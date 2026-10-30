@@ -1173,9 +1173,17 @@ static const char *caller_of_entry(Ref *r)
 static Session *sess_push(Ref *r, int routine, uint16_t sp, const char *caller)
 {
 	/* a new routine entered at SP sp replaces every session at the same or a
-	 * deeper level (they have returned or tail-jumped here) */
-	while (r->nsess && r->sess[r->nsess - 1].sp <= sp)
-		r->nsess--;
+	 * deeper level (they have returned or tail-jumped here). A generic
+	 * HandleMenuInput session (sp = its caller's level) can be polled by a known
+	 * routine at that same level (e.g. _HandlePeekSelection's first menu): it
+	 * only replaces deeper sessions and a same-level generic one. */
+	while (r->nsess) {
+		const Session *t = &r->sess[r->nsess - 1];
+		if (t->sp < sp || (t->sp == sp && (routine != GENERIC_MENU || t->routine == GENERIC_MENU)))
+			r->nsess--;
+		else
+			break;
+	}
 	if (r->nsess == MAX_SESS) {
 		stop_duel(r, REF_EV_ERROR, "too many nested input sessions");
 		return NULL;

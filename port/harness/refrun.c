@@ -18,9 +18,18 @@
  *   RESULT finished=<wDuelFinished> result=<wDuelResult> turns=<wDuelTurns> frames=<n> ...
  *
  * --human: the PLAYER_TURN side is DUELIST_TYPE_PLAYER driven by a random but
- *          legal policy (phase 2 input driver); policySeed seeds the policy.
+ *          legal policy (phase 2 input driver, see policy()); policySeed seeds it.
+ * --acks:  also print an INPUT line for every acknowledged text box.
  * --count N: run N duels; duel k uses seed (r1, r2, r3 + k) and, with --human,
- *          policy seed + k. Prints only the result lines unless --verbose.
+ *          a policy seed derived from policySeed and k. Prints only the result
+ *          lines (and a TOTAL line) unless --verbose.
+ * --rng:   an RNG line for every UpdateRNGSources return (a = the value, from=
+ *          its caller, and the caller of Random when called through Random).
+ * --anims: 1 (default) = animations on (wAnimationsDisabled = 0), 0 = off.
+ * --text-speed: wTextSpeed/sTextSpeed (default 0 = TEXT_SPEED_5, no delay).
+ * --screens dir [every]: PNG every `every` frames (default 60) + hang/error.png.
+ * --stack: print the shadow call stack under each event.
+ * Exit status: 0 if every duel ended (REF_EV_END), 1 otherwise, 2 on usage/setup errors.
  */
 #define _POSIX_C_SOURCE 199309L
 #include "ref.h"

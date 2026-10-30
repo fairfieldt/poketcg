@@ -1,0 +1,4 @@
+refrun
+*.o
+*.a
+*.png

@@ -226,6 +226,9 @@ def gen_effect_commands(rom):
         f.write(f'#define NUM_EFFECT_COMMAND_LISTS {len(lists)}\n')
         f.write('/* sorted by address (the value stored in card data and wLoadedAttackEffectCommands) */\n')
         f.write('extern const struct EffectCommandList gEffectCommandLists[NUM_EFFECT_COMMAND_LISTS];\n')
+        f.write('struct EffectFunctionAddress { u16 address; EffectFunc func; };\n')
+        f.write(f'#define NUM_EFFECT_FUNCTIONS {len(funcs)}\n')
+        f.write('extern const struct EffectFunctionAddress gEffectFunctionsByAddress[NUM_EFFECT_FUNCTIONS];\n')
         f.write('#define EFFECT_FUNCTION_LIST(X) \\\n')
         for fn in sorted(funcs):
             f.write(f'\tX({fn}) \\\n')
@@ -240,6 +243,15 @@ def gen_effect_commands(rom):
         f.write('\nconst struct EffectCommandList gEffectCommandLists[NUM_EFFECT_COMMAND_LISTS] = {\n')
         for addr, name, cmds in lists:
             f.write(f'\t{{ 0x{addr:04x}, "{name}", {name} }},\n')
+        f.write('};\n')
+    # effect functions by address, for command lists read from arbitrary memory
+    func_addrs = sorted((rom.sym[fn][1], fn) for fn in funcs)
+    with open(os.path.join(GEN, 'effect_functions_by_address.c'), 'w') as f:
+        f.write(HDR + '#include "effect_commands.h"\n\n')
+        f.write('/* every effect function referenced by a command list, sorted by its address in bank $0b */\n')
+        f.write(f'const struct EffectFunctionAddress gEffectFunctionsByAddress[{len(func_addrs)}] = {{\n')
+        for a, fn in func_addrs:
+            f.write(f'\t{{ 0x{a:04x}, {fn} }},\n')
         f.write('};\n')
     # weak fallbacks so the engine links while effect functions are being ported
     with open(os.path.join(GEN, 'effect_stubs.c'), 'w') as f:
@@ -264,6 +276,11 @@ def gen_rom_blobs(rom):
                 continue
             parts = line.split()
             label = parts[0]
+            if label.startswith('@'):
+                # a whole ROM bank: @<bank>
+                bank = int(label[1:], 16)
+                entries.append((bank, 0 if bank == 0 else 0x4000, 0x4000, f'BANK_{bank:02x}'))
+                continue
             if label not in rom.sym:
                 raise SystemExit(f'rom_blobs.txt: unknown label {label}')
             bank, addr = rom.sym[label]

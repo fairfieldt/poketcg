@@ -6,7 +6,7 @@
 /* raw ROM bytes of selected labels (tools/rom_blobs.txt), keyed by their original
  * bank:address, for data the engine reaches through pointers stored in RAM. */
 struct RomBlob { u8 bank; u16 address; u16 size; const char *label; const u8 *data; };
-#define NUM_ROM_BLOBS 79
+#define NUM_ROM_BLOBS 81
 extern const struct RomBlob gRomBlobs[NUM_ROM_BLOBS > 0 ? NUM_ROM_BLOBS : 1];
 /* pointer to the byte at bank:address (inside a blob), or NULL */
 const u8 *RomPtr(u8 bank, u16 address);

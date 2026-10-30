@@ -5,6 +5,7 @@
 #include "gen/cards.h"
 #include "gen/decks.h"
 #include "gen/effect_commands.h"
+#include "gen/rom_blobs.h"
 
 u8 gWRAM[WRAM_SIZE];
 u8 gHRAM[HRAM_SIZE];
@@ -267,6 +268,48 @@ const struct EffectCommandList *GetEffectCommandList(u16 address)
 	return NULL;
 }
 
+/* a byte of the Game Boy address space as CheckMatchingCommand sees it (ROM bank 6
+ * mapped at $4000). Garbage command list pointers do occur: e.g. the AI loads the
+ * "attack" of a non-Pokemon card, whose record tail belongs to the next card. */
+static u8 EffectCommandsBusRead(u16 a)
+{
+	if (a < 0x4000)
+		return *RomPtr(0x00, a);
+	if (a < 0x8000)
+		return *RomPtr(0x06, a);
+	if (a < 0xa000)
+		return 0; /* VRAM: not modelled */
+	if (a < 0xc000)
+		return 0xff; /* SRAM is disabled during duels: open bus */
+	if (a < 0xfe00)
+		return gWRAM[(a - 0xc000) & 0x1fff];
+	if (a >= 0xff80 && a < 0xffff)
+		return gHRAM[a - 0xff80];
+	return 0xff; /* OAM, IO: not modelled */
+}
+
+static EffectFunc EffectFunctionAt(u16 address)
+{
+	int lo = 0, hi = NUM_EFFECT_FUNCTIONS - 1;
+	while (lo <= hi) {
+		int mid = (lo + hi) / 2;
+		u16 a = gEffectFunctionsByAddress[mid].address;
+		if (a == address)
+			return gEffectFunctionsByAddress[mid].func;
+		if (a < address)
+			lo = mid + 1;
+		else
+			hi = mid - 1;
+	}
+	static char msg[48] = "jump to a non-effect function at $0b:";
+	static const char hex[] = "0123456789abcdef";
+	for (int i = 0; i < 4; i++)
+		msg[37 + i] = hex[(address >> (12 - 4 * i)) & 0xf];
+	msg[41] = 0;
+	tcg_fatal(msg);
+	return NULL;
+}
+
 /* CheckMatchingCommand: return the function for command type in the list at the
  * Game Boy address `list`, or NULL (carry) if not found */
 EffectFunc CheckMatchingCommand(u16 list, u8 type)
@@ -276,12 +319,22 @@ EffectFunc CheckMatchingCommand(u16 list, u8 type)
 	/* store the bank number of command functions ($b) in wEffectFunctionsBank */
 	wEffectFunctionsBank = 0x0b;
 	const struct EffectCommandList *l = GetEffectCommandList(list);
-	if (!l)
-		tcg_fatal("effect command list not found");
-	for (const struct EffectCommand *c = l->cmds; c->type; c++)
-		if (c->type == type)
-			return c->func;
-	return NULL;
+	if (l) {
+		for (const struct EffectCommand *c = l->cmds; c->type; c++)
+			if (c->type == type)
+				return c->func;
+		return NULL;
+	}
+	/* not one of the effect command lists: scan memory like the original does */
+	for (u16 p = list;; p = (u16)(p + 3)) {
+		u8 t = EffectCommandsBusRead(p);
+		if (t == 0)
+			return NULL;
+		if (t == type) {
+			u16 f = (u16)(EffectCommandsBusRead((u16)(p + 1)) | EffectCommandsBusRead((u16)(p + 2)) << 8);
+			return EffectFunctionAt(f);
+		}
+	}
 }
 
 EffectFunc GetEffectCommandFunction(u16 list, u8 type)

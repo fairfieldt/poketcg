@@ -580,6 +580,9 @@ struct EffectCommandList { u16 address; const char *name; const struct EffectCom
 #define NUM_EFFECT_COMMAND_LISTS 317
 /* sorted by address (the value stored in card data and wLoadedAttackEffectCommands) */
 extern const struct EffectCommandList gEffectCommandLists[NUM_EFFECT_COMMAND_LISTS];
+struct EffectFunctionAddress { u16 address; EffectFunc func; };
+#define NUM_EFFECT_FUNCTIONS 569
+extern const struct EffectFunctionAddress gEffectFunctionsByAddress[NUM_EFFECT_FUNCTIONS];
 #define EFFECT_FUNCTION_LIST(X) \
 	X(AbsorbEffect) \
 	X(AcidEffect) \
