@@ -67,6 +67,26 @@ Decisions made while porting, with the project owner's answers.
   deck; both of his duels load SAMS_PRACTICE_DECK. Fed other cards, it drives
   the original into impossible states and out-of-range memory, and the
   harness doesn't test that.
+- **Lockstep coverage.** The lockstep duels reached 775 of the 815 routines
+  that are sync points. The 40 others:
+  - dead code: `Func_14323`, `Func_1585b`, `Func_15886`, `Func_16488`,
+    `PickPokedexCards_Unreferenced`;
+  - `TryContinueDuel` and `_ContinueDuel`: run by `--continue-at`, which
+    doesn't write coverage;
+  - two AI routines needing special states: `PickRandomBenchPokemon` (Sam's
+    scripted forced switch) and `CheckIfPlayerHasPokemonOtherThanMewtwoLv53`;
+  - effects of attacks the AI practically never chooses, or that need a lot
+    of energy:
+    - AI selection: Barrier, both Metronomes, Destiny Bond, Devolution Beam,
+      Energy Conversion, Energy Spike, Recover (Kadabra, Starmie), Mewtwo's
+      Energy Absorption (both), Lure (Ninetales), Mirror Move (Pidgeotto),
+      Prophecy, Scavenge, Teleport, Wildfire, Energy Removal (the trainer);
+    - player selection: Fire Blast, Flames of Rage, Gigashock, Golduck's Hyper
+      Beam, Hypno's Dark Mind, Marowak's Call for Family, Poliwhirl's Amnesia,
+      Scavenge, Victreebel's Lure;
+    - Earthquake.
+
+  `unitdiff` can test any of these routines on its own if needed.
 - **Gambler and Recycle.** Their card records end past the end of their ROM
   bank. The bytes the original reads there come from VRAM and depend on the
   screen; the port reads 0. Nothing in the duel logic uses those bytes.

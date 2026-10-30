@@ -166,14 +166,19 @@ make test-long  # ten times as many
 Results so far are identical in every mode, after fixing the divergences these
 runs found:
 
-* about 1300 AI-vs-AI and 1000 human-vs-AI duels over all decks, random decks
-  and themed decks;
-* 30 practice duels;
-* about 30 continued duels;
+* about 1,200 AI-vs-AI and 1,100 human-vs-AI duels over all decks, random,
+  themed and focus decks;
+* 40 practice duels;
+* 31 continued duels;
 * 77 core routines in `unitdiff`.
 
-Every card effect and AI routine that the original can reach has been reached
-in lockstep, except those listed in `notes/QUESTIONS.md`.
+Together these duels reached 775 of the 815 sync points. The other 40 are
+listed in `notes/QUESTIONS.md`:
+
+* dead code;
+* the continue routines, which are checked without coverage;
+* AI selection routines for attacks the AI practically never chooses;
+* a few costly player attacks.
 
 The known differences, all outside the duel logic, are listed in
 `notes/QUESTIONS.md`:
