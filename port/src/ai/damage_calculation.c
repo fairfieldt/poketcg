@@ -120,6 +120,7 @@ not_resistant:
 	/* apply pluspower and defender boosts */
 	de = ApplyAttachedPlusPower((u8)(hTempPlayAreaLocation_ff9d + CARD_LOCATION_ARENA), de);
 	SwapTurn();
+	gRegB = CARD_LOCATION_ARENA; /* (ld b, CARD_LOCATION_ARENA: see TryExecuteEffectCommandFunction) */
 	de = ApplyAttachedDefender(CARD_LOCATION_ARENA, de);
 	de = HandleDamageReduction(de);
 	/* test if de underflowed */

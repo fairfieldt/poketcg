@@ -228,6 +228,7 @@ static bool UpdateExpectedAIDamage_SkipPushAF(u8 a, u8 d, u8 e)
 	wAIMaxDamage = (u8)(hl[0] + e);
 	bool carry = a + hl[0] > 0xff;
 	hl[0] = (u8)(a + hl[0]); /* (only the low byte of wDamage) */
+	gEffectFunctionA = hl[0];
 	return carry;
 }
 
@@ -238,6 +239,7 @@ static bool UpdateExpectedAIDamage_AccountForPoison_Carry(u8 a, u8 d, u8 e)
 		return UpdateExpectedAIDamage_SkipPushAF(a, d, e);
 	wAIMinDamage = wDamage[0];
 	wAIMaxDamage = wDamage[0];
+	gEffectFunctionA = wDamage[0];
 	/* pop af restores the flags of the caller: effect functions are entered with nc */
 	return false;
 }
@@ -275,6 +277,7 @@ void SetExpectedAIDamage(u8 a, u8 d, u8 e)
 	wDamage[1] = 0;
 	wAIMinDamage = d;
 	wAIMaxDamage = e;
+	gEffectFunctionA = e;
 }
 
 void DrawPlayAreaScreenToShowChanges(u8 loc)
@@ -353,6 +356,7 @@ void SetDefiniteAIDamage(void)
 {
 	wAIMinDamage = wDamage[0];
 	wAIMaxDamage = wDamage[0];
+	gEffectFunctionA = wDamage[0];
 }
 
 /* returns in a some random occupied Play Area location
@@ -1675,6 +1679,7 @@ bool BigEggsplosion_AIEffect(void)
 	wDamage[0] = l >> 1;
 	/* sets min damage as 0 */
 	wAIMinDamage = 0;
+	gEffectFunctionA = 0;
 	return false;
 }
 
@@ -2559,4 +2564,5 @@ void ApplyExtraWaterEnergyDamageBonus(u8 b, u8 c)
 	/* .skip_bonus */
 	wAIMinDamage = wDamage[0];
 	wAIMaxDamage = wDamage[0];
+	gEffectFunctionA = wDamage[0];
 }

@@ -54,6 +54,7 @@ static u16 HandleDamageReductionExceptSubstatus2_PkmnPower(u16 de)
 		/* invisible_wall */
 		if (wLoadedAttack.Category == POKEMON_POWER)
 			return de;
+		gRegB = 0; /* (ld bc, 30) */
 		if (de < 30)
 			return de;
 		return 0;
@@ -82,6 +83,7 @@ u16 HandleDamageReductionExceptSubstatus2(u16 de)
 		case SUBSTATUS1_REDUCE_BY_20:
 			return (u16)(de - 20);
 		case SUBSTATUS1_PREVENT_LESS_THAN_40:
+			gRegB = 0; /* (ld bc, 40) */
 			return de >= 40 ? de : 0;
 		case SUBSTATUS1_HALVE_DAMAGE:
 			return BuggyHalveDamage(de);

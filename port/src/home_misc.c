@@ -345,12 +345,26 @@ EffectFunc GetEffectCommandFunction(u16 list, u8 type)
 /* Checks if the command type is one of the commands of the attack or card effect
  * currently in use (wLoadedAttackEffectCommands), and executes its associated
  * function if so. returns the function's carry; nc if there was no such command. */
+/* register b and the a an effect function returned, modelled only where the original
+ * reads a b that a callee left in it (see AIDecide_GustOfWind .check_bench_energy):
+ * - after TryExecuteEffectCommandFunction ran a function, b = its a (push af / pop bc);
+ *   the AI effect functions' a is set by the helpers they end with
+ *   (SetExpectedAIDamage...), the others leave the bank number they are called with
+ * - CalculateDamage_VersusDefendingPokemon sets b = CARD_LOCATION_ARENA when the
+ *   Defending Pokemon can be damaged, and HandleDamageReductionExceptSubstatus2's
+ *   Invisible Wall / PREVENT_LESS_THAN_40 checks set b = 0 (ld bc, 30/40) */
+u8 gRegB;
+u8 gEffectFunctionA;
+
 bool TryExecuteEffectCommandFunction(u8 type)
 {
 	EffectFunc f = CheckMatchingCommand(rd16(wLoadedAttack.EffectCommands), type);
 	if (!f)
 		return false;
-	return f();
+	gEffectFunctionA = BANK_EFFECT_FUNCTIONS; /* a = [wEffectFunctionsBank] at CallHL */
+	bool carry = f();
+	gRegB = gEffectFunctionA;
+	return carry;
 }
 
 /* ------------------------------------------------------------------ load_deck.asm */

@@ -1066,6 +1066,7 @@ loop_4:
 	b = GetNonTurnDuelistVariable((u8)(DUELVARS_ARENA_CARD_HP + e));
 	saved_hp = GetNonTurnDuelistVariable(DUELVARS_ARENA_CARD_HP);
 	NonTurnDuelistVars()[DUELVARS_ARENA_CARD_HP] = b;
+	gRegB = b; /* (read by .check_bench_energy, see there) */
 
 	hTempPlayAreaLocation_ff9d = PLAY_AREA_ARENA;
 	if (!AIDecide_GustOfWind_CheckIfAnyAttackKnocksOut(e))
@@ -1203,19 +1204,21 @@ no_carry:
 	 * has no attached energy cards and that the AI can damage */
 check_bench_energy:
 	/* return carry if there's a bench card with weakness */
-	/* bug (original): b is not loaded with the arena card's color here: it is what
-	 * the last EstimateDamage_VersusDefendingCard (of .CheckIfAttackDealsNoDamage) left
-	 * in it. When the Defending Pokemon is not protected by a No Damage or Effect
-	 * substatus that is CARD_LOCATION_ARENA (or 0 after Invisible Wall /
-	 * PREVENT_LESS_THAN_40 handling), which matches no weakness, so the bench is
-	 * scanned (loading each card into wLoadedCard1) without finding one: modelled here.
-	 * When it is protected (Fly, Barrier, Agility, Neutralizing Shield), b is older
-	 * (the last bench card's HP from .FindBenchCardToKnockOut, or register a of an
-	 * EFFECTCMDTYPE_AI function), which the port does not model; the result is the same
-	 * (.check_can_damage cannot succeed against a protected Defending Pokemon, wDamage
-	 * is 0), only the extra CheckIfCanDamageDefendingPokemon calls for matching bench
-	 * cards are missing. */
-	b = CARD_LOCATION_ARENA;
+	/* bug (original): b is not loaded with the arena card's color here: it is what the
+	 * last routine that set it left, modelled by gRegB (see TryExecuteEffectCommandFunction):
+	 * - when the Defending Pokemon can be damaged, the last EstimateDamage_VersusDefendingCard
+	 *   (of .CheckIfAttackDealsNoDamage) leaves CARD_LOCATION_ARENA, or 0 after the
+	 *   Invisible Wall / PREVENT_LESS_THAN_40 checks: no weakness matches;
+	 * - when it is protected (Fly, Barrier, Agility, Neutralizing Shield), b is the a that
+	 *   the last attack's EFFECTCMDTYPE_AI function returned (often its maximum damage),
+	 *   or, if no AI function ran, the HP of the last bench card .FindBenchCardToKnockOut
+	 *   checked. Bench cards whose weakness matches those bits then get a
+	 *   CheckIfCanDamageDefendingPokemon check.
+	 * (The b that CheckIfSelectedAttackIsUnusable and LookForEnergyNeededForAttackInHand
+	 * leave in .FindBenchCardToKnockOut is never read: they only run when an attack can
+	 * KO, i.e. deals damage, and then .CheckIfNoAttackDealsDamage estimates that attack
+	 * again before getting here.) */
+	b = gRegB;
 	if (AIDecide_GustOfWind_FindBenchCardWithWeakness(b, &a)) {
 		*a_out = a;
 		return true;

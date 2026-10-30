@@ -169,6 +169,8 @@ u8 UpdateRNGSources(void);
 const struct EffectCommandList *GetEffectCommandList(u16 address);
 EffectFunc CheckMatchingCommand(u16 list, u8 type);   /* NULL == carry */
 EffectFunc GetEffectCommandFunction(u16 list, u8 type);
+#define BANK_EFFECT_FUNCTIONS 0x0b             /* BANK("Effect Functions") */
+extern u8 gRegB, gEffectFunctionA;             /* see TryExecuteEffectCommandFunction */
 bool TryExecuteEffectCommandFunction(u8 type);
 bool LoadDeck(u8 deck);
 

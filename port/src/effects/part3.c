@@ -1881,6 +1881,7 @@ static bool MirrorMove_AIEffect(void)
 	u8 a = GetTurnDuelistVariable(DUELVARS_ARENA_CARD_LAST_TURN_DAMAGE);
 	wAIMinDamage = a;
 	wAIMaxDamage = a;
+	gEffectFunctionA = a;
 	return false;
 }
 
@@ -2562,6 +2563,7 @@ bool DoTheWaveEffect(void)
 	u8 a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
 	a--; /* don't count arena card */
 	AddToDamage(ATimes10(a));
+	gEffectFunctionA = wDamage[1]; /* (AddToDamage leaves the high byte in a) */
 	return false;
 }
 
