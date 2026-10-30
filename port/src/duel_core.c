@@ -2168,6 +2168,19 @@ void SaveDuelDataToBackup(void)
 	gSaveDuelTarget = gCurrentDuel;
 }
 
+/* port only (tcg_state_hash): FNV-1a hash of the data SaveDuelData saves */
+u32 HashDuelData(void)
+{
+	u8 buf[SAVE_DUEL_DATA_SIZE];
+	SaveDuelDataTo(buf);
+	u32 h = 2166136261u;
+	for (unsigned i = 0; i < sizeof(buf); i++) {
+		h ^= buf[i];
+		h *= 16777619u;
+	}
+	return h;
+}
+
 /* load data saved at de (in SRAM) to WRAM, using DuelDataToSave table */
 void LoadSavedDuelData(const u8 *de)
 {

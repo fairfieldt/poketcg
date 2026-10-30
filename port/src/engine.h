@@ -235,6 +235,7 @@ u16 PrintThereWasNoEffectFromStatusText(void);   /* returns the text id (hl) */
 bool TurnDuelistTakePrizes(void);
 void SaveDuelData(void);
 void SaveDuelDataToBackup(void);
+u32 HashDuelData(void);                        /* port only: hash of the data SaveDuelData saves */
 void LoadSavedDuelData(const u8 *data);
 extern u8 gCurrentDuel[SAVE_DUEL_DATA_SIZE];
 extern u8 gBackupCurrentDuel[SAVE_DUEL_DATA_SIZE];

@@ -47,7 +47,8 @@ enum TcgEventType {
 
 enum TcgScreen {
 	TCG_SCREEN_NONE = 0,
-	TCG_SCREEN_MAIN,          /* duel main scene (both active Pokemon + HUDs) of arg[1]'s perspective */
+	TCG_SCREEN_MAIN,          /* duel main scene (both active Pokemon + HUDs) of arg[1]'s perspective.
+	                           * arg[2] = 1: only the HUDs were redrawn (DrawDuelHUDs: HP, energies, status) */
 	TCG_SCREEN_PLAY_AREA,     /* play area list of duelist arg[1] */
 	TCG_SCREEN_CARD_LIST,     /* card list (wDuelTempList) with header/info texts */
 	TCG_SCREEN_LARGE_CARD,    /* large picture of a card */
@@ -75,7 +76,8 @@ enum TcgRequestType {
 	                           * (the original shows the human the hand checked by the AI's Lass) */
 	TCG_REQ_CARD_ITEM_MENU,   /* CardListItemSelectionMenu: 0 = Play/Select, 1 = Check, or cancel. arg[0] = card */
 	TCG_REQ_PLAY_AREA,        /* DisplayPlayAreaScreen: pick a play area slot (absolute PLAY_AREA_*) of duelist `shown`, or cancel */
-	TCG_REQ_MENU,             /* HandleMenuInput: pick item in [0, num_items) or cancel. menu = TcgMenu context */
+	TCG_REQ_MENU,             /* HandleMenuInput: pick item in [0, num_items) or cancel. menu = TcgMenu context.
+	                           * TCG_MENU_PLAY_AREA: item i is play area location arg[0] + i (wExcludeArenaPokemon) */
 	TCG_REQ_YES_NO,           /* 1 = yes, 0 = no. cursor = default */
 	TCG_REQ_ENERGY_DISCARD,   /* HandleEnergyDiscardMenuInput: pick index into items (wDuelTempList) or cancel */
 	TCG_REQ_PRIZE,            /* pick one of the remaining prize cards: index in [0, 6), cursor = default */
@@ -143,8 +145,15 @@ typedef struct TcgDuelSetup {
 void tcg_set_host(const TcgHost *host);
 
 /* Runs a whole duel. Returns wDuelResult (DUEL_WIN = 0 if the PLAYER_TURN side won,
- * DUEL_LOSS = 1 otherwise; the duel engine handles draws with sudden death). */
+ * DUEL_LOSS = 1 otherwise; the duel engine handles draws with sudden death).
+ * Every call starts from cleared engine memory, so after a host that longjmps out of
+ * request() or tcg_fatal, the next tcg_run_duel starts a fresh duel. */
 int tcg_run_duel(const TcgDuelSetup *setup);
+
+/* Hash (FNV-1a) of the duel state the original saves to SRAM (SaveDuelData: both duel
+ * variable blocks, decks, wDuelStates, hWhoseTurn, the RNG, the AI's duel variables).
+ * Two engines fed the same setup and answers have the same hash at every request. */
+uint32_t tcg_state_hash(void);
 
 /* Formats a text id with the current TX_RAM substitutions (wTxRam2/3, names). */
 int tcg_format_text(uint16_t text_id, char *out, int out_size);

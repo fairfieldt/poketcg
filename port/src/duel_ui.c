@@ -310,6 +310,8 @@ bool HandleMenuInput(void)
 	r.num_items = wNumMenuItems;
 	r.cursor = wCurMenuItem;
 	r.items = wDuelTempList;
+	if (r.menu == TCG_MENU_PLAY_AREA)
+		r.arg[0] = wExcludeArenaPokemon; /* item i is play area location arg[0] + i */
 	int c = request(&r);
 	wRefreshMenuCursorSFX = 0;
 	if (c < 0 || c >= wNumMenuItems) {

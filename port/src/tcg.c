@@ -1,6 +1,7 @@
 /* Frontend entry points (tcg.h). */
 #include "engine.h"
 #include "tcg.h"
+#include "duel_ui.h"
 #include "gen/cards.h"
 #include "gen/decks.h"
 
@@ -49,6 +50,8 @@ int tcg_run_duel(const TcgDuelSetup *s)
 {
 	memset(gWRAM, 0, sizeof(gWRAM));
 	memset(gHRAM, 0, sizeof(gHRAM));
+	gUIDecider = 0; /* (a duel left by a longjmp from tcg_fatal or the host can leave it set) */
+	gTextID = 0;
 	gDuelistNames[0] = s->duelist[0].name ? s->duelist[0].name : "PLAYER";
 	gDuelistNames[1] = s->duelist[1].name ? s->duelist[1].name : "OPPONENT";
 	wTextSpeed = 0;
@@ -96,6 +99,8 @@ int tcg_run_duel(const TcgDuelSetup *s)
 	StartDuel();
 	return wDuelResult;
 }
+
+uint32_t tcg_state_hash(void) { return HashDuelData(); }
 
 uint8_t *tcg_wram(void) { return gWRAM; }
 uint8_t *tcg_hram(void) { return gHRAM; }
