@@ -366,22 +366,74 @@ static void on_event(void *ctx, const TcgEvent *ev)
 
 /* ---------------------------------------------------------------- random decks */
 
-/* --random-decks: 10 random Basic Pokemon, 30 other random Pokemon/Trainer cards and
- * 20 random energy cards, to reach cards that no AI deck has. GAMBLER and RECYCLE are
+/* --random-decks: half of the decks are fully random (10 random Basic Pokemon, 30
+ * other random Pokemon/Trainer cards, 20 random energy cards), to reach cards that no
+ * AI deck has; the other half are themed: whole evolution lines of 3 random Pokemon
+ * (3 copies of each stage), random Trainers, and energies of those Pokemon's types, so
+ * that Stage 2 Pokemon get into play with energy to attack. GAMBLER and RECYCLE are
  * left out: their card records end past their ROM bank, and the bytes the original
  * reads there come from VRAM (screen dependent; the port reads 0). */
+static const struct CardData *card(u8 id) { return (const struct CardData *)gCardData[id]; }
+
+static u8 random_card(bool (*want)(const struct CardData *))
+{
+	for (;;) {
+		u8 id = (u8)(1 + policy(NUM_CARDS));
+		if (id != GAMBLER && id != RECYCLE && want(card(id)))
+			return id;
+	}
+}
+
+static bool is_energy(const struct CardData *c) { return c->Type >= TYPE_ENERGY && c->Type < TYPE_TRAINER; }
+static bool is_pokemon(const struct CardData *c) { return c->Type < TYPE_ENERGY; }
+static bool is_basic(const struct CardData *c) { return is_pokemon(c) && c->Stage == BASIC; }
+static bool is_trainer(const struct CardData *c) { return c->Type == TYPE_TRAINER; }
+static bool is_not_energy(const struct CardData *c) { return !is_energy(c); }
+
+/* a random card of the stage below c in c's evolution line, 0 if none */
+static u8 pre_evolution(const struct CardData *c)
+{
+	u8 found[8], n = 0;
+	for (unsigned id = 1; id <= NUM_CARDS && n < 8; id++) {
+		const struct CardData *p = card((u8)id);
+		if (is_pokemon(p) && p->Stage == c->Stage - 1 && p->Name[0] == c->PreEvoName[0] &&
+		    p->Name[1] == c->PreEvoName[1])
+			found[n++] = (u8)id;
+	}
+	return n ? found[policy(n)] : 0;
+}
+
 static void random_deck(u8 *out)
 {
 	int n = 0;
-	while (n < DECK_SIZE) {
-		u8 id = (u8)(1 + policy(NUM_CARDS));
-		const struct CardData *c = (const struct CardData *)gCardData[id];
-		if (id == GAMBLER || id == RECYCLE)
-			continue;
-		bool energy = c->Type >= TYPE_ENERGY && c->Type < TYPE_TRAINER;
-		bool basic = c->Type < TYPE_ENERGY && c->Stage == BASIC;
-		if (n < 10 ? basic : n < 40 ? !energy : energy)
+	if (policy(2)) {
+		while (n < DECK_SIZE) {
+			u8 id = n < 10 ? random_card(is_basic) : n < 40 ? random_card(is_not_energy) : random_card(is_energy);
 			out[n++] = id;
+		}
+		return;
+	}
+	u8 types[3];
+	for (int line = 0; line < 3; line++) {
+		const struct CardData *c = card(random_card(is_pokemon));
+		types[line] = c->Type;
+		for (u8 id = c->ID; id; ) {
+			for (int k = 0; k < 3 && n < 36; k++)
+				out[n++] = id;
+			id = card(id)->Stage == BASIC ? 0 : pre_evolution(card(id));
+		}
+	}
+	while (n < 40)
+		out[n++] = random_card(is_trainer);
+	/* energies of the lines' types (Double Colorless for Colorless Pokemon) */
+	for (int k = 0; n < DECK_SIZE; k++) {
+		u8 t = types[k % 3];
+		u8 want = t < TYPE_PKMN_COLORLESS ? (u8)(TYPE_ENERGY + t) : TYPE_ENERGY_DOUBLE_COLORLESS;
+		for (unsigned id = 1; id <= NUM_CARDS; id++)
+			if (card((u8)id)->Type == want) {
+				out[n++] = (u8)id;
+				break;
+			}
 	}
 }
 
