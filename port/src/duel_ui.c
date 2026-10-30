@@ -21,10 +21,10 @@ void tcg_set_host(const TcgHost *host)
 	gHost = host;
 }
 
-void host_save_duel(void)
+void host_save_duel(const u8 *data, u16 size)
 {
 	if (gHost && gHost->save)
-		gHost->save(gHost->ctx);
+		gHost->save(gHost->ctx, data, size);
 }
 
 /* ---------------------------------------------------------------- frontend plumbing */
@@ -59,6 +59,15 @@ static int request(TcgRequest *r)
 	if (!gHost || !gHost->request)
 		return r->type == TCG_REQ_ACK ? 0 : TCG_CANCEL;
 	return gHost->request(gHost->ctx, r);
+}
+
+void ClearJoypad(void)
+{
+	hDPadRepeat = 0;
+	hKeysReleased = 0;
+	hDPadHeld = 0;
+	hKeysHeld = 0;
+	hKeysPressed = 0;
 }
 
 static void set_keys(u8 keys)

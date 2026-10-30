@@ -116,21 +116,33 @@ typedef struct TcgRequest {
 typedef struct TcgHost {
 	void (*event)(void *ctx, const TcgEvent *ev);
 	int (*request)(void *ctx, const TcgRequest *req);
-	/* optional: called when the original would save the duel to SRAM */
-	void (*save)(void *ctx);
+	/* optional: called every time the original writes the duel to SRAM: sCurrentDuel
+	 * each time the duel menu is printed, sBackupCurrentDuel at the start of the human's
+	 * turns. data is the duel's save file, TCG_SAVE_SIZE bytes: both SRAM images
+	 * (valid flag, checksum, wDuelType, then the DuelDataToSave data), sCurrentDuel
+	 * first. Keep the latest one to offer "Continue Duel" (tcg_continue_duel), and
+	 * delete it once the duel returns (the original clears it back in the overworld). */
+	void (*save)(void *ctx, const uint8_t *data, uint32_t size);
 	void *ctx;
 } TcgHost;
+
+#define TCG_SAVE_SIZE 1660        /* 2 * SAVE_DUEL_SIZE: sCurrentDuel, sBackupCurrentDuel */
 
 /* duelist setup */
 #define TCG_DECK_SIZE 60
 typedef struct TcgDuelistSetup {
 	uint8_t kind;             /* TCG_HUMAN or TCG_AI */
-	uint8_t deck_id;          /* TCG_AI: *_DECK_ID of the AI opponent (wOpponentDeckID) */
+	uint8_t deck_id;          /* TCG_AI: *_DECK_ID of the AI opponent (wOpponentDeckID).
+	                           * TCG_SAMS_PRACTICE_DECK_ID against a TCG_HUMAN duelist[0] is the
+	                           * practice duel with Sam (the human then plays PRACTICE_PLAYER_DECK;
+	                           * the original uses 2 prizes and MUSIC_DUEL_THEME_1) */
 	uint8_t cards[TCG_DECK_SIZE]; /* TCG_HUMAN: the 60 card ids (0 = use the AI deck_id's list) */
 	const char *name;         /* shown for TX_RAM1 (<RAMNAME>) */
 } TcgDuelistSetup;
 
 enum { TCG_HUMAN = 0, TCG_AI = 1 };
+
+#define TCG_SAMS_PRACTICE_DECK_ID 0   /* SAMS_PRACTICE_DECK_ID */
 
 typedef struct TcgDuelSetup {
 	TcgDuelistSetup duelist[2];   /* [0] = PLAYER_TURN side, [1] = OPPONENT_TURN side */
@@ -140,6 +152,10 @@ typedef struct TcgDuelSetup {
 	uint8_t animations_disabled;  /* wAnimationsDisabled */
 	uint8_t received_legendary_cards; /* sReceivedLegendaryCards save flag: nonzero makes every AI deck
 	                                   * play like a boss deck (CheckIfNotABossDeckID) */
+	uint8_t skip_delay_allowed;   /* wSkipDelayAllowed (debug option sSkipDelayAllowed): the original
+	                               * then cuts its draw/shuffle/prize animations and delays short while
+	                               * B is held. Only the engine's copy of the flag changes; frontends
+	                               * skip their own pacing (TCG_EV_WAIT, animations) while B is held */
 } TcgDuelSetup;
 
 void tcg_set_host(const TcgHost *host);
@@ -154,6 +170,28 @@ int tcg_run_duel(const TcgDuelSetup *setup);
  * variable blocks, decks, wDuelStates, hWhoseTurn, the RNG, the AI's duel variables).
  * Two engines fed the same setup and answers have the same hash at every request. */
 uint32_t tcg_state_hash(void);
+
+/* Continues a duel from an image given to host->save: the original's TryContinueDuel
+ * ("Continue Duel" in the main menu). Decks, prizes, the duelists' types and deck ids,
+ * the turn, the RNG and the music come from the save; setup (may be NULL) only gives
+ * the names and settings (animations_disabled, received_legendary_cards,
+ * skip_delay_allowed). Returns wDuelResult like tcg_run_duel, or TCG_CONTINUE_BROKEN
+ * (after the "backup is broken" text box, like the original) if data is not a valid
+ * save (size, valid flag or checksum). */
+#define TCG_CONTINUE_BROKEN (-1)
+int tcg_continue_duel(const TcgDuelSetup *setup, const uint8_t *data, uint32_t size);
+
+/* What a save image holds, for a "Continue Duel" entry. Returns 0, or -1 if data is not
+ * a valid save. */
+typedef struct TcgSavedDuel {
+	uint8_t duel_type;            /* wDuelType (the original never continues DUELTYPE_LINK saves) */
+	uint8_t duelist_type[2];      /* DUELIST_TYPE_PLAYER, or DUELIST_TYPE_AI_OPP | deck id, per side */
+	uint8_t opponent_deck_id;     /* wOpponentDeckID */
+	uint8_t turns;                /* wDuelTurns */
+	uint8_t whose_turn;           /* TCG_PLAYER / TCG_OPPONENT */
+	uint8_t prizes_left[2];       /* prize cards not taken yet, per side */
+} TcgSavedDuel;
+int tcg_saved_duel_info(const uint8_t *data, uint32_t size, TcgSavedDuel *out);
 
 /* Formats a text id with the current TX_RAM substitutions (wTxRam2/3, names). */
 int tcg_format_text(uint16_t text_id, char *out, int out_size);

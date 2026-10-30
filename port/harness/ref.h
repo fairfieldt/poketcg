@@ -168,6 +168,7 @@ extern "C" {
 typedef struct Ref Ref;
 
 #define REF_DECK_SIZE 60
+#define REF_SAVE_SIZE (2 * 0x33e) /* sCurrentDuel, then sBackupCurrentDuel (2 * SAVE_DUEL_SIZE) */
 #define REF_STACK_MAX 48
 #define REF_LIST_MAX 64
 
@@ -231,6 +232,11 @@ typedef struct RefDuel {
 	uint8_t report_acks;        /* default 0: also report each ACK as REF_EV_INPUT type REF_IN_ACK, at the read
 	                             * where A is pressed (informational: no ref_answer needed) */
 	uint32_t hang_frames;       /* default 3600: no progress for this many frames -> REF_EV_HANG */
+	/* continue_duel: start at TryContinueDuel ("Continue Duel") with save in SRAM's
+	 * sCurrentDuel and sBackupCurrentDuel (bank 2) instead of starting a new duel
+	 * (the decks come from the save) */
+	uint8_t continue_duel;
+	uint8_t save[REF_SAVE_SIZE];
 } RefDuel;
 
 void ref_duel_defaults(RefDuel *d);

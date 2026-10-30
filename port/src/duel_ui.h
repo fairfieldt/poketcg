@@ -87,6 +87,7 @@ void PlayDefaultSong(void);
 /* ---------------------------------------------------------------- duel screens (engine/duel/core.asm) */
 extern const char *gDuelistNames[2];               /* TX_RAM1 names of the PLAYER_TURN / OPPONENT_TURN duelists */
 void SetupDuel(void);
+void ClearJoypad(void);
 void PrintDuelResultStats(void);
 void PlaceDuelMenuItems(void);
 u8 HandleDuelMenuInput(u8 initial);                /* blocks; returns the selected item (also hCurMenuItem) */

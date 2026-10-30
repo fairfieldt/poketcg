@@ -14,7 +14,6 @@ void SaveDuelStateToSRAM(void)
 	SwapTurn();
 	wTempNonTurnDuelistCardID = GetCardIDFromDeckIndex(GetTurnDuelistVariable(DUELVARS_ARENA_CARD));
 	SwapTurn();
-	host_save_duel();
 }
 
 /* copies the deck list at deck to wPlayerDeck or wOpponentDeck (depending on whose turn it is).

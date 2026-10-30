@@ -180,6 +180,8 @@ struct Ref {
 	/* boot snapshot */
 	uint8_t *snap;
 	/* key addresses */
+	uint16_t a_TryContinueDuel, s_CurrentDuel, s_BackupCurrentDuel;
+	int b_BackupCurrentDuel;
 	uint16_t a_StartDuel, a_StartDuel_VSAIOpp, a_PowersOf2, a_AIDoAction, a_UpdateRNGSources,
 		a_ReadJoypad, a_Start, a_SwitchToBankAtSP;
 	int b_StartDuel;
@@ -1576,6 +1578,9 @@ Ref *ref_new(const char *rom_path, const char *sym_path)
 	int ok = 1;
 	r->a_StartDuel = need_sym(r, "StartDuel", &r->b_StartDuel, &ok);
 	r->a_StartDuel_VSAIOpp = need_sym(r, "StartDuel_VSAIOpp", NULL, &ok);
+	r->a_TryContinueDuel = need_sym(r, "TryContinueDuel", NULL, &ok);
+	r->s_CurrentDuel = need_sym(r, "sCurrentDuel", NULL, &ok);
+	r->s_BackupCurrentDuel = need_sym(r, "sBackupCurrentDuel", &r->b_BackupCurrentDuel, &ok);
 	r->a_PowersOf2 = need_sym(r, "PowersOf2", NULL, &ok);
 	r->a_AIDoAction = need_sym(r, "AIDoAction", NULL, &ok);
 	r->a_UpdateRNGSources = need_sym(r, "UpdateRNGSources", NULL, &ok);
@@ -1864,6 +1869,12 @@ int ref_start_duel(Ref *r, const RefDuel *d)
 	gb_write(gb, 0xdffe, (uint8_t)r->a_PowersOf2);
 	gb_write(gb, 0xdfff, (uint8_t)(r->a_PowersOf2 >> 8));
 	gb->pc = d->player_human ? r->a_StartDuel_VSAIOpp : r->a_StartDuel;
+	if (d->continue_duel) {
+		memcpy(sram0(r, r->s_CurrentDuel), d->save, REF_SAVE_SIZE / 2);
+		memcpy(&gb->sram[r->b_BackupCurrentDuel * 0x2000 + (r->s_BackupCurrentDuel - 0xa000)],
+		       d->save + REF_SAVE_SIZE / 2, REF_SAVE_SIZE / 2);
+		gb->pc = r->a_TryContinueDuel;
+	}
 	gb->halted = 0;
 	gb->halt_bug = 0;
 	gb->ei_pending = 0;

@@ -2,10 +2,16 @@
  * tcgcli: a terminal frontend for the duel engine (desktop target), also used
  * for smoke tests with a random "human" policy.
  *
- *   tcgcli [--p1 human|random|ai:<deck_id>] [--p2 ...] [--seed N] [--quiet] [--max-requests N]
+ *   tcgcli [--p1 human|random|ai:<deck_id>] [--p2 ...] [--deck1 ID] [--deck2 ID] [--seed N]
+ *          [--practice] [--continue] [--save-dir DIR] [--no-save] [--quiet] [--max-requests N]
  *
  * Human duelists answer on stdin: every request prints its choices and reads a
  * number (or 'b' for cancel / B button).
+ *
+ * The duel is saved like the original saves it to SRAM (save_store.h; default
+ * directory: see save_store_open) and the save is deleted when the duel ends.
+ * --continue resumes the saved duel ("Continue Duel"). --practice is the
+ * practice duel with Sam (P2 = ai:SAMS_PRACTICE_DECK_ID, 2 prizes).
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,6 +19,7 @@
 #include "tcg.h"
 #include "common.h"
 #include "gen/text.h"
+#include "../common/save_store.h"
 
 enum { KIND_HUMAN, KIND_RANDOM, KIND_AI };
 
@@ -20,6 +27,7 @@ static int kinds[2];
 static int quiet;
 static unsigned long rng_state = 1;
 static long requests, max_requests = 200000;
+static int saving = 1;
 
 static unsigned rnd(unsigned n)
 {
@@ -163,6 +171,13 @@ static int on_request(void *ctx, const TcgRequest *r)
 	return random_answer(r);
 }
 
+static void on_save(void *ctx, const uint8_t *data, uint32_t size)
+{
+	(void)ctx;
+	if (saving && !save_store_write(SAVE_STORE_DUEL, data, size))
+		fprintf(stderr, "tcgcli: could not write the save file\n");
+}
+
 static void parse_kind(const char *s, int side, TcgDuelSetup *setup)
 {
 	TcgDuelistSetup *d = &setup->duelist[side];
@@ -189,6 +204,8 @@ int main(int argc, char **argv)
 	setup.duelist[1].deck_id = SQUIRTLE_AND_FRIENDS_DECK_ID;
 	kinds[0] = kinds[1] = KIND_RANDOM;
 	unsigned seed = 1;
+	int resume = 0;
+	const char *save_dir = NULL;
 	for (int i = 1; i < argc; i++) {
 		if (!strcmp(argv[i], "--p1") && i + 1 < argc)
 			parse_kind(argv[++i], 0, &setup);
@@ -202,6 +219,15 @@ int main(int argc, char **argv)
 			seed = (unsigned)strtoul(argv[++i], NULL, 0);
 		else if (!strcmp(argv[i], "--quiet"))
 			quiet = 1;
+		else if (!strcmp(argv[i], "--practice")) {
+			parse_kind("ai:0", 1, &setup); /* SAMS_PRACTICE_DECK_ID */
+			setup.prizes = 2;
+		} else if (!strcmp(argv[i], "--continue"))
+			resume = 1;
+		else if (!strcmp(argv[i], "--save-dir") && i + 1 < argc)
+			save_dir = argv[++i];
+		else if (!strcmp(argv[i], "--no-save"))
+			saving = 0;
 		else if (!strcmp(argv[i], "--max-requests") && i + 1 < argc)
 			max_requests = strtol(argv[++i], NULL, 0);
 	}
@@ -211,9 +237,41 @@ int main(int argc, char **argv)
 	setup.rng[2] = (uint8_t)(seed >> 16);
 	setup.duelist[0].name = "P1";
 	setup.duelist[1].name = "P2";
-	TcgHost host = { on_event, on_request, NULL, NULL };
+	if ((saving || resume) && !save_store_open(save_dir)) {
+		fprintf(stderr, "tcgcli: cannot use the save directory\n");
+		saving = 0;
+	}
+	TcgHost host = { on_event, on_request, on_save, NULL };
 	tcg_set_host(&host);
-	int result = tcg_run_duel(&setup);
+	int result;
+	if (resume) {
+		static uint8_t save[TCG_SAVE_SIZE];
+		int n = save_store_read(SAVE_STORE_DUEL, save, sizeof(save));
+		TcgSavedDuel info;
+		if (n < 0) {
+			fprintf(stderr, "tcgcli: no saved duel\n");
+			return 1;
+		}
+		if (tcg_saved_duel_info(save, (uint32_t)n, &info) == 0) {
+			/* the save knows who plays each side; humans keep the kind given (human/random) */
+			for (int i = 0; i < 2; i++)
+				if (info.duelist_type[i] & 0x80)
+					kinds[i] = KIND_AI;
+				else if (kinds[i] == KIND_AI)
+					kinds[i] = KIND_RANDOM;
+			printf("continuing the saved duel: turn %d, prizes left %d / %d\n", info.turns,
+			       info.prizes_left[0], info.prizes_left[1]);
+		}
+		result = tcg_continue_duel(&setup, save, (uint32_t)n);
+		if (result == TCG_CONTINUE_BROKEN) {
+			fprintf(stderr, "tcgcli: the saved duel is broken\n");
+			return 1;
+		}
+	} else {
+		result = tcg_run_duel(&setup);
+	}
+	if (saving)
+		save_store_remove(SAVE_STORE_DUEL); /* the original clears the saved duel back in the overworld */
 	const uint8_t *w = tcg_wram();
 	printf("result: %s (wDuelFinished=%d, turns=%d, requests=%ld)\n", result == 0 ? "P1 wins" : "P2 wins",
 	       w[ADDR_wDuelFinished - 0xc000], w[ADDR_wDuelTurns - 0xc000], requests);

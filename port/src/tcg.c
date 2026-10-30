@@ -8,6 +8,7 @@
 u8 gPlayerDeckCards[DECK_SIZE];
 bool gPerSideAI;
 static u8 gReceivedLegendaryCards;
+u8 gSkipDelayAllowed;
 
 /* sReceivedLegendaryCards: whether the player has received the legendary cards
  * (the end of the game). Read by the AI (CheckIfNotABossDeckID). */
@@ -46,8 +47,12 @@ static void fill_deck(const TcgDuelistSetup *d, u8 *out)
 		expand_deck((u8)(d->deck_id + 2), out); /* *_DECK = *_DECK_ID + 2 */
 }
 
-int tcg_run_duel(const TcgDuelSetup *s)
+/* clear engine memory and apply the settings both entry points take from setup */
+static void init_engine(const TcgDuelSetup *s)
 {
+	static const TcgDuelSetup defaults;
+	if (!s)
+		s = &defaults;
 	memset(gWRAM, 0, sizeof(gWRAM));
 	memset(gHRAM, 0, sizeof(gHRAM));
 	gUIDecider = 0; /* (a duel left by a longjmp from tcg_fatal or the host can leave it set) */
@@ -56,13 +61,20 @@ int tcg_run_duel(const TcgDuelSetup *s)
 	gDuelistNames[1] = s->duelist[1].name ? s->duelist[1].name : "OPPONENT";
 	wTextSpeed = 0;
 	wAnimationsDisabled = s->animations_disabled;
+	gReceivedLegendaryCards = s->received_legendary_cards;
+	gSkipDelayAllowed = s->skip_delay_allowed ? 1 : 0;
+	wSkipDelayAllowed = gSkipDelayAllowed; /* (game_loop.asm copies sSkipDelayAllowed at boot) */
+}
+
+int tcg_run_duel(const TcgDuelSetup *s)
+{
+	init_engine(s);
 	wNPCDuelPrizes = s->prizes ? s->prizes : PRIZES_6;
 	wDuelTheme = s->music ? s->music : MUSIC_DUEL_THEME_1;
 	wIsPracticeDuel = 0;
 	wRNG1 = s->rng[0];
 	wRNG2 = s->rng[1];
 	wRNGCounter = s->rng[2];
-	gReceivedLegendaryCards = s->received_legendary_cards;
 	wOpponentName[0] = 0;
 	wOpponentName[1] = 0;
 
@@ -101,6 +113,40 @@ int tcg_run_duel(const TcgDuelSetup *s)
 }
 
 uint32_t tcg_state_hash(void) { return HashDuelData(); }
+
+int tcg_saved_duel_info(const uint8_t *data, uint32_t size, TcgSavedDuel *out)
+{
+	if (size != DUEL_SAVE_FILE_SIZE || ValidateSavedDuelDataFromHL(data))
+		return -1;
+	memset(out, 0, sizeof(*out));
+	out->duel_type = data[SAVE_DUEL_HEADER_DUEL_TYPE];
+	for (int i = 0; i < 2; i++) {
+		u16 vars = i ? ADDR_wOpponentDuelVariables : ADDR_wPlayerDuelVariables;
+		out->duelist_type[i] = *SavedDuelDataByte(data, (u16)(vars + DUELVARS_DUELIST_TYPE));
+		u8 prizes = *SavedDuelDataByte(data, (u16)(vars + DUELVARS_PRIZES));
+		for (; prizes; prizes &= (u8)(prizes - 1))
+			out->prizes_left[i]++;
+	}
+	out->opponent_deck_id = *SavedDuelDataByte(data, ADDR_wOpponentDeckID);
+	out->turns = *SavedDuelDataByte(data, ADDR_wDuelTurns);
+	out->whose_turn = *SavedDuelDataByte(data, ADDR_hWhoseTurn) == OPPONENT_TURN ? TCG_OPPONENT : TCG_PLAYER;
+	return 0;
+}
+
+int tcg_continue_duel(const TcgDuelSetup *setup, const uint8_t *data, uint32_t size)
+{
+	init_engine(setup);
+	/* back in SRAM (data of another size is a broken save) */
+	memset(gDuelSave, 0, sizeof(gDuelSave));
+	if (size == DUEL_SAVE_FILE_SIZE)
+		memcpy(gDuelSave, data, DUEL_SAVE_FILE_SIZE);
+	TcgSavedDuel info;
+	gPerSideAI = tcg_saved_duel_info(gDuelSave, DUEL_SAVE_FILE_SIZE, &info) == 0 &&
+		(info.duelist_type[0] & DUELIST_TYPE_AI_OPP) && (info.duelist_type[1] & DUELIST_TYPE_AI_OPP);
+	if (TryContinueDuel())
+		return TCG_CONTINUE_BROKEN;
+	return wDuelResult;
+}
 
 uint8_t *tcg_wram(void) { return gWRAM; }
 uint8_t *tcg_hram(void) { return gHRAM; }

@@ -236,9 +236,16 @@ bool TurnDuelistTakePrizes(void);
 void SaveDuelData(void);
 void SaveDuelDataToBackup(void);
 u32 HashDuelData(void);                        /* port only: hash of the data SaveDuelData saves */
-void LoadSavedDuelData(const u8 *data);
-extern u8 gCurrentDuel[SAVE_DUEL_DATA_SIZE];
-extern u8 gBackupCurrentDuel[SAVE_DUEL_DATA_SIZE];
+void LoadSavedDuelDataFromDE(const u8 *de);    /* de = a SAVE_DUEL_SIZE image (header + data) */
+bool ValidateSavedDuelDataFromHL(const u8 *hl); /* carry if invalid */
+const u8 *SavedDuelDataByte(const u8 *save, u16 addr); /* port only: addr's byte in a save image, or NULL */
+void ResetSerial(void);
+bool TryContinueDuel(void);                     /* carry if the saved duel is broken */
+void _ContinueDuel(void);
+#define DUEL_SAVE_FILE_SIZE (2 * SAVE_DUEL_SIZE)
+extern u8 gDuelSave[DUEL_SAVE_FILE_SIZE];       /* sCurrentDuel, then sBackupCurrentDuel */
+#define gCurrentDuel (gDuelSave)
+#define gBackupCurrentDuel (gDuelSave + SAVE_DUEL_SIZE)
 bool AIMakeDecision(u8 action);                  /* OPPACTION_*; carry if the turn ended */
 void InitVariablesToBeginDuel(void);
 void InitVariablesToBeginTurn(void);
@@ -253,6 +260,7 @@ void MoveAllTurnHolderKnockedOutPokemonToDiscardPile(void);
 /* ---------------------------------------------------------------- frontend glue (tcg.c, duel_ui.c) */
 /* AI-vs-AI mode: AIDoAction uses the turn duelist's own deck AI (see ai/home_ai.c) */
 extern bool gPerSideAI;
-void host_save_duel(void);
+extern u8 gSkipDelayAllowed;                    /* stands in for SRAM's sSkipDelayAllowed */
+void host_save_duel(const u8 *data, u16 size); /* sCurrentDuel or sBackupCurrentDuel was written */
 
 #endif

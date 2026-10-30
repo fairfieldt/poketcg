@@ -252,7 +252,7 @@ static bool PracticeDuel_RepeatInstructions(void)
 {
 	PrintPracticeDuelDrMasonInstructions(FollowMyGuidancePracticeDuelText);
 	/* restart the turn from the saved data of the previous turn */
-	LoadSavedDuelData(gBackupCurrentDuel);
+	LoadSavedDuelDataFromDE(gBackupCurrentDuel);
 	/* return carry in order to repeat instructions */
 	return true;
 }

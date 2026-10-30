@@ -63,6 +63,9 @@ static void ram_name(uint16_t a, char *buf, size_t n)
 static jmp_buf duel_jmp;
 static char fail_msg[4096];
 static int verbose, strict, human, random_decks, prizes;
+static int continue_at = -1;          /* --continue-at: turn whose saved duel is continued */
+static u8 saved_duel[DUEL_SAVE_FILE_SIZE]; /* host->save file captured at that turn */
+static int have_saved_duel;
 static u8 custom_opp_deck[DECK_SIZE]; /* human mode: replaces wOpponentDeck at StartDuel, like the reference */
 static int have_custom_opp_deck;
 static unsigned long events, rng_events;
@@ -320,6 +323,16 @@ static int on_request(void *ctx, const TcgRequest *r)
 	return c;
 }
 
+/* host->save: keep the first save of turn continue_at (the duel menu of that turn) */
+static void on_save(void *ctx, const uint8_t *data, uint32_t size)
+{
+	(void)ctx;
+	if (continue_at >= 0 && !have_saved_duel && wDuelTurns >= continue_at && size == DUEL_SAVE_FILE_SIZE) {
+		memcpy(saved_duel, data, DUEL_SAVE_FILE_SIZE);
+		have_saved_duel = 1;
+	}
+}
+
 static void on_event(void *ctx, const TcgEvent *ev)
 {
 	(void)ctx;
@@ -349,10 +362,17 @@ static void random_deck(u8 *out)
 
 /* ---------------------------------------------------------------- driver */
 
-static int run_duel(int pdeck, int odeck, const u8 seed[3])
+/* resume: continue the duel saved in saved_duel instead of starting one */
+static int run_duel(int pdeck, int odeck, const u8 seed[3], int resume)
 {
 	RefDuel d;
 	ref_duel_defaults(&d);
+	if (resume) {
+		d.continue_duel = 1;
+		memcpy(d.save, saved_duel, DUEL_SAVE_FILE_SIZE);
+	} else {
+		have_saved_duel = 0;
+	}
 	d.player_human = (uint8_t)human;
 	d.player_deck_id = (uint8_t)pdeck;
 	d.opp_deck_id = (uint8_t)odeck;
@@ -371,13 +391,14 @@ static int run_duel(int pdeck, int odeck, const u8 seed[3])
 		fprintf(stderr, "ref_start_duel failed\n");
 		return -1;
 	}
+	const char *what = resume ? " (continued)" : "";
 	if (setjmp(duel_jmp)) {
-		printf("FAIL decks %d vs %d seed %02x%02x%02x after %lu events (%lu rng)\n%s\n",
-		       pdeck, odeck, seed[0], seed[1], seed[2], events, rng_events, fail_msg);
+		printf("FAIL decks %d vs %d seed %02x%02x%02x%s after %lu events (%lu rng)\n%s\n",
+		       pdeck, odeck, seed[0], seed[1], seed[2], what, events, rng_events, fail_msg);
 		return 1;
 	}
 	/* the first event is the duel entry point: take the original's memory image */
-	const char *entry = human ? "StartDuel_VSAIOpp" : "StartDuel";
+	const char *entry = resume ? "TryContinueDuel" : human ? "StartDuel_VSAIOpp" : "StartDuel";
 	next_ref_event(&lookahead);
 	if (lookahead.kind != REF_EV_TRACE || strcmp(lookahead.name, entry))
 		fail("expected the duel to start at %s, got %s %s", entry, ref_event_kind_name(lookahead.kind), lookahead.name);
@@ -385,7 +406,11 @@ static int run_duel(int pdeck, int odeck, const u8 seed[3])
 	memcpy(gWRAM, lookahead.wram, WRAM_SIZE);
 	memcpy(gHRAM, lookahead.hram, HRAM_SIZE);
 	gPerSideAI = !human;
-	if (human) {
+	if (resume) {
+		memcpy(gDuelSave, saved_duel, DUEL_SAVE_FILE_SIZE);
+		if (TryContinueDuel())
+			fail("the port could not continue the saved duel");
+	} else if (human) {
 		/* the original's LoadPlayerDeck copies the deck the reference put in SRAM
 		 * (ROM deck pdeck): expand the same deck with the port's LoadDeck */
 		hWhoseTurn = PLAYER_TURN;
@@ -406,15 +431,22 @@ static int run_duel(int pdeck, int odeck, const u8 seed[3])
 	if (ev.kind != REF_EV_END)
 		fail("the port's duel ended, the original reached %s %s", ref_event_kind_name(ev.kind), ev.name);
 	compare_state(&ev, "end of duel");
-	printf("ok   decks %d vs %d seed %02x%02x%02x: %lu events, %lu rng, %d turns, result %d\n", pdeck, odeck,
-	       seed[0], seed[1], seed[2], events, rng_events, ev.duel_turns, ev.duel_result);
+	printf("ok   decks %d vs %d seed %02x%02x%02x%s: %lu events, %lu rng, %d turns, result %d\n", pdeck, odeck,
+	       seed[0], seed[1], seed[2], what, events, rng_events, ev.duel_turns, ev.duel_result);
+	if (!resume && continue_at >= 0) {
+		if (!have_saved_duel) {
+			printf("     (no save at turn %d to continue)\n", continue_at);
+			return 0;
+		}
+		return run_duel(pdeck, odeck, seed, 1);
+	}
 	return 0;
 }
 
 int main(int argc, char **argv)
 {
 	if (argc < 4) {
-		fprintf(stderr, "usage: %s ROM SYM TRACE_POINTS [--decks P O] [--seeds FIRST COUNT | --rng XXYYZZ] [--human] [--random-decks] [--prizes N] [--strict] [--verbose] [--coverage FILE]\n",
+		fprintf(stderr, "usage: %s ROM SYM TRACE_POINTS [--decks P O] [--seeds FIRST COUNT | --rng XXYYZZ] [--human] [--random-decks] [--prizes N] [--continue-at TURN] [--strict] [--verbose] [--coverage FILE]\n",
 		        argv[0]);
 		return 1;
 	}
@@ -439,6 +471,8 @@ int main(int argc, char **argv)
 			have_rng = 1;
 		} else if (!strcmp(argv[i], "--all-pairs")) {
 			all_pairs = 1;
+		} else if (!strcmp(argv[i], "--continue-at") && i + 1 < argc) {
+			continue_at = atoi(argv[++i]);
 		} else if (!strcmp(argv[i], "--prizes") && i + 1 < argc) {
 			prizes = atoi(argv[++i]);
 		} else if (!strcmp(argv[i], "--random-decks")) {
@@ -463,11 +497,11 @@ int main(int argc, char **argv)
 	ref_trace_rng(ref, 1);
 	if (screens)
 		ref_set_screens(ref, screens, 600);
-	TcgHost host = { on_event, on_request, NULL, NULL };
+	TcgHost host = { on_event, on_request, on_save, NULL };
 	tcg_set_host(&host);
 	int fails = 0, runs = 0;
 	if (have_rng) {
-		fails = run_duel(pdeck, odeck, rng) != 0;
+		fails = run_duel(pdeck, odeck, rng, 0) != 0;
 		printf("%d/1 duels identical\n", 1 - fails);
 		if (coverage)
 			write_coverage(coverage);
@@ -479,9 +513,9 @@ int main(int argc, char **argv)
 			/* every AI deck against a rotating opponent (deck ids 1..NUM_DECK_IDS-1) */
 			int p = 1 + (int)(s % (NUM_DECK_IDS - 1));
 			int o = 1 + (int)((s * 7 + 3) % (NUM_DECK_IDS - 1));
-			fails += run_duel(p, o, seed) != 0;
+			fails += run_duel(p, o, seed, 0) != 0;
 		} else {
-			fails += run_duel(pdeck, odeck, seed) != 0;
+			fails += run_duel(pdeck, odeck, seed, 0) != 0;
 		}
 		runs++;
 	}

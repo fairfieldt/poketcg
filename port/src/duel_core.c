@@ -19,7 +19,7 @@ enum DuelMenuNext {
 	NEXT_TURN_ENDED,                   /* ret (out of HandleTurn) */
 };
 
-static void MainDuelLoop(void);
+static void MainDuelLoop(bool between_turns);
 static void HandleTurn(void);
 static void DuelMainInterface(int entry);
 static bool HandleDuelSetup(void);
@@ -63,6 +63,15 @@ void SerialRecv8Bytes(void)
 	tcg_fatal("link duels are not supported");
 }
 
+#define ADDR_wSerialEnd 0xcbc5 /* (src/wram.asm: empty label at the end of its section, not in gen/wram.h) */
+
+/* (the serial hardware registers are not modelled) */
+void ResetSerial(void)
+{
+	/* ClearSerialData: zero serial registers in WRAM */
+	memset(gbptr(ADDR_wSerialOp), 0, ADDR_wSerialEnd - ADDR_wSerialOp);
+}
+
 /* ---------------------------------------------------------------- duel start */
 
 /* this function begins the duel after the opponent's graphics, name and deck have been introduced
@@ -92,17 +101,21 @@ void StartDuel(void)
 	PlaySong(wDuelTheme);
 	if (HandleDuelSetup())
 		return;
-	MainDuelLoop();
+	MainDuelLoop(false);
 }
 
-/* the loop returns here after every turn switch */
-static void MainDuelLoop(void)
+/* the loop returns here after every turn switch.
+ * between_turns: enter at .between_turns (_ContinueDuel) */
+static void MainDuelLoop(bool between_turns)
 {
 	for (;;) {
-		wCurrentDuelMenuItem = 0;
-		UpdateSubstatusConditions_StartOfTurn();
-		DisplayDuelistTurnScreen();
-		HandleTurn();
+		if (!between_turns) {
+			wCurrentDuelMenuItem = 0;
+			UpdateSubstatusConditions_StartOfTurn();
+			DisplayDuelistTurnScreen();
+			HandleTurn();
+		}
+		between_turns = false;
 		/* between_turns */
 		ExchangeRNG();
 		if (!wDuelFinished) {
@@ -1960,7 +1973,7 @@ void InitVariablesToBeginDuel(void)
 	wUnused_cc0f = 0xff;
 	wPlayerAttackingCardIndex = 0xff;
 	wPlayerAttackingAttackIndex = 0xff;
-	wSkipDelayAllowed = 0; /* [sSkipDelayAllowed]: the port has no debug options in SRAM */
+	wSkipDelayAllowed = gSkipDelayAllowed; /* [sSkipDelayAllowed] (TcgDuelSetup.skip_delay_allowed) */
 	u8 a = wPlayerDuelistType;
 	if (a == DUELIST_TYPE_LINK_OPP || (a & 0x80))
 		goto set;
@@ -2141,9 +2154,11 @@ static const struct { u16 address, size; } DuelDataToSave[] = {
 	{ ADDR_wAIDuelVars, ADDR_wAIDuelVarsEnd - ADDR_wAIDuelVars },
 };
 
-/* in-memory stand-ins for the SRAM slots sCurrentDuel and sBackupCurrentDuel (data part) */
-u8 gCurrentDuel[SAVE_DUEL_DATA_SIZE];
-u8 gBackupCurrentDuel[SAVE_DUEL_DATA_SIZE];
+/* in-memory stand-ins for the SRAM slots sCurrentDuel and sBackupCurrentDuel (the
+ * original's SAVE_DUEL_SIZE images: 4-byte header + DuelDataToSave), in this order.
+ * Both are the duel's save file: continuing a practice duel restarts turns from the
+ * backup (PracticeDuel_RepeatInstructions). */
+u8 gDuelSave[DUEL_SAVE_FILE_SIZE];
 static u8 *gSaveDuelTarget = gCurrentDuel;
 
 static void SaveDuelDataTo(u8 *de)
@@ -2154,11 +2169,34 @@ static void SaveDuelDataTo(u8 *de)
 	}
 }
 
+/* save data of the current duel to de (in SRAM)
+ * header (4 bytes): valid flag (TRUE), 2-byte checksum, [wDuelType]
+ * main (826 bytes): defined in DuelDataToSave */
+static void SaveDuelDataToDE(u8 *de)
+{
+	u8 *hl = de + SAVE_DUEL_HEADER_SIZE;
+	SaveDuelDataTo(hl);
+	/* calculate checksum with hl = sCurrentDuelData (omitting last 6 bytes)
+	 * and set header */
+	u8 e = SAVE_DUEL_CHECKSUM_SEED & 0xff, d = SAVE_DUEL_CHECKSUM_SEED >> 8;
+	for (unsigned i = 0; i < SAVE_DUEL_DATA_SIZE - 6; i++) {
+		e = (u8)(e - hl[i]);
+		d ^= hl[i];
+	}
+	de[SAVE_DUEL_HEADER_VALID_FLAG] = TRUE;
+	de[SAVE_DUEL_HEADER_CHECKSUM] = e;
+	de[SAVE_DUEL_HEADER_CHECKSUM + 1] = d;
+	de[SAVE_DUEL_HEADER_DUEL_TYPE] = wDuelType;
+}
+
 /* save data of the current duel to sCurrentDuel (or to sBackupCurrentDuel when the
- * SRAM bank was switched by SaveDuelStateToSRAM) */
+ * SRAM bank was switched by SaveDuelStateToSRAM). The frontend gets both slots after
+ * every write (host->save), to offer "Continue Duel" later. */
 void SaveDuelData(void)
 {
-	SaveDuelDataTo(gSaveDuelTarget);
+	/* (farcall StubbedUnusedSaveDataValidation: does nothing) */
+	SaveDuelDataToDE(gSaveDuelTarget);
+	host_save_duel(gDuelSave, DUEL_SAVE_FILE_SIZE);
 }
 
 void SaveDuelDataToBackup(void)
@@ -2166,6 +2204,86 @@ void SaveDuelDataToBackup(void)
 	gSaveDuelTarget = gBackupCurrentDuel;
 	SaveDuelData();
 	gSaveDuelTarget = gCurrentDuel;
+}
+
+/* load data saved at de (in SRAM) to WRAM, using DuelDataToSave table
+ * assumes saved data exists with valid checksum */
+void LoadSavedDuelDataFromDE(const u8 *de)
+{
+	de += SAVE_DUEL_HEADER_SIZE;
+	for (unsigned i = 0; i < sizeof(DuelDataToSave) / sizeof(*DuelDataToSave); i++) {
+		memcpy(gbptr(DuelDataToSave[i].address), de, DuelDataToSave[i].size);
+		de += DuelDataToSave[i].size;
+	}
+}
+
+/* return carry if duel save at hl (in SRAM) is invalid
+ * (no valid flag or checksum mismatch) */
+bool ValidateSavedDuelDataFromHL(const u8 *hl)
+{
+	if (hl[SAVE_DUEL_HEADER_VALID_FLAG] == FALSE)
+		return true;
+	u8 e = (u8)(hl[SAVE_DUEL_HEADER_CHECKSUM] - (SAVE_DUEL_CHECKSUM_SEED & 0xff));
+	u8 d = (u8)(hl[SAVE_DUEL_HEADER_CHECKSUM + 1] ^ (SAVE_DUEL_CHECKSUM_SEED >> 8));
+	hl += SAVE_DUEL_HEADER_SIZE;
+	for (unsigned i = 0; i < SAVE_DUEL_DATA_SIZE - 6; i++) {
+		e = (u8)(e + hl[i]);
+		d ^= hl[i];
+	}
+	return (e | d) != 0;
+}
+
+/* port only: the byte of WRAM/HRAM address addr inside the duel save image at save,
+ * NULL if DuelDataToSave doesn't save it */
+const u8 *SavedDuelDataByte(const u8 *save, u16 addr)
+{
+	const u8 *de = save + SAVE_DUEL_HEADER_SIZE;
+	for (unsigned i = 0; i < sizeof(DuelDataToSave) / sizeof(*DuelDataToSave); i++) {
+		if (addr >= DuelDataToSave[i].address && addr < DuelDataToSave[i].address + DuelDataToSave[i].size)
+			return de + (addr - DuelDataToSave[i].address);
+		de += DuelDataToSave[i].size;
+	}
+	return NULL;
+}
+
+/* loads current Duel data from SRAM and also general save data
+ * if the data is not valid, returns carry */
+static bool LoadAndValidateDuelSaveData(void)
+{
+	if (ValidateSavedDuelDataFromHL(gCurrentDuel))
+		return true;
+	LoadSavedDuelDataFromDE(gCurrentDuel);
+	/* ValidateGeneralSaveData / LoadGeneralSaveData: the general save data (player
+	 * name, overworld state, collection) isn't part of the port, which behaves like the
+	 * original without a valid general save (it then skips loading it, no carry) */
+	return false;
+}
+
+/* try to resume a saved duel from the main menu: returns carry if the save is broken */
+bool TryContinueDuel(void)
+{
+	TRACE_FN();
+	SetupDuel();
+	if (LoadAndValidateDuelSaveData()) {
+		/* HandleFailedToContinueDuel */
+		DrawWideTextBox_WaitForInput(BackUpIsBrokenText);
+		ResetSerial();
+		return true;
+	}
+	_ContinueDuel();
+	return false;
+}
+
+void _ContinueDuel(void)
+{
+	TRACE_FN();
+	wDuelReturnAddress[0] = 0; /* (ld hl, sp+$00: the port has no stack address) */
+	wDuelReturnAddress[1] = 0;
+	ClearJoypad();
+	PlaySong(wDuelTheme);
+	wDuelFinished = 0;
+	DuelMainInterface(NEXT_DUEL_MAIN_INTERFACE);
+	MainDuelLoop(true); /* jp MainDuelLoop.between_turns */
 }
 
 /* port only (tcg_state_hash): FNV-1a hash of the data SaveDuelData saves */
@@ -2179,13 +2297,4 @@ u32 HashDuelData(void)
 		h *= 16777619u;
 	}
 	return h;
-}
-
-/* load data saved at de (in SRAM) to WRAM, using DuelDataToSave table */
-void LoadSavedDuelData(const u8 *de)
-{
-	for (unsigned i = 0; i < sizeof(DuelDataToSave) / sizeof(*DuelDataToSave); i++) {
-		memcpy(gbptr(DuelDataToSave[i].address), de, DuelDataToSave[i].size);
-		de += DuelDataToSave[i].size;
-	}
 }
