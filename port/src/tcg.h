@@ -68,7 +68,11 @@ typedef struct TcgEvent {
 enum TcgRequestType {
 	TCG_REQ_ACK = 1,          /* wait for A/B on a text box (WaitForWideTextBoxInput). answer ignored */
 	TCG_REQ_DUEL_MENU,        /* duel menu: 0 Hand, 1 Attack, 2 Check, 3 Pkmn Power, 4 Retreat, 5 Done */
-	TCG_REQ_CARD_LIST,        /* DisplayCardList: pick index into items[0..num_items) or cancel */
+	TCG_REQ_CARD_LIST,        /* DisplayCardList: pick index into items[0..num_items) or cancel.
+	                           * arg[0] = 1: view only (A opens the card page, cancel leaves). The answers
+	                           * never change the duel: answer locally (not over the network), and with
+	                           * TCG_CANCEL when no human watches. `duelist` can be an AI side here
+	                           * (the original shows the human the hand checked by the AI's Lass) */
 	TCG_REQ_CARD_ITEM_MENU,   /* CardListItemSelectionMenu: 0 = Play/Select, 1 = Check, or cancel. arg[0] = card */
 	TCG_REQ_PLAY_AREA,        /* DisplayPlayAreaScreen: pick a play area slot (absolute PLAY_AREA_*) of duelist `shown`, or cancel */
 	TCG_REQ_MENU,             /* HandleMenuInput: pick item in [0, num_items) or cancel. menu = TcgMenu context */
