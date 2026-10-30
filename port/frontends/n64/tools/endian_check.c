@@ -6,7 +6,9 @@
  * no byte order dependency (make endiancheck).
  *
  * The duelists answer requests with a seeded random policy (like tcgcli's
- * "random" duelist); duels run human-vs-human, human-vs-AI and AI-vs-AI.
+ * "random" duelist); duels run human-vs-human, human-vs-AI and AI-vs-AI. The
+ * duel save images (TcgHost.save) are part of the digest, and each duel is then
+ * continued (tcg_continue_duel) from the save made at its 20th save.
  * An engine fatal error (e.g. an effect that is not ported yet) ends that duel
  * and is part of the digest.
  *
@@ -166,6 +168,16 @@ static uint32_t rnd(uint32_t n)
 
 static void *g_jmp[5];
 static const char *g_fatal;
+static uint8_t g_save[TCG_SAVE_SIZE];
+static uint32_t g_saves;
+
+static void on_save(void *ctx, const uint8_t *data, uint32_t size)
+{
+	(void)ctx;
+	mix(data, size);
+	if (++g_saves == 20 && size == TCG_SAVE_SIZE)
+		memcpy(g_save, data, size);
+}
 
 void tcg_fatal(const char *msg)
 {
@@ -259,7 +271,7 @@ static const uint8_t kDecks[] = {
 int main(void)
 {
 	static const char *const modes[3] = { "human-human", "human-ai", "ai-ai" };
-	TcgHost host = { on_event, on_request, NULL, NULL };
+	TcgHost host = { on_event, on_request, on_save, NULL };
 	tcg_set_host(&host);
 	uint32_t total = 2166136261u;
 	int duels = 0;
@@ -281,9 +293,11 @@ int main(void)
 			g_events = g_requests = 0;
 			g_rng = seed * 2654435761u + (uint32_t)mode;
 			g_fatal = NULL;
+			g_saves = 0;
 			int result = -1;
 			if (__builtin_setjmp(g_jmp) == 0)
 				result = tcg_run_duel(&s);
+			uint32_t saves = g_saves;
 			const uint8_t *w = tcg_wram();
 			out(modes[mode]);
 			out_num(" seed=", seed, 0);
@@ -297,6 +311,24 @@ int main(void)
 			if (g_fatal) {
 				out(" stopped: ");
 				out(g_fatal);
+			}
+			out_num(" saves=", saves, 0);
+			if (saves >= 20) {
+				/* continue the duel from its 20th save */
+				uint32_t h = g_hash;
+				g_hash = 2166136261u;
+				g_requests = 0;
+				g_fatal = NULL;
+				int r2 = -1;
+				if (__builtin_setjmp(g_jmp) == 0)
+					r2 = tcg_continue_duel(&s, g_save, TCG_SAVE_SIZE);
+				out_num(" continued=", (uint32_t)r2, 0);
+				out_num(" cont_stream=", g_hash, 1);
+				if (g_fatal) {
+					out(" stopped: ");
+					out(g_fatal);
+				}
+				g_hash = (h ^ g_hash) * 16777619u;
 			}
 			out("\n");
 			total = (total ^ g_hash) * 16777619u;

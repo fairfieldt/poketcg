@@ -1,0 +1,17 @@
+# The practice duel with Sam (2 prizes, Sam's practice deck, Dr. Mason's
+# instructions), played with random presses: straying from the script makes
+# Dr. Mason explain the turn again.
+wait 5
+# mode row: VS CPU -> (left, wraps) Practice with Sam
+press LEFT
+shot title_practice
+press START
+expect DUEL~mode=3~deck1=1~deck2=0~prizes=2
+shot_first ASK
+shots_every 3000
+until TURN~3~PLAYER 300000 21 P1
+shot end
+expect TURN~2~SAM
+expect TEXT~Draw~7~cards
+# random presses stray from Dr. Mason's script: he explains again
+until Do~it~again. 300000 22 P1

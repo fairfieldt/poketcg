@@ -101,6 +101,14 @@ int dfs_init(uint32_t base_fs_loc);
 FILE *mock_fopen(const char *path, const char *mode);
 #define fopen(path, mode) mock_fopen(path, mode)
 
+/* eeprom.h: backed by the file $MOCK_EEPROM (written through, so that the
+ * script can "power off" at any frame); $MOCK_EEPROM_TYPE = 16k (default), 4k, none */
+typedef enum { EEPROM_NONE = 0, EEPROM_4K = 1, EEPROM_16K = 2 } eeprom_type_t;
+#define EEPROM_BLOCK_SIZE 8
+eeprom_type_t eeprom_present(void);
+void eeprom_read(uint8_t block, uint8_t *dest);
+uint8_t eeprom_write(uint8_t block, const uint8_t *src);
+
 /* n64sys.h */
 uint64_t get_ticks(void);
 #define CachedAddr(addr) ((void *)(addr))

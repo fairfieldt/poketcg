@@ -47,11 +47,28 @@ press A
 press B
 expect REQ~confirm~PLAYER~n=0~->~0
 expect REQ~confirm~PLAYER~n=0~->~-1
-# view-only list asked on the bot's side: shown to controller 1
-shot view_only_list_for_bot
+# Peek: the other play area, then the hand (prize 0 is taken: A does nothing there)
+shot peek_area
+press DOWN
+press A
+expect REQ~menu/peek_area~PLAYER~n=2~->~1
+shot peek_target
+press A
+press LEFT
+press A
+expect REQ~menu/peek_target~PLAYER~n=8~->~6
+press B
+expect REQ~menu/peek_target~PLAYER~n=8~->~-1
+# as if the other side were the engine AI: its confirm and view-only list go to controller 1
+shot confirm_for_ai
+press A
+expect ASK~confirm(ai)~BOT
+expect REQ~confirm~BOT~n=0~->~0
+shot view_only_list_for_ai
 press DOWN
 press B
-expect ASK~card_list(view)~BOT
-expect REQ~card_list~BOT~n=
+expect ASK~card_list(ai)~BOT
+# the random bot leaves its own view-only list at once
+expect REQ~card_list~BOT~n=7~->~-1 2
 expect ASK~duel_menu~PLAYER
 monkey 2000 4 P1

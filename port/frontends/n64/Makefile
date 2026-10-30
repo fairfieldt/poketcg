@@ -25,6 +25,9 @@
 #   ai_stubs.c) stand in for whatever is excluded. The outcome is printed as
 #   "[OPT]" lines, detailed in build/optional.log and shown on the title screen.
 #
+# Saves: save_store_n64.c keeps the duel save on the cartridge's 16 Kbit EEPROM
+# (N64_ROM_SAVETYPE = eeprom16k), see README.md.
+#
 # Card art: src/gfx/cards/*.png of the disassembly are converted with mksprite
 # (RGBA16) into the ROM filesystem; tools/cardart.awk maps the cards' gfx
 # pointers to file names. Without the disassembly the ROM builds without art.
@@ -48,6 +51,7 @@ ROM := tcgn64.z64
 
 all: $(ROM)
 .PHONY: all clean hosttest endiancheck FORCE
+.DELETE_ON_ERROR:
 
 # ---------------------------------------------------------------- engine
 
@@ -107,15 +111,22 @@ $(BUILD_DIR)/tcgn64.o: tcgn64.c $(ART_HDR)
 	@echo "    [CC] $<"
 	$(N64_CC) -c $(FRONT_CFLAGS) -MMD -o $@ $<
 
+$(BUILD_DIR)/save_store_n64.o: save_store_n64.c
+	@mkdir -p $(dir $@)
+	@echo "    [CC] $<"
+	$(N64_CC) -c $(FRONT_CFLAGS) -MMD -o $@ $<
+
+FRONT_OBJS := $(BUILD_DIR)/tcgn64.o $(BUILD_DIR)/save_store_n64.o
+
 # rerun the selection when the set of optional sources changes
 $(BUILD_DIR)/optional.set: FORCE
 	@mkdir -p $(dir $@)
 	@echo "$(OPT_SRCS)" | cmp -s - $@ || echo "$(OPT_SRCS)" > $@
 
-OPT_LINK_PRE = $(N64_CXX) -o $(BUILD_DIR)/trial.elf $(CORE_OBJS) $(BUILD_DIR)/tcgn64.o
+OPT_LINK_PRE = $(N64_CXX) -o $(BUILD_DIR)/trial.elf $(CORE_OBJS) $(FRONT_OBJS)
 OPT_LINK_POST = -lc -mabi=o64 $(patsubst %,-Wl$(COMMA)%,$(N64_LDFLAGS))
 
-$(BUILD_DIR)/optional.o: $(OPT_STAMPS) $(CORE_OBJS) $(BUILD_DIR)/tcgn64.o $(BUILD_DIR)/optional.set tools/select_optional.sh
+$(BUILD_DIR)/optional.o: $(OPT_STAMPS) $(CORE_OBJS) $(FRONT_OBJS) $(BUILD_DIR)/optional.set tools/select_optional.sh
 	NM=$(N64_NM) sh tools/select_optional.sh $(BUILD_DIR)/optional $(OPT_STAMPS) -- $(OPT_LINK_PRE) -- $(OPT_LINK_POST)
 	@rm -f $(BUILD_DIR)/trial.elf
 	@if [ -s $(BUILD_DIR)/optional.lst ]; then \
@@ -129,9 +140,11 @@ $(N64_MKDFS_ROOT)/buildinfo.txt: $(BUILD_DIR)/optional.o
 	cp $(BUILD_DIR)/optional.info $@
 
 $(BUILD_DIR)/tcgn64.dfs: $(CARD_SPRITES) $(N64_MKDFS_ROOT)/buildinfo.txt
-$(BUILD_DIR)/tcgn64.elf: $(CORE_OBJS) $(BUILD_DIR)/tcgn64.o $(BUILD_DIR)/optional.o
+$(BUILD_DIR)/tcgn64.elf: $(CORE_OBJS) $(FRONT_OBJS) $(BUILD_DIR)/optional.o
 
 $(ROM): N64_ROM_TITLE = "Pokemon TCG Duel"
+# the saved duel (save_store_n64.c): 16 Kbit EEPROM, declared in the ROM header
+$(ROM): N64_ROM_SAVETYPE = eeprom16k
 $(ROM): $(BUILD_DIR)/tcgn64.dfs
 
 # ---------------------------------------------------------------- host build with the libdragon mock
@@ -160,6 +173,10 @@ $(HOST_BUILD)/tcgn64.o: tcgn64.c mock/libdragon.h $(ART_HDR)
 	@mkdir -p $(dir $@)
 	$(HOST_CC) -c $(HOST_FRONT_CFLAGS) -MMD -o $@ $<
 
+$(HOST_BUILD)/save_store_n64.o: save_store_n64.c save_store_n64.h mock/libdragon.h
+	@mkdir -p $(dir $@)
+	$(HOST_CC) -c $(HOST_FRONT_CFLAGS) -MMD -o $@ $<
+
 $(HOST_BUILD)/mock_libdragon.o: mock/mock_libdragon.c mock/libdragon.h
 	@mkdir -p $(dir $@)
 	$(HOST_CC) -c $(HOST_FRONT_CFLAGS) $(if $(wildcard $(MOCK_FONT)),-DMOCK_FONT_H='"$(MOCK_FONT)"') -o $@ $<
@@ -168,7 +185,7 @@ $(HOST_BUILD)/optional.set: FORCE
 	@mkdir -p $(dir $@)
 	@echo "$(OPT_SRCS)" | cmp -s - $@ || echo "$(OPT_SRCS)" > $@
 
-HOST_FRONT_OBJS := $(HOST_BUILD)/tcgn64.o $(HOST_BUILD)/mock_libdragon.o
+HOST_FRONT_OBJS := $(HOST_BUILD)/tcgn64.o $(HOST_BUILD)/save_store_n64.o $(HOST_BUILD)/mock_libdragon.o
 
 $(HOST_BUILD)/optional.lst: $(HOST_OPT_STAMPS) $(HOST_CORE_OBJS) $(HOST_FRONT_OBJS) $(HOST_BUILD)/optional.set tools/select_optional.sh
 	sh tools/select_optional.sh $(HOST_BUILD)/optional $(HOST_OPT_STAMPS) -- \
@@ -187,7 +204,8 @@ hosttest: $(HOST_BUILD)/tcgn64_host $(HOST_ROMFS)/buildinfo.txt
 	@fail=0; for t in $(HOST_TESTS); do \
 		n=$$(basename $$t .txt); mkdir -p $(HOST_BUILD)/shots/$$n; \
 		printf '    [TEST] %-24s' $$n; \
-		env MOCK_SCRIPT=$$t MOCK_ROMFS=$(HOST_ROMFS) MOCK_SHOTS=$(HOST_BUILD)/shots/$$n \
+		rm -f $(HOST_BUILD)/$$n.eep; \
+		env MOCK_SCRIPT=$$t MOCK_ROMFS=$(HOST_ROMFS) MOCK_SHOTS=$(HOST_BUILD)/shots/$$n MOCK_EEPROM=$(HOST_BUILD)/$$n.eep \
 			$$(sed -n 's/^#env //p' $$t) ./$(HOST_BUILD)/tcgn64_host > $(HOST_BUILD)/$$n.log 2>&1; \
 		rc=$$?; \
 		if [ $$rc = 0 ]; then echo "ok   ($$(grep -c '^TURN' $(HOST_BUILD)/$$n.log) turns, $$(grep -c '^REQ' $(HOST_BUILD)/$$n.log) requests, $$(tail -n 1 $(HOST_BUILD)/$$n.log))"; \

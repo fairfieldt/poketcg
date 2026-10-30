@@ -34,6 +34,8 @@
 #include "common.h"
 #include "gen/decks.h"
 #include "gen/text.h"
+#include "../common/save_store.h"
+#include "save_store_n64.h"
 
 #ifdef TCGN64_CARD_ART
 #include "cardart_table.h"
@@ -89,7 +91,7 @@ static const char *const kTypeName[7] = { "Fire", "Grass", "Lightning", "Water",
 
 /* ------------------------------------------------------------------ frontend state */
 
-enum { MODE_VS_AI, MODE_VS_BOT, MODE_HOTSEAT, NUM_MODES };
+enum { MODE_VS_AI, MODE_VS_BOT, MODE_HOTSEAT, MODE_PRACTICE, NUM_MODES };
 enum { PK_HUMAN, PK_AI, PK_BOT };       /* who answers a duelist's requests */
 
 static uint32_t g_col[NUM_COLORS];
@@ -119,6 +121,7 @@ static struct { int timer; uint8_t side, loc; unsigned amount; } g_dmg;
 static uint8_t g_thinking;
 static uint8_t g_asking;                /* duelist answering the current request (0: none) */
 static int g_denied;                    /* frames left of the "invalid choice" flash */
+static bool g_save_ok;                  /* a 16 Kbit EEPROM is there (save_store_open) */
 static uint8_t g_turn_holder;
 static int g_turn;
 
@@ -707,10 +710,19 @@ static void end_frame(void)
 		rect(1, 1, SCREEN_W - 2, SCREEN_H - 2, C_RED);
 		rect(2, 2, SCREEN_W - 4, SCREEN_H - 4, C_RED);
 	}
+	int pending = g_save_ok ? save_store_pending() : 0;
+	if (pending) /* in the bottom margin, below the text box */
+		print(RIGHT - 7 * CW, SCREEN_H - 8, (g_frame / 8) & 1 ? C_HI : C_DIM, "saving.");
 	data_cache_hit_writeback_invalidate(g_fb->buffer, (unsigned long)g_fb->stride * g_fb->height);
 	display_show(g_disp);
 	g_fb = NULL;
 	g_disp = NULL;
+	if (pending) {
+		/* one EEPROM block per frame: its ~15 ms write overlaps the next frame */
+		save_store_poll();
+		if (pending == 1)
+			debugf("SAVED (%lu EEPROM block writes since power-on)\n", (unsigned long)save_store_blocks_written());
+	}
 	g_frame++;
 	if (g_dmg.timer)
 		g_dmg.timer--;
@@ -1163,6 +1175,15 @@ static int ui_ack(const TcgRequest *r, int ports)
 			panel(LEFT - 6, BOARD_Y, RIGHT - LEFT + 12, BOARD_H);
 			for (int i = 0; i < nl; i++)
 				print(LEFT, BOARD_Y + 4 + i * LH, C_TEXT, lines[i]);
+			/* the practice duel labels Dr. Mason's explanations (wTextBoxLabel) */
+			const uint8_t *label = &tcg_wram()[ADDR_wTextBoxLabel - WRAM_START];
+			if (g_mode == MODE_PRACTICE && rd16(label)) {
+				char lb[24];
+				text_of(rd16(label), lb, sizeof(lb));
+				int w = (int)strlen(lb) * CW + 8;
+				fill(RIGHT + 2 - w, BOARD_Y + BOARD_H - 14, w, 10, C_PANEL2);
+				print(RIGHT + 6 - w, BOARD_Y + BOARD_H - 13, C_HI, lb);
+			}
 		} else if (list_n) {
 			int cur = hCurMenuItem < list_n ? hCurMenuItem : 0; /* the card the engine is talking about */
 			draw_card_list_screen(NULL, NULL, list, list_n, r->shown, cur, &top);
@@ -1434,8 +1455,8 @@ static int ui_play_area(const TcgRequest *r, int ports)
 
 static int ui_menu_play_area(const TcgRequest *r, int ports)
 {
-	/* items start at the arena, or at bench 1 for the bench selection menus (cursor y offset 3) */
-	int start = tcg_wram()[ADDR_wMenuCursorYOffset - WRAM_START] >= 3 ? 1 : 0;
+	/* item i is play area location arg[0] + i (arg[0] = wExcludeArenaPokemon: 1 for the bench menus) */
+	int start = r->arg[0] <= 1 ? r->arg[0] : 0;
 	int loc = pick_slot(r->shown, start, r->num_items, start + r->cursor, true, ports,
 	                    "A: choose  B: back  START: info");
 	return loc < 0 ? TCG_CANCEL : loc - start;
@@ -1601,6 +1622,74 @@ static int ui_menu_two_items(const TcgRequest *r, int ports)
 			cur ^= 1;
 		if (k.a)
 			return cur;
+	}
+}
+
+/* Peek (Mankey's Pokemon Power), first step: whose play area; no cancel */
+static int ui_peek_area(const TcgRequest *r, int ports)
+{
+	char a[40], b[40];
+	snprintf(a, sizeof(a), "%.15s's play area", who(r->shown));
+	snprintf(b, sizeof(b), "%.15s's play area", who(r->shown == TCG_PLAYER ? TCG_OPPONENT : TCG_PLAYER));
+	const char *labels[2] = { a, b };
+	int cur = r->cursor < 2 ? r->cursor : 0;
+	for (;;) {
+		begin_frame();
+		draw_board(0, -1);
+		draw_textbox_hint("A: choose");
+		draw_choice_popup(LEFT + 60, BOARD_Y + 60, "Peek at", labels, 2, cur);
+		end_frame_poll();
+		Keys k = keys(ports);
+		if (k.up || k.down || k.left || k.right)
+			cur ^= 1;
+		if (k.a)
+			return cur;
+	}
+}
+
+/* Peek, second step: a prize card (0-5, arg[0] = prizes left), the hand (6, only
+ * if arg[1]: the other duelist's area) or the top of the deck (7); B goes back */
+static int ui_peek_target(const TcgRequest *r, int ports)
+{
+	uint8_t prizes = r->arg[0];
+	bool hand = r->arg[1] != 0;
+	int cur = r->cursor < 8 ? r->cursor : 7;
+	char title[48];
+	snprintf(title, sizeof(title), "%s: which card?", who(r->shown));
+	for (;;) {
+		begin_frame();
+		draw_board(0, -1);
+		int x0 = LEFT + 40, y0 = BOARD_Y + 36;
+		panel(x0 - 10, y0 - 18, 236, 128);
+		print(x0, y0 - 12, C_HI, title);
+		for (int i = 0; i < 8; i++) {
+			int x = i < 6 ? x0 + (i % 3) * 40 : x0 + 130, y = i < 6 ? y0 + (i / 3) * 48 : y0 + (i - 6) * 48;
+			bool ok = i < 6 ? (prizes & (1 << i)) != 0 : i == 7 || hand;
+			if (ok)
+				fill(x, y, 32, 40, i < 6 ? C_CARDBACK : C_PANEL2);
+			else
+				rect(x, y, 32, 40, C_MID);
+			if (i >= 6)
+				print(x + 38, y + 16, ok ? C_TEXT : C_DIM, i == 6 ? "Hand" : "Deck");
+			if (i == cur) {
+				rect(x - 2, y - 2, 36, 44, C_HI);
+				rect(x - 3, y - 3, 38, 46, C_HI);
+			}
+		}
+		draw_textbox_hint("A: look  B: back");
+		end_frame_poll();
+		Keys k = keys(ports);
+		/* prizes in 2 rows of 3, then hand (row 1) and deck (row 2) on the right */
+		if (k.left)
+			cur = cur == 6 ? 2 : cur == 7 ? 5 : cur % 3 ? cur - 1 : (cur < 3 ? 6 : 7);
+		else if (k.right)
+			cur = cur == 6 ? 0 : cur == 7 ? 3 : cur % 3 == 2 ? (cur < 3 ? 6 : 7) : cur + 1;
+		else if (k.up || k.down)
+			cur = cur >= 6 ? 6 + ((cur - 6) ^ 1) : (cur + 3) % 6;
+		if (k.a && (cur < 6 ? (prizes & (1 << cur)) != 0 : cur == 7 || hand))
+			return cur;
+		if (k.b)
+			return TCG_CANCEL;
 	}
 }
 
@@ -1835,8 +1924,16 @@ static void check_screen(int ports)
 
 static int bot_answer(const TcgRequest *r)
 {
-	if (r->type == TCG_REQ_MENU && r->menu == TCG_MENU_TWO_ITEMS)
+	if (r->type == TCG_REQ_MENU && (r->menu == TCG_MENU_TWO_ITEMS || r->menu == TCG_MENU_PEEK_AREA))
 		return (int)rnd(2); /* no cancel */
+	if (r->type == TCG_REQ_MENU && r->menu == TCG_MENU_PEEK_TARGET) {
+		int t = (int)rnd(8);
+		if (t < 6 && !(r->arg[0] & (1 << t)))
+			t = 7;
+		if (t == 6 && !r->arg[1])
+			t = 7;
+		return t;
+	}
 	switch (r->type) {
 	case TCG_REQ_ACK:
 		return 0;
@@ -1884,7 +1981,53 @@ static int bot_answer(const TcgRequest *r)
 
 /* ------------------------------------------------------------------ host callbacks */
 
-static const char *const kMenuName[] = { "generic", "attacks", "play_area", "two_items", "card_list" };
+/* ---- saving (save_store.h on the cartridge EEPROM, see save_store_n64.c) */
+
+static uint8_t g_save_img[TCG_SAVE_SIZE];   /* the engine's latest duel save */
+static bool g_save_dirty;                    /* newer than what the store has */
+static bool g_save_mode_written;             /* "duelmode" written for this duel */
+static uint8_t g_duel_decks[2];              /* deck ids of the duel (for "Continue Duel") */
+
+/* TcgHost.save: called at every duel menu print; only kept in RAM here */
+static void on_save(void *ctx, const uint8_t *data, uint32_t size)
+{
+	(void)ctx;
+	if (!g_save_ok || size != TCG_SAVE_SIZE || !memcmp(g_save_img, data, size))
+		return;
+	memcpy(g_save_img, data, size);
+	g_save_dirty = true;
+}
+
+/* at turn boundaries: give the latest save to the store, which writes the
+ * changed EEPROM blocks in the background (save_store_poll in end_frame) */
+static void save_commit(void)
+{
+	if (!g_save_ok || !g_save_dirty)
+		return;
+	if (!g_save_mode_written) {
+		/* how the sides are controlled, so that "Continue" maps the controllers the same way */
+		uint8_t m[4] = { 'M', (uint8_t)g_mode, g_duel_decks[0], g_duel_decks[1] };
+		save_store_write("duelmode", m, sizeof(m));
+		g_save_mode_written = true;
+	}
+	save_store_write(SAVE_STORE_DUEL, g_save_img, TCG_SAVE_SIZE);
+	g_save_dirty = false;
+	debugf("SAVE turn=%d blocks=%d\n", g_turn + 1, save_store_pending());
+}
+
+/* the duel is over: delete its save (only the file headers get written) */
+static void save_discard(void)
+{
+	if (!g_save_ok)
+		return;
+	save_store_remove(SAVE_STORE_DUEL);
+	save_store_remove("duelmode");
+	g_save_dirty = false;
+}
+
+static const char *const kMenuName[] = { "generic", "attacks", "play_area", "two_items", "card_list", "peek_area",
+	"peek_target" };
+#define NUM_MENU_NAMES ((int)(sizeof(kMenuName) / sizeof(kMenuName[0])))
 static const char *const kReqName[] = { "?", "ack", "duel_menu", "card_list", "item_menu", "play_area", "menu",
 	"yes_no", "energy_discard", "prize", "color", "number", "confirm" };
 
@@ -1941,6 +2084,7 @@ static void on_event(void *ctx, const TcgEvent *ev)
 		g_turn_holder = ev->arg[0];
 		g_turn = ev->arg[1];
 		g_thinking = 0;
+		save_commit();
 		debugf("TURN %d %s\n", ev->arg[1] + 1, who(ev->arg[0]));
 		show_frames(1);
 		break;
@@ -1970,12 +2114,12 @@ static int on_request(void *ctx, const TcgRequest *r)
 		/* text boxes are always acknowledged by a human, so that they can be read */
 		int ports = g_mode == MODE_HOTSEAT ? 3 : 1;
 		ans = ui_ack(r, ports);
-	} else if (r->type == TCG_REQ_CARD_LIST && r->arg[0] && g_kind[side] != PK_HUMAN) {
-		/* a view-only list requested on an AI (or bot) side, e.g. the hand checked by the
-		 * AI's Lass: the answers never change the duel, show it to the human (controller 1;
-		 * the other duelist is always human in these modes) */
-		debugf("ASK card_list(view) %s n=%d\n", who(r->duelist), r->num_items);
-		ans = ui_card_list(r, 1);
+	} else if (g_kind[side] == PK_AI && ((r->type == TCG_REQ_CARD_LIST && r->arg[0]) || r->type == TCG_REQ_CONFIRM)) {
+		/* shown to the human although the engine AI "asks": a view-only list (e.g. the
+		 * hand checked by the AI's Lass) or the play area an AI's effect changed
+		 * (WaitForButtonAorB). The other duelist is always the human on controller 1. */
+		debugf("ASK %s(ai) %s n=%d\n", kReqName[r->type], who(r->duelist), r->num_items);
+		ans = r->type == TCG_REQ_CONFIRM ? ui_confirm(r, 1) : ui_card_list(r, 1);
 	} else if (g_kind[side] != PK_HUMAN) {
 		/* the random bot, or an AI duelist reaching a human input routine (should not happen) */
 		show_frames(2);
@@ -1984,7 +2128,7 @@ static int on_request(void *ctx, const TcgRequest *r)
 		int ports = ports_for(r->duelist);
 		g_asking = r->duelist;
 		debugf("ASK %s%s%s %s n=%d cursor=%d\n", r->type < sizeof(kReqName) / sizeof(kReqName[0]) ? kReqName[r->type] : "?",
-		       r->type == TCG_REQ_MENU ? "/" : "", r->type == TCG_REQ_MENU && r->menu < 5 ? kMenuName[r->menu] : "",
+		       r->type == TCG_REQ_MENU ? "/" : "", r->type == TCG_REQ_MENU && r->menu < NUM_MENU_NAMES ? kMenuName[r->menu] : "",
 		       who(r->duelist), r->num_items, r->cursor);
 		switch (r->type) {
 		case TCG_REQ_DUEL_MENU: ans = ui_duel_menu(r, ports); break;
@@ -1997,6 +2141,8 @@ static int on_request(void *ctx, const TcgRequest *r)
 			case TCG_MENU_PLAY_AREA: ans = ui_menu_play_area(r, ports); break;
 			case TCG_MENU_TWO_ITEMS: ans = ui_menu_two_items(r, ports); break;
 			case TCG_MENU_CARD_LIST: ans = ui_menu_card_list(r, ports); break;
+			case TCG_MENU_PEEK_AREA: ans = ui_peek_area(r, ports); break;
+			case TCG_MENU_PEEK_TARGET: ans = ui_peek_target(r, ports); break;
 			default: ans = ui_menu_generic(r, ports); break;
 			}
 			break;
@@ -2011,7 +2157,7 @@ static int on_request(void *ctx, const TcgRequest *r)
 	}
 	g_asking = 0;
 	debugf("REQ %s%s%s %s n=%d -> %d\n", r->type < sizeof(kReqName) / sizeof(kReqName[0]) ? kReqName[r->type] : "?",
-	       r->type == TCG_REQ_MENU ? "/" : "", r->type == TCG_REQ_MENU && r->menu < 5 ? kMenuName[r->menu] : "",
+	       r->type == TCG_REQ_MENU ? "/" : "", r->type == TCG_REQ_MENU && r->menu < NUM_MENU_NAMES ? kMenuName[r->menu] : "",
 	       who(r->duelist), r->num_items, ans);
 	return ans;
 }
@@ -2076,14 +2222,37 @@ static int on_request_selftest(void *ctx, const TcgRequest *menu)
 		r.type = TCG_REQ_CONFIRM;
 		on_request(ctx, &r);
 		on_request(ctx, &r);
-		/* a view-only list requested on the opponent's (non-human) side */
-		r.type = TCG_REQ_CARD_LIST;
-		r.duelist = TCG_OPPONENT;
+		/* Peek: whose play area, then which card */
+		memset(&r, 0, sizeof(r));
+		r.duelist = r.shown = TCG_PLAYER;
+		r.type = TCG_REQ_MENU;
+		r.menu = TCG_MENU_PEEK_AREA;
+		r.num_items = 2;
+		on_request(ctx, &r);
+		r.menu = TCG_MENU_PEEK_TARGET;
+		r.num_items = 8;
+		r.arg[0] = 0x3e; /* prize 0 taken */
+		r.arg[1] = 1;    /* the other duelist's area: the hand can be chosen */
+		on_request(ctx, &r);
+		on_request(ctx, &r);
+		/* requests on the opponent's side as if it were the engine AI: shown to controller 1 */
+		int kind = g_kind[1];
+		g_kind[1] = PK_AI;
+		memset(&r, 0, sizeof(r));
+		r.duelist = r.shown = TCG_OPPONENT;
+		r.type = TCG_REQ_CONFIRM;
+		on_request(ctx, &r);
+		r.type = TCG_REQ_CARD_LIST; /* e.g. the hand checked by the AI's Lass */
+		r.shown = TCG_PLAYER;
 		r.num_items = v[DUELVARS_NUMBER_OF_CARDS_IN_HAND];
 		r.items = &v[DUELVARS_HAND];
 		r.text = DuelistHandText;
 		r.arg[0] = 1;
 		on_request(ctx, &r);
+		/* the same view-only list on the random bot's side: the bot leaves it */
+		g_kind[1] = PK_BOT;
+		on_request(ctx, &r);
+		g_kind[1] = kind;
 	}
 	return on_request(ctx, menu);
 }
@@ -2163,71 +2332,132 @@ static void load_buildinfo(void)
 
 typedef struct Setup { int mode, deck[2], prizes; } Setup;
 
-static void title_screen(Setup *s)
+static const char *const kModeName[NUM_MODES] = { "VS CPU (engine AI)", "VS random bot", "2 players (hot-seat)",
+	"Practice with Sam" };
+
+/* "settings" file: the last title screen choices */
+static void load_settings(Setup *s)
 {
-	static const char *const modes[NUM_MODES] = { "VS CPU (engine AI)", "VS random bot", "2 players (hot-seat)" };
-	int row = 0;
+	uint8_t b[16];
+	if (!g_save_ok || save_store_read("settings", b, sizeof(b)) < 5 || b[0] != 'S')
+		return;
+	if (b[1] < NUM_MODES)
+		s->mode = b[1];
+	if (b[2] < g_num_decks)
+		s->deck[0] = b[2];
+	if (b[3] < g_num_decks)
+		s->deck[1] = b[3];
+	if (b[4] >= 1 && b[4] <= 6)
+		s->prizes = b[4];
+}
+
+static void store_settings(const Setup *s)
+{
+	uint8_t b[5] = { 'S', (uint8_t)s->mode, (uint8_t)s->deck[0], (uint8_t)s->deck[1], (uint8_t)s->prizes };
+	if (g_save_ok)
+		save_store_write("settings", b, sizeof(b)); /* only changed blocks get written */
+}
+
+enum { ROW_CONTINUE, ROW_MODE, ROW_DECK1, ROW_DECK2, ROW_PRIZES, ROW_START, NUM_ROWS };
+
+/* returns true for "Continue Duel" (saved != NULL), false for a new duel with *s */
+static bool title_screen(Setup *s, const TcgSavedDuel *saved, int saved_mode)
+{
+	int row = saved ? ROW_CONTINUE : ROW_MODE;
+	debugf("TITLE continue=%d\n", saved != NULL);
 	for (;;) {
+		bool practice = s->mode == MODE_PRACTICE;
 		char name[2][32];
-		deck_name(g_decks[s->deck[0]], name[0], sizeof(name[0]));
-		deck_name(g_decks[s->deck[1]], name[1], sizeof(name[1]));
+		deck_name(practice ? PRACTICE_PLAYER_DECK_ID : g_decks[s->deck[0]], name[0], sizeof(name[0]));
+		deck_name(practice ? TCG_SAMS_PRACTICE_DECK_ID : g_decks[s->deck[1]], name[1], sizeof(name[1]));
 		begin_frame();
-		fill(0, 0, SCREEN_W, 52, C_PANEL);
-		print(LEFT + 20, 14, C_HI, "POKEMON TRADING CARD GAME");
-		print(LEFT + 20, 28, C_TEXT, "duel engine - Nintendo 64 port");
-		const char *labels[5] = { "Mode", s->mode == MODE_HOTSEAT ? "P1 deck" : "Your deck",
+		fill(0, 0, SCREEN_W, 46, C_PANEL);
+		print(LEFT + 20, 12, C_HI, "POKEMON TRADING CARD GAME");
+		print(LEFT + 20, 26, C_TEXT, "duel engine - Nintendo 64 port");
+		int y = 52;
+		if (saved) {
+			char opp[32], b[48];
+			/* the opponent's deck: from the save for an AI, else as recorded in "duelmode" */
+			uint8_t m[4];
+			if (saved->duelist_type[1] & DUELIST_TYPE_AI_OPP)
+				deck_name(saved->duelist_type[1] & 0x7f, opp, sizeof(opp));
+			else if (save_store_read("duelmode", m, sizeof(m)) == 4 && m[3] <= IMAKUNI_DECK_ID)
+				deck_name(m[3], opp, sizeof(opp));
+			else
+				copy_str(opp, sizeof(opp), "?");
+			if (row == ROW_CONTINUE)
+				fill(LEFT - 4, y - 3, RIGHT - LEFT + 8, 24, C_SEL);
+			print(LEFT + 4, y, row == ROW_CONTINUE ? C_HI : C_TEXT, "CONTINUE DUEL");
+			snprintf(b, sizeof(b), "turn %d, prizes %d-%d", saved->turns + 1, saved->prizes_left[0], saved->prizes_left[1]);
+			print(LEFT + 16 * CW, y, C_DIM, b);
+			snprintf(b, sizeof(b), "%s, %s", saved_mode >= 0 ? kModeName[saved_mode] : "?", opp);
+			print_n(LEFT + 4, y + 10, C_DIM, b, COLS - 1);
+		}
+		y = 82;
+		const char *labels[NUM_ROWS] = { "", "Mode", s->mode == MODE_HOTSEAT ? "P1 deck" : "Your deck",
 			s->mode == MODE_HOTSEAT ? "P2 deck" : "Opponent", "Prizes", "" };
-		for (int i = 0; i < 5; i++) {
-			int y = 66 + i * 16;
+		for (int i = ROW_MODE; i < NUM_ROWS; i++, y += 15) {
+			bool fixed = practice && (i == ROW_DECK1 || i == ROW_DECK2 || i == ROW_PRIZES);
 			if (i == row)
 				fill(LEFT - 4, y - 3, RIGHT - LEFT + 8, 14, C_SEL);
-			if (i < 4) {
+			if (i < ROW_START) {
 				print(LEFT + 4, y, C_DIM, labels[i]);
 				char v[48];
-				if (i == 0)
-					copy_str(v, sizeof(v), modes[s->mode]);
-				else if (i < 3)
-					copy_str(v, sizeof(v), name[i - 1]);
+				if (i == ROW_MODE)
+					copy_str(v, sizeof(v), kModeName[s->mode]);
+				else if (i == ROW_DECK1 || i == ROW_DECK2)
+					copy_str(v, sizeof(v), name[i - ROW_DECK1]);
 				else
-					snprintf(v, sizeof(v), "%d", s->prizes);
-				printf_at(LEFT + 11 * CW, y, i == row ? C_HI : C_TEXT, "< %s >", v);
+					snprintf(v, sizeof(v), "%d", practice ? 2 : s->prizes);
+				if (fixed)
+					print(LEFT + 13 * CW, y, C_DIM, v);
+				else
+					printf_at(LEFT + 11 * CW, y, i == row ? C_HI : C_TEXT, "< %s >", v);
 			} else {
-				print(LEFT + 12 * CW, y, i == row ? C_HI : C_TEXT, "START DUEL");
+				print(LEFT + 12 * CW, y, i == row ? C_HI : C_TEXT, "START NEW DUEL");
 			}
 		}
-		int y = 150;
-		if (s->mode == MODE_VS_AI && !g_have_ai) {
+		y = 170;
+		if ((s->mode == MODE_VS_AI || practice) && !g_have_ai) {
 			print(LEFT, y, C_RED, "The AI port is not linked yet: an AI");
 			print(LEFT, y + 9, C_RED, "duel stops at its first AI decision.");
 		} else if (s->mode == MODE_HOTSEAT) {
 			print(LEFT, y, C_DIM, "P2 plays with controller 2 (or 1).");
 		} else if (s->mode == MODE_VS_BOT) {
 			print(LEFT, y, C_DIM, "The bot picks random legal inputs.");
+		} else if (practice) {
+			print(LEFT, y, C_DIM, "Dr. Mason explains the rules.");
 		}
-		for (int i = 0; i < g_buildinfo_lines; i++)
-			print(LEFT, 176 + i * 9, C_DIM, g_buildinfo[i]);
+		if (!g_save_ok)
+			print(LEFT, y + 18, C_DIM, "No 16K EEPROM: duels are not saved.");
+		for (int i = 0; i < g_buildinfo_lines && i < 2; i++)
+			print(LEFT, 208 + i * 9, C_DIM, g_buildinfo[i]);
 		end_frame_poll();
 		Keys k = keys(3);
+		int first = saved ? ROW_CONTINUE : ROW_MODE;
 		if (k.up)
-			row = (row + 4) % 5;
+			row = row > first ? row - 1 : ROW_START;
 		if (k.down)
-			row = (row + 1) % 5;
+			row = row < ROW_START ? row + 1 : first;
 		int d = k.left ? -1 : k.right ? 1 : 0;
-		if (d) {
-			if (row == 0)
+		if (k.l)
+			d = -8;
+		if (k.r)
+			d = 8;
+		bool fixed = practice && (row == ROW_DECK1 || row == ROW_DECK2 || row == ROW_PRIZES);
+		if (d && !fixed) {
+			if (row == ROW_MODE && (d == 1 || d == -1))
 				s->mode = (s->mode + NUM_MODES + d) % NUM_MODES;
-			else if (row == 1 || row == 2)
-				s->deck[row - 1] = (s->deck[row - 1] + g_num_decks + d) % g_num_decks;
-			else if (row == 3)
+			else if (row == ROW_DECK1 || row == ROW_DECK2)
+				s->deck[row - ROW_DECK1] = (s->deck[row - ROW_DECK1] + 8 * g_num_decks + d) % g_num_decks;
+			else if (row == ROW_PRIZES && (d == 1 || d == -1))
 				s->prizes = s->prizes + d < 1 ? 6 : s->prizes + d > 6 ? 1 : s->prizes + d;
 		}
-		if (k.l && (row == 1 || row == 2))
-			s->deck[row - 1] = (s->deck[row - 1] + g_num_decks - 8) % g_num_decks;
-		if (k.r && (row == 1 || row == 2))
-			s->deck[row - 1] = (s->deck[row - 1] + 8) % g_num_decks;
-		if (k.start || (k.a && row == 4))
-			return;
-		if (k.a && row < 4)
+		if (k.a && row == ROW_CONTINUE)
+			return true;
+		if (k.start || (k.a && row == ROW_START))
+			return false;
+		if (k.a && row != ROW_CONTINUE && row < ROW_START)
 			row++;
 	}
 }
@@ -2254,6 +2484,45 @@ static void result_screen(int result)
 
 /* ------------------------------------------------------------------ main */
 
+static void reset_duel_ui(void)
+{
+	log_clear();
+	memset(&g_overlay, 0, sizeof(g_overlay));
+	memset(&g_coin, 0, sizeof(g_coin));
+	memset(&g_dmg, 0, sizeof(g_dmg));
+	g_turn_holder = 0;
+	g_turn = 0;
+	g_thinking = 0;
+	g_screen = TCG_SCREEN_NONE;
+}
+
+/* who answers each side's requests, and the names, in mode m */
+static void set_mode(int m)
+{
+	static const char *const names[NUM_MODES][2] = { { "PLAYER", "CPU" }, { "PLAYER", "BOT" }, { "P1", "P2" },
+		{ "PLAYER", "SAM" } };
+	g_mode = m;
+	g_kind[0] = PK_HUMAN;
+	g_kind[1] = m == MODE_VS_AI || m == MODE_PRACTICE ? PK_AI : m == MODE_VS_BOT ? PK_BOT : PK_HUMAN;
+	copy_str(g_name[0], sizeof(g_name[0]), names[m][0]);
+	copy_str(g_name[1], sizeof(g_name[1]), names[m][1]);
+}
+
+/* the mode of a saved duel: the "duelmode" file, checked against the save (an AI
+ * side needs an AI mode; bot and hot-seat sides are both DUELIST_TYPE_PLAYER) */
+static int saved_duel_mode(const TcgSavedDuel *info)
+{
+	uint8_t b[8];
+	bool ai = (info->duelist_type[1] & DUELIST_TYPE_AI_OPP) != 0;
+	int m = -1;
+	if (save_store_read("duelmode", b, sizeof(b)) >= 2 && b[0] == 'M' && b[1] < NUM_MODES)
+		m = b[1];
+	bool ai_mode = m == MODE_VS_AI || m == MODE_PRACTICE;
+	if (m < 0 || ai_mode != ai)
+		m = !ai ? MODE_HOTSEAT : (info->duelist_type[1] & 0x7f) == TCG_SAMS_PRACTICE_DECK_ID ? MODE_PRACTICE : MODE_VS_AI;
+	return m;
+}
+
 int main(void)
 {
 	debug_init_isviewer();
@@ -2265,43 +2534,67 @@ int main(void)
 	dfs_init(DFS_DEFAULT_LOCATION);
 	load_buildinfo();
 	init_decks();
+	g_save_ok = save_store_open(NULL);
+	debugf("EEPROM %s\n", g_save_ok ? "ok" : "missing (no saves)");
 
 	Setup s = { MODE_VS_AI, { 0, 1 }, 6 };
-	TcgHost host = { on_event, on_request, NULL, NULL };
+	load_settings(&s);
+	TcgHost host = { on_event, on_request, on_save, NULL };
 	tcg_set_host(&host);
+	static uint8_t saved[TCG_SAVE_SIZE];
 	for (;;) {
-		title_screen(&s);
+		TcgSavedDuel info;
+		int n = g_save_ok ? save_store_read(SAVE_STORE_DUEL, saved, sizeof(saved)) : -1;
+		bool have_save = n == TCG_SAVE_SIZE && tcg_saved_duel_info(saved, (uint32_t)n, &info) == 0 &&
+		                 info.duel_type != DUELTYPE_LINK;
+		int saved_mode = have_save ? saved_duel_mode(&info) : -1;
+		bool cont = title_screen(&s, have_save ? &info : NULL, saved_mode);
 		uint32_t seed = (uint32_t)get_ticks();
 		g_rng = seed | 1;
-		g_mode = s.mode;
-		g_kind[0] = PK_HUMAN;
-		g_kind[1] = s.mode == MODE_VS_AI ? PK_AI : s.mode == MODE_VS_BOT ? PK_BOT : PK_HUMAN;
-		copy_str(g_name[0], sizeof(g_name[0]), s.mode == MODE_HOTSEAT ? "P1" : "PLAYER");
-		copy_str(g_name[1], sizeof(g_name[1]), s.mode == MODE_HOTSEAT ? "P2" : s.mode == MODE_VS_BOT ? "BOT" : "CPU");
-
+		reset_duel_ui();
 		TcgDuelSetup setup;
 		memset(&setup, 0, sizeof(setup));
-		setup.prizes = (uint8_t)s.prizes;
-		setup.rng[0] = (uint8_t)seed;
-		setup.rng[1] = (uint8_t)(seed >> 8);
-		setup.rng[2] = (uint8_t)(seed >> 16);
-		setup.duelist[0].kind = TCG_HUMAN;
-		setup.duelist[0].deck_id = g_decks[s.deck[0]]; /* cards all zero: the engine expands the deck list */
-		setup.duelist[0].name = g_name[0];
-		setup.duelist[1].kind = s.mode == MODE_VS_AI ? TCG_AI : TCG_HUMAN;
-		setup.duelist[1].deck_id = g_decks[s.deck[1]];
-		setup.duelist[1].name = g_name[1];
-
-		log_clear();
-		memset(&g_overlay, 0, sizeof(g_overlay));
-		memset(&g_coin, 0, sizeof(g_coin));
-		memset(&g_dmg, 0, sizeof(g_dmg));
-		g_turn_holder = 0;
-		g_turn = 0;
-		g_screen = TCG_SCREEN_NONE;
-		debugf("DUEL mode=%d deck1=%d deck2=%d prizes=%d seed=%08lx\n", s.mode, setup.duelist[0].deck_id,
-		       setup.duelist[1].deck_id, s.prizes, (unsigned long)seed);
-		int result = tcg_run_duel(&setup);
+		int result;
+		if (cont) {
+			/* decks, prizes, the duelists' types, the turn and the RNG come from the save */
+			set_mode(saved_mode);
+			setup.duelist[0].name = g_name[0];
+			setup.duelist[1].name = g_name[1];
+			memcpy(g_save_img, saved, sizeof(g_save_img));
+			g_save_dirty = false;
+			g_save_mode_written = true; /* "duelmode" is already there */
+			debugf("CONTINUE mode=%d turn=%d prizes=%d/%d\n", saved_mode, info.turns + 1, info.prizes_left[0],
+			       info.prizes_left[1]);
+			result = tcg_continue_duel(&setup, saved, (uint32_t)n);
+		} else {
+			store_settings(&s);
+			set_mode(s.mode);
+			bool practice = s.mode == MODE_PRACTICE;
+			setup.prizes = practice ? 2 : (uint8_t)s.prizes;
+			setup.music = MUSIC_DUEL_THEME_1;
+			setup.rng[0] = (uint8_t)seed;
+			setup.rng[1] = (uint8_t)(seed >> 8);
+			setup.rng[2] = (uint8_t)(seed >> 16);
+			setup.duelist[0].kind = TCG_HUMAN;
+			/* cards all zero: the engine loads the deck (the practice duel always uses PRACTICE_PLAYER_DECK) */
+			setup.duelist[0].deck_id = practice ? PRACTICE_PLAYER_DECK_ID : g_decks[s.deck[0]];
+			setup.duelist[0].name = g_name[0];
+			setup.duelist[1].kind = g_kind[1] == PK_AI ? TCG_AI : TCG_HUMAN;
+			setup.duelist[1].deck_id = practice ? TCG_SAMS_PRACTICE_DECK_ID : g_decks[s.deck[1]];
+			setup.duelist[1].name = g_name[1];
+			g_duel_decks[0] = setup.duelist[0].deck_id;
+			g_duel_decks[1] = setup.duelist[1].deck_id;
+			g_save_dirty = false;
+			g_save_mode_written = false;
+			debugf("DUEL mode=%d deck1=%d deck2=%d prizes=%d seed=%08lx\n", s.mode, setup.duelist[0].deck_id,
+			       setup.duelist[1].deck_id, setup.prizes, (unsigned long)seed);
+			result = tcg_run_duel(&setup);
+		}
+		save_discard(); /* the original clears the saved duel once the duel is over */
+		if (result == TCG_CONTINUE_BROKEN) {
+			debugf("CONTINUE broken save\n");
+			continue;
+		}
 		result_screen(result);
 	}
 }

@@ -6,6 +6,8 @@
  *   MOCK_ROMFS   directory that "rom:/" maps to (default: build/filesystem)
  *   MOCK_SHOTS   directory for screenshots (.ppm, default: .)
  *   MOCK_QUIET   1 = do not echo debugf output
+ *   MOCK_EEPROM  EEPROM image file (default: in memory, lost at exit)
+ *   MOCK_EEPROM_TYPE  16k (default), 4k or none
  *
  * Script: one command per line, '#' starts a comment. One input step is one
  * joypad_poll() call (one frame of the frontend).
@@ -25,7 +27,10 @@
  *   shot_first PREFIX         save the frame after the first debugf line starting with
  *                             PREFIX for each distinct second word (e.g. "ASK card_list")
  *   connect P2 | disconnect P2
- *   quit                      exit(0)
+ *   quit | poweroff           exit(0) (the EEPROM file keeps what was written)
+ *   reboot                    power-cycle: run the program again (same EEPROM file),
+ *                             the script goes on with the next line
+ *   eeprom_stats              print the EEPROM write statistics
  * The process exits 0 at the end of the script, 3 on a frontend FATAL, 4 on
  * an `until` timeout and 5 on a failed `expect`.
  */
@@ -37,6 +42,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <unistd.h>
 
 #include "libdragon.h"
 #undef fopen
@@ -56,6 +62,9 @@ static bool g_inited;
 static uint32_t g_fg = 0xffffffff, g_bg;
 static unsigned long g_frames, g_polls;
 
+static unsigned long g_eep_writes;
+static void eeprom_stats(void);
+
 static void die(int code, const char *fmt, ...)
 {
 	va_list ap;
@@ -65,6 +74,9 @@ static void die(int code, const char *fmt, ...)
 	fprintf(stderr, "\n");
 	va_end(ap);
 	fprintf(stderr, "MOCK: frames=%lu polls=%lu\n", g_frames, g_polls);
+	if (g_eep_writes)
+		eeprom_stats();
+	fflush(stdout);
 	exit(code);
 }
 
@@ -396,12 +408,97 @@ void display_show(surface_t *s)
 		die(2, "frame limit");
 }
 
+/* ------------------------------------------------------------------ EEPROM */
+
+static uint8_t g_eep[256 * 8];
+static bool g_eep_loaded;
+static unsigned long g_eep_stalls, g_eep_last_frame = (unsigned long)-1;
+static unsigned g_eep_block_writes[256];
+
+static int eep_blocks(void)
+{
+	const char *t = getenv("MOCK_EEPROM_TYPE");
+	if (t && !strcasecmp(t, "none"))
+		return 0;
+	if (t && !strcasecmp(t, "4k"))
+		return 64;
+	return 256;
+}
+
+static void eep_load(void)
+{
+	if (g_eep_loaded)
+		return;
+	g_eep_loaded = true;
+	memset(g_eep, 0xff, sizeof(g_eep)); /* a blank chip */
+	const char *path = getenv("MOCK_EEPROM");
+	FILE *f = path && *path ? fopen(path, "rb") : NULL;
+	if (f) {
+		if (fread(g_eep, 1, sizeof(g_eep), f) != sizeof(g_eep))
+			memset(g_eep, 0xff, sizeof(g_eep));
+		fclose(f);
+	}
+}
+
+eeprom_type_t eeprom_present(void)
+{
+	int n = eep_blocks();
+	return n == 256 ? EEPROM_16K : n == 64 ? EEPROM_4K : EEPROM_NONE;
+}
+
+void eeprom_read(uint8_t block, uint8_t *dest)
+{
+	eep_load();
+	if (block >= eep_blocks())
+		die(2, "eeprom_read: block %d does not exist", block);
+	memcpy(dest, &g_eep[block * 8], 8);
+}
+
+uint8_t eeprom_write(uint8_t block, const uint8_t *src)
+{
+	eep_load();
+	if (block >= eep_blocks())
+		die(2, "eeprom_write: block %d does not exist", block);
+	memcpy(&g_eep[block * 8], src, 8);
+	/* a write takes ~15 ms on the console: a second one in the same frame stalls the game */
+	if (g_eep_last_frame == g_frames)
+		g_eep_stalls++;
+	g_eep_last_frame = g_frames;
+	g_eep_writes++;
+	g_eep_block_writes[block]++;
+	const char *path = getenv("MOCK_EEPROM");
+	if (path && *path) {
+		FILE *f = fopen(path, "r+b");
+		if (!f) {
+			f = fopen(path, "wb");
+			if (f)
+				fwrite(g_eep, 1, sizeof(g_eep), f);
+		} else {
+			fseek(f, block * 8, SEEK_SET);
+			fwrite(src, 1, 8, f);
+		}
+		if (f)
+			fclose(f);
+	}
+	return 0;
+}
+
+static void eeprom_stats(void)
+{
+	unsigned most = 0;
+	for (int i = 0; i < 256; i++)
+		if (g_eep_block_writes[i] > most)
+			most = g_eep_block_writes[i];
+	printf("MOCK: eeprom writes=%lu (stalling=%lu) most writes to one block=%u\n", g_eep_writes, g_eep_stalls, most);
+}
+
 /* ------------------------------------------------------------------ scripted joypad */
 
 enum { B_A, B_B, B_Z, B_START, B_L, B_R, B_UP, B_DOWN, B_LEFT, B_RIGHT, B_CU, B_CD, B_CL, B_CR, NUM_B };
 static const char *const kBtn[NUM_B] = { "A", "B", "Z", "START", "L", "R", "UP", "DOWN", "LEFT", "RIGHT", "CU", "CD", "CL", "CR" };
 
 static FILE *g_script;
+static unsigned g_script_line;
 static unsigned g_held[2], g_prev[2];
 static bool g_connected[2] = { true, true };
 static struct {
@@ -425,6 +522,14 @@ void joypad_init(void)
 		g_script = fopen(p, "r");
 		if (!g_script)
 			die(2, "cannot open script %s", p);
+		/* after a reboot: go on after the reboot line */
+		const char *resume = getenv("MOCK_RESUME_LINE");
+		unsigned skip = resume ? (unsigned)strtoul(resume, NULL, 0) : 0;
+		char line[256];
+		while (g_script_line < skip && fgets(line, sizeof(line), g_script))
+			g_script_line++;
+		if (skip)
+			printf("MOCK: rebooted, script goes on at line %u\n", skip + 1);
 	}
 }
 
@@ -487,6 +592,8 @@ static void next_command(void)
 {
 	char line[256];
 	for (;;) {
+		if (g_script)
+			g_script_line++;
 		if (!g_script || !fgets(line, sizeof(line), g_script)) {
 			if (!g_script && g_frames < 600) {
 				g_cmd.kind = S_WAIT;
@@ -572,8 +679,27 @@ static void next_command(void)
 			g_connected[parse_ports(b) == 2 ? 1 : 0] = !strcmp(a, "connect");
 			continue;
 		}
-		if (!strcmp(a, "quit"))
-			die(0, "quit");
+		if (!strcmp(a, "quit") || !strcmp(a, "poweroff"))
+			die(0, "%s", a);
+		if (!strcmp(a, "eeprom_stats")) {
+			eeprom_stats();
+			continue;
+		}
+		if (!strcmp(a, "reboot")) {
+			const char *path = getenv("MOCK_EEPROM");
+			if (!path || !*path)
+				die(2, "reboot needs MOCK_EEPROM (the EEPROM would be lost)");
+			char n[16];
+			snprintf(n, sizeof(n), "%u", g_script_line);
+			setenv("MOCK_RESUME_LINE", n, 1);
+			eeprom_stats();
+			printf("MOCK: reboot (frame %lu)\n", g_frames);
+			fflush(stdout);
+			fflush(stderr);
+			char *const argv[] = { "tcgn64_host", NULL };
+			execv("/proc/self/exe", argv);
+			die(2, "reboot: execv failed");
+		}
 		die(2, "unknown script command: %s", a);
 	}
 }

@@ -1,0 +1,53 @@
+# Saving and "Continue Duel" on the (mock, file-backed) 16 Kbit EEPROM: the duel
+# is written back at turn boundaries, the console is powered off mid-duel and
+# the duel continued with the same controller mapping; a save cut short by a
+# power-off is not offered; the save is deleted once the duel is over.
+# boot 1: blank EEPROM, new duel against the random bot
+wait 5
+expect EEPROM~ok
+expect TITLE~continue=0
+press RIGHT
+press START
+until TURN~5 400000 7 P1
+until SAVED 100000 8 P1
+eeprom_stats
+reboot
+# boot 2: continue it
+wait 5
+shot title_continue
+expect TITLE~continue=1
+press A
+expect CONTINUE~mode=1
+# the bot still plays the other side
+until REQ~duel_menu~BOT 200000 9 P1
+until TURN~8 400000 10 P1
+shot continued
+# power off right after the next turn's save started to be written back
+until SAVE~turn= 400000 11 P1
+reboot
+# boot 3: the half-written save is not offered; new duel against the AI
+wait 5
+expect TITLE~continue=0
+press LEFT
+press START
+expect DUEL~mode=0
+until TURN~3 400000 12 P1
+until SAVED 100000 13 P1
+reboot
+# boot 4: continue against the AI, to the end of the duel
+wait 5
+expect TITLE~continue=1
+press A
+expect CONTINUE~mode=0
+until RESULT 3000000 14 P1
+press A
+wait 40
+press A
+wait 10
+expect TITLE~continue=0
+wait 60
+reboot
+# boot 5: the finished duel's save is gone
+wait 5
+expect TITLE~continue=0
+shot title_after
