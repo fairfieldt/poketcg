@@ -53,6 +53,7 @@ static int host_request(void *ctx, const TcgRequest *r)
  *   [2..61]   60 card ids of duelist 0 (all 0 = deck_id's list)
  *   [62..123] the same for duelist 1
  *   [124]     prizes  [125..127] rng  [128] music  [129] animations_disabled
+ *   [130]     received_legendary_cards
  *   [160..191] name of duelist 0 (NUL terminated)  [192..223] name of duelist 1
  */
 #define SETUP_DUELIST 62
@@ -83,6 +84,7 @@ EXPORT("web_run") int web_run(void)
 	setup.rng[2] = setup_buf[SETUP_MISC + 3];
 	setup.music = setup_buf[SETUP_MISC + 4];
 	setup.animations_disabled = setup_buf[SETUP_MISC + 5];
+	setup.received_legendary_cards = setup_buf[SETUP_MISC + 6];
 	tcg_set_host(&host);
 	return tcg_run_duel(&setup);
 }

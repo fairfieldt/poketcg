@@ -1,11 +1,16 @@
-# Human (controller 1, random presses) against the frontend's random bot.
+# Controller 1 (random presses) against the frontend's random bot.
 wait 20
 shot title
-# title: mode row -> "VS random bot" (default when the AI is not linked), keep decks
+# mode row: VS CPU (default) -> VS random bot
+press RIGHT
+wait 2
+shot title_bot
 press START
 wait 10
 shot duel_start
-until TURN_6 200000 11
+shots_every 1500
+until TURN~6 300000 11
 shot turn6
 expect TURN 6
-expect REQ_duel_menu
+expect REQ~duel_menu~PLAYER
+expect REQ~card_list~PLAYER

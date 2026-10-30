@@ -1,0 +1,44 @@
+# The request UIs that random play rarely reaches, fed as synthetic requests
+# (TCGN64_SELFTEST, host builds only) before the player's first duel menu of a
+# real duel against the bot, then answered with scripted presses.
+#env TCGN64_SELFTEST=1
+wait 5
+press RIGHT
+press START
+until ASK~yes_no~PLAYER 100000 3 P1
+shot yes_no
+press DOWN
+press A
+expect REQ~yes_no~PLAYER~n=2~->~0
+shot yes_no_two_items
+press RIGHT
+press A
+expect REQ~yes_no~PLAYER~n=2~->~0 2
+shot color
+repeat 2 press DOWN
+press A
+expect REQ~color~PLAYER~n=6~->~2
+shot number
+repeat 2 press UP
+press A
+expect REQ~number~PLAYER~n=10~->~5
+shot generic_menu
+press DOWN
+press A
+expect REQ~menu/generic~PLAYER~n=3~->~1
+shot two_items_menu
+press B
+expect REQ~menu/two_items~PLAYER~n=2~->~-1
+shot card_list_menu
+press DOWN
+press A
+expect REQ~menu/card_list~PLAYER
+expect_none REQ~menu/card_list~PLAYER~n=0
+shot prize
+press LEFT
+press A
+press RIGHT
+press A
+expect REQ~prize~PLAYER~n=6~->~1
+expect ASK~duel_menu~PLAYER
+monkey 2000 4 P1

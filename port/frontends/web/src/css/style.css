@@ -69,8 +69,8 @@ button { font-family: inherit; color: inherit; }
 .screen-head { display: flex; align-items: center; gap: 1em; }
 .screen-head h2 { margin: 0.3em 0; }
 h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
-.loading, .fatal { padding: 3em; text-align: center; font-size: 1.2em; }
-.fatal { color: var(--err); }
+.loading, .boot-error { padding: 3em; text-align: center; font-size: 1.2em; }
+.boot-error { color: var(--err); }
 
 /* ---------------------------------------------------------------- title & selection */
 .title { text-align: center; }
@@ -165,8 +165,8 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 	position: absolute; inset: 0; z-index: 5; background: var(--screen); overflow: auto;
 	padding: calc(var(--u) * 3px); display: flex; flex-direction: column;
 }
-.overlay.attackinfo { inset: auto 0 0 0; background: rgba(248, 248, 240, 0.97); border-top: calc(var(--u) * 1px) solid var(--frame); padding: calc(var(--u) * 2px) calc(var(--u) * 4px); }
-.overlay.largecard, .overlay.cardpage, .overlay.coin, .overlay.prize { align-items: center; justify-content: center; }
+.overlay.ov-attackinfo { inset: auto 0 0 0; background: rgba(248, 248, 240, 0.97); border-top: calc(var(--u) * 1px) solid var(--frame); padding: calc(var(--u) * 2px) calc(var(--u) * 4px); }
+.overlay.ov-largecard, .overlay.ov-cardpage, .overlay.ov-coin, .overlay.ov-prize { align-items: center; justify-content: center; }
 .banner { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 6; pointer-events: none; }
 .boxmsg {
 	width: calc(80px * var(--u) * 1.5); height: calc(32px * var(--u) * 1.5); background-image: url(../gfx/box_messages.png);
@@ -203,7 +203,7 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 .pa-row.cur { background: var(--sel); outline: calc(var(--u) * 0.5px) solid var(--frame); }
 .pa-row.disabled { opacity: 0.55; }
 .pa-row .art { border-width: calc(var(--u) * 0.5px); }
-.pa-loc { width: 3.6em; font-size: 0.8em; color: var(--mid); }
+.pa-loc { width: 4.4em; white-space: nowrap; font-size: 0.8em; color: var(--mid); }
 .pa-info { flex: 1; min-width: 0; }
 .pa-name { font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .pa-line { display: flex; align-items: center; gap: 0.1em; flex-wrap: wrap; }
@@ -269,6 +269,9 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 }
 .prize-card.taken { opacity: 0.15; cursor: default; }
 .prize-card.cur { outline: calc(var(--u) * 1px) solid var(--accent); outline-offset: calc(var(--u) * 1px); }
+.peek-extra { display: flex; gap: calc(var(--u) * 3px); }
+.peek-extra .btn.taken { opacity: 0.35; }
+.peek-extra .btn.cur { background: var(--sel); }
 .energy-discard { display: flex; flex-direction: column; gap: calc(var(--u) * 2px); }
 .ed-head { display: flex; gap: calc(var(--u) * 4px); align-items: center; }
 .ed-progress { font-weight: bold; color: var(--accent); }

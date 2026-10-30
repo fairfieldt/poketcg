@@ -14,7 +14,9 @@
 #
 # Writes OUT.lst (objects to link, one per line), OUT.log (report and the
 # linker errors) and OUT.info (short summary for the title screen, plus
-# "ai=0|1": whether any AI object is linked).
+# "ai=0|1": whether the linked objects define the AI entry points, i.e. real
+# definitions replace the weak stubs of port/src/ai_stubs.c; checked with $NM,
+# default nm).
 set -u
 out=$1
 shift
@@ -104,13 +106,24 @@ xe=$(count "$excluded" effects)
 xa=$(count "$excluded" ai)
 {
 	echo "effects: $ne/$((ne + xe)) linked  ai: $na/$((na + xa)) linked"
+	list=""
 	for x in $excluded; do
 		o=${x%:*}
 		why=${x##*:}
 		f=$(echo "$o" | sed 's|.*/engine/||; s|\.o$|.c|')
-		echo "excluded: $f ($why)"
+		list="$list${list:+, }$f ($why)"
 	done
-	if [ "$na" -gt 0 ]; then echo "ai=1"; else echo "ai=0"; fi
+	[ -n "$list" ] && echo "excluded: $list"
+	ai=0
+	if [ -n "$cands" ]; then
+		ai=1
+		for sym in LoadOpponentDeck AIDoAction_Turn AIDoAction_StartDuel; do
+			# shellcheck disable=SC2086
+			${NM:-nm} -g --defined-only $cands 2>/dev/null | grep -q " [TtW] $sym\$" || ai=0
+		done
+	fi
+	[ "$na" -gt 0 ] && [ $ai = 0 ] && echo "AI entry points not ported yet"
+	echo "ai=$ai"
 } > "$out.info"
 for o in $cands; do echo "linked ${o}" >> "$out.log"; done
 sed 's/^/    [OPT] /' "$out.info"

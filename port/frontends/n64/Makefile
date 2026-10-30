@@ -4,6 +4,10 @@
 #   make hosttest    build tcgn64.c against mock/libdragon.h on the host and run
 #                    the scripted UI tests in tests/*.txt (logs and screenshots
 #                    in build/host/)
+#   make endiancheck run tools/endian_check.c (36 deterministic duels, digest of
+#                    every event/request/answer and of the final WRAM/HRAM)
+#                    natively and as a big-endian MIPS32 Linux binary under
+#                    qemu-mips (QEMU_MIPS), and compare the outputs
 #   make clean
 #
 # Needs N64_INST pointing at a libdragon toolchain with libdragon and its tools
@@ -26,6 +30,7 @@
 # pointers to file names. Without the disassembly the ROM builds without art.
 
 N64_INST ?= /home/user/tools/n64/opt/libdragon
+export N64_INST
 ifeq ($(wildcard $(N64_INST)/include/n64.mk),)
 $(error N64_INST ($(N64_INST)) does not contain include/n64.mk: install libdragon first)
 endif
@@ -42,7 +47,7 @@ GFX_ASM := $(REPO)/src/gfx.asm
 ROM := tcgn64.z64
 
 all: $(ROM)
-.PHONY: all clean hosttest FORCE
+.PHONY: all clean hosttest endiancheck FORCE
 
 # ---------------------------------------------------------------- engine
 
@@ -111,7 +116,7 @@ OPT_LINK_PRE = $(N64_CXX) -o $(BUILD_DIR)/trial.elf $(CORE_OBJS) $(BUILD_DIR)/tc
 OPT_LINK_POST = -lc -mabi=o64 $(patsubst %,-Wl$(COMMA)%,$(N64_LDFLAGS))
 
 $(BUILD_DIR)/optional.o: $(OPT_STAMPS) $(CORE_OBJS) $(BUILD_DIR)/tcgn64.o $(BUILD_DIR)/optional.set tools/select_optional.sh
-	sh tools/select_optional.sh $(BUILD_DIR)/optional $(OPT_STAMPS) -- $(OPT_LINK_PRE) -- $(OPT_LINK_POST)
+	NM=$(N64_NM) sh tools/select_optional.sh $(BUILD_DIR)/optional $(OPT_STAMPS) -- $(OPT_LINK_PRE) -- $(OPT_LINK_POST)
 	@rm -f $(BUILD_DIR)/trial.elf
 	@if [ -s $(BUILD_DIR)/optional.lst ]; then \
 		$(N64_LD) -r -o $@ $$(cat $(BUILD_DIR)/optional.lst); \
@@ -134,7 +139,8 @@ $(ROM): $(BUILD_DIR)/tcgn64.dfs
 HOST_CC ?= cc
 HOST_BUILD := $(BUILD_DIR)/host
 HOST_ENGINE_CFLAGS := -std=c11 -O1 -g -Wall -Wextra -Wno-unused-parameter -DTCG_NO_DEFAULT_FATAL -I$(ENGINE)
-HOST_FRONT_CFLAGS := -std=gnu11 -O1 -g -Wall -Wextra -Wno-unused-parameter -Werror -Imock -I$(ENGINE) -I$(BUILD_DIR) $(ART_DEF)
+HOST_FRONT_CFLAGS := -std=gnu11 -O1 -g -Wall -Wextra -Wno-unused-parameter -Werror -Imock -I$(ENGINE) -I$(BUILD_DIR) $(ART_DEF) \
+	-DTCGN64_HOST_TEST
 HOST_CORE_OBJS := $(CORE_SRCS:$(ENGINE)/%.c=$(HOST_BUILD)/engine/%.o)
 HOST_OPT_STAMPS := $(OPT_SRCS:$(ENGINE)/%.c=$(HOST_BUILD)/engine/%.ok)
 MOCK_FONT := $(N64_INST)/mips64-elf/include/font.h
@@ -181,12 +187,38 @@ hosttest: $(HOST_BUILD)/tcgn64_host $(HOST_ROMFS)/buildinfo.txt
 	@fail=0; for t in $(HOST_TESTS); do \
 		n=$$(basename $$t .txt); mkdir -p $(HOST_BUILD)/shots/$$n; \
 		printf '    [TEST] %-24s' $$n; \
-		MOCK_SCRIPT=$$t MOCK_ROMFS=$(HOST_ROMFS) MOCK_SHOTS=$(HOST_BUILD)/shots/$$n \
+		env MOCK_SCRIPT=$$t MOCK_ROMFS=$(HOST_ROMFS) MOCK_SHOTS=$(HOST_BUILD)/shots/$$n \
 			$$(sed -n 's/^#env //p' $$t) ./$(HOST_BUILD)/tcgn64_host > $(HOST_BUILD)/$$n.log 2>&1; \
 		rc=$$?; \
 		if [ $$rc = 0 ]; then echo "ok   ($$(grep -c '^TURN' $(HOST_BUILD)/$$n.log) turns, $$(grep -c '^REQ' $(HOST_BUILD)/$$n.log) requests, $$(tail -n 1 $(HOST_BUILD)/$$n.log))"; \
 		else echo "FAIL (exit $$rc, see $(HOST_BUILD)/$$n.log)"; tail -n 3 $(HOST_BUILD)/$$n.log; fail=1; fi; \
 	done; exit $$fail
+
+# ---------------------------------------------------------------- byte order check (big-endian MIPS under qemu)
+
+QEMU_MIPS ?= $(firstword $(wildcard /home/user/tools/n64/qemu/usr/bin/qemu-mips-static) \
+	$(shell command -v qemu-mips-static 2> /dev/null) $(shell command -v qemu-mips 2> /dev/null))
+EC_DIR := $(BUILD_DIR)/endian
+EC_MIPS_FLAGS := -std=c11 -O2 -EB -mabi=32 -march=mips32r2 -G0 -mno-abicalls -fno-pic -ffreestanding \
+	-fno-builtin -fno-tree-loop-distribute-patterns -fno-stack-protector -nostdlib -static \
+	-DENDIAN_CHECK_FREESTANDING -DTCG_NO_DEFAULT_FATAL -I$(ENGINE) -Wl,-T,tools/endian_check.ld
+
+endiancheck: $(HOST_BUILD)/optional.lst tools/endian_check.c tools/endian_check.ld
+	@test -n "$(QEMU_MIPS)" || { echo "endiancheck needs qemu-mips (set QEMU_MIPS)"; exit 1; }
+	@mkdir -p $(EC_DIR)
+	@srcs="$(CORE_SRCS) $$(sed 's|^$(HOST_BUILD)/engine/|$(ENGINE)/|; s|\.o$$|.c|' $(HOST_BUILD)/optional.lst)"; \
+	set -e; \
+	echo "    [CC] $(EC_DIR)/endian_check_host"; \
+	$(HOST_CC) -std=c11 -O2 -DTCG_NO_DEFAULT_FATAL -I$(ENGINE) -o $(EC_DIR)/endian_check_host tools/endian_check.c $$srcs; \
+	echo "    [CC] $(EC_DIR)/endian_check_mipsbe"; \
+	$(N64_CC) $(EC_MIPS_FLAGS) -o $(EC_DIR)/endian_check_mipsbe tools/endian_check.c $$srcs -lgcc; \
+	./$(EC_DIR)/endian_check_host > $(EC_DIR)/host.txt; \
+	$(QEMU_MIPS) $(EC_DIR)/endian_check_mipsbe > $(EC_DIR)/mipsbe.txt; \
+	if cmp -s $(EC_DIR)/host.txt $(EC_DIR)/mipsbe.txt; then \
+		echo "    [ENDIAN] identical on $$(uname -m) and big-endian MIPS32: $$(tail -n 1 $(EC_DIR)/host.txt)"; \
+	else \
+		echo "    [ENDIAN] DIFFERENT, see: diff $(EC_DIR)/host.txt $(EC_DIR)/mipsbe.txt"; exit 1; \
+	fi
 
 clean:
 	rm -rf $(BUILD_DIR) $(ROM)

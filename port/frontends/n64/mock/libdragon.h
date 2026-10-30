@@ -103,6 +103,8 @@ FILE *mock_fopen(const char *path, const char *mode);
 
 /* n64sys.h */
 uint64_t get_ticks(void);
+#define CachedAddr(addr) ((void *)(addr))
+void data_cache_hit_writeback_invalidate(volatile void *addr, unsigned long length);
 
 /* debug.h */
 bool debug_init_usblog(void);

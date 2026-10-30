@@ -20,6 +20,7 @@ const opt = (name, def) => { const i = args.indexOf(name); return i >= 0 ? args[
 const [s0, s1] = String(opt('--seeds', '1-12')).split('-').map(Number);
 const maxRequests = Number(opt('--max-requests', 100000));
 const verbose = args.includes('--verbose');
+const vsAI = args.includes('--vs-ai'); // P2 is the engine's AI (TCG_AI with its own deck) instead of a random human
 
 function makeRng(seed) {
 	let s = BigInt(seed) * 2654435761n + 1n;
@@ -65,19 +66,21 @@ const deck = duel.deckList(C.CHARMANDER_AND_FRIENDS_DECK_ID + 2);
 if (deck.cards.length !== 60 || duel.text(deck.nameText) !== 'Charmander & Friends')
 	throw new Error('deck list API broken');
 
-const decks = [C.CHARMANDER_AND_FRIENDS_DECK_ID, C.SQUIRTLE_AND_FRIENDS_DECK_ID, C.BULBASAUR_AND_FRIENDS_DECK_ID,
-	C.LIGHTNING_AND_FIRE_DECK_ID, C.WATER_AND_FIGHTING_DECK_ID, C.GRASS_AND_PSYCHIC_DECK_ID];
+// every pre-constructed deck: the starter decks and all club/opponent decks (*_DECK_ID)
+const decks = [C.CHARMANDER_AND_FRIENDS_DECK_ID, C.SQUIRTLE_AND_FRIENDS_DECK_ID, C.BULBASAUR_AND_FRIENDS_DECK_ID];
+for (let id = C.LIGHTNING_AND_FIRE_DECK_ID; id <= C.IMAKUNI_DECK_ID; id++) decks.push(id);
 
 let failures = 0;
 const summary = { finished: 0, fatal: 0 };
 const fatals = new Map();
+const reqTypes = {};
 for (let seed = s0; seed <= s1; seed++) {
 	const rnd = makeRng(seed);
-	const d0 = decks[seed % decks.length], d1 = decks[(seed * 7 + 3) % decks.length];
+	const d0 = decks[seed % decks.length], d1 = decks[(seed * 17 + 5) % decks.length];
 	const setup = {
 		duelists: [
 			{ kind: 'human', cards: duel.deckList(d0 + 2).cards, name: 'P1' },
-			{ kind: 'human', cards: duel.deckList(d1 + 2).cards, name: 'P2' },
+			vsAI ? { kind: 'ai', deckId: d1, name: 'AI' } : { kind: 'human', cards: duel.deckList(d1 + 2).cards, name: 'P2' },
 		],
 		prizes: 6, seed: seed * 7919,
 	};
@@ -94,6 +97,9 @@ for (let seed = s0; seed <= s1; seed++) {
 		},
 		onRequest(r) {
 			if (r.seq >= maxRequests) throw new Error('request budget exhausted');
+			if (vsAI && r.type !== REQ.ACK && r.duelist !== 0xc2) throw new Error('a request for the AI duelist');
+			const tk = Object.keys(REQ).find((k) => REQ[k] === r.type) + (r.type === REQ.MENU ? `/${r.menu}` : '');
+			reqTypes[tk] = (reqTypes[tk] || 0) + 1;
 			const a = randomAnswer(r, rnd);
 			answers.push(a);
 			// half of the answers go through a Promise (Asyncify unwind/rewind)
@@ -137,4 +143,5 @@ for (let seed = s0; seed <= s1; seed++) {
 }
 console.log(`\n${summary.finished} finished, ${summary.fatal} stopped at an unported stub, ${failures} failures`);
 for (const [m, n] of fatals) console.log(`  ${n}x ${m}`);
+console.log('requests by type:', JSON.stringify(reqTypes));
 process.exit(failures ? 1 : 0);

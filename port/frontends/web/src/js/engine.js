@@ -27,8 +27,8 @@ export const TCG_PLAYER = 0xc2, TCG_OPPONENT = 0xc3, TCG_CANCEL = -1;
 export const TCG_HUMAN = 0, TCG_AI = 1;
 export const EV = { TEXT: 1, SCREEN: 2, CARD: 3, ANIM: 4, COIN: 5, DAMAGE: 6, SFX: 7, MUSIC: 8, WAIT: 9, TURN: 10, DUEL_END: 11, THINKING: 12 };
 export const SCREEN = { NONE: 0, MAIN: 1, PLAY_AREA: 2, CARD_LIST: 3, LARGE_CARD: 4, COIN_TOSS: 5, ENERGY_DISCARD: 6, EMPTY: 7, BOX_MESSAGE: 8, OTHER: 9 };
-export const REQ = { ACK: 1, DUEL_MENU: 2, CARD_LIST: 3, CARD_ITEM_MENU: 4, PLAY_AREA: 5, MENU: 6, YES_NO: 7, ENERGY_DISCARD: 8, PRIZE: 9, COLOR: 10, NUMBER: 11 };
-export const MENU = { GENERIC: 0, ATTACKS: 1, PLAY_AREA: 2, TWO_ITEMS: 3, CARD_LIST: 4 };
+export const REQ = { ACK: 1, DUEL_MENU: 2, CARD_LIST: 3, CARD_ITEM_MENU: 4, PLAY_AREA: 5, MENU: 6, YES_NO: 7, ENERGY_DISCARD: 8, PRIZE: 9, COLOR: 10, NUMBER: 11, CONFIRM: 12 };
+export const MENU = { GENERIC: 0, ATTACKS: 1, PLAY_AREA: 2, TWO_ITEMS: 3, CARD_LIST: 4, PEEK_AREA: 5, PEEK_TARGET: 6 };
 export const EV_NAMES = Object.fromEntries(Object.entries(EV).map(([k, v]) => [v, k]));
 export const REQ_NAMES = Object.fromEntries(Object.entries(REQ).map(([k, v]) => [v, k]));
 
@@ -221,7 +221,8 @@ export class Duel {
 	/**
 	 * setup = {
 	 *   duelists: [{ kind: 'human'|'ai', deckId, cards: [60 card ids] | null, name }, {...}],
-	 *   prizes: 6, seed: 24-bit int (or rng: [rng1, rng2, counter]), music, animationsDisabled
+	 *   prizes: 6, seed: 24-bit int (or rng: [rng1, rng2, counter]), music, animationsDisabled,
+	 *   receivedLegendaryCards (AI decks play like boss decks)
 	 * }
 	 * Resolves with { result: 0 (PLAYER_TURN side won) | 1, finished: wDuelFinished, turns, requests }.
 	 * Rejects with TcgFatal (engine abort, e.g. an unported effect/AI stub) or DuelAborted.
@@ -305,6 +306,7 @@ export class Duel {
 		m[base + 125] = rng[0] | 0; m[base + 126] = rng[1] | 0; m[base + 127] = rng[2] | 0;
 		m[base + 128] = setup.music | 0;
 		m[base + 129] = setup.animationsDisabled ? 1 : 0;
+		m[base + 130] = setup.receivedLegendaryCards ? 1 : 0;
 	}
 
 	/* FNV-1a hash of both duel variable blocks + RNG state: compared by online peers to detect desyncs */

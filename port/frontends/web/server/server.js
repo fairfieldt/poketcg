@@ -132,7 +132,8 @@ wss.on('connection', (ws) => {
 				t: 'rejoined', room: r.code, role: ro, setup: r.setup, log: r.log,
 				peer: p ? { name: p.name, deck: p.deck, connected: !!(p.ws && p.ws.readyState === 1) } : null,
 			});
-			if (p) send(p.ws, { t: 'peer-back' });
+			if (p && p.left) send(ws, { t: 'peer-quit' });
+			else if (p) send(p.ws, { t: 'peer-back' });
 			log(`room ${r.code}: ${ro} rejoined (log ${r.log.length})`);
 			break;
 		}
@@ -171,7 +172,7 @@ wss.on('connection', (ws) => {
 			send(p && p.ws, { t: 'peer-quit' });
 			room[role].ws = null;
 			room[role].left = true;
-			if (!p || p.left || !p.ws) rooms.delete(room.code);
+			if (!p || p.left) rooms.delete(room.code); // else kept until the TTL: a reconnecting peer learns that we left
 			room = null;
 			role = null;
 			break;

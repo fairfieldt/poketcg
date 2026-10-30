@@ -1,0 +1,16 @@
+# A longer duel against the random bot, saving the first screen of every kind
+# of request (first_ASK_*.ppm) and finishing the duel.
+wait 5
+press RIGHT
+press START
+shot_first ASK
+until RESULT 2000000 23
+shot result
+expect REQ~duel_menu~PLAYER
+expect REQ~card_list~PLAYER
+expect REQ~play_area~PLAYER
+press A
+wait 40
+press A
+wait 5
+shot back_to_title

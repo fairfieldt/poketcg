@@ -1,0 +1,18 @@
+# Hot-seat controller routing: P2's decisions only listen to controller 2;
+# with controller 2 unplugged, controller 1 answers for both duelists.
+wait 5
+repeat 2 press RIGHT
+press START
+# only controller 1 presses: the duel must stop at P2's first decision
+monkey 20000 4 P1
+shot waiting_for_p2
+expect ASK~card_list~P2
+expect_none REQ~card_list~P2
+expect_none REQ~duel_menu~P2
+# controller 2 answers
+until REQ~card_list~P2 20000 5 P2
+# unplug controller 2: controller 1 plays both sides
+disconnect P2
+until REQ~duel_menu~P2 200000 6 P1
+shot p1_plays_p2
+until REQ~duel_menu~P1 200000 7 P1

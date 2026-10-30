@@ -153,7 +153,7 @@ function chooseDeck(title, onPick, onBack) {
 		const grid = el('div', 'deck-grid');
 		for (const d of list) {
 			const errors = validateDeck(d.cards, (id) => app.duel.card(id));
-			const b = deckTile(d, kind === 'club' && d.npc ? `${d.npc}'s deck` : kind === 'custom' ? `${d.cards.length} cards` : 'Starter deck');
+			const b = deckTile(d, kind === 'custom' ? `${d.cards.length} cards` : kind === 'starter' ? 'Starter deck' : d.npc ? `${d.npc}'s deck` : 'Club deck');
 			if (errors.length) { b.disabled = true; b.title = errors.join(' '); }
 			b.addEventListener('click', () => onPick(d));
 			grid.appendChild(b);
@@ -173,10 +173,24 @@ function chooseOpponent(deck) {
 	s.appendChild(head);
 	if (app.info && !app.info.ai.length)
 		s.appendChild(el('div', 'warn-box', 'The AI has not been ported to C yet in this build: a duel against the computer stops as soon as the AI has to act. Use 2 Players or Online in the meantime.'));
-	const grid = el('div', 'deck-grid');
 	const buttons = [];
+	const other = el('div', 'deck-grid');
+	const mk = (title, sub, fn) => {
+		const b = el('button', 'deck-tile other-tile');
+		const t = el('div', 'dt-text');
+		t.append(el('div', 'dt-name', title), el('div', 'dt-sub', sub));
+		b.appendChild(t);
+		b.addEventListener('click', fn);
+		other.appendChild(b);
+		buttons.push(b);
+	};
+	mk('Online opponent', 'Create or join a room on this server', () => onlineLobby(deck));
+	mk('Second player (same screen)', 'Hot-seat: pick the second deck', () => chooseDeck('Player 2: choose a deck', (d2) => startLocalDuel('hotseat', deck, d2), showTitle));
+	s.appendChild(other);
+	s.appendChild(el('h3', '', 'Computer opponents'));
+	const grid = el('div', 'deck-grid');
 	for (const d of preconstructedDecks(app.duel)) {
-		const b = deckTile(d, d.npc ? `${d.npc}` : d.kind === 'starter' ? 'Starter deck' : '');
+		const b = deckTile(d, d.npc ? `${d.npc}` : d.kind === 'starter' ? 'Starter deck' : 'Club deck');
 		b.addEventListener('click', () => startLocalDuel('ai', deck, d));
 		grid.appendChild(b);
 		buttons.push(b);
@@ -200,7 +214,7 @@ function duelScreen(title, onQuit) {
 
 function startLocalDuel(mode, deck1, deck2, seed = randomSeed()) {
 	const me = playerName();
-	const names = mode === 'ai' ? [me, deck2.npc || deck2.name] : [deck1.kind === 'custom' ? 'P1' : 'P1', 'P2'];
+	const names = mode === 'ai' ? [me, deck2.npc || deck2.name] : ['P1', 'P2'];
 	const setup = {
 		duelists: [
 			{ kind: 'human', cards: deck1.cards, name: names[0] },
@@ -213,6 +227,7 @@ function startLocalDuel(mode, deck1, deck2, seed = randomSeed()) {
 	const ui = new DuelUI(root, app.duel, { mode, localSide: TCG_PLAYER, pacing: !FAST });
 	ui.names = names;
 	app.ui = ui;
+	app.online = null;
 	runDuel(ui, setup, { onEvent: (ev) => ui.onEvent(ev), onRequest: (req) => ui.onRequest(req) }, {
 		rematch: () => startLocalDuel(mode, deck1, deck2),
 		describe: (res) => describeResult(mode, res, names),
@@ -446,7 +461,7 @@ async function boot() {
 	try {
 		app.duel = await Engine.load(new URL('../tcg.wasm', import.meta.url));
 	} catch (e) {
-		clear(app.root).appendChild(el('div', 'fatal', `Cannot load the engine: ${e.message}`));
+		clear(app.root).appendChild(el('div', 'boot-error', `Cannot load the engine: ${e.message}`));
 		throw e;
 	}
 	try { app.info = await (await fetch(new URL('../build-info.json', import.meta.url))).json(); } catch { app.info = null; }

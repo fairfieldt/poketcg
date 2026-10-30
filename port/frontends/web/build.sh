@@ -12,7 +12,7 @@
 # files, then without the effect files, then without both (the engine then links against the
 # weak stubs in gen/effect_stubs.c and ai_stubs.c, which call tcg_fatal when reached).
 #
-# Environment: CLANG (default clang), WASM_OPT (default: wasm-opt from PATH or
+# Environment: CORE_ONLY=1 links only the required sources (to try the stub fallback), CLANG (default clang), WASM_OPT (default: wasm-opt from PATH or
 # /home/user/tools/npm/node_modules/.bin/wasm-opt), PYTHON (default python3).
 set -euo pipefail
 
@@ -32,8 +32,7 @@ CFLAGS=(--target=wasm32 -O2 -std=c11 -ffreestanding -nostdlib -fno-builtin-print
 	-DTCG_NO_DEFAULT_FATAL -I"$SRC" -I"$WEB/wasm/include"
 	-Wall -Wno-unused-parameter -Wno-unused-function -Wno-unused-variable -Wno-unused-but-set-variable)
 LDFLAGS=(--target=wasm32 -nostdlib -Wl,--no-entry -Wl,--export-memory
-	-Wl,-z,stack-size=1048576 -Wl,--initial-memory=8388608 -Wl,--max-memory=33554432
-	-Wl,--export=__stack_pointer)
+	-Wl,-z,stack-size=1048576 -Wl,--initial-memory=8388608 -Wl,--max-memory=33554432)
 
 rm -rf "$OBJ"
 mkdir -p "$OBJ" "$OUT"
@@ -58,6 +57,7 @@ done
 EFFECTS=(); AI=(); SKIPPED=()
 for f in "$SRC"/effects/*.c "$SRC"/ai/*.c; do
 	[ -f "$f" ] || continue
+	if [ -n "${CORE_ONLY:-}" ]; then SKIPPED+=("${f#$PORT/} (CORE_ONLY)"); continue; fi
 	o="$(objname "$f")"
 	if compile "$f" "$o"; then
 		case "$f" in */effects/*) EFFECTS+=("$o") ;; *) AI+=("$o") ;; esac

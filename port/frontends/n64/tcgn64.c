@@ -12,7 +12,7 @@
  * Rendering uses libdragon's CPU graphics API (graphics_draw_box / _text /
  * _sprite on the display surface, built-in 8x8 font) at 320x240x16bpp, input
  * comes from joypad_*. Card art (optional) is converted from the disassembly's
- * src/gfx/cards/*.png with mksprite at build time and loaded from the ROM
+ * src/gfx/cards/NAME.png with mksprite at build time and loaded from the ROM
  * filesystem. The same file also builds on the host against mock/libdragon.h,
  * which renders into memory and feeds scripted controller input (make hosttest).
  *
@@ -33,6 +33,7 @@
 #include "tcg.h"
 #include "common.h"
 #include "gen/decks.h"
+#include "gen/text.h"
 
 #ifdef TCGN64_CARD_ART
 #include "cardart_table.h"
@@ -48,9 +49,12 @@
 #define RIGHT (SCREEN_W - 16)
 #define COLS ((RIGHT - LEFT) / CW)  /* 36 text columns */
 #define BOARD_Y 8
-#define BOARD_H 184                 /* y 8..191: board or full panels */
-#define TBOX_Y 194                  /* text box: y 194..237, 4 lines */
+#define BOARD_H 182                 /* y 8..189: board or full panels */
+#define TBOX_Y 191                  /* text box: y 191..231 */
 #define TBOX_LINES 4
+#define TLH 9                       /* text box line height */
+#define TBOX_LINE(i) (TBOX_Y + 3 + (i) * TLH)
+#define SLOT_INFO_Y 90              /* between the two halves of the board */
 
 enum {
 	C_BG, C_MID, C_PANEL, C_PANEL2, C_BORDER, C_TEXT, C_DIM, C_HI, C_SEL, C_RED, C_GREEN,
@@ -113,6 +117,8 @@ static struct { bool on; uint8_t id, deck, owner, page; } g_overlay;  /* TCG_EV_
 static struct { uint8_t res[16]; int n, total; } g_coin;              /* TCG_EV_COIN */
 static struct { int timer; uint8_t side, loc; unsigned amount; } g_dmg;
 static uint8_t g_thinking;
+static uint8_t g_asking;                /* duelist answering the current request (0: none) */
+static int g_denied;                    /* frames left of the "invalid choice" flash */
 static uint8_t g_turn_holder;
 static int g_turn;
 
@@ -127,7 +133,17 @@ static uint32_t rnd(uint32_t n)
 }
 
 static int side_of(uint8_t duelist) { return duelist == TCG_OPPONENT; }
-static uint8_t duelist_of(int side) { return side ? TCG_OPPONENT : TCG_PLAYER; }
+
+/* bounded string copy (like strlcpy) */
+static void copy_str(char *dst, size_t n, const char *src)
+{
+	size_t i = 0;
+	if (!n)
+		return;
+	for (; src[i] && i < n - 1; i++)
+		dst[i] = src[i];
+	dst[i] = 0;
+}
 
 /* engine UTF-8 text -> 7-bit ASCII for the 8x8 debug font */
 static void sanitize(const char *in, char *out, int n)
@@ -213,6 +229,30 @@ static int wrap(const char *s, int width, char (*lines)[COLS + 1], int max)
 static void text_of(uint16_t id, char *out, int n)
 {
 	sanitize(tcg_text(id), out, n);
+}
+
+/* card description text with the Game Boy line breaks removed (reflowed for the wider screen) */
+static void description(uint16_t id, char *out, int n)
+{
+	text_of(id, out, n);
+	for (char *p = out; *p; p++)
+		if (*p == '\n')
+			*p = ' ';
+}
+
+/* both description pages of an attack, reflowed */
+static void attack_description(const struct AtkData *atk, char *out, int n)
+{
+	out[0] = 0;
+	for (int page = 0; page < 2; page++) {
+		uint16_t t = rd16(&atk->Description[page * 2]);
+		size_t len = strlen(out);
+		if (!t || (int)len + 2 >= n)
+			continue;
+		if (len)
+			out[len++] = ' ';
+		description(t, out + len, n - (int)len);
+	}
 }
 
 static void formatted_text(uint16_t id, char *out, int n)
@@ -515,10 +555,11 @@ static void draw_side(uint8_t duelist, bool top, int hl_loc)
 	const uint8_t *v = tcg_duelvars(duelist);
 	int side = side_of(duelist);
 	char buf[64], name[24];
-	int bar_y = top ? BOARD_Y : BOARD_Y + 175;
-	int bench_y = top ? BOARD_Y + 10 : BOARD_Y + 143;
-	int act_y = top ? BOARD_Y + 42 : BOARD_Y + 92;
-	int act_art_y = top ? BOARD_Y + 41 : BOARD_Y + 91;
+	/* top half y 8..89 (bar, bench, active), bottom half y 99..189 (active, bench, bar) */
+	int bar_y = top ? BOARD_Y : BOARD_Y + 173;
+	int bench_y = top ? BOARD_Y + 10 : BOARD_Y + 141;
+	int act_y = top ? BOARD_Y + 44 : BOARD_Y + 93;
+	int act_art_y = top ? BOARD_Y + 40 : BOARD_Y + 91;
 
 	/* info bar */
 	bool turn = g_turn_holder == duelist;
@@ -577,7 +618,7 @@ static void draw_side(uint8_t duelist, bool top, int hl_loc)
 	if (is_pokemon(c) && c->Level)
 		snprintf(buf, sizeof(buf), "%s Lv%d", name, c->Level);
 	else
-		snprintf(buf, sizeof(buf), "%s", name);
+		copy_str(buf, sizeof(buf), name);
 	energy_icon(LEFT, act_y, s.color);
 	print_n(LEFT + 12, act_y, C_TEXT, buf, 25);
 	hp_bar(LEFT, act_y + LH + 2, 96, s.hp, s.maxhp);
@@ -605,46 +646,65 @@ static void draw_side(uint8_t duelist, bool top, int hl_loc)
 	}
 }
 
-static void draw_textbox(void)
+/* the text box: the latest lines of the log (older messages dimmed); with a
+ * hint, the last line shows the controls instead */
+static void draw_textbox_hint(const char *hint)
 {
-	panel(LEFT - 6, TBOX_Y, RIGHT - LEFT + 12, TBOX_LINES * LH + 4);
-	int first = g_log_n - TBOX_LINES;
+	int lines = hint ? TBOX_LINES - 1 : TBOX_LINES;
+	panel(LEFT - 6, TBOX_Y, RIGHT - LEFT + 12, TBOX_LINES * TLH + 5);
+	int first = g_log_n - lines;
 	if (first < 0)
 		first = 0;
-	for (int i = first; i < g_log_n; i++)
-		print(LEFT, TBOX_Y + 3 + (i - first) * LH, i >= g_log_newest ? C_TEXT : C_DIM, g_log[i]);
+	/* keep the start of a long newest message visible */
+	if (g_log_n - g_log_newest > lines)
+		first = g_log_newest;
+	for (int i = first; i < g_log_n && i < first + lines; i++)
+		print(LEFT, TBOX_LINE(i - first), i >= g_log_newest ? C_TEXT : C_DIM, g_log[i]);
+	if (hint) {
+		int w = (int)strlen(hint);
+		print(RIGHT - w * CW, TBOX_LINE(TBOX_LINES - 1), C_HI, hint);
+		if (g_mode == MODE_HOTSEAT && g_asking && w <= COLS - 5) /* whose controller is listening */
+			print(LEFT, TBOX_LINE(TBOX_LINES - 1), C_GREEN, g_name[side_of(g_asking)]);
+	}
 }
+
+static void draw_textbox(void) { draw_textbox_hint(NULL); }
 
 /* the board: opponent (TCG_OPPONENT) on top, player at the bottom */
 static void draw_board(uint8_t hl_duelist, int hl_loc)
 {
-	fill(LEFT - 4, BOARD_Y + 88, RIGHT - LEFT + 8, 1, C_MID);
+	fill(LEFT - 4, SLOT_INFO_Y + 4, RIGHT - LEFT + 8, 1, C_MID);
 	draw_side(TCG_OPPONENT, true, hl_duelist == TCG_OPPONENT ? hl_loc : -1);
 	draw_side(TCG_PLAYER, false, hl_duelist == TCG_PLAYER ? hl_loc : -1);
-	if (g_thinking) {
-		fill(RIGHT - 96, BOARD_Y + 82, 96, 12, C_PANEL2);
-		print(RIGHT - 92, BOARD_Y + 84, C_HI, "Thinking...");
-	}
 }
 
-/* little hint line in the board area, just above the text box */
-static void hint(const char *s)
-{
-	int w = (int)strlen(s) * CW + 6;
-	fill(RIGHT - w, TBOX_Y - 11, w, 10, C_BLACK);
-	print(RIGHT - w + 3, TBOX_Y - 10, C_DIM, s);
-}
+/* The display surfaces are uncached memory, where the CPU drawing functions
+ * would do one slow uncached store per pixel: draw through the cached alias of
+ * the buffer instead and write the data cache back before showing the frame. */
+static surface_t *g_disp;
+static surface_t g_fb_cached;
 
 static void begin_frame(void)
 {
-	g_fb = display_get();
+	g_disp = display_get();
+	g_fb_cached = *g_disp;
+	g_fb_cached.buffer = CachedAddr(g_disp->buffer);
+	g_fb = &g_fb_cached;
 	graphics_fill_screen(g_fb, g_col[C_BG]);
 }
 
 static void end_frame(void)
 {
-	display_show(g_fb);
+	if (g_denied) {
+		g_denied--;
+		rect(0, 0, SCREEN_W, SCREEN_H, C_RED);
+		rect(1, 1, SCREEN_W - 2, SCREEN_H - 2, C_RED);
+		rect(2, 2, SCREEN_W - 4, SCREEN_H - 4, C_RED);
+	}
+	data_cache_hit_writeback_invalidate(g_fb->buffer, (unsigned long)g_fb->stride * g_fb->height);
+	display_show(g_disp);
 	g_fb = NULL;
+	g_disp = NULL;
 	g_frame++;
 	if (g_dmg.timer)
 		g_dmg.timer--;
@@ -706,6 +766,9 @@ static void input_poll(void)
 static Keys keys(int mask)
 {
 	Keys k = { 0 };
+	/* controller 2 unplugged (or never there): controller 1 takes over */
+	if (mask == 2 && !joypad_is_connected(JOYPAD_PORT_2))
+		mask = 1;
 	for (int p = 0; p < 2; p++) {
 		if (!(mask & (1 << p)))
 			continue;
@@ -844,6 +907,8 @@ static void draw_card_page(uint8_t id, uint8_t owner, int deck, const char *titl
 		wx += 6;
 		printf_at(wx, y, C_DIM, "Retreat %d", c->RetreatCost);
 		y += LH + 4;
+		if (y < BOARD_Y + 58)
+			y = BOARD_Y + 58; /* below the picture */
 		const struct AtkData *atks[2] = { &c->Atk1, &c->Atk2 };
 		for (int a = 0; a < 2; a++) {
 			const struct AtkData *atk = atks[a];
@@ -863,15 +928,11 @@ static void draw_card_page(uint8_t id, uint8_t owner, int deck, const char *titl
 				}
 			}
 			y += LH;
-			for (int page = 0; page < 2; page++) {
-				uint16_t t = rd16(&atk->Description[page * 2]);
-				if (!t)
-					continue;
-				text_of(t, buf, sizeof(buf));
-				int n = wrap(buf, COLS - 1, lines, 6);
-				for (int i = 0; i < n && y < BOARD_Y + BOARD_H - 9; i++, y += 9)
-					print(x + CW, y, C_TEXT, lines[i]);
-			}
+			char desc[400];
+			attack_description(atk, desc, sizeof(desc));
+			int n = wrap(desc, COLS - 1, lines, 12);
+			for (int i = 0; i < n && y < BOARD_Y + BOARD_H - 9; i++, y += 9)
+				print(x + CW, y, C_TEXT, lines[i]);
 			y += 3;
 		}
 	} else {
@@ -885,7 +946,7 @@ static void draw_card_page(uint8_t id, uint8_t owner, int deck, const char *titl
 		}
 		y += 3 * LH;
 		char desc[400];
-		text_of(rd16(c->NonPokemonDescription), desc, sizeof(desc));
+		description(rd16(c->NonPokemonDescription), desc, sizeof(desc));
 		char dl[14][COLS + 1];
 		int n = wrap(desc, COLS, dl, 14);
 		for (int i = 0; i < n; i++, y += 9)
@@ -899,8 +960,7 @@ static void view_card(uint8_t id, uint8_t owner, int deck, int ports)
 	for (;;) {
 		begin_frame();
 		draw_card_page(id, owner, deck, NULL);
-		draw_textbox();
-		hint("B: back");
+		draw_textbox_hint("B: back");
 		end_frame_poll();
 		Keys k = keys(ports);
 		if (k.a || k.b || k.start)
@@ -989,9 +1049,9 @@ static int label_card(void *vctx, int i, char *out, int n, int *icon)
 	card_name(id, name, sizeof(name));
 	*icon = card_color(c);
 	if (is_pokemon(c))
-		snprintf(out, (size_t)n, "%-16.16s Lv%-2d %s", name, c->Level, c->Stage ? (c->Stage == 1 ? "S1" : "S2") : "");
+		snprintf(out, (size_t)n, "%-14.14s Lv%d", name, c->Level);
 	else if (is_energy(c))
-		snprintf(out, (size_t)n, "%s", name);
+		copy_str(out, (size_t)n, name);
 	else {
 		*icon = -1;
 		snprintf(out, (size_t)n, "T %s", name);
@@ -1034,9 +1094,9 @@ static void draw_card_summary(int x, int y, int w, uint8_t id)
 		print_n(x + 2, y, C_DIM, is_energy(c) ? "Energy" : "Trainer", w / CW);
 		y += LH + 2;
 		char desc[300];
-		char dl[8][COLS + 1];
-		text_of(rd16(c->NonPokemonDescription), desc, sizeof(desc));
-		int n = wrap(desc, w / CW - 1, dl, 8);
+		char dl[12][COLS + 1];
+		description(rd16(c->NonPokemonDescription), desc, sizeof(desc));
+		int n = wrap(desc, w / CW - 1, dl, 12);
 		for (int i = 0; i < n; i++, y += 9)
 			print_n(x + 2, y, C_TEXT, dl[i], w / CW);
 	}
@@ -1048,7 +1108,7 @@ static void draw_card_list_screen(const char *title, const char *info, const uin
 {
 	CardListCtx ctx = { items, owner, 1 };
 	fill(LEFT - 6, BOARD_Y, RIGHT - LEFT + 12, BOARD_H, C_BG);
-	draw_list(LEFT - 6, BOARD_Y, 196, 15, title, n, cur, top, label_card, &ctx);
+	draw_list(LEFT - 6, BOARD_Y, 196, 13, title, n, cur, top, label_card, &ctx);
 	panel(LEFT + 192, BOARD_Y, RIGHT - LEFT - 186, BOARD_H);
 	if (n > 0 && cur < n && items[cur] < DECK_SIZE)
 		draw_card_summary(LEFT + 194, BOARD_Y + 2, RIGHT - LEFT - 190, tcg_card_id(owner, items[cur]));
@@ -1056,7 +1116,7 @@ static void draw_card_list_screen(const char *title, const char *info, const uin
 		char il[3][COLS + 1];
 		int k = wrap(info, 23, il, 2);
 		for (int i = 0; i < k; i++)
-			print(LEFT, BOARD_Y + 16 * LH + 4 + i * 9, C_DIM, il[i]);
+			print(LEFT, BOARD_Y + 13 * LH + 22 + i * 9, C_DIM, il[i]);
 	}
 }
 
@@ -1087,6 +1147,8 @@ static int ui_ack(const TcgRequest *r, int ports)
 		memcpy(list, t, (size_t)list_n);
 	}
 	int top = 0;
+	debugf("ASK ack/%s %s\n", g_overlay.on ? "card" : long_msg ? "long" : list_n ? "list" :
+	       g_screen == TCG_SCREEN_COIN_TOSS ? "coin" : g_screen == TCG_SCREEN_BOX_MESSAGE ? "box" : "text", who(r->duelist));
 	for (;;) {
 		begin_frame();
 		if (g_overlay.on) {
@@ -1096,7 +1158,8 @@ static int ui_ack(const TcgRequest *r, int ports)
 			for (int i = 0; i < nl; i++)
 				print(LEFT, BOARD_Y + 4 + i * LH, C_TEXT, lines[i]);
 		} else if (list_n) {
-			draw_card_list_screen(NULL, NULL, list, list_n, r->shown, 0, &top);
+			int cur = hCurMenuItem < list_n ? hCurMenuItem : 0; /* the card the engine is talking about */
+			draw_card_list_screen(NULL, NULL, list, list_n, r->shown, cur, &top);
 		} else {
 			draw_board(0, -1);
 			if (g_screen == TCG_SCREEN_COIN_TOSS) {
@@ -1126,7 +1189,7 @@ static int ui_ack(const TcgRequest *r, int ports)
 		}
 		draw_textbox();
 		if ((g_frame / 16) & 1)
-			print(RIGHT - CW, TBOX_Y + 3 + 3 * LH, C_HI, "v");
+			print(RIGHT - CW, TBOX_LINE(TBOX_LINES - 1), C_HI, "v");
 		end_frame_poll();
 		Keys k = keys(ports);
 		if (k.a || k.b)
@@ -1147,17 +1210,17 @@ static int ui_duel_menu(const TcgRequest *r, int ports)
 	for (;;) {
 		begin_frame();
 		draw_board(0, -1);
-		panel(LEFT - 6, TBOX_Y, RIGHT - LEFT + 12, TBOX_LINES * LH + 4);
-		printf_at(LEFT, TBOX_Y + 3, C_DIM, "%s: what will you do?", who(r->duelist));
+		panel(LEFT - 6, TBOX_Y, RIGHT - LEFT + 12, TBOX_LINES * TLH + 5);
+		printf_at(LEFT, TBOX_LINE(0), C_DIM, "%s: what will you do?", who(r->duelist));
 		for (int i = 0; i < 6; i++) {
-			int x = LEFT + 8 + (i / 2) * 12 * CW, y = TBOX_Y + 3 + LH + 3 + (i & 1) * (LH + 2);
+			int x = LEFT + 8 + (i / 2) * 12 * CW, y = TBOX_LINE(1) + (i & 1) * TLH;
 			if (i == cur) {
-				fill(x - 10, y - 1, 11 * CW, LH, C_SEL);
+				fill(x - 10, y - 1, 11 * CW, TLH, C_SEL);
 				print(x - 9, y, C_HI, ">");
 			}
 			print(x, y, i == cur ? C_HI : C_TEXT, items[i]);
 		}
-		hint("START: card  Z: check");
+		print(RIGHT - 21 * CW, TBOX_LINE(3), C_HI, "START: card  Z: check");
 		end_frame_poll();
 		Keys k = keys(ports);
 		if (k.up || k.down)
@@ -1200,8 +1263,7 @@ static int ui_card_list(const TcgRequest *r, int ports)
 	for (;;) {
 		begin_frame();
 		draw_card_list_screen(title, info, items, n, r->shown, cur, &top);
-		draw_textbox();
-		hint(hints);
+		draw_textbox_hint(hints);
 		end_frame_poll();
 		Keys k = keys(ports);
 		list_nav(k, n, &cur);
@@ -1219,8 +1281,8 @@ static void two_labels(const char *text, char *a, char *b, int n, const char *da
 {
 	char clean[256];
 	sanitize(text, clean, sizeof(clean));
-	snprintf(a, (size_t)n, "%s", da);
-	snprintf(b, (size_t)n, "%s", db);
+	copy_str(a, (size_t)n, da);
+	copy_str(b, (size_t)n, db);
 	char words[2][32];
 	int found = 0;
 	/* last line: split on runs of 2+ spaces; otherwise the last two lines */
@@ -1240,8 +1302,8 @@ static void two_labels(const char *text, char *a, char *b, int n, const char *da
 		p += len;
 	}
 	if (found == 2) {
-		snprintf(a, (size_t)n, "%s", words[0]);
-		snprintf(b, (size_t)n, "%s", words[1]);
+		copy_str(a, (size_t)n, words[0]);
+		copy_str(b, (size_t)n, words[1]);
 		return;
 	}
 	if (last && found == 1) {
@@ -1250,8 +1312,8 @@ static void two_labels(const char *text, char *a, char *b, int n, const char *da
 		prev = prev ? prev + 1 : clean;
 		while (*prev == ' ')
 			prev++;
-		snprintf(a, (size_t)n, "%s", prev);
-		snprintf(b, (size_t)n, "%s", words[0]);
+		copy_str(a, (size_t)n, prev);
+		copy_str(b, (size_t)n, words[0]);
 	}
 }
 
@@ -1297,7 +1359,7 @@ static int ui_item_menu(const TcgRequest *r, int ports)
 		begin_frame();
 		draw_card_page(id, r->shown, deck, NULL);
 		draw_choice_popup(RIGHT - 100, BOARD_Y + 130, NULL, labels, 2, cur);
-		draw_textbox();
+		draw_textbox_hint("A: choose  B: back");
 		end_frame_poll();
 		Keys k = keys(ports);
 		if (k.up || k.down || k.left || k.right)
@@ -1309,7 +1371,7 @@ static int ui_item_menu(const TcgRequest *r, int ports)
 	}
 }
 
-/* one-line description of a play area slot in the hint area */
+/* one-line description of a play area slot, between the two halves of the board */
 static void slot_hint(uint8_t duelist, int loc)
 {
 	Slot s;
@@ -1325,8 +1387,9 @@ static void slot_hint(uint8_t duelist, int loc)
 	} else {
 		snprintf(buf, sizeof(buf), "%s %d/%d", name, s.hp, s.maxhp);
 	}
-	fill(LEFT - 6, TBOX_Y - 22, RIGHT - LEFT + 12, 10, C_BLACK);
-	print(LEFT, TBOX_Y - 21, C_HI, buf);
+	int w = (int)strlen(buf) > 27 ? 27 : (int)strlen(buf);
+	fill(LEFT - 2, SLOT_INFO_Y - 1, w * CW + 4, 10, C_BLACK);
+	print_n(LEFT, SLOT_INFO_Y, C_HI, buf, 27);
 }
 
 /* cursor over a duelist's play area (slots start .. start+n-1); returns the slot or -1 */
@@ -1339,9 +1402,8 @@ static int pick_slot(uint8_t duelist, int start, int n, int cur, bool can_cancel
 	for (;;) {
 		begin_frame();
 		draw_board(duelist, cur);
-		draw_textbox();
 		slot_hint(duelist, cur);
-		hint(hints);
+		draw_textbox_hint(hints);
 		end_frame_poll();
 		Keys k = keys(ports);
 		if (k.left || k.up)
@@ -1385,13 +1447,15 @@ static int ui_attacks(const TcgRequest *r, int ports)
 	for (;;) {
 		begin_frame();
 		draw_board(0, -1);
-		int py = BOARD_Y + 90, ph = 96;
+		int py = BOARD_Y + 88, ph = TBOX_Y - 1 - (BOARD_Y + 88);
 		panel(LEFT - 6, py, RIGHT - LEFT + 12, ph);
-		char name[32], buf[160];
+		char name[32];
 		uint8_t deck = pairs[0] < DECK_SIZE ? pairs[0] : 0;
 		uint8_t id = tcg_card_id(r->shown, deck);
 		card_name(id, name, sizeof(name));
 		printf_at(LEFT, py + 4, C_DIM, "%s's attacks", name);
+		if (have_slot) /* the attacker's energy */
+			energy_icons(RIGHT - 8 * 9, py + 4, slot.energy, 8);
 		const struct CardData *c = card_data(id);
 		int y = py + 4 + LH;
 		for (int i = 0; i < n; i++, y += LH + 2) {
@@ -1411,19 +1475,12 @@ static int ui_attacks(const TcgRequest *r, int ports)
 		}
 		/* description of the attack under the cursor */
 		const struct AtkData *atk = pairs[cur * 2 + 1] ? &c->Atk2 : &c->Atk1;
-		char lines[8][COLS + 1];
-		int nl = 0;
-		for (int page = 0; page < 2 && nl < 6; page++) {
-			uint16_t t = rd16(&atk->Description[page * 2]);
-			if (!t)
-				continue;
-			text_of(t, buf, sizeof(buf));
-			nl += wrap(buf, COLS, lines + nl, 6 - nl);
-		}
+		char lines[8][COLS + 1], desc[400];
+		attack_description(atk, desc, sizeof(desc));
+		int nl = wrap(desc, COLS, lines, 6);
 		for (int i = 0; i < nl && y < py + ph - 9; i++, y += 9)
 			print(LEFT, y + 2, C_TEXT, lines[i]);
-		draw_textbox();
-		hint("A: attack  B: back  START: card");
+		draw_textbox_hint("A: attack  B: back  START: card");
 		end_frame_poll();
 		Keys k = keys(ports);
 		if (k.up || k.down)
@@ -1440,7 +1497,7 @@ static int ui_attacks(const TcgRequest *r, int ports)
 static int label_text(void *ctx, int i, char *out, int n, int *icon)
 {
 	const char *const *labels = ctx;
-	snprintf(out, (size_t)n, "%s", labels[i]);
+	copy_str(out, (size_t)n, labels[i]);
 	return C_TEXT;
 }
 
@@ -1479,8 +1536,7 @@ static int choose(const char *title, const char *const *labels, const int *icons
 		} else {
 			draw_list(x, y, pw, rows, title, n, cur, &top, label_text, (void *)labels);
 		}
-		draw_textbox();
-		hint(can_cancel ? "A: choose  B: back" : "A: choose");
+		draw_textbox_hint(can_cancel ? "A: choose  B: back" : "A: choose");
 		end_frame_poll();
 		Keys k = keys(ports);
 		if (k.up)
@@ -1539,8 +1595,7 @@ static int ui_menu_card_list(const TcgRequest *r, int ports)
 	for (;;) {
 		begin_frame();
 		draw_card_list_screen("Choose a card", NULL, items, n, r->shown, cur, &top);
-		draw_textbox();
-		hint("A: choose  B: back  START: info");
+		draw_textbox_hint("A: choose  B: back  START: info");
 		end_frame_poll();
 		Keys k = keys(ports);
 		list_nav(k, n, &cur);
@@ -1563,7 +1618,7 @@ static int ui_yes_no(const TcgRequest *r, int ports)
 	for (;;) {
 		begin_frame();
 		draw_board(0, -1);
-		draw_textbox();
+		draw_textbox_hint(r->arg[0] ? "A: choose" : "A: choose  B: no");
 		draw_choice_popup(RIGHT - 80, TBOX_Y - 40, NULL, labels, 2, cur);
 		end_frame_poll();
 		Keys k = keys(ports);
@@ -1590,8 +1645,7 @@ static int ui_energy_discard(const TcgRequest *r, int ports)
 	for (;;) {
 		begin_frame();
 		draw_card_list_screen(title, NULL, items, n, r->shown, cur, &top);
-		draw_textbox();
-		hint("A: discard  B: back");
+		draw_textbox_hint("A: discard  B: back");
 		end_frame_poll();
 		Keys k = keys(ports);
 		list_nav(k, n, &cur);
@@ -1622,8 +1676,7 @@ static int ui_prize(const TcgRequest *r, int ports)
 			if (i == cur)
 				rect(x - 3, y - 3, 50, 50, C_HI);
 		}
-		draw_textbox();
-		hint("A: take");
+		draw_textbox_hint("A: take");
 		end_frame_poll();
 		Keys k = keys(ports);
 		if (k.left)
@@ -1656,8 +1709,7 @@ static int ui_number(const TcgRequest *r, int ports)
 		panel(SCREEN_W / 2 - 60, BOARD_Y + 60, 120, 40);
 		print(SCREEN_W / 2 - 52, BOARD_Y + 66, C_DIM, "Choose a number");
 		printf_at(SCREEN_W / 2 - 12, BOARD_Y + 82, C_HI, "< %d >", v);
-		draw_textbox();
-		hint("A: ok  B: back");
+		draw_textbox_hint("A: ok  B: back");
 		end_frame_poll();
 		Keys k = keys(ports);
 		if (k.up || k.right)
@@ -1705,8 +1757,7 @@ static void check_screen(int ports)
 		snprintf(title, sizeof(title), tabs[tab], who(c.duelist));
 		begin_frame();
 		draw_card_list_screen(title, "L/R: switch view", c.cards, c.n, c.duelist, cur, &top);
-		draw_textbox();
-		hint("L/R: view  START: card  B: back");
+		draw_textbox_hint("L/R: view  START: card  B: back");
 		end_frame_poll();
 		Keys k = keys(ports);
 		if (k.up)
@@ -1773,6 +1824,7 @@ static int bot_answer(const TcgRequest *r)
 
 /* ------------------------------------------------------------------ host callbacks */
 
+static const char *const kMenuName[] = { "generic", "attacks", "play_area", "two_items", "card_list" };
 static const char *const kReqName[] = { "?", "ack", "duel_menu", "card_list", "item_menu", "play_area", "menu",
 	"yes_no", "energy_discard", "prize", "color", "number" };
 
@@ -1781,6 +1833,9 @@ static void on_event(void *ctx, const TcgEvent *ev)
 	(void)ctx;
 	switch (ev->type) {
 	case TCG_EV_TEXT:
+		/* the item labels of the PLAY|CHECK / SELECT|CHECK menus are printed as text: not a message */
+		if (ev->text == PlayCheck1Text || ev->text == PlayCheck2Text || ev->text == SelectCheckText)
+			break;
 		if (ev->str && ev->str[0])
 			log_message(ev->str);
 		show_frames(1);
@@ -1836,6 +1891,10 @@ static void on_event(void *ctx, const TcgEvent *ev)
 		g_thinking = ev->arg[0];
 		show_frames(1);
 		break;
+	case TCG_EV_SFX:
+		if (ev->arg[0] == SFX_DENIED) /* invalid choice: flash the screen border */
+			g_denied = 12;
+		break;
 	default:
 		break;
 	}
@@ -1857,6 +1916,10 @@ static int on_request(void *ctx, const TcgRequest *r)
 		ans = bot_answer(r);
 	} else {
 		int ports = ports_for(r->duelist);
+		g_asking = r->duelist;
+		debugf("ASK %s%s%s %s n=%d cursor=%d\n", r->type < sizeof(kReqName) / sizeof(kReqName[0]) ? kReqName[r->type] : "?",
+		       r->type == TCG_REQ_MENU ? "/" : "", r->type == TCG_REQ_MENU && r->menu < 5 ? kMenuName[r->menu] : "",
+		       who(r->duelist), r->num_items, r->cursor);
 		switch (r->type) {
 		case TCG_REQ_DUEL_MENU: ans = ui_duel_menu(r, ports); break;
 		case TCG_REQ_CARD_LIST: ans = ui_card_list(r, ports); break;
@@ -1879,10 +1942,67 @@ static int on_request(void *ctx, const TcgRequest *r)
 		default: ans = TCG_CANCEL; break;
 		}
 	}
-	debugf("REQ %s %s n=%d -> %d\n", r->type < sizeof(kReqName) / sizeof(kReqName[0]) ? kReqName[r->type] : "?",
+	g_asking = 0;
+	debugf("REQ %s%s%s %s n=%d -> %d\n", r->type < sizeof(kReqName) / sizeof(kReqName[0]) ? kReqName[r->type] : "?",
+	       r->type == TCG_REQ_MENU ? "/" : "", r->type == TCG_REQ_MENU && r->menu < 5 ? kMenuName[r->menu] : "",
 	       who(r->duelist), r->num_items, ans);
 	return ans;
 }
+
+#ifdef TCGN64_HOST_TEST
+/* host tests only (TCGN64_SELFTEST=1): before the first duel menu of the
+ * player, feed the UI the request types that random play rarely reaches */
+static int on_request_selftest(void *ctx, const TcgRequest *menu)
+{
+	static bool done;
+	const char *env = getenv("TCGN64_SELFTEST");
+	if (!done && env && *env == '1' && menu->type == TCG_REQ_DUEL_MENU && menu->duelist == TCG_PLAYER) {
+		done = true;
+		const uint8_t *v = tcg_duelvars(TCG_PLAYER);
+		TcgRequest r;
+		memset(&r, 0, sizeof(r));
+		r.duelist = r.shown = TCG_PLAYER;
+		r.type = TCG_REQ_YES_NO;
+		r.num_items = 2;
+		r.cursor = 1;
+		r.text = IsThisOKText;
+		on_request(ctx, &r);
+		r.arg[0] = 1;
+		r.text = PleaseSelectTheDeckText;
+		on_request(ctx, &r);
+		memset(&r, 0, sizeof(r));
+		r.duelist = r.shown = TCG_PLAYER;
+		r.type = TCG_REQ_COLOR;
+		r.num_items = 6;
+		on_request(ctx, &r);
+		r.type = TCG_REQ_NUMBER;
+		r.num_items = 10;
+		r.cursor = 3;
+		on_request(ctx, &r);
+		r.type = TCG_REQ_MENU;
+		r.menu = TCG_MENU_GENERIC;
+		r.num_items = 3;
+		r.cursor = 0;
+		on_request(ctx, &r);
+		r.menu = TCG_MENU_TWO_ITEMS;
+		r.num_items = 2;
+		on_request(ctx, &r);
+		r.menu = TCG_MENU_CARD_LIST;
+		r.num_items = v[DUELVARS_NUMBER_OF_CARDS_IN_HAND];
+		r.items = &v[DUELVARS_HAND];
+		on_request(ctx, &r);
+		memset(&r, 0, sizeof(r));
+		r.duelist = r.shown = TCG_PLAYER;
+		r.type = TCG_REQ_PRIZE;
+		r.num_items = 6;
+		r.arg[0] = 0x3e; /* prize 0 already taken */
+		r.cursor = 1;
+		on_request(ctx, &r);
+	}
+	return on_request(ctx, menu);
+}
+#define on_request on_request_selftest
+#endif
 
 /* the engine stops on an unrecoverable error: show it and halt */
 void tcg_fatal(const char *msg)
@@ -1936,7 +2056,7 @@ static void init_decks(void)
 static void load_buildinfo(void)
 {
 	FILE *f = fopen("rom:/buildinfo.txt", "r");
-	char line[128];
+	char line[512], all[1024] = "";
 	g_buildinfo_lines = 0;
 	if (!f) {
 		snprintf(g_buildinfo[g_buildinfo_lines++], COLS + 1, "(no build info)");
@@ -1948,10 +2068,11 @@ static void load_buildinfo(void)
 			g_have_ai = line[3] == '1';
 			continue;
 		}
-		if (g_buildinfo_lines < 6)
-			snprintf(g_buildinfo[g_buildinfo_lines++], COLS + 1, "%s", line);
+		size_t len = strlen(all);
+		snprintf(all + len, sizeof(all) - len, "%s%s", len ? "\n" : "", line);
 	}
 	fclose(f);
+	g_buildinfo_lines = wrap(all, COLS, g_buildinfo, 6);
 }
 
 typedef struct Setup { int mode, deck[2], prizes; } Setup;
@@ -1978,9 +2099,9 @@ static void title_screen(Setup *s)
 				print(LEFT + 4, y, C_DIM, labels[i]);
 				char v[48];
 				if (i == 0)
-					snprintf(v, sizeof(v), "%s", modes[s->mode]);
+					copy_str(v, sizeof(v), modes[s->mode]);
 				else if (i < 3)
-					snprintf(v, sizeof(v), "%s", name[i - 1]);
+					copy_str(v, sizeof(v), name[i - 1]);
 				else
 					snprintf(v, sizeof(v), "%d", s->prizes);
 				printf_at(LEFT + 11 * CW, y, i == row ? C_HI : C_TEXT, "< %s >", v);
@@ -2059,7 +2180,7 @@ int main(void)
 	load_buildinfo();
 	init_decks();
 
-	Setup s = { g_have_ai ? MODE_VS_AI : MODE_VS_BOT, { 0, 1 }, 6 };
+	Setup s = { MODE_VS_AI, { 0, 1 }, 6 };
 	TcgHost host = { on_event, on_request, NULL, NULL };
 	tcg_set_host(&host);
 	for (;;) {
@@ -2069,8 +2190,8 @@ int main(void)
 		g_mode = s.mode;
 		g_kind[0] = PK_HUMAN;
 		g_kind[1] = s.mode == MODE_VS_AI ? PK_AI : s.mode == MODE_VS_BOT ? PK_BOT : PK_HUMAN;
-		snprintf(g_name[0], sizeof(g_name[0]), "%s", s.mode == MODE_HOTSEAT ? "P1" : "PLAYER");
-		snprintf(g_name[1], sizeof(g_name[1]), "%s", s.mode == MODE_HOTSEAT ? "P2" : s.mode == MODE_VS_BOT ? "BOT" : "CPU");
+		copy_str(g_name[0], sizeof(g_name[0]), s.mode == MODE_HOTSEAT ? "P1" : "PLAYER");
+		copy_str(g_name[1], sizeof(g_name[1]), s.mode == MODE_HOTSEAT ? "P2" : s.mode == MODE_VS_BOT ? "BOT" : "CPU");
 
 		TcgDuelSetup setup;
 		memset(&setup, 0, sizeof(setup));

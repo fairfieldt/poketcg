@@ -1,0 +1,56 @@
+# Deterministic tour of the title screen, the check screen and card pages,
+# then a few hundred frames of random play against the bot.
+wait 5
+# title: change decks and prizes
+press DOWN
+repeat 2 press RIGHT
+press DOWN
+press R
+press DOWN
+press LEFT
+shot title_changed
+expect_none DUEL
+# back to the mode row: VS random bot
+repeat 3 press UP
+press RIGHT
+shot title_bot
+press START
+expect DUEL~mode=1~deck1=7~deck2=11~prizes=5
+# random presses (controller 1) until our first duel menu
+until ASK~duel_menu~PLAYER 100000 3 P1
+shot duel_menu
+# Z: the check screen, L/R switch views, START opens a card, B goes back
+press Z
+shot check_own_play_area
+press START
+shot check_card_page
+press B
+press R
+shot check_opp_play_area
+press R
+shot check_own_discard
+press R
+press R
+press B
+expect ASK~duel_menu~PLAYER
+expect_none REQ~duel_menu~PLAYER
+# START on the duel menu: the active Pokemon's card page
+press START
+shot active_card_page
+press B
+# Hand: the card list, START on a card, B back to the duel menu
+press A
+shot hand_list
+press DOWN
+press START
+shot hand_card_page
+press B
+press B
+expect REQ~duel_menu~PLAYER~n=6~->~0
+expect REQ~card_list~PLAYER~n=
+# Attack menu (or the "cannot attack" message)
+press DOWN
+press A
+shot attack
+monkey 3000 8 P1
+expect TURN~2

@@ -1,0 +1,11 @@
+# Two players on controllers 1 and 2 (random presses on both) play a whole duel.
+wait 5
+repeat 2 press RIGHT
+shot title_hotseat
+press START
+shot_first ASK
+until RESULT 3000000 9 BOTH
+shot end
+expect DUEL~mode=2
+expect REQ~duel_menu~P1
+expect REQ~duel_menu~P2

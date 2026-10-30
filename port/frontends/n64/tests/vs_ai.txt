@@ -1,0 +1,12 @@
+# Controller 1 (random presses) against the engine AI (mode "VS CPU", the
+# default). Without the AI port linked, the duel stops at its first AI call
+# with the engine's fatal error, which the frontend shows (also accepted).
+#env MOCK_FATAL_EXIT=0
+wait 5
+shot title
+press START
+shot_first ASK
+shots_every 4000
+until RESULT|FATAL 1500000 5
+shot end
+expect DUEL~mode=0

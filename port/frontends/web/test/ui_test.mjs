@@ -133,8 +133,9 @@ async function play(pages, { turns, maxSteps = 1500, onStep } = {}) {
 			same = key === last ? same + 1 : 0;
 			last = key;
 			if (same > 25) { await pages[k].keyboard.press('x'); same = 0; continue; }
+			if (onStep) await onStep(k, s, 'before');
 			const what = await act(pages[k], s, st[k]);
-			if (onStep) await onStep(k, s, what, step);
+			if (onStep) await onStep(k, s, what);
 			acted = true;
 			break;
 		}
@@ -170,9 +171,13 @@ async function hotseat(browser) {
 		turns: TURNS,
 		onStep: async (k, s, what) => {
 			const take = async (name) => { if (!shot.has(name)) { shot.add(name); await page.waitForTimeout(150); await page.screenshot({ path: path.join(SHOTS, `hotseat-${name}.png`) }); } };
-			if (s.type === REQ.CARD_LIST && s.turn >= 0) await take('3-hand');
-			if (s.type === REQ.PLAY_AREA) await take('4-play-area');
-			if (what === 'attack') await take('5-after-attack');
+			if (what === 'before') {
+				if (s.type === REQ.CARD_LIST && s.turn >= 0) await take('3-hand');
+				if (s.type === REQ.PLAY_AREA) await take('4-play-area');
+				if (s.type === REQ.MENU && s.menu === 1) await take('5-attack-menu');
+				if (s.type === REQ.ACK && s.overlay === 'coin') await take('0-coin-toss');
+				if (s.type === REQ.ACK && s.overlay === 'largecard') await take('0-large-card');
+			} else if (what === 'attack') await take('5-after-attack');
 		},
 	});
 	check(!res.timeout, `hot-seat duel progressed (${JSON.stringify(res)})`);
@@ -247,19 +252,49 @@ async function online(browser) {
 	res = await play([host, guest], { turns: TURNS });
 	check(!res.timeout, `online duel continued to turn ${TURNS} (${JSON.stringify(res)})`);
 	// both engines must be in the same state when they wait at the same request
-	let same = false;
-	for (let i = 0; i < 100 && !same; i++) {
+	// (click through local ACKs until one side waits for its own input and the other for the network)
+	let same = null;
+	for (let i = 0; i < 200 && same === null; i++) {
 		const [a, b] = [await situation(host), await situation(guest)];
-		if (a.seq === b.seq && a.hash === b.hash) same = true;
+		const ack = [[host, a], [guest, b]].find(([, s]) => s.kind === 'req' && s.type === REQ.ACK);
+		if (ack) { await ack[0].keyboard.press('z'); continue; }
+		const atRequest = (s) => s.kind === 'req' && s.type !== REQ.ACK;
+		if (a.seq === b.seq && (atRequest(a) || atRequest(b)) && (atRequest(a) !== atRequest(b))) same = a.hash === b.hash ? a.hash : false;
 		else await host.waitForTimeout(50);
 	}
-	check(same, 'host and guest engines are in the same state (same answer count and state hash)');
+	check(!!same, `host and guest engines are in the same state at the same request (hash ${same && same.toString(16)})`);
 	await host.screenshot({ path: path.join(SHOTS, 'online-3-host.png') });
 	await guest.screenshot({ path: path.join(SHOTS, 'online-3-guest.png') });
 	const st = [await situation(host), await situation(guest)];
 	check(!/Desync/i.test(st[0].status + st[1].status), 'no desync reported');
 	await hostCtx.close();
 	await guestCtx.close();
+}
+
+async function vsComputer(browser) {
+	console.log('duel vs. computer');
+	const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+	const page = await ctx.newPage();
+	watch(page, 'vs-ai');
+	await page.goto(BASE);
+	await page.click('text=Duel vs. Computer');
+	await page.click('.deck-tile >> nth=0');
+	await page.click('.deck-grid .deck-tile:has-text("Lightning & Fire")');
+	await page.waitForSelector('.duel .field');
+	const aiPorted = await page.evaluate(() => window.tcgApp.info.ai.length > 0);
+	if (!aiPorted) {
+		const dlg = await page.waitForSelector('.dialog.fatal', { timeout: 10000 });
+		const text = await dlg.textContent();
+		check(/not ported/i.test(text), `without the AI port the duel stops with a clear message: "${text.replace(/\s+/g, ' ').slice(0, 90)}…"`);
+		await page.screenshot({ path: path.join(SHOTS, 'vs-ai-stub.png') });
+		await page.click('.dialog >> text=Main menu');
+		await page.waitForSelector('.title');
+	} else {
+		const res = await play([page], { turns: 3 });
+		check(!res.timeout, `duel vs. the AI progressed (${JSON.stringify(res)})`);
+		await page.screenshot({ path: path.join(SHOTS, 'vs-ai.png') });
+	}
+	await ctx.close();
 }
 
 async function deckBuilder(browser) {
@@ -279,11 +314,16 @@ async function deckBuilder(browser) {
 	const disabledBefore = await plus.isDisabled();
 	check(disabledBefore, 'cannot add a 61st card');
 	await page.fill('.db-search', '');
-	await page.click('.db-drow:has-text("Fire Energy") .btn >> nth=0'); // remove one Fire Energy
+	for (let i = 0; i < 3; i++) await page.click('.db-drow:has-text("Fire Energy") .btn >> nth=0'); // remove 3 Fire Energy
 	await page.fill('.db-search', 'Charmander');
-	for (let i = 0; i < 4; i++) await page.locator('.db-card .btn.add').first().click({ force: true }).catch(() => {});
+	const before = await page.evaluate(() => document.querySelector('.db-count').textContent);
+	for (let i = 0; i < 4; i++) await page.locator('.db-card:has-text("Charmander Lv10") .btn.add').click({ force: true, timeout: 1000 }).catch(() => {});
 	const count = await page.evaluate(() => document.querySelector('.db-count').textContent);
-	check(count === '60/60', `same-name limit / deck size enforced while adding (count ${count})`);
+	const charmanders = await page.evaluate(() => document.querySelector('.db-card .db-num').textContent);
+	check(before === '57/60' && count === '59/60' && charmanders === '×4', `same-name limit enforced (${before} -> ${count}, Charmander ${charmanders})`);
+	await page.fill('.db-search', 'Fire Energy');
+	await page.locator('.db-card:has-text("Fire Energy") .btn.add').first().click();
+	check(await page.evaluate(() => document.querySelector('.db-count').textContent) === '60/60', 'basic energy has no same-name limit');
 	await page.fill('.db-name', 'Test Deck');
 	await page.click('.db-actions >> text=Save');
 	const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('tcg.customDecks') || '[]'));
@@ -311,6 +351,7 @@ const browser = await chromium.launch({ headless: !args.includes('--headed') });
 try {
 	await hotseat(browser);
 	await online(browser);
+	await vsComputer(browser);
 	await deckBuilder(browser);
 } catch (e) {
 	failed = true;

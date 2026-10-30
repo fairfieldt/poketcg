@@ -5,7 +5,7 @@
 //   duel.run(setup, { onEvent: (ev) => ui.onEvent(ev), onRequest: (req) => ui.onRequest(req) });
 //
 // Board state is read straight from engine memory (duel.duelvars) whenever something changes.
-import { C, T, EV, SCREEN, REQ, MENU, TCG_PLAYER, TCG_OPPONENT, TCG_CANCEL } from './engine.js';
+import { C, T, W, EV, SCREEN, REQ, MENU, TCG_PLAYER, TCG_OPPONENT, TCG_CANCEL } from './engine.js';
 import { el, clear, art, sym, esym, typeIcon, richText, plainText, cardTitle, costIcons, cardPage, COLOR_NAMES, STATUS_NAMES } from './gfx.js';
 
 export const K = { UP: 'up', DOWN: 'down', LEFT: 'left', RIGHT: 'right', A: 'a', B: 'b', START: 'start' };
@@ -311,13 +311,14 @@ export class DuelUI {
 	setPerspective(d) {
 		if (this.mode !== 'hotseat' || d === this.perspective || (d !== TCG_PLAYER && d !== TCG_OPPONENT)) return;
 		this.perspective = d;
+		clear(this.$fx);
 		this.render();
 	}
 
 	showOverlay(kind, node) {
 		this.overlayKind = kind;
 		clear(this.$overlay).appendChild(node);
-		this.$overlay.className = 'overlay ' + kind;
+		this.$overlay.className = 'overlay ov-' + kind;
 	}
 
 	hideOverlay() {
@@ -562,7 +563,6 @@ export class DuelUI {
 		case EV.TEXT:
 			this.lastTextId = ev.text;
 			this.setText(ev.str);
-			if (this.overlayKind === 'coin' && ev.str) this.coinCaption(ev.str);
 			return undefined;
 		case EV.SCREEN:
 			return this.onScreen(a);
@@ -591,7 +591,7 @@ export class DuelUI {
 		case EV.TURN:
 			this.turnHolder = a[0];
 			this.turnNumber = a[1];
-			if (this.mode === 'hotseat') this.perspective = a[0];
+			if (this.mode === 'hotseat' && this.perspective !== a[0]) { this.perspective = a[0]; clear(this.$fx); }
 			this.render();
 			return undefined;
 		case EV.DUEL_END:
@@ -631,7 +631,7 @@ export class DuelUI {
 			// show wDuelTempList (e.g. "You received these cards"); a request may replace it
 			const list = [];
 			const w = this.duel.wram();
-			const base = 0xc510 - 0xc000; // wDuelTempList
+			const base = W.wDuelTempList - 0xc000;
 			for (let i = 0; i < 60 && w[base + i] !== 0xff; i++) list.push(w[base + i]);
 			this.showOverlay('cardlist', this.cardListView({ d: a[1], items: list.slice(0, a[2] || list.length), selectable: false }).wrap);
 			break;
@@ -660,15 +660,9 @@ export class DuelUI {
 		box.appendChild(this.$coin);
 		this.$coinRow = el('div', 'coin-row');
 		box.appendChild(this.$coinRow);
-		this.$coinCaption = el('div', 'coin-caption');
-		box.appendChild(this.$coinCaption);
 		this.$coinCount = el('div', 'coin-count');
 		box.appendChild(this.$coinCount);
 		return box;
-	}
-
-	coinCaption(str) {
-		if (this.$coinCaption) clear(this.$coinCaption).appendChild(richText(str));
 	}
 
 	onCoin(a) {
@@ -748,6 +742,7 @@ export class DuelUI {
 		case REQ.PRIZE: return this.reqPrize(req);
 		case REQ.COLOR: return this.reqColor(req);
 		case REQ.NUMBER: return this.reqNumber(req);
+		case REQ.CONFIRM: return this.reqConfirm(req);
 		default: return Promise.resolve(TCG_CANCEL);
 		}
 	}
@@ -954,8 +949,10 @@ export class DuelUI {
 	reqMenu(req) {
 		const n = req.numItems;
 		if (req.menu === MENU.ATTACKS) return this.attackMenu(req);
+		if (req.menu === MENU.PEEK_AREA) return this.peekAreaMenu(req);
+		if (req.menu === MENU.PEEK_TARGET) return this.peekTargetMenu(req);
 		if (n === 6 && COLOR_MENU_TEXTS.some((t) => T[t] === this.lastTextId)) {
-			return this.colorMenu(req, COLOR_MENU_ORDER, (i) => i);
+			return this.colorMenu(req, COLOR_MENU_ORDER, (i) => i, req.cursor);
 		}
 		if (req.menu === MENU.PLAY_AREA || (req.menu === MENU.GENERIC && this.screen === SCREEN.PLAY_AREA)) {
 			const exclude = this.playAreaExclude ? 1 : 0;
@@ -1031,10 +1028,11 @@ export class DuelUI {
 		}).then((v) => { if (this.overlayKind === 'attackinfo') this.hideOverlay(); return v; });
 	}
 
-	colorMenu(req, colors, toAnswer) {
+	/* colors: list of colors in menu order; answers toAnswer(index); cursorIndex = initial item */
+	colorMenu(req, colors, toAnswer, cursorIndex = 0) {
 		return this.ask((done) => this.textMenu({
 			items: colors.map((c) => { const node = el('span'); node.append(esym(c), document.createTextNode(' ' + COLOR_NAMES[c])); return { node }; }),
-			cursor: Math.min(req.cursor || 0, colors.length - 1), cols: 3,
+			cursor: Math.max(0, Math.min(cursorIndex, colors.length - 1)), cols: 3,
 			onSelect: (i) => done(toAnswer(i)), onCancel: () => done(TCG_CANCEL),
 		}));
 	}
@@ -1115,8 +1113,73 @@ export class DuelUI {
 		});
 	}
 
+	/* TCG_REQ_COLOR: answer a color (FIRE..PSYCHIC). items (if any) = the colors in menu order
+	 * (e.g. ShiftListItemToColor for the color change screen), cursor = the default color */
 	reqColor(req) {
-		return this.colorMenu(req, [0, 1, 2, 3, 4, 5], (i) => i);
+		let colors = Array.from(req.items.slice(0, req.numItems)).filter((c) => c < 7);
+		if (!req.numItems || colors.length !== req.numItems) colors = [0, 1, 2, 3, 4, 5];
+		return this.colorMenu(req, colors, (i) => colors[i], colors.indexOf(req.cursor));
+	}
+
+	/* WaitForButtonAorB: A = go on (0), B = stop (TCG_CANCEL), e.g. Devolution Spray's "one more stage?" */
+	reqConfirm(req) {
+		return this.ask((done) => this.textMenu({
+			items: [{ label: 'Continue (A)' }, { label: 'Stop (B)' }], cursor: 0, cols: 2, cls: 'confirm',
+			onSelect: (i) => done(i === 0 ? 0 : TCG_CANCEL), onCancel: () => done(TCG_CANCEL),
+		}));
+	}
+
+	/* Peek (HandlePeekSelection): which play area */
+	peekAreaMenu(req) {
+		return this.ask((done) => this.textMenu({
+			items: [{ label: req.shown === this.perspective ? 'Your Play Area' : `${this.name(req.shown)}'s Play Area` },
+				{ label: req.shown === this.perspective ? 'Opp. Play Area' : `${this.name(other(req.shown))}'s Play Area` }],
+			cursor: req.cursor, cols: 1, onSelect: (i) => done(i), // B does nothing here in the original
+		}));
+	}
+
+	/* Peek: a prize (0-5), the hand (6, the other duelist only) or the top card of the deck (7) */
+	peekTargetMenu(req) {
+		const mask = req.arg[0], hand = !!req.arg[1];
+		const st = this.sideState(req.shown);
+		this.setText(req.textStr || this.text);
+		return this.ask((done) => {
+			const box = el('div', 'prizes-box');
+			box.appendChild(el('div', 'cl-header', `${req.shown === this.perspective ? 'Your' : `${this.name(req.shown)}'s`} cards`));
+			const grid = el('div', 'prize-grid');
+			const extra = el('div', 'peek-extra');
+			const items = [];
+			const add = (parent, i, b, ok) => {
+				if (!ok) b.classList.add('taken');
+				b.addEventListener('click', (e) => { e.stopPropagation(); if (ok) done(i); });
+				b.addEventListener('mouseenter', () => move(items.findIndex((x) => x.i === i)));
+				parent.appendChild(b);
+				items.push({ i, b, ok });
+			};
+			for (let i = 0; i < 6; i++) {
+				const p = el('button', 'prize-card');
+				p.appendChild(sym(SYM_PRIZE));
+				add(grid, i, p, !!(mask & (1 << i)));
+			}
+			if (hand) add(extra, 6, el('button', 'btn', `Hand (${st.hand})`), st.hand > 0);
+			add(extra, 7, el('button', 'btn', `Top of the deck (${st.deck})`), st.deck > 0);
+			const back = el('button', 'btn small', 'Back');
+			back.addEventListener('click', (e) => { e.stopPropagation(); done(TCG_CANCEL); });
+			box.append(grid, extra, back);
+			this.showOverlay('prize', box);
+			let cur = 0;
+			const move = (k) => { if (k < 0) return; cur = (k + items.length) % items.length; items.forEach((x, j) => x.b.classList.toggle('cur', j === cur)); };
+			move(Math.max(0, items.findIndex((x) => x.i === req.cursor)));
+			return {
+				key: (k) => {
+					if (k === K.LEFT || k === K.UP) move(cur - 1);
+					else if (k === K.RIGHT || k === K.DOWN) move(cur + 1);
+					else if (k === K.A && items[cur].ok) done(items[cur].i);
+					else if (k === K.B) done(TCG_CANCEL);
+					return true;
+				},
+			};
+		});
 	}
 
 	reqNumber(req) {
@@ -1126,8 +1189,14 @@ export class DuelUI {
 		}));
 	}
 
-	/* online: the other duelist is choosing */
+	/* online: the other duelist is choosing. Their menus are not shown: back to the board. */
 	showWaiting(req, who) {
-		this.setStatus(`Waiting for ${who}…`, 'waiting');
+		if (['cardlist', 'playarea', 'energy', 'attackinfo', 'prize', 'check'].includes(this.overlayKind)) this.hideOverlay();
+		const what = {
+			[REQ.DUEL_MENU]: 'to choose an action', [REQ.CARD_LIST]: 'to choose a card', [REQ.CARD_ITEM_MENU]: 'to choose a card',
+			[REQ.PLAY_AREA]: 'to choose a Pokémon', [REQ.MENU]: 'to choose', [REQ.YES_NO]: 'to answer', [REQ.ENERGY_DISCARD]: 'to choose an Energy card',
+			[REQ.PRIZE]: 'to take a Prize', [REQ.COLOR]: 'to choose a color', [REQ.NUMBER]: 'to choose a number',
+		}[req.type] || '';
+		this.setStatus(`Waiting for ${who} ${what}…`, 'waiting');
 	}
 }
