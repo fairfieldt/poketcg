@@ -104,6 +104,9 @@ enum {
 	P_JOY   = 1 << 4,
 	P_INPUT = 1 << 5,   /* input routine entry / ready point (see input_points) */
 	P_START = 1 << 6,   /* StartDuel (human mode: optional custom opponent deck) */
+	P_VFY_DUEL = 1 << 7,   /* HandleDuelMenuInput: verify the duel menu selection */
+	P_VFY_CURSOR = 1 << 8, /* YourOrOppPlayAreaScreen_HandleInput: verify prize / peek selection */
+	P_VFY_YESNO = 1 << 9,  /* HandleYesOrNoMenu.a_pressed: verify yes / no / two-item selection */
 };
 
 typedef struct Point {
@@ -160,6 +163,7 @@ typedef struct Session {
 	int armed;         /* the poll loop came around since the last decision */
 	int answer;        /* chosen answer (REF_CANCEL = B) */
 	int steps;         /* cursor presses delivered for the current answer */
+	int verify;        /* the poll that processes the final press is being checked */
 	const char *caller;
 	RefInput in;
 } Session;
@@ -185,7 +189,9 @@ struct Ref {
 		w_TextSpeed, w_SkipDelayAllowed, w_DuelFinished, w_DuelResult, w_DuelTurns, w_DuelTempList,
 		w_CurMenuItem, w_ListScrollOffset, w_NumListItems, w_NumMenuItems, w_CurrentDuelMenuItem,
 		w_NameBuffer, w_ExcludeArenaPokemon, w_YourOrOppPlayAreaCurPosition, w_NoItemSelectionMenuKeys,
-		w_CardListHeaderText, w_CardListInfoBoxText, w_PlayerPrizes;
+		w_CardListHeaderText, w_CardListInfoBoxText, w_PlayerPrizes, w_TransitionTablePtr,
+		w_DuelInitialPrizesUpperBitsSet, w_DeckName;
+	int b_TransitionTables;   /* bank of the cursor_transition tables (BANK(_SelectPrizeCards)) */
 	uint8_t dv_Prizes;     /* DUELVARS_PRIZES */
 	uint16_t a_ShiftListItemToColor;
 	int b_ShiftListItemToColor;
@@ -423,24 +429,25 @@ static uint8_t rom_byte(Ref *r, int bank, uint16_t addr)
 	return r->gb->rom[off];
 }
 
-int ref_rom_deck(Ref *r, int deck, uint8_t out[REF_DECK_SIZE])
+/* Expand deck `deck` like CopyDeckData: every card of the (count, card id)
+ * list in order, up to the 0 count, into out[0..0x80) (the size of the
+ * wPlayerDeck/wOpponentDeck buffers); *name = the 2 bytes after the 0 count
+ * (copied to wDeckName). Returns the number of cards, -1 for a NULL pointer. */
+static int rom_deck_raw(Ref *r, int deck, uint8_t out[0x80], uint16_t *name)
 {
-	int bank;
 	const Sym *s = find_sym(r, "DeckPointers");
 	if (!s || deck < 0 || deck > 0xff)
 		return -1;
-	bank = s->bank;
-	uint16_t p = (uint16_t)(s->addr + deck * 2);
-	uint16_t ptr = (uint16_t)(rom_byte(r, bank, p) | rom_byte(r, bank, (uint16_t)(p + 1)) << 8);
-	if (!ptr)
-		return -1;
-	/* the table ends with a NULL entry; stop at it if deck is past the end */
-	for (int i = 0; i < deck; i++) {
+	int bank = s->bank;
+	/* the table ends with a NULL entry: no deck past it */
+	for (int i = 0; i <= deck; i++) {
 		uint16_t q = (uint16_t)(s->addr + i * 2);
 		if (!(rom_byte(r, bank, q) | rom_byte(r, bank, (uint16_t)(q + 1))))
 			return -1;
 	}
-	memset(out, 0, REF_DECK_SIZE);
+	uint16_t p = (uint16_t)(s->addr + deck * 2);
+	uint16_t ptr = (uint16_t)(rom_byte(r, bank, p) | rom_byte(r, bank, (uint16_t)(p + 1)) << 8);
+	memset(out, 0, 0x80);
 	int n = 0;
 	for (;;) {
 		uint8_t cnt = rom_byte(r, bank, ptr++);
@@ -448,11 +455,22 @@ int ref_rom_deck(Ref *r, int deck, uint8_t out[REF_DECK_SIZE])
 			break;
 		uint8_t card = rom_byte(r, bank, ptr++);
 		while (cnt--) {
-			if (n < REF_DECK_SIZE)
+			if (n < 0x80)
 				out[n] = card;
 			n++;
 		}
 	}
+	if (name)
+		*name = (uint16_t)(rom_byte(r, bank, ptr) | rom_byte(r, bank, (uint16_t)(ptr + 1)) << 8);
+	return n;
+}
+
+int ref_rom_deck(Ref *r, int deck, uint8_t out[REF_DECK_SIZE])
+{
+	uint8_t buf[0x80];
+	int n = rom_deck_raw(r, deck, buf, NULL);
+	if (n >= 0)
+		memcpy(out, buf, REF_DECK_SIZE);
 	return n;
 }
 
@@ -831,6 +849,7 @@ enum {
 	K_PLAYAREA,   /* DisplayPlayAreaScreen: location = wExcludeArenaPokemon + wCurMenuItem */
 	K_PRIZE,      /* _SelectPrizeCards: wYourOrOppPlayAreaCurPosition 0-5, RIGHT column, DOWN row */
 	K_COLOR,      /* HandleColorChangeScreen: item i is color ShiftListItemToColor[i] */
+	K_PEEK,       /* _HandlePeekSelection: wYourOrOppPlayAreaCurPosition 0-7 over a transition table */
 };
 
 typedef struct InputRoutine {
@@ -854,10 +873,107 @@ static const InputRoutine kInputRoutines[] = {
 	{ "HandleEnergyDiscardMenuInput", "HandleEnergyDiscardMenuInput.wait_input", REF_IN_ENERGY_DISCARD, K_LIST, 1 },
 	{ "_SelectPrizeCards", "_SelectPrizeCards.loop_handle_input", REF_IN_PRIZE, K_PRIZE, 0 },
 	{ "HandleColorChangeScreen", "HandleColorChangeScreen.loop_input", REF_IN_COLOR, K_COLOR, 1 },
+	{ "_HandlePeekSelection", "_HandlePeekSelection.loop_input_2", REF_IN_PEEK, K_PEEK, 0 },
 };
 #define NUM_INPUT_ROUTINES ((int)(sizeof kInputRoutines / sizeof kInputRoutines[0]))
 
 #define MAX_STEPS 120      /* presses per answer before giving up */
+
+/* YourOrOppPlayAreaScreen_HandleInput cursor (prize / peek screens): the
+ * cursor moves along the 7-byte cursor_transition table at wTransitionTablePtr
+ * (x, y, attr, up, down, right, left). Breadth-first search from cur; moving
+ * onto a prize slot that does not exist in this duel
+ * (wDuelInitialPrizesUpperBitsSet) moves again in the same direction, like the
+ * original. Fills first_dir[n] (index into kTransDirs, -1 = cur itself, -2 =
+ * unreachable) for positions 0-7. */
+static const uint8_t kTransDirs[4] = { PAD_UP, PAD_DOWN, PAD_RIGHT, PAD_LEFT };
+
+static void transition_bfs(Ref *r, int cur, int first_dir[8])
+{
+	uint16_t tbl = (uint16_t)(wram(r, r->w_TransitionTablePtr)[0] | wram(r, r->w_TransitionTablePtr)[1] << 8);
+	uint8_t exist = *wram(r, r->w_DuelInitialPrizesUpperBitsSet);
+	int queue[8], qh = 0, qt = 0;
+	for (int i = 0; i < 8; i++)
+		first_dir[i] = -2;
+	if (cur < 0 || cur >= 8)
+		return;
+	first_dir[cur] = -1;
+	queue[qt++] = cur;
+	while (qh < qt) {
+		int p = queue[qh++];
+		for (int d = 0; d < 4; d++) {
+			int n = p, hops = 0;
+			do {
+				n = rom_byte(r, r->b_TransitionTables, (uint16_t)(tbl + n * 7 + 3 + d));
+			} while (n < 8 && !(exist & (1 << n)) && p != 6 && ++hops < 8);
+			if (n >= 8 || first_dir[n] != -2)
+				continue;
+			first_dir[n] = first_dir[p] < 0 ? d : first_dir[p];
+			queue[qt++] = n;
+		}
+	}
+}
+
+static uint8_t transition_steer(Ref *r, int cur, int target)
+{
+	int fd[8];
+	transition_bfs(r, cur, fd);
+	if (target < 0 || target >= 8 || fd[target] < 0)
+		return PAD_DOWN;   /* unreachable: keep moving, MAX_STEPS will catch it */
+	return kTransDirs[fd[target]];
+}
+
+/* --- verification: after the final A press, check that the original selected
+ * the answer (the poll routine that processes the press returns carry with
+ * the expected item). Cancels (B) are not checked: some callers test B
+ * before polling. */
+
+enum { V_CURMENU = 1, V_REG_A = 2 };
+
+/* the item value the poll routine reports for the session's answer */
+static int sess_expected_item(Ref *r, const Session *s)
+{
+	const InputRoutine *ir = &kInputRoutines[s->routine];
+	switch (ir->kind) {
+	case K_PLAYAREA:
+		return s->answer - s->in.first;
+	case K_YESNO:
+		return s->answer ? 0 : 1;
+	case K_COLOR:
+		for (int i = 0; i < 6; i++)
+			if (rom_byte(r, r->b_ShiftListItemToColor, (uint16_t)(r->a_ShiftListItemToColor + i)) == s->answer)
+				return i;
+		return -1;
+	default:
+		return s->answer;
+	}
+}
+
+/* at the entry of the poll routine that will process the final press */
+static void verify_on_poll(Ref *r, Session *s, int how)
+{
+	if (s->verify || s->answer == REF_CANCEL)
+		return;
+	s->verify = 1;
+	int si = (int)(s - r->sess);
+	if (watch_return(r, W_POLL, how | (sess_expected_item(r, s) & 0xff) << 4 | si << 12) < 0)
+		stop_duel(r, REF_EV_ERROR, "too many return watches (verify)");
+}
+
+static void verify_result(Ref *r, int aux)
+{
+	GB *gb = r->gb;
+	int how = aux & 15, expected = (aux >> 4) & 0xff, si = aux >> 12;
+	const char *name = si < r->nsess ? kInputRoutines[r->sess[si].routine].entry : "?";
+	int answer = si < r->nsess ? r->sess[si].answer : -1;
+	if (!(gb->f & 0x10)) {
+		stop_duel(r, REF_EV_ERROR, "%s: the press for answer %d was not accepted", name, answer);
+		return;
+	}
+	int got = how == V_CURMENU ? *hram(r, r->h_CurMenuItem) : gb->a;
+	if (got != expected)
+		stop_duel(r, REF_EV_ERROR, "%s: answer %d selected item %d instead of %d", name, answer, got, expected);
+}
 
 static int is_frame_helper(Ref *r, const Sym *s)
 {
@@ -935,6 +1051,7 @@ static int sess_cursor(Ref *r, const Session *s)
 	case K_PLAYAREA:
 		return wr8(r, r->w_ExcludeArenaPokemon) + item;
 	case K_PRIZE:
+	case K_PEEK:
 		return wr8(r, r->w_YourOrOppPlayAreaCurPosition);
 	case K_COLOR:
 		return item < 6 ? rom_byte(r, r->b_ShiftListItemToColor, (uint16_t)(r->a_ShiftListItemToColor + item)) : -1;
@@ -988,6 +1105,16 @@ static void sess_describe(Ref *r, Session *s, RefInput *in)
 	case K_COLOR:
 		in->num_items = 6;
 		break;
+	case K_PEEK: {
+		/* positions reachable in the current transition table */
+		int fd[8];
+		transition_bfs(r, in->cursor, fd);
+		in->num_items = 8;
+		for (int i = 0; i < 8; i++)
+			if (fd[i] != -2)
+				in->list[in->list_len++] = (uint8_t)i;
+		break;
+	}
 	}
 	if (ir->type == REF_IN_CARD_LIST || ir->type == REF_IN_ENERGY_DISCARD) {
 		const uint8_t *l = wram(r, r->w_DuelTempList);
@@ -1102,8 +1229,11 @@ static void on_menu_input(Ref *r)
 	const char *caller = cs ? cs->name : "?";
 	Session *top = sess_top(r);
 	if (top && kInputRoutines[top->routine].owns_menu &&
-	    (!strcmp(caller, kInputRoutines[top->routine].entry) || !strcmp(caller, "HandleCardListInput")))
+	    (!strcmp(caller, kInputRoutines[top->routine].entry) || !strcmp(caller, "HandleCardListInput"))) {
+		if (top->state == S_FIRED)
+			verify_on_poll(r, top, V_CURMENU);
 		return;
+	}
 	int ab = autob_frame(r);
 	if (ab >= 0 && (!top || top->sp > gb->cs[ab].sp))
 		return;   /* inside a look-only screen that is being exited with B */
@@ -1120,7 +1250,12 @@ static void on_menu_input(Ref *r)
 		si = r->nsess - 1;
 	}
 	s->poll_sp = gb->sp;
-	if (s->state == S_PENDING || s->state == S_FIRED)
+	/* this call runs after the DoFrame that delivered the final press: it is
+	 * the one that processes it. Only a later call is a new request. */
+	if (s->state == S_FIRED) {
+		s->state = S_DONE;
+		verify_on_poll(r, s, V_CURMENU);
+	} else if (s->state == S_PENDING || s->state == S_DONE)
 		sess_report(r, si);
 	else
 		s->armed = 1;
@@ -1153,7 +1288,8 @@ static uint8_t sess_steer(Ref *r, Session *s)
 	case K_TWO:
 		return PAD_RIGHT;
 	case K_PRIZE:
-		return (cur & 1) != (target & 1) ? PAD_RIGHT : PAD_DOWN;
+	case K_PEEK:
+		return transition_steer(r, cur, target);
 	case K_COLOR: {
 		/* move by menu item: find the item showing the target color */
 		int item = wr8(r, r->w_CurMenuItem), titem = item;
@@ -1171,7 +1307,8 @@ static void on_joypad(Ref *r)
 {
 	uint8_t buttons = 0;
 	sess_gc(r);
-	const Sym *w = joypad_waiter(r, NULL);
+	int wi = -1;
+	const Sym *w = joypad_waiter(r, &wi);
 	debug_waiter(w, w && name_in(kAckRoutines, w->name));
 	Session *s = sess_top(r);
 	if (w && name_in(kAckRoutines, w->name)) {
@@ -1186,6 +1323,14 @@ static void on_joypad(Ref *r)
 					p->input.whose_turn = *hram(r, r->h_WhoseTurn);
 					p->input.num_items = 1;
 					p->input.caller = "?";
+					/* the frame that entered the ACK routine: its call site is the caller */
+					if (wi > 0) {
+						const GBFrame *fr = &r->gb->cs[wi - 1];
+						uint16_t site = (uint16_t)(fr->ret - 1);
+						const Sym *cs = routine_at(r, site < 0x4000 ? 0 : fr->bank, site);
+						if (cs)
+							p->input.caller = cs->name;
+					}
 				}
 			}
 		}
@@ -1226,6 +1371,9 @@ static void handle_watch(Ref *r, int wi)
 	switch (w.kind) {
 	case W_AI:
 		*wram(r, r->w_OpponentDeckID) = (uint8_t)w.aux;
+		break;
+	case W_POLL:
+		verify_result(r, w.aux);
 		break;
 	case W_RNG:
 		progress(r);
@@ -1302,6 +1450,21 @@ static void handle_stop(Ref *r)
 			case 2: on_input_ready(r, idx); break;
 			case 3: on_menu_input(r); break;
 			}
+		}
+	}
+	if (p.flags & (P_VFY_DUEL | P_VFY_CURSOR | P_VFY_YESNO)) {
+		sess_gc(r);
+		Session *s = sess_top(r);
+		int kind = s ? kInputRoutines[s->routine].kind : 0;
+		if (s && s->state == S_FIRED) {
+			if ((p.flags & P_VFY_DUEL) && kind == K_DUELMENU)
+				verify_on_poll(r, s, V_CURMENU);
+			if ((p.flags & P_VFY_CURSOR) && (kind == K_PRIZE || kind == K_PEEK))
+				verify_on_poll(r, s, V_REG_A);
+			if ((p.flags & P_VFY_YESNO) && (kind == K_YESNO || kind == K_TWO) &&
+			    *wram(r, r->w_CurMenuItem) != sess_expected_item(r, s))
+				stop_duel(r, REF_EV_ERROR, "%s: answer %d selected item %d", kInputRoutines[s->routine].entry,
+					s->answer, *wram(r, r->w_CurMenuItem));
 		}
 	}
 	if (p.flags & P_JOY)
@@ -1419,6 +1582,9 @@ Ref *ref_new(const char *rom_path, const char *sym_path)
 	W(w_CardListHeaderText, "wCardListHeaderText");
 	W(w_CardListInfoBoxText, "wCardListInfoBoxText");
 	W(w_PlayerPrizes, "wPlayerPrizes");
+	W(w_TransitionTablePtr, "wTransitionTablePtr");
+	W(w_DuelInitialPrizesUpperBitsSet, "wDuelInitialPrizesUpperBitsSet");
+	W(w_DeckName, "wDeckName");
 	W(h_WhoseTurn, "hWhoseTurn");
 	W(h_BankROM, "hBankROM");
 	W(h_KeysPressed, "hKeysPressed");
@@ -1434,6 +1600,7 @@ Ref *ref_new(const char *rom_path, const char *sym_path)
 	W(s_CurrentlySelectedDeck, "sCurrentlySelectedDeck");
 #undef W
 	r->dv_Prizes = (uint8_t)r->w_PlayerPrizes;
+	need_sym(r, "_SelectPrizeCards", &r->b_TransitionTables, &ok);
 	r->a_ShiftListItemToColor = need_sym(r, "ShiftListItemToColor", &r->b_ShiftListItemToColor, &ok);
 	{
 		static const char *const fns[] = { "DoFrame", "DoFrameIfLCDEnabled", "ReadJoypad", NULL };
@@ -1455,6 +1622,10 @@ Ref *ref_new(const char *rom_path, const char *sym_path)
 	r->pt_rng = point_flag(r, "UpdateRNGSources", P_RNG, NULL);
 	r->pt_joy = point_flag(r, "ReadJoypad", P_JOY, NULL);
 	r->pt_start = point_flag(r, "StartDuel", P_START, NULL);
+	if (point_flag(r, "HandleDuelMenuInput", P_VFY_DUEL, NULL) < 0 ||
+	    point_flag(r, "YourOrOppPlayAreaScreen_HandleInput", P_VFY_CURSOR, NULL) < 0 ||
+	    point_flag(r, "HandleYesOrNoMenu.a_pressed", P_VFY_YESNO, NULL) < 0)
+		goto fail;
 	if (r->pt_trap < 0 || r->pt_reset < 0 || r->pt_ai < 0 || r->pt_rng < 0 || r->pt_joy < 0 || r->pt_start < 0)
 		goto fail;
 	/* input routines: entry and ready (poll loop) points */
@@ -1571,19 +1742,30 @@ int ref_start_duel(Ref *r, const RefDuel *d)
 {
 	GB *gb = r->gb;
 	r->duel = *d;
-	uint8_t pdeck[REF_DECK_SIZE], odeck[REF_DECK_SIZE];
+	/* decks as CopyDeckData leaves them: all cards of the ROM list (61 for
+	 * GRASS_AND_PSYCHIC_DECK: the 61st lands in the unused rest of the $80-byte
+	 * buffer), or the 60 given card ids */
+	uint8_t pdeck[0x80], odeck[0x80];
+	uint16_t pname = 0, oname = 0;
+	int pn = REF_DECK_SIZE, on = REF_DECK_SIZE;
+	memset(pdeck, 0, sizeof pdeck);
+	memset(odeck, 0, sizeof odeck);
 	if (d->player_deck[0])
 		memcpy(pdeck, d->player_deck, REF_DECK_SIZE);
-	else if (ref_rom_deck(r, d->player_deck_id + 2, pdeck) != REF_DECK_SIZE) {
+	else if ((pn = rom_deck_raw(r, d->player_deck_id + 2, pdeck, &pname)) < REF_DECK_SIZE) {
 		fprintf(stderr, "ref: invalid player deck id %d\n", d->player_deck_id);
 		return -1;
 	}
 	if (d->opp_deck[0])
 		memcpy(odeck, d->opp_deck, REF_DECK_SIZE);
-	else if (ref_rom_deck(r, d->opp_deck_id + 2, odeck) != REF_DECK_SIZE) {
+	else if ((on = rom_deck_raw(r, d->opp_deck_id + 2, odeck, &oname)) < REF_DECK_SIZE) {
 		fprintf(stderr, "ref: invalid opponent deck id %d\n", d->opp_deck_id);
 		return -1;
 	}
+	if (pn > 0x80)
+		pn = 0x80;
+	if (on > 0x80)
+		on = 0x80;
 
 	/* machine back to the title screen snapshot */
 	gb_load_state(gb, r->snap);
@@ -1608,9 +1790,17 @@ int ref_start_duel(Ref *r, const RefDuel *d)
 	*sram0(r, r->s_AnimationsDisabled) = d->animations_disabled;
 	*sram0(r, r->s_SkipDelayAllowed) = 0;
 
-	/* WRAM */
-	memcpy(wram(r, r->w_PlayerDeck), pdeck, REF_DECK_SIZE);
-	memcpy(wram(r, r->w_OpponentDeck), odeck, REF_DECK_SIZE);
+	/* WRAM. AI vs AI: what StartDuel_VSAIOpp's LoadPlayerDeck/LoadOpponentDeck
+	 * would leave (decks; wDeckName = name of the deck loaded last, the
+	 * opponent's). Human mode: StartDuel_VSAIOpp loads them itself. */
+	if (!d->player_human) {
+		memcpy(wram(r, r->w_PlayerDeck), pdeck, (size_t)pn);
+		memcpy(wram(r, r->w_OpponentDeck), odeck, (size_t)on);
+		if (!d->opp_deck[0]) {
+			wram(r, r->w_DeckName)[0] = (uint8_t)oname;
+			wram(r, r->w_DeckName)[1] = (uint8_t)(oname >> 8);
+		}
+	}
 	gb->wram[((PLAYER_TURN << 8) | DUELVARS_DUELIST_TYPE) - 0xc000] =
 		d->player_human ? DUELIST_TYPE_PLAYER : (uint8_t)(DUELIST_TYPE_AI_OPP | d->player_deck_id);
 	gb->wram[((OPPONENT_TURN << 8) | DUELVARS_DUELIST_TYPE) - 0xc000] =
@@ -1734,7 +1924,7 @@ int ref_answer(Ref *r, int choice)
 	} else {
 		if (choice < in->first || choice >= in->first + in->num_items)
 			return -1;
-		if (in->type == REF_IN_PRIZE) {
+		if (in->type == REF_IN_PRIZE || in->type == REF_IN_PEEK) {
 			int ok = 0;
 			for (int i = 0; i < in->list_len; i++)
 				if (in->list[i] == choice)
@@ -1746,6 +1936,7 @@ int ref_answer(Ref *r, int choice)
 	s->answer = choice;
 	s->state = S_ACTIVE;
 	s->steps = 0;
+	s->verify = 0;
 	r->waiting = -1;
 	return 0;
 }
@@ -1770,7 +1961,7 @@ void ref_print_stack(Ref *r, FILE *fp)
 const char *ref_input_type_name(int t)
 {
 	static const char *const n[] = { "?", "ACK", "DUEL_MENU", "CARD_LIST", "CARD_ITEM_MENU", "PLAY_AREA",
-		"MENU", "YES_NO", "ENERGY_DISCARD", "PRIZE", "COLOR" };
+		"MENU", "YES_NO", "ENERGY_DISCARD", "PRIZE", "COLOR", "NUMBER", "PEEK" };
 	return t >= 0 && t < (int)(sizeof n / sizeof n[0]) ? n[t] : "?";
 }
 

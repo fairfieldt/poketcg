@@ -32,12 +32,17 @@ refrun: refrun.c ref.h libref.a
 # 20 FLOWER_POWER 21 STRANGE_PSYSHOCK 22 WONDERS_OF_SCIENCE 23 FIRE_CHARGE
 # 24-27 IM/POWERFUL/INVINCIBLE/LEGENDARY_RONALD 28-52 club members, 52 IMAKUNI
 VALIDATE_PAIRS ?= 3,5 5,7 7,3 16,17 18,19 20,21 22,23 12,13 24,27 14,15
+VALIDATE_COUNT ?= 3
+# every pair: VALIDATE_COUNT AI-vs-AI duels, then VALIDATE_COUNT duels with a
+# random-policy human on the PLAYER_TURN side; stops at the first failure
 validate: refrun
-	@for p in $(VALIDATE_PAIRS); do \
-		./refrun $(ROM) $(SYM) --decks $${p%,*} $${p#*,} --seed 0x12 0x34 0 --count 4 | tail -1 || exit 1; \
-	done
-	@for p in $(VALIDATE_PAIRS); do \
-		./refrun $(ROM) $(SYM) --decks $${p%,*} $${p#*,} --seed 0x56 0x78 0 --human 7 --count 4 | tail -1 || exit 1; \
+	@for mode in ai human; do \
+		for p in $(VALIDATE_PAIRS); do \
+			h=; [ $$mode = human ] && h="--human 7"; \
+			out=$$(./refrun $(ROM) $(SYM) --decks $${p%,*} $${p#*,} --seed 0x12 0x34 0 $$h --count $(VALIDATE_COUNT)) || \
+				{ echo "$$out" | grep -v "END$$"; echo "FAILED: $$mode $$p"; exit 1; }; \
+			echo "$$mode $$p: $$(echo "$$out" | tail -1)"; \
+		done; \
 	done
 
 clean:

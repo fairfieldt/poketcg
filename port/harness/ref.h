@@ -6,21 +6,151 @@
  * human input requests, duel end) so that the C port can be compared against
  * it in lockstep.
  *
- * Typical use:
- *
  *     Ref *r = ref_new("poketcg.gbc", "poketcg.sym");
  *     ref_trace_add(r, "DrawCardFromDeck");
  *     ref_trace_rng(r, 1);
  *     RefDuel d;
  *     ref_duel_defaults(&d);
- *     d.player_deck_id = 5; d.opp_deck_id = 8;   // *_DECK_ID values
+ *     d.player_deck_id = 3; d.opp_deck_id = 5;   // *_DECK_ID values
  *     ref_start_duel(r, &d);
  *     RefEvent ev;
- *     while (ref_next(r, &ev) < REF_EV_END) { ... }
+ *     while (ref_next(r, &ev) < REF_EV_END)
+ *         if (ev.kind == REF_EV_INPUT && ev.input.type != REF_IN_ACK)
+ *             ref_answer(r, choose(&ev.input));
  *
- * Everything the library writes into the machine to set a duel up is listed
- * in ref.c (see "Hijack") and in README-style comments below; the C port must
- * start from the same values.
+ * ==========================================================================
+ * Machine setup (what the C port must start from)
+ * ==========================================================================
+ * Boot: SRAM is all zeros (never saved). ValidateSRAM finds neither the $41/$93
+ * test pattern nor the 04 21 05 signature, so it runs RestartSRAM (zero SRAM
+ * banks 0-3, s0a000 = 04 21 05) and InitSaveData (starter decks in
+ * sSavedDeck1-3, collection = not owned, sTextSpeed = TEXT_SPEED_3,
+ * sAnimationsDisabled = 0, sSkipDelayAllowed = 0, sPrinterContrastLevel = 2).
+ * The emulator runs with no input until the first entry of HandleTitleScreen
+ * (5 frames, IME = 1, IE = VBlank|Timer, LCD off); that state is the snapshot.
+ * The console is DMG (wConsole = CONSOLE_DMG); the duel engine only uses
+ * wConsole for palettes / VRAM banks.
+ *
+ * ref_start_duel restores the snapshot and writes:
+ *   SRAM bank 0  sTextSpeed = text_speed, sAnimationsDisabled = animations_disabled,
+ *                sSkipDelayAllowed = 0 (read by InitVariablesToBeginDuel);
+ *                human mode: sCurrentlySelectedDeck = 0, sDeck1Cards = player deck.
+ *   WRAM         AI vs AI only: wPlayerDeck / wOpponentDeck = the decks exactly
+ *                as CopyDeckData leaves them (ROM lists are copied card by card
+ *                up to their 0 count: GRASS_AND_PSYCHIC_DECK has 61 cards, the
+ *                61st lands at deck+60, inside the unused rest of the $80 buffer),
+ *                wDeckName = name text id of the opponent's ROM deck (the deck
+ *                LoadOpponentDeck would have loaded last);
+ *                wPlayerDuelistType ($c2f1) = DUELIST_TYPE_AI_OPP | player_deck_id
+ *                (DUELIST_TYPE_PLAYER in human mode), wOpponentDuelistType ($c3f1)
+ *                = DUELIST_TYPE_AI_OPP | opp_deck_id, wOpponentDeckID =
+ *                wNPCDuelDeckID = opp_deck_id, wNPCDuelPrizes = prizes,
+ *                wDuelTheme, wIsPracticeDuel = 0, wOpponentName (text id, 2
+ *                bytes), wOpponentPortrait, wRNG1/wRNG2/wRNGCounter = rng[],
+ *                wAnimationsDisabled, wTextSpeed = text_speed, wSkipDelayAllowed = 0.
+ *   HRAM         hWhoseTurn = PLAYER_TURN, hBankROM = 1 (MBC bank 1 mapped),
+ *                hDPadRepeat = hKeysReleased = hDPadHeld = hKeysHeld = hKeysPressed = 0.
+ *   CPU          SP = $dffe with [$dffe] = PowersOf2 (trap: ROM0 data, never
+ *                executed), PC = StartDuel (AI vs AI) or StartDuel_VSAIOpp
+ *                (human), IME = 1, not halted, shadow call stack empty.
+ * The duel is over when StartDuel returns into the trap (SP = $e000):
+ * REF_EV_END with wDuelFinished / wDuelResult / wDuelTurns. Sudden death after
+ * a tie happens inside StartDuel and needs no special handling.
+ *
+ * ==========================================================================
+ * Input driver
+ * ==========================================================================
+ * Black box: the harness never skips or replaces original code; it only
+ * chooses the buttons ReadJoypad reads (decided at the entry of ReadJoypad,
+ * i.e. once per DoFrame). Presses always alternate with a read with no
+ * button held, so every press is a new press (hKeysPressed). Per read:
+ *  1. ACK: the routine waiting on the joypad (call site of the innermost
+ *     DoFrame / DoFrameIfLCDEnabled call) is WaitForWideTextBoxInput,
+ *     DrawWideTextBox_WaitForInput, DrawNarrowTextBox_WaitForInput or
+ *     WaitForButtonAorB: press A. (The only input the original consumes in an
+ *     AI-vs-AI duel; all other waits there are pure frame delays.)
+ *  2. Session steering (human mode): see below.
+ *  3. Look-only screens (OpenCardPage, OpenAttackPage, _OpenDuelCheckMenu,
+ *     DuelCheckMenu_YourPlayArea/_OppPlayArea, OpenInPlayAreaScreen,
+ *     OpenGlossaryScreen) anywhere on the call stack below every live
+ *     session: press B. So "Check" in the duel menu / item menu shows the
+ *     screen and leaves at once; no INPUT event is reported for them.
+ *  4. Otherwise nothing is pressed.
+ *
+ * Sessions (human mode). An input routine is entered (PC = its entry: starts
+ * a session, alive while SP <= the entry SP), then polls in a loop; the first
+ * time its poll loop label ("ready") is reached, the cursor variables are
+ * initialised and REF_EV_INPUT is reported. After ref_answer, at each poll
+ * iteration (whose DoFrame call frame is at the loop's SP) the driver makes
+ * one closed-loop decision from the original's cursor variables: release if
+ * a button is held, else a D-pad press towards the answer, else A (or B for
+ * REF_CANCEL). When the poll loop comes around again after that final press
+ * (the original rejected the selection, e.g. a knocked-out Pokemon in the
+ * play area screen, or re-opened the same menu), a new REF_EV_INPUT is
+ * reported for the same routine. After each final A the poll routine's
+ * result is checked against the answer (HandleMenuInput / HandleDuelMenuInput
+ * / YourOrOppPlayAreaScreen_HandleInput return carry with the item in
+ * hCurMenuItem / a, HandleYesOrNoMenu.a_pressed has it in wCurMenuItem); a
+ * mismatch stops the duel with REF_EV_ERROR.
+ *
+ *   type            routine (entry / ready label)                 answer, cursor variables, keys
+ *   DUEL_MENU       PrintDuelMenuAndHandleInput / .handle_input   item 0 Hand 1 Attack 2 Check 3 Pkmn Power
+ *                   (poll: HandleDuelMenuInput)                    4 Retreat 5 Done (DuelMenuFunctionTable);
+ *                                                                  wCurMenuItem; row = item&1 (UP/DOWN toggle),
+ *                                                                  column = item>>1 (RIGHT = +2, wraps); no cancel
+ *   CARD_LIST       DisplayCardList / .wait_button                 index into wDuelTempList ($ff-terminated);
+ *                   (poll: HandleCardListInput)                    wListScrollOffset + wCurMenuItem of
+ *                                                                  wNumListItems, UP/DOWN scroll; B = cancel.
+ *                                                                  view_only when wNoItemSelectionMenuKeys has A
+ *                                                                  (A opens the card page, then the list again)
+ *   CARD_ITEM_MENU  CardListItemSelectionMenu / .wait_a_or_b       0 Play/Select, 1 Check; wCurMenuItem; B = cancel
+ *                                                                  (no event when wCardListItemSelectionMenuType = 0)
+ *   PLAY_AREA       DisplayPlayAreaScreen / .asm_604c             location = wExcludeArenaPokemon + wCurMenuItem,
+ *                   (OpenPlayAreaScreenForSelection/ForViewing)    first = wExcludeArenaPokemon, num = wNumMenuItems;
+ *                                                                  UP/DOWN; B = cancel. A knocked-out slot is
+ *                                                                  refused (new request)
+ *   YES_NO          HandleYesOrNoMenu / .wait_button_loop          1 yes, 0 no; wCurMenuItem 0 = YES, 1 = NO, RIGHT
+ *                   (YesOrNoMenu, YesOrNoMenuWithText[_...])       toggles; only A (no cancel); default cursor =
+ *                                                                  wDefaultYesOrNo ^ 1
+ *   MENU            TwoItemHorizontalMenu / HandleYesOrNoMenu      0 left, 1 right (wCurMenuItem), RIGHT toggles,
+ *                   .wait_button_loop                              no cancel
+ *   MENU            HandleMenuInput (any other caller loop)        wCurMenuItem in [0, wNumMenuItems), UP/DOWN;
+ *                                                                  B = cancel (the caller may ignore B: then it
+ *                                                                  is a new request). input.caller names the
+ *                                                                  loop: DuelMenu_Attack (attack menu, wDuelTempList
+ *                                                                  = card, attack pairs), DisplayPlayAreaScreen-
+ *                                                                  ToUsePkmnPower, HandleDefendingPokemonAttack-
+ *                                                                  Selection, _HandlePeekSelection (0 your / 1 opp
+ *                                                                  play area), effect selection loops...
+ *                                                                  A session is per (caller, SP): the first
+ *                                                                  HandleMenuInput call after the final press
+ *                                                                  processes it; a later call is a new request.
+ *   ENERGY_DISCARD  HandleEnergyDiscardMenuInput / .wait_input     index into wDuelTempList (like CARD_LIST);
+ *                                                                  B = cancel
+ *   PRIZE           _SelectPrizeCards / .loop_handle_input         prize slot 0-5 (list = slots still set in
+ *                   (SelectPrizeCards; poll: YourOrOppPlayArea-    DUELVARS_PRIZES); wYourOrOppPlayAreaCurPosition
+ *                   Screen_HandleInput)                            moved along the cursor_transition table at
+ *                                                                  wTransitionTablePtr (BFS); B ignored by the
+ *                                                                  original (no cancel). One request per prize.
+ *   COLOR           HandleColorChangeScreen / .loop_input          color 0-5 (FIRE GRASS LIGHTNING WATER FIGHTING
+ *                                                                  PSYCHIC); menu item i shows ShiftListItemToColor[i]
+ *                                                                  (GRASS FIRE WATER LIGHTNING FIGHTING PSYCHIC);
+ *                                                                  wCurMenuItem, UP/DOWN; B = cancel
+ *   PEEK            _HandlePeekSelection / .loop_input_2           position 0-7 on the transition table (list =
+ *                   (harness specific type 12)                     reachable positions): 0-5 prizes, 6 hand,
+ *                                                                  7 deck; B = back to the your/opp MENU
+ *
+ * What the port must mirror when an input routine returns: the final read
+ * pressed only A (selection) or B (cancel) after a read with nothing held,
+ * so right after the poll that consumed it hKeysPressed = hKeysHeld =
+ * hDPadHeld = PAD_A (resp. PAD_B), hKeysReleased = 0; hDPadRepeat = 24 if any
+ * D-pad press was used to move the cursor (unchanged otherwise). The next
+ * DoFrame (nothing pressed) then gives hKeysPressed = hKeysHeld = hDPadHeld = 0
+ * and hKeysReleased = the button. ACKs end the same way with PAD_A. Callers
+ * that read hKeysPressed after a routine returns (DisplayCardList,
+ * DisplayPlayAreaScreen, OpenVariousPlayAreaScreens_FromSelectPresses,
+ * DuelMenu_Attack...) therefore only ever see A or B. START, SELECT and B+D-pad
+ * shortcuts are never pressed.
  */
 #ifndef REF_H
 #define REF_H
@@ -158,6 +288,8 @@ enum RefInputType {
 	REF_IN_ENERGY_DISCARD,   /* HandleEnergyDiscardMenuInput: index into wDuelTempList */
 	REF_IN_PRIZE,            /* SelectPrizeCards: prize slot */
 	REF_IN_COLOR,            /* HandleColorChangeScreen: color 0-5 */
+	/* 11 is TCG_REQ_NUMBER in tcg.h (no original routine of its own) */
+	REF_IN_PEEK = 12,        /* harness specific: _HandlePeekSelection position cursor (Peek power) */
 };
 
 #define REF_CANCEL (-1)

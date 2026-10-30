@@ -93,9 +93,9 @@ function parseCard(id, d, text) {
 		card.weight = rd16(C.CARD_DATA_WEIGHT);
 		card.description = rd16(C.CARD_DATA_PKMN_DESCRIPTION) ? text(rd16(C.CARD_DATA_PKMN_DESCRIPTION)) : '';
 	} else {
-		const desc = rd16(C.CARD_DATA_NONPKMN_DESCRIPTION);
-		// non-Pokemon descriptions continue in the next text id when they are long (2 pages)
-		card.description = desc ? text(desc) : '';
+		// long non-Pokemon descriptions have a second page (wLoadedCard1NonPokemonDescription + 2)
+		const desc = rd16(C.CARD_DATA_NONPKMN_DESCRIPTION), desc2 = rd16(C.CARD_DATA_NONPKMN_DESCRIPTION + 2);
+		card.description = [desc, desc2].filter(Boolean).map(text).join('\n');
 	}
 	return card;
 }

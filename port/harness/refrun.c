@@ -69,9 +69,11 @@ static int policy(const RefInput *in)
 	int n = in->num_items;
 	if (in->can_cancel && (n <= 0 || pol_rand() % 4 == 0))
 		return REF_CANCEL;
+	if ((in->type == REF_IN_PRIZE || in->type == REF_IN_PEEK) && in->list_len)
+		return in->list[pol_rand() % (uint32_t)in->list_len];
 	if (n <= 0)
-		return 0;
-	return (int)(pol_rand() % (uint32_t)n);
+		return in->first;
+	return in->first + (int)(pol_rand() % (uint32_t)n);
 }
 
 static const char *show_names[32];

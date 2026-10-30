@@ -1,0 +1,4 @@
+dist/
+build/
+server/node_modules/
+test/screenshots/
