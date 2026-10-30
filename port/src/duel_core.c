@@ -51,6 +51,13 @@ void SerialSend8Bytes(void)
 		tcg_fatal("link duels are not supported");
 }
 
+bool SerialRecvByte(u8 *a)
+{
+	(void)a;
+	tcg_fatal("link duels are not supported");
+	return true;
+}
+
 void SerialRecv8Bytes(void)
 {
 	tcg_fatal("link duels are not supported");

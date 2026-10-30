@@ -179,6 +179,7 @@ void ExchangeRNG(void);
 void SetOppAction_SerialSendDuelData(u8 action);
 void SerialSend8Bytes(void);
 void SerialRecv8Bytes(void);
+bool SerialRecvByte(u8 *a);                       /* carry if no byte available */
 
 /* ---------------------------------------------------------------- home/ai.asm (ai/home_ai.c) */
 void LoadOpponentDeck(void);
