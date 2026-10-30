@@ -89,7 +89,7 @@ enum TcgMenu {
 	TCG_MENU_GENERIC = 0,
 	TCG_MENU_ATTACKS,         /* attack menu of the arena Pokemon: items[] = card, attack pairs */
 	TCG_MENU_PLAY_AREA,       /* cursor over the shown play area */
-	TCG_MENU_TWO_ITEMS,       /* two horizontal items (text) */
+	TCG_MENU_TWO_ITEMS,       /* TwoItemHorizontalMenu: 0 = left, 1 = right item, both named in `text` (no cancel) */
 	TCG_MENU_CARD_LIST,       /* list in wDuelTempList */
 	TCG_MENU_PEEK_AREA,       /* Peek: 0 = shown duelist's play area, 1 = the other one */
 	TCG_MENU_PEEK_TARGET,     /* Peek: 0-5 prize (arg[0] = prize bits), 6 hand (only if arg[1]), 7 deck top */

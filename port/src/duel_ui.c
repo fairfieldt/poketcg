@@ -370,13 +370,20 @@ static bool HandleYesOrNoMenu(u16 text, u8 two_items)
 	wCurMenuItem = cur;
 	wCursorBlinkCounter = 0;
 	TcgRequest r = { 0 };
-	r.type = TCG_REQ_YES_NO;
 	r.num_items = 2;
-	r.cursor = cur == 0 ? 1 : 0; /* 1 = yes */
 	r.text = text;
-	r.arg[0] = two_items;
-	int c = request(&r);
-	bool no = c != 1;
+	bool no;
+	if (two_items) {
+		/* TwoItemHorizontalMenu: the two items are in the text; 0 = left, 1 = right */
+		r.type = TCG_REQ_MENU;
+		r.menu = TCG_MENU_TWO_ITEMS;
+		r.cursor = cur;
+		no = request(&r) == 1;
+	} else {
+		r.type = TCG_REQ_YES_NO;
+		r.cursor = cur == 0 ? 1 : 0; /* 1 = yes */
+		no = request(&r) != 1;
+	}
 	wCurMenuItem = no ? 1 : 0;
 	set_keys(PAD_A);
 	hCurMenuItem = wCurMenuItem;
@@ -962,7 +969,8 @@ bool DisplayCardList(u8 *card)
 		r.arg[1] = wCardListItemSelectionMenuType;
 		int c = request(&r);
 		if (c < 0 || c >= n) {
-			/* b_pressed */
+			/* b_pressed (HandleMenuInput sets hCurMenuItem to $ff on B) */
+			hCurMenuItem = MENU_CANCEL;
 			set_keys(PAD_B);
 			if (card)
 				*card = hCurMenuItem;
