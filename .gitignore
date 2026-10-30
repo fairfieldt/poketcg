@@ -31,3 +31,4 @@
 
 # *disasm.py output file
 *disasm_output.asm
+port/build/

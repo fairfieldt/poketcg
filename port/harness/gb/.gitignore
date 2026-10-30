@@ -1,0 +1,5 @@
+gbtest
+*.o
+*.a
+*.png
+*.ppm
