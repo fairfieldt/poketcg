@@ -292,11 +292,11 @@ async function deckBuilder(browser) {
 	const code = await page.inputValue('.dialog textarea');
 	check(/^TCG1-/.test(code), 'deck exported as a code');
 	await page.screenshot({ path: path.join(SHOTS, 'deckbuilder-1.png') });
-	await page.click('.dialog >> text=Close');
+	await page.click('.dialog button:has-text("Close")');
 	await page.click('text=Clear');
 	await page.click('text=Import code');
 	await page.fill('.dialog textarea', code);
-	await page.click('.dialog >> text=Import');
+	await page.click('.dialog button.primary');
 	const count2 = await page.evaluate(() => document.querySelector('.db-count').textContent);
 	check(count2 === '60/60', 'deck code imported');
 	await page.click('text=◀ Menu');
