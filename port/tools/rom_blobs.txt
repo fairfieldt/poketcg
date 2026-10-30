@@ -81,3 +81,4 @@ PracticeDuelText_Turn6
 PracticeDuelText_Turn7
 PracticeDuelText_Turn8
 PracticeDuelText_SamTurn4
+InvertedPowersOf2 256

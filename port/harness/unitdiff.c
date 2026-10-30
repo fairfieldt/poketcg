@@ -348,6 +348,7 @@ T(TakeAPrizes) { TakeAPrizes(a); }
 T(AddToDamage) { AddToDamage(a); }
 T(SubtractFromDamage) { SubtractFromDamage(a); }
 T(CheckIfEnoughEnergiesToAttack) { o->c = CheckIfEnoughEnergiesToAttack(); }
+T(TranslateColorToWR) { o->a = TranslateColorToWR(a); }
 
 static const struct UnitTest tests[] = {
 	{ "CountPrizes", F_A, t_CountPrizes },
@@ -425,6 +426,7 @@ static const struct UnitTest tests[] = {
 	{ "AddToDamage", 0, t_AddToDamage },
 	{ "SubtractFromDamage", 0, t_SubtractFromDamage },
 	{ "CheckIfEnoughEnergiesToAttack", F_C, t_CheckIfEnoughEnergiesToAttack },
+	{ "TranslateColorToWR", F_A, t_TranslateColorToWR },
 };
 
 static int run_unit_test(const struct UnitTest *t, int iters)

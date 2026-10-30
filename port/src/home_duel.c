@@ -1,5 +1,6 @@
 /* Port of src/home/duel.asm */
 #include "engine.h"
+#include "gen/rom_blobs.h"
 
 /* save duel state to SRAM
  * called between each two-player turn, just after player draws card */
@@ -1129,15 +1130,15 @@ u16 ApplyDamageModifiers_DamageToTarget(void)
 
 const u8 InvertedPowersOf2[8] = { 0x80, 0x40, 0x20, 0x10, 0x08, 0x04, 0x02, 0x01 };
 
-/* convert a color to its equivalent WR_* (weakness/resistance) value */
+/* convert a color to its equivalent WR_* (weakness/resistance) value.
+ * the original indexes InvertedPowersOf2 with any color, reading the ROM bytes that
+ * follow the 8-entry table for colors >= 8 (e.g. TYPE_TRAINER through HandleAIShift) */
 u8 TranslateColorToWR(u8 color)
 {
-	if (color < 8)
-		return InvertedPowersOf2[color];
-	/* the original reads past the 8-entry table into the following ROM bytes
-	 * (the code of ApplyDamageModifiers_DamageToSelf) */
-	static const u8 following_rom[] = { 0xaf, 0xea, 0xc1, 0xcc, 0x21, 0xb9, 0xcc, 0x2a };
-	return color < 16 ? following_rom[color - 8] : 0;
+	static const u8 *table;
+	if (!table)
+		table = RomPtr(0x00, RomAddr("InvertedPowersOf2"));
+	return table[color];
 }
 
 /* given a damage value at wDamage:
