@@ -63,6 +63,8 @@ static void ram_name(uint16_t a, char *buf, size_t n)
 static jmp_buf duel_jmp;
 static char fail_msg[4096];
 static int verbose, strict, human, random_decks, prizes;
+static u8 focus[NUM_CARDS + 1];    /* --focus: card ids the themed decks are built around */
+static int nfocus;
 static int continue_at = -1;          /* --continue-at: turn whose saved duel is continued */
 static u8 saved_duel[DUEL_SAVE_FILE_SIZE]; /* host->save file captured at that turn */
 static int have_saved_duel;
@@ -406,7 +408,7 @@ static u8 pre_evolution(const struct CardData *c)
 static void random_deck(u8 *out)
 {
 	int n = 0;
-	if (policy(2)) {
+	if (!nfocus && policy(2)) {
 		while (n < DECK_SIZE) {
 			u8 id = n < 10 ? random_card(is_basic) : n < 40 ? random_card(is_not_energy) : random_card(is_energy);
 			out[n++] = id;
@@ -415,7 +417,8 @@ static void random_deck(u8 *out)
 	}
 	u8 types[3];
 	for (int line = 0; line < 3; line++) {
-		const struct CardData *c = card(random_card(is_pokemon));
+		/* --focus: the first two lines end with focus cards */
+		const struct CardData *c = card(nfocus && line < 2 ? focus[policy((unsigned)nfocus)] : random_card(is_pokemon));
 		types[line] = c->Type;
 		for (u8 id = c->ID; id; ) {
 			for (int k = 0; k < 3 && n < 36; k++)
@@ -527,7 +530,7 @@ static int run_duel(int pdeck, int odeck, const u8 seed[3], int resume)
 int main(int argc, char **argv)
 {
 	if (argc < 4) {
-		fprintf(stderr, "usage: %s ROM SYM TRACE_POINTS [--decks P O] [--seeds FIRST COUNT | --rng XXYYZZ] [--human] [--random-decks] [--prizes N] [--continue-at TURN] [--strict] [--verbose] [--coverage FILE]\n",
+		fprintf(stderr, "usage: %s ROM SYM TRACE_POINTS [--decks P O] [--seeds FIRST COUNT | --rng XXYYZZ] [--human] [--random-decks] [--focus FILE] [--prizes N] [--continue-at TURN] [--strict] [--verbose] [--coverage FILE]\n",
 		        argv[0]);
 		return 1;
 	}
@@ -553,6 +556,21 @@ int main(int argc, char **argv)
 			have_rng = 1;
 		} else if (!strcmp(argv[i], "--all-pairs")) {
 			all_pairs = 1;
+		} else if (!strcmp(argv[i], "--focus") && i + 1 < argc) {
+			/* a file of card ids (decimal or 0x..), one per line: implies --random-decks */
+			FILE *f = fopen(argv[++i], "r");
+			char line[64];
+			if (!f) {
+				perror(argv[i]);
+				return 1;
+			}
+			while (fgets(line, sizeof(line), f) && nfocus < NUM_CARDS) {
+				unsigned long id = strtoul(line, NULL, 0);
+				if (id >= 1 && id <= NUM_CARDS && card((u8)id)->Type < TYPE_ENERGY)
+					focus[nfocus++] = (u8)id;
+			}
+			fclose(f);
+			random_decks = 1;
 		} else if (!strcmp(argv[i], "--continue-at") && i + 1 < argc) {
 			continue_at = atoi(argv[++i]);
 		} else if (!strcmp(argv[i], "--prizes") && i + 1 < argc) {
