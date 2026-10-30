@@ -77,9 +77,13 @@ static int name_cmp(const void *a, const void *b)
 	return strcmp(*(char *const *)a, *(char *const *)b);
 }
 
-static int is_traced(const char *fn)
+static unsigned long *hits; /* per trace point: verified hits (--coverage) */
+
+/* index of fn in names, or -1 */
+static int trace_index(const char *fn)
 {
-	return bsearch(&fn, names, (size_t)nnames, sizeof(*names), name_cmp) != NULL;
+	char **p = bsearch(&fn, names, (size_t)nnames, sizeof(*names), name_cmp);
+	return p ? (int)(p - names) : -1;
 }
 
 static void load_trace_points(const char *path)
@@ -102,6 +106,24 @@ static void load_trace_points(const char *path)
 	}
 	fclose(f);
 	qsort(names, (size_t)nnames, sizeof(*names), name_cmp);
+	hits = calloc((size_t)nnames, sizeof(*hits));
+}
+
+/* --coverage: how often each sync point was reached with identical state */
+static void write_coverage(const char *path)
+{
+	FILE *f = fopen(path, "w");
+	if (!f) {
+		perror(path);
+		return;
+	}
+	int reached = 0;
+	for (int i = 0; i < nnames; i++)
+		reached += hits[i] != 0;
+	fprintf(f, "# %d/%d trace points reached\n", reached, nnames);
+	for (int i = 0; i < nnames; i++)
+		fprintf(f, "%lu %s\n", hits[i], names[i]);
+	fclose(f);
 }
 
 /* ---------------------------------------------------------------- failure reporting */
@@ -190,7 +212,8 @@ static void print_ref_stack(void)
 
 void tcg_trace_enter(const char *fn)
 {
-	if (!is_traced(fn))
+	int ti = trace_index(fn);
+	if (ti < 0)
 		return;
 	RefEvent ev;
 	next_ref_event(&ev);
@@ -202,6 +225,7 @@ void tcg_trace_enter(const char *fn)
 		     ref_event_kind_name(ev.kind), ev.name);
 	}
 	compare_state(&ev, fn);
+	hits[ti]++;
 }
 
 void tcg_trace_rng(u8 value)
@@ -247,6 +271,8 @@ static int choose(const TcgRequest *r, const RefInput *in)
 	}
 	if (r->type == TCG_REQ_YES_NO)
 		return policy(4) != 0;
+	if (r->type == TCG_REQ_CONFIRM)
+		return policy(3) == 0 ? TCG_CANCEL : 0;
 	if (r->type == TCG_REQ_CARD_ITEM_MENU)
 		return policy(12) == 0 ? 1 : 0;
 	if (in->can_cancel && (in->num_items <= 0 || policy(10) == 0))
@@ -263,8 +289,9 @@ static int on_request(void *ctx, const TcgRequest *r)
 	(void)ctx;
 	if (r->type == TCG_REQ_ACK)
 		return 0;
-	/* AI-vs-AI duels only reach view-only card lists (the hand shown by Lass) */
-	if (!human && !(r->type == TCG_REQ_CARD_LIST && r->arg[0]))
+	/* AI-vs-AI duels only reach screens shown to the human: view-only card lists
+	 * (the hand shown by Lass) and A/B waits (the play area changed by an effect) */
+	if (!human && !(r->type == TCG_REQ_CARD_LIST && r->arg[0]) && r->type != TCG_REQ_CONFIRM)
 		fail("AI-vs-AI duel: unexpected request type %d from the port", r->type);
 	RefEvent ev;
 	next_ref_event(&ev);
@@ -274,7 +301,8 @@ static int on_request(void *ctx, const TcgRequest *r)
 		     ref_event_kind_name(ev.kind), ev.name);
 	}
 	bool peek = ev.input.type == REF_IN_PEEK && r->type == TCG_REQ_MENU && r->menu == TCG_MENU_PEEK_TARGET;
-	if (ev.input.type != r->type && !peek)
+	bool confirm = ev.input.type == REF_IN_CONFIRM && r->type == TCG_REQ_CONFIRM;
+	if (ev.input.type != r->type && !peek && !confirm)
 		fail("input type differs: port %d, original %d (%s)", r->type, ev.input.type, ev.input.routine);
 	int c = choose(r, &ev.input);
 	if (ref_answer(ref, c) < 0)
@@ -346,13 +374,13 @@ static int run_duel(int pdeck, int odeck, const u8 seed[3])
 int main(int argc, char **argv)
 {
 	if (argc < 4) {
-		fprintf(stderr, "usage: %s ROM SYM TRACE_POINTS [--decks P O] [--seeds FIRST COUNT | --rng XXYYZZ] [--human] [--strict] [--verbose]\n",
+		fprintf(stderr, "usage: %s ROM SYM TRACE_POINTS [--decks P O] [--seeds FIRST COUNT | --rng XXYYZZ] [--human] [--strict] [--verbose] [--coverage FILE]\n",
 		        argv[0]);
 		return 1;
 	}
 	int pdeck = CHARMANDER_AND_FRIENDS_DECK_ID, odeck = SQUIRTLE_AND_FRIENDS_DECK_ID;
 	unsigned first = 1, count = 1;
-	const char *screens = NULL;
+	const char *screens = NULL, *coverage = NULL;
 	int all_pairs = 0, have_rng = 0;
 	u8 rng[3] = { 0 };
 	for (int i = 4; i < argc; i++) {
@@ -377,6 +405,8 @@ int main(int argc, char **argv)
 			strict = 1;
 		} else if (!strcmp(argv[i], "--verbose")) {
 			verbose = 1;
+		} else if (!strcmp(argv[i], "--coverage") && i + 1 < argc) {
+			coverage = argv[++i];
 		} else if (!strcmp(argv[i], "--screens") && i + 1 < argc) {
 			screens = argv[++i];
 		}
@@ -395,6 +425,8 @@ int main(int argc, char **argv)
 	if (have_rng) {
 		fails = run_duel(pdeck, odeck, rng) != 0;
 		printf("%d/1 duels identical\n", 1 - fails);
+		if (coverage)
+			write_coverage(coverage);
 		return fails;
 	}
 	for (unsigned s = first; s < first + count; s++) {
@@ -410,5 +442,7 @@ int main(int argc, char **argv)
 		runs++;
 	}
 	printf("%d/%d duels identical\n", runs - fails, runs);
+	if (coverage)
+		write_coverage(coverage);
 	return fails != 0;
 }

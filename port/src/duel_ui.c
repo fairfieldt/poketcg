@@ -1048,10 +1048,13 @@ void InitAndPrintPlayAreaCardInformationAndLocation(void)
 	PrintPlayAreaCardInformationAndLocation();
 }
 
-void InitAndPrintPlayAreaCardInformationAndLocation_WithTextBox(void)
+/* returns carry if B was pressed (SetCursorParametersForTextBox_Default falls
+ * through to WaitForButtonAorB) */
+bool InitAndPrintPlayAreaCardInformationAndLocation_WithTextBox(void)
 {
 	InitAndPrintPlayAreaCardInformationAndLocation();
 	SetCursorParametersForTextBox(0, wCurPlayAreaY, SYM_CURSOR_R, SYM_SPACE);
+	return WaitForButtonAorB();
 }
 
 void SetupPlayAreaScreen(void)

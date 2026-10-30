@@ -158,7 +158,7 @@ void SetupPlayAreaScreen(void);
 u8 PrintPlayAreaCardList(void);                    /* sets wNumPlayAreaItems, returns it */
 u8 PrintPlayAreaCardList_EnableLCD(void);
 void InitAndPrintPlayAreaCardInformationAndLocation(void);
-void InitAndPrintPlayAreaCardInformationAndLocation_WithTextBox(void);
+bool InitAndPrintPlayAreaCardInformationAndLocation_WithTextBox(void); /* TCG_REQ_CONFIRM; carry if B */
 void PrintPlayAreaCardInformationAndLocation(void);
 
 /* energy discard menu (wDuelTempList) */

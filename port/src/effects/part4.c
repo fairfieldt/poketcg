@@ -2153,12 +2153,8 @@ bool DevolutionSpray_PlayerSelection(void)
 repeat_devolution:
 	/* show Play Area screen with static cursor
 	 * so that the Player either presses A to do one more devolution
-	 * or presses B to finish selection.
-	 * (InitAndPrintPlayAreaCardInformationAndLocation_WithTextBox, inlined to get its
-	 * carry: see part4_needs.h) */
-	InitAndPrintPlayAreaCardInformationAndLocation();
-	SetCursorParametersForTextBox(0, wCurPlayAreaY, SYM_CURSOR_R, SYM_SPACE);
-	if (WaitForButtonAorB())
+	 * or presses B to finish selection. */
+	if (InitAndPrintPlayAreaCardInformationAndLocation_WithTextBox())
 		goto done_selection; /* if B pressed, end selection instead */
 	/* do one more devolution */
 	GetCardOneStageBelow(&d, &e);

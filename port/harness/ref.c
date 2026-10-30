@@ -848,6 +848,7 @@ enum {
 	K_PRIZE,      /* _SelectPrizeCards: wYourOrOppPlayAreaCurPosition 0-5 over a transition table */
 	K_COLOR,      /* HandleColorChangeScreen: item i is color ShiftListItemToColor[i] */
 	K_PEEK,       /* _HandlePeekSelection: wYourOrOppPlayAreaCurPosition 0-7 over a transition table */
+	K_CONFIRM,    /* WaitForButtonAorB after SetCursorParametersForTextBox_Default: A or B */
 };
 
 typedef struct InputRoutine {
@@ -872,6 +873,7 @@ static const InputRoutine kInputRoutines[] = {
 	{ "_SelectPrizeCards", "_SelectPrizeCards.loop_handle_input", REF_IN_PRIZE, K_PRIZE, 0 },
 	{ "HandleColorChangeScreen", "HandleColorChangeScreen.loop_input", REF_IN_COLOR, K_COLOR, 1 },
 	{ "_HandlePeekSelection", "_HandlePeekSelection.loop_input_2", REF_IN_PEEK, K_PEEK, 0 },
+	{ "SetCursorParametersForTextBox_Default", "WaitForButtonAorB", REF_IN_CONFIRM, K_CONFIRM, 0 },
 };
 #define NUM_INPUT_ROUTINES ((int)(sizeof kInputRoutines / sizeof kInputRoutines[0]))
 
@@ -1042,6 +1044,8 @@ static int sess_cursor(Ref *r, const Session *s)
 {
 	int item = wr8(r, r->w_CurMenuItem);
 	switch (kInputRoutines[s->routine].kind) {
+	case K_CONFIRM:
+		return 0;
 	case K_LIST:
 		return wr8(r, r->w_ListScrollOffset) + item;
 	case K_YESNO:
@@ -1085,6 +1089,9 @@ static void sess_describe(Ref *r, Session *s, RefInput *in)
 	case K_TWO:
 		in->num_items = 2;
 		in->can_cancel = 0;
+		break;
+	case K_CONFIRM:
+		in->num_items = 1;
 		break;
 	case K_PLAYAREA:
 		in->first = wr8(r, r->w_ExcludeArenaPokemon);
@@ -1133,9 +1140,10 @@ static void sess_report(Ref *r, int si)
 	Session *s = &r->sess[si];
 	RefInput in;
 	sess_describe(r, s, &in);
-	/* the original also shows some lists to the human when the AI acts (the hand
-	 * shown by Lass): those view-only lists are input in AI-vs-AI duels too */
-	if (!r->duel.player_human && !in.view_only) {
+	/* the original also shows some screens to the human when the AI acts (the hand
+	 * shown by Lass, the play area changed by an AI's effect): those view-only lists
+	 * and A/B waits are input in AI-vs-AI duels too */
+	if (!r->duel.player_human && !in.view_only && in.type != REF_IN_CONFIRM) {
 		char st[400];
 		stack_string(r, st, sizeof st);
 		stop_duel(r, REF_EV_ERROR, "human input routine %s (from %s) reached in an AI-vs-AI duel: %s",
@@ -1219,6 +1227,8 @@ static void on_input_ready(Ref *r, int routine)
 			si = i;
 			break;
 		}
+	if (si < 0 && kInputRoutines[routine].kind == K_CONFIRM)
+		return;   /* WaitForButtonAorB of a text page (WaitForPlayerToAdvanceText): an ACK */
 	if (si < 0) {
 		/* label reached without passing the entry: start a session here */
 		if (!sess_push(r, routine, gb->sp, "?"))
@@ -1326,7 +1336,11 @@ static void on_joypad(Ref *r)
 	const Sym *w = joypad_waiter(r, &wi);
 	debug_waiter(w, w && name_in(kAckRoutines, w->name));
 	Session *s = sess_top(r);
-	if (w && name_in(kAckRoutines, w->name)) {
+	/* WaitForButtonAorB is an ACK routine, except while a confirm session polls it */
+	int confirm = s && kInputRoutines[s->routine].kind == K_CONFIRM &&
+		(s->state == S_WAITING || s->state == S_ACTIVE) &&
+		poll_frame_sp(r) == s->poll_sp;
+	if (w && name_in(kAckRoutines, w->name) && !confirm) {
 		if (!(r->last_buttons & PAD_A)) {
 			buttons = PAD_A;
 			if (r->duel.report_acks) {

@@ -81,8 +81,10 @@ enum TcgRequestType {
 	TCG_REQ_PRIZE,            /* pick one of the remaining prize cards: index in [0, 6), cursor = default */
 	TCG_REQ_COLOR,            /* pick a color (0-5 FIRE..PSYCHIC) */
 	TCG_REQ_NUMBER,           /* pick a number in [0, num_items) */
-	TCG_REQ_CONFIRM,          /* WaitForButtonAorB where A/B matters (0 = A continue, TCG_CANCEL = B stop).
-	                           * unlike TCG_REQ_ACK this changes the duel and must be sent in network play */
+	TCG_REQ_CONFIRM,          /* WaitForButtonAorB after a play area screen (0 = A continue, TCG_CANCEL = B stop).
+	                           * unlike TCG_REQ_ACK this can change the duel (Devolution Spray) and must be sent
+	                           * in network play. `duelist` can be an AI side: the original shows the human the
+	                           * play area an AI's effect changed */
 };
 
 enum TcgMenu {

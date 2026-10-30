@@ -294,6 +294,9 @@ enum RefInputType {
 	REF_IN_COLOR,            /* HandleColorChangeScreen: color 0-5 */
 	/* 11 is TCG_REQ_NUMBER in tcg.h (no original routine of its own) */
 	REF_IN_PEEK = 12,        /* harness specific: _HandlePeekSelection position cursor (Peek power) */
+	REF_IN_CONFIRM = 13,     /* harness specific: WaitForButtonAorB entered through SetCursorParametersForTextBox_Default
+	                          * (InitAndPrintPlayAreaCardInformationAndLocation_WithTextBox): 0 = A, REF_CANCEL = B.
+	                          * Other WaitForButtonAorB waits (text pages) are ACKs */
 };
 
 #define REF_CANCEL (-1)
