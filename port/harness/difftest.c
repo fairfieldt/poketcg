@@ -18,6 +18,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../src/engine.h"
+#include "../src/gen/cards.h"
 #undef GB /* card set constant; clashes with the emulator type */
 #include "ref.h"
 
@@ -61,7 +62,9 @@ static void ram_name(uint16_t a, char *buf, size_t n)
 }
 static jmp_buf duel_jmp;
 static char fail_msg[4096];
-static int verbose, strict, human;
+static int verbose, strict, human, random_decks, prizes;
+static u8 custom_opp_deck[DECK_SIZE]; /* human mode: replaces wOpponentDeck at StartDuel, like the reference */
+static int have_custom_opp_deck;
 static unsigned long events, rng_events;
 static RefEvent lookahead;
 static int have_lookahead;
@@ -215,6 +218,11 @@ void tcg_trace_enter(const char *fn)
 	int ti = trace_index(fn);
 	if (ti < 0)
 		return;
+	if (have_custom_opp_deck && !strcmp(fn, "StartDuel")) {
+		/* human mode: the reference puts the custom opponent deck in place at StartDuel */
+		memcpy(wOpponentDeck, custom_opp_deck, DECK_SIZE);
+		have_custom_opp_deck = 0;
+	}
 	RefEvent ev;
 	next_ref_event(&ev);
 	if (verbose)
@@ -318,6 +326,27 @@ static void on_event(void *ctx, const TcgEvent *ev)
 	(void)ev;
 }
 
+/* ---------------------------------------------------------------- random decks */
+
+/* --random-decks: 10 random Basic Pokemon, 30 other random Pokemon/Trainer cards and
+ * 20 random energy cards, to reach cards that no AI deck has. GAMBLER and RECYCLE are
+ * left out: their card records end past their ROM bank, and the bytes the original
+ * reads there come from VRAM (screen dependent; the port reads 0). */
+static void random_deck(u8 *out)
+{
+	int n = 0;
+	while (n < DECK_SIZE) {
+		u8 id = (u8)(1 + policy(NUM_CARDS));
+		const struct CardData *c = (const struct CardData *)gCardData[id];
+		if (id == GAMBLER || id == RECYCLE)
+			continue;
+		bool energy = c->Type >= TYPE_ENERGY && c->Type < TYPE_TRAINER;
+		bool basic = c->Type < TYPE_ENERGY && c->Stage == BASIC;
+		if (n < 10 ? basic : n < 40 ? !energy : energy)
+			out[n++] = id;
+	}
+}
+
 /* ---------------------------------------------------------------- driver */
 
 static int run_duel(int pdeck, int odeck, const u8 seed[3])
@@ -327,10 +356,17 @@ static int run_duel(int pdeck, int odeck, const u8 seed[3])
 	d.player_human = (uint8_t)human;
 	d.player_deck_id = (uint8_t)pdeck;
 	d.opp_deck_id = (uint8_t)odeck;
+	if (prizes)
+		d.prizes = (uint8_t)prizes;
 	memcpy(d.rng, seed, 3);
 	events = rng_events = 0;
 	have_lookahead = 0;
 	policy_state = (unsigned long)(seed[0] | seed[1] << 8 | seed[2] << 16) * 2654435761u + 7;
+	have_custom_opp_deck = 0;
+	if (random_decks) {
+		random_deck(d.player_deck);
+		random_deck(d.opp_deck);
+	}
 	if (ref_start_duel(ref, &d) < 0) {
 		fprintf(stderr, "ref_start_duel failed\n");
 		return -1;
@@ -354,9 +390,13 @@ static int run_duel(int pdeck, int odeck, const u8 seed[3])
 		 * (ROM deck pdeck): expand the same deck with the port's LoadDeck */
 		hWhoseTurn = PLAYER_TURN;
 		LoadDeck((u8)(pdeck + 2));
-		memcpy(gPlayerDeckCards, wPlayerDeck, DECK_SIZE);
+		memcpy(gPlayerDeckCards, d.player_deck[0] ? d.player_deck : wPlayerDeck, DECK_SIZE);
 		memcpy(gWRAM, lookahead.wram, WRAM_SIZE);
 		memcpy(gHRAM, lookahead.hram, HRAM_SIZE);
+		if (d.opp_deck[0]) {
+			memcpy(custom_opp_deck, d.opp_deck, DECK_SIZE);
+			have_custom_opp_deck = 1;
+		}
 		StartDuel_VSAIOpp();
 	} else {
 		StartDuel();
@@ -374,7 +414,7 @@ static int run_duel(int pdeck, int odeck, const u8 seed[3])
 int main(int argc, char **argv)
 {
 	if (argc < 4) {
-		fprintf(stderr, "usage: %s ROM SYM TRACE_POINTS [--decks P O] [--seeds FIRST COUNT | --rng XXYYZZ] [--human] [--strict] [--verbose] [--coverage FILE]\n",
+		fprintf(stderr, "usage: %s ROM SYM TRACE_POINTS [--decks P O] [--seeds FIRST COUNT | --rng XXYYZZ] [--human] [--random-decks] [--prizes N] [--strict] [--verbose] [--coverage FILE]\n",
 		        argv[0]);
 		return 1;
 	}
@@ -399,6 +439,10 @@ int main(int argc, char **argv)
 			have_rng = 1;
 		} else if (!strcmp(argv[i], "--all-pairs")) {
 			all_pairs = 1;
+		} else if (!strcmp(argv[i], "--prizes") && i + 1 < argc) {
+			prizes = atoi(argv[++i]);
+		} else if (!strcmp(argv[i], "--random-decks")) {
+			random_decks = 1;
 		} else if (!strcmp(argv[i], "--human")) {
 			human = 1;
 		} else if (!strcmp(argv[i], "--strict")) {
