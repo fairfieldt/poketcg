@@ -25,6 +25,7 @@ export class DuelAborted extends Error {
 
 export const TCG_PLAYER = 0xc2, TCG_OPPONENT = 0xc3, TCG_CANCEL = -1;
 export const TCG_HUMAN = 0, TCG_AI = 1;
+export const TCG_SAVE_SIZE = 1660, TCG_CONTINUE_BROKEN = -1, TCG_SAMS_PRACTICE_DECK_ID = 0;
 export const EV = { TEXT: 1, SCREEN: 2, CARD: 3, ANIM: 4, COIN: 5, DAMAGE: 6, SFX: 7, MUSIC: 8, WAIT: 9, TURN: 10, DUEL_END: 11, THINKING: 12 };
 export const SCREEN = { NONE: 0, MAIN: 1, PLAY_AREA: 2, CARD_LIST: 3, LARGE_CARD: 4, COIN_TOSS: 5, ENERGY_DISCARD: 6, EMPTY: 7, BOX_MESSAGE: 8, OTHER: 9 };
 export const REQ = { ACK: 1, DUEL_MENU: 2, CARD_LIST: 3, CARD_ITEM_MENU: 4, PLAY_AREA: 5, MENU: 6, YES_NO: 7, ENERGY_DISCARD: 8, PRIZE: 9, COLOR: 10, NUMBER: 11, CONFIRM: 12 };
@@ -191,6 +192,10 @@ export class Duel {
 					const msg = self.inst.cstr(ptr) || 'fatal error';
 					throw new TcgFatal(msg);
 				},
+				js_save(ptr, size) {
+					// TcgHost.save: the duel's save file (TCG_SAVE_SIZE bytes), each time the original writes SRAM
+					if (run && run.handlers.onSave) run.handlers.onSave(self.inst.u8.slice(ptr, ptr + size));
+				},
 				js_event(type, a0, a1, a2, a3, text, str) {
 					if (!run) return;
 					return run.call('event', () => {
@@ -222,12 +227,49 @@ export class Duel {
 	 * setup = {
 	 *   duelists: [{ kind: 'human'|'ai', deckId, cards: [60 card ids] | null, name }, {...}],
 	 *   prizes: 6, seed: 24-bit int (or rng: [rng1, rng2, counter]), music, animationsDisabled,
-	 *   receivedLegendaryCards (AI decks play like boss decks)
+	 *   receivedLegendaryCards (AI decks play like boss decks), skipDelayAllowed (sSkipDelayAllowed)
 	 * }
+	 * handlers: onEvent(ev), onRequest(req) (both may return a Promise), onSave(bytes) (TcgHost.save)
 	 * Resolves with { result: 0 (PLAYER_TURN side won) | 1, finished: wDuelFinished, turns, requests }.
 	 * Rejects with TcgFatal (engine abort, e.g. an unported effect/AI stub) or DuelAborted.
 	 */
-	async run(setup, handlers = {}) {
+	run(setup, handlers = {}) {
+		return this._start(setup, handlers, (x) => x.web_run());
+	}
+
+	/**
+	 * "Continue Duel": resumes a duel from a save given to onSave (tcg_continue_duel). setup only
+	 * gives the names and settings; decks, duelist types, turn, RNG and music come from the save.
+	 * Resolves like run(), with result = TCG_CONTINUE_BROKEN (-1) and broken = true if the save is
+	 * not valid (after the engine's "backup is broken" text).
+	 */
+	continueDuel(setup, save, handlers = {}) {
+		return this._start(setup, handlers, (x, inst) => {
+			if (!inst.saveLoaded) {
+				const n = Math.min(save.length, x.web_save_size());
+				inst.u8.set(save.subarray ? save.subarray(0, n) : save.slice(0, n), x.web_save_buffer());
+				inst.saveLoaded = true;
+				inst.saveSize = save.length;
+			}
+			return x.web_continue(inst.saveSize);
+		}).then((res) => ({ ...res, broken: res.result === TCG_CONTINUE_BROKEN }));
+	}
+
+	/* tcg_saved_duel_info: what a save holds, or null if it is not a valid save */
+	savedDuelInfo(save) {
+		const x = this.data.x, m = this.data.u8;
+		const n = Math.min(save.length, x.web_save_size());
+		m.set(save.subarray ? save.subarray(0, n) : save.slice(0, n), x.web_save_buffer());
+		const out = x.web_text_buffer();
+		if (x.web_saved_duel_info(save.length, out) !== 0) return null;
+		const b = this.data.u8.slice(out, out + 8);
+		return {
+			duelType: b[0], duelistType: [b[1], b[2]], opponentDeckId: b[3], turns: b[4], whoseTurn: b[5],
+			prizesLeft: [b[6], b[7]],
+		};
+	}
+
+	async _start(setup, handlers, entry) {
 		if (this.running) throw new Error('a duel is already running');
 		this.running = true;
 		const run = {
@@ -260,8 +302,8 @@ export class Duel {
 			return 0;
 		};
 		try {
-			this._writeSetup(inst, setup);
-			let result = x.web_run();
+			this._writeSetup(inst, setup || {});
+			let result = entry(x, inst);
 			while (run.state === ASYNC_UNWINDING) {
 				x.asyncify_stop_unwind();
 				run.state = ASYNC_NORMAL;
@@ -270,7 +312,7 @@ export class Duel {
 				if (run.aborted) throw run.aborted;
 				x.asyncify_start_rewind(inst.asyncData);
 				run.state = ASYNC_REWINDING;
-				result = x.web_run();
+				result = entry(x, inst);
 			}
 			return { result, finished: this.w('wDuelFinished'), turns: this.w('wDuelTurns'), requests: run.requests };
 		} finally {
@@ -302,21 +344,18 @@ export class Duel {
 			m.set(name.subarray(0, 31), base + 160 + i * 32);
 		}
 		m[base + 124] = setup.prizes || 6;
-		const rng = setup.rng || [setup.seed & 0xff, (setup.seed >> 8) & 0xff, (setup.seed >> 16) & 0xff];
+		const seed = setup.seed | 0;
+		const rng = setup.rng || [seed & 0xff, (seed >> 8) & 0xff, (seed >> 16) & 0xff];
 		m[base + 125] = rng[0] | 0; m[base + 126] = rng[1] | 0; m[base + 127] = rng[2] | 0;
 		m[base + 128] = setup.music | 0;
 		m[base + 129] = setup.animationsDisabled ? 1 : 0;
 		m[base + 130] = setup.receivedLegendaryCards ? 1 : 0;
+		m[base + 131] = setup.skipDelayAllowed ? 1 : 0;
 	}
 
-	/* FNV-1a hash of both duel variable blocks + RNG state: compared by online peers to detect desyncs */
+	/* tcg_state_hash: FNV-1a of the state SaveDuelData saves; online peers compare it to detect desyncs */
 	stateHash() {
-		const m = this.wram();
-		let h = 0x811c9dc5;
-		const add = (b) => { h ^= b; h = Math.imul(h, 0x01000193) >>> 0; };
-		for (let i = 0x200; i < 0x400; i++) add(m[i]); // wPlayerDuelVariables, wOpponentDuelVariables
-		for (const l of ['wRNG1', 'wRNG2', 'wRNGCounter', 'wDuelTurns', 'wWhoseTurn']) add(m[W[l] - 0xc000]);
-		return h >>> 0;
+		return this.inst.x.tcg_state_hash() >>> 0;
 	}
 }
 

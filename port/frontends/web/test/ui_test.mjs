@@ -215,6 +215,119 @@ async function hotseat(browser) {
 	await ctx.close();
 }
 
+/* play until the local duelist is at the duel menu */
+async function toDuelMenu(page, maxSteps = 400) {
+	const st = { turn: -2 };
+	for (let i = 0; i < maxSteps; i++) {
+		const s = await situation(page);
+		if (s.kind === 'req' && s.type === REQ.DUEL_MENU) return s;
+		if (s.kind === 'dialog') return s;
+		if (s.kind === 'req') await act(page, s, Object.assign(st, { energy: true, bench: true, attack: 9, menu: 9, turn: s.turn }));
+		else await page.waitForTimeout(30);
+	}
+	return null;
+}
+
+/* the debug skip-delay option, saving, Continue Duel, save file export/import */
+async function saveContinue(browser) {
+	console.log('save files / continue duel');
+	const ctx = await browser.newContext({ viewport: { width: 1100, height: 900 }, acceptDownloads: true });
+	const page = await ctx.newPage();
+	watch(page, 'save');
+	page.on('dialog', (d) => d.accept());
+	await page.goto(BASE);
+	await page.check('.skip-delay');
+	await page.click('text=2 Players (same screen)');
+	await page.click('.deck-tile >> nth=3');
+	await page.click('.deck-tile >> nth=4');
+	await page.waitForSelector('.duel .field');
+	// pass turns (no attacks, so no early knock out) until a duel menu of turn 4
+	let atMenu = null;
+	for (let i = 0; i < 12; i++) {
+		atMenu = await toDuelMenu(page);
+		if (!atMenu || atMenu.type !== REQ.DUEL_MENU || await page.evaluate(() => window.tcgApp.duel.w('wDuelTurns')) >= 3) break;
+		await page.click('.duel-menu .tm-item:has-text("Done")');
+	}
+	check(atMenu && atMenu.type === REQ.DUEL_MENU, 'at a duel menu after turn 3');
+	check(await page.evaluate(() => window.tcgApp.duel.w('wSkipDelayAllowed')) === 1, 'skip-delay option reaches the engine (wSkipDelayAllowed = 1)');
+	await page.keyboard.down('x');
+	const ff = await page.evaluate(() => document.querySelector('.duel').classList.contains('fast-forward'));
+	await page.keyboard.up('x');
+	const ff2 = await page.evaluate(() => document.querySelector('.duel').classList.contains('fast-forward'));
+	check(ff && !ff2, 'holding B fast-forwards (no pacing, no animations) while the option is on');
+	const before = await page.evaluate(() => ({ hash: window.tcgApp.duel.stateHash(), turns: window.tcgApp.duel.w('wDuelTurns'), saves: window.tcgApp.saves }));
+	check(before.saves > 0, `the duel was saved ${before.saves} times`);
+	await page.click('.duel-bar >> text=Quit');
+	const cont = await page.waitForSelector('.title .btn.continue');
+	check(/turn \d+/.test(await cont.textContent()), `title offers Continue Duel: "${(await cont.textContent()).replace(/\s+/g, ' ')}"`);
+	await page.screenshot({ path: path.join(SHOTS, 'save-1-title.png') });
+	// export / import through the File System Access API (mocked pickers) ...
+	await page.evaluate(() => {
+		window.showSaveFilePicker = async () => ({ createWritable: async () => ({ write: async (d) => { window.__exported = Array.from(d); }, close: async () => {} }) });
+		window.showOpenFilePicker = async () => [{ getFile: async () => new File([new Uint8Array(window.__exported)], 'duel.sav') }];
+	});
+	await page.click('text=Export save file');
+	await page.waitForFunction(() => window.__exported);
+	check(await page.evaluate(() => window.__exported.length) === 1660, 'export through showSaveFilePicker writes the 1660-byte save');
+	await page.click('.save-row >> text=Delete');
+	await page.waitForFunction(() => !document.querySelector('.title .btn.continue'));
+	await page.click('text=Import save file');
+	await page.waitForSelector('.title .btn.continue');
+	check(true, 'import through showOpenFilePicker restores Continue Duel');
+	// ... and without it: download link / <input type=file>
+	await page.evaluate(() => { delete window.showSaveFilePicker; delete window.showOpenFilePicker; });
+	const [download] = await Promise.all([page.waitForEvent('download'), page.click('text=Export save file')]);
+	const file = path.join(SHOTS, 'duel.sav');
+	await download.saveAs(file);
+	check(fs.statSync(file).size === 1660 && download.suggestedFilename() === 'duel.sav', 'export fallback downloads duel.sav (1660 bytes)');
+	await page.click('.save-row >> text=Delete');
+	await page.waitForFunction(() => !document.querySelector('.title .btn.continue'));
+	const [chooser] = await Promise.all([page.waitForEvent('filechooser'), page.click('text=Import save file')]);
+	await chooser.setFiles(file);
+	await page.waitForSelector('.title .btn.continue');
+	check(true, 'import fallback (<input type=file>) restores Continue Duel');
+	fs.unlinkSync(file);
+	// continue: the duel resumes at the saved duel menu with the same state
+	await page.click('.title .btn.continue');
+	await page.waitForSelector('.duel .field');
+	const resumed = await toDuelMenu(page, 50);
+	const after = await page.evaluate(() => ({ hash: window.tcgApp.duel.stateHash(), turns: window.tcgApp.duel.w('wDuelTurns') }));
+	check(resumed && resumed.type === REQ.DUEL_MENU && after.hash === before.hash && after.turns === before.turns,
+		`continued duel resumes at the same duel menu (hash ${after.hash.toString(16)} = ${before.hash.toString(16)}, turn ${after.turns + 1})`);
+	await page.screenshot({ path: path.join(SHOTS, 'save-2-continued.png') });
+	const res = await play([page], { turns: before.turns + 2 });
+	check(!res.timeout, `continued duel plays on (${JSON.stringify(res)})`);
+	await ctx.close();
+}
+
+/* the practice duel with Sam (Dr. Mason's instructions) */
+async function practice(browser) {
+	console.log('practice duel');
+	const ctx = await browser.newContext({ viewport: { width: 1100, height: 900 } });
+	const page = await ctx.newPage();
+	watch(page, 'practice');
+	await page.goto(BASE);
+	await page.click('text=Duel vs. Computer');
+	await page.click('.deck-tile >> nth=0');
+	await page.click('text=Practice duel with Sam');
+	await page.waitForSelector('.duel .field');
+	const texts = new Set();
+	const st = { turn: -2 };
+	for (let i = 0; i < 120; i++) {
+		const s = await situation(page);
+		if (s.text) texts.add(s.text.split('\n')[0]);
+		if (s.kind === 'dialog') break;
+		if (i === 30) await page.screenshot({ path: path.join(SHOTS, 'practice-1.png') });
+		if (s.kind === 'req') await act(page, s, st); else await page.waitForTimeout(30);
+	}
+	const prizes = await page.evaluate(() => window.tcgApp.duel.w('wDuelInitialPrizes'));
+	const practiceDuel = await page.evaluate(() => window.tcgApp.duel.w('wIsPracticeDuel'));
+	check(prizes === 2 && practiceDuel !== 0, `practice duel set up by the engine (2 prizes, wIsPracticeDuel = ${practiceDuel})`);
+	check([...texts].some((t) => /practice/i.test(t)), `practice texts shown, e.g. ${JSON.stringify([...texts].find((t) => /practice/i.test(t)))}`);
+	await page.screenshot({ path: path.join(SHOTS, 'practice-2.png') });
+	await ctx.close();
+}
+
 async function online(browser) {
 	console.log('online duel');
 	const hostCtx = await browser.newContext({ viewport: { width: 1000, height: 860 } });
@@ -267,6 +380,8 @@ async function online(browser) {
 	await guest.screenshot({ path: path.join(SHOTS, 'online-3-guest.png') });
 	const st = [await situation(host), await situation(guest)];
 	check(!/Desync/i.test(st[0].status + st[1].status), 'no desync reported');
+	const saved = await Promise.all([host, guest].map((p) => p.evaluate(() => localStorage.getItem('tcg.save.duel'))));
+	check(saved[0] === null && saved[1] === null, 'online duels are not saved (no Continue Duel for link duels)');
 	await hostCtx.close();
 	await guestCtx.close();
 }
@@ -422,6 +537,8 @@ try {
 	await hotseat(browser);
 	await online(browser);
 	await vsComputer(browser);
+	await saveContinue(browser);
+	await practice(browser);
 	await requestWidgets(browser);
 	await deckBuilder(browser);
 } catch (e) {

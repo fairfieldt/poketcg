@@ -47,6 +47,8 @@ export class DuelUI {
 		this.pacing = opts.pacing !== false;
 		this.remoteAckDelay = opts.remoteAckDelay ?? 1400;
 		this.skipping = false; // fast-forward (online replay): no pacing, auto ACK
+		this.skipDelay = !!opts.skipDelay; // sSkipDelayAllowed: holding B skips pacing and animations
+		this.bHeld = false;
 		this.screen = SCREEN.MAIN;
 		this.screenArg = [0, 0, 0, 0];
 		this.lastTextId = 0;
@@ -61,15 +63,31 @@ export class DuelUI {
 			if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
 			const k = keyOf(e);
 			if (!k || !this.root.isConnected) return;
+			if (k === K.B) this.setBHeld(true);
+			// a held A/B is one press (auto-repeat would answer menu after menu)
+			if (e.repeat && (k === K.A || k === K.B)) { e.preventDefault(); return; }
 			const c = this.controls[this.controls.length - 1];
 			if (c && c.key && c.key(k) !== false) e.preventDefault();
 		};
+		this.onKeyUp = (e) => { if (keyOf(e) === K.B) this.setBHeld(false); };
+		this.onBlur = () => this.setBHeld(false);
 		document.addEventListener('keydown', this.onKeyDown);
+		document.addEventListener('keyup', this.onKeyUp);
+		window.addEventListener('blur', this.onBlur);
 	}
 
 	destroy() {
 		document.removeEventListener('keydown', this.onKeyDown);
+		document.removeEventListener('keyup', this.onKeyUp);
+		window.removeEventListener('blur', this.onBlur);
 		this.controls = [];
+	}
+
+	/* B held with the skip-delay option on: no pacing waits, no animations (like the original's
+	 * debug option, which cuts the draw/shuffle/prize animations and delays while B is held) */
+	setBHeld(held) {
+		this.bHeld = held;
+		this.root.classList.toggle('fast-forward', this.skipDelay && held);
 	}
 
 	// ---------------------------------------------------------------- layout
@@ -553,7 +571,7 @@ export class DuelUI {
 
 	// ---------------------------------------------------------------- events
 	pace(ms) {
-		if (!this.pacing || this.skipping || ms <= 0) return undefined;
+		if (!this.pacing || this.skipping || ms <= 0 || (this.skipDelay && this.bHeld)) return undefined;
 		return delay(ms);
 	}
 
@@ -612,8 +630,8 @@ export class DuelUI {
 		this.screenArg = a;
 		if (screen !== SCREEN.BOX_MESSAGE) this.hideBanner();
 		switch (screen) {
-		case SCREEN.MAIN: // main scene drawn (or its HUDs refreshed): back from any other screen
-			this.hideOverlay();
+		case SCREEN.MAIN: // main scene drawn: back from any other screen (arg[2] = 1: HUDs redrawn only)
+			if (a[2] !== 1) this.hideOverlay();
 			break;
 		case SCREEN.EMPTY:
 			if (this.overlayKind !== 'coin') this.hideOverlay();
@@ -956,7 +974,8 @@ export class DuelUI {
 			return this.colorMenu(req, COLOR_MENU_ORDER, (i) => i, req.cursor);
 		}
 		if (req.menu === MENU.PLAY_AREA || (req.menu === MENU.GENERIC && this.screen === SCREEN.PLAY_AREA)) {
-			const exclude = this.playAreaExclude ? 1 : 0;
+			// TCG_MENU_PLAY_AREA: item i is location arg[0] + i (wExcludeArenaPokemon)
+			const exclude = req.menu === MENU.PLAY_AREA ? req.arg[0] : (this.playAreaExclude ? 1 : 0);
 			const pkmnPower = this.pkmnPowerScreen;
 			return this.ask((done) => {
 				const ctl = this.playAreaView({

@@ -26,6 +26,7 @@ IMPORT("js_request") int js_request(int type, int duelist, int shown, int menu, 
                                     int text, int text2, const char *str, const uint8_t *items,
                                     int a0, int a1, int a2, int a3);
 IMPORT("js_fatal") void js_fatal(const char *msg);
+IMPORT("js_save") void js_save(const uint8_t *data, uint32_t size);
 
 void tcg_fatal(const char *msg)
 {
@@ -46,14 +47,22 @@ static int host_request(void *ctx, const TcgRequest *r)
 	                  r->str, r->items, r->arg[0], r->arg[1], r->arg[2], r->arg[3]);
 }
 
+static void host_save(void *ctx, const uint8_t *data, uint32_t size)
+{
+	(void)ctx;
+	js_save(data, size);
+}
+
+static const TcgHost host = { host_event, host_request, host_save, 0 };
+
 /*
- * Duel setup buffer, filled by JavaScript before web_run():
+ * Duel setup buffer, filled by JavaScript before web_run() / web_continue():
  *   [0]       kind of duelist 0 (TCG_HUMAN / TCG_AI)
  *   [1]       deck_id of duelist 0
  *   [2..61]   60 card ids of duelist 0 (all 0 = deck_id's list)
  *   [62..123] the same for duelist 1
  *   [124]     prizes  [125..127] rng  [128] music  [129] animations_disabled
- *   [130]     received_legendary_cards
+ *   [130]     received_legendary_cards  [131] skip_delay_allowed
  *   [160..191] name of duelist 0 (NUL terminated)  [192..223] name of duelist 1
  */
 #define SETUP_DUELIST 62
@@ -64,10 +73,10 @@ static uint8_t setup_buf[256];
 
 EXPORT("web_setup_buffer") uint8_t *web_setup_buffer(void) { return setup_buf; }
 
-EXPORT("web_run") int web_run(void)
+static TcgDuelSetup setup;
+
+static void build_setup(void)
 {
-	static TcgDuelSetup setup;
-	static const TcgHost host = { host_event, host_request, 0, 0 };
 	for (int i = 0; i < 2; i++) {
 		const uint8_t *d = &setup_buf[i * SETUP_DUELIST];
 		setup.duelist[i].kind = d[0];
@@ -85,9 +94,49 @@ EXPORT("web_run") int web_run(void)
 	setup.music = setup_buf[SETUP_MISC + 4];
 	setup.animations_disabled = setup_buf[SETUP_MISC + 5];
 	setup.received_legendary_cards = setup_buf[SETUP_MISC + 6];
+	setup.skip_delay_allowed = setup_buf[SETUP_MISC + 7];
 	tcg_set_host(&host);
+}
+
+/* (with Asyncify, JavaScript calls the same entry point again to rewind a suspended duel:
+ * the rewind skips the code before the suspended call) */
+EXPORT("web_run") int web_run(void)
+{
+	build_setup();
 	return tcg_run_duel(&setup);
 }
+
+/* save image for web_continue / web_saved_duel_info, filled by JavaScript */
+static uint8_t save_buf[TCG_SAVE_SIZE];
+EXPORT("web_save_buffer") uint8_t *web_save_buffer(void) { return save_buf; }
+EXPORT("web_save_size") int web_save_size(void) { return TCG_SAVE_SIZE; }
+
+/* tcg_continue_duel with the setup buffer's names and settings and the save buffer */
+EXPORT("web_continue") int web_continue(int size)
+{
+	build_setup();
+	return tcg_continue_duel(&setup, save_buf, (uint32_t)size);
+}
+
+/* tcg_saved_duel_info of the save buffer into out[8]: duel_type, duelist_type[2],
+ * opponent_deck_id, turns, whose_turn, prizes_left[2]. returns 0 or -1 */
+EXPORT("web_saved_duel_info") int web_saved_duel_info(int size, uint8_t *out)
+{
+	TcgSavedDuel info;
+	if (tcg_saved_duel_info(save_buf, (uint32_t)size, &info))
+		return -1;
+	out[0] = info.duel_type;
+	out[1] = info.duelist_type[0];
+	out[2] = info.duelist_type[1];
+	out[3] = info.opponent_deck_id;
+	out[4] = info.turns;
+	out[5] = info.whose_turn;
+	out[6] = info.prizes_left[0];
+	out[7] = info.prizes_left[1];
+	return 0;
+}
+
+EXPORT("tcg_state_hash") uint32_t web_state_hash(void) { return tcg_state_hash(); }
 
 /* Asyncify data buffer: [0] current position, [4] end, then the saved stack. */
 #define ASYNCIFY_DATA_SIZE (512 * 1024)

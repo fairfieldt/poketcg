@@ -1,14 +1,21 @@
 // App controller: title menu, deck/opponent selection, duels (vs AI, hot-seat, online), deck builder.
-import { Engine, TcgFatal, DuelAborted, TCG_PLAYER, TCG_OPPONENT, C } from './engine.js';
+import { Engine, TcgFatal, DuelAborted, TCG_PLAYER, TCG_OPPONENT, TCG_SAMS_PRACTICE_DECK_ID, C, T } from './engine.js';
 import { DuelUI, keyOf, K } from './duel_ui.js';
 import { DeckBuilder } from './deckbuilder.js';
 import { allDecks, preconstructedDecks, validateDeck, deckColors } from './data.js';
 import { RelayClient, relayUrl, OnlineDuel, saveSession, loadSession, clearSession } from './net.js';
 import { el, clear, art, esym } from './gfx.js';
+import {
+	SAVE_STORE_DUEL, saveStoreOpen, saveStoreRead, saveStoreWrite, saveStoreRemove, saveStoreReadJSON, saveStoreWriteJSON,
+	exportFile, importFile, hasFileSystemAccess,
+} from './save_store.js';
+import { NPC_DECKS } from './gen/assets.js';
 
 const params = new URLSearchParams(location.search);
 const FAST = params.has('fast');           // tests: no pacing delays
 const NAME_KEY = 'tcg.playerName';
+const SKIP_DELAY_KEY = 'tcg.skipDelayAllowed';
+const SAVE_META = 'duel-meta';          // who played the saved duel (names, kinds, mode), JSON
 
 const app = {
 	duel: null,
@@ -28,6 +35,46 @@ function setPlayerName(n) {
 }
 
 function randomSeed() { return (Math.random() * 0x1000000) >>> 0; }
+
+/* the original's debug option sSkipDelayAllowed (TcgDuelSetup.skip_delay_allowed) */
+function skipDelayAllowed() {
+	try { return localStorage.getItem(SKIP_DELAY_KEY) === '1'; } catch { return false; }
+}
+function setSkipDelayAllowed(on) {
+	try { localStorage.setItem(SKIP_DELAY_KEY, on ? '1' : '0'); } catch { /* ignore */ }
+}
+
+// ---------------------------------------------------------------- the saved duel ("Continue Duel")
+/* the saved duel and what we know about it, or null (online/link saves are never offered) */
+function savedDuel() {
+	const data = saveStoreRead(SAVE_STORE_DUEL);
+	if (!data) return null;
+	const info = app.duel.savedDuelInfo(data);
+	if (!info) return { data, info: null, meta: null };
+	if (info.duelType === C.DUELTYPE_LINK) return null;
+	let meta = saveStoreReadJSON(SAVE_META);
+	const kinds = info.duelistType.map((t) => (t & C.DUELIST_TYPE_AI_OPP ? 'ai' : 'human'));
+	if (!meta || !Array.isArray(meta.kinds) || meta.kinds.join() !== kinds.join()) {
+		// no side data (e.g. an imported file): derive it from the save
+		const aiName = (t) => {
+			const deck = t & 0x7f, npc = NPC_DECKS[deck];
+			return npc ? app.duel.text(T[npc.name]) : 'OPPONENT';
+		};
+		const hotseat = kinds[0] === 'human' && kinds[1] === 'human';
+		meta = {
+			mode: hotseat ? 'hotseat' : 'ai',
+			kinds,
+			names: info.duelistType.map((t, i) => (t & C.DUELIST_TYPE_AI_OPP ? aiName(t) : hotseat ? `P${i + 1}` : playerName())),
+			title: 'Saved duel',
+		};
+	}
+	return { data, info, meta };
+}
+
+function clearSavedDuel() {
+	saveStoreRemove(SAVE_STORE_DUEL);
+	saveStoreRemove(SAVE_META);
+}
 
 function toast(msg, ms = 3200) {
 	let t = document.querySelector('.toast');
@@ -103,12 +150,29 @@ function showTitle() {
 	const buttons = [];
 	const sess = loadSession();
 	if (sess && sess.room) buttons.push(btn(`Rejoin online duel (room ${sess.room})`, () => rejoinOnline(sess)));
+	const saved = savedDuel();
+	if (saved && saved.info) {
+		const i = saved.info, m = saved.meta;
+		const b = btn('Continue Duel', () => continueSavedDuel());
+		b.classList.add('continue');
+		b.appendChild(el('div', 'btn-sub', `${m.names[0]} vs. ${m.names[1]} · turn ${i.turns + 1} · prizes left ${i.prizesLeft[0]}/${i.prizesLeft[1]}`));
+		buttons.push(b);
+	}
 	buttons.push(btn('Duel vs. Computer', () => chooseDeck('Choose your deck', (deck) => chooseOpponent(deck), showTitle)));
 	buttons.push(btn('2 Players (same screen)', () => chooseDeck('Player 1: choose a deck', (d1) =>
 		chooseDeck('Player 2: choose a deck', (d2) => startLocalDuel('hotseat', d1, d2), showTitle), showTitle)));
 	buttons.push(btn('Online duel', () => chooseDeck('Choose your deck', (deck) => onlineLobby(deck), showTitle)));
 	buttons.push(btn('Deck builder', () => showDeckBuilder()));
 	s.appendChild(menu);
+	s.appendChild(saveFileRow(saved));
+	const opts = el('label', 'option-row');
+	const skip = el('input');
+	skip.type = 'checkbox';
+	skip.className = 'skip-delay';
+	skip.checked = skipDelayAllowed();
+	skip.addEventListener('change', () => setSkipDelayAllowed(skip.checked));
+	opts.append(skip, document.createTextNode(' Debug option: skip delays while B (X / Esc) is held'));
+	s.appendChild(opts);
 	const info = el('div', 'build-info');
 	if (app.info) {
 		const effects = app.info.effects.length ? `${app.info.effects.length} effect file(s)` : 'effect stubs';
@@ -118,6 +182,33 @@ function showTitle() {
 	s.appendChild(info);
 	s.appendChild(el('div', 'help', 'Keys: arrows move · Z / Enter = A · X / Esc = B · C = card details. Mouse and touch work too.'));
 	menuKeys(buttons, null);
+}
+
+/* save file management: export / import (File System Access API or download / file input), delete */
+function saveFileRow(saved) {
+	const row = el('div', 'save-row');
+	row.appendChild(el('span', 'save-label', saved ? (saved.info ? 'Saved duel:' : 'Saved duel (broken):') : 'No saved duel.'));
+	const mk = (label, fn) => { const b = el('button', 'btn small', label); b.addEventListener('click', fn); row.appendChild(b); return b; };
+	if (saved) {
+		mk('Export save file', async () => {
+			try { if (await exportFile(saved.data, 'duel.sav')) toast(hasFileSystemAccess() ? 'Save file written.' : 'Save file downloaded.'); }
+			catch (e) { toast(`Could not export: ${e.message}`); }
+		});
+	}
+	mk('Import save file', async () => {
+		let data;
+		try { data = await importFile(); } catch (e) { toast(`Could not read the file: ${e.message}`); return; }
+		if (!data) return;
+		const info = app.duel.savedDuelInfo(data);
+		if (!info) { toast('This is not a valid duel save file.'); return; }
+		if (info.duelType === C.DUELTYPE_LINK) { toast('Link duels cannot be continued.'); return; }
+		if (!saveStoreWrite(SAVE_STORE_DUEL, data)) { toast('Could not store the save file.'); return; }
+		saveStoreRemove(SAVE_META);
+		toast('Save file imported: choose Continue Duel.');
+		showTitle();
+	});
+	if (saved) mk('Delete', () => { if (confirm('Delete the saved duel?')) { clearSavedDuel(); showTitle(); } });
+	return row;
 }
 
 // ---------------------------------------------------------------- deck & opponent selection
@@ -184,6 +275,7 @@ function chooseOpponent(deck) {
 		other.appendChild(b);
 		buttons.push(b);
 	};
+	mk('Practice duel with Sam', 'The tutorial duel: Dr. Mason explains each step (you play the practice deck)', () => startPracticeDuel());
 	mk('Online opponent', 'Create or join a room on this server', () => onlineLobby(deck));
 	mk('Second player (same screen)', 'Hot-seat: pick the second deck', () => chooseDeck('Player 2: choose a deck', (d2) => startLocalDuel('hotseat', deck, d2), showTitle));
 	s.appendChild(other);
@@ -220,18 +312,67 @@ function startLocalDuel(mode, deck1, deck2, seed = randomSeed()) {
 			{ kind: 'human', cards: deck1.cards, name: names[0] },
 			mode === 'ai' ? { kind: 'ai', deckId: deck2.deckId, name: names[1] } : { kind: 'human', cards: deck2.cards, name: names[1] },
 		],
-		prizes: 6, seed, music: mode === 'ai' ? deck2.theme : 0,
+		prizes: 6, seed, music: mode === 'ai' ? deck2.theme : 0, skipDelayAllowed: skipDelayAllowed(),
 	};
 	const title = mode === 'ai' ? `${me} vs. ${names[1]} (${deck2.name})` : `${deck1.name} vs. ${deck2.name}`;
-	const root = duelScreen(title, () => { if (confirm('Quit this duel?')) { app.duel.abort('quit'); showTitle(); } });
-	const ui = new DuelUI(root, app.duel, { mode, localSide: TCG_PLAYER, pacing: !FAST });
+	playLocalDuel({ mode, setup, names, title, rematch: () => startLocalDuel(mode, deck1, deck2) });
+}
+
+/* the practice duel with Sam: the engine plays it with the practice decks, 2 prizes */
+function startPracticeDuel() {
+	const names = [playerName(), app.duel.text(T.SamNPCName) || 'SAM'];
+	const setup = {
+		duelists: [{ kind: 'human', name: names[0] }, { kind: 'ai', deckId: TCG_SAMS_PRACTICE_DECK_ID, name: names[1] }],
+		prizes: 2, seed: randomSeed(), music: C.MUSIC_DUEL_THEME_1, skipDelayAllowed: skipDelayAllowed(),
+	};
+	playLocalDuel({ mode: 'ai', setup, names, title: `Practice duel with ${names[1]}`, rematch: startPracticeDuel });
+}
+
+/* a hot-seat or vs-AI duel, saved like the original saves it (Continue Duel); `save` = resume it */
+function playLocalDuel({ mode, setup, names, title, rematch, save = null, info = null }) {
+	const root = duelScreen(title, () => {
+		if (!confirm('Quit this duel? You can continue it later from the title screen.')) return;
+		app.duel.abort('quit');
+		showTitle();
+	});
+	const ui = new DuelUI(root, app.duel, { mode, localSide: TCG_PLAYER, pacing: !FAST, skipDelay: !!setup.skipDelayAllowed });
 	ui.names = names;
 	app.ui = ui;
 	app.online = null;
-	runDuel(ui, setup, { onEvent: (ev) => ui.onEvent(ev), onRequest: (req) => ui.onRequest(req) }, {
-		rematch: () => startLocalDuel(mode, deck1, deck2),
-		describe: (res) => describeResult(mode, res, names),
+	if (info) { // resuming mid-turn: no TCG_EV_TURN until the next turn
+		ui.turnHolder = info.whoseTurn;
+		ui.turnNumber = info.turns;
+		if (mode === 'hotseat') ui.perspective = info.whoseTurn;
+		ui.render();
+	}
+	if (!save) {
+		clearSavedDuel(); // a new duel replaces the saved one
+		saveStoreWriteJSON(SAVE_META, { mode, names, kinds: setup.duelists.map((d) => d.kind), title });
+	}
+	app.saves = 0;
+	const handlers = {
+		onEvent: (ev) => ui.onEvent(ev),
+		onRequest: (req) => ui.onRequest(req),
+		onSave: (data) => { app.saves++; saveStoreWrite(SAVE_STORE_DUEL, data); },
+	};
+	runDuel(ui, setup, handlers, {
+		rematch,
+		describe: (res) => (res.broken ? 'The saved duel could not be continued.' : describeResult(mode, res, names)),
+		onEnd: (returned) => { if (returned) clearSavedDuel(); }, // the original clears the saved duel once it returns
+		start: save ? () => app.duel.continueDuel(setup, save, handlers) : null,
 	});
+}
+
+/* "Continue Duel": names and kinds come from the side data kept with the save */
+function continueSavedDuel() {
+	const saved = savedDuel();
+	if (!saved || !saved.info) { toast('There is no saved duel to continue.'); showTitle(); return; }
+	const { data, info, meta } = saved;
+	const setup = {
+		duelists: meta.kinds.map((kind, i) => ({ kind, name: meta.names[i] })),
+		skipDelayAllowed: skipDelayAllowed(),
+	};
+	playLocalDuel({ mode: meta.mode, setup, names: meta.names, title: `${meta.title || 'Saved duel'} (continued)`, rematch: null, save: data, info });
 }
 
 function describeResult(mode, res, names, localSide = TCG_PLAYER) {
@@ -242,13 +383,13 @@ function describeResult(mode, res, names, localSide = TCG_PLAYER) {
 	return winner === localIndex ? 'You won the duel!' : `${names[winner]} won the duel.`;
 }
 
-async function runDuel(ui, setup, handlers, { rematch, describe, onEnd }) {
+async function runDuel(ui, setup, handlers, { rematch, describe, onEnd, start }) {
 	try {
-		const res = await app.duel.run(setup, handlers);
-		if (onEnd) onEnd();
-		resultDialog(ui, describe(res), `${res.turns} turns`, rematch);
+		const res = await (start ? start() : app.duel.run(setup, handlers));
+		if (onEnd) onEnd(true);
+		resultDialog(ui, describe(res), res.broken ? '' : `${res.turns} turns`, rematch);
 	} catch (e) {
-		if (onEnd) onEnd();
+		if (onEnd) onEnd(false);
 		if (e instanceof DuelAborted) return;
 		if (e instanceof TcgFatal) {
 			resultDialog(ui, 'The duel stopped', `The engine reached a part of the original game that is not ported to C yet:\n${e.message}`, rematch, 'fatal');
@@ -328,7 +469,7 @@ function onlineLobby(deck) {
 				{ kind: 'human', cards: deck.cards, name },
 				{ kind: 'human', cards: m.deck.cards, name: m.name },
 			],
-			prizes: 6, seed: randomSeed(),
+			prizes: 6, seed: randomSeed(), skipDelayAllowed: skipDelayAllowed(),
 		};
 		client.send({ t: 'setup', setup });
 		startOnline({ client, setup, role: 'host', peerName: m.name, session: sess, log: [] });
@@ -389,7 +530,7 @@ function startOnline({ client, setup, role, peerName, session, log }) {
 		app.duel.abort('left');
 		showTitle();
 	});
-	const ui = new DuelUI(root, app.duel, { mode: 'online', localSide, pacing: !FAST, remoteAckDelay: FAST ? 0 : 1400 });
+	const ui = new DuelUI(root, app.duel, { mode: 'online', localSide, pacing: !FAST, remoteAckDelay: FAST ? 0 : 1400, skipDelay: !!setup.skipDelayAllowed });
 	ui.names = names;
 	app.ui = ui;
 	const online = new OnlineDuel({
@@ -457,6 +598,7 @@ function showDeckBuilder() {
 // ---------------------------------------------------------------- boot
 async function boot() {
 	setScale();
+	saveStoreOpen('tcg.save.');
 	window.addEventListener('resize', setScale);
 	try {
 		app.duel = await Engine.load(new URL('../tcg.wasm', import.meta.url));
