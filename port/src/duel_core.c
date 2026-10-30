@@ -69,6 +69,7 @@ void SerialRecv8Bytes(void)
  * loads both player's decks and sets up the variables and resources required to begin a duel. */
 void StartDuel_VSAIOpp(void)
 {
+	TRACE_FN();
 	hWhoseTurn = PLAYER_TURN;
 	wPlayerDuelistType = DUELIST_TYPE_PLAYER;
 	wOpponentDeckID = wNPCDuelDeckID;

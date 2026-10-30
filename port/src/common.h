@@ -124,9 +124,12 @@ static inline u8 *NonTurnDuelistVars(void)
  */
 #ifdef TCG_TRACE
 void tcg_trace_enter(const char *fn);
+void tcg_trace_rng(u8 value);
 #define TRACE_FN() tcg_trace_enter(__func__)
+#define TRACE_RNG(v) tcg_trace_rng(v)    /* every UpdateRNGSources result */
 #else
 #define TRACE_FN() ((void)0)
+#define TRACE_RNG(v) ((void)0)
 #endif
 
 /* fatal error in the engine (unreachable code in the original, invalid data, ...) */
