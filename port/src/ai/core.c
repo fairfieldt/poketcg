@@ -1075,8 +1075,8 @@ bool TrySetUpBossStartingPlayArea(void)
  * unreferenced */
 bool Func_1585b(const u8 *hl, u8 *a)
 {
-	TRACE_FN();
 	for (;;) {
+		TRACE_FN(); /* (each iteration jumps back to Func_1585b in the original) */
 		u8 x = *hl++;
 		if (x == 0) {
 			/* .no_carry */

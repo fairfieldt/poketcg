@@ -1981,8 +1981,8 @@ static bool HandleProphecyScreen(void);
 
 bool Prophecy_PlayerSelectEffect(void)
 {
+start: /* (.start is the routine's entry in the original) */
 	TRACE_FN();
-start:
 	DrawWholeScreenTextBox(ProcedureForProphecyText);
 select_deck:
 	DrawDuelMainScene();

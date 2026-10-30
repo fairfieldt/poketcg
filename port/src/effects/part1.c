@@ -2303,9 +2303,9 @@ static bool Shift_PlayerSelectEffect_CheckColorInPlayArea(void)
 
 bool Shift_PlayerSelectEffect(void)
 {
-	TRACE_FN();
 	for (;;) {
-		/* .loop */
+		/* .loop (the routine's entry in the original) */
+		TRACE_FN();
 		u8 a;
 		bool cancelled = HandleColorChangeScreen(hTemp_ffa0 | 0x80, ChoosePokemonWishToColorChangeText, &a);
 		hAIPkmnPowerEffectParam = a;
