@@ -174,21 +174,46 @@ static const u8 *ref_byte_ptr(const RefEvent *ev, u16 addr)
 
 static void compare_state(const RefEvent *ev, const char *where)
 {
-	char buf[2048];
-	int n = 0, bad = 0;
+	char buf[4096];
+	int n = 0, bad = 0, listed = 0;
 	buf[0] = 0;
 	for (unsigned r = 0; r < sizeof(ranges) / sizeof(*ranges); r++) {
 		if (ranges[r].strict_only && !strict)
 			continue;
+		int in_range = 0;
 		for (unsigned a = ranges[r].start; a <= ranges[r].end; a++) {
 			u8 p = *gbptr((u16)a), o = *ref_byte_ptr(ev, (u16)a);
 			if (p == o)
 				continue;
-			if (bad++ < 24 && n < (int)sizeof(buf) - 128) {
+			bad++;
+			/* the first few differences of each range */
+			if (in_range++ < 8 && listed++ < 40 && n < (int)sizeof(buf) - 128) {
 				char name[96];
 				ram_name((uint16_t)a, name, sizeof(name));
 				n += snprintf(buf + n, sizeof(buf) - (size_t)n, "    %04x %-40s port %02x original %02x\n",
 				              a, name, p, o);
+			}
+		}
+		if (in_range > 8 && n < (int)sizeof(buf) - 128)
+			n += snprintf(buf + n, sizeof(buf) - (size_t)n, "    ... %d bytes differ in %s\n", in_range,
+			              ranges[r].what);
+	}
+	if (bad && getenv("DIFFTEST_DUMP")) {
+		/* debugging aid: both sides of every range that differs */
+		for (unsigned r = 0; r < sizeof(ranges) / sizeof(*ranges); r++) {
+			if (ranges[r].strict_only && !strict)
+				continue;
+			int differs = 0;
+			for (unsigned a = ranges[r].start; a <= ranges[r].end; a++)
+				differs |= *gbptr((u16)a) != *ref_byte_ptr(ev, (u16)a);
+			if (!differs)
+				continue;
+			for (int side = 0; side < 2; side++) {
+				fprintf(stderr, "%s %s:", side ? "original" : "port    ", ranges[r].what);
+				for (unsigned a = ranges[r].start; a <= ranges[r].end; a++)
+					fprintf(stderr, "%s%02x", (a - ranges[r].start) % 32 ? " " : "\n  ",
+					        side ? *ref_byte_ptr(ev, (u16)a) : *gbptr((u16)a));
+				fprintf(stderr, "\n");
 			}
 		}
 	}
@@ -385,7 +410,11 @@ static int run_duel(int pdeck, int odeck, const u8 seed[3], int resume)
 	have_custom_opp_deck = 0;
 	if (random_decks) {
 		random_deck(d.player_deck);
-		random_deck(d.opp_deck);
+		/* Sam's AI plays scripted turns made for his deck (both of his duels load
+		 * SAMS_PRACTICE_DECK): with other cards both engines run into impossible states
+		 * (hand and play area counts of $ff and more) and out-of-range memory */
+		if (odeck != SAMS_PRACTICE_DECK_ID && odeck != SAMS_NORMAL_DECK_ID)
+			random_deck(d.opp_deck);
 	}
 	if (ref_start_duel(ref, &d) < 0) {
 		fprintf(stderr, "ref_start_duel failed\n");
