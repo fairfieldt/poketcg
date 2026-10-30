@@ -241,6 +241,11 @@ def gen_effect_commands(rom):
         for addr, name, cmds in lists:
             f.write(f'\t{{ 0x{addr:04x}, "{name}", {name} }},\n')
         f.write('};\n')
+    # weak fallbacks so the engine links while effect functions are being ported
+    with open(os.path.join(GEN, 'effect_stubs.c'), 'w') as f:
+        f.write(HDR + '#include "effect_commands.h"\n\nvoid tcg_fatal(const char *msg);\n\n')
+        f.write('#define STUB(name) __attribute__((weak)) bool name(void) { tcg_fatal("effect function not ported: " #name); return false; }\n')
+        f.write('EFFECT_FUNCTION_LIST(STUB)\n')
     print(f'{len(lists)} effect command lists, {len(funcs)} effect functions')
 
 # ---------------------------------------------------------------- ROM data blobs

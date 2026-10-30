@@ -4,9 +4,210 @@
 
 /* 01:6db9 ConvertSpecialTrainerCardToPokemon.trainer_to_pkmn_data */
 static const u8 blob_ConvertSpecialTrainerCardToPokemon_trainer_to_pkmn_data[] = {0x0a, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x30, 0x00, 0x41, 0x00, 0x00, 0x00, 0x00, 0x04, 0x35, 0x4e, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x64, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00};
+/* 05:4a15 AIActionTable_LegendaryMoltres.list_arena */
+static const u8 blob_AIActionTable_LegendaryMoltres_list_arena[] = {0x3c, 0x36, 0x33, 0x3b, 0x3f, 0x40, 0x00};
+/* 05:4a1c AIActionTable_LegendaryMoltres.list_bench */
+static const u8 blob_AIActionTable_LegendaryMoltres_list_bench[] = {0x3f, 0x33, 0x36, 0x3c, 0x3b, 0x00};
+/* 05:4a22 AIActionTable_LegendaryMoltres.list_play_hand */
+static const u8 blob_AIActionTable_LegendaryMoltres_list_play_hand[] = {0x40, 0x3f, 0x33, 0x36, 0x3c, 0x3b, 0x00};
+/* 05:4a29 AIActionTable_LegendaryMoltres.list_retreat */
+static const u8 blob_AIActionTable_LegendaryMoltres_list_retreat[] = {0x36, 0x7b, 0x33, 0x7b, 0x00};
+/* 05:4a2e AIActionTable_LegendaryMoltres.list_energy */
+static const u8 blob_AIActionTable_LegendaryMoltres_list_energy[] = {0x33, 0x03, 0x80, 0x35, 0x03, 0x81, 0x36, 0x03, 0x81, 0x38, 0x04, 0x81, 0x3b, 0x04, 0x7f, 0x3c, 0x01, 0x7f, 0x40, 0x03, 0x82, 0x3f, 0x04, 0x82, 0x00};
+/* 05:4a47 AIActionTable_LegendaryMoltres.list_prize */
+static const u8 blob_AIActionTable_LegendaryMoltres_list_prize[] = {0xd0, 0x40, 0x00};
+/* 05:4b3c AIActionTable_LegendaryZapdos.list_arena */
+static const u8 blob_AIActionTable_LegendaryZapdos_list_arena[] = {0x71, 0x6d, 0xbc, 0x74, 0x75, 0x76, 0x00};
+/* 05:4b43 AIActionTable_LegendaryZapdos.list_bench */
+static const u8 blob_AIActionTable_LegendaryZapdos_list_bench[] = {0x75, 0x74, 0xbc, 0x6d, 0x71, 0x00};
+/* 05:4b50 AIActionTable_LegendaryZapdos.list_energy */
+static const u8 blob_AIActionTable_LegendaryZapdos_list_energy[] = {0x6d, 0x01, 0x7f, 0x6e, 0x03, 0x80, 0x71, 0x02, 0x7f, 0x73, 0x03, 0x81, 0x74, 0x04, 0x82, 0x75, 0x04, 0x82, 0x76, 0x03, 0x81, 0xbc, 0x03, 0x80, 0x00};
+/* 05:4b69 AIActionTable_LegendaryZapdos.list_prize */
+static const u8 blob_AIActionTable_LegendaryZapdos_list_prize[] = {0xe3, 0x76, 0x00};
+/* 05:4c38 AIActionTable_LegendaryArticuno.list_arena */
+static const u8 blob_AIActionTable_LegendaryArticuno_list_arena[] = {0xb8, 0x59, 0xbb, 0x4b, 0x5e, 0x5f, 0x00};
+/* 05:4c3f AIActionTable_LegendaryArticuno.list_bench */
+static const u8 blob_AIActionTable_LegendaryArticuno_list_bench[] = {0x5e, 0x4b, 0x59, 0xb8, 0xbb, 0x00};
+/* 05:4c4a AIActionTable_LegendaryArticuno.list_energy */
+static const u8 blob_AIActionTable_LegendaryArticuno_list_energy[] = {0x4b, 0x03, 0x81, 0x4c, 0x04, 0x80, 0x59, 0x03, 0x80, 0x5e, 0x04, 0x81, 0x5f, 0x03, 0x80, 0xb8, 0x00, 0x78, 0xbb, 0x03, 0x80, 0x00};
+/* 05:4c60 AIActionTable_LegendaryArticuno.list_prize */
+static const u8 blob_AIActionTable_LegendaryArticuno_list_prize[] = {0xe3, 0x5f, 0x00};
+/* 05:4d8d AIActionTable_LegendaryDragonite.list_arena */
+static const u8 blob_AIActionTable_LegendaryDragonite_list_arena[] = {0xb9, 0x59, 0x30, 0xbf, 0x57, 0x00};
+/* 05:4d93 AIActionTable_LegendaryDragonite.list_bench */
+static const u8 blob_AIActionTable_LegendaryDragonite_list_bench[] = {0x30, 0x57, 0xbf, 0x59, 0xb9, 0x00};
+/* 05:4d9e AIActionTable_LegendaryDragonite.list_energy */
+static const u8 blob_AIActionTable_LegendaryDragonite_list_energy[] = {0x30, 0x03, 0x81, 0x31, 0x04, 0x81, 0x32, 0x05, 0x80, 0x57, 0x03, 0x81, 0x58, 0x04, 0x7f, 0xbf, 0x02, 0x80, 0xc0, 0x04, 0x80, 0xc1, 0x03, 0x7f, 0xb9, 0x02, 0x7e, 0x59, 0x03, 0x80, 0x00};
+/* 05:4dbd AIActionTable_LegendaryDragonite.list_prize */
+static const u8 blob_AIActionTable_LegendaryDragonite_list_prize[] = {0xe3, 0xc1, 0xb9, 0x00};
+/* 05:4eb6 AIActionTable_FirstStrike.list_arena */
+static const u8 blob_AIActionTable_FirstStrike_list_arena[] = {0x88, 0x7d, 0x87, 0x7b, 0x00};
+/* 05:4ebb AIActionTable_FirstStrike.list_bench */
+static const u8 blob_AIActionTable_FirstStrike_list_bench[] = {0x7d, 0x87, 0x88, 0x7b, 0x00};
+/* 05:4ec7 AIActionTable_FirstStrike.list_energy */
+static const u8 blob_AIActionTable_FirstStrike_list_energy[] = {0x7d, 0x03, 0x80, 0x7e, 0x04, 0x80, 0x7f, 0x04, 0x7f, 0x88, 0x03, 0x80, 0x87, 0x03, 0x80, 0x7b, 0x02, 0x7f, 0x7c, 0x03, 0x7f, 0x00};
+/* 05:4edd AIActionTable_FirstStrike.list_prize */
+static const u8 blob_AIActionTable_FirstStrike_list_prize[] = {0x87, 0x88, 0x00};
+/* 05:4f3b AIActionTable_RockCrusher.list_arena */
+static const u8 blob_AIActionTable_RockCrusher_list_arena[] = {0x89, 0x83, 0x80, 0x79, 0x00};
+/* 05:4f40 AIActionTable_RockCrusher.list_bench */
+static const u8 blob_AIActionTable_RockCrusher_list_bench[] = {0x79, 0x80, 0x89, 0x83, 0x00};
+/* 05:4f48 AIActionTable_RockCrusher.list_energy */
+static const u8 blob_AIActionTable_RockCrusher_list_energy[] = {0x79, 0x03, 0x81, 0x7a, 0x04, 0x80, 0x80, 0x02, 0x81, 0x81, 0x03, 0x80, 0x82, 0x04, 0x80, 0x83, 0x02, 0x7f, 0x89, 0x03, 0x80, 0x00};
+/* 05:4f5e AIActionTable_RockCrusher.list_prize */
+static const u8 blob_AIActionTable_RockCrusher_list_prize[] = {0xd0, 0x89, 0x00};
+/* 05:4fbc AIActionTable_GoGoRainDance.list_arena */
+static const u8 blob_AIActionTable_GoGoRainDance_list_arena[] = {0x59, 0x51, 0x53, 0x41, 0x00};
+/* 05:4fc1 AIActionTable_GoGoRainDance.list_bench */
+static const u8 blob_AIActionTable_GoGoRainDance_list_bench[] = {0x41, 0x51, 0x53, 0x59, 0x00};
+/* 05:4fcd AIActionTable_GoGoRainDance.list_energy */
+static const u8 blob_AIActionTable_GoGoRainDance_list_energy[] = {0x41, 0x02, 0x80, 0x42, 0x03, 0x80, 0x43, 0x05, 0x80, 0x53, 0x01, 0x80, 0x54, 0x02, 0x80, 0x51, 0x02, 0x80, 0x52, 0x03, 0x80, 0x59, 0x03, 0x80, 0x00};
+/* 05:4fe6 AIActionTable_GoGoRainDance.list_prize */
+static const u8 blob_AIActionTable_GoGoRainDance_list_prize[] = {0xe3, 0xcd, 0xce, 0x43, 0x00};
+/* 05:5046 AIActionTable_ZappingSelfdestruct.list_arena */
+static const u8 blob_AIActionTable_ZappingSelfdestruct_list_arena[] = {0xb9, 0x71, 0xba, 0x69, 0x6d, 0x00};
+/* 05:504c AIActionTable_ZappingSelfdestruct.list_bench */
+static const u8 blob_AIActionTable_ZappingSelfdestruct_list_bench[] = {0x69, 0x6d, 0x71, 0xba, 0xb9, 0x00};
+/* 05:5055 AIActionTable_ZappingSelfdestruct.list_energy */
+static const u8 blob_AIActionTable_ZappingSelfdestruct_list_energy[] = {0x69, 0x03, 0x81, 0x6b, 0x04, 0x80, 0x6d, 0x03, 0x81, 0x6e, 0x03, 0x80, 0x71, 0x01, 0x80, 0xb9, 0x02, 0x7e, 0xba, 0x03, 0x80, 0x00};
+/* 05:506b AIActionTable_ZappingSelfdestruct.list_prize */
+static const u8 blob_AIActionTable_ZappingSelfdestruct_list_prize[] = {0xb9, 0x00};
+/* 05:50c8 AIActionTable_FlowerPower.list_arena */
+static const u8 blob_AIActionTable_FlowerPower_list_arena[] = {0x1c, 0x28, 0x08, 0x00};
+/* 05:50cc AIActionTable_FlowerPower.list_bench */
+static const u8 blob_AIActionTable_FlowerPower_list_bench[] = {0x08, 0x28, 0x1c, 0x00};
+/* 05:50d9 AIActionTable_FlowerPower.list_energy */
+static const u8 blob_AIActionTable_FlowerPower_list_energy[] = {0x08, 0x03, 0x80, 0x09, 0x04, 0x80, 0x0b, 0x04, 0x80, 0x1c, 0x02, 0x80, 0x1d, 0x03, 0x7f, 0x1e, 0x03, 0x7f, 0x28, 0x03, 0x80, 0x29, 0x16, 0x80, 0x00};
+/* 05:50f2 AIActionTable_FlowerPower.list_prize */
+static const u8 blob_AIActionTable_FlowerPower_list_prize[] = {0x0b, 0x00};
+/* 05:514f AIActionTable_StrangePsyshock.list_arena */
+static const u8 blob_AIActionTable_StrangePsyshock_list_arena[] = {0xb9, 0xb8, 0xbe, 0x9b, 0x8e, 0x00};
+/* 05:5155 AIActionTable_StrangePsyshock.list_bench */
+static const u8 blob_AIActionTable_StrangePsyshock_list_bench[] = {0x8e, 0x9b, 0xb9, 0xbe, 0xb8, 0x00};
+/* 05:5164 AIActionTable_StrangePsyshock.list_energy */
+static const u8 blob_AIActionTable_StrangePsyshock_list_energy[] = {0x8e, 0x03, 0x81, 0x8f, 0x03, 0x80, 0x90, 0x03, 0x80, 0x9b, 0x02, 0x80, 0xb8, 0x02, 0x7e, 0xb9, 0x04, 0x7e, 0xbe, 0x00, 0x78, 0x00};
+/* 05:517a AIActionTable_StrangePsyshock.list_prize */
+static const u8 blob_AIActionTable_StrangePsyshock_list_prize[] = {0xe3, 0x9b, 0x90, 0xd2, 0x00};
+/* 05:51da AIActionTable_WondersOfScience.list_arena */
+static const u8 blob_AIActionTable_WondersOfScience_list_arena[] = {0x9d, 0x9f, 0x9e, 0x26, 0x2a, 0xbd, 0x00};
+/* 05:51e1 AIActionTable_WondersOfScience.list_bench */
+static const u8 blob_AIActionTable_WondersOfScience_list_bench[] = {0x26, 0x2a, 0x9f, 0x9e, 0x9d, 0xbd, 0x00};
+/* 05:51e9 AIActionTable_WondersOfScience.list_energy */
+static const u8 blob_AIActionTable_WondersOfScience_list_energy[] = {0x26, 0x03, 0x80, 0x27, 0x04, 0x80, 0x2a, 0x02, 0x80, 0x2b, 0x03, 0x80, 0x9d, 0x02, 0x7f, 0x9f, 0x02, 0x7f, 0x9e, 0x02, 0x7f, 0xbd, 0x02, 0x7f, 0x00};
+/* 05:5202 AIActionTable_WondersOfScience.list_prize */
+static const u8 blob_AIActionTable_WondersOfScience_list_prize[] = {0x27, 0x00};
+/* 05:525f AIActionTable_FireCharge.list_arena */
+static const u8 blob_AIActionTable_FireCharge_list_arena[] = {0xaf, 0xb8, 0xba, 0x3b, 0xad, 0x36, 0x00};
+/* 05:5266 AIActionTable_FireCharge.list_bench */
+static const u8 blob_AIActionTable_FireCharge_list_bench[] = {0xaf, 0xb8, 0x36, 0x3b, 0xad, 0xba, 0x00};
+/* 05:5274 AIActionTable_FireCharge.list_energy */
+static const u8 blob_AIActionTable_FireCharge_list_energy[] = {0x36, 0x03, 0x80, 0x38, 0x04, 0x80, 0x3b, 0x03, 0x80, 0xad, 0x03, 0x80, 0xaf, 0x02, 0x80, 0xb0, 0x03, 0x80, 0xb8, 0x04, 0x80, 0xba, 0x03, 0x80, 0x00};
+/* 05:528d AIActionTable_FireCharge.list_prize */
+static const u8 blob_AIActionTable_FireCharge_list_prize[] = {0xe3, 0x00};
+/* 05:52ea AIActionTable_ImRonald.list_arena */
+static const u8 blob_AIActionTable_ImRonald_list_arena[] = {0x59, 0x4b, 0x30, 0x84, 0x41, 0x36, 0x00};
+/* 05:52f1 AIActionTable_ImRonald.list_bench */
+static const u8 blob_AIActionTable_ImRonald_list_bench[] = {0x30, 0x41, 0x4b, 0x84, 0x36, 0x59, 0x00};
+/* 05:52f9 AIActionTable_ImRonald.list_energy */
+static const u8 blob_AIActionTable_ImRonald_list_energy[] = {0x30, 0x03, 0x80, 0x31, 0x05, 0x80, 0x36, 0x02, 0x80, 0x38, 0x04, 0x80, 0x41, 0x02, 0x80, 0x42, 0x03, 0x80, 0x4b, 0x03, 0x80, 0x4c, 0x04, 0x80, 0x59, 0x03, 0x80, 0x84, 0x03, 0x80, 0x85, 0x03, 0x80, 0x00};
+/* 05:531b AIActionTable_ImRonald.list_prize */
+static const u8 blob_AIActionTable_ImRonald_list_prize[] = {0x59, 0x00};
+/* 05:5378 AIActionTable_PowerfulRonald.list_arena */
+static const u8 blob_AIActionTable_PowerfulRonald_list_arena[] = {0xb9, 0x71, 0x88, 0x9b, 0xb7, 0x87, 0xba, 0x9c, 0x9d, 0xb5, 0x00};
+/* 05:5383 AIActionTable_PowerfulRonald.list_bench */
+static const u8 blob_AIActionTable_PowerfulRonald_list_bench[] = {0xb9, 0x87, 0x88, 0xba, 0xb5, 0x9c, 0x9d, 0x71, 0x9b, 0xb7, 0x00};
+/* 05:5395 AIActionTable_PowerfulRonald.list_energy */
+static const u8 blob_AIActionTable_PowerfulRonald_list_energy[] = {0x71, 0x02, 0x81, 0x87, 0x03, 0x81, 0x88, 0x03, 0x81, 0x9b, 0x02, 0x80, 0x9c, 0x03, 0x80, 0x9d, 0x02, 0x80, 0xb5, 0x03, 0x7f, 0xb6, 0x03, 0x7f, 0xb7, 0x02, 0x80, 0xb9, 0x04, 0x7f, 0xba, 0x03, 0x80, 0x00};
+/* 05:53b7 AIActionTable_PowerfulRonald.list_prize */
+static const u8 blob_AIActionTable_PowerfulRonald_list_prize[] = {0xe3, 0xd0, 0x00};
+/* 05:5415 AIActionTable_InvincibleRonald.list_arena */
+static const u8 blob_AIActionTable_InvincibleRonald_list_arena[] = {0xb9, 0x3c, 0xb8, 0x80, 0x2e, 0x26, 0x00};
+/* 05:541c AIActionTable_InvincibleRonald.list_bench */
+static const u8 blob_AIActionTable_InvincibleRonald_list_bench[] = {0x26, 0x2e, 0x80, 0xb8, 0x3c, 0xb9, 0x00};
+/* 05:5426 AIActionTable_InvincibleRonald.list_energy */
+static const u8 blob_AIActionTable_InvincibleRonald_list_energy[] = {0x26, 0x01, 0x7f, 0x27, 0x03, 0x7f, 0x2e, 0x04, 0x81, 0x3c, 0x02, 0x80, 0x80, 0x02, 0x80, 0x81, 0x03, 0x80, 0xb8, 0x04, 0x80, 0xb9, 0x04, 0x7f, 0x00};
+/* 05:543f AIActionTable_InvincibleRonald.list_prize */
+static const u8 blob_AIActionTable_InvincibleRonald_list_prize[] = {0xe3, 0x00};
+/* 05:549c AIActionTable_LegendaryRonald.list_arena */
+static const u8 blob_AIActionTable_LegendaryRonald_list_arena[] = {0xb9, 0xbf, 0xbc, 0x76, 0x5f, 0x40, 0x00};
+/* 05:54a3 AIActionTable_LegendaryRonald.list_bench */
+static const u8 blob_AIActionTable_LegendaryRonald_list_bench[] = {0xb9, 0xbf, 0xbc, 0x00};
+/* 05:54a7 AIActionTable_LegendaryRonald.list_play_hand */
+static const u8 blob_AIActionTable_LegendaryRonald_list_play_hand[] = {0x40, 0x76, 0xb9, 0xbf, 0xbc, 0x5f, 0x00};
+/* 05:54b1 AIActionTable_LegendaryRonald.list_energy */
+static const u8 blob_AIActionTable_LegendaryRonald_list_energy[] = {0x3d, 0x03, 0x80, 0x40, 0x03, 0x80, 0x5a, 0x03, 0x80, 0x5f, 0x00, 0x78, 0x72, 0x04, 0x80, 0x76, 0x00, 0x78, 0xb9, 0x04, 0x7f, 0xbc, 0x03, 0x80, 0xbf, 0x03, 0x80, 0xc0, 0x04, 0x80, 0xc1, 0x03, 0x80, 0x00};
+/* 05:54d3 AIActionTable_LegendaryRonald.list_prize */
+static const u8 blob_AIActionTable_LegendaryRonald_list_prize[] = {0x40, 0x5f, 0x76, 0xc1, 0xe3, 0x00};
 
 const struct RomBlob gRomBlobs[NUM_ROM_BLOBS > 0 ? NUM_ROM_BLOBS : 1] = {
 	{ 0x01, 0x6db9, 56, "ConvertSpecialTrainerCardToPokemon.trainer_to_pkmn_data", blob_ConvertSpecialTrainerCardToPokemon_trainer_to_pkmn_data },
+	{ 0x05, 0x4a15, 7, "AIActionTable_LegendaryMoltres.list_arena", blob_AIActionTable_LegendaryMoltres_list_arena },
+	{ 0x05, 0x4a1c, 6, "AIActionTable_LegendaryMoltres.list_bench", blob_AIActionTable_LegendaryMoltres_list_bench },
+	{ 0x05, 0x4a22, 7, "AIActionTable_LegendaryMoltres.list_play_hand", blob_AIActionTable_LegendaryMoltres_list_play_hand },
+	{ 0x05, 0x4a29, 5, "AIActionTable_LegendaryMoltres.list_retreat", blob_AIActionTable_LegendaryMoltres_list_retreat },
+	{ 0x05, 0x4a2e, 25, "AIActionTable_LegendaryMoltres.list_energy", blob_AIActionTable_LegendaryMoltres_list_energy },
+	{ 0x05, 0x4a47, 3, "AIActionTable_LegendaryMoltres.list_prize", blob_AIActionTable_LegendaryMoltres_list_prize },
+	{ 0x05, 0x4b3c, 7, "AIActionTable_LegendaryZapdos.list_arena", blob_AIActionTable_LegendaryZapdos_list_arena },
+	{ 0x05, 0x4b43, 6, "AIActionTable_LegendaryZapdos.list_bench", blob_AIActionTable_LegendaryZapdos_list_bench },
+	{ 0x05, 0x4b50, 25, "AIActionTable_LegendaryZapdos.list_energy", blob_AIActionTable_LegendaryZapdos_list_energy },
+	{ 0x05, 0x4b69, 3, "AIActionTable_LegendaryZapdos.list_prize", blob_AIActionTable_LegendaryZapdos_list_prize },
+	{ 0x05, 0x4c38, 7, "AIActionTable_LegendaryArticuno.list_arena", blob_AIActionTable_LegendaryArticuno_list_arena },
+	{ 0x05, 0x4c3f, 6, "AIActionTable_LegendaryArticuno.list_bench", blob_AIActionTable_LegendaryArticuno_list_bench },
+	{ 0x05, 0x4c4a, 22, "AIActionTable_LegendaryArticuno.list_energy", blob_AIActionTable_LegendaryArticuno_list_energy },
+	{ 0x05, 0x4c60, 3, "AIActionTable_LegendaryArticuno.list_prize", blob_AIActionTable_LegendaryArticuno_list_prize },
+	{ 0x05, 0x4d8d, 6, "AIActionTable_LegendaryDragonite.list_arena", blob_AIActionTable_LegendaryDragonite_list_arena },
+	{ 0x05, 0x4d93, 6, "AIActionTable_LegendaryDragonite.list_bench", blob_AIActionTable_LegendaryDragonite_list_bench },
+	{ 0x05, 0x4d9e, 31, "AIActionTable_LegendaryDragonite.list_energy", blob_AIActionTable_LegendaryDragonite_list_energy },
+	{ 0x05, 0x4dbd, 4, "AIActionTable_LegendaryDragonite.list_prize", blob_AIActionTable_LegendaryDragonite_list_prize },
+	{ 0x05, 0x4eb6, 5, "AIActionTable_FirstStrike.list_arena", blob_AIActionTable_FirstStrike_list_arena },
+	{ 0x05, 0x4ebb, 5, "AIActionTable_FirstStrike.list_bench", blob_AIActionTable_FirstStrike_list_bench },
+	{ 0x05, 0x4ec7, 22, "AIActionTable_FirstStrike.list_energy", blob_AIActionTable_FirstStrike_list_energy },
+	{ 0x05, 0x4edd, 3, "AIActionTable_FirstStrike.list_prize", blob_AIActionTable_FirstStrike_list_prize },
+	{ 0x05, 0x4f3b, 5, "AIActionTable_RockCrusher.list_arena", blob_AIActionTable_RockCrusher_list_arena },
+	{ 0x05, 0x4f40, 5, "AIActionTable_RockCrusher.list_bench", blob_AIActionTable_RockCrusher_list_bench },
+	{ 0x05, 0x4f48, 22, "AIActionTable_RockCrusher.list_energy", blob_AIActionTable_RockCrusher_list_energy },
+	{ 0x05, 0x4f5e, 3, "AIActionTable_RockCrusher.list_prize", blob_AIActionTable_RockCrusher_list_prize },
+	{ 0x05, 0x4fbc, 5, "AIActionTable_GoGoRainDance.list_arena", blob_AIActionTable_GoGoRainDance_list_arena },
+	{ 0x05, 0x4fc1, 5, "AIActionTable_GoGoRainDance.list_bench", blob_AIActionTable_GoGoRainDance_list_bench },
+	{ 0x05, 0x4fcd, 25, "AIActionTable_GoGoRainDance.list_energy", blob_AIActionTable_GoGoRainDance_list_energy },
+	{ 0x05, 0x4fe6, 5, "AIActionTable_GoGoRainDance.list_prize", blob_AIActionTable_GoGoRainDance_list_prize },
+	{ 0x05, 0x5046, 6, "AIActionTable_ZappingSelfdestruct.list_arena", blob_AIActionTable_ZappingSelfdestruct_list_arena },
+	{ 0x05, 0x504c, 6, "AIActionTable_ZappingSelfdestruct.list_bench", blob_AIActionTable_ZappingSelfdestruct_list_bench },
+	{ 0x05, 0x5055, 22, "AIActionTable_ZappingSelfdestruct.list_energy", blob_AIActionTable_ZappingSelfdestruct_list_energy },
+	{ 0x05, 0x506b, 2, "AIActionTable_ZappingSelfdestruct.list_prize", blob_AIActionTable_ZappingSelfdestruct_list_prize },
+	{ 0x05, 0x50c8, 4, "AIActionTable_FlowerPower.list_arena", blob_AIActionTable_FlowerPower_list_arena },
+	{ 0x05, 0x50cc, 4, "AIActionTable_FlowerPower.list_bench", blob_AIActionTable_FlowerPower_list_bench },
+	{ 0x05, 0x50d9, 25, "AIActionTable_FlowerPower.list_energy", blob_AIActionTable_FlowerPower_list_energy },
+	{ 0x05, 0x50f2, 2, "AIActionTable_FlowerPower.list_prize", blob_AIActionTable_FlowerPower_list_prize },
+	{ 0x05, 0x514f, 6, "AIActionTable_StrangePsyshock.list_arena", blob_AIActionTable_StrangePsyshock_list_arena },
+	{ 0x05, 0x5155, 6, "AIActionTable_StrangePsyshock.list_bench", blob_AIActionTable_StrangePsyshock_list_bench },
+	{ 0x05, 0x5164, 22, "AIActionTable_StrangePsyshock.list_energy", blob_AIActionTable_StrangePsyshock_list_energy },
+	{ 0x05, 0x517a, 5, "AIActionTable_StrangePsyshock.list_prize", blob_AIActionTable_StrangePsyshock_list_prize },
+	{ 0x05, 0x51da, 7, "AIActionTable_WondersOfScience.list_arena", blob_AIActionTable_WondersOfScience_list_arena },
+	{ 0x05, 0x51e1, 7, "AIActionTable_WondersOfScience.list_bench", blob_AIActionTable_WondersOfScience_list_bench },
+	{ 0x05, 0x51e9, 25, "AIActionTable_WondersOfScience.list_energy", blob_AIActionTable_WondersOfScience_list_energy },
+	{ 0x05, 0x5202, 2, "AIActionTable_WondersOfScience.list_prize", blob_AIActionTable_WondersOfScience_list_prize },
+	{ 0x05, 0x525f, 7, "AIActionTable_FireCharge.list_arena", blob_AIActionTable_FireCharge_list_arena },
+	{ 0x05, 0x5266, 7, "AIActionTable_FireCharge.list_bench", blob_AIActionTable_FireCharge_list_bench },
+	{ 0x05, 0x5274, 25, "AIActionTable_FireCharge.list_energy", blob_AIActionTable_FireCharge_list_energy },
+	{ 0x05, 0x528d, 2, "AIActionTable_FireCharge.list_prize", blob_AIActionTable_FireCharge_list_prize },
+	{ 0x05, 0x52ea, 7, "AIActionTable_ImRonald.list_arena", blob_AIActionTable_ImRonald_list_arena },
+	{ 0x05, 0x52f1, 7, "AIActionTable_ImRonald.list_bench", blob_AIActionTable_ImRonald_list_bench },
+	{ 0x05, 0x52f9, 34, "AIActionTable_ImRonald.list_energy", blob_AIActionTable_ImRonald_list_energy },
+	{ 0x05, 0x531b, 2, "AIActionTable_ImRonald.list_prize", blob_AIActionTable_ImRonald_list_prize },
+	{ 0x05, 0x5378, 11, "AIActionTable_PowerfulRonald.list_arena", blob_AIActionTable_PowerfulRonald_list_arena },
+	{ 0x05, 0x5383, 11, "AIActionTable_PowerfulRonald.list_bench", blob_AIActionTable_PowerfulRonald_list_bench },
+	{ 0x05, 0x5395, 34, "AIActionTable_PowerfulRonald.list_energy", blob_AIActionTable_PowerfulRonald_list_energy },
+	{ 0x05, 0x53b7, 3, "AIActionTable_PowerfulRonald.list_prize", blob_AIActionTable_PowerfulRonald_list_prize },
+	{ 0x05, 0x5415, 7, "AIActionTable_InvincibleRonald.list_arena", blob_AIActionTable_InvincibleRonald_list_arena },
+	{ 0x05, 0x541c, 7, "AIActionTable_InvincibleRonald.list_bench", blob_AIActionTable_InvincibleRonald_list_bench },
+	{ 0x05, 0x5426, 25, "AIActionTable_InvincibleRonald.list_energy", blob_AIActionTable_InvincibleRonald_list_energy },
+	{ 0x05, 0x543f, 2, "AIActionTable_InvincibleRonald.list_prize", blob_AIActionTable_InvincibleRonald_list_prize },
+	{ 0x05, 0x549c, 7, "AIActionTable_LegendaryRonald.list_arena", blob_AIActionTable_LegendaryRonald_list_arena },
+	{ 0x05, 0x54a3, 4, "AIActionTable_LegendaryRonald.list_bench", blob_AIActionTable_LegendaryRonald_list_bench },
+	{ 0x05, 0x54a7, 7, "AIActionTable_LegendaryRonald.list_play_hand", blob_AIActionTable_LegendaryRonald_list_play_hand },
+	{ 0x05, 0x54b1, 34, "AIActionTable_LegendaryRonald.list_energy", blob_AIActionTable_LegendaryRonald_list_energy },
+	{ 0x05, 0x54d3, 6, "AIActionTable_LegendaryRonald.list_prize", blob_AIActionTable_LegendaryRonald_list_prize },
 };
 
 const u8 *RomPtr(u8 bank, u16 address)
