@@ -102,7 +102,7 @@ enum {
 	P_AI    = 1 << 2,
 	P_RNG   = 1 << 3,
 	P_JOY   = 1 << 4,
-	P_INPUT = 1 << 5,   /* input routine entry / ready point (see input_points) */
+	P_INPUT = 1 << 5,   /* input routine entry / ready point (Point.input_roles) */
 	P_START = 1 << 6,   /* StartDuel (human mode: optional custom opponent deck) */
 	P_VFY_DUEL = 1 << 7,   /* HandleDuelMenuInput: verify the duel menu selection */
 	P_VFY_CURSOR = 1 << 8, /* YourOrOppPlayAreaScreen_HandleInput: verify prize / peek selection */
@@ -118,7 +118,7 @@ typedef struct Point {
 	int trace_ids[4];
 	int nwatch;
 	int ninput;
-	short input_roles[6];   /* encoded (routine index << 1) | is_ready */
+	short input_roles[6];   /* kInputRoutines index << 2 | 1 entry, 2 ready label, 3 generic HandleMenuInput */
 } Point;
 
 typedef struct Trace {
@@ -129,13 +129,13 @@ typedef struct Trace {
 	int active;
 } Trace;
 
-enum { W_AI = 1, W_RNG, W_INPUT, W_POLL };
+enum { W_AI = 1, W_RNG, W_POLL };
 
 typedef struct Watch {
 	int point;
 	uint16_t sp;       /* SP expected after the return */
 	int kind;
-	int aux;           /* W_AI: saved wOpponentDeckID; W_INPUT/W_POLL: session index */
+	int aux;           /* W_AI: saved wOpponentDeckID; W_POLL: check (see verify_on_poll) */
 } Watch;
 
 #define MAX_WATCH 128
@@ -181,14 +181,13 @@ struct Ref {
 	uint8_t *snap;
 	/* key addresses */
 	uint16_t a_StartDuel, a_StartDuel_VSAIOpp, a_PowersOf2, a_AIDoAction, a_UpdateRNGSources,
-		a_ReadJoypad, a_Start;
+		a_ReadJoypad, a_Start, a_SwitchToBankAtSP;
 	int b_StartDuel;
 	/* RAM addresses */
 	uint16_t w_PlayerDeck, w_OpponentDeck, w_OpponentDeckID, w_NPCDuelDeckID, w_NPCDuelPrizes,
 		w_DuelTheme, w_IsPracticeDuel, w_OpponentName, w_OpponentPortrait, w_RNG1, w_AnimationsDisabled,
 		w_TextSpeed, w_SkipDelayAllowed, w_DuelFinished, w_DuelResult, w_DuelTurns, w_DuelTempList,
-		w_CurMenuItem, w_ListScrollOffset, w_NumListItems, w_NumMenuItems, w_CurrentDuelMenuItem,
-		w_NameBuffer, w_ExcludeArenaPokemon, w_YourOrOppPlayAreaCurPosition, w_NoItemSelectionMenuKeys,
+		w_CurMenuItem, w_ListScrollOffset, w_NumListItems, w_NumMenuItems, w_ExcludeArenaPokemon, w_YourOrOppPlayAreaCurPosition, w_NoItemSelectionMenuKeys,
 		w_CardListHeaderText, w_CardListInfoBoxText, w_PlayerPrizes, w_TransitionTablePtr,
 		w_DuelInitialPrizesUpperBitsSet, w_DeckName;
 	int b_TransitionTables;   /* bank of the cursor_transition tables (BANK(_SelectPrizeCards)) */
@@ -220,8 +219,7 @@ struct Ref {
 	uint64_t last_progress;  /* cycles */
 	int start_patched;
 	/* joypad */
-	uint8_t last_buttons;
-	uint8_t ack_toggle;
+	uint8_t last_buttons;      /* buttons given to the previous ReadJoypad */
 	/* sessions */
 	Session sess[MAX_SESS];
 	int nsess;
@@ -847,7 +845,7 @@ enum {
 	K_YESNO,      /* HandleYesOrNoMenu: wCurMenuItem 0 = YES, 1 = NO; RIGHT toggles; A only */
 	K_TWO,        /* TwoItemHorizontalMenu: wCurMenuItem 0 left, 1 right; RIGHT toggles; A only */
 	K_PLAYAREA,   /* DisplayPlayAreaScreen: location = wExcludeArenaPokemon + wCurMenuItem */
-	K_PRIZE,      /* _SelectPrizeCards: wYourOrOppPlayAreaCurPosition 0-5, RIGHT column, DOWN row */
+	K_PRIZE,      /* _SelectPrizeCards: wYourOrOppPlayAreaCurPosition 0-5 over a transition table */
 	K_COLOR,      /* HandleColorChangeScreen: item i is color ShiftListItemToColor[i] */
 	K_PEEK,       /* _HandlePeekSelection: wYourOrOppPlayAreaCurPosition 0-7 over a transition table */
 };
@@ -1155,12 +1153,20 @@ static void sess_report(Ref *r, int si)
 	progress(r);
 }
 
+/* routine that called the routine at PC (return address at [SP]). Routines
+ * entered through farcall / bank1call return into SwitchToBankAtSP, with the
+ * caller's bank at [SP+2] and its return address at [SP+4]. */
 static const char *caller_of_entry(Ref *r)
 {
 	GB *gb = r->gb;
 	uint16_t ret = gb_read16(gb, gb->sp);
+	int bank = gb_rom_bank(gb);
+	if (ret == r->a_SwitchToBankAtSP) {
+		bank = gb_read(gb, (uint16_t)(gb->sp + 2));
+		ret = gb_read16(gb, (uint16_t)(gb->sp + 4));
+	}
 	uint16_t site = (uint16_t)(ret - 1);
-	const Sym *s = routine_at(r, site < 0x4000 ? 0 : gb_rom_bank(gb), site);
+	const Sym *s = routine_at(r, site < 0x4000 ? 0 : bank, site);
 	return s ? s->name : "?";
 }
 
@@ -1223,10 +1229,7 @@ static void on_input_ready(Ref *r, int routine)
 static void on_menu_input(Ref *r)
 {
 	GB *gb = r->gb;
-	uint16_t ret = gb_read16(gb, gb->sp);
-	uint16_t site = (uint16_t)(ret - 1);
-	const Sym *cs = routine_at(r, site < 0x4000 ? 0 : gb_rom_bank(gb), site);
-	const char *caller = cs ? cs->name : "?";
+	const char *caller = caller_of_entry(r);
 	Session *top = sess_top(r);
 	if (top && kInputRoutines[top->routine].owns_menu &&
 	    (!strcmp(caller, kInputRoutines[top->routine].entry) || !strcmp(caller, "HandleCardListInput"))) {
@@ -1552,6 +1555,7 @@ Ref *ref_new(const char *rom_path, const char *sym_path)
 	r->a_UpdateRNGSources = need_sym(r, "UpdateRNGSources", NULL, &ok);
 	r->a_ReadJoypad = need_sym(r, "ReadJoypad", NULL, &ok);
 	r->a_Start = need_sym(r, "Start", NULL, &ok);
+	r->a_SwitchToBankAtSP = need_sym(r, "SwitchToBankAtSP", NULL, &ok);
 #define W(f, n) r->f = need_sym(r, n, NULL, &ok)
 	W(w_PlayerDeck, "wPlayerDeck");
 	W(w_OpponentDeck, "wOpponentDeck");
@@ -1574,8 +1578,6 @@ Ref *ref_new(const char *rom_path, const char *sym_path)
 	W(w_ListScrollOffset, "wListScrollOffset");
 	W(w_NumListItems, "wNumListItems");
 	W(w_NumMenuItems, "wNumMenuItems");
-	W(w_CurrentDuelMenuItem, "wCurrentDuelMenuItem");
-	W(w_NameBuffer, "wNameBuffer");
 	W(w_ExcludeArenaPokemon, "wExcludeArenaPokemon");
 	W(w_YourOrOppPlayAreaCurPosition, "wYourOrOppPlayAreaCurPosition");
 	W(w_NoItemSelectionMenuKeys, "wNoItemSelectionMenuKeys");
@@ -1776,7 +1778,6 @@ int ref_start_duel(Ref *r, const RefDuel *d)
 	r->npend = r->pend_head = 0;
 	r->nsess = 0;
 	r->waiting = -1;
-	r->ack_toggle = 0;
 	r->last_buttons = 0;
 	r->start_patched = 0;
 

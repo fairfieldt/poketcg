@@ -1,0 +1,195 @@
+# Nintendo 64 frontend (libdragon) for the portable Pokemon TCG duel engine.
+#
+#   make             build tcgn64.z64
+#   make hosttest    build tcgn64.c against mock/libdragon.h on the host and run
+#                    the scripted UI tests in tests/*.txt (logs and screenshots
+#                    in build/host/)
+#   make clean
+#
+# Needs N64_INST pointing at a libdragon toolchain with libdragon and its tools
+# installed (n64.mk, mksprite, mkdfs, n64tool), e.g.
+#   N64_INST=/home/user/tools/n64/opt/libdragon make
+#
+# Engine sources
+#   port/src/*.c and port/src/gen/*.c are always built (-DTCG_NO_DEFAULT_FATAL:
+#   tcgn64.c provides tcg_fatal, which shows the message and halts).
+#   port/src/effects/*.c and port/src/ai/*.c are being ported concurrently and
+#   are optional: each one is compiled on its own and excluded if it does not
+#   compile; then tools/select_optional.sh trial-links the ROM and drops the
+#   objects the linker blames (undefined references to helpers not ported yet,
+#   duplicate definitions) until it links. The weak stubs (gen/effect_stubs.c,
+#   ai_stubs.c) stand in for whatever is excluded. The outcome is printed as
+#   "[OPT]" lines, detailed in build/optional.log and shown on the title screen.
+#
+# Card art: src/gfx/cards/*.png of the disassembly are converted with mksprite
+# (RGBA16) into the ROM filesystem; tools/cardart.awk maps the cards' gfx
+# pointers to file names. Without the disassembly the ROM builds without art.
+
+N64_INST ?= /home/user/tools/n64/opt/libdragon
+ifeq ($(wildcard $(N64_INST)/include/n64.mk),)
+$(error N64_INST ($(N64_INST)) does not contain include/n64.mk: install libdragon first)
+endif
+
+BUILD_DIR := build
+N64_MKDFS_ROOT := $(BUILD_DIR)/filesystem
+include $(N64_INST)/include/n64.mk
+
+PORT := ../..
+ENGINE := $(PORT)/src
+REPO := $(PORT)/..
+CARD_GFX := $(REPO)/src/gfx/cards
+GFX_ASM := $(REPO)/src/gfx.asm
+ROM := tcgn64.z64
+
+all: $(ROM)
+.PHONY: all clean hosttest FORCE
+
+# ---------------------------------------------------------------- engine
+
+CORE_SRCS := $(wildcard $(ENGINE)/*.c) $(wildcard $(ENGINE)/gen/*.c)
+OPT_SRCS := $(wildcard $(ENGINE)/effects/*.c) $(wildcard $(ENGINE)/ai/*.c)
+CORE_OBJS := $(CORE_SRCS:$(ENGINE)/%.c=$(BUILD_DIR)/engine/%.o)
+OPT_STAMPS := $(OPT_SRCS:$(ENGINE)/%.c=$(BUILD_DIR)/engine/%.ok)
+
+# the engine is C11 (like port/Makefile); warnings are not errors there
+ENGINE_CFLAGS = $(filter-out -Werror -std=%,$(N64_CFLAGS)) -std=c11 -Wextra -Wno-unused-parameter \
+	-DTCG_NO_DEFAULT_FATAL -I$(ENGINE)
+
+$(BUILD_DIR)/engine/%.o: $(ENGINE)/%.c
+	@mkdir -p $(dir $@)
+	@echo "    [CC] engine/$*.c"
+	$(N64_CC) -c $(ENGINE_CFLAGS) -MMD -o $@ $<
+
+# optional engine sources: a compile error only excludes the file
+$(BUILD_DIR)/engine/%.ok: $(ENGINE)/%.c
+	@mkdir -p $(dir $@)
+	@if $(N64_CC) -c $(ENGINE_CFLAGS) -MMD -MT $@ -MF $(@:.ok=.d) -o $(@:.ok=.o) $< 2> $(@:.ok=.err); then \
+		echo "    [CC] engine/$*.c"; cat $(@:.ok=.err); echo ok > $@; \
+	else \
+		echo "    [CC] engine/$*.c: does not compile, excluded (see $(@:.ok=.err))"; \
+		rm -f $(@:.ok=.o); echo fail > $@; \
+	fi
+
+# ---------------------------------------------------------------- card art
+
+CARD_PNGS := $(wildcard $(CARD_GFX)/*.png)
+ifneq ($(CARD_PNGS),)
+ifneq ($(wildcard $(GFX_ASM)),)
+CARD_ART := 1
+endif
+endif
+ifeq ($(CARD_ART),1)
+CARD_SPRITES := $(CARD_PNGS:$(CARD_GFX)/%.png=$(N64_MKDFS_ROOT)/cards/%.sprite)
+ART_HDR := $(BUILD_DIR)/cardart_table.h
+ART_DEF := -DTCGN64_CARD_ART
+endif
+
+$(N64_MKDFS_ROOT)/cards/%.sprite: $(CARD_GFX)/%.png
+	@mkdir -p $(dir $@)
+	@echo "    [SPRITE] $@"
+	$(N64_MKSPRITE) -f RGBA16 -o $(dir $@) "$<" > /dev/null
+
+$(BUILD_DIR)/cardart_table.h: $(GFX_ASM) tools/cardart.awk
+	@mkdir -p $(dir $@)
+	awk -f tools/cardart.awk $(GFX_ASM) > $@.tmp && mv $@.tmp $@
+
+# ---------------------------------------------------------------- frontend and ROM
+
+FRONT_CFLAGS = $(N64_CFLAGS) -I$(ENGINE) -I$(BUILD_DIR) $(ART_DEF)
+
+$(BUILD_DIR)/tcgn64.o: tcgn64.c $(ART_HDR)
+	@mkdir -p $(dir $@)
+	@echo "    [CC] $<"
+	$(N64_CC) -c $(FRONT_CFLAGS) -MMD -o $@ $<
+
+# rerun the selection when the set of optional sources changes
+$(BUILD_DIR)/optional.set: FORCE
+	@mkdir -p $(dir $@)
+	@echo "$(OPT_SRCS)" | cmp -s - $@ || echo "$(OPT_SRCS)" > $@
+
+OPT_LINK_PRE = $(N64_CXX) -o $(BUILD_DIR)/trial.elf $(CORE_OBJS) $(BUILD_DIR)/tcgn64.o
+OPT_LINK_POST = -lc -mabi=o64 $(patsubst %,-Wl$(COMMA)%,$(N64_LDFLAGS))
+
+$(BUILD_DIR)/optional.o: $(OPT_STAMPS) $(CORE_OBJS) $(BUILD_DIR)/tcgn64.o $(BUILD_DIR)/optional.set tools/select_optional.sh
+	sh tools/select_optional.sh $(BUILD_DIR)/optional $(OPT_STAMPS) -- $(OPT_LINK_PRE) -- $(OPT_LINK_POST)
+	@rm -f $(BUILD_DIR)/trial.elf
+	@if [ -s $(BUILD_DIR)/optional.lst ]; then \
+		$(N64_LD) -r -o $@ $$(cat $(BUILD_DIR)/optional.lst); \
+	else \
+		$(N64_CC) $(N64_CFLAGS) -x c -c -o $@ - < /dev/null; \
+	fi
+
+$(N64_MKDFS_ROOT)/buildinfo.txt: $(BUILD_DIR)/optional.o
+	@mkdir -p $(dir $@)
+	cp $(BUILD_DIR)/optional.info $@
+
+$(BUILD_DIR)/tcgn64.dfs: $(CARD_SPRITES) $(N64_MKDFS_ROOT)/buildinfo.txt
+$(BUILD_DIR)/tcgn64.elf: $(CORE_OBJS) $(BUILD_DIR)/tcgn64.o $(BUILD_DIR)/optional.o
+
+$(ROM): N64_ROM_TITLE = "Pokemon TCG Duel"
+$(ROM): $(BUILD_DIR)/tcgn64.dfs
+
+# ---------------------------------------------------------------- host build with the libdragon mock
+
+HOST_CC ?= cc
+HOST_BUILD := $(BUILD_DIR)/host
+HOST_ENGINE_CFLAGS := -std=c11 -O1 -g -Wall -Wextra -Wno-unused-parameter -DTCG_NO_DEFAULT_FATAL -I$(ENGINE)
+HOST_FRONT_CFLAGS := -std=gnu11 -O1 -g -Wall -Wextra -Wno-unused-parameter -Werror -Imock -I$(ENGINE) -I$(BUILD_DIR) $(ART_DEF)
+HOST_CORE_OBJS := $(CORE_SRCS:$(ENGINE)/%.c=$(HOST_BUILD)/engine/%.o)
+HOST_OPT_STAMPS := $(OPT_SRCS:$(ENGINE)/%.c=$(HOST_BUILD)/engine/%.ok)
+MOCK_FONT := $(N64_INST)/mips64-elf/include/font.h
+HOST_ROMFS := $(HOST_BUILD)/filesystem
+HOST_TESTS := $(wildcard tests/*.txt)
+
+$(HOST_BUILD)/engine/%.o: $(ENGINE)/%.c
+	@mkdir -p $(dir $@)
+	$(HOST_CC) -c $(HOST_ENGINE_CFLAGS) -MMD -o $@ $<
+
+$(HOST_BUILD)/engine/%.ok: $(ENGINE)/%.c
+	@mkdir -p $(dir $@)
+	@if $(HOST_CC) -c $(HOST_ENGINE_CFLAGS) -MMD -MT $@ -MF $(@:.ok=.d) -o $(@:.ok=.o) $< 2> $(@:.ok=.err); then \
+		echo ok > $@; else rm -f $(@:.ok=.o); echo fail > $@; fi
+
+$(HOST_BUILD)/tcgn64.o: tcgn64.c mock/libdragon.h $(ART_HDR)
+	@mkdir -p $(dir $@)
+	$(HOST_CC) -c $(HOST_FRONT_CFLAGS) -MMD -o $@ $<
+
+$(HOST_BUILD)/mock_libdragon.o: mock/mock_libdragon.c mock/libdragon.h
+	@mkdir -p $(dir $@)
+	$(HOST_CC) -c $(HOST_FRONT_CFLAGS) $(if $(wildcard $(MOCK_FONT)),-DMOCK_FONT_H='"$(MOCK_FONT)"') -o $@ $<
+
+$(HOST_BUILD)/optional.set: FORCE
+	@mkdir -p $(dir $@)
+	@echo "$(OPT_SRCS)" | cmp -s - $@ || echo "$(OPT_SRCS)" > $@
+
+HOST_FRONT_OBJS := $(HOST_BUILD)/tcgn64.o $(HOST_BUILD)/mock_libdragon.o
+
+$(HOST_BUILD)/optional.lst: $(HOST_OPT_STAMPS) $(HOST_CORE_OBJS) $(HOST_FRONT_OBJS) $(HOST_BUILD)/optional.set tools/select_optional.sh
+	sh tools/select_optional.sh $(HOST_BUILD)/optional $(HOST_OPT_STAMPS) -- \
+		$(HOST_CC) -o $(HOST_BUILD)/trial $(HOST_CORE_OBJS) $(HOST_FRONT_OBJS) --
+	@rm -f $(HOST_BUILD)/trial
+
+$(HOST_BUILD)/tcgn64_host: $(HOST_BUILD)/optional.lst $(HOST_CORE_OBJS) $(HOST_FRONT_OBJS)
+	$(HOST_CC) -o $@ $(HOST_CORE_OBJS) $(HOST_FRONT_OBJS) $$(cat $(HOST_BUILD)/optional.lst)
+
+$(HOST_ROMFS)/buildinfo.txt: $(HOST_BUILD)/optional.lst $(CARD_SPRITES)
+	@mkdir -p $(dir $@)
+	cp $(HOST_BUILD)/optional.info $@
+	@if [ -n "$(CARD_SPRITES)" ]; then rm -rf $(HOST_ROMFS)/cards; ln -s ../../filesystem/cards $(HOST_ROMFS)/cards; fi
+
+hosttest: $(HOST_BUILD)/tcgn64_host $(HOST_ROMFS)/buildinfo.txt
+	@fail=0; for t in $(HOST_TESTS); do \
+		n=$$(basename $$t .txt); mkdir -p $(HOST_BUILD)/shots/$$n; \
+		printf '    [TEST] %-24s' $$n; \
+		MOCK_SCRIPT=$$t MOCK_ROMFS=$(HOST_ROMFS) MOCK_SHOTS=$(HOST_BUILD)/shots/$$n \
+			$$(sed -n 's/^#env //p' $$t) ./$(HOST_BUILD)/tcgn64_host > $(HOST_BUILD)/$$n.log 2>&1; \
+		rc=$$?; \
+		if [ $$rc = 0 ]; then echo "ok   ($$(grep -c '^TURN' $(HOST_BUILD)/$$n.log) turns, $$(grep -c '^REQ' $(HOST_BUILD)/$$n.log) requests, $$(tail -n 1 $(HOST_BUILD)/$$n.log))"; \
+		else echo "FAIL (exit $$rc, see $(HOST_BUILD)/$$n.log)"; tail -n 3 $(HOST_BUILD)/$$n.log; fail=1; fi; \
+	done; exit $$fail
+
+clean:
+	rm -rf $(BUILD_DIR) $(ROM)
+
+-include $(wildcard $(BUILD_DIR)/*.d $(BUILD_DIR)/engine/*.d $(BUILD_DIR)/engine/*/*.d)
+-include $(wildcard $(HOST_BUILD)/*.d $(HOST_BUILD)/engine/*.d $(HOST_BUILD)/engine/*/*.d)

@@ -63,11 +63,27 @@ static uint32_t pol_rand(void)
 	return pol_state = x;
 }
 
-/* random but legal answer for a human input request */
+/* random but legal answer for a human input request. Biased towards
+ * playing cards so that card effects get exercised: duel menu Hand 40%,
+ * Attack 20%, Check 3%, Pkmn Power 7%, Retreat 10%, Done 20%; item menu
+ * Play/Select 80%, Check 10%, cancel 10%; elsewhere cancel 15% when allowed. */
 static int policy(const RefInput *in)
 {
 	int n = in->num_items;
-	if (in->can_cancel && (n <= 0 || pol_rand() % 4 == 0))
+	if (in->type == REF_IN_DUEL_MENU) {
+		static const int w[6] = { 40, 20, 3, 7, 10, 20 };
+		int x = (int)(pol_rand() % 100), i = 0;
+		while (i < 5 && x >= w[i])
+			x -= w[i++];
+		return i;
+	}
+	if (in->type == REF_IN_CARD_ITEM_MENU) {
+		int x = (int)(pol_rand() % 10);
+		return x < 8 ? 0 : x == 8 ? 1 : REF_CANCEL;
+	}
+	if (in->can_cancel && n > 0 && pol_rand() % 100 < 15)
+		return REF_CANCEL;
+	if (in->can_cancel && n <= 0)
 		return REF_CANCEL;
 	if ((in->type == REF_IN_PRIZE || in->type == REF_IN_PEEK) && in->list_len)
 		return in->list[pol_rand() % (uint32_t)in->list_len];

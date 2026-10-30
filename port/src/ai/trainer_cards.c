@@ -2208,3 +2208,1203 @@ found_grimer_or_muk:
 	*a_out = a;
 	return false;
 }
+
+void AIPlay_EnergyRetrieval(void)
+{
+	TRACE_FN();
+	wCurrentAIFlags |= AI_FLAG_MODIFIED_HAND;
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	hTemp_ffa0 = wAITrainerCardParameter;
+	hTempPlayAreaLocation_ffa1 = wce1a;
+	u8 a = wce1b;
+	hTempRetreatCostCards[0] = a;
+	if (a != 0xff)
+		hTempRetreatCostCards[1] = 0xff;
+	/* .asm_20e68 */
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* checks whether AI can play Energy Retrieval and
+ * picks the energy cards from the discard pile,
+ * and duplicate cards in hand to discard. */
+bool AIDecide_EnergyRetrieval(u8 *a_out)
+{
+	TRACE_FN();
+	u8 *hl;
+	u8 a, b, d, e, count;
+
+	/* return no carry if no cards in hand */
+	if (!CreateEnergyCardListFromHand()) {
+		a = wDuelTempList[0];
+		goto no_carry;
+	}
+
+	/* handle Go Go Rain Dance deck
+	 * return no carry if there's no Muk card in play and
+	 * if there's no Blastoise card in Play Area
+	 * if there's a Muk in play, continue as normal */
+	if (wOpponentDeckID != GO_GO_RAIN_DANCE_DECK_ID)
+		goto start;
+	if (CountPokemonWithActivePkmnPowerInBothPlayAreas(MUK))
+		goto start;
+	a = CountTurnDuelistPokemonWithActivePkmnPower(BLASTOISE);
+	if (!a)
+		goto no_carry;
+
+start:
+	/* find duplicate cards in hand */
+	CreateHandCardList(NULL);
+	if (FindDuplicateCards(wDuelTempList, &a))
+		goto no_carry;
+
+	wce06 = a;
+	if (FindBasicEnergyCardsInLocation(CARD_LOCATION_DISCARD_PILE, &count)) {
+		a = count;
+		goto no_carry;
+	}
+
+	/* some basic energy cards were found in Discard Pile */
+	wce1a = 0xff;
+	wce1b = 0xff;
+	wce1c = 0xff;
+
+	d = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	e = PLAY_AREA_ARENA;
+
+	/* first check if there are useful energy cards in the list
+	 * and choose them for retrieval first */
+	do { /* .loop_play_area */
+		/* load this card's ID in wTempCardID
+		 * and this card's Type in wTempCardType */
+		a = GetCardIDFromDeckIndex(GetTurnDuelistVariable((u8)(DUELVARS_ARENA_CARD + e)));
+		wTempCardID = a;
+		LoadCardDataToBuffer1_FromCardID(a);
+		wTempCardType = wLoadedCard1Type | TYPE_ENERGY;
+
+		/* loop the energy cards in the Discard Pile
+		 * and check if they are useful for this Pokemon */
+		hl = wDuelTempList;
+		for (;;) { /* .loop_energy_cards_1 */
+			a = *hl++;
+			if (a == 0xff)
+				break; /* .next_play_area */
+
+			b = a;
+			if (!CheckIfEnergyIsUseful(a))
+				continue;
+
+			if (wce1a != 0xff)
+				goto second_energy_1;
+
+			/* check if there were already chosen cards,
+			 * if this is the second chosen card, return carry */
+
+			/* first energy card found */
+			wce1a = b;
+			RemoveCardFromList(hl);
+			break; /* .next_play_area */
+second_energy_1:
+			wce1b = b;
+			goto set_carry;
+		}
+		/* .next_play_area */
+		e++;
+	} while (--d);
+
+	/* next, if there are still energy cards left to choose,
+	 * loop through the energy cards again and select
+	 * them in order. */
+	hl = wDuelTempList;
+	for (;;) { /* .loop_energy_cards_2 */
+		a = *hl++;
+		if (a == 0xff)
+			break; /* .check_chosen */
+		b = a;
+		if (wce1a != 0xff)
+			goto second_energy_2;
+		wce1a = b;
+		hl = RemoveCardFromList(hl);
+	}
+
+	/* will set carry if at least one has been chosen */
+	/* .check_chosen */
+	a = wce1a;
+	if (a != 0xff)
+		goto set_carry;
+no_carry:
+	*a_out = a;
+	return false;
+
+second_energy_2:
+	wce1b = b;
+	/* fallthrough to .set_carry */
+set_carry:
+	*a_out = wce06;
+	return true;
+}
+
+/* remove an element from the list
+ * and shortens it accordingly
+ * input:
+ *   hl = pointer to element after the one to remove */
+u8 *RemoveCardFromList(u8 *hl)
+{
+	u8 *de = hl;
+	hl--;
+	u8 *start = hl; /* push hl */
+	for (;;) { /* .loop_remove */
+		u8 a = *de;
+		*hl++ = a;
+		if (a == 0xff)
+			break;
+		de++;
+	}
+	/* .done_remove */
+	return start; /* pop hl */
+}
+
+/* finds duplicates in card list in hl.
+ * if a duplicate of Pokemon cards are found, return in
+ * a the deck index of the second one.
+ * otherwise, if a duplicate of non-Pokemon cards are found
+ * return in a the deck index of the second one.
+ * if no duplicates found, return carry.
+ * input:
+ *   hl = list to look in
+ * output:
+ *   a = deck index of duplicate card */
+bool FindDuplicateCards(u8 *hl, u8 *a_out)
+{
+	TRACE_FN();
+	const u8 *outer = hl; /* push hl */
+	const u8 *inner;
+	u8 a, b, c, e;
+
+	wce0f[0] = 0xff;
+	wce0f[1] = 0xff;
+
+loop_outer:
+	/* get ID of current card */
+	a = *outer++; /* pop hl / ld a, [hli] */
+	if (a == 0xff)
+		goto check_found;
+	b = GetCardIDFromDeckIndex(a);
+	inner = outer; /* push hl */
+
+	/* loop the rest of the list to find
+	 * another card with the same ID */
+loop_inner:
+	a = *inner++;
+	if (a == 0xff)
+		goto loop_outer;
+	c = a;
+	e = GetCardIDFromDeckIndex(a);
+	if (e != b)
+		goto loop_inner;
+
+	/* found two cards with same ID */
+	a = GetCardType(e);
+	if (a < TYPE_ENERGY)
+		goto not_energy;
+
+	/* they are energy or trainer cards
+	 * loads wce0f+1 with this card deck index */
+	wce0f[1] = c;
+	goto loop_outer;
+
+not_energy:
+	/* they are Pokemon cards
+	 * loads wce0f with this card deck index */
+	wce0f[0] = c;
+	goto loop_outer;
+
+check_found:
+	a = wce0f[0];
+	if (a != 0xff)
+		goto no_carry;
+	a = wce0f[1];
+	if (a != 0xff)
+		goto no_carry;
+
+	/* only set carry if duplicate cards were not found */
+	*a_out = a;
+	return true;
+
+no_carry:
+	/* two cards with the same ID were found
+	 * of either Pokemon or Non-Pokemon cards */
+	*a_out = a;
+	return false;
+}
+
+void AIPlay_SuperEnergyRetrieval(void)
+{
+	TRACE_FN();
+	u8 a;
+
+	wCurrentAIFlags |= AI_FLAG_MODIFIED_HAND;
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	hTemp_ffa0 = wAITrainerCardParameter;
+	hTempPlayAreaLocation_ffa1 = wce1a;
+	hTempRetreatCostCards[0] = wce1b;
+	a = wce1c;
+	hTempRetreatCostCards[1] = a;
+	if (a == 0xff)
+		goto asm_20fbb;
+	a = wce1d;
+	hTempRetreatCostCards[2] = a;
+	if (a == 0xff)
+		goto asm_20fbb;
+	a = wce1e;
+	hTempRetreatCostCards[3] = a;
+	if (a == 0xff)
+		goto asm_20fbb;
+	hTempRetreatCostCards[4] = 0xff;
+asm_20fbb:
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+bool AIDecide_SuperEnergyRetrieval(u8 *a_out)
+{
+	TRACE_FN();
+	u8 *hl;
+	u8 a, b, d, e, count;
+
+	/* return no carry if no cards in hand */
+	if (!CreateEnergyCardListFromHand()) {
+		a = wDuelTempList[0];
+		goto no_carry;
+	}
+
+	/* handle Go Go Rain Dance deck
+	 * return no carry if there's no Muk card in play and
+	 * if there's no Blastoise card in Play Area
+	 * if there's a Muk in play, continue as normal */
+	if (wOpponentDeckID != GO_GO_RAIN_DANCE_DECK_ID)
+		goto start;
+	if (CountPokemonWithActivePkmnPowerInBothPlayAreas(MUK))
+		goto start;
+	a = CountTurnDuelistPokemonWithActivePkmnPower(BLASTOISE);
+	if (!a)
+		goto no_carry;
+
+start:
+	/* find duplicate cards in hand */
+	CreateHandCardList(NULL);
+	if (FindDuplicateCards(wDuelTempList, &a))
+		goto no_carry;
+
+	/* remove the duplicate card in hand
+	 * and run the hand check again */
+	wce06 = a;
+	FindAndRemoveCardFromList(a, wDuelTempList);
+	if (FindDuplicateCards(wDuelTempList, &a))
+		goto no_carry;
+	wce08[0] = a;
+
+	if (FindBasicEnergyCardsInLocation(CARD_LOCATION_DISCARD_PILE, &count)) {
+		a = count;
+		goto no_carry;
+	}
+
+	/* some basic energy cards were found in Discard Pile */
+	wce1b = 0xff;
+	wce1c = 0xff;
+	wce1d = 0xff;
+	wce1e = 0xff;
+	wce1f = 0xff;
+
+	d = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	e = PLAY_AREA_ARENA;
+
+	/* first check if there are useful energy cards in the list
+	 * and choose them for retrieval first */
+	do { /* .loop_play_area */
+		/* load this card's ID in wTempCardID
+		 * and this card's Type in wTempCardType */
+		a = GetCardIDFromDeckIndex(GetTurnDuelistVariable((u8)(DUELVARS_ARENA_CARD + e)));
+		wTempCardID = a;
+		LoadCardDataToBuffer1_FromCardID(a);
+		wTempCardType = wLoadedCard1Type | TYPE_ENERGY;
+
+		/* loop the energy cards in the Discard Pile
+		 * and check if they are useful for this Pokemon */
+		hl = wDuelTempList;
+		for (;;) { /* .loop_energy_cards_1 */
+			a = *hl++;
+			if (a == 0xff)
+				break; /* .next_play_area */
+
+			b = a;
+			if (!CheckIfEnergyIsUseful(a))
+				continue;
+
+			/* first energy */
+			if (wce1b == 0xff) {
+				wce1b = b;
+				RemoveCardFromList(hl);
+				break; /* .next_play_area */
+			}
+			/* .second_energy_1 */
+			if (wce1c == 0xff) {
+				wce1c = b;
+				RemoveCardFromList(hl);
+				break; /* .next_play_area */
+			}
+			/* .third_energy_1 */
+			if (wce1d == 0xff) {
+				wce1d = b;
+				RemoveCardFromList(hl);
+				break; /* .next_play_area */
+			}
+			/* .fourth_energy_1 */
+			wce1e = b;
+			goto set_carry;
+		}
+		/* .next_play_area */
+		e++;
+	} while (--d);
+
+	/* next, if there are still energy cards left to choose,
+	 * loop through the energy cards again and select
+	 * them in order. */
+	hl = wDuelTempList;
+	for (;;) { /* .loop_energy_cards_2 */
+		a = *hl++;
+		if (a == 0xff)
+			break; /* .check_chosen */
+		b = a;
+		if (wce1b == 0xff) {
+			/* first energy */
+			wce1b = b;
+			hl = RemoveCardFromList(hl);
+			continue;
+		}
+		/* .second_energy_2 */
+		if (wce1c == 0xff) {
+			wce1c = b;
+			hl = RemoveCardFromList(hl);
+			continue;
+		}
+		/* .third_energy_2 */
+		if (wce1d == 0xff) {
+			wce1d = b;
+			hl = RemoveCardFromList(hl);
+			continue;
+		}
+		/* .fourth_energy_2 */
+		wce1e = b;
+		goto set_carry;
+	}
+
+	/* will set carry if at least one has been chosen */
+	/* .check_chosen */
+	a = wce1b;
+	if (a != 0xff)
+		goto set_carry;
+
+no_carry:
+	*a_out = a;
+	return false;
+set_carry:
+	wce1a = wce08[0];
+	*a_out = wce06;
+	return true;
+}
+
+/* finds the card with deck index a in list hl,
+ * and removes it from the list.
+ * the card HAS to exist in the list, since this
+ * routine does not check for the terminating byte $ff!
+ * input:
+ *   a  = card deck index to look
+ *   hl = pointer to list of cards */
+void FindAndRemoveCardFromList(u8 a, u8 *hl)
+{
+	u8 b = a;
+	u8 *p = hl; /* push hl */
+	while (*p++ != b) /* .loop */
+		;
+	RemoveCardFromList(p);
+	/* pop hl */
+}
+
+void AIPlay_PokemonCenter(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+bool AIDecide_PokemonCenter(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a, b, d, e;
+	u16 sum;
+
+	hTempPlayAreaLocation_ff9d = PLAY_AREA_ARENA;
+
+	/* return if active Pokemon can KO player's card. */
+	a = 0;
+	if (!CheckIfAnyAttackKnocksOutDefendingCard())
+		goto start;
+	if (!CheckIfSelectedAttackIsUnusable())
+		goto no_carry;
+	if (LookForEnergyNeededForAttackInHand())
+		goto no_carry;
+
+start:
+	wce06 = 0;
+	wce08[0] = 0;
+	wce0f[0] = 0;
+
+	d = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	e = PLAY_AREA_ARENA;
+
+	do { /* .loop_play_area */
+		LoadCardDataToBuffer1_FromDeckIndex(GetTurnDuelistVariable((u8)(DUELVARS_ARENA_CARD + e)));
+		/* ld a, e ; useless instruction */
+
+		/* get this Pokemon's current HP in number of counters
+		 * and add it to the total. */
+		b = ConvertHPToDamageCounters_Bank8(wLoadedCard1HP);
+		wce06 = (u8)(wce06 + b);
+
+		/* get this Pokemon's current damage counters
+		 * and add it to the total. */
+		b = ConvertHPToDamageCounters_Bank8(GetCardDamageAndMaxHP(e, NULL));
+		wce08[0] = (u8)(wce08[0] + b);
+
+		/* get this Pokemon's number of attached energy cards
+		 * and add it to the total.
+		 * if there's overflow, return no carry. */
+		GetPlayAreaCardAttachedEnergies(e);
+		b = wTotalAttachedEnergies;
+		sum = (u16)(wce0f[0] + b);
+		a = (u8)sum;
+		if (sum > 0xff)
+			goto no_carry;
+		wce0f[0] = a;
+
+		e++;
+	} while (--d);
+
+	/* if (number of damage counters / 2) < (total energy cards attached)
+	 * return no carry. */
+	a = (u8)(wce08[0] >> 1);
+	if (a < wce0f[0])
+		goto no_carry;
+
+	/* if (number of HP counters * 6 / 10) >= (number of damage counters)
+	 * return no carry. */
+	a = (u8)CalculateWordTensDigit(HtimesL(6, wce06));
+	if (a >= wce08[0])
+		goto no_carry;
+
+	*a_out = a;
+	return true;
+
+no_carry:
+	*a_out = a;
+	return false;
+}
+
+void AIPlay_ImposterProfessorOak(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* sets carry depending on player's number of cards
+ * in deck in in hand. */
+bool AIDecide_ImposterProfessorOak(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	a = GetNonTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_NOT_IN_DECK);
+	if (a < DECK_SIZE - 14)
+		goto more_than_14_cards;
+
+	/* if player has less than 14 cards in deck, only
+	 * set carry if number of cards in their hands < 6 */
+	a = GetNonTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_IN_HAND);
+	if (a < 6)
+		goto set_carry;
+no_carry:
+	*a_out = a;
+	return false;
+
+	/* if player has more than 14 cards in deck, only
+	 * set carry if number of cards in their hands >= 9 */
+more_than_14_cards:
+	a = GetNonTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_IN_HAND);
+	if (a < 9)
+		goto no_carry;
+set_carry:
+	*a_out = a;
+	return true;
+}
+
+void AIPlay_EnergySearch(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	hTemp_ffa0 = wAITrainerCardParameter;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* return carry if cards in wDuelTempList are not
+ * useful to any of the Play Area Pokemon
+ * (*a = the useful card without carry, the Play Area count with carry) */
+static bool AIDecide_EnergySearch_CheckForUsefulEnergyCards(u8 *a_out)
+{
+	const u8 *hl;
+	u8 a, b, d, e;
+
+	d = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	e = PLAY_AREA_ARENA;
+
+loop_play_area_1:
+	/* store ID and type of card */
+	a = GetCardIDFromDeckIndex(GetTurnDuelistVariable((u8)(DUELVARS_ARENA_CARD + e)));
+	wTempCardID = a;
+	LoadCardDataToBuffer1_FromCardID(a);
+	wTempCardType = wLoadedCard1Type | TYPE_ENERGY;
+
+	/* look in list for a useful energy,
+	 * is any is found return no carry. */
+	hl = wDuelTempList;
+loop_energy_1:
+	a = *hl++;
+	if (a == 0xff)
+		goto none_found;
+	b = a;
+	if (!CheckIfEnergyIsUseful(a))
+		goto loop_energy_1;
+
+	*a_out = b;
+	return false;
+
+none_found:
+	e++;
+	a = e;
+	if (a != d)
+		goto loop_play_area_1;
+
+	*a_out = a;
+	return true;
+}
+
+/* checks whether there are useful energies
+ * only for Fire and Lightning type Pokemon cards
+ * in Play Area. If none found, return carry. */
+static bool AIDecide_EnergySearch_CheckUsefulFireOrLightningEnergy(u8 *a_out)
+{
+	const u8 *hl;
+	u8 a, b, d, e;
+
+	d = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	e = PLAY_AREA_ARENA;
+
+loop_play_area_2:
+	/* get card's ID and Type */
+	a = GetCardIDFromDeckIndex(GetTurnDuelistVariable((u8)(DUELVARS_ARENA_CARD + e)));
+	wTempCardID = a;
+	LoadCardDataToBuffer1_FromCardID(a);
+	a = wLoadedCard1Type | TYPE_ENERGY;
+
+	/* only do check if the Pokemon's type
+	 * is either Fire or Lightning */
+	if (a == TYPE_ENERGY_FIRE)
+		goto fire_or_lightning;
+	if (a != TYPE_ENERGY_LIGHTNING)
+		goto next_play_area;
+
+	/* loop each energy card in list */
+fire_or_lightning:
+	wTempCardType = a;
+	hl = wDuelTempList;
+loop_energy_2:
+	a = *hl++;
+	if (a == 0xff)
+		goto next_play_area;
+
+	/* if this energy card is useful,
+	 * return no carry. */
+	b = a;
+	if (!CheckIfEnergyIsUseful(a))
+		goto loop_energy_2;
+
+	*a_out = b;
+	return false;
+
+next_play_area:
+	e++;
+	a = e;
+	if (a != d)
+		goto loop_play_area_2;
+
+	/* no card was found to be useful
+	 * for Fire/Lightning type Pokemon card. */
+	*a_out = a;
+	return true;
+}
+
+/* checks whether there are useful energies
+ * only for Grass type Pokemon cards
+ * in Play Area. If none found, return carry. */
+__attribute__((unused))
+static bool AIDecide_EnergySearch_CheckUsefulGrassEnergy(u8 *a_out)
+{
+	/* unreferenced */
+	const u8 *hl;
+	u8 a, b, d, e;
+
+	d = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	e = PLAY_AREA_ARENA;
+
+loop_play_area_3:
+	/* get card's ID and Type */
+	a = GetCardIDFromDeckIndex(GetTurnDuelistVariable((u8)(DUELVARS_ARENA_CARD + e)));
+	wTempCardID = a;
+	LoadCardDataToBuffer1_FromCardID(a);
+	a = wLoadedCard1Type | TYPE_ENERGY;
+
+	/* only do check if the Pokemon's type is Grass */
+	if (a != TYPE_ENERGY_GRASS)
+		goto next_play_area_3;
+
+	/* loop each energy card in list */
+	wTempCardType = a;
+	hl = wDuelTempList;
+loop_energy_3:
+	a = *hl++;
+	if (a == 0xff)
+		goto next_play_area_3;
+
+	/* if this energy card is useful,
+	 * return no carry. */
+	b = a;
+	if (!CheckIfEnergyIsUseful(a))
+		goto loop_energy_3;
+
+	*a_out = b;
+	return false;
+
+next_play_area_3:
+	e++;
+	a = e;
+	if (a != d)
+		goto loop_play_area_3;
+
+	/* no card was found to be useful
+	 * for Grass type Pokemon card. */
+	*a_out = a;
+	return true;
+}
+
+/* AI checks for playing Energy Search */
+bool AIDecide_EnergySearch(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a, count;
+
+	a = 0;
+	if (CreateEnergyCardListFromHand())
+		goto start;
+	if (AIDecide_EnergySearch_CheckForUsefulEnergyCards(&a))
+		goto start;
+
+	/* there are energy cards in hand and at least
+	 * one of them is useful to a card in Play Area */
+no_carry:
+	*a_out = a;
+	return false;
+
+start:
+	a = wOpponentDeckID;
+	if (a == HEATED_BATTLE_DECK_ID)
+		goto heated_battle;
+	if (a == WONDERS_OF_SCIENCE_DECK_ID)
+		goto wonders_of_science;
+
+	/* if no energy cards in deck, return no carry */
+	if (FindBasicEnergyCardsInLocation(CARD_LOCATION_DECK, &count)) {
+		a = count;
+		goto no_carry;
+	}
+
+	/* if any of the energy cards in deck is useful
+	 * return carry right away... */
+	if (AIDecide_EnergySearch_CheckForUsefulEnergyCards(&a))
+		goto no_useful;
+	*a_out = a;
+	return true;
+
+	/* ...otherwise save the list in a before return carry. */
+no_useful:
+	*a_out = wDuelTempList[0];
+	return true;
+
+	/* Heated Battle deck only searches for Fire and Lightning
+	 * if they are found to be useful to some card in Play Area */
+heated_battle:
+	if (FindBasicEnergyCardsInLocation(CARD_LOCATION_DECK, &count)) {
+		a = count;
+		goto no_carry;
+	}
+	if (AIDecide_EnergySearch_CheckUsefulFireOrLightningEnergy(&a))
+		goto no_carry;
+	*a_out = a;
+	return true;
+
+	/* this subroutine has a bug.
+	 * it was supposed to use the .CheckUsefulGrassEnergy subroutine
+	 * but uses .CheckUsefulFireOrLightningEnergy instead. */
+wonders_of_science:
+	if (FindBasicEnergyCardsInLocation(CARD_LOCATION_DECK, &count)) {
+		a = count;
+		goto no_carry;
+	}
+	if (AIDecide_EnergySearch_CheckUsefulFireOrLightningEnergy(&a))
+		goto no_carry;
+	*a_out = a;
+	return true;
+}
+
+void AIPlay_Pokedex(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	hTemp_ffa0 = wce1a;
+	hTempPlayAreaLocation_ffa1 = wce1b;
+	hTempRetreatCostCards[0] = wce1c;
+	hTempRetreatCostCards[1] = wce1d;
+	hTempRetreatCostCards[2] = wce1e;
+	hTempRetreatCostCards[3] = 0xff;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+bool AIDecide_Pokedex(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	/* return if counter hasn't reached 6 yet */
+	a = wAIPokedexCounter;
+	if (a < 5 + 1)
+		goto no_carry;
+
+	/* return no carry if number of cards in deck <= 4 */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_NOT_IN_DECK);
+	if (a >= DECK_SIZE - 4)
+		goto no_carry;
+
+	/* has a 3 in 10 chance of actually playing card */
+	a = Random(10);
+	if (a < 3)
+		goto pick_cards;
+
+no_carry:
+	*a_out = a;
+	return false;
+
+pick_cards:
+	/* the following comparison is disregarded
+	 * the Wonders of Science deck was probably intended
+	 * to use PickPokedexCards_Unreferenced instead */
+	(void)(wOpponentDeckID == WONDERS_OF_SCIENCE_DECK_ID);
+	return PickPokedexCards(a_out); /* bug, should be jp nz */
+}
+
+static u8 PickPokedexCards_Unreferenced_GetCardType(u8 a)
+{
+	return GetCardType(GetCardIDFromDeckIndex(a));
+}
+
+/* picks order of the cards in deck from the effects of Pokedex.
+ * prioritizes Pokemon cards, then Trainer cards, then energy cards.
+ * stores the resulting order in wce1a. */
+bool PickPokedexCards_Unreferenced(u8 *a_out)
+{
+	TRACE_FN();
+	/* unreferenced */
+	const u8 *hl;
+	u8 *de;
+	u8 a, b, c, e;
+
+	wAIPokedexCounter = 0; /* reset counter */
+
+	/* ld l, a (h = hWhoseTurn from GetTurnDuelistVariable) */
+	hl = TurnDuelistVars()
+		+ (u8)(GetTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_NOT_IN_DECK) + DUELVARS_DECK_CARDS);
+	e = 0;
+
+	/* run through 5 of the remaining cards in deck */
+	for (b = 5; b; b--) { /* .next_card */
+		a = *hl++;
+		c = a;
+		a = PickPokedexCards_Unreferenced_GetCardType(a);
+
+		/* load this card's deck index and type in memory
+		 * wce08 = card types
+		 * wce0f = card deck indices */
+		wce08[e] = a;
+		wce0f[e] = c;
+
+		e++;
+	}
+
+	/* terminate the wce08 list */
+	wce08[5] = 0xff;
+
+	de = &wce1a;
+
+	/* find Pokemon */
+	hl = wce08;
+	c = 0xff; /* -1 */
+
+	/* run through the stored cards
+	 * and look for any Pokemon cards. */
+	for (;;) { /* .loop_pokemon */
+		c++;
+		a = *hl++;
+		if (a == 0xff)
+			break;
+		if (a >= TYPE_ENERGY)
+			continue;
+		/* found a Pokemon card
+		 * store it in wce1a list */
+		*de++ = wce0f[c];
+	}
+
+	/* run through the stored cards
+	 * and look for any Trainer cards. */
+	/* .find_trainers */
+	hl = wce08;
+	c = 0xff;
+
+	for (;;) { /* .loop_trainers */
+		c++;
+		a = *hl++;
+		if (a == 0xff)
+			break;
+		if (a != TYPE_TRAINER)
+			continue;
+		/* found a Trainer card
+		 * store it in wce1a list */
+		*de++ = wce0f[c];
+	}
+
+	/* .find_energy */
+	hl = wce08;
+	c = 0xff;
+
+	/* run through the stored cards
+	 * and look for any energy cards. */
+	for (;;) { /* .loop_energy */
+		c++;
+		a = *hl++;
+		if (a == 0xff)
+			break;
+		a &= TYPE_ENERGY;
+		if (a == 0)
+			continue;
+		/* found an energy card
+		 * store it in wce1a list */
+		*de++ = wce0f[c];
+	}
+
+	/* .done */
+	*a_out = a;
+	return true;
+}
+
+static u8 PickPokedexCards_GetCardType(u8 a)
+{
+	return GetCardType(GetCardIDFromDeckIndex(a));
+}
+
+/* picks order of the cards in deck from the effects of Pokedex.
+ * prioritizes energy cards, then Pokemon cards, then Trainer cards.
+ * stores the resulting order in wce1a. */
+bool PickPokedexCards(u8 *a_out)
+{
+	TRACE_FN();
+	const u8 *hl;
+	u8 *de;
+	u8 a, b, c, e;
+
+	/* reset counter */
+	wAIPokedexCounter = 0;
+
+	/* ld l, a (h = hWhoseTurn from GetTurnDuelistVariable) */
+	hl = TurnDuelistVars()
+		+ (u8)(GetTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_NOT_IN_DECK) + DUELVARS_DECK_CARDS);
+	e = 0;
+
+	/* run through 5 of the remaining cards in deck */
+	for (b = 5; b; b--) { /* .next_card */
+		a = *hl++;
+		c = a;
+		a = PickPokedexCards_GetCardType(a);
+
+		/* load this card's deck index and type in memory
+		 * wce08 = card types
+		 * wce0f = card deck indices */
+		wce08[e] = a;
+		wce0f[e] = c;
+
+		e++;
+	}
+
+	/* terminate the wce08 list */
+	wce08[5] = 0xff;
+
+	/* find energy */
+	de = &wce1a;
+	hl = wce08;
+	c = 0xff; /* -1 */
+
+	/* run through the stored cards
+	 * and look for any energy cards. */
+	for (;;) { /* .loop_energy */
+		c++;
+		a = *hl++;
+		if (a == 0xff)
+			break;
+		a &= TYPE_ENERGY;
+		if (a == 0)
+			continue;
+		/* found an energy card
+		 * store it in wce1a list */
+		*de++ = wce0f[c];
+	}
+
+	/* .find_pokemon */
+	hl = wce08;
+	c = 0xff;
+
+	/* run through the stored cards
+	 * and look for any Pokemon cards. */
+	for (;;) { /* .loop_pokemon */
+		c++;
+		a = *hl++;
+		if (a == 0xff)
+			break;
+		if (a >= TYPE_ENERGY)
+			continue;
+		/* found a Pokemon card
+		 * store it in wce1a list */
+		*de++ = wce0f[c];
+	}
+
+	/* .find_trainers */
+	hl = wce08;
+	c = 0xff;
+
+	/* run through the stored cards
+	 * and look for any Trainer cards. */
+	for (;;) { /* .loop_trainers */
+		c++;
+		a = *hl++;
+		if (a == 0xff)
+			break;
+		if (a != TYPE_TRAINER)
+			continue;
+		/* found a Trainer card
+		 * store it in wce1a list */
+		*de++ = wce0f[c];
+	}
+
+	/* .done */
+	*a_out = a;
+	return true;
+}
+
+void AIPlay_FullHeal(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* register a that AIDecideWhetherToRetreat (retreat.asm, part C) leaves when it
+ * returns no carry, which AIDecide_FullHeal returns with carry (so it reaches
+ * wAITrainerCardParameter): [wConfusionRetreatCheckWasUnsuccessful] if nonzero
+ * (`jp nz, .no_carry`), $ff if the Arena card is Mysterious Fossil or Clefairy Doll
+ * (.loop_ko_3 reached the end of the bench), else [wAIScore] (`cp 131`, < 131).
+ * Only reads state; must be called right after it returned no carry. */
+static u8 AIDecide_FullHeal_RetreatNoCarryA(void)
+{
+	if (wConfusionRetreatCheckWasUnsuccessful)
+		return wConfusionRetreatCheckWasUnsuccessful;
+	u8 id = _GetCardIDFromDeckIndex(TurnDuelistVars()[DUELVARS_ARENA_CARD]);
+	if (id == MYSTERIOUS_FOSSIL || id == CLEFAIRY_DOLL)
+		return 0xff;
+	return wAIScore;
+}
+
+bool AIDecide_FullHeal(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a, scoop_up;
+
+	a = GetTurnDuelistVariable(DUELVARS_ARENA_CARD_STATUS);
+
+	/* skip if no status on arena card */
+	if (a == NO_STATUS)
+		goto no_carry;
+
+	a &= CNF_SLP_PRZ;
+	if (a == PARALYZED)
+		goto paralyzed;
+	if (a == ASLEEP)
+		goto asleep;
+	if (a == CONFUSED)
+		goto confused;
+	/* if either PSN or DBLPSN, fallthrough */
+
+set_carry:
+	*a_out = a;
+	return true;
+
+asleep:
+	/* set carry if any of the following
+	 * cards are in own Play Area.
+	 * bug, should be checking player's Play Area instead */
+	if (LookForCardIDInPlayArea_Bank8(GASTLY_LV8, PLAY_AREA_ARENA, &a))
+		goto set_carry;
+	if (LookForCardIDInPlayArea_Bank8(GASTLY_LV17, PLAY_AREA_ARENA, &a))
+		goto set_carry;
+	if (LookForCardIDInPlayArea_Bank8(HAUNTER_LV22, PLAY_AREA_ARENA, &a))
+		goto set_carry;
+
+	/* otherwise fallthrough */
+
+paralyzed:
+	/* if Scoop Up is in hand and decided to be played, skip. */
+	if (!LookForCardIDInHandList_Bank8(SCOOP_UP, &a))
+		goto no_scoop_up_prz;
+	if (AIDecide_ScoopUp(&scoop_up)) {
+		a = scoop_up;
+		goto no_carry;
+	}
+
+no_scoop_up_prz:
+	/* return no carry if Arena card
+	 * cannot damage the defending Pokémon */
+
+	/* this is a bug, since CheckIfCanDamageDefendingPokemon
+	 * also takes into account whether card is paralyzed */
+	a = 0;
+	if (!CheckIfCanDamageDefendingPokemon(PLAY_AREA_ARENA))
+		goto no_carry;
+
+	/* if it can play an energy card to retreat, set carry. */
+	a = wAIPlayEnergyCardForRetreat;
+	if (a)
+		goto set_carry;
+
+	/* if not, check whether it's a card it would rather retreat,
+	 * and if it isn't, set carry. */
+	if (!AIDecideWhetherToRetreat()) {
+		a = AIDecide_FullHeal_RetreatNoCarryA();
+		goto set_carry;
+	}
+	a = 0;
+
+no_carry:
+	*a_out = a;
+	return false;
+
+confused:
+	/* if Scoop Up is in hand and decided to be played, skip. */
+	if (!LookForCardIDInHandList_Bank8(SCOOP_UP, &a))
+		goto no_scoop_up_cnf;
+	if (AIDecide_ScoopUp(&scoop_up)) {
+		a = scoop_up;
+		goto no_carry;
+	}
+
+no_scoop_up_cnf:
+	/* if card can damage defending Pokemon... */
+	a = 0;
+	if (!CheckIfCanDamageDefendingPokemon(PLAY_AREA_ARENA))
+		goto no_carry;
+	/* ...and can play an energy card to retreat, set carry. */
+	a = wAIPlayEnergyCardForRetreat;
+	if (a)
+		goto set_carry;
+	/* if not, return no carry. */
+	goto no_carry;
+}
+
+void AIPlay_MrFuji(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	hTemp_ffa0 = wAITrainerCardParameter;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* AI logic for playing Mr Fuji */
+bool AIDecide_MrFuji(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a, b, d, e;
+
+	wce06 = 0xff;
+	wce08[0] = 0xff;
+
+	/* if just one Pokemon in Play Area, skip. */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	if (a == 1) {
+		*a_out = a;
+		return false;
+	}
+
+	a--;
+	d = a;
+	e = PLAY_AREA_BENCH_1;
+
+	/* find a Pokemon in the bench that has damage counters. */
+loop_bench:
+	LoadCardDataToBuffer1_FromDeckIndex(GetTurnDuelistVariable((u8)(DUELVARS_ARENA_CARD + e)));
+
+	b = wLoadedCard1HP;
+
+	/* skip if zero damage counters */
+	a = ConvertHPToDamageCounters_Bank8(GetCardDamageAndMaxHP(e, NULL));
+	if (a == 0)
+		goto next;
+
+	/* a = damage counters
+	 * b = max HP */
+	a = CalculateBDividedByA_Bank8(a, b);
+	if (a >= 20)
+		goto next;
+
+	/* here, HP left in counters is less than twice
+	 * the number of damage counters, that is:
+	 * remaining HP < 1/3 max HP */
+
+	/* if value is less than the one found before, store this one. */
+	if (a >= wce08[0])
+		goto next;
+	wce08[0] = a;
+	wce06 = e;
+next:
+	e++;
+	d--;
+	if (d != 0)
+		goto loop_bench;
+
+	a = wce06;
+	*a_out = a;
+	if (a == 0xff)
+		return false;
+	return true;
+}

@@ -192,8 +192,9 @@ const char *ref_addr_name(Ref *ref, int bank, uint16_t addr, char *buf, size_t n
 
 /* Expands deck `deck` (a *_DECK constant = *_DECK_ID + 2) from DeckPointers in
  * the ROM exactly like CopyDeckData: (count, card id) pairs until a 0 count.
- * Returns the number of cards (60 for every valid deck), -1 for an invalid /
- * NULL deck pointer. Cards past 60 are not written. */
+ * Returns the number of cards in the list (60, but 61 for GRASS_AND_PSYCHIC_DECK,
+ * whose list is one card too long), -1 for an invalid / NULL deck pointer.
+ * Only the first 60 cards are written to out. */
 int  ref_rom_deck(Ref *ref, int deck, uint8_t out[REF_DECK_SIZE]);
 
 /* ------------------------------------------------------------------------ */
@@ -214,7 +215,9 @@ typedef struct RefDuel {
 	uint8_t player_deck_id;
 	uint8_t opp_deck_id;        /* OPPONENT_TURN side, always AI: wOpponentDeckID / wNPCDuelDeckID */
 	/* 60 card ids each. If player_deck[0] == 0 (resp. opp_deck[0]) the ROM list
-	 * of player_deck_id + 2 (resp. opp_deck_id + 2) is used (ref_rom_deck). */
+	 * of player_deck_id + 2 (resp. opp_deck_id + 2) is used (ref_rom_deck).
+	 * Human mode: a custom opp_deck overwrites wOpponentDeck when StartDuel is
+	 * reached (after LoadOpponentDeck loaded the ROM list of opp_deck_id). */
 	uint8_t player_deck[REF_DECK_SIZE];
 	uint8_t opp_deck[REF_DECK_SIZE];
 	uint8_t prizes;             /* wNPCDuelPrizes (default 6) */
@@ -222,10 +225,11 @@ typedef struct RefDuel {
 	uint8_t rng[3];             /* wRNG1, wRNG2, wRNGCounter */
 	uint8_t animations_disabled;/* wAnimationsDisabled (+ sAnimationsDisabled), default 0 */
 	uint8_t text_speed;         /* wTextSpeed (+ sTextSpeed), default 0 = TEXT_SPEED_5 (no delay) */
-	uint16_t opp_name;          /* wOpponentName text id, default 0 (CopyOpponentName prints "Player2"-style default) */
+	uint16_t opp_name;          /* wOpponentName text id, default 0 (CopyOpponentName then uses wNameBuffer or Player2Text) */
 	uint8_t opp_portrait;       /* wOpponentPortrait, default 0 */
 	uint8_t per_side_ai;        /* default 1: AIDoAction hook (see below) */
-	uint8_t report_acks;        /* default 0: also report TCG_REQ_ACK inputs (auto-answered with A) */
+	uint8_t report_acks;        /* default 0: also report each ACK as REF_EV_INPUT type REF_IN_ACK, at the read
+	                             * where A is pressed (informational: no ref_answer needed) */
 	uint32_t hang_frames;       /* default 3600: no progress for this many frames -> REF_EV_HANG */
 } RefDuel;
 
@@ -342,10 +346,16 @@ typedef struct RefEvent {
 /* Runs the duel until the next event and fills *ev. Returns ev->kind.
  * After REF_EV_END / REF_EV_HANG / REF_EV_ERROR the duel is stopped and further
  * calls return the same kind again. After REF_EV_INPUT, ref_answer must be
- * called before ref_next (except for REF_IN_ACK, which is auto-answered). */
+ * called before ref_next (except for REF_IN_ACK, which is auto-answered); a
+ * ref_next without it returns REF_EV_ERROR without running or stopping the duel.
+ * Several events can happen at the same machine state (e.g. a trace point and
+ * an RNG return at one PC): they are returned one per call, all with the same
+ * registers. Hang = no trace hit, RNG call, AIDoAction entry or input request
+ * for hang_frames * 70224 cycles (also catches an LCD left off). */
 int  ref_next(Ref *ref, RefEvent *ev);
 
-/* Answers the pending REF_EV_INPUT: choice in [0, num_items) or REF_CANCEL.
+/* Answers the pending REF_EV_INPUT: choice in [first, first + num_items) (and
+ * in list[] for PRIZE / PEEK) or REF_CANCEL (only if can_cancel).
  * The answer is given to the original only as joypad presses (cursor moves +
  * A, or B). Returns 0 if accepted, -1 if there is no pending input or the
  * choice is out of range. */
