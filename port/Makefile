@@ -57,7 +57,7 @@ $(BUILD)/harness/unitdiff: harness/unitdiff.c harness/gb/gb.c $(HARNESS_ENGINE)
 DIFFTEST = $(BUILD)/harness/difftest $(ROM) $(SYM) $(BUILD)/harness/trace_points.txt
 
 # unit fuzzing of home/core routines, then lockstep duels against the original:
-# AI vs AI and human (random policy) vs AI over many deck pairs, random decks,
+# AI vs AI and human (random policy) vs AI over many deck pairs, random and focus decks,
 # the practice duel with Sam, and duels continued from a save
 test: harness
 	$(BUILD)/harness/unitdiff $(ROM) $(SYM) 2000
@@ -65,6 +65,8 @@ test: harness
 	$(DIFFTEST) --all-pairs --human --seeds 1 40
 	$(DIFFTEST) --all-pairs --random-decks --seeds 1000 30
 	$(DIFFTEST) --all-pairs --human --random-decks --seeds 2000 30
+	$(DIFFTEST) --all-pairs --focus harness/focus_cards.txt --seeds 6000 20
+	$(DIFFTEST) --all-pairs --human --focus harness/focus_cards.txt --seeds 7000 20
 	$(DIFFTEST) --human --decks 1 0 --prizes 2 --seeds 1 5
 	$(DIFFTEST) --all-pairs --human --seeds 100 10 --continue-at 6
 
@@ -75,6 +77,8 @@ test-long: harness
 	$(DIFFTEST) --all-pairs --human --seeds 1 400
 	$(DIFFTEST) --all-pairs --random-decks --seeds 1000 300
 	$(DIFFTEST) --all-pairs --human --random-decks --seeds 2000 300
+	$(DIFFTEST) --all-pairs --focus harness/focus_cards.txt --seeds 6000 200
+	$(DIFFTEST) --all-pairs --human --focus harness/focus_cards.txt --seeds 7000 200
 	$(DIFFTEST) --human --decks 1 0 --prizes 2 --seeds 1 50
 	$(DIFFTEST) --all-pairs --human --seeds 100 100 --continue-at 6
 
