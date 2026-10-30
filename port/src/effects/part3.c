@@ -12,27 +12,8 @@
 #include "../tcg.h"
 #include "part3_needs.h"
 
-/* PlayAreaSelectionMenuParameters and BenchSelectionMenuParameters are data
- * tables of part 1's range (effect_functions.asm line 1419); copies for part 3 */
-static const struct MenuParams PlayAreaSelectionMenuParameters = {
-	0, 0,                  /* cursor x, cursor y */
-	3,                     /* y displacement between items */
-	MAX_PLAY_AREA_POKEMON, /* number of items */
-	SYM_CURSOR_R,          /* cursor tile number */
-	SYM_SPACE,             /* tile behind cursor */
-	0,                     /* function pointer if non-0 */
-	TCG_MENU_PLAY_AREA,
-};
-
-static const struct MenuParams BenchSelectionMenuParameters = {
-	0, 3,                  /* cursor x, cursor y */
-	3,                     /* y displacement between items */
-	MAX_PLAY_AREA_POKEMON, /* number of items */
-	SYM_CURSOR_R,          /* cursor tile number */
-	SYM_SPACE,             /* tile behind cursor */
-	0,                     /* function pointer if non-0 */
-	TCG_MENU_PLAY_AREA,
-};
+/* (PlayAreaSelectionMenuParameters / BenchSelectionMenuParameters are part 1's
+ * tables and PlayerPickAttackForAmnesia_Carry is part 2's: see part3_needs.h) */
 
 /* `call DoFrame / call HandleMenuInput / jr nc, .loop_input` */
 static void WaitForMenuInput(void)
@@ -40,19 +21,6 @@ static void WaitForMenuInput(void)
 	do {
 		DoFrame();
 	} while (!HandleMenuInput());
-}
-
-/*
- * PlayerPickAttackForAmnesia (part 2) returns the carry of
- * HandleDefendingPokemonAttackSelection (set if the Player pressed B), but its
- * shared C signature is void. HandleDefendingPokemonAttackSelection only
- * returns carry from its `bit B_PAD_B, [hKeysPressed]` check, and on the A
- * path hKeysPressed holds the A press, so the carry is recomputed from it.
- */
-static bool PlayerPickAttackForAmnesia_Carry(void)
-{
-	PlayerPickAttackForAmnesia();
-	return (hKeysPressed & PAD_B) != 0;
 }
 
 bool StrangeBehavior_SelectAndSwapEffect(void)
@@ -536,8 +504,8 @@ bool MarowakCallForFamily_PlayerSelectEffect(void)
 	hTemp_ffa0 = 0xff;
 
 	CreateDeckCardList(NULL);
-	/* bc = FightingPokemonDeckText (LoadTxRam2'd by LookForCardsInDeck if none
-	 * is found): the shared signature only takes hl, see the part 3 report */
+	/* (bc = FightingPokemonDeckText: the shared signature takes only hl,
+	 * part 1 recovers bc from its table of LookForCardsInDeck callers) */
 	if (LookForCardsInDeck(SEARCHEFFECT_BASIC_FIGHTING, 0x00, ChooseBasicFightingPokemonFromDeckText))
 		return true;
 
@@ -1293,4 +1261,1543 @@ bool RaichuThunder_RecoilEffect(void)
 	return false;
 }
 
-/* @@PART3_CONTINUE@@ */
+/* returns carry if Bench Pokemon
+ * in register a was already chosen. */
+static bool Gigashock_PlayerSelectEffect_CheckIfChosenAlready(u8 a)
+{
+	u8 c = (u8)(a + 1);
+	u8 b = hCurSelectionItem;
+	u8 *hl = hTempList;
+	b++;
+	while (--b) {
+		/* .check_chosen */
+		if (*hl++ == c)
+			return true; /* return if chosen already */
+	}
+	return false;
+}
+
+bool Gigashock_PlayerSelectEffect(void)
+{
+	TRACE_FN();
+	SwapTurn();
+	if (GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA) < 2) {
+		SwapTurn();
+		hTempList[0] = 0xff;
+		return true; /* (carry from cp 2) */
+	}
+
+	/* .has_bench */
+	DrawWideTextBox_WaitForInput(ChooseUpTo3PkmnOnBenchToGiveDamageText);
+
+	/* init number of items in list and cursor position */
+	hCurSelectionItem = 0;
+	wCurGigashockItem = 0;
+	SetupPlayAreaScreen();
+start:;
+	u8 n = PrintPlayAreaCardList_EnableLCD();
+	InitializeMenuParameters(wCurGigashockItem, &BenchSelectionMenuParameters);
+
+	/* exclude Arena Pokemon from number of items */
+	wNumMenuItems = (u8)(n - 1);
+
+loop_input:
+	WaitForMenuInput();
+	u8 a = hCurMenuItem;
+	if (a == (u8)MENU_CANCEL)
+		goto try_cancel;
+
+	wCurGigashockItem = a;
+	if (Gigashock_PlayerSelectEffect_CheckIfChosenAlready(a)) {
+		/* play SFX */
+		PlaySFX_InvalidChoice();
+		goto loop_input;
+	}
+
+	/* .not_chosen: mark this Play Area location */
+	DrawSymbolOnPlayAreaCursor((u8)(hCurMenuItem + 1), SYM_LIGHTNING);
+	/* store it in the list of chosen Bench Pokemon */
+	*GetNextPositionInTempList() = (u8)(hCurMenuItem + 1);
+
+	/* check if 3 were chosen already */
+	u8 c = hCurSelectionItem;
+	if (c < 3) {
+		if ((u8)(GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA) - 1) != c)
+			goto start; /* if sill more options available, loop back */
+		/* fallthrough if no other options available to choose */
+	}
+
+	/* .chosen */
+	DrawPlayAreaScreenToShowChanges((u8)(hCurMenuItem + 1));
+	if (hKeysPressed & PAD_B)
+		goto try_cancel;
+	SwapTurn();
+	*GetNextPositionInTempList() = 0xff; /* terminating byte */
+	return false;
+
+try_cancel:
+	a = hCurSelectionItem;
+	if (a == 0)
+		goto start; /* none selected, can safely loop back to start */
+
+	/* undo last selection made */
+	a--;
+	hCurSelectionItem = a;
+	a = hTempList[a];
+
+	DrawSymbolOnPlayAreaCursor(a, SYM_SPACE);
+	EraseCursor();
+
+	wCurGigashockItem = (u8)(a - 1);
+	goto start;
+}
+
+bool Gigashock_AISelectEffect(void)
+{
+	TRACE_FN();
+	/* if Bench has 3 Pokemon or less, no need for selection,
+	 * since AI will choose them all. */
+	u8 a = GetNonTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	if (a < MAX_PLAY_AREA_POKEMON - 1) {
+		/* select them all */
+		u8 *hl = hTempList;
+		u8 b = PLAY_AREA_ARENA;
+		for (;;) {
+			/* .next_bench */
+			b++;
+			if (--a == 0)
+				break;
+			/* .select_bench */
+			*hl++ = b;
+		}
+		*hl = 0xff; /* terminating byte */
+		return true; /* (carry from cp MAX_PLAY_AREA_POKEMON - 1) */
+	}
+
+	/* .start_selection
+	 * has more than 3 Bench cards, proceed to sort them
+	 * by lowest remaining HP to highest, and pick first 3. */
+	SwapTurn();
+	a--;
+	u8 c = a;
+	u8 b = PLAY_AREA_BENCH_1;
+
+	/* first select all of the Bench Pokemon and write to list */
+	u8 *hl = hTempList;
+	do {
+		/* .loop_all */
+		*hl++ = b;
+		b++;
+	} while (--c);
+	*hl = 0x00; /* end list with $00 */
+
+	/* then check each of the Bench Pokemon HP
+	 * sort them from lowest remaining HP to highest.
+	 * (note: `cp c / jr c, .loop_inner` skips the Pokemon with less HP, so the
+	 * one with the most HP is moved first) */
+	u8 *de = hTempList;
+	do {
+		/* .loop_outer */
+		c = GetTurnDuelistVariable((u8)(*de + DUELVARS_ARENA_CARD_HP));
+		hl = de + 1;
+		for (;;) {
+			/* .loop_inner */
+			a = *hl++;
+			if (a == 0)
+				break; /* reaching $00 means it's end of list */
+			a = GetTurnDuelistVariable((u8)(a + DUELVARS_ARENA_CARD_HP));
+			if (a < c)
+				continue;
+			/* a Bench Pokemon was found with less HP */
+			c = a; /* store its HP */
+
+			/* switch the two */
+			hl--;
+			b = *hl;
+			*hl++ = *de;
+			*de = b;
+		}
+		/* .next */
+		de++;
+	} while (*de != 0);
+
+	/* done */
+	hTempList[3] = 0xff; /* terminating byte */
+	SwapTurn();
+	return false;
+}
+
+bool Gigashock_BenchDamageEffect(void)
+{
+	TRACE_FN();
+	SwapTurn();
+	u8 *hl = hTempList;
+	for (;;) {
+		/* .loop_selection */
+		u8 a = *hl++;
+		if (a == 0xff)
+			break;
+		DealDamageToPlayAreaPokemon_RegularAnim(a, 10);
+	}
+	/* .done */
+	SwapTurn();
+	return false;
+}
+
+bool MagnetonLv28SelfdestructEffect(void)
+{
+	TRACE_FN();
+	DealRecoilDamageToSelf(80);
+
+	/* own bench */
+	wIsDamageToSelf = TRUE;
+	DealDamageToAllBenchedPokemon(20);
+
+	/* opponent's bench */
+	SwapTurn();
+	wIsDamageToSelf = FALSE;
+	DealDamageToAllBenchedPokemon(20);
+	SwapTurn();
+	return false;
+}
+
+bool MagnetonSonicboom_UnaffectedByColorEffect(void)
+{
+	TRACE_FN();
+	wDamage[1] |= 1 << UNAFFECTED_BY_WEAKNESS_RESISTANCE_F;
+	return false;
+}
+
+bool MagnetonSonicboom_NullEffect(void)
+{
+	TRACE_FN();
+	return false;
+}
+
+bool MagnetonLv35SelfdestructEffect(void)
+{
+	TRACE_FN();
+	DealRecoilDamageToSelf(100);
+
+	/* own bench */
+	wIsDamageToSelf = TRUE;
+	DealDamageToAllBenchedPokemon(20);
+
+	/* opponent's bench */
+	SwapTurn();
+	wIsDamageToSelf = FALSE;
+	DealDamageToAllBenchedPokemon(20);
+	SwapTurn();
+	return false;
+}
+
+bool PealOfThunder_InitialEffect(void)
+{
+	TRACE_FN();
+	return true;
+}
+
+static void RandomlyDamagePlayAreaPokemon(u16 de);
+
+bool PealOfThunder_RandomlyDamageEffect(void)
+{
+	TRACE_FN();
+	ExchangeRNG();
+	RandomlyDamagePlayAreaPokemon(30); /* damage to inflict */
+	HandleDestinyBondAndBetweenTurnKnockOuts();
+	return false;
+}
+
+/* RandomlyDamagePlayAreaPokemon.DoDamage: input b = PLAY_AREA_*, de = damage */
+static void RandomlyDamagePlayAreaPokemon_DoDamage(u8 b, u16 de)
+{
+	wLoadedAttackAnimation = ATK_ANIM_THUNDER_PLAY_AREA;
+	DealDamageToPlayAreaPokemon(b, de);
+}
+
+/* randomly damages a Pokemon in play, except
+ * card that is in [hTempPlayAreaLocation_ff9d].
+ * plays thunder animation when Play Area is shown.
+ * input: de = amount of damage to deal */
+static void RandomlyDamagePlayAreaPokemon(u16 de)
+{
+	u8 b;
+	for (;;) {
+		/* .sample */
+		wNoDamageOrEffect = 0;
+
+		/* choose randomly which Play Area to attack */
+		if (UpdateRNGSources() & 1)
+			break; /* .opp_play_area */
+
+		/* own Play Area */
+		wIsDamageToSelf = TRUE;
+		b = Random(GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA));
+		/* can't select Zapdos */
+		if (hTempPlayAreaLocation_ff9d == b)
+			continue; /* re-roll Pokemon to attack */
+		RandomlyDamagePlayAreaPokemon_DoDamage(b, de);
+		return;
+	}
+
+	/* .opp_play_area */
+	wIsDamageToSelf = FALSE;
+	SwapTurn();
+	b = Random(GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA));
+	RandomlyDamagePlayAreaPokemon_DoDamage(b, de);
+	SwapTurn();
+}
+
+bool BigThunderEffect(void)
+{
+	TRACE_FN();
+	ExchangeRNG();
+	RandomlyDamagePlayAreaPokemon(70); /* damage to inflict */
+	return false;
+}
+
+bool MagneticStormEffect(void)
+{
+	TRACE_FN();
+	u8 *vars = TurnDuelistVars();
+
+	/* writes in wDuelTempList all deck indices
+	 * of Energy cards attached to Pokemon
+	 * in the Turn Duelist's Play Area. */
+	u8 *de = wDuelTempList;
+	u8 c = 0;
+	for (u8 l = DUELVARS_CARD_LOCATIONS; l < DECK_SIZE; l++) {
+		/* .loop_card_locations */
+		if (!(vars[l] & CARD_LOCATION_PLAY_AREA))
+			continue;
+		/* is a card that is in the Play Area */
+		if (!(GetCardType(GetCardIDFromDeckIndex(l)) & TYPE_ENERGY))
+			continue;
+		/* is an Energy card attached to Pokemon in Play Area */
+		*de++ = l;
+		c++;
+	}
+	*de = 0xff; /* terminating byte */
+
+	/* divide number of energy cards
+	 * by number of Pokemon in Play Area */
+	u8 b = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	u8 a = c;
+	c = 0xff; /* -1 */
+	bool borrow;
+	do {
+		/* .loop_division */
+		c++;
+		borrow = a < b;
+		a = (u8)(a - b);
+	} while (!borrow);
+	/* c = floor(a / b) */
+
+	/* evenly divides the Energy cards randomly
+	 * to every Pokemon in the Play Area. */
+	u8 saved_b = b, saved_c = c; /* push bc */
+	u8 *hl = wDuelTempList;
+	ShuffleCards(hl, CountCardsInDuelTempList());
+	u8 d = c;
+	u8 e = PLAY_AREA_ARENA;
+	do {
+		/* .start_attach */
+		c = d;
+		c++;
+		while (--c) {
+			/* .attach_energy */
+			a = *hl++;
+			AddCardToHand(a);
+			PutHandCardInPlayArea(a, e);
+		}
+		/* .check_done: go to next Pokemon in Play Area */
+		e++; /* next in Play Area */
+	} while (--b);
+	b = saved_b; /* pop bc */
+	c = saved_c;
+
+	u8 *rest = hl; /* push hl */
+
+	/* fill hTempList with PLAY_AREA_* locations
+	 * that have Pokemon in them. */
+	hl = hTempList;
+	a = 0;
+	do {
+		/* .loop_init */
+		*hl++ = a;
+		a++;
+	} while (a != b);
+
+	/* shuffle them and distribute
+	 * the remaining cards in random order. */
+	ShuffleCards(hTempList, b);
+	hl = rest; /* pop hl */
+	de = hTempList;
+	for (;;) {
+		/* .next_random_pokemon */
+		if (*hl == 0xff)
+			break;
+		e = *de;
+		a = *hl;
+		AddCardToHand(a);
+		PutHandCardInPlayArea(a, e);
+		hl++;
+		de++;
+	}
+
+	/* .done */
+	DrawDuelMainScene();
+	DrawDuelHUDs();
+	DrawWideTextBox_WaitForInput(TheEnergyCardFromPlayAreaWasMovedText);
+	DrawPlayAreaScreenToShowChanges(PLAY_AREA_ARENA);
+	return false;
+}
+
+bool ElectrodeSonicboom_UnaffectedByColorEffect(void)
+{
+	TRACE_FN();
+	wDamage[1] |= 1 << UNAFFECTED_BY_WEAKNESS_RESISTANCE_F;
+	return false;
+}
+
+bool ElectrodeSonicboom_NullEffect(void)
+{
+	TRACE_FN();
+	return false;
+}
+
+/* return carry if no cards in Deck */
+bool EnergySpike_DeckCheck(void)
+{
+	TRACE_FN();
+	return CheckIfDeckIsEmpty();
+}
+
+bool EnergySpike_PlayerSelectEffect(void)
+{
+	TRACE_FN();
+	hTemp_ffa0 = 0xff;
+
+	/* search cards in Deck */
+	CreateDeckCardList(NULL);
+	/* (bc = BasicEnergyText: the shared signature takes only hl,
+	 * part 1 recovers bc from its table of LookForCardsInDeck callers) */
+	if (LookForCardsInDeck(SEARCHEFFECT_BASIC_ENERGY, 0, Choose1BasicEnergyCardFromDeckText))
+		return true;
+
+	InitAndDrawCardListScreenLayout_WithSelectCheckMenu();
+	SetCardListHeaderText(ChooseBasicEnergyCardText, DuelistDeckText);
+	for (;;) {
+		/* .select_card */
+		u8 card;
+		if (DisplayCardList(&card))
+			goto try_cancel;
+		u8 type = GetCardType(GetCardIDFromDeckIndex(card));
+		if (type >= TYPE_ENERGY_DOUBLE_COLORLESS)
+			continue; /* not a Basic Energy card */
+		if (!(type & TYPE_ENERGY))
+			continue; /* not a Basic Energy card */
+		/* Energy card selected */
+
+		hTemp_ffa0 = hTempCardIndex_ff98;
+		EmptyScreen();
+		DrawWideTextBox_WaitForInput(ChoosePokemonToAttachEnergyCardText);
+
+		/* choose a Pokemon in Play Area to attach card */
+		HasAlivePokemonInPlayArea(NULL);
+		while (OpenPlayAreaScreenForSelection())
+			; /* .loop_input */
+		hTempPlayAreaLocation_ffa1 = hTempPlayAreaLocation_ff9d;
+		return false;
+
+	play_sfx:
+		PlaySFX_InvalidChoice();
+		continue;
+
+	try_cancel:;
+		/* Player tried exiting screen, if there are
+		 * any Basic Energy cards, Player is forced to select them.
+		 * otherwise, they can safely exit. */
+		u8 *vars = TurnDuelistVars();
+		for (u8 l = DUELVARS_CARD_LOCATIONS; l < DECK_SIZE; l++) {
+			/* .loop_deck */
+			if (vars[l] != CARD_LOCATION_DECK)
+				continue;
+			u8 a = GetCardType(GetCardIDFromDeckIndex(l)) & TYPE_ENERGY;
+			if (a == 0)
+				continue;
+			/* bug (original): a is TYPE_ENERGY after the `and`, so this is always
+			 * true and any Energy card in the Deck (Double Colorless Energy
+			 * included) prevents exiting */
+			if (a < TYPE_ENERGY_DOUBLE_COLORLESS)
+				goto play_sfx;
+		}
+		/* can exit */
+		hTemp_ffa0 = 0xff;
+		return false;
+	}
+}
+
+bool EnergySpike_AISelectEffect(void)
+{
+	TRACE_FN();
+	/* AI doesn't choose card here,
+	 * instead this is handled in AISelectSpecialAttackParameters */
+	hTemp_ffa0 = 0xff;
+	return false;
+}
+
+bool EnergySpike_AttachEnergyEffect(void)
+{
+	TRACE_FN();
+	u8 a = hTemp_ffa0;
+	if (a == 0xff)
+		goto done;
+
+	/* add card to hand and attach it to the selected Pokemon */
+	SearchCardInDeckAndAddToHand(a);
+	AddCardToHand(a);
+	PutHandCardInPlayArea(hTemp_ffa0, hTempPlayAreaLocation_ffa1);
+	if (IsPlayerTurn())
+		goto done;
+
+	/* not Player, so show detail screen
+	 * and which Pokemon was chosen to attach Energy. */
+	LoadCardDataToBuffer1_FromDeckIndex(
+		GetTurnDuelistVariable((u8)(hTempPlayAreaLocation_ffa1 + DUELVARS_ARENA_CARD)));
+	wTxRam2_b[0] = wLoadedCard1.Name[0];
+	wTxRam2_b[1] = wLoadedCard1.Name[1];
+	DisplayCardDetailScreen(hTemp_ffa0, AttachedEnergyToPokemonText);
+
+done:
+	ShuffleCardsInDeck();
+	return false;
+}
+
+bool JolteonDoubleKick_AIEffect(void)
+{
+	TRACE_FN();
+	SetExpectedAIDamage(40 / 2, 0, 40);
+	return false;
+}
+
+bool JolteonDoubleKick_MultiplierEffect(void)
+{
+	TRACE_FN();
+	LoadTxRam3(20);
+	u8 a = TossCoinATimes_BankB(2, DamageCheckIfHeadsXDamageText);
+	a = (u8)(a + a); /* a = 2 * heads */
+	SetDefiniteDamage(ATimes10(a));
+	return false;
+}
+
+bool TailWagEffect(void)
+{
+	TRACE_FN();
+	if (!TossCoin_BankB(IfHeadsOpponentCannotAttackText)) {
+		SetWasUnsuccessful();
+		return false;
+	}
+	wLoadedAttackAnimation = ATK_ANIM_LURE;
+	ApplySubstatus2ToDefendingCard(SUBSTATUS2_TAIL_WAG);
+	return false;
+}
+
+bool EeveeQuickAttack_AIEffect(void)
+{
+	TRACE_FN();
+	SetExpectedAIDamage((10 + 30) / 2, 10, 30);
+	return false;
+}
+
+bool EeveeQuickAttack_DamageBoostEffect(void)
+{
+	TRACE_FN();
+	LoadTxRam3(20);
+	if (!TossCoin_BankB(DamageCheckIfHeadsPlusDamageText))
+		return false; /* return if tails */
+	AddToDamage(20);
+	return false;
+}
+
+/* these are effect commands that Mirror Move uses
+ * in order to mimic last turn's attack.
+ * it covers all possible effect steps to perform its commands
+ * (i.e. selection for Amnesia and Energy discarding attacks, etc) */
+static bool MirrorMove_AIEffect(void);
+static bool MirrorMove_InitialEffect1(void);
+static bool MirrorMove_InitialEffect2(void);
+static bool MirrorMove_PlayerSelection(void);
+static bool MirrorMove_AISelection(void);
+static bool MirrorMove_BeforeDamage(void);
+static bool MirrorMove_AfterDamage(void);
+static bool MirrorMove_ExecuteStatusEffect(u8 a);
+static bool HandleEnergyDiscardEffectSelection(void);
+
+bool SpearowMirrorMove_AIEffect(void)
+{
+	TRACE_FN();
+	return MirrorMove_AIEffect();
+}
+
+bool SpearowMirrorMove_InitialEffect1(void)
+{
+	TRACE_FN();
+	return MirrorMove_InitialEffect1();
+}
+
+bool SpearowMirrorMove_InitialEffect2(void)
+{
+	TRACE_FN();
+	return MirrorMove_InitialEffect2();
+}
+
+bool SpearowMirrorMove_PlayerSelection(void)
+{
+	TRACE_FN();
+	return MirrorMove_PlayerSelection();
+}
+
+bool SpearowMirrorMove_AISelection(void)
+{
+	TRACE_FN();
+	return MirrorMove_AISelection();
+}
+
+bool SpearowMirrorMove_BeforeDamage(void)
+{
+	TRACE_FN();
+	return MirrorMove_BeforeDamage();
+}
+
+bool SpearowMirrorMove_AfterDamage(void)
+{
+	TRACE_FN();
+	return MirrorMove_AfterDamage();
+}
+
+static bool MirrorMove_AIEffect(void)
+{
+	u8 a = GetTurnDuelistVariable(DUELVARS_ARENA_CARD_LAST_TURN_DAMAGE);
+	wAIMinDamage = a;
+	wAIMaxDamage = a;
+	return false;
+}
+
+static bool MirrorMove_InitialEffect1(void)
+{
+	u8 *vars = TurnDuelistVars();
+	u8 a = vars[DUELVARS_ARENA_CARD_LAST_TURN_DAMAGE];
+	a |= vars[DUELVARS_ARENA_CARD_LAST_TURN_DAMAGE + 1];
+	a |= vars[DUELVARS_ARENA_CARD_LAST_TURN_STATUS];
+	if (a)
+		return false; /* return if has last turn damage or status */
+	if (vars[DUELVARS_ARENA_CARD_LAST_TURN_SUBSTATUS2])
+		return false; /* return if has last turn substatus */
+	/* no attack received last turn */
+	gTextID = YouDidNotReceiveAnAttackToMirrorMoveText;
+	return true;
+}
+
+static bool MirrorMove_InitialEffect2(void)
+{
+	hTemp_ffa0 = 0xff;
+	u8 a = GetTurnDuelistVariable(DUELVARS_ARENA_CARD_LAST_TURN_EFFECT);
+	if (a == 0)
+		return false; /* no effect */
+	if (a == LAST_TURN_EFFECT_AMNESIA)
+		return PlayerPickAttackForAmnesia_Carry();
+	return false;
+}
+
+static bool MirrorMove_PlayerSelection(void)
+{
+	u8 a = GetTurnDuelistVariable(DUELVARS_ARENA_CARD_LAST_TURN_EFFECT);
+	if (a == 0)
+		return false; /* no effect */
+	/* handle Energy card discard effect */
+	if (a == LAST_TURN_EFFECT_DISCARD_ENERGY)
+		return HandleEnergyDiscardEffectSelection();
+	return a < LAST_TURN_EFFECT_DISCARD_ENERGY; /* (carry from cp) */
+}
+
+static bool MirrorMove_AISelection(void)
+{
+	hTemp_ffa0 = 0xff;
+	u8 a = GetTurnDuelistVariable(DUELVARS_ARENA_CARD_LAST_TURN_EFFECT);
+	if (a == 0)
+		return false; /* no effect */
+	if (a == LAST_TURN_EFFECT_DISCARD_ENERGY) {
+		/* .discard_energy */
+		hTemp_ffa0 = AIPickEnergyCardToDiscardFromDefendingPokemon();
+		return false;
+	}
+	if (a == LAST_TURN_EFFECT_AMNESIA) {
+		/* .pick_amnesia_attack */
+		hTemp_ffa0 = AIPickAttackForAmnesia();
+		return false;
+	}
+	return a < LAST_TURN_EFFECT_AMNESIA; /* (carry from cp) */
+}
+
+static bool MirrorMove_BeforeDamage(void)
+{
+	/* if was attacked with Amnesia, apply it to the selected attack */
+	if (GetTurnDuelistVariable(DUELVARS_ARENA_CARD_LAST_TURN_EFFECT) == LAST_TURN_EFFECT_AMNESIA) {
+		/* .apply_amnesia */
+		ApplyAmnesiaToAttack();
+		return false;
+	}
+
+	/* otherwise, check if there was last turn damage,
+	 * and write it to wDamage. */
+	u8 *vars = TurnDuelistVars();
+	wDamage[0] = vars[DUELVARS_ARENA_CARD_LAST_TURN_DAMAGE];
+	wDamage[1] = vars[DUELVARS_ARENA_CARD_LAST_TURN_DAMAGE + 1];
+	if (vars[DUELVARS_ARENA_CARD_LAST_TURN_DAMAGE + 1] | vars[DUELVARS_ARENA_CARD_LAST_TURN_DAMAGE])
+		wLoadedAttackAnimation = ATK_ANIM_HIT;
+	/* .no_damage
+	 * check if there was a status applied to Defending Pokemon
+	 * from the attack it used. */
+	u8 *de = NonTurnDuelistVars(); /* (de = DUELVARS_ARENA_CARD_STATUS of this block) */
+	bool carry = false;
+	u8 a = vars[DUELVARS_ARENA_CARD_LAST_TURN_STATUS];
+	if (a)
+		carry = MirrorMove_ExecuteStatusEffect(a);
+	/* .no_status
+	 * hl is at DUELVARS_ARENA_CARD_LAST_TURN_SUBSTATUS2
+	 * apply substatus2 to defending card */
+	de[DUELVARS_ARENA_CARD_SUBSTATUS2] = vars[DUELVARS_ARENA_CARD_LAST_TURN_SUBSTATUS2];
+	return carry;
+}
+
+static bool MirrorMove_AfterDamage(void)
+{
+	if (wNoDamageOrEffect)
+		return false; /* is unaffected */
+	if (GetTurnDuelistVariable(DUELVARS_ARENA_CARD_LAST_TURN_EFFECT) == LAST_TURN_EFFECT_DISCARD_ENERGY) {
+		/* execute Energy discard effect for card chosen */
+		SwapTurn();
+		PutCardInDiscardPile(hTemp_ffa0);
+		TurnDuelistVars()[DUELVARS_ARENA_CARD_LAST_TURN_EFFECT] = LAST_TURN_EFFECT_DISCARD_ENERGY;
+		SwapTurn();
+	}
+
+	/* .change_weakness */
+	u8 *hl = &TurnDuelistVars()[DUELVARS_ARENA_CARD_LAST_TURN_CHANGE_WEAK];
+	if (*hl == 0)
+		return false; /* weakness wasn't changed last turn */
+
+	SwapTurn();
+	LoadCardDataToBuffer2_FromDeckIndex(GetTurnDuelistVariable(DUELVARS_ARENA_CARD));
+	SwapTurn();
+
+	if (wLoadedCard2.Weakness == 0)
+		return false; /* defending Pokemon has no weakness to change */
+
+	/* apply same color weakness to Defending Pokemon */
+	u8 a = *hl;
+	NonTurnDuelistVars()[DUELVARS_ARENA_CARD_CHANGED_WEAKNESS] = a;
+
+	/* print message of weakness color change */
+	u8 c = 0xff; /* -1 */
+	bool carry = false; /* (cleared by the `or a` on wLoadedCard2Weakness) */
+	do {
+		/* .loop_color */
+		c++;
+		bool bit7 = (a & 0x80) != 0; /* rla */
+		a = (u8)((a << 1) | (carry ? 1 : 0));
+		carry = bit7;
+	} while (!carry);
+	a = c;
+	SwapTurn();
+	LoadCardDataToBuffer1_FromDeckIndex(GetTurnDuelistVariable(DUELVARS_ARENA_CARD));
+	LoadCardNameAndInputColor(a);
+	DrawWideTextBox_PrintText(ChangedTheWeaknessOfPokemonToColorText);
+	SwapTurn();
+	return false;
+}
+
+static bool MirrorMove_ExecuteStatusEffect(u8 a)
+{
+	u8 c = a;
+	a &= PSN_DBLPSN;
+	if (a) {
+		u8 b = a;
+		if (a == DOUBLE_POISONED)
+			DoublePoisonEffect();
+		if (b == POISONED)
+			PoisonEffect();
+	}
+	/* .cnf_slp_prz */
+	a = c & CNF_SLP_PRZ;
+	if (a == 0)
+		return false;
+	if (a == CONFUSED)
+		return ConfusionEffect();
+	if (a == ASLEEP)
+		return SleepEffect();
+	if (a == PARALYZED)
+		return ParalysisEffect();
+	return a < PARALYZED; /* (carry from cp) */
+}
+
+bool FearowAgilityEffect(void)
+{
+	TRACE_FN();
+	if (!TossCoin_BankB(IfHeadsDoNotReceiveDamageOrEffectText))
+		return false;
+	wLoadedAttackAnimation = ATK_ANIM_AGILITY_PROTECT;
+	ApplySubstatus1ToAttackingCard(SUBSTATUS1_AGILITY);
+	return false;
+}
+
+/* return carry if cannot use Step In */
+bool StepIn_BenchCheck(void)
+{
+	TRACE_FN();
+	u8 a = hTempPlayAreaLocation_ff9d;
+	hTemp_ffa0 = a;
+	gTextID = CanOnlyBeUsedOnTheBenchText;
+	if (a == 0)
+		return true;
+
+	a = GetTurnDuelistVariable((u8)(a + DUELVARS_ARENA_CARD_FLAGS));
+	gTextID = OnlyOncePerTurnText;
+	if (a & USED_PKMN_POWER_THIS_TURN)
+		return true;
+
+	return CheckIsIncapableOfUsingPkmnPower(hTempPlayAreaLocation_ff9d);
+}
+
+bool StepIn_SwitchEffect(void)
+{
+	TRACE_FN();
+	SwapArenaWithBenchPokemon(hTemp_ffa0);
+	TurnDuelistVars()[DUELVARS_ARENA_CARD_FLAGS] |= USED_PKMN_POWER_THIS_TURN;
+	return false;
+}
+
+bool DragoniteLv45Slam_AIEffect(void)
+{
+	TRACE_FN();
+	SetExpectedAIDamage((40 * 2) / 2, 0, 80);
+	return false;
+}
+
+bool DragoniteLv45Slam_MultiplierEffect(void)
+{
+	TRACE_FN();
+	LoadTxRam3(40);
+	u8 a = TossCoinATimes_BankB(2, DamageCheckIfHeadsXDamageText);
+	a = (u8)(a + a);
+	a = (u8)(a + a);
+	SetDefiniteDamage(ATimes10(a));
+	return false;
+}
+
+bool ThickSkinnedEffect(void)
+{
+	TRACE_FN();
+	return true;
+}
+
+bool LeekSlap_AIEffect(void)
+{
+	TRACE_FN();
+	SetExpectedAIDamage(30 / 2, 0, 30);
+	return false;
+}
+
+/* return carry if already used attack in this duel */
+bool LeekSlap_OncePerDuelCheck(void)
+{
+	TRACE_FN();
+	/* can only use attack if it was never used before this duel */
+	if (!(GetTurnDuelistVariable(DUELVARS_ARENA_CARD_FLAGS) & USED_LEEK_SLAP_THIS_DUEL))
+		return false;
+	gTextID = ThisAttackCannotBeUsedTwiceText;
+	return true;
+}
+
+bool LeekSlap_SetUsedThisDuelFlag(void)
+{
+	TRACE_FN();
+	TurnDuelistVars()[DUELVARS_ARENA_CARD_FLAGS] |= USED_LEEK_SLAP_THIS_DUEL;
+	return false;
+}
+
+bool LeekSlap_NoDamage50PercentEffect(void)
+{
+	TRACE_FN();
+	if (TossCoin_BankB(DamageCheckIfTailsNoDamageText))
+		return true;
+	SetDefiniteDamage(0); /* 0 damage */
+	return false;
+}
+
+bool FetchEffect(void)
+{
+	TRACE_FN();
+	DrawWideTextBox_WaitForInput(Draw1CardFromTheDeckText);
+	DisplayDrawOneCardScreen();
+	u8 card;
+	if (DrawCardFromDeck(&card))
+		return true; /* return if deck is empty */
+	AddCardToHand(card);
+	LoadCardDataToBuffer1_FromDeckIndex(card);
+	if (wDuelistType != DUELIST_TYPE_PLAYER)
+		return false;
+	/* show card on screen if it was Player */
+	OpenCardPage_FromHand();
+	return false;
+}
+
+bool CometPunch_AIEffect(void)
+{
+	TRACE_FN();
+	SetExpectedAIDamage((20 * 4) / 2, 0, 80);
+	return false;
+}
+
+bool CometPunch_MultiplierEffect(void)
+{
+	TRACE_FN();
+	LoadTxRam3(20);
+	u8 a = TossCoinATimes_BankB(4, DamageCheckIfHeadsXDamageText);
+	a = (u8)(a + a);
+	SetDefiniteDamage(ATimes10(a));
+	return false;
+}
+
+bool TaurosStomp_AIEffect(void)
+{
+	TRACE_FN();
+	SetExpectedAIDamage((20 + 30) / 2, 20, 30);
+	return false;
+}
+
+bool TaurosStomp_DamageBoostEffect(void)
+{
+	TRACE_FN();
+	LoadTxRam3(10);
+	if (!TossCoin_BankB(DamageCheckIfHeadsPlusDamageText))
+		return false; /* tails */
+	AddToDamage(10);
+	return false;
+}
+
+bool Rampage_AIEffect(void)
+{
+	TRACE_FN();
+	AddToDamage(GetCardDamageAndMaxHP(PLAY_AREA_ARENA, NULL));
+	SetDefiniteAIDamage();
+	return false;
+}
+
+bool Rampage_Confusion50PercentEffect(void)
+{
+	TRACE_FN();
+	AddToDamage(GetCardDamageAndMaxHP(PLAY_AREA_ARENA, NULL));
+	if (TossCoin_BankB(IfTailsYourPokemonBecomesConfusedText))
+		return true; /* heads */
+	SwapTurn();
+	bool carry = ConfusionEffect();
+	SwapTurn();
+	return carry;
+}
+
+bool FuryAttack_AIEffect(void)
+{
+	TRACE_FN();
+	SetExpectedAIDamage((10 * 2) / 2, 0, 20);
+	return false;
+}
+
+bool FuryAttack_MultiplierEffect(void)
+{
+	TRACE_FN();
+	LoadTxRam3(10);
+	u8 a = TossCoinATimes_BankB(2, DamageCheckIfHeadsXDamageText);
+	SetDefiniteDamage(ATimes10(a));
+	return false;
+}
+
+bool RetreatAidEffect(void)
+{
+	TRACE_FN();
+	return true;
+}
+
+bool DodrioRage_AIEffect(void)
+{
+	TRACE_FN();
+	DodrioRage_DamageBoostEffect();
+	SetDefiniteAIDamage();
+	return false;
+}
+
+bool DodrioRage_DamageBoostEffect(void)
+{
+	TRACE_FN();
+	AddToDamage(GetCardDamageAndMaxHP(PLAY_AREA_ARENA, NULL));
+	return false;
+}
+
+bool PayDayEffect(void)
+{
+	TRACE_FN();
+	if (!TossCoin_BankB(IfHeadsDraw1CardFromDeckText))
+		return false; /* tails */
+	DrawWideTextBox_WaitForInput(Draw1CardFromTheDeckText);
+	DisplayDrawOneCardScreen();
+	u8 card;
+	if (DrawCardFromDeck(&card))
+		return true; /* empty deck */
+	AddCardToHand(card);
+	LoadCardDataToBuffer1_FromDeckIndex(card);
+	if (wDuelistType != DUELIST_TYPE_PLAYER)
+		return false;
+	/* show card on screen if it was Player */
+	OpenCardPage_FromHand();
+	return false;
+}
+
+bool DragonairSlam_AIEffect(void)
+{
+	TRACE_FN();
+	SetExpectedAIDamage((30 * 2) / 2, 0, 60);
+	return false;
+}
+
+bool DragonairSlam_MultiplierEffect(void)
+{
+	TRACE_FN();
+	LoadTxRam3(30);
+	u8 e = TossCoinATimes_BankB(2, DamageCheckIfHeadsXDamageText);
+	u8 a = (u8)(e + e);
+	a = (u8)(a + e);
+	SetDefiniteDamage(ATimes10(a));
+	return false;
+}
+
+bool DragonairHyperBeam_PlayerSelectEffect(void)
+{
+	TRACE_FN();
+	return HandleEnergyDiscardEffectSelection();
+}
+
+bool DragonairHyperBeam_AISelectEffect(void)
+{
+	TRACE_FN();
+	hTemp_ffa0 = AIPickEnergyCardToDiscardFromDefendingPokemon();
+	return false;
+}
+
+bool DragonairHyperBeam_DiscardEffect(void)
+{
+	TRACE_FN();
+	if (HandleNoDamageOrEffect())
+		return true; /* is unaffected */
+	if (hTemp_ffa0 == 0xff)
+		return false; /* no energy card chosen */
+	SwapTurn();
+	PutCardInDiscardPile(hTemp_ffa0);
+	TurnDuelistVars()[DUELVARS_ARENA_CARD_LAST_TURN_EFFECT] = LAST_TURN_EFFECT_DISCARD_ENERGY;
+	SwapTurn();
+	return false;
+}
+
+/* handles screen for selecting an Energy card to discard
+ * that is attached to Defending Pokemon,
+ * and store the Player selection in [hTemp_ffa0]. */
+static bool HandleEnergyDiscardEffectSelection(void)
+{
+	SwapTurn();
+	if (CreateArenaOrBenchEnergyCardList(PLAY_AREA_ARENA)) {
+		/* .no_energy */
+		SwapTurn();
+		hTemp_ffa0 = 0xff;
+		return true; /* (carry from CreateArenaOrBenchEnergyCardList) */
+	}
+	DrawWideTextBox_WaitForInput(ChooseDiscardEnergyCardFromOpponentText);
+	DisplayEnergyDiscardScreen(PLAY_AREA_ARENA);
+
+	while (HandleEnergyDiscardMenuInput())
+		; /* .loop_input */
+
+	SwapTurn();
+	hTemp_ffa0 = hTempCardIndex_ff98; /* store selected card to discard */
+	return false;
+}
+
+static bool HandlePlayerMetronomeEffect(u8 a);
+static void HandleAIMetronomeEffect(void);
+
+/* return carry if Defending Pokemon has no attacks */
+bool ClefableMetronome_CheckAttacks(void)
+{
+	TRACE_FN();
+	bool carry = CheckIfDefendingPokemonHasAnyAttack();
+	gTextID = NoAttackMayBeChoosenText;
+	return carry;
+}
+
+bool ClefableMetronome_AISelectEffect(void)
+{
+	TRACE_FN();
+	HandleAIMetronomeEffect();
+	return false;
+}
+
+bool ClefableMetronome_UseAttackEffect(void)
+{
+	TRACE_FN();
+	return HandlePlayerMetronomeEffect(1); /* energy cost of this attack */
+}
+
+bool ClefableMinimizeEffect(void)
+{
+	TRACE_FN();
+	ApplySubstatus1ToAttackingCard(SUBSTATUS1_REDUCE_BY_20);
+	return false;
+}
+
+bool HurricaneEffect(void)
+{
+	TRACE_FN();
+	if (HandleNoDamageOrEffect())
+		return true; /* is unaffected */
+
+	if (GetNonTurnDuelistVariable(DUELVARS_ARENA_CARD_HP) == 0)
+		return false; /* return if Pokemon was KO'd */
+
+	/* look at all the card locations and put all cards
+	 * that are in the Arena in the hand. */
+	SwapTurn();
+	u8 *vars = TurnDuelistVars();
+	for (u8 l = DUELVARS_CARD_LOCATIONS; l < DECK_SIZE; l++) {
+		/* .loop_locations */
+		if (vars[l] != CARD_LOCATION_ARENA)
+			continue;
+		/* card in Arena found, put in hand */
+		AddCardToHand(l);
+	}
+
+	/* empty the Arena card slot */
+	u8 a = vars[DUELVARS_ARENA_CARD];
+	vars[DUELVARS_ARENA_CARD] = 0xff;
+	vars[DUELVARS_ARENA_CARD_HP] = 0;
+	LoadCardDataToBuffer1_FromDeckIndex(a);
+	LoadTxRam2(rd16(wLoadedCard1.Name));
+	DrawWideTextBox_WaitForInput(PokemonAndAllAttachedCardsReturnedToHandText);
+	wDuelDisplayedScreen = 0;
+	SwapTurn();
+	return false;
+}
+
+bool PidgeottoWhirlwind_SelectEffect(void)
+{
+	TRACE_FN();
+	if (GetNonTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA) < 2) {
+		/* no Bench Pokemon */
+		hTemp_ffa0 = 0xff;
+		return true; /* (carry from cp 2) */
+	}
+	/* .switch */
+	DuelistSelectForcedSwitch();
+	hTemp_ffa0 = hTempPlayAreaLocation_ff9d;
+	return false;
+}
+
+bool PidgeottoWhirlwind_SwitchEffect(void)
+{
+	TRACE_FN();
+	HandleSwitchDefendingPokemonEffect(hTemp_ffa0);
+	return false;
+}
+
+bool PidgeottoMirrorMove_AIEffect(void)
+{
+	TRACE_FN();
+	return MirrorMove_AIEffect();
+}
+
+bool PidgeottoMirrorMove_InitialEffect1(void)
+{
+	TRACE_FN();
+	return MirrorMove_InitialEffect1();
+}
+
+bool PidgeottoMirrorMove_InitialEffect2(void)
+{
+	TRACE_FN();
+	return MirrorMove_InitialEffect2();
+}
+
+bool PidgeottoMirrorMove_PlayerSelection(void)
+{
+	TRACE_FN();
+	return MirrorMove_PlayerSelection();
+}
+
+bool PidgeottoMirrorMove_AISelection(void)
+{
+	TRACE_FN();
+	return MirrorMove_AISelection();
+}
+
+bool PidgeottoMirrorMove_BeforeDamage(void)
+{
+	TRACE_FN();
+	return MirrorMove_BeforeDamage();
+}
+
+bool PidgeottoMirrorMove_AfterDamage(void)
+{
+	TRACE_FN();
+	return MirrorMove_AfterDamage();
+}
+
+bool SingEffect(void)
+{
+	TRACE_FN();
+	bool carry = Sleep50PercentEffect();
+	if (!carry)
+		SetNoEffectFromStatus();
+	return carry;
+}
+
+/* return carry if Defending Pokemon has no attacks */
+bool ClefairyMetronome_CheckAttacks(void)
+{
+	TRACE_FN();
+	bool carry = CheckIfDefendingPokemonHasAnyAttack();
+	gTextID = NoAttackMayBeChoosenText;
+	return carry;
+}
+
+bool ClefairyMetronome_AISelectEffect(void)
+{
+	TRACE_FN();
+	HandleAIMetronomeEffect();
+	return false;
+}
+
+bool ClefairyMetronome_UseAttackEffect(void)
+{
+	TRACE_FN();
+	return HandlePlayerMetronomeEffect(3); /* energy cost of this attack (fallthrough) */
+}
+
+/* handles Metronome selection, and validates
+ * whether it can use the selected attack.
+ * if unsuccessful, returns carry.
+ * input: a = amount of colorless energy needed for Metronome */
+static bool HandlePlayerMetronomeEffect(u8 a)
+{
+	wMetronomeEnergyCost = a;
+	DrawWideTextBox_WaitForInput(ChooseOppAttackToBeUsedWithMetronomeText);
+
+	u8 d, e;
+	if (HandleDefendingPokemonAttackSelection(&d, &e))
+		return true; /* return if operation cancelled */
+
+	/* store this attack as selected attack to use */
+	wMetronomeSelectedAttack[0] = d;
+	wMetronomeSelectedAttack[1] = e;
+
+	/* compare selected attack's name with
+	 * the attack that is loaded, which is Metronome.
+	 * if equal, then cannot select it.
+	 * (i.e. cannot use Metronome with Metronome.) */
+	u16 name = rd16(wLoadedAttack.Name);
+	SwapTurn();
+	CopyAttackDataAndDamage_FromDeckIndex(d, e);
+	SwapTurn();
+	u16 hl;
+	if ((u8)name != wLoadedAttack.Name[0] || (u8)(name >> 8) != wLoadedAttack.Name[1])
+		goto try_use;
+	/* cannot select Metronome */
+	hl = UnableToSelectText;
+failed:
+	DrawWideTextBox_WaitForInput(hl);
+	/* .set_carry */
+	return true;
+
+try_use:
+	/* run the attack checks to determine
+	 * whether it can be used. */
+	if (TryExecuteEffectCommandFunction(EFFECTCMDTYPE_INITIAL_EFFECT_1)) {
+		hl = gTextID;
+		goto failed;
+	}
+
+	/* run initial effect 2 where player selection
+	 * happens for some attacks */
+	if (TryExecuteEffectCommandFunction(EFFECTCMDTYPE_INITIAL_EFFECT_2))
+		return true; /* .set_carry */
+	/* successful */
+
+	/* send data to link opponent */
+	SendAttackDataToLinkOpponent();
+	SetOppAction_SerialSendDuelData(OPPACTION_USE_METRONOME_ATTACK);
+	/* (d, e = wMetronomeSelectedAttack, c = wMetronomeEnergyCost are the data sent) */
+	SerialSend8Bytes();
+
+	wPlayerAttackingCardIndex = hTempCardIndex_ff9f;
+	wPlayerAttackingAttackIndex = wSelectedAttack;
+	wPlayerAttackingCardID = wTempCardID_ccc2;
+	return false;
+}
+
+/* does nothing for AI. */
+static void HandleAIMetronomeEffect(void)
+{
+}
+
+bool DoTheWaveEffect(void)
+{
+	TRACE_FN();
+	u8 a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	a--; /* don't count arena card */
+	AddToDamage(ATimes10(a));
+	return false;
+}
+
+/* return carry if no damage counters */
+bool FirstAid_DamageCheck(void)
+{
+	TRACE_FN();
+	u8 a = GetCardDamageAndMaxHP(PLAY_AREA_ARENA, NULL);
+	gTextID = NoDamageCountersText;
+	return a < 10;
+}
+
+bool FirstAid_HealEffect(void)
+{
+	TRACE_FN();
+	ApplyAndAnimateHPRecovery(10);
+	return false;
+}
+
+bool JigglypuffDoubleEdgeEffect(void)
+{
+	TRACE_FN();
+	DealRecoilDamageToSelf(20);
+	return false;
+}
+
+bool PounceEffect(void)
+{
+	TRACE_FN();
+	ApplySubstatus2ToDefendingCard(SUBSTATUS2_POUNCE);
+	return false;
+}
+
+bool LickitungSupersonicEffect(void)
+{
+	TRACE_FN();
+	bool carry = Confusion50PercentEffect();
+	if (!carry)
+		SetNoEffectFromStatus();
+	return carry;
+}
+
+bool PidgeyWhirlwind_SelectEffect(void)
+{
+	TRACE_FN();
+	if (GetNonTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA) < 2) {
+		/* no Bench Pokemon */
+		hTemp_ffa0 = 0xff;
+		return true; /* (carry from cp 2) */
+	}
+	/* .switch */
+	DuelistSelectForcedSwitch();
+	hTemp_ffa0 = hTempPlayAreaLocation_ff9d;
+	return false;
+}
+
+bool PidgeyWhirlwind_SwitchEffect(void)
+{
+	TRACE_FN();
+	HandleSwitchDefendingPokemonEffect(hTemp_ffa0);
+	return false;
+}
+
+static void PrintArenaCardNameAndColorText(u16 hl);
+static bool AISelectConversionColor(void);
+
+/* return carry if Defending card has no weakness */
+bool Conversion1_WeaknessCheck(void)
+{
+	TRACE_FN();
+	SwapTurn();
+	LoadCardDataToBuffer2_FromDeckIndex(GetTurnDuelistVariable(DUELVARS_ARENA_CARD));
+	SwapTurn();
+	if (wLoadedCard2.Weakness)
+		return false;
+	gTextID = NoWeaknessText;
+	return true;
+}
+
+bool Conversion1_PlayerSelectEffect(void)
+{
+	TRACE_FN();
+	u8 color;
+	bool carry = HandleColorChangeScreen(PLAY_AREA_ARENA, ChooseWeaknessYouWishToChangeText, &color);
+	/* a = selected color, or MENU_CANCEL (left by HandleMenuInput) if B was pressed */
+	hTemp_ffa0 = carry ? (u8)MENU_CANCEL : color;
+	return carry;
+}
+
+bool Conversion1_AISelectEffect(void)
+{
+	TRACE_FN();
+	return AISelectConversionColor();
+}
+
+bool Conversion1_ChangeWeaknessEffect(void)
+{
+	TRACE_FN();
+	if (HandleNoDamageOrEffect())
+		return true; /* is unaffected */
+
+	/* apply changed weakness */
+	u8 *vars = NonTurnDuelistVars();
+	u8 a = TranslateColorToWR(hTemp_ffa0);
+	vars[DUELVARS_ARENA_CARD_CHANGED_WEAKNESS] = a;
+	vars[DUELVARS_ARENA_CARD_LAST_TURN_CHANGE_WEAK] = a;
+
+	/* print text box */
+	SwapTurn();
+	PrintArenaCardNameAndColorText(ChangedTheWeaknessOfPokemonToColorText);
+	SwapTurn();
+
+	/* apply substatus */
+	ApplySubstatus2ToDefendingCard(SUBSTATUS2_CONVERSION2);
+	return false;
+}
+
+/* returns carry if Active Pokemon has no Resistance. */
+bool Conversion2_ResistanceCheck(void)
+{
+	TRACE_FN();
+	LoadCardDataToBuffer2_FromDeckIndex(GetTurnDuelistVariable(DUELVARS_ARENA_CARD));
+	if (wLoadedCard2.Resistance)
+		return false;
+	gTextID = NoResistanceText;
+	return true;
+}
+
+bool Conversion2_PlayerSelectEffect(void)
+{
+	TRACE_FN();
+	u8 color;
+	bool carry = HandleColorChangeScreen(0x80, ChooseResistanceYouWishToChangeText, &color);
+	/* a = selected color, or MENU_CANCEL (left by HandleMenuInput) if B was pressed */
+	hTemp_ffa0 = carry ? (u8)MENU_CANCEL : color;
+	return carry;
+}
+
+bool Conversion2_AISelectEffect(void)
+{
+	TRACE_FN();
+	/* AI will choose Defending Pokemon's color
+	 * unless it is colorless. */
+	SwapTurn();
+	LoadCardDataToBuffer1_FromDeckIndex(GetTurnDuelistVariable(DUELVARS_ARENA_CARD));
+	SwapTurn();
+	u8 a = wLoadedCard1.Type;
+	if (a != COLORLESS) {
+		hTemp_ffa0 = a;
+		return a < COLORLESS; /* (carry from cp) */
+	}
+
+	/* .is_colorless */
+	SwapTurn();
+	bool carry = AISelectConversionColor();
+	SwapTurn();
+	return carry;
+}
+
+bool Conversion2_ChangeResistanceEffect(void)
+{
+	TRACE_FN();
+	/* apply changed resistance */
+	TurnDuelistVars()[DUELVARS_ARENA_CARD_CHANGED_RESISTANCE] = TranslateColorToWR(hTemp_ffa0);
+	/* fallthrough */
+	PrintArenaCardNameAndColorText(ChangedTheResistanceOfPokemonToColorText);
+	return false;
+}
+
+/* prints text that requires card name and color,
+ * with the card name of the Turn Duelist's Arena Pokemon
+ * and color in [hTemp_ffa0].
+ * input: hl = text to print */
+static void PrintArenaCardNameAndColorText(u16 hl)
+{
+	LoadCardDataToBuffer1_FromDeckIndex(GetTurnDuelistVariable(DUELVARS_ARENA_CARD));
+	LoadCardNameAndInputColor(hTemp_ffa0);
+	DrawWideTextBox_PrintText(hl);
+}
+
+/* handles AI logic for selecting a new color
+ * for weakness/resistance.
+ * - if within the context of Conversion1, looks
+ * in own Bench for a non-colorless card that can attack.
+ * - if within the context of Conversion2, looks
+ * in Player's Bench for a non-colorless card that can attack. */
+static bool AISelectConversionColor(void)
+{
+	u8 d = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	u8 e = PLAY_AREA_ARENA;
+
+	/* look for a non-colorless Bench Pokemon
+	 * that has enough energy to use an attack. */
+	for (;;) {
+		/* .next_pkmn_atk */
+		e++;
+		if (--d == 0)
+			break;
+		/* .loop_atk */
+		GetPlayAreaCardAttachedEnergies(e);
+		u8 card = GetTurnDuelistVariable((u8)(e + DUELVARS_ARENA_CARD));
+		LoadCardDataToBuffer1_FromDeckIndex(card);
+		if (wLoadedCard1.Type == COLORLESS)
+			continue; /* skip colorless Pokemon */
+		if (!CheckIfEnoughEnergiesForGivenAttack(card, FIRST_ATTACK_OR_PKMN_POWER))
+			goto found;
+		if (!CheckIfEnoughEnergiesForGivenAttack(card, SECOND_ATTACK))
+			goto found;
+		/* .skip_pkmn_atk */
+	}
+
+	/* none found in Bench.
+	 * next, look for a non-colorless Bench Pokemon
+	 * that has any Energy cards attached. */
+	d = e; /* number of Play Area Pokemon */
+	e = PLAY_AREA_ARENA;
+	for (;;) {
+		/* .next_pkmn_energy */
+		e++;
+		if (--d == 0)
+			break;
+		/* .loop_energy */
+		GetPlayAreaCardAttachedEnergies(e);
+		if (wTotalAttachedEnergies == 0)
+			continue; /* .skip_pkmn_energy */
+		LoadCardDataToBuffer1_FromDeckIndex(GetTurnDuelistVariable((u8)(e + DUELVARS_ARENA_CARD)));
+		if (wLoadedCard1.Type != COLORLESS)
+			goto found;
+		/* .skip_pkmn_energy */
+	}
+
+	/* otherwise, just select a random energy. */
+	hTemp_ffa0 = Random(NUM_COLORED_TYPES);
+	return false;
+
+found:
+	hTemp_ffa0 = wLoadedCard1.Type & TYPE_PKMN;
+	return false;
+}

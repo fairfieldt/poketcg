@@ -6,6 +6,14 @@
 
 u8 gPlayerDeckCards[DECK_SIZE];
 bool gPerSideAI;
+static u8 gReceivedLegendaryCards;
+
+/* sReceivedLegendaryCards: whether the player has received the legendary cards
+ * (the end of the game). Read by the AI (CheckIfNotABossDeckID). */
+u8 GetSRAMReceivedLegendaryCards(void)
+{
+	return gReceivedLegendaryCards;
+}
 
 
 /* expand a DeckPointers list into 60 card IDs, exactly like CopyDeckData */
@@ -51,6 +59,7 @@ int tcg_run_duel(const TcgDuelSetup *s)
 	wRNG1 = s->rng[0];
 	wRNG2 = s->rng[1];
 	wRNGCounter = s->rng[2];
+	gReceivedLegendaryCards = s->received_legendary_cards;
 	wOpponentName[0] = 0;
 	wOpponentName[1] = 0;
 

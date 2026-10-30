@@ -32,3 +32,12 @@
 # *disasm.py output file
 *disasm_output.asm
 port/build/
+port/frontends/web/build/
+port/frontends/web/dist/
+port/frontends/web/server/node_modules/
+port/frontends/n64/build/
+port/harness/*.a
+port/harness/refrun
+port/harness/difftest
+port/harness/unitdiff
+*.z64

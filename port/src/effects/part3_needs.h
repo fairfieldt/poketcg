@@ -1,8 +1,9 @@
 /*
  * Routines used by effects/part3.c (effect_functions.asm lines 5540-8420) that
  * are not declared in any shared header yet (or whose shared declaration does
- * not expose the register inputs the original passes). To be provided by the
- * lead / part 1. Nothing here is implemented in part3.c.
+ * not expose an output the original returns). Provided by part1.c / part2.c
+ * (non-static there) or to be provided by the lead. Nothing here is
+ * implemented in part3.c.
  */
 #ifndef TCG_EFFECTS_PART3_NEEDS_H
 #define TCG_EFFECTS_PART3_NEEDS_H
@@ -18,6 +19,25 @@ bool ParalysisEffect(void);      /* lb bc, PSN_DBLPSN, PARALYZED / jr QueueStatu
 bool ConfusionEffect(void);      /* lb bc, PSN_DBLPSN, CONFUSED / jr QueueStatusCondition */
 /* TossCoin_BankB(SleepCheckText); ret nc (tails: carry clear); then SleepEffect (carry = queued) */
 bool Sleep50PercentEffect(void);
+
+/* data tables of part 1's range (effect_functions.asm line 1419), used by
+ * StrangeBehavior_SelectAndSwapEffect and Gigashock_PlayerSelectEffect with
+ * InitializeMenuParameters. part1.c defines them non-static (.menu = TCG_MENU_PLAY_AREA):
+ *   PlayAreaSelectionMenuParameters: cursor 0,0; y sep 3; MAX_PLAY_AREA_POKEMON items; SYM_CURSOR_R / SYM_SPACE; no func
+ *   BenchSelectionMenuParameters:    cursor 0,3; y sep 3; MAX_PLAY_AREA_POKEMON items; SYM_CURSOR_R / SYM_SPACE; no func */
+extern const struct MenuParams PlayAreaSelectionMenuParameters;
+extern const struct MenuParams BenchSelectionMenuParameters;
+
+/* ---- engine/duel/effect_functions.asm, part 2 range: PlayerPickAttackForAmnesia with its carry ----
+ * effects.h declares PlayerPickAttackForAmnesia as void, but the original returns the
+ * carry of HandleDefendingPokemonAttackSelection (set if the Player pressed B), which
+ * SlowpokeAmnesia_PlayerSelectEffect and MirrorMove_InitialEffect2 return as their
+ * EFFECTCMDTYPE_INITIAL_EFFECT_2 result (carry = the attack is cancelled).
+ * part2.c defines this non-static: same effects as PlayerPickAttackForAmnesia
+ * (DrawWideTextBox_WaitForInput(ChooseAttackOpponentWillNotBeAbleToUseText),
+ * HandleDefendingPokemonAttackSelection, hTemp_ffa0 = e), returns that carry.
+ * (If effects.h's PlayerPickAttackForAmnesia becomes bool, this is the same routine.) */
+bool PlayerPickAttackForAmnesia_Carry(void);
 
 /* ---- src/home/print_text.asm CopyText ----
  * input: hl = text id, de = destination. copies the TX_END-terminated text
@@ -53,17 +73,6 @@ u8 HandlePeekSelection(void);
  *   wYourOrOppPlayAreaCurPosition, wVBlankOAMCopyToggle, wDuelDisplayedScreen;
  *   hWhoseTurn is swapped and restored. no outputs used by the caller. */
 void DrawAIPeekScreen(u8 a);
-
-/* ---- engine/duel/core.asm CheckIfEnoughEnergiesForGivenAttack, with its inputs ----
- * engine.h declares CheckIfEnoughEnergiesForGivenAttack(void), but the original
- * takes d = deck index of the card (0-59), e = attack index
- * (FIRST_ATTACK_OR_PKMN_POWER / SECOND_ATTACK), plus wAttachedEnergies and
- * wTotalAttachedEnergies. output: carry if the attack is unusable (no attack /
- * Pokemon Power) or there are not enough energies.
- * side effects: wLoadedCard1 = card d (LoadCardDataToBuffer1_FromDeckIndex),
- *   wAttachedEnergiesAccum. preserves de.
- * If engine.h gets the (u8 d, u8 e) signature, this can become a plain alias. */
-bool CheckIfEnoughEnergiesForGivenAttack_DE(u8 d, u8 e);
 
 /* ---- constants not generated into gen/constants.h ---- */
 #ifndef PAD_B

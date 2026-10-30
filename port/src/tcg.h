@@ -87,6 +87,8 @@ enum TcgMenu {
 	TCG_MENU_PLAY_AREA,       /* cursor over the shown play area */
 	TCG_MENU_TWO_ITEMS,       /* two horizontal items (text) */
 	TCG_MENU_CARD_LIST,       /* list in wDuelTempList */
+	TCG_MENU_PEEK_AREA,       /* Peek: 0 = shown duelist's play area, 1 = the other one */
+	TCG_MENU_PEEK_TARGET,     /* Peek: 0-5 prize (arg[0] = prize bits), 6 hand (only if arg[1]), 7 deck top */
 };
 
 typedef struct TcgRequest {
@@ -128,6 +130,8 @@ typedef struct TcgDuelSetup {
 	uint8_t rng[3];               /* wRNG1, wRNG2, wRNGCounter at the start of the duel */
 	uint8_t music;                /* wDuelTheme */
 	uint8_t animations_disabled;  /* wAnimationsDisabled */
+	uint8_t received_legendary_cards; /* sReceivedLegendaryCards save flag: nonzero makes every AI deck
+	                                   * play like a boss deck (CheckIfNotABossDeckID) */
 } TcgDuelSetup;
 
 void tcg_set_host(const TcgHost *host);

@@ -47,6 +47,10 @@ void DrawWholeScreenTextBox(u16 text);             /* print over the whole scree
 /* writes "<name> Lv<level>" of wLoadedCard1 (at most max_len tiles) to the default text
  * (what TX_RAM2 prints when its text id is 0). In the original it writes wDefaultText. */
 void CopyCardNameAndLevel(u8 max_len);
+/* copy text (id 0: turn duelist's name) to de; returns the address of the terminator */
+u8 *CopyText(u16 text, u8 *de);
+u8 HandlePeekSelection(void);                      /* see duel_ui.c */
+void DrawAIPeekScreen(u8 b);
 
 /* ---------------------------------------------------------------- generic menus (home/menus.asm) */
 struct MenuParams {                 /* the 8 bytes InitializeMenuParameters copies to wMenuParams */

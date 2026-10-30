@@ -13,7 +13,6 @@
 
 static const TcgHost *gHost;
 u8 gUIDecider;
-static char gDefaultText[64];       /* C side of wDefaultText (what TX_RAM2 prints for text id 0) */
 static u8 gMenuContext;             /* TcgMenu of the last InitializeMenuParameters */
 const char *gDuelistNames[2] = { "PLAYER", "OPPONENT" };
 
@@ -101,9 +100,28 @@ const char *tcg_text(uint16_t id)
 	return gTexts[id];
 }
 
+/* wDefaultText holds UTF-8 text in the port (the original stores GB-encoded text there;
+ * it is only ever printed, never read by the duel logic) */
+static char *default_text(void)
+{
+	wDefaultText[SIZEOF_wDefaultText - 1] = 0;
+	return (char *)wDefaultText;
+}
+
+static void set_default_text(const char *s)
+{
+	int i = 0;
+	while (s[i] && i < SIZEOF_wDefaultText - 1) {
+		wDefaultText[i] = (u8)s[i];
+		i++;
+	}
+	wDefaultText[i] = 0;
+}
+
 static int format_text(u16 id, char *out, int n, int pos, u8 *which2, u8 *which3, int depth)
 {
-	const char *s = tcg_text(id);
+	/* text id 0 prints wDefaultText */
+	const char *s = id ? tcg_text(id) : default_text();
 	for (; *s && pos < n - 1; s++) {
 		char c = *s;
 		if (c == TX_RAM1) {
@@ -112,7 +130,7 @@ static int format_text(u16 id, char *out, int n, int pos, u8 *which2, u8 *which3
 			u16 t = rd16(&wTxRam2[(u8)(*which2 * 2)]);
 			(*which2)++;
 			if (t == 0)
-				pos = append(out, n, pos, gDefaultText);
+				pos = append(out, n, pos, default_text());
 			else if (depth < 4)
 				pos = format_text(t, out, n, pos, which2, which3, depth + 1);
 		} else if (c == TX_RAM3) {
@@ -241,18 +259,28 @@ void CopyCardNameAndLevel(u8 max_len)
 		pos = append(buf, sizeof(buf), pos, num);
 	}
 	(void)max_len;
-	memcpy(gDefaultText, buf, sizeof(gDefaultText));
-	gDefaultText[sizeof(gDefaultText) - 1] = 0;
+	set_default_text(buf);
 }
 
 void CopyPlayerNameToDefaultText(void)
 {
-	append(gDefaultText, sizeof(gDefaultText), 0, gDuelistNames[0]);
+	set_default_text(gDuelistNames[0]);
 }
 
 void CopyOpponentNameToDefaultText(void)
 {
-	append(gDefaultText, sizeof(gDefaultText), 0, gDuelistNames[1]);
+	set_default_text(gDuelistNames[1]);
+}
+
+/* copy the text with the given id to de (text id 0: the turn duelist's name);
+ * returns the address of the terminator */
+u8 *CopyText(u16 text, u8 *de)
+{
+	const char *s = text ? tcg_text(text) : gDuelistNames[hWhoseTurn == OPPONENT_TURN];
+	while (*s && de < gWRAM + WRAM_SIZE - 1)
+		*de++ = (u8)*s++;
+	*de = 0;
+	return de;
 }
 
 /* ---------------------------------------------------------------- generic menus */
@@ -1413,4 +1441,126 @@ void WriteOneByteNumberInTxSymbol_PadSpace(u8 a, u8 b, u8 c)
 void WriteTwoDigitNumberInTxSymbol_PadSpace(u8 a, u8 b, u8 c)
 {
 	TwoByteNumberToTxSymbol_PadSpace_Bank1(a);
+}
+
+/* ---------------------------------------------------------------- peek (engine/menus/duel.asm) */
+
+static void DrawYourOrOppPlayAreaScreen(u8 h, u8 l)
+{
+	wCheckMenuPlayAreaWhichDuelist = h;
+	wCheckMenuPlayAreaWhichLayout = l;
+	EmptyScreen();
+	tcg_ui_screen(TCG_SCREEN_PLAY_AREA, 0, 2);
+}
+
+/* the player's Peek selection (Mankey's Peek): pick a prize card, the opponent's hand
+ * (a random card of it) or the top card of a deck, of either play area.
+ * returns wce5c: $40 + prize index, $7f for the deck, or the hand card's deck index,
+ * with bit 7 set if the opponent's play area was chosen (turn swapped) */
+u8 HandlePeekSelection(void)
+{
+	wce5c = 0;
+	wIsSwapTurnPending = 0;
+	DrawYourOrOppPlayAreaScreen(hWhoseTurn, hWhoseTurn);
+	for (;;) {
+		/* check_swap */
+		if (wIsSwapTurnPending) {
+			SwapTurn();
+			wIsSwapTurnPending = 0;
+		}
+		static const struct MenuParams PlayAreaMenuParameters = {
+			1, 14, 2, 2, SYM_CURSOR_R, SYM_SPACE, 0, TCG_MENU_PEEK_AREA,
+		};
+		InitializeMenuParameters(0, &PlayAreaMenuParameters);
+		do
+			HandleMenuInput();
+		while (hCurMenuItem == MENU_CANCEL); /* can't use B btn */
+		bool other = hCurMenuItem != 0;
+		if (!other) {
+			if (wCheckMenuPlayAreaWhichDuelist != hWhoseTurn) {
+				DrawYourOrOppPlayAreaScreen(hWhoseTurn, hWhoseTurn);
+				wIsSwapTurnPending = 0;
+			}
+		} else {
+			/* PrepareYourPlayAreaSelection */
+			if (wCheckMenuPlayAreaWhichDuelist == hWhoseTurn)
+				DrawYourOrOppPlayAreaScreen(hWhoseTurn == PLAYER_TURN ? OPPONENT_TURN : PLAYER_TURN, hWhoseTurn);
+			SwapTurn();
+			wIsSwapTurnPending = TRUE; /* mark pending to swap turn */
+		}
+		wYourOrOppPlayAreaCurPosition = 0;
+		for (;;) {
+			/* loop_input_2: 0-5 prize cards, 6 hand (opponent's play area only), 7 deck */
+			TcgRequest r = { 0 };
+			r.type = TCG_REQ_MENU;
+			r.menu = TCG_MENU_PEEK_TARGET;
+			r.num_items = 8;
+			r.cursor = wYourOrOppPlayAreaCurPosition;
+			r.arg[0] = GetTurnDuelistVariable(DUELVARS_PRIZES);
+			r.arg[1] = other;
+			r.text = WhichCardWouldYouLikeToSeeText;
+			int c = request(&r);
+			if (c < 0 || c > 7)
+				break; /* selection_cancelled: back to the play area menu */
+			if (c == 6 && !other)
+				continue; /* not reachable with PeekYourPlayAreaTransitionTable */
+			set_keys(PAD_A);
+			wYourOrOppPlayAreaCurPosition = (u8)c;
+			u8 card;
+			if (c < 6) {
+				/* SelectedPrize: return if prize card taken */
+				if (!(GetTurnDuelistVariable(DUELVARS_PRIZES) & (1 << c)))
+					continue;
+				wce5c = (u8)(c + 0x40);
+				card = GetTurnDuelistVariable((u8)(c + DUELVARS_PRIZE_CARDS));
+			} else if (c == 6) {
+				/* SelectedOppsHand */
+				u8 n;
+				if (CreateHandCardList(&n))
+					continue;
+				ShuffleCards(wDuelTempList, n);
+				card = wDuelTempList[0];
+			} else {
+				/* SelectedDeck */
+				if (CreateDeckCardList(NULL))
+					continue;
+				wce5c = 0x7f;
+				card = wDuelTempList[0];
+			}
+			/* ShowSelectedCard */
+			if (wce5c == 0)
+				wce5c = card;
+			LoadCardDataToBuffer1_FromDeckIndex(card);
+			OpenCardPage_FromHand();
+			if (wIsSwapTurnPending) {
+				SwapTurn();
+				return (u8)(wce5c | 0x80);
+			}
+			return wce5c;
+		}
+	}
+}
+
+/* show the card the AI chose with Peek (b = AI_PEEK_TARGET_* value) */
+void DrawAIPeekScreen(u8 b)
+{
+	wIsSwapTurnPending = 0;
+	u8 l = hWhoseTurn;
+	u8 a = hWhoseTurn;
+	if (b & (1 << AI_PEEK_TARGET_HAND_F)) {
+		/* AI chose the hand */
+		SwapTurn();
+		wIsSwapTurnPending = TRUE;
+		a = hWhoseTurn;
+	}
+	DrawYourOrOppPlayAreaScreen(a, l);
+	u8 t = b & 0x7f;
+	if (t == 0x7f)
+		wYourOrOppPlayAreaCurPosition = 7; /* cursor on the deck */
+	else if (t & (1 << AI_PEEK_TARGET_PRIZE_F))
+		wYourOrOppPlayAreaCurPosition = t & 0x3f;
+	else
+		wYourOrOppPlayAreaCurPosition = 6;
+	if (wIsSwapTurnPending)
+		SwapTurn();
 }
