@@ -1,0 +1,4 @@
+# Code labels whose original GB address the port stores in RAM (gen/symbols.h: GBADDR_<label>)
+PrintSortNumberInCardList
+PlayAreaScreenMenuFunction
+CardListFunction

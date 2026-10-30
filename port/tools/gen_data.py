@@ -243,12 +243,90 @@ def gen_effect_commands(rom):
         f.write('};\n')
     print(f'{len(lists)} effect command lists, {len(funcs)} effect functions')
 
+# ---------------------------------------------------------------- ROM data blobs
+
+def gen_rom_blobs(rom):
+    """Raw ROM data that the engine reads through pointers stored in RAM (e.g. the
+    AI card lists in wAICardList*). tools/rom_blobs.txt lists one label per line,
+    optionally followed by a size; without a size the blob extends to the next
+    label in the same bank."""
+    cfg = os.path.join(ROOT, 'port', 'tools', 'rom_blobs.txt')
+    entries = []
+    if os.path.exists(cfg):
+        for line in open(cfg):
+            line = line.split('#')[0].strip()
+            if not line:
+                continue
+            parts = line.split()
+            label = parts[0]
+            if label not in rom.sym:
+                raise SystemExit(f'rom_blobs.txt: unknown label {label}')
+            bank, addr = rom.sym[label]
+            if len(parts) > 1:
+                size = int(parts[1], 0)
+            else:
+                nxt = min([a for (b, a) in rom.by_addr if b == bank and a > addr] + [0x8000])
+                size = nxt - addr
+            entries.append((bank, addr, size, label))
+    entries.sort()
+    def cname(label):
+        return 'blob_' + re.sub(r'\W', '_', label)
+    with open(os.path.join(GEN, 'rom_blobs.h'), 'w') as f:
+        f.write(HDR + '#ifndef TCG_GEN_ROM_BLOBS_H\n#define TCG_GEN_ROM_BLOBS_H\n#include "common.h"\n\n')
+        f.write('/* raw ROM bytes of selected labels (tools/rom_blobs.txt), keyed by their original\n'
+                ' * bank:address, for data the engine reaches through pointers stored in RAM. */\n')
+        f.write('struct RomBlob { u8 bank; u16 address; u16 size; const char *label; const u8 *data; };\n')
+        f.write(f'#define NUM_ROM_BLOBS {len(entries)}\n')
+        f.write('extern const struct RomBlob gRomBlobs[NUM_ROM_BLOBS > 0 ? NUM_ROM_BLOBS : 1];\n')
+        f.write('/* pointer to the byte at bank:address (inside a blob), or NULL */\n')
+        f.write('const u8 *RomPtr(u8 bank, u16 address);\n')
+        f.write('/* GB address of a label listed in rom_blobs.txt (0 if missing) */\n')
+        f.write('u16 RomAddr(const char *label);\n\n#endif\n')
+    with open(os.path.join(GEN, 'rom_blobs.c'), 'w') as f:
+        f.write(HDR + '#include <string.h>\n#include "rom_blobs.h"\n\n')
+        for bank, addr, size, label in entries:
+            data = rom.read(bank, addr, size)
+            f.write(f'/* {bank:02x}:{addr:04x} {label} */\nstatic const u8 {cname(label)}[] = {{')
+            f.write(', '.join(f'0x{x:02x}' for x in data) + '};\n')
+        f.write('\nconst struct RomBlob gRomBlobs[NUM_ROM_BLOBS > 0 ? NUM_ROM_BLOBS : 1] = {\n')
+        for bank, addr, size, label in entries:
+            f.write(f'\t{{ 0x{bank:02x}, 0x{addr:04x}, {size}, "{label}", {cname(label)} }},\n')
+        if not entries:
+            f.write('\t{ 0, 0, 0, "", 0 },\n')
+        f.write('};\n\nconst u8 *RomPtr(u8 bank, u16 address)\n{\n'
+                '\tfor (int i = 0; i < NUM_ROM_BLOBS; i++) {\n'
+                '\t\tconst struct RomBlob *b = &gRomBlobs[i];\n'
+                '\t\tif (b->bank == bank && address >= b->address && address < b->address + b->size)\n'
+                '\t\t\treturn b->data + (address - b->address);\n'
+                '\t}\n\treturn 0;\n}\n\n'
+                'u16 RomAddr(const char *label)\n{\n'
+                '\tfor (int i = 0; i < NUM_ROM_BLOBS; i++)\n'
+                '\t\tif (!strcmp(gRomBlobs[i].label, label))\n'
+                '\t\t\treturn gRomBlobs[i].address;\n'
+                '\treturn 0;\n}\n')
+    print(f'{len(entries)} rom blobs')
+
+def gen_symbols(rom):
+    cfg = os.path.join(ROOT, 'port', 'tools', 'symbols.txt')
+    with open(os.path.join(GEN, 'symbols.h'), 'w') as f:
+        f.write(HDR + '#ifndef TCG_GEN_SYMBOLS_H\n#define TCG_GEN_SYMBOLS_H\n\n')
+        for line in open(cfg):
+            line = line.split('#')[0].strip()
+            if not line:
+                continue
+            b, a = rom.sym[line]
+            name = re.sub(r'\W', '_', line)
+            f.write(f'#define GBADDR_{name} 0x{a:04x} /* bank ${b:02x} */\n')
+        f.write('\n#endif\n')
+
 def main():
     rom = Rom()
     order, texts = gen_text(rom)
     gen_cards(rom, order, texts)
     gen_decks(rom)
     gen_effect_commands(rom)
+    gen_rom_blobs(rom)
+    gen_symbols(rom)
     print('ok')
 
 if __name__ == '__main__':

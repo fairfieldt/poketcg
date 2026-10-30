@@ -190,10 +190,30 @@ u8 AIDoAction_TakePrize(void);
 u8 AIDoAction(u8 action);
 
 /* ---------------------------------------------------------------- engine/duel/core.asm (duel_core.c) */
+extern u8 gPlayerDeckCards[DECK_SIZE];           /* stands in for the selected SRAM deck (LoadPlayerDeck) */
 void StartDuel_VSAIOpp(void);
+void StartDuel(void);
+bool DuelFinished(void);                         /* MainDuelLoop.duel_finished; true = sudden death follows */
+bool DisplayRetreatScreen(void);
+u8 PrintAndLoadAttacksToDuelTempList(void);
+u8 IsLoadedCard1BasicPokemon(bool *carry);
+u8 IsLoadedCard1BasicPokemon_SkipMysteriousFossilClefairyDoll(bool *carry);
+bool DisplayPlaceInitialPokemonCardsScreen(u8 a, u16 text);
+void DisplayNoBasicPokemonInHandScreenAndText(void);
+void PrintReturnCardsToDeckDrawAgain(void);
+bool DisplayPlayAreaScreenToUsePkmnPower(void);
+void OppActionTable(u8 action);
+void LoadCardNameToTxRam2(u8 card);
+void LoadCardNameToTxRam2_b(u8 card);
+void Func_6ba2(u16 text);
+void PrintCardNameFromCardIDInTextBox(u16 text);
+void ApplyStatusConditionToArenaPokemon(const u8 *entry);
+bool ReplaceKnockedOutPokemon_Carry(void);
+void TakeAPrizes(u8 a);
+bool PracticeDuelAction(u8 action);              /* practice.c */
 void LoadPlayerDeck(void);
-bool CheckIfEnoughEnergiesToAttack(void);
-bool CheckIfEnoughEnergiesForGivenAttack(void);
+bool CheckIfEnoughEnergiesToAttack(void);          /* attack at hCurMenuItem in wDuelTempList pairs; carry if not enough */
+bool CheckIfEnoughEnergiesForGivenAttack(u8 d, u8 e);   /* d = deck index, e = attack index; uses wAttachedEnergies. carry if not enough */
 bool CheckIfActiveCardParalyzedOrAsleep(void);   /* text in gTextID */
 bool CheckAbleToRetreat(void);                   /* text in gTextID */
 bool CheckIfEnoughEnergiesToRetreat(void);
@@ -222,13 +242,11 @@ bool CheckIfTurnDuelistPlayAreaPokemonAreAllKnockedOut(void);
 void ReplaceKnockedOutPokemon(void);
 void MoveAllTurnHolderKnockedOutPokemonToDiscardPile(void);
 
-/* ---------------------------------------------------------------- engine/duel/effect_functions.asm (effects/) */
-bool CreateEnergyCardListFromDiscardPile_AllEnergy(void);
-bool CreateEnergyCardListFromDiscardPile_OnlyBasic(void);
-u8 DuelistSelectForcedSwitch(void);
-void HandleSwitchDefendingPokemonEffect(void);
+/* engine/duel/effect_functions.asm helpers shared across files: see effects/effects.h */
 
-/* ---------------------------------------------------------------- frontend glue (tcg.c) */
+/* ---------------------------------------------------------------- frontend glue (tcg.c, duel_ui.c) */
+/* AI-vs-AI mode: AIDoAction uses the turn duelist's own deck AI (see ai/home_ai.c) */
+extern bool gPerSideAI;
 void host_save_duel(void);
 
 #endif

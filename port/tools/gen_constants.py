@@ -30,6 +30,16 @@ def load_sym():
 
 def collect_names():
     names, equs, order = [], {}, []
+    # joypad constants from hardware.inc
+    for line in open(os.path.join(SRC, 'constants', 'hardware.inc')):
+        m = re.match(r'^\s*def\s+((?:B_)?PAD_\w+)\s+equ\b', line, re.I)
+        if m:
+            names.append(('hardware.inc', m.group(1)))
+    # TX_SYMBOL tile constants (txsymbol macro in charmaps.asm)
+    for line in open(os.path.join(SRC, 'constants', 'charmaps.asm')):
+        m = re.match(r'^\s*txsymbol\s+"(\w+)"', line)
+        if m:
+            names.append(('charmaps.asm', 'SYM_' + m.group(1)))
     for fn in sorted(os.listdir(os.path.join(SRC, 'constants'))):
         if fn in SKIP_FILES or not fn.endswith('.asm'):
             continue
@@ -69,8 +79,10 @@ def main():
     for line in out.stdout.splitlines():
         fn, n, v = line.split()
         v = int(v)
-        if v < 0:
-            v &= 0xffffffff
+        if -128 <= v < 0:
+            v &= 0xff  # negative constants are used as 8-bit values (cp MENU_CANCEL)
+        elif v < 0:
+            v &= 0xffff
         if n in values or n in ('NULL',):
             continue
         values[n] = v

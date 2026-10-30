@@ -20,6 +20,7 @@
 #define TCG_DUEL_UI_H
 
 #include "common.h"
+#include "tcg.h"
 
 /* ---------------------------------------------------------------- frontend plumbing */
 void tcg_ui_event(u8 type, u8 a0, u8 a1, u8 a2, u8 a3, u16 text);
@@ -77,6 +78,24 @@ void PlaySFX_InvalidChoice(void);                  /* SFX_DENIED */
 void PlayDefaultSong(void);
 
 /* ---------------------------------------------------------------- duel screens (engine/duel/core.asm) */
+extern const char *gDuelistNames[2];               /* TX_RAM1 names of the PLAYER_TURN / OPPONENT_TURN duelists */
+void SetupDuel(void);
+void PrintDuelResultStats(void);
+void PlaceDuelMenuItems(void);
+u8 HandleDuelMenuInput(u8 initial);                /* blocks; returns the selected item (also hCurMenuItem) */
+void DisplayPlayAreaScreenToUsePkmnPower_DrawScreen(void);
+void PrintAttachedEnergyToPokemon(void);
+void PrintPokemonEvolvedIntoPokemon(void);
+void OpenDuelCheckMenu(void);
+void DisplayNoBasicPokemonInHandScreen(void);
+void HandleDuelSetup_PlacePrizes(void);
+void CopyPlayerNameToDefaultText(void);
+void CopyOpponentNameToDefaultText(void);
+void DrawPlayAreaToPlacePrizeCards(void);
+void PrintScrollableText_NoTextBoxLabel(u16 text);
+void SelectPrizeCards(u8 n);                       /* home/duel_menus.asm, engine/menus/duel.asm _SelectPrizeCards */
+void DrawYourOrOppPlayAreaScreen_Bank0(u8 l);
+void Func_82b6(void);
 void EmptyScreen(void);
 void ZeroObjectPositionsAndToggleOAMCopy(void);
 void DrawDuelMainScene(void);
