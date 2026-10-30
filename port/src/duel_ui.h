@@ -30,6 +30,7 @@ void tcg_ui_screen(u8 screen, u8 a2, u8 a3);
 extern u8 gUIDecider;
 
 /* ---------------------------------------------------------------- text (home/print_text.asm, text_box.asm, menus.asm) */
+void print_ui_text(u16 text);                       /* print a text without a text box routine (instructions etc.) */
 void LoadTxRam2(u16 text);
 void LoadTxRam3(u16 number);
 void DrawWideTextBox(void);
@@ -41,6 +42,7 @@ void DrawNarrowTextBox_PrintTextNoDelay(u16 text);
 void DrawWideTextBox_WaitForInput(u16 text);       /* print, then TCG_REQ_ACK */
 void DrawNarrowTextBox_WaitForInput(u16 text);
 void WaitForWideTextBoxInput(void);                /* TCG_REQ_ACK */
+bool WaitForButtonAorB(void);                      /* TCG_REQ_CONFIRM; carry if B */
 void DrawWholeScreenTextBox(u16 text);             /* print over the whole screen + ACK */
 /* writes "<name> Lv<level>" of wLoadedCard1 (at most max_len tiles) to the default text
  * (what TX_RAM2 prints when its text id is 0). In the original it writes wDefaultText. */
@@ -158,6 +160,11 @@ void PrintPlayAreaCardInformationAndLocation(void);
 void DisplayEnergyDiscardScreen(u8 loc);
 void DisplayEnergyDiscardMenu(void);
 bool HandleEnergyDiscardMenuInput(void);           /* carry if B; card in hTempCardIndex_ff98 */
+
+/* numbers written to wStringBuffer (core.asm); b, c = screen coordinates */
+void TwoByteNumberToTxSymbol_PadSpace_Bank1(u16 hl);
+void WriteOneByteNumberInTxSymbol_PadSpace(u8 a, u8 b, u8 c);
+void WriteTwoDigitNumberInTxSymbol_PadSpace(u8 a, u8 b, u8 c);
 
 /* ---------------------------------------------------------------- animations (engine/duel/animations, core.asm) */
 void ResetAnimationQueue(void);

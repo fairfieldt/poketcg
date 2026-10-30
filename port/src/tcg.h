@@ -77,6 +77,8 @@ enum TcgRequestType {
 	TCG_REQ_PRIZE,            /* pick one of the remaining prize cards: index in [0, 6), cursor = default */
 	TCG_REQ_COLOR,            /* pick a color (0-5 FIRE..PSYCHIC) */
 	TCG_REQ_NUMBER,           /* pick a number in [0, num_items) */
+	TCG_REQ_CONFIRM,          /* WaitForButtonAorB where A/B matters (0 = A continue, TCG_CANCEL = B stop).
+	                           * unlike TCG_REQ_ACK this changes the duel and must be sent in network play */
 };
 
 enum TcgMenu {

@@ -144,6 +144,11 @@ static void print_text(u16 text, u8 waits)
 	event(TCG_EV_TEXT, waits, 0, 0, 0, text, buf);
 }
 
+void print_ui_text(u16 text)
+{
+	print_text(text, 0);
+}
+
 void LoadTxRam2(u16 text)
 {
 	wr16(wTxRam2, text);
@@ -180,6 +185,21 @@ void WaitForWideTextBoxInput(void)
 	r.type = TCG_REQ_ACK;
 	request(&r);
 	set_keys(PAD_A);
+}
+
+/* wait for A or B; returns carry if B was pressed */
+bool WaitForButtonAorB(void)
+{
+	TcgRequest r = { 0 };
+	r.type = TCG_REQ_CONFIRM;
+	int c = request(&r);
+	EraseCursor();
+	if (c == TCG_CANCEL) {
+		set_keys(PAD_B);
+		return true;
+	}
+	set_keys(PAD_A);
+	return false;
 }
 
 void DrawWideTextBox_WaitForInput(u16 text)
@@ -1363,4 +1383,34 @@ u8 HandleDuelMenuInput(u8 initial)
 		PlaySFX(SFX_CONFIRM);
 		return (u8)c;
 	}
+}
+
+/* ---------------------------------------------------------------- numbers (core.asm) */
+
+/* convert two-byte number in hl to TX_SYMBOL format and write it to wStringBuffer
+ * replace leading zeros with SYM_SPACE */
+void TwoByteNumberToTxSymbol_PadSpace_Bank1(u16 hl)
+{
+	static const u16 pow10[5] = { 10000, 1000, 100, 10, 1 };
+	for (int i = 0; i < 5; i++) {
+		wStringBuffer[i] = (u8)(SYM_0 + hl / pow10[i]);
+		hl %= pow10[i];
+	}
+	wStringBuffer[5] = TX_END;
+	for (int i = 0; i < 4 && wStringBuffer[i] == SYM_0; i++)
+		wStringBuffer[i] = SYM_SPACE; /* trim leading zero */
+}
+
+/* convert one-byte number in a to TX_SYMBOL format, and write it to wStringBuffer + 2
+ * and BGMap0 address at bc */
+void WriteOneByteNumberInTxSymbol_PadSpace(u8 a, u8 b, u8 c)
+{
+	TwoByteNumberToTxSymbol_PadSpace_Bank1(a);
+}
+
+/* convert one-byte two-digit number in a (0-99) to TX_SYMBOL format,
+ * and write it to wStringBuffer + 3 and BGMap0 address at bc */
+void WriteTwoDigitNumberInTxSymbol_PadSpace(u8 a, u8 b, u8 c)
+{
+	TwoByteNumberToTxSymbol_PadSpace_Bank1(a);
 }

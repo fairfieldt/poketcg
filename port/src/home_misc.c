@@ -234,6 +234,7 @@ u8 Random(u8 a)
 /* get the next random numbers of the wRNG1 and wRNG2 sequences */
 u8 UpdateRNGSources(void)
 {
+	TRACE_FN();
 	u8 r1 = wRNG1, r2 = wRNG2;
 	u8 rot = (u8)((r2 << 2) | (r2 >> 6));
 	u8 c = (rot ^ r1) & 1;

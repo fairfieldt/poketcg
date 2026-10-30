@@ -233,6 +233,10 @@ void UpdateArenaCardLastTurnDamage(void);
 u16 PrintThereWasNoEffectFromStatusText(void);   /* returns the text id (hl) */
 bool TurnDuelistTakePrizes(void);
 void SaveDuelData(void);
+void SaveDuelDataToBackup(void);
+void LoadSavedDuelData(const u8 *data);
+extern u8 gCurrentDuel[SAVE_DUEL_DATA_SIZE];
+extern u8 gBackupCurrentDuel[SAVE_DUEL_DATA_SIZE];
 bool AIMakeDecision(u8 action);                  /* OPPACTION_*; carry if the turn ended */
 void InitVariablesToBeginDuel(void);
 void InitVariablesToBeginTurn(void);

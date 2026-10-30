@@ -8,7 +8,7 @@ void SaveDuelStateToSRAM(void)
 	/* The original writes the duel to SRAM (sBackupCurrentDuel and one of
 	 * four sDuelBuffer slots). The port has no SRAM; only the observable
 	 * WRAM side effects are kept. */
-	SaveDuelData();
+	SaveDuelDataToBackup(); /* SaveDuelData with the SRAM bank of sBackupCurrentDuel */
 	wTempTurnDuelistCardID = GetCardIDFromDeckIndex(GetTurnDuelistVariable(DUELVARS_ARENA_CARD));
 	SwapTurn();
 	wTempNonTurnDuelistCardID = GetCardIDFromDeckIndex(GetTurnDuelistVariable(DUELVARS_ARENA_CARD));

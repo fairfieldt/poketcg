@@ -2122,7 +2122,49 @@ void LoadPlayerDeck(void)
 	memcpy(wPlayerDeck, gPlayerDeckCards, DECK_SIZE);
 }
 
+/* DuelDataToSave: what SaveDuelData copies to SRAM (826 bytes) */
+static const struct { u16 address, size; } DuelDataToSave[] = {
+	{ ADDR_wPlayerDuelVariables, ADDR_wOpponentDuelVariables - ADDR_wPlayerDuelVariables },
+	{ ADDR_wOpponentDuelVariables, ADDR_wPlayerDeck - ADDR_wOpponentDuelVariables },
+	{ ADDR_wPlayerDeck, ADDR_wDuelTempList - ADDR_wPlayerDeck },
+	{ ADDR_wDuelStates, ADDR_wDuelStatesEnd - ADDR_wDuelStates },
+	{ ADDR_hWhoseTurn, 1 },
+	{ ADDR_wRNGVars, RNGVARS_SIZE },
+	{ ADDR_wAIDuelVars, ADDR_wAIDuelVarsEnd - ADDR_wAIDuelVars },
+};
+
+/* in-memory stand-ins for the SRAM slots sCurrentDuel and sBackupCurrentDuel (data part) */
+u8 gCurrentDuel[SAVE_DUEL_DATA_SIZE];
+u8 gBackupCurrentDuel[SAVE_DUEL_DATA_SIZE];
+static u8 *gSaveDuelTarget = gCurrentDuel;
+
+static void SaveDuelDataTo(u8 *de)
+{
+	for (unsigned i = 0; i < sizeof(DuelDataToSave) / sizeof(*DuelDataToSave); i++) {
+		memcpy(de, gbptr(DuelDataToSave[i].address), DuelDataToSave[i].size);
+		de += DuelDataToSave[i].size;
+	}
+}
+
+/* save data of the current duel to sCurrentDuel (or to sBackupCurrentDuel when the
+ * SRAM bank was switched by SaveDuelStateToSRAM) */
 void SaveDuelData(void)
 {
-	/* the original saves the duel to SRAM (sCurrentDuel); the port has no SRAM */
+	SaveDuelDataTo(gSaveDuelTarget);
+}
+
+void SaveDuelDataToBackup(void)
+{
+	gSaveDuelTarget = gBackupCurrentDuel;
+	SaveDuelData();
+	gSaveDuelTarget = gCurrentDuel;
+}
+
+/* load data saved at de (in SRAM) to WRAM, using DuelDataToSave table */
+void LoadSavedDuelData(const u8 *de)
+{
+	for (unsigned i = 0; i < sizeof(DuelDataToSave) / sizeof(*DuelDataToSave); i++) {
+		memcpy(gbptr(DuelDataToSave[i].address), de, DuelDataToSave[i].size);
+		de += DuelDataToSave[i].size;
+	}
 }

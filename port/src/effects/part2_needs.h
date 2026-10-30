@@ -7,6 +7,14 @@
 
 #include "../common.h"
 
+/* ---- engine/duel/effect_functions.asm, part 1 range (lines 14-40) ----
+ * Not referenced from effect command lists (so not in gen/effect_commands.h) and
+ * not in effects.h, but part 2 calls them: part1.c must define them non-static.
+ * Both end in QueueStatusCondition (carry = status queued). */
+bool ParalysisEffect(void);      /* lb bc, PSN_DBLPSN, PARALYZED / jr QueueStatusCondition */
+/* TossCoin_BankB(SleepCheckText); ret nc (tails: carry clear); then SleepEffect (carry = queued) */
+bool Sleep50PercentEffect(void);
+
 /*
  * WriteTwoDigitNumberInTxSymbol_PadSpace (engine/duel/core.asm, bank 1; called with bank1call)
  * input:  a = number to print (the hand/deck counters, < 100),
