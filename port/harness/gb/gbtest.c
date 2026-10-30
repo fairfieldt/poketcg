@@ -1,6 +1,7 @@
 /*
  * gbtest.c - test driver for the gb core.
  *
+ *   gbtest selftest                        targeted unit checks (timer, serial, LCD, call stack, ...)
  *   gbtest blargg  ROM [max_frames]        run a Blargg test ROM, print serial output;
  *                                          exit 0 iff it printed "Passed"
  *   gbtest bench   ROM [frames] [render]   measure emulated frames per second
@@ -263,7 +264,7 @@ static int run_frame(GB *gb, Stats *st)
 
 static void print_callstack(GB *gb)
 {
-    char buf[96];
+    char buf[200];
     printf("  callstack depth %d (dropped %u):\n", gb->cs_depth, gb->cs_dropped);
     for (int i = gb->cs_depth - 1; i >= 0 && i >= gb->cs_depth - 8; i--) {
         const GBFrame *fr = &gb->cs[i];
@@ -410,8 +411,407 @@ static int cmd_poketcg(const char *rom, const char *sym, const char *outdir)
     return fails ? 1 : 0;
 }
 
+/* ------------------------------------------------------------------ */
+/* selftest: targeted checks for behaviour Blargg's ROMs do not cover */
+
+static int st_fail;
+#define CHECK(cond) do { if (!(cond)) { printf("  FAIL %s:%d: %s\n", __func__, __LINE__, #cond); st_fail++; } } while (0)
+
+/* 64KB MBC5+RAM+BATTERY ROM, 4 banks; bank n (n>=1) starts with byte n at $4000 */
+static uint8_t st_rom[0x10000];
+
+static GB *st_new(const uint8_t *code, size_t n, uint16_t at)
+{
+    memset(st_rom, 0, sizeof st_rom);
+    st_rom[0x147] = 0x1B;
+    st_rom[0x148] = 0x01;
+    st_rom[0x149] = 0x03;
+    for (int b = 1; b < 4; b++)
+        st_rom[b * 0x4000] = (uint8_t)b;
+    if (code)
+        memcpy(st_rom + at, code, n);
+    GB *gb = gb_new(st_rom, sizeof st_rom);
+    gb->render = 0;
+    gb->pc = at;
+    return gb;
+}
+
+static void st_ei_di(void)
+{
+    static const uint8_t code[] = { 0xFB, 0xF3, 0x00, 0x00 }; /* ei; di; nop */
+    GB *gb = st_new(code, sizeof code, 0x150);
+    gb->ie = GB_INT_TIMER;
+    gb->io[0x0F] = GB_INT_TIMER;
+    gb_step(gb); gb_step(gb); gb_step(gb);
+    CHECK(gb->pc == 0x153 && !gb->ime);
+    gb_free(gb);
+
+    static const uint8_t code2[] = { 0xFB, 0x00, 0x00 }; /* ei; nop; nop */
+    gb = st_new(code2, sizeof code2, 0x150);
+    gb->ie = GB_INT_TIMER;
+    gb->io[0x0F] = GB_INT_TIMER;
+    gb_step(gb);
+    CHECK(!gb->ime && gb->pc == 0x151);
+    gb_step(gb); /* nop after EI still executes */
+    CHECK(gb->ime && gb->pc == 0x152);
+    uint64_t c = gb->cycles;
+    gb_step(gb); /* dispatch */
+    CHECK(gb->pc == 0x50 && gb->cycles - c == 20 && !gb->ime && !(gb->io[0x0F] & GB_INT_TIMER));
+    CHECK(gb_read16(gb, gb->sp) == 0x152);
+    CHECK(gb->cs_depth == 1 && gb->cs[0].is_interrupt && gb->cs[0].target == 0x50 &&
+          gb->cs[0].ret == 0x152 && gb->cs[0].sp == gb->sp);
+    gb_free(gb);
+}
+
+static void st_priority(void)
+{
+    GB *gb = st_new(NULL, 0, 0x150);
+    gb->ie = 0x1F;
+    gb->io[0x0F] = 0x1F;
+    gb->ime = 1;
+    static const uint16_t vec[5] = { 0x40, 0x48, 0x50, 0x58, 0x60 };
+    for (int i = 0; i < 5; i++) {
+        gb->pc = 0x150;
+        gb->ime = 1;
+        gb_step(gb);
+        CHECK(gb->pc == vec[i]);
+        CHECK(gb->io[0x0F] == (0x1F & ~((2 << i) - 1)));
+    }
+    gb_free(gb);
+}
+
+static void st_halt(void)
+{
+    static const uint8_t code[] = { 0x76, 0x3C, 0x00 }; /* halt; inc a */
+    GB *gb = st_new(code, sizeof code, 0x150);
+    gb->ie = GB_INT_SERIAL;
+    gb_write(gb, 0xFF02, 0x81); /* serial completes after 4096 cycles */
+    gb_step(gb);
+    CHECK(gb->halted);
+    uint64_t c = gb->cycles;
+    gb_run(gb, 100000, 0);
+    CHECK(gb->a == 0x02 && !gb->halted); /* woke and continued (IME=0: no dispatch) */
+    CHECK(gb->cs_depth == 0 && gb->cycles - c >= 4096);
+    gb_free(gb);
+
+    /* halt bug: IME=0 with interrupt pending -> next byte executed twice */
+    gb = st_new(code, sizeof code, 0x150);
+    gb->a = 0;
+    gb->ie = GB_INT_VBLANK;
+    gb->io[0x0F] = GB_INT_VBLANK;
+    gb_step(gb); /* halt (does not halt) */
+    CHECK(!gb->halted);
+    gb_step(gb);
+    gb_step(gb);
+    CHECK(gb->a == 2 && gb->pc == 0x152);
+    gb_free(gb);
+}
+
+static void st_callstack(void)
+{
+    uint8_t code[0x40] = { 0 };
+    /* 0150: call 0160 ; 0153: nop */
+    code[0x00] = 0xCD; code[0x01] = 0x60; code[0x02] = 0x01;
+    /* 0160: push bc; pop bc; call 0170; ret */
+    code[0x10] = 0xC5; code[0x11] = 0xC1; code[0x12] = 0xCD; code[0x13] = 0x70; code[0x14] = 0x01; code[0x15] = 0xC9;
+    /* 0170: pop hl (drop return address); rst $08 ; ... */
+    code[0x20] = 0xE1; code[0x21] = 0xCF;
+    /* 0008: ret (rst handler) */
+    GB *gb = st_new(code, sizeof code, 0x150);
+    gb_free(gb);
+    st_rom[0x08] = 0xC9;
+    gb = gb_new(st_rom, sizeof st_rom);
+    gb->render = 0;
+    gb->pc = 0x150;
+
+    gb_step(gb);
+    CHECK(gb->pc == 0x160 && gb->cs_depth == 1 && gb->cs[0].target == 0x160 && gb->cs[0].ret == 0x153 &&
+          gb->cs[0].sp == 0xFFFC && !gb->cs[0].is_interrupt && gb->cs[0].bank == 1);
+    gb_step(gb); gb_step(gb);           /* push/pop */
+    CHECK(gb->cs_depth == 1);
+    gb_step(gb);                        /* call 0170 */
+    CHECK(gb->cs_depth == 2 && gb->cs[1].sp == 0xFFFA);
+    gb_step(gb);                        /* pop hl */
+    CHECK(gb->cs_depth == 1 && gb->h == 0x01 && gb->l == 0x65);
+    gb_step(gb);                        /* rst 08 */
+    CHECK(gb->cs_depth == 2 && gb->cs[1].target == 0x08 && gb->cs[1].ret == 0x172);
+    gb_step(gb);                        /* ret from rst */
+    CHECK(gb->cs_depth == 1 && gb->pc == 0x172);
+    /* harness-style early return */
+    gb_ret(gb);
+    CHECK(gb->cs_depth == 0 && gb->pc == 0x153 && gb->sp == 0xFFFE);
+
+    /* LD SP,nn above all frames pops everything */
+    gb->sp = 0xD000;
+    gb->pc = 0x150;
+    gb_step(gb);
+    CHECK(gb->cs_depth == 1);
+    gb->wram[0] = 0x31; gb->wram[1] = 0xFE; gb->wram[2] = 0xDF; /* ld sp,$dffe */
+    gb->pc = 0xC000;
+    gb_step(gb);
+    CHECK(gb->sp == 0xDFFE && gb->cs_depth == 0);
+    gb_free(gb);
+}
+
+static void st_timer(void)
+{
+    GB *gb = st_new(NULL, 0, 0x150); /* NOPs */
+    gb_write(gb, 0xFF04, 0);         /* DIV reset */
+    gb_write(gb, 0xFF06, 0x10);      /* TMA */
+    gb_write(gb, 0xFF05, 0xFE);      /* TIMA */
+    gb_write(gb, 0xFF07, 0x05);      /* 262144 Hz: +1 every 16 cycles */
+    gb->io[0x0F] = 0;
+    gb_run(gb, 16, 0);
+    CHECK(gb_read(gb, 0xFF05) == 0xFF);
+    gb_run(gb, 16, 0);
+    CHECK(gb_read(gb, 0xFF05) == 0x00 && !(gb->io[0x0F] & GB_INT_TIMER));
+    gb_run(gb, 4, 0);
+    CHECK(gb_read(gb, 0xFF05) == 0x10 && (gb->io[0x0F] & GB_INT_TIMER));
+    /* DIV */
+    gb_write(gb, 0xFF07, 0);
+    gb_write(gb, 0xFF04, 0);
+    gb_run(gb, 256 * 3, 0);
+    CHECK(gb_read(gb, 0xFF04) == 3);
+    /* 4096 Hz with halt fast-forward: 0x100 increments == 0x40000 cycles */
+    static const uint8_t code[] = { 0x76, 0x00, 0x18, 0xFC }; /* halt; nop; jr -4 */
+    gb_free(gb);
+    gb = st_new(code, sizeof code, 0x150);
+    gb_write(gb, 0xFF04, 0);
+    gb_write(gb, 0xFF06, 0x00);
+    gb_write(gb, 0xFF05, 0x00);
+    gb_write(gb, 0xFF07, 0x04);
+    gb_write(gb, 0xFF40, 0x00);      /* LCD off: no other events */
+    gb->ie = GB_INT_TIMER;
+    gb->io[0x0F] = 0;
+    gb_add_breakpoint(gb, -1, 0x151);   /* instruction after HALT: stops on wake-up */
+    uint64_t c0 = gb->cycles;
+    int r = gb_run(gb, 0x80000, 0);
+    CHECK(r == GB_STOP_BREAKPOINT && (gb->io[0x0F] & GB_INT_TIMER) && gb_read(gb, 0xFF05) == 0);
+    CHECK(gb->cycles - c0 >= 0x40000 && gb->cycles - c0 <= 0x40000 + 16);
+    gb_free(gb);
+}
+
+static void st_serial(void)
+{
+    GB *gb = st_new(NULL, 0, 0x150);
+    gb->io[0x0F] = 0;
+    gb_write(gb, 0xFF01, 0x42);
+    gb_write(gb, 0xFF02, 0x81);
+    gb_run(gb, 4092, 0);
+    CHECK((gb_read(gb, 0xFF02) & 0x80) && !(gb->io[0x0F] & GB_INT_SERIAL));
+    gb_run(gb, 4, 0);
+    CHECK(!(gb_read(gb, 0xFF02) & 0x80) && (gb->io[0x0F] & GB_INT_SERIAL) && gb_read(gb, 0xFF01) == 0xFF);
+    gb->io[0x0F] = 0;
+    gb_write(gb, 0xFF02, 0x80); /* external clock: never completes */
+    gb_run(gb, 1000000, 0);
+    CHECK((gb_read(gb, 0xFF02) & 0x80) && !(gb->io[0x0F] & GB_INT_SERIAL));
+    gb_free(gb);
+}
+
+static void st_lcd(void)
+{
+    GB *gb = st_new(NULL, 0, 0x150);
+    CHECK(gb_read(gb, 0xFF44) == 0 && (gb_read(gb, 0xFF41) & 3) == 2);
+    gb_run(gb, 80, 0);
+    CHECK((gb_read(gb, 0xFF41) & 3) == 3);
+    gb_run(gb, 172, 0);
+    CHECK((gb_read(gb, 0xFF41) & 3) == 0);
+    gb_run(gb, 204, 0);
+    CHECK(gb_read(gb, 0xFF44) == 1 && (gb_read(gb, 0xFF41) & 3) == 2);
+    gb->io[0x0F] = 0;
+    int r = gb_run(gb, 200000, 1);
+    CHECK(r == GB_STOP_FRAME && gb->frames == 1 && gb_read(gb, 0xFF44) == 144 &&
+          (gb_read(gb, 0xFF41) & 3) == 1 && (gb->io[0x0F] & GB_INT_VBLANK));
+    CHECK(gb->cycles == 456 * 144);
+    gb_run(gb, 456 * 10, 0);
+    CHECK(gb_read(gb, 0xFF44) == 0);    /* 154 lines per frame */
+    gb_run(gb, 456 * 154 - 456 * 10, 1);
+    CHECK(gb->frames == 2);
+    /* LYC coincidence + STAT interrupt */
+    gb->io[0x0F] = 0;
+    gb_write(gb, 0xFF45, 10);
+    gb_write(gb, 0xFF41, 0x40);
+    while (!(gb->io[0x0F] & GB_INT_STAT))
+        gb_run(gb, 4, 0);
+    CHECK(gb_read(gb, 0xFF44) == 10 && (gb_read(gb, 0xFF41) & 4));
+    /* LCD off: LY=0, mode 0, no frames / interrupts */
+    gb_write(gb, 0xFF41, 0x78);
+    gb_write(gb, 0xFF40, 0x11);
+    gb->io[0x0F] = 0;
+    uint64_t f = gb->frames;
+    r = gb_run(gb, 300000, 1);
+    CHECK(r == GB_STOP_CYCLES && gb->frames == f && gb_read(gb, 0xFF44) == 0 &&
+          (gb_read(gb, 0xFF41) & 3) == 0 && gb->io[0x0F] == 0);
+    /* back on: restart at line 0 */
+    gb_write(gb, 0xFF40, 0x91);
+    CHECK(gb_read(gb, 0xFF44) == 0);
+    gb_run(gb, 456, 0);
+    CHECK(gb_read(gb, 0xFF44) == 1);
+    gb_run(gb, 456 * 143, 0);
+    CHECK(gb_read(gb, 0xFF44) == 144 && gb->frames == f + 1);
+    gb_free(gb);
+}
+
+static void st_breakpoints(void)
+{
+    uint8_t code[0x20];
+    int n = 0;
+    /* 0150: ld a,2; ld [2000],a; call 4000; ld a,3; ld [2000],a; call 4000; jr $ */
+    code[n++] = 0x3E; code[n++] = 0x02; code[n++] = 0xEA; code[n++] = 0x00; code[n++] = 0x20;
+    code[n++] = 0xCD; code[n++] = 0x00; code[n++] = 0x40;
+    code[n++] = 0x3E; code[n++] = 0x03; code[n++] = 0xEA; code[n++] = 0x00; code[n++] = 0x20;
+    code[n++] = 0xCD; code[n++] = 0x00; code[n++] = 0x40;
+    code[n++] = 0x18; code[n++] = 0xFE;
+    memset(st_rom, 0, sizeof st_rom);
+    GB *gb = st_new(code, (size_t)n, 0x150);
+    gb_free(gb);
+    /* bank 2 / bank 3 routines at $4000: "nop; ret" (byte 0 is bank id: ld bc,... avoided) */
+    st_rom[0x8000] = 0x00; st_rom[0x8001] = 0xC9;
+    st_rom[0xC000] = 0x00; st_rom[0xC001] = 0xC9;
+    gb = gb_new(st_rom, sizeof st_rom);
+    gb->render = 0;
+    gb->pc = 0x150;
+    gb_write(gb, 0xFF40, 0); /* LCD off: no interrupts */
+    int id3 = gb_add_breakpoint(gb, 3, 0x4000);
+    int r = gb_run(gb, 10000, 0);
+    CHECK(r == GB_STOP_BREAKPOINT && gb->hit_breakpoint == id3 && gb_rom_bank(gb) == 3 && gb->pc == 0x4000);
+    CHECK(gb->cs_depth == 1 && gb->cs[0].bank == 3);
+    r = gb_run(gb, 1000, 0);
+    CHECK(r == GB_STOP_CYCLES && gb->pc == 0x160);
+    /* bank -1 matches both calls; removed breakpoints are ignored */
+    gb_remove_breakpoint(gb, id3);
+    gb_reset(gb);
+    gb->pc = 0x150;
+    gb_write(gb, 0xFF40, 0);
+    int idany = gb_add_breakpoint(gb, -1, 0x4000);
+    r = gb_run(gb, 10000, 0);
+    CHECK(r == GB_STOP_BREAKPOINT && gb->hit_breakpoint == idany && gb_rom_bank(gb) == 2);
+    r = gb_run(gb, 10000, 0);
+    CHECK(r == GB_STOP_BREAKPOINT && gb->hit_breakpoint == idany && gb_rom_bank(gb) == 3);
+    /* resume after an interrupt that fires right away: must not re-stop at the same PC */
+    gb->ie = GB_INT_SERIAL;
+    gb->io[0x0F] = GB_INT_SERIAL;
+    gb->ime = 1;
+    /* the interrupt is dispatched before the resumed instruction runs; stop at its vector */
+    int idvec = gb_add_breakpoint(gb, -1, 0x58);
+    r = gb_run(gb, 10000, 0);
+    CHECK(r == GB_STOP_BREAKPOINT && gb->hit_breakpoint == idvec && gb->cs_depth == 2 && gb->cs[1].is_interrupt);
+    /* simulate the handler returning */
+    gb_ret(gb);
+    gb->ime = 1;
+    CHECK(gb->pc == 0x4000 && gb->cs_depth == 1);
+    r = gb_run(gb, 4, 0);
+    CHECK(r == GB_STOP_CYCLES && gb->pc == 0x4001); /* bp at 4000 not re-triggered */
+    gb_clear_breakpoints(gb);
+    CHECK(gb->bp_active == 0);
+    gb_free(gb);
+}
+
+static void st_joypad(void)
+{
+    GB *gb = st_new(NULL, 0, 0x150);
+    gb_set_buttons(gb, GB_BTN_START | GB_BTN_RIGHT);
+    gb_write(gb, 0xFF00, 0x20);
+    CHECK(gb_read(gb, 0xFF00) == 0xEE);
+    gb_write(gb, 0xFF00, 0x10);
+    CHECK(gb_read(gb, 0xFF00) == 0xD7);
+    gb_write(gb, 0xFF00, 0x30);
+    CHECK(gb_read(gb, 0xFF00) == 0xFF);
+    gb->io[0x0F] = 0;
+    gb_write(gb, 0xFF00, 0x10);
+    CHECK(gb->io[0x0F] & GB_INT_JOYPAD); /* selecting a pressed line = falling edge */
+    gb->io[0x0F] = 0;
+    gb_set_buttons(gb, GB_BTN_START | GB_BTN_RIGHT | GB_BTN_A);
+    CHECK(gb->io[0x0F] & GB_INT_JOYPAD);
+    gb_free(gb);
+}
+
+static void st_mbc5(void)
+{
+    GB *gb = st_new(NULL, 0, 0x150);
+    CHECK(gb_rom_bank(gb) == 1 && gb_read(gb, 0x4000) == 1);
+    gb_write(gb, 0x2000, 3);
+    CHECK(gb_rom_bank(gb) == 3 && gb_read(gb, 0x4000) == 3);
+    gb_write(gb, 0x2000, 0);
+    CHECK(gb_rom_bank(gb) == 0 && gb_read(gb, 0x4000) == gb_read(gb, 0x0000)); /* MBC5 allows bank 0 */
+    gb_write(gb, 0x2000, 6);
+    CHECK(gb_rom_bank(gb) == 2);   /* wraps modulo ROM size */
+    gb_write(gb, 0x3000, 1);
+    CHECK(gb_rom_bank(gb) == (0x106 % 4));
+    gb_write(gb, 0x3000, 0);
+    CHECK(gb_read(gb, 0xA000) == 0xFF); /* RAM disabled */
+    gb_write(gb, 0x0000, 0x0A);
+    gb_write(gb, 0x4000, 2);
+    gb_write(gb, 0xA123, 0x5A);
+    CHECK(gb_read(gb, 0xA123) == 0x5A && gb_sram(gb)[2 * 0x2000 + 0x123] == 0x5A);
+    gb_write(gb, 0x4000, 0);
+    CHECK(gb_read(gb, 0xA123) == 0x00);
+    gb_write(gb, 0x0000, 0x00);
+    CHECK(gb_read(gb, 0xA123) == 0xFF);
+    /* echo RAM, HRAM, IE, DMA */
+    gb_write(gb, 0xC010, 0x77);
+    CHECK(gb_read(gb, 0xE010) == 0x77);
+    gb_write(gb, 0xFF90, 0x12);
+    CHECK(gb_hram(gb)[0x10] == 0x12);
+    gb_write(gb, 0xFFFF, 0x1F);
+    CHECK(gb->ie == 0x1F && gb_read(gb, 0xFFFF) == 0x1F);
+    for (int i = 0; i < 0xA0; i++)
+        gb_wram(gb)[0x100 + i] = (uint8_t)(i * 3);
+    gb_write(gb, 0xFF46, 0xC1);
+    CHECK(gb->oam[0] == 0 && gb->oam[0x9F] == (uint8_t)(0x9F * 3));
+    /* NR52 */
+    CHECK(gb_read(gb, 0xFF26) == 0xF0);
+    gb_write(gb, 0xFF26, 0x00);
+    CHECK(gb_read(gb, 0xFF26) == 0x70 && gb_read(gb, 0xFF12) == 0x00);
+    gb_write(gb, 0xFF12, 0xF0); /* ignored while powered off */
+    CHECK(gb_read(gb, 0xFF12) == 0x00);
+    gb_free(gb);
+}
+
+static void st_illegal(void)
+{
+    static const uint8_t code[] = { 0x00, 0xD3 };
+    GB *gb = st_new(code, sizeof code, 0x150);
+    int r = gb_run(gb, 1000, 0);
+    CHECK(r == GB_STOP_ERROR && gb->error == GB_ERR_ILLEGAL_OPCODE && gb->error_pc == 0x151 &&
+          gb->pc == 0x151 && gb->error_opcode == 0xD3);
+    CHECK(gb_run(gb, 1000, 0) == GB_STOP_ERROR);
+    gb_free(gb);
+}
+
+static void st_postboot(void)
+{
+    GB *gb = st_new(NULL, 0, 0x100);
+    CHECK(gb->a == 0x01 && gb->f == 0xB0 && gb->b == 0x00 && gb->c == 0x13 && gb->d == 0x00 &&
+          gb->e == 0xD8 && gb->h == 0x01 && gb->l == 0x4D && gb->sp == 0xFFFE && gb->pc == 0x100);
+    CHECK(gb_read(gb, 0xFF00) == 0xCF && gb_read(gb, 0xFF04) == 0xAB && gb_read(gb, 0xFF07) == 0xF8 &&
+          gb_read(gb, 0xFF0F) == 0xE1 && gb_read(gb, 0xFF40) == 0x91 && gb_read(gb, 0xFF47) == 0xFC &&
+          gb_read(gb, 0xFF02) == 0x7E && gb_read(gb, 0xFFFF) == 0x00 && gb_read(gb, 0xFF4D) == 0xFF);
+    gb_free(gb);
+}
+
+static int cmd_selftest(void)
+{
+    st_postboot();
+    st_ei_di();
+    st_priority();
+    st_halt();
+    st_callstack();
+    st_timer();
+    st_serial();
+    st_lcd();
+    st_breakpoints();
+    st_joypad();
+    st_mbc5();
+    st_illegal();
+    printf("selftest: %s (%d failures)\n", st_fail ? "FAIL" : "PASS", st_fail);
+    return st_fail ? 1 : 0;
+}
+
 int main(int argc, char **argv)
 {
+    if (argc >= 2 && !strcmp(argv[1], "selftest"))
+        return cmd_selftest();
     if (argc >= 3 && !strcmp(argv[1], "blargg"))
         return cmd_blargg(argv[2], argc > 3 ? atol(argv[3]) : 60 * 120);
     if (argc >= 3 && !strcmp(argv[1], "bench"))
@@ -422,10 +822,11 @@ int main(int argc, char **argv)
         return cmd_poketcg(argv[2], argv[3], argv[4]);
     fprintf(stderr,
             "usage:\n"
+            "  %s selftest\n"
             "  %s blargg ROM [max_frames]\n"
             "  %s bench ROM [frames] [render]\n"
             "  %s shot ROM frames out.png\n"
             "  %s poketcg ROM SYM OUTDIR\n",
-            argv[0], argv[0], argv[0], argv[0]);
+            argv[0], argv[0], argv[0], argv[0], argv[0]);
     return 2;
 }

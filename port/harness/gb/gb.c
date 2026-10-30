@@ -823,6 +823,14 @@ static inline void cs_pop_check(GB *gb)
 }
 
 int gb_callstack_depth(GB *gb) { return gb->cs_depth; }
+void gb_callstack_sync(GB *gb) { cs_pop_check(gb); }
+
+void gb_ret(GB *gb)
+{
+    gb->pc = (uint16_t)(bus_read(gb, gb->sp) | bus_read(gb, (uint16_t)(gb->sp + 1)) << 8);
+    gb->sp = (uint16_t)(gb->sp + 2);
+    cs_pop_check(gb);
+}
 const GBFrame *gb_callstack(GB *gb) { return gb->cs; }
 const GBFrame *gb_callstack_top(GB *gb) { return gb->cs_depth ? &gb->cs[gb->cs_depth - 1] : NULL; }
 
@@ -869,6 +877,10 @@ static void dispatch(GB *gb)
  * M-cycle to tick(). */
 static void halt_skip(GB *gb, uint64_t limit)
 {
+#ifdef GB_NO_HALT_SKIP
+    (void)gb; (void)limit;
+    return;
+#endif
     if (gb->tima_overflow)
         return;
     uint64_t target = gb->next_event < limit ? gb->next_event : limit;
@@ -1224,17 +1236,33 @@ static int bp_check(GB *gb)
     }
     if (hit < 0)
         return 0;
-    if (gb->bp_skip_valid && gb->bp_skip_pc == pc && gb->bp_skip_bank == bank &&
-        gb->bp_skip_sp == gb->sp) {
-        gb->bp_skip_valid = 0;   /* resuming from this very stop */
-        return 0;
+    for (int i = gb->bp_skip_n - 1; i >= 0; i--) {
+        const GBSkip *k = &gb->bp_skip[i];
+        if (k->pc == pc && k->bank == bank && k->sp == gb->sp) {
+            gb->bp_skip_n = i;   /* resuming from this stop (deeper entries are stale) */
+            return 0;
+        }
     }
-    gb->bp_skip_valid = 1;
-    gb->bp_skip_pc = pc;
-    gb->bp_skip_bank = bank;
-    gb->bp_skip_sp = gb->sp;
+    while (gb->bp_skip_n > 0 && gb->bp_skip[gb->bp_skip_n - 1].sp <= gb->sp)
+        gb->bp_skip_n--;
+    if (gb->bp_skip_n == GB_BP_SKIP_MAX) {
+        memmove(gb->bp_skip, gb->bp_skip + 1, sizeof(GBSkip) * (GB_BP_SKIP_MAX - 1));
+        gb->bp_skip_n--;
+    }
+    GBSkip *k = &gb->bp_skip[gb->bp_skip_n++];
+    k->pc = pc;
+    k->sp = gb->sp;
+    k->bank = bank;
     gb->hit_breakpoint = hit;
     return 1;
+}
+
+/* Called right before an instruction executes: drop reported stops that are
+ * no longer pending at this stack level. */
+static inline void bp_skip_cleanup(GB *gb)
+{
+    while (gb->bp_skip_n > 0 && gb->bp_skip[gb->bp_skip_n - 1].sp <= gb->sp)
+        gb->bp_skip_n--;
 }
 
 /* ---------------------------------------------------------------------- */
@@ -1258,8 +1286,7 @@ int gb_step(GB *gb)
         dispatch(gb);
         return 0;
     }
-    if (gb->bp_skip_valid && gb->sp >= gb->bp_skip_sp)
-        gb->bp_skip_valid = 0;
+    bp_skip_cleanup(gb);
     execute(gb);
     return gb->error ? GB_STOP_ERROR : 0;
 }
@@ -1296,8 +1323,8 @@ int gb_run(GB *gb, uint64_t max_cycles, int stop_on_frame)
         }
         if (gb->bp_active && bp_check(gb))
             return GB_STOP_BREAKPOINT;
-        if (gb->bp_skip_valid && gb->sp >= gb->bp_skip_sp)
-            gb->bp_skip_valid = 0;
+        if (gb->bp_skip_n)
+            bp_skip_cleanup(gb);
         execute(gb);
     }
 }
@@ -1447,20 +1474,12 @@ int gb_write_ppm(GB *gb, const char *path)
 
 static uint32_t crc32_update(uint32_t crc, const uint8_t *p, size_t n)
 {
-    static uint32_t table[256];
-    static int init;
-    if (!init) {
-        for (uint32_t i = 0; i < 256; i++) {
-            uint32_t c = i;
-            for (int k = 0; k < 8; k++)
-                c = (c & 1) ? 0xEDB88320u ^ (c >> 1) : c >> 1;
-            table[i] = c;
-        }
-        init = 1;
-    }
     crc = ~crc;
-    while (n--)
-        crc = table[(crc ^ *p++) & 0xFF] ^ (crc >> 8);
+    while (n--) {
+        crc ^= *p++;
+        for (int k = 0; k < 8; k++)
+            crc = (crc & 1) ? 0xEDB88320u ^ (crc >> 1) : crc >> 1;
+    }
     return ~crc;
 }
 
@@ -1530,15 +1549,15 @@ int gb_write_png(GB *gb, const char *path)
 
 const char *gb_error_string(GB *gb)
 {
-    static char buf[96];
     switch (gb->error) {
     case GB_ERR_NONE:
         return "no error";
-    case GB_ERR_ILLEGAL_OPCODE:
-        snprintf(buf, sizeof buf, "illegal opcode $%02X at %02X:%04X",
-                 gb->error_opcode, gb_bank_of(gb, gb->error_pc) < 0 ? 0 : gb_bank_of(gb, gb->error_pc),
-                 gb->error_pc);
-        return buf;
+    case GB_ERR_ILLEGAL_OPCODE: {
+        int bank = gb_bank_of(gb, gb->error_pc);
+        snprintf(gb->errbuf, sizeof gb->errbuf, "illegal opcode $%02X at %02X:%04X",
+                 gb->error_opcode, bank < 0 ? 0 : bank, gb->error_pc);
+        return gb->errbuf;
+    }
     default:
         return "unknown error";
     }

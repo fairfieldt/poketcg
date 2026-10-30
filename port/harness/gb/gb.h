@@ -58,6 +58,12 @@ typedef struct GBFrame {
     uint8_t  _pad;
 } GBFrame;
 
+typedef struct GBSkip {
+    uint16_t pc, sp;
+    int      bank;
+} GBSkip;
+#define GB_BP_SKIP_MAX 8
+
 typedef struct GBBreakpoint {
     int      bank;         /* -1 = any bank */
     uint16_t addr;
@@ -90,11 +96,14 @@ struct GB {
     uint16_t error_pc;     /* address of the offending instruction */
     uint8_t  error_opcode;
 
-    /* breakpoint resume bookkeeping */
+    /* breakpoint resume bookkeeping: stops that have been reported but whose
+     * instruction has not executed yet (a stack, innermost = lowest SP). A stop
+     * at (pc, bank, sp) is not reported again when execution reaches that same
+     * (pc, bank, sp); an entry is discarded once any instruction executes at
+     * SP >= its sp. */
     int      hit_breakpoint;   /* id of the breakpoint that stopped gb_run, -1 otherwise */
-    uint8_t  bp_skip_valid;
-    uint16_t bp_skip_pc, bp_skip_sp;
-    int      bp_skip_bank;
+    int      bp_skip_n;
+    GBSkip   bp_skip[GB_BP_SKIP_MAX];
 
     /* shadow call stack */
     int      cs_depth;
@@ -153,6 +162,8 @@ struct GB {
     gb_serial_fn serial_cb;
     void    *serial_user;
 
+    char     errbuf[96];
+
     GBBreakpoint *bps;
     int      bp_cap, bp_count;      /* bp_count = slots used (ids are slot indices) */
     int      bp_active;             /* number of active breakpoints */
@@ -209,6 +220,12 @@ void gb_clear_breakpoints(GB *gb);
 int            gb_callstack_depth(GB *gb);
 const GBFrame *gb_callstack(GB *gb);          /* frames[0] = outermost */
 const GBFrame *gb_callstack_top(GB *gb);      /* innermost frame or NULL */
+/* Frames are popped automatically after every executed instruction. If the
+ * harness changes SP itself, call this to pop frames whose SP is now below SP. */
+void           gb_callstack_sync(GB *gb);
+/* Convenience for replacing a routine: emulate RET (PC = pop, SP += 2, call
+ * stack synced). Takes no cycles. */
+void           gb_ret(GB *gb);
 
 /* ---- snapshots ---- */
 size_t gb_state_size(void);                    /* == GB_STATE_SIZE */
