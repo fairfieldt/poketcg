@@ -531,6 +531,7 @@ int main(int argc, char **argv)
 		        argv[0]);
 		return 1;
 	}
+	setvbuf(stdout, NULL, _IOLBF, 0); /* progress shows when redirected to a file */
 	int pdeck = CHARMANDER_AND_FRIENDS_DECK_ID, odeck = SQUIRTLE_AND_FRIENDS_DECK_ID;
 	unsigned first = 1, count = 1;
 	const char *screens = NULL, *coverage = NULL;
