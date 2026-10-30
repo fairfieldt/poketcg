@@ -1,10 +1,9 @@
 /* Port of src/engine/duel/ai/energy.asm */
 #include "ai/ai.h"
 
+static bool AIProcessAndTryToPlayEnergy_has_logic_flags(void);
 static void AIProcessEnergyCards_loop_play_area(u8 b);
 static u8 CheckSpecificDecksToAttachDoubleColorless_get_id(void);
-
-static bool AIProcessAndTryToPlayEnergy_has_logic_flags(void);
 
 /* processes AI energy card playing logic
  * with AI_ENERGY_FLAG_DONT_PLAY flag on

@@ -376,15 +376,6 @@ bool AIDecideBenchPokemonToSwitchTo(u8 *a)
 	return false;
 }
 
-/* adds to AI score depending on amount of damage
- * it can inflict to the defending Pokémon
- * AI score += floor(Damage / 10) + 1 */
-static void AIDecideBenchPokemonToSwitchTo_HandleAttackDamageScore(void)
-{
-	EstimateDamage_VersusDefendingCard(wSelectedAttack);
-	AIEncourage((u8)(ConvertHPToDamageCounters_Bank5(wDamage[0]) + 1));
-}
-
 /* .loop_play_area body for Play Area location c, up to the point
  * where the original jumps to (or reaches) .store_score */
 static void AIDecideBenchPokemonToSwitchTo_loop_play_area(u8 c)
@@ -570,6 +561,15 @@ check_if_has_bench_utility:
 		/* .next_id */
 		hl++;
 	}
+}
+
+/* adds to AI score depending on amount of damage
+ * it can inflict to the defending Pokémon
+ * AI score += floor(Damage / 10) + 1 */
+static void AIDecideBenchPokemonToSwitchTo_HandleAttackDamageScore(void)
+{
+	EstimateDamage_VersusDefendingCard(wSelectedAttack);
+	AIEncourage((u8)(ConvertHPToDamageCounters_Bank5(wDamage[0]) + 1));
 }
 
 /* handles AI action of retreating Arena Pokémon
