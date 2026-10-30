@@ -1,0 +1,46 @@
+FIRE CLUB LOBBY - 3D room brief
+===============
+Image: fire_club_lobby.png - 28 x 26 tiles = 224 x 208 px at 8 px/tile.
+Game map: FIRE_CLUB_LOBBY.
+Read 3D_GUIDE.md in this folder for the coordinate/scale convention, then
+build the room from club_lobby_3d.txt in this folder.
+
+THIS ROOM IS IDENTICAL TO THE OTHER EIGHT CLUB LOBBIES
+  All nine lobbies share TILEMAP_CLUB_LOBBY_CGB, TILESET_CLUB_LOBBY and
+  PALETTE_CLUB_LOBBY; pairwise comparison gives 728/728 identical tiles.  The
+  geometry, the art and the colours do not change at all between clubs - do
+  NOT tint this room to the Fire theme.  The only per-club difference is the
+  NPC list below and the map the east door leads to.
+
+WHAT IS IN THIS FILE
+  Everything in club_lobby_3d.txt: the counter + Card Pop machine on the west
+  side, the duel table with four red chairs in the south-west, three
+  bookcases against the north-east wall, two framed pictures and a wall sign
+  on the north wall, a pair of potted palms in the south corners, an entrance
+  rug at the east door, and the shared club livery (brown/gold/white walls,
+  pale-green gridded floor).
+
+CONNECTION
+  East door x26 at y10-13 -> FIRE_CLUB_ENTRANCE at x2, y6 / y2, y8 (the club
+  foyer).  That is the only warp: the lobby is a side room off the foyer and
+  the club room itself is reached from the foyer, not from here.
+
+PEOPLE IN THE ROOM (6 of them; positions from the map's NPC script, they
+are not drawn in the PNG)
+    x6 , y4   NPC_CLERK10              behind the reception counter
+    x10, y4   NPC_GIFT_CENTER_CLERK    behind the reception counter
+    x18, y6   NPC_LAD2                 out on the floor
+    x6 , y10  NPC_CHAP3                out on the floor
+    x12, y14  NPC_JESSICA              at/near the duel table
+    x20, y18  NPC_MANIA                south-east floor
+  Standing positions are given as scripted.  Two of them are behind the
+  reception counter (the counter top is at y6-8, so y4 is behind it): the
+  club clerk at x6 and the gift-centre clerk at x10 - the gift clerk is the
+  one who hands you a promo card.  The rest stand out on the floor as
+  challengeable members; several of them sit on the duel table's chairs.
+  Keep at least one free chair at the table so the room still reads as a
+  play area.
+
+WHAT MAKES THIS ROOM THE FIRE CLUB LOBBY
+  Nothing you can see.  Same room, same colours, same props - only the people
+  and the door destination differ.

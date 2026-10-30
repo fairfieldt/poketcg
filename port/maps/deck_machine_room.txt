@@ -1,0 +1,70 @@
+DECK MACHINE ROOM - 3D room brief
+=================================
+Image: deck_machine_room.png - 24 x 30 tiles = 192 x 240 px at 8 px/tile.
+Game map: DECK_MACHINE_ROOM.  Read 3D_GUIDE.md in this folder first.  A
+service room attached to the laboratory, lined with card-deck printers.
+It uses the SAME tileset and palette as mason_laboratory.txt - same walls,
+same floor, same cabinet language.  Build those once.
+
+CONNECTION
+  West door x0 at y10 and y12 -> MASON_LABORATORY at x24,y10 / x24,y12.
+  The only exit; the room is otherwise a dead end.  Fixed camera looking north.
+
+SHELL
+  Walkable floor ...... x2-21, y5-26 minus the machine banks below.
+  North wall band ..... y0-2.   South wall band ..... y27-29.
+  West wall band ...... x0-1 (with the door).  East wall band ..... x22-23.
+  Wall build: identical to the Mason Laboratory - dark olive-brown #4a3c00
+  panelling, a gold #b5a100 pinstripe, a white inner outline, and a gold-and-
+  white 8 px checkerboard on a cream ground along y1 and y27.
+
+FLOOR
+  Identical to the Mason Laboratory: pale cyan #ccffff tiles with a medium
+  blue #52a5ff grout.  Flat, one texture.
+
+DECK MACHINES - ten, one machine mesh, in four banks
+  Each machine is a cabinet about 4 tiles wide x 4-5 tall, about 1.6 units
+  high, built in three stacked parts:
+    - TOP (1 row): an open rack of gold #ffd200 and black vertical card
+      cartridges - thin gold strips in a black frame, the deck blanks waiting
+      to be printed.  This is the machine's signature silhouette.
+    - MIDDLE (2 rows): a dark navy console carrying a CRT.  The tube is a
+      deep blue #2918ff screen with a white bezel, a row of white "text"
+      lines under it and a small white cursor block.
+    - BOTTOM (1 row): a sloped control desk: a blue panel with a 4 x 3 grid
+      of white keys and a dark base.
+  Banks (all impassable, all standing against a wall or back-to-back):
+    1. NORTH BANK - five machines in one continuous run, x2-21, y1-4,
+       against the north wall.  The leftmost machine (x2-5) has a MAGENTA
+       #ff00ff screen instead of blue - it is the active one.
+    2. EAST BANK, upper - two machines, x14-17 and x18-21, y8-12, standing
+       free on the east side of the room.
+    3. WEST MACHINE - one machine, x2-5, y16-20, against the west wall.  Its
+       screen is GREEN #00b500 with a white readout - a different state.
+    4. EAST BANK, lower - two machines, x14-17 and x18-21, y16-20.
+  Nine blue screens, one magenta, one green.  See
+  events/deck_machine_room_all_deck_machines.png for the all-lit variant.
+  Build one machine with three switchable screen materials and instance it ten.
+
+WALL DOOR
+  x0, y9-11: a low counter and a gold-checker panel set into the west wall
+  marking the doorway through to the laboratory; the walkable opening is at
+  y10 and y12.
+
+NPCS (scripted, not drawn in the PNG)
+  NPC_AARON x12,y12 - the technician in charge, standing in the middle of the
+  room between the two east banks.  NPC_TECH6 x6,y8 at the north bank,
+  NPC_TECH8 x10,y18 in the centre-south, NPC_TECH7 x6,y22 at the west
+  machine.  Keep the central aisle x6-13 clear from door to north bank.
+
+COLOUR SCRIPT
+  The same cyan floor and olive-and-gold walls as the laboratory, but here the
+  colour is all in the machines: ten gold cartridge racks along the top and a
+  wall of deep-blue CRTs, with one magenta and one green screen as the only
+  exceptions.
+
+WHAT MAKES THIS ROOM THE DECK MACHINE ROOM
+  Ten identical deck printers - gold card-cartridge rack over a blue CRT over
+  a keyed control desk - arranged five along the north wall and two-two-two
+  down the east and west sides of a cyan-tiled corridor, one screen magenta
+  and one green.

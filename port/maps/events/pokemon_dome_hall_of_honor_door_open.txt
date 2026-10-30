@@ -1,0 +1,39 @@
+EVENT - POKEMON DOME, HALL OF HONOR DOOR OPEN
+=============================================
+Image: events/pokemon_dome_hall_of_honor_door_open.png
+This is NOT a separate room.  It is pokemon_dome.txt with the north doorway
+uncovered.  Build the base room once and swap this patch.
+
+WHAT IS IDENTICAL
+  The raised violet field with its yellow curb, the two giant floor Poké
+  Balls, the green duel platform, the two serpent statues, the ramps, both
+  flowered hedges, the striped and lattice red carpets, the olive-and-gold
+  walls, the south door and the whole palette are unchanged, tile for tile.
+
+WHAT CHANGES - exactly one 4 x 3-tile patch on the NORTH WALL
+  x14-17, y0-2.
+  In the BASE room this patch carries the two POKE BALL PLAQUES: black-
+  framed, gold-backed panels at x14-15 and x16-17, each showing a red-and-
+  white Poké Ball on a blue field.  They sit side by side and seal the
+  opening, so the north wall reads as a pair of ceremonial emblems.
+  In THIS state the plaques are gone.  The red carpet with its gold diagonal
+  stripes runs straight through the gap and off the top edge at x14-17,
+  bounded by white-and-tan #c66b00 doorjambs standing at x13 and x18 on
+  y1-2.  Again there is no door leaf - the emblem panels are the closed door;
+  removing them opens the way.
+
+HOW TO BUILD THE OPENING
+  Model the north wall with a 4-tile-wide, 3-tile-tall opening at x14-17 and
+  a separate "sealed" plug made of the two Poké Ball plaques plus the wall
+  band between them, shown in the base state and hidden in this one.  Keep
+  the two jambs at x13 and x18 in BOTH states - they are part of the wall,
+  not the plug - so the opening keeps its reveal when the plaques are in
+  place.  This is the warp to HALL_OF_HONOR at x14 -> x10,y22 and
+  x16 -> x12,y22, so it must be walkable in the open state.
+
+NOTES
+  The notch at x14-17 in the raised field's north edge (y8) already lines up
+  with this doorway; the carpet axis x14-17 from the south door to the Hall
+  of Honor is the room's processional line and is clear in both states.
+  The two plaques are the only place in the game where a door is disguised as
+  decoration - keep them readable when closed.

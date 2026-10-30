@@ -1,0 +1,94 @@
+LIGHTNING CLUB - 3D room brief
+==============================
+Image: lightning_club.png - 28 x 32 tiles = 224 x 256 px at 8 px/tile.
+Game map: LIGHTNING_CLUB.  Read 3D_GUIDE.md in this folder first.  This is the
+most graphic, most "poster" room in the game: a flat indigo floor with a
+giant lightning bolt inlaid down it.  Symmetric about the vertical axis except
+for the bolt itself, which is deliberately off-axis.
+
+CONNECTION
+  South door x12-15 at y30 -> LIGHTNING_CLUB_ENTRANCE at x8,y2 / x10,y2.
+  Only warp; dead end.  Fixed camera looking north, straight down the bolt.
+
+SHELL
+  Walkable floor ...... x2-25, y2-27 minus the four pillars and the badge
+                        structure.  The bolt, the discs and everything else
+                        drawn on the floor are walkable decals.
+  North wall band ..... y0-2.   South wall band ..... y28-31.
+  West wall band ...... x0-1.   East wall band ...... x26-27.
+  Wall build: dark brown #521800 face with a gold #ffbd21 pinstripe; the
+  decorated row (y1, mirrored at y29) is a black-and-gold hazard band -
+  alternating solid gold blocks, gold/black checkerboard and black vertical
+  stripes - punctuated at regular intervals by black T-shaped silhouettes
+  (electrical insulators / terminals).  Row y2 (and y30) is a plain cream
+  #ffffad band with black-gold checker at the ends.  Height 4-5 units.
+
+FLOOR
+  Indigo carpet: medium purple #1800a5 with a dark #000021 horizontal rib
+  every 2 tiles and a cyan #00bdff micro-highlight.  One flat texture over the
+  whole room; everything below is laid on top of it.
+
+THE LIGHTNING BOLT - the room's subject
+  A giant stylised bolt inlaid in the floor, running from the north wall to
+  the south doorway, dead centre on the door axis (x12-15).
+  * From y14 to y31 it is a straight 4-tile-wide shaft: x12-15.
+  * North of y14 it breaks into the classic zig-zag: it jogs left to about
+    x5-8 at y12-13, back right through x12-16 at y9-11, left again at y8, and
+    terminates in a short stub at x12-13, y8 under the badge structure.
+  * Construction of the bolt itself: a dark #000021 core with a cyan #00bdff
+    outline and a white #ffffff inner zig-zag ladder, drawn on a dark indigo
+    ground, with the whole outline stepped in 8 px increments.  It reads as a
+    flat inlay, not a raised object.
+  * Model it as a decal strip on the floor (or a recessed inlay 1-2 cm deep).
+    It must stay walkable - the player walks down it to the far wall.
+  * IMPACT BURST: at x13-16, y17-20 the bolt passes through a magenta
+    #ad0063 disc, 4 x 4 tiles, with a white #ffffde crescent on its right
+    side (a stylised flash/knife-edge highlight).  This is the only magenta
+    in the room.  It sits on the shaft about a third of the way down.
+
+FLOOR DISCS - two, mirrored
+  Cream #ffffde circles, 5 x 4 tiles each, outlined in cyan #00bdff and
+  divided into quarters by white lines (they read as spotlights, portholes or
+  full moons let into the floor).  Positions: x4-8, y11-14 and x20-24, y11-14,
+  one either side of the bolt, in the middle of the room.  Flat decals;
+  walkable.
+
+BADGE STRUCTURE - the focal point on the north wall
+  x8-19, y2-4.  12 tiles wide, 3 tall, standing against the north wall and
+  IMPASSABLE - it is a raised counter/shrine, not a wall decal, about 1 unit
+  high.  Face: an orange #e78c00 field carrying two rows of ten round badges,
+  each 1 tile across: alternating white #ffffff rings with cream centres and
+  red #ff0029 discs with dark centres.  Above it (y1) the hazard band steps up
+  into black-and-gold striped caps at x8 and x19.
+  Build it as a low dais with a vertical front face carrying the badge
+  texture; it is the room's altar.
+
+PILLARS - four, all the same mesh, all impassable
+  Square-section striped pillars, 2 tiles across, decorated with the same
+  badge motif: an orange #e78c00 and cream #ffffde checkerboard ground with
+  red #ff0029 discs set into it at regular intervals, closed at the base by a
+  dark maroon #730042 cap with a gold toe.
+    - TWO TALL ONES, 2 x 12 tiles: x8-9, y14-25 and x17-18, y14-25.
+      These flank the bolt in the near half of the room, 8 tiles apart, and
+      are about 3 units tall.
+    - TWO SHORT ONES, 2 x 4 tiles: x4-5, y3-6 and x22-23, y3-6.
+      Flanking the badge structure in the far corners, about 1 unit tall.
+  Model one pillar mesh with a scrollable/checkerable texture; instance it
+  four times at two heights.
+
+NPCS (scripted, not drawn in the PNG)
+  NPC_ISAAC x12,y4 - directly in front of the badge structure, on the bolt
+  (the club's opponent).  NPC_NICHOLAS x6,y10 and NPC_BRANDON x22,y12 stand
+  beside the two floor discs.  NPC_JENNIFER x14,y18 stands on the bolt at the
+  impact burst.
+
+COLOUR SCRIPT
+  Indigo field, cyan-white bolt, orange-cream-red pillars, gold-and-black
+  hazard walls, one magenta accent.  Very high contrast, hard edges, no
+  gradients - the room is a graphic design, not an interior.
+
+WHAT MAKES THIS ROOM THE LIGHTNING CLUB
+  A giant cyan-and-white lightning bolt inlaid from wall to door down the
+  centre of an indigo floor, a magenta impact burst on it, two quadrant discs
+  flanking it, four orange-and-cream badge-striped pillars, and a low
+  badge-shrine under the north wall holding twenty round badges.

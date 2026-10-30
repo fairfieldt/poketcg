@@ -1,0 +1,69 @@
+POKEMON DOME ENTRANCE - 3D room brief
+=====================================
+Image: pokemon_dome_entrance.png - 32 x 18 tiles = 256 x 144 px at 8 px/tile.
+Game map: POKEMON_DOME_ENTRANCE.  Read 3D_GUIDE.md in this folder first.
+A wide, low, richly carpeted vestibule: the ticket hall at the foot of the
+Pokemon Dome.  It is a corridor, not a hall - you enter from the south and
+leave north into the dome.
+
+CONNECTION
+  South door x14-17 at y16 -> OVERWORLD_MAP.
+  North door x22 at y0 -> POKEMON_DOME at x14,y28;  x24 at y0 -> x16,y28.
+  Fixed camera looking north.
+
+SHELL
+  Walkable floor ...... x2-29, y3-14 minus the counters and machine below.
+  North wall band ..... y0-2.   South wall band ..... y14-16.
+  West wall band ...... x0-1.   East wall band ...... x30-31.
+  Wall build: dark olive-brown #5a4b00 panelling with a gold #c66b00 stripe
+  and a white #ffffff outline; the decorated row (y1-2, mirrored at y15) is a
+  brown-and-cream 8 px checkerboard on a gold rail.  Height only about 3.5
+  units - the room is deliberately low and wide.
+
+FLOOR
+  A heavy red #ff0000 carpet with a gold #ffe784 lattice: gold diamonds
+  on a 2-tile pitch, each enclosing a dark crimson #a50000 dot, joined by
+  gold crosses.  Flat, one texture, the whole room.  It is the same carpet
+  family as the dome interior - this room is the outside of the same building.
+
+TICKET KIOSKS - six, one mesh, two runs
+  Each is a 2 x 4-tile counter stall about 1.6 units tall: an orange #c66b00
+  carcass with a dark #291800 interior, one open shelf holding pale bottles
+  and cups, and a closed orange cupboard with a dark knob below; a plain tan
+  #c68c4a canopy panel caps it at y1.  Impassable.
+    NORTH RUN - three at x2-3, x4-5, x6-7, y1-4, against the north wall.
+    WEST RUN  - three at x2-3, x4-5, x6-7, y8-10, standing free in the room.
+  Model one, instance six.
+
+TICKET MACHINE - east wall
+  x29-30, y1-4.  A blue #2939ff turnstile/turnstile-console: a white bezel,
+  a blue screen, a blue key panel and a brown base.  About 1.5 units tall.
+
+COUNTERS - north wall, east
+  x22-23 and x24-25, y1-2: two low 2 x 2-tile counter stalls of the same
+  orange construction, set into the wall either side of the way through.
+
+"B1F" SIGN - north wall, centre
+  x17-20, y1-2.  A black-framed, white-faced sign with a yellow #ffce00
+  inset, carrying the letters B1F at the left and a yellow arrow/legend
+  panel to the right.  A flat sign plane 0.1 units off the wall, about
+  2 x 1 units.  It is the only lettering in the room.
+
+POTTED PALM - south-east
+  x28-29, y11-14.  A brown pot, a curved trunk and green #21ad08 fronds,
+  about 1.8 units tall, standing just inside the south-east corner.
+
+NPCS (scripted, not drawn in the PNG)
+  None.  This is a pass-through; keep the axis x14-25 clear from the south
+  door to the north opening.
+
+COLOUR SCRIPT
+  Red and gold carpet over the whole floor, dark olive walls with a gold
+  checker, orange kiosks, one blue machine, one yellow sign.  The palette is
+  shared with the dome interior - build it as one material set.
+
+WHAT MAKES THIS ROOM THE POKEMON DOME ENTRANCE
+  A low, wide ticket vestibule carpeted head to foot in red-and-gold lattice,
+  with six orange kiosk stalls in two runs of three, a blue ticket machine and
+  a yellow "B1F" sign on the north wall, and an opening in the north-east
+  corner that leads into the dome.

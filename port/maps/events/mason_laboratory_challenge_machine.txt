@@ -1,0 +1,39 @@
+EVENT - MASON LABORATORY, CHALLENGE MACHINE INSTALLED
+=====================================================
+Image: events/mason_laboratory_challenge_machine.png
+This is NOT a separate room.  It is mason_laboratory.txt with one object
+added; build the base room once and toggle this on it.
+
+WHAT IS IDENTICAL
+  Every wall, every floor tile, the workstation, the desk, all eleven orange
+  specimen cabinets, the green collection booth, the four balloons, the palm,
+  the floor, the lighting and the palette are unchanged, tile for tile.
+
+WHAT CHANGES - exactly one 4 x 5-tile patch
+  x10-13, y0-4 on the NORTH WALL, immediately west of the green wall display.
+  In the base room this patch is plain wall - the gold-and-white checkerboard
+  band and the olive panelling continue through it uninterrupted.  In this
+  state a machine is installed there.
+
+THE CHALLENGE MACHINE - x10-13, y0-4, 4 x 5 tiles, about 2 units wide
+  Build it as four stacked parts, front face flat-on to the camera:
+    y0-y1  SUPERSTRUCTURE.  A black #000000 open frame packed with gold
+           #bd8c39 and white pipework: vertical columns, elbows, a T-junction
+           and short white stubs.  Read it as exposed ducting and coolant
+           pipes on top of a cabinet, not as decoration.
+    y2     MONITORS.  Two identical pale-cyan #bfe8ff CRTs side by side, each
+           with a black bezel, each showing a bright MAGENTA #ff00ff and
+           pale-cyan CHECKERBOARD on a 2 x 2-pixel pitch that fills the tube.
+           The magenta is the machine "running".
+    y3     CONSOLE BODY.  A blue #3979ff carcass with two long white readout
+           bars - a wide one on the left, a narrower one on the right - and a
+           small dark port below.
+    y4     CONTROL DESK.  A blue sloped panel with a grid of pale-cyan keys -
+           four keys left, three right - on a blue base.
+  It stands against the wall about 2 units tall and is impassable; the player
+  interacts with it from x10-13, y5.
+
+HOW TO SHIP IT
+  Model the machine as a single prop with a boolean "installed" flag, and a
+  second material variant on the two CRTs (magenta checker = active, plain
+  dark blue = idle).  Nothing else in the room needs a variant.

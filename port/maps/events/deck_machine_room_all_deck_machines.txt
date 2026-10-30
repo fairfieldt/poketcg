@@ -1,0 +1,38 @@
+EVENT - DECK MACHINE ROOM, ALL DECK MACHINES RUNNING
+====================================================
+Image: events/deck_machine_room_all_deck_machines.png
+This is NOT a separate room.  It is deck_machine_room.txt with one material
+switched on every machine.  Build the base room once; this state only changes
+which screens are lit.
+
+WHAT IS IDENTICAL
+  Every wall, the floor, both wall bands, the west doorway panel, all ten
+  machine cabinets - gold cartridge racks, bezels, control desks, key grids -
+  and every NPC position are unchanged, tile for tile.  Nothing moves, nothing
+  is added or removed.
+
+WHAT CHANGES - the CRT faces only, three horizontal strips
+  y2   x6-21   the four still-dark screens of the north bank.
+  y10  x14-21  the two screens of the upper east bank.
+  y18  x14-21  the two screens of the lower east bank.
+  Eight screens in total.  The magenta screen at x2-5, y2 and the green
+  screen at x2-5, y18 are already lit in the base room and are NOT touched -
+  they are identical in both images.
+
+THE CHANGE ITSELF
+  Each of the eight screens goes from a plain deep-blue #2918ff tube with a
+  few white text lines, to the ACTIVE face: a bright MAGENTA #ff00ff and
+  pale-cyan #bfe8ff CHECKERBOARD on a 2 x 2-pixel pitch filling the whole
+  tube, inside the same white bezel.  It is the same active pattern the
+  Challenge Machine uses in mason_lab - share the texture.
+
+HOW TO SHIP IT
+  One machine mesh, one screen material with three variants:
+    IDLE   - dark blue tube with faint white text lines (base state, 8 tubes)
+    ACTIVE - magenta/cyan checker (base state: 1 tube, north bank left;
+             this state: 9 tubes)
+    GREEN  - green tube with a white readout (1 tube, west machine, both
+             states)
+  The event is a single global switch from "8 idle" to "0 idle".  No geometry,
+  no lighting rig changes - though a small emissive bloom on the magenta tubes
+  is in the spirit of the original.

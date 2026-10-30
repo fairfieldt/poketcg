@@ -1,0 +1,78 @@
+FIRE CLUB - 3D room brief
+=========================
+Image: fire_club.png - 28 x 32 tiles = 224 x 256 px at 8 px/tile.
+Game map: FIRE_CLUB.  Read 3D_GUIDE.md in this folder first.  The simplest,
+most formal room: a perfectly symmetric hall, a hot checkerboard floor, cold
+blue walls, and a red carpet down the middle.  Everything on the left is
+mirrored on the right.
+
+CONNECTION
+  South door x12-15 at y30 -> FIRE_CLUB_ENTRANCE at x8,y2 / x10,y2.
+  Only warp; dead end.  Fixed camera looking north straight down the carpet.
+
+SHELL
+  Walkable floor ...... x2-25, y3-27, entirely open except the six braziers.
+                        There are no other obstacles: the room is one big
+                        clear hall.
+  North wall band ..... y0-2.   South wall band ..... y28-31.
+  West wall band ...... x0-1.   East wall band ...... x26-27.
+  Wall build: deep blue #0000e7 panels with a white #ffffff outline and a
+  light-blue #42a5ff inner bevel.  The decorated rows (y1-2 north, y29-30
+  south) carry the FIRE CLUB MOTIF: a run of concentric nested squares -
+  white, then blue, then light blue, then a white centre - each unit 2 tiles
+  wide and 2 tall, repeated 12 times across the width and interrupted only by
+  the carpet at x12-15.  Use exactly the same motif as fire_club_entrance.txt
+  and fire_club_lobby.txt - it is the club's livery.  Height 4-5 units.
+
+FLOOR
+  A checkerboard: alternating tiles of plain cream #ffffc6 and tiles carrying
+  an orange #ff9c39 open cross-hatch, so the floor reads as a warm cream-and-
+  ember chequered tile at 1-tile scale.  Flat, one texture, the whole room.
+  EMBLEM INLAYS: small pink #ffd6ff four-petal rosettes, 1 tile each, set
+  into the floor in two vertical columns at x=11 and x=20, at y=5, 9, 13, 17
+  and 21 - five each, ten in total, spaced every 4 rows.  They are the only
+  cool colour on the floor and they mark the two walkways either side of the
+  carpet.
+
+RED CARPET
+  A runner exactly x12-15 (4 tiles wide) from y3 to y31 - from the north wall
+  to and through the south doorway, the full length of the room.  Pattern: a
+  red #ff0000 ground with a dark #840000 and white diagonal lattice forming
+  elongated diamonds along its length, with dark selvedges at x11 and x16
+  drawn as a thin dark strip with a light notch every other row.  Flat decal,
+  walkable.  It is the room's axis and its only large warm mass.
+
+BRAZIERS - six, one mesh, mirrored
+  Each stands on a 2 x 5-tile footprint and is about 2 units tall:
+    - y+0..1  the head: a red #ff0000 domed cap with a dark #840000 shadow
+              band and a cream highlight, drawn as a wide brim over a narrower
+              neck - a brazier hood or a mushroom cap;
+    - y+2     a short cream #ffffc6 neck with orange detailing;
+    - y+2..4  the pedestal: a green #84ff39 body with a dark-teal #005a31
+              diagonal lattice (a woven or coiled wrap), tapering slightly,
+              on a dark base.
+  Positions (2 x 5 each):
+      x6-7,  y4-8      x20-21, y4-8      (far pair)
+      x6-7,  y12-16    x20-21, y12-16    (middle pair)
+      x6-7,  y20-24    x20-21, y20-24    (near pair)
+  All six are evenly spaced on a 8-row grid, 13 tiles apart horizontally,
+  straddling the two rosette columns.  Impassable.  Model one, instance six,
+  and put an orange point light in each hood.
+
+NPCS (scripted, not drawn in the PNG)
+  NPC_KEN x14,y4 - the club opponent, at the head of the carpet against the
+  north wall.  NPC_JONATHAN x18,y10 and NPC_ADAM x8,y14 flank the middle of
+  the hall between the braziers.  NPC_JOHN x12,y18 stands on the carpet in
+  the near half.
+
+COLOUR SCRIPT
+  Cold deep-blue walls with white-and-blue nested squares, a hot cream-and-
+  ember checkerboard floor, one saturated red axis, six green-and-red
+  braziers, ten tiny pink rosettes.  The wall/floor temperature contrast IS
+  the room.
+
+WHAT MAKES THIS ROOM THE FIRE CLUB
+  The nested-square blue livery on every wall, a cream-and-ember chequered
+  floor with ten pink rosette inlays in two columns, a red diamond-lattice
+  carpet running the full length through the door, and six identical green-
+  pedalled red-hooded braziers in a mirrored 2 x 3 grid.

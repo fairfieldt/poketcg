@@ -1,0 +1,84 @@
+PSYCHIC CLUB ENTRANCE - 3D room brief
+=====================
+Image: psychic_club_entrance.png - 20 x 18 tiles = 160 x 144 px at 8 px/tile.
+Game map: PSYCHIC_CLUB_ENTRANCE - the Psychic club's entrance foyer.
+Read 3D_GUIDE.md in this folder first: coordinate system, scale, and the
+camera convention (the top band of the image is the north wall in elevation).
+
+THIS ROOM IS A COPY - BUILD THE SHELL ONCE
+  All nine club foyers share one tilemap and one tileset.  Comparing this map
+  with fighting_club_entrance.png gives 355 identical tiles out of 360.
+  The ONLY difference in the entire room is the 4 x 4 emblem plaque in the
+  middle of the floor (16 tiles, plus its own palette).  Everything below is
+  the shared shell; the emblem section at the end is the only club-specific
+  part.  Do not retheme the walls or the floor: the foyer is deliberately the
+  same corporate livery in front of every club.
+
+SHELL
+  Walkable floor ............. x2-17, y3-13 (16 x 11 tiles) plus the door
+                               passages below.
+  North wall band ............ y0-2, drawn in elevation.
+  South wall band ............ y14-17: the same decoration mirrored, plus one
+                               black edge row at y17 that is not geometry.
+  West wall band ............. x0-1.        East wall band .... x18-19.
+  Wall build: dark brown #5a4229 face, gold #c6ad31 frame moulding turning
+  the corners, white #ffffff inner field, black outline.  Identical livery to
+  the club lobbies.
+  Doors (each 4 tiles wide, cut flush through the wall band, no doors - just
+  openings):
+    north door x8-11 at y0 ... -> PSYCHIC_CLUB (the club room).  A red runner
+                                  rug fills the opening and runs 1 tile into
+                                  the room: x8-11, y0-3.
+    south door x8-11 at y17 .. -> the street (OVERWORLD_MAP).  No rug.
+    west door  x0 at y6-9 .... -> PSYCHIC_CLUB_LOBBY.  A red rug with a
+                                  maroon border and pale diamonds at x0-2,
+                                  y7-10.
+  So the foyer is a hub: street to the south, lobby to the west, club to the
+  north.  Camera: fixed, looking north from just inside the south door.
+
+FLOOR
+  One material: pale yellow-green #deffb5 with bright green #00ff31 grout on
+  the east and south edge of each tile, reading as 2 x 2-tile pale squares
+  with bright green joints.  Flat, unlit, one texture.
+
+WALL DECORATION (the north band's decoration is mirrored exactly on the south
+band)
+  * Wainscot panels: gold/white 8 px checkerboard, x2-6 and x13-17 at y1-2,
+    and the same two at y15-16.  5 x 2 tiles each, four total.
+  * Two framed pictures per wall: x3-4 and x15-16 at y1-2 (and the same x at
+    y15-16).  2 x 2 tiles: dark brown frame, white mat, a small green-and-
+    orange abstract picture.  Hung at eye height, 3 units apart.
+  * Gold vertical mouldings at x7 and x12 (y1-2 and y15-16) trim the north
+    and south door openings.
+
+PROPS
+  * One potted palm, south-east corner: x16-17, y10-13 (2 x 4 tiles).
+    Round orange #c66b00 pot with a dark body and a fan of green #21ad08
+    fronds; about 1.5 units tall.  The only prop standing on the floor.
+
+  * CLUB EMBLEM PLAQUE - the one unique piece.  x8-11, y6-9 (4 x 4 tiles),
+    set flush into the floor in the exact centre of the room, on the
+    north-south axis between the two doors.
+    From the outside in:
+      1. a 1-tile black outline all round;
+      2. a flat field in violet `#a500ff`;
+      3. a small hollow square in each of the four corners;
+      4. a stepped ring/annulus in near-black `#080029` (this is the only emblem whose ring is dark rather than white) filling the middle;
+      5. on the field, inside the ring: a wide open eye: an almond outline in magenta `#ff29ff` with a round iris and a dark pupil and a white catchlight.
+    Palette: `#ffffff` white, `#ff29ff` magenta, `#a500ff` violet, `#080029` near-black.
+    Build it as a 4 x 4 decal 1-2 cm above the floor, or as an inlaid
+    medallion.  It has to read from the south door - it is the whole point of
+    the room.
+
+NPC
+  NPC_CLERK1 is scripted at x6, y2 - on top of the north wall band, between
+  the wainscot panel and the north doorway.  He is the club greeter.  Put his
+  standing position just south of the wall (x6, y3) so he does not clip.
+
+LIGHTING / MOOD
+  Flat shading, no coloured light.  The emblem is the only saturated object in
+  the room; keep the livery colours so the badge reads from the street door.
+
+WHAT MAKES THIS ROOM PSYCHIC
+  Only the emblem plaque at x8-11, y6-9.  Everything else in this file is
+  identical to the other eight club foyers.

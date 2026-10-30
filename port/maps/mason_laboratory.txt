@@ -1,0 +1,90 @@
+MASON LABORATORY - 3D room brief
+================================
+Image: mason_laboratory.png - 28 x 30 tiles = 224 x 240 px at 8 px/tile.
+Game map: MASON_LABORATORY.  Read 3D_GUIDE.md in this folder first.  Dr.
+Mason's card research lab - the game's first room.  Shares its tileset and
+palette with deck_machine_room.txt; build that set once and reuse it.
+
+CONNECTION
+  South door x14-17 at y28 -> OVERWORLD_MAP.
+  East door x26 at y10 and y12 -> DECK_MACHINE_ROOM at x2,y10 / x2,y12.
+  Two exits; the rest is dead end.  Fixed camera looking north.
+
+SHELL
+  Walkable floor ...... x2-25, y5-26 minus the machines and counters below.
+  North wall band ..... y0-2.   South wall band ..... y27-29.
+  West wall band ...... x0-1.   East wall band ...... x26-27 (with the door).
+  Wall build: dark olive-brown #4a3c00 panelling with a gold #b5a100 pinstripe
+  and a white #ffffff inner outline.  The decorated row (y1, mirrored at y27)
+  is a cream #ffeef0 band carrying a gold-and-white 8 px checkerboard, broken
+  only by the door.  Height 4-5 units.  This is the Mason Laboratory /
+  Deck Machine Room livery - do not invent another.
+
+FLOOR
+  Pale cyan #ccffff tiles with a medium blue #52a5ff grout on every tile edge,
+  drawn as short blue bars so the grid reads as a bright institutional tile
+  floor.  Flat, one texture, the whole room.
+
+WORKSTATION - north-west corner
+  x2-8, y1-4.  A computer workstation: a white cabinet with a pale-blue top at
+  y1, a blue CRT monitor with a white highlight at y2, a blue control panel
+  with a row of white keys at y3, and a brown base with a dark toe at y4.
+  Immediately in front of it, x4-9, y2-4, is an orange-brown #b55a00 desk
+  carrying a black articulated instrument arm (a lamp or microscope) that
+  reaches up to y1 at x8-9.  Impassable, about 1 unit high.
+
+WALL DISPLAY - north wall, centre
+  x14-15, y1-3.  A small wall-mounted readout: a heavy black-framed box with
+  a green #00b500 screen carrying a few white bars, set into the checker band.
+  About 1.5 units tall, flat against the wall.  It is present in every state
+  of this room.
+  NOTE: the Challenge Machine itself is NOT built in the base room.  The wall
+  at x10-13, y0-4 - immediately west of this display - is plain checkerboard
+  here, and only becomes a machine in
+  events/mason_laboratory_challenge_machine.png.  Leave that 4 x 5-tile patch
+  as plain wall and model the machine as a toggleable prop.
+
+STORE CABINETS - four, north wall east
+  x17-19, x20-22, x23-25 and one more at x25-26, y1-4 - four identical tall
+  cabinets 3 x 4 tiles: an orange #b55a00 carcass with a dark interior, three
+  shelves holding small pale bottles and canisters, and a closed orange cupboard
+  with a dark handle at the bottom.  About 2 units tall, impassable.
+  Model one, instance four (and reuse the mesh in the south-east).
+
+BENCH AND COUNTER - mid room
+  * x20-26, y14-16: three more of the same cabinets, in a row on the east side.
+  * x18-26, y26-27: a low counter/bench run against the south-east wall.
+
+COLLECTION BOOTH - the centre of the room
+  x8-12, y14-19.  The room's main prop: a large machine with a bright green
+  #00b500 face set in a heavy black frame, the face carrying dark rectangular
+  bays and small white indicator lamps, standing behind a brown #b57300 counter
+  with a black-toothed front at y18-19.  About 2 units tall, impassable.  Give
+  the counter a workable top so the player can stand at it.
+
+BALLOONS - four
+  Bright magenta #ff00ff balloons with a white highlight and a short dark
+  string, 1 tile each, at x5,y14; x11,y14; x5,y17; x11,y17 - clustered round
+  the west side of the collection booth.  They are decoration only; float them
+  at about 1.8 units.
+
+POTTED PALM - south-west corner
+  x2-4, y22-26.  A fat brown #b55a31 pot with a thick trunk and a fan of
+  green #00b500 / dark-green fronds, about 2 units tall.
+
+NPCS (scripted, not drawn in the PNG)
+  NPC_DRMASON x14,y6 at the head of the room under the Challenge Machine.
+  NPC_TECH5 x6,y4 at the desk, NPC_TECH1 x22,y8 and NPC_TECH2 x22,y20 and
+  NPC_TECH3 x22,y22 along the east cabinets, NPC_TECH4 x10,y22 in the south,
+  NPC_SAM x4,y14 at the west wall.
+
+COLOUR SCRIPT
+  Bright cyan-tiled floor, dark olive walls with gold and a gold checker,
+  orange-brown cabinetry, one large green machine face, four magenta balloons.
+
+WHAT MAKES THIS ROOM THE MASON LABORATORY
+  The green-screened collection booth in the middle of an otherwise empty
+  cyan-tiled hall, a small green wall readout under the north checker band,
+  a computer workstation and instrument desk in the north-west corner,
+  eleven orange specimen cabinets lining the east and north walls, four
+  magenta balloons and a corner palm.

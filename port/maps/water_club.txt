@@ -1,0 +1,104 @@
+WATER CLUB - 3D room brief
+==========================
+Image: water_club.png - 28 x 32 tiles = 224 x 256 px at 8 px/tile.
+Game map: WATER_CLUB.  Read 3D_GUIDE.md in this folder first (coordinates,
+scale, camera).  This is the only club room with a diagonal plan: it is an
+indoor pool / conservatory, not a hall.
+
+CONNECTION
+  South door x12-15 at y30 -> WATER_CLUB_ENTRANCE at x8,y2 / x10,y2.  Only
+  warp; dead end.  Fixed camera looking north.
+
+SHELL
+  Walkable floor ...... the deck only: x2-25, y2-28 minus the pool, the
+                        planted bed and the props.  The pool and the bed are
+                        impassable.
+  North wall band ..... y0-2.   South wall band ..... y28-31.
+  West wall band ...... x0-1.   East wall band ...... x26-27.
+  Wall build: white #ffffff face, a light-cyan #00adff pinstripe, and a
+  full-width cyan/white 8 px checkerboard frieze along y2 (and y30), with the
+  same checkerboard on the side wall bands.  Black outline at the outer edge.
+  This is the brightest, cleanest wall in the game - an aquatics-centre
+  livery.  Height 4-5 units.
+
+FLOOR
+  Deck tile everywhere: pale yellow #ffffa5 squares with thick orange #ff8400
+  grout, laid as 2 x 2-tile (16 px) blocks (four tile variants make one
+  block).  Flat, one texture.  It reads as painted pool-side tiling.
+
+THE POOL - the room's subject, and it is NOT rectangular
+  A sunken swimming pool of deep blue #1800ff water, occupying the middle of
+  the room.  Its outline, given row by row so you can rebuild it exactly
+  (inclusive x ranges of open water):
+      y3  x11-17      y8  x6-17
+      y4  x10-17      y9  x5-17
+      y5  x9-17       y10 x4-17
+      y6  x8-17       y11 x4-13
+      y7  x7-17       y12..y16  x4-13
+  So: a rectangle from y11 to y16 with its east edge at x13; above y10 it
+  widens to x17; and its north-west corner is cut by a clean 45-degree
+  chamfer running from (11,3) down to (4,10).
+  Coping, from the water outward: a dark navy #000042 waterline, then a
+  light-cyan #00adff band, then a white #ffffff band, then the deck.  The
+  coping is a real raised lip - model it 0.1-0.2 units proud of the deck with
+  a rounded top, and it mitres at the 45-degree corner.
+  Water surface: flat deep blue with a few 2 x 1-tile white/cyan ripple
+  highlights scattered at random, plus a couple of single white sparkles.
+  Give the water a flat unlit blue with 2-3 static ripple decals; no
+  animation is needed to match the original.
+  FISH: two, 2 x 2 tiles each, drawn as blue fish with white bellies and dark
+  outlines - one at x16-17, y5-6 (head to the right) and one at x4-5, y12-13
+  (head to the left).  They are the only living things drawn in the pool.
+
+PLANTED BED - the north-west corner
+  A triangular raised bed of moss and shrubs that fills the corner behind the
+  pool's diagonal: bright green #00ff00 ground with mid-green #21ad08 and
+  dark-green #085200 fern/shrub clumps.  Its hypotenuse is parallel to the
+  pool's chamfer, 1-2 tiles north-west of it, running from about (11,3) down
+  to (2,9); its other edges are the north and west walls.
+  Two or three tall palms stand in it at x4-7, y1-2 - their fronds are drawn
+  ABOVE the wall band, i.e. they are taller than the wall.  Treat them as
+  4-5 units tall, the tallest objects in the room.
+  The bed is impassable and about 0.3 units high (a low kerbed planter).
+
+BENCHES - three, all the same mesh
+  Each is a slatted park bench drawn in three-quarter view: navy #000042
+  frame, white #ffffff vertical slats on the back and horizontal slats on the
+  seat, orange #ff8400 legs and arm ends.  About 4 tiles wide x 3 tall,
+  seat height 0.5 units.
+  Positions: x20-24, y4-6 (east side, facing the pool);
+             x5-9,  y20-22 (south-west, facing the pool);
+             x22-25, y22-26 (south-east, facing the pool).
+  All three face the water.
+
+CREATURE STATUES - three
+  A cream #ffffa5 and orange #ff8400 four-legged animal drawn side-on facing
+  left, with a red #ff1000 and navy #000042 striped saddle-cloth over its
+  back and a red crest on its head - it reads as a caparisoned or carousel
+  horse.  About 3 x 3 tiles, ~1.5 units tall, on no visible plinth.
+  Positions: x20-23, y2-3 (north-east, behind the bench);
+             x4-7,  y18-20 (south-west, behind the bench);
+             x24-25, y14-16 (east side, hard against the wall and partly
+             clipped by it - the original only has room for its front half).
+  Model one, instance three.
+
+PLOTTED PLANTS
+  * Four potted shrubs in a tight 2 x 2 block at x14-17, y11-12, on the deck
+    in the notch east of the pool: orange pots, round green bushes.
+  * One potted palm in the south-west corner at x2-3, y24-27: a fat brown
+    #c66b00 pot, a thick trunk and a fan of green fronds, about 2 units tall.
+
+NPCS (scripted, not drawn in the PNG)
+  NPC_AMY x22,y4 and NPC_JOSHUA x22,y8 on the east deck, NPC_SARA x6,y18
+  west, NPC_AMANDA x22,y20 south-east.  Keep the deck ring around the pool
+  clear - it is 2-4 tiles wide everywhere and is the only walkable surface.
+
+COLOUR SCRIPT
+  Yellow deck, deep blue water, cyan-and-white walls, green plants, and only
+  the red-and-cream statues as a warm accent.  High key, very saturated.
+
+WHAT MAKES THIS ROOM THE WATER CLUB
+  The big chamfered indoor pool with a raised cyan-and-white coping and two
+  fish in it, the triangular planted bed with palms growing over the wall, and
+  benches and creature statues arranged around the water on yellow tiling.
+  Nothing is symmetric: the whole room is organised around one diagonal.

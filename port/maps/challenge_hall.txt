@@ -1,0 +1,98 @@
+CHALLENGE HALL - 3D room brief
+==============================
+Image: challenge_hall.png - 28 x 32 tiles = 224 x 256 px at 8 px/tile.
+Game map: CHALLENGE_HALL.  Read 3D_GUIDE.md in this folder first.  The
+tournament hall: one enormous room whose floor is a giant triangular carpet
+pointing at the door.  Symmetric about the vertical axis except for the
+scoreboard, which sits left of centre.
+
+CONNECTION
+  South door x14-17 at y30 -> CHALLENGE_HALL_ENTRANCE at x8,y2 / x10,y2.
+  Note the door is NOT centred on the tilemap: it is at x14-17 while the
+  room's visual axis is x13-16.  Only warp; dead end.  Fixed camera looking
+  north.
+
+SHELL
+  Walkable floor ...... essentially the whole interior x2-25, y5-27.  Only the
+                        scoreboard, the two magenta stands and the two
+                        stair flights block.
+  North wall band ..... y0-2.   South wall band ..... y28-31.
+  West wall band ...... x0-1.   East side is open below y13 - the carpet runs
+                        to the edge of the map; above y12 there is a low
+                        balustrade at x26-27.
+  Wall build: an outdoor/atrium livery.  A HEDGE of dark green #00bd00 with a
+  light-cyan #42ffff sky-line, fronted by a CYAN-AND-WHITE CHECKERBOARD band
+  (#42ffff / #ffffff, 8 px squares) with a black outline and a cream cap.
+  This band runs the full width at y1-2 and y29-30 (broken only by the banner
+  and the door) and down the west side at x0-1.  Height about 2 units - it
+  reads as a low planted terrace wall, not a tall interior wall.
+
+FLOOR - the room's entire idea
+  One carpet in two tones, laid out as a huge funnel:
+    * TONE A (the field): a saturated orange #ffb539 carpet carrying a dense
+      white #ffffff diamond lattice (argyle) drawn as crossing 1-tile
+      diagonals on a 2-tile pitch.
+    * TONE B (the funnel): the same carpet with the lattice OMITTED - plain
+      pale cream #ffffad.
+  The plain funnel is a triangle: its base runs along y5 from x7 to x20, and
+  its two sides close as straight diagonals running down and inward -
+  the left from (7,5) to (13,17), the right from (20,5) to (14,17) - meeting
+  at an apex at about x13-16, y17.  Below y19 the whole width is Tone A.
+  Two short Tone A tabs also sit at x2-3 and x24-25 on rows y3-4.
+  Build it as one flat carpet mesh with a lattice texture and a second,
+  untextured triangle laid over it - the hard diagonal edges are the point of
+  the design; do not feather them.  Fully walkable.
+
+BANNER - the focal point
+  x10-21, y1-4 (12 x 4 tiles) on the north wall.  A yellow #fff700 sign with
+  a red #ff0000 outer border and a black outline, lettered in two lines:
+  "Pokemon TCG" over "CHALLENGE CUP" in white block capitals with black
+  outlines, and a red-and-white POKe BALL at each end of the second line.
+  It is flat on the wall but drawn with a drop shadow - model it as a
+  separate sign plane 0.1 units off the wall, about 6 x 2 units.
+
+SCOREBOARD
+  x13-18, y6-12, standing free just north of the middle of the room, in front
+  of the banner.  A green #00bd00 display board with a dark #085200 frame,
+  filled with rows of small yellow #fff700 dots and bars (a league table of
+  names and scores), mounted on a brown #b54200 plinth with a stepped toe at
+  y12.  About 3 units tall, impassable.  It is deliberately off-axis: it sits
+  west of the funnel's centre line.
+
+MAGENTA STANDS - two, mirrored
+  Two identical 2 x 2-tile objects at x12-13, y8-9 and x18-19, y8-9, flanking
+  the scoreboard: a bright magenta #ff00ff sphere on a small black pedestal -
+  a trophy orb or a ball on a stand.  About 1 unit tall, impassable.
+
+STAIR FLIGHTS - two, mirrored
+  Two straight flights running down the sides of the funnel toward the apex:
+  the left from (7,13) down-right to (13,19), the right from (24,13) down-
+  left to (18,19).  Each is drawn as brown #b54200 steps with black nosing
+  and a black handrail line running diagonally above them, with a 3 x 3-tile
+  flight of visible treads at x9-11, y15-17 and x20-22, y15-17.  They mark
+  the boundary between the plain funnel and the latticed field, so treat them
+  as a shallow 1-2 step change of level with a slim rail, not a grand
+  staircase.
+
+PALMS
+  Ornamental palms are planted along the west terrace at x4, y3-11 (three
+  stacked crowns) and along the east balustrade at x26, y3-11 (three more).
+  Their crowns are drawn over the wall band, so they are taller than it -
+  about 3 units.  Six total, three per side.
+
+NPCS (scripted, not drawn in the PNG)
+  NPC_HOST x14,y4 - the host, under the banner at the head of the funnel.
+  NPC_GUIDE x14,y20 on the field in front of the apex.  NPC_CLERK12 x10,y18
+  and NPC_CLERK13 x20,y18 at the two stair feet.
+
+COLOUR SCRIPT
+  One orange key over the whole floor in two values, a cyan-white checker and
+  green hedge shell, a yellow-and-red banner, a green scoreboard and two
+  magenta orbs.  Flat, graphic, high-key.
+
+WHAT MAKES THIS ROOM THE CHALLENGE HALL
+  The giant un-latticed triangular carpet funneling from the banner to the
+  doorway through a latticed orange field, the yellow "Pokemon TCG Challenge
+  Cup" banner with its two POKe BALLs, the green league-table scoreboard, two
+  magenta trophy orbs, twin diagonal stair rails and a low hedge-and-checker
+  terrace instead of walls.

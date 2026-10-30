@@ -1,0 +1,71 @@
+PSYCHIC CLUB - 3D room brief
+============================
+Image: psychic_club.png - the tilemap is 28 x 32 but only y0-27 is drawn;
+rows y28-31 of the PNG are black void.  Treat the room as 28 x 28 tiles =
+224 x 224 px of usable space.  Game map: PSYCHIC_CLUB.  Read 3D_GUIDE.md
+first.  Perfectly symmetric about the vertical axis; a long, narrow, shrine-
+like hall.
+
+CONNECTION
+  South door x12-15 at y26 -> PSYCHIC_CLUB_ENTRANCE at x8,y2 / x10,y2.
+  Only warp; dead end.  Fixed camera looking north straight down the carpet.
+
+SHELL
+  Walkable floor ...... x2-25, y3-24 plus the carpet strip; the eight torches
+                        are the only blockers.
+  North wall band ..... y0-2.   South wall band ..... y25-26 (nothing below).
+  West wall band ...... x0-1.   East wall band ...... x26-27.
+  Wall build: a bright BLUE ARCADE.  The wall bands (y1-2 and y25-26, and the
+  side bands) are a repeating run of pointed arches drawn in blue #0000ff
+  outlines with light-purple #9c6bff and white #ffffff fills on a dark blue
+  ground, separated by narrow amber #f7ad00 and light-yellow #ffff9c vertical
+  pilasters.  The arch motif is 2 tiles wide and repeats 12 times along the
+  north and south bands.  The carpet passes under the arch in the middle of
+  both the north and south bands (x12-15 at y3 and y26 are open arches).
+  Height 4-5 units; the arcade is a flat decorated wall, not a real colonnade.
+
+FLOOR
+  Light yellow #ffff9c field with an amber #f7ad00 lattice: a grid of 2 x
+  2-tile squares outlined in amber, with a darker amber cross at every
+  intersection and a faint orange dot in the centre of each panel.  Flat, one
+  texture, covers the whole room.  It reads as inlaid wood or a tatami-style
+  parquet.
+
+RED CARPET
+  A runner exactly x12-15 (4 tiles wide) from y4 to y27 - the full length of
+  the room, through the doorway.  Pattern: a red #ff0000 ground with a dark
+  #5a0000 and white diagonal lattice (a repeating 4 x 4-tile diamond
+  trellis), bounded on x11 and x16 by a 1-tile dark-red border strip with a
+  light notch every other row.  Flat decal; walkable.  It is the room's axis.
+
+TORCHES - eight, one mesh, the only 3D props
+  A standing torch on a 2 x 5-tile footprint:
+    - a slender dark navy #000052 standard, slightly waisted, with a spiral
+      scroll-volute curling out of its base to the left and a small open ring
+      at the top of the shaft;
+    - at the top, a large pointed flame/leaf about 2 tiles tall: light purple
+      #9c6bff body, amber #f7ad00 outline, white #ffff9c core, with dark
+      veins radiating through it.
+  Total height about 2.5 units.  Impassable.
+  Positions (top-left of the 2 x 5 footprint):
+      x10-11 y4-8     x16-17 y4-8      (far pair, flanking the carpet)
+      x6-7   y6-10    x20-21 y6-10     (far-mid pair)
+      x6-7   y14-18   x20-21 y14-18    (near-mid pair)
+      x10-11 y16-20   x16-17 y16-20    (near pair, flanking the carpet)
+  The eight form a mirrored octagon around the central carpet - the four
+  inner ones step in toward the north, the four outer ones step out toward
+  the south.  Give each a small purple point light.
+
+NPCS (scripted, not drawn in the PNG)
+  NPC_MURRAY1 x12,y6 and NPC_MURRAY2 x2,y2 - the two-headed opponent, one on
+  the carpet at the far end, one in the north-west corner.  NPC_DANIEL x8,y8
+  and NPC_STEPHANIE x22,y12 stand between the torches.
+
+COLOUR SCRIPT
+  Yellow-amber parquet, a saturated red runner, blue-and-purple arcade walls,
+  and eight purple flames as the only light sources.  Warm floor, cold walls.
+
+WHAT MAKES THIS ROOM THE PSYCHIC CLUB
+  A long arcade hall of blue-and-purple pointed arches around a yellow lattice
+  floor, bisected end to end by a red diamond-lattice runner, with eight
+  standing torches burning purple flames arranged in a mirrored octagon.

@@ -1,0 +1,36 @@
+EVENT - POKEMON DOME ENTRANCE, NORTH DOOR OPEN
+==============================================
+Image: events/pokemon_dome_entrance_door_open.png
+This is NOT a separate room.  It is pokemon_dome_entrance.txt with the north
+opening uncovered.  Build the base room once and swap this patch.
+
+WHAT IS IDENTICAL
+  Every wall, the red-and-gold carpet, all six ticket kiosks, the blue ticket
+  machine, the "B1F" sign, the palm, the south door and the whole palette are
+  unchanged, tile for tile.
+
+WHAT CHANGES - exactly one 4 x 3-tile patch on the NORTH WALL
+  x22-25, y0-2.
+  In the BASE room this patch is closed: two low orange counter stalls sit at
+  x22-23 and x24-25 on y1-2, backed by the olive wall and the brown-and-cream
+  checker band, so the north wall reads as continuous and the way through is
+  hidden.
+  In THIS state the stalls and the whole wall band are gone.  The red-and-gold
+  lattice carpet simply runs off the top edge at x22-25, bounded by the plain
+  wall returns at x21 and x26.  It is an open doorway, not a door object:
+  there is no leaf, no frame and no leaf swing - the wall is cut away and the
+  floor continues through.
+
+HOW TO BUILD THE OPENING
+  Model the north wall as one mesh with a 4-tile-wide, 3-tile-tall opening at
+  x22-25, plus a separate "closed" plug - the two counter stalls and the wall
+  band segment - that is shown in the base state and hidden in this one.
+  Give the opening a 0.1-unit black reveal and a thin gold #c66b00 jamb so it
+  reads as a way through rather than a hole in the map.  It is the warp to
+  POKEMON_DOME at x22 -> dome x14,y28 and x24 -> dome x16,y28, so keep it
+  walkable and unobstructed in the open state.
+
+VISUAL CUE
+  The checker band on the north wall stops dead at x21 and restarts at x26 in
+  the open state, so the opening is legible even from the south door.  Do not
+  carry the checker over the gap.

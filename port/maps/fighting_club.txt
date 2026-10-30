@@ -1,0 +1,91 @@
+FIGHTING CLUB - 3D room brief
+=============================
+Image: fighting_club.png - 24 x 18 tiles = 192 x 144 px at 8 px/tile.
+Game map: FIGHTING_CLUB.  Read 3D_GUIDE.md in this folder first (coordinates,
+scale, camera convention).
+This is the smallest and simplest club room, and one of only two that are NOT
+mirror-symmetric (the other is Grass).  It is a gym / training hall.
+
+CONNECTION
+  South door x10-13 at y17 -> FIGHTING_CLUB_ENTRANCE at x8,y2 / x10,y2.
+  That is the only warp; the room is a dead end.  Fixed camera looking north.
+
+SHELL
+  Walkable floor ............. x2-21, y2-13 (20 x 12 tiles) minus the props
+                               below, plus the door passage x10-13, y14-17.
+  North wall band ............ y0-1, drawn in elevation.
+  South wall band ............ y14-17 (mirror of the north, minus its hangings).
+  West wall band ............. x0-1.        East wall band .... x22-23.
+  Wall build: dark brown #632908 face with a gold #d6b54a cap line along the
+  top edge and a black outline; white inner field on the decorated row.
+  Door: x10-13 at y17, 4 tiles wide, with a red runner rug lying in the
+  opening and 4 rows down (x10-13, y14-17) - see PROPS 8.
+
+FLOOR - three strips running east-west, north to south
+  1. y2 ............ a single row of blue/white 8 px checkerboard tile
+                     (white #ffffff and blue #312994 with #9494c6 mid-tone).
+                     Walkable.  It is the strip that butts against the north
+                     wall, all the way across x2-21.
+  2. y3-10 ......... the main floor: a green training mat.  Drawn as 2 x 2-tile
+                     (16 px) squares, bright green #29ff00 with a mid-green
+                     #009c10 diagonal weave inside each square and black grout
+                     between them.  20 x 8 tiles.  Flat, one texture.
+  3. y11-13 ........ a low raised dais along the south wall, and it IS
+                     walkable.  y11 is its top edge (a light tan #d6b54a
+                     surface with black outlining), y12-13 are its front: a
+                     tan #d6b54a brick face with dark #632908 mortar in a
+                     running bond, 2 rows tall.  Model it as a step 3 tiles
+                     deep and about 0.5 units high.  20 tiles wide.
+
+WALL DECORATION (north wall only; the south wall repeats just the checker and
+brick rows)
+  * TEN hanging pennants, 1 tile wide x 1 tile tall each, hung edge to edge in
+    two runs of five: x3-7 and x16-20 at y1.  Gold/cream frame, green field,
+    dark olive vertical stripe, notched bottom.  They hang at the top of the
+    wall, above head height.
+  * Two gold end-caps at x8 and x15 (y1) terminate the runs.
+  * Gold/white checkerboard infill panels at x2, x9, x14 and x21 (y1).
+  * CLUB SIGN: x10-13, y1-2.  4 x 2 tiles, a thick teal #29ffce frame with a
+    navy #000031 outer line, white field, and two big black kanji on it
+    (根性, "guts/spirit" - the club motto).  This is the room's focal point
+    and it is dead centre on the north wall, directly above the door axis.
+    Its lower row overlaps the walkable checker strip, i.e. it hangs low.
+
+PROPS (all of them are gym kit; the room has no furniture)
+  1. Barbell, drawn side-on ........ x20-21, y3-4.  A grey #9494c6 bar with a
+     square plate on each end, lying horizontally.  About 2 units long.
+  2. Loop weights (a pair of thick dark grey rings joined by a short handle -
+     reads as kettlebells or a coiled rope) ... two of them: x2-3, y3-4 and
+     x20-21, y5-6.
+  3. Speed bag .... x2-3, y5-6.  A red #ff1000 ball with a white top on a
+     dark mount, 2 x 2 tiles.  The only red object in the room apart from the
+     rug.
+  4. Three loose dumbbells, 2 x 2 tiles each, drawn at a diagonal: x2-3, y7-8;
+     x20-21, y7-8; x20-21, y9-10.  Grey bar, black bell ends.
+  5. TEN dumbbells lined up on the south dais, one every other tile at
+     x3,5,7,9,11,13,15,17,19,21, drawn into y12-13.  Small, grey with black
+     ends.  They are a rack, evenly spaced - model one mesh, instance it ten
+     times along the dais.
+  6. Red runner rug in the south door .... x10-13, y14-17 (4 x 4).  Red
+     #ff1000 with a white-and-red diamond/lattice pattern and a white
+     border; it continues through the doorway into the foyer.
+  Note the asymmetry: the west wall has 3 items (loop weights, speed bag,
+  dumbbell) and the east wall has 4 (barbell, loop weights, 2 dumbbells).  Do
+  not mirror this room.
+
+NPCS (scripted, not in the PNG)
+  NPC_MITCH x10,y4 (centre of the mat, facing the door - the club's opponent),
+  NPC_JESSICA x18,y6, NPC_MICHAEL x14,y10, NPC_CHRIS x4,y8.  Four people
+  standing scattered on the mat; keep the centre row x10-13 clear so the
+  approach to the sign stays open.
+
+COLOUR SCRIPT
+  Green mat #29ff00/#009c10, brown-and-gold walls #632908/#d6b54a, one blue
+  checker strip, one teal sign, red only on the bag and the rug.  Keep it
+  flat and hard-edged.
+
+WHAT MAKES THIS ROOM THE FIGHTING CLUB
+  The green training mat filling the whole floor, the row of ten hanging
+  pennants, the teal 根性 sign over the centre, the low brick dais with its
+  rack of ten dumbbells, and loose weights scattered along both side walls.
+  No seating, no counter, no plants - it is a gym, not a lounge.

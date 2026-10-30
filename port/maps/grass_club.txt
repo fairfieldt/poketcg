@@ -1,0 +1,98 @@
+GRASS CLUB - 3D room brief
+==========================
+Image: grass_club.png - 28 x 32 tiles = 224 x 256 px at 8 px/tile.
+Game map: GRASS_CLUB.  Read 3D_GUIDE.md in this folder first.  The largest
+and most "garden" room: an outdoor lawn inside a log fence, with topiaries,
+flower beds and scattered stones.  Layout is a loose grid, not mirrored.
+
+CONNECTION
+  South door x12-15 at y30 -> GRASS_CLUB_ENTRANCE at x8,y2 / x10,y2.
+  Only warp; dead end.  Fixed camera looking north.
+
+SHELL
+  Walkable floor ...... the whole lawn x2-25, y2-27 except where a bed,
+                        topiary, basket or stone stands.
+  Perimeter ........... y0-1 and y28-31 and x0-1 and x26-27 are a LOG FENCE,
+                        not a masonry wall: a row of vertical tan #f7c652
+                        posts with dark #631000 grain lines and dark gaps,
+                        capped along the top (y1, mirrored y28) by a dark
+                        crimson #631000 horizontal rail, with a strip of
+                        dark-green #006300 hedge outside it and a lime
+                        #ffff84 outline.  The fence is about 2 units tall and
+                        you see hedge over the top of it.  It is a fence, not
+                        a wall - leave gaps at the post bottoms and let the
+                        sky be bright.
+
+FLOOR
+  Bright lawn #21ef21 with a dark #006300 grid line every tile (it reads as
+  mown turf in 1-tile squares), scattered with single light-green #ffff84
+  tufts/specks and a few small clusters of them.  Completely flat.
+  Scatter 50-80 small tuft decals at the same density as the PNG; do not
+  tile a uniform grass texture - the speckling is the look.
+
+FLOWER BEDS - six, all flush planters
+  Each is a rectangular bed with a navy #00005a kerb, a bright blue #5263ff
+  and cyan #52e7ff interior and a dense scatter of yellow #ffff00 blossom
+  dots; the two long ones on the north side also have a row of solid blue
+  #5263ff blocks along their bottom kerb.  They are flat or at most 0.2 units
+  proud.
+    1. x4-9,  y3-4    6 x 2   against the north fence, west
+    2. x14-23 y3-4   10 x 2   against the north fence, east
+    3. x24-25 y6-10   2 x 5   east fence, upper
+    4. x2-3,  y8-12   2 x 5   west fence, upper
+    5. x24-25 y14-18  2 x 5   east fence, lower
+    6. x2-3,  y14-18  2 x 5   west fence, lower
+  They are impassable.  Note beds 3 and 4 are NOT at the same height: the
+  east one starts one row further north.
+
+TOPIARIES - eighteen, one mesh, four rows
+  Each is a small ornamental tree on a 2 x 3-tile footprint: a flared
+  tan #f7c652 / crimson #631000 trunk about 0.5 units tall, carrying a round
+  clipped green head (dark #006300 shell, mid #006300 and light #21ef21
+  checker foliage) with a small green star-sprig on top.  Total height about
+  1.5 units.  Impassable.
+    Row 1, y6-8  : x14-15, x16-17, x18-19                      (3)
+    Row 2, y10-12: x14-15, x16-17, x18-19                      (3)
+    Row 3, y16-18: x6-7, x8-9, x10-11, x12-13, x18-19, x20-21 (6)
+    Row 4, y20-22: x6-7, x8-9, x10-11, x12-13, x18-19, x20-21 (6)
+  Rows 3 and 4 are aligned pairs with a 4-tile gap between the two blocks and
+  a 4-tile aisle at x14-17.  Rows 1-2 form a 3 x 2 hedge square in the
+  north-east quarter.
+
+FLOWER BASKETS - eight, one mesh
+  Round brown #c66b00 basket pots, 2 x 2 tiles, overfilled with pink
+  #ffb5ff and white blossoms and a couple of green leaves.  About 0.6 units
+  tall, impassable.
+    A cluster of four in a 2 x 2 block at x8-9 / x10-11, y8-9 / y10-11
+    (dead centre of the west half of the lawn).
+    Four at the south corners: x2-3 y24-25, x24-25 y24-25,
+                              x2-3 y26-27, x24-25 y26-27.
+
+STONES - 57 clusters
+  Small grey #9c9c9c / white #ffffff boulders with a dark outline, 1 tile or
+  less across, about 0.3 units tall, dropped at random all over the lawn -
+  47 single stones, 8 pairs, 1 triple at x9-10 y14-15 and one 5-stone clump
+  at x22-23 y22-25.  They are impassable.  Do not place them on the paths
+  between the topiary rows; they cluster in the open lawn.
+
+SOUTH ENTRANCE RUNNER
+  A red #ff1000 and white #ffffff patterned runner, 4 tiles wide (x12-15),
+  from y28 to y31, laid across the fence line at the doorway: a red ground
+  with a white diamond/lattice pattern and a white fringe.  It is the only
+  red in the room.  Model it as a flat decal that crosses the fence line.
+
+NPCS (scripted, not drawn in the PNG)
+  NPC_NIKKI x12,y4 - the club opponent, at the north fence between beds 1 and
+  2.  NPC_KRISTIN x4,y10 on the west lawn by bed 4.  NPC_HEATHER x14,y16 in
+  the central aisle between the topiary rows.
+
+COLOUR SCRIPT
+  One saturated green field, a tan log fence, blue-and-yellow beds, clipped
+  green topiaries, pink baskets, grey stones, and a single red-and-white
+  runner at the door.
+
+WHAT MAKES THIS ROOM THE GRASS CLUB
+  A walled garden rather than a room: a log fence with hedge behind it, mown
+  square turf, six blue flower beds set into the fence line, eighteen clipped
+  topiaries in four rows, eight pink flower baskets, and 57 loose stones
+  scattered over the lawn.

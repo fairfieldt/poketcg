@@ -1,0 +1,84 @@
+HALL OF HONOR - 3D room brief
+=============================
+Image: hall_of_honor.png - 24 x 26 tiles = 192 x 208 px at 8 px/tile.
+Game map: HALL_OF_HONOR.  Read 3D_GUIDE.md in this folder first.  The
+sanctum at the top of the Pokemon Dome, where the five Legendary Cards are
+kept.  A small, perfectly symmetric shrine room - the most formal interior in
+the game.
+
+CONNECTION
+  South door x10-13 at y24 -> POKEMON_DOME at x14,y2 / x16,y2.
+  Only warp; dead end.  Fixed camera looking north.
+
+SHELL
+  Walkable floor ...... x2-21, y5-21 minus the shrine, pillars, torches and
+                        medallions.  The shrine block is not walkable.
+  North wall band ..... y0-2.   South wall band ..... y22-25.
+  West wall band ...... x0-1.   East wall band ...... x22-23.
+  Wall build: dark olive-brown #211008 panelling with a gold #bd6300 stripe
+  and a white outline; the decorated row (y1, mirrored at y23) is a brown-and-
+  cream 8 px checkerboard on a gold rail.  Height 4-5 units.  Same wall
+  family as the dome - this is the same building.
+
+FLOOR
+  A gold-and-white checkerboard: 2 x 2-tile squares of bright yellow #ffe700
+  alternating with white #ffffff, each yellow square shaded with a diagonal
+  orange #ffa531 hatch and each white square with a pale yellow cross-hatch,
+  all on a 4-tile pitch with red #ff0000 grout lines.  Flat decal, the whole
+  room.  It should read as polished brass and marble.
+
+ENTRANCE RUNNER
+  x10-13, y23-25: a red #ff0000 carpet with white arrow/chevron marks laid
+  across the threshold, 4 tiles wide, running straight at the shrine.
+
+CORNER MEDALLIONS - four, mirrored
+  2 x 2-tile square plaques set into the floor at the four corners of the
+  room: x2-3,y3-4; x20-21,y3-4; x2-3,y20-21; x20-21,y20-21.  Each is a
+  white field with a dark-blue #000052 interlaced knotwork pattern inside a
+  blue #7b84ff border.  Flat inlays, impassable, about 1 unit across.
+
+THE SHRINE - the focus, dead centre
+  x7-16, y9-14: a stepped blue-and-white altar block, symmetric about x=11.5.
+    * y9:      the upper step, x8-15.
+    * y10-14:  the main block, x7-16.
+  Build it as two stacked platforms with white faces, blue #7b84ff fluting and
+  a dark #000052 base - about 1.2 and 1.8 units high.  On its top sits a
+  large dark blue POKE BALL, x11-14, y10-12, a sphere with a white band and
+  highlight, about 1.5 units in diameter.  Down the front face, y12-14, run
+  horizontal blue-and-white banded steps.
+
+PILLARS - two, mirrored
+  x7-8, y10-14 and x15-16, y10-14: two white columns with blue fluting and
+  a notched capital, standing at the front corners of the shrine and rising
+  above it to about 3 units.
+
+TORCHES - two, mirrored
+  x8, y8 and x14, y8: slender posts behind the shrine topped by a red
+  #ef3100 and orange flame head on a white stem, about 2.5 units tall.
+
+LEGENDARY CARD BANNER - north wall, centre
+  x10-13, y1-4: a tall hanging banner, blue #7b84ff and white with a dark
+  border, carrying a red-and-white POKE BALL in a white shield at its centre.
+  It hangs behind and above the shrine, about 3 x 4 units.  It is the room's
+  focal emblem.
+
+NPCS (scripted, not drawn in the PNG) - the Legendary Cards
+  Six figures stand on and around the shrine, and they are the point of the
+  room: NPC_LEGENDARY_CARD_TOP_LEFT x10,y8, NPC_LEGENDARY_CARD_TOP_RIGHT
+  x12,y8, NPC_LEGENDARY_CARD_LEFT_SPARK x8,y10, NPC_LEGENDARY_CARD_BOTTOM_
+  LEFT x10,y10, NPC_LEGENDARY_CARD_BOTTOM_RIGHT x12,y10, NPC_LEGENDARY_
+  CARD_RIGHT_SPARK x14,y10.  Model them as glowing card shrines arranged in a
+  ring on the altar steps, each about 1 unit tall, with a soft halo.
+  Keep the runner axis x10-13 clear from the door to the shrine.
+
+COLOUR SCRIPT
+  Brass-and-marble checker floor, olive-and-gold walls, one blue-and-white
+  shrine with a dark Poké Ball, two torches, one banner, one red runner.
+  Very few hues, high contrast, ceremonial.
+
+WHAT MAKES THIS ROOM THE HALL OF HONOR
+  A two-step blue-and-white altar holding a giant dark Poké Ball, flanked by
+  two fluted pillars and two red-flamed torches, under a hanging Poké Ball
+  banner; a gold-and-white checkered floor with four blue knotwork medallions
+  in the corners and a red arrowed runner laid from the door straight to the
+  altar.

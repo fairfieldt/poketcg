@@ -1,0 +1,100 @@
+POKEMON DOME - 3D room brief
+============================
+Image: pokemon_dome.png - 32 x 32 tiles = 256 x 256 px at 8 px/tile.
+Game map: POKEMON_DOME.  Read 3D_GUIDE.md in this folder first.  The final
+arena of the game and the largest room in it: a raised violet duel floor
+floating in a red-and-gold carpet, with the duel platform dead centre.
+Perfectly symmetric about x=15.5.
+
+CONNECTION
+  South door x14-17 at y30 -> POKEMON_DOME_ENTRANCE at x22,y2 / x24,y2.
+  North door x14-17 at y0  -> HALL_OF_HONOR at x10,y22 / x12,y22.
+  The room is a north-south axis; both doors are on the same centre line.
+  Fixed camera looking north.
+
+SHELL
+  Walkable floor ...... the whole interior x2-29, y3-27 EXCEPT the raised
+                        field edge (see RAISED FIELD), the platform, the
+                        hedges and the two statues.
+  North wall band ..... y0-2 and y7.   South wall band ..... y28-31.
+  West wall band ...... x0-1.   East wall band ...... x30-31.
+  Wall build: dark olive-brown #5a4b00 panelling with a gold #c66b00 stripe
+  and a white outline, and a brown-and-cream 8 px checkerboard on a gold rail
+  along y1 and y29.  Height 4-5 units.
+
+NORTH EMBLEMS - two
+  x14-15 and x16-17, y1-2: two identical black-framed, gold-backed plaques,
+  each carrying a red-and-white POKE BALL on a blue field.  They sit either
+  side of the way through to the Hall of Honor.  Flat sign planes about
+  1 x 1 units, 0.1 off the wall.
+
+FLOOR - the carpet
+  A red #ff0000 carpet with a gold #ffe784 figure, in two different weaves:
+    * NORTH HALF (y3-6): bold gold diagonal stripes on red, running at 45
+      degrees on a 1-tile pitch - the upper concourse.
+    * SOUTH HALF (y21-27): a gold octagon-and-cross lattice with dark crimson
+      #a50000 dots on red - the lower concourse.
+  Both are flat decals.  Between them, at y7, runs a white-and-gold skirting
+  that marks the foot of the raised field.
+
+RAISED FIELD - the arena
+  A raised platform of violet-blue #6b52ff tiles with a darker #1818a5 grid
+  on every tile edge, outlined along its whole perimeter with a bright yellow
+  #ffff00 curb 1 tile wide.  Its outline:
+      y8        x4-13 and x18-27          (a 4-tile notch at x14-17 for the
+                                           north way through)
+      y9-y11    x4-27
+      y12-y18   x4-13 and x18-27          (the platform occupies the notch)
+      y19-y20   x4-27
+      y21       x5-26
+      y22       x6-13 and x18-26
+      y23       x7-13 and x18-26
+  Raise it about 0.5 units above the carpet and give it a plain violet
+  riser.  Walkable on top; the curb is the only visual edge.
+  Two ramps step it down to the carpet at the south corners: a wedge of dark
+  blue treads with yellow nosing descending from (4,18) to (9,22) on the west
+  and mirrored from (27,18) to (22,22) on the east.
+
+POKE BALL FLOOR MOTIFS - two, mirrored
+  Painted directly on the raised field at x8-11, y12-15 and x21-24, y12-15:
+  four-tile-diameter POKE BALLS drawn as a red upper half, a yellow lower
+  half, a dark band and a blue-and-white centre button.  Flat decals about
+  2 units across; they are the arena's identity.
+
+DUEL PLATFORM - dead centre
+  x14-17, y12-17 (4 x 6 tiles) standing on the raised field: a bright green
+  #21ad08 card field framed in brown #734200, marked with dark rectangular
+  card bays and small white position markers, on a dark brown base with a
+  vented toe at y18.  This is the actual duelling board - model it as a
+  slightly raised dais, 0.3 units, with a flat green playing surface.
+
+DUEL STATUES - two, mirrored
+  Small red-and-blue serpent/dragon figures at x12-13, y14-15 and x18-19,
+  y14-15, crouched either side of the duel platform facing outward.  About
+  0.8 units tall, impassable.
+
+HEDGES - two runs
+  Flowered hedges fill the side channels between the field and the walls:
+  x1-3, y9-20 on the west and x28-30, y9-20 on the east.  Green #21ad08 and
+  dark-green #085200 foliage thickly dotted with red #ff0000 flowers, with
+  brown #c66b00 trunks showing at intervals.  About 1 unit tall, impassable.
+  They run the full height of the field and hide its edges.
+
+NPCS (scripted, not drawn in the PNG)
+  The Challenge Cup finalists line the top of the field: NPC_JACK x8,y2,
+  NPC_ROD x12,y2, NPC_COURTNEY x18,y2, NPC_STEVE x22,y2 - all on the upper
+  concourse, evenly spaced either side of the north way through.
+  NPC_RONALD1 x30,y0 at the top of the east hedge.  Leave the platform and
+  the axis x14-17 clear.
+
+COLOUR SCRIPT
+  Red and gold carpet, a violet field with a yellow curb, two giant Poké
+  Balls on it, one green duel board at its heart, green-and-red hedges down
+  the sides, and olive-and-gold walls.  Saturated, ceremonial, final.
+
+WHAT MAKES THIS ROOM THE POKEMON DOME
+  A raised violet duel floor with a yellow curb, painted with two giant
+  Poké Balls, carrying a green duel platform guarded by two red serpent
+  statues; red-and-gold striped carpet above it and lattice carpet below;
+  flowered hedges in the side channels; twin Poké Ball plaques over the north
+  door to the Hall of Honor.

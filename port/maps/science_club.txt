@@ -1,0 +1,94 @@
+SCIENCE CLUB - 3D room brief
+============================
+Image: science_club.png - 28 x 32 tiles = 224 x 256 px at 8 px/tile.
+Game map: SCIENCE_CLUB.  Read 3D_GUIDE.md in this folder first.  A laboratory
+in violet: the whole shell is one purple, and every prop is a machine.
+Roughly symmetric shell, asymmetric furniture.
+
+CONNECTION
+  South door x12-15 at y30 -> SCIENCE_CLUB_ENTRANCE at x8,y2 / x10,y2.
+  Only warp; dead end.  Fixed camera looking north.
+
+SHELL
+  Walkable floor ...... x2-25, y5-27, minus the machines listed below.
+  North wall band ..... y0.   South wall band ..... y28-31.
+  West wall band ...... x0-1.   East wall band ...... x26-27.
+  Wall build: flat violet #6b00ff with a bright white #ffffff outline along
+  its inner edge, standing on a CYAN-AND-WHITE CHECKERBOARD baseboard
+  (#52e7ff / #ffffff, 8 px squares) that runs the full width of the south
+  wall at y29-30 and reappears under the north console bank.  Height 4-5
+  units.  The white edge is thick (1 tile) - it is what makes the room read
+  as a clean lab rather than a dark cave.
+
+FLOOR
+  Light lilac #e7b5ff tiles with a violet #6b00ff grout line on every tile
+  edge and a slightly darker #ad6bff tile face, so the floor reads as a grid
+  of 1-tile purple squares.  Flat, one texture, everywhere.
+
+WORKBENCH - north-west corner
+  x2-5, y1-4.  A 4 x 4-tile workbench with an orange #e76318 top and a dark
+  #5a1008 base with a lighter toe rail.  On the top sit two dark instruments
+  (a tilted telescope/microscope body and a small stand) and a white square at
+  the near-left corner (a lamp or a terminal).  Impassable, about 1 unit
+  high.  It is the only warm-orange object in the north half of the room.
+
+COMPUTER BANKS - two, against the north wall
+  Each is an 8-9 x 4-tile console run: x7-15, y1-4 and x18-25, y1-4.
+  Construction: a white #ffffff carcass with a black outline, a cyan #52e7ff
+  and white dotted worktop, and, standing on it, TWO CRT MONITORS each, so
+  FOUR monitors in total across the room.  Each monitor is 2 x 2 tiles: a
+  black-framed tube displaying a colour-bar test card (yellow #ffff00, green
+  #00ff00, blue #0000ff, red #ff0000 bars) on a light-purple face, with a
+  small control panel of cyan dots and a knob below it.  Impassable, about
+  1.5 units high.  These four colour bars are the brightest thing in the
+  room and are its signature.
+
+STORE RACK - west wall
+  x2-5, y13-16.  A 4 x 4-tile orange #e76318 shelving unit, built as two
+  2 x 4 shelves side by side, each with three open compartments holding dark
+  bottles, boxes and equipment.  About 1.5 units tall, impassable.
+
+LAB BENCHES - two, back to back with the walkway
+  A pair of long low benches on the middle-left of the room: x7-11, y12-13
+  and x12-16, y12-13, each 5 x 2 tiles, butted together to form a single
+  10 x 2 run.  Top: a cyan #52e7ff and white dotted surface; body: a green
+  #009442 and white front panel with a dark base.  About 0.8 units high,
+  impassable.  A black-and-white kerb line runs along y11 from x2 to x17 and
+  back along y14 from x7 to x17, so the benches sit on a shallow outlined
+  platform with the store rack at its west end.
+
+BENCH MACHINE - centre of the room
+  x12-15, y9-10.  A 4 x 2-tile instrument on a low stand: a light-purple
+  carcass with a cyan dotted top and a four-colour panel (yellow / green /
+  blue / red) at its centre.  Impassable, about 0.8 units high.  It sits
+  directly on the room's axis, 4 tiles north of the benches.
+
+TEST RANGE - four identical machines, south-east
+  x14-25, y20-22 - four machines in a row, each 3 x 3 tiles at x14-16,
+  x17-19, x20-22 and x23-25, y20-22, spaced 3 tiles apart with no gaps.
+  Each is a white-outlined violet cabinet with a blue #0000ff square screen
+  in its upper half, a maze of white piping traced across its face, two red
+  #ff1000 caps on top and a dark base.  About 1.2 units tall, impassable.
+  Model one, instance four.
+
+SOUTH ENTRANCE RUNNER
+  A red #ff1000 and white #ffffff patterned mat, 4 tiles wide (x12-15),
+  y28-31, across the doorway: a red ground with a white diagonal lattice and
+  a white border.  Flat decal.
+
+NPCS (scripted, not drawn in the PNG)
+  NPC_RICK x4,y4 at the workbench, NPC_DAVID x20,y4 under the east computer
+  bank, NPC_JOSEPH x8,y10 on the west side of the central aisle, NPC_ERIK
+  x6,y18 on the west lawn-side.  Keep the central aisle x10-15 clear from the
+  door to the north wall - it is the only route through.
+
+COLOUR SCRIPT
+  One violet key light over everything, white outlines, cyan checker, and the
+  only saturated colour coming from the four CRT test cards and the red door
+  mat.
+
+WHAT MAKES THIS ROOM THE SCIENCE CLUB
+  A violet-tiled laboratory ringed with white-outlined purple walls on a
+  cyan-checker baseboard: a workbench, two console banks with four colour-bar
+  CRTs, an orange store rack, two dotted-top lab benches on a kerbed
+  platform, and a row of four identical blue-screened test machines.

@@ -1,0 +1,80 @@
+OVERWORLD MAP - 3D brief (map screen, not a room)
+=================================================
+Image: overworld.png - 20 x 18 tiles = 160 x 144 px at 8 px/tile.
+Game map: OVERWORLD_MAP.  Read 3D_GUIDE.md in this folder first.
+This is NOT a walkable interior.  It is the world map the player moves a
+cursor around to choose a destination - every other room warps back here.
+If you want a 3D version, build it as a flat tilt-up diorama on a table,
+camera looking down at about 55 degrees, not as a room you can enter.
+
+WHAT IT IS
+  A stylised cartoon island drawn in 20 x 18 tiles.  There are no walls, no
+  floor and no ceiling; there is sea, land, and buildings standing on the
+  land.  Navigation is a cursor that snaps between the marked locations, not a
+  character walking.
+
+SEA (the base plate)
+  A flat plane of saturated blue-purple #4a18ff covering the whole map,
+  sprinkled with small white two-and-three-pixel wave flecks on an irregular
+  scatter.  In 3D: a flat blue disc or slab with a tiled wave decal, about
+  0.2 units thick.  Everything else sits on top of it.
+
+ISLANDS (the land masses)
+  Three rounded land masses with a heavy black #080029 outline and a 1-tile
+  drop shadow to the south-east:
+    * WEST ISLAND - x1-8, y6-17.  Bright green #42d600 grass with a dark-green
+      #087b00 speckle, its northern half (x1-8, y7-10) covered by a bare
+      tan #ce9431 hill mass with a dark cave mouth at x3-4, y8.
+    * CENTRAL/EAST ISLAND - x6-18, y3-17, the big one.  Same green grass;
+      its eastern third (x13-18, y5-12) is a dense CONIFEROUS FOREST drawn as
+      a regular grid of dark-green conical trees on a 1-tile pitch.
+    * SOUTH-WEST ISLET - x1-8, y13-17, joined to the west island by a narrow
+      green neck at x6-7, y12-13.
+  In 3D: extrude each land mass about 0.4 units with black sides and a
+  grass-speckle top.  The outlines are the whole look - keep them thick.
+
+TITLE PANEL - north-west
+  x0-12, y0-2.  A wide blank white panel with a yellow #ffef00 inner border
+  and a black outer border - the strip that displays the name of the selected
+  location.  Model it as a floating framed board above the map, about
+  6.5 x 1.5 units.
+
+LOCATION MARKERS - the buildings
+  Each is a small white-outlined icon, 2-3 tiles across, about 1 unit tall in
+  3D, sitting flat on the land:
+    x1-2,  y4    a small hut with a white domed roof and a brown body.
+    x6-8,  y4-5  a white mushroom-topped tower on a brown stem with a ladder
+                 running down its front.
+    x13-16,y1-3  the largest structure: a tan #ce9431 mountain-hall on the
+                 north-east peak, flying a red banner with a black band at
+                 x14, y2.
+    x15-16,y5    a white building with a green dome.
+    x12,   y6-7  a slim purple-and-white vertical marker.
+    x15-17,y9    a long, low white-and-green building.
+    x5-6,  y11   a small yellow #ffef00 building with a white frame.
+    x1-2,  y14   a white building with dark windows.
+    x7,    y14   a small red-and-white structure.
+    x13-15,y13-15 a white domed stadium with a ladder down its front - the
+                 Pokemon Dome, the biggest marker on the south coast.
+    x18,   y16   a tiny islet with a small brown boat.
+  Twelve markers.  They are the destinations; treat them as buttons, not
+  buildings you can enter.
+
+CURSOR - the Poké Ball
+  x9-10, y8-9.  A giant POKE BALL - a red upper hemisphere, a white lower
+  one, a black band and a white button with a blue centre - drawn far larger
+  than any building, with a black outline and drop shadow.  This is the
+  player's marker.  In 3D make it a sphere about 2 units across hovering
+  0.3 units above the map, with a slow bob, and it is the only thing that
+  moves.
+
+COLOUR SCRIPT
+  Four flat colours and a black outline: blue-purple sea, bright green land,
+  tan hills, white buildings, plus one red-and-white Poké Ball.  No shading,
+  no gradients, no perspective.
+
+WHAT MAKES THIS SCREEN THE OVERWORLD MAP
+  A flat cartoon island in a blue sea with a black-outlined, drop-shadowed
+  paper-cutout look, twelve tiny building icons dotting the coast, a conifer
+  forest on the east side, a blank yellow-framed name board at the top left,
+  and an oversized Poké Ball used as the cursor.

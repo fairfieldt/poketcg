@@ -1,0 +1,97 @@
+ROCK CLUB - 3D room brief
+=========================
+Image: rock_club.png - 28 x 30 tiles = 224 x 240 px at 8 px/tile.
+Game map: ROCK_CLUB.  Read 3D_GUIDE.md in this folder first (coordinates,
+scale, camera).  This is the archetypal "club room": perfectly symmetric about
+the room's vertical axis, one long central axis, mirrored rows of props.
+Theme: a cave/canyon shrine.  Blue stone floor, gold statues, brown boulders.
+
+CONNECTION
+  South door x12-15 at y28 -> ROCK_CLUB_ENTRANCE at x8,y2 / x10,y2.  Only
+  warp; dead end.  Fixed camera looking north from the door, straight down the
+  carpet - the composition is a single one-point perspective corridor.
+
+SHELL
+  Walkable floor ...... x2-25, y4-25 minus the props, plus the carpet aisle
+                        x12-15 which is walkable end to end from y2 to y28.
+  North wall band ..... y0-2.   South wall band ..... y26-29.
+  West wall band ...... x0-1.   East wall band ...... x26-27.
+  Wall build, three rows, repeated on the north and south bands:
+    row 0 (y0 / y26) - black outline over a violet #5242ce face with a salmon
+                       #ff845a pinstripe.
+    row 1 (y1 / y27) - a white #ffffff band carrying a salmon #ff845a
+                       zigzag/diamond frieze, broken every 2 tiles by a small
+                       violet #5242ce square set into the frieze (12 of them
+                       per wall).  This reads as a carved strata band.
+    row 2 (y2 / y28) - a violet balustrade: a row of dark vertical bars with
+                       white caps, running the full width.
+  The side wall bands (x0-1, x26-27) are the violet face with a vertical
+  salmon stripe - the same material, seen from above.
+  Wall height: build 4-5 units.
+
+FLOOR - two materials, laid in a strict plan
+  1. BLUE STONE TILE (the main floor): light blue #8cceff squares with a hard
+     blue #0031de border and white grout highlights, one tile per square.
+     Laid as rectangular "pools" that fill everything between the wall band
+     and the rock work.  Flat, unlit, one texture.
+  2. GRAVEL + ROCKS (the border): a white #ffffff gravel bed with #efa518
+     orange speckles, with brown boulders sitting on it.  Wherever the gravel
+     appears it replaces the blue tile, so the room reads as: blue tile floor
+     edged and interrupted by gravel and boulders.
+
+CENTRAL AXIS - the room's spine
+  * RED CARPET: x12-15, y3-28.  4 tiles wide, running the entire length of
+    the room from the north wall out through the south doorway.  Built as:
+      x12 and x15 - solid gold #ffce18 borders with a dotted edge;
+      x13 and x14 - red #ff1000 field with a white #ffffff diamond lattice
+                    (a running argyle of small diamonds and cross dots) and a
+                    dark crimson #631000 edge line.
+    At y3 the carpet has a distinct finished end panel (a fringe/head band)
+    against the north wall.  Lay it flat on the floor, 1-2 cm proud.
+  * Two GRAVEL-AND-ROCK AISLES flank the carpet: x9-11 and x16-18, each 3
+    tiles wide, running the full height y3-25.  They are continuous gravel
+    beds scattered with loose rocks and they carry the statues.
+
+STATUES - six, in a perfect 2 x 3 grid (the room's identity)
+  Positions (2 tiles wide x 4 tall each): x10-11 and x16-17, at y3-6, y10-13
+  and y18-21.  Three per side, evenly spaced 7 tiles apart, standing in the
+  gravel aisles and facing the carpet.
+  Construction: 2 x 3 of carved figure on top of a 2 x 1 pedestal block.
+  The figure is a stylised totem - a rounded head/canopy over a narrow waist
+  and flared base, in gold #ffce18 with #a56b00 mid-tone and black outlines.
+  The pedestal is a gold frame with a dark inset panel on its face.
+  Total height about 2 units.  Model one statue and instance it six times.
+
+BOULDERS - the perimeter rock work, all mirrored left/right
+  * FOUR CORNER PILES, 4 x 4 tiles each: x2-5 y3-6, x22-25 y3-6,
+    x2-5 y22-25, x22-25 y22-25.  Big rounded boulders in brown #efa518 /
+    #842900 with heavy black outlines and white speculars, on gravel.
+    About 1.5 units tall, impassable.
+  * TWO SIDE FORMATIONS, 4 x 7 tiles each: x2-5 y10-16 and x22-25 y10-16,
+    at the mid-point of the side walls, directly opposite each other.  Taller,
+    multi-boulder stacks; the largest impassable objects in the room.
+  * EIGHT SMALL ROCK CLUSTERS scattered against the corner and side piles:
+    2 x 2 at x4-5 y10-11, x22-23 y10-11, x4-5 y15-16, x22-23 y15-16;
+    2 x 1 at x2-3 y13 and x24-25 y13; single rocks at x4 y5, x23 y5,
+    x6 y13, x21 y13, x4 y23, x23 y23.
+  * Loose rocks and gravel patches are scattered continuously along the two
+    aisles x9-11 and x16-18 between the statues.
+  Total impassable rock work: 6 large piles + 8 small clusters + the aisle
+  scatter.  Nothing sits on the blue tile: the boulders always sit on gravel.
+
+NPCS (scripted, not drawn in the PNG)
+  NPC_GENE x12,y6 - standing on the carpet in the north third, between the
+  first pair of statues (this is the club's opponent).
+  NPC_RYAN x20,y14 and NPC_ANDREW x6,y20 - on the east and west blue-tile
+  pools.
+
+COLOUR SCRIPT
+  Cool blue floor, hot gold/brown rock and statuary, one saturated red
+  carpet down the middle, violet-and-salmon walls.  Keep the blue flat and the
+  rock work hard-outlined; no gradients, no bump maps.
+
+WHAT MAKES THIS ROOM THE ROCK CLUB
+  The red carpet corridor flanked by two gravel aisles holding six gold
+  totem-statues in a 2 x 3 grid, with brown boulder piles in the four corners
+  and at the middle of both side walls, all on a blue-tile floor.  If you
+  build the carpet, six statues and six boulder piles, the room is done.

@@ -1,0 +1,119 @@
+CLUB LOBBY - shared shell for all nine *_club_lobby.png
+=======================================================
+Image: 28 x 26 tiles = 224 x 208 px at 8 px/tile.
+Used by: FIGHTING/ROCK/WATER/LIGHTNING/GRASS/PSYCHIC/SCIENCE/FIRE CLUB_LOBBY
+         and CHALLENGE_HALL_LOBBY.
+All nine share TILEMAP_CLUB_LOBBY_CGB + TILESET_CLUB_LOBBY +
+PALETTE_CLUB_LOBBY: they are one identical room.  Build it once.
+Read ../3D_GUIDE.md (i.e. port/maps/3D_GUIDE.md) first for the coordinate and
+scale convention.
+
+ROOM SHELL
+  Walkable floor ......... x2-25, y3-21 (24 x 19 tiles).  The permissions map
+                           also blocks the counter footprint, the bookshelves,
+                           the duel table and the chairs (see below).
+  North wall band ........ y0-2, drawn in elevation, carries every wall object.
+  South wall band ........ y22-25 (same construction, mirrored).
+  West wall band ......... x0-1.
+  East wall band ......... x26-27, with the only door in the whole room.
+  East door .............. x26 at y10-13 -> the club entrance foyer.  This is
+                           the only warp in the room; the club itself is
+                           reached from the foyer, not from here.
+  Wall construction (all four sides, this is the club "corporate" livery):
+      outer face ......... dark brown #5a4229
+      trim ............... gold #c6ad31, a 2 px line that turns the corner of
+                           the room and forms a rectangular picture-frame
+                           moulding around the whole band
+      inner face ......... white #ffffff
+      wainscot ........... a gold/white 8 px checkerboard running along the
+                           wall at y1-2 (and y23-24), 2 tiles tall
+      base line .......... black #000000 at the very outer edge
+    Build this as one box with a checker-textured lower band; the checker is
+    8 px in the map, i.e. 1 tile per two checks.
+
+FLOOR
+  One material: pale yellow-green #deffb5 tiles with a bright green #00ff31
+  grout line on the east and south edge of every tile, so the floor reads as
+      a grid of 2 x 2-tile (16 px) pale-green squares with bright green
+      joints.  Flat, unlit, single texture.  Same floor as the club foyers.
+
+OBJECTS (all of these are in the room; positions are exact)
+
+  1. Reception counter, L-shaped  .................... x2-13 y6-8 plus
+                                                      x12-13 y2-8
+     - top surface: flat orange #e76300, 1 tile tall visually, black outline,
+       total footprint 12 x 3 tiles for the long run plus a 2 x 7 return that
+       runs north to the wall.
+     - front (south) face at y8: white highlight line over navy #000031.
+     - base at y9 (x4-13): brown panel with vertical gold slats, 1 tile tall.
+     - counter height: about 1 unit (half a character); the drawn top+front+
+       base is 3 tiles = a chest-high counter.
+     - on the top: four small props drawn as white/orange blocks with a hard
+       drop shadow to the south-east - two card-deck dispensers at x6-7 y7 and
+       x10-11 y7, and two low white boxes (register/box) at x7 y6 and x11 y6.
+     - at the west end of the top, x2-3 y6: four small bottles/trophies in a
+       row (white caps, dark bodies).
+  2. Card Pop machine ....................... x2-3, y7-10 (2 x 4 tiles)
+     Attached to the west end of the counter, standing on the floor.
+     Blue #2939ff cabinet with white trim: a white screen panel (y7), a blue
+     face with a dark slot and a light blue button (y8), a blue/white checker
+     grille (y9), a dark blue base with a wide dark opening (y10).
+     It is a vending-height machine: about 2 units tall.  This is the machine
+     that dispenses a promo card once per day.
+  3. Potted flower on the counter's north arm ........ x12-13, y2-3
+     A squat dark pot with a dense head of yellow #ffff21 and white blossoms
+     and dark green leaves.  Sits on the counter, not on the floor.
+  4. Duel table ............................. x8-11, y14-17, plus apron y18
+     - 4 x 4 tile square table, top-down.
+     - playmat: green #00ff31 felt, dark maroon #631000 outer border, cream
+       #deffb5 inner border.
+     - card zones drawn into the mat, in maroon: two columns of four small
+       rectangles down the left and right edges (8 per side = the two players'
+       bench rows), two pairs of small rectangles in the middle (the attack /
+       stadium slots).
+     - apron/skirt at y18: navy #000029 with an orange band and brown slats,
+       1 tile tall - the visible side of the table.
+     - table height: about 0.6 units, i.e. knee to waist height.
+  5. Four chairs, one at each corner of the table ....
+       x6-7 y14-15, x12-13 y14-15, x6-7 y17-18, x12-13 y17-18 (2 x 2 each)
+     Red #ff1000 seat and back with maroon #631000 outline and a white
+     highlight.  Drawn from a high angle: the seat is a small light quad and
+     the back is the big red rounded shape.  Model as one low backless-ish
+     chair mesh, rotated to face the table.
+  6. Three bookcases, against the north-east wall .... x20-21, x22-23, x24-25
+                                                      at y1-4 (2 x 4 each)
+     Identical units side by side with no gap.  Navy #000029 carcass, orange
+     #e76300 panels: a crown panel with a white top highlight, two open
+     shelves stocked with book spines (white, orange and brown rectangles of
+     uneven heights), and a bottom cupboard with two doors and small dark
+     square knobs.  Floor-standing, about 2 units tall.
+  7. Two framed pictures on the north wall ........... x8-10 y1-2, x16-18 y1-2
+     3 x 2 tiles each: navy outer frame, orange mat, white field with an
+     orange abstract shape.  Hung at eye height.
+  8. Wall sign on the north wall, west end ........... x2-5, y1
+     4 x 1 tiles: gold frame, navy field, gold block letters.  It is the club
+     name / TCG sign.  Recolour and re-letter per club if you want.
+  9. Entrance rug in front of the east door .......... x25-27, y11-14
+     Red #ff1000 rug with a maroon border and pale diamonds, drawn in
+     elevation-style flat.  The doorway itself is a gap in the east wall at
+     y10-13 with the wainscot continuing over it.
+ 10. Two potted palms, floor-standing ................ x2-3 y18-21 and
+                                                      x24-25 y18-21 (2 x 4)
+     Symmetric pair in the south corners.  A round glazed pot - orange
+     #e76300 body, navy shadow, white specular - with a fan of dark and
+     mid green fronds above it.  About 1.5 units tall.
+
+NPCS (not in the PNG; positions come from the map's NPC script)
+  Vary per club; see the individual `*_club_lobby.txt`.  Typical contents: a
+  clerk behind the counter, Imai/Mason near the north wall, and a few
+  bystanders standing near the tables.
+
+LIGHTING / MOOD
+  Flat.  White, gold, brown, orange and green only.  No coloured light - the
+  lobby is deliberately neutral so it can sit in front of any of the eight
+  themed clubs.
+
+WHAT MAKES THIS ROOM WHAT IT IS
+  The counter-with-Card-Pop-machine on the west side, the duel table and four
+  red chairs in the south-west, the three bookcases in the north-east, and a
+  single door in the east wall.  Everything else is the shared club livery.

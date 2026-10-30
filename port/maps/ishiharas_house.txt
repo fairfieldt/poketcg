@@ -1,0 +1,79 @@
+ISHIHARA'S HOUSE - 3D room brief
+================================
+Image: ishiharas_house.png - 20 x 24 tiles = 160 x 192 px at 8 px/tile.
+Game map: ISHIHARAS_HOUSE.  Read 3D_GUIDE.md in this folder first.  The
+smallest interior in the game: a warm, wood-panelled private library.  Not
+symmetric.
+
+CONNECTION
+  South door x8-11 at y22 -> OVERWORLD_MAP.  Only warp; dead end.  Fixed
+  camera looking north.
+
+SHELL
+  Walkable floor ...... x2-17, y5-20 minus the rug edges (the rug is
+                        walkable), the desk, the palm and the two bushes.
+  North wall band ..... y0.   South wall band ..... y20-23.
+  West wall band ...... x0-1.   East wall band ...... x18-19.
+  Wall build: rich wood panelling - a deep crimson-brown #4a0000 field, an
+  orange #f77b29 inner stripe and a peach #ffd6a5 highlight, with a pale
+  #fff7ad outline.  The south wall band (y21-22) carries a peach-and-cream
+  8 px checkerboard over an orange baseboard.  Height 4 units; keep the room
+  intimate rather than grand - it is a private house.
+
+FLOOR
+  Warm parquet: light yellow #ffef7b boards with a tan #bd8c39 brick-lay
+  pattern (staggered 2 x 1-tile planks) and a small dark dot at the corner of
+  most boards.  Flat, one texture, the whole room.  It should read as polished
+  pine.
+
+BOOKCASES - twelve, one mesh, three runs
+  Each is a 2 x 4-tile bookcase about 2 units tall: a dark #4a0000 carcass,
+  an orange #f77b29 cornice panel across the top, three open shelves packed
+  with vertical cream and pale books of uneven height, and a closed orange
+  cupboard with a dark knob at the bottom.  Impassable.
+    NORTH RUN - six, standing side by side against the north wall:
+       x5-6, x7-8, x9-10, x11-12, x13-14, x15-16, all y1-4.
+    WEST RUN - three, against the west wall below the desk:
+       x2-3, x4-5, x6-7, all y12-14.
+    EAST RUN - three, against the east wall:
+       x12-13, x14-15, x16-17, all y12-14.
+  The west and east runs leave a 4-tile gap at x8-11 that lines up with the
+  doorway - that is the only approach.
+
+ISHIHARA'S DESK - north-west corner
+  x2-4, y1-4.  A writing desk set into the corner: a white #ffffff top with a
+  dark-framed panel, a black chair tucked in at x2-3, y2-3, a brass reading
+  lamp on a long articulated arm reaching from x4 up to y1, and a striped
+  orange-and-cream hearth rug or apron on the floor at y4.  About 1 unit
+  high, impassable.  It is where Ishihara is meant to be sitting.
+
+BLUE RUG - centre of the room
+  x6-13, y6-10 (8 x 5 tiles).  A blue rug with a white and mid-blue
+  checkered border and a field of white and blue houndstooth/diamond blocks
+  that fade toward the middle.  Flat decal on the parquet, walkable, about
+  2 cm thick.  It is the room's only cool colour and the only thing in the
+  centre of the floor - everything is arranged around it.
+
+PLANTS - two groups
+  * A potted palm at x16-18, y8-11: a brown pot, a curved trunk and a fan of
+    green #08b500 and dark-green #004200 fronds, about 1.8 units tall.  It
+    stands just east of the rug, in front of the east bookcase run.
+  * Two low leafy bushes on the floor at x2-3, y18-19 and x4-5, y18-19 -
+    round mounds of green and dark-green leaves in shallow pots, about 0.6
+    units tall, in front of the west bookcase run.
+
+NPCS (scripted, not drawn in the PNG)
+  NPC_ISHIHARA x8,y8 - at the far edge of the rug, facing the door.
+  NPC_RONALD1 x2,y4 and NPC_NIKKI x4,y4 - both at the desk, in the corner.
+  The room only fits three figures; keep the rug's near half clear.
+
+COLOUR SCRIPT
+  An all-warm room: crimson-brown panelling, orange trim, honey parquet, cream
+  book spines - broken by exactly one object, the blue-and-white rug, plus the
+  two green plants.
+
+WHAT MAKES THIS ROOM THE ISHIHARA'S HOUSE
+  A small wood-panelled private library: twelve orange-corniced bookcases in
+  three runs, a writing desk with a brass lamp in the north-west corner, a
+  blue-and-white patterned rug alone in the middle of honey-coloured parquet,
+  and a palm and two potted bushes softening the corners.
