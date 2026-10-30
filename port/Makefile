@@ -54,9 +54,28 @@ $(BUILD)/harness/unitdiff: harness/unitdiff.c harness/gb/gb.c $(HARNESS_ENGINE)
 	@mkdir -p $(dir $@)
 	$(CC) $(HARNESS_CFLAGS) -o $@ harness/unitdiff.c harness/gb/gb.c $(HARNESS_ENGINE)
 
-# unit fuzzing of home/core routines, then lockstep duels (AI vs AI over many deck pairs and seeds)
+DIFFTEST = $(BUILD)/harness/difftest $(ROM) $(SYM) $(BUILD)/harness/trace_points.txt
+
+# unit fuzzing of home/core routines, then lockstep duels against the original:
+# AI vs AI and human (random policy) vs AI over many deck pairs, random decks,
+# the practice duel with Sam, and duels continued from a save
 test: harness
 	$(BUILD)/harness/unitdiff $(ROM) $(SYM) 2000
-	$(BUILD)/harness/difftest $(ROM) $(SYM) $(BUILD)/harness/trace_points.txt --all-pairs --seeds 1 100
+	$(DIFFTEST) --all-pairs --seeds 1 60
+	$(DIFFTEST) --all-pairs --human --seeds 1 40
+	$(DIFFTEST) --all-pairs --random-decks --seeds 1000 30
+	$(DIFFTEST) --all-pairs --human --random-decks --seeds 2000 30
+	$(DIFFTEST) --human --decks 1 0 --prizes 2 --seeds 1 5
+	$(DIFFTEST) --all-pairs --human --seeds 100 10 --continue-at 6
 
-.PHONY: all objs gen clean test harness
+# the same with ten times the duels (a few hours)
+test-long: harness
+	$(BUILD)/harness/unitdiff $(ROM) $(SYM) 20000
+	$(DIFFTEST) --all-pairs --seeds 1 600
+	$(DIFFTEST) --all-pairs --human --seeds 1 400
+	$(DIFFTEST) --all-pairs --random-decks --seeds 1000 300
+	$(DIFFTEST) --all-pairs --human --random-decks --seeds 2000 300
+	$(DIFFTEST) --human --decks 1 0 --prizes 2 --seeds 1 50
+	$(DIFFTEST) --all-pairs --human --seeds 100 100 --continue-at 6
+
+.PHONY: all objs gen clean test test-long harness
