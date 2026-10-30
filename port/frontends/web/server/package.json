@@ -1,0 +1,17 @@
+{
+  "name": "tcg-relay",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static file server + WebSocket relay for online duels of the Pokemon TCG web frontend",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}
