@@ -1,7 +1,7 @@
 /*
  * Port of src/engine/duel/ai/core.asm itself (bank $05, "AI Logic 1").
  * Its INCLUDEs are ported separately:
- *   decks/unreferenced.asm, deck_ai.asm + decks/*.asm -> ai/deck_ai.c
+ *   decks/unreferenced.asm, deck_ai.asm + decks/<deck>.asm -> ai/deck_ai.c
  *   damage_calculation.asm -> ai/damage_calculation.c, init.asm -> ai/init.c,
  *   boss_deck_set_up.asm -> ai/boss_deck_set_up.c,
  *   retreat.asm, hand_pokemon.asm, energy.asm, attacks.asm, special_attacks.asm -> part C.

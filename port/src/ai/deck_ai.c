@@ -1,5 +1,5 @@
 /*
- * Port of src/engine/duel/ai/deck_ai.asm and every decks/*.asm it INCLUDEs (in INCLUDE
+ * Port of src/engine/duel/ai/deck_ai.asm and every decks/<deck>.asm it INCLUDEs (in INCLUDE
  * order), plus decks/unreferenced.asm (INCLUDEd at the top of engine/duel/ai/core.asm).
  *
  * deck AIs are specialized to work on a given deck ID.
