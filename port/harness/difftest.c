@@ -430,7 +430,7 @@ static void random_deck(u8 *out)
 		out[n++] = random_card(is_trainer);
 	/* energies of the lines' types (Double Colorless for Colorless Pokemon) */
 	for (int k = 0; n < DECK_SIZE; k++) {
-		u8 t = types[k % 3];
+		u8 t = types[k % (nfocus ? 2 : 3)]; /* (--focus: only the focus lines' types) */
 		u8 want = t < TYPE_PKMN_COLORLESS ? (u8)(TYPE_ENERGY + t) : TYPE_ENERGY_DOUBLE_COLORLESS;
 		for (unsigned id = 1; id <= NUM_CARDS; id++)
 			if (card((u8)id)->Type == want) {
