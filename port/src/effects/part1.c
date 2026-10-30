@@ -1157,10 +1157,8 @@ bool HandleColorChangeScreen(u8 loc, u16 text, u8 *color)
 	InitializeMenuParameters(0, &HandleColorChangeScreen_MenuParams);
 	/* (EnableLCD) */
 
-	/* .loop_input */
-	do {
-		DoFrame();
-	} while (!HandleMenuInput());
+	/* .loop_input (the menu's items map to colors through ShiftListItemToColor) */
+	HandleColorMenuInput(ShiftListItemToColor);
 	u8 a = hCurMenuItem;
 	if (a == (u8)MENU_CANCEL) { /* b pressed? */
 		/* .set_carry */

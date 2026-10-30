@@ -64,6 +64,7 @@ struct MenuParams {                 /* the 8 bytes InitializeMenuParameters copi
 void InitializeMenuParameters(u8 a, const struct MenuParams *params);
 /* blocks until A or B. returns carry; a = hCurMenuItem (MENU_CANCEL if B), e = wCurMenuItem */
 bool HandleMenuInput(void);
+bool HandleColorMenuInput(const u8 *item_to_color); /* TCG_REQ_COLOR; same results as HandleMenuInput */
 void EraseCursor(void);
 void DrawCursor2(void);
 void RefreshMenuCursor(void);

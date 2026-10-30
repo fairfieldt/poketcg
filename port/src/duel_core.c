@@ -804,8 +804,8 @@ static void InitializeDuelVariables(void);
  * - tossing coin to determine first player to go */
 static bool HandleDuelSetup(void)
 {
+restart: /* (jp HandleDuelSetup in the original) */
 	TRACE_FN();
-restart:
 	/* init variables and shuffle cards */
 	InitializeDuelVariables();
 	SwapTurn();

@@ -325,6 +325,31 @@ bool HandleMenuInput(void)
 	return true;
 }
 
+/* HandleMenuInput for the color list of HandleColorChangeScreen: the frontend answers
+ * with a color (TCG_REQ_COLOR), converted back to the menu item */
+bool HandleColorMenuInput(const u8 *item_to_color)
+{
+	TcgRequest r = { 0 };
+	r.type = TCG_REQ_COLOR;
+	r.num_items = wNumMenuItems;
+	r.cursor = item_to_color[wCurMenuItem];
+	r.items = item_to_color;
+	int c = request(&r);
+	for (u8 i = 0; c >= 0 && i < wNumMenuItems; i++) {
+		if (item_to_color[i] == c) {
+			wCurMenuItem = i;
+			hCurMenuItem = i;
+			set_keys(PAD_A);
+			PlaySFX(SFX_CONFIRM);
+			return true;
+		}
+	}
+	hCurMenuItem = MENU_CANCEL;
+	set_keys(PAD_B);
+	PlaySFX(SFX_CANCEL);
+	return true;
+}
+
 void EraseCursor(void) {}
 void DrawCursor2(void) {}
 void RefreshMenuCursor(void) {}

@@ -1131,7 +1131,11 @@ static void sess_describe(Ref *r, Session *s, RefInput *in)
 static void sess_report(Ref *r, int si)
 {
 	Session *s = &r->sess[si];
-	if (!r->duel.player_human) {
+	RefInput in;
+	sess_describe(r, s, &in);
+	/* the original also shows some lists to the human when the AI acts (the hand
+	 * shown by Lass): those view-only lists are input in AI-vs-AI duels too */
+	if (!r->duel.player_human && !in.view_only) {
 		char st[400];
 		stack_string(r, st, sizeof st);
 		stop_duel(r, REF_EV_ERROR, "human input routine %s (from %s) reached in an AI-vs-AI duel: %s",
@@ -1144,7 +1148,7 @@ static void sess_report(Ref *r, int si)
 		return;
 	}
 	p->has_input = 1;
-	sess_describe(r, s, &p->input);
+	p->input = in;
 	s->in = p->input;
 	s->state = S_WAITING;
 	s->armed = 1;

@@ -229,11 +229,13 @@ static unsigned policy(unsigned n)
 	return n ? (unsigned)((policy_state >> 33) % n) : 0;
 }
 
+/* a random valid answer; the original's input description is the authority on what
+ * is selectable (first .. first + num_items - 1, list of valid slots, cancel) */
 static int choose(const TcgRequest *r, const RefInput *in)
 {
-	int n = in->num_items >= 0 ? in->num_items : r->num_items;
-	switch (r->type) {
-	case TCG_REQ_DUEL_MENU: {
+	if (in->view_only)
+		return TCG_CANCEL;
+	if (r->type == TCG_REQ_DUEL_MENU) {
 		static const int weights[6] = { 40, 30, 0, 8, 7, 15 };
 		int t = (int)policy(100);
 		for (int i = 0; i < 6; i++) {
@@ -243,19 +245,17 @@ static int choose(const TcgRequest *r, const RefInput *in)
 		}
 		return 5;
 	}
-	case TCG_REQ_YES_NO:
+	if (r->type == TCG_REQ_YES_NO)
 		return policy(4) != 0;
-	case TCG_REQ_CARD_ITEM_MENU:
-		return 0;
-	case TCG_REQ_PLAY_AREA:
-		if (in->can_cancel && policy(10) == 0)
-			return TCG_CANCEL;
-		return r->arg[0] + (int)policy((unsigned)(n > 0 ? n : 1));
-	default:
-		if (in->can_cancel && (n <= 0 || policy(8) == 0))
-			return TCG_CANCEL;
-		return (int)policy((unsigned)(n > 0 ? n : 1));
-	}
+	if (r->type == TCG_REQ_CARD_ITEM_MENU)
+		return policy(12) == 0 ? 1 : 0;
+	if (in->can_cancel && (in->num_items <= 0 || policy(10) == 0))
+		return TCG_CANCEL;
+	if ((in->type == REF_IN_PRIZE || in->type == REF_IN_PEEK) && in->list_len > 0)
+		return in->list[policy((unsigned)in->list_len)];
+	if (in->num_items <= 0)
+		return TCG_CANCEL;
+	return in->first + (int)policy((unsigned)in->num_items);
 }
 
 static int on_request(void *ctx, const TcgRequest *r)
@@ -263,7 +263,8 @@ static int on_request(void *ctx, const TcgRequest *r)
 	(void)ctx;
 	if (r->type == TCG_REQ_ACK)
 		return 0;
-	if (!human)
+	/* AI-vs-AI duels only reach view-only card lists (the hand shown by Lass) */
+	if (!human && !(r->type == TCG_REQ_CARD_LIST && r->arg[0]))
 		fail("AI-vs-AI duel: unexpected request type %d from the port", r->type);
 	RefEvent ev;
 	next_ref_event(&ev);
@@ -272,7 +273,8 @@ static int on_request(void *ctx, const TcgRequest *r)
 		fail("divergence: the port asked for input (type %d), the original reached %s %s", r->type,
 		     ref_event_kind_name(ev.kind), ev.name);
 	}
-	if (ev.input.type != r->type)
+	bool peek = ev.input.type == REF_IN_PEEK && r->type == TCG_REQ_MENU && r->menu == TCG_MENU_PEEK_TARGET;
+	if (ev.input.type != r->type && !peek)
 		fail("input type differs: port %d, original %d (%s)", r->type, ev.input.type, ev.input.routine);
 	int c = choose(r, &ev.input);
 	if (ref_answer(ref, c) < 0)
@@ -320,7 +322,13 @@ static int run_duel(int pdeck, int odeck, const u8 seed[3])
 	memcpy(gHRAM, lookahead.hram, HRAM_SIZE);
 	gPerSideAI = !human;
 	if (human) {
-		memcpy(gPlayerDeckCards, d.player_deck, DECK_SIZE);
+		/* the original's LoadPlayerDeck copies the deck the reference put in SRAM
+		 * (ROM deck pdeck): expand the same deck with the port's LoadDeck */
+		hWhoseTurn = PLAYER_TURN;
+		LoadDeck((u8)(pdeck + 2));
+		memcpy(gPlayerDeckCards, wPlayerDeck, DECK_SIZE);
+		memcpy(gWRAM, lookahead.wram, WRAM_SIZE);
+		memcpy(gHRAM, lookahead.hram, HRAM_SIZE);
 		StartDuel_VSAIOpp();
 	} else {
 		StartDuel();
@@ -338,14 +346,15 @@ static int run_duel(int pdeck, int odeck, const u8 seed[3])
 int main(int argc, char **argv)
 {
 	if (argc < 4) {
-		fprintf(stderr, "usage: %s ROM SYM TRACE_POINTS [--decks P O] [--seeds FIRST COUNT] [--human] [--strict] [--verbose]\n",
+		fprintf(stderr, "usage: %s ROM SYM TRACE_POINTS [--decks P O] [--seeds FIRST COUNT | --rng XXYYZZ] [--human] [--strict] [--verbose]\n",
 		        argv[0]);
 		return 1;
 	}
 	int pdeck = CHARMANDER_AND_FRIENDS_DECK_ID, odeck = SQUIRTLE_AND_FRIENDS_DECK_ID;
 	unsigned first = 1, count = 1;
 	const char *screens = NULL;
-	int all_pairs = 0;
+	int all_pairs = 0, have_rng = 0;
+	u8 rng[3] = { 0 };
 	for (int i = 4; i < argc; i++) {
 		if (!strcmp(argv[i], "--decks") && i + 2 < argc) {
 			pdeck = atoi(argv[++i]);
@@ -353,6 +362,13 @@ int main(int argc, char **argv)
 		} else if (!strcmp(argv[i], "--seeds") && i + 2 < argc) {
 			first = (unsigned)strtoul(argv[++i], NULL, 0);
 			count = (unsigned)strtoul(argv[++i], NULL, 0);
+		} else if (!strcmp(argv[i], "--rng") && i + 1 < argc) {
+			/* the seed as printed by a FAIL line: wRNG1, wRNG2, wRNGCounter */
+			unsigned long v = strtoul(argv[++i], NULL, 16);
+			rng[0] = (u8)(v >> 16);
+			rng[1] = (u8)(v >> 8);
+			rng[2] = (u8)v;
+			have_rng = 1;
 		} else if (!strcmp(argv[i], "--all-pairs")) {
 			all_pairs = 1;
 		} else if (!strcmp(argv[i], "--human")) {
@@ -376,6 +392,11 @@ int main(int argc, char **argv)
 	TcgHost host = { on_event, on_request, NULL, NULL };
 	tcg_set_host(&host);
 	int fails = 0, runs = 0;
+	if (have_rng) {
+		fails = run_duel(pdeck, odeck, rng) != 0;
+		printf("%d/1 duels identical\n", 1 - fails);
+		return fails;
+	}
 	for (unsigned s = first; s < first + count; s++) {
 		u8 seed[3] = { (u8)(s * 37), (u8)(s * 101 + 13), (u8)(s >> 8) };
 		if (all_pairs) {

@@ -75,9 +75,20 @@ int tcg_run_duel(const TcgDuelSetup *s)
 	}
 	/* other combinations set up both sides directly and enter StartDuel, like the
 	 * differential harness does with the original ROM */
+	/* decks given as card lists are copied; ROM decks are loaded with LoadDeck like the
+	 * original (CopyDeckData; GRASS_AND_PSYCHIC_DECK even has 61 cards, the extra one
+	 * landing in the unused part of the deck buffer) */
 	hWhoseTurn = PLAYER_TURN;
-	fill_deck(p, wPlayerDeck);
-	fill_deck(o, wOpponentDeck);
+	if (has_cards(p))
+		memcpy(wPlayerDeck, p->cards, DECK_SIZE);
+	else
+		LoadDeck((u8)(p->deck_id + 2));
+	hWhoseTurn = OPPONENT_TURN;
+	if (has_cards(o))
+		memcpy(wOpponentDeck, o->cards, DECK_SIZE);
+	else
+		LoadDeck((u8)(o->deck_id + 2));
+	hWhoseTurn = PLAYER_TURN;
 	wPlayerDuelistType = p->kind == TCG_AI ? (u8)(DUELIST_TYPE_AI_OPP | p->deck_id) : DUELIST_TYPE_PLAYER;
 	wOpponentDuelistType = o->kind == TCG_AI ? (u8)(DUELIST_TYPE_AI_OPP | o->deck_id) : DUELIST_TYPE_PLAYER;
 	wOpponentDeckID = o->kind == TCG_AI ? o->deck_id : p->deck_id;
