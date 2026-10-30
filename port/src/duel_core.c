@@ -1401,7 +1401,7 @@ static void OppAction_UseMetronomeAttack(void)
  * on a non-link duel (vs AI opponent), this is referenced by AIMakeDecision */
 void OppActionTable(u8 action)
 {
-	TRACE_FN();
+	/* (a data table in the original, not a routine: no TRACE_FN) */
 	switch (action) {
 	case OPPACTION_PLAY_BASIC_PKMN: OppAction_PlayBasicPokemonCard(); break;
 	case OPPACTION_EVOLVE_PKMN: OppAction_EvolvePokemonCard(); break;

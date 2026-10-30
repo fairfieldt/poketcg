@@ -22,6 +22,43 @@
 #include "ref.h"
 
 static Ref *ref;
+
+/* WRAM/HRAM label names for diff reports (from the .sym file) */
+static struct { uint16_t addr; char name[64]; } *ram_syms;
+static int n_ram_syms;
+
+static void load_ram_syms(const char *path)
+{
+	FILE *f = fopen(path, "r");
+	if (!f)
+		return;
+	char line[256];
+	ram_syms = calloc(4096, sizeof(*ram_syms));
+	while (fgets(line, sizeof(line), f) && n_ram_syms < 4096) {
+		unsigned b, a;
+		char name[64];
+		if (sscanf(line, "%x:%x %63s", &b, &a, name) == 3 && a >= 0xc000 && !strchr(name, '.')) {
+			ram_syms[n_ram_syms].addr = (uint16_t)a;
+			strcpy(ram_syms[n_ram_syms].name, name);
+			n_ram_syms++;
+		}
+	}
+	fclose(f);
+}
+
+static void ram_name(uint16_t a, char *buf, size_t n)
+{
+	int best = -1;
+	for (int i = 0; i < n_ram_syms; i++)
+		if (ram_syms[i].addr <= a && (best < 0 || ram_syms[i].addr > ram_syms[best].addr))
+			best = i;
+	if (best < 0)
+		snprintf(buf, n, "?");
+	else if (ram_syms[best].addr == a)
+		snprintf(buf, n, "%s", ram_syms[best].name);
+	else
+		snprintf(buf, n, "%s+%d", ram_syms[best].name, a - ram_syms[best].addr);
+}
 static jmp_buf duel_jmp;
 static char fail_msg[4096];
 static int verbose, strict, human;
@@ -121,7 +158,7 @@ static void compare_state(const RefEvent *ev, const char *where)
 				continue;
 			if (bad++ < 24 && n < (int)sizeof(buf) - 128) {
 				char name[96];
-				ref_addr_name(ref, 0, (uint16_t)a, name, sizeof(name));
+				ram_name((uint16_t)a, name, sizeof(name));
 				n += snprintf(buf + n, sizeof(buf) - (size_t)n, "    %04x %-40s port %02x original %02x\n",
 				              a, name, p, o);
 			}
@@ -332,6 +369,7 @@ int main(int argc, char **argv)
 	if (!ref)
 		return 1;
 	load_trace_points(argv[3]);
+	load_ram_syms(argv[2]);
 	ref_trace_rng(ref, 1);
 	if (screens)
 		ref_set_screens(ref, screens, 600);

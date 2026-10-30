@@ -87,21 +87,29 @@ u8 AIDoAction_TakePrize(void)
  * (DUELVARS_DUELIST_TYPE & $7f) for the duration of the action and restored afterwards. */
 u8 AIDoAction(u8 action)
 {
-	TRACE_FN();
+	/* AI-vs-AI test mode (not in the original): use the turn duelist's own deck AI.
+	 * Done before TRACE_FN, like the reference harness' hook at AIDoAction's entry. */
 	bool per_side = gPerSideAI;
 	u8 saved_deck_id = wOpponentDeckID;
-	if (per_side)
+	if (per_side && (TurnDuelistVars()[DUELVARS_DUELIST_TYPE] & DUELIST_TYPE_AI_OPP))
 		wOpponentDeckID = (u8)(TurnDuelistVars()[DUELVARS_DUELIST_TYPE] & 0x7f);
+	TRACE_FN();
 
 	/* (the bank switch to BANK(DeckAIPointerTable) and back is not modelled) */
-	if (action == 0)
+	if (action == 0) {
 		/* if input was 0, copy deck data of turn player from the table's first word:
 		 * never used by the original */
 		tcg_fatal("AIDoAction(0)");
-	if (action > AIACTION_TAKE_PRIZE)
+		return 0;
+	}
+	if (action > AIACTION_TAKE_PRIZE) {
 		tcg_fatal("AIDoAction: action out of range");
-	if (wOpponentDeckID > NUM_DECK_IDS)
+		return 0;
+	}
+	if (wOpponentDeckID > NUM_DECK_IDS) {
 		tcg_fatal("AIDoAction: wOpponentDeckID out of range");
+		return 0;
+	}
 
 	/* jump to corresponding AI routine related to input */
 	u8 a = DeckAIPointerTable[wOpponentDeckID][action]();

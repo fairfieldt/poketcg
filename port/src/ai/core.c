@@ -490,8 +490,10 @@ static const u8 ConvertColorToEnergyCardID_card_id[7] = {
  *	a = energy card ID */
 u8 ConvertColorToEnergyCardID(u8 type)
 {
-	if (type >= 7)
+	if (type >= 7) {
 		tcg_fatal("ConvertColorToEnergyCardID: type out of range (the original reads the following ROM code)");
+		return 0;
+	}
 	return ConvertColorToEnergyCardID_card_id[type];
 }
 

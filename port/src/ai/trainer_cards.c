@@ -5,7 +5,7 @@
  *   - Every AIDecide_* (AITrainerDecideFunc) writes *a_out on every path. With carry it is
  *     exactly register a at `ret` (it becomes wAITrainerCardParameter). Without carry no
  *     caller reads it; when the asm's a there comes from a routine whose C version does not
- *     expose it, 0 is written.
+ *     expose it, the value written is arbitrary (0 or the last value tracked in C).
  *   - `u8 a` is register a; other registers keep their asm names (b, c, d, e).
  *   - Asm locals that are `call`ed become static helpers <Function>_<label>; locals that are
  *     only jumped to stay as labels.
@@ -966,6 +966,8 @@ loop_3:
 	goto loop_3;
 
 check_can_damage:
+	/* bug (original): this checks whether the Arena card can damage the player's
+	 * current Arena card, not the weak Bench card */
 	if (!CheckIfCanDamageDefendingPokemon(PLAY_AREA_ARENA))
 		goto loop_3;
 	*a = c;
@@ -1206,9 +1208,13 @@ check_bench_energy:
 	 * in it. When the Defending Pokemon is not protected by a No Damage or Effect
 	 * substatus that is CARD_LOCATION_ARENA (or 0 after Invisible Wall /
 	 * PREVENT_LESS_THAN_40 handling), which matches no weakness, so the bench is
-	 * scanned (loading each card into wLoadedCard1) without finding one. When it is
-	 * protected (Fly, Barrier, Agility, Neutralizing Shield), b is register a of the
-	 * attack's EFFECTCMDTYPE_AI function (or older), which the port does not model. */
+	 * scanned (loading each card into wLoadedCard1) without finding one: modelled here.
+	 * When it is protected (Fly, Barrier, Agility, Neutralizing Shield), b is older
+	 * (the last bench card's HP from .FindBenchCardToKnockOut, or register a of an
+	 * EFFECTCMDTYPE_AI function), which the port does not model; the result is the same
+	 * (.check_can_damage cannot succeed against a protected Defending Pokemon, wDamage
+	 * is 0), only the extra CheckIfCanDamageDefendingPokemon calls for matching bench
+	 * cards are missing. */
 	b = CARD_LOCATION_ARENA;
 	if (AIDecide_GustOfWind_FindBenchCardWithWeakness(b, &a)) {
 		*a_out = a;
@@ -1847,6 +1853,8 @@ not_found_in_hand:
 	d = 0;
 
 	/* find highest score in wce08 */
+	/* bug (original): wce07 is not initialized here; if no score is above 0
+	 * it keeps a stale value, which is then used as an index into wce0f */
 	do { /* .loop_score_1 */
 		if (wce06 < wce08[e]) {
 			/* store this score to wce06 */
@@ -2146,6 +2154,8 @@ set_carry_articuno:
 	/* if there are more than 3 energy cards in hand,
 	 * return no carry, otherwise check for playable cards. */
 check_playable_cards:
+	/* bug (original): CountOppEnergyCardsInHand returns $ff when there are no energy
+	 * cards in hand, which also takes the no carry branch */
 	a = CountOppEnergyCardsInHand();
 	if (a >= 4)
 		goto no_carry_articuno;
@@ -3406,5 +3416,1868 @@ next:
 	*a_out = a;
 	if (a == 0xff)
 		return false;
+	return true;
+}
+
+void AIPlay_ScoopUp(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	hTemp_ffa0 = wAITrainerCardParameter;
+	hTempPlayAreaLocation_ffa1 = wce1a;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+bool AIDecide_ScoopUp(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a, b, d, e;
+
+	hTempPlayAreaLocation_ff9d = PLAY_AREA_ARENA;
+
+	/* if only one Pokemon in Play Area, skip. */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	if (a < 2)
+		goto no_carry;
+
+	/* handle some decks differently */
+	a = wOpponentDeckID;
+	if (a == LEGENDARY_ARTICUNO_DECK_ID)
+		goto HandleLegendaryArticuno;
+	if (a == LEGENDARY_RONALD_DECK_ID)
+		goto HandleLegendaryRonald;
+
+	/* if can't KO defending Pokemon, check if defending Pokemon
+	 * can KO this card. If so, then continue.
+	 * If not, return no carry. */
+
+	/* if it can KO the defending Pokemon this turn,
+	 * return no carry. */
+	a = 0;
+	if (!CheckIfAnyAttackKnocksOutDefendingCard())
+		goto cannot_ko;
+	if (!CheckIfSelectedAttackIsUnusable())
+		goto no_carry;
+	if (LookForEnergyNeededForAttackInHand())
+		goto no_carry;
+
+cannot_ko:
+	a = GetTurnDuelistVariable(DUELVARS_ARENA_CARD_STATUS) & CNF_SLP_PRZ;
+	if (a == PARALYZED)
+		goto cannot_retreat;
+	if (a == ASLEEP)
+		goto cannot_retreat;
+
+	/* doesn't have a status that prevents retreat.
+	 * so check if it has enough energy to retreat.
+	 * if not, return no carry. */
+	hTempPlayAreaLocation_ff9d = PLAY_AREA_ARENA;
+	b = GetPlayAreaCardRetreatCost();
+	a = CountNumberOfEnergyCardsAttached(PLAY_AREA_ARENA);
+	if (a < b)
+		goto cannot_retreat;
+
+no_carry:
+	*a_out = a;
+	return false;
+
+cannot_retreat:
+	/* store damage and total HP left */
+	LoadCardDataToBuffer1_FromDeckIndex(GetTurnDuelistVariable(DUELVARS_ARENA_CARD));
+	d = ConvertHPToDamageCounters_Bank8(wLoadedCard1HP);
+
+	/* skip if card has no damage counters. */
+	a = GetCardDamageAndMaxHP(PLAY_AREA_ARENA, NULL);
+	if (a == 0)
+		goto no_carry;
+
+	/* if (total damage / total HP counters) < 7
+	 * return carry.
+	 * (this corresponds to damage counters
+	 * being under 70% of the max HP) */
+	b = a;
+	a = CalculateBDividedByA_Bank8(d, b);
+	if (a < 7)
+		goto no_carry;
+
+	/* store Pokemon to switch to in wce1a and set carry. */
+decide_switch:
+	if (AIDecideBenchPokemonToSwitchTo(&a))
+		goto no_carry;
+	wce1a = a;
+	*a_out = 0;
+	return true;
+
+	/* this deck will use Scoop Up on a benched ArticunoLv37.
+	 * it checks if the defending Pokemon is a Snorlax,
+	 * (interestingly does not check for Muk in play.)
+	 * will also use Scoop Up on Arena ArticunoLv37 or Chansey
+	 * if they will be KO'd by the player */
+HandleLegendaryArticuno:
+	/* if less than 3 Play Area Pokemon cards, skip. */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	if (a < 3)
+		goto no_carry;
+
+	/* look for ArticunoLv37 in bench */
+	if (LookForCardIDInPlayArea_Bank8(ARTICUNO_LV37, PLAY_AREA_BENCH_1, &a))
+		goto articuno_bench;
+
+	/* check Arena card */
+	a = GetCardIDFromDeckIndex(GetTurnDuelistVariable(DUELVARS_ARENA_CARD));
+	if (a == ARTICUNO_LV37)
+		goto articuno_or_chansey;
+	if (a != CHANSEY)
+		goto no_carry;
+
+	/* here either ArticunoLv37 or Chansey
+	 * is the Arena Card. */
+articuno_or_chansey:
+	/* if can't KO defending Pokemon, check if defending Pokemon
+	 * can KO this card. If so, then continue.
+	 * If not, return no carry. */
+
+	/* if it can KO the defending Pokemon this turn,
+	 * return no carry. */
+	a = 0;
+	if (!CheckIfAnyAttackKnocksOutDefendingCard())
+		goto check_ko;
+	if (!CheckIfSelectedAttackIsUnusable())
+		goto no_carry;
+	if (LookForEnergyNeededForAttackInHand())
+		goto no_carry;
+check_ko:
+	if (!CheckIfDefendingPokemonCanKnockOut(&a))
+		goto no_carry;
+	goto decide_switch;
+
+articuno_bench:
+	/* skip if the defending card is Snorlax */
+	b = a; /* push af / pop bc */
+	{
+		u8 card = GetNonTurnDuelistVariable(DUELVARS_ARENA_CARD);
+		SwapTurn();
+		e = GetCardIDFromDeckIndex(card);
+		SwapTurn();
+	}
+	a = e;
+	if (a == SNORLAX)
+		goto no_carry;
+
+	/* check attached energy cards.
+	 * if it has any, return no carry. */
+	a = b;
+check_attached_energy:
+	e = a;
+	b = a; /* push af / pop bc */
+	if (CountNumberOfEnergyCardsAttached(e) == 0) {
+		a = b;
+		goto no_energy;
+	}
+	a = b;
+	goto no_carry;
+
+no_energy:
+	/* has decided to Scoop Up benched card,
+	 * store $ff as the Pokemon card to switch to
+	 * because there's no need to switch. */
+	wce1a = 0xff;
+	*a_out = a;
+	return true;
+
+	/* this deck will use Scoop Up on a benched ArticunoLv37, ZapdosLv68 or MoltresLv37.
+	 * interestingly, does not check for Muk in both Play Areas. */
+HandleLegendaryRonald:
+	/* if less than 3 Play Area Pokemon cards, skip. */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	if (a < 3)
+		goto no_carry;
+
+	if (LookForCardIDInPlayArea_Bank8(ARTICUNO_LV37, PLAY_AREA_BENCH_1, &a))
+		goto articuno_bench;
+	if (LookForCardIDInPlayArea_Bank8(ZAPDOS_LV68, PLAY_AREA_BENCH_1, &a))
+		goto check_attached_energy;
+	if (LookForCardIDInPlayArea_Bank8(MOLTRES_LV37, PLAY_AREA_BENCH_1, &a))
+		goto check_attached_energy;
+	goto no_carry;
+}
+
+void AIPlay_Maintenance(void)
+{
+	TRACE_FN();
+	wCurrentAIFlags |= AI_FLAG_MODIFIED_HAND;
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	hTemp_ffa0 = wce1a;
+	hTempPlayAreaLocation_ffa1 = wce1b;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* AI logic for playing Maintenance */
+bool AIDecide_Maintenance(u8 *a_out)
+{
+	TRACE_FN();
+	const u8 *hl;
+	u8 *de;
+	u8 a, b, c;
+
+	/* Imakuni? has his own thing */
+	a = wOpponentDeckID;
+	if (a == IMAKUNI_DECK_ID)
+		goto imakuni;
+
+	/* skip if number of cars in hand < 4. */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_IN_HAND);
+	if (a < 4)
+		goto no_carry;
+
+	/* list out all the hand cards and remove
+	 * wAITrainerCardToPlay from list. Then find any duplicate cards. */
+	CreateHandCardList(NULL);
+	FindAndRemoveCardFromList(wAITrainerCardToPlay, wDuelTempList);
+	/* if duplicates are not found, return no carry. */
+	if (FindDuplicateCards(wDuelTempList, &a))
+		goto no_carry;
+
+	/* store the first duplicate card and remove it from the list.
+	 * run duplicate check again. */
+	wce1a = a;
+	FindAndRemoveCardFromList(a, wDuelTempList);
+	/* if duplicates are not found, return no carry. */
+	if (FindDuplicateCards(wDuelTempList, &a))
+		goto no_carry;
+
+	/* store the second duplicate card and return carry. */
+	wce1b = a;
+	*a_out = a;
+	return true;
+
+no_carry:
+	*a_out = a;
+	return false;
+
+imakuni:
+	/* has a 2 in 10 chance of not skipping. */
+	a = Random(10);
+	if (a >= 2)
+		goto no_carry;
+
+	/* skip if number of cards in hand < 3. */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_IN_HAND);
+	if (a < 3)
+		goto no_carry;
+
+	/* shuffle hand cards */
+	CreateHandCardList(NULL);
+	hl = wDuelTempList;
+	ShuffleCards(wDuelTempList, CountCardsInDuelTempList());
+
+	/* go through each card and find
+	 * cards that are different from wAITrainerCardToPlay.
+	 * if found, add those cards to wce1a and wce1a+1. */
+	b = wAITrainerCardToPlay;
+	c = 2;
+	de = &wce1a;
+
+loop:
+	a = *hl++;
+	if (a == 0xff)
+		goto no_carry;
+	if (a == b)
+		goto loop;
+	*de++ = a;
+	c--;
+	if (c != 0)
+		goto loop;
+
+	/* two cards were found, return carry. */
+	*a_out = a;
+	return true;
+}
+
+void AIPlay_Recycle(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	if (!TossCoin(TrainerCardSuccessCheckText))
+		goto asm_216ae;
+	hTemp_ffa0 = wAITrainerCardParameter;
+	goto asm_216b2;
+asm_216ae:
+	hTemp_ffa0 = 0xff;
+asm_216b2:
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* lists cards to look for in the Discard Pile.
+ * has priorities for Ghost Deck, and a "default" priority list
+ * (which is the Fire Charge deck, since it's the only other
+ * deck that runs a Recycle card in it.) */
+bool AIDecide_Recycle(u8 *a_out)
+{
+	TRACE_FN();
+	const u8 *hl;
+	u8 a, b;
+
+	/* no use checking if no cards in Discard Pile */
+	a = 0;
+	if (CreateDiscardPileCardList())
+		goto no_carry;
+
+	wce08[0] = 0xff;
+	wce08[1] = 0xff;
+	wce08[2] = 0xff;
+	wce08[3] = 0xff;
+	wce08[4] = 0xff;
+
+	/* handle Ghost deck differently */
+	hl = wDuelTempList;
+	a = wOpponentDeckID;
+	if (a == GHOST_DECK_ID)
+		goto loop_2;
+
+	/* priority list for Fire Charge deck */
+loop_1:
+	a = *hl++;
+	if (a == 0xff)
+		goto pick_most_important_card;
+
+	b = a;
+	a = LoadCardDataToBuffer1_FromDeckIndex(a);
+
+	/* 1: Double Colorless Energy */
+	if (a != DOUBLE_COLORLESS_ENERGY)
+		goto chansey;
+	wce08[0] = b;
+	goto loop_1;
+
+chansey:
+	/* 2: Chansey */
+	if (a != CHANSEY)
+		goto tauros;
+	wce08[1] = b;
+	goto loop_1;
+
+tauros:
+	/* 3: Taurus */
+	if (a != TAUROS)
+		goto jigglypuff;
+	wce08[2] = b;
+	goto loop_1;
+
+jigglypuff:
+	/* 4: Jigglypuff */
+	if (a != JIGGLYPUFF_LV12)
+		goto loop_1;
+	wce08[3] = b;
+	goto loop_1;
+
+	/* loop through wce08 and set carry
+	 * on the first that was found in Discard Pile.
+	 * if none were found, return no carry. */
+pick_most_important_card:
+	hl = wce08;
+	b = 5;
+loop_find:
+	a = *hl++;
+	if (a != 0xff)
+		goto set_carry;
+	b--;
+	if (b != 0)
+		goto loop_find;
+no_carry:
+	*a_out = a;
+	return false;
+set_carry:
+	*a_out = a;
+	return true;
+
+	/* priority list for Ghost deck */
+loop_2:
+	a = *hl++;
+	if (a == 0xff)
+		goto pick_most_important_card;
+
+	b = a;
+	a = LoadCardDataToBuffer1_FromDeckIndex(a);
+
+	/* gastly2 */
+	if (a != GASTLY_LV17)
+		goto gastly1;
+	wce08[0] = b;
+	goto loop_2;
+
+gastly1:
+	if (a != GASTLY_LV8)
+		goto zubat;
+	wce08[1] = b;
+	goto loop_2;
+
+zubat:
+	if (a != ZUBAT)
+		goto ditto;
+	wce08[2] = b;
+	goto loop_2;
+
+ditto:
+	if (a != DITTO)
+		goto meowth;
+	wce08[3] = b;
+	goto loop_2;
+
+meowth:
+	if (a != MEOWTH_LV15)
+		goto loop_2;
+	wce08[4] = b;
+	goto loop_2;
+}
+
+void AIPlay_Lass(void)
+{
+	TRACE_FN();
+	wCurrentAIFlags |= AI_FLAG_MODIFIED_HAND;
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+bool AIDecide_Lass(u8 *a_out)
+{
+	TRACE_FN();
+	const u8 *hl;
+	u8 a;
+
+	/* skip if player has less than 7 cards in hand */
+	a = GetNonTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_IN_HAND);
+	if (a < 7)
+		goto no_carry;
+
+	/* look for Trainer cards in hand (except for Lass)
+	 * if any is found, return no carry.
+	 * otherwise, return carry. */
+	CreateHandCardList(NULL);
+	hl = wDuelTempList;
+loop:
+	a = *hl++;
+	if (a == 0xff)
+		goto set_carry;
+	a = LoadCardDataToBuffer1_FromDeckIndex(a);
+	if (a == LASS)
+		goto loop;
+	a = wLoadedCard1Type;
+	if (a != TYPE_TRAINER)
+		goto loop;
+no_carry:
+	*a_out = a;
+	return false;
+set_carry:
+	*a_out = a;
+	return true;
+}
+
+void AIPlay_ItemFinder(void)
+{
+	TRACE_FN();
+	wCurrentAIFlags |= AI_FLAG_MODIFIED_HAND;
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	hTemp_ffa0 = wce1a;
+	hTempPlayAreaLocation_ffa1 = wce1b;
+	hTempRetreatCostCards[0] = wAITrainerCardParameter;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* checks whether there's Energy Removal in Discard Pile.
+ * if so, find duplicate cards in hand to discard
+ * that are not Mr Mime and Pokemon Trader cards.
+ * this logic is suitable only for Strange Psyshock deck. */
+bool AIDecide_ItemFinder(u8 *a_out)
+{
+	TRACE_FN();
+	u8 *hl;
+	u8 a, b;
+
+	/* skip if no Discard Pile. */
+	a = 0;
+	if (CreateDiscardPileCardList())
+		goto no_carry;
+
+	/* look for Energy Removal in Discard Pile */
+	hl = wDuelTempList;
+loop_discard_pile:
+	a = *hl++;
+	if (a == 0xff)
+		goto no_carry;
+	b = a;
+	a = LoadCardDataToBuffer1_FromDeckIndex(a);
+	if (a != ENERGY_REMOVAL)
+		goto loop_discard_pile;
+	/* found, store this deck index */
+	wce06 = b;
+
+	/* before looking for cards to discard in hand,
+	 * remove any Mr Mime and Pokemon Trader cards.
+	 * this way these are guaranteed to not be discarded. */
+	CreateHandCardList(NULL);
+	hl = wDuelTempList;
+loop_hand:
+	a = *hl++;
+	if (a == 0xff)
+		goto choose_discard;
+	b = a;
+	a = LoadCardDataToBuffer1_FromDeckIndex(a);
+	if (a != MR_MIME)
+		goto pkmn_trader;
+	hl = RemoveCardFromList(hl);
+	goto loop_hand;
+pkmn_trader:
+	if (a != POKEMON_TRADER)
+		goto loop_hand;
+	hl = RemoveCardFromList(hl);
+	goto loop_hand;
+
+	/* choose cards to discard from hand. */
+choose_discard:
+	/* do not discard wAITrainerCardToPlay */
+	FindAndRemoveCardFromList(wAITrainerCardToPlay, wDuelTempList);
+	/* find any duplicates, if not found, return no carry. */
+	if (FindDuplicateCards(wDuelTempList, &a))
+		goto no_carry;
+
+	/* store the duplicate found in wce1a and
+	 * remove it from the hand list. */
+	wce1a = a;
+	FindAndRemoveCardFromList(a, wDuelTempList);
+	/* find duplicates again, if not found, return no carry. */
+	if (FindDuplicateCards(wDuelTempList, &a))
+		goto no_carry;
+
+	/* store the duplicate found in wce1b.
+	 * output the card to be recovered from the Discard Pile. */
+	wce1b = a;
+	*a_out = wce06;
+	return true;
+
+no_carry:
+	*a_out = a;
+	return false;
+}
+
+void AIPlay_Imakuni(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* only sets carry if Active card is not confused. */
+bool AIDecide_Imakuni(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a = GetTurnDuelistVariable(DUELVARS_ARENA_CARD_STATUS) & CNF_SLP_PRZ;
+	*a_out = a;
+	if (a == CONFUSED)
+		return false; /* .confused */
+	return true;
+}
+
+void AIPlay_Gambler(void)
+{
+	TRACE_FN();
+	wCurrentAIFlags |= AI_FLAG_MODIFIED_HAND;
+
+	/* Imakuni?'s deck uses regular RNG */
+	if (wOpponentDeckID == IMAKUNI_DECK_ID)
+		goto no_cheated_rng;
+
+	/* for all other decks, RNG is cheated to
+	 * always yield heads in the coin toss */
+
+	/* backup RNG */
+	wce06 = wRNG1;
+	wce08[0] = wRNG2;
+	wce0f[0] = wRNGCounter;
+
+	/* use cheated RNG */
+	wRNGCounter = 0x50;
+	wRNG2 = 0x50;
+	wRNG1 = 0x50;
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+
+	/* restore RNG */
+	wRNG1 = wce06;
+	wRNG2 = wce08[0];
+	wRNGCounter = wce0f[0];
+	return;
+
+no_cheated_rng:
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* checks whether to play Gambler.
+ * aside from Imakuni?, all other opponents only
+ * play this card if Player is running MewtwoLv53-only deck. */
+bool AIDecide_Gambler(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	/* Imakuni? has his own routine */
+	a = wOpponentDeckID;
+	if (a == IMAKUNI_DECK_ID)
+		goto imakuni;
+
+	/* check if flag is set for Player using MewtwoLv53 only deck */
+	a = wAIBarrierFlagCounter & AI_MEWTWO_MILL;
+	if (a == 0)
+		goto no_carry;
+
+	/* set carry if number of cards in deck <= 4.
+	 * this is done to counteract the deck out strategy
+	 * of MewtwoLv53 deck, by replenishing the deck with hand cards. */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_NOT_IN_DECK);
+	if (a >= DECK_SIZE - 4)
+		goto set_carry;
+no_carry:
+	*a_out = a;
+	return false;
+
+imakuni:
+	/* has a 2 in 10 chance of returning carry */
+	a = Random(10);
+	if (a >= 2)
+		goto no_carry;
+set_carry:
+	*a_out = a;
+	return true;
+}
+
+void AIPlay_Revive(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	hTemp_ffa0 = wAITrainerCardParameter;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* checks certain cards in Discard Pile to use Revive on.
+ * suitable for Muscle For Brains deck only. */
+bool AIDecide_Revive(u8 *a_out)
+{
+	TRACE_FN();
+	const u8 *hl;
+	u8 a, b;
+
+	/* skip if no cards in Discard Pile */
+	a = 0;
+	if (CreateDiscardPileCardList())
+		goto no_carry;
+
+	/* skip if number of Pokemon cards in Play Area >= 4 */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	if (a >= 4)
+		goto no_carry;
+
+	/* look in Discard Pile for specific cards. */
+	hl = wDuelTempList;
+loop_discard_pile:
+	a = *hl++;
+	if (a == 0xff)
+		goto no_carry;
+	b = a;
+	a = LoadCardDataToBuffer1_FromDeckIndex(a);
+	if (a == HITMONCHAN)
+		goto set_carry;
+	if (a == HITMONLEE)
+		goto set_carry;
+	if (a != TAUROS)
+		goto loop_discard_pile; /* bug, these two lines should be swapped */
+	if (a == KANGASKHAN)
+		goto set_carry; /* bug, these two lines should be swapped */
+
+set_carry:
+	*a_out = b;
+	return true;
+no_carry:
+	*a_out = a;
+	return false;
+}
+
+void AIPlay_PokemonFlute(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	hTemp_ffa0 = wAITrainerCardParameter;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+bool AIDecide_PokemonFlute(u8 *a_out)
+{
+	TRACE_FN();
+	const u8 *hl;
+	u8 a, b;
+	bool cy;
+
+	/* if player has no Discard Pile, skip. */
+	SwapTurn();
+	cy = CreateDiscardPileCardList();
+	SwapTurn();
+	a = 0;
+	if (cy)
+		goto no_carry;
+
+	/* if player's Play Area is already full, skip. */
+	a = GetNonTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	if (a >= MAX_PLAY_AREA_POKEMON)
+		goto no_carry;
+
+	a = wOpponentDeckID;
+	if (a == IMAKUNI_DECK_ID)
+		goto imakuni;
+
+	wce06 = 0xff;
+	wce08[0] = 0xff;
+
+	/* find Basic stage Pokemon with lowest HP in Discard Pile */
+	hl = wDuelTempList;
+loop_1:
+	a = *hl++;
+	if (a == 0xff)
+		goto check_result;
+
+	b = a;
+	SwapTurn();
+	LoadCardDataToBuffer1_FromDeckIndex(a);
+	SwapTurn();
+	/* skip this card if it's not Pokemon card */
+	a = wLoadedCard1Type;
+	if (a >= TYPE_ENERGY)
+		goto loop_1;
+	/* skip this card if it's not Basic Stage */
+	a = wLoadedCard1Stage;
+	if (a != BASIC)
+		goto loop_1;
+
+	/* compare this HP with one stored */
+	a = wLoadedCard1HP;
+	if (a >= wce06)
+		goto loop_1;
+	/* if lower, store this one */
+	wce06 = a;
+	wce08[0] = b;
+	goto loop_1;
+
+check_result:
+	/* if lowest HP found >= 50, return no carry */
+	a = wce06;
+	if (a >= 50)
+		goto no_carry;
+	/* otherwise output its deck index in a and set carry. */
+	*a_out = wce08[0];
+	return true;
+no_carry:
+	*a_out = a;
+	return false;
+
+imakuni:
+	/* has 2 in 10 chance of not skipping */
+	a = Random(10);
+	if (a >= 2)
+		goto no_carry;
+
+	/* look for any Basic Pokemon card */
+	hl = wDuelTempList;
+loop_2:
+	a = *hl++;
+	if (a == 0xff)
+		goto no_carry;
+	b = a;
+	SwapTurn();
+	LoadCardDataToBuffer1_FromDeckIndex(a);
+	SwapTurn();
+	a = wLoadedCard1Type;
+	if (a >= TYPE_ENERGY)
+		goto loop_2;
+	a = wLoadedCard1Stage;
+	if (a != BASIC)
+		goto loop_2;
+
+	/* a Basic stage Pokemon was found, return carry */
+	*a_out = b;
+	return true;
+}
+
+void AIPlay_ClefairyDollOrMysteriousFossil(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* AI logic for playing Clefairy Doll */
+bool AIDecide_ClefairyDollOrMysteriousFossil(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	/* if has max number of Play Area Pokemon, skip */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA);
+	if (a >= MAX_PLAY_AREA_POKEMON)
+		goto no_carry;
+
+	/* store number of Play Area Pokemon cards */
+	wce06 = a;
+
+	/* if the Arena card is Wigglytuff, return carry */
+	a = GetCardIDFromDeckIndex(GetTurnDuelistVariable(DUELVARS_ARENA_CARD));
+	if (a == WIGGLYTUFF)
+		goto set_carry;
+
+	/* if number of Play Area Pokemon >= 4, return no carry */
+	a = wce06;
+	if (a >= 4)
+		goto no_carry;
+
+set_carry:
+	*a_out = a;
+	return true;
+no_carry:
+	*a_out = a;
+	return false;
+}
+
+void AIPlay_Pokeball(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	bool heads = TossCoin(TrainerCardSuccessCheckText);
+	hTemp_ffa0 = heads ? 1 : 0; /* register a = 1 (heads) / 0 (tails) */
+	if (!heads)
+		goto asm_219bc;
+	hTempPlayAreaLocation_ffa1 = wAITrainerCardParameter;
+	goto asm_219c0;
+asm_219bc:
+	hTempPlayAreaLocation_ffa1 = 0xff;
+asm_219c0:
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+bool AIDecide_Pokeball(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	/* go to the routines associated with deck ID */
+	a = wOpponentDeckID;
+	if (a == FIRE_CHARGE_DECK_ID)
+		goto fire_charge;
+	if (a == HARD_POKEMON_DECK_ID)
+		goto hard_pokemon;
+	if (a == PIKACHU_DECK_ID)
+		goto pikachu;
+	if (a == ETCETERA_DECK_ID)
+		goto etcetera;
+	if (a == LOVELY_NIDORAN_DECK_ID)
+		goto lovely_nidoran;
+	goto no_carry;
+
+	/* this deck runs a deck check for specific
+	 * card IDs in order of decreasing priority */
+fire_charge:
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, CHANSEY, &a))
+		goto set_carry;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, TAUROS, &a))
+		goto set_carry;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, JIGGLYPUFF_LV12, &a))
+		goto set_carry;
+	goto no_carry;
+
+	/* this deck runs a deck check for specific
+	 * card IDs in order of decreasing priority */
+hard_pokemon:
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, RHYHORN, &a))
+		goto set_carry;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, RHYDON, &a))
+		goto set_carry;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, ONIX, &a))
+		goto set_carry;
+	goto no_carry;
+
+	/* this deck runs a deck check for specific
+	 * card IDs in order of decreasing priority */
+pikachu:
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, PIKACHU_LV14, &a))
+		goto set_carry;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, PIKACHU_LV16, &a))
+		goto set_carry;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, PIKACHU_ALT_LV16, &a))
+		goto set_carry;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, PIKACHU_LV12, &a))
+		goto set_carry;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, FLYING_PIKACHU, &a))
+		goto set_carry;
+	goto no_carry;
+
+	/* this deck runs a deck check for specific
+	 * card IDs in order of decreasing priority
+	 * given a specific energy card in hand.
+	 * also it avoids redundancy, so if it already
+	 * has that card ID in the hand, it is skipped. */
+etcetera:
+	/* fire */
+	if (!LookForCardIDInHandList_Bank8(FIRE_ENERGY, &a))
+		goto lightning;
+	if (LookForCardIDInHandList_Bank8(CHARMANDER, &a))
+		goto lightning;
+	if (LookForCardIDInHandList_Bank8(MAGMAR_LV31, &a))
+		goto lightning;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, CHARMANDER, &a))
+		goto set_carry;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, MAGMAR_LV31, &a))
+		goto set_carry;
+
+lightning:
+	if (!LookForCardIDInHandList_Bank8(LIGHTNING_ENERGY, &a))
+		goto fighting;
+	if (LookForCardIDInHandList_Bank8(PIKACHU_LV12, &a))
+		goto fighting;
+	if (LookForCardIDInHandList_Bank8(MAGNEMITE_LV13, &a))
+		goto fighting;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, PIKACHU_LV12, &a))
+		goto set_carry;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, MAGNEMITE_LV13, &a))
+		goto set_carry;
+
+fighting:
+	if (!LookForCardIDInHandList_Bank8(FIGHTING_ENERGY, &a))
+		goto psychic;
+	if (LookForCardIDInHandList_Bank8(DIGLETT, &a))
+		goto psychic;
+	if (LookForCardIDInHandList_Bank8(MACHOP, &a))
+		goto psychic;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, DIGLETT, &a))
+		goto set_carry;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, MACHOP, &a))
+		goto set_carry;
+
+psychic:
+	if (!LookForCardIDInHandList_Bank8(PSYCHIC_ENERGY, &a))
+		goto done_etcetera;
+	if (LookForCardIDInHandList_Bank8(GASTLY_LV8, &a))
+		goto done_etcetera;
+	if (LookForCardIDInHandList_Bank8(JYNX, &a))
+		goto done_etcetera;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, GASTLY_LV8, &a))
+		goto set_carry;
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, JYNX, &a))
+		goto set_carry;
+done_etcetera:
+	goto no_carry;
+
+	/* this deck looks for card evolutions if
+	 * its pre-evolution is in hand or in Play Area.
+	 * if none of these are found, it looks for pre-evolutions
+	 * of cards it has in hand.
+	 * it does this for both the NidoranM (first)
+	 * and NidoranF (second) families. */
+lovely_nidoran:
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(NIDORINO, NIDORANM, &a))
+		goto set_carry;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(NIDOKING, NIDORINO, &a))
+		goto set_carry;
+	if (LookForCardIDInDeck_GivenCardIDInHand(NIDORANM, NIDORINO, &a))
+		goto set_carry;
+	if (LookForCardIDInDeck_GivenCardIDInHand(NIDORINO, NIDOKING, &a))
+		goto set_carry;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(NIDORINA, NIDORANF, &a))
+		goto set_carry;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(NIDOQUEEN, NIDORINA, &a))
+		goto set_carry;
+	if (LookForCardIDInDeck_GivenCardIDInHand(NIDORANF, NIDORINA, &a))
+		goto set_carry;
+	if (LookForCardIDInDeck_GivenCardIDInHand(NIDORINA, NIDOQUEEN, &a))
+		goto set_carry;
+	goto no_carry;
+
+set_carry: /* ret c */
+	*a_out = a;
+	return true;
+no_carry:
+	*a_out = a;
+	return false;
+}
+
+void AIPlay_ComputerSearch(void)
+{
+	TRACE_FN();
+	wCurrentAIFlags |= AI_FLAG_MODIFIED_HAND;
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	hTempRetreatCostCards[0] = wAITrainerCardParameter;
+	hTemp_ffa0 = wce1a;
+	hTempPlayAreaLocation_ffa1 = wce1b;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+/* checks what Deck ID AI is playing and handle
+ * them in their own routine. */
+bool AIDecide_ComputerSearch(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	/* skip if number of cards in hand < 3 */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_IN_HAND);
+	if (a < 3)
+		goto no_carry;
+
+	a = wOpponentDeckID;
+	if (a == ROCK_CRUSHER_DECK_ID)
+		return AIDecide_ComputerSearch_RockCrusher(a_out);
+	if (a == WONDERS_OF_SCIENCE_DECK_ID)
+		return AIDecide_ComputerSearch_WondersOfScience(a_out);
+	if (a == FIRE_CHARGE_DECK_ID)
+		return AIDecide_ComputerSearch_FireCharge(a_out);
+	if (a == ANGER_DECK_ID)
+		return AIDecide_ComputerSearch_Anger(a_out);
+
+no_carry:
+	*a_out = a;
+	return false;
+}
+
+bool AIDecide_ComputerSearch_RockCrusher(u8 *a_out)
+{
+	TRACE_FN();
+	u8 *hl;
+	u8 *bc;
+	u8 *de;
+	u8 a, b, c, d, e;
+
+	/* if number of cards in hand is equal to 3,
+	 * target Professor Oak in deck */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_IN_HAND);
+	if (a != 3)
+		goto graveler;
+
+	if (LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, PROFESSOR_OAK, &a))
+		goto find_discard_cards_1;
+	/* no Professor Oak in deck, fallthrough */
+
+no_carry:
+	*a_out = a;
+	return false;
+
+find_discard_cards_1:
+	wce06 = a;
+	wce1a = 0xff;
+	wce1b = 0xff;
+
+	CreateHandCardList(NULL);
+	hl = wDuelTempList;
+	de = &wce1a;
+loop_hand_1:
+	a = *hl++;
+	if (a == 0xff)
+		goto check_discard_cards;
+
+	c = a;
+	a = LoadCardDataToBuffer1_FromDeckIndex(a);
+
+	/* if any of the following cards are in the hand,
+	 * return no carry. */
+	if (a == PROFESSOR_OAK)
+		goto no_carry;
+	if (a == FIGHTING_ENERGY)
+		goto no_carry;
+	if (a == DOUBLE_COLORLESS_ENERGY)
+		goto no_carry;
+	if (a == DIGLETT)
+		goto no_carry;
+	if (a == GEODUDE)
+		goto no_carry;
+	if (a == ONIX)
+		goto no_carry;
+	if (a == RHYHORN)
+		goto no_carry;
+
+	/* if it's same as wAITrainerCardToPlay, skip this card. */
+	b = wAITrainerCardToPlay;
+	a = c;
+	if (a == b)
+		goto loop_hand_1;
+
+	/* store this card index in memory */
+	*de++ = a;
+	goto loop_hand_1;
+
+check_discard_cards:
+	/* check if two cards were found
+	 * if so, output in a the deck index
+	 * of Professor Oak card found in deck and set carry. */
+	a = wce1b;
+	if (a == 0xff)
+		goto no_carry;
+	*a_out = wce06;
+	return true;
+
+	/* more than 3 cards in hand, so look for
+	 * specific evolution cards. */
+
+	/* checks if there is a Graveler card in the deck to target.
+	 * if so, check if there's Geodude in hand or Play Area,
+	 * and if there's no Graveler card in hand, proceed.
+	 * also removes Geodude from hand list so that it is not discarded. */
+graveler:
+	if (!LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, GRAVELER, &a))
+		goto golem;
+	wce06 = a;
+	if (!LookForCardIDInHandAndPlayArea(GEODUDE))
+		goto golem;
+	if (LookForCardIDInHandList_Bank8(GRAVELER, &a))
+		goto golem;
+	CreateHandCardList(NULL);
+	hl = wDuelTempList;
+	RemoveCardIDInList(GEODUDE, hl, &a);
+	goto find_discard_cards_2;
+
+	/* checks if there is a Golem card in the deck to target.
+	 * if so, check if there's Graveler in Play Area,
+	 * and if there's no Golem card in hand, proceed. */
+golem:
+	if (!LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, GOLEM, &a))
+		goto dugtrio;
+	wce06 = a;
+	/* b = CARD_LOCATION_DECK (= PLAY_AREA_ARENA), left by LookForCardIDInLocation_Bank8 (`ld b, a`) */
+	if (!LookForCardIDInPlayArea_Bank8(GRAVELER, CARD_LOCATION_DECK, &a))
+		goto dugtrio;
+	if (LookForCardIDInHandList_Bank8(GOLEM, &a))
+		goto dugtrio;
+	CreateHandCardList(NULL);
+	hl = wDuelTempList;
+	goto find_discard_cards_2;
+
+	/* checks if there is a Dugtrio card in the deck to target.
+	 * if so, check if there's Diglett in Play Area,
+	 * and if there's no Dugtrio card in hand, proceed. */
+dugtrio:
+	if (!LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, DUGTRIO, &a))
+		goto no_carry;
+	wce06 = a;
+	/* b = CARD_LOCATION_DECK (= PLAY_AREA_ARENA), left by LookForCardIDInLocation_Bank8 (`ld b, a`) */
+	if (!LookForCardIDInPlayArea_Bank8(DIGLETT, CARD_LOCATION_DECK, &a))
+		goto no_carry;
+	if (LookForCardIDInHandList_Bank8(DUGTRIO, &a))
+		goto no_carry;
+	CreateHandCardList(NULL);
+	hl = wDuelTempList;
+	goto find_discard_cards_2;
+
+find_discard_cards_2:
+	wce1a = 0xff;
+	wce1b = 0xff;
+
+	bc = &wce1a;
+	d = 0x00; /* start considering Trainer cards only */
+
+	/* stores wAITrainerCardToPlay in e so that
+	 * all routines ignore it for the discard effects. */
+	e = wAITrainerCardToPlay;
+
+	/* this loop will store in wce1a cards to discard from hand.
+	 * at the start it will only consider Trainer cards,
+	 * then if there are still needed to discard,
+	 * move on to Pokemon cards, and finally to Energy cards. */
+loop_hand_2:
+	if (RemoveFromListDifferentCardOfGivenType(d, e, hl, &a))
+		goto found;
+	d++; /* move on to next type (Pokemon, then Energy) */
+	a = 0x03;
+	if (a == d)
+		goto no_carry; /* no more types to look */
+	goto loop_hand_2;
+found:
+	/* store this card in memory,
+	 * and if there's still one more card to search for,
+	 * jump back into the loop. */
+	*bc++ = a;
+	a = wce1b;
+	if (a == 0xff)
+		goto loop_hand_2;
+
+	/* output in a Computer Search target and set carry. */
+	*a_out = wce06;
+	return true;
+}
+
+bool AIDecide_ComputerSearch_WondersOfScience(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a, d, e;
+
+	/* if number of cards in hand < 5, target Professor Oak in deck */
+	a = GetTurnDuelistVariable(DUELVARS_NUMBER_OF_CARDS_IN_HAND);
+	if (a >= 5)
+		goto look_in_hand;
+
+	/* target Professor Oak for Computer Search */
+	if (!LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, PROFESSOR_OAK, &a))
+		goto look_in_hand; /* can be a jr */
+	wce06 = a;
+	goto find_discard_cards;
+
+	/* Professor Oak not in deck, move on to
+	 * look for other cards instead.
+	 * if Grimer or Muk are not in hand,
+	 * check whether to use Computer Search on them. */
+look_in_hand:
+	if (!LookForCardIDInHandList_Bank8(GRIMER, &a))
+		goto target_grimer;
+	if (!LookForCardIDInHandList_Bank8(MUK, &a))
+		goto target_muk;
+
+no_carry:
+	*a_out = a;
+	return false;
+
+	/* first check Grimer
+	 * if in deck, check cards to discard. */
+target_grimer:
+	if (!LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, GRIMER, &a))
+		goto no_carry; /* can be a jr */
+	wce06 = a;
+	goto find_discard_cards;
+
+	/* first check Muk
+	 * if in deck, check cards to discard. */
+target_muk:
+	if (!LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, MUK, &a))
+		goto no_carry; /* can be a jr */
+	wce06 = a;
+
+	/* only discard Trainer cards from hand.
+	 * if there are less than 2 Trainer cards to discard,
+	 * then return with no carry.
+	 * else, store the cards to discard and the
+	 * target card deck index, and return carry. */
+find_discard_cards:
+	CreateHandCardList(NULL);
+	d = 0x00; /* first consider Trainer cards */
+
+	/* ignore wAITrainerCardToPlay for the discard effects. */
+	e = wAITrainerCardToPlay;
+	if (!RemoveFromListDifferentCardOfGivenType(d, e, wDuelTempList, &a))
+		goto no_carry;
+	wce1a = a;
+	if (!RemoveFromListDifferentCardOfGivenType(d, e, wDuelTempList, &a))
+		goto no_carry;
+	wce1b = a;
+	*a_out = wce06;
+	return true;
+}
+
+bool AIDecide_ComputerSearch_FireCharge(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a, d, e;
+
+	/* pick target card in deck from highest to lowest priority.
+	 * if not found in hand, go to corresponding branch. */
+	if (!LookForCardIDInHandList_Bank8(CHANSEY, &a))
+		goto chansey;
+	if (!LookForCardIDInHandList_Bank8(TAUROS, &a))
+		goto tauros;
+	if (!LookForCardIDInHandList_Bank8(JIGGLYPUFF_LV12, &a))
+		goto jigglypuff;
+	/* fallthrough */
+
+no_carry:
+	*a_out = a;
+	return false;
+
+	/* for each card targeted, check if it's in deck and,
+	 * if not, then return no carry.
+	 * else, look for cards to discard. */
+chansey:
+	if (!LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, CHANSEY, &a))
+		goto no_carry;
+	wce06 = a;
+	goto find_discard_cards;
+tauros:
+	if (!LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, TAUROS, &a))
+		goto no_carry;
+	wce06 = a;
+	goto find_discard_cards;
+jigglypuff:
+	if (!LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, JIGGLYPUFF_LV12, &a))
+		goto no_carry;
+	wce06 = a;
+
+	/* only discard Trainer cards from hand.
+	 * if there are less than 2 Trainer cards to discard,
+	 * then return with no carry.
+	 * else, store the cards to discard and the
+	 * target card deck index, and return carry. */
+find_discard_cards:
+	CreateHandCardList(NULL);
+	d = 0x00; /* first consider Trainer cards */
+
+	/* ignore wAITrainerCardToPlay for the discard effects. */
+	e = wAITrainerCardToPlay;
+	if (!RemoveFromListDifferentCardOfGivenType(d, e, wDuelTempList, &a))
+		goto no_carry;
+	wce1a = a;
+	if (!RemoveFromListDifferentCardOfGivenType(d, e, wDuelTempList, &a))
+		goto no_carry;
+	wce1b = a;
+	*a_out = wce06;
+	return true;
+}
+
+bool AIDecide_ComputerSearch_Anger(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a, d, e;
+
+	/* for each of the following cards,
+	 * first run a check if there's a pre-evolution in
+	 * Play Area or in the hand. If there is, choose it as target.
+	 * otherwise, check if the evolution card is in
+	 * hand and if so, choose it as target instead. */
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(RATICATE, RATTATA, &a))
+		goto find_discard_cards;
+	if (LookForCardIDInDeck_GivenCardIDInHand(RATTATA, RATICATE, &a))
+		goto find_discard_cards;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(ARCANINE_LV34, GROWLITHE, &a))
+		goto find_discard_cards;
+	if (LookForCardIDInDeck_GivenCardIDInHand(GROWLITHE, ARCANINE_LV34, &a))
+		goto find_discard_cards;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(DODRIO, DODUO, &a))
+		goto find_discard_cards;
+	if (LookForCardIDInDeck_GivenCardIDInHand(DODUO, DODRIO, &a))
+		goto find_discard_cards;
+	/* fallthrough */
+
+no_carry:
+	*a_out = a;
+	return false;
+
+	/* only discard Trainer cards from hand.
+	 * if there are less than 2 Trainer cards to discard,
+	 * then return with no carry.
+	 * else, store the cards to discard and the
+	 * target card deck index, and return carry. */
+find_discard_cards:
+	wce06 = a;
+	CreateHandCardList(NULL);
+	d = 0x00; /* first consider Trainer cards */
+
+	/* ignore wAITrainerCardToPlay for the discard effects. */
+	e = wAITrainerCardToPlay;
+	if (!RemoveFromListDifferentCardOfGivenType(d, e, wDuelTempList, &a))
+		goto no_carry;
+	wce1a = a;
+	if (!RemoveFromListDifferentCardOfGivenType(d, e, wDuelTempList, &a))
+		goto no_carry;
+	wce1b = a;
+	*a_out = wce06;
+	return true;
+}
+
+void AIPlay_PokemonTrader(void)
+{
+	TRACE_FN();
+	hTempCardIndex_ff9f = wAITrainerCardToPlay;
+	hTemp_ffa0 = wAITrainerCardParameter;
+	hTempPlayAreaLocation_ffa1 = wce1a;
+	AIMakeDecision(OPPACTION_EXECUTE_TRAINER_EFFECTS);
+}
+
+bool AIDecide_PokemonTrader(u8 *a_out)
+{
+	TRACE_FN();
+	/* each deck has their own routine for picking
+	 * what Pokemon to look for. */
+	u8 a = wOpponentDeckID;
+	if (a == LEGENDARY_MOLTRES_DECK_ID)
+		return AIDecide_PokemonTrader_LegendaryMoltres(a_out);
+	if (a == LEGENDARY_ARTICUNO_DECK_ID)
+		return AIDecide_PokemonTrader_LegendaryArticuno(a_out);
+	if (a == LEGENDARY_DRAGONITE_DECK_ID)
+		return AIDecide_PokemonTrader_LegendaryDragonite(a_out);
+	if (a == LEGENDARY_RONALD_DECK_ID)
+		return AIDecide_PokemonTrader_LegendaryRonald(a_out);
+	if (a == BLISTERING_POKEMON_DECK_ID)
+		return AIDecide_PokemonTrader_BlisteringPokemon(a_out);
+	if (a == SOUND_OF_THE_WAVES_DECK_ID)
+		return AIDecide_PokemonTrader_SoundOfTheWaves(a_out);
+	if (a == POWER_GENERATOR_DECK_ID)
+		return AIDecide_PokemonTrader_PowerGenerator(a_out);
+	if (a == FLOWER_GARDEN_DECK_ID)
+		return AIDecide_PokemonTrader_FlowerGarden(a_out);
+	if (a == STRANGE_POWER_DECK_ID)
+		return AIDecide_PokemonTrader_StrangePower(a_out);
+	if (a == FLAMETHROWER_DECK_ID)
+		return AIDecide_PokemonTrader_Flamethrower(a_out);
+	*a_out = a;
+	return false;
+}
+
+bool AIDecide_PokemonTrader_LegendaryMoltres(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a, e;
+
+	/* look for MoltresLv37 card in deck to trade with a
+	 * card in hand different from MoltresLv35. */
+	if (!LookForCardIDToTradeWithDifferentHandCard(MOLTRES_LV37, MOLTRES_LV35, &a, &e))
+		goto no_carry;
+	/* success */
+	wce1a = a;
+	*a_out = e;
+	return true;
+no_carry:
+	*a_out = a;
+	return false;
+}
+
+bool AIDecide_PokemonTrader_LegendaryArticuno(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a = 0;
+
+	/* if has none of these cards in Hand or Play Area, proceed */
+	if (LookForCardIDInHandAndPlayArea(ARTICUNO_LV35))
+		goto no_carry;
+	if (LookForCardIDInHandAndPlayArea(LAPRAS))
+		goto no_carry;
+
+	/* if doesn't have Seel in Hand or Play Area,
+	 * look for it in the deck.
+	 * otherwise, look for Dewgong instead. */
+	if (LookForCardIDInHandAndPlayArea(SEEL))
+		goto dewgong;
+
+	if (!LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, SEEL, &a))
+		goto dewgong;
+	wce1a = a;
+	goto check_hand;
+
+dewgong:
+	a = 0;
+	if (LookForCardIDInHandAndPlayArea(DEWGONG))
+		goto no_carry;
+	if (!LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, DEWGONG, &a))
+		goto no_carry;
+	wce1a = a;
+
+	/* a Seel or Dewgong was found in deck,
+	 * check hand for card to trade for */
+check_hand:
+	if (CheckIfHasCardIDInHand(CHANSEY, &a))
+		goto set_carry;
+	if (CheckIfHasCardIDInHand(DITTO, &a))
+		goto set_carry;
+	if (CheckIfHasCardIDInHand(ARTICUNO_LV37, &a))
+		goto set_carry;
+	/* doesn't have any of the cards in hand */
+
+no_carry:
+	*a_out = a;
+	return false;
+
+set_carry:
+	*a_out = a;
+	return true;
+}
+
+bool AIDecide_PokemonTrader_LegendaryDragonite(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	/* if has less than 5 cards of energy
+	 * and of Pokemon in hand/Play Area,
+	 * target a Kangaskhan in deck. */
+	a = CountOppEnergyCardsInHandAndAttached();
+	if (a < 5)
+		goto kangaskhan;
+	a = CountPokemonCardsInHandAndInPlayArea();
+	if (a < 5)
+		goto kangaskhan;
+	/* total number of energy cards >= 5
+	 * total number of Pokemon cards >= 5 */
+
+	/* for each of the following cards,
+	 * first run a check if there's a pre-evolution in
+	 * Play Area or in the hand. If there is, choose it as target.
+	 * otherwise, check if the evolution card is in
+	 * hand and if so, choose it as target instead. */
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(GYARADOS, MAGIKARP, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(MAGIKARP, GYARADOS, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(DRAGONAIR, DRATINI, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(DRAGONITE_LV41, DRAGONAIR, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(DRATINI, DRAGONAIR, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(DRAGONAIR, DRAGONITE_LV41, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(CHARMELEON, CHARMANDER, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(CHARIZARD, CHARMELEON, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(CHARMANDER, CHARMELEON, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(CHARMELEON, CHARIZARD, &a))
+		goto choose_hand;
+	goto no_carry;
+
+kangaskhan:
+	if (!LookForCardIDInLocation_Bank8(CARD_LOCATION_DECK, KANGASKHAN, &a))
+		goto no_carry;
+
+	/* card was found as target in deck,
+	 * look for card in hand to trade with */
+choose_hand:
+	wce1a = a;
+	if (CheckIfHasCardIDInHand(DRAGONAIR, &a))
+		goto set_carry;
+	if (CheckIfHasCardIDInHand(CHARMELEON, &a))
+		goto set_carry;
+	if (CheckIfHasCardIDInHand(GYARADOS, &a))
+		goto set_carry;
+	if (CheckIfHasCardIDInHand(MAGIKARP, &a))
+		goto set_carry;
+	if (CheckIfHasCardIDInHand(CHARMANDER, &a))
+		goto set_carry;
+	if (CheckIfHasCardIDInHand(DRATINI, &a))
+		goto set_carry;
+	/* non found */
+
+no_carry:
+	*a_out = a;
+	return false;
+set_carry:
+	*a_out = a;
+	return true;
+}
+
+bool AIDecide_PokemonTrader_LegendaryRonald(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	/* for each of the following cards,
+	 * first run a check if there's a pre-evolution in
+	 * Play Area or in the hand. If there is, choose it as target.
+	 * otherwise, check if the evolution card is in
+	 * hand and if so, choose it as target instead. */
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(FLAREON_LV22, EEVEE, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(VAPOREON_LV29, EEVEE, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(JOLTEON_LV24, EEVEE, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(EEVEE, FLAREON_LV22, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(EEVEE, VAPOREON_LV29, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(EEVEE, JOLTEON_LV24, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(DRAGONAIR, DRATINI, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(DRAGONITE_LV41, DRAGONAIR, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(DRATINI, DRAGONAIR, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(DRAGONAIR, DRAGONITE_LV41, &a))
+		goto choose_hand;
+	goto no_carry;
+
+	/* card was found as target in deck,
+	 * look for card in hand to trade with */
+choose_hand:
+	wce1a = a;
+	if (LookForCardIDInHandList_Bank8(ZAPDOS_LV68, &a))
+		goto set_carry;
+	if (LookForCardIDInHandList_Bank8(ARTICUNO_LV37, &a))
+		goto set_carry;
+	if (LookForCardIDInHandList_Bank8(MOLTRES_LV37, &a))
+		goto set_carry;
+	/* none found */
+
+no_carry:
+	*a_out = a;
+	return false;
+set_carry:
+	*a_out = a;
+	return true;
+}
+
+bool AIDecide_PokemonTrader_BlisteringPokemon(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	/* for each of the following cards,
+	 * first run a check if there's a pre-evolution in
+	 * Play Area or in the hand. If there is, choose it as target.
+	 * otherwise, check if the evolution card is in
+	 * hand and if so, choose it as target instead. */
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(RHYDON, RHYHORN, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(RHYHORN, RHYDON, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(MAROWAK_LV26, CUBONE, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(CUBONE, MAROWAK_LV26, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(RAPIDASH, PONYTA, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(PONYTA, RAPIDASH, &a))
+		goto find_duplicates;
+	goto no_carry;
+
+	/* a card in deck was found to look for,
+	 * check if there are duplicates in hand to trade with. */
+find_duplicates:
+	wce1a = a;
+	if (FindDuplicatePokemonCards(&a))
+		goto set_carry;
+no_carry:
+	*a_out = a;
+	return false;
+set_carry:
+	*a_out = a;
+	return true;
+}
+
+bool AIDecide_PokemonTrader_SoundOfTheWaves(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	/* for each of the following cards,
+	 * first run a check if there's a pre-evolution in
+	 * Play Area or in the hand. If there is, choose it as target.
+	 * otherwise, check if the evolution card is in
+	 * hand and if so, choose it as target instead. */
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(DEWGONG, SEEL, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(SEEL, DEWGONG, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(KINGLER, KRABBY, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(KRABBY, KINGLER, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(CLOYSTER, SHELLDER, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(SHELLDER, CLOYSTER, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(SEADRA, HORSEA, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(HORSEA, SEADRA, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(TENTACRUEL, TENTACOOL, &a))
+		goto choose_hand;
+	if (LookForCardIDInDeck_GivenCardIDInHand(TENTACOOL, TENTACRUEL, &a))
+		goto choose_hand;
+	goto no_carry;
+
+	/* card was found as target in deck,
+	 * look for card in hand to trade with */
+choose_hand:
+	wce1a = a;
+	if (CheckIfHasCardIDInHand(SEEL, &a))
+		goto set_carry;
+	if (CheckIfHasCardIDInHand(KRABBY, &a))
+		goto set_carry;
+	if (CheckIfHasCardIDInHand(HORSEA, &a))
+		goto set_carry;
+	if (CheckIfHasCardIDInHand(SHELLDER, &a))
+		goto set_carry;
+	if (CheckIfHasCardIDInHand(TENTACOOL, &a))
+		goto set_carry;
+	/* none found */
+
+no_carry:
+	*a_out = a;
+	return false;
+set_carry:
+	*a_out = a;
+	return true;
+}
+
+bool AIDecide_PokemonTrader_PowerGenerator(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	/* for each of the following cards,
+	 * first run a check if there's a pre-evolution in
+	 * Play Area or in the hand. If there is, choose it as target.
+	 * otherwise, check if the evolution card is in
+	 * hand and if so, choose it as target instead. */
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(RAICHU_LV40, PIKACHU_LV14, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(RAICHU_LV40, PIKACHU_LV12, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(PIKACHU_LV14, RAICHU_LV40, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(PIKACHU_LV12, RAICHU_LV40, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(ELECTRODE_LV42, VOLTORB, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(ELECTRODE_LV35, VOLTORB, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(VOLTORB, ELECTRODE_LV42, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(VOLTORB, ELECTRODE_LV35, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(MAGNETON_LV35, MAGNEMITE_LV13, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(MAGNETON_LV35, MAGNEMITE_LV15, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(MAGNETON_LV28, MAGNEMITE_LV13, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(MAGNETON_LV28, MAGNEMITE_LV15, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(MAGNEMITE_LV15, MAGNETON_LV35, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(MAGNEMITE_LV13, MAGNETON_LV35, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(MAGNEMITE_LV15, MAGNETON_LV28, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(MAGNEMITE_LV13, MAGNETON_LV28, &a))
+		goto find_duplicates;
+	/* bug, missing jr .no_carry
+	 * (falls through with a = what the last LookForCardIDInDeck_GivenCardIDInHand left) */
+
+	/* a card in deck was found to look for,
+	 * check if there are duplicates in hand to trade with. */
+find_duplicates:
+	wce1a = a;
+	if (FindDuplicatePokemonCards(&a))
+		goto set_carry;
+	*a_out = a;
+	return false;
+set_carry:
+	*a_out = a;
+	return true;
+}
+
+bool AIDecide_PokemonTrader_FlowerGarden(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	/* for each of the following cards,
+	 * first run a check if there's a pre-evolution in
+	 * Play Area or in the hand. If there is, choose it as target.
+	 * otherwise, check if the evolution card is in
+	 * hand and if so, choose it as target instead. */
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(IVYSAUR, BULBASAUR, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(VENUSAUR_LV67, IVYSAUR, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(BULBASAUR, IVYSAUR, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(IVYSAUR, VENUSAUR_LV67, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(WEEPINBELL, BELLSPROUT, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(VICTREEBEL, WEEPINBELL, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(BELLSPROUT, WEEPINBELL, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(WEEPINBELL, VICTREEBEL, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(GLOOM, ODDISH, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(VILEPLUME, GLOOM, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(ODDISH, GLOOM, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(GLOOM, VILEPLUME, &a))
+		goto find_duplicates;
+	goto no_carry;
+
+	/* a card in deck was found to look for,
+	 * check if there are duplicates in hand to trade with. */
+find_duplicates:
+	wce1a = a;
+	if (FindDuplicatePokemonCards(&a))
+		goto found;
+no_carry:
+	*a_out = a;
+	return false;
+found:
+	*a_out = a;
+	return true;
+}
+
+bool AIDecide_PokemonTrader_StrangePower(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a, e;
+
+	/* looks for a Pokemon in hand to trade with Mr Mime in deck.
+	 * inputting Mr Mime in register e for the function is redundant
+	 * since it already checks whether a Mr Mime exists in the hand. */
+	if (!LookForCardIDToTradeWithDifferentHandCard(MR_MIME, MR_MIME, &a, &e))
+		goto no_carry;
+	/* found */
+	wce1a = a;
+	*a_out = e;
+	return true;
+no_carry:
+	*a_out = a;
+	return false;
+}
+
+bool AIDecide_PokemonTrader_Flamethrower(u8 *a_out)
+{
+	TRACE_FN();
+	u8 a;
+
+	/* for each of the following cards,
+	 * first run a check if there's a pre-evolution in
+	 * Play Area or in the hand. If there is, choose it as target.
+	 * otherwise, check if the evolution card is in
+	 * hand and if so, choose it as target instead. */
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(CHARMELEON, CHARMANDER, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(CHARIZARD, CHARMELEON, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(CHARMANDER, CHARMELEON, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(CHARMELEON, CHARIZARD, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(NINETALES_LV32, VULPIX, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(VULPIX, NINETALES_LV32, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(ARCANINE_LV45, GROWLITHE, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(GROWLITHE, ARCANINE_LV45, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHandAndPlayArea(FLAREON_LV28, EEVEE, &a))
+		goto find_duplicates;
+	if (LookForCardIDInDeck_GivenCardIDInHand(EEVEE, FLAREON_LV28, &a))
+		goto find_duplicates;
+	goto no_carry;
+
+	/* a card in deck was found to look for,
+	 * check if there are duplicates in hand to trade with. */
+find_duplicates:
+	wce1a = a;
+	if (FindDuplicatePokemonCards(&a))
+		goto set_carry;
+no_carry:
+	*a_out = a;
+	return false;
+set_carry:
+	*a_out = a;
 	return true;
 }

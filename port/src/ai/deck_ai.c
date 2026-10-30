@@ -445,8 +445,11 @@ bool AIPerformScriptedTurn(void)
 {
 	TRACE_FN();
 	u8 a = (u8)(wDuelTurns >> 1);
-	if (a >= 7)
+	if (a >= 7) {
+		/* (JumpToFunctionInTable would jump through the bytes after the table) */
 		tcg_fatal("AIPerformScriptedTurn: turn out of the scripted_actions_list");
+		return false;
+	}
 	AIPerformScriptedTurn_scripted_actions_list[a]();
 
 	/* always attack with Arena card's first attack.
