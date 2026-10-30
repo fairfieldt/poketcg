@@ -7,12 +7,19 @@
 // seq = number of non-ACK requests before this one, rt = request type, v = answer,
 // h = engine state hash at the request (duel.stateHash()). The other client waits for the
 // answer with its own seq, and checks rt and h against its own request: any mismatch is a desync.
-// TCG_REQ_ACK requests never change engine state: they are answered locally and never sent.
+// TCG_REQ_ACK requests and view-only card lists (TCG_REQ_CARD_LIST with arg[0] = 1) never change
+// the duel: they are answered locally and never sent (a remote duelist's view-only list is
+// answered with TCG_CANCEL at once, a remote ACK advances by itself after a moment).
 //
 // After a disconnect the client re-attaches with {t:'rejoin', room, token}; the server answers
 // with the setup and the whole answer log, so a client that lost its engine (page reload) replays
 // the duel up to the current point, and one that kept it picks up any answers it missed.
-import { REQ, TCG_PLAYER, TCG_OPPONENT } from './engine.js';
+import { REQ, TCG_PLAYER, TCG_OPPONENT, TCG_CANCEL } from './engine.js';
+
+/* requests whose answers never change the duel: answered locally, never sent over the relay */
+export function isLocalOnly(req) {
+	return req.type === REQ.ACK || (req.type === REQ.CARD_LIST && req.arg[0] === 1);
+}
 
 const SESSION_KEY = 'tcg.online';
 
@@ -172,9 +179,10 @@ export class OnlineDuel {
 
 	async onRequest(req) {
 		const replaying = this.seq < this.replayUntil;
-		if (req.type === REQ.ACK) {
-			if (replaying) return 0;
-			return this.ui.onRequest(req, { remote: req.duelist !== this.localSide });
+		if (isLocalOnly(req)) {
+			const remote = req.duelist !== this.localSide;
+			if (replaying || (remote && req.type !== REQ.ACK)) return req.type === REQ.ACK ? 0 : TCG_CANCEL;
+			return this.ui.onRequest(req, { remote });
 		}
 		const seq = this.seq;
 		const h = this.duel.stateHash();

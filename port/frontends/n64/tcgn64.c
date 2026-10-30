@@ -676,6 +676,12 @@ static void draw_board(uint8_t hl_duelist, int hl_loc)
 	fill(LEFT - 4, SLOT_INFO_Y + 4, RIGHT - LEFT + 8, 1, C_MID);
 	draw_side(TCG_OPPONENT, true, hl_duelist == TCG_OPPONENT ? hl_loc : -1);
 	draw_side(TCG_PLAYER, false, hl_duelist == TCG_PLAYER ? hl_loc : -1);
+	if (g_thinking && hl_loc < 0) { /* TCG_EV_THINKING: the AI is deciding */
+		char buf[40];
+		snprintf(buf, sizeof(buf), "%s is thinking%s", g_name[side_of(g_thinking)], (g_frame / 16) & 1 ? "..." : "");
+		fill(LEFT - 2, SLOT_INFO_Y - 1, (int)strlen(buf) * CW + 4, 10, C_BLACK);
+		print(LEFT, SLOT_INFO_Y, C_HI, buf);
+	}
 }
 
 /* The display surfaces are uncached memory, where the CPU drawing functions
@@ -1576,12 +1582,26 @@ static int ui_menu_generic(const TcgRequest *r, int ports)
 	return choose("Choose", labels, NULL, n, r->cursor, true, ports);
 }
 
+/* TwoItemHorizontalMenu (e.g. Prophecy: "Please select the Deck: Yours Opponent's"):
+ * 0 = left, 1 = right item, both named at the end of the text; no cancel */
 static int ui_menu_two_items(const TcgRequest *r, int ports)
 {
 	char a[32], b[32];
 	const char *labels[2] = { a, b };
-	two_labels(g_log_n ? g_log[g_log_n - 1] : "", a, b, sizeof(a), "First", "Second");
-	return choose(NULL, labels, NULL, 2, r->cursor, true, ports);
+	two_labels(r->text ? tcg_text(r->text) : g_log_n ? g_log[g_log_n - 1] : "", a, b, sizeof(a), "Left", "Right");
+	int cur = r->cursor < 2 ? r->cursor : 0;
+	for (;;) {
+		begin_frame();
+		draw_board(0, -1);
+		draw_textbox_hint("A: choose");
+		draw_choice_popup(RIGHT - 120, TBOX_Y - 40, NULL, labels, 2, cur);
+		end_frame_poll();
+		Keys k = keys(ports);
+		if (k.up || k.down || k.left || k.right)
+			cur ^= 1;
+		if (k.a)
+			return cur;
+	}
 }
 
 static int ui_menu_card_list(const TcgRequest *r, int ports)
@@ -1610,15 +1630,12 @@ static int ui_menu_card_list(const TcgRequest *r, int ports)
 
 static int ui_yes_no(const TcgRequest *r, int ports)
 {
-	char a[32] = "Yes", b[32] = "No";
-	if (r->arg[0])
-		two_labels(r->text ? tcg_text(r->text) : (g_log_n ? g_log[g_log_n - 1] : ""), a, b, sizeof(a), "First", "Second");
-	const char *labels[2] = { a, b };
+	const char *labels[2] = { "Yes", "No" };
 	int cur = r->cursor ? 0 : 1; /* ui item 0 = yes / first item = answer 1 */
 	for (;;) {
 		begin_frame();
 		draw_board(0, -1);
-		draw_textbox_hint(r->arg[0] ? "A: choose" : "A: choose  B: no");
+		draw_textbox_hint("A: choose  B: no");
 		draw_choice_popup(RIGHT - 80, TBOX_Y - 40, NULL, labels, 2, cur);
 		end_frame_poll();
 		Keys k = keys(ports);
@@ -1626,7 +1643,7 @@ static int ui_yes_no(const TcgRequest *r, int ports)
 			cur ^= 1;
 		if (k.a)
 			return cur == 0 ? 1 : 0;
-		if (k.b && !r->arg[0])
+		if (k.b)
 			return 0; /* B = No */
 	}
 }
@@ -1690,13 +1707,48 @@ static int ui_prize(const TcgRequest *r, int ports)
 	}
 }
 
+/* answer: a color 0-5 (FIRE..PSYCHIC); listed in the engine's menu order (items) if given */
 static int ui_color(const TcgRequest *r, int ports)
 {
-	static const int icons[6] = { FIRE, GRASS, LIGHTNING, WATER, FIGHTING, PSYCHIC };
+	int colors[6], n = 0, cur = 0;
+	if (r->items && r->num_items >= 1 && r->num_items <= 6) {
+		for (int i = 0; i < r->num_items; i++)
+			if (r->items[i] <= PSYCHIC)
+				colors[n++] = r->items[i];
+	}
+	if (n == 0)
+		for (n = 0; n < 6; n++)
+			colors[n] = n;
 	const char *labels[6];
-	for (int i = 0; i < 6; i++)
-		labels[i] = kTypeName[i];
-	return choose("Choose a color", labels, icons, 6, r->cursor, true, ports);
+	for (int i = 0; i < n; i++) {
+		labels[i] = kTypeName[colors[i]];
+		if (colors[i] == r->cursor)
+			cur = i;
+	}
+	int i = choose("Choose a color", labels, colors, n, cur, true, ports);
+	return i < 0 ? TCG_CANCEL : colors[i];
+}
+
+/* WaitForButtonAorB (e.g. Devolution Spray: A = one more stage, B = stop) */
+static int ui_confirm(const TcgRequest *r, int ports)
+{
+	const uint8_t *w = tcg_wram();
+	int loc = w[ADDR_wCurPlayAreaSlot - WRAM_START];
+	if (loc >= num_in_play(r->shown))
+		loc = -1;
+	for (;;) {
+		begin_frame();
+		draw_board(r->shown, loc);
+		draw_textbox_hint("A: continue  B: stop");
+		end_frame_poll();
+		Keys k = keys(ports);
+		if (k.a)
+			return 0;
+		if (k.b)
+			return TCG_CANCEL;
+		if (k.start && loc >= 0)
+			view_slot(r->shown, loc, ports);
+	}
 }
 
 static int ui_number(const TcgRequest *r, int ports)
@@ -1783,6 +1835,8 @@ static void check_screen(int ports)
 
 static int bot_answer(const TcgRequest *r)
 {
+	if (r->type == TCG_REQ_MENU && r->menu == TCG_MENU_TWO_ITEMS)
+		return (int)rnd(2); /* no cancel */
 	switch (r->type) {
 	case TCG_REQ_ACK:
 		return 0;
@@ -1808,6 +1862,12 @@ static int bot_answer(const TcgRequest *r)
 		if (r->arg[1] || rnd(10) == 0)
 			return TCG_CANCEL;
 		return r->arg[0] + (int)rnd(r->num_items ? r->num_items : 1);
+	case TCG_REQ_CONFIRM:
+		return rnd(3) ? 0 : TCG_CANCEL;
+	case TCG_REQ_COLOR:
+		if (rnd(10) == 0)
+			return TCG_CANCEL;
+		return r->items && r->num_items ? r->items[rnd(r->num_items)] : (int)rnd(6);
 	case TCG_REQ_PRIZE:
 		for (int tries = 0; tries < 32; tries++) {
 			int i = (int)rnd(6);
@@ -1826,7 +1886,7 @@ static int bot_answer(const TcgRequest *r)
 
 static const char *const kMenuName[] = { "generic", "attacks", "play_area", "two_items", "card_list" };
 static const char *const kReqName[] = { "?", "ack", "duel_menu", "card_list", "item_menu", "play_area", "menu",
-	"yes_no", "energy_discard", "prize", "color", "number" };
+	"yes_no", "energy_discard", "prize", "color", "number", "confirm" };
 
 static void on_event(void *ctx, const TcgEvent *ev)
 {
@@ -1910,6 +1970,12 @@ static int on_request(void *ctx, const TcgRequest *r)
 		/* text boxes are always acknowledged by a human, so that they can be read */
 		int ports = g_mode == MODE_HOTSEAT ? 3 : 1;
 		ans = ui_ack(r, ports);
+	} else if (r->type == TCG_REQ_CARD_LIST && r->arg[0] && g_kind[side] != PK_HUMAN) {
+		/* a view-only list requested on an AI (or bot) side, e.g. the hand checked by the
+		 * AI's Lass: the answers never change the duel, show it to the human (controller 1;
+		 * the other duelist is always human in these modes) */
+		debugf("ASK card_list(view) %s n=%d\n", who(r->duelist), r->num_items);
+		ans = ui_card_list(r, 1);
 	} else if (g_kind[side] != PK_HUMAN) {
 		/* the random bot, or an AI duelist reaching a human input routine (should not happen) */
 		show_frames(2);
@@ -1939,6 +2005,7 @@ static int on_request(void *ctx, const TcgRequest *r)
 		case TCG_REQ_PRIZE: ans = ui_prize(r, ports); break;
 		case TCG_REQ_COLOR: ans = ui_color(r, ports); break;
 		case TCG_REQ_NUMBER: ans = ui_number(r, ports); break;
+		case TCG_REQ_CONFIRM: ans = ui_confirm(r, ports); break;
 		default: ans = TCG_CANCEL; break;
 		}
 	}
@@ -1967,14 +2034,20 @@ static int on_request_selftest(void *ctx, const TcgRequest *menu)
 		r.cursor = 1;
 		r.text = IsThisOKText;
 		on_request(ctx, &r);
-		r.arg[0] = 1;
+		r.type = TCG_REQ_MENU; /* TwoItemHorizontalMenu */
+		r.menu = TCG_MENU_TWO_ITEMS;
+		r.cursor = 0;
 		r.text = PleaseSelectTheDeckText;
 		on_request(ctx, &r);
 		memset(&r, 0, sizeof(r));
 		r.duelist = r.shown = TCG_PLAYER;
+		static const uint8_t shift_order[6] = { GRASS, FIRE, WATER, LIGHTNING, FIGHTING, PSYCHIC };
 		r.type = TCG_REQ_COLOR;
 		r.num_items = 6;
+		r.items = shift_order;
+		r.cursor = GRASS;
 		on_request(ctx, &r);
+		r.items = NULL;
 		r.type = TCG_REQ_NUMBER;
 		r.num_items = 10;
 		r.cursor = 3;
@@ -1997,6 +2070,19 @@ static int on_request_selftest(void *ctx, const TcgRequest *menu)
 		r.num_items = 6;
 		r.arg[0] = 0x3e; /* prize 0 already taken */
 		r.cursor = 1;
+		on_request(ctx, &r);
+		memset(&r, 0, sizeof(r));
+		r.duelist = r.shown = TCG_PLAYER;
+		r.type = TCG_REQ_CONFIRM;
+		on_request(ctx, &r);
+		on_request(ctx, &r);
+		/* a view-only list requested on the opponent's (non-human) side */
+		r.type = TCG_REQ_CARD_LIST;
+		r.duelist = TCG_OPPONENT;
+		r.num_items = v[DUELVARS_NUMBER_OF_CARDS_IN_HAND];
+		r.items = &v[DUELVARS_HAND];
+		r.text = DuelistHandText;
+		r.arg[0] = 1;
 		on_request(ctx, &r);
 	}
 	return on_request(ctx, menu);

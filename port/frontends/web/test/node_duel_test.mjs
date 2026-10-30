@@ -97,7 +97,9 @@ for (let seed = s0; seed <= s1; seed++) {
 		},
 		onRequest(r) {
 			if (r.seq >= maxRequests) throw new Error('request budget exhausted');
-			if (vsAI && r.type !== REQ.ACK && r.duelist !== 0xc2) throw new Error('a request for the AI duelist');
+			// the AI never answers requests, except the ones that only show something (ACK, view-only card lists)
+			const viewOnly = r.type === REQ.ACK || (r.type === REQ.CARD_LIST && r.arg[0] === 1);
+			if (vsAI && !viewOnly && r.duelist !== 0xc2) throw new Error(`a request (type ${r.type}) for the AI duelist`);
 			const tk = Object.keys(REQ).find((k) => REQ[k] === r.type) + (r.type === REQ.MENU ? `/${r.menu}` : '');
 			reqTypes[tk] = (reqTypes[tk] || 0) + 1;
 			const a = randomAnswer(r, rnd);

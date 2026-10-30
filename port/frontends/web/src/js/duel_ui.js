@@ -950,6 +950,7 @@ export class DuelUI {
 		const n = req.numItems;
 		if (req.menu === MENU.ATTACKS) return this.attackMenu(req);
 		if (req.menu === MENU.PEEK_AREA) return this.peekAreaMenu(req);
+		if (req.menu === MENU.TWO_ITEMS) return this.twoItemMenu(req);
 		if (req.menu === MENU.PEEK_TARGET) return this.peekTargetMenu(req);
 		if (n === 6 && COLOR_MENU_TEXTS.some((t) => T[t] === this.lastTextId)) {
 			return this.colorMenu(req, COLOR_MENU_ORDER, (i) => i, req.cursor);
@@ -1037,13 +1038,30 @@ export class DuelUI {
 		}));
 	}
 
+	/* the two items are on the last line of the text, e.g. "Please select the Deck:\n   Yours   Opponent's" */
+	splitTwoItems(text) {
+		const lines = (text || '').split('\n');
+		const parts = lines[lines.length - 1].trim().split(/\s{2,}/);
+		if (parts.length === 2) return { labels: parts, prompt: lines.slice(0, -1).join('\n') };
+		return null;
+	}
+
+	/* TwoItemHorizontalMenu: 0 = left item, 1 = right item */
+	twoItemMenu(req) {
+		const split = this.splitTwoItems(req.textStr || this.text) || { labels: ['1', '2'], prompt: req.textStr || this.text };
+		this.setText(split.prompt);
+		return this.ask((done) => this.textMenu({
+			items: split.labels.map((label) => ({ label })), cursor: req.cursor ? 1 : 0, cols: 2, cls: 'yes-no two-items',
+			onSelect: (i) => done(i),
+		}));
+	}
+
 	reqYesNo(req) {
 		let prompt = req.textStr || this.text;
 		let labels = [this.duel.text(T.YesText) || 'Yes', this.duel.text(T.NoText) || 'No'];
-		if (req.arg[0]) {
-			const lines = prompt.split('\n');
-			const parts = lines[lines.length - 1].trim().split(/\s{2,}/);
-			if (parts.length === 2) { labels = parts; prompt = lines.slice(0, -1).join('\n'); }
+		if (req.arg[0]) { // older engines sent TwoItemHorizontalMenu as a yes/no request
+			const split = this.splitTwoItems(prompt);
+			if (split) ({ labels, prompt } = split);
 		}
 		this.setText(prompt);
 		return this.ask((done) => this.textMenu({

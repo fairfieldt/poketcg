@@ -112,7 +112,7 @@ echo "== asyncify ($WASM_OPT)"
 } >"$OUT/build-info.json"
 
 echo "== assets"
-"$PYTHON" "$WEB/tools/gen_assets.py" "$OUT"
+PYTHONDONTWRITEBYTECODE=1 "$PYTHON" "$WEB/tools/gen_assets.py" "$OUT"
 
 echo "== static files"
 cp -r "$WEB/src/." "$OUT/"

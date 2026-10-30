@@ -88,12 +88,13 @@ request answers are exchanged, as JSON over `ws://host/ws`:
 
 * lobby: `create` / `join {room}` / `rejoin {room, token}`; the host sends `setup` when the guest
   has joined (the guest's deck comes with `join`).
-* duel: for every request that is not `TCG_REQ_ACK`, the duelist it belongs to answers in its
-  UI and sends `{t:'answer', seq, rt, v, h}`: `seq` = number of non-ACK requests before it,
+* duel: for every request except `TCG_REQ_ACK` and view-only card lists (`TCG_REQ_CARD_LIST`
+  with `arg[0] = 1`), the duelist it belongs to answers in its UI and sends `{t:'answer', seq, rt, v, h}`: `seq` = number of non-ACK requests before it,
   `rt` = request type, `v` = answer, `h` = `duel.stateHash()` (FNV-1a of both duel variable
   blocks and the RNG). The peer waits for the answer with its own `seq`; a different `rt` or `h`
-  is a desync, reported to both players. ACK requests never change engine state: they are
-  answered locally (the remote duelist's ones advance automatically) and never sent.
+  is a desync, reported to both players. ACKs and view-only lists never change the duel: they
+  are answered locally and never sent (a remote duelist's ACK advances by itself after a
+  moment, its view-only lists are answered with TCG_CANCEL). `TCG_REQ_CONFIRM` is sent.
 * the server checks `seq` continuity and keeps the setup and the answer log of each room.
   After a disconnect a client rejoins with its token and gets the log back: a client that kept
   its engine resends any answers the server missed, one that reloaded the page replays the

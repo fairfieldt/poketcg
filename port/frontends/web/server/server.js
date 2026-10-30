@@ -13,7 +13,8 @@
 //     {t:'join', room, name, deck}        join as guest (TCG_OPPONENT side)
 //     {t:'rejoin', room, token}           re-attach after a disconnect
 //     {t:'setup', setup}                  host only: the duel setup, relayed to the guest
-//     {t:'answer', seq, rt, v, h}         answer number seq (0-based count of non-ACK requests),
+//     {t:'answer', seq, rt, v, h}         answer number seq (0-based count of the requests that are
+//                                         not ACKs or view-only card lists),
 //                                         request type rt, value v, state hash h; relayed + logged
 //     {t:'desync', seq, detail}           a peer detected a desync; relayed
 //     {t:'leave'}                         leave the room for good

@@ -297,6 +297,76 @@ async function vsComputer(browser) {
 	await ctx.close();
 }
 
+/* every request type's widget, driven with synthetic requests on a board left by a real duel */
+async function requestWidgets(browser) {
+	console.log('request widgets');
+	const ctx = await browser.newContext({ viewport: { width: 1100, height: 900 } });
+	const page = await ctx.newPage();
+	watch(page, 'widgets');
+	page.on('dialog', (d) => d.accept());
+	await page.goto(BASE);
+	await page.click('text=2 Players (same screen)');
+	await page.click('.deck-tile >> nth=0');
+	await page.click('.deck-tile >> nth=1');
+	await page.waitForSelector('.duel .field');
+	await play([page], { turns: 2 });
+	await page.click('.duel-bar >> text=Quit');
+	await page.waitForSelector('.title');
+	const results = await page.evaluate(async () => {
+		const { DuelUI } = await import('./js/duel_ui.js');
+		const app = window.tcgApp;
+		if (app.keyHandler) { document.removeEventListener('keydown', app.keyHandler); app.keyHandler = null; } // the title menu's keys
+		const root = document.createElement('div');
+		document.getElementById('app').replaceChildren(root);
+		const ui = new DuelUI(root, app.duel, { mode: 'hotseat', pacing: false });
+		ui.names = ['P1', 'P2'];
+		const key = (k) => document.dispatchEvent(new KeyboardEvent('keydown', { key: k, bubbles: true }));
+		const tick = () => new Promise((r) => setTimeout(r, 20));
+		const req = (o) => ({ duelist: 0xc2, shown: 0xc2, menu: 0, numItems: 0, cursor: 0, text: 0, text2: 0, str: null, textStr: '', text2Str: '', items: new Uint8Array(128), arg: [0, 0, 0, 0], seq: 0, ...o });
+		let captured = '';
+		const run = async (r, actions) => {
+			const p = ui.onRequest(r);
+			await tick();
+			for (const a of actions) {
+				if (a.startsWith('labels:')) { captured = [...document.querySelectorAll(a.slice(7))].map((e) => e.textContent).join('|'); continue; }
+				if (a.startsWith('click:')) {
+					const e = document.querySelector(a.slice(6));
+					if (!e) return `no element ${a.slice(6)} in: ${root.querySelector('.overlay').innerHTML.slice(0, 300)}`;
+					e.click();
+				} else key(a);
+				await tick();
+			}
+			return Promise.race([p, new Promise((res) => setTimeout(() => res('timeout'), 500))]);
+		};
+		const items = (a) => { const u = new Uint8Array(128); u.set(a); return u; };
+		return {
+			confirmA: await run(req({ type: 12 }), ['z']),
+			confirmB: await run(req({ type: 12 }), ['x']),
+			peekArea: await run(req({ type: 6, menu: 5, numItems: 2 }), ['ArrowDown', 'z']),
+			peekTargetPrize: await run(req({ type: 6, menu: 6, numItems: 8, arg: [0b000101, 1, 0, 0] }), ['ArrowRight', 'z', 'ArrowRight', 'z']),
+			peekTargetDeck: await run(req({ type: 6, menu: 6, numItems: 8, arg: [0, 0, 0, 0] }), ['click:.peek-extra .btn:last-child']),
+			colorDefault: await run(req({ type: 10, numItems: 6, cursor: 3, items: items([1, 0, 3, 2, 4, 5]) }), ['z']),
+			colorMoved: await run(req({ type: 10, numItems: 6, cursor: 3, items: items([1, 0, 3, 2, 4, 5]) }), ['ArrowRight', 'z']),
+			yesNoTwoItems: await run(req({ type: 7, numItems: 2, cursor: 1, arg: [1, 0, 0, 0], textStr: "Please select the Deck:\n            Yours   Opponent's" }), ['labels:.yes-no .tm-item', 'ArrowRight', 'z']),
+			twoItemLabels: captured,
+			twoItems: await run(req({ type: 6, menu: 3, numItems: 2, cursor: 0, textStr: "Please select the Play Area:\n            Yours   Opponent's" }), ['labels:.two-items .tm-item', 'ArrowRight', 'z']),
+			twoItemsLabels: captured,
+			yesNoB: await run(req({ type: 7, numItems: 2, cursor: 1 }), ['x']),
+			prize: await run(req({ type: 9, numItems: 6, arg: [0b100000, 0, 0, 0] }), ['z', 'click:.prize-card:not(.taken)']),
+			number: await run(req({ type: 11, numItems: 3 }), ['ArrowRight', 'z']),
+			generic: await run(req({ type: 6, menu: 0, numItems: 3 }), ['ArrowRight', 'z']),
+			duelMenu: await run(req({ type: 2, numItems: 6, cursor: 0 }), ['ArrowDown', 'ArrowRight', 'z']),
+			duelMenuB: await run(req({ type: 2, numItems: 6, cursor: 5 }), ['x', 'z']),
+		};
+	});
+	const expect = {
+		confirmA: 0, confirmB: -1, peekArea: 1, peekTargetPrize: 2, peekTargetDeck: 7, colorDefault: 3, colorMoved: 2,
+		yesNoTwoItems: 0, twoItemLabels: "Yours|Opponent's", twoItems: 1, twoItemsLabels: "Yours|Opponent's", yesNoB: 0, prize: 5, number: 1, generic: 1, duelMenu: 3, duelMenuB: 5,
+	};
+	for (const [k, v] of Object.entries(expect)) check(results[k] === v, `${k}: ${JSON.stringify(results[k])}${results[k] === v ? '' : ` (expected ${JSON.stringify(v)})`}`);
+	await ctx.close();
+}
+
 async function deckBuilder(browser) {
 	console.log('deck builder');
 	const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
@@ -352,6 +422,7 @@ try {
 	await hotseat(browser);
 	await online(browser);
 	await vsComputer(browser);
+	await requestWidgets(browser);
 	await deckBuilder(browser);
 } catch (e) {
 	failed = true;
