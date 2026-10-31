@@ -1,0 +1,52 @@
+{
+  "source_base_commit": "2899c92e251bed30bafba99db3c9c98b13bc40b3",
+  "production_rom_sha256": "09f9c16d57343de46821a7d9de92db67603d90aef001cccbc9f362d5b3d561a7",
+  "production_rom_bytes": 36454400,
+  "world_sha256": "2215b292c1c65cab220fb6e8baa301552e83084bca6426e1fde38b9323396326",
+  "geometry": {
+    "sites": 12,
+    "shells": 13,
+    "faces": 228,
+    "edges": 486,
+    "facing_triangles": 282,
+    "overlap_pairs": 0,
+    "depth_samples": 0
+  },
+  "native": {
+    "passed": true,
+    "ram_mib": 4,
+    "worst_heap": {
+      "map": 0,
+      "total": 2778288,
+      "used": 1729000,
+      "free": 1049288
+    },
+    "rom_sha256": "0969eb7ebf8e247b78488af364f36d9bb221c5242000bf9f7c6e5b06d94d1d30"
+  },
+  "island": {
+    "triangles": 5410,
+    "vertices": 10854,
+    "batches": 18
+  },
+  "island_textures": 17,
+  "unchanged": [
+    "camera",
+    "source maps",
+    "routes",
+    "gameplay",
+    "interior meshes",
+    "VI filter",
+    "renderer depth mode"
+  ],
+  "post_vi": {
+    "passed": true,
+    "provenance": "capture-provenance.json",
+    "reference_proof": "old-rom-capture-proof.json",
+    "static_reference_pixels_exact": 150000,
+    "static_reference_pixels_total": 150000,
+    "captures": [
+      "after-mason-post-vi.png",
+      "after-dome-post-vi.png"
+    ]
+  }
+}

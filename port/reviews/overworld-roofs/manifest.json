@@ -1,0 +1,78 @@
+{
+  "baseline_commit": "2899c92e251bed30bafba99db3c9c98b13bc40b3",
+  "before": {
+    "file": "before-post-vi.png",
+    "source": "Committed port/reviews/overworld-readability/after-post-vi.png",
+    "sha256": "526a655abf157e6805f9c7c4fde667e0e9aaeb57fe2313533751112f183029f9",
+    "renderer": "ares v148 SD, N64 VI enabled, built-in screenshot export"
+  },
+  "pre_vi_reference": {
+    "file": "after-pre-vi-reference.png",
+    "renderer": "ares/paraLLEl-RDP framebuffer BEFORE N64 VI filtering",
+    "rom_sha256": "0969eb7ebf8e247b78488af364f36d9bb221c5242000bf9f7c6e5b06d94d1d30"
+  },
+  "native_validation": {
+    "file": "native-validation.json",
+    "passed": true,
+    "ram_mib": 4,
+    "maps": 34,
+    "captures": 42,
+    "worst_heap": {
+      "map": 0,
+      "total": 2778288,
+      "used": 1729000,
+      "free": 1049288
+    },
+    "wall_seconds": 130.89
+  },
+  "geometry_validation": {
+    "file": "roof-geometry-validation.json",
+    "passed": true,
+    "totals": {
+      "sites": 12,
+      "shells": 13,
+      "faces": 228,
+      "edges": 486,
+      "facing_triangles": 282,
+      "overlap_pairs": 0,
+      "depth_samples": 0
+    }
+  },
+  "vi_filter": "FILTERS_RESAMPLE",
+  "settings": "SD; shader None; supersampling false; VI processing enabled",
+  "static_rom_sha256": "e0aecfe378f585a28bc8327dc2eb81c7e0bdfb0095f1f2c427e0b7169291312a",
+  "static_rom": "port/frontends/n64/adventure/poketcg-roof-static.z64",
+  "native_geometry_sha256": "10e806b83adcf567de84ff1f7700f65495204a6a2fabba3f86c23ab499441ef4",
+  "notes": "The before/after images are actual ares post-VI output. The separate pre-VI RDP reference is labeled explicitly. The original PNG encoder was triggered in an isolated debug copy whose executable code matches installed ares; the old-ROM reference matched all 150,000 static RGB pixels exactly.",
+  "after": [
+    {
+      "file": "after-mason-post-vi.png",
+      "selection": "mason",
+      "sha256": "12b6e1d8da7823e7e9e544b285895262f6ea96a80e6a170a9076d06b76859931",
+      "renderer": "ares v148 SD, actual N64 post-VI output, original built-in PNG encoder",
+      "dimensions": [
+        640,
+        240
+      ]
+    },
+    {
+      "file": "after-dome-post-vi.png",
+      "selection": "dome",
+      "sha256": "0cf2c3fac8f3bba7d996c7243bbe83149788cc916ff64ca4d7dd9aa7efe21b36",
+      "renderer": "ares v148 SD, actual N64 post-VI output, original built-in PNG encoder",
+      "dimensions": [
+        640,
+        240
+      ]
+    }
+  ],
+  "capture_provenance": "capture-provenance.json",
+  "comparison": {
+    "file": "comparison.png",
+    "method": "Before and Mason-selected after: raw 640x240 post-VI exports, displayed at 640x480 by exact row duplication. No sharpening or synthetic VI filter."
+  },
+  "roof_details": {
+    "file": "roof-details.png",
+    "method": "Post-VI crops with nearest-neighbor aspect correction. Laboratory after uses the Dome-selected capture so the roof is unobstructed; other after crops use Mason-selected capture."
+  }
+}

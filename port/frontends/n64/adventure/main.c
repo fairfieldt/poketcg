@@ -399,6 +399,12 @@ int main(void)
  memset(&game,0,sizeof(game));game.ow.overworld_selection=OWMAP_MASON_LABORATORY;
  presentation_init(&presentation,NULL,false);capture_next=true;
  for(unsigned f=0;;f++) {
+  if(f&&f%900==0) {
+   game.ow.overworld_selection=game.ow.overworld_selection==OWMAP_MASON_LABORATORY?
+     OWMAP_POKEMON_DOME:OWMAP_MASON_LABORATORY;
+   presentation_init(&presentation,NULL,false);
+   debugf("OVERWORLD VI LOCATION %u\n",game.ow.overworld_selection);
+  }
   game_draw();
   if(f==4)debugf("OVERWORLD VI READY filter=%u\n",(unsigned)ADVENTURE_VI_FILTER);
  }

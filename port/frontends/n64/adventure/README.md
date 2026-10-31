@@ -80,6 +80,9 @@ make -C port/frontends/n64/adventure BUILD_DIR=build/vi-review \
   ROM=poketcg-vi-review DIAGNOSTIC=4 bundle
 ```
 
+The diagnostic alternates the selected location between the laboratory and
+Dome, leaving each roof unobstructed in one view.
+
 `VI_FILTER=FILTERS_RESAMPLE_ANTIALIAS_DEDITHER` restores the earlier filter for
 comparison. The build tracks the diagnostic/filter configuration and rebuilds
 its frontend objects when either changes.

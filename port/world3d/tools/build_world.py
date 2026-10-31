@@ -826,7 +826,7 @@ def update_overworld():
     if (OUT/'overworld_authoring.json').exists():
         import os,shutil,subprocess
         blender=os.environ.get('POKETCG_BLENDER') or shutil.which('blender') or '/Applications/Blender.app/Contents/MacOS/Blender'
-        subprocess.run([blender,'--background','--python',str(ROOT/'tools/author_overworld.py')],check=True)
+        subprocess.run([blender,'--background','--python-exit-code','1','--python',str(ROOT/'tools/author_overworld.py')],check=True)
         return
     doc=json.loads((OUT/'world.json').read_text())
     scene=Scene('overworld');terrain(scene,Image(REPO/'port/maps/overworld.png'))

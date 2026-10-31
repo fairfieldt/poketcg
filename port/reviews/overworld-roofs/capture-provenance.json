@@ -1,0 +1,138 @@
+{
+  "method": "LLDB callback requests the original ares PNG encoder; no OS UI automation or image filtering",
+  "source": {
+    "repository": "https://github.com/ares-emulator/ares.git",
+    "commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "tag": "v148",
+    "clean": true,
+    "video_callback": "https://github.com/ares-emulator/ares/blob/0aafd85789215e84e1e43415c07d4c88461b7899/desktop-ui/program/platform.cpp#L78",
+    "official_encoder": "https://github.com/ares-emulator/ares/blob/0aafd85789215e84e1e43415c07d4c88461b7899/desktop-ui/program/utility.cpp#L47",
+    "core_vi": "https://github.com/ares-emulator/ares/blob/0aafd85789215e84e1e43415c07d4c88461b7899/ares/n64/vi/vi.cpp#L134"
+  },
+  "binary": {
+    "installed_unmodified": {
+      "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+      "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+      "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+      "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+    },
+    "isolated_debug_copy": {
+      "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+      "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+      "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+      "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+    },
+    "same_arm64_executable_code": true
+  },
+  "hook": {
+    "file": "vi_capture.py",
+    "sha256": "fda6c9748963dd0c6d68d2d43390c80170480fc40a2c58b73f32d5895195ea9e",
+    "function": "Program::video",
+    "breakpoint_file_address": "0x100145f74",
+    "skip_prologue": false,
+    "arm64_arguments": {
+      "program": "x0",
+      "pixels": "x2",
+      "pitch": "w3",
+      "width": "w4",
+      "height": "w5"
+    },
+    "requestScreenshot_offset": "0xc5",
+    "verification": "ldrb w8,[x0,#0xc5] and strb wzr,[x21,#0xc5] in the original Program::video; only this process-local request flag is set"
+  },
+  "settings": {
+    "private_file": true,
+    "Video_Driver": "Metal",
+    "Video_Quality": "SD",
+    "DisableVideoInterfaceProcessing": false,
+    "Shader": "None",
+    "Input_Defocus": "Allow",
+    "ExpansionPak": false
+  },
+  "reference_proof": {
+    "file": "old-rom-capture-proof.json",
+    "passed": true,
+    "static_exact_rgb_pixels": 150000,
+    "static_total_rgb_pixels": 150000,
+    "excluded_animated_marker_box": [
+      60,
+      145,
+      132,
+      195
+    ],
+    "official_png_equals_all153600_raw_callback_pixels": true
+  },
+  "roms": {
+    "old_reference": {
+      "file": "port/frontends/n64/adventure/poketcg-vi-enlarged.z64",
+      "sha256": "eb11731e837be1a8b4dced4eeec2c73607e756b0df8e300481a9a45366b62809"
+    },
+    "current": {
+      "file": "port/frontends/n64/adventure/poketcg-roof-static.z64",
+      "sha256": "e0aecfe378f585a28bc8327dc2eb81c7e0bdfb0095f1f2c427e0b7169291312a",
+      "diagnostic": 4,
+      "filter": 1,
+      "natural_selection_switch_rendered_frames": 900
+    }
+  },
+  "captures": [
+    {
+      "file": "after-mason-post-vi.png",
+      "selection": 1,
+      "label": "mason",
+      "dimensions": [
+        640,
+        240
+      ],
+      "png_sha256": "12b6e1d8da7823e7e9e544b285895262f6ea96a80e6a170a9076d06b76859931",
+      "rgb_sha256": "062e750aac02bdb989d6de5ce39450241ab690614a3b12b701b80f905981c4e1",
+      "all153600_callback_pixels_equal_png_rgb": true,
+      "callback": {
+        "callbacks": 161,
+        "event": "requestScreenshot",
+        "height": 240,
+        "index": 0,
+        "label_sha256": "3c52dba39438c4257ccd5563f57e72c302973bb8b48f666a8d97bbd4839e28d0",
+        "pitch": 2560,
+        "pixels": "0x7cf1568000",
+        "program": "0x1058c1c00",
+        "raw_sha256": "3638e23539240fb515d6adf6c3ff16a6334b880bd91eedae6aa376f4e719a51f",
+        "valid_frames": 30,
+        "width": 640
+      }
+    },
+    {
+      "file": "after-dome-post-vi.png",
+      "selection": 12,
+      "label": "dome",
+      "dimensions": [
+        640,
+        240
+      ],
+      "png_sha256": "0cf2c3fac8f3bba7d996c7243bbe83149788cc916ff64ca4d7dd9aa7efe21b36",
+      "rgb_sha256": "312d92121f2df1a9b16be7f997f0c4492726ad6a8dafbec5a5bc8d0cce7090f6",
+      "all153600_callback_pixels_equal_png_rgb": true,
+      "callback": {
+        "callbacks": 6150,
+        "event": "requestScreenshot",
+        "height": 240,
+        "index": 1,
+        "label_sha256": "7d17b8981d7f5aaf81cca70a9ac440a82286bcb52d723b14e7099774674b98b5",
+        "pitch": 2560,
+        "pixels": "0x7cf1568000",
+        "program": "0x1058c1c00",
+        "raw_sha256": "f35162f83833efdf7dc4da8d38b808af1e21ebd5f652e38f46f8d7cff307ef46",
+        "valid_frames": 6019,
+        "width": 640
+      }
+    }
+  ],
+  "completion": {
+    "callbacks": 6153,
+    "natural_dome_guest_log": "OVERWORLD VI LOCATION 12",
+    "processes_terminated": true,
+    "installed_application_unmodified": true,
+    "host_settings_unchanged": true,
+    "emulator_fork_distributed": false
+  }
+}

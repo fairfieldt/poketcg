@@ -18,7 +18,7 @@ frontend.
 hierarchy. `tools/author_overworld.py` creates that scene with `bpy`, then exports
 its actual mesh positions, UVs, and baked vertex colors into the native island.
 Small opaque 32/64-pixel textures supply grass, rock, stone, timber, roofs,
-water, foliage and the roof badge; each fits RGBA16 TMEM. The native fixed-camera export omits
+water, foliage and roof badges; each fits RGBA16 TMEM. The native fixed-camera export omits
 unseen back/bottom faces, retaining about 5,600 triangles in 300 KiB. Repeated
 textures retain their original UVs; the renderer selects `GL_REPEAT` for these
 batches rather than subdividing geometry at every texture boundary. The complete
@@ -55,8 +55,10 @@ python3 port/world3d/tools/build_world.py --overworld-only
 python3 port/world3d/tools/check_world.py
 python3 port/world3d/tools/check_solid_terrain.py
 python3 port/world3d/tools/check_characters.py
-/Applications/Blender.app/Contents/MacOS/Blender --background \
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 \
   --python port/world3d/tools/author_overworld.py
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 \
+  --python port/world3d/tools/check_overworld_roofs.py
 /Applications/Blender.app/Contents/MacOS/Blender --background \
   --python port/world3d/tools/blender_world.py -- --render
 ```
@@ -68,6 +70,14 @@ island; `--overworld-only` invokes Blender to re-author it (set
 map rules from `port/maps/3D_GUIDE.md` and hand-reviewed prop elevations in
 `tools/scene_specs.py`. Building the N64 ROM from checked-in assets needs
 neither Blender nor the original Game Boy ROM.
+
+Island roofs use one closed outer shell per tier. Colored slopes, caps and
+white fascia share their boundary vertices; there is no complete trim roof
+under another roof. Round roofs have real recessed centers. Roof identifiers
+are painted into their owning cap faces. The authoring export checks all twelve
+roof sites for manifold shells, duplicate faces and competing surfaces from
+the native camera before publishing meshes. `check_overworld_roofs.py` repeats
+the check against the saved Blender artifact.
 
 - `generated/world3d_maps.h`: native-map-indexed scene paths and cameras.
 - `generated/world.json`: all maps, source NPC/warp/permission data, mesh

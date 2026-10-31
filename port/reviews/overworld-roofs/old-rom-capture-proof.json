@@ -1,0 +1,84 @@
+{
+  "reference": "port/reviews/overworld-readability/after-post-vi.png",
+  "capture": "port/frontends/n64/adventure/build/vi-direct-capture/old-reference/Nintendo 64/poketcg-vi-enlarged 2026-10-30 23-44-31.png",
+  "size": [
+    640,
+    240
+  ],
+  "static_excluded_box": [
+    60,
+    145,
+    132,
+    195
+  ],
+  "static_exact_pixels": 150000,
+  "static_total_pixels": 150000,
+  "regions": [
+    {
+      "name": "dome_roof",
+      "box": [
+        248,
+        91,
+        360,
+        133
+      ],
+      "exact_rgb": true,
+      "sha256": "87fbe61db241d4318771d26cad4757a309cb70c4ef76afd1a5c814014ebed3ef",
+      "reference_sha256": "87fbe61db241d4318771d26cad4757a309cb70c4ef76afd1a5c814014ebed3ef"
+    },
+    {
+      "name": "fighting_roof",
+      "box": [
+        190,
+        144,
+        302,
+        186
+      ],
+      "exact_rgb": true,
+      "sha256": "3c5e556405a52af414a5b8a581f937ee489f8cd8f51fd489d95d3bcacdbffc0c",
+      "reference_sha256": "3c5e556405a52af414a5b8a581f937ee489f8cd8f51fd489d95d3bcacdbffc0c"
+    },
+    {
+      "name": "science",
+      "box": [
+        435,
+        55,
+        515,
+        88
+      ],
+      "exact_rgb": true,
+      "sha256": "55fbb27ac424476f2e9dcbfeb5834b8043d350feaac82000086545d8e06f122d",
+      "reference_sha256": "55fbb27ac424476f2e9dcbfeb5834b8043d350feaac82000086545d8e06f122d"
+    },
+    {
+      "name": "label",
+      "box": [
+        18,
+        8,
+        366,
+        23
+      ],
+      "exact_rgb": true,
+      "sha256": "46976efaa32c24962e56fa46ae42d2c1accc2d85489c3b165524549cfbc3ec35",
+      "reference_sha256": "46976efaa32c24962e56fa46ae42d2c1accc2d85489c3b165524549cfbc3ec35"
+    },
+    {
+      "name": "rightsea",
+      "box": [
+        580,
+        20,
+        630,
+        140
+      ],
+      "exact_rgb": true,
+      "sha256": "055bb15a605fc57bcfd2fc664abc4390657d990536981cae004fc153b6a2e0b4",
+      "reference_sha256": "055bb15a605fc57bcfd2fc664abc4390657d990536981cae004fc153b6a2e0b4"
+    }
+  ],
+  "first_differences": [],
+  "reference_sha256": "526a655abf157e6805f9c7c4fde667e0e9aaeb57fe2313533751112f183029f9",
+  "export_file": "old-rom-direct-post-vi.png",
+  "export_sha256": "1ca8f85b7144e20d2a7bc01e5a82347e7c9964d693a731c1e2b22bbfdcd42a7f",
+  "all153600_callback_pixels_equal_official_png_rgb": true,
+  "passed": true
+}

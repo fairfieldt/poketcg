@@ -10055,11 +10055,13 @@
   "meshes": {
     "overworld": {
       "file": "maps/overworld.l64",
-      "vertices": 11114,
-      "triangles": 5560,
-      "batches": 16,
+      "vertices": 10854,
+      "triangles": 5410,
+      "batches": 18,
       "textures": [
+        "t1061656e9659e580",
         "t10e0038945313eb8",
+        "t14a0c54e08f12b0f",
         "t1be80a1c7bb22f33",
         "t231f74feec91db8e",
         "t25fa21fce63252dd",
@@ -21430,7 +21432,7 @@
     "actors": "actors.l64",
     "textures": "content-addressed PNG files, global deduplication"
   },
-  "texture_count": 431,
+  "texture_count": 433,
   "individual_characters": [
     {
       "file": "maps/actor_mark.l64",

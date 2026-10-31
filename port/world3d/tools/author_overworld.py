@@ -200,7 +200,6 @@ DARKMAT=material('Inset — blue charcoal',color=DARK)
 REDMAT=material('Accent — red',color=RED)
 GOLDMAT=material('Accent — gold',color=GOLD)
 BLUEMAT=material('Accent — blue',color=BLUE)
-LEAFMAT=material('Accent — leaf green',color=(157,201,76,255))
 FOAM=material('Foam — pale cyan',color=(176,225,235,255))
 FOAMWHITE=material('Foam — white tips',color=(246,249,230,255))
 
@@ -349,19 +348,26 @@ def bake_ground_lighting():
         split_edge_budget=GROUND_SPLIT_BUDGET,sun_ground=list(SUN_GROUND),opaque_overlays=False))
 
 
-def mesh(name,verts,faces,mat,up=False,uvs=None,shade=1):
+def mesh(name,verts,faces,mat,up=False,uvs=None,shade=1,face_materials=None):
     data=bpy.data.meshes.new(name)
     verts=[world(v) for v in verts]
     if up:
         faces=[tuple(reversed(f)) if (verts[f[1]]-verts[f[0]]).cross(verts[f[2]]-verts[f[0]]).z<0 else f for f in faces]
-    data.from_pydata(verts,[],faces);data.materials.append(mat);data.update()
+    data.from_pydata(verts,[],faces)
+    face_materials=face_materials or [mat]*len(faces)
+    assert len(face_materials)==len(faces)
+    palette=[]
+    for surface in face_materials:
+        if surface not in palette:palette.append(surface);data.materials.append(surface)
+    data.update()
     uv=data.uv_layers.new(name='UVMap')
     col=data.color_attributes.new(name='Color',type='FLOAT_COLOR',domain='CORNER')
-    base=mat['native_color']
     for poly in data.polygons:
+        surface=face_materials[poly.index];poly.material_index=palette.index(surface)
+        base=surface['native_color']
         normal=poly.normal
         light=(.72+.28*max(0,normal.dot(SUN)))*shade
-        if mat in (FOAM,FOAMWHITE):light=1
+        if surface in (FOAM,FOAMWHITE):light=1
         coords=[data.vertices[v].co for v in poly.vertices]
         dominant=max(range(3),key=lambda i:abs(normal[i]))
         axes=(0,1) if dominant==2 else (0,2) if dominant==1 else (1,2)
@@ -370,28 +376,28 @@ def mesh(name,verts,faces,mat,up=False,uvs=None,shade=1):
         for j,li in enumerate(poly.loop_indices):
             v=data.vertices[data.loops[li].vertex_index].co
             if uvs:coord=uvs[poly.index][j]
-            elif mat['native_tile']:coord=(v.x/mat['native_scale'],-v.y/mat['native_scale'])
+            elif surface['native_tile']:coord=(v.x/surface['native_scale'],-v.y/surface['native_scale'])
             else:coord=tuple((v[k]-mins[i])/spans[i] if spans[i]>.00001 else 0 for i,k in enumerate(axes))
             uv.data[li].uv=coord
             # A small position-dependent tint keeps wide top faces painted,
             # rather than uniformly lit, while remaining baked native colors.
             local=light
-            if mat==GRASS:
+            if surface==GRASS:
                 normal=Vector((-.0245*math.cos(v.x*.7),-.0234*math.sin(-v.y*.9),1)).normalized()
                 local=(.83+.17*max(0,normal.dot(SUN)))*(.96+.04*math.sin(v.x*.6+v.y*.4)**2)
-            elif mat==WATER:local=1
+            elif surface==WATER:local=1
             col.data[li].color=tuple(linear(min(255,round(c*local))) for c in base[:3])+(1,)
     obj=bpy.data.objects.new(name,data);active_collection.objects.link(obj)
     obj['native_export']=True
     return obj
 
 
-def box(name,x,z,w,d,h,mat,y=None):
+def box(name,x,z,w,d,h,mat,y=None,top=None):
     if y is None:y=height(x+w/2,z+d/2)
     v=[(x,y,z),(x+w,y,z),(x+w,y,z+d),(x,y,z+d),
        (x,y+h,z),(x+w,y+h,z),(x+w,y+h,z+d),(x,y+h,z+d)]
     f=[(0,1,2,3),(0,4,5,1),(1,5,6,2),(2,6,7,3),(3,7,4,0),(4,7,6,5)]
-    return mesh(name,v,f,mat)
+    return mesh(name,v,f,mat,face_materials=[mat]*5+[top or mat])
 
 
 def cylinder(name,x,z,y,r,h,mat,n=8,top_r=None):
@@ -408,21 +414,99 @@ def cone(name,x,z,y,r,h,mat,n=6,shade=1):
     return mesh(name,verts,[(i,n,(i+1)%n) for i in range(n)],mat,shade=shade)
 
 
-def roof(name,x,z,w,d,y,rise,mat):
-    # A hip roof is a closed, chamfered low-poly form with visible eaves.
+def roof_tag(obj,site,tier=0,role='shell'):
+    obj['roof_site']=site;obj['roof_tier']=tier;obj['roof_role']=role
+    return obj
+
+
+def cap_uv(obj):
+    # The owned final cap uses native image rows north -> south, matching the
+    # original verified roof badge rather than Blender's reversed Y axis.
+    data=obj.data;poly=data.polygons[-1]
+    coords=[data.vertices[i].co for i in poly.vertices]
+    left,right=min(v.x for v in coords),max(v.x for v in coords)
+    north,south=min(-v.y for v in coords),max(-v.y for v in coords)
+    for li in poly.loop_indices:
+        v=data.vertices[data.loops[li].vertex_index].co
+        data.uv_layers.active.data[li].uv=((v.x-left)/(right-left),(-v.y-north)/(south-north))
+    return obj
+
+
+def roof(name,x,z,w,d,y,rise,mat,site=None,tier=0,cap_raise=0,cap_mat=None):
+    # One outer shell: trim is the exposed fascia, never a second full roof.
+    fascia=.12
+    assert rise>fascia
     cut=min(w,d)*.13
     outline=[(x+cut,z),(x+w-cut,z),(x+w,z+cut),(x+w,z+d-cut),
              (x+w-cut,z+d),(x+cut,z+d),(x,z+d-cut),(x,z+cut)]
     verts=[(a,y,b) for a,b in outline]
-    verts += [(x+w/2+(a-x-w/2)*.66,y+rise,z+d/2+(b-z-d/2)*.48) for a,b in outline]
-    faces=[tuple(range(8)),tuple(reversed(range(8,16)))]+[(i,8+i,8+(i+1)%8,(i+1)%8) for i in range(8)]
-    return mesh(name,verts,faces,mat)
+    verts += [(a,y+fascia,b) for a,b in outline]
+    cap=[(x+w/2+(a-x-w/2)*.66,y+rise,z+d/2+(b-z-d/2)*.48) for a,b in outline]
+    verts+=cap
+    faces=[tuple(range(8))];mats=[TRIM]
+    for i in range(8):
+        j=(i+1)%8
+        faces.append((i,8+i,8+j,j));mats.append(TRIM)
+        faces.append((8+i,16+i,16+j,8+j));mats.append(mat)
+    cap_start=16
+    if cap_raise:
+        verts += [(x+w/2+(a-x-w/2)*.82,yy+cap_raise,z+d/2+(b-z-d/2)*.82) for a,yy,b in cap]
+        for i in range(8):
+            j=(i+1)%8;faces.append((16+i,24+i,24+j,16+j));mats.append(mat)
+        cap_start=24
+    faces.append(tuple(reversed(range(cap_start,cap_start+8))));mats.append(cap_mat or mat)
+    obj=cap_uv(mesh(name,verts,faces,mat,face_materials=mats))
+    return roof_tag(obj,site or name,tier)
 
 
-def gable(name,x,z,w,d,y,rise,mat):
+def gable(name,x,z,w,d,y,rise,mat,site=None,tier=0):
+    fascia=.12
     verts=[(x,y,z),(x+w,y,z),(x+w,y,z+d),(x,y,z+d),
+           (x,y+fascia,z),(x+w,y+fascia,z),(x+w,y+fascia,z+d),(x,y+fascia,z+d),
            (x+w*.5,y+rise,z),(x+w*.5,y+rise,z+d)]
-    return mesh(name,verts,[(0,1,2,3),(0,4,1),(3,2,5),(0,3,5,4),(4,5,2,1)],mat)
+    faces=[(0,1,2,3),(0,4,5,1),(1,5,6,2),(2,6,7,3),(3,7,4,0),
+           (4,8,5),(7,6,9),(4,7,9,8),(8,9,6,5)]
+    obj=mesh(name,verts,faces,mat,face_materials=[TRIM]*5+[mat]*4)
+    return roof_tag(obj,site or name,tier)
+
+
+def flat_roof(name,x,z,w,d,y,mat,site,cap_mat=None):
+    rim=.08;h=.15
+    corners=[(x,z),(x+w,z),(x+w,z+d),(x,z+d)]
+    verts=[(a,y,b) for a,b in corners]+[(a,y+h,b) for a,b in corners]
+    verts += [(x+rim,y+h,z+rim),(x+w-rim,y+h,z+rim),
+              (x+w-rim,y+h,z+d-rim),(x+rim,y+h,z+d-rim)]
+    faces=[(0,1,2,3)];mats=[TRIM]
+    for i in range(4):
+        j=(i+1)%4
+        faces.extend([(i,4+i,4+j,j),(4+i,8+i,8+j,4+j)]);mats.extend([TRIM,TRIM])
+    faces.append((8,11,10,9));mats.append(cap_mat or mat)
+    return roof_tag(cap_uv(mesh(name,verts,faces,mat,face_materials=mats)),site)
+
+
+def round_roof(name,x,z,profile,side_mats,inner_radius,recess,center_mat,site,n=8):
+    # A continuous annular roof with a recessed center. Intermediate profile
+    # rings have no caps, so neighboring roof stages cannot fight for depth.
+    assert len(side_mats)==len(profile)-1 and 0<inner_radius<profile[-1][0]
+    verts=[]
+    for radius,y in profile:
+        verts += [(x+radius*math.cos(i*math.tau/n),y,z+radius*math.sin(i*math.tau/n)) for i in range(n)]
+    top_y=profile[-1][1];inner=len(verts)
+    verts += [(x+inner_radius*math.cos(i*math.tau/n),top_y,z+inner_radius*math.sin(i*math.tau/n)) for i in range(n)]
+    floor=len(verts)
+    verts += [(x+inner_radius*math.cos(i*math.tau/n),top_y-recess,z+inner_radius*math.sin(i*math.tau/n)) for i in range(n)]
+    faces=[tuple(range(n))];mats=[side_mats[0]]
+    for ring,material in enumerate(side_mats):
+        for i in range(n):
+            j=(i+1)%n;lo=ring*n;hi=lo+n
+            faces.append((lo+i,hi+i,hi+j,lo+j));mats.append(material)
+    outer=(len(profile)-1)*n
+    for i in range(n):
+        j=(i+1)%n
+        faces.extend([(outer+i,inner+i,inner+j,outer+j),(inner+i,floor+i,floor+j,inner+j)])
+        mats.extend([side_mats[-1]]*2)
+    faces.append(tuple(reversed(range(floor,floor+n))));mats.append(center_mat)
+    return roof_tag(cap_uv(mesh(name,verts,faces,side_mats[0],face_materials=mats)),site)
 
 
 def rock(name,x,z,scale,mat=ROCK):
@@ -594,7 +678,7 @@ def front(name,x,z,w,base,roof_y):
     box(name+' door step',x-.28,z+.02,.56,.24,.08,STONE,y=base)
 
 
-def hall(name,node,w=1.25,d=.95,roofmat=GREENROOF,roof_type='flat'):
+def hall(name,node,w=1.25,d=.95,roofmat=GREENROOF,roof_type='flat',cap_mat=None,cap_raise=0):
     x,z=node;center_z=z-d*.46
     y=height(x,z)
     rect_caster(name,x-w*.55,center_z-d*.55,w*1.1,d*1.1,1.1 if roof_type!='flat' else .9)
@@ -605,36 +689,34 @@ def hall(name,node,w=1.25,d=.95,roofmat=GREENROOF,roof_type='flat'):
     for dx in (-w*.5,w*.5-.09):box(name+' corner pillar',x+dx,center_z-d*.5,.09,d,.64,TRIM,y=y+.12)
     front(name,x,z+d*.05+.025,w,y+.12,y+.74)
     if roof_type=='flat':
-        box(name+' roof',x-w*.53,center_z-d*.53,w*1.06,d*1.06,.1,roofmat,y=y+.75)
-        for sign in (-1,1):
-            box(name+' roof edge',x-w*.56,center_z+sign*d*.53-.035,w*1.12,.07,.15,TRIM,y=y+.74)
-            box(name+' roof edge',x+sign*w*.54-.035,center_z-d*.56,.07,d*1.12,.15,TRIM,y=y+.74)
-    else:
-        roof(name+' white eaves',x-w*.6,center_z-d*.61,w*1.2,d*1.22,y+.74,.25,TRIM)
-        roof(name+' tiled roof',x-w*.56,center_z-d*.56,w*1.12,d*1.12,y+.78,.27,roofmat)
+        flat_roof(name+' roof',x-w*.56,center_z-d*.56,w*1.12,d*1.12,y+.74,roofmat,name,cap_mat)
+    elif roof_type=='hip':
+        roof(name+' roof',x-w*.6,center_z-d*.61,w*1.2,d*1.22,y+.74,.33,roofmat,
+             site=name,cap_mat=cap_mat,cap_raise=cap_raise)
+    else:assert roof_type=='none'
     return y,center_z
 
 
 group('01 Mason Laboratory')
-y,cz=hall('Mason Laboratory',(2.5,14),1.25,1.05,BLUEROOF,'hip')
+y,cz=hall('Mason Laboratory',(2.5,14),1.25,1.05,BLUEROOF,'none')
 box('Mason side annex',1.52,13.33,.45,.55,.5,STONE,y=y+.08)
-gable('Mason silver curved roof',1.82,12.92,1.36,1.12,y+.83,.3,TRIM)
+gable('Mason silver roof',1.7,12.85,1.6,1.23,y+.74,.46,TRIM,site='Mason Laboratory')
 cylinder('Mason chimney',2.87,13.12,y+1.0,.07,.5,STONE,n=6)
 cylinder('Mason gold chimney cap',2.87,13.12,y+1.46,.1,.07,GOLDMAT,n=6)
-cylinder('Dish support',1.7,13.42,y+.52,.04,.26,WOOD,n=4)
-mesh('Laboratory satellite dish',[(1.7,y+.7,13.42)]+[(1.7+.25*math.cos(i*math.tau/8),y+.92,13.42+.25*math.sin(i*math.tau/8)) for i in range(8)],
+cylinder('Dish support',1.95,13.2,y+1.0,.04,.35,WOOD,n=4)
+mesh('Laboratory satellite dish',[(1.95,y+1.27,13.2)]+[(1.95+.25*math.cos(i*math.tau/8),y+1.49,13.2+.25*math.sin(i*math.tau/8)) for i in range(8)],
      [(0,i+1,(i+1)%8+1) for i in range(8)],TRIM,up=True)
-beam('Dish aerial',(1.7,y+.73,13.42),(1.7,y+1.02,13.42),.025,BLUEMAT)
+beam('Dish aerial',(1.95,y+1.30,13.2),(1.95,y+1.63,13.2),.025,BLUEMAT)
 
 group('02 Ishihara House')
 hall('Ishihara House',(1.5,4),.95,.8,GOLDROOF,'hip')
 
 group('03 Fighting Club')
 y,cz=hall('Fighting Club',(7.5,14),1.25,.9,REDROOF,'hip')
-gable('Fighting Club upper white roof',7.11,cz-.34,.78,.68,y+1.05,.42,TRIM)
-gable('Fighting Club upper red roof',7.17,cz-.31,.66,.62,y+1.10,.4,REDROOF)
+box('Fighting Club upper storey',7.19,cz-.27,.62,.54,.18,STONE,y=y+1.07)
+gable('Fighting Club upper roof',7.05,cz-.38,.9,.76,y+1.25,.36,REDROOF,site='Fighting Club',tier=1)
 for dx in (-.62,.62):
-    cone('Fighting roof finial',7.5+dx,cz,y+.95,.05,.24,TRIM,n=4)
+    roof_tag(cone('Fighting roof finial',7.5+dx,cz,y+.95,.05,.24,TRIM,n=4),'Fighting Club',role='ornament')
 
 group('04 Rock Club and western hills')
 for x,z,sx,sy,sz in [(2.2,7.5,.75,.95,.75),(3.1,6.9,.8,1.25,.65),(4.3,7.0,1,1.05,.6),
@@ -644,7 +726,7 @@ y=height(3.5,8)
 rect_caster('Rock Club gate',2.9,7.61,1.19,.5,.95)
 box('Rock Club gate recess',2.98,7.66,1.04,.35,.68,DARKMAT,y=y)
 for x in (2.91,3.93):box('Rock Club stone jamb',x,7.61,.15,.5,.85,STONE,y=y)
-box('Rock Club gate lintel',2.9,7.61,1.19,.5,.17,STONE,y=y+.78)
+roof_tag(box('Rock Club gate lintel',2.9,7.61,1.19,.5,.17,STONE,y=y+.78),'Rock Club')
 box('Rock Club timber door',3.08,7.97,.85,.04,.62,WOOD,y=y+.04)
 for x in (3.23,3.65):box('Rock gate gold hinge',x,8.0,.11,.035,.06,GOLDMAT,y=y+.3)
 box('Rock Club approach step',3.0,8.0,1,.32,.07,STONE,y=y)
@@ -663,45 +745,32 @@ cylinder('Water Club glass band',x,z,y+.28,.715,.32,GLASS,n=8)
 for i in range(8):
     a=(i+.5)*math.tau/8
     cylinder('Water Club column',x+.68*math.cos(a),z+.68*math.sin(a),y+.08,.055,.77,TRIM,n=4)
-cylinder('Water Club white roof skirt',x,z,y+.75,.81,.12,TRIM,n=8,top_r=.7)
-cylinder('Water Club sloped roof',x,z,y+.87,.7,.28,STONE,n=8,top_r=.43)
-cylinder('Water Club open center',x,z,y+1.145,.42,.012,GREENROOF,n=8)
+round_roof('Water Club roof',x,z,[(.81,y+.75),(.7,y+.87),(.43,y+1.15)],
+           [TRIM,STONE],.33,.12,GREENROOF,'Water Club')
 front('Water Club',x,13.70,1.1,y+.03,y+.8)
 for i in range(8):box('Water Club stair',x-.21,13.56+i*.085,.42,.09,.07,STONE,y=y+.035-i*.025)
 
 group('06 Lightning Club')
-y,cz=hall('Lightning Club',(5.5,11),1.2,.87,GOLDMAT)
 # Paint the bolt into the top face. Separate tiny overlay triangles lose
 # fragments against the roof in the N64's compressed depth buffer.
 bolt=[(17,3),(25,3),(18,13),(25,13),(8,29),(13,18),(7,18)]
 rows=[[DARK if inside(x+.5,z+.5,bolt) else GOLD for x in range(32)] for z in range(32)]
-bolt_material=material('Roof — Lightning bolt',rows=rows)
-roof_object=bpy.data.objects['Lightning Club roof']
-data=roof_object.data;data.materials.append(bolt_material)
-for poly in data.polygons:
-    if poly.normal.z<.9:continue
-    poly.material_index=len(data.materials)-1
-    coords=[data.vertices[i].co for i in poly.vertices]
-    left,right=min(v.x for v in coords),max(v.x for v in coords)
-    north,south=min(-v.y for v in coords),max(-v.y for v in coords)
-    light=.72+.28*max(0,poly.normal.dot(SUN))
-    for li in poly.loop_indices:
-        vertex=data.vertices[data.loops[li].vertex_index].co
-        data.uv_layers.active.data[li].uv=((vertex.x-left)/(right-left),(-vertex.y-north)/(south-north))
-        data.color_attributes['Color'].data[li].color=(linear(round(255*light)),)*3+(1,)
+bolt_material=material('Roof — Lightning bolt',rows=rows,color=(255,255,255,255))
+y,cz=hall('Lightning Club',(5.5,11),1.2,.87,GOLDMAT,cap_mat=bolt_material)
 
 group('07 Grass Club')
-y,cz=hall('Grass Club',(16.5,9),1.45,.9,GREENROOF,'hip')
-mesh('Grass roof leaf',[(16.5-.31,y+1.13,cz+.12),(16.5-.07,y+1.23,cz-.25),
-                        (16.5+.31,y+1.13,cz-.12),(16.5+.07,y+1.13,cz+.25)],
-     [(0,1,2),(0,2,3)],LEAFMAT,up=True)
+leaf=[(4,23),(8,9),(27,4),(24,22),(14,28)]
+green_rows=texture_rows[GREENROOF['native_texture']]
+rows=[[(157,201,76,255) if inside(x+.5,z+.5,leaf) else green_rows[z][x] for x in range(32)] for z in range(32)]
+leaf_material=material('Roof — Grass leaf',rows=rows)
+y,cz=hall('Grass Club',(16.5,9),1.45,.9,GREENROOF,'hip',cap_mat=leaf_material)
 
 group('08 Psychic Club obelisk')
 x,z=12.5,6.15;y=height(x,z)
 rect_caster('Psychic Club',x-.37,z-.28,.74,.62,1.5)
 box('Psychic Club plinth',x-.37,z-.28,.74,.62,.18,STONE,y=y)
 box('Psychic Club obelisk',x-.21,z-.19,.42,.4,1.02,STONE,y=y+.18)
-roof('Psychic Club pointed crown',x-.22,z-.2,.44,.42,y+1.19,.31,TRIM)
+roof('Psychic Club pointed crown',x-.22,z-.2,.44,.42,y+1.19,.31,TRIM,site='Psychic Club')
 # One blocky rune replaces three subpixel glyphs. Its bars project at least
 # two native pixels after the landmark's footprint enlargement below.
 for dx in (-.19,.06):
@@ -715,8 +784,7 @@ building_footprints.append((11.8,5.8,1.4,1.1))
 
 group('09 Science Club')
 y,cz=hall('Science Club',(16.5,5),1.35,.92,BLUEROOF)
-box('Science Club vent',16.7,cz-.24,.34,.38,.29,TRIM,y=y+.86)
-box('Science Club vent inset',16.73,cz-.20,.28,.30,.055,DARKMAT,y=y+1.15)
+box('Science Club vent',16.7,cz-.24,.34,.38,.29,TRIM,y=y+.89,top=DARKMAT)
 
 group('10 Fire Club volcano')
 cx,cz=16.2,2.08;n=12
@@ -745,9 +813,8 @@ def round_hall(name,x,z):
     for i in range(8):
         a=i*math.tau/8
         cylinder(name+' pale column',x+.59*math.cos(a),z+.59*math.sin(a),y+.4,.045,.62,TRIM,n=4)
-    cylinder(name+' roof bevel',x,z,y+.96,.75,.17,STONE,n=8,top_r=.62)
-    cylinder(name+' crown',x,z,y+1.13,.62,.18,TRIM,n=8,top_r=.47)
-    cylinder(name+' crown opening',x,z,y+1.315,.45,.012,BLUEROOF,n=8)
+    round_roof(name+' roof',x,z,[(.75,y+.96),(.62,y+1.13),(.47,y+1.31)],
+               [STONE,TRIM],.33,.10,BLUEROOF,name)
     for i in range(7):box(name+' entrance stair',x-.18,z+.56+i*.08,.36,.085,.065,STONE,y=y+.15-i*.025)
     front(name,x,z+.65,.85,y+.14,y+.95)
 
@@ -758,16 +825,21 @@ landmarks.append(dict(name='Challenge Hall',x=8.5,y=5,width=1.5,depth=1.5))
 building_footprints.append((7.65,3.6,1.7,1.8))
 
 group('12 Pokemon Dome')
-y,cz=hall('Pokemon Dome',(9.5,9.5),1.53,1.03,REDROOF,'hip')
-cylinder('Pokemon Dome roof center',9.5,cz,y+1.05,.45,.12,REDROOF,n=8,top_r=.38)
-# The front badge and white roof belt make this a Poké Ball stadium, rather
-# than another red building. The badge is real opaque geometry.
-for half,mat in ((0,REDMAT),(1,TRIM)):
-    verts=[(9.5,y+.86,9.65)]
-    verts += [(9.5+.33*math.cos((i+half*6)*math.pi/6),y+.86+.33*math.sin((i+half*6)*math.pi/6),9.65) for i in range(7)]
-    mesh('Dome Pokeball badge',verts,[tuple(range(8))],mat)
-box('Dome badge band',9.17,9.66,.66,.035,.13,DARKMAT,y=y+.795)
-box('Dome badge button',9.41,9.70,.18,.04,.18,TRIM,y=y+.77)
+# The badge belongs to the cap itself, without intersecting decal geometry.
+red_rows=texture_rows[REDROOF['native_texture']]
+rows=[]
+for z in range(32):
+    row=[]
+    for x in range(32):
+        radius=math.hypot(x-15.5,z-15.5)
+        color=red_rows[z][x]
+        if radius<14:
+            color=DARK if radius>12 or abs(z-15.5)<2 else RED if z<16 else WHITE
+            if math.hypot(x-15.5,z-15.5)<3:color=WHITE
+        row.append(color)
+    rows.append(row)
+dome_material=material('Roof — Dome badge',rows=rows)
+y,cz=hall('Pokemon Dome',(9.5,9.5),1.53,1.03,REDROOF,'hip',cap_mat=dome_material,cap_raise=.10)
 
 
 def enlarge_landmarks():
@@ -963,7 +1035,6 @@ def native_export():
     temp=OUT/'maps/overworld-authoring.l64'
     record=native.save(temp)
     assert record['triangles']<7500,record
-    os.replace(temp,OUT/'maps/overworld.l64');record['file']='maps/overworld.l64'
     doc=json.loads((OUT/'world.json').read_text())
     before_nodes=doc['overworld_nodes']
     doc['meshes']['overworld']=record
@@ -972,6 +1043,14 @@ def native_export():
         concept='port/maps/prototypes/overworld_n64_concept_v1.png',sea_height=SEA,ground_height=.35)
     doc['texture_count']=len({t for r in doc['meshes'].values() for t in r['textures']})
     assert doc['overworld_nodes']==before_nodes
+    # Reject layered/crossing roof surfaces before publishing runtime assets.
+    from check_overworld_roofs import validate as validate_roofs
+    roof_check=validate_roofs(doc,.12)
+    report=ROOT/'build/roof-check.json';report.parent.mkdir(parents=True,exist_ok=True)
+    report.write_text(json.dumps(roof_check,indent=2)+'\n')
+    assert roof_check['passed'],roof_check['failures'][:8]
+    scene['roof_shell_validation']=json.dumps(roof_check['totals'])
+    os.replace(temp,OUT/'maps/overworld.l64');record['file']='maps/overworld.l64'
     write_world_metadata(OUT,doc)
     (OUT/'overworld_authoring.json').write_text(json.dumps(dict(record=record,camera=doc['maps'][0]['camera'],
         blend='overworld.blend',script='tools/author_overworld.py',native_uv_wrap='repeat when outside [0,1]',
