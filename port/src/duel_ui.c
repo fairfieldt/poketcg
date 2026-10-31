@@ -355,7 +355,9 @@ bool HandleMenuInput(void)
 	r.cursor = wCurMenuItem;
 	r.items = wDuelTempList;
 	if (r.menu == TCG_MENU_PLAY_AREA)
-		r.arg[0] = wExcludeArenaPokemon; /* item i is play area location arg[0] + i */
+		/* Included/Bench cursors start at rows 0/3. The exclude flag can
+		 * belong to an earlier selector rather than this menu. */
+		r.arg[0] = (u8)(wMenuCursorYOffset / 3);
 	int c = request(&r);
 	wRefreshMenuCursorSFX = 0;
 	if (c < 0 || c >= wNumMenuItems) {
@@ -1257,7 +1259,7 @@ void DisplayPlayAreaScreenToUsePkmnPower_DrawScreen(void)
 		b++;
 	} while (--c);
 	wNumPlayAreaItems = b;
-	tcg_ui_screen(TCG_SCREEN_PLAY_AREA, 0, 1);
+	tcg_ui_screen(TCG_SCREEN_PLAY_AREA, 0, TCG_PLAY_AREA_POWER);
 }
 
 /* ---------------------------------------------------------------- energy discard menu */

@@ -1,0 +1,2026 @@
+CHECK_FLOW_BEGIN postko-P1
+ASK play_area P1 n=3 cursor=0
+MOCK: [frame 1] wait 6
+MOCK: [frame 7] expect CHECK_FLOW_BEGIN~postko-P1
+MOCK: expect 'CHECK_FLOW_BEGIN~postko-P1' >= 1: 1
+MOCK: [frame 7] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 7] press RIGHT
+MOCK: [frame 11] press RIGHT
+MOCK: [frame 15] press Z+A
+CHECK BEGIN ports=1
+MOCK: [frame 19] wait 4
+MOCK: [frame 23] expect CHECK~BEGIN~ports=1
+MOCK: expect 'CHECK~BEGIN~ports=1' >= 1: 1
+MOCK: [frame 23] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 23] shot postko-P1-check
+MOCK: shot build/host/shots/check-selector-320/postko-P1-check.ppm (frame 24)
+MOCK: [frame 24] press B
+MOCK: [frame 28] press START
+VIEW SLOT P1 loc=2 card=153
+MOCK: [frame 32] expect VIEW~SLOT~P1~loc=2
+MOCK: expect 'VIEW~SLOT~P1~loc=2' >= 1: 1
+MOCK: [frame 32] shot postko-P1-selected-card
+MOCK: shot build/host/shots/check-selector-320/postko-P1-selected-card.ppm (frame 33)
+MOCK: [frame 33] press B
+MOCK: [frame 37] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 37] press LEFT
+MOCK: [frame 41] press Z
+CHECK BEGIN ports=1
+MOCK: [frame 45] press B
+MOCK: [frame 49] shot postko-P1-same-selector
+MOCK: shot build/host/shots/check-selector-320/postko-P1-same-selector.ppm (frame 50)
+MOCK: [frame 50] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 50] press A
+REQ play_area P1 n=3 -> 1
+CHECK_FLOW_RETURN postko-P1 answer=1 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN postko-P2
+ASK play_area P2 n=3 cursor=0
+MOCK: [frame 54] wait 6
+MOCK: [frame 60] expect CHECK_FLOW_BEGIN~postko-P2
+MOCK: expect 'CHECK_FLOW_BEGIN~postko-P2' >= 1: 1
+MOCK: [frame 60] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 60] press RIGHT P2
+MOCK: [frame 64] press RIGHT P2
+MOCK: [frame 68] press Z+A P2
+CHECK BEGIN ports=2
+MOCK: [frame 72] wait 4
+MOCK: [frame 76] expect CHECK~BEGIN~ports=2
+MOCK: expect 'CHECK~BEGIN~ports=2' >= 1: 1
+MOCK: [frame 76] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 76] shot postko-P2-check
+MOCK: shot build/host/shots/check-selector-320/postko-P2-check.ppm (frame 77)
+MOCK: [frame 77] press B P2
+MOCK: [frame 81] press START P2
+VIEW SLOT P2 loc=2 card=153
+MOCK: [frame 85] expect VIEW~SLOT~P2~loc=2
+MOCK: expect 'VIEW~SLOT~P2~loc=2' >= 1: 1
+MOCK: [frame 85] shot postko-P2-selected-card
+MOCK: shot build/host/shots/check-selector-320/postko-P2-selected-card.ppm (frame 86)
+MOCK: [frame 86] press B P2
+MOCK: [frame 90] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 90] press LEFT P2
+MOCK: [frame 94] press Z P2
+CHECK BEGIN ports=2
+MOCK: [frame 98] press B P2
+MOCK: [frame 102] shot postko-P2-same-selector
+MOCK: shot build/host/shots/check-selector-320/postko-P2-same-selector.ppm (frame 103)
+MOCK: [frame 103] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 103] press A P2
+REQ play_area P2 n=3 -> 1
+CHECK_FLOW_RETURN postko-P2 answer=1 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN menu-P1
+ASK menu/play_area P1 n=2 cursor=0
+MOCK: [frame 107] wait 6
+MOCK: [frame 113] expect CHECK_FLOW_BEGIN~menu-P1
+MOCK: expect 'CHECK_FLOW_BEGIN~menu-P1' >= 1: 1
+MOCK: [frame 113] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 113] press RIGHT
+MOCK: [frame 117] press Z+A
+CHECK BEGIN ports=1
+MOCK: [frame 121] wait 4
+MOCK: [frame 125] expect CHECK~BEGIN~ports=1
+MOCK: expect 'CHECK~BEGIN~ports=1' >= 1: 3
+MOCK: [frame 125] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 125] shot menu-P1-check
+MOCK: shot build/host/shots/check-selector-320/menu-P1-check.ppm (frame 126)
+MOCK: [frame 126] press B
+MOCK: [frame 130] press START
+VIEW SLOT P1 loc=2 card=153
+MOCK: [frame 134] expect VIEW~SLOT~P1~loc=2
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN transfer P1
+POWER_ASK transfer P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 2] wait 6
+MOCK: [frame 8] expect POWER_BEGIN~transfer~P1
+MOCK: expect 'POWER_BEGIN~transfer~P1' >= 1: 1
+MOCK: [frame 8] expect_none POWER_RETURN~transfer~P1
+MOCK: expect_none 'POWER_RETURN~transfer~P1': 0
+MOCK: [frame 8] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 12] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 1
+MOCK: [frame 12] shot transfer-P1-power
+MOCK: shot build/host/shots/power-flow-320/transfer-P1-power.ppm (frame 13)
+MOCK: [frame 13] press B
+MOCK: [frame 17] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK transfer P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 21] wait 6
+MOCK: [frame 27] expect POWER_ASK~transfer~P1~confirm
+MOCK: expect 'POWER_ASK~transfer~P1~confirm' >= 1: 1
+MOCK: [frame 27] shot transfer-P1-confirm
+MOCK: shot build/host/shots/power-flow-320/transfer-P1-confirm.ppm (frame 28)
+MOCK: [frame 28] press LEFT
+MOCK: [frame 32] press A
+REQ yes_no P1 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK transfer P1 ack answer=0
+POWER_ASK transfer P1 from answer=1
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 36] wait 6
+MOCK: [frame 42] expect POWER_ASK~transfer~P1~from
+MOCK: expect 'POWER_ASK~transfer~P1~from' >= 1: 1
+MOCK: [frame 42] shot transfer-P1-from
+MOCK: shot build/host/shots/power-flow-320/transfer-P1-from.ppm (frame 43)
+MOCK: [frame 43] press RIGHT
+MOCK: [frame 47] press START
+VIEW SLOT P1 loc=1 card=8
+MOCK: [frame 51] expect VIEW~SLOT~P1~loc=1
+MOCK: expect 'VIEW~SLOT~P1~loc=1' >= 1: 1
+MOCK: [frame 51] press B
+MOCK: [frame 55] press A
+REQ menu/play_area P1 n=3 -> 1
+POWER_ASK transfer P1 to answer=2
+ASK menu/play_area P1 n=3 cursor=1
+MOCK: [frame 59] wait 6
+MOCK: [frame 65] expect POWER_ASK~transfer~P1~to
+MOCK: expect 'POWER_ASK~transfer~P1~to' >= 1: 1
+MOCK: [frame 65] shot transfer-P1-to
+MOCK: shot build/host/shots/power-flow-320/transfer-P1-to.ppm (frame 66)
+MOCK: [frame 66] press RIGHT
+MOCK: [frame 70] press START
+VIEW SLOT P1 loc=2 card=44
+MOCK: [frame 74] expect VIEW~SLOT~P1~loc=2
+MOCK: expect 'VIEW~SLOT~P1~loc=2' >= 1: 1
+MOCK: [frame 74] press B
+MOCK: [frame 78] press A
+REQ menu/play_area P1 n=3 -> 2
+POWER_ASK transfer P1 from answer=-1
+ASK menu/play_area P1 n=3 cursor=2
+MOCK: [frame 82] wait 6
+MOCK: [frame 88] press B
+REQ menu/play_area P1 n=3 -> -1
+POWER_RETURN transfer P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN transfer P2
+POWER_ASK transfer P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 93] wait 6
+MOCK: [frame 99] expect POWER_RETURN~transfer~P1
+MOCK: expect 'POWER_RETURN~transfer~P1' >= 1: 1
+MOCK: [frame 99] wait 6
+MOCK: [frame 105] expect POWER_BEGIN~transfer~P2
+MOCK: expect 'POWER_BEGIN~transfer~P2' >= 1: 1
+MOCK: [frame 105] expect_none POWER_RETURN~transfer~P2
+MOCK: expect_none 'POWER_RETURN~transfer~P2': 0
+MOCK: [frame 105] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 109] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 1
+MOCK: [frame 109] shot transfer-P2-power
+MOCK: shot build/host/shots/power-flow-320/transfer-P2-power.ppm (frame 110)
+MOCK: [frame 110] press B P2
+MOCK: [frame 114] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK transfer P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 118] wait 6
+MOCK: [frame 124] expect POWER_ASK~transfer~P2~confirm
+MOCK: expect 'POWER_ASK~transfer~P2~confirm' >= 1: 1
+MOCK: [frame 124] shot transfer-P2-confirm
+MOCK: shot build/host/shots/power-flow-320/transfer-P2-confirm.ppm (frame 125)
+MOCK: [frame 125] press LEFT P2
+MOCK: [frame 129] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK transfer P2 ack answer=0
+POWER_ASK transfer P2 from answer=1
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 133] wait 6
+MOCK: [frame 139] expect POWER_ASK~transfer~P2~from
+MOCK: expect 'POWER_ASK~transfer~P2~from' >= 1: 1
+MOCK: [frame 139] shot transfer-P2-from
+MOCK: shot build/host/shots/power-flow-320/transfer-P2-from.ppm (frame 140)
+MOCK: [frame 140] press RIGHT P2
+MOCK: [frame 144] press START P2
+VIEW SLOT P2 loc=1 card=8
+MOCK: [frame 148] expect VIEW~SLOT~P2~loc=1
+MOCK: expect 'VIEW~SLOT~P2~loc=1' >= 1: 1
+MOCK: [frame 148] press B P2
+MOCK: [frame 152] press A P2
+REQ menu/play_area P2 n=3 -> 1
+POWER_ASK transfer P2 to answer=2
+ASK menu/play_area P2 n=3 cursor=1
+MOCK: [frame 156] wait 6
+MOCK: [frame 162] expect POWER_ASK~transfer~P2~to
+MOCK: expect 'POWER_ASK~transfer~P2~to' >= 1: 1
+MOCK: [frame 162] shot transfer-P2-to
+MOCK: shot build/host/shots/power-flow-320/transfer-P2-to.ppm (frame 163)
+MOCK: [frame 163] press RIGHT P2
+MOCK: [frame 167] press START P2
+VIEW SLOT P2 loc=2 card=44
+MOCK: [frame 171] expect VIEW~SLOT~P2~loc=2
+MOCK: expect 'VIEW~SLOT~P2~loc=2' >= 1: 1
+MOCK: [frame 171] press B P2
+MOCK: [frame 175] press A P2
+REQ menu/play_area P2 n=3 -> 2
+POWER_ASK transfer P2 from answer=-1
+ASK menu/play_area P2 n=3 cursor=2
+MOCK: [frame 179] wait 6
+MOCK: [frame 185] press B P2
+REQ menu/play_area P2 n=3 -> -1
+POWER_RETURN transfer P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN donor-cancel P1
+POWER_ASK donor-cancel P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 190] wait 6
+MOCK: [frame 196] expect POWER_RETURN~transfer~P2
+MOCK: expect 'POWER_RETURN~transfer~P2' >= 1: 1
+MOCK: [frame 196] wait 6
+MOCK: [frame 202] expect POWER_BEGIN~donor-cancel~P1
+MOCK: expect 'POWER_BEGIN~donor-cancel~P1' >= 1: 1
+MOCK: [frame 202] expect_none POWER_RETURN~donor-cancel~P1
+MOCK: expect_none 'POWER_RETURN~donor-cancel~P1': 0
+MOCK: [frame 202] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 206] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 2
+MOCK: [frame 206] shot donor-cancel-P1-power
+MOCK: shot build/host/shots/power-flow-320/donor-cancel-P1-power.ppm (frame 207)
+MOCK: [frame 207] press B
+MOCK: [frame 211] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK donor-cancel P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 215] wait 6
+MOCK: [frame 221] expect POWER_ASK~donor-cancel~P1~confirm
+MOCK: expect 'POWER_ASK~donor-cancel~P1~confirm' >= 1: 1
+MOCK: [frame 221] shot donor-cancel-P1-confirm
+MOCK: shot build/host/shots/power-flow-320/donor-cancel-P1-confirm.ppm (frame 222)
+MOCK: [frame 222] press LEFT
+MOCK: [frame 226] press A
+REQ yes_no P1 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK donor-cancel P1 ack answer=0
+POWER_ASK donor-cancel P1 from answer=-1
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 230] wait 6
+MOCK: [frame 236] expect POWER_ASK~donor-cancel~P1~from
+MOCK: expect 'POWER_ASK~donor-cancel~P1~from' >= 1: 1
+MOCK: [frame 236] shot donor-cancel-P1-from
+MOCK: shot build/host/shots/power-flow-320/donor-cancel-P1-from.ppm (frame 237)
+MOCK: [frame 237] press B
+REQ menu/play_area P1 n=3 -> -1
+POWER_RETURN donor-cancel P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN donor-cancel P2
+POWER_ASK donor-cancel P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 242] wait 6
+MOCK: [frame 248] expect POWER_RETURN~donor-cancel~P1
+MOCK: expect 'POWER_RETURN~donor-cancel~P1' >= 1: 1
+MOCK: [frame 248] wait 6
+MOCK: [frame 254] expect POWER_BEGIN~donor-cancel~P2
+MOCK: expect 'POWER_BEGIN~donor-cancel~P2' >= 1: 1
+MOCK: [framMOCK: expect 'VIEW~SLOT~P1~loc=2' >= 1: 2
+MOCK: [frame 134] shot menu-P1-selected-card
+MOCK: shot build/host/shots/check-selector-320/menu-P1-selected-card.ppm (frame 135)
+MOCK: [frame 135] press B
+MOCK: [frame 139] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 139] press LEFT
+MOCK: [frame 143] press Z
+CHECK BEGIN ports=1
+MOCK: [frame 147] press B
+MOCK: [frame 151] shot menu-P1-same-selector
+MOCK: shot build/host/shots/check-selector-320/menu-P1-same-selector.ppm (frame 152)
+MOCK: [frame 152] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 152] press A
+REQ menu/play_area P1 n=2 -> 0
+CHECK_FLOW_RETURN menu-P1 answer=0 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN menu-P2
+ASK menu/play_area P2 n=2 cursor=0
+MOCK: [frame 156] wait 6
+MOCK: [frame 162] expect CHECK_FLOW_BEGIN~menu-P2
+MOCK: expect 'CHECK_FLOW_BEGIN~menu-P2' >= 1: 1
+MOCK: [frame 162] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 162] press RIGHT P2
+MOCK: [frame 166] press Z+A P2
+CHECK BEGIN ports=2
+MOCK: [frame 170] wait 4
+MOCK: [frame 174] expect CHECK~BEGIN~ports=2
+MOCK: expect 'CHECK~BEGIN~ports=2' >= 1: 3
+MOCK: [frame 174] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 174] shot menu-P2-check
+MOCK: shot build/host/shots/check-selector-320/menu-P2-check.ppm (frame 175)
+MOCK: [frame 175] press B P2
+MOCK: [frame 179] press START P2
+VIEW SLOT P2 loc=2 card=153
+MOCK: [frame 183] expect VIEW~SLOT~P2~loc=2
+MOCK: expect 'VIEW~SLOT~P2~loc=2' >= 1: 2
+MOCK: [frame 183] shot menu-P2-selected-card
+MOCK: shot build/host/shots/check-selector-320/menu-P2-selected-card.ppm (frame 184)
+MOCK: [frame 184] press B P2
+MOCK: [frame 188] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 188] press LEFT P2
+MOCK: [frame 192] press Z P2
+CHECK BEGIN ports=2
+MOCK: [frame 196] press B P2
+MOCK: [frame 200] shot menu-P2-same-selector
+MOCK: shot build/host/shots/check-selector-320/menu-P2-same-selector.ppm (frame 201)
+MOCK: [frame 201] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 201] press A P2
+REQ menu/play_area P2 n=2 -> 0
+CHECK_FLOW_RETURN menu-P2 answer=0 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN lesson
+TEXT Press Z to check Pokemon data./Check your cards and the status/of your Pokemon before choosing.
+ASK ack/text P1
+MOCK: [frame 205] wait 6
+MOCK: [frame 211] expect CHECK_FLOW_BEGIN~lesson
+MOCK: expect 'CHECK_FLOW_BEGIN~lesson' >= 1: 1
+MOCK: [frame 211] expect_none CHECK_FLOW_RETURN~lesson
+MOCK: expect_none 'CHECK_FLOW_RETURN~lesson': 0
+MOCK: [frame 211] press Z+A
+CHECK BEGIN ports=1
+MOCK: [frame 215] wait 4
+MOCK: [frame 219] expect_none CHECK_FLOW_RETURN~lesson
+MOCK: expect_none 'CHECK_FLOW_RETURN~lesson': 0
+MOCK: [frame 219] shot lesson-check
+MOCK: shot build/host/shots/check-selector-320/lesson-check.ppm (frame 220)
+MOCK: [frame 220] press B
+MOCK: [frame 224] wait 4
+MOCK: [frame 228] expect_none CHECK_FLOW_RETURN~lesson
+MOCK: expect_none 'CHECK_FLOW_RETURN~lesson': 0
+MOCK: [frame 228] shot lesson-return
+MOCK: shot build/host/shots/check-selector-320/lesson-return.ppm (frame 229)
+MOCK: [frame 229] press A
+REQ ack P1 n=0 -> 0
+CHECK_FLOW_RETURN lesson answer=0 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN evolution-P1
+ASK play_area P1 n=3 cursor=1
+MOCK: [frame 233] wait 6
+MOCK: [frame 239] expect CHECK_FLOW_RETURN~lesson
+MOCK: expect 'CHECK_FLOW_RETURN~lesson' >= 1: 1
+MOCK: [frame 239] expect CHECK_FLOW_BEGIN~evolution-P1
+MOCK: expect 'CHECK_FLOW_BEGIN~evolution-P1' >= 1: 1
+MOCK: [frame 239] expect_none CHECK_FLOW_RETURN~evolution-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P1': 0
+MOCK: [frame 239] press START
+VIEW SLOT P1 loc=1 card=85
+MOCK: [frame 243] expect VIEW~SLOT~P1~loc=1
+MOCK: expect 'VIEW~SLOT~P1~loc=1' >= 1: 1
+MOCK: [frame 243] shot evolution-P1-default-card
+MOCK: shot build/host/shots/check-selector-320/evolution-P1-default-card.ppm (frame 24MOCK: end of script
+MOCK: frames=277 polls=277
+4)
+MOCK: [frame 244] press B
+MOCK: [frame 248] expect_none CHECK_FLOW_RETURN~evolution-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P1': 0
+MOCK: [frame 248] press A
+REQ play_area P1 n=3 -> 1
+CHECK_FLOW_RETURN evolution-P1 answer=1 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN evolution-P2
+ASK play_area P2 n=3 cursor=1
+MOCK: [frame 252] wait 6
+MOCK: [frame 258] expect CHECK_FLOW_RETURN~evolution-P1
+MOCK: expect 'CHECK_FLOW_RETURN~evolution-P1' >= 1: 1
+MOCK: [frame 258] expect CHECK_FLOW_BEGIN~evolution-P2
+MOCK: expect 'CHECK_FLOW_BEGIN~evolution-P2' >= 1: 1
+MOCK: [frame 258] expect_none CHECK_FLOW_RETURN~evolution-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P2': 0
+MOCK: [frame 258] press START P2
+VIEW SLOT P2 loc=1 card=85
+MOCK: [frame 262] expect VIEW~SLOT~P2~loc=1
+MOCK: expect 'VIEW~SLOT~P2~loc=1' >= 1: 1
+MOCK: [frame 262] shot evolution-P2-default-card
+MOCK: shot build/host/shots/check-selector-320/evolution-P2-default-card.ppm (frame 263)
+MOCK: [frame 263] press B P2
+MOCK: [frame 267] expect_none CHECK_FLOW_RETURN~evolution-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P2': 0
+MOCK: [frame 267] press A P2
+REQ play_area P2 n=3 -> 1
+CHECK_FLOW_RETURN evolution-P2 answer=1 unchanged_engine_requests_rng=1
+CHECK_SELECTOR_PASS postko_P1_P2_START_Z_B_cursor_Z_A_priority_lesson_engine_rng=1 evolution_default_P1_P2=1
+MOCK: [frame 271] wait 6
+MOCK: [frame 277] expect CHECK_FLOW_RETURN~evolution-P2
+MOCK: expect 'CHECK_FLOW_RETURN~evolution-P2' >= 1: 1
+MOCK: [frame 277] expect CHECK_SELECTOR_PASS
+MOCK: expect 'CHECK_SELECTOR_PASS' >= 1: 1
+e 254] expect_none POWER_RETURN~donor-cancel~P2
+MOCK: expect_none 'POWER_RETURN~donor-cancel~P2': 0
+MOCK: [frame 254] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 258] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 2
+MOCK: [frame 258] shot donor-cancel-P2-power
+MOCK: shot build/host/shots/power-flow-320/donor-cancel-P2-power.ppm (frame 259)
+MOCK: [frame 259] press B P2
+MOCK: [frame 263] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK donor-cancel P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 267] wait 6
+MOCK: [frame 273] expect POWER_ASK~donor-cancel~P2~confirm
+MOCK: expect 'POWER_ASK~donor-cancel~P2~confirm' >= 1: 1
+MOCK: [frame 273] shot donor-cancel-P2-confirm
+MOCK: shot build/host/shots/power-flow-320/donor-cancel-P2-confirm.ppm (frame 274)
+MOCK: [frame 274] press LEFT P2
+MOCK: [frame 278] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK donor-cancel P2 ack answer=0
+POWER_ASK donor-cancel P2 from answer=-1
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 282] wait 6
+MOCK: [frame 288] expect POWER_ASK~donor-cancel~P2~from
+MOCK: expect 'POWER_ASK~donor-cancel~P2~from' >= 1: 1
+MOCK: [frame 288] shot donor-cancel-P2-from
+MOCK: shot build/host/shots/power-flow-320/donor-cancel-P2-from.ppm (frame 289)
+MOCK: [frame 289] press B P2
+REQ menu/play_area P2 n=3 -> -1
+POWER_RETURN donor-cancel P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN recipient-cancel P1
+POWER_ASK recipient-cancel P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 294] wait 6
+MOCK: [frame 300] expect POWER_RETURN~donor-cancel~P2
+MOCK: expect 'POWER_RETURN~donor-cancel~P2' >= 1: 1
+MOCK: [frame 300] wait 6
+MOCK: [frame 306] expect POWER_BEGIN~recipient-cancel~P1
+MOCK: expect 'POWER_BEGIN~recipient-cancel~P1' >= 1: 1
+MOCK: [frame 306] expect_none POWER_RETURN~recipient-cancel~P1
+MOCK: expect_none 'POWER_RETURN~recipient-cancel~P1': 0
+MOCK: [frame 306] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 310] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 3
+MOCK: [frame 310] shot recipient-cancel-P1-power
+MOCK: shot build/host/shots/power-flow-320/recipient-cancel-P1-power.ppm (frame 311)
+MOCK: [frame 311] press B
+MOCK: [frame 315] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK recipient-cancel P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 319] wait 6
+MOCK: [frame 325] expect POWER_ASK~recipient-cancel~P1~confirm
+MOCK: expect 'POWER_ASK~recipient-cancel~P1~confirm' >= 1: 1
+MOCK: [frame 325] shot recipient-cancel-P1-confirm
+MOCK: shot build/host/shots/power-flow-320/recipient-cancel-P1-confirm.ppm (frame 326)
+MOCK: [frame 326] press LEFT
+MOCK: [frame 330] press A
+REQ yes_no P1 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK recipient-cancel P1 ack answer=0
+POWER_ASK recipient-cancel P1 from answer=1
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 334] wait 6
+MOCK: [frame 340] expect POWER_ASK~recipient-cancel~P1~from
+MOCK: expect 'POWER_ASK~recipient-cancel~P1~from' >= 1: 1
+MOCK: [frame 340] shot recipient-cancel-P1-from
+MOCK: shot build/host/shots/power-flow-320/recipient-cancel-P1-from.ppm (frame 341)
+MOCK: [frame 341] press RIGHT
+MOCK: [frame 345] press START
+VIEW SLOT P1 loc=1 card=8
+MOCK: [frame 349] expect VIEW~SLOT~P1~loc=1
+MOCK: expect 'VIEW~SLOT~P1~loc=1' >= 1: 2
+MOCK: [frame 349] press B
+MOCK: [frame 353] press A
+REQ menu/play_area P1 n=3 -> 1
+POWER_ASK recipient-cancel P1 to answer=-1
+ASK menu/play_area P1 n=3 cursor=1
+MOCK: [frame 357] wait 6
+MOCK: [frame 363] expect POWER_ASK~recipient-cancel~P1~to
+MOCK: expect 'POWER_ASK~recipient-cancel~P1~to' >= 1: 1
+MOCK: [frame 363] shot recipient-cancel-P1-to
+MOCK: shot build/host/shots/power-flow-320/recipient-cancel-P1-to.ppm (frame 364)
+MOCK: [frame 364] press B
+REQ menu/play_area P1 n=3 -> -1
+POWER_ASK recipient-cancel P1 from answer=-1
+ASK menu/play_area P1 n=3 cursor=1
+MOCK: [frame 368] wait 6
+MOCK: [frame 374] press B
+REQ menu/play_area P1 n=3 -> -1
+POWER_RETURN recipient-cancel P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN recipient-cancel P2
+POWER_ASK recipient-cancel P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 379] wait 6
+MOCK: [frame 385] expect POWER_RETURN~recipient-cancel~P1
+MOCK: expect 'POWER_RETURN~recipient-cancel~P1' >= 1: 1
+MOCK: [frame 385] wait 6
+MOCK: [frame 391] expect POWER_BEGIN~recipient-cancel~P2
+MOCK: expect 'POWER_BEGIN~recipient-cancel~P2' >= 1: 1
+MOCK: [frame 391] expect_none POWER_RETURN~recipient-cancel~P2
+MOCK: expect_none 'POWER_RETURN~recipient-cancel~P2': 0
+MOCK: [frame 391] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 395] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 3
+MOCK: [frame 395] shot recipient-cancel-P2-power
+MOCK: shot build/host/shots/power-flow-320/recipient-cancel-P2-power.ppm (frame 396)
+MOCK: [frame 396] press B P2
+MOCK: [frame 400] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK recipient-cancel P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 404] wait 6
+MOCK: [frame 410] expect POWER_ASK~recipient-cancel~P2~confirm
+MOCK: expect 'POWER_ASK~recipient-cancel~P2~confirm' >= 1: 1
+MOCK: [frame 410] shot recipient-cancel-P2-confirm
+MOCK: shot build/host/shots/power-flow-320/recipient-cancel-P2-confirm.ppm (frame 411)
+MOCK: [frame 411] press LEFT P2
+MOCK: [frame 415] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK recipient-cancel P2 ack answer=0
+POWER_ASK recipient-cancel P2 from answer=1
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 419] wait 6
+MOCK: [frame 425] expect POWER_ASK~recipient-cancel~P2~from
+MOCK: expect 'POWER_ASK~recipient-cancel~P2~from' >= 1: 1
+MOCK: [frame 425] shot recipient-cancel-P2-from
+MOCK: shot build/host/shots/power-flow-320/recipient-cancel-P2-from.ppm (frame 426)
+MOCK: [frame 426] press RIGHT P2
+MOCK: [frame 430] press START P2
+VIEW SLOT P2 loc=1 card=8
+MOCK: [frame 434] expect VIEW~SLOT~P2~loc=1
+MOCK: expect 'VIEW~SLOT~P2~loc=1' >= 1: 2
+MOCK: [frame 434] press B P2
+MOCK: [frame 438] press A P2
+REQ menu/play_area P2 n=3 -> 1
+POWER_ASK recipient-cancel P2 to answer=-1
+ASK menu/play_area P2 n=3 cursor=1
+MOCK: [frame 442] wait 6
+MOCK: [frame 448] expect POWER_ASK~recipient-cancel~P2~to
+MOCK: expect 'POWER_ASK~recipient-cancel~P2~to' >= 1: 1
+MOCK: [frame 448] shot recipient-cancel-P2-to
+MOCK: shot build/host/shots/power-flow-320/recipient-cancel-P2-to.ppm (frame 449)
+MOCK: [frame 449] press B P2
+REQ menu/play_area P2 n=3 -> -1
+POWER_ASK recipient-cancel P2 from answer=-1
+ASK menu/play_area P2 n=3 cursor=1
+MOCK: [frame 453] wait 6
+MOCK: [frame 459] press B P2
+REQ menu/play_area P2 n=3 -> -1
+POWER_RETURN recipient-cancel P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN invalid-donor P1
+POWER_ASK invalid-donor P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 464] wait 6
+MOCK: [frame 470] expect POWER_RETURN~recipient-cancel~P2
+MOCK: expect 'POWER_RETURN~recipient-cancel~P2' >= 1: 1
+MOCK: [frame 470] wait 6
+MOCK: [frame 476] expect POWER_BEGIN~invalid-donor~P1
+MOCK: expect 'POWER_BEGIN~invalid-donor~P1' >= 1: 1
+MOCK: [frame 476] expect_none POWER_RETURN~invalid-donor~P1
+MOCK: expect_none 'POWER_RETURN~invalid-donor~P1': 0
+MOCK: [frame 476] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 480] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 4
+MOCK: [frame 480] shot invalid-donor-P1-power
+MOCK: shot build/host/shots/power-flow-320/invalid-donor-P1-power.ppm (frame 481)
+MOCK: [frame 481] press B
+MOCK: [frame 485] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK invalid-donor P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 489] wait 6
+MOCK: [frame 495] expect POWER_ASK~invalid-donor~P1~confirm
+MOCK: expect 'POWER_ASK~invalid-donor~P1~confirm' >= 1: 1
+MOCK: [frame 495] shot invalid-donor-P1-confirm
+MOCK: shot build/host/shots/power-flow-320/invalid-donor-P1-confirm.ppm (frame 496)
+MOCK: [frame 496] press LEFT
+MOCK: [frame 500] press A
+REQ yes_no P1 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK invalid-donor P1 ack answer=0
+POWER_ASK invalid-donor P1 from answer=2
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 504] wait 6
+MOCK: [frame 510] expect POWER_ASK~invalid-donor~P1~from
+MOCK: expect 'POWER_ASK~invalid-donor~P1~from' >= 1: 1
+MOCK: [frame 510] shot invalid-donor-P1-from
+MOCK: shot build/host/shots/power-flow-320/invalid-donor-P1-from.ppm (frame 511)
+MOCK: [frame 511] press RIGHT
+MOCK: [frame 515] press RIGHT
+MOCK: [frame 519] press A
+REQ menu/play_area P1 n=3 -> 2
+POWER_ASK invalid-donor P1 from answer=1
+ASK menu/play_area P1 n=3 cursor=2
+MOCK: [frame 523] wait 6
+MOCK: [frame 529] press LEFT
+MOCK: [frame 533] press START
+VIEW SLOT P1 loc=1 card=8
+MOCK: [frame 537] expect VIEW~SLOT~P1~loc=1
+MOCK: expect 'VIEW~SLOT~P1~loc=1' >= 1: 3
+MOCK: [frame 537] press B
+MOCK: [frame 541] press A
+REQ menu/play_area P1 n=3 -> 1
+POWER_ASK invalid-donor P1 to answer=2
+ASK menu/play_area P1 n=3 cursor=1
+MOCK: [frame 545] wait 6
+MOCK: [frame 551] expect POWER_ASK~invalid-donor~P1~to
+MOCK: expect 'POWER_ASK~invalid-donor~P1~to' >= 1: 1
+MOCK: [frame 551] shot invalid-donor-P1-to
+MOCK: shot build/host/shots/power-flow-320/invalid-donor-P1-to.ppm (frame 552)
+MOCK: [frame 552] press RIGHT
+MOCK: [frame 556] press START
+VIEW SLOT P1 loc=2 card=44
+MOCK: [frame 560] expect VIEW~SLOT~P1~loc=2
+MOCK: expect 'VIEW~SLOT~P1~loc=2' >= 1: 2
+MOCK: [frame 560] press B
+MOCK: [frame 564] press A
+REQ menu/play_area P1 n=3 -> 2
+POWER_ASK invalid-donor P1 from answer=-1
+ASK menu/play_area P1 n=3 cursor=2
+MOCK: [frame 568] wait 6
+MOCK: [frame 574] press B
+REQ menu/play_area P1 n=3 -> -1
+POWER_RETURN invalid-donor P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN invalid-donor P2
+POWER_ASK invalid-donor P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 579] wait 6
+MOCK: [frame 585] expect POWER_RETURN~invalid-donor~P1
+MOCK: expect 'POWER_RETURN~invalid-donor~P1' >= 1: 1
+MOCK: [frame 585] wait 6
+MOCK: [frame 591] expect POWER_BEGIN~invalid-donor~P2
+MOCK: expect 'POWER_BEGIN~invalid-donor~P2' >= 1: 1
+MOCK: [frame 591] expect_none POWER_RETURN~invalid-donor~P2
+MOCK: expect_none 'POWER_RETURN~invalid-donor~P2': 0
+MOCK: [frame 591] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 595] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 4
+MOCK: [frame 595] shot invalid-donor-P2-power
+MOCK: shot build/host/shots/power-flow-320/invalid-donor-P2-power.ppm (frame 596)
+MOCK: [frame 596] press B P2
+MOCK: [frame 600] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK invalid-donor P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 604] wait 6
+MOCK: [frame 610] expect POWER_ASK~invalid-donor~P2~confirm
+MOCK: expect 'POWER_ASK~invalid-donor~P2~confirm' >= 1: 1
+MOCK: [frame 610] shot invalid-donor-P2-confirm
+MOCK: shot build/host/shots/power-flow-320/invalid-donor-P2-confirm.ppm (frame 611)
+MOCK: [frame 611] press LEFT P2
+MOCK: [frame 615] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. ChoCHECK_FLOW_BEGIN postko-P1
+ASK play_area P1 n=3 cursor=0
+MOCK: [frame 1] wait 6
+MOCK: [frame 7] expect CHECK_FLOW_BEGIN~postko-P1
+MOCK: expect 'CHECK_FLOW_BEGIN~postko-P1' >= 1: 1
+MOCK: [frame 7] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 7] press RIGHT
+MOCK: [frame 11] press RIGHT
+MOCK: [frame 15] press Z+A
+CHECK BEGIN ports=1
+MOCK: [frame 19] wait 4
+MOCK: [frame 23] expect CHECK~BEGIN~ports=1
+MOCK: expect 'CHECK~BEGIN~ports=1' >= 1: 1
+MOCK: [frame 23] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 23] shot postko-P1-check
+MOCK: shot build/host/shots/check-selector-480/postko-P1-check.ppm (frame 24)
+MOCK: [frame 24] press B
+MOCK: [frame 28] press START
+VIEW SLOT P1 loc=2 card=153
+MOCK: [frame 32] expect VIEW~SLOT~P1~loc=2
+MOCK: expect 'VIEW~SLOT~P1~loc=2' >= 1: 1
+MOCK: [frame 32] shot postko-P1-selected-card
+MOCK: shot build/host/shots/check-selector-480/postko-P1-selected-card.ppm (frame 33)
+MOCK: [frame 33] press B
+MOCK: [frame 37] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 37] press LEFT
+MOCK: [frame 41] press Z
+CHECK BEGIN ports=1
+MOCK: [frame 45] press B
+MOCK: [frame 49] shot postko-P1-same-selector
+MOCK: shot build/host/shots/check-selector-480/postko-P1-same-selector.ppm (frame 50)
+MOCK: [frame 50] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 50] press A
+REQ play_area P1 n=3 -> 1
+CHECK_FLOW_RETURN postko-P1 answer=1 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN postko-P2
+ASK play_area P2 n=3 cursor=0
+MOCK: [frame 54] wait 6
+MOCK: [frame 60] expect CHECK_FLOW_BEGIN~postko-P2
+MOCK: expect 'CHECK_FLOW_BEGIN~postko-P2' >= 1: 1
+MOCK: [frame 60] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 60] press RIGHT P2
+MOCK: [frame 64] press RIGHT P2
+MOCK: [frame 68] press Z+A P2
+CHECK BEGIN ports=2
+MOCK: [frame 72] wait 4
+MOCK: [frame 76] expect CHECK~BEGIN~ports=2
+MOCK: expect 'CHECK~BEGIN~ports=2' >= 1: 1
+MOCK: [frame 76] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 76] shot postko-P2-check
+MOCK: shot build/host/shots/check-selector-480/postko-P2-check.ppm (frame 77)
+MOCK: [frame 77] press B P2
+MOCK: [frame 81] press START P2
+VIEW SLOT P2 loc=2 card=153
+MOCK: [frame 85] expect VIEW~SLOT~P2~loc=2
+MOCK: expect 'VIEW~SLOT~P2~loc=2' >= 1: 1
+MOCK: [frame 85] shot postko-P2-selected-card
+MOCK: shot build/host/shots/check-selector-480/postko-P2-selected-card.ppm (frame 86)
+MOCK: [frame 86] press B P2
+MOCK: [frame 90] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 90] press LEFT P2
+MOCK: [frame 94] press Z P2
+CHECK BEGIN ports=2
+MOCK: [frame 98] press B P2
+MOCK: [frame 102] shot postko-P2-same-selector
+MOCK: shot build/host/shots/check-selector-480/postko-P2-same-selector.ppm (frame 103)
+MOCK: [frame 103] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 103] press A P2
+REQ play_area P2 n=3 -> 1
+CHECK_FLOW_RETURN postko-P2 answer=1 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN menu-P1
+ASK menu/play_area P1 n=2 cursor=0
+MOCK: [frame 107] wait 6
+MOCK: [frame 113] expect CHECK_FLOW_BEGIN~menu-P1
+MOCK: expect 'CHECK_FLOW_BEGIN~menu-P1' >= 1: 1
+MOCK: [frame 113] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 113] press RIGHT
+MOCK: [frame 117] press Z+A
+CHECK BEGIN ports=1
+MOCK: [frame 121] wait 4
+MOCK: [frame 125] expect CHECK~BEGIN~ports=1
+MOCK: expect 'CHECK~BEGIN~ports=1' >= 1: 3
+MOCK: [frame 125] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 125] shot menu-P1-check
+MOCK: shot build/host/shots/check-selector-480/menu-P1-check.ppm (frame 126)
+MOCK: [frame 126] press B
+MOCK: [frame 130] press START
+VIEW SLOT P1 loc=2 card=153
+MOCK: [frame 134] expect VIEW~SLOT~P1~loc=2
+ose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK invalid-donor P2 ack answer=0
+POWER_ASK invalid-donor P2 from answer=2
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 619] wait 6
+MOCK: [frame 625] expect POWER_ASK~invalid-donor~P2~from
+MOCK: expect 'POWER_ASK~invalid-donor~P2~from' >= 1: 1
+MOCK: [frame 625] shot invalid-donor-P2-from
+MOCK: shot build/host/shots/power-flow-320/invalid-donor-P2-from.ppm (frame 626)
+MOCK: [frame 626] press RIGHT P2
+MOCK: [frame 630] press RIGHT P2
+MOCK: [frame 634] press A P2
+REQ menu/play_area P2 n=3 -> 2
+POWER_ASK invalid-donor P2 from answer=1
+ASK menu/play_area P2 n=3 cursor=2
+MOCK: [frame 638] wait 6
+MOCK: [frame 644] press LEFT P2
+MOCK: [frame 648] press START P2
+VIEW SLOT P2 loc=1 card=8
+MOCK: [frame 652] expect VIEW~SLOT~P2~loc=1
+MOCK: expect 'VIEW~SLOT~P2~loc=1' >= 1: 3
+MOCK: [frame 652] press B P2
+MOCK: [frame 656] press A P2
+REQ menu/play_area P2 n=3 -> 1
+POWER_ASK invalid-donor P2 to answer=2
+ASK menu/play_area P2 n=3 cursor=1
+MOCK: [frame 660] wait 6
+MOCK: [frame 666] expect POWER_ASK~invalid-donor~P2~to
+MOCK: expect 'POWER_ASK~invalid-donor~P2~to' >= 1: 1
+MOCK: [frame 666] shot invalid-donor-P2-to
+MOCK: shot build/host/shots/power-flow-320/invalid-donor-P2-to.ppm (frame 667)
+MOCK: [frame 667] press RIGHT P2
+MOCK: [frame 671] press START P2
+VIEW SLOT P2 loc=2 card=44
+MOCK: [frame 675] expect VIEW~SLOT~P2~loc=2
+MOCK: expect 'VIEW~SLOT~P2~loc=2' >= 1: 2
+MOCK: [frame 675] press B P2
+MOCK: [frame 679] press A P2
+REQ menu/play_area P2 n=3 -> 2
+POWER_ASK invalid-donor P2 from answer=-1
+ASK menu/play_area P2 n=3 cursor=2
+MOCK: [frame 683] wait 6
+MOCK: [frame 689] press B P2
+REQ menu/play_area P2 n=3 -> -1
+POWER_RETURN invalid-donor P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN power-cancel P1
+POWER_ASK power-cancel P1 power answer=-1
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 694] wait 6
+MOCK: [frame 700] expect POWER_RETURN~invalid-donor~P2
+MOCK: expect 'POWER_RETURN~invalid-donor~P2' >= 1: 1
+MOCK: [frame 700] wait 6
+MOCK: [frame 706] expect POWER_BEGIN~power-cancel~P1
+MOCK: expect 'POWER_BEGIN~power-cancel~P1' >= 1: 1
+MOCK: [frame 706] expect_none POWER_RETURN~power-cancel~P1
+MOCK: expect_none 'POWER_RETURN~power-cancel~P1': 0
+MOCK: [frame 706] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 710] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 5
+MOCK: [frame 710] shot power-cancel-P1-power
+MOCK: shot build/host/shots/power-flow-320/power-cancel-P1-power.ppm (frame 711)
+MOCK: [frame 711] press B
+MOCK: [frame 715] press B
+REQ menu/play_area P1 n=3 -> -1
+POWER_RETURN power-cancel P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN power-cancel P2
+POWER_ASK power-cancel P2 power answer=-1
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 720] wait 6
+MOCK: [frame 726] expect POWER_RETURN~power-cancel~P1
+MOCK: expect 'POWER_RETURN~power-cancel~P1' >= 1: 1
+MOCK: [frame 726] wait 6
+MOCK: [frame 732] expect POWER_BEGIN~power-cancel~P2
+MOCK: expect 'POWER_BEGIN~power-cancel~P2' >= 1: 1
+MOCK: [frame 732] expect_none POWER_RETURN~power-cancel~P2
+MOCK: expect_none 'POWER_RETURN~power-cancel~P2': 0
+MOCK: [frame 732] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 736] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 5
+MOCK: [frame 736] shot power-cancel-P2-power
+MOCK: shot build/host/shots/power-flow-320/power-cancel-P2-power.ppm (frame 737)
+MOCK: [frame 737] press B P2
+MOCK: [frame 741] press B P2
+REQ menu/play_area P2 n=3 -> -1
+POWER_RETURN power-cancel P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN no-grass P1
+POWER_ASK no-grass P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 746] wait 6
+MOCK: [frame 752] expect POWER_RETURN~power-cancel~P2
+MOCK: expect 'POWER_RETURN~power-cancel~P2' >= 1: 1
+MOCK: [frame 752] wait 6
+MOCK: [frame 758] expect POWER_BEGIN~no-grass~P1
+MOCK: expect 'POWER_BEGIN~no-grass~P1' >= 1: 1
+MOCK: [frame 758] expect_none POWER_RETURN~no-grass~P1
+MOCK: expect_none 'POWER_RETURN~no-grass~P1': 0
+MOCK: [frame 758] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 762] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 6
+MOCK: [frame 762] shot no-grass-P1-power
+MOCK: shot build/host/shots/power-flow-320/no-grass-P1-power.ppm (frame 763)
+MOCK: [frame 763] press B
+MOCK: [frame 767] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK no-grass P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 771] wait 6
+MOCK: [frame 777] expect POWER_ASK~no-grass~P1~confirm
+MOCK: expect 'POWER_ASK~no-grass~P1~confirm' >= 1: 1
+MOCK: [frame 777] shot no-grass-P1-confirm
+MOCK: shot build/host/shots/power-flow-320/no-grass-P1-confirm.ppm (frame 778)
+MOCK: [frame 778] press LEFT
+MOCK: [frame 782] press A
+REQ yes_no P1 n=2 -> 1
+TEXT No Grass Energy.
+POWER_ASK no-grass P1 ack answer=0
+POWER_RETURN no-grass P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN no-grass P2
+POWER_ASK no-grass P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 787] wait 6
+MOCK: [frame 793] expect POWER_RETURN~no-grass~P1
+MOCK: expect 'POWER_RETURN~no-grass~P1' >= 1: 1
+MOCK: [frame 793] wait 6
+MOCK: [frame 799] expect POWER_BEGIN~no-grass~P2
+MOCK: expect 'POWER_BEGIN~no-grass~P2' >= 1: 1
+MOCK: [frame 799] expect_none POWER_RETURN~no-grass~P2
+MOCK: expect_none 'POWER_RETURN~no-grass~P2': 0
+MOCK: [frame 799] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 803] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 6
+MOCK: [frame 803] shot no-grass-P2-power
+MOCK: shot build/host/shots/power-flow-320/no-grass-P2-power.ppm (frame 804)
+MOCK: [frame 804] press B P2
+MOCK: [frame 808] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK no-grass P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 812] wait 6
+MOCK: [frame 818] expect POWER_ASK~no-grass~P2~confirm
+MOCK: expect 'POWER_ASK~no-grass~P2~confirm' >= 1: 1
+MOCK: [frame 818] shot no-grass-P2-confirm
+MOCK: shot build/host/shots/power-flow-320/no-grass-P2-confirm.ppm (frame 819)
+MOCK: [frame 819] press LEFT P2
+MOCK: [frame 823] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT No Grass Energy.
+POWER_ASK no-grass P2 ack answer=0
+POWER_RETURN no-grass P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN status-blocked P1
+POWER_ASK status-blocked P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 828] wait 6
+MOCK: [frame 834] expect POWER_RETURN~no-grass~P2
+MOCK: expect 'POWER_RETURN~no-grass~P2' >= 1: 1
+MOCK: [frame 834] wait 6
+MOCK: [frame 840] expect POWER_BEGIN~status-blocked~P1
+MOCK: expect 'POWER_BEGIN~status-blocked~P1' >= 1: 1
+MOCK: [frame 840] expect_none POWER_RETURN~status-blocked~P1
+MOCK: expect_none 'POWER_RETURN~status-blocked~P1': 0
+MOCK: [frame 840] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 844] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 7
+MOCK: [frame 844] shot status-blocked-P1-power
+MOCK: shot build/host/shots/power-flow-320/status-blocked-P1-power.ppm (frame 845)
+MOCK: [frame 845] press B
+MOCK: [frame 849] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK status-blocked P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 853] wait 6
+MOCK: [frame 859] expect POWER_ASK~status-blocked~P1~confirm
+MOCK: expect 'POWER_ASK~status-blocked~P1~confirm' >= 1: 1
+MOCK: [frame 859] shot status-blocked-P1-confirm
+MOCK: shot build/host/shots/power-flow-320/status-blocked-P1-confirm.ppm (frame 860)
+MOCK: [frame 860] press LEFT
+MOCK: [frame 864] press A
+REQ yes_no P1 n=2 -> 1
+TEXT Cannot use due to Sleep, Paralysis,/or Confusion.
+POWER_ASK status-blocked P1 ack answer=0
+POWER_RETURN status-blocked P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN status-blockedMOCK: expect 'VIEW~SLOT~P1~loc=2' >= 1: 2
+MOCK: [frame 134] shot menu-P1-selected-card
+MOCK: shot build/host/shots/check-selector-480/menu-P1-selected-card.ppm (frame 135)
+MOCK: [frame 135] press B
+MOCK: [frame 139] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 139] press LEFT
+MOCK: [frame 143] press Z
+CHECK BEGIN ports=1
+MOCK: [frame 147] press B
+MOCK: [frame 151] shot menu-P1-same-selector
+MOCK: shot build/host/shots/check-selector-480/menu-P1-same-selector.ppm (frame 152)
+MOCK: [frame 152] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 152] press A
+REQ menu/play_area P1 n=2 -> 0
+CHECK_FLOW_RETURN menu-P1 answer=0 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN menu-P2
+ASK menu/play_area P2 n=2 cursor=0
+MOCK: [frame 156] wait 6
+MOCK: [frame 162] expect CHECK_FLOW_BEGIN~menu-P2
+MOCK: expect 'CHECK_FLOW_BEGIN~menu-P2' >= 1: 1
+MOCK: [frame 162] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 162] press RIGHT P2
+MOCK: [frame 166] press Z+A P2
+CHECK BEGIN ports=2
+MOCK: [frame 170] wait 4
+MOCK: [frame 174] expect CHECK~BEGIN~ports=2
+MOCK: expect 'CHECK~BEGIN~ports=2' >= 1: 3
+MOCK: [frame 174] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 174] shot menu-P2-check
+MOCK: shot build/host/shots/check-selector-480/menu-P2-check.ppm (frame 175)
+MOCK: [frame 175] press B P2
+MOCK: [frame 179] press START P2
+VIEW SLOT P2 loc=2 card=153
+MOCK: [frame 183] expect VIEW~SLOT~P2~loc=2
+MOCK: expect 'VIEW~SLOT~P2~loc=2' >= 1: 2
+MOCK: [frame 183] shot menu-P2-selected-card
+MOCK: shot build/host/shots/check-selector-480/menu-P2-selected-card.ppm (frame 184)
+MOCK: [frame 184] press B P2
+MOCK: [frame 188] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 188] press LEFT P2
+MOCK: [frame 192] press Z P2
+CHECK BEGIN ports=2
+MOCK: [frame 196] press B P2
+MOCK: [frame 200] shot menu-P2-same-selector
+MOCK: shot build/host/shots/check-selector-480/menu-P2-same-selector.ppm (frame 201)
+MOCK: [frame 201] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 201] press A P2
+REQ menu/play_area P2 n=2 -> 0
+CHECK_FLOW_RETURN menu-P2 answer=0 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN lesson
+TEXT Press Z to check Pokemon data./Check your cards and the status/of your Pokemon before choosing.
+ASK ack/text P1
+MOCK: [frame 205] wait 6
+MOCK: [frame 211] expect CHECK_FLOW_BEGIN~lesson
+MOCK: expect 'CHECK_FLOW_BEGIN~lesson' >= 1: 1
+MOCK: [frame 211] expect_none CHECK_FLOW_RETURN~lesson
+MOCK: expect_none 'CHECK_FLOW_RETURN~lesson': 0
+MOCK: [frame 211] press Z+A
+CHECK BEGIN ports=1
+MOCK: [frame 215] wait 4
+MOCK: [frame 219] expect_none CHECK_FLOW_RETURN~lesson
+MOCK: expect_none 'CHECK_FLOW_RETURN~lesson': 0
+MOCK: [frame 219] shot lesson-check
+MOCK: shot build/host/shots/check-selector-480/lesson-check.ppm (frame 220)
+MOCK: [frame 220] press B
+MOCK: [frame 224] wait 4
+MOCK: [frame 228] expect_none CHECK_FLOW_RETURN~lesson
+MOCK: expect_none 'CHECK_FLOW_RETURN~lesson': 0
+MOCK: [frame 228] shot lesson-return
+MOCK: shot build/host/shots/check-selector-480/lesson-return.ppm (frame 229)
+MOCK: [frame 229] press A
+REQ ack P1 n=0 -> 0
+CHECK_FLOW_RETURN lesson answer=0 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN evolution-P1
+ASK play_area P1 n=3 cursor=1
+MOCK: [frame 233] wait 6
+MOCK: [frame 239] expect CHECK_FLOW_RETURN~lesson
+MOCK: expect 'CHECK_FLOW_RETURN~lesson' >= 1: 1
+MOCK: [frame 239] expect CHECK_FLOW_BEGIN~evolution-P1
+MOCK: expect 'CHECK_FLOW_BEGIN~evolution-P1' >= 1: 1
+MOCK: [frame 239] expect_none CHECK_FLOW_RETURN~evolution-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P1': 0
+MOCK: [frame 239] press START
+VIEW SLOT P1 loc=1 card=85
+MOCK: [frame 243] expect VIEW~SLOT~P1~loc=1
+MOCK: expect 'VIEW~SLOT~P1~loc=1' >= 1: 1
+MOCK: [frame 243] shot evolution-P1-default-card
+MOCK: shot build/host/shots/check-selector-480/evolution-P1-default-card.ppm (frame 24 P2
+POWER_ASK status-blocked P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 869] wait 6
+MOCK: [frame 875] expect POWER_RETURN~status-blocked~P1
+MOCK: expect 'POWER_RETURN~status-blocked~P1' >= 1: 1
+MOCK: [frame 875] wait 6
+MOCK: [frame 881] expect POWER_BEGIN~status-blocked~P2
+MOCK: expect 'POWER_BEGIN~status-blocked~P2' >= 1: 1
+MOCK: [frame 881] expect_none POWER_RETURN~status-blocked~P2
+MOCK: expect_none 'POWER_RETURN~status-blocked~P2': 0
+MOCK: [frame 881] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 885] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 7
+MOCK: [frame 885] shot status-blocked-P2-power
+MOCK: shot build/host/shots/power-flow-320/status-blocked-P2-power.ppm (frame 886)
+MOCK: [frame 886] press B P2
+MOCK: [frame 890] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK status-blocked P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 894] wait 6
+MOCK: [frame 900] expect POWER_ASK~status-blocked~P2~confirm
+MOCK: expect 'POWER_ASK~status-blocked~P2~confirm' >= 1: 1
+MOCK: [frame 900] shot status-blocked-P2-confirm
+MOCK: shot build/host/shots/power-flow-320/status-blocked-P2-confirm.ppm (frame 901)
+MOCK: [frame 901] press LEFT P2
+MOCK: [frame 905] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT Cannot use due to Sleep, Paralysis,/or Confusion.
+POWER_ASK status-blocked P2 ack answer=0
+POWER_RETURN status-blocked P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN muk-blocked P1
+POWER_ASK muk-blocked P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 910] wait 6
+MOCK: [frame 916] expect POWER_RETURN~status-blocked~P2
+MOCK: expect 'POWER_RETURN~status-blocked~P2' >= 1: 1
+MOCK: [frame 916] wait 6
+MOCK: [frame 922] expect POWER_BEGIN~muk-blocked~P1
+MOCK: expect 'POWER_BEGIN~muk-blocked~P1' >= 1: 1
+MOCK: [frame 922] expect_none POWER_RETURN~muk-blocked~P1
+MOCK: expect_none 'POWER_RETURN~muk-blocked~P1': 0
+MOCK: [frame 922] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 926] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 8
+MOCK: [frame 926] shot muk-blocked-P1-power
+MOCK: shot build/host/shots/power-flow-320/muk-blocked-P1-power.ppm (frame 927)
+MOCK: [frame 927] press B
+MOCK: [frame 931] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK muk-blocked P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 935] wait 6
+MOCK: [frame 941] expect POWER_ASK~muk-blocked~P1~confirm
+MOCK: expect 'POWER_ASK~muk-blocked~P1~confirm' >= 1: 1
+MOCK: [frame 941] shot muk-blocked-P1-confirm
+MOCK: shot build/host/shots/power-flow-320/muk-blocked-P1-confirm.ppm (frame 942)
+MOCK: [frame 942] press LEFT
+MOCK: [frame 946] press A
+REQ yes_no P1 n=2 -> 1
+TEXT Unable to use due to the/effects of Toxic Gas.
+POWER_ASK muk-blocked P1 ack answer=0
+POWER_RETURN muk-blocked P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN muk-blocked P2
+POWER_ASK muk-blocked P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 951] wait 6
+MOCK: [frame 957] expect POWER_RETURN~muk-blocked~P1
+MOCK: expect 'POWER_RETURN~muk-blocked~P1' >= 1: 1
+MOCK: [frame 957] wait 6
+MOCK: [frame 963] expect POWER_BEGIN~muk-blocked~P2
+MOCK: expect 'POWER_BEGIN~muk-blocked~P2' >= 1: 1
+MOCK: [frame 963] expect_none POWER_RETURN~muk-blocked~P2
+MOCK: expect_none 'POWER_RETURN~muk-blocked~P2': 0
+MOCK: [frame 963] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 967] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 8
+MOCK: [frame 967] shot muk-blocked-P2-power
+MOCK: shot build/host/shots/power-flow-320/muk-blocked-P2-power.ppm (frame 968)
+MOCK: [frame 968] press B P2
+MOCK: [frame 972] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK muk-blocked P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 976] wait 6
+MOCK: [frame 982] expect POWER_ASK~muk-blocked~P2~confirm
+MOCK: expect 'POWER_ASK~muk-blocked~P2~confirm' >= 1: 1
+MOCK: [frame 982] shotMOCK: end of script
+MOCK: frames=997 polls=981
+ muk-blocked-P2-confirm
+MOCK: shot build/host/shots/power-flow-320/muk-blocked-P2-confirm.ppm (frame 983)
+MOCK: [frame 983] press LEFT P2
+MOCK: [frame 987] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT Unable to use due to the/effects of Toxic Gas.
+POWER_ASK muk-blocked P2 ack answer=0
+POWER_RETURN muk-blocked P2 state_requests_answers_rng_equal=1
+POWER_FLOW_PASS cases16 stale_retreat_exclude_slot_transfer_cancel_invalid_blocked_noGrass_rng_footer=1
+MOCK: [frame 991] wait 6
+MOCK: [frame 997] expect POWER_RETURN~muk-blocked~P2
+MOCK: expect 'POWER_RETURN~muk-blocked~P2' >= 1: 1
+MOCK: [frame 997] expect POWER_FLOW_PASS
+MOCK: expect 'POWER_FLOW_PASS' >= 1: 1
+MOCK: end of script
+MOCK: frames=277 polls=277
+4)
+MOCK: [frame 244] press B
+MOCK: [frame 248] expect_none CHECK_FLOW_RETURN~evolution-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P1': 0
+MOCK: [frame 248] press A
+REQ play_area P1 n=3 -> 1
+CHECK_FLOW_RETURN evolution-P1 answer=1 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN evolution-P2
+ASK play_area P2 n=3 cursor=1
+MOCK: [frame 252] wait 6
+MOCK: [frame 258] expect CHECK_FLOW_RETURN~evolution-P1
+MOCK: expect 'CHECK_FLOW_RETURN~evolution-P1' >= 1: 1
+MOCK: [frame 258] expect CHECK_FLOW_BEGIN~evolution-P2
+MOCK: expect 'CHECK_FLOW_BEGIN~evolution-P2' >= 1: 1
+MOCK: [frame 258] expect_none CHECK_FLOW_RETURN~evolution-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P2': 0
+MOCK: [frame 258] press START P2
+VIEW SLOT P2 loc=1 card=85
+MOCK: [frame 262] expect VIEW~SLOT~P2~loc=1
+MOCK: expect 'VIEW~SLOT~P2~loc=1' >= 1: 1
+MOCK: [frame 262] shot evolution-P2-default-card
+MOCK: shot build/host/shots/check-selector-480/evolution-P2-default-card.ppm (frame 263)
+MOCK: [frame 263] press B P2
+MOCK: [frame 267] expect_none CHECK_FLOW_RETURN~evolution-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P2': 0
+MOCK: [frame 267] press A P2
+REQ play_area P2 n=3 -> 1
+CHECK_FLOW_RETURN evolution-P2 answer=1 unchanged_engine_requests_rng=1
+CHECK_SELECTOR_PASS postko_P1_P2_START_Z_B_cursor_Z_A_priority_lesson_engine_rng=1 evolution_default_P1_P2=1
+MOCK: [frame 271] wait 6
+MOCK: [frame 277] expect CHECK_FLOW_RETURN~evolution-P2
+MOCK: expect 'CHECK_FLOW_RETURN~evolution-P2' >= 1: 1
+MOCK: [frame 277] expect CHECK_SELECTOR_PASS
+MOCK: expect 'CHECK_SELECTOR_PASS' >= 1: 1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN transfer P1
+POWER_ASK transfer P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 2] wait 6
+MOCK: [frame 8] expect POWER_BEGIN~transfer~P1
+MOCK: expect 'POWER_BEGIN~transfer~P1' >= 1: 1
+MOCK: [frame 8] expect_none POWER_RETURN~transfer~P1
+MOCK: expect_none 'POWER_RETURN~transfer~P1': 0
+MOCK: [frame 8] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 12] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 1
+MOCK: [frame 12] shot transfer-P1-power
+MOCK: shot build/host/shots/power-flow-480/transfer-P1-power.ppm (frame 13)
+MOCK: [frame 13] press B
+MOCK: [frame 17] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK transfer P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 21] wait 6
+MOCK: [frame 27] expect POWER_ASK~transfer~P1~confirm
+MOCK: expect 'POWER_ASK~transfer~P1~confirm' >= 1: 1
+MOCK: [frame 27] shot transfer-P1-confirm
+MOCK: shot build/host/shots/power-flow-480/transfer-P1-confirm.ppm (frame 28)
+MOCK: [frame 28] press LEFT
+MOCK: [frame 32] press A
+REQ yes_no P1 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK transfer P1 ack answer=0
+POWER_ASK transfer P1 from answer=1
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 36] wait 6
+MOCK: [frame 42] expect POWER_ASK~transfer~P1~from
+MOCK: expect 'POWER_ASK~transfer~P1~from' >= 1: 1
+MOCK: [frame 42] shot transfer-P1-from
+MOCK: shot build/host/shots/power-flow-480/transfer-P1-from.ppm (frame 43)
+MOCK: [frame 43] press RIGHT
+MOCK: [frame 47] press START
+VIEW SLOT P1 loc=1 card=8
+MOCK: [frame 51] expect VIEW~SLOT~P1~loc=1
+MOCK: expect 'VIEW~SLOT~P1~loc=1' >= 1: 1
+MOCK: [frame 51] press B
+MOCK: [frame 55] press A
+REQ menu/play_area P1 n=3 -> 1
+POWER_ASK transfer P1 to answer=2
+ASK menu/play_area P1 n=3 cursor=1
+MOCK: [frame 59] wait 6
+MOCK: [frame 65] expect POWER_ASK~transfer~P1~to
+MOCK: expect 'POWER_ASK~transfer~P1~to' >= 1: 1
+MOCK: [frame 65] shot transfer-P1-to
+MOCK: shot build/host/shots/power-flow-480/transfer-P1-to.ppm (frame 66)
+MOCK: [frame 66] press RIGHT
+MOCK: [frame 70] press START
+VIEW SLOT P1 loc=2 card=44
+MOCK: [frame 74] expect VIEW~SLOT~P1~loc=2
+MOCK: expect 'VIEW~SLOT~P1~loc=2' >= 1: 1
+MOCK: [frame 74] press B
+MOCK: [frame 78] press A
+REQ menu/play_area P1 n=3 -> 2
+POWER_ASK transfer P1 from answer=-1
+ASK menu/play_area P1 n=3 cursor=2
+MOCK: [frame 82] wait 6
+MOCK: [frame 88] press B
+REQ menu/play_area P1 n=3 -> -1
+POWER_RETURN transfer P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN transfer P2
+POWER_ASK transfer P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 93] wait 6
+MOCK: [frame 99] expect POWER_RETURN~transfer~P1
+MOCK: expect 'POWER_RETURN~transfer~P1' >= 1: 1
+MOCK: [frame 99] wait 6
+MOCK: [frame 105] expect POWER_BEGIN~transfer~P2
+MOCK: expect 'POWER_BEGIN~transfer~P2' >= 1: 1
+MOCK: [frame 105] expect_none POWER_RETURN~transfer~P2
+MOCK: expect_none 'POWER_RETURN~transfer~P2': 0
+MOCK: [frame 105] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 109] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 1
+MOCK: [frame 109] shot transfer-P2-power
+MOCK: shot build/host/shots/power-flow-480/transfer-P2-power.ppm (frame 110)
+MOCK: [frame 110] press B P2
+MOCK: [frame 114] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK transfer P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 118] wait 6
+MOCK: [frame 124] expect POWER_ASK~transfer~P2~confirm
+MOCK: expect 'POWER_ASK~transfer~P2~confirm' >= 1: 1
+MOCK: [frame 124] shot transfer-P2-confirm
+MOCK: shot build/host/shots/power-flow-480/transfer-P2-confirm.ppm (frame 125)
+MOCK: [frame 125] press LEFT P2
+MOCK: [frame 129] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK transfer P2 ack answer=0
+POWER_ASK transfer P2 from answer=1
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 133] wait 6
+MOCK: [frame 139] expect POWER_ASK~transfer~P2~from
+MOCK: expect 'POWER_ASK~transfer~P2~from' >= 1: 1
+MOCK: [frame 139] shot transfer-P2-from
+MOCK: shot build/host/shots/power-flow-480/transfer-P2-from.ppm (frame 140)
+MOCK: [frame 140] press RIGHT P2
+MOCK: [frame 144] press START P2
+VIEW SLOT P2 loc=1 card=8
+MOCK: [frame 148] expect VIEW~SLOT~P2~loc=1
+MOCK: expect 'VIEW~SLOT~P2~loc=1' >= 1: 1
+MOCK: [frame 148] press B P2
+MOCK: [frame 152] press A P2
+REQ menu/play_area P2 n=3 -> 1
+POWER_ASK transfer P2 to answer=2
+ASK menu/play_area P2 n=3 cursor=1
+MOCK: [frame 156] wait 6
+MOCK: [frame 162] expect POWER_ASK~transfer~P2~to
+MOCK: expect 'POWER_ASK~transfer~P2~to' >= 1: 1
+MOCK: [frame 162] shot transfer-P2-to
+MOCK: shot build/host/shots/power-flow-480/transfer-P2-to.ppm (frame 163)
+MOCK: [frame 163] press RIGHT P2
+MOCK: [frame 167] press START P2
+VIEW SLOT P2 loc=2 card=44
+MOCK: [frame 171] expect VIEW~SLOT~P2~loc=2
+MOCK: expect 'VIEW~SLOT~P2~loc=2' >= 1: 1
+MOCK: [frame 171] press B P2
+MOCK: [frame 175] press A P2
+REQ menu/play_area P2 n=3 -> 2
+POWER_ASK transfer P2 from answer=-1
+ASK menu/play_area P2 n=3 cursor=2
+MOCK: [frame 179] wait 6
+MOCK: [frame 185] press B P2
+REQ menu/play_area P2 n=3 -> -1
+POWER_RETURN transfer P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN donor-cancel P1
+POWER_ASK donor-cancel P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 190] wait 6
+MOCK: [frame 196] expect POWER_RETURN~transfer~P2
+MOCK: expect 'POWER_RETURN~transfer~P2' >= 1: 1
+MOCK: [frame 196] wait 6
+MOCK: [frame 202] expect POWER_BEGIN~donor-cancel~P1
+MOCK: expect 'POWER_BEGIN~donor-cancel~P1' >= 1: 1
+MOCK: [frame 202] expect_none POWER_RETURN~donor-cancel~P1
+MOCK: expect_none 'POWER_RETURN~donor-cancel~P1': 0
+MOCK: [frame 202] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 206] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 2
+MOCK: [frame 206] shot donor-cancel-P1-power
+MOCK: shot build/host/shots/power-flow-480/donor-cancel-P1-power.ppm (frame 207)
+MOCK: [frame 207] press B
+MOCK: [frame 211] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK donor-cancel P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 215] wait 6
+MOCK: [frame 221] expect POWER_ASK~donor-cancel~P1~confirm
+MOCK: expect 'POWER_ASK~donor-cancel~P1~confirm' >= 1: 1
+MOCK: [frame 221] shot donor-cancel-P1-confirm
+MOCK: shot build/host/shots/power-flow-480/donor-cancel-P1-confirm.ppm (frame 222)
+MOCK: [frame 222] press LEFT
+MOCK: [frame 226] press A
+REQ yes_no P1 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK donor-cancel P1 ack answer=0
+POWER_ASK donor-cancel P1 from answer=-1
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 230] wait 6
+MOCK: [frame 236] expect POWER_ASK~donor-cancel~P1~from
+MOCK: expect 'POWER_ASK~donor-cancel~P1~from' >= 1: 1
+MOCK: [frame 236] shot donor-cancel-P1-from
+MOCK: shot build/host/shots/power-flow-480/donor-cancel-P1-from.ppm (frame 237)
+MOCK: [frame 237] press B
+REQ menu/play_area P1 n=3 -> -1
+POWER_RETURN donor-cancel P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN donor-cancel P2
+POWER_ASK donor-cancel P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 242] wait 6
+MOCK: [frame 248] expect POWER_RETURN~donor-cancel~P1
+MOCK: expect 'POWER_RETURN~donor-cancel~P1' >= 1: 1
+MOCK: [frame 248] wait 6
+MOCK: [frame 254] expect POWER_BEGIN~donor-cancel~P2
+MOCK: expect 'POWER_BEGIN~donor-cancel~P2' >= 1: 1
+MOCK: [frame 254] expect_none POWER_RETURN~donor-cancel~P2
+MOCK: expect_none 'POWER_RETURN~donor-cancel~P2': 0
+MOCK: [frame 254] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 258] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 2
+MOCK: [frame 258] shot donor-cancel-P2-power
+MOCK: shot build/host/shots/power-flow-480/donor-cancel-P2-power.ppm (frame 259)
+MOCK: [frame 259] press B P2
+MOCK: [frame 263] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK donor-cancel P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 267] wait 6
+MOCK: [frame 273] expect POWER_ASK~donor-cancel~P2~confirm
+MOCK: expect 'POWER_ASK~donor-cancel~P2~confirm' >= 1: 1
+MOCK: [frame 273] shot donor-cancel-P2-confirm
+MOCK: shot build/host/shots/power-flow-480/donor-cancel-P2-confirm.ppm (frame 274)
+MOCK: [frame 274] press LEFT P2
+MOCK: [frame 278] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK donor-cancel P2 ack answer=0
+POWER_ASK donor-cancel P2 from answer=-1
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 282] wait 6
+MOCK: [frame 288] expect POWER_ASK~donor-cancel~P2~from
+MOCK: expect 'POWER_ASK~donor-cancel~P2~from' >= 1: 1
+MOCK: [frame 288] shot donor-cancel-P2-from
+MOCK: shot build/host/shots/power-flow-480/donor-cancel-P2-from.ppm (frame 289)
+MOCK: [frame 289] press B P2
+REQ menu/play_area P2 n=3 -> -1
+POWER_RETURN donor-cancel P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN recipient-cancel P1
+POWER_ASK recipient-cancel P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 294] wait 6
+MOCK: [frame 300] expect POWER_RETURN~donor-cancel~P2
+MOCK: expect 'POWER_RETURN~donor-cancel~P2' >= 1: 1
+MOCK: [frame 300] wait 6
+MOCK: [frame 306] expect POWER_BEGIN~recipient-cancel~P1
+MOCK: expect 'POWER_BEGIN~recipient-cancel~P1' >= 1: 1
+MOCK: [frame 306] expect_none POWER_RETURN~recipient-cancel~P1
+MOCK: expect_none 'POWER_RETURN~recipient-cancel~P1': 0
+MOCK: [frame 306] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 310] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 3
+MOCK: [frame 310] shot recipient-cancel-P1-power
+MOCK: shot build/host/shots/power-flow-480/recipient-cancel-P1-power.ppm (frame 311)
+MOCK: [frame 311] press B
+MOCK: [frame 315] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK recipient-cancel P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 319] wait 6
+MOCK: [frame 325] expect POWER_ASK~recipient-cancel~P1~confirm
+MOCK: expect 'POWER_ASK~recipient-cancel~P1~confirm' >= 1: 1
+MOCK: [frame 325] shot recipient-cancel-P1-confirm
+MOCK: shot build/host/shots/power-flow-480/recipient-cancel-P1-confirm.ppm (frame 326)
+MOCK: [frame 326] press LEFT
+MOCK: [frame 330] press A
+REQ yes_no P1 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK recipient-cancel P1 ack answer=0
+POWER_ASK recipient-cancel P1 from answer=1
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 334] wait 6
+MOCK: [frame 340] expect POWER_ASK~recipient-cancel~P1~from
+MOCK: expect 'POWER_ASK~recipient-cancel~P1~from' >= 1: 1
+MOCK: [frame 340] shot recipient-cancel-P1-from
+MOCK: shot build/host/shots/power-flow-480/recipient-cancel-P1-from.ppm (frame 341)
+MOCK: [frame 341] press RIGHT
+MOCK: [frame 345] press START
+VIEW SLOT P1 loc=1 card=8
+MOCK: [frame 349] expect VIEW~SLOT~P1~loc=1
+MOCK: expect 'VIEW~SLOT~P1~loc=1' >= 1: 2
+MOCK: [frame 349] press B
+MOCK: [frame 353] press A
+REQ menu/play_area P1 n=3 -> 1
+POWER_ASK recipient-cancel P1 to answer=-1
+ASK menu/play_area P1 n=3 cursor=1
+MOCK: [frame 357] wait 6
+MOCK: [frame 363] expect POWER_ASK~recipient-cancel~P1~to
+MOCK: expect 'POWER_ASK~recipient-cancel~P1~to' >= 1: 1
+MOCK: [frame 363] shot recipient-cancel-P1-to
+MOCK: shot build/host/shots/power-flow-480/recipient-cancel-P1-to.ppm (frame 364)
+MOCK: [frame 364] press B
+REQ menu/play_area P1 n=3 -> -1
+POWER_ASK recipient-cancel P1 from answer=-1
+ASK menu/play_area P1 n=3 cursor=1
+MOCK: [frame 368] wait 6
+MOCK: [frame 374] press B
+REQ menu/play_area P1 n=3 -> -1
+POWER_RETURN recipient-cancel P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN recipient-cancel P2
+POWER_ASK recipient-cancel P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 379] wait 6
+MOCK: [frame 385] expect POWER_RETURN~recipient-cancel~P1
+MOCK: expect 'POWER_RETURN~recipient-cancel~P1' >= 1: 1
+MOCK: [frame 385] wait 6
+MOCK: [frame 391] expect POWER_BEGIN~recipient-cancel~P2
+MOCK: expect 'POWER_BEGIN~recipient-cancel~P2' >= 1: 1
+MOCK: [frame 391] expect_none POWER_RETURN~recipient-cancel~P2
+MOCK: expect_none 'POWER_RETURN~recipient-cancel~P2': 0
+MOCK: [frame 391] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 395] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 3
+MOCK: [frame 395] shot recipient-cancel-P2-power
+MOCK: shot build/host/shots/power-flow-480/recipient-cancel-P2-power.ppm (frame 396)
+MOCK: [frame 396] press B P2
+MOCK: [frame 400] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK recipient-cancel P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 404] wait 6
+MOCK: [frame 410] expect POWER_ASK~recipient-cancel~P2~confirm
+MOCK: expect 'POWER_ASK~recipient-cancel~P2~confirm' >= 1: 1
+MOCK: [frame 410] shot recipient-cancel-P2-confirm
+MOCK: shot build/host/shots/power-flow-480/recipient-cancel-P2-confirm.ppm (frame 411)
+MOCK: [frame 411] press LEFT P2
+MOCK: [frame 415] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK recipient-cancel P2 ack answer=0
+POWER_ASK recipient-cancel P2 from answer=1
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 419] wait 6
+MOCK: [frame 425] expect POWER_ASK~recipient-cancel~P2~from
+MOCK: expect 'POWER_ASK~recipient-cancel~P2~from' >= 1: 1
+MOCK: [frame 425] shot recipient-cancel-P2-from
+MOCK: shot build/host/shots/power-flow-480/recipient-cancel-P2-from.ppm (frame 426)
+MOCK: [frame 426] press RIGHT P2
+MOCK: [frame 430] press START P2
+VIEW SLOT P2 loc=1 card=8
+MOCK: [frame 434] expect VIEW~SLOT~P2~loc=1
+MOCK: expect 'VIEW~SLOT~P2~loc=1' >= 1: 2
+MOCK: [frame 434] press B P2
+MOCK: [frame 438] press A P2
+REQ menu/play_area P2 n=3 -> 1
+POWER_ASK recipient-cancel P2 to answer=-1
+ASK menu/play_area P2 n=3 cursor=1
+MOCK: [frame 442] wait 6
+MOCK: [frame 448] expect POWER_ASK~recipient-cancel~P2~to
+MOCK: expect 'POWER_ASK~recipient-cancel~P2~to' >= 1: 1
+MOCK: [frame 448] shot recipient-cancel-P2-to
+MOCK: shot build/host/shots/power-flow-480/recipient-cancel-P2-to.ppm (frame 449)
+MOCK: [frame 449] press B P2
+REQ menu/play_area P2 n=3 -> -1
+POWER_ASK recipient-cancel P2 from answer=-1
+ASK menu/play_area P2 n=3 cursor=1
+MOCK: [frame 453] wait 6
+MOCK: [frame 459] press B P2
+REQ menu/play_area P2 n=3 -> -1
+POWER_RETURN recipient-cancel P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN invalid-donor P1
+POWER_ASK invalid-donor P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 464] wait 6
+MOCK: [frame 470] expect POWER_RETURN~recipient-cancel~P2
+MOCK: expect 'POWER_RETURN~recipient-cancel~P2' >= 1: 1
+MOCK: [frame 470] wait 6
+MOCK: [frame 476] expect POWER_BEGIN~invalid-donor~P1
+MOCK: expect 'POWER_BEGIN~invalid-donor~P1' >= 1: 1
+MOCK: [frame 476] expect_none POWER_RETURN~invalid-donor~P1
+MOCK: expect_none 'POWER_RETURN~invalid-donor~P1': 0
+MOCK: [frame 476] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 480] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 4
+MOCK: [frame 480] shot invalid-donor-P1-power
+MOCK: shot build/host/shots/power-flow-480/invalid-donor-P1-power.ppm (frame 481)
+MOCK: [frame 481] press B
+MOCK: [frame 485] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK invalid-donor P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 489] wait 6
+MOCK: [frame 495] expect POWER_ASK~invalid-donor~P1~confirm
+MOCK: expect 'POWER_ASK~invalid-donor~P1~confirm' >= 1: 1
+MOCK: [frame 495] shot invalid-donor-P1-confirm
+MOCK: shot build/host/shots/power-flow-480/invalid-donor-P1-confirm.ppm (frame 496)
+MOCK: [frame 496] press LEFT
+MOCK: [frame 500] press A
+REQ yes_no P1 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK invalid-donor P1 ack answer=0
+POWER_ASK invalid-donor P1 from answer=2
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 504] wait 6
+MOCK: [frame 510] expect POWER_ASK~invalid-donor~P1~from
+MOCK: expect 'POWER_ASK~invalid-donor~P1~from' >= 1: 1
+MOCK: [frame 510] shot invalid-donor-P1-from
+MOCK: shot build/host/shots/power-flow-480/invalid-donor-P1-from.ppm (frame 511)
+MOCK: [frame 511] press RIGHT
+MOCK: [frame 515] press RIGHT
+MOCK: [frame 519] press A
+REQ menu/play_area P1 n=3 -> 2
+POWER_ASK invalid-donor P1 from answer=1
+ASK menu/play_area P1 n=3 cursor=2
+MOCK: [frame 523] wait 6
+MOCK: [frame 529] press LEFT
+MOCK: [frame 533] press START
+VIEW SLOT P1 loc=1 card=8
+MOCK: [frame 537] expect VIEW~SLOT~P1~loc=1
+MOCK: expect 'VIEW~SLOT~P1~loc=1' >= 1: 3
+MOCK: [frame 537] press B
+MOCK: [frame 541] press A
+REQ menu/play_area P1 n=3 -> 1
+POWER_ASK invalid-donor P1 to answer=2
+ASK menu/play_area P1 n=3 cursor=1
+MOCK: [frame 545] wait 6
+MOCK: [frame 551] expect POWER_ASK~invalid-donor~P1~to
+MOCK: expect 'POWER_ASK~invalid-donor~P1~to' >= 1: 1
+MOCK: [frame 551] shot invalid-donor-P1-to
+MOCK: shot build/host/shots/power-flow-480/invalid-donor-P1-to.ppm (frame 552)
+MOCK: [frame 552] press RIGHT
+MOCK: [frame 556] press START
+VIEW SLOT P1 loc=2 card=44
+MOCK: [frame 560] expect VIEW~SLOT~P1~loc=2
+MOCK: expect 'VIEW~SLOT~P1~loc=2' >= 1: 2
+MOCK: [frame 560] press B
+MOCK: [frame 564] press A
+REQ menu/play_area P1 n=3 -> 2
+POWER_ASK invalid-donor P1 from answer=-1
+ASK menu/play_area P1 n=3 cursor=2
+MOCK: [frame 568] wait 6
+MOCK: [frame 574] press B
+REQ menu/play_area P1 n=3 -> -1
+POWER_RETURN invalid-donor P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN invalid-donor P2
+POWER_ASK invalid-donor P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 579] wait 6
+MOCK: [frame 585] expect POWER_RETURN~invalid-donor~P1
+MOCK: expect 'POWER_RETURN~invalid-donor~P1' >= 1: 1
+MOCK: [frame 585] wait 6
+MOCK: [frame 591] expect POWER_BEGIN~invalid-donor~P2
+MOCK: expect 'POWER_BEGIN~invalid-donor~P2' >= 1: 1
+MOCK: [frame 591] expect_none POWER_RETURN~invalid-donor~P2
+MOCK: expect_none 'POWER_RETURN~invalid-donor~P2': 0
+MOCK: [frame 591] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 595] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 4
+MOCK: [frame 595] shot invalid-donor-P2-power
+MOCK: shot build/host/shots/power-flow-480/invalid-donor-P2-power.ppm (frame 596)
+MOCK: [frame 596] press B P2
+MOCK: [frame 600] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK invalid-donor P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 604] wait 6
+MOCK: [frame 610] expect POWER_ASK~invalid-donor~P2~confirm
+MOCK: expect 'POWER_ASK~invalid-donor~P2~confirm' >= 1: 1
+MOCK: [frame 610] shot invalid-donor-P2-confirm
+MOCK: shot build/host/shots/power-flow-480/invalid-donor-P2-confirm.ppm (frame 611)
+MOCK: [frame 611] press LEFT P2
+MOCK: [frame 615] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT Procedure for Energy Transfer://1. Choose the Pokemon to move Grass/   Energy from.  Press the A Button.//2. Choose the Pokemon to move the/   energy to and press the A Button.//3. Repeat steps 1 and 2.//4. Press the B Button to end.
+POWER_ASK invalid-donor P2 ack answer=0
+POWER_ASK invalid-donor P2 from answer=2
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 619] wait 6
+MOCK: [frame 625] expect POWER_ASK~invalid-donor~P2~from
+MOCK: expect 'POWER_ASK~invalid-donor~P2~from' >= 1: 1
+MOCK: [frame 625] shot invalid-donor-P2-from
+MOCK: shot build/host/shots/power-flow-480/invalid-donor-P2-from.ppm (frame 626)
+MOCK: [frame 626] press RIGHT P2
+MOCK: [frame 630] press RIGHT P2
+MOCK: [frame 634] press A P2
+REQ menu/play_area P2 n=3 -> 2
+POWER_ASK invalid-donor P2 from answer=1
+ASK menu/play_area P2 n=3 cursor=2
+MOCK: [frame 638] wait 6
+MOCK: [frame 644] press LEFT P2
+MOCK: [frame 648] press START P2
+VIEW SLOT P2 loc=1 card=8
+MOCK: [frame 652] expect VIEW~SLOT~P2~loc=1
+MOCK: expect 'VIEW~SLOT~P2~loc=1' >= 1: 3
+MOCK: [frame 652] press B P2
+MOCK: [frame 656] press A P2
+REQ menu/play_area P2 n=3 -> 1
+POWER_ASK invalid-donor P2 to answer=2
+ASK menu/play_area P2 n=3 cursor=1
+MOCK: [frame 660] wait 6
+MOCK: [frame 666] expect POWER_ASK~invalid-donor~P2~to
+MOCK: expect 'POWER_ASK~invalid-donor~P2~to' >= 1: 1
+MOCK: [frame 666] shot invalid-donor-P2-to
+MOCK: shot build/host/shots/power-flow-480/invalid-donor-P2-to.ppm (frame 667)
+MOCK: [frame 667] press RIGHT P2
+MOCK: [frame 671] press START P2
+VIEW SLOT P2 loc=2 card=44
+MOCK: [frame 675] expect VIEW~SLOT~P2~loc=2
+MOCK: expect 'VIEW~SLOT~P2~loc=2' >= 1: 2
+MOCK: [frame 675] press B P2
+MOCK: [frame 679] press A P2
+REQ menu/play_area P2 n=3 -> 2
+POWER_ASK invalid-donor P2 from answer=-1
+ASK menu/play_area P2 n=3 cursor=2
+MOCK: [frame 683] wait 6
+MOCK: [frame 689] press B P2
+REQ menu/play_area P2 n=3 -> -1
+POWER_RETURN invalid-donor P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN power-cancel P1
+POWER_ASK power-cancel P1 power answer=-1
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 694] wait 6
+MOCK: [frame 700] expect POWER_RETURN~invalid-donor~P2
+MOCK: expect 'POWER_RETURN~invalid-donor~P2' >= 1: 1
+MOCK: [frame 700] wait 6
+MOCK: [frame 706] expect POWER_BEGIN~power-cancel~P1
+MOCK: expect 'POWER_BEGIN~power-cancel~P1' >= 1: 1
+MOCK: [frame 706] expect_none POWER_RETURN~power-cancel~P1
+MOCK: expect_none 'POWER_RETURN~power-cancel~P1': 0
+MOCK: [frame 706] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 710] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 5
+MOCK: [frame 710] shot power-cancel-P1-power
+MOCK: shot build/host/shots/power-flow-480/power-cancel-P1-power.ppm (frame 711)
+MOCK: [frame 711] press B
+MOCK: [frame 715] press B
+REQ menu/play_area P1 n=3 -> -1
+POWER_RETURN power-cancel P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN power-cancel P2
+POWER_ASK power-cancel P2 power answer=-1
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 720] wait 6
+MOCK: [frame 726] expect POWER_RETURN~power-cancel~P1
+MOCK: expect 'POWER_RETURN~power-cancel~P1' >= 1: 1
+MOCK: [frame 726] wait 6
+MOCK: [frame 732] expect POWER_BEGIN~power-cancel~P2
+MOCK: expect 'POWER_BEGIN~power-cancel~P2' >= 1: 1
+MOCK: [frame 732] expect_none POWER_RETURN~power-cancel~P2
+MOCK: expect_none 'POWER_RETURN~power-cancel~P2': 0
+MOCK: [frame 732] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 736] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 5
+MOCK: [frame 736] shot power-cancel-P2-power
+MOCK: shot build/host/shots/power-flow-480/power-cancel-P2-power.ppm (frame 737)
+MOCK: [frame 737] press B P2
+MOCK: [frame 741] press B P2
+REQ menu/play_area P2 n=3 -> -1
+POWER_RETURN power-cancel P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN no-grass P1
+POWER_ASK no-grass P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 746] wait 6
+MOCK: [frame 752] expect POWER_RETURN~power-cancel~P2
+MOCK: expect 'POWER_RETURN~power-cancel~P2' >= 1: 1
+MOCK: [frame 752] wait 6
+MOCK: [frame 758] expect POWER_BEGIN~no-grass~P1
+MOCK: expect 'POWER_BEGIN~no-grass~P1' >= 1: 1
+MOCK: [frame 758] expect_none POWER_RETURN~no-grass~P1
+MOCK: expect_none 'POWER_RETURN~no-grass~P1': 0
+MOCK: [frame 758] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 762] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 6
+MOCK: [frame 762] shot no-grass-P1-power
+MOCK: shot build/host/shots/power-flow-480/no-grass-P1-power.ppm (frame 763)
+MOCK: [frame 763] press B
+MOCK: [frame 767] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK no-grass P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 771] wait 6
+MOCK: [frame 777] expect POWER_ASK~no-grass~P1~confirm
+MOCK: expect 'POWER_ASK~no-grass~P1~confirm' >= 1: 1
+MOCK: [frame 777] shot no-grass-P1-confirm
+MOCK: shot build/host/shots/power-flow-480/no-grass-P1-confirm.ppm (frame 778)
+MOCK: [frame 778] press LEFT
+MOCK: [frame 782] press A
+REQ yes_no P1 n=2 -> 1
+TEXT No Grass Energy.
+POWER_ASK no-grass P1 ack answer=0
+POWER_RETURN no-grass P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN no-grass P2
+POWER_ASK no-grass P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 787] wait 6
+MOCK: [frame 793] expect POWER_RETURN~no-grass~P1
+MOCK: expect 'POWER_RETURN~no-grass~P1' >= 1: 1
+MOCK: [frame 793] wait 6
+MOCK: [frame 799] expect POWER_BEGIN~no-grass~P2
+MOCK: expect 'POWER_BEGIN~no-grass~P2' >= 1: 1
+MOCK: [frame 799] expect_none POWER_RETURN~no-grass~P2
+MOCK: expect_none 'POWER_RETURN~no-grass~P2': 0
+MOCK: [frame 799] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 803] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 6
+MOCK: [frame 803] shot no-grass-P2-power
+MOCK: shot build/host/shots/power-flow-480/no-grass-P2-power.ppm (frame 804)
+MOCK: [frame 804] press B P2
+MOCK: [frame 808] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK no-grass P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 812] wait 6
+MOCK: [frame 818] expect POWER_ASK~no-grass~P2~confirm
+MOCK: expect 'POWER_ASK~no-grass~P2~confirm' >= 1: 1
+MOCK: [frame 818] shot no-grass-P2-confirm
+MOCK: shot build/host/shots/power-flow-480/no-grass-P2-confirm.ppm (frame 819)
+MOCK: [frame 819] press LEFT P2
+MOCK: [frame 823] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT No Grass Energy.
+POWER_ASK no-grass P2 ack answer=0
+POWER_RETURN no-grass P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN status-blocked P1
+POWER_ASK status-blocked P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 828] wait 6
+MOCK: [frame 834] expect POWER_RETURN~no-grass~P2
+MOCK: expect 'POWER_RETURN~no-grass~P2' >= 1: 1
+MOCK: [frame 834] wait 6
+MOCK: [frame 840] expect POWER_BEGIN~status-blocked~P1
+MOCK: expect 'POWER_BEGIN~status-blocked~P1' >= 1: 1
+MOCK: [frame 840] expect_none POWER_RETURN~status-blocked~P1
+MOCK: expect_none 'POWER_RETURN~status-blocked~P1': 0
+MOCK: [frame 840] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 844] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 7
+MOCK: [frame 844] shot status-blocked-P1-power
+MOCK: shot build/host/shots/power-flow-480/status-blocked-P1-power.ppm (frame 845)
+MOCK: [frame 845] press B
+MOCK: [frame 849] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK status-blocked P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 853] wait 6
+MOCK: [frame 859] expect POWER_ASK~status-blocked~P1~confirm
+MOCK: expect 'POWER_ASK~status-blocked~P1~confirm' >= 1: 1
+MOCK: [frame 859] shot status-blocked-P1-confirm
+MOCK: shot build/host/shots/power-flow-480/status-blocked-P1-confirm.ppm (frame 860)
+MOCK: [frame 860] press LEFT
+MOCK: [frame 864] press A
+REQ yes_no P1 n=2 -> 1
+TEXT Cannot use due to Sleep, Paralysis,/or Confusion.
+POWER_ASK status-blocked P1 ack answer=0
+POWER_RETURN status-blocked P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN status-blocked P2
+POWER_ASK status-blocked P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 869] wait 6
+MOCK: [frame 875] expect POWER_RETURN~status-blocked~P1
+MOCK: expect 'POWER_RETURN~status-blocked~P1' >= 1: 1
+MOCK: [frame 875] wait 6
+MOCK: [frame 881] expect POWER_BEGIN~status-blocked~P2
+MOCK: expect 'POWER_BEGIN~status-blocked~P2' >= 1: 1
+MOCK: [frame 881] expect_none POWER_RETURN~status-blocked~P2
+MOCK: expect_none 'POWER_RETURN~status-blocked~P2': 0
+MOCK: [frame 881] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 885] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 7
+MOCK: [frame 885] shot status-blocked-P2-power
+MOCK: shot build/host/shots/power-flow-480/status-blocked-P2-power.ppm (frame 886)
+MOCK: [frame 886] press B P2
+MOCK: [frame 890] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK status-blocked P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 894] wait 6
+MOCK: [frame 900] expect POWER_ASK~status-blocked~P2~confirm
+MOCK: expect 'POWER_ASK~status-blocked~P2~confirm' >= 1: 1
+MOCK: [frame 900] shot status-blocked-P2-confirm
+MOCK: shot build/host/shots/power-flow-480/status-blocked-P2-confirm.ppm (frame 901)
+MOCK: [frame 901] press LEFT P2
+MOCK: [frame 905] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT Cannot use due to Sleep, Paralysis,/or Confusion.
+POWER_ASK status-blocked P2 ack answer=0
+POWER_RETURN status-blocked P2 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN muk-blocked P1
+POWER_ASK muk-blocked P1 power answer=0
+ASK menu/play_area P1 n=3 cursor=0
+MOCK: [frame 910] wait 6
+MOCK: [frame 916] expect POWER_RETURN~status-blocked~P2
+MOCK: expect 'POWER_RETURN~status-blocked~P2' >= 1: 1
+MOCK: [frame 916] wait 6
+MOCK: [frame 922] expect POWER_BEGIN~muk-blocked~P1
+MOCK: expect 'POWER_BEGIN~muk-blocked~P1' >= 1: 1
+MOCK: [frame 922] expect_none POWER_RETURN~muk-blocked~P1
+MOCK: expect_none 'POWER_RETURN~muk-blocked~P1': 0
+MOCK: [frame 922] press START
+VIEW SLOT P1 loc=0 card=11
+MOCK: [frame 926] expect VIEW~SLOT~P1~loc=0
+MOCK: expect 'VIEW~SLOT~P1~loc=0' >= 1: 8
+MOCK: [frame 926] shot muk-blocked-P1-power
+MOCK: shot build/host/shots/power-flow-480/muk-blocked-P1-power.ppm (frame 927)
+MOCK: [frame 927] press B
+MOCK: [frame 931] press A
+REQ menu/play_area P1 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK muk-blocked P1 confirm answer=1
+ASK yes_no P1 n=2 cursor=0
+MOCK: [frame 935] wait 6
+MOCK: [frame 941] expect POWER_ASK~muk-blocked~P1~confirm
+MOCK: expect 'POWER_ASK~muk-blocked~P1~confirm' >= 1: 1
+MOCK: [frame 941] shot muk-blocked-P1-confirm
+MOCK: shot build/host/shots/power-flow-480/muk-blocked-P1-confirm.ppm (frame 942)
+MOCK: [frame 942] press LEFT
+MOCK: [frame 946] press A
+REQ yes_no P1 n=2 -> 1
+TEXT Unable to use due to the/effects of Toxic Gas.
+POWER_ASK muk-blocked P1 ack answer=0
+POWER_RETURN muk-blocked P1 state_requests_answers_rng_equal=1
+TEXT Select a Pokemon to retreat.
+TEXT Select a Pokemon to retreat.
+POWER_BEGIN muk-blocked P2
+POWER_ASK muk-blocked P2 power answer=0
+ASK menu/play_area P2 n=3 cursor=0
+MOCK: [frame 951] wait 6
+MOCK: [frame 957] expect POWER_RETURN~muk-blocked~P1
+MOCK: expect 'POWER_RETURN~muk-blocked~P1' >= 1: 1
+MOCK: [frame 957] wait 6
+MOCK: [frame 963] expect POWER_BEGIN~muk-blocked~P2
+MOCK: expect 'POWER_BEGIN~muk-blocked~P2' >= 1: 1
+MOCK: [frame 963] expect_none POWER_RETURN~muk-blocked~P2
+MOCK: expect_none 'POWER_RETURN~muk-blocked~P2': 0
+MOCK: [frame 963] press START P2
+VIEW SLOT P2 loc=0 card=11
+MOCK: [frame 967] expect VIEW~SLOT~P2~loc=0
+MOCK: expect 'VIEW~SLOT~P2~loc=0' >= 1: 8
+MOCK: [frame 967] shot muk-blocked-P2-power
+MOCK: shot build/host/shots/power-flow-480/muk-blocked-P2-power.ppm (frame 968)
+MOCK: [frame 968] press B P2
+MOCK: [frame 972] press A P2
+REQ menu/play_area P2 n=3 -> 0
+TEXT Use this Pokemon Power?
+POWER_ASK muk-blocked P2 confirm answer=1
+ASK yes_no P2 n=2 cursor=0
+MOCK: [frame 976] wait 6
+MOCK: [frame 982] expect POWER_ASK~muk-blocked~P2~confirm
+MOCK: expect 'POWER_ASK~muk-blocked~P2~confirm' >= 1: 1
+MOCK: [frame 982] shotMOCK: end of script
+MOCK: frames=997 polls=981
+ muk-blocked-P2-confirm
+MOCK: shot build/host/shots/power-flow-480/muk-blocked-P2-confirm.ppm (frame 983)
+MOCK: [frame 983] press LEFT P2
+MOCK: [frame 987] press A P2
+REQ yes_no P2 n=2 -> 1
+TEXT Unable to use due to the/effects of Toxic Gas.
+POWER_ASK muk-blocked P2 ack answer=0
+POWER_RETURN muk-blocked P2 state_requests_answers_rng_equal=1
+POWER_FLOW_PASS cases16 stale_retreat_exclude_slot_transfer_cancel_invalid_blocked_noGrass_rng_footer=1
+MOCK: [frame 991] wait 6
+MOCK: [frame 997] expect POWER_RETURN~muk-blocked~P2
+MOCK: expect 'POWER_RETURN~muk-blocked~P2' >= 1: 1
+MOCK: [frame 997] expect POWER_FLOW_PASS
+MOCK: expect 'POWER_FLOW_PASS' >= 1: 1

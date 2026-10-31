@@ -201,7 +201,10 @@ static void test_conversation_cameras(void)
   if(kind==4)state.npcs[0].y=255;
   if(kind==5)state.npcs[0].y=28;
   presentation_sync(&p,&state,false);presentation_conversation(&p,speaker);camera_settle(&p,&state,&lab);
-  for(unsigned axis=0;axis<3;axis++){close_to(p.camera.eye[axis],lab.eye[axis]);close_to(p.camera.target[axis],lab.target[axis]);}
+  Presentation exploration;presentation_init(&exploration,&state,false);camera_settle(&exploration,&state,&lab);
+  for(unsigned axis=0;axis<3;axis++) {
+   close_to(p.camera.eye[axis],exploration.camera.eye[axis]);close_to(p.camera.target[axis],exploration.camera.target[axis]);
+  }
  }
  OwState world={.map=OVERWORLD_MAP,.overworld_selection=OWMAP_MASON_LABORATORY};Presentation p;
  presentation_init(&p,&world,false);presentation_conversation(&p,NPC_DRMASON);camera_settle(&p,&world,&island);
@@ -228,13 +231,11 @@ static float projected_height(const PresentationCamera *c,float x,float z)
  return feet-head;
 }
 
-static void test_club_tracking(void)
+static void test_interior_tracking(void)
 {
- static const unsigned rooms[]={FIGHTING_CLUB,ROCK_CLUB,WATER_CLUB,LIGHTNING_CLUB,
-  GRASS_CLUB,PSYCHIC_CLUB,SCIENCE_CLUB,FIRE_CLUB,CHALLENGE_HALL,POKEMON_DOME};
  unsigned compositions=0;
- for(unsigned room=0;room<sizeof(rooms)/sizeof(rooms[0]);room++) {
-  unsigned id=rooms[room];const W3Map *map=&w3_maps[id];
+ for(unsigned id=1;id<W3_MAP_COUNT;id++) {
+  const W3Map *map=&w3_maps[id];
   PresentationCamera authored={.fov=map->fov};
   memcpy(authored.eye,map->eye,sizeof(authored.eye));memcpy(authored.target,map->target,sizeof(authored.target));
   OwState state={.map=id,.x=map->width/2,.y=map->height-4,.direction=NORTH};
@@ -280,7 +281,8 @@ static void test_club_tracking(void)
     assert(sx>10&&sx<310&&sy>16&&sy<228);
    }
    assert(projected_height(camera,x,z)>=entry_height*.73f);
-   float wall=id==LIGHTNING_CLUB?4.5f:id==GRASS_CLUB||id==CHALLENGE_HALL?2:5;
+   float wall=id==LIGHTNING_CLUB?4.5f:id==POKEMON_DOME_ENTRANCE?3.5f:
+    id==GRASS_CLUB||id==CHALLENGE_HALL?2:5;
    float sx,sy;project_point(camera,camera->eye[0],wall,1,&sx,&sy);
    /* Test actual authored wall heights, including the two open-air rooms;
       their existing sky band can stay, but cannot grow as Mark walks north. */
@@ -332,23 +334,21 @@ static void test_club_tracking(void)
    }
   }
  }
- /* The world, laboratory, homes, foyers and lobbies keep their authored view. */
- for(unsigned id=0;id<W3_MAP_COUNT;id++) {
-  bool tracking=false;for(unsigned i=0;i<sizeof(rooms)/sizeof(rooms[0]);i++)if(id==rooms[i])tracking=true;
-  if(tracking)continue;
-  const W3Map *map=&w3_maps[id];OwState state={.map=id,.x=2,.y=2};Presentation p;
+ /* The island retains its complete overview and fixed-eye visibility bake. */
+ for(unsigned location=1;location<=12;location++) {
+  const W3Map *map=&w3_maps[0];OwState state={.map=OVERWORLD_MAP,.overworld_selection=location};Presentation p;
   presentation_init(&p,&state,false);camera_settle(&p,&state,map);
   for(unsigned axis=0;axis<3;axis++) {
    close_to(p.camera.eye[axis],map->eye[axis]);close_to(p.camera.target[axis],map->target[axis]);
   }
  }
- printf("CLUB TRACKING PASS: 10 rooms, %u walkable compositions; entry view, continuous tile motion, readable leader scale, TV-safe sides/feet, bounded wall framing, dialogue priority/exit and unchanged other maps/state\n",compositions);
+ printf("INTERIOR TRACKING PASS: all33 interiors, %u walkable compositions; entry view, continuous tile motion, readable far-room scale, TV-safe sides/feet, authored wall heights, dialogue priority/exit, fixed island overview and unchanged state\n",compositions);
 }
 
 int main(void)
 {
  test_conversation_cameras();
- test_club_tracking();
+ test_interior_tracking();
  /* Fractional source waits accumulate instead of doubling one-frame waits. */
  Presentation timing={0};assert(presentation_wait_frames(&timing,60)==30);
  assert(presentation_wait_frames(&timing,120)==60);

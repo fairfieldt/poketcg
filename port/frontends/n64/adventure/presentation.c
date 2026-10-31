@@ -290,12 +290,7 @@ static bool conversation_camera(Presentation *p,const OwState *s,const W3Map *ma
 
 static bool tracking_room(unsigned map)
 {
- switch(map) {
- case FIGHTING_CLUB:case ROCK_CLUB:case WATER_CLUB:case LIGHTNING_CLUB:
- case GRASS_CLUB:case PSYCHIC_CLUB:case SCIENCE_CLUB:case FIRE_CLUB:
- case CHALLENGE_HALL:case POKEMON_DOME:return true;
- default:return false;
- }
+ return map>OVERWORLD_MAP&&map<OW_MAP_COUNT;
 }
 
 static void exploration_camera(const Presentation *p,const OwState *s,const W3Map *map,
@@ -304,7 +299,7 @@ static void exploration_camera(const Presentation *p,const OwState *s,const W3Ma
  if(!tracking_room(s->map)||map->width<12||map->height<12)return;
  const PresentationPose *mark=&p->player.pose;
  /* Keep the authored doorway composition, then move the whole camera rig
-    into the hall. Aiming farther north alone makes the distant player tiny.
+    into the room. Aiming farther north alone makes the distant player tiny.
     Use the interpolated pose so tile boundaries do not become camera stops. */
  float shift_z=clampf(mark->z+10-map->eye[2],2-map->target[2],0);
  camera->eye[2]+=shift_z;camera->target[2]+=shift_z;
@@ -316,9 +311,10 @@ static void exploration_camera(const Presentation *p,const OwState *s,const W3Ma
  shift_x=clampf(shift_x,5-map->eye[0],map->width-5-map->eye[0]);
  camera->eye[0]+=shift_x;camera->target[0]+=shift_x;
  /* Keep the north wall's top near its authored screen height as the eye
-    moves inward. Lightning's authored walls are 4.5 units; Grass/Challenge
-    have two-unit open-air walls. Preserve their existing sky allowance. */
+    moves inward. Respect the authored low walls in Lightning, the Dome foyer
+    and the two open-air rooms, preserving their existing sky allowance. */
  float wall=s->map==LIGHTNING_CLUB?4.5f:
+  s->map==POKEMON_DOME_ENTRANCE?3.5f:
   s->map==GRASS_CLUB||s->map==CHALLENGE_HALL?2:5;
  float old_top=atan2f(maxf(map->eye[1]-wall,0),maxf(map->eye[2]-1,1));
  float old_pitch=atan2f(map->eye[1]-map->target[1],map->eye[2]-map->target[2]);

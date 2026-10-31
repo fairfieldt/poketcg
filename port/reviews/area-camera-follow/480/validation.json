@@ -1,0 +1,56 @@
+{
+  "passed": true,
+  "case": "native-480-8mib-v1",
+  "frames": [
+    {
+      "file": "lab-before.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "57a5e6c4124b36c9ea01ae53237e373e0f0552082aaf9b4ad23b349426285561"
+    },
+    {
+      "file": "lab-after.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "6935868cc7e8e8b1d269935ac07e6471c7878e0b359761b64e5d5104ea2da731"
+    },
+    {
+      "file": "lobby-before.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "c22223096d14bff53acd29fb979a053762a200fa1ef273203fa42ca3be209069"
+    },
+    {
+      "file": "lobby-after.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "7bd4a21eb48993a51f98047ccec279cb89a05c2fdce53fb58dcf895ec8d69ca7"
+    },
+    {
+      "file": "house-before.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "55388bbba248806ccdbbfc9e44a1c8843804c37644961b5330355e5870672577"
+    },
+    {
+      "file": "house-after.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "ef96d40a0393ba6b96915e4b37b8002b3edf8d1622c3eea0aa13574514546f51"
+    }
+  ],
+  "wall_seconds": 22.88,
+  "method": "N64 RDP framebuffer read after detach_wait, production world/main.c + Tiny3D renderer; fixed source poses; only camera getter differs; privateAres/noVIbreakpoints"
+}

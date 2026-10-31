@@ -1,0 +1,56 @@
+{
+  "status": "pass",
+  "command": "make -C port/frontends/n64 powertest checktest -j6",
+  "resolutions": [
+    [
+      320,
+      240
+    ],
+    [
+      480,
+      360
+    ]
+  ],
+  "power_cases_per_resolution": 16,
+  "case_names": [
+    "transfer",
+    "donor-cancel",
+    "recipient-cancel",
+    "invalid-donor",
+    "power-cancel",
+    "no-grass",
+    "status-blocked",
+    "muk-blocked"
+  ],
+  "controller_owners": [
+    "P1",
+    "P2"
+  ],
+  "stale_state": {
+    "log": "Select a Pokemon to retreat.",
+    "wExcludeArenaPokemon": 1
+  },
+  "engine_entry_points": [
+    "DisplayPlayAreaScreenToUsePkmnPower",
+    "UseAttackOrPokemonPower"
+  ],
+  "checks": [
+    "current menu offset includes Active despite stale exclude1",
+    "START inspects actual slots0/1/2",
+    "exact Grass deck-index6 donor1 to recipient2",
+    "Grass7 and Water8 unchanged",
+    "cancellation and blocked cases no transfer",
+    "complete WRAM and HRAM equality with headless answers",
+    "event/request/answer digest equality",
+    "RNG state equality",
+    "context/confirm footer independent of stale log",
+    "log bytes and indices preserved",
+    "existing7 selector cases still pass"
+  ],
+  "capture_type": "host-mock CPU renderer; placeholder art; no VI or physical hardware claim",
+  "excluded_scope": [
+    "procedure/error ACK pagination",
+    "native performance measurement",
+    "production build or deployment"
+  ]
+}

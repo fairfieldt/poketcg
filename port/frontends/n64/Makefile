@@ -237,6 +237,17 @@ checktest: $(HOST_BUILD)/check_selector
 	MOCK_SCRIPT=tests/check_selector.script MOCK_SHOTS=$(HOST_BUILD)/shots/check-selector-480 MOCK_HIGH_RES=1 ./$(HOST_BUILD)/check_selector
 .PHONY: checktest
 
+$(HOST_BUILD)/power_flow.o: tests/power_flow.c tcgn64.c duel_input.h mock/libdragon.h
+	@mkdir -p $(dir $@)
+	$(HOST_CC) -c $(HOST_FRONT_CFLAGS) -UTCGN64_CARD_ART -ffunction-sections -fdata-sections -o $@ $<
+$(HOST_BUILD)/power_flow: $(HOST_BUILD)/power_flow.o $(HOST_CORE_OBJS) $(HOST_BUILD)/save_store_n64.o $(HOST_BUILD)/mock_libdragon.o $(HOST_BUILD)/optional.lst
+	$(HOST_CC) -o $@ $(HOST_BUILD)/power_flow.o $(HOST_CORE_OBJS) $(HOST_BUILD)/save_store_n64.o $(HOST_BUILD)/mock_libdragon.o $$(cat $(HOST_BUILD)/optional.lst) $(HOST_DEAD_STRIP)
+powertest: $(HOST_BUILD)/power_flow
+	@mkdir -p $(HOST_BUILD)/shots/power-flow-320 $(HOST_BUILD)/shots/power-flow-480
+	MOCK_SCRIPT=tests/power_flow.script MOCK_SHOTS=$(HOST_BUILD)/shots/power-flow-320 ./$(HOST_BUILD)/power_flow
+	MOCK_SCRIPT=tests/power_flow.script MOCK_SHOTS=$(HOST_BUILD)/shots/power-flow-480 MOCK_HIGH_RES=1 ./$(HOST_BUILD)/power_flow
+.PHONY: powertest
+
 $(HOST_BUILD)/input_capture: tests/input_capture.c duel_input.h
 	@mkdir -p $(dir $@)
 	$(HOST_CC) -std=c11 -O2 -Wall -Wextra -Werror $< -o $@
@@ -299,7 +310,7 @@ $(HOST_ROMFS)/buildinfo.txt: $(HOST_BUILD)/optional.lst $(CARD_SPRITES)
 	cp $(HOST_BUILD)/optional.info $@
 	@if [ -n "$(CARD_SPRITES)" ]; then rm -rf $(HOST_ROMFS)/cards; ln -s ../../filesystem/cards $(HOST_ROMFS)/cards; fi
 
-hosttest: felttest inputtest cointest boardtest rastertest focustest retainedtest acktest checktest $(HOST_BUILD)/tcgn64_host $(HOST_ROMFS)/buildinfo.txt
+hosttest: felttest inputtest cointest boardtest rastertest focustest retainedtest acktest checktest powertest $(HOST_BUILD)/tcgn64_host $(HOST_ROMFS)/buildinfo.txt
 	@fail=0; for t in $(HOST_TESTS); do \
 		n=$$(basename $$t .txt); mkdir -p $(HOST_BUILD)/shots/$$n; \
 		printf '    [TEST] %-24s' $$n; \

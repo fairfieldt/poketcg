@@ -1,0 +1,349 @@
+wait 6
+expect POWER_BEGIN~transfer~P1
+expect_none POWER_RETURN~transfer~P1
+shot transfer-P1-picker
+press START
+expect VIEW~SLOT~P1~loc=0
+shot transfer-P1-power
+press B
+press A
+wait 6
+expect POWER_ASK~transfer~P1~confirm
+shot transfer-P1-confirm
+press LEFT
+press A
+wait 6
+expect POWER_ASK~transfer~P1~from
+shot transfer-P1-from
+press RIGHT
+press START
+expect VIEW~SLOT~P1~loc=1
+press B
+press A
+wait 6
+expect POWER_ASK~transfer~P1~to
+shot transfer-P1-to
+press RIGHT
+press START
+expect VIEW~SLOT~P1~loc=2
+press B
+press A
+wait 6
+press B
+wait 6
+expect POWER_RETURN~transfer~P1
+wait 6
+expect POWER_BEGIN~transfer~P2
+expect_none POWER_RETURN~transfer~P2
+shot transfer-P2-picker
+press START P2
+expect VIEW~SLOT~P2~loc=0
+shot transfer-P2-power
+press B P2
+press A P2
+wait 6
+expect POWER_ASK~transfer~P2~confirm
+shot transfer-P2-confirm
+press LEFT P2
+press A P2
+wait 6
+expect POWER_ASK~transfer~P2~from
+shot transfer-P2-from
+press RIGHT P2
+press START P2
+expect VIEW~SLOT~P2~loc=1
+press B P2
+press A P2
+wait 6
+expect POWER_ASK~transfer~P2~to
+shot transfer-P2-to
+press RIGHT P2
+press START P2
+expect VIEW~SLOT~P2~loc=2
+press B P2
+press A P2
+wait 6
+press B P2
+wait 6
+expect POWER_RETURN~transfer~P2
+wait 6
+expect POWER_BEGIN~donor-cancel~P1
+expect_none POWER_RETURN~donor-cancel~P1
+press START
+expect VIEW~SLOT~P1~loc=0
+shot donor-cancel-P1-power
+press B
+press A
+wait 6
+expect POWER_ASK~donor-cancel~P1~confirm
+shot donor-cancel-P1-confirm
+press LEFT
+press A
+wait 6
+expect POWER_ASK~donor-cancel~P1~from
+shot donor-cancel-P1-from
+press B
+wait 6
+expect POWER_RETURN~donor-cancel~P1
+wait 6
+expect POWER_BEGIN~donor-cancel~P2
+expect_none POWER_RETURN~donor-cancel~P2
+press START P2
+expect VIEW~SLOT~P2~loc=0
+shot donor-cancel-P2-power
+press B P2
+press A P2
+wait 6
+expect POWER_ASK~donor-cancel~P2~confirm
+shot donor-cancel-P2-confirm
+press LEFT P2
+press A P2
+wait 6
+expect POWER_ASK~donor-cancel~P2~from
+shot donor-cancel-P2-from
+press B P2
+wait 6
+expect POWER_RETURN~donor-cancel~P2
+wait 6
+expect POWER_BEGIN~recipient-cancel~P1
+expect_none POWER_RETURN~recipient-cancel~P1
+press START
+expect VIEW~SLOT~P1~loc=0
+shot recipient-cancel-P1-power
+press B
+press A
+wait 6
+expect POWER_ASK~recipient-cancel~P1~confirm
+shot recipient-cancel-P1-confirm
+press LEFT
+press A
+wait 6
+expect POWER_ASK~recipient-cancel~P1~from
+shot recipient-cancel-P1-from
+press RIGHT
+press START
+expect VIEW~SLOT~P1~loc=1
+press B
+press A
+wait 6
+expect POWER_ASK~recipient-cancel~P1~to
+shot recipient-cancel-P1-to
+press B
+wait 6
+press B
+wait 6
+expect POWER_RETURN~recipient-cancel~P1
+wait 6
+expect POWER_BEGIN~recipient-cancel~P2
+expect_none POWER_RETURN~recipient-cancel~P2
+press START P2
+expect VIEW~SLOT~P2~loc=0
+shot recipient-cancel-P2-power
+press B P2
+press A P2
+wait 6
+expect POWER_ASK~recipient-cancel~P2~confirm
+shot recipient-cancel-P2-confirm
+press LEFT P2
+press A P2
+wait 6
+expect POWER_ASK~recipient-cancel~P2~from
+shot recipient-cancel-P2-from
+press RIGHT P2
+press START P2
+expect VIEW~SLOT~P2~loc=1
+press B P2
+press A P2
+wait 6
+expect POWER_ASK~recipient-cancel~P2~to
+shot recipient-cancel-P2-to
+press B P2
+wait 6
+press B P2
+wait 6
+expect POWER_RETURN~recipient-cancel~P2
+wait 6
+expect POWER_BEGIN~invalid-donor~P1
+expect_none POWER_RETURN~invalid-donor~P1
+press START
+expect VIEW~SLOT~P1~loc=0
+shot invalid-donor-P1-power
+press B
+press A
+wait 6
+expect POWER_ASK~invalid-donor~P1~confirm
+shot invalid-donor-P1-confirm
+press LEFT
+press A
+wait 6
+expect POWER_ASK~invalid-donor~P1~from
+shot invalid-donor-P1-from
+press RIGHT
+press RIGHT
+press A
+wait 6
+press LEFT
+press START
+expect VIEW~SLOT~P1~loc=1
+press B
+press A
+wait 6
+expect POWER_ASK~invalid-donor~P1~to
+shot invalid-donor-P1-to
+press RIGHT
+press START
+expect VIEW~SLOT~P1~loc=2
+press B
+press A
+wait 6
+press B
+wait 6
+expect POWER_RETURN~invalid-donor~P1
+wait 6
+expect POWER_BEGIN~invalid-donor~P2
+expect_none POWER_RETURN~invalid-donor~P2
+press START P2
+expect VIEW~SLOT~P2~loc=0
+shot invalid-donor-P2-power
+press B P2
+press A P2
+wait 6
+expect POWER_ASK~invalid-donor~P2~confirm
+shot invalid-donor-P2-confirm
+press LEFT P2
+press A P2
+wait 6
+expect POWER_ASK~invalid-donor~P2~from
+shot invalid-donor-P2-from
+press RIGHT P2
+press RIGHT P2
+press A P2
+wait 6
+press LEFT P2
+press START P2
+expect VIEW~SLOT~P2~loc=1
+press B P2
+press A P2
+wait 6
+expect POWER_ASK~invalid-donor~P2~to
+shot invalid-donor-P2-to
+press RIGHT P2
+press START P2
+expect VIEW~SLOT~P2~loc=2
+press B P2
+press A P2
+wait 6
+press B P2
+wait 6
+expect POWER_RETURN~invalid-donor~P2
+wait 6
+expect POWER_BEGIN~power-cancel~P1
+expect_none POWER_RETURN~power-cancel~P1
+press START
+expect VIEW~SLOT~P1~loc=0
+shot power-cancel-P1-power
+press B
+press B
+wait 6
+expect POWER_RETURN~power-cancel~P1
+wait 6
+expect POWER_BEGIN~power-cancel~P2
+expect_none POWER_RETURN~power-cancel~P2
+press START P2
+expect VIEW~SLOT~P2~loc=0
+shot power-cancel-P2-power
+press B P2
+press B P2
+wait 6
+expect POWER_RETURN~power-cancel~P2
+wait 6
+expect POWER_BEGIN~no-grass~P1
+expect_none POWER_RETURN~no-grass~P1
+press START
+expect VIEW~SLOT~P1~loc=0
+shot no-grass-P1-power
+press B
+press A
+wait 6
+expect POWER_ASK~no-grass~P1~confirm
+shot no-grass-P1-confirm
+press LEFT
+press A
+wait 6
+expect POWER_RETURN~no-grass~P1
+wait 6
+expect POWER_BEGIN~no-grass~P2
+expect_none POWER_RETURN~no-grass~P2
+press START P2
+expect VIEW~SLOT~P2~loc=0
+shot no-grass-P2-power
+press B P2
+press A P2
+wait 6
+expect POWER_ASK~no-grass~P2~confirm
+shot no-grass-P2-confirm
+press LEFT P2
+press A P2
+wait 6
+expect POWER_RETURN~no-grass~P2
+wait 6
+expect POWER_BEGIN~status-blocked~P1
+expect_none POWER_RETURN~status-blocked~P1
+press START
+expect VIEW~SLOT~P1~loc=0
+shot status-blocked-P1-power
+press B
+press A
+wait 6
+expect POWER_ASK~status-blocked~P1~confirm
+shot status-blocked-P1-confirm
+press LEFT
+press A
+wait 6
+expect POWER_RETURN~status-blocked~P1
+wait 6
+expect POWER_BEGIN~status-blocked~P2
+expect_none POWER_RETURN~status-blocked~P2
+press START P2
+expect VIEW~SLOT~P2~loc=0
+shot status-blocked-P2-power
+press B P2
+press A P2
+wait 6
+expect POWER_ASK~status-blocked~P2~confirm
+shot status-blocked-P2-confirm
+press LEFT P2
+press A P2
+wait 6
+expect POWER_RETURN~status-blocked~P2
+wait 6
+expect POWER_BEGIN~muk-blocked~P1
+expect_none POWER_RETURN~muk-blocked~P1
+press START
+expect VIEW~SLOT~P1~loc=0
+shot muk-blocked-P1-power
+press B
+press A
+wait 6
+expect POWER_ASK~muk-blocked~P1~confirm
+shot muk-blocked-P1-confirm
+press LEFT
+press A
+wait 6
+expect POWER_RETURN~muk-blocked~P1
+wait 6
+expect POWER_BEGIN~muk-blocked~P2
+expect_none POWER_RETURN~muk-blocked~P2
+press START P2
+expect VIEW~SLOT~P2~loc=0
+shot muk-blocked-P2-power
+press B P2
+press A P2
+wait 6
+expect POWER_ASK~muk-blocked~P2~confirm
+shot muk-blocked-P2-confirm
+press LEFT P2
+press A P2
+wait 6
+expect POWER_RETURN~muk-blocked~P2
+expect POWER_FLOW_PASS

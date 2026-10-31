@@ -1,0 +1,51 @@
+cc -std=c11 -O2 -g -Isrc -DTCG_NO_DEFAULT_FATAL -Wall -Wno-unused-parameter -o build/harness/practice_check harness/practice_check.c src/ai_stubs.c src/duel_core.c src/duel_ui.c src/home_duel.c src/home_misc.c src/practice.c src/substatus.c src/tcg.c src/gen/cards.c src/gen/decks.c src/gen/effect_commands.c src/gen/effect_functions_by_address.c src/gen/effect_stubs.c src/gen/rom_blobs.c src/gen/text.c src/effects/part1.c src/effects/part2.c src/effects/part3.c src/effects/part4.c src/ai/ai_trainer_card_logic.c src/ai/attacks.c src/ai/boss_deck_set_up.c src/ai/common.c src/ai/core.c src/ai/damage_calculation.c src/ai/deck_ai.c src/ai/deck_ai_pointers.c src/ai/energy.c src/ai/hand_pokemon.c src/ai/home_ai.c src/ai/init.c src/ai/pkmn_powers.c src/ai/retreat.c src/ai/special_attacks.c src/ai/trainer_cards.c
+./build/harness/practice_check
+PRACTICE TRACE wrong=0 requests=200 memory=d4027b58c8a5c77
+PRACTICE TRACE wrong=1 requests=63 memory=14b6a98d0ce934ec
+PRACTICE PASS: all eight turns; persistent checklist and fresh Mason ACKs; Finally/recap ordering; exact original memory/RNG/request traces; Psychic advances and wrong Water rewinds
+cc -std=c11 -O2 -g -Isrc -DTCG_NO_DEFAULT_FATAL -Wall -Wno-unused-parameter -o build/harness/evolution_cursor harness/evolution_cursor.c src/ai_stubs.c src/duel_ui.c src/home_duel.c src/home_misc.c src/practice.c src/substatus.c src/tcg.c src/gen/cards.c src/gen/decks.c src/gen/effect_commands.c src/gen/effect_functions_by_address.c src/gen/effect_stubs.c src/gen/rom_blobs.c src/gen/text.c src/effects/part1.c src/effects/part2.c src/effects/part3.c src/effects/part4.c src/ai/ai_trainer_card_logic.c src/ai/attacks.c src/ai/boss_deck_set_up.c src/ai/common.c src/ai/core.c src/ai/damage_calculation.c src/ai/deck_ai.c src/ai/deck_ai_pointers.c src/ai/energy.c src/ai/hand_pokemon.c src/ai/home_ai.c src/ai/init.c src/ai/pkmn_powers.c src/ai/retreat.c src/ai/special_attacks.c src/ai/trainer_cards.c
+./build/harness/evolution_cursor
+EVOLUTION CURSOR PASS: 26 real-engine cases; all6 slots, Active/Bench priority, placement/evolution flags, HP0, Stage2, Fossil, P2, Prehistoric/Muk/status, cancel/manual choice, unchanged RNG and exact wrapper WRAM/HRAM parity
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai_stubs.o src/ai_stubs.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/duel_core.o src/duel_core.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/duel_ui.o src/duel_ui.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/home_duel.o src/home_duel.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/home_misc.o src/home_misc.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/practice.o src/practice.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/substatus.o src/substatus.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/tcg.o src/tcg.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/gen/cards.o src/gen/cards.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/gen/decks.o src/gen/decks.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/gen/effect_commands.o src/gen/effect_commands.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/gen/effect_functions_by_address.o src/gen/effect_functions_by_address.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/gen/effect_stubs.o src/gen/effect_stubs.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/gen/rom_blobs.o src/gen/rom_blobs.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/gen/text.o src/gen/text.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/effects/part1.o src/effects/part1.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/effects/part2.o src/effects/part2.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/effects/part3.o src/effects/part3.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/effects/part4.o src/effects/part4.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/ai_trainer_card_logic.o src/ai/ai_trainer_card_logic.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/attacks.o src/ai/attacks.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/boss_deck_set_up.o src/ai/boss_deck_set_up.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/common.o src/ai/common.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/core.o src/ai/core.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/damage_calculation.o src/ai/damage_calculation.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/deck_ai.o src/ai/deck_ai.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/deck_ai_pointers.o src/ai/deck_ai_pointers.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/energy.o src/ai/energy.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/hand_pokemon.o src/ai/hand_pokemon.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/home_ai.o src/ai/home_ai.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/init.o src/ai/init.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/pkmn_powers.o src/ai/pkmn_powers.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/retreat.o src/ai/retreat.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/special_attacks.o src/ai/special_attacks.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/src/ai/trainer_cards.o src/ai/trainer_cards.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/gameplay/gameplay.o gameplay/gameplay.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/gameplay/gen/data.o gameplay/gen/data.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/overworld/overworld.o overworld/overworld.c
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -c -o build/overworld/gen/data.o overworld/gen/data.c
+ar rcs build/libtcg.a build/src/ai_stubs.o build/src/duel_core.o build/src/duel_ui.o build/src/home_duel.o build/src/home_misc.o build/src/practice.o build/src/substatus.o build/src/tcg.o build/src/gen/cards.o build/src/gen/decks.o build/src/gen/effect_commands.o build/src/gen/effect_functions_by_address.o build/src/gen/effect_stubs.o build/src/gen/rom_blobs.o build/src/gen/text.o build/src/effects/part1.o build/src/effects/part2.o build/src/effects/part3.o build/src/effects/part4.o build/src/ai/ai_trainer_card_logic.o build/src/ai/attacks.o build/src/ai/boss_deck_set_up.o build/src/ai/common.o build/src/ai/core.o build/src/ai/damage_calculation.o build/src/ai/deck_ai.o build/src/ai/deck_ai_pointers.o build/src/ai/energy.o build/src/ai/hand_pokemon.o build/src/ai/home_ai.o build/src/ai/init.o build/src/ai/pkmn_powers.o build/src/ai/retreat.o build/src/ai/special_attacks.o build/src/ai/trainer_cards.o build/gameplay/gameplay.o build/gameplay/gen/data.o build/overworld/overworld.o build/overworld/gen/data.o
+cc -O2 -g -std=c11 -Wall -Wextra -Wno-unused-parameter -Isrc -o build/frontends/control_text frontends/tests/control_text.c build/libtcg.a
+./build/frontends/control_text
+CONTROL TEXT PASS: source/N64/web lookup, all text IDs, composed lesson/checklist/book, unchanged engine state

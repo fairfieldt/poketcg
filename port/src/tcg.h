@@ -59,7 +59,7 @@ enum TcgScreen {
 	TCG_SCREEN_NONE = 0,
 	TCG_SCREEN_MAIN,          /* duel main scene (both active Pokemon + HUDs) of arg[1]'s perspective.
 	                           * arg[2] = 1: only the HUDs were redrawn (DrawDuelHUDs: HP, energies, status) */
-	TCG_SCREEN_PLAY_AREA,     /* play area list of duelist arg[1] */
+	TCG_SCREEN_PLAY_AREA,     /* list: arg[1] duelist, arg[2] first slot, arg[3] TcgPlayAreaMode */
 	TCG_SCREEN_CARD_LIST,     /* card list (wDuelTempList) with header/info texts */
 	TCG_SCREEN_LARGE_CARD,    /* large picture of a card */
 	TCG_SCREEN_COIN_TOSS,
@@ -67,6 +67,13 @@ enum TcgScreen {
 	TCG_SCREEN_EMPTY,
 	TCG_SCREEN_BOX_MESSAGE,   /* big box message (BOXMSG_* in arg[2]) */
 	TCG_SCREEN_OTHER,
+};
+
+enum TcgPlayAreaMode {
+	TCG_PLAY_AREA_NORMAL = 0,
+	TCG_PLAY_AREA_POWER,
+	TCG_PLAY_AREA_ENERGY_FROM,
+	TCG_PLAY_AREA_ENERGY_TO,
 };
 
 typedef struct TcgEvent {
@@ -87,7 +94,7 @@ enum TcgRequestType {
 	TCG_REQ_CARD_ITEM_MENU,   /* CardListItemSelectionMenu: 0 = Play/Select, 1 = Check, or cancel. arg[0] = card */
 	TCG_REQ_PLAY_AREA,        /* DisplayPlayAreaScreen: pick a play area slot (absolute PLAY_AREA_*) of duelist `shown`, or cancel */
 	TCG_REQ_MENU,             /* HandleMenuInput: pick item in [0, num_items) or cancel. menu = TcgMenu context.
-	                           * TCG_MENU_PLAY_AREA: item i is play area location arg[0] + i (wExcludeArenaPokemon) */
+	                           * TCG_MENU_PLAY_AREA: item i is location arg[0] + i (current menu's first slot) */
 	TCG_REQ_YES_NO,           /* 1 = yes, 0 = no. cursor = default */
 	TCG_REQ_ENERGY_DISCARD,   /* HandleEnergyDiscardMenuInput: pick index into items (wDuelTempList) or cancel */
 	TCG_REQ_PRIZE,            /* pick one of the remaining prize cards: index in [0, 6), cursor = default */

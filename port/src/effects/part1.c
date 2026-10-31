@@ -2063,6 +2063,7 @@ bool EnergyTrans_TransferEffect(void)
 		wNumMenuItems = n;
 
 		/* handle the action of taking a Grass Energy card */
+		tcg_ui_screen(TCG_SCREEN_PLAY_AREA,0,TCG_PLAY_AREA_ENERGY_FROM);
 		u8 a, card;
 		for (;;) {
 			/* .loop_input_take */
@@ -2094,6 +2095,7 @@ bool EnergyTrans_TransferEffect(void)
 
 		/* handle the action of placing a Grass Energy card */
 		/* .loop_input_put */
+		tcg_ui_screen(TCG_SCREEN_PLAY_AREA,0,TCG_PLAY_AREA_ENERGY_TO);
 		do {
 			DoFrame();
 		} while (!HandleMenuInput());

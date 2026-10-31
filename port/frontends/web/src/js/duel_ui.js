@@ -764,6 +764,9 @@ export class DuelUI {
 		case SCREEN.PLAY_AREA:
 			this.playAreaExclude = a[2];
 			this.pkmnPowerScreen = a[3] === 1;
+			if (a[3] === 1) this.setText('Choose a Pokémon to use its Power.');
+			else if (a[3] === 2) this.setText('Choose a Pokémon to move Grass Energy from.');
+			else if (a[3] === 3) this.setText('Choose a Pokémon to receive Grass Energy.');
 			this.showOverlay('playarea', this.playAreaView({ d: a[1], selectable: () => false, pkmnPower: this.pkmnPowerScreen }).wrap);
 			break;
 		case SCREEN.CARD_LIST: {
@@ -1164,7 +1167,7 @@ export class DuelUI {
 			return this.colorMenu(req, COLOR_MENU_ORDER, (i) => i, req.cursor);
 		}
 		if (req.menu === MENU.PLAY_AREA || (req.menu === MENU.GENERIC && this.screen === SCREEN.PLAY_AREA)) {
-			// TCG_MENU_PLAY_AREA: item i is location arg[0] + i (wExcludeArenaPokemon)
+			// TCG_MENU_PLAY_AREA: item i is location arg[0] + i from the current menu.
 			const exclude = req.menu === MENU.PLAY_AREA ? req.arg[0] : (this.playAreaExclude ? 1 : 0);
 			const pkmnPower = this.pkmnPowerScreen;
 			return this.ask((done) => {
