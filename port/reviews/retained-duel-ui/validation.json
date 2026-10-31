@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "host_full_scripts_per_resolution": 11,
+  "board_focus_helper_valid_states": 97544,
+  "board_focus_helper_occupancy_pairs": 4096,
+  "retained_canvas_full_pixel_frames": 276,
+  "retained_canvas_reuses": 108,
+  "board_cache_full_pixel_frames": 369,
+  "native_full_pixel_frames_8mib": 128,
+  "native_full_pixel_frames_4mib": 64,
+  "native_actual_ui_cases_per_mode": 8,
+  "native_board_inspection_frames_per_controller": 34,
+  "native_controllers": [
+    1,
+    2
+  ],
+  "fresh_confirmation_cases": [
+    "YouDrew card ACK",
+    "successful human Basic placement ACK",
+    "following action menu"
+  ],
+  "engine_equivalence": "Real engine presentation functions and action request produce byte-identical WRAM/HRAM, event/request/answer digest and RNG against the same headless answers; intervening forced and future intentional Hand selections return normally",
+  "sanitizers": [
+    "AddressSanitizer",
+    "UndefinedBehaviorSanitizer"
+  ],
+  "added_n64_object_sections": {
+    "text": 10518,
+    "data": 0,
+    "bss": 8443
+  },
+  "new_n64_snapshot_bytes": 8432,
+  "additional_static_flags_and_generations_bytes": 11,
+  "loop_local_token_bytes": 24,
+  "new_heap_or_image_allocation": false
+}

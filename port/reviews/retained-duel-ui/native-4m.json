@@ -1,0 +1,2318 @@
+{
+  "passed": true,
+  "method": "Ares v148 CP0 timing of actual production UI loops with real compressed music/mixer/RDP; 30fps display cap; test-only logical key driver; not physical N64 FPS",
+  "production_source_sha256": "10d7b47a5951a5df749241d51dfa224ad91fd45f8b8439a580a39f570a923ef8",
+  "rom_sha256": "d4e848b29338e86b4de911b77d41cca81fa39f2bb28b688838448036c9bf4e4c",
+  "cases": [
+    {
+      "case": "hand-list",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33425,
+        "median_us": 33463.0,
+        "p95_us": 35571,
+        "min_us": 30829,
+        "max_us": 35851
+      },
+      "work": {
+        "mean_us": 5153,
+        "median_us": 5407.0,
+        "p95_us": 5776,
+        "min_us": 3074,
+        "max_us": 6140
+      },
+      "acquire": {
+        "mean_us": 28216,
+        "median_us": 27962.0,
+        "p95_us": 30136,
+        "min_us": 27255,
+        "max_us": 30270
+      }
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33425,
+        "median_us": 33387.5,
+        "p95_us": 35729,
+        "min_us": 30983,
+        "max_us": 36101
+      },
+      "work": {
+        "mean_us": 5125,
+        "median_us": 5394.0,
+        "p95_us": 6488,
+        "min_us": 3003,
+        "max_us": 6749
+      },
+      "acquire": {
+        "mean_us": 28245,
+        "median_us": 27970.5,
+        "p95_us": 30234,
+        "min_us": 26659,
+        "max_us": 30324
+      }
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33434,
+        "median_us": 33435.5,
+        "p95_us": 35962,
+        "min_us": 30899,
+        "max_us": 36161
+      },
+      "work": {
+        "mean_us": 5073,
+        "median_us": 5390.0,
+        "p95_us": 5732,
+        "min_us": 3014,
+        "max_us": 5817
+      },
+      "acquire": {
+        "mean_us": 28304,
+        "median_us": 27993.0,
+        "p95_us": 30263,
+        "min_us": 27642,
+        "max_us": 30289
+      }
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33433,
+        "median_us": 33325.0,
+        "p95_us": 35818,
+        "min_us": 30874,
+        "max_us": 36089
+      },
+      "work": {
+        "mean_us": 5113,
+        "median_us": 5400.5,
+        "p95_us": 5733,
+        "min_us": 2988,
+        "max_us": 6148
+      },
+      "acquire": {
+        "mean_us": 28262,
+        "median_us": 28005.0,
+        "p95_us": 30309,
+        "min_us": 27222,
+        "max_us": 30321
+      }
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33384,
+        "median_us": 33356.5,
+        "p95_us": 36365,
+        "min_us": 29937,
+        "max_us": 37102
+      },
+      "work": {
+        "mean_us": 5284,
+        "median_us": 5372.5,
+        "p95_us": 6837,
+        "min_us": 3003,
+        "max_us": 6952
+      },
+      "acquire": {
+        "mean_us": 28043,
+        "median_us": 27961.5,
+        "p95_us": 30211,
+        "min_us": 26492,
+        "max_us": 30301
+      }
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33448,
+        "median_us": 33395.0,
+        "p95_us": 78244,
+        "min_us": 3443,
+        "max_us": 78581
+      },
+      "work": {
+        "mean_us": 7684,
+        "median_us": 5255.0,
+        "p95_us": 49266,
+        "min_us": 3115,
+        "max_us": 49419
+      },
+      "acquire": {
+        "mean_us": 25699,
+        "median_us": 28094.5,
+        "p95_us": 30125,
+        "min_us": 10,
+        "max_us": 30186
+      }
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 32907,
+        "median_us": 33529.5,
+        "p95_us": 39931,
+        "min_us": 14233,
+        "max_us": 41133
+      },
+      "work": {
+        "mean_us": 5335,
+        "median_us": 5339.0,
+        "p95_us": 9986,
+        "min_us": 2994,
+        "max_us": 10760
+      },
+      "acquire": {
+        "mean_us": 27510,
+        "median_us": 28036.0,
+        "p95_us": 30326,
+        "min_us": 11018,
+        "max_us": 31085
+      }
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33421,
+        "median_us": 33361.5,
+        "p95_us": 36074,
+        "min_us": 30980,
+        "max_us": 36171
+      },
+      "work": {
+        "mean_us": 5099,
+        "median_us": 5377.5,
+        "p95_us": 5787,
+        "min_us": 2996,
+        "max_us": 6360
+      },
+      "acquire": {
+        "mean_us": 28119,
+        "median_us": 27855.0,
+        "p95_us": 30144,
+        "min_us": 26858,
+        "max_us": 30181
+      }
+    }
+  ],
+  "pixel_checks": [
+    {
+      "width": 320,
+      "frames": 64
+    }
+  ],
+  "board_focus_controller_checks": [
+    {
+      "width": 320,
+      "ports": 1,
+      "frames": 34,
+      "answer": 0
+    },
+    {
+      "width": 320,
+      "ports": 2,
+      "frames": 34,
+      "answer": 0
+    }
+  ],
+  "memory": [
+    {
+      "width": 320,
+      "ram_bytes": 4194304,
+      "snapshot_bytes": 8432,
+      "free_heap": 2282408
+    }
+  ],
+  "samples": [
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 8,
+      "cadence": 33317,
+      "work": 5433,
+      "acquire": 27830
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 9,
+      "cadence": 33566,
+      "work": 5561,
+      "acquire": 27951
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 10,
+      "cadence": 31147,
+      "work": 3287,
+      "acquire": 27806
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 11,
+      "cadence": 35571,
+      "work": 5488,
+      "acquire": 30028
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 12,
+      "cadence": 33195,
+      "work": 5197,
+      "acquire": 27944
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33998,
+      "work": 5776,
+      "acquire": 28168
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 14,
+      "cadence": 33149,
+      "work": 5481,
+      "acquire": 27615
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 15,
+      "cadence": 33382,
+      "work": 5433,
+      "acquire": 27895
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 16,
+      "cadence": 33683,
+      "work": 5683,
+      "acquire": 27946
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 17,
+      "cadence": 31938,
+      "work": 4192,
+      "acquire": 27692
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 18,
+      "cadence": 34430,
+      "work": 5203,
+      "acquire": 29174
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 19,
+      "cadence": 33666,
+      "work": 5452,
+      "acquire": 28159
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 20,
+      "cadence": 33722,
+      "work": 5725,
+      "acquire": 27943
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 21,
+      "cadence": 32952,
+      "work": 5242,
+      "acquire": 27655
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 22,
+      "cadence": 33587,
+      "work": 5436,
+      "acquire": 28096
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 23,
+      "cadence": 31381,
+      "work": 3354,
+      "acquire": 27973
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 24,
+      "cadence": 35349,
+      "work": 5326,
+      "acquire": 29968
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 25,
+      "cadence": 33256,
+      "work": 5131,
+      "acquire": 28070
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 26,
+      "cadence": 33544,
+      "work": 5247,
+      "acquire": 28242
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 27,
+      "cadence": 33875,
+      "work": 5680,
+      "acquire": 28141
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 28,
+      "cadence": 33060,
+      "work": 5294,
+      "acquire": 27713
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 29,
+      "cadence": 31198,
+      "work": 3074,
+      "acquire": 28068
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 30,
+      "cadence": 35851,
+      "work": 5526,
+      "acquire": 30270
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 31,
+      "cadence": 33293,
+      "work": 5372,
+      "acquire": 27866
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 32,
+      "cadence": 34221,
+      "work": 6140,
+      "acquire": 28026
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 33,
+      "cadence": 32642,
+      "work": 5333,
+      "acquire": 27255
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 34,
+      "cadence": 33848,
+      "work": 5770,
+      "acquire": 28023
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 35,
+      "cadence": 30829,
+      "work": 3157,
+      "acquire": 27617
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 36,
+      "cadence": 35421,
+      "work": 5207,
+      "acquire": 30136
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 37,
+      "cadence": 34003,
+      "work": 5748,
+      "acquire": 28200
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 38,
+      "cadence": 33286,
+      "work": 5582,
+      "acquire": 27650
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 39,
+      "cadence": 33229,
+      "work": 5381,
+      "acquire": 27794
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 8,
+      "cadence": 35532,
+      "work": 5544,
+      "acquire": 29933
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 9,
+      "cadence": 33140,
+      "work": 5188,
+      "acquire": 27897
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 10,
+      "cadence": 33680,
+      "work": 5454,
+      "acquire": 28169
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 11,
+      "cadence": 33350,
+      "work": 5345,
+      "acquire": 27951
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 12,
+      "cadence": 33353,
+      "work": 5292,
+      "acquire": 28003
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33586,
+      "work": 5446,
+      "acquire": 28083
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 14,
+      "cadence": 31361,
+      "work": 3359,
+      "acquire": 27947
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 15,
+      "cadence": 35346,
+      "work": 5323,
+      "acquire": 29968
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 16,
+      "cadence": 34631,
+      "work": 6488,
+      "acquire": 28085
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 17,
+      "cadence": 32453,
+      "work": 5488,
+      "acquire": 26910
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 18,
+      "cadence": 33613,
+      "work": 5675,
+      "acquire": 27884
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 19,
+      "cadence": 33192,
+      "work": 5438,
+      "acquire": 27699
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 20,
+      "cadence": 30983,
+      "work": 3003,
+      "acquire": 27925
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 21,
+      "cadence": 36101,
+      "work": 5722,
+      "acquire": 30324
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 22,
+      "cadence": 33189,
+      "work": 5435,
+      "acquire": 27699
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 23,
+      "cadence": 33106,
+      "work": 5108,
+      "acquire": 27943
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 24,
+      "cadence": 33635,
+      "work": 5330,
+      "acquire": 28247
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 25,
+      "cadence": 33535,
+      "work": 5421,
+      "acquire": 28056
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 26,
+      "cadence": 31127,
+      "work": 3120,
+      "acquire": 27949
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 27,
+      "cadence": 35729,
+      "work": 5456,
+      "acquire": 30218
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 28,
+      "cadence": 33526,
+      "work": 5514,
+      "acquire": 27958
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 29,
+      "cadence": 33092,
+      "work": 5189,
+      "acquire": 27845
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 30,
+      "cadence": 33339,
+      "work": 5114,
+      "acquire": 28167
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 31,
+      "cadence": 35075,
+      "work": 6749,
+      "acquire": 28268
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 32,
+      "cadence": 32067,
+      "work": 5354,
+      "acquire": 26659
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 33,
+      "cadence": 31160,
+      "work": 3122,
+      "acquire": 27980
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 34,
+      "cadence": 35670,
+      "work": 5381,
+      "acquire": 30234
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 35,
+      "cadence": 33748,
+      "work": 5647,
+      "acquire": 28047
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 36,
+      "cadence": 32956,
+      "work": 5177,
+      "acquire": 27723
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 37,
+      "cadence": 33675,
+      "work": 5460,
+      "acquire": 28157
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 38,
+      "cadence": 33422,
+      "work": 5407,
+      "acquire": 27961
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 39,
+      "cadence": 31239,
+      "work": 3245,
+      "acquire": 27936
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 8,
+      "cadence": 33555,
+      "work": 5342,
+      "acquire": 28155
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 9,
+      "cadence": 33433,
+      "work": 5353,
+      "acquire": 28021
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 10,
+      "cadence": 33611,
+      "work": 5532,
+      "acquire": 28021
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 11,
+      "cadence": 30912,
+      "work": 3014,
+      "acquire": 27842
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 12,
+      "cadence": 36161,
+      "work": 5817,
+      "acquire": 30289
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33150,
+      "work": 5451,
+      "acquire": 27642
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 14,
+      "cadence": 33049,
+      "work": 5082,
+      "acquire": 27911
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 15,
+      "cadence": 33998,
+      "work": 5665,
+      "acquire": 28274
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 16,
+      "cadence": 33183,
+      "work": 5391,
+      "acquire": 27736
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 17,
+      "cadence": 33174,
+      "work": 5152,
+      "acquire": 27964
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 18,
+      "cadence": 31355,
+      "work": 3095,
+      "acquire": 28201
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 19,
+      "cadence": 35962,
+      "work": 5654,
+      "acquire": 30252
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 20,
+      "cadence": 33268,
+      "work": 5437,
+      "acquire": 27774
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 21,
+      "cadence": 33168,
+      "work": 5168,
+      "acquire": 27944
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 22,
+      "cadence": 33975,
+      "work": 5731,
+      "acquire": 28185
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 23,
+      "cadence": 33221,
+      "work": 5514,
+      "acquire": 27651
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 24,
+      "cadence": 30977,
+      "work": 3067,
+      "acquire": 27852
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 25,
+      "cadence": 35635,
+      "work": 5316,
+      "acquire": 30263
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 26,
+      "cadence": 33868,
+      "work": 5714,
+      "acquire": 28095
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 27,
+      "cadence": 32954,
+      "work": 5230,
+      "acquire": 27668
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 28,
+      "cadence": 33307,
+      "work": 5118,
+      "acquire": 28129
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 29,
+      "cadence": 34050,
+      "work": 5732,
+      "acquire": 28260
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 30,
+      "cadence": 30899,
+      "work": 3201,
+      "acquire": 27642
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 31,
+      "cadence": 35373,
+      "work": 5220,
+      "acquire": 30097
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 32,
+      "cadence": 33873,
+      "work": 5602,
+      "acquire": 28212
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 33,
+      "cadence": 33235,
+      "work": 5389,
+      "acquire": 27788
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 34,
+      "cadence": 33462,
+      "work": 5429,
+      "acquire": 27974
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 35,
+      "cadence": 33465,
+      "work": 5449,
+      "acquire": 27960
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 36,
+      "cadence": 33473,
+      "work": 5493,
+      "acquire": 27924
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 37,
+      "cadence": 31116,
+      "work": 3203,
+      "acquire": 27854
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 38,
+      "cadence": 35601,
+      "work": 5410,
+      "acquire": 30134
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 39,
+      "cadence": 33438,
+      "work": 5369,
+      "acquire": 28012
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 8,
+      "cadence": 33305,
+      "work": 5242,
+      "acquire": 28005
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 9,
+      "cadence": 33556,
+      "work": 5365,
+      "acquire": 28134
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 10,
+      "cadence": 31348,
+      "work": 3286,
+      "acquire": 28005
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 11,
+      "cadence": 35630,
+      "work": 5536,
+      "acquire": 30036
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 12,
+      "cadence": 33148,
+      "work": 5184,
+      "acquire": 27906
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33765,
+      "work": 5561,
+      "acquire": 28147
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 14,
+      "cadence": 33182,
+      "work": 5300,
+      "acquire": 27825
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 15,
+      "cadence": 33293,
+      "work": 5165,
+      "acquire": 28071
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 16,
+      "cadence": 33731,
+      "work": 5468,
+      "acquire": 28207
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 17,
+      "cadence": 32222,
+      "work": 4248,
+      "acquire": 27918
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 18,
+      "cadence": 34601,
+      "work": 5436,
+      "acquire": 29109
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 19,
+      "cadence": 33183,
+      "work": 5162,
+      "acquire": 27964
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 20,
+      "cadence": 33744,
+      "work": 5491,
+      "acquire": 28195
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 21,
+      "cadence": 33431,
+      "work": 5501,
+      "acquire": 27873
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 22,
+      "cadence": 33075,
+      "work": 5130,
+      "acquire": 27888
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 23,
+      "cadence": 31608,
+      "work": 3334,
+      "acquire": 28213
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 24,
+      "cadence": 35642,
+      "work": 5572,
+      "acquire": 30013
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 25,
+      "cadence": 33040,
+      "work": 5131,
+      "acquire": 27852
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 26,
+      "cadence": 33740,
+      "work": 5467,
+      "acquire": 28215
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 27,
+      "cadence": 33672,
+      "work": 5678,
+      "acquire": 27937
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 28,
+      "cadence": 33068,
+      "work": 5317,
+      "acquire": 27695
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 29,
+      "cadence": 31115,
+      "work": 3015,
+      "acquire": 28042
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 30,
+      "cadence": 36089,
+      "work": 5722,
+      "acquire": 30309
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 31,
+      "cadence": 33345,
+      "work": 5583,
+      "acquire": 27706
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 32,
+      "cadence": 34004,
+      "work": 6148,
+      "acquire": 27799
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 33,
+      "cadence": 32391,
+      "work": 5112,
+      "acquire": 27222
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 34,
+      "cadence": 34011,
+      "work": 5733,
+      "acquire": 28219
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 35,
+      "cadence": 33282,
+      "work": 5550,
+      "acquire": 27675
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 36,
+      "cadence": 30874,
+      "work": 2988,
+      "acquire": 27829
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 37,
+      "cadence": 35818,
+      "work": 5439,
+      "acquire": 30321
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 38,
+      "cadence": 33293,
+      "work": 5284,
+      "acquire": 27949
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 39,
+      "cadence": 33642,
+      "work": 5482,
+      "acquire": 28101
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 8,
+      "cadence": 29937,
+      "work": 3237,
+      "acquire": 26643
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 9,
+      "cadence": 37102,
+      "work": 6952,
+      "acquire": 30093
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 10,
+      "cadence": 33378,
+      "work": 6830,
+      "acquire": 26492
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 11,
+      "cadence": 33335,
+      "work": 6730,
+      "acquire": 26549
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 12,
+      "cadence": 33516,
+      "work": 6837,
+      "acquire": 26622
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33113,
+      "work": 6503,
+      "acquire": 26554
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 14,
+      "cadence": 30271,
+      "work": 3353,
+      "acquire": 26862
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 15,
+      "cadence": 36365,
+      "work": 6374,
+      "acquire": 29934
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 16,
+      "cadence": 32589,
+      "work": 5448,
+      "acquire": 27088
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 17,
+      "cadence": 33223,
+      "work": 5237,
+      "acquire": 27931
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 18,
+      "cadence": 33792,
+      "work": 5614,
+      "acquire": 28120
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 19,
+      "cadence": 33080,
+      "work": 5249,
+      "acquire": 27774
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 20,
+      "cadence": 33317,
+      "work": 5153,
+      "acquire": 28106
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 21,
+      "cadence": 31624,
+      "work": 3345,
+      "acquire": 28221
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 22,
+      "cadence": 35390,
+      "work": 5357,
+      "acquire": 29977
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 23,
+      "cadence": 33207,
+      "work": 5090,
+      "acquire": 28060
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 24,
+      "cadence": 33890,
+      "work": 5552,
+      "acquire": 28280
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 25,
+      "cadence": 33540,
+      "work": 5637,
+      "acquire": 27846
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 26,
+      "cadence": 33265,
+      "work": 5471,
+      "acquire": 27737
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 27,
+      "cadence": 30961,
+      "work": 3003,
+      "acquire": 27901
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 28,
+      "cadence": 36087,
+      "work": 5730,
+      "acquire": 30301
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 29,
+      "cadence": 32971,
+      "work": 5210,
+      "acquire": 27705
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 30,
+      "cadence": 33385,
+      "work": 5188,
+      "acquire": 28139
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 31,
+      "cadence": 33703,
+      "work": 5444,
+      "acquire": 28201
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 32,
+      "cadence": 33380,
+      "work": 5388,
+      "acquire": 27934
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 33,
+      "cadence": 31141,
+      "work": 3094,
+      "acquire": 27989
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 34,
+      "cadence": 35505,
+      "work": 5237,
+      "acquire": 30211
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 35,
+      "cadence": 33965,
+      "work": 5717,
+      "acquire": 28190
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 36,
+      "cadence": 32915,
+      "work": 5193,
+      "acquire": 27665
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 37,
+      "cadence": 33379,
+      "work": 5165,
+      "acquire": 28156
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 38,
+      "cadence": 33770,
+      "work": 5493,
+      "acquire": 28218
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 39,
+      "cadence": 33191,
+      "work": 5254,
+      "acquire": 27879
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 8,
+      "cadence": 78581,
+      "work": 49419,
+      "acquire": 29098
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 9,
+      "cadence": 3443,
+      "work": 3365,
+      "acquire": 10
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 10,
+      "cadence": 18372,
+      "work": 5230,
+      "acquire": 13080
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 11,
+      "cadence": 31387,
+      "work": 3194,
+      "acquire": 28129
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 12,
+      "cadence": 35582,
+      "work": 5394,
+      "acquire": 30125
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33225,
+      "work": 5155,
+      "acquire": 28006
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 14,
+      "cadence": 33421,
+      "work": 5149,
+      "acquire": 28209
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 15,
+      "cadence": 34004,
+      "work": 5704,
+      "acquire": 28235
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 16,
+      "cadence": 33974,
+      "work": 6234,
+      "acquire": 27676
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 17,
+      "cadence": 32367,
+      "work": 5161,
+      "acquire": 27141
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 18,
+      "cadence": 31501,
+      "work": 3259,
+      "acquire": 28178
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 19,
+      "cadence": 35678,
+      "work": 5563,
+      "acquire": 30052
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 20,
+      "cadence": 33092,
+      "work": 5162,
+      "acquire": 27865
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 21,
+      "cadence": 33369,
+      "work": 5121,
+      "acquire": 28183
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 22,
+      "cadence": 34078,
+      "work": 5775,
+      "acquire": 28239
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 23,
+      "cadence": 32997,
+      "work": 5312,
+      "acquire": 27622
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 24,
+      "cadence": 78244,
+      "work": 49266,
+      "acquire": 28914
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 25,
+      "cadence": 3548,
+      "work": 3470,
+      "acquire": 11
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 26,
+      "cadence": 16406,
+      "work": 3221,
+      "acquire": 13123
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 27,
+      "cadence": 35354,
+      "work": 5212,
+      "acquire": 30079
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 28,
+      "cadence": 33761,
+      "work": 5491,
+      "acquire": 28207
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 29,
+      "cadence": 33517,
+      "work": 5567,
+      "acquire": 27886
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 30,
+      "cadence": 30977,
+      "work": 3115,
+      "acquire": 27799
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 31,
+      "cadence": 35381,
+      "work": 5132,
+      "acquire": 30186
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 32,
+      "cadence": 34014,
+      "work": 5673,
+      "acquire": 28277
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 33,
+      "cadence": 33113,
+      "work": 5325,
+      "acquire": 27724
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 34,
+      "cadence": 33509,
+      "work": 5418,
+      "acquire": 28028
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 35,
+      "cadence": 33300,
+      "work": 5280,
+      "acquire": 27957
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 36,
+      "cadence": 31402,
+      "work": 3278,
+      "acquire": 28060
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 37,
+      "cadence": 35555,
+      "work": 5469,
+      "acquire": 30023
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 38,
+      "cadence": 33121,
+      "work": 5073,
+      "acquire": 27985
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 39,
+      "cadence": 34051,
+      "work": 5717,
+      "acquire": 28270
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 8,
+      "cadence": 31143,
+      "work": 2994,
+      "acquire": 28087
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 9,
+      "cadence": 36071,
+      "work": 5684,
+      "acquire": 30326
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 10,
+      "cadence": 33105,
+      "work": 5300,
+      "acquire": 27743
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 11,
+      "cadence": 33248,
+      "work": 5128,
+      "acquire": 28058
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 12,
+      "cadence": 33622,
+      "work": 5329,
+      "acquire": 28229
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33707,
+      "work": 5588,
+      "acquire": 28056
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 14,
+      "cadence": 30974,
+      "work": 3125,
+      "acquire": 27786
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 15,
+      "cadence": 35407,
+      "work": 5164,
+      "acquire": 30182
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 16,
+      "cadence": 39931,
+      "work": 10760,
+      "acquire": 29107
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 17,
+      "cadence": 27134,
+      "work": 5315,
+      "acquire": 21754
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 18,
+      "cadence": 33520,
+      "work": 5413,
+      "acquire": 28044
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 19,
+      "cadence": 33535,
+      "work": 5503,
+      "acquire": 27969
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 20,
+      "cadence": 34277,
+      "work": 6359,
+      "acquire": 27855
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 21,
+      "cadence": 30157,
+      "work": 3071,
+      "acquire": 27022
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 22,
+      "cadence": 35709,
+      "work": 5422,
+      "acquire": 30226
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 23,
+      "cadence": 33781,
+      "work": 5714,
+      "acquire": 28004
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 24,
+      "cadence": 14233,
+      "work": 3152,
+      "acquire": 11018
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 25,
+      "cadence": 35256,
+      "work": 5125,
+      "acquire": 30069
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 26,
+      "cadence": 33689,
+      "work": 5344,
+      "acquire": 28283
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 27,
+      "cadence": 33423,
+      "work": 5334,
+      "acquire": 28027
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 28,
+      "cadence": 33279,
+      "work": 5182,
+      "acquire": 28034
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 29,
+      "cadence": 33598,
+      "work": 5356,
+      "acquire": 28180
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 30,
+      "cadence": 33827,
+      "work": 5727,
+      "acquire": 28038
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 31,
+      "cadence": 30841,
+      "work": 3138,
+      "acquire": 27641
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 32,
+      "cadence": 41133,
+      "work": 9986,
+      "acquire": 31085
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 33,
+      "cadence": 28011,
+      "work": 5449,
+      "acquire": 22495
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 34,
+      "cadence": 33524,
+      "work": 5535,
+      "acquire": 27926
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 35,
+      "cadence": 33245,
+      "work": 5323,
+      "acquire": 27861
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 36,
+      "cadence": 34228,
+      "work": 6126,
+      "acquire": 28040
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 37,
+      "cadence": 30578,
+      "work": 3270,
+      "acquire": 27246
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 38,
+      "cadence": 35616,
+      "work": 5529,
+      "acquire": 30025
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 39,
+      "cadence": 33232,
+      "work": 5265,
+      "acquire": 27905
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 8,
+      "cadence": 33322,
+      "work": 5466,
+      "acquire": 27650
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 9,
+      "cadence": 30980,
+      "work": 3001,
+      "acquire": 27777
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 10,
+      "cadence": 36074,
+      "work": 5726,
+      "acquire": 30144
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 11,
+      "cadence": 34143,
+      "work": 6360,
+      "acquire": 27582
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 12,
+      "cadence": 32327,
+      "work": 5259,
+      "acquire": 26858
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33365,
+      "work": 5202,
+      "acquire": 27958
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 14,
+      "cadence": 33968,
+      "work": 5734,
+      "acquire": 28029
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 15,
+      "cadence": 33038,
+      "work": 5344,
+      "acquire": 27493
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 16,
+      "cadence": 31082,
+      "work": 2996,
+      "acquire": 27880
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 17,
+      "cadence": 36171,
+      "work": 5787,
+      "acquire": 30181
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 18,
+      "cadence": 33327,
+      "work": 5631,
+      "acquire": 27494
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 19,
+      "cadence": 33259,
+      "work": 5460,
+      "acquire": 27597
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 20,
+      "cadence": 33354,
+      "work": 5382,
+      "acquire": 27770
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 21,
+      "cadence": 33445,
+      "work": 5405,
+      "acquire": 27838
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 22,
+      "cadence": 31160,
+      "work": 3153,
+      "acquire": 27801
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 23,
+      "cadence": 35657,
+      "work": 5407,
+      "acquire": 30047
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 24,
+      "cadence": 33485,
+      "work": 5411,
+      "acquire": 27872
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 25,
+      "cadence": 33514,
+      "work": 5515,
+      "acquire": 27792
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 26,
+      "cadence": 33165,
+      "work": 5242,
+      "acquire": 27722
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 27,
+      "cadence": 33587,
+      "work": 5398,
+      "acquire": 27983
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 28,
+      "cadence": 31311,
+      "work": 3271,
+      "acquire": 27838
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 29,
+      "cadence": 35351,
+      "work": 5266,
+      "acquire": 29882
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 30,
+      "cadence": 33590,
+      "work": 5373,
+      "acquire": 28012
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 31,
+      "cadence": 33719,
+      "work": 5644,
+      "acquire": 27873
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 32,
+      "cadence": 33100,
+      "work": 5319,
+      "acquire": 27580
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 33,
+      "cadence": 33441,
+      "work": 5341,
+      "acquire": 27895
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 34,
+      "cadence": 33358,
+      "work": 5255,
+      "acquire": 27901
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 35,
+      "cadence": 31429,
+      "work": 3273,
+      "acquire": 27950
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 36,
+      "cadence": 35644,
+      "work": 5566,
+      "acquire": 29874
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 37,
+      "cadence": 33080,
+      "work": 5119,
+      "acquire": 27758
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 38,
+      "cadence": 33846,
+      "work": 5551,
+      "acquire": 28088
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 39,
+      "cadence": 33192,
+      "work": 5300,
+      "acquire": 27686
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+MOCK: end of script
+MOCK: frames=66 polls=66
+TEXT You drew Goldeen Lv12.
+MOCK: [frame 1] wait 8
+ASK ack/card PLAYER
+MOCK: [frame 9] expect ASK~ack/card
+MOCK: expect 'ASK~ack/card' >= 1: 1
+MOCK: [frame 9] expect_none FLOW_RETURN~draw
+MOCK: expect_none 'FLOW_RETURN~draw': 0
+MOCK: [frame 9] shot drawn_card_waits_for_fresh_a
+MOCK: shot ./drawn_card_waits_for_fresh_a.ppm (frame 10)
+MOCK: [frame 10] press A
+REQ ack PLAYER n=0 -> 0
+FLOW_RETURN draw answer=0
+TEXT Placed Staryu Lv15/on the Bench.
+ASK ack/text PLAYER
+MOCK: [frame 14] wait 8
+MOCK: [frame 22] expect FLOW_RETURN~draw~answer=0
+MOCK: expect 'FLOW_RETURN~draw~answer=0' >= 1: 1
+MOCK: [frame 22] expect ASK~ack/text
+MOCK: expect 'ASK~ack/text' >= 1: 1
+MOCK: [frame 22] expect_none FLOW_RETURN~placement
+MOCK: expect_none 'FLOW_RETURN~placement': 0
+MOCK: [frame 22] shot placement_on_board_waits
+MOCK: shot ./placement_on_board_waits.ppm (frame 23)
+MOCK: [frame 23] press A
+REQ ack PLAYER n=0 -> 0
+FLOW_RETURN placement answer=0
+ASK card_list PLAYER n=2 cursor=0
+MOCK: [frame 27] wait 6
+MOCK: [frame 33] expect FLOW_RETURN~placement~answer=0
+MOCK: expect 'FLOW_RETURN~placement~answer=0' >= 1: 1
+MOCK: [frame 33] expect ASK~card_list~PLAYER
+MOCK: expect 'ASK~card_list~PLAYER' >= 1: 1
+MOCK: [frame 33] expect_none FLOW_RETURN~forced
+MOCK: expect_none 'FLOW_RETURN~forced': 0
+MOCK: [frame 33] press A
+REQ card_list PLAYER n=2 -> 0
+FLOW_RETURN forced answer=0
+ASK duel_menu PLAYER n=6 cursor=0
+MOCK: [frame 37] wait 8
+MOCK: [frame 45] expect FLOW_RETURN~forced~answer=0
+MOCK: expect 'FLOW_RETURN~forced~answer=0' >= 1: 1
+MOCK: [frame 45] expect ASK~duel_menu~PLAYER
+MOCK: expect 'ASK~duel_menu~PLAYER' >= 1: 1
+MOCK: [frame 45] expect_none FLOW_RETURN~actions
+MOCK: expect_none 'FLOW_RETURN~actions': 0
+MOCK: [frame 45] shot actions_ignore_queued_placement_a
+MOCK: shot ./actions_ignore_queued_placement_a.ppm (frame 46)
+MOCK: [frame 46] press A
+REQ duel_menu PLAYER n=6 -> 0
+FLOW_RETURN actions answer=0
+ASK card_list PLAYER n=2 cursor=0
+MOCK: [frame 50] wait 6
+MOCK: [frame 56] expect FLOW_RETURN~actions~answer=0
+MOCK: expect 'FLOW_RETURN~actions~answer=0' >= 1: 1
+MOCK: [frame 56] expect_none FLOW_RETURN~intentional-hand
+MOCK: expect_none 'FLOW_RETURN~intentional-hand': 0
+MOCK: [frame 56] press A
+REQ card_list PLAYER n=2 -> 0
+FLOW_RETURN intentional-hand answer=0
+ACK_FLOW_PASS engine_memory_requests_answers_rng_unchanged=1 draw_placement_actions_fresh=1 forced_and_intentional_hand_preserved=1
+MOCK: [frame 60] wait 6
+MOCK: [frame 66] expect FLOW_RETURN~intentional-hand~answer=0
+MOCK: expect 'FLOW_RETURN~intentional-hand~answer=0' >= 1: 1
+MOCK: [frame 66] expect ACK_FLOW_PASS
+MOCK: expect 'ACK_FLOW_PASS' >= 1: 1

@@ -1,0 +1,4620 @@
+{
+  "passed": true,
+  "method": "Ares v148 CP0 timing of actual production UI loops with real compressed music/mixer/RDP; 30fps display cap; test-only logical key driver; not physical N64 FPS",
+  "production_source_sha256": "10d7b47a5951a5df749241d51dfa224ad91fd45f8b8439a580a39f570a923ef8",
+  "rom_sha256": "d4e848b29338e86b4de911b77d41cca81fa39f2bb28b688838448036c9bf4e4c",
+  "cases": [
+    {
+      "case": "hand-list",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33425,
+        "median_us": 33457.0,
+        "p95_us": 35572,
+        "min_us": 30841,
+        "max_us": 35912
+      },
+      "work": {
+        "mean_us": 5152,
+        "median_us": 5408.5,
+        "p95_us": 5778,
+        "min_us": 3036,
+        "max_us": 6139
+      },
+      "acquire": {
+        "mean_us": 28218,
+        "median_us": 27973.0,
+        "p95_us": 30132,
+        "min_us": 27249,
+        "max_us": 30308
+      }
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33426,
+        "median_us": 33390.5,
+        "p95_us": 35743,
+        "min_us": 30981,
+        "max_us": 36109
+      },
+      "work": {
+        "mean_us": 5127,
+        "median_us": 5397.0,
+        "p95_us": 6488,
+        "min_us": 2995,
+        "max_us": 6749
+      },
+      "acquire": {
+        "mean_us": 28243,
+        "median_us": 27976.5,
+        "p95_us": 30235,
+        "min_us": 26656,
+        "max_us": 30325
+      }
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33433,
+        "median_us": 33415.0,
+        "p95_us": 35963,
+        "min_us": 30904,
+        "max_us": 36161
+      },
+      "work": {
+        "mean_us": 5072,
+        "median_us": 5395.0,
+        "p95_us": 5738,
+        "min_us": 3014,
+        "max_us": 5817
+      },
+      "acquire": {
+        "mean_us": 28304,
+        "median_us": 27984.5,
+        "p95_us": 30265,
+        "min_us": 27639,
+        "max_us": 30289
+      }
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33433,
+        "median_us": 33318.5,
+        "p95_us": 35832,
+        "min_us": 30883,
+        "max_us": 36092
+      },
+      "work": {
+        "mean_us": 5111,
+        "median_us": 5379.5,
+        "p95_us": 5734,
+        "min_us": 2988,
+        "max_us": 6149
+      },
+      "acquire": {
+        "mean_us": 28265,
+        "median_us": 28017.5,
+        "p95_us": 30313,
+        "min_us": 27216,
+        "max_us": 30325
+      }
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33384,
+        "median_us": 33347.0,
+        "p95_us": 36363,
+        "min_us": 29937,
+        "max_us": 37105
+      },
+      "work": {
+        "mean_us": 5283,
+        "median_us": 5371.5,
+        "p95_us": 6833,
+        "min_us": 3006,
+        "max_us": 6958
+      },
+      "acquire": {
+        "mean_us": 28044,
+        "median_us": 27958.0,
+        "p95_us": 30217,
+        "min_us": 26486,
+        "max_us": 30297
+      }
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33447,
+        "median_us": 33381.0,
+        "p95_us": 78237,
+        "min_us": 3434,
+        "max_us": 78555
+      },
+      "work": {
+        "mean_us": 7682,
+        "median_us": 5276.5,
+        "p95_us": 49266,
+        "min_us": 3111,
+        "max_us": 49399
+      },
+      "acquire": {
+        "mean_us": 25701,
+        "median_us": 28079.5,
+        "p95_us": 30130,
+        "min_us": 10,
+        "max_us": 30189
+      }
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 32907,
+        "median_us": 33527.5,
+        "p95_us": 39937,
+        "min_us": 14237,
+        "max_us": 41133
+      },
+      "work": {
+        "mean_us": 5336,
+        "median_us": 5345.0,
+        "p95_us": 9985,
+        "min_us": 2990,
+        "max_us": 10756
+      },
+      "acquire": {
+        "mean_us": 27509,
+        "median_us": 28032.5,
+        "p95_us": 30328,
+        "min_us": 11021,
+        "max_us": 31086
+      }
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33421,
+        "median_us": 33372.0,
+        "p95_us": 36085,
+        "min_us": 30979,
+        "max_us": 36168
+      },
+      "work": {
+        "mean_us": 5098,
+        "median_us": 5378.5,
+        "p95_us": 5785,
+        "min_us": 2997,
+        "max_us": 6357
+      },
+      "acquire": {
+        "mean_us": 28119,
+        "median_us": 27858.0,
+        "p95_us": 30152,
+        "min_us": 26857,
+        "max_us": 30180
+      }
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "height": 360,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33441,
+        "median_us": 33606.5,
+        "p95_us": 35617,
+        "min_us": 29517,
+        "max_us": 35842
+      },
+      "work": {
+        "mean_us": 6531,
+        "median_us": 6774.5,
+        "p95_us": 8477,
+        "min_us": 4364,
+        "max_us": 8526
+      },
+      "acquire": {
+        "mean_us": 26855,
+        "median_us": 26543.5,
+        "p95_us": 28820,
+        "min_us": 24849,
+        "max_us": 28884
+      }
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "height": 360,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33431,
+        "median_us": 33433.5,
+        "p95_us": 35653,
+        "min_us": 30779,
+        "max_us": 35687
+      },
+      "work": {
+        "mean_us": 6451,
+        "median_us": 6664.0,
+        "p95_us": 6911,
+        "min_us": 4347,
+        "max_us": 8702
+      },
+      "acquire": {
+        "mean_us": 26924,
+        "median_us": 26657.5,
+        "p95_us": 28882,
+        "min_us": 24694,
+        "max_us": 28919
+      }
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "height": 360,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33369,
+        "median_us": 33334.5,
+        "p95_us": 35669,
+        "min_us": 29293,
+        "max_us": 35805
+      },
+      "work": {
+        "mean_us": 6353,
+        "median_us": 6537.0,
+        "p95_us": 6967,
+        "min_us": 4347,
+        "max_us": 8705
+      },
+      "acquire": {
+        "mean_us": 26958,
+        "median_us": 26760.5,
+        "p95_us": 28842,
+        "min_us": 24697,
+        "max_us": 28932
+      }
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "height": 360,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33374,
+        "median_us": 33358.0,
+        "p95_us": 35916,
+        "min_us": 29251,
+        "max_us": 37303
+      },
+      "work": {
+        "mean_us": 6440,
+        "median_us": 6603.0,
+        "p95_us": 8453,
+        "min_us": 4370,
+        "max_us": 8585
+      },
+      "acquire": {
+        "mean_us": 26877,
+        "median_us": 26700.5,
+        "p95_us": 28842,
+        "min_us": 24807,
+        "max_us": 28891
+      }
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "height": 360,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33333,
+        "median_us": 33414.0,
+        "p95_us": 35788,
+        "min_us": 29897,
+        "max_us": 36531
+      },
+      "work": {
+        "mean_us": 6565,
+        "median_us": 6709.5,
+        "p95_us": 8048,
+        "min_us": 4360,
+        "max_us": 8102
+      },
+      "acquire": {
+        "mean_us": 26711,
+        "median_us": 26617.0,
+        "p95_us": 28880,
+        "min_us": 25202,
+        "max_us": 28882
+      }
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "height": 360,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 35454,
+        "median_us": 33144.5,
+        "p95_us": 127514,
+        "min_us": 4332,
+        "max_us": 128059
+      },
+      "work": {
+        "mean_us": 12095,
+        "median_us": 6627.0,
+        "p95_us": 99943,
+        "min_us": 4262,
+        "max_us": 102213
+      },
+      "acquire": {
+        "mean_us": 23296,
+        "median_us": 26624.5,
+        "p95_us": 28863,
+        "min_us": 14,
+        "max_us": 28954
+      }
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "height": 360,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33374,
+        "median_us": 33423.5,
+        "p95_us": 44741,
+        "min_us": 17630,
+        "max_us": 49348
+      },
+      "work": {
+        "mean_us": 7080,
+        "median_us": 6660.0,
+        "p95_us": 16950,
+        "min_us": 4339,
+        "max_us": 19547
+      },
+      "acquire": {
+        "mean_us": 26232,
+        "median_us": 26695.0,
+        "p95_us": 28912,
+        "min_us": 12967,
+        "max_us": 29739
+      }
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "height": 360,
+      "ram_mib": 8,
+      "warmup": 8,
+      "samples": 32,
+      "cadence": {
+        "mean_us": 33375,
+        "median_us": 33436.5,
+        "p95_us": 35833,
+        "min_us": 29185,
+        "max_us": 35955
+      },
+      "work": {
+        "mean_us": 6497,
+        "median_us": 6736.5,
+        "p95_us": 8537,
+        "min_us": 4311,
+        "max_us": 8559
+      },
+      "acquire": {
+        "mean_us": 26675,
+        "median_us": 26431.5,
+        "p95_us": 28728,
+        "min_us": 24675,
+        "max_us": 28793
+      }
+    }
+  ],
+  "pixel_checks": [
+    {
+      "width": 320,
+      "frames": 64
+    },
+    {
+      "width": 480,
+      "frames": 64
+    }
+  ],
+  "board_focus_controller_checks": [
+    {
+      "width": 320,
+      "ports": 1,
+      "frames": 34,
+      "answer": 0
+    },
+    {
+      "width": 320,
+      "ports": 2,
+      "frames": 34,
+      "answer": 0
+    },
+    {
+      "width": 480,
+      "ports": 1,
+      "frames": 34,
+      "answer": 0
+    },
+    {
+      "width": 480,
+      "ports": 2,
+      "frames": 34,
+      "answer": 0
+    }
+  ],
+  "memory": [
+    {
+      "width": 320,
+      "ram_bytes": 8388608,
+      "snapshot_bytes": 8432,
+      "free_heap": 6476712
+    },
+    {
+      "width": 480,
+      "ram_bytes": 8388608,
+      "snapshot_bytes": 8432,
+      "free_heap": 5536872
+    }
+  ],
+  "samples": [
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 8,
+      "cadence": 33318,
+      "work": 5436,
+      "acquire": 27828
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 9,
+      "cadence": 33552,
+      "work": 5555,
+      "acquire": 27944
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 10,
+      "cadence": 31160,
+      "work": 3291,
+      "acquire": 27816
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 11,
+      "cadence": 35572,
+      "work": 5493,
+      "acquire": 30023
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 12,
+      "cadence": 33213,
+      "work": 5217,
+      "acquire": 27942
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33979,
+      "work": 5778,
+      "acquire": 28146
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 14,
+      "cadence": 33153,
+      "work": 5486,
+      "acquire": 27613
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 15,
+      "cadence": 33377,
+      "work": 5434,
+      "acquire": 27890
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 16,
+      "cadence": 33648,
+      "work": 5651,
+      "acquire": 27944
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 17,
+      "cadence": 31965,
+      "work": 4191,
+      "acquire": 27720
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 18,
+      "cadence": 34421,
+      "work": 5195,
+      "acquire": 29173
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 19,
+      "cadence": 33658,
+      "work": 5434,
+      "acquire": 28170
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 20,
+      "cadence": 33764,
+      "work": 5735,
+      "acquire": 27974
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 21,
+      "cadence": 32936,
+      "work": 5242,
+      "acquire": 27640
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 22,
+      "cadence": 33588,
+      "work": 5440,
+      "acquire": 28095
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 23,
+      "cadence": 31419,
+      "work": 3392,
+      "acquire": 27972
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 24,
+      "cadence": 35300,
+      "work": 5325,
+      "acquire": 29920
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 25,
+      "cadence": 33257,
+      "work": 5131,
+      "acquire": 28071
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 26,
+      "cadence": 33537,
+      "work": 5234,
+      "acquire": 28248
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 27,
+      "cadence": 33888,
+      "work": 5681,
+      "acquire": 28153
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 28,
+      "cadence": 33067,
+      "work": 5294,
+      "acquire": 27720
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 29,
+      "cadence": 31152,
+      "work": 3036,
+      "acquire": 28061
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 30,
+      "cadence": 35912,
+      "work": 5548,
+      "acquire": 30308
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 31,
+      "cadence": 33271,
+      "work": 5372,
+      "acquire": 27845
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 32,
+      "cadence": 34222,
+      "work": 6139,
+      "acquire": 28028
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 33,
+      "cadence": 32628,
+      "work": 5324,
+      "acquire": 27249
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 34,
+      "cadence": 33846,
+      "work": 5765,
+      "acquire": 28026
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 35,
+      "cadence": 30841,
+      "work": 3160,
+      "acquire": 27627
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 36,
+      "cadence": 35382,
+      "work": 5173,
+      "acquire": 30132
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 37,
+      "cadence": 34041,
+      "work": 5750,
+      "acquire": 28237
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 38,
+      "cadence": 33275,
+      "work": 5575,
+      "acquire": 27646
+    },
+    {
+      "case": "hand-list",
+      "width": 320,
+      "frame": 39,
+      "cadence": 33246,
+      "work": 5383,
+      "acquire": 27809
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 8,
+      "cadence": 35545,
+      "work": 5546,
+      "acquire": 29944
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 9,
+      "cadence": 33133,
+      "work": 5188,
+      "acquire": 27890
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 10,
+      "cadence": 33722,
+      "work": 5494,
+      "acquire": 28171
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 11,
+      "cadence": 33315,
+      "work": 5348,
+      "acquire": 27913
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 12,
+      "cadence": 33357,
+      "work": 5301,
+      "acquire": 27997
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33577,
+      "work": 5455,
+      "acquire": 28065
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 14,
+      "cadence": 31338,
+      "work": 3332,
+      "acquire": 27952
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 15,
+      "cadence": 35363,
+      "work": 5324,
+      "acquire": 29984
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 16,
+      "cadence": 34631,
+      "work": 6488,
+      "acquire": 28085
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 17,
+      "cadence": 32456,
+      "work": 5487,
+      "acquire": 26914
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 18,
+      "cadence": 33613,
+      "work": 5672,
+      "acquire": 27886
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 19,
+      "cadence": 33193,
+      "work": 5440,
+      "acquire": 27699
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 20,
+      "cadence": 30981,
+      "work": 2995,
+      "acquire": 27931
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 21,
+      "cadence": 36109,
+      "work": 5728,
+      "acquire": 30325
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 22,
+      "cadence": 33191,
+      "work": 5437,
+      "acquire": 27700
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 23,
+      "cadence": 33099,
+      "work": 5106,
+      "acquire": 27938
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 24,
+      "cadence": 33670,
+      "work": 5362,
+      "acquire": 28250
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 25,
+      "cadence": 33501,
+      "work": 5424,
+      "acquire": 28019
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 26,
+      "cadence": 31109,
+      "work": 3115,
+      "acquire": 27936
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 27,
+      "cadence": 35743,
+      "work": 5454,
+      "acquire": 30235
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 28,
+      "cadence": 33526,
+      "work": 5511,
+      "acquire": 27961
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 29,
+      "cadence": 33093,
+      "work": 5190,
+      "acquire": 27844
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 30,
+      "cadence": 33347,
+      "work": 5117,
+      "acquire": 28172
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 31,
+      "cadence": 35067,
+      "work": 6749,
+      "acquire": 28260
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 32,
+      "cadence": 32060,
+      "work": 5349,
+      "acquire": 26656
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 33,
+      "cadence": 31174,
+      "work": 3124,
+      "acquire": 27992
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 34,
+      "cadence": 35671,
+      "work": 5383,
+      "acquire": 30233
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 35,
+      "cadence": 33742,
+      "work": 5647,
+      "acquire": 28040
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 36,
+      "cadence": 32960,
+      "work": 5178,
+      "acquire": 27727
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 37,
+      "cadence": 33675,
+      "work": 5460,
+      "acquire": 28158
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 38,
+      "cadence": 33424,
+      "work": 5411,
+      "acquire": 27958
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 320,
+      "frame": 39,
+      "cadence": 31237,
+      "work": 3238,
+      "acquire": 27942
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 8,
+      "cadence": 33550,
+      "work": 5343,
+      "acquire": 28148
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 9,
+      "cadence": 33434,
+      "work": 5348,
+      "acquire": 28027
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 10,
+      "cadence": 33611,
+      "work": 5531,
+      "acquire": 28021
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 11,
+      "cadence": 30912,
+      "work": 3014,
+      "acquire": 27842
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 12,
+      "cadence": 36161,
+      "work": 5817,
+      "acquire": 30289
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33144,
+      "work": 5449,
+      "acquire": 27639
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 14,
+      "cadence": 33056,
+      "work": 5082,
+      "acquire": 27917
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 15,
+      "cadence": 34027,
+      "work": 5701,
+      "acquire": 28267
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 16,
+      "cadence": 33157,
+      "work": 5393,
+      "acquire": 27708
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 17,
+      "cadence": 33174,
+      "work": 5160,
+      "acquire": 27957
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 18,
+      "cadence": 31349,
+      "work": 3094,
+      "acquire": 28196
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 19,
+      "cadence": 35963,
+      "work": 5651,
+      "acquire": 30257
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 20,
+      "cadence": 33264,
+      "work": 5433,
+      "acquire": 27775
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 21,
+      "cadence": 33167,
+      "work": 5170,
+      "acquire": 27940
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 22,
+      "cadence": 33987,
+      "work": 5736,
+      "acquire": 28192
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 23,
+      "cadence": 33221,
+      "work": 5514,
+      "acquire": 27650
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 24,
+      "cadence": 30964,
+      "work": 3065,
+      "acquire": 27842
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 25,
+      "cadence": 35589,
+      "work": 5267,
+      "acquire": 30265
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 26,
+      "cadence": 33920,
+      "work": 5714,
+      "acquire": 28146
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 27,
+      "cadence": 32962,
+      "work": 5232,
+      "acquire": 27673
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 28,
+      "cadence": 33296,
+      "work": 5118,
+      "acquire": 28120
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 29,
+      "cadence": 34055,
+      "work": 5738,
+      "acquire": 28259
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 30,
+      "cadence": 30904,
+      "work": 3200,
+      "acquire": 27648
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 31,
+      "cadence": 35349,
+      "work": 5209,
+      "acquire": 30084
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 32,
+      "cadence": 33902,
+      "work": 5613,
+      "acquire": 28230
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 33,
+      "cadence": 33237,
+      "work": 5397,
+      "acquire": 27783
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 34,
+      "cadence": 33454,
+      "work": 5433,
+      "acquire": 27962
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 35,
+      "cadence": 33452,
+      "work": 5448,
+      "acquire": 27948
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 36,
+      "cadence": 33479,
+      "work": 5491,
+      "acquire": 27931
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 37,
+      "cadence": 31122,
+      "work": 3203,
+      "acquire": 27860
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 38,
+      "cadence": 35607,
+      "work": 5411,
+      "acquire": 30139
+    },
+    {
+      "case": "external-card-detail",
+      "width": 320,
+      "frame": 39,
+      "cadence": 33396,
+      "work": 5332,
+      "acquire": 28007
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 8,
+      "cadence": 33294,
+      "work": 5241,
+      "acquire": 27996
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 9,
+      "cadence": 33518,
+      "work": 5325,
+      "acquire": 28136
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 10,
+      "cadence": 31375,
+      "work": 3279,
+      "acquire": 28039
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 11,
+      "cadence": 35647,
+      "work": 5539,
+      "acquire": 30051
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 12,
+      "cadence": 33140,
+      "work": 5181,
+      "acquire": 27903
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33766,
+      "work": 5557,
+      "acquire": 28152
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 14,
+      "cadence": 33201,
+      "work": 5310,
+      "acquire": 27834
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 15,
+      "cadence": 33278,
+      "work": 5165,
+      "acquire": 28056
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 16,
+      "cadence": 33733,
+      "work": 5469,
+      "acquire": 28207
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 17,
+      "cadence": 32213,
+      "work": 4247,
+      "acquire": 27909
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 18,
+      "cadence": 34606,
+      "work": 5434,
+      "acquire": 29116
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 19,
+      "cadence": 33179,
+      "work": 5162,
+      "acquire": 27961
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 20,
+      "cadence": 33746,
+      "work": 5488,
+      "acquire": 28201
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 21,
+      "cadence": 33437,
+      "work": 5505,
+      "acquire": 27875
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 22,
+      "cadence": 33067,
+      "work": 5125,
+      "acquire": 27886
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 23,
+      "cadence": 31614,
+      "work": 3335,
+      "acquire": 28220
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 24,
+      "cadence": 35633,
+      "work": 5565,
+      "acquire": 30011
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 25,
+      "cadence": 33043,
+      "work": 5127,
+      "acquire": 27860
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 26,
+      "cadence": 33763,
+      "work": 5480,
+      "acquire": 28225
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 27,
+      "cadence": 33653,
+      "work": 5673,
+      "acquire": 27924
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 28,
+      "cadence": 33064,
+      "work": 5314,
+      "acquire": 27694
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 29,
+      "cadence": 31117,
+      "work": 3011,
+      "acquire": 28048
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 30,
+      "cadence": 36092,
+      "work": 5721,
+      "acquire": 30313
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 31,
+      "cadence": 33343,
+      "work": 5581,
+      "acquire": 27706
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 32,
+      "cadence": 34012,
+      "work": 6149,
+      "acquire": 27805
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 33,
+      "cadence": 32349,
+      "work": 5077,
+      "acquire": 27216
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 34,
+      "cadence": 34046,
+      "work": 5734,
+      "acquire": 28253
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 35,
+      "cadence": 33274,
+      "work": 5541,
+      "acquire": 27675
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 36,
+      "cadence": 30883,
+      "work": 2988,
+      "acquire": 27838
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 37,
+      "cadence": 35832,
+      "work": 5449,
+      "acquire": 30325
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 38,
+      "cadence": 33280,
+      "work": 5283,
+      "acquire": 27937
+    },
+    {
+      "case": "generic-menu",
+      "width": 320,
+      "frame": 39,
+      "cadence": 33646,
+      "work": 5483,
+      "acquire": 28103
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 8,
+      "cadence": 29937,
+      "work": 3237,
+      "acquire": 26643
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 9,
+      "cadence": 37105,
+      "work": 6958,
+      "acquire": 30091
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 10,
+      "cadence": 33370,
+      "work": 6828,
+      "acquire": 26486
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 11,
+      "cadence": 33324,
+      "work": 6721,
+      "acquire": 26547
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 12,
+      "cadence": 33525,
+      "work": 6833,
+      "acquire": 26634
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33119,
+      "work": 6508,
+      "acquire": 26556
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 14,
+      "cadence": 30269,
+      "work": 3354,
+      "acquire": 26860
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 15,
+      "cadence": 36363,
+      "work": 6372,
+      "acquire": 29934
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 16,
+      "cadence": 32592,
+      "work": 5449,
+      "acquire": 27089
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 17,
+      "cadence": 33173,
+      "work": 5190,
+      "acquire": 27927
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 18,
+      "cadence": 33842,
+      "work": 5614,
+      "acquire": 28169
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 19,
+      "cadence": 33079,
+      "work": 5253,
+      "acquire": 27769
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 20,
+      "cadence": 33313,
+      "work": 5149,
+      "acquire": 28106
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 21,
+      "cadence": 31648,
+      "work": 3370,
+      "acquire": 28219
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 22,
+      "cadence": 35370,
+      "work": 5354,
+      "acquire": 29959
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 23,
+      "cadence": 33205,
+      "work": 5090,
+      "acquire": 28057
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 24,
+      "cadence": 33897,
+      "work": 5557,
+      "acquire": 28283
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 25,
+      "cadence": 33536,
+      "work": 5640,
+      "acquire": 27839
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 26,
+      "cadence": 33265,
+      "work": 5474,
+      "acquire": 27734
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 27,
+      "cadence": 30964,
+      "work": 3006,
+      "acquire": 27901
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 28,
+      "cadence": 36087,
+      "work": 5734,
+      "acquire": 30297
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 29,
+      "cadence": 32974,
+      "work": 5215,
+      "acquire": 27703
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 30,
+      "cadence": 33375,
+      "work": 5185,
+      "acquire": 28133
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 31,
+      "cadence": 33710,
+      "work": 5448,
+      "acquire": 28204
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 32,
+      "cadence": 33373,
+      "work": 5389,
+      "acquire": 27926
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 33,
+      "cadence": 31143,
+      "work": 3095,
+      "acquire": 27989
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 34,
+      "cadence": 35487,
+      "work": 5213,
+      "acquire": 30217
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 35,
+      "cadence": 33985,
+      "work": 5717,
+      "acquire": 28210
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 36,
+      "cadence": 32916,
+      "work": 5194,
+      "acquire": 27666
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 37,
+      "cadence": 33377,
+      "work": 5164,
+      "acquire": 28154
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 38,
+      "cadence": 33779,
+      "work": 5498,
+      "acquire": 28223
+    },
+    {
+      "case": "practice-reading",
+      "width": 320,
+      "frame": 39,
+      "cadence": 33185,
+      "work": 5251,
+      "acquire": 27875
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 8,
+      "cadence": 78555,
+      "work": 49399,
+      "acquire": 29092
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 9,
+      "cadence": 3434,
+      "work": 3355,
+      "acquire": 10
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 10,
+      "cadence": 18404,
+      "work": 5235,
+      "acquire": 13107
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 11,
+      "cadence": 31377,
+      "work": 3187,
+      "acquire": 28127
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 12,
+      "cadence": 35583,
+      "work": 5390,
+      "acquire": 30130
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33239,
+      "work": 5161,
+      "acquire": 28014
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 14,
+      "cadence": 33408,
+      "work": 5145,
+      "acquire": 28199
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 15,
+      "cadence": 33997,
+      "work": 5698,
+      "acquire": 28235
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 16,
+      "cadence": 33975,
+      "work": 6229,
+      "acquire": 27683
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 17,
+      "cadence": 32361,
+      "work": 5153,
+      "acquire": 27143
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 18,
+      "cadence": 31504,
+      "work": 3251,
+      "acquire": 28190
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 19,
+      "cadence": 35688,
+      "work": 5561,
+      "acquire": 30064
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 20,
+      "cadence": 33093,
+      "work": 5161,
+      "acquire": 27868
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 21,
+      "cadence": 33354,
+      "work": 5104,
+      "acquire": 28186
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 22,
+      "cadence": 34096,
+      "work": 5776,
+      "acquire": 28256
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 23,
+      "cadence": 33004,
+      "work": 5320,
+      "acquire": 27619
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 24,
+      "cadence": 78237,
+      "work": 49266,
+      "acquire": 28908
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 25,
+      "cadence": 3577,
+      "work": 3499,
+      "acquire": 11
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 26,
+      "cadence": 16377,
+      "work": 3221,
+      "acquire": 13093
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 27,
+      "cadence": 35360,
+      "work": 5216,
+      "acquire": 30081
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 28,
+      "cadence": 33714,
+      "work": 5449,
+      "acquire": 28201
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 29,
+      "cadence": 33563,
+      "work": 5565,
+      "acquire": 27935
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 30,
+      "cadence": 30972,
+      "work": 3111,
+      "acquire": 27798
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 31,
+      "cadence": 35397,
+      "work": 5144,
+      "acquire": 30189
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 32,
+      "cadence": 33989,
+      "work": 5665,
+      "acquire": 28260
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 33,
+      "cadence": 33120,
+      "work": 5323,
+      "acquire": 27734
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 34,
+      "cadence": 33514,
+      "work": 5418,
+      "acquire": 28032
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 35,
+      "cadence": 33339,
+      "work": 5318,
+      "acquire": 27957
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 36,
+      "cadence": 31357,
+      "work": 3277,
+      "acquire": 28016
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 37,
+      "cadence": 35559,
+      "work": 5467,
+      "acquire": 30029
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 38,
+      "cadence": 33109,
+      "work": 5063,
+      "acquire": 27983
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 320,
+      "frame": 39,
+      "cadence": 34058,
+      "work": 5713,
+      "acquire": 28280
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 8,
+      "cadence": 31127,
+      "work": 2990,
+      "acquire": 28075
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 9,
+      "cadence": 36049,
+      "work": 5660,
+      "acquire": 30328
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 10,
+      "cadence": 33121,
+      "work": 5293,
+      "acquire": 27766
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 11,
+      "cadence": 33266,
+      "work": 5127,
+      "acquire": 28076
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 12,
+      "cadence": 33615,
+      "work": 5330,
+      "acquire": 28222
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33698,
+      "work": 5586,
+      "acquire": 28050
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 14,
+      "cadence": 30972,
+      "work": 3118,
+      "acquire": 27791
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 15,
+      "cadence": 35413,
+      "work": 5163,
+      "acquire": 30188
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 16,
+      "cadence": 39937,
+      "work": 10756,
+      "acquire": 29117
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 17,
+      "cadence": 27132,
+      "work": 5318,
+      "acquire": 21749
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 18,
+      "cadence": 33525,
+      "work": 5413,
+      "acquire": 28048
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 19,
+      "cadence": 33530,
+      "work": 5501,
+      "acquire": 27966
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 20,
+      "cadence": 34274,
+      "work": 6357,
+      "acquire": 27854
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 21,
+      "cadence": 30160,
+      "work": 3072,
+      "acquire": 27025
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 22,
+      "cadence": 35704,
+      "work": 5416,
+      "acquire": 30226
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 23,
+      "cadence": 33786,
+      "work": 5711,
+      "acquire": 28012
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 24,
+      "cadence": 14237,
+      "work": 3153,
+      "acquire": 11021
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 25,
+      "cadence": 35260,
+      "work": 5130,
+      "acquire": 30068
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 26,
+      "cadence": 33725,
+      "work": 5385,
+      "acquire": 28278
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 27,
+      "cadence": 33387,
+      "work": 5339,
+      "acquire": 27986
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 28,
+      "cadence": 33276,
+      "work": 5182,
+      "acquire": 28030
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 29,
+      "cadence": 33594,
+      "work": 5351,
+      "acquire": 28180
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 30,
+      "cadence": 33825,
+      "work": 5724,
+      "acquire": 28039
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 31,
+      "cadence": 30846,
+      "work": 3138,
+      "acquire": 27646
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 32,
+      "cadence": 41133,
+      "work": 9985,
+      "acquire": 31086
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 33,
+      "cadence": 28016,
+      "work": 5454,
+      "acquire": 22496
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 34,
+      "cadence": 33519,
+      "work": 5537,
+      "acquire": 27919
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 35,
+      "cadence": 33246,
+      "work": 5324,
+      "acquire": 27861
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 36,
+      "cadence": 34219,
+      "work": 6121,
+      "acquire": 28035
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 37,
+      "cadence": 30634,
+      "work": 3316,
+      "acquire": 27256
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 38,
+      "cadence": 35568,
+      "work": 5530,
+      "acquire": 29976
+    },
+    {
+      "case": "placement-fresh",
+      "width": 320,
+      "frame": 39,
+      "cadence": 33235,
+      "work": 5269,
+      "acquire": 27904
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 8,
+      "cadence": 33311,
+      "work": 5465,
+      "acquire": 27640
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 9,
+      "cadence": 30979,
+      "work": 3000,
+      "acquire": 27777
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 10,
+      "cadence": 36085,
+      "work": 5730,
+      "acquire": 30152
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 11,
+      "cadence": 34130,
+      "work": 6357,
+      "acquire": 27571
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 12,
+      "cadence": 32325,
+      "work": 5258,
+      "acquire": 26857
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 13,
+      "cadence": 33390,
+      "work": 5218,
+      "acquire": 27966
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 14,
+      "cadence": 33940,
+      "work": 5733,
+      "acquire": 28002
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 15,
+      "cadence": 33043,
+      "work": 5341,
+      "acquire": 27500
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 16,
+      "cadence": 31085,
+      "work": 2997,
+      "acquire": 27883
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 17,
+      "cadence": 36168,
+      "work": 5785,
+      "acquire": 30180
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 18,
+      "cadence": 33325,
+      "work": 5632,
+      "acquire": 27491
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 19,
+      "cadence": 33275,
+      "work": 5464,
+      "acquire": 27609
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 20,
+      "cadence": 33332,
+      "work": 5376,
+      "acquire": 27755
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 21,
+      "cadence": 33458,
+      "work": 5405,
+      "acquire": 27851
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 22,
+      "cadence": 31152,
+      "work": 3148,
+      "acquire": 27798
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 23,
+      "cadence": 35660,
+      "work": 5402,
+      "acquire": 30055
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 24,
+      "cadence": 33477,
+      "work": 5405,
+      "acquire": 27870
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 25,
+      "cadence": 33525,
+      "work": 5516,
+      "acquire": 27803
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 26,
+      "cadence": 33165,
+      "work": 5242,
+      "acquire": 27722
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 27,
+      "cadence": 33596,
+      "work": 5405,
+      "acquire": 27985
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 28,
+      "cadence": 31305,
+      "work": 3273,
+      "acquire": 27830
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 29,
+      "cadence": 35344,
+      "work": 5263,
+      "acquire": 29877
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 30,
+      "cadence": 33604,
+      "work": 5381,
+      "acquire": 28017
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 31,
+      "cadence": 33708,
+      "work": 5641,
+      "acquire": 27865
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 32,
+      "cadence": 33103,
+      "work": 5317,
+      "acquire": 27584
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 33,
+      "cadence": 33439,
+      "work": 5340,
+      "acquire": 27893
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 34,
+      "cadence": 33354,
+      "work": 5254,
+      "acquire": 27898
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 35,
+      "cadence": 31449,
+      "work": 3277,
+      "acquire": 27965
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 36,
+      "cadence": 35632,
+      "work": 5568,
+      "acquire": 29861
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 37,
+      "cadence": 33043,
+      "work": 5080,
+      "acquire": 27760
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 38,
+      "cadence": 33894,
+      "work": 5559,
+      "acquire": 28128
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 320,
+      "frame": 39,
+      "cadence": 33175,
+      "work": 5302,
+      "acquire": 27666
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 8,
+      "cadence": 35482,
+      "work": 6698,
+      "acquire": 28728
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 9,
+      "cadence": 33315,
+      "work": 6597,
+      "acquire": 26663
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 10,
+      "cadence": 33629,
+      "work": 6875,
+      "acquire": 26700
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 11,
+      "cadence": 33071,
+      "work": 6553,
+      "acquire": 26465
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 12,
+      "cadence": 33584,
+      "work": 6774,
+      "acquire": 26756
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 13,
+      "cadence": 30994,
+      "work": 4429,
+      "acquire": 26511
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 14,
+      "cadence": 35519,
+      "work": 6643,
+      "acquire": 28820
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 15,
+      "cadence": 33660,
+      "work": 6877,
+      "acquire": 26728
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 16,
+      "cadence": 34982,
+      "work": 8477,
+      "acquire": 26451
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 17,
+      "cadence": 31595,
+      "work": 6627,
+      "acquire": 24915
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 18,
+      "cadence": 33659,
+      "work": 7010,
+      "acquire": 26595
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 19,
+      "cadence": 33155,
+      "work": 6775,
+      "acquire": 26326
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 20,
+      "cadence": 31063,
+      "work": 4484,
+      "acquire": 26524
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 21,
+      "cadence": 35375,
+      "work": 6541,
+      "acquire": 28779
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 22,
+      "cadence": 33654,
+      "work": 6794,
+      "acquire": 26806
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 23,
+      "cadence": 33156,
+      "work": 6582,
+      "acquire": 26519
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 24,
+      "cadence": 33643,
+      "work": 6846,
+      "acquire": 26743
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 25,
+      "cadence": 33641,
+      "work": 7114,
+      "acquire": 26473
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 26,
+      "cadence": 30623,
+      "work": 4364,
+      "acquire": 26205
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 27,
+      "cadence": 35842,
+      "work": 6903,
+      "acquire": 28884
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 28,
+      "cadence": 33331,
+      "work": 6807,
+      "acquire": 26470
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 29,
+      "cadence": 33143,
+      "work": 6595,
+      "acquire": 26493
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 30,
+      "cadence": 33540,
+      "work": 6785,
+      "acquire": 26701
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 31,
+      "cadence": 35132,
+      "work": 8526,
+      "acquire": 26552
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 32,
+      "cadence": 29517,
+      "work": 4615,
+      "acquire": 24849
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 33,
+      "cadence": 35151,
+      "work": 6525,
+      "acquire": 28571
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 34,
+      "cadence": 33717,
+      "work": 6836,
+      "acquire": 26826
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 35,
+      "cadence": 33665,
+      "work": 7111,
+      "acquire": 26500
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 36,
+      "cadence": 33033,
+      "work": 6772,
+      "acquire": 26207
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 37,
+      "cadence": 33403,
+      "work": 6814,
+      "acquire": 26535
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 38,
+      "cadence": 31207,
+      "work": 4660,
+      "acquire": 26493
+    },
+    {
+      "case": "hand-list",
+      "width": 480,
+      "frame": 39,
+      "cadence": 35617,
+      "work": 6993,
+      "acquire": 28569
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 8,
+      "cadence": 35500,
+      "work": 6600,
+      "acquire": 28845
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 9,
+      "cadence": 33557,
+      "work": 6758,
+      "acquire": 26741
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 10,
+      "cadence": 33069,
+      "work": 6450,
+      "acquire": 26564
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 11,
+      "cadence": 33477,
+      "work": 6590,
+      "acquire": 26829
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 12,
+      "cadence": 33445,
+      "work": 6654,
+      "acquire": 26733
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 13,
+      "cadence": 31056,
+      "work": 4347,
+      "acquire": 26651
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 14,
+      "cadence": 35653,
+      "work": 6679,
+      "acquire": 28919
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 15,
+      "cadence": 33551,
+      "work": 6829,
+      "acquire": 26664
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 16,
+      "cadence": 33246,
+      "work": 6696,
+      "acquire": 26493
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 17,
+      "cadence": 35376,
+      "work": 8702,
+      "acquire": 26620
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 18,
+      "cadence": 31636,
+      "work": 6889,
+      "acquire": 24694
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 19,
+      "cadence": 30779,
+      "work": 4389,
+      "acquire": 26335
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 20,
+      "cadence": 35687,
+      "work": 6750,
+      "acquire": 28882
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 21,
+      "cadence": 33404,
+      "work": 6748,
+      "acquire": 26601
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 22,
+      "cadence": 33465,
+      "work": 6834,
+      "acquire": 26577
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 23,
+      "cadence": 33196,
+      "work": 6674,
+      "acquire": 26467
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 24,
+      "cadence": 33581,
+      "work": 6882,
+      "acquire": 26643
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 25,
+      "cadence": 31100,
+      "work": 4624,
+      "acquire": 26421
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 26,
+      "cadence": 35138,
+      "work": 6464,
+      "acquire": 28619
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 27,
+      "cadence": 33594,
+      "work": 6626,
+      "acquire": 26909
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 28,
+      "cadence": 33422,
+      "work": 6685,
+      "acquire": 26679
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 29,
+      "cadence": 33202,
+      "work": 6525,
+      "acquire": 26619
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 30,
+      "cadence": 33641,
+      "work": 6798,
+      "acquire": 26785
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 31,
+      "cadence": 33379,
+      "work": 6803,
+      "acquire": 26521
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 32,
+      "cadence": 32964,
+      "work": 6402,
+      "acquire": 26507
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 33,
+      "cadence": 33378,
+      "work": 6358,
+      "acquire": 26967
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 34,
+      "cadence": 33860,
+      "work": 6911,
+      "acquire": 26891
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 35,
+      "cadence": 33218,
+      "work": 6754,
+      "acquire": 26409
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 36,
+      "cadence": 33028,
+      "work": 6419,
+      "acquire": 26550
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 37,
+      "cadence": 33586,
+      "work": 6642,
+      "acquire": 26886
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 38,
+      "cadence": 31131,
+      "work": 4405,
+      "acquire": 26668
+    },
+    {
+      "case": "duel-card-detail",
+      "width": 480,
+      "frame": 39,
+      "cadence": 35477,
+      "work": 6558,
+      "acquire": 28865
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 8,
+      "cadence": 33358,
+      "work": 6541,
+      "acquire": 26758
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 9,
+      "cadence": 31366,
+      "work": 4544,
+      "acquire": 26763
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 10,
+      "cadence": 35563,
+      "work": 6787,
+      "acquire": 28720
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 11,
+      "cadence": 33462,
+      "work": 6831,
+      "acquire": 26575
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 12,
+      "cadence": 33500,
+      "work": 6967,
+      "acquire": 26476
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 13,
+      "cadence": 32770,
+      "work": 6371,
+      "acquire": 26343
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 14,
+      "cadence": 33777,
+      "work": 6794,
+      "acquire": 26924
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 15,
+      "cadence": 33055,
+      "work": 6469,
+      "acquire": 26530
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 16,
+      "cadence": 31226,
+      "work": 4347,
+      "acquire": 26821
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 17,
+      "cadence": 35805,
+      "work": 6816,
+      "acquire": 28932
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 18,
+      "cadence": 33113,
+      "work": 6518,
+      "acquire": 26538
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 19,
+      "cadence": 33520,
+      "work": 6677,
+      "acquire": 26785
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 20,
+      "cadence": 33217,
+      "work": 6521,
+      "acquire": 26637
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 21,
+      "cadence": 35543,
+      "work": 8705,
+      "acquire": 26779
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 22,
+      "cadence": 29293,
+      "work": 4542,
+      "acquire": 24697
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 23,
+      "cadence": 35443,
+      "work": 6753,
+      "acquire": 28633
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 24,
+      "cadence": 33200,
+      "work": 6533,
+      "acquire": 26610
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 25,
+      "cadence": 33334,
+      "work": 6521,
+      "acquire": 26754
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 26,
+      "cadence": 33252,
+      "work": 6404,
+      "acquire": 26789
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 27,
+      "cadence": 33547,
+      "work": 6586,
+      "acquire": 26901
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 28,
+      "cadence": 31213,
+      "work": 4416,
+      "acquire": 26739
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 29,
+      "cadence": 35610,
+      "work": 6711,
+      "acquire": 28842
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 30,
+      "cadence": 33482,
+      "work": 6792,
+      "acquire": 26631
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 31,
+      "cadence": 33179,
+      "work": 6589,
+      "acquire": 26533
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 32,
+      "cadence": 33513,
+      "work": 6755,
+      "acquire": 26700
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 33,
+      "cadence": 33133,
+      "work": 6505,
+      "acquire": 26569
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 34,
+      "cadence": 31315,
+      "work": 4461,
+      "acquire": 26795
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 35,
+      "cadence": 35669,
+      "work": 6811,
+      "acquire": 28802
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 36,
+      "cadence": 33115,
+      "work": 6498,
+      "acquire": 26561
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 37,
+      "cadence": 33335,
+      "work": 6481,
+      "acquire": 26795
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 38,
+      "cadence": 33299,
+      "work": 6416,
+      "acquire": 26825
+    },
+    {
+      "case": "external-card-detail",
+      "width": 480,
+      "frame": 39,
+      "cadence": 33593,
+      "work": 6641,
+      "acquire": 26893
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 8,
+      "cadence": 33491,
+      "work": 6882,
+      "acquire": 26552
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 9,
+      "cadence": 33214,
+      "work": 6719,
+      "acquire": 26438
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 10,
+      "cadence": 33281,
+      "work": 6660,
+      "acquire": 26564
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 11,
+      "cadence": 33365,
+      "work": 6640,
+      "acquire": 26668
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 12,
+      "cadence": 31348,
+      "work": 4632,
+      "acquire": 26659
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 13,
+      "cadence": 35265,
+      "work": 6578,
+      "acquire": 28630
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 14,
+      "cadence": 33341,
+      "work": 6511,
+      "acquire": 26772
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 15,
+      "cadence": 33323,
+      "work": 6476,
+      "acquire": 26790
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 16,
+      "cadence": 33760,
+      "work": 6869,
+      "acquire": 26833
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 17,
+      "cadence": 35100,
+      "work": 8585,
+      "acquire": 26458
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 18,
+      "cadence": 29251,
+      "work": 4389,
+      "acquire": 24807
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 19,
+      "cadence": 35916,
+      "work": 7073,
+      "acquire": 28786
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 20,
+      "cadence": 32844,
+      "work": 6494,
+      "acquire": 26292
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 21,
+      "cadence": 33492,
+      "work": 6619,
+      "acquire": 26816
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 22,
+      "cadence": 33776,
+      "work": 7049,
+      "acquire": 26669
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 23,
+      "cadence": 32719,
+      "work": 6380,
+      "acquire": 26282
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 24,
+      "cadence": 31395,
+      "work": 4435,
+      "acquire": 26903
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 25,
+      "cadence": 35398,
+      "work": 6499,
+      "acquire": 28842
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 26,
+      "cadence": 33488,
+      "work": 6587,
+      "acquire": 26843
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 27,
+      "cadence": 33484,
+      "work": 6700,
+      "acquire": 26726
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 28,
+      "cadence": 33327,
+      "work": 6633,
+      "acquire": 26637
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 29,
+      "cadence": 33703,
+      "work": 6989,
+      "acquire": 26655
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 30,
+      "cadence": 32836,
+      "work": 6444,
+      "acquire": 26336
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 31,
+      "cadence": 31378,
+      "work": 4486,
+      "acquire": 26834
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 32,
+      "cadence": 37303,
+      "work": 8453,
+      "acquire": 28792
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 33,
+      "cadence": 31690,
+      "work": 6661,
+      "acquire": 24973
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 34,
+      "cadence": 33141,
+      "work": 6492,
+      "acquire": 26592
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 35,
+      "cadence": 33351,
+      "work": 6505,
+      "acquire": 26788
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 36,
+      "cadence": 33509,
+      "work": 6651,
+      "acquire": 26801
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 37,
+      "cadence": 31103,
+      "work": 4370,
+      "acquire": 26675
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 38,
+      "cadence": 35532,
+      "work": 6583,
+      "acquire": 28891
+    },
+    {
+      "case": "generic-menu",
+      "width": 480,
+      "frame": 39,
+      "cadence": 33854,
+      "work": 7042,
+      "acquire": 26752
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 8,
+      "cadence": 33461,
+      "work": 8102,
+      "acquire": 25303
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 9,
+      "cadence": 29897,
+      "work": 4639,
+      "acquire": 25202
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 10,
+      "cadence": 36531,
+      "work": 7875,
+      "acquire": 28600
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 11,
+      "cadence": 33434,
+      "work": 7882,
+      "acquire": 25495
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 12,
+      "cadence": 33535,
+      "work": 8048,
+      "acquire": 25430
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 13,
+      "cadence": 33328,
+      "work": 7998,
+      "acquire": 25274
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 14,
+      "cadence": 32839,
+      "work": 7472,
+      "acquire": 25312
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 15,
+      "cadence": 30344,
+      "work": 4454,
+      "acquire": 25836
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 16,
+      "cadence": 35550,
+      "work": 6730,
+      "acquire": 28763
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 17,
+      "cadence": 33353,
+      "work": 6652,
+      "acquire": 26643
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 18,
+      "cadence": 33481,
+      "work": 6746,
+      "acquire": 26678
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 19,
+      "cadence": 33336,
+      "work": 6716,
+      "acquire": 26563
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 20,
+      "cadence": 33016,
+      "work": 6387,
+      "acquire": 26571
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 21,
+      "cadence": 33701,
+      "work": 6726,
+      "acquire": 26917
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 22,
+      "cadence": 31030,
+      "work": 4360,
+      "acquire": 26613
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 23,
+      "cadence": 35788,
+      "work": 6849,
+      "acquire": 28882
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 24,
+      "cadence": 33092,
+      "work": 6511,
+      "acquire": 26525
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 25,
+      "cadence": 33398,
+      "work": 6543,
+      "acquire": 26797
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 26,
+      "cadence": 33801,
+      "work": 6994,
+      "acquire": 26749
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 27,
+      "cadence": 32761,
+      "work": 6368,
+      "acquire": 26337
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 28,
+      "cadence": 31472,
+      "work": 4500,
+      "acquire": 26913
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 29,
+      "cadence": 35657,
+      "work": 6834,
+      "acquire": 28766
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 30,
+      "cadence": 33203,
+      "work": 6616,
+      "acquire": 26529
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 31,
+      "cadence": 33272,
+      "work": 6505,
+      "acquire": 26711
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 32,
+      "cadence": 33547,
+      "work": 6703,
+      "acquire": 26785
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 33,
+      "cadence": 33430,
+      "work": 6753,
+      "acquire": 26621
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 34,
+      "cadence": 30976,
+      "work": 4360,
+      "acquire": 26560
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 35,
+      "cadence": 35518,
+      "work": 6582,
+      "acquire": 28880
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 36,
+      "cadence": 33541,
+      "work": 6700,
+      "acquire": 26782
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 37,
+      "cadence": 33292,
+      "work": 6639,
+      "acquire": 26595
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 38,
+      "cadence": 33625,
+      "work": 6873,
+      "acquire": 26696
+    },
+    {
+      "case": "practice-reading",
+      "width": 480,
+      "frame": 39,
+      "cadence": 33456,
+      "work": 6964,
+      "acquire": 26436
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 8,
+      "cadence": 31264,
+      "work": 4398,
+      "acquire": 26803
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 9,
+      "cadence": 35517,
+      "work": 6591,
+      "acquire": 28863
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 10,
+      "cadence": 33748,
+      "work": 6931,
+      "acquire": 26753
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 11,
+      "cadence": 33142,
+      "work": 6675,
+      "acquire": 26403
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 12,
+      "cadence": 33257,
+      "work": 6567,
+      "acquire": 26625
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 13,
+      "cadence": 33814,
+      "work": 7044,
+      "acquire": 26706
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 14,
+      "cadence": 30631,
+      "work": 4286,
+      "acquire": 26281
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 15,
+      "cadence": 37454,
+      "work": 8437,
+      "acquire": 28954
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 16,
+      "cadence": 128059,
+      "work": 102213,
+      "acquire": 25785
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 17,
+      "cadence": 4530,
+      "work": 4449,
+      "acquire": 14
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 18,
+      "cadence": 4332,
+      "work": 4262,
+      "acquire": 14
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 19,
+      "cadence": 26003,
+      "work": 4529,
+      "acquire": 21418
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 20,
+      "cadence": 35908,
+      "work": 7098,
+      "acquire": 28747
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 21,
+      "cadence": 33033,
+      "work": 6673,
+      "acquire": 26296
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 22,
+      "cadence": 33524,
+      "work": 6826,
+      "acquire": 26634
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 23,
+      "cadence": 33147,
+      "work": 6608,
+      "acquire": 26476
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 24,
+      "cadence": 33525,
+      "work": 6785,
+      "acquire": 26677
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 25,
+      "cadence": 33103,
+      "work": 6509,
+      "acquire": 26530
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 26,
+      "cadence": 31253,
+      "work": 4409,
+      "acquire": 26781
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 27,
+      "cadence": 35924,
+      "work": 7019,
+      "acquire": 28841
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 28,
+      "cadence": 32812,
+      "work": 6395,
+      "acquire": 26354
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 29,
+      "cadence": 35618,
+      "work": 8676,
+      "acquire": 26878
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 30,
+      "cadence": 31763,
+      "work": 6960,
+      "acquire": 24742
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 31,
+      "cadence": 32965,
+      "work": 6646,
+      "acquire": 26256
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 32,
+      "cadence": 127514,
+      "work": 99943,
+      "acquire": 27508
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 33,
+      "cadence": 4540,
+      "work": 4458,
+      "acquire": 15
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 34,
+      "cadence": 4554,
+      "work": 4476,
+      "acquire": 15
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 35,
+      "cadence": 30216,
+      "work": 6705,
+      "acquire": 23456
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 36,
+      "cadence": 33314,
+      "work": 6585,
+      "acquire": 26666
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 37,
+      "cadence": 31378,
+      "work": 4609,
+      "acquire": 26706
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 38,
+      "cadence": 35450,
+      "work": 6744,
+      "acquire": 28643
+    },
+    {
+      "case": "drawn-card-fresh",
+      "width": 480,
+      "frame": 39,
+      "cadence": 33220,
+      "work": 6533,
+      "acquire": 26624
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 8,
+      "cadence": 44741,
+      "work": 16950,
+      "acquire": 27728
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 9,
+      "cadence": 21990,
+      "work": 6405,
+      "acquire": 15520
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 10,
+      "cadence": 33814,
+      "work": 6905,
+      "acquire": 26847
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 11,
+      "cadence": 31149,
+      "work": 4651,
+      "acquire": 26435
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 12,
+      "cadence": 35359,
+      "work": 6706,
+      "acquire": 28591
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 13,
+      "cadence": 33191,
+      "work": 6473,
+      "acquire": 26655
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 14,
+      "cadence": 35278,
+      "work": 8412,
+      "acquire": 26802
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 15,
+      "cadence": 31462,
+      "work": 6409,
+      "acquire": 24993
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 16,
+      "cadence": 33668,
+      "work": 6798,
+      "acquire": 26808
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 17,
+      "cadence": 30997,
+      "work": 4411,
+      "acquire": 26523
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 18,
+      "cadence": 35616,
+      "work": 6726,
+      "acquire": 28829
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 19,
+      "cadence": 33337,
+      "work": 6658,
+      "acquire": 26616
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 20,
+      "cadence": 33606,
+      "work": 6872,
+      "acquire": 26671
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 21,
+      "cadence": 33242,
+      "work": 6746,
+      "acquire": 26434
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 22,
+      "cadence": 33070,
+      "work": 6460,
+      "acquire": 26546
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 23,
+      "cadence": 31330,
+      "work": 4430,
+      "acquire": 26836
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 24,
+      "cadence": 49348,
+      "work": 19547,
+      "acquire": 29739
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 25,
+      "cadence": 17630,
+      "work": 4599,
+      "acquire": 12967
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 26,
+      "cadence": 35325,
+      "work": 6683,
+      "acquire": 28580
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 27,
+      "cadence": 33337,
+      "work": 6586,
+      "acquire": 26689
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 28,
+      "cadence": 33550,
+      "work": 6787,
+      "acquire": 26701
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 29,
+      "cadence": 34858,
+      "work": 8281,
+      "acquire": 26515
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 30,
+      "cadence": 29536,
+      "work": 4376,
+      "acquire": 25101
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 31,
+      "cadence": 35331,
+      "work": 6471,
+      "acquire": 28799
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 32,
+      "cadence": 33402,
+      "work": 6464,
+      "acquire": 26874
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 33,
+      "cadence": 33445,
+      "work": 6542,
+      "acquire": 26839
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 34,
+      "cadence": 33345,
+      "work": 6506,
+      "acquire": 26777
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 35,
+      "cadence": 33623,
+      "work": 6767,
+      "acquire": 26794
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 36,
+      "cadence": 30940,
+      "work": 4339,
+      "acquire": 26539
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 37,
+      "cadence": 35890,
+      "work": 6916,
+      "acquire": 28912
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 38,
+      "cadence": 33526,
+      "work": 7010,
+      "acquire": 26454
+    },
+    {
+      "case": "placement-fresh",
+      "width": 480,
+      "frame": 39,
+      "cadence": 33029,
+      "work": 6662,
+      "acquire": 26305
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 8,
+      "cadence": 33408,
+      "work": 6562,
+      "acquire": 26639
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 9,
+      "cadence": 33606,
+      "work": 6787,
+      "acquire": 26613
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 10,
+      "cadence": 33070,
+      "work": 6481,
+      "acquire": 26387
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 11,
+      "cadence": 33403,
+      "work": 6534,
+      "acquire": 26663
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 12,
+      "cadence": 33777,
+      "work": 6946,
+      "acquire": 26624
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 13,
+      "cadence": 30752,
+      "work": 4317,
+      "acquire": 26234
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 14,
+      "cadence": 35833,
+      "work": 6838,
+      "acquire": 28793
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 15,
+      "cadence": 33294,
+      "work": 6716,
+      "acquire": 26375
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 16,
+      "cadence": 33341,
+      "work": 6714,
+      "acquire": 26421
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 17,
+      "cadence": 33463,
+      "work": 6786,
+      "acquire": 26476
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 18,
+      "cadence": 35140,
+      "work": 8559,
+      "acquire": 26379
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 19,
+      "cadence": 29185,
+      "work": 4311,
+      "acquire": 24675
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 20,
+      "cadence": 35432,
+      "work": 6500,
+      "acquire": 28728
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 21,
+      "cadence": 33680,
+      "work": 6772,
+      "acquire": 26702
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 22,
+      "cadence": 33539,
+      "work": 6927,
+      "acquire": 26410
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 23,
+      "cadence": 33051,
+      "work": 6614,
+      "acquire": 26235
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 24,
+      "cadence": 33643,
+      "work": 6894,
+      "acquire": 26547
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 25,
+      "cadence": 31088,
+      "work": 4620,
+      "acquire": 26267
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 26,
+      "cadence": 35120,
+      "work": 6416,
+      "acquire": 28501
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 27,
+      "cadence": 33817,
+      "work": 6843,
+      "acquire": 26768
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 28,
+      "cadence": 33506,
+      "work": 6958,
+      "acquire": 26346
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 29,
+      "cadence": 33130,
+      "work": 6721,
+      "acquire": 26206
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 30,
+      "cadence": 33331,
+      "work": 6687,
+      "acquire": 26442
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 31,
+      "cadence": 31074,
+      "work": 4397,
+      "acquire": 26475
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 32,
+      "cadence": 35955,
+      "work": 7036,
+      "acquire": 28716
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 33,
+      "cadence": 34914,
+      "work": 8537,
+      "acquire": 26175
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 34,
+      "cadence": 31657,
+      "work": 6752,
+      "acquire": 24706
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 35,
+      "cadence": 33575,
+      "work": 7034,
+      "acquire": 26339
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 36,
+      "cadence": 32925,
+      "work": 6591,
+      "acquire": 26133
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 37,
+      "cadence": 31205,
+      "work": 4433,
+      "acquire": 26571
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 38,
+      "cadence": 35687,
+      "work": 6826,
+      "acquire": 28657
+    },
+    {
+      "case": "actions-after-placement-fresh",
+      "width": 480,
+      "frame": 39,
+      "cadence": 33410,
+      "work": 6801,
+      "acquire": 26408
+    }
+  ]
+}

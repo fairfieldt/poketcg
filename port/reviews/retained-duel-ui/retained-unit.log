@@ -1,0 +1,21 @@
+    [OPT] effects: 4/4 linked  ai: 16/16 linked
+    [OPT] ai=1
+TEXT Choose a card.
+TEXT A new message.
+TEXT A new message.
+TEXT A new message.
+TEXT A new message.
+retained UI 320x240: exact across pages, controls, state, logs, expired effects and nested screens
+TEXT Choose a card.
+TEXT A new message.
+TEXT A new message.
+TEXT A new message.
+TEXT A new message.
+retained UI 480x360: exact across pages, controls, state, logs, expired effects and nested screens
+TEXT Choose a card.
+TEXT A new message.
+TEXT A new message.
+TEXT A new message.
+TEXT A new message.
+retained UI 320x240: exact across pages, controls, state, logs, expired effects and nested screens
+RETAINED UI PASS frames276 draws168 reuses108 snapshot_bytes8440 no_image_allocation

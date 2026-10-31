@@ -1,0 +1,21 @@
+{
+  "source_commit": "4d0b4a50",
+  "date": "2026-10-31",
+  "superseded_by": "f20558f3ea196697573e86ac28e23ea3ffd0798c",
+  "published": [
+    {
+      "variant": "standard",
+      "rom": "/home/deck/Games/n64/poketcg/standard.z64",
+      "release": "/home/deck/Games/n64/poketcg/releases/20261031T194423939021Z-standard-9d55c572d026.z64",
+      "sha256": "9d55c572d0260d768c999c4d1dd45a16a4aa0a9f2e21e44e3ff6b4cc8500cc29",
+      "bytes": 37470208
+    },
+    {
+      "variant": "expansion",
+      "rom": "/home/deck/Games/n64/poketcg/expansion.z64",
+      "release": "/home/deck/Games/n64/poketcg/releases/20261031T194427307845Z-expansion-835bf56814ce.z64",
+      "sha256": "835bf56814cedd256ed20b6579cab213c6b7ee1ee5ffa06e4bb599bcc77101dd",
+      "bytes": 37470208
+    }
+  ]
+}
