@@ -1,4 +1,5 @@
 #include "../src/gen/constants.h"
+#include "../src/gen/text.h"
 #include "gen/data.h"
 #include "overworld.h"
 #include <assert.h>
@@ -9,22 +10,34 @@ typedef struct {
   unsigned text_count, duels, features, gifts, starter;
   int outcome;
   unsigned collection;
+  unsigned starter_choice, starter_choices, confirmations, reward_messages;
+  bool reselect;
   uint8_t saved[2048];
   size_t saved_size;
 } Test;
+static const uint16_t starter_texts[] = {CharmanderAndFriendsDeckChoiceText,
+    SquirtleAndFriendsDeckChoiceText, BulbasaurAndFriendsDeckChoiceText};
 static void text(void *ctx, OwState *s, uint16_t id, uint8_t npc) {
   (void)s;
   (void)npc;
   assert(id);
-  ((Test *)ctx)->text_count++;
+  Test *t=ctx;t->text_count++;
+  if(id==Text05f4||id==Text05f5){
+    assert(s->starter<3&&s->txram[0]==starter_texts[s->starter]);
+    if(id==Text05f5)t->reward_messages++;
+  }
 }
 static int choice(void *ctx, OwState *s, unsigned kind, uint16_t id,
                   unsigned count, unsigned initial) {
-  (void)ctx;
-  (void)s;
-  (void)id;
+  Test *t=ctx;
   (void)count;
   (void)initial;
+  if(kind==OW_CHOICE_STARTER)
+    return t->reselect&&t->starter_choices++ ? 2 : (int)t->starter_choice;
+  if(kind==OW_CHOICE_YES_NO&&id==Text05f3){
+    assert(s->starter<3&&s->txram[0]==starter_texts[s->starter]);
+    return !t->reselect||t->confirmations++>0;
+  }
   return kind == OW_CHOICE_YES_NO      ? 1
          : kind == OW_CHOICE_SAM       ? SAM_MENU_NOTHING
          : kind == OW_CHOICE_SAM_RULES ? SAM_MENU_NOTHING_TO_ASK
@@ -87,6 +100,16 @@ int main(void) {
   Test t = {.outcome = 1, .collection = 4};
   OwHost h = host(&t);
   OwState s;
+  for(unsigned selected=0;selected<4;selected++){
+    Test names={.outcome=1,.collection=4,.starter_choice=selected%3,
+                .reselect=selected==3};
+    OwHost names_host=host(&names);OwState named;
+    ow_new_game(&named,&names_host,123);
+    assert(!named.error[0]&&names.starter==1&&names.reward_messages==1);
+    assert(named.starter==(selected==3?2:selected));
+    if(selected==3)assert(names.confirmations==2&&names.starter_choices==2);
+  }
+  puts("Starter text PASS: all three complete deck names, confirmation/reward and reselection");
   ow_new_game(&s, &h, 123);
   assert(!s.error[0]);
   assert(s.map == MASON_LABORATORY);

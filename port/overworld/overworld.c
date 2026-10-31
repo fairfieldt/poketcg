@@ -1214,6 +1214,12 @@ void ow_run(OwState *s, const OwHost *h, uint16_t pc, unsigned id) {
       break;
     case 0x39:
       s->starter = (uint8_t)choice(s, h, OW_CHOICE_STARTER, 0, 3, 0);
+      /* ShowMultichoiceTextbox also puts the chosen entry in wTxRam2.
+         The confirmation and starter reward both interpolate that text. */
+      if (s->starter < 3)
+        s->txram[0] = word(ow_script_address(
+            "ScriptCommand_ChooseStarterDeckMultichoice.text_entries") +
+            s->starter * 2);
       break;
     case 0x3a:
       ow_load_map(s, h, b, byte(pc + 3), byte(pc + 4), byte(pc + 5));
