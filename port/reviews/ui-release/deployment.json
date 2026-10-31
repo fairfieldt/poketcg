@@ -1,7 +1,40 @@
 {
   "date": "2026-10-31",
-  "source_commit": "2dda70b300505e8851bc6ba13fad7698bf93c7b3",
+  "source_commit": "6e65501117fa52aab308e63fc055884b5f2fed67",
   "published": [
+    {
+      "variant": "standard",
+      "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-adventure.z64",
+      "bytes": 37650432,
+      "sha256": "026defefab988e78b98d7d0351eba5328d679c925563bb71d4ddc8f842d471f7",
+      "source_commit": "6e65501117fa52aab308e63fc055884b5f2fed67",
+      "video_mode": "320x240",
+      "renderer": "Tiny3D/libdragon",
+      "steam_deployed": true,
+      "remote_sha256_verified": true,
+      "diagnostic": 0,
+      "show_fps": true,
+      "release": "/home/deck/Games/n64/poketcg/releases/20261031T230859458970Z-standard-026defefab98.z64"
+    },
+    {
+      "variant": "expansion",
+      "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-expansion.z64",
+      "bytes": 37650432,
+      "sha256": "5572788d7dc12e3f5ebf42bf68439e7f4585fc275205be685c908a0db098170c",
+      "source_commit": "6e65501117fa52aab308e63fc055884b5f2fed67",
+      "video_mode": "480x360 with 8 MiB; automatic 320x240 with 4 MiB",
+      "renderer": "Tiny3D/libdragon",
+      "steam_deployed": true,
+      "remote_sha256_verified": true,
+      "diagnostic": 0,
+      "show_fps": true,
+      "release": "/home/deck/Games/n64/poketcg/releases/20261031T230902209939Z-expansion-5572788d7dc1.z64"
+    }
+  ],
+  "live_saves_modified": false,
+  "active_game_restarted": false,
+  "web_url": "http://ms.tdf.sh:8091/",
+  "previous_published": [
     {
       "variant": "standard",
       "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-adventure.z64",
@@ -31,37 +64,6 @@
       "release": "/home/deck/Games/n64/poketcg/releases/20261031T221039274050Z-expansion-2c24fe3328fa.z64"
     }
   ],
-  "live_saves_modified": false,
-  "active_game_restarted": false,
-  "web_url": "http://ms.tdf.sh:8091/",
-  "previous_published": [
-    {
-      "variant": "standard",
-      "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-adventure.z64",
-      "bytes": 37519360,
-      "sha256": "7cd7dfa70d5101d201ac740ba408d87367656311e22074b5914825f68af380aa",
-      "source_commit": "1d909552e1f1c7f18d5b236deaf215d552bf5c0f",
-      "video_mode": "320x240",
-      "renderer": "Tiny3D/libdragon",
-      "steam_deployed": true,
-      "remote_sha256_verified": true,
-      "diagnostic": 0,
-      "release": "/home/deck/Games/n64/poketcg/releases/20261031T214026721221Z-standard-7cd7dfa70d51.z64"
-    },
-    {
-      "variant": "expansion",
-      "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-expansion.z64",
-      "bytes": 37519360,
-      "sha256": "8ed5d43a5caca3a7f088df97fc19e3d1edcc10e1ade6da7e288e0e8bbd589584",
-      "source_commit": "1d909552e1f1c7f18d5b236deaf215d552bf5c0f",
-      "video_mode": "480x360 with 8 MiB; automatic 320x240 with 4 MiB",
-      "renderer": "Tiny3D/libdragon",
-      "steam_deployed": true,
-      "remote_sha256_verified": true,
-      "diagnostic": 0,
-      "release": "/home/deck/Games/n64/poketcg/releases/20261031T214029174535Z-expansion-8ed5d43a5cac.z64"
-    }
-  ],
   "effect_audit_reports": [
     "../power-audit/README.md",
     "../special-effects-audit/README.md",
@@ -70,6 +72,9 @@
   "presentation_reports": [
     "../medal-rewards/README.md",
     "../medal-reward/integration/README.md",
-    "../title64/README.md"
+    "../title64/README.md",
+    "../ground-shadow-fix/README.md",
+    "../hall-of-honor-remodel/README.md",
+    "../trailer/v2/audio-investigation/README.md"
   ]
 }
