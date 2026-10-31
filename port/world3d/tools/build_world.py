@@ -22,6 +22,7 @@ from render_maps import Game,Decompressor,parse_consts
 from scene_specs import PROPS,FOYER,LOBBY,Prop,P,F,footprint
 from room_style import material_pixel,wall_paint,bake_lighting
 from solid_terrain import POOL_CELLS,swimming_pool as build_swimming_pool,align_lightning_room
+from honor_props import build as build_honor_prop
 OUT=ROOT/'generated'
 TEX=OUT/'textures'
 MAPS=OUT/'maps'
@@ -213,13 +214,16 @@ def prop(destination,img,p):
     record['solid_bounds']=[bx,bz,bx+bw,bz+bd]
     if scene.name=='water_club' and p.kind=='bench' and p.x==20:
         record['supports_npcs']=[34]  # Amy lies/stands on this bench.
-    face=texture(img.crop(p.x*8,p.y*8,p.w*8,p.h*8))
+    honor=scene.name=='hall_of_honor' and p.kind in ('altar','pillar','ball','legendary_machine')
+    face=None if honor else texture(img.crop(p.x*8,p.y*8,p.w*8,p.h*8))
     # Crop/erase rectangles describe projected GBC art. The floor body is
     # authored independently against the original even-coordinate step grid.
     p=replace(p,x=bx,y=bz,w=bw,h=bd,depth=bd)
     x=p.x+p.w/2; z=p.y+p.h/2
     kind=p.kind;h=p.height
-    if kind in ('machine','cabinet','counter','pillar','altar'):
+    if honor:
+        build_honor_prop(scene,p)
+    elif kind in ('machine','cabinet','counter','pillar','altar'):
         omit=(0,)+(3,) if switch else (0,)
         if kind=='machine':omit+=(5,)
         hole=(p.x+.6,z-p.depth/2+.6,p.x+p.w-.6,z+p.depth/2-.6) if kind=='altar' else None
@@ -887,6 +891,8 @@ def main():
         doc['individual_characters']=previous.get('individual_characters',[])
         if 'overworld_authoring' in previous:doc['overworld_authoring']=previous['overworld_authoring']
     doc=apply_characters(doc)
+    from honor_cards import build as build_honor_cards
+    build_honor_cards(sys.modules[__name__],doc)
     referenced={t for record in doc['meshes'].values() for t in record['textures']}
     for old in TEX.glob('t????????????????.png'):
         if old.stem not in referenced:old.unlink()
@@ -911,6 +917,31 @@ def update_overworld():
     record=doc['meshes']['overworld']
     print(f"Overworld rebuilt: {record['triangles']} triangles, {record['vertices']} vertices, {record['batches']} batches")
 
+
+def update_hall():
+    """Rebuild the Hall alone; leave every other authored export untouched."""
+    from world_manifest import write_world_metadata
+    existing_textures=set(TEX.glob('*.png'))
+    doc=json.loads((OUT/'world.json').read_text())
+    data=next(m for m in doc['maps'] if m['slug']=='hall_of_honor')
+    image=Image(REPO/'port/maps/hall_of_honor.png')
+    scene=Scene('hall_of_honor');props=scene_props(scene.name,image)
+    scene.floor(image,props);walls(scene,image,data['warps'])
+    for p in props:prop(scene,image,p)
+    doc['meshes'][scene.name]=scene.save(MAPS/'hall_of_honor.l64')
+    from honor_cards import build as build_honor_cards
+    build_honor_cards(sys.modules[__name__],doc)
+    referenced={t for record in doc['meshes'].values() for t in record['textures']}
+    # Generic primitive extraction can produce a face crop that a geometric
+    # torch never uses. Only remove new, unreferenced files from this run.
+    for path in set(TEX.glob('*.png'))-existing_textures:
+        if path.stem not in referenced:path.unlink()
+    doc['texture_count']=len(referenced)
+    write_world_metadata(OUT,doc)
+    record=doc['meshes'][scene.name]
+    print(f"Hall rebuilt: {record['triangles']} triangles, {record['vertices']} vertices, {record['batches']} batches")
+
 if __name__=='__main__':
     if '--overworld-only' in sys.argv:update_overworld()
+    elif '--hall-only' in sys.argv:update_hall()
     else:main()

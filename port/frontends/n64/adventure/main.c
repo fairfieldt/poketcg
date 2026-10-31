@@ -106,6 +106,13 @@ static unsigned npc_model(unsigned index)
  if(game.ow.npc_animation[index]==SPRITE_ANIM_CGB_AMY_LAYING&&w3_npc_pose_models[id])return w3_npc_pose_models[id];
  return w3_npc_models[id];
 }
+static const char *actor_path(unsigned model)
+{
+ for(unsigned i=0;i<W3_MAP_ACTOR_SCENE_COUNT;i++)
+  if(w3_map_actor_scenes[i].map==game.ow.map&&w3_map_actor_scenes[i].model==model)
+   return w3_map_actor_scenes[i].scene;
+ return w3_actor_scenes[model];
+}
 static void load_characters(void)
 {
  uint8_t needed[256]={0};
@@ -121,7 +128,7 @@ static void load_characters(void)
  }
  /* Preloads run before the frame's GL/RDP context. Keep the AI ring fed
     between completed loads rather than waiting for the whole actor set. */
- for(unsigned model=7;model<256;model++)if(needed[model]&&w3_actor_scenes[model]&&!actor_scenes[model]){actor_scenes[model]=scene_open(w3_actor_scenes[model],W3_TEXTURE_ROOT);adventure_audio_poll();}
+ for(unsigned model=7;model<256;model++)if(needed[model]&&actor_path(model)&&!actor_scenes[model]){actor_scenes[model]=scene_open(actor_path(model),W3_TEXTURE_ROOT);adventure_audio_poll();}
  for(unsigned model=7;model<256;model++)if(needed[model]&&w3_actor_lod_scenes[model]&&!actor_lod_scenes[model]){actor_lod_scenes[model]=scene_open(w3_actor_lod_scenes[model],W3_TEXTURE_ROOT);adventure_audio_poll();}
 }
 static const Scene *actor_scene(unsigned model,unsigned npc,const PresentationPose *pose,float scale,float floor)

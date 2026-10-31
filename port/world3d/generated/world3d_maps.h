@@ -159,4 +159,11 @@ static const char *const w3_actor_scenes[256] = {
     [180] = "rom:/world/maps/actor_legendary_card__top_left.l64", /* legendary_card__top_left */
     [181] = "rom:/world/maps/actor_legendary_card__top_right.l64", /* legendary_card__top_right */
 };
+static const struct { unsigned char map, model; const char *scene; } w3_map_actor_scenes[] = {
+    {33,180,"rom:/world/maps/hall_card_top_left.l64"},
+    {33,181,"rom:/world/maps/hall_card_top_right.l64"},
+    {33,176,"rom:/world/maps/hall_card_bottom_left.l64"},
+    {33,177,"rom:/world/maps/hall_card_bottom_right.l64"},
+};
+#define W3_MAP_ACTOR_SCENE_COUNT 4
 #endif

@@ -41,7 +41,12 @@ def write_world_metadata(out,doc):
              'static const char *const w3_actor_scenes[256] = {']
     for c in doc.get('individual_characters',[]):
         header.append('    ['+str(c['model'])+'] = "rom:/world/'+c['file']+'", /* '+c['slug']+' */')
-    header+=['};','#endif']
+    header+=['};','static const struct { unsigned char map, model; const char *scene; } w3_map_actor_scenes[] = {']
+    overrides=doc.get('map_actor_scenes',[])
+    for c in overrides:
+        header.append('    {'+str(c['map'])+','+str(c['model'])+',"'+c['scene']+'"},')
+    if not overrides:header.append('    {0,0,0},')
+    header+=['};','#define W3_MAP_ACTOR_SCENE_COUNT '+str(len(overrides)),'#endif']
     # Actor files and textures must already exist before publishing the header.
     write_if_changed(Path(out)/'world3d_maps.h','\n'.join(header)+'\n')
     write_if_changed(Path(out)/'world.json',json.dumps(doc,indent=2)+'\n')

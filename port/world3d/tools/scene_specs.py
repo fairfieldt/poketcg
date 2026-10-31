@@ -124,7 +124,11 @@ PROPS={
     P('serpent',18,14,2,2,1,floor=(15.15,13.15,1.7,1.7)),
     *[P('shrub',x,y,2,2,1,floor=F(2 if x==1 else 28,y-1)) for x in (1,28) for y in range(9,19,2)]],
 'hall_of_honor':[
-    P('altar',7,9,10,6,1.8,4,floor=F(8,8,14,10)),
+    # This is the Legendary Auto Deck Machine (Script_fbe1), not a banner.
+    P('legendary_machine',10,1,4,4,3.35,1.7,floor=F(10,2,12,2)),
+    # Include the projected side feet when erasing the old sprite from the
+    # floor. The independent canonical solid footprint remains unchanged.
+    P('altar',6,9,12,6,1.8,4,floor=F(8,8,14,10)),
     P('pillar',7,10,2,5,3,floor=F(6,10,8,12)),
     P('pillar',15,10,2,5,3,floor=F(14,10,16,12)),
     P('torch',8,8,1,1,2.5,1,floor=F(8,8)),

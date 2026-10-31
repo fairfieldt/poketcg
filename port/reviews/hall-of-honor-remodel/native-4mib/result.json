@@ -1,0 +1,38 @@
+{
+  "passed": true,
+  "ram_mib": 4,
+  "rom_sha256": "1e31e9cad90b2ce5aaeed8157b74e6d61bca04b0e626e440689096227ceda959",
+  "canonical_state_unchanged": true,
+  "frames": [
+    {
+      "file": "hall-shrine-before.png",
+      "width": 320,
+      "height": 240,
+      "sha256": "e4d0ca824e5c8a1ed78bd0fc67eed48fb12c14fae3a508e720f1031d4a82af6b"
+    },
+    {
+      "file": "hall-shrine-after.png",
+      "width": 320,
+      "height": 240,
+      "sha256": "e08c739ac08f5053c8f0c8b52aca3d4d4450397ef783bbe504a1e58f362b8018"
+    },
+    {
+      "file": "hall-machine-before.png",
+      "width": 320,
+      "height": 240,
+      "sha256": "c53edf2c1b13ae8445bccb425de51fd5e8a13f2ed7a715442e64d2cffdb37095"
+    },
+    {
+      "file": "hall-machine-after.png",
+      "width": 320,
+      "height": 240,
+      "sha256": "f9e88bcc71b78533124182e0270f37994b0fb18b85d35432a9326bf1c8478fb8"
+    }
+  ],
+  "wall_seconds": 8.94,
+  "method": "Production main/renderer in private Ares, completed fenced RDP framebuffers before VI. Before uses original Hall architecture and canonical actors; after uses final Hall architecture and map33-only card derivatives. Camera, source poses, visibility, display mode and renderer stay identical. No CRT shader or FPS overlay.",
+  "map_specific_native_lookup_checks": [
+    "map33 uses Hall derivative",
+    "map32 uses canonical actor path"
+  ]
+}

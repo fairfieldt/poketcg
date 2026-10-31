@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "source_metadata_unchanged": true,
+  "four_card_components_two_sparks": true,
+  "previous_solid_bounds_unchanged": true,
+  "prop_planar_triangles": 332,
+  "competing_planar_overlaps": 0,
+  "all_map_clearance": {
+    "maps": 33,
+    "variants": 37,
+    "permission_states": 292,
+    "solids": 574,
+    "anchors": 3528,
+    "edges": 5817,
+    "npc_starts": 141,
+    "offstage_starts": 2
+  },
+  "actor_radius": 0.65,
+  "scene": {
+    "vertices": 1594,
+    "triangles": 920,
+    "batches": 21,
+    "textures": [
+      "t05694b4430b42a75",
+      "t2202390e791c2e65",
+      "t2300b72310df2cc8",
+      "t3771406fb67d0b97",
+      "t536ef4c0a82db005",
+      "t5551bf64b2bf5774",
+      "t57fc93835734121c",
+      "t5925c9cbfb04ce49",
+      "t6a215bcea9dff2ae",
+      "t791a7b95babe43ed",
+      "t9a051849cb6ad115",
+      "ta25bf1f30d79c72b",
+      "ta8b2708092997145",
+      "tc9683079b670c72e",
+      "tca9a6951c4a431b5",
+      "tcdac50b10fa7dac2",
+      "td38b186992f6176f",
+      "te99bf03929f79a25",
+      "tee15c0983468db39",
+      "tfb04530c6b7d0ba9"
+    ]
+  },
+  "mesh_bytes": 45012,
+  "mesh_sha256": "00fbca321ed9986aeffd02161f3db11162cc0e073812c5439303a6cb566ec888",
+  "source_map_sha256": "b37885135ba410c8e34228d043928f079598a28ab2d8cfbd6f45b56dcedf3188",
+  "hall_only_card_derivatives": 4,
+  "composite_card_triangles": 64,
+  "composite_card_overlaps": 0
+}

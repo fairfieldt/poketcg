@@ -43,8 +43,9 @@ THE SHRINE - the focus, dead centre
     * y10-14:  the main block, x7-16.
   Build it as two stacked platforms with white faces, blue #7b84ff fluting and
   a dark #000052 base - about 1.2 and 1.8 units high.  On its top sits a
-  large dark blue POKE BALL, x11-14, y10-12, a sphere with a white band and
-  highlight, about 1.5 units in diameter.  Down the front face, y12-14, run
+  dark blue POKE BALL crest, x11-14, y10-12. In the 3D room this is a shallow
+  relief on the shrine's back panel, leaving the floating cards prominent.
+  Down the front face, y12-14, run
   horizontal blue-and-white banded steps.
 
 PILLARS - two, mirrored
@@ -56,29 +57,31 @@ TORCHES - two, mirrored
   x8, y8 and x14, y8: slender posts behind the shrine topped by a red
   #ef3100 and orange flame head on a white stem, about 2.5 units tall.
 
-LEGENDARY CARD BANNER - north wall, centre
-  x10-13, y1-4: a tall hanging banner, blue #7b84ff and white with a dark
-  border, carrying a red-and-white POKE BALL in a white shield at its centre.
-  It hangs behind and above the shrine, about 3 x 4 units.  It is the room's
-  focal emblem.
+LEGENDARY AUTO DECK MACHINE - north wall, centre
+  x10-13, y1-4: the separate blue-and-white deck-building console. The map
+  objects at (10,2) and (12,2) call Script_fbe1, whose Text05b5-05b7 names it
+  the Legendary Auto Deck Machine and opens DECK_MACHINE_LEGENDARY.
+  Give it a cream frame, blue display, card slot and one red activation key.
+  The central shrine instead calls Script_fbf1 and awards the Legendary Cards.
 
 NPCS (scripted, not drawn in the PNG) - the Legendary Cards
-  Six figures stand on and around the shrine, and they are the point of the
-  room: NPC_LEGENDARY_CARD_TOP_LEFT x10,y8, NPC_LEGENDARY_CARD_TOP_RIGHT
+  Four card components and two sparks float around the shrine:
+  NPC_LEGENDARY_CARD_TOP_LEFT x10,y8, NPC_LEGENDARY_CARD_TOP_RIGHT
   x12,y8, NPC_LEGENDARY_CARD_LEFT_SPARK x8,y10, NPC_LEGENDARY_CARD_BOTTOM_
   LEFT x10,y10, NPC_LEGENDARY_CARD_BOTTOM_RIGHT x12,y10, NPC_LEGENDARY_
-  CARD_RIGHT_SPARK x14,y10.  Model them as glowing card shrines arranged in a
-  ring on the altar steps, each about 1 unit tall, with a soft halo.
+  CARD_RIGHT_SPARK x14,y10. The four card actors are graphical quadrants:
+  AnimFrameTable18 assembles one cream-bordered purple card with a pulsing
+  pink circular aura. The two sparks blink beside that composite icon.
   Keep the runner axis x10-13 clear from the door to the shrine.
 
 COLOUR SCRIPT
   Brass-and-marble checker floor, olive-and-gold walls, one blue-and-white
-  shrine with a dark Poké Ball, two torches, one banner, one red runner.
+  shrine with a dark Poké Ball crest, two torches, one deck machine, one red runner.
   Very few hues, high contrast, ceremonial.
 
 WHAT MAKES THIS ROOM THE HALL OF HONOR
-  A two-step blue-and-white altar holding a giant dark Poké Ball, flanked by
-  two fluted pillars and two red-flamed torches, under a hanging Poké Ball
-  banner; a gold-and-white checkered floor with four blue knotwork medallions
+  A stepped blue-and-white altar with a dark Poké Ball crest, flanked by
+  two fluted pillars and two red-flamed torches, with a separate deck machine
+  against the north wall; a gold-and-white floor with four blue knotwork medallions
   in the corners and a red arrowed runner laid from the door straight to the
   altar.

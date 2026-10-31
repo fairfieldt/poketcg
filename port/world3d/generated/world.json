@@ -17833,13 +17833,11 @@
     },
     "hall_of_honor": {
       "file": "maps/hall_of_honor.l64",
-      "vertices": 868,
-      "triangles": 536,
-      "batches": 27,
+      "vertices": 1594,
+      "triangles": 920,
+      "batches": 21,
       "textures": [
-        "t0102bd098b929631",
         "t05694b4430b42a75",
-        "t0e471bbb536571c6",
         "t2202390e791c2e65",
         "t2300b72310df2cc8",
         "t3771406fb67d0b97",
@@ -17847,7 +17845,6 @@
         "t5551bf64b2bf5774",
         "t57fc93835734121c",
         "t5925c9cbfb04ce49",
-        "t6522bafc3f26c77a",
         "t6a215bcea9dff2ae",
         "t791a7b95babe43ed",
         "t9a051849cb6ad115",
@@ -17857,12 +17854,9 @@
         "tca9a6951c4a431b5",
         "tcdac50b10fa7dac2",
         "td38b186992f6176f",
-        "te5d627d44f51cabe",
         "te99bf03929f79a25",
         "tee15c0983468db39",
-        "tf4a65fd9cca9e342",
-        "tfb04530c6b7d0ba9",
-        "tff7ff1c76e9f99f0"
+        "tfb04530c6b7d0ba9"
       ],
       "props": [
         {
@@ -17946,10 +17940,32 @@
           ]
         },
         {
+          "kind": "legendary_machine",
+          "x": 10,
+          "y": 1,
+          "w": 4,
+          "h": 4,
+          "height": 3.35,
+          "depth": 1.7,
+          "floor": [
+            9.15,
+            1.15,
+            3.7,
+            1.7
+          ],
+          "solid": true,
+          "solid_bounds": [
+            9.15,
+            1.15,
+            12.850000000000001,
+            2.945
+          ]
+        },
+        {
           "kind": "altar",
-          "x": 7,
+          "x": 6,
           "y": 9,
-          "w": 10,
+          "w": 12,
           "h": 6,
           "height": 1.8,
           "depth": 4,
@@ -18071,10 +18087,10 @@
           ],
           "solid": false,
           "solid_bounds": [
-            11.0,
-            9.0,
-            11.0,
-            9.0
+            10.393782217350893,
+            7.64,
+            11.606217782649107,
+            7.829999999999999
           ]
         }
       ]
@@ -20145,6 +20161,46 @@
       ],
       "props": []
     },
+    "hall_card_top_left": {
+      "file": "maps/hall_card_top_left.l64",
+      "vertices": 32,
+      "triangles": 16,
+      "batches": 2,
+      "textures": [
+        "t85656ca994b61b8d"
+      ],
+      "props": []
+    },
+    "hall_card_top_right": {
+      "file": "maps/hall_card_top_right.l64",
+      "vertices": 32,
+      "triangles": 16,
+      "batches": 2,
+      "textures": [
+        "t85656ca994b61b8d"
+      ],
+      "props": []
+    },
+    "hall_card_bottom_left": {
+      "file": "maps/hall_card_bottom_left.l64",
+      "vertices": 32,
+      "triangles": 16,
+      "batches": 2,
+      "textures": [
+        "t85656ca994b61b8d"
+      ],
+      "props": []
+    },
+    "hall_card_bottom_right": {
+      "file": "maps/hall_card_bottom_right.l64",
+      "vertices": 32,
+      "triangles": 16,
+      "batches": 2,
+      "textures": [
+        "t85656ca994b61b8d"
+      ],
+      "props": []
+    },
     "actor_dr_mason": {
       "file": "maps/actor_dr_mason.l64",
       "vertices": 1291,
@@ -21540,7 +21596,7 @@
     "actors": "actors.l64",
     "textures": "content-addressed PNG files, global deduplication"
   },
-  "texture_count": 509,
+  "texture_count": 504,
   "individual_characters": [
     {
       "file": "maps/actor_mark.l64",
@@ -23404,5 +23460,31 @@
     0
   ],
   "player_model": 7,
-  "character_catalog": "port/characters/catalog.json"
+  "character_catalog": "port/characters/catalog.json",
+  "map_actor_scenes": [
+    {
+      "map": 33,
+      "npc": 104,
+      "model": 180,
+      "scene": "rom:/world/maps/hall_card_top_left.l64"
+    },
+    {
+      "map": 33,
+      "npc": 105,
+      "model": 181,
+      "scene": "rom:/world/maps/hall_card_top_right.l64"
+    },
+    {
+      "map": 33,
+      "npc": 107,
+      "model": 176,
+      "scene": "rom:/world/maps/hall_card_bottom_left.l64"
+    },
+    {
+      "map": 33,
+      "npc": 108,
+      "model": 177,
+      "scene": "rom:/world/maps/hall_card_bottom_right.l64"
+    }
+  ]
 }

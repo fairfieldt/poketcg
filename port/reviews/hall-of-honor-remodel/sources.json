@@ -1,0 +1,8 @@
+{
+  "port/world3d/tools/honor_props.py": "dda0ed3474b33018dc65ddfc6e4567103d5af9d60973536650854351a23510e0",
+  "port/world3d/tools/honor_cards.py": "c4b09542f09b68c548cf605e247ab5dbaabe355f3c1344e3eafaea45b3ccb8c6",
+  "port/world3d/tools/build_world.py": "17245c6f65c256309d5289fc92a9a537de58969d5da8e7472b757e36959af454",
+  "port/world3d/tools/world_manifest.py": "3f85bbe75a394307ed6e546069903aa689cba6744dcac4c825162920f1bfdd42",
+  "port/frontends/n64/adventure/main.c": "640d2c0da012ea235de35417ce188ba2bedf053806ae410c31381ecd87086964",
+  "port/frontends/web/src/js/world3d.js": "339778c3c0a673b3038d3d6cd6f913eed6ee5b1b598dc282cc091725bc371412"
+}

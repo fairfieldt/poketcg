@@ -1,0 +1,19 @@
+{
+  "changed_existing_generated_files": [
+    "world3d_maps.h",
+    "prop-clearance.json",
+    "world.json",
+    "maps/hall_of_honor.l64",
+    "previews/hall_of_honor.png"
+  ],
+  "only_changed_existing_mesh": "maps/hall_of_honor.l64",
+  "other_existing_meshes_byte_identical": 146,
+  "existing_textures_byte_identical": 512,
+  "new_generated_files": [
+    "maps/hall_card_bottom_right.l64",
+    "maps/hall_card_top_left.l64",
+    "maps/hall_card_bottom_left.l64",
+    "maps/hall_card_top_right.l64",
+    "textures/t85656ca994b61b8d.png"
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "world/world.json": {
+    "status": 200,
+    "sha256": "8e57a909838761f6fa765d55005dfb9f5b001ca932806611a2d4cd3e8f4a7015",
+    "cache_control": "no-store"
+  },
+  "world/maps/hall_of_honor.l64": {
+    "status": 200,
+    "sha256": "00fbca321ed9986aeffd02161f3db11162cc0e073812c5439303a6cb566ec888",
+    "cache_control": "no-store"
+  },
+  "js/world3d.js": {
+    "status": 200,
+    "sha256": "339778c3c0a673b3038d3d6cd6f913eed6ee5b1b598dc282cc091725bc371412",
+    "cache_control": "no-store"
+  },
+  "world/maps/hall_card_top_left.l64": {
+    "status": 200,
+    "sha256": "3cd19ad34e8ec9cdd97d8f38d5abf151d04326dd8d01a719084cb87b4875e7b9",
+    "cache_control": "no-store"
+  },
+  "world/maps/hall_card_top_right.l64": {
+    "status": 200,
+    "sha256": "c98ab4d840e510807885f52e13d20d75cc7211a2be3051dc372b4d3414924c33",
+    "cache_control": "no-store"
+  },
+  "world/maps/hall_card_bottom_left.l64": {
+    "status": 200,
+    "sha256": "8ec3cd9e9434a9633a0f7d361ff61652905294ba92136dbb047e6e8be410bf77",
+    "cache_control": "no-store"
+  },
+  "world/maps/hall_card_bottom_right.l64": {
+    "status": 200,
+    "sha256": "a0bb203366e8e9721271ef4cadf83c264092ac46932c87d3f897e8edf464b6a5",
+    "cache_control": "no-store"
+  }
+}

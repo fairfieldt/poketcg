@@ -84,7 +84,9 @@ def spawn_actor(scene,npc,position=None,heading=None):
     if 104<=npc.get('npc',0)<=109:support=2.2
     parent.location=(x,-z,support)
     parent.rotation_euler.z=math.radians(heading)
-    actor_meshes=load(individual_models[mid]) if mid in individual_models else actors
+    override=next((c['scene'].removeprefix('rom:/world/') for c in world.get('map_actor_scenes',[])
+                   if c['map']==scene.get('map_id') and c['model']==mid),None)
+    actor_meshes=load(override or individual_models[mid]) if override or mid in individual_models else actors
     for data,model,part,pivot in actor_meshes:
         if model!=mid:continue
         obj=bpy.data.objects.new(parent.name+' part '+str(part),data)
@@ -92,8 +94,11 @@ def spawn_actor(scene,npc,position=None,heading=None):
         obj.parent=parent
         obj.location=(pivot[0],-pivot[2],pivot[1])
 
-for m in world['maps']:
+hall_only='--hall-only' in sys.argv
+selected_maps=[m for m in world['maps'] if not hall_only or m['slug']=='hall_of_honor']
+for m in selected_maps:
     scene=bpy.data.scenes.new(m['slug'])
+    scene['map_id']=m['id']
     scene.render.engine='BLENDER_EEVEE'
     scene.render.resolution_x=320;scene.render.resolution_y=240;scene.render.resolution_percentage=100
     scene.render.image_settings.file_format='PNG'
@@ -135,6 +140,6 @@ for m in world['maps']:
         bpy.ops.render.render(write_still=True,scene=scene.name)
 
 bpy.data.scenes.remove(base)
-bpy.context.window.scene=bpy.data.scenes['mason_laboratory']
-bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'all_maps.blend'))
-print('Created 34 editable Blender scenes with shared mesh/texture datablocks')
+bpy.context.window.scene=bpy.data.scenes['hall_of_honor' if hall_only else 'mason_laboratory']
+bpy.ops.wm.save_as_mainfile(filepath=str(OUT/('hall_of_honor.blend' if hall_only else 'all_maps.blend')))
+print(f'Created {len(selected_maps)} editable Blender scenes with shared mesh/texture datablocks')

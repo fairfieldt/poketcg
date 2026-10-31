@@ -263,6 +263,10 @@ export class World3D {
         if ((npc.animation ?? npc.anim) === AMY_LYING && poseModel) return poseModel;
         return this.metadata.npc_models[id] || this.metadata.fallback_npc_models?.[id] || 2;
     }
+    _modelPath(model, map) {
+        return this.metadata.map_actor_scenes?.find(entry => entry.map === map && entry.model === model)?.scene
+            || this.modelPaths.get(model) || 'actors.l64';
+    }
     _roomPaths(view) {
         const map = this.metadata.maps[view.map];
         if (!map) throw new Error('Invalid map');
@@ -282,7 +286,7 @@ export class World3D {
         const models = new Set([this.playerModel, ...((view.npcs || []).filter(visible).map(npc => this._npcModel(npc)))]);
         const [rooms, actors] = await Promise.all([
             Promise.all(paths.map(path => this._scene(path))),
-            Promise.all([...models].map(async model => [model, await this._scene(this.modelPaths.get(model) || 'actors.l64')]))
+            Promise.all([...models].map(async model => [model, await this._scene(this._modelPath(model, view.map))]))
         ]);
         if (generation !== this.generation) return;
         this.roomScenes = rooms; this.actorScenes = new Map(actors); this.loadedMap = view.map;
