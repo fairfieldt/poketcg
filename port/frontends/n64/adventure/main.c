@@ -109,7 +109,7 @@ static const Scene *actor_scene(unsigned model)
 static void draw_presented_actor(unsigned model,const PresentationPose *pose,float scale,float floor,float tilt)
 {
  if(!pose)return;
- glPushMatrix();glTranslatef(pose->x,floor+pose->bob*scale,pose->z);
+ glPushMatrix();glTranslatef(pose->x,floor+pose->floor+pose->bob*scale,pose->z);
  glRotatef(pose->heading,0,1,0);glScalef(scale,scale,scale);
  if(pose->lean)glRotatef(pose->lean,1,0,0);
  scene_draw_actor_tilt(actor_scene(model),model,0,0,0,pose->gait,tilt);
@@ -154,7 +154,7 @@ surface_t *game_render_frame(void)
    const OwNpc *npc=&game.ow.npcs[i];
    if(!npc->visible||(npc->id>=NPC_TORCH&&npc->id<=NPC_LEGENDARY_CARD_RIGHT_SPARK)||
       game.ow.npc_animation[i]==SPRITE_ANIM_CGB_AMY_LAYING)continue;
-   const PresentationPose *pose=presentation_npc(&presentation,npc->id);if(!pose)continue;
+   const PresentationPose *pose=presentation_npc(&presentation,npc->id);if(!pose||pose->floor)continue;
    contacts[contact_count][0]=pose->x;contacts[contact_count++][1]=pose->z;
   }
   scene_draw_contact_shadows(contacts,contact_count);

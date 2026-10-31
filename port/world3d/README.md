@@ -21,8 +21,8 @@ textures retain their original UVs; the renderer selects `GL_REPEAT` for these
 batches rather than subdividing geometry at every texture boundary. The complete
 Blender models retain their hidden faces.
 
-The approved Lightning Club room and actor geometry are preserved directly
-from the standalone prototype. Its camera remains `(14,9,34)` looking toward
+The Lightning Club retains the approved standalone prototype, with its solid
+props and doorway aligned to the original movement grid. Its camera remains `(14,9,34)` looking toward
 `(14,0,21.5)`, with a 58-degree vertical field of view.
 
 ## Reuse
@@ -50,6 +50,7 @@ manifest; gameplay selects visibility and movement through the story engine.
 python3 port/world3d/tools/build_world.py
 python3 port/world3d/tools/build_world.py --overworld-only
 python3 port/world3d/tools/check_world.py
+python3 port/world3d/tools/check_solid_terrain.py
 python3 port/world3d/tools/check_characters.py
 /Applications/Blender.app/Contents/MacOS/Blender --background \
   --python port/world3d/tools/author_overworld.py
@@ -112,8 +113,16 @@ map-event bits 2..9. The alternate shell omits those eight faces, so each
 state is a replacement surface with no coplanar overlap.
 
 The original permission grid and story map events are authoritative for
-movement. Visual prop feet account for the source's fake elevation, while
-retaining the exact source rectangles in the manifest. Original broad floor
+movement. Texture crops retain the source image rectangles. Each solid has a separate
+authored floor footprint and an exported body bound, aligned to the logical
+actor centres at the original even coordinates. `check_world.py` checks a
+0.65-unit actor radius at every walkable anchor, along every legal cardinal
+step, and at human NPC starts, including all permission-event combinations.
+It records results in `generated/prop-clearance.json`. The Water pool and
+imported Lightning triangles have an additional geometry check. Lobby chairs
+are tucked under the table because their original surrounding tiles are
+walkable. Amy rests on her bench; Legendary Card figures float above the
+altar. These elevations affect presentation alone. Original broad floor
 motifs, carpeting, pool outline, lawn stone positions, and wall livery are
 preserved as texture details. Some geometric shapes remain simplified
 prototypes rather than final art; water and arena elevation still use the

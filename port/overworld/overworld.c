@@ -676,7 +676,9 @@ static bool load_npcs(OwState *s, const OwHost *h) {
     s->npc_flags[s->npc_count] = ow_npc_headers[id].flags;
     s->npc_animation[s->npc_count] = ow_npc_headers[id].animation;
     if (id == NPC_AMY && s->native_vars[21]) {
-      s->npc_animation[s->npc_count] = SPRITE_ANIM_CGB_AMY_LAYING;
+      /* Func_c998 changes Amy to the ordinary upright animation when her
+         after-duel preload places her beside the bench at (20,4). */
+      s->npc_animation[s->npc_count] = SPRITE_ANIM_BLUE_NPC_UP;
       s->npc_flags[s->npc_count] = 0;
     }
     OwNpc *n = &s->npcs[s->npc_count++];
@@ -1407,7 +1409,12 @@ void ow_finish_duel(OwState *s, const OwHost *h, int result) {
   s->map_patch[0] = 0;
   if (s->map == POKEMON_DOME_ENTRANCE)
     s->map_patch[1] = 0;
-  if (!load_npcs(s, h))
+  /* LoadMap sees GAME_EVENT_DUEL during NPC preloads; Func_c141 then clears
+     it before dispatching the after-duel script. Amy relies on that order. */
+  s->native_vars[0] = GAME_EVENT_DUEL;
+  bool loaded_npcs = load_npcs(s, h);
+  s->native_vars[0] = 0;
+  if (!loaded_npcs)
     return;
   play_default_song(s, h);
   uint16_t after = ow_map_handlers[s->map][5];

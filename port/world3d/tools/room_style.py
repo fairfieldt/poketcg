@@ -83,13 +83,12 @@ def bake_lighting(scene,width,height):
             contact=1.0
             glow=0.0
             for p in props:
-                depth=min(p['depth'],p['h'])
-                a,b=p['x'],p['y']+p['h']-depth
-                dx=max(a-x,0,x-a-p['w']);dz=max(b-z,0,z-b-depth)
+                a,b,right,south=p.get('solid_bounds',(p['x'],p['y']+p['h']-min(p['depth'],p['h']),p['x']+p['w'],p['y']+p['h']))
+                dx=max(a-x,0,x-right);dz=max(b-z,0,z-south)
                 strength=.10 if p['kind'] in ('table','chair','bench','rack') else .24
                 contact=min(contact,1-strength*math.exp(-(math.hypot(dx,dz)/.7)**2))
                 if p['kind'] in ('torch','brazier'):
-                    glow=max(glow,.15*math.exp(-((x-a-p['w']/2)/1.6)**2-((z-b-depth/2)/1.6)**2))
+                    glow=max(glow,.15*math.exp(-((x-(a+right)/2)/1.6)**2-((z-(b+south)/2)/1.6)**2))
             aisle=1+.10*(1-smooth(1.4,4,abs(x-width/2)))
             focal=1+.08*math.exp(-((x-width/2)/4)**2-((z-height*.25)/4)**2)
             if scene.name=='hall_of_honor':

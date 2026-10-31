@@ -184,6 +184,25 @@ int main(void)
  close_to(presentation_npc(&p,NPC_SAM)->x,10);
  for(unsigned i=0;i<8;i++)presentation_step(&p,&reorder,&lab);
  close_to(presentation_npc(&p,NPC_SAM)->x,12);
+ /* Amy's lying/standing animation rests on the bench; beside it she returns
+    to the floor. Elevation belongs only to presentation, never the save. */
+ OwState amy_state={.map=WATER_CLUB,.x=20,.y=6,.npc_count=1,
+  .npcs={{NPC_AMY,22,4,WEST,1,0}}};
+ amy_state.npc_animation[0]=SPRITE_ANIM_CGB_AMY_LAYING;
+ Presentation amy_view;presentation_init(&amy_view,&amy_state,false);
+ close_to(presentation_npc(&amy_view,NPC_AMY)->floor,.66f);
+ amy_state.npc_animation[0]=SPRITE_ANIM_CGB_AMY_STAND;
+ presentation_sync(&amy_view,&amy_state,false);
+ close_to(presentation_npc(&amy_view,NPC_AMY)->floor,.71f);
+ amy_state.npcs[0].x=20;amy_state.npc_animation[0]=SPRITE_ANIM_BLUE_NPC_UP;
+ OwState amy_canonical=amy_state;
+ presentation_sync(&amy_view,&amy_state,false);
+ close_to(presentation_npc(&amy_view,NPC_AMY)->floor,0);
+ assert(!memcmp(&amy_state,&amy_canonical,sizeof(amy_state)));
+ OwState honor_state={.map=HALL_OF_HONOR,.x=10,.y=14,.npc_count=1,
+  .npcs={{NPC_LEGENDARY_CARD_BOTTOM_LEFT,10,10,SOUTH,1,0}}};
+ Presentation honor_view;presentation_init(&honor_view,&honor_state,false);
+ close_to(presentation_npc(&honor_view,NPC_LEGENDARY_CARD_BOTTOM_LEFT)->floor,2.2f);
  /* Real source scripts: Dome -> island path -> nine fast steps to Mason ->
     Sam/Mason choreography -> table positions before the practice duel. */
  OwState s;memset(&view,0,sizeof(view));view.cinematic=true;

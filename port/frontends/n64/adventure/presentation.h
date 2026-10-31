@@ -5,7 +5,7 @@
 
 /* Rendering state only: never serialized and never changes OwState. */
 typedef struct {
- float x,z,heading,gait,bob,lean;
+ float x,z,heading,gait,bob,lean,floor;
 } PresentationPose;
 typedef struct {
  PresentationPose pose;

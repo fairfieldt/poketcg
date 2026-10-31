@@ -79,7 +79,10 @@ def spawn_actor(scene,npc,position=None,heading=None):
     if heading is None:heading=npc.get('heading',180)
     parent=bpy.data.objects.new(npc.get('name','Actor'),None)
     scene.collection.objects.link(parent)
-    parent.location=(x,-z,0)
+    # The source lying pose rests on the Water Club bench.
+    support=.66 if npc.get('npc')==34 and (x,z)==(22,4) and pose_model else 0
+    if 104<=npc.get('npc',0)<=109:support=2.2
+    parent.location=(x,-z,support)
     parent.rotation_euler.z=math.radians(heading)
     actor_meshes=load(individual_models[mid]) if mid in individual_models else actors
     for data,model,part,pivot in actor_meshes:

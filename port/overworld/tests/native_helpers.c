@@ -4,6 +4,16 @@
 #include <assert.h>
 
 static unsigned mail_ids[3], mail_count;
+static bool amy_after_seen;
+static void amy_text(void *ctx,OwState *s,uint16_t id,uint8_t speaker) {
+  (void)ctx;(void)id;(void)speaker;
+  if(amy_after_seen)return;
+  OwNpc *amy=npc(s,NPC_AMY);assert(amy&&amy->x==20&&amy->y==4);
+  unsigned index=(unsigned)(amy-s->npcs);
+  assert(s->npc_animation[index]==SPRITE_ANIM_BLUE_NPC_UP&&s->npc_flags[index]==0);
+  assert(s->native_vars[0]==0); /* Func_c141 clears before the after script. */
+  amy_after_seen=true;
+}
 static bool mail(void *ctx, OwState *s, unsigned feature_id,
                  unsigned argument) {
   (void)ctx;
@@ -33,6 +43,21 @@ int main(void) {
   s.native_vars[9] = 16;
   assert(native_run(&s, NULL, ow_script_address("Preload_Tech5"), &r));
   assert(r.carry && s.native_vars[9] == 18); /* Original inc[hl] twice. */
+  /* Amy rests on her bench during normal map load. After a duel, Preload_Amy
+     places her beside it and Func_c998 selects an upright normal animation. */
+  OwState amy_state={.version=OW_SAVE_VERSION,.map=WATER_CLUB,.x=20,.y=6,.rng=123};
+  assert(load_npcs(&amy_state,NULL));
+  OwNpc *amy=npc(&amy_state,NPC_AMY);assert(amy&&amy->x==22&&amy->y==4);
+  assert(amy_state.npc_animation[amy-amy_state.npcs]==SPRITE_ANIM_CGB_AMY_LAYING);
+  amy_state.duel_npc=NPC_AMY;amy_state.duel_pending=1;
+  OwHost amy_host={.text=amy_text};
+  ow_finish_duel(&amy_state,&amy_host,0);
+  assert(amy_after_seen&&!amy_state.error[0]&&amy_state.native_vars[0]==0);
+  amy=npc(&amy_state,NPC_AMY);assert(amy&&amy->x==22&&amy->y==4);
+  assert(amy_state.npc_animation[amy-amy_state.npcs]==SPRITE_ANIM_CGB_AMY_LAYING);
+  uint8_t amy_save[2048];OwState amy_restored;
+  assert(ow_save_size()<=sizeof(amy_save)&&ow_save_encode(&amy_state,amy_save,sizeof(amy_save)));
+  assert(ow_save_decode(&amy_restored,amy_save,ow_save_size())&&amy_restored.native_vars[0]==0);
   s.challenge_history[0] = s.challenge_history[1] = s.challenge_history[2] =
       s.challenge_history[3] = 255;
   assert(native_run(&s, NULL, ow_script_address("Func_f5db"), &r));
@@ -62,6 +87,6 @@ int main(void) {
     }
   }
   puts("Native helpers OK: allRAM "
-       "aliases/postinc,Tech5preload,Cuphistory,medalmailorder,65K exactRNG "
+       "aliases/postinc,Tech5preload,Amyreload,Cuphistory,medalmailorder,65K exactRNG "
        "draws");
 }

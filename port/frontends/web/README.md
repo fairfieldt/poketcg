@@ -113,6 +113,7 @@ node port/frontends/web/test/diaries_test.mjs
 node port/frontends/web/test/diaries_browser.mjs
 node port/frontends/web/test/movement_engine_test.mjs
 node port/frontends/web/test/movement_browser.mjs
+node port/frontends/web/test/object_clearance_browser.mjs
 node port/frontends/web/test/pointer_selection.mjs
 node port/frontends/web/test/duel_banners.mjs
 node port/frontends/web/test/world3d_test.mjs

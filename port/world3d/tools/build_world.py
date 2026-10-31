@@ -5,7 +5,7 @@ The original ROM is used only to extract authoritative map/NPC/warp/permission
 metadata. Checked-in .l64 and textures build on hosts without ROM or Blender.
 """
 from collections import Counter,defaultdict
-from dataclasses import asdict
+from dataclasses import asdict,replace
 import hashlib
 import json
 import math
@@ -19,8 +19,9 @@ sys.path.insert(0,str(REPO/'port/frontends/web/tools'))
 sys.path.insert(0,str(REPO/'port/tools'))
 from png import read_png,write_png
 from render_maps import Game,Decompressor,parse_consts
-from scene_specs import PROPS,FOYER,LOBBY,Prop
+from scene_specs import PROPS,FOYER,LOBBY,Prop,P,F,footprint
 from room_style import material_pixel,wall_paint,bake_lighting
+from solid_terrain import POOL_CELLS,swimming_pool as build_swimming_pool,align_lightning_room
 OUT=ROOT/'generated'
 TEX=OUT/'textures'
 MAPS=OUT/'maps'
@@ -55,36 +56,9 @@ def rgb(hexcolor):
 WHITE=rgb('efebda'); BLACK=rgb('181b2b'); BROWN=rgb('955f35'); GREEN=rgb('469d35')
 DARKGREEN=rgb('1b5523'); GOLD=rgb('d4a836'); RED=rgb('d62824'); BLUE=rgb('374fb7')
 
-def pool_rows():
-    return [(z,(14-z if z<11 else 4),17 if z<11 else 13) for z in range(3,17)]
-
-POOL_CELLS={(x,z) for z,left,right in pool_rows() for x in range(left,right+1)}
-
 def swimming_pool(scene):
-    rows=[]
-    for y in range(32):
-        row=[]
-        for x in range(32):
-            wave=math.sin((x+y*2)*math.tau/16)*.5+.5
-            glint=10 if (x+y*3)%29<2 else 0
-            row.append((28+glint,90+round(wave*15)+glint,170+round(wave*23)+glint,255))
-        rows.append(row)
-    tex=texture(rows)
-    for z,left,right in pool_rows():
-        scene.polygon([(left,-.24,z),(right+1,-.24,z),(right+1,-.24,z+1),(left,-.24,z+1)],
-            tex=tex,uv=[(left/4,z/4),((right+1)/4,z/4),((right+1)/4,(z+1)/4),(left/4,(z+1)/4)])
-    for x,z in sorted(POOL_CELLS):
-        edges=[((x,z-1),(x,z),(x+1,z),(0,-.15)),((x+1,z),(x+1,z),(x+1,z+1),(.15,0)),
-               ((x,z+1),(x+1,z+1),(x,z+1),(0,.15)),((x-1,z),(x,z+1),(x,z),(-.15,0))]
-        for neighbor,a,b,outward in edges:
-            if neighbor in POOL_CELLS:continue
-            ax,az=a;bx,bz=b;dx,dz=outward
-            scene.polygon([(ax,-.44,az),(bx,-.44,bz),(bx,.06,bz),(ax,.06,az)],rgb('688e9c'))
-            scene.polygon([(ax,.07,az),(bx,.07,bz),(bx+dx,.07,bz+dz),(ax+dx,.07,az+dz)],WHITE)
-    # Two little fish retain the original pool's decorative occupants.
-    for x,z,heading in ((16.7,5.8,1),(4.8,12.7,-1)):
-        scene.ball(x,z,-.17,.45,.075,.18,rgb('94d5df'),segments=6,rings=3)
-        scene.polygon([(x-heading*.33,-.10,z),(x-heading*.68,-.10,z-.22),(x-heading*.68,-.10,z+.22)],rgb('477fbc'))
+    build_swimming_pool(scene,texture,rgb,WHITE)
+
 
 class Scene:
     def __init__(self,name):
@@ -170,6 +144,13 @@ class Scene:
                 plain[tx,ty]=all(img.at(tx*8+i,ty*8+j) in palette for j in range(8) for i in range(8))
         def pixel(x,y):
             tx,ty=x/8,y/8
+            if self.name=='water_club' and 2<=ty<18:
+                # Repaint the old projected pool/coping where the real pool
+                # was pulled back to leave the source's dry walking lane.
+                left=max(3,13-int(ty))
+                right=18 if ty<11 else 14
+                if left<=tx<right:
+                    return material_pixel(self.name,x,y,img.at(bx+x%16,by+y%16),True)
             if any(p.x<=tx<p.x+p.w and p.y<=ty<p.y+p.h for p in erase) or (exclude_emblem and 8<=tx<12 and 6<=ty<10):
                 return material_pixel(self.name,x,y,img.at(bx+x%16,by+y%16),True)
             return material_pixel(self.name,x,y,img.at(x,y),plain.get((int(tx),int(ty)),False))
@@ -185,6 +166,11 @@ class Scene:
                     for ix in range(divisions):
                         a,b=x+cw*ix/divisions,z+cd*iz/divisions;c,d=a+cw/divisions,b+cd/divisions
                         if self.name=='water_club' and (int((a+c)/2),int((b+d)/2)) in POOL_CELLS:continue
+                        # Logical actor centres can stand on the first/last
+                        # source anchors. Continue the floor under their feet.
+                        if a==2:a=1
+                        if b==2:b=1
+                        if c==w-2:c=w-1
                         points=[(a,0,b),(c,0,b),(c,0,d),(a,0,d)]
                         self.polygon(points,tex=tex,
                             uv=[(ix/divisions,iz/divisions),((ix+1)/divisions,iz/divisions),((ix+1)/divisions,(iz+1)/divisions),(ix/divisions,(iz+1)/divisions)])
@@ -204,13 +190,23 @@ class Scene:
         return dict(file=str(Path(path).relative_to(OUT)),vertices=sum(len(v[0]) for v in self.batches.values()),triangles=sum(len(v[1])//3 for v in self.batches.values()),batches=len(self.batches),textures=tex,props=self.props)
 
 
-def prop(scene,img,p):
-    scene.props.append(asdict(p))
-    x=p.x+p.w/2; z=p.y+p.h-p.depth/2
+def prop(destination,img,p):
+    scene=Scene(destination.name)
+    switch=destination.switchable and p.kind=='machine' and (
+        (p.y==1 and p.x in (6,10,14,18)) or
+        (p.y in (8,16) and p.x in (14,18)))
+    record=asdict(p)
+    bx,bz,bw,bd=footprint(p)
+    record['solid_bounds']=[bx,bz,bx+bw,bz+bd]
+    if scene.name=='water_club' and p.kind=='bench' and p.x==20:
+        record['supports_npcs']=[34]  # Amy lies/stands on this bench.
     face=texture(img.crop(p.x*8,p.y*8,p.w*8,p.h*8))
+    # Crop/erase rectangles describe projected GBC art. The floor body is
+    # authored independently against the original even-coordinate step grid.
+    p=replace(p,x=bx,y=bz,w=bw,h=bd,depth=bd)
+    x=p.x+p.w/2; z=p.y+p.h/2
     kind=p.kind;h=p.height
     if kind in ('machine','cabinet','counter','pillar','altar'):
-        switch=scene.switchable and kind=='machine' and ((p.y==1 and p.x in (6,10,14,18)) or (p.y in (8,16) and p.x in (14,18)))
         scene.box(p.x,z-p.depth/2,p.w,p.depth,h,BROWN,front=None if switch else face,omit=(3,) if switch else ())
         if kind=='machine':
             scene.box(p.x-.05,z-p.depth/2-.05,p.w+.1,p.depth+.1,.12,WHITE,y=h)
@@ -230,6 +226,8 @@ def prop(scene,img,p):
     elif kind in ('palm','topiary','shrub','flowers'):
         scene.cylinder(x,z,0,.52,.5,BROWN,top_r=.65)
         if kind=='palm':
+            # Fronds can overhang the footpath only above a person's head.
+            h=max(h,3.25)
             scene.cylinder(x,z,.45,.16,h-.65,BROWN,segments=6)
             for i in range(6):
                 a=i*math.tau/6
@@ -270,11 +268,13 @@ def prop(scene,img,p):
     elif kind=='balloon':
         scene.cylinder(x,z,0,.04,h*.7,BLACK,segments=4)
         scene.ball(x,z,h*.85,.34,h*.25,.34,rgb('e94ac9'))
-    elif kind=='ball':scene.ball(x,z,2.5,p.w/2,h/2,p.depth/2,rgb('000052'))
+    elif kind=='ball':scene.ball(x,z,3.05,.75,.75,.75,rgb('000052'))
     elif kind=='chair':
-        scene.box(x-.6,z-.6,1.2,1.2,.15,RED,y=.5)
-        scene.box(x-.6,z-.7,1.2,.2,.6,RED,y=.55)
-        for dx,dz in ((-.45,-.45),(.45,-.45),(-.45,.45),(.45,.45)):scene.box(x+dx,z+dz,.14,.14,.5,BROWN)
+        sx=min(1,p.w/1.4);sz=min(1,p.depth/1.4)
+        scene.box(x-.6*sx,z-.6*sz,1.2*sx,1.2*sz,.15,RED,y=.5)
+        scene.box(x-.6*sx,z-.7*sz,1.2*sx,.2*sz,.6,RED,y=.55)
+        for dx,dz in ((-.45,-.45),(.45,-.45),(-.45,.45),(.45,.45)):
+            scene.box(x+dx*sx,z+dz*sz,.14*sx,.14*sz,.5,BROWN)
     elif kind=='bench':
         scene.box(p.x,z-.7,p.w,1.4,.16,WHITE,y=.55)
         for i in range(max(2,int(p.w)*2)):
@@ -294,6 +294,22 @@ def prop(scene,img,p):
             px=p.x+1+i*(p.w-2)/5
             for dx in (-.18,.18):scene.ball(px+dx,z,h*.70,.13,.40,.40,BLACK,segments=6,rings=3)
 
+    # Keep the validator tied to the exported body rather than an approximate
+    # authoring rectangle. High palm fronds and the floating honor-room orb
+    # do not occupy a walking character's height range.
+    low=[v for vs,_,_ in scene.batches.values() for v in vs if -.01<=v[1]<=2.3]
+    if low:
+        record['solid_bounds']=[min(v[0] for v in low),min(v[2] for v in low),
+                                max(v[0] for v in low),max(v[2] for v in low)]
+    destination.props.append(record)
+    for key,(vertices,indices,_) in scene.batches.items():
+        vs,inds,cache=destination.batches[key]
+        remap=[]
+        for v in vertices:
+            if v not in cache:cache[v]=len(vs);vs.append(v)
+            remap.append(cache[v])
+        inds.extend(remap[i] for i in indices)
+
 
 def walls(scene,img,warps,height=5):
     w,h=img.width/8,img.height/8
@@ -306,28 +322,29 @@ def walls(scene,img,warps,height=5):
     paint=wall_paint(scene.name)
     brown=img.at(4,4)
     if max(brown[:3])<20:brown=rgb('521800')
-    def isdoor(side,a,b):
+    def doors(side):
+        intervals=[]
         for warp in warps:
             x,z=warp['x'],warp['y']
-            if side=='north' and z<=1 and a<x+2 and b>x:return True
-            if side=='south' and z>=h-4 and a<x+2 and b>x:return True
-            if side=='west' and x<=1 and a<z+2 and b>z:return True
-            if side=='east' and x>=w-3 and a<z+2 and b>z:return True
-        return False
+            if ((side=='north' and z<=1) or (side=='south' and z>=h-4)):
+                intervals.append((x-1.05,x+1.05))
+            if ((side=='west' and x<=1) or (side=='east' and x>=w-3)):
+                intervals.append((z-1.05,z+1.05))
+        return sorted(intervals)
     def runs(side,stop):
-        start=None
-        for a in range(2,int(stop)-2,2):
-            if isdoor(side,a,a+2):
-                if start is not None:yield start,a;start=None
-            elif start is None:start=a
-        if start is not None:yield start,int(stop)-2
+        start=.9;end=stop-.9
+        for left,right in doors(side):
+            if left>start:yield start,min(left,end)
+            start=max(start,right)
+            if start>=end:return
+        if start<end:yield start,end
     def bands(side,start,end):
         # Source livery is wainscot and cornice, never a wall-sized stripe.
         span=end-start
         def face(lo,hi,color=WHITE,tex=None):
-            if side=='north':points=[(start,lo,1.83),(end,lo,1.83),(end,hi,1.83),(start,hi,1.83)]
+            if side=='north':points=[(start,lo,.93),(end,lo,.93),(end,hi,.93),(start,hi,.93)]
             else:
-                ix=1.83 if side=='west' else w-1.83
+                ix=.93 if side=='west' else w-1.03
                 points=[(ix,lo,start),(ix,lo,end),(ix,hi,end),(ix,hi,start)]
             scene.polygon(points,color,tex,[(0,1),(span/2,1),(span/2,0),(0,0)])
         waist=min(1.45,height-.4)
@@ -338,20 +355,31 @@ def walls(scene,img,warps,height=5):
     # One continuous face per uninterrupted wall. Adjacent antialiased quads
     # exposed their backing along every two-tile seam; repeat UVs preserve the
     # original livery without geometric cracks or coincident internal caps.
+    def solid_wall(x,z,width,depth,high):
+        scene.props.append(dict(kind='wall',x=x,y=z,w=width,h=depth,height=high,
+                                depth=depth,solid=True,solid_bounds=[x,z,x+width,z+depth]))
     for side in ('north','south'):
         for x,end in runs(side,w):
             span=end-x
             if side=='north':
-                scene.box(x,.8,span,1,height,brown,omit=(3,))
+                scene.box(x,-.1,span,1,height,brown,omit=(3,))
+                solid_wall(x,-.1,span,1.03,height)
                 bands(side,x,end)
             else:
                 scene.box(x,h-2.0,span,.8,.9,brown)
                 scene.box(x-.03,h-2.03,span+.06,.86,.12,GOLD,y=.9)
-    for side,x in [('west',.8),('east',w-1.8)]:
+                solid_wall(x-.03,h-2.03,span+.06,.86,1.02)
+    for side,x in [('west',-.1),('east',w-1)]:
         for z,end in runs(side,h):
             span=end-z
             scene.box(x,z,1,span,height,brown,omit=(2,) if side=='west' else (4,))
+            solid_wall(x,z,1.03 if side=='west' else 1,span,height)
             bands(side,z,end)
+    # North doors lead through row0 after source event patches open them.
+    # Continue the threshold beneath the opening instead of leaving a void.
+    for left,right in doors('north'):
+        scene.polygon([(left,0,-.9),(right,0,-.9),(right,0,2),(left,0,2)],
+                      tex=texture(img.crop(max(0,left)*8,16,(right-left)*8,16)))
 
 
 def terrain(scene,img):
@@ -601,6 +629,7 @@ def copy_lightning():
     ball.cylinder(0,0,.8,.705,.08,BLACK,segments=12)
     ball.ball(0,0,1.05,.68,.45,.68,RED)
     for (m,p,t,pivot),data in ball.batches.items():actors.batches[(6,p,t,pivot)]=data
+    align_lightning_room(room)
     return room,actors
 
 
@@ -669,7 +698,9 @@ def scene_props(slug,img):
                 gray=sum(1 for j in range(8) for i in range(8)
                          if max(img.at(x*8+i,y*8+j)[:3])-min(img.at(x*8+i,y*8+j)[:3])<10
                          and img.at(x*8+i,y*8+j)[0]>120)
-                if gray>=4:props.append(Prop('boulder',x,y,1,1,.3,1))
+                # Grey stepping stones are flush floor details. They are
+                # intentionally traversable, unlike the flower/topiary beds.
+                if gray>=4:props.append(P('boulder',x,y,1,1,.035,1,solid=False))
     return props
 
 
@@ -741,7 +772,9 @@ def main():
     for name,mid,event in variants:
         data=maps[mid];img=Image(REPO/'port/maps/events'/(name+'.png'))
         scene=Scene(data['slug']);props=scene_props(data['slug'],img)
-        if mid==1:props.append(Prop('machine',10,0,4,5,2.2,2))
+        if mid==1:props.append(P('machine',10,0,4,5,2.2,2,floor=F(10,2,12,2)))
+        # These are the closed doorway's panels, not permanent counters.
+        if mid==31:props=[p for p in props if p.kind!='counter']
         scene.floor(img,props);walls(scene,img,data['warps'])
         for p in props:prop(scene,img,p)
         records[name]=scene.save(MAPS/(name+'.l64'))
@@ -762,7 +795,9 @@ def main():
         for state,image in [('off',base_img),('on',lit_img)]:
             face=Scene(f'deck_machine_{event}_{state}')
             tex=texture(image.crop(x*8,y*8,32,h*8))
-            face.polygon([(x,0,y+h),(x+4,0,y+h),(x+4,1.8,y+h),(x,1.8,y+h)],tex=tex,uv=[(0,1),(1,1),(1,0),(0,0)])
+            machine=next(p for p in PROPS['deck_machine_room'] if p.x==x and p.y==y)
+            left,north,width,depth=footprint(machine);front=north+depth
+            face.polygon([(left,0,front),(left+width,0,front),(left+width,1.8,front),(left,1.8,front)],tex=tex,uv=[(0,1),(1,1),(1,0),(0,0)])
             records[face.name]=face.save(MAPS/(face.name+'.l64'))
             record[state]='rom:/world/maps/'+face.name+'.l64'
         switches.append(record)

@@ -153,6 +153,14 @@ unsigned presentation_sync(Presentation *p,const OwState *s,bool running)
                  opcode(s)==0x23||magnitude(coordinate(n->x)-next[i].pose.x,coordinate(n->y)-next[i].pose.z)>5,
                  p->tutorial_motion))
    changes|=PRESENTATION_NPC;
+  /* Amy's source start is on her bench, including the short standing-up
+     animation. Her subsequent (20,4) floor position has no elevation. */
+  unsigned animation=s->npc_animation[i];
+  next[i].pose.floor=s->map==WATER_CLUB&&n->id==NPC_AMY&&n->x==22&&n->y==4&&
+    (animation==SPRITE_ANIM_CGB_AMY_LAYING||animation==SPRITE_ANIM_CGB_AMY_STAND)?
+    (animation==SPRITE_ANIM_CGB_AMY_LAYING?.66f:.71f):0;
+  if(s->map==HALL_OF_HONOR&&n->id>=NPC_LEGENDARY_CARD_TOP_LEFT&&
+     n->id<=NPC_LEGENDARY_CARD_RIGHT_SPARK)next[i].pose.floor=2.2f;
  }
  memcpy(p->npcs,next,sizeof(next));p->npc_count=count;
  if(!s->map)world_position(s->overworld_selection,&p->cursor.x,&p->cursor.z);

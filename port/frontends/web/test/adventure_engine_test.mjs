@@ -5,6 +5,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import assert from 'node:assert/strict';
+import { checkClearancePoses } from './object_clearance_poses.mjs';
 const here = path.dirname(fileURLToPath(import.meta.url)), web = path.resolve(here, '..');
 const dist = path.join(web, 'dist'), isolated = path.join(web, 'build/adventure-engine-test');
 await fs.mkdir(path.join(isolated, 'js/gen'), { recursive: true });
@@ -14,6 +15,7 @@ await fs.copyFile(path.join(dist, 'js/gen/consts.js'), path.join(isolated, 'js/g
 const { AdventureEngine, Cartridge } = await import(pathToFileURL(path.join(isolated, 'js/adventure_engine.js')));
 const { C } = await import(pathToFileURL(path.join(isolated, 'js/engine.js')));
 const bytes = await fs.readFile(path.join(dist, 'tcg.wasm'));
+const collisionWorld = JSON.parse(await fs.readFile(path.resolve(web, '../../world3d/generated/world.json'), 'utf8'));
 const module = await WebAssembly.compile(bytes);
 class MemoryStorage {
     constructor() { this.values = new Map(); this.failNext = false; this.writes = 0; }
@@ -27,6 +29,7 @@ const handlers = {
     frame(view) {
         assert(view.map >= 0 && view.map < 34);
         assert(view.presentation && Number.isFinite(view.presentation.player.x));
+        checkClearancePoses(collisionWorld, view);
         if (++frameCount > 20000) throw new Error('Story frame budget exceeded');
         frames.push(view);
         return Promise.resolve(); // Exercise actual Asyncify unwind/rewind.

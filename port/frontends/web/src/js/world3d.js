@@ -415,14 +415,15 @@ export class World3D {
             for (const npc of view.npcs || []) if (visible(npc)) {
                 const id = npc.id ?? npc.npc;
                 if ((id >= NPC_TORCH && id <= NPC_LEGENDARY_CARD_RIGHT_SPARK) || (npc.animation ?? npc.anim) === AMY_LYING) continue;
-                draw(this._pose(`npc:${id}`, view));
+                const pose = this._pose(`npc:${id}`, view);
+                if (!pose?.floor) draw(pose);
             }
         } finally { gl.depthMask(true); }
     }
     _actor(model, pose, actorScale = 1, floor = 0, tilt = 0) {
         if (!pose) return;
         const scene = this.actorScenes?.get(model) || this.fallback;
-        let matrix = translation(pose.x, floor + (pose.bob || 0) * actorScale + (tilt ? 1 : 0), pose.z);
+        let matrix = translation(pose.x, floor + (pose.floor || 0) + (pose.bob || 0) * actorScale + (tilt ? 1 : 0), pose.z);
         matrix = multiply(matrix, rotationY((pose.heading || 0) * DEG));
         matrix = multiply(matrix, scale(actorScale));
         matrix = multiply(matrix, rotationX(((pose.lean || 0) + tilt) * DEG));

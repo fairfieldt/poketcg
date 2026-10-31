@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate all exported meshes and the disassembly-to-scene manifest."""
 from pathlib import Path
-import json,math,struct,sys
+import json,math,struct,subprocess,sys
 ROOT=Path(__file__).resolve().parents[1]
 REPO=ROOT.parents[1]
 sys.path.insert(0,str(REPO/'port/frontends/web/tools'))
@@ -14,6 +14,8 @@ foyers=[m for m in world['maps'] if m['slug'].endswith('_club_entrance') or m['s
 assert len(foyers)==9 and len({m['scene'] for m in foyers})==1
 assert len({m['overlay'] for m in foyers})==9
 assert len(world['overworld_nodes'])==12
+# Dynamic fronts replace eight ordinary faces; they must not overlay them.
+assert world['meshes']['deck_machine_room_dynamic']['triangles']==world['meshes']['deck_machine_room']['triangles']-16
 vertices=triangles=0;max_textures=max_batches=0
 for name,record in world['meshes'].items():
     blob=(out/record['file']).read_bytes()
@@ -54,5 +56,7 @@ lightning=world['maps'][15]
 assert lightning['camera']==dict(eye=[14,9,34],target=[14,0,21.5],fov=58)
 assert {(n['name'],n['x'],n['y'],n['dir']) for n in lightning['npcs']}=={
 ('NPC_JENNIFER',14,18,2),('NPC_NICHOLAS',6,10,2),('NPC_BRANDON',22,12,0),('NPC_ISAAC',12,4,0)}
+subprocess.run([sys.executable,str(ROOT/'tools/check_prop_clearance.py'),
+                '--report',str(out/'prop-clearance.json')],check=True)
 print(f'WORLD3D PASS: 34 maps; {len(world["meshes"])} meshes; {triangles} triangles; {vertices} vertices; {world["texture_count"]} shared textures')
 print(f'Per-scene maximum: {max_batches} batches, {max_textures} textures; RGBA16 TMEM and map/NPC/warp links verified')

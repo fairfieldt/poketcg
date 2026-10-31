@@ -545,8 +545,8 @@ static void append(char **p, size_t *left, const char *format, ...) {
 }
 static void pose(char **p, size_t *left, const PresentationPose *v) {
   append(p, left,
-         "{\"x\":%.4f,\"z\":%.4f,\"heading\":%.4f,\"gait\":%.4f,\"bob\":%.4f,\"lean\":%.4f}", v->x,
-         v->z, v->heading, v->gait, v->bob, v->lean);
+         "{\"x\":%.4f,\"z\":%.4f,\"heading\":%.4f,\"gait\":%.4f,\"bob\":%.4f,\"lean\":%.4f,\"floor\":%.4f}", v->x,
+         v->z, v->heading, v->gait, v->bob, v->lean, v->floor);
 }
 EXPORT("web_adv_view") const char *web_adv_view(void) {
   presentation_sync(&presentation, &game.ow, running);
