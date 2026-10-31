@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N64 hardware performance analysis</title>
+<style>
+body{max-width:900px;margin:48px auto;padding:0 22px;font:17px/1.55 system-ui,sans-serif;color:#172333;background:#f6f5ef}h1{font-size:30px;line-height:1.2}h2{font-size:21px;margin-top:32px}a{color:#164e8c}table{border-collapse:collapse;width:100%;font-size:15px}th,td{text-align:left;padding:10px;border-bottom:1px solid #cdcfc8;vertical-align:top}th{font-weight:650}code{font-size:.9em}li{margin:10px 0}.note{color:#465261;font-size:15px}nav{display:flex;flex-wrap:wrap;gap:18px;margin:24px 0}strong{font-weight:680}
+</style>
+<main>
+<h1>N64 hardware performance analysis</h1>
+<p>The game fits in both RAM configurations. <strong>The current renderer needs optimization to hold 30 fps.</strong> The largest opportunities are the duel background and the world geometry pipeline.</p>
+<p class="note">October 31, 2026. Source, asset and binary analysis using existing ares captures. Physical console frame rates remain unmeasured. The audit hashes identify the inspected binaries; subsequent camera changes do not reduce submitted geometry.</p>
+<nav><a href="README.md">Full analysis</a><a href="geometry.md">Geometry and timing tables</a><a href="budgets.json">Budget calculations</a><a href="felt-disassembly.txt">Duel assembly evidence</a></nav>
+<h2>First changes</h2>
+<ol>
+<li><strong>Cache the duel felt rows at the display resolution.</strong> Its current inner loop executes two integer divisions per pixel. Those stalls alone cost about 43 ms at 320×240 and 97 ms at 480×360. Keep the completed UI canvas and presentation fence.</li>
+<li><strong>Benchmark a packed 3D backend on one populated room.</strong> Existing GL display lists already cache commands. The RSP still processes thousands of triangles each frame.</li>
+<li><strong>Use character LOD and conservative visibility rejection.</strong> Keep detailed lead faces for conversations and naming. Halving all actor triangles, including the player, removes about 42% of submitted geometry in the lab and Lightning Club.</li>
+<li><strong>Split the overworld into coarse visible chunks.</strong> Its 5,511 static triangles dominate the cost. Character LOD alone cannot solve the island.</li>
+</ol>
+<p class="note">The division calculation uses the <a href="https://datasheets.chipdb.org/NEC/Vr-Series/Vr43xx/U10504EJ7V0UMJ1.pdf">NEC VR4300 manual, Table 3-12</a> and <a href="https://ultra64.ca/files/documentation/online-manuals/man-v5-1/kantan/step1/2/2_2.htm">Nintendo's CPU clock specification</a>.</p>
+<h2>Planning estimates for the current implementation</h2>
+<p class="note">These broad estimates use the emulator geometry workload and static CPU costs. They are not console measurements. Actual raster and memory contention may change them.</p>
+<table>
+<thead><tr><th>Scene</th><th>320×240</th><th>480×360</th></tr></thead>
+<tbody>
+<tr><td>Overworld</td><td>6–11 fps</td><td>5–10 fps</td></tr>
+<tr><td>Typical club</td><td>10–18 fps</td><td>8–16 fps</td></tr>
+<tr><td>Crowded lab / club / Dome</td><td>6–12 fps</td><td>5–11 fps</td></tr>
+<tr><td>Sparse room / Hall</td><td>20–30 fps</td><td>15–30 fps</td></tr>
+<tr><td>Naming</td><td>25–30 fps</td><td>20–30 fps</td></tr>
+<tr><td>Duel board before felt fix</td><td>12–18 fps</td><td>5–8 fps</td></tr>
+</tbody>
+</table>
+<p>The strongest hardware constraint is the duel loop: division stalls alone cap a complete board redraw below 23.2 fps at standard resolution and 10.3 fps in Expansion mode. Other estimates require real-console profiling.</p>
+<h2>Memory has room</h2>
+<table>
+<thead><tr><th>Measured diagnostic</th><th>4 MiB / 320×240</th><th>8 MiB / 480×360</th></tr></thead>
+<tbody>
+<tr><td>Five persistent 16-bit surfaces</td><td>768,000 bytes</td><td>1,728,000 bytes</td></tr>
+<tr><td>Minimum free heap, full map sweep</td><td>929,184 bytes</td><td>4,165,072 bytes</td></tr>
+<tr><td>Free heap at naming peak</td><td>746,152 bytes</td><td>3,596,456 bytes</td></tr>
+</tbody>
+</table>
+<p class="note">Heap captures predate approximately 5 KiB of added Ronald geometry. Expansion mode draws 2.25× as many pixels; additional RAM does not raise processor clocks.</p>
+<p><a href="README.md">Read the assumptions, ranked changes and profiling plan.</a></p>
+</main>
+</html>

@@ -1,0 +1,90 @@
+{
+  "repository_commit": "703688be28660f03d1638f9d07e59af213ba9dee",
+  "note": "Working tree may include newer camera edits; ROM and ELF hashes identify audited binaries.",
+  "roms": [
+    {
+      "path": "port/frontends/n64/adventure/poketcg-adventure.z64",
+      "bytes": 36372480,
+      "sha256": "93a6cbc620dd520ae7d15b9699cc147ac92d1aef5e840bf0dfb4b1c5b03cb102"
+    },
+    {
+      "path": "port/frontends/n64/adventure/poketcg-expansion.z64",
+      "bytes": 36372480,
+      "sha256": "72f4caa1c2df80b815ce91dd32399ba02e1be5bab050954ed0f554fce59a704d"
+    }
+  ],
+  "elf": {
+    "path": "port/frontends/n64/adventure/build/poketcg-adventure.elf",
+    "bytes": 4838076,
+    "sha256": "2e5bb7f162aef63b035dd5120c02a8df1b986eac152e260608a68ecc6e0adea8"
+  },
+  "elf_sections": {
+    ".intvectors": 392,
+    ".text": 678832,
+    ".eh_frame": 1064,
+    ".rodata": 579896,
+    ".MIPS.abiflags": 24,
+    ".ctors": 28,
+    ".data": 26536,
+    ".tbss": 0,
+    ".sdata": 2896,
+    ".lit8": 0,
+    ".lit4": 0,
+    ".sbss": 940,
+    ".bss": 148832,
+    ".reginfo": 24,
+    ".gnu.attributes": 16,
+    ".comment": 18
+  },
+  "modes": [
+    {
+      "width": 320,
+      "height": 240,
+      "frame_pixels": 76800,
+      "one_rgba16_surface_bytes": 153600,
+      "five_persistent_surfaces_bytes": 768000,
+      "seven_surfaces_naming_bytes": 1075200,
+      "felt_pixels_per_board_frame": 54600,
+      "felt_divisions_per_board_frame": 109200,
+      "felt_DIV_stall_CPU_cycles": 4040400,
+      "felt_DIV_stalls_ms_at_93_75MHz": 43.0976,
+      "board_fps_ceiling_from_DIV_stalls_alone": 23.203148203148203,
+      "30fps_one_surface_payload_MB_per_second": 4.608
+    },
+    {
+      "width": 480,
+      "height": 360,
+      "frame_pixels": 172800,
+      "one_rgba16_surface_bytes": 345600,
+      "five_persistent_surfaces_bytes": 1728000,
+      "seven_surfaces_naming_bytes": 2419200,
+      "felt_pixels_per_board_frame": 122850,
+      "felt_divisions_per_board_frame": 245700,
+      "felt_DIV_stall_CPU_cycles": 9090900,
+      "felt_DIV_stalls_ms_at_93_75MHz": 96.9696,
+      "board_fps_ceiling_from_DIV_stalls_alone": 10.312510312510312,
+      "30fps_one_surface_payload_MB_per_second": 10.368
+    }
+  ],
+  "filesystem_payloads": {
+    "audio": {
+      "files": 127,
+      "payload_bytes": 31440301
+    },
+    "cards": {
+      "files": 228,
+      "payload_bytes": 302780
+    },
+    "intro": {
+      "files": 12,
+      "payload_bytes": 14912
+    },
+    "world": {
+      "files": 610,
+      "payload_bytes": 3049274
+    }
+  },
+  "primary_DIV_source": "https://datasheets.chipdb.org/NEC/Vr-Series/Vr43xx/U10504EJ7V0UMJ1.pdf",
+  "DIV_source_location": "NEC VR4300 User's Manual, Table 3-12, printed page 76: DIV stalls 37 PCycles",
+  "clock_source": "https://ultra64.ca/files/documentation/online-manuals/man-v5-1/kantan/step1/2/2_2.htm"
+}

@@ -1,0 +1,29 @@
+{
+  "path": "port/frontends/n64/adventure/build/poketcg-adventure.elf",
+  "bytes": 4838076,
+  "sha256": "2e5bb7f162aef63b035dd5120c02a8df1b986eac152e260608a68ecc6e0adea8"
+}
+
+8006af0c:	004f3021 	addu	a2,v0,t7
+8006af10:	03063021 	addu	a2,t8,a2
+8006af14:	00000000 	nop
+8006af18:	95020004 	lhu	v0,4(t0)
+8006af1c:	95040002 	lhu	a0,2(t0)
+8006af20:	00e2001a 	div	zero,a3,v0
+8006af24:	004001f4 	teq	v0,zero,0x7
+8006af28:	24c60002 	addiu	a2,a2,2
+8006af2c:	00001012 	mflo	v0
+8006af30:	3042001f 	andi	v0,v0,0x1f
+8006af34:	00021140 	sll	v0,v0,0x5
+8006af38:	0064001a 	div	zero,v1,a0
+8006af3c:	008001f4 	teq	a0,zero,0x7
+8006af40:	24630140 	addiu	v1,v1,320
+8006af44:	00002012 	mflo	a0
+8006af48:	3084001f 	andi	a0,a0,0x1f
+8006af4c:	00441021 	addu	v0,v0,a0
+8006af50:	00021040 	sll	v0,v0,0x1
+8006af54:	01421021 	addu	v0,t2,v0
+8006af58:	94420000 	lhu	v0,0(v0)
+8006af5c:	1469ffee 	bne	v1,t1,8006af18 <draw_board+0x278>
+8006af60:	a4c2fffe 	sh	v0,-2(a2)
+8006af64:	256b0001 	addiu	t3,t3,1
