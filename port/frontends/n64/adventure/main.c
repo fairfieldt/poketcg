@@ -153,7 +153,7 @@ static void conversation_capture(surface_t *source,const char *label)
  for(unsigned f=0;f<24;f++) {
   surface_t *frame=display_get();copy_frame(frame,&still);
   if(f==4)capture(frame,label);
-  display_show(frame);adventure_audio_poll();
+  n64_video_present(frame);adventure_audio_poll();
  }
  surface_free(&still);
 }
@@ -261,7 +261,7 @@ surface_t *game_render_frame(void)
 void game_draw(void)
 {
  if(rendering)return;
- display_show(game_render_frame());adventure_audio_poll();
+ n64_video_present(game_render_frame());adventure_audio_poll();
 }
 static void warp_fade(bool revealing,unsigned map,const surface_t *snapshot)
 {
@@ -279,7 +279,7 @@ static void warp_fade(bool revealing,unsigned map,const surface_t *snapshot)
    rdpq_mode_blender(RDPQ_BLENDER_MULTIPLY);
   }
   rdpq_fill_rectangle(0,0,n64_video_width,n64_video_height);
-  rdpq_mode_pop();rdpq_detach_wait();display_show(frame);adventure_audio_poll();
+  rdpq_mode_pop();rdpq_detach_wait();n64_video_present(frame);adventure_audio_poll();
  }
 }
 
@@ -478,7 +478,10 @@ int main(void)
  depth=n64_video_surface();scene_begin_opaque();
  glEnable(GL_MULTISAMPLE_ARB);glDisable(GL_CULL_FACE);glDisable(GL_LIGHTING);
  adventure_audio_init();n64_ui_init();actors=scene_open(W3_ACTOR_SCENE,W3_TEXTURE_ROOT);
-#if ADVENTURE_DIAGNOSTIC == 14
+#if ADVENTURE_DIAGNOSTIC == 17
+ adventure_audio_regression();
+ for(;;){}
+#elif ADVENTURE_DIAGNOSTIC == 14
  adventure_audio_review();
  for(;;)adventure_audio_poll();
 #elif ADVENTURE_DIAGNOSTIC == 13
@@ -486,11 +489,11 @@ int main(void)
  extern bool adventure_cinematic_diagnostic(void (*)(surface_t *,const char *));
  assertf(adventure_cinematic_diagnostic(conversation_capture),"Conversation opening failed");
  game_conversation(0);for(unsigned f=0;f<40;f++)game_draw();
- surface_t *exploration=game_render_frame();display_show(exploration);
+ surface_t *exploration=game_render_frame();n64_video_present(exploration);
  conversation_capture(exploration,"sam-exploration");
  conversation_fixture(PSYCHIC_CLUB_LOBBY,NPC_RONALD1,14,10,WEST,"ronald-dialogue");
  conversation_fixture(PSYCHIC_CLUB_ENTRANCE,NPC_CLERK6,6,4,NORTH,"clerk-dialogue");
- exploration=game_render_frame();display_show(exploration);
+ exploration=game_render_frame();n64_video_present(exploration);
  conversation_capture(exploration,"clerk-exploration");
  debugf("VIDEO REVIEW PASS\n");for(;;)adventure_audio_poll();
 #elif ADVENTURE_DIAGNOSTIC == 12
@@ -520,7 +523,7 @@ int main(void)
       a running gait, cursor bob, or camera interpolation. */
    presentation_init(&presentation,NULL,false);surface_t *frame=game_render_frame();
    if(f==4)capture(frame,review_names[i]);
-   display_show(frame);adventure_audio_poll();
+   n64_video_present(frame);adventure_audio_poll();
   }
   heap_stats_t stats;sys_get_heap_stats(&stats);
   debugf("VIDEO HEAP stage=%s total=%d used=%d free=%d\n",review_names[i],stats.total,stats.used,stats.total-stats.used);
@@ -567,7 +570,7 @@ int main(void)
    capture_next=false;surface_t *frame=game_render_frame();
    char label[40];snprintf(label,sizeof(label),"Map %u: surface review",map);n64_map_label(frame,label);
    if(f==(ADVENTURE_DIAGNOSTIC==5?1:4))capture(frame,NULL);
-   display_show(frame);adventure_audio_poll();
+   n64_video_present(frame);adventure_audio_poll();
   }
  }
  capture_next=false;surface_t *name_frame=adventure_name_player_preview();capture(name_frame,"naming");

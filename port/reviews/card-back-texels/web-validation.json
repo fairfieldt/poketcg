@@ -1,0 +1,155 @@
+{
+  "passed": true,
+  "method": "Actual source portrait/card-back CSS and card sprite sheet; static asset fixture",
+  "results": [
+    {
+      "variant": "before",
+      "size": {
+        "name": "native-high",
+        "u": 1.5,
+        "width": 480,
+        "height": 420
+      },
+      "dimensions": {
+        "back": [
+          256,
+          357
+        ],
+        "portrait": {
+          "x": 81,
+          "y": 44,
+          "width": 98,
+          "height": 74,
+          "top": 44,
+          "right": 179,
+          "bottom": 118,
+          "left": 81
+        },
+        "prize": {
+          "x": 171,
+          "y": 133,
+          "width": 42,
+          "height": 58.5,
+          "top": 133,
+          "right": 213,
+          "bottom": 191.5,
+          "left": 171
+        },
+        "scroll": 480,
+        "width": 480
+      }
+    },
+    {
+      "variant": "after",
+      "size": {
+        "name": "native-high",
+        "u": 1.5,
+        "width": 480,
+        "height": 420
+      },
+      "dimensions": {
+        "back": [
+          256,
+          357
+        ],
+        "portrait": {
+          "x": 81,
+          "y": 44,
+          "width": 98,
+          "height": 74,
+          "top": 44,
+          "right": 179,
+          "bottom": 118,
+          "left": 81
+        },
+        "prize": {
+          "x": 171,
+          "y": 133,
+          "width": 42,
+          "height": 58.5,
+          "top": 133,
+          "right": 213,
+          "bottom": 191.5,
+          "left": 171
+        },
+        "scroll": 480,
+        "width": 480
+      }
+    },
+    {
+      "variant": "before",
+      "size": {
+        "name": "desktop",
+        "u": 3,
+        "width": 840,
+        "height": 700
+      },
+      "dimensions": {
+        "back": [
+          256,
+          357
+        ],
+        "portrait": {
+          "x": 99,
+          "y": 44,
+          "width": 198,
+          "height": 150,
+          "top": 44,
+          "right": 297,
+          "bottom": 194,
+          "left": 99
+        },
+        "prize": {
+          "x": 282,
+          "y": 224,
+          "width": 84,
+          "height": 117,
+          "top": 224,
+          "right": 366,
+          "bottom": 341,
+          "left": 282
+        },
+        "scroll": 840,
+        "width": 840
+      }
+    },
+    {
+      "variant": "after",
+      "size": {
+        "name": "desktop",
+        "u": 3,
+        "width": 840,
+        "height": 700
+      },
+      "dimensions": {
+        "back": [
+          256,
+          357
+        ],
+        "portrait": {
+          "x": 99,
+          "y": 44,
+          "width": 198,
+          "height": 150,
+          "top": 44,
+          "right": 297,
+          "bottom": 194,
+          "left": 99
+        },
+        "prize": {
+          "x": 282,
+          "y": 224,
+          "width": 84,
+          "height": 117,
+          "top": 224,
+          "right": 366,
+          "bottom": 341,
+          "left": 282
+        },
+        "scroll": 840,
+        "width": 840
+      }
+    }
+  ],
+  "errors": []
+}

@@ -24,10 +24,22 @@
   "transforms": [
     "Retain original downloaded JPEG bytes.",
     "Mask white outer corners with a 36px rounded rectangle at source resolution.",
-    "Resize from original source with Lanczos; no recoloring, invented lettering, or reconstructed artwork.",
+    "Derive unchanged 24x34/32x44 color masters from the original source with Lanczos; no recoloring, invented lettering, or reconstructed artwork.",
+    "Expand those masters with nearest-neighbor sampling to 36x51/48x66 at 480x360, matching the 1.5x texel scale of Pokemon portraits.",
+    "Keep each target resolution's original rounded alpha mask.",
     "Native variants quantize RGB to five bits and alpha to one bit.",
-    "Renderer selects exact native size for 24x34/32x44 at 320x240 and 36x51/48x66 at 480x360."
+    "Web art expands the same 32x44 color master to the existing 256x357 file dimensions."
   ],
+  "logical_color_masters": {
+    "small": [
+      24,
+      34
+    ],
+    "standard": [
+      32,
+      44
+    ]
+  },
   "outputs": [
     {
       "path": "port/assets/ui/card-back/native-small.png",
@@ -57,7 +69,7 @@
       ],
       "format": "RGBA5551",
       "bytes": 3672,
-      "sha256": "08a7294934380c4a5db5fbafc145c64beff80cdb484fd312c0c3bac4c3f4e8ef"
+      "sha256": "6fd85b50011b423781c6b2e3da10b0d33b0e22c9c2c7e5c045ebd52dc91cdefb"
     },
     {
       "path": "port/assets/ui/card-back/native-high.png",
@@ -67,7 +79,7 @@
       ],
       "format": "RGBA5551",
       "bytes": 6336,
-      "sha256": "1be6c137113df4f29a6e2b65bf5ae160e04be94ada12b247a9fdd80865d0edfb"
+      "sha256": "0b233b497ead4a1865406dfcb1a38a7960fa4415e665dd92fca16c83d22c8c6f"
     },
     {
       "path": "port/frontends/web/src/img/card-back.png",
@@ -76,7 +88,7 @@
         357
       ],
       "format": "RGBA8 PNG",
-      "sha256": "994df93424a2f4e8d004d700483124313b80ace71be5673fa64473be8aca2855"
+      "sha256": "4dc90cb667d575ac3eb576f9d1281109d3f307e04d593708612043dd0f9de8be"
     }
   ],
   "native_total_bytes": 14456

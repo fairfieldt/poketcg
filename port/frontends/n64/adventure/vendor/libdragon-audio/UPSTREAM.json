@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/DragonMinded/libdragon",
+  "revision": "12bba06615ce9e89185947bbbeba41e290ec0c23",
+  "files": {
+    "src/audio/wav64_vadpcm.c": "8983034c84ccdfd11522fd86f73994d5960de328d047b37b62afbada45fc7522",
+    "src/audio/wav64_internal.h": "ce4c86228a83dab9c3c355dcf774704f7b6758591240c0145c003fcfe62dc12c",
+    "src/audio/wav64_vadpcm_internal.h": "bff494d9dcc048ebf734fddf6a3f29e5193678f71fd058205b995d275d95086f",
+    "src/audio/mixer_internal.h": "89f3d71d0970e4e8bd409b6a6dbd1cbf0c423d7e74dd0991d8c31341b5b83c15",
+    "src/utils.h": "887610660fa908164c29f5f537f18104c40c4d9734b9229967172893972fb0bd",
+    "LICENSE.md": "88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd"
+  }
+}

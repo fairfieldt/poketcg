@@ -30,7 +30,7 @@ emu=Emulator(gbs)
 for track in data['tracks']:
     path=out/track['file'];blob=path.read_bytes();size+=len(blob)
     assert blob[:8]==b'WV64\x04\x01\x02\x10',(path,'format')
-    rate,length,loop_length=struct.unpack_from('>III',blob,8)
+    rate,length,loop_length,start,state_size=struct.unpack_from('>5I',blob,8)
     assert rate==24000 and 0<=length-track['samples']<=32,(path,rate,length,track['samples'])
     assert length==track['playback_samples']
     assert track['transport_samples']%32==0 and 0<=track['transport_samples']-length<32
@@ -41,6 +41,20 @@ for track in data['tracks']:
         assert length-loop_length==track['playback_loop_start_sample']
         assert (length-loop_length)%32==0,(path,'unaligned decoder loop point')
     else:assert loop_length==0,(path,'finite clip loops')
+    # Parse the actual VADPCM skip table, rather than trusting only the outer
+    # WAV64 loop fields. Arbitrary saved playback positions are not valid
+    # decoder seeks; the generated streams expose only their loop start.
+    predictors,order,flags,points=struct.unpack_from('>4B',blob,28)
+    assert (predictors,order,flags,state_size)==(4,2,1,48),(path,'VADPCM codec header')
+    relative_table=struct.unpack_from('>I',blob,36)[0]
+    table=28+88+relative_table
+    assert points==int(loop_length>0),(path,'unexpected decoder skip count')
+    assert start==28+88+predictors*order*2*16+points*40 and start<len(blob),(path,'VADPCM payload bounds')
+    if points:
+        assert relative_table==predictors*order*2*16
+        bit_position,sample_position=struct.unpack_from('>II',blob,table+32)
+        assert sample_position==length-loop_length and sample_position%32==0,(path,'decoder skip disagrees with loop')
+        assert bit_position<=(len(blob)-start)*8,(path,'decoder skip outside payload')
     # Transport PCM preserves every source frame, performs the original loop
     # realignment, and pads only its tail. Original hashes exclude this padding.
     source=cached_wave(track)
@@ -110,4 +124,4 @@ for name in ('MUSIC_TITLESCREEN','MUSIC_OVERWORLD','MUSIC_CLUB_1','SFX_CURSOR','
         raw=f.readframes(f.getnframes())
     assert any(raw),name+' rendered silence'
 emu.close()
-print(f'AUDIO PASS: 31 songs, 96 SFX; all headers/loops/timings; unchanged source PCM; stereo finite/loop/title decoder regression; {size/2**20:.2f} MiB WAV64')
+print(f'AUDIO PASS: 31 songs, 96 SFX; all headers/decoder skips/loops/timings; unchanged source PCM; stereo finite/loop/title decoder regression; {size/2**20:.2f} MiB WAV64')

@@ -25,4 +25,10 @@ not restart the emulator. Quit the game and launch it again to load an update.
 Saves are separate from the ROM releases; publishing never deletes saves.
 Do not ship debug/diagnostic ROMs under the normal game entry unless requested.
 
+The ROM's `Game` counter measures completed game frames over N64 time. The
+Steam overlay's `Output` counter measures emulator output. At 4K, the game
+badge occupies x516..1092, y18..144; the Steam launcher stages `Output` at
+x1200,y32, font size96. These changes require a full quit/relaunch to apply
+the launcher configuration. The ROM counter works in both resolution modes.
+
 Host setup and recovery: `~/dev/homelab/hosts/steamdeck/README.md`.

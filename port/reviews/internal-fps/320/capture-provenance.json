@@ -1,0 +1,306 @@
+{
+  "status": "verified-expansion-pak-trial-captures",
+  "rom": {
+    "file": "port/frontends/n64/adventure/poketcg-fps-review-320.z64",
+    "sha256": "e52e3bd2135a5642bd629440d7e2d83d7ece2eb10ff9793ea94605efecd7d377",
+    "diagnostic": 15
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 6,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": "full observed callback dimensions",
+      "stage_pattern": "^(?:VIDEO REVIEW|DUEL UI) ([A-Za-z0-9_-]+) BEGIN\\r?$",
+      "require_native_frame": true,
+      "native_lead_frames": 6
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 4,
+    "private_settings": true,
+    "ExpansionPak": false
+  },
+  "runtime_video_modes": [
+    {
+      "width": 320,
+      "height": 240,
+      "ram": 4194304,
+      "highres": 0
+    }
+  ],
+  "raw_format": {
+    "pixel_order": "BGRA little endian; padding excluded from RGB proof",
+    "dimensions": "Recorded per image from Program::video registers",
+    "display_aspect": "4:3"
+  },
+  "finished": {
+    "callbacks": 810,
+    "captures": 6,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "overworld.png",
+      "stage": "overworld",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "051bf7ac9ad6b902110030666158795ed86a088a6acb0380914cfa8a3861757d",
+      "callback_sha256": "7f00acd8072f550a9fbcf8b765cfd436b7d1387fe5ab1e94f429c2d118c9373b",
+      "rgb_sha256": "4ab344256c46caafa159f3fba69d2004cd91b2eaa1d97c9e8d81c0f5ee3dc07a",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 51,
+      "stage_gate": {
+        "stage_started_callback": 6,
+        "native_frame": "overworld",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 42,
+        "native_ready_valid_frames": 6,
+        "post_native_valid_callbacks": 10,
+        "stable_callbacks": 10,
+        "previous_captured_sha256": null
+      }
+    },
+    {
+      "file": "lab.png",
+      "stage": "lab",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "27a192ab891369d936178e3f44aa00cd68c69b299b5d544de8eb9e64a0ff3c41",
+      "callback_sha256": "cc1c5c9abd2b54f004c59451e2162195bf2a0c792967b3813742d51d46ff970f",
+      "rgb_sha256": "d09863ea4d9cf83cc14aac061b9982398acfc44068c33781764cd326d39f3f21",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 168,
+      "stage_gate": {
+        "stage_started_callback": 135,
+        "native_frame": "lab",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 163,
+        "native_ready_valid_frames": 127,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "3f3b68d65efd395f0cda940a1efd67f917cc83b58a4f328852103565e2f52150"
+      }
+    },
+    {
+      "file": "lightning.png",
+      "stage": "lightning",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "d2ec054c5ba8d5729f7e78abfcc4cb356ded3eab5740fffaf00bac4fbdef020b",
+      "callback_sha256": "bfe6c529868374dd48a30a04e5d227d4cafe27c3b386541b7d7ecdb44dce6260",
+      "rgb_sha256": "1b215c779ef811ddd5ab9738ff42200e4b302abd0db5b1cbb4de2b87a47e75ff",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 292,
+      "stage_gate": {
+        "stage_started_callback": 257,
+        "native_frame": "lightning",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 287,
+        "native_ready_valid_frames": 251,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "3604192d0278ca981b3acc983a43610670db5c740eff5e82773a892fde75d976"
+      }
+    },
+    {
+      "file": "dome.png",
+      "stage": "dome",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "24c247dffcaa9821b8b6e748d637f635e44c4e46c3afe0da02fc1dceb4de42ae",
+      "callback_sha256": "4642588b3d8186642e1125161ef45ef85319ff685499d51daca6e4eb889f9153",
+      "rgb_sha256": "8a25324f85a866780c06dd4154999768be459ac6fe3826b236f85b9cb6d7828a",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 431,
+      "stage_gate": {
+        "stage_started_callback": 380,
+        "native_frame": "dome",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 426,
+        "native_ready_valid_frames": 390,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "8a5227cf6f07e37c16dff7ab93e3a9d818d109d3d937baf356efbb475345e6d1"
+      }
+    },
+    {
+      "file": "naming.png",
+      "stage": "naming",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "968b489a14bb8a07fd1fb7ed9ba4387de7e56315316a99c5ac02f3e8fb87df53",
+      "callback_sha256": "cb89cef3e7d822c9e087cd56cd3e9a3107bab6738d05581fbeaa396305f151c0",
+      "rgb_sha256": "8a7368ce35a285dbc390714a3fb97b7ac4f21262e453f65108616694c96cf896",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 552,
+      "stage_gate": {
+        "stage_started_callback": 520,
+        "native_frame": "naming",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 545,
+        "native_ready_valid_frames": 509,
+        "post_native_valid_callbacks": 8,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "41cdef09568dc1a5c004f158a86bd5beecac3b852403a23e46f347bb2b64e1cc"
+      }
+    },
+    {
+      "file": "dialogue.png",
+      "stage": "dialogue",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "94b9dd62af20e437436bee232c07bae47762b99fb7aa76ebd73e7e6ae675c13e",
+      "callback_sha256": "17e97b8851e95270026907797e845bf4e39308297889578c465054e50430b695",
+      "rgb_sha256": "260cefe0233cbcb1284a8480fc0fefed777897f35adeab0c2a059abd80ba95f5",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 720,
+      "stage_gate": {
+        "stage_started_callback": 697,
+        "native_frame": "dialogue",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 715,
+        "native_ready_valid_frames": 679,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "8b55fc4918fc3d02a7c6280ba56328f2afe6551bb1ad2ca8748ae2f44d133d88"
+      }
+    }
+  ],
+  "native_frames": [
+    {
+      "file": "overworld.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "425bb968dc6220fde0d8f1962d24b3ee6c10dd455de7e551ac298311d854e5c1",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "lab.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "df3178c3e7317b5e41e5437402802504572f656cf38d04636487299b8a6f31d4",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "lightning.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "1d35c08ef33108c7c0fe5527fa3fe7eaace99af3ef55b3988f05163ebd72164d",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "dome.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "2947af8c28252936091d886d95c1a95f0caeaf6021ac49d77318f967d153e7f4",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "naming.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "8b574e36d10be35745dacf206f01ba7a507a3fa2a6bca9f80f83562bd2748b1a",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "dialogue.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "ea23e22b02156334d7245c60ccc076b6832aacfe5e0ab5c85e4ac6ff3b6d6965",
+      "exact_native_pixels": 76800
+    }
+  ],
+  "memory": [],
+  "source_logs": {
+    "path": "port/frontends/n64/adventure/build/expansion-pak/fps-final-320/lldb.log",
+    "sha256": "f1b762487bd89b27c539bd76675d43eae90d7d386b1d8e81df64e9c51d1f2fc5"
+  }
+}

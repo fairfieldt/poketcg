@@ -1,0 +1,22 @@
+{
+  "deployed_at_utc": "2026-10-31T19:01:44.576350+00:00",
+  "host": "steamdeck.tdf.sh",
+  "variants": {
+    "standard": {
+      "rom": "/home/deck/Games/n64/poketcg/standard.z64",
+      "release": "/home/deck/Games/n64/poketcg/releases/20261031T190130394789Z-standard-82d18ef89f5a.z64",
+      "sha256": "82d18ef89f5ad29a366a3977273cc66695433ecf517ed4a23471a100a8bbe3ef",
+      "bytes": 37453824
+    },
+    "expansion": {
+      "rom": "/home/deck/Games/n64/poketcg/expansion.z64",
+      "release": "/home/deck/Games/n64/poketcg/releases/20261031T190133937668Z-expansion-007e925cfda7.z64",
+      "sha256": "007e925cfda733936670ccee39001917f679ebb2aa37d6f7676284f9e08f9364",
+      "bytes": 37453824
+    }
+  },
+  "remote_checksums_match_local": true,
+  "saves_preserved": true,
+  "running_emulator_restarted": false,
+  "steam_overlay_layout": "Game badge x516..1092,y18..144; staged Output x1200,y32 at3840x2160; final host composition pending full relaunch"
+}

@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "source_unchanged": true,
+  "native_bytes": 14456,
+  "native": [
+    {
+      "name": "small",
+      "size": [
+        24,
+        34
+      ],
+      "color_master": "small",
+      "unique_colors": 405
+    },
+    {
+      "name": "standard",
+      "size": [
+        32,
+        44
+      ],
+      "color_master": "standard",
+      "unique_colors": 539
+    },
+    {
+      "name": "small_hi",
+      "size": [
+        36,
+        51
+      ],
+      "color_master": "small",
+      "unique_colors": 406
+    },
+    {
+      "name": "high",
+      "size": [
+        48,
+        66
+      ],
+      "color_master": "standard",
+      "unique_colors": 540
+    }
+  ],
+  "web_size": [
+    256,
+    357
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "passed": true,
+  "case": "native",
+  "frames": [
+    {
+      "file": "texels-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "da62c132e75ac20e551275ba6c3db7c00072e3cfd22474a5e9155cfe4fcb2d71"
+    },
+    {
+      "file": "prizes-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "111b0156205091527203547de971419772057bab3b8f194bafab0833c21c990f"
+    },
+    {
+      "file": "texels-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "6918689dac794036ffda493181b7dba6513b7591afdd590c4d029b17cf49ba08"
+    },
+    {
+      "file": "prizes-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "94b48deecf830c1d30fc1e6892338e2ac9322111b3377da85764deff9a370501"
+    }
+  ],
+  "wall_seconds": 14.27,
+  "method": "N64 RDP framebuffer read after detach_wait, same production duel UI/video code; privateAres/noVIbreakpoints"
+}

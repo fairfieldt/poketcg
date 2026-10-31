@@ -283,11 +283,11 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 
 /* coin toss */
 .overlay.ov-coin { background: rgba(16, 32, 40, 0.24); }
-.coin-box { display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 3px); background: #f7f7de; color: #183050; padding: calc(var(--u) * 8px) calc(var(--u) * 16px); border: calc(var(--u) * 2px) solid #4a739c; box-shadow: inset 1px 1px #fffff7, inset -1px -1px #a9bccc, 0 3px 0 #0a121e; }
+.coin-box { display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 3px); background: #f7f7de; color: #183050; padding: calc(var(--u) * 6px) calc(var(--u) * 8px); max-width: calc(100% - 16px); border: calc(var(--u) * 2px) solid #4a739c; box-shadow: inset 1px 1px #fffff7, inset -1px -1px #a9bccc, 0 3px 0 #0a121e; }
 .coin-title { font-weight: bold; font-size: 1.2em; }
 .duel .coin-box .coin-title { color: #183050; text-shadow: none; }
 .coin-box { cursor: pointer; }
-.coin-stage { position: relative; width: calc(var(--u) * 72px); height: calc(var(--u) * 80px); display: flex; justify-content: center; align-items: flex-end; padding-bottom: calc(var(--u) * 4px); }
+.coin-stage { position: relative; width: calc(var(--u) * 64px); height: calc(var(--u) * 72px); display: flex; justify-content: center; align-items: flex-end; padding-bottom: calc(var(--u) * 4px); }
 .coin-shadow { position: absolute; bottom: 0; width: calc(var(--u) * 30px); height: calc(var(--u) * 3px); border-radius: 50%; background: #a9bccc; }
 .coin {
 	position: relative; width: calc(var(--u) * 48px); height: calc(var(--u) * 48px);
@@ -295,12 +295,11 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 }
 .coin.tails { background-image: url(../img/coin-tails.png); }
 .coin-result { min-height: 1.2em; font-weight: bold; }
-.coin-row { display: flex; gap: 0.2em; flex-wrap: wrap; justify-content: center; }
+.coin-row { display: flex; gap: 0.2em; flex-wrap: wrap; justify-content: center; max-width: calc(var(--u) * 132px); }
 .coin-chip { width: 1.5em; height: 1.5em; border-radius: 50%; border: 1px solid var(--frame); display: inline-flex; align-items: center; justify-content: center; font-size: 0.8em; font-weight: bold; }
 .coin-chip.heads { background: #f8d040; }
 .coin-chip.tails { background: #c8c8d0; }
 .coin-caption { text-align: center; max-width: 90%; }
-.coin-count { font-weight: bold; }
 
 /* prizes, energy discard, check menu */
 .prizes-box { display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 4px); }

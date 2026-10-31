@@ -108,7 +108,7 @@ static void draw_keyboard(NameAssets *assets,const NameState *state,unsigned fra
  uint32_t ink=color(24,48,80),paper=color(247,247,222),blue=color(74,115,156),white=color(255,255,247),selected=color(32,72,120);
  graphics_fill_screen(&canvas,0);
  box(&canvas,0,0,320,34,paper);box(&canvas,0,208,320,32,paper);
- text(&canvas,16,14,ink,"What is your name?");
+ text(&canvas,16,18,ink,"What is your name?");
  border(&canvas,12,38,108,160,blue);
  box(&canvas,128,36,180,32,paper);border(&canvas,128,36,180,32,blue);
  for(unsigned i=0;i<6;i++) {
@@ -155,7 +155,7 @@ static surface_t *draw_frame(NameAssets *assets,const NameState *state,unsigned 
  scene_draw_actor(assets->player,assets->model,0,0,-12+sinf(frame*.025f)*5,0);
  glPopMatrix();glMatrixMode(GL_PROJECTION);glPopMatrix();glMatrixMode(GL_MODELVIEW);
  glViewport(0,0,n64_video_width,n64_video_height);gl_context_end();scene_frame_end();
- draw_keyboard(assets,state,frame);rdpq_detach_wait();display_show(display);
+ draw_keyboard(assets,state,frame);rdpq_detach_wait();n64_video_present(display);
  adventure_audio_poll();return display;
 }
 

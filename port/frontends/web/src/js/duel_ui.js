@@ -798,7 +798,8 @@ export class DuelUI {
 			const control = this.controls[this.controls.length - 1];
 			if (control && control.key) control.key(K.A);
 		});
-		box.appendChild(el('div', 'coin-title', this.coinTotal > 1 ? `Coin toss ×${this.coinTotal}` : 'Coin toss'));
+		this.$coinTitle = el('div', 'coin-title', this.coinTotal > 1 ? `Coin 1 of ${this.coinTotal}` : 'Coin toss');
+		box.appendChild(this.$coinTitle);
 		const stage = el('div', 'coin-stage');
 		stage.appendChild(el('div', 'coin-shadow'));
 		this.$coin = el('div', 'coin heads');
@@ -810,14 +811,13 @@ export class DuelUI {
 		box.appendChild(this.$coinResult);
 		this.$coinRow = el('div', 'coin-row');
 		box.appendChild(this.$coinRow);
-		this.$coinCount = el('div', 'coin-count');
-		box.appendChild(this.$coinCount);
 		return box;
 	}
 
 	async onCoin(a) {
 		if (this.overlayKind !== 'coin') { this.coins = []; this.coinTotal = a[2] || 1; this.showOverlay('coin', this.coinView()); }
 		const heads = a[0] === C.HEADS;
+		this.$coinTitle.textContent = a[2] > 1 ? `Coin ${a[1]} of ${a[2]}` : 'Coin toss';
 		this.$coinResult.textContent = '';
 		const motion = this.pacing && !this.skipping && !this.animationsDisabled && !(this.skipDelay && this.bHeld);
 		if (motion) {
@@ -827,14 +827,18 @@ export class DuelUI {
 			this.controls.push(control);
 			try {
 				const widths = [1, 0.75, 0.125, 0.75, 1, 0.75, 0.125, 0.75];
-				for (let frame = 0; frame < 30; frame++) {
+				const started = performance.now(), duration = 20 * 1000 / 30;
+				for (;;) {
+					const elapsed = performance.now() - started;
+					if (elapsed >= duration) break;
+					const frame = Math.min(19, Math.floor(elapsed * 30 / 1000));
 					if (skip || this.skipping || (this.skipDelay && this.bHeld) || !this.$coin.isConnected) break;
-					const spin = frame < 24, phase = frame % 8;
+					const spin = frame < 16, phase = frame % 8;
 					const face = spin ? phase < 4 : heads;
-					const rise = spin ? frame * (24 - frame) * 28 / 144 : -[4, 2, 0, -1, 0, 0][frame - 24];
+					const rise = spin ? frame * (16 - frame) * 20 / 64 : -[3, 1, 0, 0][frame - 16];
 					this.$coin.className = 'coin ' + (face ? 'heads' : 'tails');
 					this.$coin.style.transform = `translateY(${-rise * this.$coin.clientWidth / 48}px) scaleX(${spin ? widths[phase] : 1})`;
-					await delay(1000 / 30);
+					await delay(Math.min(1000 / 30, duration - elapsed));
 				}
 			} finally {
 				const at = this.controls.indexOf(control);
@@ -848,9 +852,8 @@ export class DuelUI {
 		this.$coinResult.textContent = heads ? 'Heads' : 'Tails';
 		const chip = el('span', 'coin-chip ' + (heads ? 'heads' : 'tails'), heads ? 'H' : 'T');
 		this.$coinRow.appendChild(chip);
-		const nh = this.coins.filter(Boolean).length;
-		this.$coinCount.textContent = (a[2] > 1 ? `${a[1]}/${a[2]}: ` : '') + `${nh} heads, ${this.coins.length - nh} tails`;
-		return this.pace(motion ? 120 : 0);
+		while(this.$coinRow.children.length>12)this.$coinRow.firstElementChild.remove();
+		return undefined;
 	}
 
 	onAnim(a) {
@@ -860,6 +863,7 @@ export class DuelUI {
 				this.$coin.className = 'coin heads';
 				this.$coin.style.transform = '';
 				this.$coinResult.textContent = '';
+				this.$coinTitle.textContent = this.coinTotal > 1 ? `Coin ${this.coins.length + 1} of ${this.coinTotal}` : 'Coin toss';
 				this.$coin.setAttribute('aria-label', 'Coin ready');
 				return undefined;
 			}

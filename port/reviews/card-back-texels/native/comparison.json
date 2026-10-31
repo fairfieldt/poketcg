@@ -1,0 +1,45 @@
+{
+  "passed": true,
+  "standard_mode_unchanged": true,
+  "portraits_unchanged": true,
+  "comparisons": [
+    {
+      "stage": "texels",
+      "width": 320,
+      "changed_pixels": 0,
+      "difference_bounds": null,
+      "differences_confined_to_card_backs": true
+    },
+    {
+      "stage": "texels",
+      "width": 480,
+      "changed_pixels": 13371,
+      "difference_bounds": [
+        48,
+        184,
+        430,
+        250
+      ],
+      "differences_confined_to_card_backs": true
+    },
+    {
+      "stage": "prizes",
+      "width": 320,
+      "changed_pixels": 0,
+      "difference_bounds": null,
+      "differences_confined_to_card_backs": true
+    },
+    {
+      "stage": "prizes",
+      "width": 480,
+      "changed_pixels": 16806,
+      "difference_bounds": [
+        138,
+        84,
+        348,
+        228
+      ],
+      "differences_confined_to_card_backs": true
+    }
+  ]
+}

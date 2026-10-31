@@ -1,0 +1,1 @@
+frame rate: 30/15/60/20Hz, startup, stall/recovery, repeated VI and 64-bit timing PASS

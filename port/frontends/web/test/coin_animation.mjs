@@ -34,13 +34,14 @@ try {
  const page=await browser.newPage({viewport:{width:960,height:1000}});
  page.on('pageerror',e=>errors.push(e.message));
  await page.goto(`http://127.0.0.1:${server.address().port}/`);await page.waitForFunction(()=>window.ready);
- await page.evaluate(()=>{const {ui,SCREEN,TCG_PLAYER}=window.fixture;ui.onScreen([SCREEN.COIN_TOSS,TCG_PLAYER,3,0]);window.toss=ui.onCoin([1,1,3,TCG_PLAYER]);});
+ await page.evaluate(()=>{const {ui,SCREEN,TCG_PLAYER}=window.fixture;ui.onScreen([SCREEN.COIN_TOSS,TCG_PLAYER,3,0]);const start=performance.now();window.toss=ui.onCoin([1,1,3,TCG_PLAYER]).then(()=>window.tossElapsed=performance.now()-start);});
  await page.waitForTimeout(220);
  assert.equal(await page.locator('.coin-result').textContent(),'');
  assert.equal(await page.locator('.coin-chip').count(),0);
  assert.notEqual(await page.locator('.coin').evaluate(n=>n.style.transform),'');
  await page.screenshot({path:path.join(out,'flight.png'),fullPage:true});
  await page.evaluate(()=>window.toss);
+ assert(await page.evaluate(()=>window.tossElapsed)<950,'Intentional toss lasts about two-thirds of a second');
  assert.equal(await page.locator('.coin-result').textContent(),'Heads');
  assert.equal(await page.locator('.coin').getAttribute('aria-label'),'Heads');
  assert.deepEqual(await page.locator('.coin-chip').allTextContents(),['H']);
@@ -64,6 +65,9 @@ try {
  assert.equal(await page.locator('.coin-result').textContent(),'Heads','Click skips through the same active control');
  await page.setViewportSize({width:320,height:700});
  await page.evaluate(()=>document.documentElement.style.setProperty('--u',4/3));
+ await page.evaluate(async()=>{const {ui,SCREEN,TCG_PLAYER}=window.fixture;ui.animationsDisabled=true;ui.onScreen([SCREEN.COIN_TOSS,TCG_PLAYER,20,0]);for(let i=1;i<=20;i++)await ui.onCoin([i&1,i,20,TCG_PLAYER]);});
+ assert.equal(await page.locator('.coin-chip').count(),12,'Long histories retain the most recent twelve results');
+ assert.deepEqual(await page.locator('.coin-chip').allTextContents(),Array.from({length:12},(_,i)=>i%2?'T':'H'));
  const bounds=await page.locator('.coin-box').evaluate(n=>{
   const b=n.getBoundingClientRect(),f=n.closest('.overlay').getBoundingClientRect();
   return {left:b.left,right:b.right,top:b.top,bottom:b.bottom,fieldTop:f.top,fieldBottom:f.bottom};

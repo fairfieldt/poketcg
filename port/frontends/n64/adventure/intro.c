@@ -204,7 +204,7 @@ static surface_t *draw_frame(const IntroAssets *assets,unsigned scene,unsigned t
   rdpq_mode_filter(FILTER_POINT);blit(assets->press_start,35,94);
  }
  rdpq_set_scissor(0,0,n64_video_width,n64_video_height);if(extra_white)draw_white(extra_white);
- rdpq_mode_pop();rdpq_detach_wait();display_show(frame);
+ rdpq_mode_pop();rdpq_detach_wait();n64_video_present(frame);
  adventure_audio_poll();return frame;
 }
 

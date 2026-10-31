@@ -115,7 +115,7 @@ void adventure_story_message(const char *speaker,const char *text,unsigned speed
   if((pressed.a||pressed.b)&&advance(&lines,&page))break;
   reveal(&lines,&page,speed);
   surface_t *frame=game_render_frame();assert(frame);
-  draw_panel(frame,&canvas,speaker,&lines,&page,"A/B: continue");display_show(frame);adventure_audio_poll();
+  draw_panel(frame,&canvas,speaker,&lines,&page,"A/B: continue");n64_video_present(frame);adventure_audio_poll();
  }
  surface_free(&canvas);free(lines.line);
 }
@@ -174,7 +174,7 @@ int adventure_story_choice(const char *question,const char *const *items,
   surface_t *frame=game_render_frame();assert(frame);
   if(lines.count)draw_panel(frame,&canvas,NULL,&lines,&page,open?(cancel?"A: choose  B: back":"A: choose"):"A/B: continue");
   if(open)draw_choices(frame,&popup,choices,count,current,lines.count?166:222);
-  display_show(frame);adventure_audio_poll();
+  n64_video_present(frame);adventure_audio_poll();
  }
  surface_free(&popup);surface_free(&canvas);free(lines.line);
  for(unsigned i=0;i<count;i++)free(choices[i].text.line);
@@ -190,7 +190,7 @@ void adventure_duel_transition(bool entering)
   unsigned extent=(unsigned)(120*(entering?1-inverse*inverse:inverse*inverse)+.5f);
   rdpq_attach(frame,NULL);rdpq_mode_push();rdpq_set_mode_fill(RGBA32(0,0,0,255));
   if(extent){rdpq_fill_rectangle(0,0,n64_video_width,n64_video_y(extent));rdpq_fill_rectangle(0,n64_video_y(240-extent),n64_video_width,n64_video_height);}
-  rdpq_mode_pop();rdpq_detach_wait();display_show(frame);adventure_audio_poll();
+  rdpq_mode_pop();rdpq_detach_wait();n64_video_present(frame);adventure_audio_poll();
  }
 }
 
@@ -207,7 +207,7 @@ struct surface_s *adventure_story_message_preview(const char *speaker,const char
   measured=true;
  }
 #endif
- draw_panel(frame,&canvas,speaker,&lines,&page,"A/B: continue");display_show(frame);
+ draw_panel(frame,&canvas,speaker,&lines,&page,"A/B: continue");n64_video_present(frame);
  adventure_audio_poll();surface_free(&canvas);free(lines.line);return frame;
 }
 

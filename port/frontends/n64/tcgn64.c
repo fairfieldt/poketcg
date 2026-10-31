@@ -47,6 +47,7 @@
 #include "coin_art.h"
 #ifdef TCGN64_ADVENTURE
 #include "adventure/audio.h"
+#include "adventure/video.h"
 #endif
 
 #ifdef TCGN64_CARD_ART
@@ -867,12 +868,22 @@ static void draw_side(uint8_t duelist, bool top, int hl_loc)
 	/* info bar */
 	bool turn = g_turn_holder == duelist;
 	fill(LEFT - 2, bar_y - 1, RIGHT - LEFT + 4, 9, turn ? C_PANEL2 : C_BG);
-	printf_at(LEFT, bar_y, turn ? C_HI : C_TEXT, "%-7.7s", g_name[side]);
 	int deck = DECK_SIZE - v[DUELVARS_NUMBER_OF_CARDS_NOT_IN_DECK];
 	if (deck < 0)
 		deck = 0;
-	printf_at(LEFT + 8 * CW, bar_y, C_DIM, "Hand%d Deck%d Disc%d",
-	          v[DUELVARS_NUMBER_OF_CARDS_IN_HAND], deck, v[DUELVARS_NUMBER_OF_CARDS_IN_DISCARD_PILE]);
+#ifdef TCGN64_ADVENTURE
+	if(top) {
+		/* Leave the diagnostic counter's corner clear without moving cards. */
+		bodyf(72,bar_y,turn?C_HI:C_TEXT,66,"%.7s",g_name[side]);
+		bodyf(140,bar_y,C_DIM,124,"Hand%d Deck%d Disc%d",
+		      v[DUELVARS_NUMBER_OF_CARDS_IN_HAND],deck,v[DUELVARS_NUMBER_OF_CARDS_IN_DISCARD_PILE]);
+	} else
+#endif
+	{
+		printf_at(LEFT,bar_y,turn?C_HI:C_TEXT,"%-7.7s",g_name[side]);
+		printf_at(LEFT+8*CW,bar_y,C_DIM,"Hand%d Deck%d Disc%d",
+		          v[DUELVARS_NUMBER_OF_CARDS_IN_HAND],deck,v[DUELVARS_NUMBER_OF_CARDS_IN_DISCARD_PILE]);
+	}
 	int pz = prizes_left(duelist);
 	print(LEFT + 31 * CW, bar_y, C_DIM, "P");
 	for (int i = 0; i < 6; i++)
@@ -1080,7 +1091,7 @@ static unsigned g_review_seen;
 #endif
 #endif
 
-static void begin_frame(void)
+static void begin_frame_canvas(bool clear)
 {
 	g_disp = display_get();
 	g_raster_width=g_disp->width;
@@ -1093,8 +1104,10 @@ static void begin_frame(void)
 #endif
 	g_fb_cached.buffer = CachedAddr(g_fb_cached.buffer);
 	g_fb = &g_fb_cached;
-	graphics_fill_screen(g_fb, g_col[C_BG]);
+	if(clear)graphics_fill_screen(g_fb, g_col[C_BG]);
 }
+
+static void begin_frame(void) {begin_frame_canvas(true);}
 
 static void end_frame(void)
 {
@@ -1115,9 +1128,11 @@ static void end_frame(void)
 	rdpq_mode_pop();rdpq_detach_wait();
 	/* Finish reading the canvas before the CPU reuses it for another frame. */
 #endif
-	display_show(g_disp);
 #ifdef TCGN64_ADVENTURE
+	n64_video_present(g_disp);
 	g_last_ui_frame=g_disp;
+#else
+	display_show(g_disp);
 #endif
 	g_fb = NULL;
 	g_disp = NULL;
@@ -1338,7 +1353,7 @@ static bool review_snapshot(void)
 /* render n frames of the board (pacing for events); A/B skips */
 static void draw_match_plaque(bool result);
 
-enum { COIN_SPIN_FRAMES=24, COIN_TOSS_FRAMES=30 };
+enum { COIN_SPIN_FRAMES=16, COIN_TOSS_FRAMES=20 };
 
 static void draw_coin_art(int cx,int cy,int width,int height,bool heads)
 {
@@ -1365,17 +1380,24 @@ static void draw_coin_panel(int animation_frame)
 		static const uint8_t widths[]={48,36,6,36,48,36,6,36};
 		unsigned phase=(unsigned)animation_frame%8;
 		width=widths[phase];heads=phase<4;
-		y-=animation_frame*(COIN_SPIN_FRAMES-animation_frame)*28/144;
+		y-=animation_frame*(COIN_SPIN_FRAMES-animation_frame)*20/64;
 	} else if(animation_frame>=COIN_SPIN_FRAMES&&animation_frame<COIN_TOSS_FRAMES) {
-		static const int8_t bounce[]={4,2,0,-1,0,0};
+		static const int8_t bounce[]={3,1,0,0};
 		y+=bounce[animation_frame-COIN_SPIN_FRAMES];
 	}
-	paper_panel(62,26,196,156);
 	char heading[32];
 	unsigned number=(unsigned)(g_coin.number+(g_coin.ready?1:0));
 	if(g_coin.total>1)snprintf(heading,sizeof(heading),"Coin %u of %d",number?number:1,g_coin.total);
 	else copy_str(heading,sizeof(heading),"Coin toss");
-	body(160-body_width(heading)/2,36,C_INK,heading,184);
+	int history=g_coin.total>g_coin.n?g_coin.total:g_coin.n;
+	if(history>12)history=12;
+	int panel_width=history*11+16,heading_width=body_width(heading);
+	if(panel_width<104)panel_width=104;
+	if(panel_width<heading_width+16)panel_width=heading_width+16;
+	/* Keep the whole flight and history inside an opaque, stable rectangle.
+	 * It replaces every pixel touched by the previous animation frame. */
+	paper_panel(160-panel_width/2,42,panel_width,128);
+	body(160-heading_width/2,49,C_INK,heading,panel_width-16);
 	fill(145,137,30,2,C_PAPERSHADE);fill(150,139,20,1,C_PAPERSHADE);
 	draw_coin_art(160,y,width,48,heads);
 	if(g_coin.ready) {
@@ -1390,8 +1412,8 @@ static void draw_coin_panel(int animation_frame)
 	for(int i=0;i<shown;i++) {
 		int x=160-shown*11/2+i*11;
 		bool result=g_coin.res[start+i]!=0;
-		fill(x,166,9,9,result?C_HI:C_PANELLIGHT);rect(x,166,9,9,C_EDGE);
-		print(x+1,167,C_INK,result?"H":"T");
+		fill(x,159,9,9,result?C_HI:C_PANELLIGHT);rect(x,159,9,9,C_EDGE);
+		print(x+1,160,C_INK,result?"H":"T");
 	}
 }
 
@@ -1414,6 +1436,36 @@ static bool coin_fast_forward(int ports)
 	return false;
 }
 
+#ifdef TCGN64_ADVENTURE
+static unsigned coin_board_phase(void)
+{
+	/* These are the only board decorations advanced by end_frame while the
+	 * synchronous coin event owns the UI. Rebuild when their visible state
+	 * changes, including the frame that clears an expired damage flash. */
+	unsigned phase=(g_dmg.timer?1u:0u)|(g_denied?2u:0u)|((unsigned)g_thinking<<8);
+	if(g_thinking&&((g_frame/16)&1))phase|=4;
+	if(g_save_ok&&save_store_pending())phase|=8|((g_frame/8)&1?16:0);
+	return phase;
+}
+#endif
+
+static bool begin_coin_animation_frame(int frame,unsigned *previous_board_phase)
+{
+#ifdef TCGN64_ADVENTURE
+	/* This event owns one fenced canvas. Keep its cards and text until a
+	 * timed decoration changes, then repaint the complete board once. */
+	unsigned board_phase=coin_board_phase();
+	bool redraw=!frame||board_phase!=*previous_board_phase;
+	begin_frame_canvas(redraw);
+	if(redraw){draw_board(0,-1);draw_textbox();}
+	*previous_board_phase=board_phase;
+	return redraw;
+#else
+	/* The standalone frontend draws directly into rotating displays. */
+	begin_frame();draw_board(0,-1);draw_textbox();return true;
+#endif
+}
+
 static void animate_coin(void)
 {
 	if(wAnimationsDisabled)return;
@@ -1422,8 +1474,10 @@ static void animate_coin(void)
 	adventure_audio_event(1,SFX_COIN_TOSS);
 #endif
 	int ports=ports_for(g_coin.owner);
+	unsigned previous_board_phase=~0u;
 	for(int frame=0;frame<COIN_TOSS_FRAMES;frame++) {
-		begin_frame();draw_board(0,-1);draw_textbox();draw_coin_panel(frame);end_frame_poll();
+		begin_coin_animation_frame(frame,&previous_board_phase);
+		draw_coin_panel(frame);end_frame_poll();
 		if(coin_fast_forward(ports))break;
 	}
 }
@@ -1823,9 +1877,9 @@ static void card_back(int x,int y,int width,int height)
 {
 	fill(x+2,y+2,width,height,C_PANELSHADE);
 	const uint16_t *source;int sw,sh;
-	/* Both display modes receive a direct reduction of the published back.
-	 * The small plaque keeps its own filtered LOD instead of losing the logo
-	 * to a second nearest-neighbor reduction of the Prize image. */
+	/* Each size has its own reduced color master. High-resolution variants
+	 * expand that same master, matching the portraits' visible texel scale.
+	 * The small plaque retains its separately filtered logo. */
 	if(width<=24) {
 		source=ui_high_res()?card_back_small_hi:card_back_small;
 		sw=ui_high_res()?CARD_BACK_SMALL_HI_W:CARD_BACK_SMALL_W;

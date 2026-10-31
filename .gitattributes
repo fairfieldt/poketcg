@@ -40,3 +40,6 @@
 *.1bpp binary diff=hex
 *.lz binary diff=hex
 *.bgmap binary diff=hex
+
+# Keep pinned upstream SDK formatting so its source diff stays reviewable.
+port/frontends/n64/adventure/vendor/libdragon-audio/* whitespace=-blank-at-eol,-blank-at-eof

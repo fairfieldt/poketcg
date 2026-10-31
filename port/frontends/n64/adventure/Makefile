@@ -23,7 +23,7 @@ ENGINE_SOURCES := $(wildcard $(PORT)/src/*.c $(PORT)/src/gen/*.c $(PORT)/src/eff
 ENGINE_OBJECTS := $(ENGINE_SOURCES:$(PORT)/src/%.c=$(BUILD_DIR)/engine/%.o)
 GAME_SOURCES := $(wildcard $(PORT)/gameplay/*.c $(PORT)/gameplay/gen/*.c $(PORT)/overworld/*.c $(PORT)/overworld/gen/*.c)
 GAME_OBJECTS := $(GAME_SOURCES:$(PORT)/%.c=$(BUILD_DIR)/game/%.o)
-FRONT_OBJECTS := $(addprefix $(BUILD_DIR)/,main.o menus.o profiles.o extra_ui.o intro.o naming.o presentation.o dialogue.o audio.o scene.o video.o save_sram.o duel_frontend.o)
+FRONT_OBJECTS := $(addprefix $(BUILD_DIR)/,main.o menus.o profiles.o extra_ui.o intro.o naming.o presentation.o dialogue.o audio.o wav64_vadpcm_fixed.o scene.o video.o save_sram.o duel_frontend.o)
 ifneq ($(DIAGNOSTIC),0)
 FRONT_OBJECTS += $(BUILD_DIR)/mips_story.o $(BUILD_DIR)/cinematic.o
 endif
@@ -35,6 +35,9 @@ FRONT_OBJECTS += $(BUILD_DIR)/leads_preview.o
 endif
 ifeq ($(DIAGNOSTIC),12)
 FRONT_OBJECTS += $(BUILD_DIR)/camera_preview.o
+endif
+ifeq ($(DIAGNOSTIC),17)
+FRONT_OBJECTS += $(BUILD_DIR)/audio_reward.o
 endif
 ifeq ($(DIAGNOSTIC),8)
 FRONT_OBJECTS += $(BUILD_DIR)/face_preview.o
@@ -103,6 +106,12 @@ $(BUILD_DIR)/leads_preview.o: tests/leads_preview.c
 $(BUILD_DIR)/camera_preview.o: tests/camera_preview.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+$(BUILD_DIR)/audio_reward.o: tests/audio_reward.c
+	@mkdir -p $(dir $@)
+	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+$(BUILD_DIR)/wav64_vadpcm_fixed.o: vendor/libdragon-audio/wav64_vadpcm.c
+	@mkdir -p $(dir $@)
+	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 $(BUILD_DIR)/visual_sweep.o: tests/visual_sweep.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -MMD -c $< -o $@
@@ -142,6 +151,9 @@ review-diagnostic:
 	$(MAKE) BUILD_DIR=build/review ROM=poketcg-review DIAGNOSTIC=3
 .PHONY: test validate visual-diagnostic expansion
 test:
+	@mkdir -p $(BUILD_DIR)/host
+	$(HOST_CC) -std=c11 -Wall -Wextra -Werror tests/frame_rate.c -o $(BUILD_DIR)/host/test_frame_rate
+	./$(BUILD_DIR)/host/test_frame_rate
 	$(MAKE) -C $(PORT) practicecheck
 	$(MAKE) -C $(PORT)/gameplay test
 	$(MAKE) -C $(PORT)/overworld test
