@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_smile"
+    "fc_e7ad63_mark"
   ],
   "actors": [
     {
@@ -66,13 +66,13 @@
     "solid_material": "mark \u00b7 skin",
     "faces": [
       {
-        "texture": "fc_e7ad63_smile",
+        "texture": "fc_e7ad63_mark",
         "background_rgb8": [
           231,
           173,
           99
         ],
-        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
+        "feature_sha256": "043e3848bef0a4e1accd81f06da9e9be25e59353bd44ef2210a6655b6bcb15de",
         "colorspace": "Non-Color",
         "directional_shade": true
       }

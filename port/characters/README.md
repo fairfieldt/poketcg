@@ -34,13 +34,18 @@ materials. The native assets and ROM do not require Blender or Fast64.
   numbers, with no exported hidden scalp vertices.
   [Cap validation](review/cap_validation.json) records this camera-independent
   exterior proof for all five capped families.
-- **Materials:** facial styles reuse textures; the cast needs 11 textures, all
+- **Materials:** facial styles reuse textures; the cast needs 12 textures, all
   32×32 RGBA16. Opaque facial backgrounds use the same RGBA16-safe pigment as
   each character's solid head, ears, neck and limbs. Eye whites, pupils, glasses
   and mouths retain their painted colors. Faces and solids receive the same
   native directional lighting; palette images use Non-Color input in Blender
   so its preview agrees with the solid Fast64 material. UVs, the coordinate
   system and five rigid animation groups match the existing libdragon renderer.
+- **Story leads:** Mark, Ronald, Dr. Mason and Imakuni have distinct original
+  facial paint while retaining their geometry and rig. Mark has a separate face
+  style rather than changing every smiling NPC. [Lead-face comparison and
+  preservation checks](review/distinctive-leads/README.md) distinguish texture
+  inspection and Blender previews from native gameplay captures.
 - **Palettes:** Matthew, Robert/Jonathan/Lad 2, and Amanda are material variants
   of the Mania, Boy and Swimmer families respectively. No second authored mesh
   or `.blend` file is created for them.

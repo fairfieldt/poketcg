@@ -36,7 +36,7 @@ DESIGNS = {
  'pappy':dict(body='elder',hair='bald',face='old',costume='vest',detail='bald crown, side tufts, old brows and purple sweater vest'),
  'butch':dict(body='stout',hair='short',face='mature',costume='shirt',detail='wide head and thick short dark hair, yellow shirt'),
  'granny':dict(body='elder_female',hair='bun',face='old_glasses',costume='cardigan',detail='silver braided bun, small spectacles, yellow cardigan and long skirt'),
- 'mark':dict(body='youth',hair='cap',face='smile',costume='trainer',detail='red sideways trainer cap, red vest, blue trousers and backpack'),
+ 'mark':dict(body='youth',hair='cap',face='mark',costume='trainer',detail='red sideways trainer cap, red vest, blue trousers and backpack'),
  'torch':dict(body='prop',detail='faceted blue outer flame with pale inner flame and dark brazier'),
  'legendary_card':dict(body='prop',detail='four reusable rounded card quadrants and two faceted pink star sparks'),
 }

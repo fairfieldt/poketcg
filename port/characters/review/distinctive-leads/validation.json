@@ -1,0 +1,131 @@
+{
+  "passed": true,
+  "scope": "Four canonical lead families only; original authored face paint; no model or camera edits",
+  "models": [
+    {
+      "slug": "mark",
+      "runtime_model": 1,
+      "triangles": 906,
+      "batches": 6,
+      "all_mesh_records_unchanged": true,
+      "geometry_uv_rig_sha256": "c81009dcd91604cbdb39271a464c0696fa9c6bf1ea34462aa194974394f35e88",
+      "texture_before": "fc_e7ad63_smile",
+      "texture_after": "fc_e7ad63_mark",
+      "paint_sha256": "c6e89890f40071f291553d715743ad0aa45ae60bcef0d3735a592009b5ed804c",
+      "skin_rgb8": [
+        231,
+        173,
+        99
+      ],
+      "aliases": [
+        "NPC_6E",
+        "NPC_6F",
+        "NPC_PLAYER_CREDITS"
+      ],
+      "world_textures_before": [
+        "t10c908d3d5164363"
+      ],
+      "world_textures_after": [
+        "t7967c400e0bd639a"
+      ]
+    },
+    {
+      "slug": "ronald",
+      "runtime_model": 2,
+      "triangles": 728,
+      "batches": 6,
+      "all_mesh_records_unchanged": true,
+      "geometry_uv_rig_sha256": "299d5233c176c64ad39e40df8c05fe2bd2e01f23604076f8f6786e81416decac",
+      "texture_before": "fc_e7ad63_ronald",
+      "texture_after": "fc_e7ad63_ronald",
+      "paint_sha256": "df21c870618ddd7cfaea90a9f2b8011fe7da53ec5540f6a9d5caaaa2ed5fe0a9",
+      "skin_rgb8": [
+        231,
+        173,
+        99
+      ],
+      "aliases": [
+        "NPC_RONALD1",
+        "NPC_RONALD2",
+        "NPC_RONALD3"
+      ],
+      "world_textures_before": [
+        "tafd4af8dd8e57b95"
+      ],
+      "world_textures_after": [
+        "tccf0e2101d5829c2"
+      ]
+    },
+    {
+      "slug": "dr_mason",
+      "runtime_model": 3,
+      "triangles": 718,
+      "batches": 6,
+      "all_mesh_records_unchanged": true,
+      "geometry_uv_rig_sha256": "8af9ac097902061f0fd765756f54e027eea7f1f5b1b725205d0ef9d7b2372a25",
+      "texture_before": "fc_e7ad63_mason",
+      "texture_after": "fc_e7ad63_mason",
+      "paint_sha256": "8ba99dbbc3eaada387bb5159926024247be8302e7c6c099289e2a5793a0e5ce7",
+      "skin_rgb8": [
+        231,
+        173,
+        99
+      ],
+      "aliases": [
+        "NPC_DRMASON",
+        "NPC_05",
+        "NPC_06"
+      ],
+      "world_textures_before": [
+        "tc1137760b72f27ca"
+      ],
+      "world_textures_after": [
+        "tf1bf6acaf061be1c"
+      ]
+    },
+    {
+      "slug": "imakuni",
+      "runtime_model": 5,
+      "triangles": 518,
+      "batches": 6,
+      "all_mesh_records_unchanged": true,
+      "geometry_uv_rig_sha256": "56aa8fba309f463f1d226290b95ad9f6e99c87302b5f749b506f8ab928f62507",
+      "texture_before": "fc_e7ad63_imakuni",
+      "texture_after": "fc_e7ad63_imakuni",
+      "paint_sha256": "5b86e7d1a0b51cde9d002425a0b1eb7d2379d3cf6c5958612def58b37eb95105",
+      "skin_rgb8": [
+        231,
+        173,
+        99
+      ],
+      "aliases": [
+        "NPC_IMAKUNI"
+      ],
+      "world_textures_before": [
+        "t3bcdeca17a85e16d"
+      ],
+      "world_textures_after": [
+        "tf23dbd1f14923587"
+      ]
+    }
+  ],
+  "other_family_files_byte_identical": 230,
+  "other_runtime_records_unchanged": 45,
+  "all_aliases_unchanged": true,
+  "opaque_rgba16_skin": [
+    231,
+    173,
+    99
+  ],
+  "textures": [
+    32,
+    32
+  ],
+  "skin_check_max_adjacent_difference": 1,
+  "geometry_limit": {
+    "triangles": 906,
+    "batches": 6
+  },
+  "before_snapshot": "port/characters/build/distinctive-before (ignored)",
+  "image_notes": "Paint comparison is source texels enlarged without filtering; Blender comparison is asset inspection, not native emulator output."
+}

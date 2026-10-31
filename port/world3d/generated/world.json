@@ -20140,7 +20140,7 @@
       "triangles": 718,
       "batches": 6,
       "textures": [
-        "tc1137760b72f27ca"
+        "tf1bf6acaf061be1c"
       ],
       "props": [],
       "character": true,
@@ -20148,7 +20148,7 @@
       "model": 9,
       "source_model": 3,
       "source": "port/characters/assets/models/dr_mason",
-      "source_sha256": "5077808f4be60d4c4bd75f50bc49c7dde18f595b4aa658784d4598f9c8e6f62c",
+      "source_sha256": "8f561d567a8497b1e0d0d231622639bf101773ed437f513a4178a5a6c7f29204",
       "family": "dr_mason",
       "kind": "canonical",
       "selector": null,
@@ -20169,7 +20169,7 @@
       "triangles": 728,
       "batches": 6,
       "textures": [
-        "tafd4af8dd8e57b95"
+        "tccf0e2101d5829c2"
       ],
       "props": [],
       "character": true,
@@ -20177,7 +20177,7 @@
       "model": 8,
       "source_model": 2,
       "source": "port/characters/assets/models/ronald",
-      "source_sha256": "c6e162548d57d4b66e0b3de3f193c3537a2427643f6e8b7875473b9a5b2ec3db",
+      "source_sha256": "2ed154adb9d0047da6118ec7a7aa68e1adfba928a6ffe7405d4673d27c36bf7b",
       "family": "ronald",
       "kind": "canonical",
       "selector": null,
@@ -20223,7 +20223,7 @@
       "triangles": 518,
       "batches": 6,
       "textures": [
-        "t3bcdeca17a85e16d"
+        "tf23dbd1f14923587"
       ],
       "props": [],
       "character": true,
@@ -20231,7 +20231,7 @@
       "model": 11,
       "source_model": 5,
       "source": "port/characters/assets/models/imakuni",
-      "source_sha256": "694d29a2480f7dd4e465259b6c50818d030b86f322cc2e36ff63ce7e7fcca146",
+      "source_sha256": "cd644406a3ef43a87bbfd1a12dc21314db22b04b19f0c9feaf70ca61aeb94b9a",
       "family": "imakuni",
       "kind": "canonical",
       "selector": null,
@@ -21210,7 +21210,7 @@
       "triangles": 906,
       "batches": 6,
       "textures": [
-        "t10c908d3d5164363"
+        "t7967c400e0bd639a"
       ],
       "props": [],
       "character": true,
@@ -21218,7 +21218,7 @@
       "model": 7,
       "source_model": 1,
       "source": "port/characters/assets/models/mark",
-      "source_sha256": "3c62ebfe9323ab9ebc4e0a03b9b0e87d46a1a3c7e823af2e6f14a00e68c45e0e",
+      "source_sha256": "4c318f7d3b5b8e76ea13485ea5e6595027b887e73e14872d0324bf28892f823f",
       "family": "mark",
       "kind": "canonical",
       "selector": null,
@@ -21529,7 +21529,7 @@
     "actors": "actors.l64",
     "textures": "content-addressed PNG files, global deduplication"
   },
-  "texture_count": 508,
+  "texture_count": 509,
   "individual_characters": [
     {
       "file": "maps/actor_mark.l64",
@@ -21537,7 +21537,7 @@
       "triangles": 906,
       "batches": 6,
       "textures": [
-        "t10c908d3d5164363"
+        "t7967c400e0bd639a"
       ],
       "props": [],
       "character": true,
@@ -21545,7 +21545,7 @@
       "model": 7,
       "source_model": 1,
       "source": "port/characters/assets/models/mark",
-      "source_sha256": "3c62ebfe9323ab9ebc4e0a03b9b0e87d46a1a3c7e823af2e6f14a00e68c45e0e",
+      "source_sha256": "4c318f7d3b5b8e76ea13485ea5e6595027b887e73e14872d0324bf28892f823f",
       "family": "mark",
       "kind": "canonical",
       "selector": null,
@@ -21566,7 +21566,7 @@
       "triangles": 728,
       "batches": 6,
       "textures": [
-        "tafd4af8dd8e57b95"
+        "tccf0e2101d5829c2"
       ],
       "props": [],
       "character": true,
@@ -21574,7 +21574,7 @@
       "model": 8,
       "source_model": 2,
       "source": "port/characters/assets/models/ronald",
-      "source_sha256": "c6e162548d57d4b66e0b3de3f193c3537a2427643f6e8b7875473b9a5b2ec3db",
+      "source_sha256": "2ed154adb9d0047da6118ec7a7aa68e1adfba928a6ffe7405d4673d27c36bf7b",
       "family": "ronald",
       "kind": "canonical",
       "selector": null,
@@ -21595,7 +21595,7 @@
       "triangles": 718,
       "batches": 6,
       "textures": [
-        "tc1137760b72f27ca"
+        "tf1bf6acaf061be1c"
       ],
       "props": [],
       "character": true,
@@ -21603,7 +21603,7 @@
       "model": 9,
       "source_model": 3,
       "source": "port/characters/assets/models/dr_mason",
-      "source_sha256": "5077808f4be60d4c4bd75f50bc49c7dde18f595b4aa658784d4598f9c8e6f62c",
+      "source_sha256": "8f561d567a8497b1e0d0d231622639bf101773ed437f513a4178a5a6c7f29204",
       "family": "dr_mason",
       "kind": "canonical",
       "selector": null,
@@ -21649,7 +21649,7 @@
       "triangles": 518,
       "batches": 6,
       "textures": [
-        "t3bcdeca17a85e16d"
+        "tf23dbd1f14923587"
       ],
       "props": [],
       "character": true,
@@ -21657,7 +21657,7 @@
       "model": 11,
       "source_model": 5,
       "source": "port/characters/assets/models/imakuni",
-      "source_sha256": "694d29a2480f7dd4e465259b6c50818d030b86f322cc2e36ff63ce7e7fcca146",
+      "source_sha256": "cd644406a3ef43a87bbfd1a12dc21314db22b04b19f0c9feaf70ca61aeb94b9a",
       "family": "imakuni",
       "kind": "canonical",
       "selector": null,

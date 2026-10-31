@@ -26,6 +26,7 @@ import export_scene
 import render_maps
 from skin import prepare_skin
 from exterior import exterior_sources
+from lead_faces import paint as paint_lead_face
 
 slug=sys.argv[sys.argv.index('--')+1]
 catalog=json.loads((ROOT/'catalog.json').read_text())
@@ -135,6 +136,13 @@ def plane(name,verts,mat):return mesh(name,(verts,[tuple(range(len(verts)))]),ma
 
 
 def face(style):
+    lead_pixels=paint_lead_face(slug)
+    if lead_pixels is not None:
+        texture_name='face_'+style
+        path=ROOT/'assets/textures'/(texture_name+'.png')
+        write_png(path,32,32,[bytes(c for p in row for c in p) for row in lead_pixels])
+        image=bpy.data.images.load(str(path),check_existing=False);image.name=texture_name;image.pack()
+        return material('face',(1,1,1),image)
     pixels=[[(227,172,100,255) for x in range(32)] for y in range(32)]
     def rect(x0,y0,x1,y1,c):
         for y in range(max(0,y0),min(32,y1)):
@@ -329,7 +337,22 @@ if slug in ('dr_mason','ronald'):
             obj['model']=model;sources.append(obj)
     source_manifest=json.loads((original/'scene.json').read_text())
     textures=source_manifest['textures']
-    for t in textures:shutil.copy2(original/'textures'/(t+'.png'),ROOT/'assets/textures'/(t+'.png'))
+    for t in textures:
+        target=ROOT/'assets/textures'/(t+'.png')
+        shutil.copy2(original/'textures'/(t+'.png'),target)
+        if 'face' in t:
+            pixels=paint_lead_face(slug)
+            write_png(target,32,32,[bytes(c for p in row for c in p) for row in pixels])
+            image=bpy.data.images.load(str(target),check_existing=False);image.name=t;image.pack()
+            # The imported meshes retain their exact UVs and exterior recipe.
+            # Only the canonical character's copied facial image is replaced.
+            for obj in sources:
+                for slot in obj.material_slots:
+                    mat=slot.material
+                    if mat and int(mat.get('texture_id',-1))==textures.index(t):
+                        mat.f3d_mat.tex0.tex=image
+                        mat['role']='face'
+                        with bpy.context.temp_override(material=mat):update_all_node_values(mat,bpy.context)
 else:
     if spec['body']=='prop':props()
     else:humanoid()
