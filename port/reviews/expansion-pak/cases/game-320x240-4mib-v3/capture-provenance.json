@@ -1,0 +1,788 @@
+{
+  "status": "verified-expansion-pak-trial-captures",
+  "rom": {
+    "file": "port/frontends/n64/adventure/poketcg-expansion-review.z64",
+    "sha256": "6229dc981a571c9ea070aad7f4c104384a635c6d13d0af280a39cb97599e2caa",
+    "diagnostic": 10
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 6,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": "full observed callback dimensions",
+      "stage_pattern": "^(?:VIDEO REVIEW|DUEL UI) ([A-Za-z0-9_-]+) BEGIN\\r?$",
+      "require_native_frame": true,
+      "native_lead_frames": 6
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 4,
+    "private_settings": true,
+    "ExpansionPak": false
+  },
+  "runtime_video_modes": [
+    {
+      "width": 320,
+      "height": 240,
+      "ram": 4194304,
+      "highres": 0
+    }
+  ],
+  "raw_format": {
+    "pixel_order": "BGRA little endian; padding excluded from RGB proof",
+    "dimensions": "Recorded per image from Program::video registers",
+    "display_aspect": "4:3"
+  },
+  "finished": {
+    "callbacks": 4361,
+    "captures": 19,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "overworld.png",
+      "stage": "overworld",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "5f081536248210a6bbd8f75fb6ff68ed1018532cb4d52be9ddd20fb171571ad1",
+      "callback_sha256": "c79dcaaa32412965f426e10c9ff02c9419788d9a0a7e7d7eef62adbac7d27087",
+      "rgb_sha256": "de41fd1554b9de119a535fee748d9f43f948f8143ca5dbe2d0fe9a7cbb82a3d6",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 75,
+      "stage_gate": {
+        "stage_started_callback": 8,
+        "native_frame": "overworld",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 70,
+        "native_ready_valid_frames": 26,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": null
+      }
+    },
+    {
+      "file": "lab.png",
+      "stage": "lab",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "c537290f6c6f9813d95a3180f503e3c8e4f47dae8f23254df513f85129489607",
+      "callback_sha256": "45fcff7ac9a95c3146daaead0886b3aa21c0024faf61c0b0a48af6dcf0c47424",
+      "rgb_sha256": "190a793f33833fbb9ef30654189907b3c2bfcd02e72f6a811a29f9dd2d37349e",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 316,
+      "stage_gate": {
+        "stage_started_callback": 264,
+        "native_frame": "lab",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 311,
+        "native_ready_valid_frames": 267,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "a42209ad31b281c5fea1d0b82a6458cd0d9dcc55e4810cf418b8906e0c785aa9"
+      }
+    },
+    {
+      "file": "lightning.png",
+      "stage": "lightning",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "4942c6ae35f93f63b4741ff4c867581fde9acfb37fbcb4b7eabaa1271cbac365",
+      "callback_sha256": "13ddd5bb7b8d1ad33a0d0672c476ba9b76663ea5ed1d0531705a7f56da2a5e5f",
+      "rgb_sha256": "d38a7a5963bfa3ae68393c1f8f566b727e28aa8a6eefe3709b94121835aca76a",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 538,
+      "stage_gate": {
+        "stage_started_callback": 495,
+        "native_frame": "lightning",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 533,
+        "native_ready_valid_frames": 489,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "491886d7b2190cf6996973ed95ff1f078f7883f89a987e75fc375dfe82ba3050"
+      }
+    },
+    {
+      "file": "dome.png",
+      "stage": "dome",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "aa393ffe80148f7f4a37b6b93ebf6d18aee06b8a3a1c3574f4708de95516fc3e",
+      "callback_sha256": "9f2c6431d8fceccc557ce7514319f9635a8274852a7e05ffd82756f361e03757",
+      "rgb_sha256": "815ae6e5997e318bb066517d1741d1996c5aab084ba79a29e42f0bd82c51c58b",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 738,
+      "stage_gate": {
+        "stage_started_callback": 674,
+        "native_frame": "dome",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 733,
+        "native_ready_valid_frames": 689,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "455f253f4a989a8df8e9d508c2fa3e46f6ea1bd1f5875fc0400b946cced61cbf"
+      }
+    },
+    {
+      "file": "naming.png",
+      "stage": "naming",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "d1e27b83ff1663bf71c132518c71fac65bab0c413b897b73b0fdbf326836c8ef",
+      "callback_sha256": "d21b14ff73d48b0bcc0dba9f19a50dfc5f2a0bc991786bef2c97a837976821fc",
+      "rgb_sha256": "57a1ac3c7d70a3da373b21591b86235cfac2d3c4fe8ed57395dbafac61228de7",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 944,
+      "stage_gate": {
+        "stage_started_callback": 912,
+        "native_frame": "naming",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 939,
+        "native_ready_valid_frames": 895,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "939bf9fe573abf2922ebfa1348ba32971214fc9e6e573302c55a08e7cf306ce5"
+      }
+    },
+    {
+      "file": "dialogue.png",
+      "stage": "dialogue",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "8551babdb480d06c9cb63eeab44d680ca131c68308736e0b14fdb6cb33de76c8",
+      "callback_sha256": "735a2f582ff1ea0995e90565f88dd0379932557af9ff60c54dd7cad4bf5f09d9",
+      "rgb_sha256": "9e0e506512bbd7a6fbc110716c6b3caef21fa94586ca5949df08045d4cbdca47",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 1127,
+      "stage_gate": {
+        "stage_started_callback": 1101,
+        "native_frame": "dialogue",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 1122,
+        "native_ready_valid_frames": 1078,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "00240d772cffac3ee7f64e5f2a670761d0afc9c3eb8d5316dd24501f7ee7c581"
+      }
+    },
+    {
+      "file": "board.png",
+      "stage": "board",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "f6083509b8b9d955456246ded94fead238ac8f83a591f1c1a722ac04db0683f1",
+      "callback_sha256": "d4a6723a4e32780cee23631e0affab8c30aa6d9aae971f254e9169c7ff509812",
+      "rgb_sha256": "bc493b381d106f2b635c3adfbda1c530d34c40ac164465546c22e9d6b19d1eca",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 2067,
+      "stage_gate": {
+        "stage_started_callback": 2029,
+        "native_frame": "duel-ui-board",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 2062,
+        "native_ready_valid_frames": 2018,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "ddf595402583830340e7ea175472ac044fd0e6772b2e010c60c54d78c2855995"
+      }
+    },
+    {
+      "file": "energy-overflow.png",
+      "stage": "energy-overflow",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "6a686cfb0e1114f25a00507ca74890617cbf730fae2b3125ee1304e1f7f249c7",
+      "callback_sha256": "e582a164133d10dda0233a1eeb430cea8fe5e08c26055f1e524e5805ccff4285",
+      "rgb_sha256": "4c0b8bc228ae129c81d87ee1e8350a6d9e9cb3ea0bbca52b82e7c9f61e668951",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 2288,
+      "stage_gate": {
+        "stage_started_callback": 2250,
+        "native_frame": "duel-ui-energy-overflow",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 2283,
+        "native_ready_valid_frames": 2239,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "34055947a120b0f82dcd4679d757207670780d039d8230f6cfdb4c0eafadc25b"
+      }
+    },
+    {
+      "file": "actions.png",
+      "stage": "actions",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "8f6f361e56bfb834baf2b02352db83063210e165d29522955302e24e01e759a1",
+      "callback_sha256": "ab534c694ce3664b0a83735726783d6e2f72539d84279ecbc03edfcc9bb27630",
+      "rgb_sha256": "7f07da0a3aad502d7f65185f401dd08933271af4aa00da01231e56088b2419bc",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 2511,
+      "stage_gate": {
+        "stage_started_callback": 2471,
+        "native_frame": "duel-ui-actions",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 2506,
+        "native_ready_valid_frames": 2462,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "68a2a4ea1640d924dc1e2cc9d03d63aff975f251cc0959b78043731a6350c72d"
+      }
+    },
+    {
+      "file": "hand-pokemon.png",
+      "stage": "hand-pokemon",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "c84db1751ac911df9ff31a5f9ddfd3ae7483d136fabae64be47ab63c0ced025a",
+      "callback_sha256": "a4c9d96c285b3cda58d03c48665d3f47901909f1304dbab6873cec6a6449cd1e",
+      "rgb_sha256": "33a6179ac6eb394ee036e5fa7b226557825d3539da458d4427077b16f1e1ca73",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 2724,
+      "stage_gate": {
+        "stage_started_callback": 2699,
+        "native_frame": "duel-ui-hand-pokemon",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 2719,
+        "native_ready_valid_frames": 2675,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "aff052b003a5adbc39c30498cd27b5ed0ee80acb2e8f93adbbea528b7f567011"
+      }
+    },
+    {
+      "file": "hand-trainer.png",
+      "stage": "hand-trainer",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "4a12444d96747effd80cd5384b66a8067744b6fe90602cb4e210b077def8e4af",
+      "callback_sha256": "ea2feadfaf1eb2f5ed6b60aaff890bfee7c71300982f19fbfb29a7fd381cd6ea",
+      "rgb_sha256": "349afbd69054423a2882342cb83776ccd2f15ba6e43d0a92237fe2ed0327b8e8",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 2879,
+      "stage_gate": {
+        "stage_started_callback": 2854,
+        "native_frame": "duel-ui-hand-trainer",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 2874,
+        "native_ready_valid_frames": 2830,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "bce2cea902b6d9b023b2cd207a13812548f75443a5c1187a3fa5d46960368142"
+      }
+    },
+    {
+      "file": "chosen-card.png",
+      "stage": "chosen-card",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "5d3f04dcab58e08df763ebd14d28af0a86c3ee6cf83c77e38d18da379505fb13",
+      "callback_sha256": "f73adf2697519bc3b5db4a2add2df825022f36c644b70fe0804660b1eb7c41b9",
+      "rgb_sha256": "75d1814604384e26a8eacb8b85bd3259257d024240251a6fc86d7ebc3bb1afbb",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 3026,
+      "stage_gate": {
+        "stage_started_callback": 3008,
+        "native_frame": "duel-ui-chosen-card",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 3021,
+        "native_ready_valid_frames": 2977,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "13bdc9cef6e0c5c8103ed813f6b34abfaf1077883fbb6fa344443acb9a356118"
+      }
+    },
+    {
+      "file": "pokemon-rules-1.png",
+      "stage": "pokemon-rules-1",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "7371a3d9a0160ce58cd17149eab3df33876427088a374851cef1cd0315ceaf0d",
+      "callback_sha256": "7f7c40f0fa27e3e2d36eb1f1d98c6ebb600ab0a1f4705ab924bde51ff730ec3a",
+      "rgb_sha256": "8e9f5afe60a181ba381b90b304e9e430232009ba731f9a33e9c41b44eb6f5cd1",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 3150,
+      "stage_gate": {
+        "stage_started_callback": 3129,
+        "native_frame": "duel-ui-pokemon-rules-1",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 3145,
+        "native_ready_valid_frames": 3101,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "730d16e468ad2dfd2a3e5b7f06152c3716ef1fe369d43fec1e13b146b8c2488d"
+      }
+    },
+    {
+      "file": "pokemon-rules-2.png",
+      "stage": "pokemon-rules-2",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "8c1e1fb95cbfcbcd7a4d06edd9fb46e53702eecaf7d1c32ad1eba73581ee3465",
+      "callback_sha256": "585dcc2f185215a9e998bcdcc5bfcd17a66e3e54ca948f2bd3fa8c5b2b25c25b",
+      "rgb_sha256": "99f2cff74756d514776c62182bbbb2fe25ca0e2ef3985f81959f68587e64a416",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 3288,
+      "stage_gate": {
+        "stage_started_callback": 3267,
+        "native_frame": "duel-ui-pokemon-rules-2",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 3283,
+        "native_ready_valid_frames": 3239,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "c5b6b0d95aa84ccd1c5574245bcc3020dff52280e01322a6fb394887c5dddefb"
+      }
+    },
+    {
+      "file": "pokemon-rules-3.png",
+      "stage": "pokemon-rules-3",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "35a31985b210b8cf616325d53206bd0d028c003e67c5650c73538ca9d9544fdf",
+      "callback_sha256": "111fa8d2c2687a1ecdb1f1200d629172e14785cba4719f70b68ca9693fc2d8a9",
+      "rgb_sha256": "682d7d6d2a94633b6309f2647325cbe80d89c181fdafe24f6063c9d9b6661c47",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 3420,
+      "stage_gate": {
+        "stage_started_callback": 3404,
+        "native_frame": "duel-ui-pokemon-rules-3",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 3415,
+        "native_ready_valid_frames": 3371,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "2c334aa71fff720ecca3d0774c2d88f8ae9e0104549d105efe8ee378dd65716a"
+      }
+    },
+    {
+      "file": "trainer-rules.png",
+      "stage": "trainer-rules",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "dc50cd201a8a19d8937756f718a3a92327b9ff77eeefaa9bed26528b4a9fec5a",
+      "callback_sha256": "175b6ac25ba019fee4e5671058c1b858bc508e82c3bdc47fbc5ecc470ae655f4",
+      "rgb_sha256": "a83062740aab3733d2b83c9d13c26ad6e8c2d3de246f3bbe1d7ba9b071103f4d",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 3535,
+      "stage_gate": {
+        "stage_started_callback": 3516,
+        "native_frame": "duel-ui-trainer-rules",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 3530,
+        "native_ready_valid_frames": 3486,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "c58410597bc8d1ebc1ad59f9d3e5e029afc2c452e7e3f28dcf416ec0ff608ff5"
+      }
+    },
+    {
+      "file": "prize.png",
+      "stage": "prize",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "6efbe396ffed97af80351dc232b610f3a51444290375f6cc79d044222e1e9d04",
+      "callback_sha256": "a33a65275e0a3d0e764bc9472828d3228fc52fc6fcd9a824c865875ed1740408",
+      "rgb_sha256": "be74211f9cdfb9b05ac4320c48a3ac43b5605d487e22e9bc9200a09a5888fe3c",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 3687,
+      "stage_gate": {
+        "stage_started_callback": 3644,
+        "native_frame": "duel-ui-prize",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 3682,
+        "native_ready_valid_frames": 3638,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "2beb917ca3a745877b39656e47d87f78565b7b0dc614c2fcba0482f69b5c27f4"
+      }
+    },
+    {
+      "file": "result.png",
+      "stage": "result",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "9fb7a52dfb93459344ff530f353ff424772b9f69f62af9ab588d17d144035282",
+      "callback_sha256": "99c6b271f55df4cb2269d9cbffe85fc8646854372d259610fcd0d934f4a7d482",
+      "rgb_sha256": "caa5341f0fb492f4f6e348dd8f1204a6da95bbe9cc048cce14347b76e743d21b",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 3929,
+      "stage_gate": {
+        "stage_started_callback": 3888,
+        "native_frame": "duel-ui-result",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 3924,
+        "native_ready_valid_frames": 3880,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "82ae12717b08749fb44e1131875b775847203bbca92bd49eb29712f401c31499"
+      }
+    },
+    {
+      "file": "start.png",
+      "stage": "start",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "c3f0f2cd7bfdc4f590c467cfdbf87936016a872ceeca253eb1f76fc2af7b57aa",
+      "callback_sha256": "29dc6793ee081dc93472a28d784d4d1816693e3895a1ed332f6195cb8a6a5ac5",
+      "rgb_sha256": "d92b154c5f725ef79480840e2cb5ce5dd39a784ea15250009c3e9470c07e70be",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 4164,
+      "stage_gate": {
+        "stage_started_callback": 4123,
+        "native_frame": "duel-ui-start",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 4159,
+        "native_ready_valid_frames": 4115,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "4d6cc7694de84f9a4ec87b4e043a761a7a2d12d6d37be3daa62ccac18ee24400"
+      }
+    }
+  ],
+  "native_frames": [
+    {
+      "file": "overworld.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "e615a63161fd638989254e662bba8c7ffcb0ea74236d6b5cc9551e591074e225",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "lab.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "6d191741762d093310721fe69681df6e8b94441e3440edce0518f29d7281d4d6",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "lightning.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "d47f573008b2edb6306a2050e1c2255a706c2d8aa920daf998aac384737edf7f",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "dome.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "e819e851e785820f2ef50475aa3159932084742e4f2c853071697a0fe85ad367",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "naming.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "a436598be81c6411fe2938de75938c7ea0cc5d4e26f5fcf9410dd7c050664071",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "dialogue.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "2968b69caf581bc0b8c78b8b3cf20e26d9e067747ae02c29ee01f069697335d2",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-board.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "65a782ffea3c27f2bdb51e7b1328856f2ecd3091b7b4f212b1ad6cc550c4fa7e",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-energy-overflow.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "1adca06c05d5239939adecbd596dc1404a657fd08412db9a8c052d7c91f8a7ef",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-actions.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "6167436c480d96d12be02b37ad8e8c10cdf16b94db8b2fffb0ed408089ff1a01",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-hand-pokemon.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "ec7ae88645703199e2137cbda7bd39ccf03a59b2df5a40f6488e71d20fe03800",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-hand-trainer.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "34c71d18252e7045c981ea87f87966a3fe50126a749ddff3bdd5835f6cffbb9a",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-chosen-card.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "b4f04324076ec235f5efe564f94bed5ecf9011f9cf0f0a06f6df39920c264379",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-pokemon-rules-1.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "a2c8b925339e63c19ae03b38f7a65c4852c8c243516b2a823991d9859fd29f66",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-pokemon-rules-2.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "2448a5f2804fa9ec6b44aaaf80b751a0c22e6c2c6a80c80106572fd3c9b0ba92",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-pokemon-rules-3.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "9fced53f2dea12e3548994dbb7697172c3edd0c07566c2f68868abc7e40e776b",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-trainer-rules.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "6d51cb9fe3a1422b3bdf8a9378240b2d54f02a39a732f99ae640ce2de7fc9899",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-prize.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "e6cbb8923c087a097e57de24b82fc7893f8399a71bfe5ed4fa37d351002094a8",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-result.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "7ba98e98ef999c56e1429a7a1709e45363602462bd8874684d28d08270eb8906",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "duel-ui-start.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "7759fa78b0d036a16c146e8084df60149235bfabd9e34619b4d23ee29408627c",
+      "exact_native_pixels": 76800
+    }
+  ],
+  "memory": [
+    "DUEL UI HEAP stage=board total=2831520 used=1442008 free=1389512",
+    "DUEL UI HEAP stage=energy-overflow total=2831520 used=1442008 free=1389512",
+    "DUEL UI HEAP stage=actions total=2831520 used=1442008 free=1389512",
+    "DUEL UI HEAP stage=hand-pokemon total=2831520 used=1442008 free=1389512",
+    "DUEL UI HEAP stage=hand-trainer total=2831520 used=1442008 free=1389512",
+    "DUEL UI HEAP stage=chosen-card total=2831520 used=1442008 free=1389512",
+    "DUEL UI HEAP stage=pokemon-rules-1 total=2831520 used=1442008 free=1389512",
+    "DUEL UI HEAP stage=pokemon-rules-2 total=2831520 used=1442008 free=1389512",
+    "DUEL UI HEAP stage=pokemon-rules-3 total=2831520 used=1442008 free=1389512",
+    "DUEL UI HEAP stage=trainer-rules total=2831520 used=1442008 free=1389512",
+    "DUEL UI HEAP stage=prize total=2831520 used=1442008 free=1389512",
+    "DUEL UI HEAP stage=result total=2831520 used=1442008 free=1389512",
+    "DUEL UI HEAP stage=start total=2831520 used=1442008 free=1389512"
+  ],
+  "source_logs": {
+    "path": "port/frontends/n64/adventure/build/expansion-pak/game-320x240-4mib-v3/lldb.log",
+    "sha256": "caff0ac061793d93a858e1a74c922b0e4bfbf125b1e413b2a8d6ec184e260eb7"
+  }
+}

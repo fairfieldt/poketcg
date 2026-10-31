@@ -1,0 +1,64 @@
+{
+  "purpose": "Controlled earlier face paint rendered through the new resolution/camera harness",
+  "asset_commit": "114f1eef",
+  "baseline_rom_sha256": "1811176f93cba70e44d66327617109e582617d272217ab2ea2e5e57a9eaec6d5",
+  "method": "Build DIAG11/HIGH_RES=1, restore only these four world meshes and their source textures from Git into the isolated filesystem, convert originals with mksprite RGBA16, then rebuild DFS/ROM. Current source and other families stay untouched.",
+  "restored_meshes": [
+    {
+      "slug": "mark",
+      "file": "port/world3d/generated/maps/actor_mark.l64",
+      "sha256": "6f9fc73f80c7a6c139de7becc6bbd0df31d35d277a2e3976116e7b37696b8496",
+      "textures": [
+        "t10c908d3d5164363"
+      ]
+    },
+    {
+      "slug": "ronald",
+      "file": "port/world3d/generated/maps/actor_ronald.l64",
+      "sha256": "25f17922002e30c4183bbbc3ed20227e86d4614b19ca88507df18c998f49a1e3",
+      "textures": [
+        "tafd4af8dd8e57b95"
+      ]
+    },
+    {
+      "slug": "dr_mason",
+      "file": "port/world3d/generated/maps/actor_dr_mason.l64",
+      "sha256": "7861e1808aa9aa401aaa52d35d1b9fa3e207b0f4d9f82bfaded8e9d7d2e69da6",
+      "textures": [
+        "tc1137760b72f27ca"
+      ]
+    },
+    {
+      "slug": "imakuni",
+      "file": "port/world3d/generated/maps/actor_imakuni.l64",
+      "sha256": "00442fcadf10e9ca69fd402af4156a9e6e1dd0d5e791b41a0941146a194aaf57",
+      "textures": [
+        "t3bcdeca17a85e16d"
+      ]
+    }
+  ],
+  "object_text_proof": [
+    {
+      "file": "leads_preview.o",
+      "executable_sections": 1,
+      "executable_bytes": 1984,
+      "all_sections_identical": true,
+      "section_name_length_bytes_sha256": "ab858f883a56c0e1fdbde51207b9d3bfb23ba48dc0f193cf99b03ee1d1ceef06"
+    },
+    {
+      "file": "scene.o",
+      "executable_sections": 7,
+      "executable_bytes": 4704,
+      "all_sections_identical": true,
+      "section_name_length_bytes_sha256": "9a4f0a5f06f9d44277b260b359ff1be6dcd2395ba48fd3555904fa9bcf8ddaf6"
+    },
+    {
+      "file": "main.o",
+      "executable_sections": 24,
+      "executable_bytes": 7360,
+      "all_sections_identical": true,
+      "section_name_length_bytes_sha256": "b0f429bd29475da5f90b7c26fad88db5496d746cd10ab84b5ae01cd81a2cb0b4"
+    }
+  ],
+  "note": "The later ROM additionally contains authentic 2D card-back data/code. That helper is not called by the lead comparison. Camera/harness, scene and main executable text are compared here."
+}

@@ -1,0 +1,478 @@
+{
+  "passed": true,
+  "source_commit": "30149082349e2bf91aa88b7d0e56762b33df3ae1",
+  "capture_cases": {
+    "game480": {
+      "source": "port/reviews/expansion-pak/cases/game-480x360-8mib-v3/capture-provenance.json",
+      "sha256": "de6f7bc533a2aba378ee11593ef498a8900ad022aede825e7f6c252b8c3e7dbb",
+      "rom": {
+        "file": "port/frontends/n64/adventure/poketcg-expansion-review.z64",
+        "sha256": "6229dc981a571c9ea070aad7f4c104384a635c6d13d0af280a39cb97599e2caa",
+        "diagnostic": 10
+      },
+      "runtime_video_modes": [
+        {
+          "width": 480,
+          "height": 360,
+          "ram": 8388608,
+          "highres": 1
+        }
+      ],
+      "frames": 19,
+      "exact_callback_rgb_pixels": 5836800,
+      "timing": {},
+      "memory": [
+        "VIDEO HEAP stage=overworld total=7025824 used=2654968 free=4370856",
+        "VIDEO HEAP stage=lab total=7025824 used=2360336 free=4665488",
+        "VIDEO HEAP stage=lightning total=7025824 used=2445368 free=4580456",
+        "VIDEO HEAP stage=dome total=7025824 used=2682856 free=4342968",
+        "VIDEO HEAP stage=naming total=7025824 used=3429368 free=3596456",
+        "VIDEO HEAP stage=dialogue total=7025824 used=2366152 free=4659672",
+        "DUEL UI HEAP stage=board total=7025824 used=2402008 free=4623816",
+        "DUEL UI HEAP stage=energy-overflow total=7025824 used=2402008 free=4623816",
+        "DUEL UI HEAP stage=actions total=7025824 used=2402008 free=4623816",
+        "DUEL UI HEAP stage=hand-pokemon total=7025824 used=2402008 free=4623816",
+        "DUEL UI HEAP stage=hand-trainer total=7025824 used=2402008 free=4623816",
+        "DUEL UI HEAP stage=chosen-card total=7025824 used=2402008 free=4623816",
+        "DUEL UI HEAP stage=pokemon-rules-1 total=7025824 used=2402008 free=4623816",
+        "DUEL UI HEAP stage=pokemon-rules-2 total=7025824 used=2402008 free=4623816",
+        "DUEL UI HEAP stage=pokemon-rules-3 total=7025824 used=2402008 free=4623816",
+        "DUEL UI HEAP stage=trainer-rules total=7025824 used=2402008 free=4623816",
+        "DUEL UI HEAP stage=prize total=7025824 used=2402008 free=4623816",
+        "DUEL UI HEAP stage=result total=7025824 used=2402008 free=4623816",
+        "DUEL UI HEAP stage=start total=7025824 used=2402008 free=4623816"
+      ]
+    },
+    "game320": {
+      "source": "port/reviews/expansion-pak/cases/game-320x240-4mib-v3/capture-provenance.json",
+      "sha256": "7c52b68d3f511dd6251c6ac52b5a8e24d46364bb9e56d8c4d8c6ee16d921430f",
+      "rom": {
+        "file": "port/frontends/n64/adventure/poketcg-expansion-review.z64",
+        "sha256": "6229dc981a571c9ea070aad7f4c104384a635c6d13d0af280a39cb97599e2caa",
+        "diagnostic": 10
+      },
+      "runtime_video_modes": [
+        {
+          "width": 320,
+          "height": 240,
+          "ram": 4194304,
+          "highres": 0
+        }
+      ],
+      "frames": 19,
+      "exact_callback_rgb_pixels": 2918400,
+      "timing": {},
+      "memory": [
+        "VIDEO HEAP stage=overworld total=2831520 used=1694968 free=1136552",
+        "VIDEO HEAP stage=lab total=2831520 used=1400336 free=1431184",
+        "VIDEO HEAP stage=lightning total=2831520 used=1485368 free=1346152",
+        "VIDEO HEAP stage=dome total=2831520 used=1722856 free=1108664",
+        "VIDEO HEAP stage=naming total=2831520 used=2085368 free=746152",
+        "VIDEO HEAP stage=dialogue total=2831520 used=1342152 free=1489368",
+        "DUEL UI HEAP stage=board total=2831520 used=1442008 free=1389512",
+        "DUEL UI HEAP stage=energy-overflow total=2831520 used=1442008 free=1389512",
+        "DUEL UI HEAP stage=actions total=2831520 used=1442008 free=1389512",
+        "DUEL UI HEAP stage=hand-pokemon total=2831520 used=1442008 free=1389512",
+        "DUEL UI HEAP stage=hand-trainer total=2831520 used=1442008 free=1389512",
+        "DUEL UI HEAP stage=chosen-card total=2831520 used=1442008 free=1389512",
+        "DUEL UI HEAP stage=pokemon-rules-1 total=2831520 used=1442008 free=1389512",
+        "DUEL UI HEAP stage=pokemon-rules-2 total=2831520 used=1442008 free=1389512",
+        "DUEL UI HEAP stage=pokemon-rules-3 total=2831520 used=1442008 free=1389512",
+        "DUEL UI HEAP stage=trainer-rules total=2831520 used=1442008 free=1389512",
+        "DUEL UI HEAP stage=prize total=2831520 used=1442008 free=1389512",
+        "DUEL UI HEAP stage=result total=2831520 used=1442008 free=1389512",
+        "DUEL UI HEAP stage=start total=2831520 used=1442008 free=1389512"
+      ]
+    },
+    "after480": {
+      "source": "port/reviews/expansion-pak/cases/leads-after-480x360-8mib-v3/capture-provenance.json",
+      "sha256": "d4275cbdeb3d460211c114d8eb728368fb4ed8c988eced4d572d6a4cfbc9f2a1",
+      "rom": {
+        "file": "port/frontends/n64/adventure/poketcg-leads-after.z64",
+        "sha256": "69851606c7585036f85361a6cd24eccab127661cf84402868bc64e03ebc5675d",
+        "diagnostic": 11
+      },
+      "runtime_video_modes": [
+        {
+          "width": 480,
+          "height": 360,
+          "ram": 8388608,
+          "highres": 1
+        }
+      ],
+      "frames": 6,
+      "exact_callback_rgb_pixels": 1843200,
+      "timing": {
+        "mark-portrait": {
+          "samples": 24,
+          "median_us": 16071.5,
+          "min_us": 15932,
+          "max_us": 16288
+        },
+        "ronald-portrait": {
+          "samples": 24,
+          "median_us": 13475.0,
+          "min_us": 13335,
+          "max_us": 13654
+        },
+        "mason-portrait": {
+          "samples": 24,
+          "median_us": 13297.5,
+          "min_us": 13164,
+          "max_us": 13484
+        },
+        "imakuni-portrait": {
+          "samples": 24,
+          "median_us": 10133.5,
+          "min_us": 9989,
+          "max_us": 10317
+        },
+        "leads-room": {
+          "samples": 24,
+          "median_us": 110079.5,
+          "min_us": 109587,
+          "max_us": 110530
+        },
+        "leads-conversation": {
+          "samples": 24,
+          "median_us": 61678.0,
+          "min_us": 61130,
+          "max_us": 62256
+        }
+      },
+      "memory": [
+        "VIDEO HEAP stage=leads total=7046416 used=2399232 free=4647184"
+      ]
+    },
+    "before480": {
+      "source": "port/reviews/expansion-pak/cases/leads-before-480x360-8mib-v3/capture-provenance.json",
+      "sha256": "3e51defa6e5f25c169f5fa371ad6dfa50550f37fad9c2d6716256d7993f368e9",
+      "rom": {
+        "file": "port/frontends/n64/adventure/poketcg-leads-before.z64",
+        "sha256": "1811176f93cba70e44d66327617109e582617d272217ab2ea2e5e57a9eaec6d5",
+        "diagnostic": 11
+      },
+      "runtime_video_modes": [
+        {
+          "width": 480,
+          "height": 360,
+          "ram": 8388608,
+          "highres": 1
+        }
+      ],
+      "frames": 6,
+      "exact_callback_rgb_pixels": 1843200,
+      "timing": {
+        "mark-portrait": {
+          "samples": 24,
+          "median_us": 16077.0,
+          "min_us": 15962,
+          "max_us": 16289
+        },
+        "ronald-portrait": {
+          "samples": 24,
+          "median_us": 13473.0,
+          "min_us": 13347,
+          "max_us": 13652
+        },
+        "mason-portrait": {
+          "samples": 24,
+          "median_us": 13293.5,
+          "min_us": 13165,
+          "max_us": 13509
+        },
+        "imakuni-portrait": {
+          "samples": 24,
+          "median_us": 10130.0,
+          "min_us": 10005,
+          "max_us": 10318
+        },
+        "leads-room": {
+          "samples": 24,
+          "median_us": 110036.0,
+          "min_us": 109577,
+          "max_us": 110535
+        },
+        "leads-conversation": {
+          "samples": 24,
+          "median_us": 61702.5,
+          "min_us": 61112,
+          "max_us": 62118
+        }
+      },
+      "memory": [
+        "VIDEO HEAP stage=leads total=7061216 used=2399232 free=4661984"
+      ]
+    },
+    "after320": {
+      "source": "port/reviews/expansion-pak/cases/leads-after-320x240-4mib-v3/capture-provenance.json",
+      "sha256": "9f457ae7d8c0be6145fddef598350d4caeccb419da782d43e64c02776e6ffd9e",
+      "rom": {
+        "file": "port/frontends/n64/adventure/poketcg-leads-after.z64",
+        "sha256": "69851606c7585036f85361a6cd24eccab127661cf84402868bc64e03ebc5675d",
+        "diagnostic": 11
+      },
+      "runtime_video_modes": [
+        {
+          "width": 320,
+          "height": 240,
+          "ram": 4194304,
+          "highres": 0
+        }
+      ],
+      "frames": 6,
+      "exact_callback_rgb_pixels": 921600,
+      "timing": {
+        "mark-portrait": {
+          "samples": 24,
+          "median_us": 16108.5,
+          "min_us": 15780,
+          "max_us": 16248
+        },
+        "ronald-portrait": {
+          "samples": 24,
+          "median_us": 13503.5,
+          "min_us": 13170,
+          "max_us": 13657
+        },
+        "mason-portrait": {
+          "samples": 24,
+          "median_us": 13304.5,
+          "min_us": 12985,
+          "max_us": 13456
+        },
+        "imakuni-portrait": {
+          "samples": 24,
+          "median_us": 10177.0,
+          "min_us": 9831,
+          "max_us": 10299
+        },
+        "leads-room": {
+          "samples": 24,
+          "median_us": 110116.5,
+          "min_us": 109554,
+          "max_us": 110590
+        },
+        "leads-conversation": {
+          "samples": 24,
+          "median_us": 61804.5,
+          "min_us": 61246,
+          "max_us": 62216
+        }
+      },
+      "memory": [
+        "VIDEO HEAP stage=leads total=2852112 used=1439232 free=1412880"
+      ]
+    },
+    "before320": {
+      "source": "port/reviews/expansion-pak/cases/leads-before-320x240-4mib-v3/capture-provenance.json",
+      "sha256": "3f7c658fb97c70eb01b6f02ff85e28be8b68a31be87736cccab9df75c9ae45cb",
+      "rom": {
+        "file": "port/frontends/n64/adventure/poketcg-leads-before.z64",
+        "sha256": "1811176f93cba70e44d66327617109e582617d272217ab2ea2e5e57a9eaec6d5",
+        "diagnostic": 11
+      },
+      "runtime_video_modes": [
+        {
+          "width": 320,
+          "height": 240,
+          "ram": 4194304,
+          "highres": 0
+        }
+      ],
+      "frames": 6,
+      "exact_callback_rgb_pixels": 921600,
+      "timing": {
+        "mark-portrait": {
+          "samples": 24,
+          "median_us": 16127.5,
+          "min_us": 15787,
+          "max_us": 16335
+        },
+        "ronald-portrait": {
+          "samples": 24,
+          "median_us": 13510.0,
+          "min_us": 13173,
+          "max_us": 13747
+        },
+        "mason-portrait": {
+          "samples": 24,
+          "median_us": 13337.5,
+          "min_us": 12991,
+          "max_us": 13516
+        },
+        "imakuni-portrait": {
+          "samples": 24,
+          "median_us": 10199.5,
+          "min_us": 9837,
+          "max_us": 10327
+        },
+        "leads-room": {
+          "samples": 24,
+          "median_us": 110075.5,
+          "min_us": 109561,
+          "max_us": 110604
+        },
+        "leads-conversation": {
+          "samples": 24,
+          "median_us": 61815.0,
+          "min_us": 61250,
+          "max_us": 62286
+        }
+      },
+      "memory": [
+        "VIDEO HEAP stage=leads total=2866912 used=1439232 free=1427680"
+      ]
+    }
+  },
+  "post_vi_pngs": 62,
+  "exact_callback_rgb_pixels": 14284800,
+  "stage_gate": {
+    "matching_native_header": true,
+    "minimum_post_native_valid_callbacks": 6,
+    "minimum_stable_callbacks": 6
+  },
+  "same_rom_across_4_and_8_mib": {
+    "game": "6229dc981a571c9ea070aad7f4c104384a635c6d13d0af280a39cb97599e2caa",
+    "before": "1811176f93cba70e44d66327617109e582617d272217ab2ea2e5e57a9eaec6d5",
+    "after": "69851606c7585036f85361a6cd24eccab127661cf84402868bc64e03ebc5675d"
+  },
+  "full_native_suites": {
+    "expansion": {
+      "source": "port/frontends/n64/adventure/build/expansion-native-8mib-v2/result.json",
+      "sha256": "25c83bf033b376b35370ac8bebae3d4083faaba7d136d1a2bf74f083fabf8553",
+      "rom_sha256": "74ba6414e936b5ed19c0fced4e329214397b78b05eae355cf3c14847aa3e8fb6",
+      "native_dimensions": [
+        480,
+        360
+      ],
+      "ram_mib": 8,
+      "maps": 34,
+      "frames": 42,
+      "worst_heap": {
+        "map": 32,
+        "total": 6882512,
+        "used": 2717440,
+        "free": 4165072
+      },
+      "sram_passed": true,
+      "mips_story_passed": true,
+      "native_duel_passed": true,
+      "intro_passed": true
+    },
+    "standard": {
+      "source": "port/frontends/n64/adventure/build/final-standard-native-v2/result.json",
+      "sha256": "3a83b3bf37f2b5024be8588de5b49356829a3cc3eda6bd4d56b23d2299bf077e",
+      "rom_sha256": "69e8b30aa5629e34a042492f4daf17226559205d580aa3a718e9295bc88d3359",
+      "native_dimensions": [
+        320,
+        240
+      ],
+      "ram_mib": 4,
+      "maps": 34,
+      "frames": 42,
+      "worst_heap": {
+        "map": 32,
+        "total": 2688208,
+        "used": 1759024,
+        "free": 929184
+      },
+      "sram_passed": true,
+      "mips_story_passed": true,
+      "native_duel_passed": true,
+      "intro_passed": true
+    }
+  },
+  "production_roms": {
+    "standard": {
+      "file": "port/frontends/n64/adventure/poketcg-adventure.z64",
+      "bytes": 36356096,
+      "sha256": "90b2158fa3b5915d3f69d0ff8c65073d2f0fcae8c13d7b137698e12efdbfc85b"
+    },
+    "expansion": {
+      "file": "port/frontends/n64/adventure/poketcg-expansion.z64",
+      "bytes": 36356096,
+      "sha256": "ff1c1f0d0afc419cf132908bb3e0b98d221b6d1a4c71223868fc6d2a7160197b"
+    }
+  },
+  "lead_geometry": {
+    "source": "port/characters/review/distinctive-leads/validation.json",
+    "sha256": "d6827d548e5d2f286ac3942e39b24396bf66738634f4744e73d6df2953dadb42",
+    "all_mesh_records_unchanged": true,
+    "all_aliases_unchanged": true,
+    "maximum_triangles": 906,
+    "maximum_batches": 6
+  },
+  "crops": {
+    "display_canvas": [
+      640,
+      480
+    ],
+    "source_box": [
+      75,
+      95,
+      200,
+      225
+    ],
+    "nearest_scale": 2,
+    "original_pngs_unchanged": true,
+    "low_resolution_display": "Exact row duplication from640x240 to640x480",
+    "higher_resolution_display": "640x480 scanout unchanged"
+  },
+  "renderer_timing": {
+    "source": "ares emulated N64 timer_ticks around scene render and RDP completion",
+    "physical_console_fps_measured": false,
+    "eight_actor_room": {
+      "after480": {
+        "samples": 24,
+        "median_us": 110079.5,
+        "min_us": 109587,
+        "max_us": 110530
+      },
+      "before480": {
+        "samples": 24,
+        "median_us": 110036.0,
+        "min_us": 109577,
+        "max_us": 110535
+      },
+      "after320": {
+        "samples": 24,
+        "median_us": 110116.5,
+        "min_us": 109554,
+        "max_us": 110590
+      },
+      "before320": {
+        "samples": 24,
+        "median_us": 110075.5,
+        "min_us": 109561,
+        "max_us": 110604
+      }
+    }
+  },
+  "regressions": {
+    "host_ui_scripts_per_resolution": 10,
+    "host_resolutions": [
+      [
+        320,
+        240
+      ],
+      [
+        480,
+        360
+      ]
+    ],
+    "card_records": 228,
+    "card_descriptions": 316,
+    "exact_rules_pages": "all rendered at both resolutions",
+    "two_controller_ownership": "pass",
+    "web_pointer_selection": "pass: actual compiled C hand selection and taken Prize masks",
+    "web_full_gameplay": "pass: hotseat, AI, online replay, save/continue, practice, widgets and deckbuilder",
+    "web_viewports": "pass: both entry points at 1280x720, 800x600, 320x480",
+    "live_gallery": "pass: image loading, 4:3 display and no browser/HTTP errors"
+  },
+  "extra_proofs": {
+    "controlled_baseline": "baseline-assets.json",
+    "face_pixel_changes": "face-pixel-proof.json",
+    "card_back_source": "../../assets/ui/card-back/manifest.json"
+  }
+}

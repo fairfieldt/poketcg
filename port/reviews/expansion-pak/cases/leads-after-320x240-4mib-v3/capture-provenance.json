@@ -1,0 +1,306 @@
+{
+  "status": "verified-expansion-pak-trial-captures",
+  "rom": {
+    "file": "port/frontends/n64/adventure/poketcg-leads-after.z64",
+    "sha256": "69851606c7585036f85361a6cd24eccab127661cf84402868bc64e03ebc5675d",
+    "diagnostic": 11
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 6,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": "full observed callback dimensions",
+      "stage_pattern": "^(?:VIDEO REVIEW|DUEL UI) ([A-Za-z0-9_-]+) BEGIN\\r?$",
+      "require_native_frame": true,
+      "native_lead_frames": 6
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 4,
+    "private_settings": true,
+    "ExpansionPak": false
+  },
+  "runtime_video_modes": [
+    {
+      "width": 320,
+      "height": 240,
+      "ram": 4194304,
+      "highres": 0
+    }
+  ],
+  "raw_format": {
+    "pixel_order": "BGRA little endian; padding excluded from RGB proof",
+    "dimensions": "Recorded per image from Program::video registers",
+    "display_aspect": "4:3"
+  },
+  "finished": {
+    "callbacks": 829,
+    "captures": 6,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "mark-portrait.png",
+      "stage": "mark-portrait",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "14eecda6e08c225ca22b39be0d8d0aab583d9670419b9a33c87a8d4c9b060c8d",
+      "callback_sha256": "d1b0dbca694376fdc755e0b45ff78fedbced397e8f3048230cad57784dcb8700",
+      "rgb_sha256": "dffad6c83514a4610ffbb67f1112bc7e8c52583b1a00fe8a6484fc86bbd3cdec",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 41,
+      "stage_gate": {
+        "stage_started_callback": 22,
+        "native_frame": "mark-portrait",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 31,
+        "native_ready_valid_frames": 5,
+        "post_native_valid_callbacks": 11,
+        "stable_callbacks": 11,
+        "previous_captured_sha256": null
+      }
+    },
+    {
+      "file": "ronald-portrait.png",
+      "stage": "ronald-portrait",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "098e3d4e09e1df6b414316c6f56a5d61765352198346e1376a793ca198ae8b0c",
+      "callback_sha256": "bfd8526def72c010c92b441a00afffba4d52b686bdd5fcdfb56ec4119ebd7097",
+      "rgb_sha256": "5fe7a65ddffc103272eeabd18aa7f1abdbab8609e3ac02764fed5d74d355e3d2",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 141,
+      "stage_gate": {
+        "stage_started_callback": 127,
+        "native_frame": "ronald-portrait",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 136,
+        "native_ready_valid_frames": 110,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "9a96597d15e9430985c4f202665c1c44d92ed18c0c81ddced5f9d643f6fc8476"
+      }
+    },
+    {
+      "file": "mason-portrait.png",
+      "stage": "mason-portrait",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "cc4a2685993c68883ac7fc7356d73e638644030c6bd746355061dcefb70fdc01",
+      "callback_sha256": "038bb635a827f2df5cce098b455a79a27c23b9396055f4fd0b5c9ab7ad3429be",
+      "rgb_sha256": "606b959d36b6174f5ac87ed07a604d8bf798f1382e562f94ff5b3290d1f1b808",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 247,
+      "stage_gate": {
+        "stage_started_callback": 232,
+        "native_frame": "mason-portrait",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 242,
+        "native_ready_valid_frames": 216,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "dd7d8de504e7f2e0b024a6d1dca018e5668a66c909997cc3facf8a0d8f581d4d"
+      }
+    },
+    {
+      "file": "imakuni-portrait.png",
+      "stage": "imakuni-portrait",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "b440bc8cf46ad68113bf423a17414ac21627774926a5dd1ec5eb2cc0e2bd3e04",
+      "callback_sha256": "19c97bee2ee7fcbb8c92ad3b1e4a661c4ffc4cc9c3a33f25e3e6882d7098c4d8",
+      "rgb_sha256": "56257f86cd2a90604b0ac68cbbf712ef7551a6b1803dc52fbbe1ade8cf9a6322",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 352,
+      "stage_gate": {
+        "stage_started_callback": 338,
+        "native_frame": "imakuni-portrait",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 347,
+        "native_ready_valid_frames": 321,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "98b37ae731480861e6b0658d5e4ee93673a730967c843ee1380748453279b49c"
+      }
+    },
+    {
+      "file": "leads-room.png",
+      "stage": "leads-room",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "e9db81b01fb51a6e0d3e1c8199495399507b421765a9a477f803040def33b0f9",
+      "callback_sha256": "cc157a1db90a1e689a1ed847e2f5bbd20cd94737e74b2593d012ed3e8c714cd5",
+      "rgb_sha256": "8ddecce16aa4c4b41f92c6faf7e0fd254d960f2c878692dc0fcb8bac1c4bd8da",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 484,
+      "stage_gate": {
+        "stage_started_callback": 443,
+        "native_frame": "leads-room",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 479,
+        "native_ready_valid_frames": 453,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "c0844ddd6a2a305439c0cdbe0e6c09ce13e1c6533f8d8d69dc92d08627dee99f"
+      }
+    },
+    {
+      "file": "leads-conversation.png",
+      "stage": "leads-conversation",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "552cc98257f8f089ef2d99a09bc887b289a1a6e61c9f025ccd267262abddfff7",
+      "callback_sha256": "d0bee8903023cdc85501e01bdb40c1ac5f856e8819c2f6979953f9d79ef8069e",
+      "rgb_sha256": "247a439ef7e1a33f386d5cc0643a2600310907a30dfeb530f02d0424b4ae05f9",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 695,
+      "stage_gate": {
+        "stage_started_callback": 670,
+        "native_frame": "leads-conversation",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 690,
+        "native_ready_valid_frames": 664,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "5c7e6059a48bd91f296546e3e02b6efd09caf38f50f70217522ccdd0692af561"
+      }
+    }
+  ],
+  "native_frames": [
+    {
+      "file": "mark-portrait.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "dec21a277f2319e7851638aae7fb571a75da847620072ebb196b16b1ab5cb1a9",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "ronald-portrait.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "5a934589d73657d074cc25519940c309d4491df9928e1a4fa163546b7357786f",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "mason-portrait.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "66149c4c33a37a8ffa4c9f500f22b129192196978980bb276733edad2c594566",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "imakuni-portrait.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "6f229787079497f809b7818ab92f205648272d9e170f823a0a700979dfefd71c",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "leads-room.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "2053720aa0a00077e8313a237ede76198f6cbc56fe1ed625da28472d5e2440b0",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "leads-conversation.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "94602595eb5fe3cbdca36568b3376f81b9e8f0f2ae9dae1753f46922c149b08a",
+      "exact_native_pixels": 76800
+    }
+  ],
+  "memory": [],
+  "source_logs": {
+    "path": "port/frontends/n64/adventure/build/expansion-pak/leads-after-320x240-4mib-v3/lldb.log",
+    "sha256": "dd89b0feb811d48849be40887d0a84f64a19ec9d6cceb6de9c5665b1ea1fe995"
+  }
+}

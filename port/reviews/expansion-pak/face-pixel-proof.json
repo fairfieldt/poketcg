@@ -1,0 +1,138 @@
+[
+  {
+    "resolution": 320,
+    "slug": "mark",
+    "raw_vi_changed_bounds": [
+      105,
+      86,
+      154,
+      99
+    ],
+    "display_changed_bounds": [
+      105,
+      172,
+      154,
+      198
+    ],
+    "all_changes_on_face": true
+  },
+  {
+    "resolution": 320,
+    "slug": "ronald",
+    "raw_vi_changed_bounds": [
+      101,
+      77,
+      158,
+      93
+    ],
+    "display_changed_bounds": [
+      101,
+      154,
+      158,
+      186
+    ],
+    "all_changes_on_face": true
+  },
+  {
+    "resolution": 320,
+    "slug": "mason",
+    "raw_vi_changed_bounds": [
+      99,
+      78,
+      160,
+      94
+    ],
+    "display_changed_bounds": [
+      99,
+      156,
+      160,
+      188
+    ],
+    "all_changes_on_face": true
+  },
+  {
+    "resolution": 320,
+    "slug": "imakuni",
+    "raw_vi_changed_bounds": [
+      101,
+      77,
+      160,
+      94
+    ],
+    "display_changed_bounds": [
+      101,
+      154,
+      160,
+      188
+    ],
+    "all_changes_on_face": true
+  },
+  {
+    "resolution": 480,
+    "slug": "mark",
+    "raw_vi_changed_bounds": [
+      105,
+      170,
+      154,
+      198
+    ],
+    "display_changed_bounds": [
+      105,
+      170,
+      154,
+      198
+    ],
+    "all_changes_on_face": true
+  },
+  {
+    "resolution": 480,
+    "slug": "ronald",
+    "raw_vi_changed_bounds": [
+      101,
+      153,
+      158,
+      186
+    ],
+    "display_changed_bounds": [
+      101,
+      153,
+      158,
+      186
+    ],
+    "all_changes_on_face": true
+  },
+  {
+    "resolution": 480,
+    "slug": "mason",
+    "raw_vi_changed_bounds": [
+      99,
+      155,
+      160,
+      188
+    ],
+    "display_changed_bounds": [
+      99,
+      155,
+      160,
+      188
+    ],
+    "all_changes_on_face": true
+  },
+  {
+    "resolution": 480,
+    "slug": "imakuni",
+    "raw_vi_changed_bounds": [
+      101,
+      153,
+      159,
+      190
+    ],
+    "display_changed_bounds": [
+      101,
+      153,
+      159,
+      190
+    ],
+    "all_changes_on_face": true
+  }
+]
