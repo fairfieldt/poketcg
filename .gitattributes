@@ -18,6 +18,8 @@
 
 # Denote all files that are truly binary and should not be modified.
 *.png binary diff=hex
+*.jpg binary
+*.jpeg binary
 *.bin binary diff=hex
 *.lz.match binary diff=hex
 *.dimensions binary diff=hex
