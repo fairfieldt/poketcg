@@ -21,3 +21,5 @@ Reports: [duel UI/input](../retained-duel-ui/README.md), [performance survey](..
 The full browser build is refreshed at <http://ms.tdf.sh:8091/> with the shared camera, textures and portable-C updates.
 
 The follow-up [control audit](../n64-controls/README.md) adds Z inspection during forced replacement choices and practice lessons, updates native/browser instructions, and preserves START card details. The current deployment hashes include that follow-up.
+
+The [evolution-focus follow-up](../evolution-focus/README.md) starts the selector on the first legal Active or Bench target, preserving game state and existing manual choices. Current deployment hashes include this update.
