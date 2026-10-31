@@ -42,6 +42,7 @@ function closeModal() {
 	app.modal = null;
 }
 function modal(title, cls = '') {
+	clearMovementInput();
 	closeModal();
 	const element = el('section', 'adventure-dialog ' + cls);
 	element.setAttribute('role', 'dialog');
@@ -225,15 +226,72 @@ async function frame(view) {
 const padStates = new Map();
 let lastClock = 0;
 let keyboardBHeld = false;
+let shiftHeld = false, inputFocused = true, actionInFlight = false, padFocusReset = false;
+let pendingAction = null, movementNeedsIdle = false, blockedMovement = false, movementRetryAt = 0;
+const heldDirections = new Map(), pointerRunning = new Set(), padNeedsNeutral = new Set();
+const directions = { [K.UP]: 0, [K.RIGHT]: 1, [K.DOWN]: 2, [K.LEFT]: 3 };
+function runningInput() { app.running = shiftHeld || keyboardBHeld || pointerRunning.size > 0; }
+function worldInput() { return inputFocused && app.active && app.mode === 'world' && !app.modal; }
+function clearMovementInput() {
+	heldDirections.clear();pointerRunning.clear();pendingAction = null;movementRetryAt = 0;
+	runningInput();
+}
+function holdDirection(source, key) {
+	if (!worldInput() || heldDirections.get(source) === key) return;
+	heldDirections.delete(source);heldDirections.set(source, key);movementRetryAt = 0;
+}
+function releaseDirection(source) {
+	if (heldDirections.delete(source)) movementRetryAt = 0;
+}
+function pumpActions() {
+	if (actionInFlight || !app.engine || app.engine.busy) return;
+	if (!app.active || app.mode !== 'world' || app.modal) return;
+	const held = inputFocused ? [...heldDirections.values()].at(-1) : null;
+	if (movementNeedsIdle && (pendingAction || !held || blockedMovement)) {
+		movementNeedsIdle = false;blockedMovement = false;actionInFlight = true;
+		app.engine.stopMovement().catch(showError).finally(() => { actionInFlight = false;pumpActions(); });
+		return;
+	}
+	if (!inputFocused) return;
+	const command = pendingAction || (held && performance.now() >= movementRetryAt ?
+		{ action: directions[held], arg: app.running || app.padRunning ? 1 : 0 } : null);
+	if (!command) return;
+	pendingAction = null;actionInFlight = true;
+	const before = app.engine.view, began = performance.now();
+	app.engine.action(command.action, command.arg).then(async result => {
+		if (command.action < 4) {
+			const after = app.engine.view;
+			const moved = after.map !== before.map || after.x !== before.x || after.y !== before.y;
+			if (before.map && moved) movementNeedsIdle = true;
+			blockedMovement = !!before.map && !moved;
+			// Successful room steps chain in this promise, without a RAF or key
+			// repeat delay. Blocked retries yield so releases and menus can run.
+			movementRetryAt = !before.map ? began + 180 : moved ? 0 : performance.now() + 100;
+			// Fast previews omit frame pacing; yield once so keyup/touchend can
+			// interrupt a held chain instead of starving behind resolved promises.
+			if (fast && moved) await new Promise(resolve => requestAnimationFrame(resolve));
+		}
+		if (result === 1) { movementNeedsIdle = false;clearMovementInput();return showTitle(false); }
+		if (app.chooseDiaryNext) {
+			app.chooseDiaryNext = false;
+			await app.engine.action(6);app.active = false;movementNeedsIdle = false;clearMovementInput();
+			return diaryMenu();
+		}
+	}).catch(showError).finally(() => { actionInFlight = false;pumpActions(); });
+}
 document.addEventListener('keydown', (e) => {
-	if (e.isTrusted && keyOf(e) === K.B) keyboardBHeld = true;
+	if (e.isTrusted && keyOf(e) === K.B) { keyboardBHeld = true;runningInput(); }
 });
 document.addEventListener('keyup', (e) => {
-	if (e.isTrusted && keyOf(e) === K.B) keyboardBHeld = false;
+	if (e.isTrusted && keyOf(e) === K.B) { keyboardBHeld = false;runningInput(); }
+	releaseDirection(`keyboard:${e.code || e.key}`);pumpActions();
 });
 addEventListener('blur', () => {
-	keyboardBHeld = false;
+	inputFocused = false;keyboardBHeld = false;shiftHeld = false;app.padRunning = false;padFocusReset = true;
+	for (const index of padStates.keys()) padNeedsNeutral.add(index);
+	clearMovementInput();pumpActions();
 });
+addEventListener('focus', () => { inputFocused = true; });
 let gamepadsUnavailable = false;
 function gamepads(time) {
 	app.padRunning = false;
@@ -246,9 +304,11 @@ function gamepads(time) {
 		}
 	}
 	let duelB = false;
+	const connected = new Set();
 	for (let index = 0; index < pads.length; index++) {
 		const pad = pads[index];
 		if (!pad) continue;
+		connected.add(index);
 		if (app.mode === 'duel' && app.ui?.mode === 'hotseat') {
 			const expected = app.ui.req?.duelist === 0xc3 ? 1 : 0;
 			if (pads[1] && index !== expected) continue;
@@ -264,8 +324,15 @@ function gamepads(time) {
 		];
 		if (app.mode === 'duel') duelB = duelB || !!active[5];
 		const previous = padStates.get(index) || { active: [], repeat: [] };
+		if (padFocusReset && active.slice(0, 4).some(Boolean)) padNeedsNeutral.add(index);
+		if (!active.slice(0, 4).some(Boolean)) padNeedsNeutral.delete(index);
+		if (app.mode !== 'duel' && !app.modal) app.padRunning = !!active[5];
 		for (let i = 0; i < active.length; i++)
-			if (active[i] && (!previous.active[i] || (i < 4 && time > (previous.repeat[i] || 0)))) {
+			if (i < 4 && worldInput()) {
+				const source = `gamepad:${index}:${i}`;
+				if (!active[i]) releaseDirection(source);
+				else if (!previous.active[i] && !padNeedsNeutral.has(index)) holdDirection(source, [K.UP, K.RIGHT, K.DOWN, K.LEFT][i]);
+			} else if (active[i] && (!previous.active[i] || (i < 4 && time > (previous.repeat[i] || 0)))) {
 				previous.repeat[i] = time + 180;
 				const key = [K.UP, K.RIGHT, K.DOWN, K.LEFT, K.A, K.B, K.START][i];
 				if (app.mode === 'duel')
@@ -292,11 +359,16 @@ function gamepads(time) {
 					);
 				else dispatch(key);
 			}
-		if (app.mode !== 'duel' && !app.modal) app.padRunning = !!active[5];
 		previous.active = active;
 		padStates.set(index, previous);
 	}
+	for (const index of padStates.keys()) if (!connected.has(index)) {
+		for (let i = 0; i < 4; i++) releaseDirection(`gamepad:${index}:${i}`);
+		padStates.delete(index);padNeedsNeutral.delete(index);
+	}
 	if (app.mode === 'duel' && app.ui) app.ui.setBHeld(duelB || keyboardBHeld);
+	if (inputFocused) padFocusReset = false;
+	pumpActions();
 }
 function animate(time) {
 	if (app.active && app.engine && time - lastClock >= 1000) {
@@ -310,19 +382,9 @@ function animate(time) {
 }
 
 function runAction(action, arg = 0) {
-	if (!app.active || app.engine.busy || app.modal || app.mode === 'duel') return;
-	app.engine
-		.action(action, arg)
-		.then(async (result) => {
-			if (result === 1) return showTitle(false);
-			if (app.chooseDiaryNext) {
-				app.chooseDiaryNext = false;
-				await app.engine.action(6);
-				app.active = false;
-				return diaryMenu();
-			}
-		})
-		.catch(showError);
+	if (!worldInput()) return;
+	if (action >= 4) { heldDirections.clear();movementRetryAt = 0; }
+	pendingAction = { action, arg };pumpActions();
 }
 function showError(error) {
 	console.error(error);
@@ -336,7 +398,6 @@ function dispatch(k) {
 		return;
 	}
 	if (!app.active) return;
-	const directions = { [K.UP]: 0, [K.RIGHT]: 1, [K.DOWN]: 2, [K.LEFT]: 3 };
 	if (k in directions) runAction(directions[k], app.running || app.padRunning ? 1 : 0);
 	else if (k === K.A) runAction(4);
 	else if (k === K.START) runAction(5);
@@ -352,23 +413,32 @@ function controls() {
 		['B', K.B],
 		['Menu', K.START],
 	]) {
-		const b = button(label, () => dispatch(k));
+		let pointerConsumed = false;
+		const b = button(label, () => {
+			if (pointerConsumed) { pointerConsumed = false;return; }
+			dispatch(k);
+		});
 		b.setAttribute('aria-label', label === 'A' ? 'Talk or enter' : label);
+		if (k in directions || k === K.B) {
+			b.style.touchAction = 'none';
+			b.addEventListener('pointerdown', e => {
+				pointerConsumed = false;
+				if (e.button !== 0 || !worldInput()) return;
+				e.preventDefault();b.setPointerCapture(e.pointerId);pointerConsumed = true;
+				if (k === K.B) { pointerRunning.add(e.pointerId);runningInput(); }
+				else holdDirection(`pointer:${e.pointerId}`, k);
+				pumpActions();
+			});
+			const release = e => {
+				releaseDirection(`pointer:${e.pointerId}`);pointerRunning.delete(e.pointerId);runningInput();pumpActions();
+			};
+			b.addEventListener('pointerup', release);
+			b.addEventListener('lostpointercapture', release);
+			b.addEventListener('pointercancel', e => { pointerConsumed = false;release(e); });
+		}
 		pad.appendChild(b);
 	}
 	app.root.appendChild(pad);
-	for (const b of pad.querySelectorAll('button'))
-		if (b.textContent === 'B') {
-			b.addEventListener('pointerdown', () => {
-				if (!app.modal) app.running = true;
-			});
-			b.addEventListener('pointerup', () => {
-				app.running = false;
-			});
-			b.addEventListener('pointercancel', () => {
-				app.running = false;
-			});
-		}
 }
 async function start(profile, fresh) {
 	app.profile = profile;
@@ -803,18 +873,21 @@ async function boot() {
 	document.addEventListener('keydown', (e) => {
 		if (app.mode === 'title' || app.mode === 'duel' || e.target.tagName === 'INPUT') return;
 		if (e.key === 'Shift') {
-			app.running = true;
+			shiftHeld = true;runningInput();
 			return;
 		}
-		app.running = e.shiftKey;
+		shiftHeld = e.shiftKey;runningInput();
 		const k = keyOf(e);
 		if (k) {
 			e.preventDefault();
-			dispatch(k);
+			if (k in directions && worldInput()) {
+				if (!e.repeat) holdDirection(`keyboard:${e.code || e.key}`, k);
+				pumpActions();
+			} else dispatch(k);
 		}
 	});
 	document.addEventListener('keyup', (e) => {
-		if (e.key === 'Shift') app.running = false;
+		if (e.key === 'Shift') { shiftHeld = false;runningInput(); }
 	});
 	await showTitle(true);
 }

@@ -113,6 +113,34 @@ int main(void)
  Presentation timing={0};assert(presentation_wait_frames(&timing,60)==30);
  assert(presentation_wait_frames(&timing,120)==60);
  assert(presentation_wait_frames(&timing,1)==0&&presentation_wait_frames(&timing,1)==1);
+ /* Adjacent targets have no stationary frame or gait restart at tile edges.
+    Stopping afterwards changes presentation alone, including the run lean. */
+ for(unsigned running=0;running<2;running++) {
+  OwState straight={.map=MASON_LABORATORY,.x=14,.y=26,.direction=NORTH};
+  ow_set_event(&straight,EVENT_MASON_LAB_STATE,MASON_LAB_RECEIVED_STARTER_DECK);
+  Presentation continuous;presentation_init(&continuous,&straight,true);
+  PresentationPose previous=*presentation_player(&continuous);
+  unsigned duration=running?4:8;float speed=running?.5f:.25f;
+  for(unsigned tile=0;tile<4;tile++) {
+   straight.y-=2;OwState canonical=straight;
+   presentation_sync(&continuous,&straight,running!=0);
+   for(unsigned frame=0;frame<duration;frame++) {
+    presentation_step(&continuous,&straight,&lab);
+    const PresentationPose *now=presentation_player(&continuous);
+    close_to(previous.z-now->z,speed);close_to(now->x,14);
+    float phase=previous.gait+speed*3.14159265358979323846f;
+    close_to(sinf(now->gait),sinf(phase));close_to(cosf(now->gait),cosf(phase));
+    if(running)close_to(now->lean,6);
+    previous=*now;
+   }
+   assert(!presentation_moving(&continuous)&&!memcmp(&straight,&canonical,sizeof(straight)));
+  }
+  OwState canonical=straight;presentation_step(&continuous,&straight,&lab);
+  const PresentationPose *stopped=presentation_player(&continuous);
+  close_to(stopped->x,previous.x);close_to(stopped->z,previous.z);
+  close_to(stopped->gait,0);close_to(stopped->lean,0);
+  assert(!presentation_moving(&continuous)&&!memcmp(&straight,&canonical,sizeof(straight)));
+ }
  /* Breathing is rendering state: it stays tiny, has distinct NPC phases,
     keeps props fixed, and never makes script waits think an actor is walking. */
  OwState idle={.map=1,.x=14,.y=26,.npc_count=3,

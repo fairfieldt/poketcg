@@ -489,6 +489,7 @@ EXPORT("web_adv_start") int web_adv_start(unsigned profile, unsigned fresh, unsi
   return 0;
 }
 EXPORT("web_adv_action") int web_adv_action(unsigned action, unsigned arg) {
+  unsigned rendered_before = presentation.render_frames;
   running = action < 4 && arg != 0;
   if (action < 4) {
     if (!game.ow.map)
@@ -520,9 +521,15 @@ EXPORT("web_adv_action") int web_adv_action(unsigned action, unsigned arg) {
     game_album();
   else if (action == 11)
     game_link(arg);
+  else if (action == 12) {
+    /* Presentation-only stop: release gait/lean after a held movement chain. */
+  }
   if (!game.ow.duel_pending)
     finish_save();
-  game_draw();
+  /* changed() already renders each movement frame through the tile boundary.
+     An unconditional tail draw adds an idle beat before the next held step. */
+  if (action >= 4 || presentation.render_frames == rendered_before)
+    game_draw();
   return game_credits_finished ? 1 : 0;
 }
 static void append(char **p, size_t *left, const char *format, ...) {

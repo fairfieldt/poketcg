@@ -515,7 +515,7 @@ restart_title:
    } else {
     player_running=held.b;
     if(pressed.a){while(presentation_moving(&presentation))game_draw();ow_interact(&game.ow,&game_host);}
-    if(!cooldown){int direction=(held.d_up||input.stick_y>35)?0:(held.d_right||input.stick_x>35)?1:(held.d_down||input.stick_y< -35)?2:(held.d_left||input.stick_x< -35)?3:-1;if(direction>=0){ow_move(&game.ow,&game_host,direction);cooldown=held.b?4:8;}}
+    if(!cooldown){int direction=(held.d_up||input.stick_y>35)?0:(held.d_right||input.stick_x>35)?1:(held.d_down||input.stick_y< -35)?2:(held.d_left||input.stick_x< -35)?3:-1;if(direction>=0&&ow_move(&game.ow,&game_host,direction))cooldown=held.b?4:8;}
    }
   }
   if(cooldown)cooldown--;

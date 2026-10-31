@@ -317,6 +317,9 @@ export class AdventureEngine {
 	action(action, arg = 0) {
 		return this.call('web_adv_action', action, arg);
 	}
+	stopMovement() {
+		return this.action(12);
+	}
 	setDuelRng(values) {
 		this.x.web_adv_rng(...values);
 	}

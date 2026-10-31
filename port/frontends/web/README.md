@@ -54,7 +54,8 @@ movement, Mason/Sam dialogue and practice duel.
 | C / gamepad Start | Adventure menu; card details during a duel |
 | Hold Shift / gamepad B while walking | Run |
 
-On-screen controls support mouse/touch. Clicks select options; merely moving
+On-screen controls support mouse/touch. Hold an arrow to keep walking.
+Clicks select options; merely moving
 the pointer does not change the selected card or option. The Battle Center uses the two selected diaries'
 selected physical decks. Two standard gamepads route each duelist to its own
 controller; the keyboard can also be passed between players. Card Pop and Gift
@@ -110,6 +111,8 @@ node port/frontends/web/test/node_duel_test.mjs --seeds 1-60
 node port/frontends/web/test/adventure_engine_test.mjs
 node port/frontends/web/test/diaries_test.mjs
 node port/frontends/web/test/diaries_browser.mjs
+node port/frontends/web/test/movement_engine_test.mjs
+node port/frontends/web/test/movement_browser.mjs
 node port/frontends/web/test/pointer_selection.mjs
 node port/frontends/web/test/duel_banners.mjs
 node port/frontends/web/test/world3d_test.mjs
