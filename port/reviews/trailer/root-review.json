@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "sha256": "aeb648b7047bb78f5934d2e09ba80cabcb3102526a6d85ce5015ed41f08eeb0f",
+  "format_verified": true,
+  "faststart_verified": true,
+  "matching_av_durations": true,
+  "visual_review": "Full draft reviewed at12 timeline anchors; final20-frame contact sheet checked. All requested scenes,4:3,noFPS overlays/capture chrome.",
+  "audio_review": "Exact file matches final decode/PCM/level validation; no ear audition.",
+  "production_release_source": "2dda70b3"
+}
