@@ -1,0 +1,577 @@
+POKEMON TCG N64 PORT - VISUAL / ART-DIRECTION REVIEW (baseline c17975fa)
+=========================================================================
+Reviewer: Claude Fable 5.1 (independent visual/design review, read-only).
+Evidence: the 25 native RDP captures in port/reviews/n64-polish/before/
+(contact-sheet.png plus each PNG at native 320x240 and 3-4x nearest zooms),
+the two approved concepts in port/maps/prototypes/, the original GBC maps and
+briefs in port/maps/, and the presentation source listed at the end.
+
+What I could and could not verify
+---------------------------------
+* I read every PNG with image-capable Read; the images rendered correctly
+  and I could resolve single texels on the zooms.
+* NO final VI scanout images exist. The capture helper reported that ares
+  window capture failed (cgWindowNotFound) and the main manifest now records
+  this. Every observation below is from the RDP framebuffer BEFORE VI
+  resample/antialias/dedither. I therefore do not comment on edge aliasing,
+  dither noise or texture shimmer: those are exactly what VI changes. All
+  composition, palette, value, lighting, texture-scale, camera and layout
+  findings are unaffected by VI filtering and stand.
+* Timing, input feel, animation cadence and transitions are inferred from
+  code (presentation.c, dialogue.c, intro.c, main.c), not observed. Marked
+  "inferred" where that matters. Physical-console performance is unverified.
+
+------------------------------------------------------------------------
+0. ONE-PARAGRAPH VERDICT
+------------------------------------------------------------------------
+The layouts, prop placement, cameras and story choreography are faithful and
+the island is already close to the approved concept. What is missing is the
+entire LIGHTING LAYER, and that is what separates these frames from a 1999
+retail N64 game. Concretely: (a) every textured surface is exported with
+pure white vertex colour, so floors and walls have no shading at all; (b)
+there is no contact shadow under any actor or prop, so nothing is grounded;
+(c) the side walls are a 2-tile wainscot strip stretched to full wall
+height, producing huge horizontal stripes that dominate every interior;
+(d) floors are the brightest element in most rooms (measured mean value
+0.75-0.86), inverting the value hierarchy so characters and focal props read
+weaker than the carpet; (e) the near south wall is a flat bright gold slab
+across the bottom 10-15% of every room frame, and the top corners show the
+navy void above 4-unit walls, so rooms read as "dollhouse in space". None of
+these need new geometry or runtime lights. Almost all of it is a vertex-colour
+bake in build_world.py plus one runtime octagon per actor, which both the N64
+GL path and the WebGL path already consume (both multiply vColor x texture).
+That is the first pass. The second pass is material/prop quality and UI.
+
+------------------------------------------------------------------------
+1. ART-DIRECTION TARGET (the look every room should converge on)
+------------------------------------------------------------------------
+Name it "the lit showroom". The approved lightning_club_n64_v1.png already
+encodes it:
+
+  * Value hierarchy, brightest to darkest:
+      1. characters (faces, shirts)           ~0.85-1.00
+      2. the room's focal object (shrine, altar, pool, arena) ~0.80-0.95
+      3. floor graphic along the central aisle   ~0.65-0.80
+      4. floor at the walls / under props       ~0.40-0.55 (baked AO)
+      5. wainscot and props                     ~0.55-0.75
+      6. upper walls                            ~0.30-0.45, darkening upward
+      7. the near (south) wall block            ~0.25-0.40 (it is a frame)
+      8. ceiling/void                           near-black, warm not blue
+  * Pools of light: the aisle and the focal object get a +10-20% vertex
+    brightening; everything within ~2.5 units of a wall gets a smooth
+    darkening to ~0.45. This single gradient is what makes the concept read
+    as a room instead of a diagram.
+  * Grounding: an opaque dark octagon (0.43 x 0.32 units, like the
+    Lightning prototype's "Contact shadow" material) under every actor and
+    every free-standing prop. No alpha blending; era-correct and 8 tris.
+  * Saturation: keep the clubs' loud GBC hues (they are the brand), but
+    only the aisle/focal graphic stays at full saturation and value.
+    Walls, the near block and floor edges drop to ~70% value so the hue
+    reads as "painted surface under light" rather than "unlit emissive".
+  * Walls: three bands, as in the concept. Wainscot 0-1.6 units carries the
+    source livery (checker, pinstripe, cream base). Upper wall 1.6-4.4 units
+    is a plain painted colour with a vertical gradient. A cornice/frieze
+    band at the top carries the source's decorated row. The upper wall
+    should leave the frame at the top in long rooms; no void.
+  * Materials: small, repeated, hand-tiled textures (32x32 RGBA16 now;
+    64x64 CI4 later), bilinear. Variation comes from vertex colour, not
+    from bigger textures.
+  * Motion: 30 Hz grid walking is fine (it is the source). Add idle
+    breathing so standing actors are not statues, and fade warps.
+  * UI: one visual language for story/menu text (cream paper, blue ink,
+    bevelled frame, drop-shadowed text) and a matching dark variant for
+    the duel board. Replace the plain 8x8 debug font treatment with the
+    same font plus a 1-pixel dark drop shadow everywhere it sits on 3D.
+
+------------------------------------------------------------------------
+2. PRIORITISED FINDINGS WITH IMAGE EVIDENCE
+------------------------------------------------------------------------
+Severity: [A] changes the whole game's impression, [B] per-room / per-screen
+quality, [C] polish. Each item names the file to change in section 3.
+
+[A1] No lighting on any textured surface.
+  Evidence: every interior; clearest in map-12.png (Water), map-21.png
+  (Psychic), map-33.png (Hall of Honor) where the floor is a uniform glare
+  edge to edge. Measured mean value (HSV V) of the frame: Water 0.86,
+  Psychic 0.84, Fire 0.84, Hall of Honor 0.82, Lobby 0.82, Science 0.79,
+  Rock 0.78; the approved Lightning capture is 0.56 and the concept images
+  sit around 0.5-0.6.
+  Cause: build_world.py Scene.box() sets c=WHITE whenever a texture is
+  present; Scene.floor() and walls() emit textured quads with the default
+  WHITE. Only untextured prop faces receive the fixed per-face table
+  (.6,.78,.86,1,.72,1). The overworld (author_overworld.py) DOES bake a
+  sun term (.72+.28*N.dot(SUN)) and it shows: the island is the best frame.
+  Fix: a vertex-colour post-pass over every room batch (section 3.1).
+
+[A2] No contact shadows under actors; props float.
+  Evidence: zoom map-15-player.png (Mark on the bolt, no shadow at all),
+  map-01-lab.png (Sam, Mason and techs hover over cyan tiles), map-18-grass
+  (topiaries and boulders float on the lawn), map-09-rock (gold statues
+  float). The naming screen (naming-mark.png) DOES draw a blue ellipse under
+  Mark and immediately reads as a finished screen. The Lightning prototype
+  build_scene.py had opaque octagonal contact shadows; the finished
+  character exports (model 7+) do not carry them, so they were lost when
+  the detailed models replaced the fallbacks.
+  Fix: runtime octagon per actor in scene.c, baked octagons under props in
+  build_world.py (section 3.2, 3.1).
+
+[A3] Side walls are a stretched 2-tile strip.
+  Evidence: zooms map-27-wall.png, map-12-wall.png, map-24-wall.png: four
+  to six broad horizontal bands of the livery colour sweeping along the
+  full wall height. In map-21 (Psychic) and map-06 (Fighting) the bands
+  are the loudest element in frame.
+  Cause: walls() samples wall_tex=img.crop(16,(h-3)*8,32,16,...) (the
+  2-row south band) and maps it with uv (0,1)..(span/2,0) over the whole
+  4-unit wall, so a 2-tile-tall wainscot is magnified 2x vertically and the
+  room's bright livery occupies the entire wall.
+  Fix: three-band wall (section 3.3). This is faithful: 3D_GUIDE.md says
+  the livery is a 2-tile wainscot under a plain wall.
+
+[A4] Value hierarchy inverted: floors brightest, near block brightest.
+  Evidence: map-12, map-21, map-33, map-14: the floor and the gold-capped
+  south block at the bottom of frame are the brightest pixels; NPCs are
+  darker than the carpet. In the Lightning concept the near blocks are
+  mid-value gold on dark wood and the floor is deep indigo.
+  Cause: south wall = brown box .9 high + GOLD cap at top shade 1.0,
+  nearest to camera; floor textures at full source value with white vertex
+  colour.
+  Fix: per-room floor tint table + near-block darkening in the bake
+  (3.1), and optionally drop the camera target so the block is thinner.
+
+[A5] Void above the walls.
+  Evidence: top corners of map-01, map-09, map-12, map-24, map-27 show the
+  navy clear colour (.02,.025,.055) above the 4-unit wall. Reads as a set
+  in a black studio. The Lightning concept's walls run out of frame.
+  Fix: a ceiling slab at wall height with a dark warm vertex gradient, or
+  walls to 5.5 units with the cornice band, plus a matching clear colour
+  (3.1, 3.3).
+
+[B1] Floors: scale, grout and tint.
+  * Club lobby (map-14, zoom map-14-lobby.png): #deffb5 tiles with #00ff31
+    grout; the 1-texel neon grout bilinear-spreads to ~3 px and the room
+    becomes a green lightbox. This is the most garish floor in the game and
+    it is the room every club shares.
+  * Mason lab (map-01, mason-dialogue): saturated cyan tile grid reads as a
+    swimming pool, especially under the cream dialogue panel.
+  * Psychic (map-21): bright yellow tile floor in a room whose identity is
+    violet; the floor should be lavender-cream at ~0.7 value.
+  * Hall of Honor (map-33): glaring orange-yellow tiles; this is the one
+    room that should be dim with a single pool of light on the altar.
+  Fix: FLOOR_TINT per room multiplied into the floor vertex colours (zero
+  texture work), and for lobby/foyer/lab a repainted 32x32 tile texture
+  with grout at ~0.8 of tile value (3.1, 3.4).
+
+[B2] Props are unlit saturated primitives.
+  Evidence: map-18-grass (pure green balls in brown pots, lime lawn, grey
+  boulders), map-27 (brazier = green cylinder + red ball), map-21 (torch =
+  black pole + purple ball), map-09 (statue = gold cylinder + ball),
+  map-06 (weights rack = row of black pegs), map-12 (benches and "horse"
+  = white boxes). The per-face shade table gives them form, but at pure
+  #ff0000 / #42d600 base colours they read as toy plastic.
+  Fix: desaturate/darken prop base palette ~15-25%, add bottom-to-top
+  vertex gradients on cylinder/ball, baked shadow octagons, and
+  re-model the four worst props (3.1, 3.5).
+
+[B3] Sam's table in Mason Lab is a 2.4-unit white block.
+  Evidence: map-01-lab.png and sam-table.png: a large cream slab with the
+  green mat and magenta balloons below it. The practice duel is the
+  story's first set piece and the camera frames this block.
+  Cause: scene_specs 'mason_laboratory' P('machine',8,14,5,6,2.4,3) draws
+  the 'machine' recipe (brown box with white top cap). The source draws a
+  duel table with a green playmat.
+  Fix: use the 'table' recipe (legs + thin top carrying the source mat
+  texture) at height ~0.85 like the lobby's duel table (3.5).
+
+[B4] Water Club pool is a flat blue rectangle.
+  Evidence: map-12-pool.png: single blue with a white border and no
+  surface detail; palms and benches good.
+  Fix: recess the pool 0.3 units with inner walls, tile the island's water
+  texture with GL_REPEAT, bake darker vertex colour at the rim (3.5).
+
+[B5] Overworld (map-00) vs concept: good, but dim and shadowless.
+  Evidence: map-00-island.png. Terrain, cliffs, conifers, buildings and
+  routes match overworld_n64_concept_v1.png. Gaps: the sea is a dark
+  indigo (frame mean value 0.52) where the concept is cobalt with foam;
+  buildings and trees cast nothing; the Poke Ball cursor has no shadow;
+  the location label is a navy duel-UI box in a cream-paper story game.
+  Fix: section 3.6 and 3.8.
+
+[B6] Duel board is functional, not finished.
+  Evidence: duel.png, duel-action-menu.png, duel-coin.png: flat
+  #103028/#182048 fields, 56x30 bench rectangles with 6-character names,
+  8x8 font with no shadow, text box and HUD share the same flat 2 px
+  rectangle style. The card art thumbnails (64 px) are the only thing that
+  reads as "Pokemon". The action menu and coin popup overlap the active
+  Pokemon name (duel-coin.png).
+  Fix: section 3.7 (second pass; the board is correct and legible today).
+
+[B7] Three UI languages.
+  Story panels: cream #f7f7de paper, blue #183050 ink, #4a739c edge.
+  Duel: dark teal/navy. Island label: navy. Intro/title: GBC pixel art at
+  1.5x point-sampled. Menus (n64_menu): same dark style as duel.
+  Fix: one language (3.8).
+
+[C1] Intro/title 1.5x nearest scaling.
+  Evidence: title.png, intro-charizard.png: 160x144 art scaled 1.5x with
+  FILTER_POINT gives alternating 1 px / 2 px columns (visible in the logo
+  outline and the "TM"). Era-correct answer is bilinear for the blit (3.9).
+
+[C2] Transitions (inferred from code).
+  Warps are an instant cut (load_scene with no fade). Duel shutters are a
+  linear 12-frame close from top and bottom; no hold on black, no sound
+  sync. Camera cuts are instant on map change (correct) and eased at .24
+  per frame in the Mason cinematic (good). Fix in 3.10.
+
+[C3] Idle actors are statues (inferred from code).
+  step_actor zeroes gait/bob/lean when not moving. Gait itself is good:
+  distance-tied phase (one cycle per two tiles), contralateral arm swing
+  (parts 2 and 3 negated), 6 degree run lean. Add an idle breath (3.10).
+
+[C4] Camera uniformity.
+  All 33 interiors use one recipe (eye y=max(7,h*.28125) at z=h+2, target
+  z=h*.67). It is a sound "approved proportions" rule, and I would keep the
+  Lightning camera untouched. But short rooms (foyers, Fighting Club, Dome
+  entrance) at fov 64 show the most void and the most near-block, and the
+  Hall of Honor would benefit from a lower, closer, more reverent framing.
+  Treat as optional per-room overrides after A1-A5 land (3.11).
+
+------------------------------------------------------------------------
+3. IMPLEMENTATION SUGGESTIONS, PER FILE
+------------------------------------------------------------------------
+Design principle for all of it: PRESERVE geometry, UVs, indices and pivots.
+Everything in 3.1 is a colour-only post-pass over the existing batches, so
+the approved Lightning room (copied verbatim by copy_lightning()) and the
+finished character exports are untouched, and the WebGL frontend picks up
+the same look for free because world3d.js already computes
+vColor * texture.
+
+3.1 port/world3d/tools/build_world.py - lighting bake post-pass
+  Add `bake_lighting(scene, width, height, props, slug)` and call it once
+  per interior after walls()/prop() and also on the `lightning` scene
+  returned by copy_lightning() (its batches are plain vertex lists, so the
+  pass applies unchanged). For every vertex (x,y,z,u,v,r,g,b,a) in every
+  batch with model==0 compute a multiplier m and replace rgb with
+  rgb*m (clamped). Suggested terms, all cheap and tunable:
+
+    # 1. floor AO toward walls: d = distance to nearest wall inner face
+    wall_ao  = 0.45 + 0.55*smoothstep(0, 2.5, d)       # floor verts (y<0.05)
+    # 2. floor AO toward prop footprints: dp = distance to nearest prop rect
+    prop_ao  = 0.6 + 0.4*smoothstep(0, 0.9, dp)
+    # 3. aisle / focal pool of light (per room: a rect list in scene_specs)
+    pool     = 1.0 + 0.18*smoothstep(1.5, 0, distance_to_pool_rect)
+    # 4. wall vertical gradient (wall verts: y>0.05, within 1.2 of a wall)
+    wall_v   = 0.85 - 0.45*clamp((y-1.6)/2.8, 0, 1)     # 0.85 at wainscot top -> 0.40 at top
+    # 5. near (south) block: everything with z > height-2.2
+    near     = 0.40
+    # 6. prop bottom darkening (prop verts: 0<y<prop.height)
+    prop_v   = 0.75 + 0.25*clamp(y/ (0.6*prop.height), 0, 1)
+
+  Floor quads are 4x4 tiles, so the AO gradient will be coarse. For the
+  three tile rows nearest each wall, emit 2x2-tile quads instead (change
+  the `range(2,w-2,4)` loops in Scene.floor() to step 2 when within 4 tiles
+  of a wall). Cost: roughly +40% floor quads, which is a small share of
+  room triangles (floors are ~100-200 tris; Grass Club's 4016 tris are
+  topiaries).
+
+  Add FLOOR_TINT (rgb multipliers) keyed by slug; first values to try:
+    club_lobby      (0.78,0.82,0.74)   kills the neon grout
+    club_foyer      (0.82,0.84,0.78)
+    mason_laboratory(0.80,0.86,0.92)   cyan -> cool grey-blue
+    psychic_club    (0.78,0.70,0.88)   yellow tile -> lavender cream
+    hall_of_honor   (0.70,0.62,0.50)   dim gold, then the altar pool +0.25
+    water_club      (0.84,0.84,0.76)
+    fire_club       (0.86,0.78,0.70)
+    everything else (0.85,0.85,0.85)
+  Keep the Lightning floor at 1.0 (it is the reference) but still apply
+  wall AO and pool terms so it matches the concept's pools of light.
+
+  Prop shadows: in prop(), after each free-standing recipe (palm, topiary,
+  shrub, flowers, boulder, statue, serpent, horse, brazier, torch, balloon,
+  chair, bench, weight, ball, pillar) emit an octagon at y=0.012,
+  radius ~ (w*0.45, depth*0.4), colour rgb(16,10,28) (indigo rooms) or a
+  per-room shadow tint = floor_base*0.25. Opaque, no texture, 6 tris.
+  The engine already draws untextured polygons in the same batch key
+  space, so no renderer change.
+
+  Ceiling / void: emit one quad at y=wall_height over the walkable rect
+  with colour (26,18,14) and the four wall-top rows of vertices given
+  wall_v=0.40 so wall meets ceiling without a hard edge. Then set
+  glClearColor in main.c to the same (26,18,14)/255. The ceiling costs 2
+  tris and removes finding A5 in every room. (Alternative: wall height 5.5
+  with cornice; both are fine, ceiling is cheaper and safer for the
+  near-plane.)
+
+  Prop palette: in the colour constants, replace pure primaries with
+  value-controlled versions, e.g. RED (255,0,0)->(214,40,36),
+  GREEN (0,255,49)->(62,170,70), GOLD->(214,172,52), DARKGREEN->(20,96,40),
+  BLUE (0,0,255)->(44,70,200), WHITE for prop bodies ->(236,232,220) so
+  benches/horses stop blooming. Keep texture-face props unchanged.
+
+  Validation: python3 port/world3d/tools/check_world.py; mesh byte deltas
+  from port/world3d/generated/memory-budget.json; native 42-frame capture;
+  rerun the mean-value script in section 4 and aim for 0.55-0.68 per room.
+
+3.2 port/frontends/n64/adventure/scene.c + main.c - runtime contact shadows
+  Add
+    void scene_draw_shadow(float x,float z,float rx,float rz,float y);
+  drawing an 8-vertex GL_TRIANGLE_FAN at y (0.02 in rooms, ground+0.02 on
+  the island), glDisable(GL_TEXTURE_2D), glColor4ub(14,10,28,255), with
+  the depth test on and depth write OFF (glDepthMask(GL_FALSE)) so a foot
+  passing through it never z-fights; draw all shadows BEFORE the actors.
+  The naming screen in naming.c already does exactly this with a 24-segment
+  fan; reuse its parameters (0.78 x 0.60 at scale 1 looks right under the
+  642-tri Mark; use 0.43 x 0.32 for the smaller fallback actors, i.e. scale
+  by the per-actor `scale` argument of draw_presented_actor). Island: Mark
+  at scale .48 and the cursor ball (0.55 scale, floating at 1.8) should get
+  a shadow on the grass under the ball; that reads as "hovering" like the
+  concept's Poke Ball with its soft ground shadow.
+  Also call rdpq_mode_dithering(DITHER_SQUARE_SQUARE) (or the GL
+  equivalent libdragon exposes) once after gl_init(): with 3.1's gradients
+  in RGBA16 you will see banding on walls without ordered dither, and VI's
+  dedither filter is designed to smooth exactly that pattern.
+  Cost: 6 tris per visible actor; negligible RSP time.
+
+3.3 build_world.py walls() - three-band wall
+  Replace the single stretched plane with:
+    wainscot  y 0..1.6  : wall_tex as now, uv v in [0,1] over 1.6 units
+                           (so the 2-tile source band is 1:1), u repeating
+                           every 2 tiles as now.
+    upper     y 1.6..H  : untextured quad, colour = img.at(4,4) ("brown",
+                           the source's outer wall colour) with wall_v
+                           gradient from 3.1.
+    cornice   y H-0.5..H: the source's decorated north row (crop
+                           (16,8,32,8)) repeated; on the Lightning room
+                           this is the hazard frieze and on the lobby the
+                           gold moulding. Omit on rooms whose north row is
+                           plain.
+  The north wall keeps its full textured elevation plane (it carries the
+  room's wall decoration) but gets the same vertical gradient. Keep the
+  one-continuous-face-per-run structure (the comment about antialiased
+  seams is right; do not go back to per-tile quads).
+  Height: H=4.4 for standard rooms; keep Grass/Challenge Hall at 2 (they
+  are gardens/stadiums) and Dome entrance at 3.5.
+
+3.4 Floor textures (optional in pass 1, recommended in pass 2)
+  Today Scene.floor() extracts 32x32 texels per 4x4 tiles = 8 texels per
+  unit, i.e. 1:1 with the GBC pixels. That is correct resolution for the
+  era; the problem is only content (neon grout, full value). For the three
+  shared floors (lobby, foyer, lab/deck room) author a 32x32 "material"
+  tile in port/maps/ or port/world3d/tools/ and reference it by slug in
+  floor(): tile colour at 0.8 value, grout 1 texel at 0.65 value, and a
+  2-level checker (+/-4%) across the 2x2-tile repeat so bilinear magnifies
+  into soft variation instead of flat colour. Keep GL_REPEAT by emitting UVs
+  in tile units.
+  Pass 2: convert floor/wall textures to CI4 with `mksprite -f CI4` so a
+  64x64 tile fits the 4 KiB TMEM budget at 2 KiB and doubles texel density
+  for the near floor (the bottom third of every frame is the most
+  magnified surface in the game). Verify libdragon preview GL honours CI4
+  palettes through glSpriteTextureN64 before converting more than one.
+
+3.5 scene_specs.py + build_world.py prop() - worst props
+  * mason_laboratory: P('machine',8,14,5,6,2.4,3) -> P('table',8,14,5,6,.85,3)
+    so Sam's table uses the table recipe with the source playmat on top.
+    Keep the exact source rectangle (collision/scripting is unaffected; the
+    brief says the mesh recipe is purely visual).
+  * fighting_club: the y=12 row of 10 'weight' props should be one rack:
+    add a 'rack' recipe = horizontal bar (0.12x0.12) on two uprights with
+    4-6 plate discs; emit once for the span.
+  * water_club: 'horse' and 'bench' bodies to (236,232,220) with bottom
+    darkening; recess the pool: in floor() for water_club erase the pool
+    rect from the floor, then emit the pool as a box with y=-0.3 bottom
+    using the island's water texture (world.json lists the overworld
+    texture names; pick the water one) with GL_REPEAT, and inner rim faces
+    in cliff/stone colour. Add a 0.1 unit cream coping ring at y=0.02.
+  * grass_club: topiary balls -> two-tone (upper half GREEN, lower half
+    DARKGREEN via rings shade), lawn floor tint (0.80,0.86,0.74) and use the
+    island grass texture tiled instead of extracted lime pixels; boulders
+    (156,156,156) -> (150,140,128) with bottom darkening; this also lets
+    the 4016-tri room lose the 1x1 boulder balls (6 seg x 3 rings each) in
+    favour of 4-seg pebbles if memory ever pinches.
+  * psychic_club: torch flame ball -> small bright core (230,200,255) over
+    a darker violet bulb, and a 1.2-radius lighter floor pool under each
+    torch via the pool term in 3.1. This is how the room gets "moody" with
+    zero runtime cost.
+  * hall_of_honor: altar pool +0.25 at x7-17,y9-15; floor tint dim gold.
+  * pokemon_dome: already the best-composed interior; just bake AO on the
+    step risers and darken the outer red-carpet ring by 0.8.
+
+3.6 port/world3d/tools/author_overworld.py - island
+  * Sea: raise the water material toward cobalt (the concept's
+    #1f5fd0-ish), brighten foam, and give the sea plane a very gentle
+    gradient (0.9 near the island, 1.0 far) so the coast reads.
+  * Shadows: for each building group emit a flat dark polygon offset
+    (+0.25,+0.25) south-east at ground+0.012 (the SUN vector already in the
+    file defines the direction); for conifers a small 6-gon under each.
+    Cheap, baked, and exactly what the concept shows.
+  * Beach: a 0.35-unit sand ring (cream (230,210,160)) along coast edges
+    before the cliff faces; the concept's shoreline is the single feature
+    that most says "N64 world map".
+  * Cursor ball: shadow from 3.2.
+  * Camera: fine. The concept's slightly lower angle (65-70 degrees) vs the
+    current ~70 is not worth re-exporting the fixed-camera backface cull.
+
+3.7 port/frontends/n64/tcgn64.c - duel board (pass 2)
+  * Replace flat C_BG with a table texture (32x32 RGBA16 felt/wood tile via
+    rdpq_tex_blit with repeat) under the board, keep panels flat.
+  * Bench slots: draw a 24x30 mini art (art_get() at half scale through
+    rdpq blit) or at least the type-colour card back; the 6-char names are
+    unreadable ("Ponyta","Magnem") and today the bench is a row of grey
+    boxes.
+  * Give every text draw on C_PANEL a 1 px (0,0,0) drop shadow (a second
+    graphics_draw_text at +1,+1 first). This is the cheapest single change
+    that makes the 8x8 font look intentional.
+  * Panels: 2 px C_BORDER outer, 1 px lighter inner line, 1 px darker
+    bottom/right (bevel). Same recipe in dialogue.c/naming.c (3.8).
+  * Popups (coin toss, action menu) anchor to the bottom panel instead of
+    covering the active Pokemon's name/HP (duel-coin.png).
+  * Damage flash "-40": keep, but outline the number.
+  The gameplay/engine contract is untouched; all of this is in draw_side /
+  draw_textbox_hint / panel().
+
+3.8 dialogue.c, naming.c, extra_ui.c, main.c label - one UI language
+  * Adopt the dialogue panel palette (paper #f7f7de, ink #183050, edge
+    #4a739c, highlight #204878) as THE story/menu language; n64_menu,
+    n64_message, the diary chooser and the island label (n64_map_label)
+    should use it. The island label today is the only navy duel-style box
+    in the adventure flow.
+  * Drop shadow under ink text when the panel sits over 3D (dialogue
+    panel): draw text once in edge colour at +1,+1 then ink. Keep the 36
+    column x 4 line geometry; it matches the source's 4-line box.
+  * Bevel the panel: 2 px edge, then a 1 px white inner line top/left and
+    1 px #a9bccc bottom/right.
+  * Speaker tag: good. Add a 1 px gap so the tag's bottom edge is not
+    fused to the panel edge (mason-panel.png zoom).
+  * Hint "A/B: continue": right-aligned and fine; lower it 1 px so the
+    descender of "/" clears the border.
+  * Naming screen: already the most finished screen. Only add the drop
+    shadow and bevel for consistency.
+
+3.9 intro.c
+  * For the 1.5x blits use rdpq_mode_filter(FILTER_BILINEAR) for the
+    backgrounds and orbs; keep the PRESS START prompt and copyright text
+    point-sampled (text at bilinear 1.5x goes mushy). The GBC art was
+    designed for a soft LCD; bilinear is the era-correct TV look.
+  * Keep the flat cream/blue clear colours exactly (they are the source).
+
+3.10 presentation.c, dialogue.c, main.c - motion and transitions (inferred)
+  * Idle: in step_actor's "not moving" branch set
+      a->pose.bob = 0.008f*sinf(idle_phase)  with idle_phase += 0.10f/frame
+    and leave gait 0. Also give NPCs a per-id phase offset (id*0.7) so a
+    crowd does not breathe in unison.
+  * Warps: in main.c load_scene() path (loaded_map != game.ow.map) run a
+    6-frame fade to the clear colour before swapping and a 6-frame fade in
+    after; reuse adventure_duel_transition's fill-rectangle approach with
+    an alpha blend instead of black bars. Suppress it for the scripted
+    intro walk if ow_* reports a scripted map change.
+  * Duel shutters: ease (extent = 120*(1-(1-t)^2)) and hold 4 frames
+    closed; play SFX_CONFIRM-style sting on close if the source has one.
+  * Camera smoothing .24/frame is good; apply the same lerp when returning
+    from the Mason intro camera to the room camera so there is no cut.
+
+3.11 build_world.py camera() - optional per-room overrides
+  After 3.1/3.3 land, review: foyers/Fighting/Dome entrance (fov 64,
+  h<24) -> eye y 6.2, target z h*0.62; Hall of Honor -> eye (12,6.5,27),
+  target (12,0.8,15), fov 52 (closer, lower, altar-centred); Dome -> keep.
+  Leave Lightning exactly as approved.
+
+------------------------------------------------------------------------
+4. SUGGESTED ORDER AND VALIDATION
+------------------------------------------------------------------------
+Pass 1 (highest impact, all colour/placement, no new textures):
+  1. 3.1 lighting bake post-pass incl. floor AO, pools, wall gradient,
+     near block, prop base darkening, prop shadow octagons, ceiling.
+  2. 3.3 three-band walls.
+  3. 3.2 runtime actor/cursor contact shadows + dither mode.
+  4. 3.1 FLOOR_TINT table (lobby, lab, psychic, hall of honor first).
+  5. 3.5 Sam's table recipe fix (it is in the first cinematic).
+  6. 3.8 drop shadows + bevel + island label restyle; 3.10 warp fade.
+Pass 2 (material/prop quality, UI depth):
+  3.4 authored floor tiles and CI4; 3.5 remaining props and pool; 3.6
+  island shadows/beach/sea; 3.7 duel board; 3.9 intro bilinear; 3.10
+  idle breath and shutter easing; 3.11 camera overrides.
+
+Validation for each step:
+  * python3 port/world3d/tools/check_world.py and check_characters.py.
+  * make -C port/frontends/n64/adventure validate: the 42 native captures
+    must still render every map, the campaign fixture, the AI duel and
+    SRAM round trip; compare worst free heap against the recorded
+    1,078,824 bytes (overworld) and keep >= 1.0 MiB. Expected deltas:
+    +2 tris ceiling, +6 tris per prop shadow, +~40% floor quads near
+    walls, +6 tris per actor at runtime; well under 5% of any room.
+  * Regenerate the contact sheet and re-run a mean-value check, e.g.
+      python3 -c "from PIL import Image;import colorsys,glob
+      for f in sorted(glob.glob('port/reviews/n64-polish/after/map-*.png')):
+        px=list(Image.open(f).convert('RGB').resize((80,60)).getdata())
+        print(f,round(sum(colorsys.rgb_to_hsv(*[c/255 for c in p])[2] for p in px)/len(px),2))"
+    Target 0.55-0.68 per interior (Lightning is 0.56 today and is the
+    reference), island 0.55-0.60.
+  * Browser: the WebGL frontend consumes the same L643 colours; run the
+    existing all34map and Sam-flow browser tests and eyeball three rooms
+    there too, since any bake bug shows up identically in both.
+  * Visual acceptance per room: (1) every actor has a shadow, (2) no
+    navy void in any corner, (3) the floor at the walls is visibly darker
+    than at the aisle, (4) the brightest pixels in frame are on a
+    character or the focal prop, (5) side walls show wainscot + plain
+    upper wall, not stripes.
+
+------------------------------------------------------------------------
+5. TRADE-OFFS AND RISKS
+------------------------------------------------------------------------
+* Vertex AO on coarse quads looks blotchy if the gradient crosses only
+  one quad; hence the 2x2-tile subdivision near walls. Do not subdivide
+  the whole floor.
+* RGBA16 gradients band without dither; enable RDP dither when adding
+  gradients, and remember VI dedither is on, so the final image will be
+  smoother than the RDP captures.
+* Darkening floors lowers readability of the walkable grid slightly; the
+  aisle pool term compensates, and the player always has a shadow now.
+* The ceiling slab sits at the near plane for the high camera in short
+  rooms (eye y=7, wall 4.4): check the fov-64 rooms for near-plane clipping
+  (near=1.5); if it clips, use the 5.5-unit wall option instead.
+* Depth-write-off shadows draw in actor order; two adjacent actors'
+  shadows overlap harmlessly because both are the same opaque colour.
+* CI4 conversion is the only item with a real toolchain unknown; prove it
+  on one texture first.
+* None of this touches the story engine, saves, duel engine, NPC
+  coordinates or collision; all geometry/UV/pivot data is preserved by
+  design, and the approved Lightning mesh is only re-coloured.
+
+------------------------------------------------------------------------
+6. PER-CAPTURE NOTES (quick reference)
+------------------------------------------------------------------------
+title.png / intro-*.png: faithful; 1.5x point scaling unevenness (C1).
+naming.png: best screen in the build; shadow ellipse is the model for 3.2.
+map-00 Overworld: best 3D frame; needs sea brightness, shadows, beach,
+  cursor shadow, paper-style label.
+map-01 Mason lab / mason-dialogue / sam-table: cyan floor glare, white
+  slab table (B3), no shadows, void in top corners. The cinematic camera
+  framing of Mark+Sam (sam-table.png) is good.
+map-15 Lightning: reference room; add actor shadows, floor pools at the
+  discs and aisle, wall gradient; cream discs are reading grey (they get
+  the +pool term).
+map-12 Water: brightest frame in the set; pool flat; walls striped.
+map-18 Grass: lime lawn, floating topiaries, grey pebbles; 2-unit walls
+  are right for a garden; worst triangle count.
+map-21 Psychic: yellow floor contradicts the violet identity; torches are
+  pegs; needs the moodiest treatment of all rooms.
+map-27 Fire: blue/white walls ARE the source (checked fire_club.png), so
+  keep the hue but wainscot it; braziers need warm core and floor pool.
+map-09 Rock: boulders and statues float; good composition otherwise.
+map-24 Science: machines with source faces look right; lavender floor is
+  the one floor that could stay; walls striped green.
+map-06 Fighting: mat floor OK; weights rack reads as pegs (3.5).
+map-14 Lobby: neon grout (B1); the duel table + chairs cluster is good.
+map-32 Dome: strongest interior composition; only needs AO and ring
+  darkening.
+map-33 Hall of Honor: should be the dimmest, most reverent room; today it
+  is the second brightest.
+duel*.png: correct and legible; see 3.7 for depth.
+
+Source files inspected: port/world3d/tools/build_world.py,
+scene_specs.py, author_overworld.py (shading/camera sections),
+port/frontends/n64/adventure/{main,scene,presentation,dialogue,intro,
+naming,menus}.c and headers, port/frontends/n64/tcgn64.c (layout, palette,
+board drawing), port/frontends/n64/lightning/{README.md,tools/build_scene.py,
+tools/export_scene.py}, port/frontends/web/src/js/world3d.js (shader),
+port/world3d/generated/{world3d_maps.h,memory-budget.json,
+native/validation.json}, port/maps/3D_GUIDE.md and the club briefs.
