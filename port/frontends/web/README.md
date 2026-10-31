@@ -11,7 +11,7 @@ python3 -m http.server 8080 --directory port/frontends/web/dist
 ```
 
 Build requirements: Emscripten (`emcc`), Binaryen `wasm-opt` (the Emscripten
-installation's copy is discovered automatically), Python3. Checked-in audio
+installation's copy is discovered automatically), Python3 and Node.js. Checked-in audio
 and model assets make normal builds independent of Blender and the Game Boy
 ROM. `EMCC`, `WASM_OPT` and `PYTHON` override tool paths.
 
@@ -37,7 +37,10 @@ is unavailable.
 
 ## Play
 
-The original opening/title sequence precedes two local diaries. Each diary has
+The original opening/title sequence precedes the local diary picker. Create as
+many diaries as browser storage allows with New diary, or use Menu → Choose
+diary during play. An empty Diary 2 is filled with a checkpoint after Sam's
+tutorial, including the awarded starter deck. Each diary has
 its own name, story, collection, decks, recipes, mail, records, settings, and
 salted Card Pop identity. Player naming shows the detailed Mark model. The
 story begins with the original island route to Mason Laboratory, scripted
@@ -51,10 +54,11 @@ movement, Mason/Sam dialogue and practice duel.
 | C / gamepad Start | Adventure menu; card details during a duel |
 | Hold Shift / gamepad B while walking | Run |
 
-On-screen controls support mouse/touch. The Battle Center uses both diaries'
+On-screen controls support mouse/touch. Clicks select options; merely moving
+the pointer does not change the selected card or option. The Battle Center uses the two selected diaries'
 selected physical decks. Two standard gamepads route each duelist to its own
 controller; the keyboard can also be passed between players. Card Pop and Gift
-Center exchange cards/recipes between the diaries. Printer features create
+Center let you choose another diary for exchanges. Printer features create
 actual downloadable text reports.
 
 The browser shares `overworld.c`, `gameplay.c`, and the N64 adventure's
@@ -69,15 +73,18 @@ vertex colors, joint pivots, source cameras, event patches and character poses.
 
 Use Menu → Diary to save. Single-player duels also checkpoint the story and
 save their turns, as in the N64 adaptation. Reloading and choosing Continue
-resumes a pending saved duel. Battle Center duels are not resumable.
+resumes that diary's pending duel. Each diary checkpoints independently, so
+another diary remains playable during a paused duel. Battle Center duels are
+not resumable.
 
-The browser stores one versioned cartridge record in localStorage. Both
-canonical diaries and pending duel data are named blobs inside it. A Card Pop
+The browser stores one versioned cartridge record in localStorage. Canonical
+diaries and their independent pending duels are named blobs inside it. Existing
+two-diary cartridge records migrate without changing saved-duel bytes. A Card Pop
 or Gift Center exchange replaces the whole record in one atomic write; a failed
 write leaves both old diaries and rolls back the in-memory operation. The C
 profile decoder checks version/length and the canonical story/gameplay CRCs.
 
-Export cartridge backs up both diaries and saved duels. Import validates both
+Export cartridge backs up all diaries and saved duels. Import validates all
 canonical diaries before replacing the cartridge. These adventure saves use a
 separate namespace from the existing standalone duel frontend's saves. Browser
 storage remains local to the site/profile; export before clearing site data.
@@ -101,6 +108,10 @@ because browsers restrict autoplay.
 ```sh
 node port/frontends/web/test/node_duel_test.mjs --seeds 1-60
 node port/frontends/web/test/adventure_engine_test.mjs
+node port/frontends/web/test/diaries_test.mjs
+node port/frontends/web/test/diaries_browser.mjs
+node port/frontends/web/test/pointer_selection.mjs
+node port/frontends/web/test/duel_banners.mjs
 node port/frontends/web/test/world3d_test.mjs
 node port/frontends/web/test/relay_test.mjs
 node port/frontends/web/test/world3d_browser.mjs
@@ -129,7 +140,8 @@ npm install --prefix port/frontends/web/build/world-test playwright
 A full human browser playthrough remains a further check. Native scene fidelity,
 sampled audio overlap and platform save/print adaptations have the same limits
 as the documented N64 port. Physical Game Boy link/IR/printer transport is
-replaced by the local two-diary and download features.
+replaced by local diary exchanges and download features. The native N64 build
+retains its two-diary cartridge storage layout.
 
 The preview serves `dist/` directly without caching. Run `build.sh` after source
 changes, then refresh the same URL. The persistent server is the user LaunchAgent
