@@ -1,0 +1,293 @@
+{
+  "purpose": "Baseline art direction, design, texture, lighting, shadow, material, camera and game-feel review for N64",
+  "capture_notes": "Raw native screenshots omit final VI antialias/dedither filtering. Review actual ares scanout files too when present. Labels are outside screenshots.",
+  "baseline_validation_rom_sha256": "24bdc9f7d407f37d2cf8bbf7b581ef47f37ac0d33ace2c4c78e26ef1c0618823",
+  "baseline_validation_source": "port/world3d/generated/native/validation.json",
+  "images": [
+    {
+      "file": "title.png",
+      "label": "Title screen",
+      "source": "port/world3d/generated/native/title.png",
+      "sha256": "9209840af2ab966c65e1f79796a34150b8e15bab843e65884f8136274a00ee52",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "intro-charizard.png",
+      "label": "Opening: Charizard",
+      "source": "port/world3d/generated/native/intro-charizard.png",
+      "sha256": "4f6013a28fa6290f8e01139690884741fe4b71dfbf841d9bb3c4c3dacec8febd",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "intro-scyther.png",
+      "label": "Opening: Scyther",
+      "source": "port/world3d/generated/native/intro-scyther.png",
+      "sha256": "d83909bcf39add4cc497e9b2e1c8cac3d4d845570394da024aefaba4394f07e9",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "intro-aerodactyl.png",
+      "label": "Opening: Aerodactyl",
+      "source": "port/world3d/generated/native/intro-aerodactyl.png",
+      "sha256": "dad87117ef4ec9985c6a9e75b36abb8ab60a3ca9b0c7767d82c7f8afc97a427b",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "naming.png",
+      "label": "Choose your name",
+      "source": "port/world3d/generated/native/naming.png",
+      "sha256": "d58d1353c8963c8d515c15b1d82109c56f735779025058afac4fcdab40d8faf3",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-00.png",
+      "label": "Overworld",
+      "source": "port/world3d/generated/native/map-00.png",
+      "sha256": "a177116e4c399fea8528be9ee374c251846c16200f19f9a998ed55997f1bfead",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-01.png",
+      "label": "Mason laboratory",
+      "source": "port/world3d/generated/native/map-01.png",
+      "sha256": "fb49a3a3b93ddc731cdc1850e7b48767733551aec48b5edbe4fe133949e31d63",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "mason-dialogue.png",
+      "label": "Mason dialogue",
+      "source": "port/world3d/generated/native/mason-dialogue.png",
+      "sha256": "e20ee858e0f98c5255a456dfd06557a161a84d2b78faa652ae3bcb1c7cbb0d4b",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "sam-table.png",
+      "label": "Approach Sam",
+      "source": "port/world3d/generated/native/sam-table.png",
+      "sha256": "860c02aec055f9c719cbc373d75414aec07c01be318d74449c3628aab75b2501",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-15.png",
+      "label": "Lightning Club",
+      "source": "port/world3d/generated/native/map-15.png",
+      "sha256": "94110c4add7ac3bfd06ca42c4d51cc534e660a76c44c8c9891b135ec539c1487",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-12.png",
+      "label": "Water Club",
+      "source": "port/world3d/generated/native/map-12.png",
+      "sha256": "00382fe72dc155a2b0912bc67b098d5fcc43f11e4e49d5897a369d6043c3900e",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-18.png",
+      "label": "Grass Club",
+      "source": "port/world3d/generated/native/map-18.png",
+      "sha256": "704f1be14a6a2aaf5efecf83b1d55c6aef7d7d27ae54e2b4c97cb935a43f2d26",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-21.png",
+      "label": "Psychic Club",
+      "source": "port/world3d/generated/native/map-21.png",
+      "sha256": "d336389aefd98863f1add5e3599f2b2e2426e19c4af5e35f6c09a2608976b0d2",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-27.png",
+      "label": "Fire Club",
+      "source": "port/world3d/generated/native/map-27.png",
+      "sha256": "fb53c185cc8ea545b04e732e3bc21a57c412fe2d4f369edc7d2530e58b649f86",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-09.png",
+      "label": "Rock Club",
+      "source": "port/world3d/generated/native/map-09.png",
+      "sha256": "919407cbe3f407912ed60219150e517f4ed352b09cdba22971c31a12c6c75868",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-24.png",
+      "label": "Science Club",
+      "source": "port/world3d/generated/native/map-24.png",
+      "sha256": "17757135fbb066a324c33f66c4f2328a0b1c25086ce128eaccdbd50e9c4f20ed",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-06.png",
+      "label": "Fighting Club",
+      "source": "port/world3d/generated/native/map-06.png",
+      "sha256": "6cebe886c336273fc3094234cee27a4edf43fe6d2ebe4c845c1de4cb6928c8c4",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-14.png",
+      "label": "Shared lobby: Lightning",
+      "source": "port/world3d/generated/native/map-14.png",
+      "sha256": "c875fdb797ff1c6a8a57ae8bb24ee0cebe9ace7c78c12a1b01070ec6bd294a80",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-32.png",
+      "label": "Pokemon Dome",
+      "source": "port/world3d/generated/native/map-32.png",
+      "sha256": "88981ffe4f76112d1c4057f6164e354ed6f2a7e59ddead9efecf9b4f918b65a5",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "map-33.png",
+      "label": "Hall of Honor",
+      "source": "port/world3d/generated/native/map-33.png",
+      "sha256": "9180859c5ef51e848bcc7d03cf9972ebb9be90156dd0c203b0ca3cbbad3548f6",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "duel.png",
+      "label": "Duel: native AI match final board",
+      "source": "port/world3d/generated/native/duel.png",
+      "sha256": "dae3532ea8a015bc2875f3a5fb8fb9aa84c92dd030fa74bdb5d4e4036a670432",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "duel-card-list.png",
+      "label": "Duel: choose a card from the hand",
+      "source": "port/reviews/n64-polish/before/diagnostic/ares.log",
+      "sha256": "b10a66d3bff2e6960482a78ee1ee238e95e6f87fb15cdd663339876097555e9f",
+      "capture": "Actual duel engine request, existing native UI renderer; RDP completion fenced, before VI filtering",
+      "diagnostic_mode": 3,
+      "rom_sha256": "bbb72f4ee53af9eaf28ef1a78e41d359c40fbfd60655c9057076a3baafa534ba",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "duel-card-detail.png",
+      "label": "Duel: card detail",
+      "source": "port/reviews/n64-polish/before/diagnostic/ares.log",
+      "sha256": "d5efa9502550f6072265ec368651c31f563905424960d85709dbfc6903e9b4fe",
+      "capture": "Actual duel engine request, existing native UI renderer; RDP completion fenced, before VI filtering",
+      "diagnostic_mode": 3,
+      "rom_sha256": "bbb72f4ee53af9eaf28ef1a78e41d359c40fbfd60655c9057076a3baafa534ba",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "duel-coin.png",
+      "label": "Duel: coin toss",
+      "source": "port/reviews/n64-polish/before/diagnostic/ares.log",
+      "sha256": "a7ad74454e9341f28f27c3d377c8da796b021da7cc26011afd5b111a392d7ae6",
+      "capture": "Actual duel engine request, existing native UI renderer; RDP completion fenced, before VI filtering",
+      "diagnostic_mode": 3,
+      "rom_sha256": "bbb72f4ee53af9eaf28ef1a78e41d359c40fbfd60655c9057076a3baafa534ba",
+      "dimensions": [
+        320,
+        240
+      ]
+    },
+    {
+      "file": "duel-action-menu.png",
+      "label": "Duel: action menu",
+      "source": "port/reviews/n64-polish/before/diagnostic/ares.log",
+      "sha256": "f94020534767cef9fb0c7bef0b02f4ee5009a5775ee6c3414cd24724f6c4b467",
+      "capture": "Actual duel engine request, existing native UI renderer; RDP completion fenced, before VI filtering",
+      "diagnostic_mode": 3,
+      "rom_sha256": "bbb72f4ee53af9eaf28ef1a78e41d359c40fbfd60655c9057076a3baafa534ba",
+      "dimensions": [
+        320,
+        240
+      ]
+    }
+  ],
+  "baseline_commit": "04c5b482",
+  "review_rom_sha256": "bbb72f4ee53af9eaf28ef1a78e41d359c40fbfd60655c9057076a3baafa534ba"
+}

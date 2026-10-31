@@ -367,6 +367,10 @@ int main(void)
  extern bool adventure_story_diagnostic(void);assertf(adventure_story_diagnostic(),"MIPS story campaign failed");
  TcgDuelSetup duel_test={0};duel_test.prizes=2;duel_test.animations_disabled=1;duel_test.skip_delay_allowed=1;duel_test.rng[0]=0x57;duel_test.rng[1]=0x31;
  duel_test.duelist[0].kind=TCG_AI;duel_test.duelist[0].deck_id=CHARMANDER_AND_FRIENDS_DECK_ID;duel_test.duelist[0].name="MARK";
+#if ADVENTURE_DIAGNOSTIC == 3
+ /* Request the human frontend screens while the diagnostic bot answers. */
+ duel_test.duelist[0].kind=TCG_HUMAN;
+#endif
  duel_test.duelist[1].kind=TCG_AI;duel_test.duelist[1].deck_id=SAMS_NORMAL_DECK_ID;duel_test.duelist[1].name="SAM";
  n64_duel_automated(true);int duel_result=n64_duel_play(&duel_test,NULL);n64_duel_automated(false);
  assertf(duel_result==0||duel_result==1,"Native duel did not finish");
@@ -385,15 +389,20 @@ int main(void)
  assertf(adventure_cinematic_diagnostic(ADVENTURE_DIAGNOSTIC==1?capture:NULL),"Opening choreography failed");
  debugf("ADVENTURE CINEMATIC PASS\n");
  debugf("ADVENTURE MAP TOUR PASS\n");
-#if ADVENTURE_DIAGNOSTIC == 2
+#if ADVENTURE_DIAGNOSTIC >= 2
  for(unsigned cycle=0;;cycle++) {
+#if ADVENTURE_DIAGNOSTIC == 3
+  debugf("REVIEW VI title cycle=%u frames=900\n",cycle);
+  for(unsigned f=0;f<900;f++)adventure_intro_preview(3,70);
+#endif
   game.ow.map=15;game.ow.x=w3_maps[15].width/2;game.ow.y=w3_maps[15].height-4;
   game.ow.direction=2;game.ow.npc_count=0;
-  debugf("VIDEO PHASE room cycle=%u frames=90\n",cycle);
-  for(unsigned f=0;f<90;f++)game_draw();
+  unsigned held_frames=ADVENTURE_DIAGNOSTIC==3?900:90;
+  debugf("VIDEO PHASE room cycle=%u frames=%u\n",cycle,held_frames);
+  for(unsigned f=0;f<held_frames;f++)game_draw();
   n64_ui_video_probe(N64_VIDEO_DIALOGUE,90);
-  n64_ui_video_probe(N64_VIDEO_DUEL,90);
-  n64_ui_video_probe(N64_VIDEO_CARD,90);
+  n64_ui_video_probe(N64_VIDEO_DUEL,held_frames);
+  n64_ui_video_probe(N64_VIDEO_CARD,held_frames);
   debugf("VIDEO CYCLE PASS %u\n",cycle);
  }
 #else

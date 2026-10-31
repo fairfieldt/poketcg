@@ -16,7 +16,7 @@ void n64_duel_automated(bool enabled);
 struct surface_s *n64_ui_frame(void);
 void n64_map_label(struct surface_s *frame,const char *name);
 void n64_ui_text_speed(unsigned speed);
-/* Static CPU-rendered phases in the DIAGNOSTIC=2 video test ROM only. */
+/* Held production UI phases in the DIAGNOSTIC=2/3 test ROMs only. */
 enum { N64_VIDEO_DIALOGUE, N64_VIDEO_DUEL, N64_VIDEO_CARD };
 void n64_ui_video_probe(unsigned phase,unsigned frames);
 #endif

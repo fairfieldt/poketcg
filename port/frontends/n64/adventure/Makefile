@@ -33,7 +33,7 @@ AUDIO_FILES := $(AUDIO_ASSETS:$(PORT)/audio/generated/%=$(N64_MKDFS_ROOT)/audio/
 INTRO_PNGS := $(wildcard assets/intro/*.png)
 INTRO_SPRITES := $(INTRO_PNGS:assets/intro/%.png=$(N64_MKDFS_ROOT)/intro/%.sprite)
 
-.PHONY: all bundle clean assets diagnostic video-diagnostic
+.PHONY: all bundle clean assets diagnostic video-diagnostic review-diagnostic
 all:
 	python3 $(PORT)/world3d/tools/sync_characters.py
 	$(MAKE) bundle
@@ -84,6 +84,8 @@ diagnostic:
 	$(MAKE) BUILD_DIR=build/diagnostic ROM=poketcg-diagnostic DIAGNOSTIC=1
 video-diagnostic:
 	$(MAKE) BUILD_DIR=build/video ROM=poketcg-video DIAGNOSTIC=2
+review-diagnostic:
+	$(MAKE) BUILD_DIR=build/review ROM=poketcg-review DIAGNOSTIC=3
 .PHONY: test validate
 test:
 	$(MAKE) -C $(PORT) practicecheck

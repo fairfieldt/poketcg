@@ -701,6 +701,10 @@ static surface_t g_ui_canvas;
 static bool g_automated_ui;
 static unsigned g_automated_events;
 static unsigned g_message_speed=2;
+#if ADVENTURE_DIAGNOSTIC == 3
+static const char *g_review_label;
+static unsigned g_review_seen;
+#endif
 #endif
 
 static void begin_frame(void)
@@ -839,6 +843,25 @@ static void end_frame_poll(void)
 	end_frame();
 	input_poll();
 }
+
+#if ADVENTURE_DIAGNOSTIC == 3
+/* Capture the first frame of a real, engine-requested UI screen. The review
+ * ROM alone acknowledges it afterwards; production input is untouched. */
+static bool review_snapshot(void)
+{
+	if(!g_review_label)return false;
+	surface_t *frame=g_last_ui_frame;
+	const uint16_t *pixels=UncachedAddr(frame->buffer);
+	debugf("FRAMEBUFFER %s 320 240\n",g_review_label);
+	for(unsigned y=0;y<240;y++)for(unsigned x=0;x<320;x+=32) {
+		char line[129];
+		for(unsigned i=0;i<32;i++)snprintf(line+i*4,5,"%04x",pixels[y*(frame->stride/2)+x+i]);
+		debugf("PIXELS %u %u %s\n",x,y,line);
+	}
+	debugf("FRAMEBUFFER END\n");g_review_label=NULL;
+	return true;
+}
+#endif
 
 /* render n frames of the board (pacing for events); A/B skips */
 static void show_frames(int n)
@@ -1250,6 +1273,9 @@ static int ui_ack(const TcgRequest *r, int ports)
 		if ((g_frame / 16) & 1)
 			print(RIGHT - CW, TBOX_LINE(TBOX_LINES - 1), C_HI, "v");
 		end_frame_poll();
+#if ADVENTURE_DIAGNOSTIC == 3
+		if(review_snapshot())return 0;
+#endif
 		Keys k = keys(ports);
 		if (k.a || k.b)
 			break;
@@ -1281,6 +1307,9 @@ static int ui_duel_menu(const TcgRequest *r, int ports)
 		}
 		print(RIGHT - 21 * CW, TBOX_LINE(3), C_HI, "START: card  Z: check");
 		end_frame_poll();
+#if ADVENTURE_DIAGNOSTIC == 3
+		if(review_snapshot())return cur;
+#endif
 		Keys k = keys(ports);
 		if (k.up || k.down)
 			cur ^= 1;
@@ -1324,6 +1353,9 @@ static int ui_card_list(const TcgRequest *r, int ports)
 		draw_card_list_screen(title, info, items, n, r->shown, cur, &top);
 		draw_textbox_hint(hints);
 		end_frame_poll();
+#if ADVENTURE_DIAGNOSTIC == 3
+		if(review_snapshot())return cur;
+#endif
 		Keys k = keys(ports);
 		list_nav(k, n, &cur);
 		if (k.a && n > 0)
@@ -2144,7 +2176,24 @@ static int on_request(void *ctx, const TcgRequest *r)
 {
 	(void)ctx;
 #ifdef TCGN64_ADVENTURE
-	if(g_automated_ui){if(r->type==TCG_REQ_ACK||r->type==TCG_REQ_CONFIRM)return 0;return bot_answer(r);}
+	if(g_automated_ui){
+#if ADVENTURE_DIAGNOSTIC == 3
+		unsigned bit=0;
+		if(r->type==TCG_REQ_DUEL_MENU) {bit=1;g_review_label="duel-action-menu";}
+		else if(r->type==TCG_REQ_CARD_LIST&&r->num_items>0) {bit=2;g_review_label="duel-card-list";}
+		else if(r->type==TCG_REQ_ACK&&g_overlay.on) {bit=4;g_review_label="duel-card-detail";}
+		else if(r->type==TCG_REQ_ACK&&g_screen==TCG_SCREEN_COIN_TOSS) {bit=8;g_review_label="duel-coin";}
+		if(bit&&!(g_review_seen&bit)) {
+			g_review_seen|=bit;
+			if(r->type==TCG_REQ_DUEL_MENU)ui_duel_menu(r,1);
+			else if(r->type==TCG_REQ_CARD_LIST)ui_card_list(r,1);
+			else ui_ack(r,1);
+		}
+		g_review_label=NULL;
+#endif
+		if(r->type==TCG_REQ_ACK||r->type==TCG_REQ_CONFIRM)return 0;
+		return bot_answer(r);
+	}
 #endif
 	int side = side_of(r->duelist);
 	int ans;
@@ -2608,7 +2657,7 @@ void n64_map_label(surface_t *frame,const char *name)
 }
 void n64_ui_text_speed(unsigned speed) {g_message_speed=speed<5?speed:2;}
 
-#if ADVENTURE_DIAGNOSTIC == 2
+#if ADVENTURE_DIAGNOSTIC >= 2
 /* These checks deliberately use the production CPU renderer and display
  * queue. The checksum catches framebuffer corruption; watching the held
  * phases in ares additionally checks the VI output, which a raw framebuffer
