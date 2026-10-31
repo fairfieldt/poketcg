@@ -1,0 +1,451 @@
+{
+  "native_cases": [
+    {
+      "passed": true,
+      "case": "native-320-4mib-v2",
+      "frames": [
+        {
+          "file": "lightning-entry-before.png",
+          "dimensions": [
+            320,
+            240
+          ],
+          "sha256": "6a30bb6ff1b44a682ef010a4c81ae75bdb4b94065a6689d62eba216fb6e98a99"
+        },
+        {
+          "file": "lightning-entry-after.png",
+          "dimensions": [
+            320,
+            240
+          ],
+          "sha256": "6a30bb6ff1b44a682ef010a4c81ae75bdb4b94065a6689d62eba216fb6e98a99"
+        },
+        {
+          "file": "lightning-middle-before.png",
+          "dimensions": [
+            320,
+            240
+          ],
+          "sha256": "fe0b4ce7c4d720124ecb743df08437aa05fc769ef0135f46e3970713d43b8d2c"
+        },
+        {
+          "file": "lightning-middle-after.png",
+          "dimensions": [
+            320,
+            240
+          ],
+          "sha256": "541fd165d281c0afab8e0e72bc904c92133ca142d36571a4730a5bdae09b87bf"
+        },
+        {
+          "file": "lightning-leader-before.png",
+          "dimensions": [
+            320,
+            240
+          ],
+          "sha256": "7b617af5df92fea61dc46f9482a569e94c539aa3816098f4dade297c2c42931c"
+        },
+        {
+          "file": "lightning-leader-after.png",
+          "dimensions": [
+            320,
+            240
+          ],
+          "sha256": "5d369066ef7c2c5807e9d1c8bfee2a320fdd3ccdf7997e8eb2cd8376f060acbb"
+        },
+        {
+          "file": "fire-entry-before.png",
+          "dimensions": [
+            320,
+            240
+          ],
+          "sha256": "3eb3ba1159d99320011bb1c038f395e9166fcef47bf9d722dc4d8e566310763b"
+        },
+        {
+          "file": "fire-entry-after.png",
+          "dimensions": [
+            320,
+            240
+          ],
+          "sha256": "3eb3ba1159d99320011bb1c038f395e9166fcef47bf9d722dc4d8e566310763b"
+        },
+        {
+          "file": "fire-middle-before.png",
+          "dimensions": [
+            320,
+            240
+          ],
+          "sha256": "169ae71169695c96d95f60c8e8625e0cf496dba6f238d7cc13a4b1e59e95d67a"
+        },
+        {
+          "file": "fire-middle-after.png",
+          "dimensions": [
+            320,
+            240
+          ],
+          "sha256": "bb03eb4bcf7a08724438b0ddccc62bfe41dab758d226c262753a0bc25aadeaaa"
+        },
+        {
+          "file": "fire-leader-before.png",
+          "dimensions": [
+            320,
+            240
+          ],
+          "sha256": "25faaa0a9eb9d58bd2d3b742f5164e12058ecce42c6a9c91778892546c4df343"
+        },
+        {
+          "file": "fire-leader-after.png",
+          "dimensions": [
+            320,
+            240
+          ],
+          "sha256": "c8571ab661b4dc6648274b3563b2902d302ebba613a8e05c2610ba88b2c6c592"
+        }
+      ],
+      "wall_seconds": 22.37,
+      "method": "N64 RDP framebuffer read after detach_wait, production world/main.c + Tiny3D renderer; fixed source poses; only camera getter differs; privateAres/noVIbreakpoints"
+    },
+    {
+      "passed": true,
+      "case": "native-480-8mib-v3",
+      "frames": [
+        {
+          "file": "lightning-entry-before.png",
+          "dimensions": [
+            480,
+            360
+          ],
+          "sha256": "9f12861e78353d74426af6889b251a7caf4f99930c3743b9c3ae45ca41056d1c"
+        },
+        {
+          "file": "lightning-entry-after.png",
+          "dimensions": [
+            480,
+            360
+          ],
+          "sha256": "9f12861e78353d74426af6889b251a7caf4f99930c3743b9c3ae45ca41056d1c"
+        },
+        {
+          "file": "lightning-middle-before.png",
+          "dimensions": [
+            480,
+            360
+          ],
+          "sha256": "74a6c3cb58246ae0509d1a87df60485fe01ec712ac964766b07c239311bd30f9"
+        },
+        {
+          "file": "lightning-middle-after.png",
+          "dimensions": [
+            480,
+            360
+          ],
+          "sha256": "d180006cfaff5373364beba5ffa1676d43f8132a6b1f0ff1859953c7cdd3ee79"
+        },
+        {
+          "file": "lightning-leader-before.png",
+          "dimensions": [
+            480,
+            360
+          ],
+          "sha256": "8077387b7ed4694008e560b4d6718fe7536963c146923bc96b599acb9a788ba8"
+        },
+        {
+          "file": "lightning-leader-after.png",
+          "dimensions": [
+            480,
+            360
+          ],
+          "sha256": "96a7af6f97a733fa0e9bba1568110e2de8224d171667fc7d5349d50cf3cca78a"
+        },
+        {
+          "file": "fire-entry-before.png",
+          "dimensions": [
+            480,
+            360
+          ],
+          "sha256": "41d4b5b203a13b23fb949a5a05581a17d72664f82ac6ac29f802b3ec71c32600"
+        },
+        {
+          "file": "fire-entry-after.png",
+          "dimensions": [
+            480,
+            360
+          ],
+          "sha256": "41d4b5b203a13b23fb949a5a05581a17d72664f82ac6ac29f802b3ec71c32600"
+        },
+        {
+          "file": "fire-middle-before.png",
+          "dimensions": [
+            480,
+            360
+          ],
+          "sha256": "d4b93f0e47685dd1062a3002fb2b2f40e0d8eb0f32c09f3f3a228eef16245005"
+        },
+        {
+          "file": "fire-middle-after.png",
+          "dimensions": [
+            480,
+            360
+          ],
+          "sha256": "de9c529220ff184e2d14660ef2d055ed510226635a25e35047a3c1f73a51b35d"
+        },
+        {
+          "file": "fire-leader-before.png",
+          "dimensions": [
+            480,
+            360
+          ],
+          "sha256": "cd7153172c66c82f971a613f77a9b2f40c144723cc3740ba6e4f93884f295a7d"
+        },
+        {
+          "file": "fire-leader-after.png",
+          "dimensions": [
+            480,
+            360
+          ],
+          "sha256": "2e9b3a53a1b2a0a1badad01113ec7654b38c646d5796015cec5cc10246d93332"
+        }
+      ],
+      "wall_seconds": 50.93,
+      "method": "N64 RDP framebuffer read after detach_wait, production world/main.c + Tiny3D renderer; fixed source poses; only camera getter differs; privateAres/noVIbreakpoints"
+    }
+  ],
+  "meshes": {
+    "world/maps/actor_chap.l64": "5c6f747968bf60d33dc93088aae3ad6f03a44e87d1ae71edfc279ee720ef5fc9",
+    "world/maps/deck_machine_room_all_deck_machines.l64": "0ce32375283c42925ed19b46d1680097a89eb2d647c06891f1ac0ee36b81accf",
+    "world/maps/deck_machine_3_on.l64": "2a50350443f2572095ea5a1fb75af493967a4c5a2ba15f1d35a0e4adcaadffaf",
+    "world/maps/pokemon_dome_hall_of_honor_door_open.l64": "3362ca1028c0acb3ae141443549cd0afe0c5958d3203727ceb65bd9f3bae3f1b",
+    "world/maps/actor_mania.l64": "5d6b9cab070da0f3661ecc6132e22bbf790d4b9e8f285551f7c8765f792ed36c",
+    "world/maps/deck_machine_4_off.l64": "2ef53211a07116f342f288e5655e0adcebd34d63f5cd4e6b6fa000175be00886",
+    "world/maps/emblem_grass_club_entrance.l64": "d1d53a3cc7b1ef59ebd7d74798e76e4d832d07de8a04c7be051f114b5f476ee5",
+    "world/maps/psychic_club.l64": "68b89e72c07bb5ce9ccb15e1e7b7247d8fccbe9768d06aa75f2cb96ea960f84a",
+    "world/maps/actor_mark.l64": "dfff3dfa24781703b0e5d4d09b9d38cad41fa652530787120728abf2f88e8afa",
+    "world/maps/actor_boy.l64": "266abb08901e0eca82ec8929a21b3b529cd03789e7cd9a5920b1678a8b8a0e45",
+    "world/maps/lightning_club.l64": "fc6cace537264d48feb6697d707b102fdbdeb8e1c6c7e9a575790fa4f841f661",
+    "world/maps/rock_club.l64": "879f660ef382613ecd91bf6b12b2695be5b0fa6c7488cea0bc58e14cf0c2c453",
+    "world/maps/actor_steve.l64": "a45d5339977ccad2f2b2a7825d0cdadd73bedc64d75eee828d140621dfa005e7",
+    "world/maps/water_club.l64": "84160bac1b6e7349c5a7bec9bb709eabb2caf5364cb6bfb995fd309800945759",
+    "world/maps/actor_tech.l64": "36389559e90922a8cf22fdb50164f8f9f9638adf68789449c9a6f1ec129e8084",
+    "world/maps/actor_legendary_card.l64": "30e1b9904bf4bcb93fe31e9cfc78f652c365e834d645968af6ee0f43216c2792",
+    "world/maps/actor_torch.l64": "b1da574812607b1ac826bba3ba2883c963673a87c2fa49d02019a2c2780f301a",
+    "world/maps/mason_laboratory.l64": "cc4f20b3a82f7958fe8d9ad8218e1e4429e1a6430bbaf3b37d46441bfd915fbb",
+    "world/maps/actor_legendary_card__bottom_left.l64": "9d2c81a1645ef86a78e28331998ae7c2dc206e8ce583a15483d327d1a459fe2a",
+    "world/maps/emblem_fighting_club_entrance.l64": "de5076730b1ff16e88b550925764e459057a01b38579d6858fb246d1d6748758",
+    "world/maps/actor_legendary_card__top_right.l64": "e2fac1b28ce5cb6e14ba64225581d3b8fa477143a959315df0f8bfb71205205f",
+    "world/maps/deck_machine_5_off.l64": "6d0839e461ec27bcaad845cb55622ae5d3c77c751b746b24c7ab9022692f2ed9",
+    "world/maps/actor_gene.l64": "db92776ba9de69f7a8a42f01325dc0976139f5659dfd18896468bcdc309f6488",
+    "world/maps/emblem_lightning_club_entrance.l64": "63e22d8393572c3a4c5a4b9f88964e3370c214aa9be8ef503ebc217870d734d5",
+    "world/maps/actor_boy_palette2.l64": "d5cd6bb77753980ea1028d6cd87a5b16163758bda384386d95ffe8424d7f4749",
+    "world/maps/actor_dr_mason.l64": "28c2459cf09bb876ba738fdad9ea9b712cf98d4a6e67bb2f07626e95bcb262b9",
+    "world/maps/actor_swimmer_palette2.l64": "8da63584ca3727adeda09d554bfb977a68b90948c4e23634233dee3ea14c6491",
+    "world/maps/actor_granny.l64": "58c991b139bcc7e87cb9f69f83ab151d20c35d483f49d7382fd0b8c8ab2bd051",
+    "world/maps/fighting_club.l64": "4037912f3bb1759001075bfb74b3a9e51006cd669a5898e036a36729ab93c86d",
+    "world/maps/actor_legendary_card__top_left.l64": "022d8a2fbebed4c8b2a399109a8a5b7148166ba149701b2cc622c6ffc70c55d3",
+    "world/maps/actor_mania_palette2.l64": "a533075b2212d2a0304d77da4b0ad8217cbf167492e074410d93df9b8f3dae20",
+    "world/maps/actor_ronald.l64": "eee2aa4a22e144fea319d7eeae850133d674fdf3aa124078a60d1d981650dd08",
+    "world/maps/emblem_fire_club_entrance.l64": "1511f2f862b331a191224a3473e2633e61da264236312ce4890ca78b96bec6c9",
+    "world/maps/actor_rod.l64": "894b25c2da15fd0213b91a323904a2b110d98cd1244db67f918683234134fe84",
+    "world/maps/ishiharas_house.l64": "62e6d221ab25d4a196feba6e0600f9d09046eeb37f8ae2d56439349d36064fbf",
+    "world/maps/actor_courtney.l64": "2679885f7fb438f053284e587b337248db60432e8954132e7c395b7e7cd2a97d",
+    "world/maps/deck_machine_room.l64": "39afb245f2263ddcb972221b60af35ec6c31545ed763bddc86f73af4e39e7968",
+    "world/maps/actor_nikki.l64": "85a5832ca2ccb80ff169395e75f8854fa24d3abadf7b63e47675e344a84adadb",
+    "world/maps/actor_joshua.l64": "79cfac6b6ba7f218fbcfdefe30e4220e7ec026633632ac68f64debc473bebf78",
+    "world/maps/deck_machine_5_on.l64": "1cd497ed53d8a1d3cb6e7e508adf07e99a9e434014edbee9e908d8ce9b50b69b",
+    "world/maps/pokemon_dome_entrance.l64": "7981d28df0b48d972c4c18f39113f0e3470e8e2d609366c4b2b30cf8692ff02a",
+    "world/maps/deck_machine_7_off.l64": "cc7312fc43c5f476478bc8fa5cb6b3c839703938f80060f1b53895f160b7ad25",
+    "world/maps/challenge_hall.l64": "592966701662ad51bce3bdfe05fd5380e3901178cc0079dcba2bdd762423e324",
+    "world/maps/overworld.l64": "1b23d9b2cab8dc27ef6f0975b9704b1a82140f89510163e2df52686d42571863",
+    "world/maps/emblem_challenge_hall_entrance.l64": "285da0fc2c94578c3de18036572c10e685d7cd376fe17fe2b71daf229d302abc",
+    "world/maps/actor_jack.l64": "4fd20421b0dc5e79396a230612c751b067f562ea1c92e756dadaf720950f27df",
+    "world/maps/deck_machine_9_on.l64": "7f32e81861c394fa438d7720d522fa61064d70f7195e89efc367b1771a16605d",
+    "world/maps/actor_butch.l64": "e65718e1ec1cf6061e670132394b176d5f68af56e8193439bf9c9e3df308fd7d",
+    "world/maps/hall_of_honor.l64": "c17dda0b7e825e7c32e5fea6f0e25a337a6b8c20539c7e8b7f010b5098811937",
+    "world/maps/deck_machine_7_on.l64": "d2e39911451044756c2988837ef2c40a9616a38d0cc4eaa44249fe4390c28887",
+    "world/maps/deck_machine_6_off.l64": "b238e772e38ef681dafa534d7073a231ccf604a5b4b105ce2919ed3f92871471",
+    "world/maps/fire_club.l64": "89d17aa1a108248ef43b6b3cb5c2c38fb09b8324048a2fd0c88557d9753a5f49",
+    "world/maps/actor_specs.l64": "efc74eff427545a1ddd9054f1285988a8398203f95c5c2e374d9b9c1248252cc",
+    "world/maps/actor_ishihara.l64": "f471ea5302b60d25cd8c6e671b979444da0d7e8179c33b5346cdcbf47a1efec5",
+    "world/maps/actor_hood.l64": "204c960f34a4fb50f2994506d4a2006814470c53ebea66ba08bdbef4c6224789",
+    "world/maps/actor_man.l64": "3e8f389069bbaeb9f6b69620d7087feae7be275e0d495ed51d1e18894f98ed96",
+    "world/maps/actor_imakuni.l64": "d08dd1e43848a0a4d3611b32f415a62078eb3b168be87ea9c62aa9764da9d7a2",
+    "world/maps/club_foyer.l64": "c3924f8201c77e76757c1397636a94900ca0bcfc568408ea3b584c1ab214b47c",
+    "world/maps/actor_legendary_card__left_spark.l64": "fc51233fe1233bc4dd238af2b48353e788b05f2f02fca5a0525190ebeaf2fcce",
+    "world/maps/grass_club.l64": "4f6d58556cbbed0d1303c0549cb36ad574a96f02ab5595f0f19bbfd96857562a",
+    "world/maps/emblem_science_club_entrance.l64": "13ddedccb6e094fb375a14ca3f25c4c1afff420326677ddb31b77714417c18d1",
+    "world/maps/club_lobby.l64": "ed4c64e29c79bfc44efc42ace35dfbce137de9e646fc6f22e3d179f648b4b5a7",
+    "world/maps/emblem_rock_club_entrance.l64": "822565b128b0f3eea92ab255070dbf8178be5585299d53e560331424977b0386",
+    "world/maps/actor_amy.l64": "97174b402d91010fde09cef3374ac2b119be6b141a71c881fc0a216a1c716a13",
+    "world/maps/actor_rick.l64": "e0921574c7bcf01043c5ee683b54bafdc1f24ca77c807578e9c35f6c3560f022",
+    "world/maps/deck_machine_room_dynamic.l64": "9e287cd205db692cb5fea5c7ab6c486130ef36421d8ec84307d44e3fec4bbc72",
+    "world/maps/pokemon_dome.l64": "3cc4ef2afc9da2f963a49b1d278373e6dd31003dab4c56922635eb125c993d34",
+    "world/maps/deck_machine_3_off.l64": "5e452c373ccc46c248d23182d1fd74e033ec198a52d7e96bc64a4511a00ebee9",
+    "world/maps/actor_murray.l64": "1a4f32934e60f7ad5d794a461f6b02c7e62802bf18c8b1eb76fbf42cca61716d",
+    "world/maps/deck_machine_2_on.l64": "089734ee000f0aca19e7e0a54d31ac00f4e9e421f7ead04f91f6f7fc2362100a",
+    "world/maps/actor_clerk.l64": "92d1d20458a399fcb29a94fbea441fc4f8db47c670cd1686c18639a39d17e8a2",
+    "world/maps/deck_machine_2_off.l64": "5fda4bbdec49ea12ce6f13a476448529199a64dbdd7316055d369ab0671d1ea2",
+    "world/maps/actor_woman.l64": "b30e052e607deb6ddbcbb23a08825a859fb0bcc7768ddb326f0a095524ab1cc0",
+    "world/maps/actor_pappy.l64": "32a4bc336d4248c7c8f7099034c4562b06a0a383138a1dd19b70a04bfdcd83ae",
+    "world/maps/actor_girl.l64": "843d32957418c0e621f13f664ae1c591f504853e6a91fac2f441da2406261a31",
+    "world/maps/actor_mitch.l64": "1799e2507993342fe7ec8e4a2a4b7296eee759a5d61e823884332b64ed2f23e0",
+    "world/maps/science_club.l64": "39f35345bda30220c82e1247171324ea1fe67bccba0ad2347ce9dafad53f54be",
+    "world/maps/actor_isaac.l64": "0d96b259cb389f785462877f7daae2a0b8808d07c65752f5772214a7e76359ee",
+    "world/maps/actor_swimmer.l64": "49e5af9a10cc11ff35780c4bb4b4400220d43dcf811f6e2d6a144103533eee51",
+    "world/maps/actor_gal.l64": "636ff085ceed301b6237ac02e661326e18dbad66157824a24e16bd7f99e9650c",
+    "world/maps/actor_ken.l64": "fb7f30c2bcff4ac3498022590b10dbceba09e0888fbd5b58c18c6911b3ce93ba",
+    "world/maps/actor_lass3.l64": "e38d2f5922dad2971667377c885a52a199becb05fb0fa016f57186db1d6e5ade",
+    "world/maps/deck_machine_4_on.l64": "8267f8fd7987b3e08b1233322e60f7423f9a6207cbd2515a703a7cb7286735de",
+    "world/maps/deck_machine_8_on.l64": "fa0b69924d095760f31f641445472c0a520882a69fdb3a2d923770caf6d30f7a",
+    "world/maps/actor_lass2.l64": "402ea1401bad0c83255ea9574baa590d578210ddb3edcf6f8547ab19fb6e4109",
+    "world/maps/mason_laboratory_challenge_machine.l64": "950e41d29cbf7bf573e2baeb5254c44239ebc20a6ed37945ece58b2cbe3e8204",
+    "world/maps/deck_machine_9_off.l64": "4b50187a8fb20a227896fa32f702847c341a99b48200bba4f551de4136dc668c",
+    "world/maps/emblem_psychic_club_entrance.l64": "e6ae69c58ccad6dd0ae0f67b5685d283036199988cbbd0f4ccca39034949aa97",
+    "world/maps/actor_lass1.l64": "57c2f4c1397796fbe4cec322924960f88e4bc850bbadb61b689c7a8bcfc46fe3",
+    "world/maps/pokemon_dome_entrance_door_open.l64": "9e3e9cc3f1b2d4c2d0b46892388c9665e3dfd92349582bffff755765791c6f2a",
+    "world/maps/actor_legendary_card__bottom_right.l64": "ae18e65804e7c8a2ddaeaac7a01c66598cc2a1ca869b976709ef2f15b5ed38ad",
+    "world/maps/actor_amy__lying.l64": "a30f5cee01d11f39122f4625d2f2df4fb4a98786ec5c55a124fa1994422e9795",
+    "world/maps/deck_machine_8_off.l64": "752bcccfb22abc3acd7d112987986245eefcb92186b9357c6a64b20130eb4116",
+    "world/maps/actor_legendary_card__right_spark.l64": "ba724d46951250134a91b2e02cb2a56313468938858bf54908e77a5d2e468560",
+    "world/maps/deck_machine_6_on.l64": "f66e39735cb4bebf51acbdfe9a9a610cd8c62886e60937bfdee8306f03c60486",
+    "world/maps/emblem_water_club_entrance.l64": "bf292246551268ec10c8166fc37fe6b2227ffbd7c73012723aee20f0f91b0826",
+    "world/maps/actor_lad.l64": "5c2b17f60b2b72430c90fecbda91936109cac7063ac383c7859e06348f8d76cc"
+  },
+  "roms": {
+    "club-camera.z64": "424efaddd67b30baf9a8ba282e88f083168a5badb1549a3c9718c6c103657ebc",
+    "club-camera-vi.z64": "8dabd107c98d6e596ed11b6dd19dd877fd7daa9521a3a07fc8b30818b1f50c24"
+  },
+  "production_files": [
+    "port/frontends/n64/adventure/presentation.c",
+    "port/frontends/n64/adventure/tests/presentation.c"
+  ],
+  "host_checks": [
+    "-Wall -Wextra -Werror",
+    "ASan/UBSan",
+    "1206 walkable compositions",
+    "four-direction movement sweeps",
+    "10 tracked rooms",
+    "other24 maps unchanged",
+    "20-degree conversation framing/source intro preserved"
+  ],
+  "post_vi": [
+    {
+      "resolution": 320,
+      "source": "port/reviews/club-camera-follow/320-vi/capture-provenance.json",
+      "images": [
+        {
+          "file": "lightning-leader-before.png",
+          "stage": "lightning-leader-before",
+          "dimensions": [
+            640,
+            240
+          ],
+          "pitch": 2560,
+          "png_sha256": "9ee7e0b409d5ab8b24869ab3cedbbc3cade904c3f8f45f6846cd6961804677ff",
+          "callback_sha256": "328da160b17cd77b8bf10daf03ba7c5693b2b6348542de600f813bdce8f6ef7a",
+          "rgb_sha256": "b166fbe3a9f76f9cfe82f31160bb86ad44ec7616157604345dda5d4f0d153712",
+          "exact_callback_rgb_pixels": 153600,
+          "callback": 45,
+          "stage_gate": {
+            "stage_started_callback": 7,
+            "native_frame": "lightning-leader-before",
+            "native_dimensions": [
+              320,
+              240
+            ],
+            "native_ready_callback": 35,
+            "native_ready_valid_frames": 5,
+            "post_native_valid_callbacks": 11,
+            "stable_callbacks": 11,
+            "previous_captured_sha256": null
+          }
+        },
+        {
+          "file": "lightning-leader-after.png",
+          "stage": "lightning-leader-after",
+          "dimensions": [
+            640,
+            240
+          ],
+          "pitch": 2560,
+          "png_sha256": "8715ba150788a8cf489a56575603ff3ffb0b102bab96b47c7e35495f0a18a5f1",
+          "callback_sha256": "53ab63db88632a8bf41d9572454d2469765d8d83f9e8504fc084f413de606e2a",
+          "rgb_sha256": "f6d599537b31388b36e356c8b9b9c0735443a911ef19e8252905f1a8abb76d1b",
+          "exact_callback_rgb_pixels": 153600,
+          "callback": 203,
+          "stage_gate": {
+            "stage_started_callback": 188,
+            "native_frame": "lightning-leader-after",
+            "native_dimensions": [
+              320,
+              240
+            ],
+            "native_ready_callback": 198,
+            "native_ready_valid_frames": 168,
+            "post_native_valid_callbacks": 6,
+            "stable_callbacks": 6,
+            "previous_captured_sha256": "f30b98d777d5bcdf231999cdfcb906774309e99f1bd4fdde98eb8616db96068b"
+          }
+        }
+      ]
+    },
+    {
+      "resolution": 480,
+      "source": "port/reviews/club-camera-follow/480-vi/capture-provenance.json",
+      "images": [
+        {
+          "file": "lightning-leader-before.png",
+          "stage": "lightning-leader-before",
+          "dimensions": [
+            640,
+            480
+          ],
+          "pitch": 2560,
+          "png_sha256": "ac0ff5786a8dde3d446c6748825f14cca11b18ed988381398847953a83645ffb",
+          "callback_sha256": "d922427781cbdcd9d2fafd0a2592d133644de0eb9f2efbb8194a31d8e095807f",
+          "rgb_sha256": "fbca3834ca2d97fa61c9fd03e18b35f8466b41de4d8c6ac870e06fe3dc780d1c",
+          "exact_callback_rgb_pixels": 307200,
+          "callback": 47,
+          "stage_gate": {
+            "stage_started_callback": 7,
+            "native_frame": "lightning-leader-before",
+            "native_dimensions": [
+              480,
+              360
+            ],
+            "native_ready_callback": 37,
+            "native_ready_valid_frames": 5,
+            "post_native_valid_callbacks": 11,
+            "stable_callbacks": 11,
+            "previous_captured_sha256": null
+          }
+        },
+        {
+          "file": "lightning-leader-after.png",
+          "stage": "lightning-leader-after",
+          "dimensions": [
+            640,
+            480
+          ],
+          "pitch": 2560,
+          "png_sha256": "cda0fe6f778ca391eccbc10a4b8f7da2ae729c9b1c6b7f7005153791e60eb4b9",
+          "callback_sha256": "837c1ab6de8b815907b73b34bf49e35ff3f7208d5f4c5415e427d0fe7dcbc220",
+          "rgb_sha256": "5fa152764a38b78b22922f2ad1e34a250c49e159a0dd20099e6997e59a0947fe",
+          "exact_callback_rgb_pixels": 307200,
+          "callback": 299,
+          "stage_gate": {
+            "stage_started_callback": 284,
+            "native_frame": "lightning-leader-after",
+            "native_dimensions": [
+              480,
+              360
+            ],
+            "native_ready_callback": 294,
+            "native_ready_valid_frames": 262,
+            "post_native_valid_callbacks": 6,
+            "stable_callbacks": 6,
+            "previous_captured_sha256": "d11d565610ed53757fbae886b691f5e41e199ccf94067d564b4b45323feba64a"
+          }
+        }
+      ]
+    }
+  ],
+  "native_vi_pose_pixel_parity": "All4 VI-gate native captures exactly equal their final native-only counterparts."
+}

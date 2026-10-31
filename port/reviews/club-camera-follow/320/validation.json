@@ -1,0 +1,104 @@
+{
+  "passed": true,
+  "case": "native-320-4mib-v2",
+  "frames": [
+    {
+      "file": "lightning-entry-before.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "6a30bb6ff1b44a682ef010a4c81ae75bdb4b94065a6689d62eba216fb6e98a99"
+    },
+    {
+      "file": "lightning-entry-after.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "6a30bb6ff1b44a682ef010a4c81ae75bdb4b94065a6689d62eba216fb6e98a99"
+    },
+    {
+      "file": "lightning-middle-before.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "fe0b4ce7c4d720124ecb743df08437aa05fc769ef0135f46e3970713d43b8d2c"
+    },
+    {
+      "file": "lightning-middle-after.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "541fd165d281c0afab8e0e72bc904c92133ca142d36571a4730a5bdae09b87bf"
+    },
+    {
+      "file": "lightning-leader-before.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "7b617af5df92fea61dc46f9482a569e94c539aa3816098f4dade297c2c42931c"
+    },
+    {
+      "file": "lightning-leader-after.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "5d369066ef7c2c5807e9d1c8bfee2a320fdd3ccdf7997e8eb2cd8376f060acbb"
+    },
+    {
+      "file": "fire-entry-before.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "3eb3ba1159d99320011bb1c038f395e9166fcef47bf9d722dc4d8e566310763b"
+    },
+    {
+      "file": "fire-entry-after.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "3eb3ba1159d99320011bb1c038f395e9166fcef47bf9d722dc4d8e566310763b"
+    },
+    {
+      "file": "fire-middle-before.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "169ae71169695c96d95f60c8e8625e0cf496dba6f238d7cc13a4b1e59e95d67a"
+    },
+    {
+      "file": "fire-middle-after.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "bb03eb4bcf7a08724438b0ddccc62bfe41dab758d226c262753a0bc25aadeaaa"
+    },
+    {
+      "file": "fire-leader-before.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "25faaa0a9eb9d58bd2d3b742f5164e12058ecce42c6a9c91778892546c4df343"
+    },
+    {
+      "file": "fire-leader-after.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "c8571ab661b4dc6648274b3563b2902d302ebba613a8e05c2610ba88b2c6c592"
+    }
+  ],
+  "wall_seconds": 22.37,
+  "method": "N64 RDP framebuffer read after detach_wait, production world/main.c + Tiny3D renderer; fixed source poses; only camera getter differs; privateAres/noVIbreakpoints"
+}

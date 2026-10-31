@@ -288,11 +288,53 @@ static bool conversation_camera(Presentation *p,const OwState *s,const W3Map *ma
  return found;
 }
 
+static bool tracking_room(unsigned map)
+{
+ switch(map) {
+ case FIGHTING_CLUB:case ROCK_CLUB:case WATER_CLUB:case LIGHTNING_CLUB:
+ case GRASS_CLUB:case PSYCHIC_CLUB:case SCIENCE_CLUB:case FIRE_CLUB:
+ case CHALLENGE_HALL:case POKEMON_DOME:return true;
+ default:return false;
+ }
+}
+
+static void exploration_camera(const Presentation *p,const OwState *s,const W3Map *map,
+ PresentationCamera *camera)
+{
+ if(!tracking_room(s->map)||map->width<12||map->height<12)return;
+ const PresentationPose *mark=&p->player.pose;
+ /* Keep the authored doorway composition, then move the whole camera rig
+    into the hall. Aiming farther north alone makes the distant player tiny.
+    Use the interpolated pose so tile boundaries do not become camera stops. */
+ float shift_z=clampf(mark->z+10-map->eye[2],2-map->target[2],0);
+ camera->eye[2]+=shift_z;camera->target[2]+=shift_z;
+ /* Side aisles remain readable without panning for every small movement. */
+ float shift_x=mark->x-map->target[0];
+ if(shift_x>4)shift_x-=4;
+ else if(shift_x< -4)shift_x+=4;
+ else shift_x=0;
+ shift_x=clampf(shift_x,5-map->eye[0],map->width-5-map->eye[0]);
+ camera->eye[0]+=shift_x;camera->target[0]+=shift_x;
+ /* Keep the north wall's top near its authored screen height as the eye
+    moves inward. Lightning's authored walls are 4.5 units; Grass/Challenge
+    have two-unit open-air walls. Preserve their existing sky allowance. */
+ float wall=s->map==LIGHTNING_CLUB?4.5f:
+  s->map==GRASS_CLUB||s->map==CHALLENGE_HALL?2:5;
+ float old_top=atan2f(maxf(map->eye[1]-wall,0),maxf(map->eye[2]-1,1));
+ float old_pitch=atan2f(map->eye[1]-map->target[1],map->eye[2]-map->target[2]);
+ float half_fov=camera->fov*.5f*PI/180;
+ float allowance=maxf(2*PI/180,old_top+half_fov-old_pitch);
+ float top=atan2f(maxf(camera->eye[1]-wall,0),maxf(camera->eye[2]-1,1));
+ float inside=camera->eye[2]-camera->eye[1]/tanf(top+half_fov-allowance);
+ camera->target[2]=maxf(camera->target[2],inside);
+}
+
 void presentation_camera_step(Presentation *p,const OwState *s,const W3Map *map)
 {
  PresentationCamera desired;
  memcpy(desired.eye,map->eye,sizeof(desired.eye));
  memcpy(desired.target,map->target,sizeof(desired.target));desired.fov=map->fov;
+ exploration_camera(p,s,map,&desired);
  if(p->cinematic&&s->map==MASON_LABORATORY&&ow_event(s,EVENT_MASON_LAB_STATE)<MASON_LAB_RECEIVED_STARTER_DECK) {
   const PresentationPose *mark=&p->player.pose;
   if(s->active_npc==NPC_SAM)p->intro_stage=1;

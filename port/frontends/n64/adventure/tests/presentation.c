@@ -1,6 +1,7 @@
 #include "../presentation.h"
 #include "../../../../overworld/gen/data.h"
 #include "../../../../src/gen/constants.h"
+#include "../../../../world3d/generated/world3d_maps.h"
 #include <assert.h>
 #include <math.h>
 #include <setjmp.h>
@@ -208,9 +209,146 @@ static void test_conversation_cameras(void)
  printf("CONVERSATION CAMERA PASS: %u direction/source/edge compositions; speaker faces,20deg/FOV50,dialogue clearance,stable bubbles,exit and invalid-target fallback; canonical state unchanged\n",cases);
 }
 
+static void project_point(const PresentationCamera *c,float x,float y,float z,float *sx,float *sy)
+{
+ float fx=c->target[0]-c->eye[0],fy=c->target[1]-c->eye[1],fz=c->target[2]-c->eye[2];
+ float length=sqrtf(fx*fx+fy*fy+fz*fz);fx/=length;fy/=length;fz/=length;
+ float horizontal=hypotf(fx,fz),rx=-fz/horizontal,rz=fx/horizontal;
+ float ux=-rz*fy,uy=rz*fx-rx*fz,uz=rx*fy;
+ x-=c->eye[0];y-=c->eye[1];z-=c->eye[2];
+ float depth=x*fx+y*fy+z*fz,tangent=tanf(c->fov*3.14159265358979323846f/360);
+ assert(depth>1);
+ *sx=160+(x*rx+z*rz)/(depth*tangent*(4.0f/3.0f))*160;
+ *sy=120-(x*ux+y*uy+z*uz)/(depth*tangent)*120;
+}
+
+static float projected_height(const PresentationCamera *c,float x,float z)
+{
+ float sx,feet,head;project_point(c,x,0,z,&sx,&feet);project_point(c,x,2.2f,z,&sx,&head);
+ return feet-head;
+}
+
+static void test_club_tracking(void)
+{
+ static const unsigned rooms[]={FIGHTING_CLUB,ROCK_CLUB,WATER_CLUB,LIGHTNING_CLUB,
+  GRASS_CLUB,PSYCHIC_CLUB,SCIENCE_CLUB,FIRE_CLUB,CHALLENGE_HALL,POKEMON_DOME};
+ unsigned compositions=0;
+ for(unsigned room=0;room<sizeof(rooms)/sizeof(rooms[0]);room++) {
+  unsigned id=rooms[room];const W3Map *map=&w3_maps[id];
+  PresentationCamera authored={.fov=map->fov};
+  memcpy(authored.eye,map->eye,sizeof(authored.eye));memcpy(authored.target,map->target,sizeof(authored.target));
+  OwState state={.map=id,.x=map->width/2,.y=map->height-4,.direction=NORTH};
+  Presentation p;presentation_init(&p,&state,false);camera_settle(&p,&state,map);
+  for(unsigned axis=0;axis<3;axis++) {
+   close_to(p.camera.eye[axis],map->eye[axis]);close_to(p.camera.target[axis],map->target[axis]);
+  }
+  float entry_height=projected_height(&p.camera,p.player.pose.x,p.player.pose.z);
+  /* Walk the central aisle using real source tile interpolation. The camera
+     must move through tile boundaries, with bounded per-frame displacement. */
+  float last_eye=p.camera.eye[2];unsigned moving_frames=0;
+  for(unsigned z=state.y;z>6;z-=2) {
+   state.y-=2;OwState canonical=state;presentation_sync(&p,&state,false);
+   for(unsigned frame=0;frame<8;frame++) {
+    presentation_step(&p,&state,map);
+    float movement=last_eye-p.camera.eye[2];assert(movement>=-.001f&&movement<.251f);
+    if(movement>.01f)moving_frames++;
+    last_eye=p.camera.eye[2];
+   }
+   assert(!memcmp(&state,&canonical,sizeof(state)));
+  }
+  camera_settle(&p,&state,map);
+  float leader_height=projected_height(&p.camera,p.player.pose.x,p.player.pose.z);
+  float old_leader=projected_height(&authored,p.player.pose.x,p.player.pose.z);
+  assert(moving_frames>8&&leader_height>=entry_height*.78f&&leader_height>old_leader*1.12f);
+  if(map->height>=28)assert(leader_height>old_leader*1.5f);
+  assert(p.camera.eye[2]<map->eye[2]-3&&p.camera.target[2]>=2);
+  /* Project every unblocked, non-warp source cell. A broad hair silhouette
+     and feet stay inside the TV-safe scene at either N64 resolution. */
+  const OwMap *source=&ow_maps[id];
+  for(unsigned z=2;z<=map->height-4;z+=2)for(unsigned x=2;x<=map->width-4;x+=2) {
+   if(source->permissions[(z/2)*((source->width+1)/2)+x/2]&128)continue;
+   state.x=x;state.y=z;OwState canonical=state;Presentation sample;
+   presentation_init(&sample,&state,false);camera_settle(&sample,&state,map);
+   const PresentationCamera *camera=&sample.camera;
+   assert(camera->eye[0]>=5&&camera->eye[0]<=map->width-5);
+   assert(camera->eye[2]>=z+5.99f&&camera->eye[2]<=map->eye[2]);
+   assert(camera->target[2]>=2&&camera->target[2]<=map->target[2]+.001f);
+   close_to(camera->fov,map->fov);close_to(camera->eye[1],map->eye[1]);
+   for(unsigned corner=0;corner<8;corner++) {
+    float sx,sy;project_point(camera,x+(corner&1?.65f:-.65f),corner&2?2.4f:0,
+     z+(corner&4?.35f:-.35f),&sx,&sy);
+    assert(sx>10&&sx<310&&sy>16&&sy<228);
+   }
+   assert(projected_height(camera,x,z)>=entry_height*.73f);
+   float wall=id==LIGHTNING_CLUB?4.5f:id==GRASS_CLUB||id==CHALLENGE_HALL?2:5;
+   float sx,sy;project_point(camera,camera->eye[0],wall,1,&sx,&sy);
+   /* Test actual authored wall heights, including the two open-air rooms;
+      their existing sky band can stay, but cannot grow as Mark walks north. */
+   float old_x,old_y;project_point(&authored,authored.eye[0],wall,1,&old_x,&old_y);
+   assert(sy<=fmaxf(10,old_y)+.1f);
+   assert(!memcmp(&state,&canonical,sizeof(state)));compositions++;
+  }
+  /* NPC dialogue still owns the approved 20-degree shot; closing it returns
+     smoothly to the tracked exploration camera, not the distant entry view. */
+  state.x=map->width/2;state.y=6;state.npc_count=1;
+  state.npcs[0]=(OwNpc){NPC_RONALD1,state.x,4,SOUTH,1,0};
+  presentation_init(&p,&state,false);camera_settle(&p,&state,map);
+  PresentationCamera exploration=p.camera;OwState canonical=state;
+  presentation_conversation(&p,NPC_RONALD1);camera_settle(&p,&state,map);
+  close_to(p.camera.fov,50);
+  float distance=hypotf(p.camera.eye[0]-p.camera.target[0],p.camera.eye[2]-p.camera.target[2]);
+  close_to(atan2f(p.camera.eye[1]-p.camera.target[1],distance)*180/3.14159265358979323846f,20);
+  conversation_visible(&p.camera,&p.player.pose);conversation_visible(&p.camera,&p.npcs[0].pose);
+  presentation_conversation(&p,0);presentation_camera_step(&p,&state,map);
+  assert(fabsf(p.camera.fov-exploration.fov)>1);camera_settle(&p,&state,map);
+  for(unsigned axis=0;axis<3;axis++) {
+   close_to(p.camera.eye[axis],exploration.eye[axis]);close_to(p.camera.target[axis],exploration.target[axis]);
+  }
+  assert(!memcmp(&state,&canonical,sizeof(state)));
+  /* Sweep all four movement directions at the rendered walking speed. This
+     also checks the short follow lag while returning toward the doorway. */
+  state.npc_count=0;state.x=map->width/2;state.y=map->height-4;
+  presentation_init(&p,&state,false);camera_settle(&p,&state,map);
+  const unsigned path[][2]={{map->width/2,2},{2,2},{2,map->height-4},
+   {map->width-4,map->height-4},{map->width-4,2},{map->width/2,2}};
+  for(unsigned leg=0;leg<sizeof(path)/sizeof(path[0]);leg++) {
+   while(state.x!=path[leg][0]||state.y!=path[leg][1]) {
+    if(state.x<path[leg][0]){state.x+=2;state.direction=EAST;}
+    else if(state.x>path[leg][0]){state.x-=2;state.direction=WEST;}
+    else if(state.y<path[leg][1]){state.y+=2;state.direction=SOUTH;}
+    else {state.y-=2;state.direction=NORTH;}
+    canonical=state;presentation_sync(&p,&state,false);
+    for(unsigned frame=0;frame<8;frame++) {
+     PresentationCamera previous=p.camera;presentation_step(&p,&state,map);
+     assert(fabsf(p.camera.eye[0]-previous.eye[0])<.251f);
+     assert(fabsf(p.camera.eye[2]-previous.eye[2])<.251f);
+     float sx,head,feet;
+     project_point(&p.camera,p.player.pose.x,2.4f,p.player.pose.z,&sx,&head);
+     assert(sx>18&&sx<302&&head>16);
+     project_point(&p.camera,p.player.pose.x,0,p.player.pose.z,&sx,&feet);
+     assert(feet<228&&feet-head>entry_height*.70f);
+    }
+    assert(!memcmp(&state,&canonical,sizeof(state)));
+   }
+  }
+ }
+ /* The world, laboratory, homes, foyers and lobbies keep their authored view. */
+ for(unsigned id=0;id<W3_MAP_COUNT;id++) {
+  bool tracking=false;for(unsigned i=0;i<sizeof(rooms)/sizeof(rooms[0]);i++)if(id==rooms[i])tracking=true;
+  if(tracking)continue;
+  const W3Map *map=&w3_maps[id];OwState state={.map=id,.x=2,.y=2};Presentation p;
+  presentation_init(&p,&state,false);camera_settle(&p,&state,map);
+  for(unsigned axis=0;axis<3;axis++) {
+   close_to(p.camera.eye[axis],map->eye[axis]);close_to(p.camera.target[axis],map->target[axis]);
+  }
+ }
+ printf("CLUB TRACKING PASS: 10 rooms, %u walkable compositions; entry view, continuous tile motion, readable leader scale, TV-safe sides/feet, bounded wall framing, dialogue priority/exit and unchanged other maps/state\n",compositions);
+}
+
 int main(void)
 {
  test_conversation_cameras();
+ test_club_tracking();
  /* Fractional source waits accumulate instead of doubling one-frame waits. */
  Presentation timing={0};assert(presentation_wait_frames(&timing,60)==30);
  assert(presentation_wait_frames(&timing,120)==60);

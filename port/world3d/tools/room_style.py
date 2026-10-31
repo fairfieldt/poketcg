@@ -67,7 +67,13 @@ def material_pixel(slug,x,y,source,is_plain):
         phase=(y+abs(x-112))%32
         band=1-smooth(1.0,3.0,abs(phase-16))
         base=(35,49,128);thread=(102,158,206)
-        return tuple(round(a+(b-a)*band*.62) for a,b in zip(base,thread))+(255,)
+        pigment=tuple(a+(b-a)*band*.62 for a,b in zip(base,thread))
+        # The original central light pool crosses the runner. Apply its
+        # wash after repainting the cloth, rather than erasing that half
+        # of the pool while the adjacent source floor stays illuminated.
+        pool=1-smooth(15,17,math.hypot(x-119.5,y-151.5))
+        return tuple(round(c+(lit-c)*pool*.72) for c,lit in
+                     zip(pigment,(241,248,255)))+(255,)
     if slug=='rock_club' and (72<=x<96 or 128<=x<152) and y>=24:
         # These are the two continuous sand-colored strips beside the runner,
         # including the floor restored below statue art. Replace white/gold

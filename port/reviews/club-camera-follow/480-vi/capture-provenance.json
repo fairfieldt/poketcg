@@ -1,0 +1,167 @@
+{
+  "status": "verified-expansion-pak-trial-captures",
+  "rom": {
+    "file": "port/frontends/n64/adventure/build/club-camera-review/club-camera-vi.z64",
+    "sha256": "8dabd107c98d6e596ed11b6dd19dd877fd7daa9521a3a07fc8b30818b1f50c24",
+    "diagnostic": 9
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 6,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": [
+        0,
+        30,
+        640,
+        220
+      ],
+      "stage_pattern": "^(?:VIDEO REVIEW|DUEL UI) ([A-Za-z0-9_-]+) BEGIN\\r?$",
+      "require_native_frame": true,
+      "native_lead_frames": 6
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 8,
+    "private_settings": true,
+    "ExpansionPak": true
+  },
+  "runtime_video_modes": [
+    {
+      "width": 480,
+      "height": 360,
+      "ram": 8388608,
+      "highres": 1
+    }
+  ],
+  "raw_format": {
+    "pixel_order": "BGRA little endian; padding excluded from RGB proof",
+    "dimensions": "Recorded per image from Program::video registers",
+    "display_aspect": "4:3"
+  },
+  "finished": {
+    "callbacks": 544,
+    "captures": 2,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "lightning-leader-before.png",
+      "stage": "lightning-leader-before",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "ac0ff5786a8dde3d446c6748825f14cca11b18ed988381398847953a83645ffb",
+      "callback_sha256": "d922427781cbdcd9d2fafd0a2592d133644de0eb9f2efbb8194a31d8e095807f",
+      "rgb_sha256": "fbca3834ca2d97fa61c9fd03e18b35f8466b41de4d8c6ac870e06fe3dc780d1c",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 47,
+      "stage_gate": {
+        "stage_started_callback": 7,
+        "native_frame": "lightning-leader-before",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 37,
+        "native_ready_valid_frames": 5,
+        "post_native_valid_callbacks": 11,
+        "stable_callbacks": 11,
+        "previous_captured_sha256": null
+      }
+    },
+    {
+      "file": "lightning-leader-after.png",
+      "stage": "lightning-leader-after",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "cda0fe6f778ca391eccbc10a4b8f7da2ae729c9b1c6b7f7005153791e60eb4b9",
+      "callback_sha256": "837c1ab6de8b815907b73b34bf49e35ff3f7208d5f4c5415e427d0fe7dcbc220",
+      "rgb_sha256": "5fa152764a38b78b22922f2ad1e34a250c49e159a0dd20099e6997e59a0947fe",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 299,
+      "stage_gate": {
+        "stage_started_callback": 284,
+        "native_frame": "lightning-leader-after",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 294,
+        "native_ready_valid_frames": 262,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "d11d565610ed53757fbae886b691f5e41e199ccf94067d564b4b45323feba64a"
+      }
+    }
+  ],
+  "native_frames": [
+    {
+      "file": "lightning-leader-before.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "bf3c6846850d0c684d3bb40ebd63df24e995314b0ab01ad89c6c8244b0d54ba3",
+      "exact_native_pixels": 172800
+    },
+    {
+      "file": "lightning-leader-after.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "2adc2461fa574d6fb514a03187440e3bbee839711fc05f0b2ce5b3428d30d3bc",
+      "exact_native_pixels": 172800
+    }
+  ],
+  "memory": [],
+  "source_logs": {
+    "path": "port/frontends/n64/adventure/build/club-camera-review/vi-480-v1/lldb.log",
+    "sha256": "91b34b52aa20549fd8075dfc61cb9c3086fdacdd16d01e6ed99ee84bb82b0d6e"
+  }
+}
