@@ -1,0 +1,105 @@
+F: Not sharing "/esp" with sandbox: Ignoring blocking autofs path "/esp"
+OpenGL Version: 4.6 (Core Profile) Mesa 26.2.5 (git-ddaf85e353), GLSL: 4.60
+Loaded capture
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 69132 bytes
+TRAILER READY intro vi=0 us=507888
+TRAILER BEGIN intro vi=481 us=8518207
+Scene rom:/world/maps/overworld.l64: 18 batches, 17 textures, 292664 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+TRAILER AUDIO vi=509 us=9000805 pos=0.000 ai=03100000
+AUDIO REVIEW phase=trailer-clock polls=243 buffers=209 underruns=0 max_poll_us=33412 max_mix_us=709
+TRAILER FIRST_FRAME intro vi=509 us=9001095
+TRAILER AUDIO vi=569 us=9986687 pos=29574.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=29 buffers=31 underruns=0 max_poll_us=49150 max_mix_us=2494
+TRAILER INTRO_RUN overworld-source-movement vi=571 us=10023048
+TRAILER AUDIO vi=629 us=10994969 pos=54378.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=26 underruns=0 max_poll_us=34358 max_mix_us=2367
+TRAILER AUDIO vi=689 us=12000027 pos=78228.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=34078 max_mix_us=2366
+TRAILER AUDIO vi=750 us=13006264 pos=102078.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=34184 max_mix_us=2447
+TRAILER AUDIO vi=810 us=14014422 pos=126882.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=26 underruns=0 max_poll_us=34142 max_mix_us=2412
+Scene rom:/world/maps/mason_laboratory.l64: 24 batches, 23 textures, 43128 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_dr_mason.l64: 6 batches, 1 textures, 35504 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_dr_mason.l64: 6 batches, 1 textures, 26084 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+TRAILER AUDIO vi=870 us=15017031 pos=148824.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=20 buffers=23 underruns=1 max_poll_us=361391 max_mix_us=2408
+TRAILER AUDIO vi=931 us=16028933 pos=172674.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=31 buffers=25 underruns=0 max_poll_us=35421 max_mix_us=2425
+TRAILER TEXT id=1507 npc=1 map=1 x=14 y=8 vi=935 us=16097724
+TRAILER AUDIO vi=991 us=17029285 pos=197478.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=26 underruns=0 max_poll_us=52046 max_mix_us=2386
+TRAILER AUDIO vi=1052 us=18046487 pos=221328.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=31 buffers=25 underruns=0 max_poll_us=34507 max_mix_us=2405
+TRAILER AUDIO vi=1112 us=19047461 pos=245178.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=34496 max_mix_us=2391
+TRAILER AUDIO vi=1172 us=20048928 pos=269028.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=50736 max_mix_us=2380
+TRAILER AUDIO vi=1232 us=21049500 pos=293832.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=26 underruns=0 max_poll_us=34504 max_mix_us=2380
+TRAILER AUDIO vi=1292 us=22050485 pos=317682.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=34521 max_mix_us=2385
+TRAILER AUDIO vi=1352 us=23051932 pos=341532.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=50797 max_mix_us=2395
+TRAILER AUDIO vi=1413 us=24070278 pos=366336.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=31 buffers=26 underruns=0 max_poll_us=34517 max_mix_us=2393
+TRAILER AUDIO vi=1473 us=25071307 pos=390186.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=34523 max_mix_us=2392
+TRAILER AUDIO vi=1533 us=26072261 pos=414036.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=50783 max_mix_us=2390
+TRAILER AUDIO vi=1593 us=27073250 pos=437886.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=34504 max_mix_us=2397
+TRAILER AUDIO vi=1653 us=28074242 pos=461736.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=34506 max_mix_us=2389
+TRAILER TEXT id=1508 npc=7 map=1 x=14 y=8 vi=1671 us=28378017
+TRAILER AUDIO vi=1713 us=29075054 pos=486540.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=26 underruns=0 max_poll_us=48999 max_mix_us=2393
+TRAILER AUDIO vi=1774 us=30092690 pos=510390.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=31 buffers=25 underruns=0 max_poll_us=34514 max_mix_us=2396
+TRAILER AUDIO vi=1834 us=31093668 pos=534240.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=34504 max_mix_us=2380
+TRAILER TEXT id=1509 npc=1 map=1 x=14 y=8 vi=1852 us=31396730
+TRAILER AUDIO vi=1894 us=32094721 pos=559044.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=26 underruns=0 max_poll_us=50892 max_mix_us=2423
+TRAILER AUDIO vi=1954 us=33095721 pos=582894.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=34555 max_mix_us=2387
+TRAILER AUDIO vi=2014 us=34096711 pos=606744.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=34520 max_mix_us=2401
+TRAILER AUDIO vi=2075 us=35115942 pos=631548.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=31 buffers=26 underruns=0 max_poll_us=35114 max_mix_us=2397
+TRAILER AUDIO vi=2135 us=36114533 pos=655398.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=35322 max_mix_us=2396
+TRAILER AUDIO vi=2195 us=37115584 pos=679248.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=35301 max_mix_us=2419
+TRAILER AUDIO vi=2255 us=38117568 pos=703098.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=35291 max_mix_us=2397
+TRAILER TEXT id=1510 npc=1 map=1 x=14 y=8 vi=2295 us=38788023
+TRAILER AUDIO vi=2315 us=39117569 pos=726948.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=50717 max_mix_us=2400
+TRAILER AUDIO vi=2375 us=40118205 pos=751752.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=26 underruns=0 max_poll_us=34479 max_mix_us=2380
+TRAILER AUDIO vi=2436 us=41135785 pos=775602.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=31 buffers=25 underruns=0 max_poll_us=34486 max_mix_us=2397
+TRAILER AUDIO vi=2496 us=42138121 pos=799452.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=35562 max_mix_us=2421
+TRAILER AUDIO vi=2556 us=43139167 pos=824256.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=26 underruns=0 max_poll_us=35511 max_mix_us=2417
+TRAILER TEXT id=1511 npc=1 map=1 x=10 y=14 vi=2590 us=43709584
+TRAILER SHOT mark-at-first-table vi=2590 us=43709745
+TRAILER AUDIO vi=2616 us=44141477 pos=848106.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=35506 max_mix_us=2403
+TRAILER END intro vi=2650 us=44711082
+TRAILER AUDIO vi=2676 us=45142612 pos=871956.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=34517 max_mix_us=2424
+TRAILER AUDIO vi=2736 us=46143911 pos=895806.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=30 buffers=25 underruns=0 max_poll_us=34041 max_mix_us=2377
+TRAILER AUDIO vi=2797 us=47161297 pos=920610.000 ai=c3100001
+AUDIO REVIEW phase=trailer-clock polls=31 buffers=26 underruns=0 max_poll_us=33993 max_mix_us=2381

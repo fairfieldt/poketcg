@@ -1,0 +1,377 @@
+[
+  {
+    "line": "TRAILER READY intro vi=0 us=514363",
+    "epoch": 1793487318.9177942,
+    "monotonic": 28104.578393718
+  },
+  {
+    "line": "TRAILER BEGIN intro vi=480 us=8518739",
+    "epoch": 1793487326.9226115,
+    "monotonic": 28112.583211808
+  },
+  {
+    "line": "TRAILER AUDIO vi=510 us=9027652 pos=11448.000 ai=c3100001",
+    "epoch": 1793487327.4484913,
+    "monotonic": 28113.109090724
+  },
+  {
+    "line": "TRAILER FIRST_FRAME intro vi=510 us=9028083",
+    "epoch": 1793487327.4488237,
+    "monotonic": 28113.109422316
+  },
+  {
+    "line": "TRAILER AUDIO vi=570 us=10033604 pos=35298.000 ai=c3100001",
+    "epoch": 1793487328.4503174,
+    "monotonic": 28114.110916522
+  },
+  {
+    "line": "TRAILER INTRO_RUN overworld-source-movement vi=571 us=10036273",
+    "epoch": 1793487328.4506238,
+    "monotonic": 28114.111222365
+  },
+  {
+    "line": "TRAILER AUDIO vi=631 us=11046236 pos=60102.000 ai=c3100001",
+    "epoch": 1793487329.459255,
+    "monotonic": 28115.119855729
+  },
+  {
+    "line": "TRAILER AUDIO vi=692 us=12055615 pos=83952.000 ai=c3100001",
+    "epoch": 1793487330.4755409,
+    "monotonic": 28116.136140602
+  },
+  {
+    "line": "TRAILER AUDIO vi=752 us=13066809 pos=108756.000 ai=c3100001",
+    "epoch": 1793487331.4871094,
+    "monotonic": 28117.147708589
+  },
+  {
+    "line": "TRAILER AUDIO vi=813 us=14076966 pos=132606.000 ai=c3100001",
+    "epoch": 1793487332.493702,
+    "monotonic": 28118.154302459
+  },
+  {
+    "line": "TRAILER AUDIO vi=873 us=15074912 pos=156456.000 ai=c3100001",
+    "epoch": 1793487333.512219,
+    "monotonic": 28119.172818166
+  },
+  {
+    "line": "TRAILER AUDIO vi=934 us=16096516 pos=181260.000 ai=c3100001",
+    "epoch": 1793487334.5252078,
+    "monotonic": 28120.185807149
+  },
+  {
+    "line": "TRAILER TEXT id=1507 npc=1 map=1 x=14 y=8 vi=936 us=16129268",
+    "epoch": 1793487334.561535,
+    "monotonic": 28120.222135032
+  },
+  {
+    "line": "TRAILER AUDIO vi=994 us=17096440 pos=205110.000 ai=c3100001",
+    "epoch": 1793487335.533661,
+    "monotonic": 28121.194260126
+  },
+  {
+    "line": "TRAILER AUDIO vi=1055 us=18114868 pos=229914.000 ai=c3100001",
+    "epoch": 1793487336.5501463,
+    "monotonic": 28122.210745465
+  },
+  {
+    "line": "TRAILER AUDIO vi=1115 us=19115864 pos=253764.000 ai=c3100001",
+    "epoch": 1793487337.546705,
+    "monotonic": 28123.207304098
+  },
+  {
+    "line": "TRAILER AUDIO vi=1175 us=20117361 pos=277614.000 ai=c3100001",
+    "epoch": 1793487338.547277,
+    "monotonic": 28124.207876328
+  },
+  {
+    "line": "TRAILER AUDIO vi=1235 us=21117866 pos=301464.000 ai=c3100001",
+    "epoch": 1793487339.549161,
+    "monotonic": 28125.209760467
+  },
+  {
+    "line": "TRAILER AUDIO vi=1295 us=22118851 pos=325314.000 ai=c3100001",
+    "epoch": 1793487340.5506766,
+    "monotonic": 28126.211275585
+  },
+  {
+    "line": "TRAILER AUDIO vi=1355 us=23120290 pos=349164.000 ai=c3100001",
+    "epoch": 1793487341.5522518,
+    "monotonic": 28127.212851227
+  },
+  {
+    "line": "TRAILER AUDIO vi=1416 us=24137540 pos=373968.000 ai=c3100001",
+    "epoch": 1793487342.5740082,
+    "monotonic": 28128.234607672
+  },
+  {
+    "line": "TRAILER AUDIO vi=1476 us=25138530 pos=397818.000 ai=c3100001",
+    "epoch": 1793487343.5703626,
+    "monotonic": 28129.230961873
+  },
+  {
+    "line": "TRAILER AUDIO vi=1536 us=26139510 pos=421668.000 ai=c3100001",
+    "epoch": 1793487344.570692,
+    "monotonic": 28130.231291609
+  },
+  {
+    "line": "TRAILER AUDIO vi=1596 us=27140538 pos=446472.000 ai=c3100001",
+    "epoch": 1793487345.571302,
+    "monotonic": 28131.231901149
+  },
+  {
+    "line": "TRAILER AUDIO vi=1656 us=28141533 pos=470322.000 ai=c3100001",
+    "epoch": 1793487346.5721023,
+    "monotonic": 28132.232701859
+  },
+  {
+    "line": "TRAILER TEXT id=1508 npc=7 map=1 x=14 y=8 vi=1672 us=28409180",
+    "epoch": 1793487346.8382497,
+    "monotonic": 28132.498848928
+  },
+  {
+    "line": "TRAILER AUDIO vi=1717 us=29158796 pos=495126.000 ai=c3100001",
+    "epoch": 1793487347.5904562,
+    "monotonic": 28133.251056015
+  },
+  {
+    "line": "TRAILER AUDIO vi=1777 us=30159793 pos=518976.000 ai=c3100001",
+    "epoch": 1793487348.5918446,
+    "monotonic": 28134.252443976
+  },
+  {
+    "line": "TRAILER AUDIO vi=1837 us=31160789 pos=542826.000 ai=c3100001",
+    "epoch": 1793487349.5926409,
+    "monotonic": 28135.253240448
+  },
+  {
+    "line": "TRAILER TEXT id=1509 npc=1 map=1 x=14 y=8 vi=1853 us=31428230",
+    "epoch": 1793487349.863722,
+    "monotonic": 28135.52432153
+  },
+  {
+    "line": "TRAILER AUDIO vi=1897 us=32161811 pos=566676.000 ai=c3100001",
+    "epoch": 1793487350.5946386,
+    "monotonic": 28136.255239696
+  },
+  {
+    "line": "TRAILER AUDIO vi=1957 us=33162799 pos=590526.000 ai=c3100001",
+    "epoch": 1793487351.5960073,
+    "monotonic": 28137.256606648
+  },
+  {
+    "line": "TRAILER AUDIO vi=2017 us=34163774 pos=614376.000 ai=c3100001",
+    "epoch": 1793487352.5973384,
+    "monotonic": 28138.257937784
+  },
+  {
+    "line": "TRAILER AUDIO vi=2078 us=35183424 pos=639180.000 ai=c3100001",
+    "epoch": 1793487353.619694,
+    "monotonic": 28139.280293335
+  },
+  {
+    "line": "TRAILER AUDIO vi=2138 us=36181124 pos=663030.000 ai=c3100001",
+    "epoch": 1793487354.6169958,
+    "monotonic": 28140.277595265
+  },
+  {
+    "line": "TRAILER AUDIO vi=2198 us=37182141 pos=686880.000 ai=c3100001",
+    "epoch": 1793487355.6134427,
+    "monotonic": 28141.274041711
+  },
+  {
+    "line": "TRAILER AUDIO vi=2258 us=38184085 pos=711684.000 ai=c3100001",
+    "epoch": 1793487356.6196852,
+    "monotonic": 28142.280284257
+  },
+  {
+    "line": "TRAILER TEXT id=1510 npc=1 map=1 x=14 y=8 vi=2296 us=38819500",
+    "epoch": 1793487357.2532058,
+    "monotonic": 28142.91380494
+  },
+  {
+    "line": "TRAILER AUDIO vi=2318 us=39184174 pos=735534.000 ai=c3100001",
+    "epoch": 1793487357.6166825,
+    "monotonic": 28143.277281456
+  },
+  {
+    "line": "TRAILER AUDIO vi=2378 us=40185244 pos=759384.000 ai=c3100001",
+    "epoch": 1793487358.6193433,
+    "monotonic": 28144.279942386
+  },
+  {
+    "line": "TRAILER AUDIO vi=2439 us=41202829 pos=784188.000 ai=c3100001",
+    "epoch": 1793487359.6323338,
+    "monotonic": 28145.292933087
+  },
+  {
+    "line": "TRAILER AUDIO vi=2499 us=42204626 pos=808038.000 ai=c3100001",
+    "epoch": 1793487360.6387372,
+    "monotonic": 28146.299336586
+  },
+  {
+    "line": "TRAILER AUDIO vi=2559 us=43205655 pos=831888.000 ai=c3100001",
+    "epoch": 1793487361.6370084,
+    "monotonic": 28147.297607755
+  },
+  {
+    "line": "TRAILER TEXT id=1511 npc=1 map=1 x=10 y=14 vi=2591 us=43743784",
+    "epoch": 1793487362.1790485,
+    "monotonic": 28147.839648242
+  },
+  {
+    "line": "TRAILER SHOT mark-at-first-table vi=2591 us=43743940",
+    "epoch": 1793487362.1794617,
+    "monotonic": 28147.840060104
+  },
+  {
+    "line": "TRAILER AUDIO vi=2619 us=44209144 pos=855738.000 ai=c3100001",
+    "epoch": 1793487362.6415532,
+    "monotonic": 28148.302152579
+  },
+  {
+    "line": "TRAILER SHOT LIGHTNING_CLUB vi=2676 us=45168752",
+    "epoch": 1793487363.6018543,
+    "monotonic": 28149.262453775
+  },
+  {
+    "line": "TRAILER AUDIO vi=2679 us=45213926 pos=11448.000 ai=c3100001",
+    "epoch": 1793487363.6482165,
+    "monotonic": 28149.308816356
+  },
+  {
+    "line": "TRAILER AUDIO vi=2739 us=46210370 pos=35298.000 ai=c3100001",
+    "epoch": 1793487364.6448035,
+    "monotonic": 28150.30540488
+  },
+  {
+    "line": "TRAILER WALK map=15 steps=11 requested=12,8 reached=12,8 vi=2772 us=46765309",
+    "epoch": 1793487365.191364,
+    "monotonic": 28150.85196342
+  },
+  {
+    "line": "TRAILER AUDIO vi=2800 us=47227721 pos=59148.000 ai=c3100001",
+    "epoch": 1793487365.6615074,
+    "monotonic": 28151.322108646
+  },
+  {
+    "line": "TRAILER AUDIO vi=2860 us=48229215 pos=82998.000 ai=c3100001",
+    "epoch": 1793487366.6585467,
+    "monotonic": 28152.319146032
+  },
+  {
+    "line": "TRAILER AUDIO vi=2920 us=49230750 pos=107802.000 ai=c3100001",
+    "epoch": 1793487367.6661232,
+    "monotonic": 28153.326722522
+  },
+  {
+    "line": "TRAILER AUDIO vi=2980 us=50227702 pos=131652.000 ai=c3100001",
+    "epoch": 1793487368.6606073,
+    "monotonic": 28154.3212068
+  },
+  {
+    "line": "TRAILER AUDIO vi=3041 us=51246005 pos=954.000 ai=c3100001",
+    "epoch": 1793487369.6777616,
+    "monotonic": 28155.338362043
+  },
+  {
+    "line": "TRAILER SHOT WATER_CLUB vi=3088 us=52039733",
+    "epoch": 1793487370.4705048,
+    "monotonic": 28156.131103836
+  },
+  {
+    "line": "TRAILER AUDIO vi=3101 us=52254263 pos=25758.000 ai=c3100001",
+    "epoch": 1793487370.6859348,
+    "monotonic": 28156.346534331
+  },
+  {
+    "line": "TRAILER AUDIO vi=3161 us=53256161 pos=49608.000 ai=c3100001",
+    "epoch": 1793487371.687525,
+    "monotonic": 28157.348124235
+  },
+  {
+    "line": "TRAILER WALK map=12 steps=13 requested=22,8 reached=20,8 vi=3187 us=53692212",
+    "epoch": 1793487372.1218967,
+    "monotonic": 28157.782495918
+  },
+  {
+    "line": "TRAILER AUDIO vi=3221 us=54256614 pos=73458.000 ai=c3100001",
+    "epoch": 1793487372.6893213,
+    "monotonic": 28158.349920667
+  },
+  {
+    "line": "TRAILER AUDIO vi=3281 us=55255706 pos=97308.000 ai=c3100001",
+    "epoch": 1793487373.7020073,
+    "monotonic": 28159.36260679
+  },
+  {
+    "line": "TRAILER AUDIO vi=3341 us=56252674 pos=121158.000 ai=c3100001",
+    "epoch": 1793487374.6897583,
+    "monotonic": 28160.350357994
+  },
+  {
+    "line": "TRAILER AUDIO vi=3401 us=57252414 pos=145008.000 ai=c3100001",
+    "epoch": 1793487375.6920228,
+    "monotonic": 28161.352622023
+  },
+  {
+    "line": "TRAILER AUDIO vi=3462 us=58269553 pos=169812.000 ai=c3100001",
+    "epoch": 1793487376.708519,
+    "monotonic": 28162.369118361
+  },
+  {
+    "line": "TRAILER AUDIO vi=3525 us=59320746 pos=16218.000 ai=c3100001",
+    "epoch": 1793487377.761155,
+    "monotonic": 28163.421756013
+  },
+  {
+    "line": "TRAILER SHOT FIRE_CLUB vi=3534 us=59477299",
+    "epoch": 1793487377.9152532,
+    "monotonic": 28163.575852532
+  },
+  {
+    "line": "TRAILER AUDIO vi=3586 us=60341834 pos=40068.000 ai=c3100001",
+    "epoch": 1793487378.7788937,
+    "monotonic": 28164.43949368
+  },
+  {
+    "line": "TRAILER WALK map=27 steps=10 requested=14,8 reached=14,8 vi=3630 us=61080299",
+    "epoch": 1793487379.5200732,
+    "monotonic": 28165.180672321
+  },
+  {
+    "line": "TRAILER AUDIO vi=3646 us=61343207 pos=63918.000 ai=c3100001",
+    "epoch": 1793487379.7860034,
+    "monotonic": 28165.446602676
+  },
+  {
+    "line": "TRAILER AUDIO vi=3706 us=62344300 pos=87768.000 ai=c3100001",
+    "epoch": 1793487380.7882195,
+    "monotonic": 28166.448818716
+  },
+  {
+    "line": "TRAILER AUDIO vi=3766 us=63345347 pos=112572.000 ai=c3100001",
+    "epoch": 1793487381.7860491,
+    "monotonic": 28167.44664841
+  },
+  {
+    "line": "TRAILER AUDIO vi=3827 us=64359303 pos=136422.000 ai=c3100001",
+    "epoch": 1793487382.799469,
+    "monotonic": 28168.460068582
+  },
+  {
+    "line": "TRAILER END intro vi=3877 us=65196341",
+    "epoch": 1793487383.6369846,
+    "monotonic": 28169.297583678
+  },
+  {
+    "line": "TRAILER AUDIO vi=3887 us=65360340 pos=160272.000 ai=c3100001",
+    "epoch": 1793487383.8009808,
+    "monotonic": 28169.461579991
+  },
+  {
+    "line": "TRAILER AUDIO vi=3947 us=66361365 pos=185076.000 ai=c3100001",
+    "epoch": 1793487384.8022354,
+    "monotonic": 28170.462834318
+  }
+]

@@ -1,0 +1,34 @@
+{
+  "native_queue_cases": [
+    {
+      "case": "v2-audio-probe",
+      "underruns": 1,
+      "max_poll_us": 361391,
+      "max_mix_us": 2494,
+      "video_mode": "VIDEO MODE width=480 height=360 ram=8388608 highres=1",
+      "complete": true
+    },
+    {
+      "case": "v2-audio-batched8",
+      "underruns": 0,
+      "max_poll_us": 164543,
+      "max_mix_us": 2498,
+      "video_mode": "VIDEO MODE width=480 height=360 ram=8388608 highres=1",
+      "complete": true
+    },
+    {
+      "case": "v2-audio-batched4",
+      "underruns": 0,
+      "max_poll_us": 163993,
+      "max_mix_us": 2585,
+      "video_mode": "VIDEO MODE width=320 height=240 ram=4194304 highres=0",
+      "complete": true
+    }
+  ],
+  "buffer_frames": 1272,
+  "sample_rate": 31995,
+  "buffers": 8,
+  "ring_capacity_us": 318049.69526488514,
+  "qualifier": "Ares CP0/AI emulation, not a physical-console measurement. Baseline and fixed probes use immutable v1 scene assets and production path with diagnostic-only counters.",
+  "pcm_finding": "v1 capture matches original music09 before12.5s, loses continuous phase during12.75\u201321s, then resumes clean with4.74s source lag. The new low-priority2-thread capture stays near1.00\u00d7 host/N64 time; baseline still exposes a separate native preload gap."
+}

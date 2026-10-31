@@ -1,6 +1,9 @@
 #ifndef ADVENTURE_SCENE_H
 #define ADVENTURE_SCENE_H
 typedef struct Scene Scene;
+/* Optional idle work between completed loading batches, outside frame/block
+ * recording. Standalone consumers keep the default null callback. */
+void scene_set_load_idle(void (*callback)(void));
 /* Establish the shared opaque world/portrait pass before clearing or drawing. */
 void scene_begin_opaque(void);
 /* One explicit camera scope per frame. End it and complete the RDP fence

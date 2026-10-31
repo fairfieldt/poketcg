@@ -1,0 +1,212 @@
+[
+  {
+    "capture": 8.0,
+    "source": 0.564292,
+    "corr": 0.991
+  },
+  {
+    "capture": 8.5,
+    "source": 1.064375,
+    "corr": 0.985
+  },
+  {
+    "capture": 9.0,
+    "source": 1.5645,
+    "corr": 0.9771
+  },
+  {
+    "capture": 9.5,
+    "source": 2.064583,
+    "corr": 0.9784
+  },
+  {
+    "capture": 10.0,
+    "source": 2.564667,
+    "corr": 0.9911
+  },
+  {
+    "capture": 10.5,
+    "source": 3.06475,
+    "corr": 0.9865
+  },
+  {
+    "capture": 11.0,
+    "source": 3.564833,
+    "corr": 0.9874
+  },
+  {
+    "capture": 11.5,
+    "source": 1.275875,
+    "corr": 0.9885
+  },
+  {
+    "capture": 12.0,
+    "source": 4.565042,
+    "corr": 0.9598
+  },
+  {
+    "capture": 12.5,
+    "source": 5.065125,
+    "corr": 0.9941
+  },
+  {
+    "capture": 13.0,
+    "source": 5.481625,
+    "corr": 0.9925
+  },
+  {
+    "capture": 13.5,
+    "source": 5.981708,
+    "corr": 0.9879
+  },
+  {
+    "capture": 14.0,
+    "source": 6.481833,
+    "corr": 0.9885
+  },
+  {
+    "capture": 14.5,
+    "source": 9.770958,
+    "corr": 0.9874
+  },
+  {
+    "capture": 15.0,
+    "source": 10.271083,
+    "corr": 0.9916
+  },
+  {
+    "capture": 15.5,
+    "source": 7.982083,
+    "corr": 0.9797
+  },
+  {
+    "capture": 16.0,
+    "source": 2.972833,
+    "corr": 0.9963
+  },
+  {
+    "capture": 16.5,
+    "source": 8.982292,
+    "corr": 0.9905
+  },
+  {
+    "capture": 17.0,
+    "source": 3.90425,
+    "corr": 0.9461
+  },
+  {
+    "capture": 17.5,
+    "source": 9.982458,
+    "corr": 0.9656
+  },
+  {
+    "capture": 18.0,
+    "source": 10.482583,
+    "corr": 0.9656
+  },
+  {
+    "capture": 18.5,
+    "source": 10.982667,
+    "corr": 0.9944
+  },
+  {
+    "capture": 19.0,
+    "source": 11.48275,
+    "corr": 0.9914
+  },
+  {
+    "capture": 19.5,
+    "source": 11.982833,
+    "corr": 0.979
+  },
+  {
+    "capture": 20.0,
+    "source": 12.482958,
+    "corr": 0.9817
+  },
+  {
+    "capture": 20.5,
+    "source": 12.983042,
+    "corr": 0.9879
+  },
+  {
+    "capture": 21.0,
+    "source": 13.483125,
+    "corr": 0.9857
+  },
+  {
+    "capture": 21.5,
+    "source": 13.983208,
+    "corr": 0.9855
+  },
+  {
+    "capture": 22.0,
+    "source": 14.483333,
+    "corr": 0.986
+  },
+  {
+    "capture": 22.5,
+    "source": 14.983417,
+    "corr": 0.9888
+  },
+  {
+    "capture": 23.0,
+    "source": 15.4835,
+    "corr": 0.9876
+  },
+  {
+    "capture": 23.5,
+    "source": 15.983583,
+    "corr": 0.9707
+  },
+  {
+    "capture": 24.0,
+    "source": 16.483708,
+    "corr": 0.9868
+  },
+  {
+    "capture": 24.5,
+    "source": 16.983792,
+    "corr": 0.991
+  },
+  {
+    "capture": 25.0,
+    "source": 17.483875,
+    "corr": 0.9885
+  },
+  {
+    "capture": 25.5,
+    "source": 17.983958,
+    "corr": 0.9665
+  },
+  {
+    "capture": 26.0,
+    "source": 18.484083,
+    "corr": 0.9751
+  },
+  {
+    "capture": 26.5,
+    "source": 18.984167,
+    "corr": 0.9852
+  },
+  {
+    "capture": 27.0,
+    "source": 19.48425,
+    "corr": 0.9913
+  },
+  {
+    "capture": 27.5,
+    "source": 19.984333,
+    "corr": 0.9817
+  },
+  {
+    "capture": 28.0,
+    "source": 20.484458,
+    "corr": 0.9814
+  },
+  {
+    "capture": 28.5,
+    "source": 20.984542,
+    "corr": 0.994
+  }
+]

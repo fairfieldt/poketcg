@@ -83,14 +83,17 @@ static void load_scene(void)
    scene_close(actor_scenes[model]);actor_scenes[model]=NULL;
    scene_close(actor_lod_scenes[model]);actor_lod_scenes[model]=NULL;
   }
+  adventure_audio_poll();
   memset(actor_low_detail,0,sizeof(actor_low_detail));
  }
  scene_close(overlay);scene_close(room);overlay=NULL;
  for(unsigned i=0;i<8;i++){scene_close(switches[i]);switches[i]=NULL;}
+ adventure_audio_poll();
  room=scene_open(path,W3_TEXTURE_ROOT);
+ adventure_audio_poll();
  const W3Map *map=&w3_maps[game.ow.map];
- if(map->overlay)overlay=scene_open(map->overlay,W3_TEXTURE_ROOT);
- if(game.ow.map==2)for(unsigned i=0;i<W3_SWITCH_SCENE_COUNT;i++){const W3SwitchScene *panel=&w3_switch_scenes[i];switches[i]=scene_open(game.ow.map_patch[panel->event]?panel->on_scene:panel->off_scene,W3_TEXTURE_ROOT);}
+ if(map->overlay){overlay=scene_open(map->overlay,W3_TEXTURE_ROOT);adventure_audio_poll();}
+ if(game.ow.map==2)for(unsigned i=0;i<W3_SWITCH_SCENE_COUNT;i++){const W3SwitchScene *panel=&w3_switch_scenes[i];switches[i]=scene_open(game.ow.map_patch[panel->event]?panel->on_scene:panel->off_scene,W3_TEXTURE_ROOT);adventure_audio_poll();}
  loaded_map=game.ow.map;loaded_path=path;
  glMatrixMode(GL_PROJECTION);glLoadIdentity();
  gluPerspective(map->fov,4.0/3.0,1.5,90);
@@ -116,8 +119,10 @@ static void load_characters(void)
   if(actor_scenes[model]&&!needed[model]){scene_close(actor_scenes[model]);actor_scenes[model]=NULL;}
   if(actor_lod_scenes[model]&&!needed[model]){scene_close(actor_lod_scenes[model]);actor_lod_scenes[model]=NULL;}
  }
- for(unsigned model=7;model<256;model++)if(needed[model]&&w3_actor_scenes[model]&&!actor_scenes[model])actor_scenes[model]=scene_open(w3_actor_scenes[model],W3_TEXTURE_ROOT);
- for(unsigned model=7;model<256;model++)if(needed[model]&&w3_actor_lod_scenes[model]&&!actor_lod_scenes[model])actor_lod_scenes[model]=scene_open(w3_actor_lod_scenes[model],W3_TEXTURE_ROOT);
+ /* Preloads run before the frame's GL/RDP context. Keep the AI ring fed
+    between completed loads rather than waiting for the whole actor set. */
+ for(unsigned model=7;model<256;model++)if(needed[model]&&w3_actor_scenes[model]&&!actor_scenes[model]){actor_scenes[model]=scene_open(w3_actor_scenes[model],W3_TEXTURE_ROOT);adventure_audio_poll();}
+ for(unsigned model=7;model<256;model++)if(needed[model]&&w3_actor_lod_scenes[model]&&!actor_lod_scenes[model]){actor_lod_scenes[model]=scene_open(w3_actor_lod_scenes[model],W3_TEXTURE_ROOT);adventure_audio_poll();}
 }
 static const Scene *actor_scene(unsigned model,unsigned npc,const PresentationPose *pose,float scale,float floor)
 {
@@ -475,7 +480,8 @@ int main(void)
  display_set_fps_limit(30);dfs_init(DFS_DEFAULT_LOCATION);joypad_init();rdpq_init();gl_init();
  depth=n64_video_surface();scene_begin_opaque();
  glEnable(GL_MULTISAMPLE_ARB);glDisable(GL_CULL_FACE);glDisable(GL_LIGHTING);
- adventure_audio_init();n64_ui_init();actors=scene_open(W3_ACTOR_SCENE,W3_TEXTURE_ROOT);
+ adventure_audio_init();scene_set_load_idle(adventure_audio_poll);
+ n64_ui_init();actors=scene_open(W3_ACTOR_SCENE,W3_TEXTURE_ROOT);
 #if ADVENTURE_DIAGNOSTIC == 24
  extern void adventure_pack_native_regression(void);
  adventure_pack_native_regression();

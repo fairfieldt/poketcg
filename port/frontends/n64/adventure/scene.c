@@ -36,6 +36,9 @@ struct Scene {
 #define room_list (scene->room_list)
 #define sprites (scene->sprites)
 #define textures (scene->textures)
+static void (*load_idle)(void);
+void scene_set_load_idle(void (*callback)(void)){load_idle=callback;}
+static void scene_load_idle(void){if(load_idle)load_idle();}
 
 #if SCENE_T3D
 #include "scene_packed.inc"
@@ -126,6 +129,7 @@ Scene *scene_open(const char *path, const char *texture_root)
         free(vertices);
         fseek(f,(h.indices*sizeof(uint16_t)+3)&~(size_t)3,SEEK_CUR);
         assertf(ftell(f)<=size,"Scene scan indices exceed file");
+        scene_load_idle();
     }
     fseek(f,batches_start,SEEK_SET);
     glGenTextures(texture_count, textures);
@@ -141,6 +145,7 @@ Scene *scene_open(const char *path, const char *texture_root)
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
         glSpriteTextureN64(GL_TEXTURE_2D, sprites[i], NULL);
+        scene_load_idle();
     }
     free(names);
     for (unsigned i = 0; i < mesh_count; i++) {
@@ -184,6 +189,7 @@ Scene *scene_open(const char *path, const char *texture_root)
            command stream. The source arrays need not stay resident. Streaming
            one batch at a time also avoids a full-file loading peak. */
         free(batch);
+        scene_load_idle();
     }
     assertf(ftell(f)==size,"Scene trailing data");fclose(f);
     glDisableClientState(GL_VERTEX_ARRAY);glDisableClientState(GL_COLOR_ARRAY);
