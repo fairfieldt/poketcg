@@ -34,6 +34,10 @@ materials. The native assets and ROM do not require Blender or Fast64.
   numbers, with no exported hidden scalp vertices.
   [Cap validation](review/cap_validation.json) records this camera-independent
   exterior proof for all five capped families.
+  Ronald's cap, spikes and fringe also share the owning head exterior. His
+  upper scalp uses the hair pigment so small exposed facets cannot appear as
+  skin islands. [Hair validation](review/ronald-hair/validation.json) checks the
+  final native shell, hairline and unchanged animated limbs.
 - **Materials:** facial styles reuse textures; the cast needs 12 textures, all
   32×32 RGBA16. Opaque facial backgrounds use the same RGBA16-safe pigment as
   each character's solid head, ears, neck and limbs. Eye whites, pupils, glasses
@@ -166,7 +170,7 @@ The existing Lightning scenes are not populated with the entire cast.
 
 Validation covers every NPC binding, triangle indices, finite geometry, UVs,
 degenerate triangles, texture-memory limits, five-part rigs, palette geometry
-identity and front/back renders. Humans use 518–906 triangles; the torch has 68
+identity and front/back renders. Humans use 518–910 triangles; the torch has 68
 and the card assembly 128. Each texture occupies 2 KiB of the RDP's 4 KiB TMEM.
 
 The original **49 native exports** were rendered in ares with **4 MiB RAM**, four headings

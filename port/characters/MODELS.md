@@ -5,7 +5,7 @@ One row per authored model. Repeated NPC IDs use the same file.
 | Model | Triangles | Blender source | NPC IDs |
 |---|---:|---|---|
 | Dr Mason | 718 | [dr_mason.blend](assets/models/dr_mason/dr_mason.blend) | `DRMASON`, `05`, `06` |
-| Ronald | 728 | [ronald.blend](assets/models/ronald/ronald.blend) | `RONALD1`, `RONALD2`, `RONALD3` |
+| Ronald | 910 | [ronald.blend](assets/models/ronald/ronald.blend) | `RONALD1`, `RONALD2`, `RONALD3` |
 | Ishihara | 804 | [ishihara.blend](assets/models/ishihara/ishihara.blend) | `ISHIHARA` |
 | Imakuni | 518 | [imakuni.blend](assets/models/imakuni/imakuni.blend) | `IMAKUNI` |
 | Tech | 663 | [tech.blend](assets/models/tech/tech.blend) | `SAM`, `TECH1`, `TECH2`, `TECH3`, `TECH4`, `TECH5`, `TECH6`, `JOSEPH`, `DAVID`, `ERIK`, `SPECS2`, `AARON`, `TECH7`, `TECH8` |

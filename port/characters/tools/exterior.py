@@ -12,7 +12,7 @@ import bmesh
 from mathutils import Matrix, Vector
 
 
-def exterior_sources(sources,wearing_cap=False):
+def exterior_sources(sources,wearing_cap=False,owning_hair=False):
     bpy.context.view_layer.update()
     scene=bpy.context.scene
     groups=defaultdict(list)
@@ -20,7 +20,8 @@ def exterior_sources(sources,wearing_cap=False):
     for source in sources:
         name=source.name.lower()
         key=None
-        headwear=wearing_cap and any(word in name for word in ('hair','fringe',' · cap',' · brim'))
+        headwear=(wearing_cap and any(word in name for word in ('hair','fringe',' · cap',' · brim')) or
+                  owning_hair and any(word in name for word in ('hair','spike','fringe')))
         head=('head' in name and not any(word in name for word in ('hair','headband','hood'))) or 'face' in name
         if headwear or head:
             key='head'
@@ -76,6 +77,18 @@ def exterior_sources(sources,wearing_cap=False):
         bmesh.ops.dissolve_degenerate(bm,dist=1e-5,edges=list(bm.edges))
         bmesh.ops.dissolve_limit(bm,angle_limit=.001,use_dissolve_boundaries=False,verts=list(bm.verts),edges=list(bm.edges),delimit={'MATERIAL'})
         bmesh.ops.triangulate(bm,faces=list(bm.faces))
+        if owning_hair and region=='head':
+            # A boolean hair intersection can leave a numerical sliver below
+            # the native triangle-area limit. Collapse its shortest edge
+            # rather than deleting a face and puncturing the closed shell.
+            for _ in range(32):
+                slivers=[face for face in bm.faces if face.calc_area()<=5.1e-7]
+                if not slivers:break
+                edge=min(slivers[0].edges,key=lambda edge:edge.calc_length())
+                bmesh.ops.collapse(bm,edges=[edge],uvs=True)
+                bmesh.ops.dissolve_degenerate(bm,dist=1e-5,edges=list(bm.edges))
+                bmesh.ops.triangulate(bm,faces=list(bm.faces))
+            assert not any(face.calc_area()<=5.1e-7 for face in bm.faces),'Unresolved hair union sliver'
         tiny=[face for face in bm.faces if face.calc_area()<=5.1e-7]
         if tiny:bmesh.ops.delete(bm,geom=tiny,context='FACES_ONLY')
         bm.to_mesh(target.data);bm.free();target.data.update()

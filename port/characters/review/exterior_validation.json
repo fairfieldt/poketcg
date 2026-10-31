@@ -2,7 +2,7 @@
   "passed": true,
   "families": 39,
   "exports": 49,
-  "maximum_triangles": 906,
+  "maximum_triangles": 910,
   "maximum_batches": 6,
   "duplicate_triangles": 0,
   "degenerate_triangles": 0,
@@ -17,11 +17,11 @@
     },
     {
       "file": "assets/models/ronald/scene.l64",
-      "triangles": 728,
-      "vertices": 1340,
+      "triangles": 910,
+      "vertices": 1515,
       "batches": 6,
       "duplicate_triangles": 0,
-      "sha256": "2bea16d66a69a1e32e17a8c8f97aa90775a783a0fa2d6faa3a3ce987ad4d814c"
+      "sha256": "76f37c83878340f5e8aaceb43ae33d5c78492e044a5395f651781d307d12890c"
     },
     {
       "file": "assets/models/ishihara/scene.l64",

@@ -353,6 +353,17 @@ if slug in ('dr_mason','ronald'):
                         mat.f3d_mat.tex0.tex=image
                         mat['role']='face'
                         with bpy.context.temp_override(material=mat):update_all_node_values(mat,bpy.context)
+    if slug=='ronald':
+        # The faceted cap does not cover every corner of the skull. Give the
+        # upper scalp its hair pigment before the exterior union, so those
+        # genuinely exposed corners cannot remain skin-colored islands.
+        head=next(obj for obj in sources if obj.name=='Ronald faceted head')
+        hair=next(obj for obj in sources if obj.name=='Ronald hair cap')
+        head.data.materials.append(hair.material_slots[0].material)
+        hair_slot=len(head.data.materials)-1
+        for polygon in head.data.polygons:
+            if min((head.matrix_world@head.data.vertices[i].co).z for i in polygon.vertices)>=1.88-1e-5:
+                polygon.material_index=hair_slot
 else:
     if spec['body']=='prop':props()
     else:humanoid()
@@ -361,7 +372,8 @@ else:
 authored_sources=list(sources)
 for source in sources:source['character_name']=slug
 if slug not in ('torch','legendary_card'):
-    sources=exterior_sources(sources,wearing_cap=spec.get('hair')=='cap' or spec.get('cap',False))
+    sources=exterior_sources(sources,wearing_cap=spec.get('hair')=='cap' or spec.get('cap',False),
+        owning_hair=slug=='ronald')
 
 # The facial paint and solid head/ears/limbs share the same character pigment.
 # Opaque feature pixels remain unchanged; no alpha-test support is required.

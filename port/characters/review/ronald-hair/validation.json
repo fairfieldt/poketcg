@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "model": "ronald",
+  "triangles": 910,
+  "batches": 6,
+  "owning_head_components": 1,
+  "owning_head_boundary_edges": 0,
+  "hidden_authored_hair_objects": 12,
+  "native_head_triangles": 402,
+  "non_exterior_native_head_triangles": 0,
+  "maximum_outside_winding": 0.001858,
+  "minimum_inside_winding": 0.998033,
+  "bright_upper_scalp_triangles": 0,
+  "scalp_hairline": 1.88,
+  "face_paint_top": 1.89,
+  "limbs_unchanged": true,
+  "lower_body_triangles_unchanged": true,
+  "native_sha256": "76f37c83878340f5e8aaceb43ae33d5c78492e044a5395f651781d307d12890c",
+  "other_model_files_unchanged": 266,
+  "sly_face_paint_unchanged": true,
+  "face_paint_sha256": "df21c870618ddd7cfaea90a9f2b8011fe7da53ec5540f6a9d5caaaa2ed5fe0a9"
+}

@@ -1,11 +1,11 @@
 {
   "model": "ronald",
-  "triangles": 728,
-  "vertices": 1340,
+  "triangles": 910,
+  "vertices": 1515,
   "batches": 6,
   "linked_parts": 0,
   "appearances": [
     "ronald"
   ],
-  "fingerprint": "e23badcfce8de0a7571c83859cdfea3721aa729e33d77d68b2023089fb69abcf"
+  "fingerprint": "39f7c50120a6c3a3b0621fe37ba166b7301b382cb2080a2a248c4573179bcf49"
 }

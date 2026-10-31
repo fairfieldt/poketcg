@@ -20165,8 +20165,8 @@
     },
     "actor_ronald": {
       "file": "maps/actor_ronald.l64",
-      "vertices": 1340,
-      "triangles": 728,
+      "vertices": 1515,
+      "triangles": 910,
       "batches": 6,
       "textures": [
         "tccf0e2101d5829c2"
@@ -20177,7 +20177,7 @@
       "model": 8,
       "source_model": 2,
       "source": "port/characters/assets/models/ronald",
-      "source_sha256": "2ed154adb9d0047da6118ec7a7aa68e1adfba928a6ffe7405d4673d27c36bf7b",
+      "source_sha256": "bec2730ff9c977b580bfee396def797842cd6037b76c40a07656ca998e656128",
       "family": "ronald",
       "kind": "canonical",
       "selector": null,
@@ -21562,8 +21562,8 @@
     },
     {
       "file": "maps/actor_ronald.l64",
-      "vertices": 1340,
-      "triangles": 728,
+      "vertices": 1515,
+      "triangles": 910,
       "batches": 6,
       "textures": [
         "tccf0e2101d5829c2"
@@ -21574,7 +21574,7 @@
       "model": 8,
       "source_model": 2,
       "source": "port/characters/assets/models/ronald",
-      "source_sha256": "2ed154adb9d0047da6118ec7a7aa68e1adfba928a6ffe7405d4673d27c36bf7b",
+      "source_sha256": "bec2730ff9c977b580bfee396def797842cd6037b76c40a07656ca998e656128",
       "family": "ronald",
       "kind": "canonical",
       "selector": null,
