@@ -1,0 +1,77 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comparison</title><style>body{max-width:94ch;margin:32px auto;padding:0 20px;background:#171923;color:#edf1f7;font:16px/1.55 system-ui}a{color:#a8cfff}h1{font-size:26px}nav{margin-bottom:24px}article{white-space:pre-wrap;overflow-wrap:anywhere}li{margin:6px 0}img{max-width:100%;height:auto}</style><nav><a href="index.html">Reviews</a> · <a href="captures/">Screenshots</a> · <a href="fable-review.html">Fable 5.1 High</a> · <a href="astra-review.html">Astra High</a> · <a href="comparison.html">Comparison</a></nav><h1>Comparison</h1><article>Independent presentation reviews
+
+Fable 5.1 High (Claude Code) and GPT-6 Astra High received the identical brief
+and the same 27 native screenshots. Neither received the development conversation
+or earlier feedback. Both inspected the complete bundle and scoped source.
+Their reports are preserved without editorial changes in fable-review.txt and
+astra-review.txt. reviewers.json records the model settings and input hashes.
+
+Shared priorities
+
+1. Quiet supporting floor patterns, especially Fire, Water, Dome and Lightning.
+   Preserve club colors/motifs while reducing contrast and small repeated marks
+   so characters and focal objects win at 320x240.
+2. Improve a few distinctive prop recipes rather than adding detail everywhere.
+   Hall&#x27;s altar/display, Rock&#x27;s statues/boulders and Fire/Psychic flames are
+   useful first targets. Preserve source placements, paths and rigs.
+3. Compose each room around people and destinations. Both want less unused
+   foreground/upper space and better far-character readability. Conversation
+   framing should be tested with the actual bottom dialogue panel.
+4. Strengthen material and light hierarchy. Tune existing baked shading and
+   grounding locally, give emitters a deliberate warm/violet character, and
+   make important objects brighter than their surrounding carpet.
+5. Improve native duel hierarchy and feedback: group active card/name/HP/art,
+   reserve space for prompts, simplify supporting counts and empty slots, and
+   add readable coin/damage feedback without changing outcomes.
+
+Meaningful differences
+
+Fable&#x27;s first priority is the dark area above walls and the far-wall gradient.
+Astra puts floor content and recognizable silhouettes first, then room cameras.
+Fable proposes a broader island treatment with larger landmarks and more sea/
+forest variation. Astra regards the island as a strong asset to protect and
+suggests only selective separation between paths, grass and pale buildings.
+Fable favors a proportional body font matching the new banners. Astra prefers
+retaining compact rules text and fixing layout/spacing before changing fonts.
+Fable wants substantially denser actor shadows; Astra explicitly recommends
+retaining modest contacts and checking sampling before adding darkness/passes.
+
+Parent assessment and factual qualifications
+
+The strongest shared direction is selective content authoring: calmer patterns,
+recognizable focal props and better framing. A focused Fire/Rock/Hall proof and
+a duel layout proof would establish the style before propagating it globally.
+The island and existing compact text should be evaluated separately rather
+than changed solely to reconcile two different preferences.
+
+Some recommendations describe systems that already exist: textured box faces
+receive per-face shading; indoor people have soft contact fans; floors have
+prop proximity and emitter boosts; the island has grounding and shoreline foam.
+The actionable issue is how strongly these read in the captures, not their
+absence. Fable acknowledges several of these implementations later in its text.
+
+An opaque full ceiling plane can obscure these rooms from their elevated
+cameras. Soffits, backdrops, corner completion or camera adjustments should be
+prototyped with actor/path visibility before adopting that specific suggestion.
+Likewise, mipmaps or extra translucent/animated layers need a small toolchain
+and frame-time prototype before broad changes.
+
+Both reports are based on static pre-VI frames and source inspection. Claims
+about shimmer/flicker, movement feel or the benefit of longer transitions remain
+tentative until filtered moving output is observed. Numeric brightness targets
+are aesthetic experiments, not hard correctness requirements.
+
+One concrete native input issue identified by Astra is separate from the web
+intro Start fix: naming&#x27;s START:End hint currently selects End, then requires A.
+The reports document that follow-up; the current review does not establish a
+manual full-game or physical-console playthrough.
+
+Verification of the accompanying build
+
+49 browser diaries and large exports/imports; independent real saved-duel
+resumes with identical state hashes; byte-preserving legacy migration and
+transaction rollback; live diary picker/reload and tutorial-complete Diary 2;
+mouse click/hover/explicit reselection through actual C requests; desktop and
+mobile intro Start centering; original source intro to Sam browser flow;
+48 native captures across 34 maps in 4 MiB with 1,053,416 bytes minimum free heap.
+</article></html>

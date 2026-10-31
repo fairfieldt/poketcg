@@ -1,0 +1,392 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Astra High</title><style>body{max-width:94ch;margin:32px auto;padding:0 20px;background:#171923;color:#edf1f7;font:16px/1.55 system-ui}a{color:#a8cfff}h1{font-size:26px}nav{margin-bottom:24px}article{white-space:pre-wrap;overflow-wrap:anywhere}li{margin:6px 0}img{max-width:100%;height:auto}</style><nav><a href="index.html">Reviews</a> · <a href="captures/">Screenshots</a> · <a href="fable-review.html">Fable 5.1 High</a> · <a href="astra-review.html">Astra High</a> · <a href="comparison.html">Comparison</a></nav><h1>Astra High</h1><article>PRESENTATION REVIEW — NINTENDO 64 TARGET
+
+Evidence and limits
+
+I inspected captures/contact-sheet.png first, then all 27 individual PNGs and
+captures/manifest.json. PNG inspection worked. I judged the images at native
+320x240 and inspected nearest-neighbor enlargements of the Lightning and Rock
+clubs, Hall of Honor, dialogue, duel actions and card details. I also inspected
+the two supplied concept images and relevant original room images/descriptions,
+and read presentation-relevant portions of the explicitly listed sources.
+I did not play the game, launch an emulator, inspect final VI scanout, or use
+project history or other reviews. Movement and timing observations below are
+explicitly code-based. No production files were changed.
+
+The captures are 16-bit RDP output before VI filtering. Some fine stippling,
+stair-stepping and narrow edge noise may soften considerably on the intended
+display. These images do establish large-scale composition, competing values,
+prop silhouettes and interface hierarchy. They cannot establish shimmer,
+frame pacing, input responsiveness, sound quality or final text legibility.
+Recommendations assume 320x240, 30 Hz and 4 MiB, not a modern rendering budget.
+
+Overall assessment and art direction
+
+The port has a convincing foundation for a colorful N64 game, but it currently
+looks unevenly authored. The island, naming screen and tutorial dialogue feel
+deliberate. Several club interiors feel like a source floor image laid beneath
+a kit of primitives. The duel is readable when studied, yet presents too much
+information with the same small-text emphasis. More polygons everywhere would
+not address the largest problems.
+
+Use a coherent target: a miniature island of painted club interiors, populated
+by readable toy-like characters, with card-table interfaces in cream, navy and
+muted green. Preserve each club&#x27;s original layout, color identity and motifs.
+Make broad fields quiet, the room&#x27;s signature object distinct, and characters
+and current actions the clearest small shapes. Painted highlights, broad vertex
+gradients, small filtered textures and restrained contact shadows suit this
+direction. Do not aim for glossy realistic surfaces, bloom or tiny ornament.
+
+The Lightning concept is useful for its hierarchy: quiet blue floor, readable
+figures, grounded pillars and a bright destination. The native map-15.png has
+many of the same ingredients, but the dark floor grid and pillar texture carry
+more visual weight than the people. Transfer that hierarchy, not the concept&#x27;s
+resolution or rendering richness. The overworld concept similarly demonstrates
+distinct landmarks and cohesive land/water materials; map-00.png already gets
+much of its miniature-island appeal.
+
+Qualities to retain
+
+* map-00.png has a strong island silhouette, legible coastline, distinct roof
+  colors, bridges and a pleasing forest/volcano contrast. It promises a place
+  worth exploring. The small cream destination label is useful and restrained.
+* naming.png is one of the most complete compositions: the model preview,
+  keyboard, name slots and controls each have a clear place. The existing
+  character rig reads well at this larger presentation scale.
+* mason-dialogue.png and sam-table.png keep the speaker and player in view and
+  use a clear cream dialogue box with a separate speaker tab. The restrained
+  tile treatment in map-01.png and map-14.png supports characters much better
+  than the loud patterned floors elsewhere.
+* Clubs are identifiable from color and arrangement. Water&#x27;s asymmetric pool,
+  Grass&#x27;s low enclosing wall and planting, Lightning&#x27;s central inlay and the
+  Dome&#x27;s stepped outline are valuable distinctive forms.
+* The green felt, original card illustrations, HP bars and highlighted current
+  player provide a workable duel vocabulary. The cream turn plaques in
+  duel-player-turn.png and duel-opponent-turn.png are clearer focal points than
+  the surrounding small text. Preserve that useful contrast.
+
+HIGH-IMPACT, FEASIBLE WORK — IN PRIORITY ORDER
+
+1. Re-author floor and prop texture contrast for the actual camera scale.
+
+Evidence: map-12.png&#x27;s dense orange deck grid competes with the pool and white
+benches; map-27.png&#x27;s repeated orange floor pattern overwhelms its six small
+braziers; map-06.png&#x27;s green weave is more conspicuous than the gym kit;
+map-09.png combines blue grout, speckled gold strips and a bright red runner;
+map-32.png&#x27;s foreground carpet dominates the central duel table. map-15.png&#x27;s
+near-black grout makes the blue floor a cage of lines. The red runners shared
+by several rooms also compete directly with the player&#x27;s red cap and jacket.
+This is a design issue even if VI filtering removes some pixel noise.
+
+Reduce local contrast and motif density on supporting surfaces while retaining
+their identity. Start with Fire, Water and the Dome: preserve orange/yellow
+deck colors, red/gold ceremonial carpet and room borders, but simplify interior
+marks and make grout a nearby value instead of a hard dark or bright line.
+Keep one clearly readable pattern scale per material. Enlarge or simplify a
+repeating motif inside the existing material footprint rather than stretching
+the entire original room image. Reserve the brightest cream/yellow accents for
+steps, important inlays and focal furniture. Make the runner red deeper so the
+player separates from it. Do not uniformly desaturate all rooms into beige.
+
+Source: build_world.py Scene.floor() selects source patches and emits 32x32
+texture chunks; room_style.py material_pixel(), TILES and FLOOR_TINT already
+provide a suitable per-room authoring seam. The lab/lobby replacement flagstones
+demonstrate that selective reinterpretation works. The generic fallback&#x27;s 12%
+luminance blend cannot remove dense source motifs. Lightning is imported by
+copy_lightning(), so do not assume all floor changes flow through Scene.floor().
+
+Cost/validation: primarily replace existing small textures and colors; avoid
+adding layers or more unique textures by default. Compare before/after at 1x,
+in grayscale, and with actual VI output later. At a glance the player, room
+subject and exit should win over the floor grid. Preserve motif boundaries,
+walkable areas and all source coordinates. Test a short walk across patterned
+areas for shimmer on the target; no shimmer claim is made from these stills.
+
+2. Give repeated props specific silhouettes and properly authored faces.
+
+Evidence: map-09.png&#x27;s boulders read as broad brown loaves and its gold statues
+as generic round-headed posts; map-27.png and map-21.png&#x27;s flame heads resemble
+cones on sticks; map-18.png&#x27;s topiary repeats nearly identical rounded masses.
+map-24.png&#x27;s machines are long white-topped slabs whose detail is mostly on the
+front face. In map-33.png the intended Poké Ball is largely a dark cap behind a
+wide white slab, while the altar front is a compressed blue/white image. That
+weakens the climactic room more than a lack of surface effects does.
+
+Spend the modeling pass on a small set of recognizable recipes, reused at the
+existing positions. Give rocks uneven angular profiles and a few broad shaded
+faces; give statues a clear head/torso/base and one recognizable outline feature;
+give braziers a visible bowl and a deliberately shaped two- or three-part flame;
+give machines an inset screen and a readable top/control-plane separation.
+For the Hall, expose a properly rounded ball silhouette with a broad band and
+button, and separate the altar&#x27;s top, riser and column faces. Inspect its vertical
+placement against the slab before adding ornament. Restore essential original
+wall focal motifs where absent or too small, particularly the Fighting sign
+and Hall banner. These are existing identity features, not new UI text.
+
+Source: build_world.py prop() constructs the recipes. It crops the complete
+source prop image for a front or tabletop texture; that source image can already
+contain perspective and shading, so mapping it wholesale can bake the wrong
+surface cues into a 3D object. Author separate top/front/side patches from the
+same palette. Its ball branch fixes the center at y=2.5, while the altar adds a
+raised slab; inspect this overlap for the cap-like appearance. scene_specs.py
+PROPS supplies stable placements, footprints and heights. walls() deliberately
+uses south-wall livery, which avoids duplicated cabinetry but does not by itself
+reconstruct unique north-wall signs. Compare with the supplied room PNGs and
+descriptions before selecting which unique features to recover.
+
+Keep character rigs, collision and story outcomes unchanged. Most of this can
+be done by redistributing the polygons already used by balls/cylinders and by
+reusing small material patches. Validate each replacement as a silhouette and
+at its smallest native camera size; if the new feature disappears at 1x, remove
+it. Check screen-space occlusion around nearby NPCs and unchanged source paths.
+Prioritize Hall, Rock and Fire before minor furnishings.
+
+3. Tune per-room cameras and focal composition around people and destinations.
+
+Evidence: map-01.png has a very large tiled foreground and tiny figures at the
+back. map-15.png&#x27;s far opponent is dwarfed by the bright shrine and pillars;
+map-21.png and map-27.png place most important figures near the far edge of a
+long corridor. map-24.png devotes much of the picture to the purple floor.
+The close tutorial compositions in mason-dialogue.png and sam-table.png show
+how much better the existing people read when given sufficient pixels.
+
+Author a small table of camera overrides rather than asking one proportional
+camera formula to finish every room. Adjust eye height, target and FOV together
+to reduce unused foreground and increase the far NPC&#x27;s apparent size while
+retaining the entry, navigable side lanes and room identity. For long rooms,
+prototype a restrained presentation-only conversation framing that keeps both
+participants above the dialogue box; a single permanent zoom can crop side
+paths and is not automatically an improvement. Preserve the useful fixed-room
+overview where it works. Do not move NPCs or change their rigs to solve framing.
+
+Source: build_world.py camera() mostly derives its view from room dimensions,
+with a small number of exceptions. presentation.c update_camera() already has
+Mason/Sam framing and smooths eye, target and FOV by 0.24 per rendered frame.
+dialogue.c reserves the bottom 80 pixels for its panel. Tune toward that actual
+safe region, not an unobstructed editor viewport. main.c game_render_frame()
+draws the world with the presentation camera.
+
+Validation: capture the entrance, every conversation position, side exits and
+both far corners, with and without dialogue. Check faces, feet and navigation
+landmarks at 320x240. Inspect the complete approach to Mason and Sam in motion
+for framing changes and line-of-sight occlusion. Camera changes alone cost
+little, but a closer view may increase overdraw; measure the busiest view.
+
+4. Make lighting and contact communicate material and depth consistently.
+
+Evidence: broad wall gradients already help map-01.png and map-14.png, and
+small character contacts are visible. Nevertheless, large objects in map-09.png,
+map-18.png and map-24.png can read as separate primitives sitting on a printed
+floor. Fire&#x27;s floor remains broadly bright while its apparent light sources
+are small and pale; Psychic has a distinct purple palette but little sense of
+localized light. Hall&#x27;s broad white top competes with the object it should
+display. Do not describe these rooms as having no shadows: contacts and baked
+shading already exist.
+
+Choose a consistent broad key direction per room and use it on boxes, rounded
+props and their short grounding shadows. Keep soft ambient light sufficient
+for faces and routes. Strengthen localized floor darkening just under large
+props and table legs before darkening entire rooms. Differentiate materials
+through broad painted response: quiet matte floor, darker wood side faces,
+limited pale machine edges, and gold accents with a small bright face. In Fire,
+paint restrained warm pools around the braziers and keep the enclosing walls
+cooler; in Psychic use subdued violet pools and stronger silhouette contrast.
+These are baked cues, not a request for runtime point lights.
+
+Source: room_style.py bake_lighting() already applies perimeter darkening,
+prop proximity, aisle/focal boosts and torch glow to environment vertices.
+Scene.floor() provides only a few samples per chunk; a narrow contact field can
+fall between vertices. Check sampling before merely increasing darkness, and
+add a few local samples only where necessary. build_world.py Scene.box(),
+cylinder() and ball() use different hard-coded shade recipes; align their visual
+key direction. scene.c scene_draw_contact_shadows() already supplies a soft
+12-segment fan per character, independent of bob. Retain its modest footprint.
+author_overworld.py mesh(), grounding_factor() and bake_ground_lighting() show
+an existing directional/grounding approach; keep the island&#x27;s gentle light.
+
+Validation: use one near and one far prop in each material family. Check that
+contacts touch the bases without making black puddles or climbing walls, and
+that shaded faces remain distinct after 16-bit quantization and VI filtering.
+Do not increase room-wide geometry density or translucency just to improve a
+small contact. Compare triangle, material-batch and resident-memory counts.
+
+5. Finish the duel&#x27;s information hierarchy and connect it to the adventure UI.
+
+Evidence: duel-action-menu.png is functional but compresses six actions,
+question text and shortcuts into four tightly packed lines. Both active cards&#x27;
+statistics use nearly the same weight as deck/hand/discard counts, while card art
+sits detached at the right. The bright turn plaques are clear but sit across
+part of the player&#x27;s bench/count region in duel-player-turn.png and
+duel-opponent-turn.png. duel-card-list.png gives a large empty panel to a short
+hand and squeezes card identity/attack information into a narrow strip.
+duel-card-detail.png has abundant space but concentrates almost everything at
+the top, and leaves repeated prior rejection messages in the bottom log.
+duel-coin.png shows an instructional popup, not a visible coin at that captured
+moment. duel.png demonstrates useful damage/HP feedback, but it remains small.
+
+Keep the two-sided board and complete game information. Establish one strong
+active-Pokémon grouping per side: name, HP, energy and art should visibly belong
+together. De-emphasize empty bench outlines and supporting counts instead of
+adding badges. Retain cream/navy panels and a consistent selection treatment
+across dialogue, naming, lists and duel prompts. Use the larger banner face for
+brief headings only; dense rules still need compact, carefully spaced type.
+Use the existing banner&#x27;s clarity as a hierarchy reference, not a requirement
+to enlarge every label.
+
+Give actions more vertical room while the action menu is open, with consistent
+column spacing and a distinct current selection. Place turn/coin prompts in a
+reserved area that does not conceal live card information, or temporarily
+compose the board around the prompt. Give card detail pages a deliberate
+header/art/attack structure and a clear Back hint, rather than filling empty
+space with prose. Prioritize relevant current guidance over repeated stale
+errors in the visible log, while retaining required engine acknowledgements.
+Test long attack text before enlarging the illustration or typography. Replace
+ambiguous single-letter energy shorthand with small recognizable symbols where
+they survive the native pixel budget; provide names on the detail page.
+
+Source: tcgn64.c draw_side(), draw_board(), draw_felt(), ui_duel_menu(),
+draw_card_list_screen(), draw_card_summary(), draw_card_page(),
+draw_textbox_hint(), ui_ack() and draw_duel_banner(). banner_font.h supplies an
+existing 18-pixel glyph mask resource. dialogue.c draw_panel() and naming.c
+draw_keyboard() provide the cream/blue counterpart. Web duel_banners.js and
+style.css already share this palette, but their resolution-independent CSS,
+font sizing and centered overlays are not evidence that the native layout is
+finished. Tune each renderer against the same hierarchy, not CSS pixel parity.
+
+Validation: review a full bench, long names, many energy attachments, low HP,
+statuses, long two-attack rules, trainer text and multi-coin results. Check the
+same states with banners and menus open. Preserve all engine answers, outcomes
+and input mappings. Test on filtered 320x240 output at normal viewing distance;
+require that active card, HP, selection and next available input can be found
+quickly. No high-resolution text dependency or new font family is needed.
+
+SECOND PASS: ROOM-SPECIFIC FINISH
+
+* Mason laboratory / shared lobby (map-01.png, map-14.png): preserve their calm
+  floors, warm cabinets and green table. Improve furniture-face authoring and
+  focal framing. Do not populate the open paths with decorative clutter.
+* Lightning (map-15.png): keep cobalt, cyan inlay, orange pillars and magenta
+  disc. Calm the grid and simplify pillar faces enough for Jennifer and the
+  distant opponents to separate. The pillars should frame the route.
+* Water (map-12.png): keep the pool outline, palms and white seating; quieter
+  deck texture and a stronger coping/water value difference will make the pool
+  the subject. Preserve the original asymmetric footprint.
+* Grass (map-18.png): the miniature garden is charming. Reduce scattered bright
+  grass marks, distinguish leaf masses from pots and use subtle shared-shape
+  variation within existing planting footprints. Keep stepping stones legible.
+* Psychic (map-21.png): retain lavender and its ritual symmetry. Darker column
+  bodies, more specific flame silhouettes and a quieter red runner can create
+  atmosphere without obscuring people.
+* Fire (map-27.png): currently one of the least convincing interiors. Make the
+  braziers and their warmth the subject, with quieter supporting orange tile.
+* Rock (map-09.png): silhouette authoring is the main need. Avoid rounded brown
+  blobs and identical gold knobs; preserve the recognizable six-statue axis.
+* Science (map-24.png): readable screens/control surfaces and darker side faces
+  will do more than adding machines. Reduce the purple floor&#x27;s grid contrast.
+* Fighting (map-06.png): emphasize the mat as a broad surface, distinguish the
+  speed bag from a decorative balloon, and recover the central wall sign.
+* Dome (map-32.png): the raised perimeter is effective. Calm the foreground
+  carpet and make the central board/steps the first read. Preserve the two
+  Poké Ball floor motifs and the formal north/south axis.
+* Hall (map-33.png): treat it as a climax through a readable ball, columns and
+  banner, using cream/blue against controlled warm stone. The current brown
+  field plus white slab undersells the shrine. Legendary-card visibility may
+  depend on game state; this still does not establish missing story content.
+* Island (map-00.png): protect this strong asset. If refining it, prioritize a
+  little more separation between paths, grass and neighboring pale buildings.
+  Do not enlarge every landmark or remove intentional foreground marker depth
+  treatment. main.c explicitly clears terrain depth before map markers.
+
+OPENING, NAMING, DIALOGUE AND TIMING
+
+title.png, intro-charizard.png, intro-scyther.png and intro-aerodactyl.png
+preserve appealing original artwork,
+but their flat pale field and small pack illustrations feel like a handheld
+opening beside the later 3D world. This is a coherence opportunity, not a broken
+screen. First carry the same cream/navy palette and disciplined spacing through
+the interface. A modest physical card/pack presentation is an optional later
+experiment; replacing the established opening should not precede the rooms and
+duel. Keep the recognizable logo and source sequence. intro.c draw_frame()
+scales a 160x144 composition by 1.5 and deliberately separates filtering for
+art and small lettering; judge that choice on actual VI output before changing
+filtering or redrawing all pixel artwork.
+
+One concrete naming polish issue: naming.png says &quot;START: End&quot;, but
+naming.c adventure_name_player() uses Start to select the End item; A performs
+choose() and exits. Either make the hint accurately describe selection or make
+the direct End action match the hint after checking intended behavior. This is
+a presentation/input-expectation issue, not a request to alter naming rules.
+
+Dialogue boxes are already good. Preserve their modest borders and high
+contrast. The four-line layout uses ten-pixel line spacing and a separate bottom
+hint, so long dialogue and large speaker names should be checked for collisions,
+but the supplied Mason/Sam frames show no obvious overflow.
+
+Code-based timing findings, not observed motion:
+
+* presentation.c player_duration() gives ordinary movement eight rendered
+  frames and running four: about 267 ms and 133 ms at 30 Hz. step_actor() ties
+  gait to distance, limits heading changes to 45 degrees per frame, and uses
+  a small idle bob. These are sensible restrained ingredients. Do not replace
+  them with exaggerated squash, camera shake or continuous idle activity.
+* The tutorial scales presentation movement to 70% speed, preserving fractional
+  remainder. update_camera() eases toward its target every render frame. Review
+  the actual tutorial for camera lag, abrupt composition changes and whether
+  the slower approach remains purposeful; the screenshots cannot decide this.
+* main.c warp_fade() has six frames per half, nominally 0.2 seconds each, plus
+  room loading. dialogue.c adventure_duel_transition() uses sixteen frames per
+  shutter sequence, nominally 0.53 seconds. These are reasonable starting
+  lengths. Check actual load stalls and input carryover in a later runtime pass.
+* dialogue.c reveal() offers 1/2/3/6 characters per frame or instant text, and
+  advance() first completes the current page. At the default speed the nominal
+  rate is 90 characters/second. Keep this user control; verify sounds and
+  response with real input rather than assuming the reveal feels slow or fast.
+* intro.c advances original animation time by two ticks per rendered frame.
+  adventure_intro_play() requires title time &gt;=60 ticks for confirmation,
+  nominally a one-second title gate even after skipping the opening. Review the
+  gate as a first-use responsiveness issue; the still title cannot establish it.
+* tcgn64.c on_event() presents coin results for 20 frames and damage for 20
+  frames with a 40-frame damage timer, nominally 0.67/1.33 seconds. show_frames()
+  allows A/B to shorten waits. In the inspected native event handler there is
+  no general animation-event case equivalent to web duel_ui.js onAnim(), which
+  implements coin spin, shuffle and hit feedback. Native feedback should not
+  be credited with those web effects. ui_ack() waits for acknowledgment; turn
+  plaques should not be described as automatically timed banners.
+
+OPTIONAL EXPERIMENTS — AFTER THE FIVE PRIORITIES
+
+1. Add very cheap native coin anticipation/result motion and a brief targeted
+   hit pulse or HP interpolation. Use the existing engine event outcome, never
+   visual randomness that changes results. Keep timing bounded, skippable where
+   appropriate, and consistent with the disabled-animation option. A few small
+   sprite frames or a scaled quad suffice; no 3D battle simulation is needed.
+2. Animate only one environmental cue per relevant room: a small flame change,
+   a very slow water highlight, or subtle light modulation. Keep it in existing
+   batches where possible. Avoid a room full of moving textures and particles.
+3. Try a simple card/pack tilt and short settling motion in the opening to link
+   original illustrations with the miniature world. Compare against retaining
+   the current sequence; do not assume more animation is an improvement.
+
+Practical acceptance sequence
+
+First make a small style proof in Fire, Rock, Hall and the duel detail/action
+screens. These expose the material, silhouette, composition and hierarchy
+problems with relatively little asset coverage. Compare each against its exact
+supplied screenshot, the original room image and the proposed art direction.
+Then propagate successful material and prop recipes to the other rooms.
+
+For the next review, recapture the same complete 27-image set, plus full benches,
+long card text and representative room conversation positions. Evaluate 1x
+native images and final VI output separately; retain zooms for diagnosing texture
+and geometry, not as the primary aesthetic test. Review short motion recordings
+of the title skip, naming, Mason/Sam sequence, room warps and a duel containing
+coin, damage, knockout and turn changes. Include audio and controller response
+in that later pass; neither was established here.
+
+Measure worst-view frame time against a 33.3 ms budget and peak allocation
+against the complete 4 MiB budget, including framebuffer/depth surfaces, texture
+residency, transition snapshots and duel buffers. Prefer texture replacement,
+shared prop recipes and vertex colors over extra passes. Confirm the original
+positions, collision, scripts, rigs and duel outcomes remain intact. The release
+impression should improve through clearer authored choices, not added UI copy
+or an unbounded list of effects.
+</article></html>

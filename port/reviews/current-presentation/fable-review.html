@@ -1,0 +1,545 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fable 5.1 High</title><style>body{max-width:94ch;margin:32px auto;padding:0 20px;background:#171923;color:#edf1f7;font:16px/1.55 system-ui}a{color:#a8cfff}h1{font-size:26px}nav{margin-bottom:24px}article{white-space:pre-wrap;overflow-wrap:anywhere}li{margin:6px 0}img{max-width:100%;height:auto}</style><nav><a href="index.html">Reviews</a> · <a href="captures/">Screenshots</a> · <a href="fable-review.html">Fable 5.1 High</a> · <a href="astra-review.html">Astra High</a> · <a href="comparison.html">Comparison</a></nav><h1>Fable 5.1 High</h1><article>INDEPENDENT PRESENTATION REVIEW - Pokemon Trading Card Game port as an N64 game
+===============================================================================
+
+Reviewer basis
+--------------
+Inspected: captures/contact-sheet.png, every one of the 27 native PNGs in
+captures/ (320x240 RDP RGBA16, pre-VI), each also at 3x nearest-neighbour zoom,
+captures/manifest.json, the original room renders and briefs in port/maps/
+(*.png, *.txt, 3D_GUIDE.md, club_lobby_3d.txt), and both concept images in
+port/maps/prototypes/. Source read for timing, lighting, camera and UI
+behaviour: port/world3d/tools/{build_world.py,room_style.py,scene_specs.py,
+author_overworld.py}, port/frontends/n64/adventure/{main,scene,presentation,
+dialogue,intro,naming}.c, port/frontends/n64/tcgn64.c, banner_font.h, and the
+web files listed in the brief (for parity only).
+
+Not done: I did not play the game, run an emulator, or see VI-filtered output.
+Every statement about motion, pacing or input feel below is marked
+&quot;[code]&quot; and is inferred from the listed source, not observed. Pixel-level
+comments account for the missing VI antialias/dedither pass: it will soften
+edges and dither grain, but it will not remove moire in dense floor patterns,
+fill missing geometry, or change value/colour hierarchy.
+
+Measured on the native PNGs (ImageMagick, 0..1 luminance / HSL saturation):
+  map-01 (Lab)       mean 0.59  sat 0.25
+  map-15 (Lightning) mean 0.44  sat 0.88
+  map-27 (Fire)      mean 0.60  sat 0.50
+  map-32 (Dome)      mean 0.49  sat 0.59
+  map-33 (Honor)     mean 0.52  sat 0.47
+  map-00 (Island)    mean 0.55  sat 0.69
+  duel.png           mean 0.43  sat 0.47
+These are only used to support what is visible: Lightning is far more
+saturated than anything else, and the duel board is the darkest screen.
+
+
+1. SUMMARY VERDICT
+------------------
+The port already has the bones of a credible 1999 N64 adventure: fixed
+cameras per room, low-poly blocky people that read at 320x240, source-faithful
+layouts, a consistent cream-paper UI language shared by dialogue, naming and
+duel banners, and one room (Lightning Club) that is genuinely a &quot;poster&quot;
+room. What stops it reading as a finished product is not polygon count or
+texture size. It is four systemic things that every screenshot shares:
+
+  A. A dark brown void above every wall, plus walls that fade to 43 percent
+     at the top, so the upper 10-40 percent of every room shot reads as a
+     cave ceiling or a hole. In the tutorial camera (mason-dialogue.png) it is
+     about 40 percent of the frame.
+  B. Floors carry source-resolution patterns that alias into moire at this
+     camera distance (Fire checker, Dome carpet, Water parquet, Lightning
+     ribs), while walls and props are low-detail flat boxes. The detail is
+     in the wrong place for the hierarchy: the floor shouts, the focal props
+     whisper.
+  C. Nothing is grounded. Actor contact shadows are nearly invisible, props
+     have only a faint baked darkening, the light-emitting props (braziers,
+     torches, pool) emit nothing, so rooms with a strong mood in the source
+     (Fire, Psychic, Hall of Honor, Water) are flat and cold.
+  D. Everything textual uses the libdragon 8x8 system font with a 1px drop
+     shadow, and duel feedback (coin, damage, piles) is text and rectangles.
+     The one proportional anti-aliased face (the banner font) shows how much
+     better the same screens could look.
+
+Fixing A and C is cheap (a handful of constants and two dozen triangles per
+room). B is content work on a few textures. D is a font asset plus a coin
+sprite. Together they would move the impression from &quot;renderer demo of the
+GBC maps&quot; to &quot;small, charming N64 game&quot;, without changing any rules,
+positions, collision or rigs.
+
+
+2. WHAT ALREADY WORKS (keep these)
+----------------------------------
+* Lightning Club (map-15.png). The indigo floor, cyan-white bolt, cream
+  quadrant discs, magenta burst and orange badge pillars survive the trip to
+  3D and the composition (camera straight down the bolt, pillars framing the
+  player) is the best in the set. It is the room to calibrate the others to.
+* Pokemon Dome (map-32.png). The raised purple dais with the yellow kerb,
+  steps, green duel table and serpent statues reads as a stage. The grand
+  scale works.
+* Club lobby (map-14.png) and Mason Laboratory (map-01.png). Source textures
+  mapped on cabinet fronts, the orange counter, red chairs and green duel
+  table give these the most &quot;furnished&quot; feel. Props with real front textures
+  beat flat-colour primitives everywhere they appear.
+* Grass Club (map-18.png). Log fence, hedge, flower beds, topiaries and
+  scattered stones read as a garden at a glance.
+* Characters. At this distance the big-head blocky rigs with textured faces
+  read instantly; the player&#x27;s red cap is findable in every room; white coats
+  identify lab staff. Walk cycle ties stride to distance [code: step_actor
+  in presentation.c uses a cycle per two tiles], run adds a 6 degree lean,
+  idle has a tiny bob. All period-appropriate.
+* UI language. Cream paper (247,247,222), navy ink (24,48,80), blue edge
+  (74,115,156) are used consistently by dialogue.c, naming.c, the duel
+  banner and the island label. The speaker tag on the dialogue panel and
+  the &quot;A/B: continue&quot; hint are clear. The naming screen (naming.png) is
+  clean and complete.
+* Duel banner (duel-player-turn.png, duel-opponent-turn.png). The bevelled
+  paper plaque with the anti-aliased proportional font is the most
+  finished-looking element in the game.
+* Title fidelity (title.png). Logo, blink timing and copyright are faithful
+  [code: intro.c draw_frame keeps the 60-tick delay and 37/26 blink].
+* Camera system. One fixed camera per room, smooth 24 percent per-frame
+  lerp when the cinematic camera changes [code: update_camera], a
+  letterbox shutter into duels [code: adventure_duel_transition, 16 frames]
+  and a 6-step tinted fade on warps [code: warp_fade] are all sensible N64
+  choices.
+
+
+3. ART-DIRECTION TARGET
+-----------------------
+One sentence: &quot;A bright, toy-like card-club island, lit like a tabletop
+diorama, where each club room is a single strong colour idea seen from a
+fixed camera, and the UI is printed card stock.&quot;
+
+Concretely:
+* Value plan per room shot, top to bottom: ceiling band dark-mid (not black,
+  not a hole), far wall mid and even, floor light but calm, focal prop
+  brightest and most saturated, player and NPCs darker than the floor with a
+  crisp shadow under each. Right now the floor is the brightest and busiest
+  element in almost every room; the focal prop should win.
+* Palette: keep the source club theme colours (3D_GUIDE.md table) as the
+  accent, desaturate the floor field to roughly 50-65 percent of source
+  saturation, and keep walls neutral per room. Lightning should remain the
+  most saturated room, but Fighting (map-06.png) and Lightning floors are
+  currently beyond what a CRT shows cleanly in 16-bit.
+* Texture rule: no pattern period smaller than 2 tiles on floors, so that at
+  the far wall a repeat is still 10-12 pixels wide. Detail budget goes to
+  the front faces of focal props and to wall friezes at eye height, which
+  the camera sees nearly square-on.
+* Light rule: every room has exactly one implied light direction (from the
+  camera side, slightly from the left, matching the island SUN vector in
+  author_overworld.py), expressed as baked vertex colour: prop tops 1.0,
+  fronts 0.9, sides 0.75, backs 0.65. Emitters (braziers, torches, pool,
+  screens) add a local warm or cool pool on the floor and on neighbouring
+  wall faces. No runtime lights needed.
+* Shadow rule: one dark elliptical contact blob under every actor, visible on
+  every floor; props get the same blob where they touch the floor.
+* UI rule: one typeface family. Headings and speaker names in the banner
+  font; body text in a matching proportional 8px pixel font with the same
+  ink colour; the system font kept only for debug.
+
+
+4. HIGH-IMPACT FEASIBLE WORK, IN PRIORITY ORDER
+-----------------------------------------------
+
+P1. Close the void above the walls and even out the far wall
+    Evidence: map-01, map-06, map-09, map-12, map-18, map-21, map-24, map-27,
+    map-32, map-33 all show a dark brown band across the top of frame;
+    mason-dialogue.png and sam-table.png show it taking roughly 40 percent of
+    the frame; map-18.png shows it over a garden fence where the brief asks
+    for bright sky; map-32.png shows a black slit where the open north door
+    gap exposes it.
+    Cause [code]: main.c game_render_frame clears to (26,18,14) for every
+    interior; walls() in build_world.py builds 5-unit walls with nothing above
+    them; bake_lighting in room_style.py darkens side and north wall vertices
+    from 0.86 at the floor to 0.43 at y&gt;=5 and the south wall to a flat 0.43;
+    the tutorial tracking camera in presentation.c update_camera (eye = Mark +
+    (4.5, 6.8, 10.5), target y=1, fov 52) pitches down only about 25 degrees,
+    so with a 52 degree vertical fov the top of frame is above the horizon.
+    Fix:
+      a. Add a ceiling plane per room at wall height (two triangles, flat
+         colour = wall paint at 35-45 percent value), or a 1.5-unit cornice
+         soffit box along the north and side walls. This alone turns the
+         hole into a ceiling.
+      b. Raise the wall top value from 0.43 to about 0.70 and keep a gentle
+         gradient (0.95 at floor to 0.70 at top); keep the south low wall at
+         about 0.6 so it still frames the bottom edge.
+      c. Set the clear colour per room to the ceiling colour instead of a
+         global brown, so any remaining sliver matches.
+      d. Grass Club only: clear to a pale sky (e.g. 150,200,235) and give
+         the hedge strip a lighter top, matching grass_club.txt (&quot;let the sky
+         be bright&quot;).
+      e. Behind every wall door gap draw a dark doorway quad (door panel
+         texture from the source north band, or a 0.3-value plane set 0.5
+         units back) so open doors read as doors, not holes (map-32.png).
+      f. Tutorial camera: lower the target y from 1 to about 0.2 and raise
+         the eye to about 8.5 (or reduce fov to 46) so the top of frame stays
+         at or below the wall top while Mark runs; verify on the run toward
+         Mason and the Sam framing (eye center+(.5,10,10) is fine).
+    Cost: small. Content: none. Validation: re-capture; the mean luminance
+    of rows 0-29 in map-01/map-21 should rise from about 0.48 to above 0.55
+    and the top band should sample a single flat colour, not 26,18,14.
+
+P2. Calm the floors, move detail to walls and focal props
+    Evidence: map-27.png (Fire) cream/orange cross-hatch checker shimmers at
+    the far half; map-32.png (Dome) red diamond carpet is moire across the
+    bottom half; map-12.png (Water) orange-lined parquet is noisy everywhere;
+    map-15.png indigo ribs and map-06.png bright green grid vibrate; map-09
+    (Rock) speckled strip flickers. Dense floor pattern plus flat side faces
+    on props inverts the hierarchy.
+    Cause [code]: Scene.floor in build_world.py bakes source pixels at 1
+    source pixel = 1 texel, one 32x32 texture per 4x4 tiles (8 texels per
+    tile) with no mip levels; scene.c requests GL_LINEAR only. At the far
+    wall a tile is 5-7 pixels, so 1-tile motifs alias no matter what VI does.
+    Fix:
+      a. Author 2-tile-period variants of the four worst floors (Fire
+         checker: one cream and one warm cross-hatch tile each 2x2; Dome
+         carpet: one diamond per 2 tiles; Water parquet: 2-tile boards;
+         Lightning: rib every 2 tiles with the cyan micro-highlight dropped
+         or made every 4). Keep the exact source colours; only the period
+         changes.
+      b. Generate a 16x16 mip for each floor texture (box-filtered) and
+         enable it in scene_open (libdragon GL supports mipmapped sprites);
+         if that is not available in this build, pre-blur the far-field half
+         of each floor texture in build_world.floor using the tile&#x27;s distance
+         from the camera, which the fixed camera makes legal.
+      c. Reduce floor saturation in room_style.FLOOR_TINT for fighting_club
+         (currently absent, so 0.85 neutral) and lightning_club (0.97) to a
+         tinted 0.80, and desaturate the Fighting green by mixing 15 percent
+         towards the wall paint in material_pixel.
+      d. Give prop boxes per-face shading in Scene.box (top 1.0, front 0.9,
+         sides 0.75, back 0.65) so brown cabinets and white machines stop
+         reading as untextured cubes (map-01, map-24, map-12 benches).
+    Cost: a few hours of texture authoring plus small code changes. No
+    layout change. Validation: zoom 3x on the far third of each fixed floor;
+    no repeat should be narrower than 10 pixels; count unique colours per
+    frame (result.json &quot;colors&quot;) should fall slightly, not rise.
+
+P3. Ground everything: shadows and emitter glow
+    Evidence: in map-01.png, map-15.png and map-21.png actors have no
+    visible shadow; topiaries (map-18), braziers (map-27), torches (map-21),
+    statues (map-09) appear to float; the six Fire braziers and eight
+    Psychic torches light nothing; the Hall of Honor altar has no
+    spotlight; the Water pool has no highlight or reflection.
+    Cause [code]: scene_draw_contact_shadows draws a fan with centre alpha 64
+    fading to 0 at a 0.56 x 0.40 radius, which on pale floors averages a few
+    percent darkening; bake_lighting applies prop contact of strength 0.24
+    (0.10 for tables/chairs) with a 0.7-unit gaussian, and torch/brazier glow
+    of only 0.15 in the floor tint colour (not warm).
+    Fix:
+      a. Actor blob: centre alpha 64 -&gt; 120, add a second inner fan at radius
+         0.32 with alpha 90, keep rim 0. Keep it on the floor plane (already
+         independent of bob). This is the single cheapest readability win.
+      b. Prop grounding: raise contact strength to 0.40 for solid props and
+         widen the gaussian to 1.0 unit; also emit the same ellipse fan under
+         every prop footprint at build time (two triangles each, baked into
+         the floor batch as a dark vertex-coloured decal) so tables and pots
+         sit down.
+      c. Emitter glow: for &#x27;brazier&#x27; and &#x27;torch&#x27; bake a warm pool (Fire:
+         +0.35 red, +0.18 green over a 2.2-unit gaussian; Psychic: violet
+         pool) into the floor vertices and the nearest wall band, and tint
+         the flame cones with a 2-ring vertical gradient (white core at the
+         base, saturated tip) so they stop reading as traffic cones.
+      d. Hall of Honor: the existing focal boost (+0.22 at 12,12) is too
+         subtle to see in map-33.png; raise it to +0.45 and narrow it to the
+         altar footprint, then darken the room&#x27;s perimeter floor by 0.15 so
+         the altar is the brightest thing in frame.
+      e. Water pool: add a second scrolling layer, or simply a lighter rim
+         band and a 2-frame alternating glint texture [code: swimming_pool
+         already has a wave texture; animate its UV by one texel every 4
+         frames at 30Hz via a second batch toggled in scene_draw_room].
+         Also fix the jagged diagonal pool edge visible in map-12.png
+         (pool_rows steps 1 tile per row; use 2 rows per step or chamfer).
+    Cost: small code, no content. Validation: in each room, sample the
+    floor luminance 0.3 units in front of an NPC vs 2 units away; expect a
+    20-30 percent drop. Fire floor near a brazier should be measurably
+    warmer (R-B difference up) than mid-room.
+
+P4. Island: scale, surface and sea
+    Evidence: map-00.png vs overworld_n64_concept_v1.png. The native island
+    is a flat, uniformly saturated green plate; buildings are 10-14 pixel
+    white blobs with coloured lids (the concept prompt explicitly warned
+    against this); the conifer forest is a visible grid of identical blobs;
+    the sea is flat blue with faint diagonal streaks; loose brown rocks float
+    at the bottom right; the volcano is a smooth brown cone.
+    Cause [code]: author_overworld.py hall() builds halls 1.25 x 0.95 units
+    (the source icon is 2 x 2 tiles), with STONE walls that run to (239,
+    231,202) and TRIM at (239,233,208), so facades blow out to white at this
+    size; the native island camera is eye (10,22,24.6), target (10,.25,8.8),
+    fov 38 (about 54 degrees down), so the door, window and lintel detail
+    front() builds is 2-3 pixels tall; trees are planted on a 0.64 x 0.65
+    grid with +-0.13 jitter; the water texture is a 64x32 noise with sparse
+    wave highlights and no shoreline band.
+    Fix:
+      a. Scale every landmark hall by 1.35-1.5 (keep node positions; they
+         are the source travel coordinates) and lower STONE high end to about
+         (215,205,180) so walls are stone, not paper. Roofs keep their
+         colours; make the red Dome roof and the lab&#x27;s blue roof the two
+         brightest.
+      b. Double the window and door sizes in front() so each is at least 4
+         pixels wide at native; add one dark eave line under every roof edge
+         (TRIM at 0.7 value) so roofs separate from walls.
+      c. Trees: raise jitter to +-0.28 and drop rate to 0.25, add a second,
+         darker pine material for every third tree, and push the crown
+         shade range (currently 0.86/1.0/1.1) to 0.75/1.0/1.2.
+      d. Sea: add a 0.35-unit shoreline foam band (light quad strip along
+         all_land outlines at SEA+0.02, 60 percent white) and a one-texel UV
+         scroll of the water texture every 3 frames [code: would need a
+         second batch or a texture-matrix update in game_render_frame]. Even
+         a 2-phase alternation reads as water on a CRT.
+      e. Remove or sink the detached rocks at the bottom right unless they
+         are the source&#x27;s sea rocks; if they are, give them a foam ring.
+      f. Grass: the current texture is one green; blend two (sunlit and
+         shaded) by the baked grounding factor and add the dirt path&#x27;s soft
+         edge (path() already exists; widen its blend by 0.1).
+    Cost: moderate content work in Blender script; camera unchanged.
+    Validation: at 3x zoom, every building&#x27;s door should be visible; the
+    coast should read as a line of foam, not a hard edge; the forest should
+    not show rows.
+
+P5. One typeface and real duel feedback
+    Evidence: every text screen (mason-dialogue, sam-table, naming, all
+    duel-*.png) uses the heavy 8x8 system font with a 1px shadow; it is
+    legible but looks like a debug overlay next to the banner font in
+    duel-player-turn.png. duel-coin.png shows the coin toss as a text panel
+    (&quot;Coin toss / A: toss&quot;) and show_frames prints HEADS/TAILS; damage is a
+    red rectangle with &quot;-20&quot; (duel.png); prizes are 5x7 squares; deck and
+    discard are numbers only.
+    Cause [code]: dialogue.c print and tcgn64.c print use graphics_draw_text;
+    banner_text has its own 4-bit coverage font (banner_font.h); TCG_EV_COIN
+    runs show_frames(20) with no sprite; TCG_EV_DAMAGE sets g_dmg.timer=40
+    and draws fill+damage_number with no flash or offset.
+    Fix:
+      a. Add a proportional 8px body font in the same coverage format as
+         banner_font.h (uppercase, lowercase, digits, punctuation, the
+         source&#x27;s male/female and energy glyphs). Use it in dialogue.c
+         draw_panel, naming.c draw_keyboard and the duel text box / card
+         page. Keep wrap() metrics by measuring advances. Letter shapes
+         should match the banner font so the plaque and the text box feel
+         like one print job.
+      b. Coin: draw a 16x16 coin sprite (heads/tails from the source
+         sprites) in the coin panel; on TCG_EV_COIN run a 12-frame flip
+         (scale x by cos over 6 frames, swap face at the narrowest frame,
+         then 8 frames of rest) before the result text.
+      c. Damage: for the first 6 frames of g_dmg.timer invert the art
+         rectangle to white for 2 frames and offset the slot by +-2 px
+         (mirrors the web &#x27;hit&#x27; animation in style.css), then show the
+         red number. Add a 4-frame bar drain on hp_bar instead of a jump.
+      d. Piles: draw deck and discard as small card-back rectangles (C_CARDBACK
+         with a 1px light edge) with the count on them in the info bar, and
+         prizes as 6 tiny card-backs that grey out when taken.
+      e. Bench slots: empty slots as a 1px dotted outline in C_MID rather
+         than a solid rectangle, so filled slots pop.
+    Cost: font asset is the main work; the rest is small. Validation:
+    compare the dialogue panel and banner side by side at 3x; the two
+    faces should share stroke weight. Coin and damage can be checked with
+    the existing automated duel capture by adding a frame dump at timer 38
+    and timer 20.
+
+P6. Fix the prop silhouettes that misread
+    Evidence and fix per prop (all in build_world.prop):
+      * balloons (map-01, sam-table): magenta ball on a 4-sided black stick
+        reads as a lollipop. Use a thin 1-texel-wide string (alpha-tested
+        quad) and a slightly taller ellipsoid (sy 0.3), and bake a tiny
+        highlight (one lighter ring).
+      * braziers and torches (map-27, map-21, map-33): red/violet cones look
+        like party hats. Replace the cone with a 2-level flame: a short
+        wide cone (bright core colour) and a taller narrow cone with 3
+        rotated copies, vertex-coloured bright at the base and dark at the
+        tip; add the glow pool from P3.
+      * statues (map-09): gold cylinder+ball reads as a chess pawn. The
+        source shows a hooded figure; a box torso with a shallow pyramid
+        head and a dark front crop from rock_club.png would read better.
+      * boulders (map-09): smooth ellipsoids. Use 6-segment, 3-ring with a
+        random 15 percent vertex jitter and a two-tone (lit top, dark base)
+        vertex colour.
+      * Hall of Honor dark blue ellipsoid (map-33, &#x27;ball&#x27; kind): it is not
+        identifiable. If it stands for the legendary card display, model a
+        thin gold-framed card quad standing on the altar; if it is the
+        Pokeball of the source hall_of_honor.png, use the cursor ball mesh
+        (model 6) scaled up.
+      * water horses (map-12): white boxes with red lids. A box body with a
+        neck box and a conical head reads as a seahorse statue at this size.
+      * grey stones in Grass Club: flat identical hexagons look like litter.
+        Give each a random scale 0.6-1.2 and a 2-tone shade.
+    Cost: small per prop. Validation: at native size, a viewer who has not
+    seen the GBC map should name each prop.
+
+P7. Room-specific composition fixes
+      * Science Club (map-24.png): the near two-thirds of the frame is empty
+        purple tile. Pull the camera target 3 tiles further north (target z
+        0.55h instead of 0.67h) or add the source&#x27;s foreground machines row
+        at y20 with their front textures facing the camera; they currently
+        read as white boxes with the texture on the far side.
+      * Water Club (map-12.png): the benches&#x27; white slats are stubs; use
+        3 wider slats. The palms at the back are too tall for the 5-unit
+        wall (4.4) and crowd the ceiling; 3.4 reads as a palm indoors.
+      * Fighting Club (map-06.png): the mid-room rack is a horizontal bar
+        across the frame at the player&#x27;s chest; lower it to 0.8 and darken
+        the floor by 0.15 to make the black weights pop.
+      * Pokemon Dome (map-32.png): the four officials at the far wall are 8
+        pixels tall. Lower the fov from 58 to 52 for this room only; the
+        dais remains in frame and the far figures gain 12 percent.
+      * Mason Laboratory: the collection booth (x8-12, y14-19) is built as a
+        knee-high duel table. The brief describes a 2-unit machine behind a
+        counter. If the rules need it walkable-adjacent, keep the counter
+        footprint but add a 2-unit back panel with the green face texture.
+      * Thin dark vertical lines rise from the far wall corners into the void
+        in map-06.png, map-01.png, map-12.png, map-24.png, mason-dialogue.png
+        and sam-table.png. [code] walls() starts wall runs at tile 2 while
+        the boxes sit at 0.8, so the corner cell is uncovered; whether the
+        line is that gap or an exposed box edge, add a corner post box
+        (0.8..2.0 on both axes, full height) in each corner. It also gives
+        the rooms the pilasters N64 interiors usually had.
+
+P8. Opening and title presentation
+    Evidence: intro-charizard/scyther/aerodactyl.png show the GBC booster
+    art scaled 1.5x bilinear in a 240x216 box on a flat cream field with the
+    energy orbs; title.png is the GBC title at 1.5x. They are faithful, but
+    they look like an emulator window, not an N64 opening.
+    Cause [code]: intro.c INTRO_SCALE 1.5 with INTRO_LEFT/TOP letterboxing;
+    the clear colour is the GBC background.
+    Fix (keeping all source timing): draw the pack as a textured quad with a
+    slow 6-degree yaw wobble and a soft blob shadow on a full-bleed felt or
+    radial-gradient backdrop (same felt as draw_felt); draw the orbs as
+    sprites with the same blob shadow and a 1-frame bounce on landing;
+    keep the logo at 1.5x but place &quot;PRESS START&quot; and the copyright over a
+    darker lower band so the white text in the plaque does not sit on
+    cream. Low cost, visible first impression.
+
+
+5. PER-SCREEN NOTES
+-------------------
+title.png: faithful; cream field edge-to-edge is fine on CRT. Suggest a
+  2-tone band under the copyright (see P8). The lower-case &quot;inc.&quot; glyphs are
+  point-filtered and crisp; good call.
+intro-*.png: pack art soft from 1.5x bilinear; orb positions and the pack&#x27;s
+  centre composition are correct. Orbs have no shadow or depth cue.
+naming.png: good. The disc shadow under the model is the strongest shadow in
+  the game; use that density for the room blobs. The blinking insertion
+  frame reads. Keyboard grid spacing at 18px is comfortable for a D-pad.
+map-00.png: see P4. The label plaque is right. The travelling player at 0.48
+  scale and the bobbing cursor ball [code: presentation_step cursor.bob] are
+  good source-faithful touches.
+map-01.png / mason-dialogue.png / sam-table.png: P1 is the dominant problem.
+  Dialogue layout and speaker tag are good; the text reveal is per-character
+  [code: reveal() at game.text_speed], with pages of 4 lines of 36 columns
+  which matches the panel. Dr. Mason&#x27;s white hair and coat read. Mark&#x27;s
+  shadow is invisible on the pale floor.
+map-15.png: the best room. Only P2 (ribs) and P3 (no shadows on indigo)
+  apply; the pillars&#x27; badge texture is noisy at native size, so a 2x
+  coarser badge repeat would be cleaner.
+map-12.png: pool edge jaggies, parquet moire, missing water highlight,
+  benches and horses unreadable. The grey-teal wall is a good neutral.
+map-18.png: best mood after Lightning; needs sky (P1d) and stone variation.
+map-21.png: clean and symmetric; torches need glow and better flames. The
+  lilac floor is the right saturation level for the whole game.
+map-27.png: the room called Fire is the coldest in the set: pale blue walls,
+  cream floor, no warmth. P3c fixes this almost on its own.
+map-09.png: statues and boulders (P6); the white speckled walkway strips
+  flicker (P2).
+map-24.png: empty foreground (P7); source machine faces are good where
+  visible.
+map-06.png: over-saturated green; corner lines; rack height.
+map-14.png: good furnished room. A faint green line under the counter front
+  (zoom) looks like a z-fight or a 1-texel bleed from the source crop; clamp
+  the crop by one texel.
+map-32.png: dais good; carpet moire; open-door void; far figures tiny.
+map-33.png: altar texture crop includes black; the room has no focal light;
+  the blue ellipsoid is unidentifiable. This is the game&#x27;s trophy room and
+  currently its least ceremonial space.
+duel.png and other duel-*.png: legible, dense, dark. The felt grain is a
+  nice touch. See P5. The &quot;SAM is thinking...&quot; black box over the divider
+  is harsh; use the panel colour with an ellipsis blink. The card list and
+  card page are fine functionally; the card page leaves two-thirds of the
+  panel empty, so centre the block vertically or enlarge the art 1.5x.
+  Energy icons as coloured letters in squares are era-appropriate.
+  The &quot;v&quot; continue blink and &quot;A: choose B: back START: info&quot; hints are
+  clear.
+
+
+6. TRANSITIONS, PACING AND FEEDBACK [code only]
+-----------------------------------------------
+* warp_fade: 6 frames in, 6 out at 30Hz (0.2 s each) to the room clear
+  colour. Brisk; it may read as a hard cut after VI. Consider 8 frames with
+  a 4-frame hold at full, and fade to the P1 ceiling colour.
+* adventure_duel_transition: 16-frame letterbox shutter, eased (quadratic);
+  good. Consider a 1-frame white flash at full close.
+* Camera lerp 0.24 per frame: 95 percent in about 11 frames (0.37 s). Fine.
+* Walking: 8 rendered frames per tile at walk, 4 at run; tutorial motion at
+  70 percent speed with a per-actor remainder. Reasonable; the bob of 0.035
+  units is subtle enough.
+* Duel pacing: show_frames(20) after coin and damage (0.67 s), WAIT capped
+  at 30 frames, A/B skips. Fine once the coin and hit visuals exist; without
+  them 20 frames of a static panel feels like a stall.
+* Dialogue: per-character reveal paced by text speed; A/B advances. Good.
+* Denied input: a 3px red frame around the whole screen for g_denied frames
+  is loud; a 2-frame shake of the cursor or a dimmed option would be gentler
+  and more period-typical.
+
+
+7. OPTIONAL EXPERIMENTS (do after P1-P5, only if cheap)
+-------------------------------------------------------
+* A 2-frame &quot;breathing&quot; vertex-colour pulse on brazier/torch glow (toggle
+  between two baked floor batches every 8 frames).
+* A faint 32x32 vignette quad in screen space (alpha 0.18 at corners) over
+  every room to pull the eye to centre; N64 games used this via the
+  framebuffer blend. Check it does not crush the P1 ceiling band.
+* Per-room fog colour set to the ceiling colour with a far start, to soften
+  the far wall very slightly (RDP fog is free).
+* Spotlight discs: the Lightning floor discs read as lights; add a 20
+  percent brighter cone of floor vertices above them to imply spots.
+* NPC head turn toward the player when spoken to (yaw the head mesh part by
+  up to 30 degrees; rigs unchanged).
+* Interaction cue: a small &quot;!&quot; sprite above an NPC when facing them within
+  one tile.
+* Island: smoke sprite from the volcano (the source draws it) and a 2-frame
+  boat bob.
+* Title: a slow horizontal scroll of a repeating card-back texture behind the
+  logo instead of the flat cream.
+
+
+8. VALIDATION PLAN
+------------------
+1. Re-run the existing native capture harness (ADVENTURE_DIAGNOSTIC capture
+   path referenced by manifest.json) at the same 27 points and regenerate the
+   contact sheet; diff against this bundle.
+2. For P1: rows 0-29 of every map-*.png must not contain the old clear
+   colour (26,18,14); measure mean luminance of that band (target 0.55-0.70).
+   Check mason-dialogue and sam-table specifically for frame-top coverage.
+3. For P2: 3x zoom crops of the far third of map-27, map-32, map-12, map-15;
+   no visible moire; repeat width at the far wall &gt;= 10 px. Also confirm
+   triangle and texture counts in the build summary do not rise more than
+   10 percent (the generator prints totals).
+4. For P3: luminance probe 0.3 units in front of each NPC vs 2 units away;
+   R-B difference near Fire braziers vs room centre.
+5. For P4: at 3x zoom each landmark shows a door; coast shows a foam band;
+   no row alignment in the forest when the image is reduced to 80x60.
+6. For P5: add two duel frame dumps (coin flip mid-frame, damage flash
+   frame) to the automated duel capture; compare dialogue and banner glyph
+   stroke weight at 3x.
+7. If any VI-filtered capture path exists, repeat steps 2-4 on it; the
+   expected change is softer edges only.
+8. Budget: keep every new texture at 32x32 RGBA16 or smaller (2 KiB) and
+   keep per-room triangle growth under 300; verify 30Hz hold by watching the
+   REVIEW VI cycle debug lines in main.c on the largest rooms (Dome, Grass).
+
+
+9. FIVE HIGHEST-IMPACT RECOMMENDATIONS
+--------------------------------------
+1. Close the ceiling void and even the far wall (P1): ceiling plane or
+   cornice per room, wall top value 0.43 -&gt; 0.70, per-room clear colour,
+   doorway quads behind wall gaps, sky for Grass Club, and a lower tutorial
+   camera target. Touches every room screenshot.
+2. Calm the floors and shade the props (P2): 2-tile-period floor textures
+   for Fire, Dome, Water and Lightning, mip or pre-blur, desaturate the
+   Fighting and Lightning floors, per-face shading on prop boxes.
+3. Ground and light (P3): denser actor contact blobs, prop footprint blobs,
+   warm or violet glow pools under braziers and torches, a real focal light
+   on the Hall of Honor altar, a glint on the Water pool.
+4. Island surfaces (P4): larger landmark halls with legible doors and
+   windows, stone that is not white, jittered two-tone forest, shoreline
+   foam and a water UV scroll.
+5. Typography and duel feedback (P5): one proportional pixel font family
+   matching the banner font for dialogue, naming and duel text; a coin
+   flip sprite; a hit flash and shake on damage; deck, discard and prizes
+   drawn as card backs.
+</article></html>

@@ -8,14 +8,20 @@
       "model": "claude-fable-5-1",
       "effort": "high",
       "harness": "claude",
-      "task": 1709
+      "task": 1709,
+      "report": "fable-review.txt",
+      "report_sha256": "b08d6301f30dbf7e5737ffb83210201efa2962ad2fd9ea9b8466d008262c0d84",
+      "complete": true
     },
     {
       "model": "gpt-6-astra",
       "effort": "high",
       "harness": "collaboration",
       "task": "/root/presentation_review",
-      "fork_turns": "none"
+      "fork_turns": "none",
+      "report": "astra-review.txt",
+      "report_sha256": "b61585307d402e0902dff5f7fcd2b12fdc2efcc1d4b771edb46b166c68ecfaf1",
+      "complete": true
     }
   ]
 }
