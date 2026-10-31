@@ -1,0 +1,337 @@
+{
+  "purpose": "N64 art direction, design, texture, lighting, shadow, material, camera and game-feel review",
+  "capture_notes": "Original native 320x240 pixels before final VI antialiasing/dedithering. Labels are outside screenshots. No final-VI scanout is claimed.",
+  "source_commit": "e5a8fae3f81ba617dd1e6c3e38327171fafc3c09",
+  "native_source": "port/frontends/n64/adventure/build/polish-validation",
+  "native_validation_source": "port/frontends/n64/adventure/build/polish-validation/result.json",
+  "native_validation_rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4",
+  "logs": [],
+  "images": [
+    {
+      "file": "title.png",
+      "label": "Title screen",
+      "source": "port/frontends/n64/adventure/build/polish-validation/title.png",
+      "sha256": "5b9ccb78b80519de074e92f9191d5b702e296f612d11abaf7977fc7d6d72c0ab",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "intro-charizard.png",
+      "label": "Opening: Charizard",
+      "source": "port/frontends/n64/adventure/build/polish-validation/intro-charizard.png",
+      "sha256": "bd33a494b60eb89bedebe44246276387cabc6b9fcbfa74f028508dc9bedb92c8",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "intro-scyther.png",
+      "label": "Opening: Scyther",
+      "source": "port/frontends/n64/adventure/build/polish-validation/intro-scyther.png",
+      "sha256": "3e769955fcf966a4f279ce14951fa917b4631f294d8bd000b0af2ea1dbd8ddaf",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "intro-aerodactyl.png",
+      "label": "Opening: Aerodactyl",
+      "source": "port/frontends/n64/adventure/build/polish-validation/intro-aerodactyl.png",
+      "sha256": "e2f8db9ee649f287c2b53a2b5aa0300c5ad9bdafec145fca3a172f14f0dc2566",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "naming.png",
+      "label": "Choose your name",
+      "source": "port/frontends/n64/adventure/build/polish-validation/naming.png",
+      "sha256": "e0edfc2da4e619680a90e7688f924c11f83fb81c0c3b5c09e5179d9d83b3d0fe",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-00.png",
+      "label": "Overworld",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-00.png",
+      "sha256": "15f38678af2cd0bcac8a4608b38116e0aaf4776cb99a4cb13feb4eaa8df08e5c",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-01.png",
+      "label": "Mason laboratory",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-01.png",
+      "sha256": "e61e654b723dedb6d375ee6f82834c6592ba06481b4c75a36e2de81595aedb46",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "mason-dialogue.png",
+      "label": "Mason dialogue",
+      "source": "port/frontends/n64/adventure/build/polish-validation/mason-dialogue.png",
+      "sha256": "15c0ffc142bd2bdaa775089860ecdc5851c7926c04fcd6a510d36f0c1eb222e2",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "sam-table.png",
+      "label": "Approach Sam",
+      "source": "port/frontends/n64/adventure/build/polish-validation/sam-table.png",
+      "sha256": "7a7ac8f02261a36d59907c6ee97afe8ad24057b899aab7a42113f5a24540042c",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-15.png",
+      "label": "Lightning Club",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-15.png",
+      "sha256": "78ccdcfedd5f3e7ca23798ed97862bd0efe357043cba2bb800031369ff5b19a6",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-12.png",
+      "label": "Water Club",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-12.png",
+      "sha256": "8b707c3d191a177c2be9033428500540234f80ddbb94102e8edda34d9e14667d",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-18.png",
+      "label": "Grass Club",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-18.png",
+      "sha256": "38bd7754f8c0a9832aa1199943fb563e3af16bb68ef0373bd2b719c66b6d27e4",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-21.png",
+      "label": "Psychic Club",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-21.png",
+      "sha256": "de8d2284ad8b9b8a4f882b6491915c06578c6c25721dedb4b3d6dbda3ce4169a",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-27.png",
+      "label": "Fire Club",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-27.png",
+      "sha256": "f5c2a9ba19992abd08ff57771f88372c3cc7d2e9761632bdc4cea5b8cce5a6b4",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-09.png",
+      "label": "Rock Club",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-09.png",
+      "sha256": "f8a816259a84b6c7de3dba957fe00e0f1c6f6a0524d4c544515a2fe314b18440",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-24.png",
+      "label": "Science Club",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-24.png",
+      "sha256": "4e915197c64559d7eeb785196bf23b95d2c44b2210d53527c2e50ffbd5b87b0a",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-06.png",
+      "label": "Fighting Club",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-06.png",
+      "sha256": "01de685b772d52acdf59a1ec3a36525f013a8fcc9603e7f9f387eb32710dcb3b",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-14.png",
+      "label": "Shared lobby: Lightning",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-14.png",
+      "sha256": "2171a41ddebaa4f226eff0f9d787c035eeeabe48c7522b1599c09faddcfc60cb",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-32.png",
+      "label": "Pokemon Dome",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-32.png",
+      "sha256": "f4d3662716ea252fd18da9d8dd1db6b9ddacca6b8691c27f14dbcfb55df2e813",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "map-33.png",
+      "label": "Hall of Honor",
+      "source": "port/frontends/n64/adventure/build/polish-validation/map-33.png",
+      "sha256": "d14dbd7f9d3855e244fe8128354c8c48b1de853574f8a9b37cc0ddd8097f2012",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "duel.png",
+      "label": "Duel: native match final board",
+      "source": "port/frontends/n64/adventure/build/polish-validation/duel.png",
+      "sha256": "555688339bd55f78009f6f61966023b418aff8a0729198662eecb62e1fbc43f5",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "duel-card-list.png",
+      "label": "Duel: choose a card from the hand",
+      "source": "port/frontends/n64/adventure/build/polish-validation/duel-card-list.png",
+      "sha256": "ab0af6963a0b451c461268c38919e5a95a77ed15ee4ab9b48d8cd4e8aa1e9188",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "duel-card-detail.png",
+      "label": "Duel: card detail",
+      "source": "port/frontends/n64/adventure/build/polish-validation/duel-card-detail.png",
+      "sha256": "929f69583d30a56e92449e41f5019efab944c379f67346266839f165d91a1a92",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "duel-coin.png",
+      "label": "Duel: coin toss",
+      "source": "port/frontends/n64/adventure/build/polish-validation/duel-coin.png",
+      "sha256": "50a1a5a7235f0fae5cf88b306f3c938b9d22acb353c684e2a48c570b48ea3094",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    },
+    {
+      "file": "duel-action-menu.png",
+      "label": "Duel: action menu",
+      "source": "port/frontends/n64/adventure/build/polish-validation/duel-action-menu.png",
+      "sha256": "81ce8dd640cdc1f8cd262a0d77c7ac052f5b0876917abf654995a290eab41d12",
+      "capture": "Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering",
+      "dimensions": [
+        320,
+        240
+      ],
+      "source_manifest": "port/frontends/n64/adventure/build/polish-validation/result.json",
+      "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4"
+    }
+  ],
+  "contact_sheet": true
+}

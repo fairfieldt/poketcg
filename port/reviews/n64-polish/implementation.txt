@@ -1,0 +1,68 @@
+N64 polish implementation
+
+Independent review: Claude Code, claude-fable-5-1, high reasoning, task #1708.
+Review commit: 6e073232. Production implementation: cdf9d544 and e5a8fae3.
+The original 25-image baseline remains immutable in before/.
+
+Implemented
+
+Shared environment exports now bake room lighting into vertex colors: wall
+falloff, contact around physical prop bases, brighter aisles and focal areas,
+and darker foreground framing. Textured box faces receive directional shade.
+The completed character geometry, UVs, skin pigments, rig IDs and pivots remain
+the source exports. Runtime soft contact shadows ground indoor people.
+
+Lab, deck room, shared foyers and lobbies use restrained painted stone tiles.
+Psychic Club has lavender flooring; Grass Club has a quieter garden palette;
+Hall of Honor has dimmer gold. Source motifs and room layouts remain readable.
+Walls have separate wainscot, plain painted upper sections and cornices.
+Taller walls and warm interior clear colors frame the fixed-camera rooms.
+
+Sam's table has a thin playmat top and legs, with its actual source image crop.
+Balloon crops remove their old painted floor images. Fighting Club has a
+continuous weight rack. Fire and Psychic flames have pointed silhouettes and
+bright cores, with baked floor light. Water Club has a recessed pool following
+the source water cells, raised coping, inner walls, ripples and its two fish.
+
+The island has ground-color contact/cast shading from building footprints and
+conifers, cobalt water, a gentle coast gradient, brighter thin foam and sand
+shore caps. Refinement added 99 triangles and 76 exported vertices; its camera
+and source destination/route coordinates are unchanged. Blender scenes and
+native/WebGL exports are refreshed together.
+
+Story/menu/diary panels and the island label share cream paper and blue ink.
+The duel board uses a matching dark variant, subtle felt, bench art/current HP
+and bars, and outlined damage. Popups preserve active-card name/HP visibility.
+Panel bevels and restrained text shadows keep the existing 8x8 font readable.
+Intro art uses bilinear sampling while prompt/copyright text remains sharp.
+
+Idle breathing is small and phased per person. Walking cadence remains tied
+to distance and source 60Hz timing. Warps use six-frame fades with a temporary
+snapshot allocated only during transition and freed before destination load.
+Duel shutters ease over 12 frames and hold closed for four frames. Browser
+presentation uses the same assets and corresponding transitions.
+
+Engineering decisions
+
+An opaque ceiling slab would obscure these rooms from the elevated cameras;
+taller graded walls and a warm background provide the framing instead.
+Static contact is baked into floor colors rather than opaque black discs.
+Dynamic human shadows use a small alpha fan supported by both renderers.
+Libdragon GL already enables ordered square dithering; final VI dedither stays
+enabled. RGBA16 remains the verified material format. Optional CI4 experiments
+and further camera retuning are outside this pass.
+
+Evidence
+
+after/manifest.json identifies every screenshot and its exact diagnostic ROM.
+validation.json records the complete native 46-frame /34-map /4MiB run,
+canonical story fixture, actual duel, SRAM reopen, source opening and explicit
+production warp/shutter checks. value-comparison.json records measured image
+values as a visual aid, not an arbitrary pass threshold.
+
+Native host suites, all 49 character exports/skin consistency, all 34 WebGL maps
+and event variants, portable-C WASM features, and the live tailnet opening to
+Sam duel browser flow were checked. Screenshot pixels are native RDP output
+before final VI filtering; CUA could not access the ares window for scanout
+export. Physical-console frame timing and a complete manual campaign remain
+unverified.
