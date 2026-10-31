@@ -55,6 +55,7 @@ all:
 	$(MAKE) bundle
 bundle: $(ROM).z64
 expansion:
+	python3 $(PORT)/world3d/tools/sync_characters.py
 	$(MAKE) BUILD_DIR=build/expansion ROM=poketcg-expansion HIGH_RES=1 bundle
 assets:
 	python3 $(PORT)/world3d/tools/build_world.py

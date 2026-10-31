@@ -23,6 +23,18 @@ scene/audio/gameplay assets are checked in; normal builds need neither Blender,
 the original Game Boy ROM, RGBDS, nor libgme. `make duel` in the parent directory
 still builds the separate duel-only frontend.
 
+Build the optional Expansion Pak trial with:
+
+```sh
+make -C port/frontends/n64/adventure expansion
+```
+
+This produces `poketcg-expansion.z64`. With an Expansion Pak enabled, it renders
+at 480 × 360 using 16-bit color and interlaced output. With 4 MiB it automatically
+uses 320 × 240. The standard `poketcg-adventure.z64` keeps its 320 × 240 mode.
+Both use the same game and save format. Enable the Expansion Pak in ares to try
+the higher resolution.
+
 Builds first scan the character catalog and completed native character exports.
 All 39 canonical characters now use their detailed models, including palette
 variants, Amy's lying pose, and separate legendary-card components. Later exports
@@ -61,13 +73,21 @@ separate, as in the source game.
 
 ## Video output
 
-The renderer uses 320 × 240 RGBA16 with resample-only VI output. The additional
+The standard renderer uses 320 × 240 RGBA16 with resample-only VI output. The additional
 VI antialiasing/divot/dedither chain softened small landmark features and text;
 resampling retains more detail while still scaling the native image. Landmark
 footprints and their major roof/rune details are sized for this output.
 Solid room and character meshes use ordinary opaque depth testing (`GL_LESS`);
 the special interpenetrating mode is used only by the visual A/B diagnostic.
 Contact shadows use a separate blended pass with depth writes disabled.
+
+The Expansion Pak trial renders 3D viewports, depth buffers and UI canvases at
+480 × 360. Proportional duel text has separate native-resolution glyphs; original
+card illustrations and opening artwork retain their source detail. The shared
+320 × 240 composition keeps cameras and controls consistent across both modes.
+[Resolution, lead-face and card-back comparisons](../../../reviews/expansion-pak/index.html)
+include actual ares VI captures, RAM measurements and the two complete native
+validation runs.
 
 [Overworld before/after from ares](../../../reviews/overworld-readability/comparison.png)
 
