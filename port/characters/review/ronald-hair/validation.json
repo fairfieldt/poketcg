@@ -18,5 +18,6 @@
   "native_sha256": "76f37c83878340f5e8aaceb43ae33d5c78492e044a5395f651781d307d12890c",
   "other_model_files_unchanged": 266,
   "sly_face_paint_unchanged": true,
-  "face_paint_sha256": "df21c870618ddd7cfaea90a9f2b8011fe7da53ec5540f6a9d5caaaa2ed5fe0a9"
+  "face_paint_sha256": "df21c870618ddd7cfaea90a9f2b8011fe7da53ec5540f6a9d5caaaa2ed5fe0a9",
+  "other_runtime_records_unchanged": 48
 }

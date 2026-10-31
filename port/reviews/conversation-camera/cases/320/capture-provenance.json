@@ -1,0 +1,414 @@
+{
+  "status": "verified-expansion-pak-trial-captures",
+  "rom": {
+    "file": "port/frontends/n64/adventure/poketcg-camera-trials.z64",
+    "sha256": "403216fd3818e1da1d52836ce97ba48beb177e295594185547b1ea63db09cd43",
+    "diagnostic": 12
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 6,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": "full observed callback dimensions",
+      "stage_pattern": "^(?:VIDEO REVIEW|DUEL UI) ([A-Za-z0-9_-]+) BEGIN\\r?$",
+      "require_native_frame": true,
+      "native_lead_frames": 6
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 4,
+    "private_settings": true,
+    "ExpansionPak": false
+  },
+  "runtime_video_modes": [
+    {
+      "width": 320,
+      "height": 240,
+      "ram": 4194304,
+      "highres": 0
+    }
+  ],
+  "raw_format": {
+    "pixel_order": "BGRA little endian; padding excluded from RGB proof",
+    "dimensions": "Recorded per image from Program::video registers",
+    "display_aspect": "4:3"
+  },
+  "finished": {
+    "callbacks": 1319,
+    "captures": 9,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "angle-current.png",
+      "stage": "angle-current",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "7cf5fcf20aa13c44c59514964e188d5ee17e28bbfe2606c14ce740762e336aac",
+      "callback_sha256": "51a0a9a9ff55ef996472e469669cd086a71b7f1a7e1e3c3e5797df8609e67514",
+      "rgb_sha256": "22705586d51f92c49e2b52bfdae638d85f8d4ac404a108067d36df8b36463b19",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 52,
+      "stage_gate": {
+        "stage_started_callback": 24,
+        "native_frame": "angle-current",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 47,
+        "native_ready_valid_frames": 17,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": null
+      }
+    },
+    {
+      "file": "angle-30.png",
+      "stage": "angle-30",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "34e50babea6a951f0a376227ceaa206c783a3eaa180e547d6f623b48b64aff4d",
+      "callback_sha256": "1fb29f5babf04f5a0f2872f094a5c919a813b5337d24fcf02b20999a464b56d0",
+      "rgb_sha256": "69cb13b504550f8d25dc1cc58406b33d26f0d0ffc4b8e329ebc7d4ab275456b1",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 224,
+      "stage_gate": {
+        "stage_started_callback": 196,
+        "native_frame": "angle-30",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 219,
+        "native_ready_valid_frames": 189,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "55a0238586a112d9767d742f85d60eb30cd0a391cbfa374104e2638cac519e03"
+      }
+    },
+    {
+      "file": "angle-20.png",
+      "stage": "angle-20",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "c592ff09cc3639058d6abbad20500f8fbd4fc793f0d8b0d46aaf72999b7eae8b",
+      "callback_sha256": "b459d7ee38405906e119e4f22f039567c9e153a57e9d05d5005ac9eaef56d298",
+      "rgb_sha256": "37b0a14acd430528c46f10bd4729351efa274c9957dab866f473f602534cbff6",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 397,
+      "stage_gate": {
+        "stage_started_callback": 369,
+        "native_frame": "angle-20",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 392,
+        "native_ready_valid_frames": 362,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "778739f6e4cb5a64e1e8be46b7dc75889a6d98668ed3a02f26033880e6a22c49"
+      }
+    },
+    {
+      "file": "angle-12.png",
+      "stage": "angle-12",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "01200eac58441a228d8c7ee6bb8843a8e04cd4e00dc4587a9574983e984da3b9",
+      "callback_sha256": "51ebc16d254bdf6d9745052afd0d645b46824966ea5250240f9bf008cf8eb59c",
+      "rgb_sha256": "fc80b494108f30ef569429446a2a4a60f07630822272423b7ca32a2dcb43fe0f",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 569,
+      "stage_gate": {
+        "stage_started_callback": 542,
+        "native_frame": "angle-12",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 564,
+        "native_ready_valid_frames": 534,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "a45d6cf3c794a225cf2da7c8191dab0bde7e6972aeedf2fc322f2d7938ed4467"
+      }
+    },
+    {
+      "file": "close-ronald.png",
+      "stage": "close-ronald",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "4645fafb05b52284421bc64259ae7a096bd3807cd8674237832295b6a75a5ef5",
+      "callback_sha256": "6342d7c5f926058ed6c293eaf48b3109db6fca8e5df4f56355e729eb717f49aa",
+      "rgb_sha256": "a2d4318865c20b9eca8d9de879fd7be34dcd6e65120c8c813f86e72db718bc9d",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 736,
+      "stage_gate": {
+        "stage_started_callback": 714,
+        "native_frame": "close-ronald",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 731,
+        "native_ready_valid_frames": 701,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "2e28505c883727f92bd1f95b22045d5891f1ad0264e5bf04235d1b8b64d62d62"
+      }
+    },
+    {
+      "file": "close-mason.png",
+      "stage": "close-mason",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "8603f90b64aa9aaffbf40768e8a3845573a15f248ee9510f84549484c07b5210",
+      "callback_sha256": "b609bba5b8dc8d2fcc1ecec73dd21f0177e129a3c64b09d6ca6c054b97c6b78a",
+      "rgb_sha256": "968f000999e446a7b18a4975497cbc2a9b6fc89b4662328afee87df52d10e499",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 876,
+      "stage_gate": {
+        "stage_started_callback": 855,
+        "native_frame": "close-mason",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 871,
+        "native_ready_valid_frames": 841,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "345a7237e250f611fc1dae2e93c53cea7f7c412e908b7b70ff5ba514816f6b51"
+      }
+    },
+    {
+      "file": "hair-front.png",
+      "stage": "hair-front",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "220fb0924d497a229e8f681e5c62f3adeae5830f854550f87367755887230816",
+      "callback_sha256": "9dd04df63ef08b8aea1886ac525e144cb8dcdc2ab14d34793ed543b034986861",
+      "rgb_sha256": "f6074cf2cdbe418f7fcecca65084f157e4dbe6b3d13635a49ccea7829c247b89",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 1007,
+      "stage_gate": {
+        "stage_started_callback": 994,
+        "native_frame": "hair-front",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 1002,
+        "native_ready_valid_frames": 972,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "61b7f1cc2b3bc0302bef589aa8272e476a39f59d82a59561c8d62900fce52c5f"
+      }
+    },
+    {
+      "file": "hair-side.png",
+      "stage": "hair-side",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "99b1cecce0f25f5eab75bfbc6de9a2989b2ad0969a690306f63c637c77ff93e9",
+      "callback_sha256": "90d04bd245435733b32ab06b02c15106c600640c169ae8b708bde29bd0a66f8d",
+      "rgb_sha256": "3b446e21612c0c310a0493b78c061ea21520439108e696281a9d1c6cdba41b51",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 1114,
+      "stage_gate": {
+        "stage_started_callback": 1099,
+        "native_frame": "hair-side",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 1109,
+        "native_ready_valid_frames": 1079,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "1b98afb0a1cba0221241bb30cb4e931a6a89a135dd7b73367d9127043ae5b7de"
+      }
+    },
+    {
+      "file": "hair-high.png",
+      "stage": "hair-high",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "6f3194bc9ba8a8eecb8e82c584202f2cb8485a18f7bfa94c29f54a743a92c0ed",
+      "callback_sha256": "3cbb3ecb841407fb6c49e3abb88c65d022d315fc7a6d3314c792e8e8a0363613",
+      "rgb_sha256": "9ff6707f59a17b088ccef6a00604f2f8d2f6c0721ed071d9149670d17f3ab6f3",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 1223,
+      "stage_gate": {
+        "stage_started_callback": 1207,
+        "native_frame": "hair-high",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 1218,
+        "native_ready_valid_frames": 1188,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "62865fdbe372c9aa1d9dfb085cd10c4627238609b49ad35d8c0502d2ccec5d49"
+      }
+    }
+  ],
+  "native_frames": [
+    {
+      "file": "angle-current.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "ea13c9411e68cfaabd0ccd94a830551b03bb131173dc0cddfd7da14b18fe4830",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "angle-30.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "557a9a6f67f2e3bea94f6d5dcbf5acb8f44ec8ddaec905b72b0f10b588166e44",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "angle-20.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "c090e0154cd4dcbe5e16048c90291c8295c1ba5ea6bee6f720f45d4b161c59a2",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "angle-12.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "097faeb21b124c79ff41b7a287d2a2bbbb78256be3105ed04faf4f530491b835",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "close-ronald.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "7fb39fdbe34d70df603d2ff01e28f7998ddf583199e36284ac71415c5d3498f5",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "close-mason.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "0a7abadcde2b0b49c4e372fd2739db1607d6139dfc96d108c80421bedf9c761b",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "hair-front.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "81d97784a4fe93b2ad11ff3afc6f2f70107b2e07488488473c127d0a09d652f7",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "hair-side.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "27c0f9c4edf4f947ad882fe8217915f28117fa09c4285bde3c877d5d3746deb1",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "hair-high.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "5f6a1416c301339995f57f9ec45f72cf0394e9cdf2d5b247d88ddc33f3ad55dc",
+      "exact_native_pixels": 76800
+    }
+  ],
+  "memory": [],
+  "source_logs": {
+    "path": "port/frontends/n64/adventure/build/expansion-pak/conversation-camera-320/lldb.log",
+    "sha256": "9a44bda79098296d8fde74ac74a121d28a3315e04ff9711aaa81891011ed1a66"
+  }
+}

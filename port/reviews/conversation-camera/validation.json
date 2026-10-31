@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "source_commit": "efc49edf62174ed41a41d1df14ba28463a148e6d",
+  "cases": {
+    "320": {
+      "source": "cases/320/capture-provenance.json",
+      "sha256": "831ecb0ef5e4248a2c02c944e1d620d6b73355273242cc650ae82719a600256a",
+      "rom": {
+        "file": "port/frontends/n64/adventure/poketcg-camera-trials.z64",
+        "sha256": "403216fd3818e1da1d52836ce97ba48beb177e295594185547b1ea63db09cd43",
+        "diagnostic": 12
+      },
+      "runtime": [
+        {
+          "width": 320,
+          "height": 240,
+          "ram": 4194304,
+          "highres": 0
+        }
+      ],
+      "frames": 9
+    },
+    "480": {
+      "source": "cases/480/capture-provenance.json",
+      "sha256": "40ec460f1f50ad945ffa937174ff20349983d13aba641f11cb7efddc39de8bf8",
+      "rom": {
+        "file": "port/frontends/n64/adventure/poketcg-camera-trials.z64",
+        "sha256": "403216fd3818e1da1d52836ce97ba48beb177e295594185547b1ea63db09cd43",
+        "diagnostic": 12
+      },
+      "runtime": [
+        {
+          "width": 480,
+          "height": 360,
+          "ram": 8388608,
+          "highres": 1
+        }
+      ],
+      "frames": 9
+    }
+  },
+  "original_post_vi_pngs": 18,
+  "exact_callback_rgb_pixels": 4147200,
+  "same_rom_across_ram_modes": true,
+  "stage_gate": {
+    "matching_native_header": true,
+    "post_native_valid_callbacks": 6,
+    "stable_callbacks": 6
+  },
+  "ronald": {
+    "source": "hair-validation.json",
+    "triangles": 910,
+    "batches": 6,
+    "closed_head": true,
+    "scalp_skin_islands": 0,
+    "face_paint_unchanged": true,
+    "limbs_unchanged": true
+  },
+  "production_roms": {
+    "standard": {
+      "file": "port/frontends/n64/adventure/poketcg-adventure.z64",
+      "sha256": "93a6cbc620dd520ae7d15b9699cc147ac92d1aef5e840bf0dfb4b1c5b03cb102",
+      "bytes": 36372480
+    },
+    "expansion": {
+      "file": "port/frontends/n64/adventure/poketcg-expansion.z64",
+      "sha256": "72f4caa1c2df80b815ce91dd32399ba02e1be5bab050954ed0f554fce59a704d",
+      "bytes": 36372480
+    }
+  },
+  "production_camera_changed": false,
+  "display": "Original 640x240 VI outputs use exact row duplication for 4:3 sheets; 640x480 outputs are unchanged. Original PNGs are preserved."
+}

@@ -211,6 +211,19 @@ struct surface_s *adventure_story_message_preview(const char *speaker,const char
  adventure_audio_poll();surface_free(&canvas);free(lines.line);return frame;
 }
 
+#if ADVENTURE_DIAGNOSTIC == 12
+/* Camera trials use the production panel over a controlled scene frame. */
+void adventure_camera_dialogue_overlay(surface_t *frame,const char *speaker,const char *text)
+{
+ TextLines lines=wrap_all(text,DIALOGUE_COLUMNS);
+ TextPage page={.visible=page_characters(&lines,0)};
+ surface_t canvas=surface_alloc(FMT_RGBA16,n64_video_width,n64_video_y(PANEL_HEIGHT));
+ assert(canvas.buffer);
+ draw_panel(frame,&canvas,speaker,&lines,&page,"A/B: continue");
+ surface_free(&canvas);free(lines.line);
+}
+#endif
+
 bool adventure_dialogue_check(void)
 {
  char *long_text=malloc(10004);if(!long_text)return false;

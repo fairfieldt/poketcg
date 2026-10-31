@@ -1,0 +1,268 @@
+{
+  "purpose": "Conversation framing comparison; production cameras unchanged",
+  "profiles": [
+    {
+      "stage": "angle-current",
+      "label": "Current",
+      "pitch_degrees": 41.951647258762975,
+      "eye": [
+        14.5,
+        10,
+        30
+      ],
+      "target": [
+        14,
+        1,
+        20
+      ],
+      "fov": 50,
+      "positions": [
+        [
+          9,
+          20
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          15,
+          20
+        ],
+        [
+          18,
+          20
+        ]
+      ],
+      "models": [
+        7,
+        8,
+        9,
+        11
+      ],
+      "headings": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "comparison": "Same X/Z camera position, target, FOV and actors; camera height changes"
+    },
+    {
+      "stage": "angle-30",
+      "label": "Lower camera: 30 degrees",
+      "pitch_degrees": 30,
+      "eye": [
+        14.5,
+        6.780715065341541,
+        30
+      ],
+      "target": [
+        14,
+        1,
+        20
+      ],
+      "fov": 50,
+      "positions": [
+        [
+          9,
+          20
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          15,
+          20
+        ],
+        [
+          18,
+          20
+        ]
+      ],
+      "models": [
+        7,
+        8,
+        9,
+        11
+      ],
+      "headings": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "comparison": "Same X/Z camera position, target, FOV and actors; camera height changes"
+    },
+    {
+      "stage": "angle-20",
+      "label": "Lower camera: 20 degrees",
+      "pitch_degrees": 20,
+      "eye": [
+        14.5,
+        4.644249130621748,
+        30
+      ],
+      "target": [
+        14,
+        1,
+        20
+      ],
+      "fov": 50,
+      "positions": [
+        [
+          9,
+          20
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          15,
+          20
+        ],
+        [
+          18,
+          20
+        ]
+      ],
+      "models": [
+        7,
+        8,
+        9,
+        11
+      ],
+      "headings": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "comparison": "Same X/Z camera position, target, FOV and actors; camera height changes"
+    },
+    {
+      "stage": "angle-12",
+      "label": "Lower camera: 12 degrees",
+      "pitch_degrees": 12,
+      "eye": [
+        14.5,
+        3.1282209151954685,
+        30
+      ],
+      "target": [
+        14,
+        1,
+        20
+      ],
+      "fov": 50,
+      "positions": [
+        [
+          9,
+          20
+        ],
+        [
+          12,
+          20
+        ],
+        [
+          15,
+          20
+        ],
+        [
+          18,
+          20
+        ]
+      ],
+      "models": [
+        7,
+        8,
+        9,
+        11
+      ],
+      "headings": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "comparison": "Same X/Z camera position, target, FOV and actors; camera height changes"
+    },
+    {
+      "stage": "close-ronald",
+      "label": "Closer: Mark and Ronald",
+      "pitch_degrees": 20,
+      "eye": [
+        14.339575795218467,
+        3.4749975930101757,
+        26.791515904369344
+      ],
+      "target": [
+        14,
+        1,
+        20
+      ],
+      "fov": 50,
+      "positions": [
+        [
+          12.3,
+          20
+        ],
+        [
+          15.7,
+          20
+        ]
+      ],
+      "models": [
+        7,
+        8
+      ],
+      "headings": [
+        40,
+        -40
+      ],
+      "comparison": "Separate framing trial: closer camera and two three-quarter character poses"
+    },
+    {
+      "stage": "close-mason",
+      "label": "Closer: Mark and Mason",
+      "pitch_degrees": 20,
+      "eye": [
+        14.339575795218467,
+        3.4749975930101757,
+        26.791515904369344
+      ],
+      "target": [
+        14,
+        1,
+        20
+      ],
+      "fov": 50,
+      "positions": [
+        [
+          12.3,
+          20
+        ],
+        [
+          15.7,
+          20
+        ]
+      ],
+      "models": [
+        7,
+        9
+      ],
+      "headings": [
+        40,
+        -40
+      ],
+      "comparison": "Separate framing trial: closer camera and two three-quarter character poses"
+    }
+  ],
+  "hair_check_stages": [
+    "hair-front",
+    "hair-side",
+    "hair-high"
+  ]
+}

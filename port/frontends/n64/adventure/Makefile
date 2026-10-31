@@ -28,6 +28,9 @@ endif
 ifeq ($(DIAGNOSTIC),11)
 FRONT_OBJECTS += $(BUILD_DIR)/leads_preview.o
 endif
+ifeq ($(DIAGNOSTIC),12)
+FRONT_OBJECTS += $(BUILD_DIR)/camera_preview.o
+endif
 ifeq ($(DIAGNOSTIC),8)
 FRONT_OBJECTS += $(BUILD_DIR)/face_preview.o
 .PHONY: face-preview-assets
@@ -82,6 +85,9 @@ $(BUILD_DIR)/face_preview.o: tests/face_preview.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 $(BUILD_DIR)/leads_preview.o: tests/leads_preview.c
+	@mkdir -p $(dir $@)
+	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+$(BUILD_DIR)/camera_preview.o: tests/camera_preview.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 $(BUILD_DIR)/visual_sweep.o: tests/visual_sweep.c

@@ -400,7 +400,11 @@ int main(void)
  depth=n64_video_surface();scene_begin_opaque();
  glEnable(GL_MULTISAMPLE_ARB);glDisable(GL_CULL_FACE);glDisable(GL_LIGHTING);
  adventure_audio_init();n64_ui_init();actors=scene_open(W3_ACTOR_SCENE,W3_TEXTURE_ROOT);
-#if ADVENTURE_DIAGNOSTIC == 11
+#if ADVENTURE_DIAGNOSTIC == 12
+ extern void adventure_camera_preview(surface_t *,void (*)(surface_t *,const char *));
+ adventure_camera_preview(&depth,capture);
+ for(;;)adventure_audio_poll();
+#elif ADVENTURE_DIAGNOSTIC == 11
  extern void adventure_leads_preview(surface_t *,void (*)(surface_t *,const char *));
  adventure_leads_preview(&depth,capture);
  for(;;)adventure_audio_poll();

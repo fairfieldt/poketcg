@@ -79,6 +79,7 @@ def main():
     parser.add_argument('--height',type=int,default=360,help='Expected native framebuffer height')
     parser.add_argument('--diagnostic',type=int,default=10)
     parser.add_argument('--build',type=Path)
+    parser.add_argument('--output-dir',type=Path,help='Review folder for this case; defaults to cases/NAME beside this script')
     parser.add_argument('--timeout',type=int,default=1200)
     parser.add_argument('--stable-frames',type=int,default=6)
     parser.add_argument('--label-box',type=int,nargs=4,metavar=('LEFT','TOP','RIGHT','BOTTOM'),
@@ -92,7 +93,7 @@ def main():
     assert len(set(args.stages))==len(args.stages),'Duplicate requested stages'
     rom=args.rom.resolve();work=(args.build or ADV/'build/expansion-pak'/args.case).resolve()
     work.mkdir(parents=True,exist_ok=True)
-    out=REVIEW/'cases'/args.case;vi=out/'post-vi';native=out/'native'
+    out=(args.output_dir or REVIEW/'cases'/args.case).resolve();vi=out/'post-vi';native=out/'native'
     vi.mkdir(parents=True,exist_ok=True);native.mkdir(exist_ok=True)
     log=work/'lldb.log';config_path=work/'config.json'
     config=dict(output=str(work),log=str(log),wanted=args.stages,skip_unwanted=0,
