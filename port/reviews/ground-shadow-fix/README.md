@@ -41,12 +41,25 @@ shadow reference in every sampled state. The fixture additionally proves:
 meshes. Walkable carpets are floor textures at Y=0; other low surfaces belong
 to pool coping, planters and props, rather than walkable raised carpet meshes.
 
+| Native mode | Samples | Old rejected pixels | New rejected pixels |
+| --- | ---: | ---: | ---: |
+| 320×240 / 4 MiB | 112 | 313 | 0 |
+| 480×360 / 8 MiB | 112 | 896 | 0 |
+
+The completed depth buffers match across 8,601,600 sampled pixels per path
+at 320 and 19,353,600 at 480, plus the later actor-pass comparison.
+
 ## Images
 
 The `native/` PNGs are completed, fenced N64 RGBA16 framebuffer readbacks.
 The `post-vi/` PNGs are actual Ares `Program::video` output encoded by Ares,
 with VI processing enabled. The provenance files verify every encoded RGB
 pixel against the callback buffer. Neither set uses a WebGL render.
+The 320 callback is 640×240 and should be displayed at 4:3; 480 is 640×480.
+
+Representative actual VI images: [lab arrival at 480](480/post-vi/walk-3-after.png),
+[Mason at 480](480/post-vi/lab-after.png), [Sam at 480](480/post-vi/sam-after.png),
+[lab arrival at 320](320/post-vi/walk-3-after.png).
 
 `walk-0`, `walk-3` and `walk-7` show three phases of the source lab arrival;
 `lab` and `sam` show the actual source conversation poses. Before/after pairs
@@ -55,6 +68,8 @@ ordering mistake initially allowed the preceding actor-hidden reference to
 remain on the VI while slow pixel logging ran. Those earlier captures are
 excluded. The final fixture presents the completed image before logging its
 stage and pixels, and the final VI pairs were inspected for actor presence.
+The final pair checker also limits changes to small, low-contrast contact
+regions; it rejects the real stale actor-hidden frame as a negative check.
 
 ## Implementation and reproduction
 

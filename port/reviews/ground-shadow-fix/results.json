@@ -122,7 +122,8 @@
             180
           ]
         }
-      ]
+      ],
+      "capture_command": "python3 port/reviews/expansion-pak/capture.py port/frontends/n64/adventure/build/ground-shadow-review/shadow-review.z64 walk-0-before walk-0-after walk-3-before walk-3-after walk-7-before walk-7-after lab-before lab-after sam-before sam-after --case shadows-320-v1 --ram-mib 4 --width 320 --height 240 --diagnostic 9 --timeout 240 --output-dir port/reviews/ground-shadow-fix/320"
     },
     {
       "native_dimensions": [
@@ -244,7 +245,8 @@
             480
           ]
         }
-      ]
+      ],
+      "capture_command": "python3 port/reviews/expansion-pak/capture.py port/frontends/n64/adventure/build/ground-shadow-review/shadow-review.z64 walk-0-before walk-0-after walk-3-before walk-3-after walk-7-before walk-7-after lab-before lab-after sam-before sam-after --case shadows-480-v3 --ram-mib 8 --width 480 --height 360 --diagnostic 9 --timeout 240 --output-dir port/reviews/ground-shadow-fix/480"
     }
   ],
   "legacy_gl_compile": "PASS with -Wall -Wextra -Werror",
