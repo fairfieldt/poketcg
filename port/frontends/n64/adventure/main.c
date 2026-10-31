@@ -478,7 +478,18 @@ int main(void)
  depth=n64_video_surface();scene_begin_opaque();
  glEnable(GL_MULTISAMPLE_ARB);glDisable(GL_CULL_FACE);glDisable(GL_LIGHTING);
  adventure_audio_init();n64_ui_init();actors=scene_open(W3_ACTOR_SCENE,W3_TEXTURE_ROOT);
-#if ADVENTURE_DIAGNOSTIC == 17
+#if ADVENTURE_DIAGNOSTIC == 24
+ extern void adventure_pack_native_regression(void);
+ adventure_pack_native_regression();
+ for(;;)adventure_audio_poll();
+#elif ADVENTURE_DIAGNOSTIC == 23
+ adventure_audio_nested_regression();
+ for(;;){}
+#elif ADVENTURE_DIAGNOSTIC == 20
+ extern void adventure_fps_survey(void);
+ adventure_fps_survey();
+ for(;;){}
+#elif ADVENTURE_DIAGNOSTIC == 17
  adventure_audio_regression();
  for(;;){}
 #elif ADVENTURE_DIAGNOSTIC == 14

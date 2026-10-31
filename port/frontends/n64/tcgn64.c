@@ -44,6 +44,7 @@
 #include "body_font.h"
 #include "card_back.h"
 #include "duel_input.h"
+#include "duel_board_focus.h"
 #include "coin_art.h"
 #ifdef TCGN64_ADVENTURE
 #include "adventure/audio.h"
@@ -145,6 +146,8 @@ static int g_screen;                    /* last TCG_SCREEN_* */
 static uint8_t g_screen_arg;            /* its arg[2] */
 static uint8_t g_boxmsg = 0xff;
 static struct { bool on; uint8_t id, deck, owner, page; } g_overlay;  /* TCG_EV_CARD */
+static bool g_drawn_card_fresh_ack,g_placement_ack;
+static uint8_t g_actions_fresh_owner;
 static struct { uint8_t res[16], owner; int n, total, number; bool ready; } g_coin;
 static struct { int timer; uint8_t side, loc; unsigned amount; } g_dmg;
 static uint8_t g_thinking;
@@ -154,6 +157,7 @@ static bool g_save_ok;                  /* a 16 Kbit EEPROM is there (save_store
 static uint8_t g_turn_holder;
 static int g_turn;
 static int g_result = -1;            /* -1 playing, otherwise winner side / 2 draw */
+static unsigned g_ui_revision;       /* events and text changed presentation state */
 
 /* ------------------------------------------------------------------ small utilities */
 
@@ -1282,6 +1286,7 @@ static void draw_board(uint8_t hl_duelist,int hl_loc)
  * the buffer instead and write the data cache back before showing the frame. */
 static surface_t *g_disp;
 static surface_t g_fb_cached;
+static unsigned g_canvas_serial;     /* any intervening screen invalidates reuse */
 #ifdef TCGN64_ADVENTURE
 static surface_t *g_last_ui_frame;
 static surface_t g_ui_canvas;
@@ -1296,6 +1301,7 @@ static unsigned g_review_seen;
 
 static void begin_frame_canvas(bool clear)
 {
+	g_canvas_serial++;
 	g_disp = display_get();
 	g_raster_width=g_disp->width;
 	/* The adventure presents a completed CPU canvas through RDP, keeping
@@ -1532,6 +1538,20 @@ static Keys keys(int mask)
 	return k;
 }
 
+static bool confirm_buttons_held(int mask)
+{
+#ifndef TCGN64_HOST_TEST
+	disable_interrupts();
+#endif
+	if(mask==2&&!g_input_capture.connected[1])mask=1;
+	uint16_t held=0;
+	for(unsigned p=0;p<2;p++)if(mask&(1<<p))held|=g_input_capture.held[p];
+#ifndef TCGN64_HOST_TEST
+	enable_interrupts();
+#endif
+	return (held&(INPUT_A|INPUT_B))!=0;
+}
+
 /* the controller(s) that answer for a duelist */
 static int ports_for(uint8_t duelist)
 {
@@ -1652,25 +1672,97 @@ static bool coin_fast_forward(int ports)
 	return false;
 }
 
-#ifdef TCGN64_ADVENTURE
-static unsigned coin_board_phase(void)
+typedef struct {
+	uint64_t key;
+	unsigned serial,phase;
+	bool valid;
+} UiCanvasReuse;
+
+#if defined(TCGN64_ADVENTURE) || defined(TCGN64_RETAINED_UI_TEST)
+static unsigned canvas_effect_phase(void)
 {
-	/* These are the only board decorations advanced by end_frame while the
-	 * synchronous coin event owns the UI. Rebuild when their visible state
+	/* These decorations advance while a synchronous UI owns the canvas.
+	 * Rebuild when their visible state
 	 * changes, including the frame that clears an expired damage flash. */
 	unsigned phase=(g_dmg.timer?1u:0u)|(g_denied?2u:0u)|((unsigned)g_thinking<<8);
 	if(g_thinking&&((g_frame/16)&1))phase|=4;
 	if(g_save_ok&&save_store_pending())phase|=8|((g_frame/8)&1?16:0);
 	return phase;
 }
+
+/* One synchronous request owns the canvas until it returns. Its controls
+ * can change while the engine is paused; the exact snapshot also catches
+ * silent state mutations. Nested screens share this single snapshot. */
+static struct {
+	uintptr_t owner;
+	unsigned revision,raster_width;
+	uint8_t wram[WRAM_SIZE],hram[HRAM_SIZE];
+	char names[2][16];
+	int mode,result,screen;
+	uint8_t turn_holder,asking,boxmsg,damage_side,damage_loc;
+	unsigned damage_amount;
+	uint8_t overlay[sizeof(g_overlay)],coin[sizeof(g_coin)];
+} g_retained_ui;
+
+static bool ui_canvas_reuse_prepare(UiCanvasReuse *reuse,uint64_t key)
+{
+	unsigned phase=canvas_effect_phase();
+	bool match=reuse->valid&&reuse->serial==g_canvas_serial&&reuse->key==key&&reuse->phase==phase&&
+		g_retained_ui.owner==(uintptr_t)reuse&&g_retained_ui.revision==g_ui_revision&&
+		g_retained_ui.raster_width==g_raster_width&&g_retained_ui.mode==g_mode&&
+		g_retained_ui.result==g_result&&g_retained_ui.screen==g_screen&&
+		g_retained_ui.turn_holder==g_turn_holder&&g_retained_ui.asking==g_asking&&
+		g_retained_ui.boxmsg==g_boxmsg&&g_retained_ui.damage_side==g_dmg.side&&
+		g_retained_ui.damage_loc==g_dmg.loc&&g_retained_ui.damage_amount==g_dmg.amount&&
+		!memcmp(g_retained_ui.names,g_name,sizeof(g_name))&&
+		!memcmp(g_retained_ui.overlay,&g_overlay,sizeof(g_overlay))&&
+		!memcmp(g_retained_ui.coin,&g_coin,sizeof(g_coin))&&
+		!memcmp(g_retained_ui.wram,gWRAM,sizeof(gWRAM))&&!memcmp(g_retained_ui.hram,gHRAM,sizeof(gHRAM));
+	reuse->key=key;reuse->phase=phase;reuse->valid=true;
+	return !match;
+}
+
+static void ui_canvas_reuse_commit(UiCanvasReuse *reuse)
+{
+	reuse->serial=g_canvas_serial;
+	g_retained_ui.owner=(uintptr_t)reuse;g_retained_ui.revision=g_ui_revision;
+	g_retained_ui.raster_width=g_raster_width;g_retained_ui.mode=g_mode;
+	g_retained_ui.result=g_result;g_retained_ui.screen=g_screen;
+	g_retained_ui.turn_holder=g_turn_holder;g_retained_ui.asking=g_asking;g_retained_ui.boxmsg=g_boxmsg;
+	g_retained_ui.damage_side=g_dmg.side;g_retained_ui.damage_loc=g_dmg.loc;g_retained_ui.damage_amount=g_dmg.amount;
+	memcpy(g_retained_ui.names,g_name,sizeof(g_name));
+	memcpy(g_retained_ui.overlay,&g_overlay,sizeof(g_overlay));memcpy(g_retained_ui.coin,&g_coin,sizeof(g_coin));
+	memcpy(g_retained_ui.wram,gWRAM,sizeof(gWRAM));memcpy(g_retained_ui.hram,gHRAM,sizeof(gHRAM));
+}
 #endif
+
+static bool begin_reused_frame(UiCanvasReuse *reuse,uint64_t key)
+{
+#if defined(TCGN64_ADVENTURE) || defined(TCGN64_RETAINED_UI_TEST)
+	bool redraw=ui_canvas_reuse_prepare(reuse,key);
+	begin_frame_canvas(redraw);
+	return redraw;
+#else
+	(void)reuse;(void)key;begin_frame();return true;
+#endif
+}
+
+static void end_reused_frame(UiCanvasReuse *reuse)
+{
+#if defined(TCGN64_ADVENTURE) || defined(TCGN64_RETAINED_UI_TEST)
+	ui_canvas_reuse_commit(reuse);
+#else
+	(void)reuse;
+#endif
+	end_frame_poll();
+}
 
 static bool begin_coin_animation_frame(int frame,unsigned *previous_board_phase)
 {
 #ifdef TCGN64_ADVENTURE
 	/* This event owns one fenced canvas. Keep its cards and text until a
 	 * timed decoration changes, then repaint the complete board once. */
-	unsigned board_phase=coin_board_phase();
+	unsigned board_phase=canvas_effect_phase();
 	bool redraw=!frame||board_phase!=*previous_board_phase;
 	begin_frame_canvas(redraw);
 	if(redraw){draw_board(0,-1);draw_textbox();}
@@ -1734,6 +1826,7 @@ static void log_message(const char *utf8)
 	int n = wrap(clean, COLS, lines, 24);
 	if (n == 0)
 		return;
+	g_ui_revision++;
 	if (n > LOG_LINES)
 		n = LOG_LINES;
 	if (g_log_n + n > LOG_LINES) {
@@ -1752,6 +1845,7 @@ static void log_message(const char *utf8)
 
 static void log_clear(void)
 {
+	g_ui_revision++;
 	g_log_n = 0;
 	g_log_newest = 0;
 	g_practice_checklist[0]=0;g_practice_checklist_on=false;
@@ -1885,11 +1979,11 @@ static int draw_card_view_page(uint8_t id,uint8_t owner,int deck,int page,bool d
 
 static void view_card_context(uint8_t id,uint8_t owner,int deck,int ports,bool duel_log)
 {
-	int page=0;
+	int page=0,pages=1;
+	UiCanvasReuse reuse={0};
 	for(;;) {
-		begin_frame();
-		int pages=draw_card_view_page(id,owner,deck,page,duel_log);
-		end_frame_poll();Keys k=keys(ports);
+		if(begin_reused_frame(&reuse,(uint32_t)page))pages=draw_card_view_page(id,owner,deck,page,duel_log);
+		end_reused_frame(&reuse);Keys k=keys(ports);
 		if(k.a||k.b||k.start)return;
 		if((k.r||k.right||k.down)&&page+1<pages)page++;
 		if((k.l||k.left||k.up)&&page>0)page--;
@@ -2146,6 +2240,8 @@ static const char *who(uint8_t duelist) { return g_name[side_of(duelist)]; }
 
 static int ui_ack(const TcgRequest *r, int ports)
 {
+	bool fresh_confirm=(g_overlay.on&&g_drawn_card_fresh_ack)||g_placement_ack;
+	DuelFreshConfirm confirm={0};
 	char lines[22][COLS + 1];
 	int msg_lines = g_log_n - g_log_newest;
 	bool long_msg = msg_lines > TBOX_LINES;
@@ -2172,53 +2268,56 @@ static int ui_ack(const TcgRequest *r, int ports)
 	int top = 0, card_page = 0;
 	debugf("ASK ack/%s %s\n", g_overlay.on ? "card" : long_msg ? "long" : list_n ? "list" :
 	       g_screen == TCG_SCREEN_COIN_TOSS ? "coin" : g_screen == TCG_SCREEN_BOX_MESSAGE ? "box" : "text", who(r->duelist));
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		if(reading) {
-			draw_practice_reading(speech_first);
-		} else if (checklist) {
-			draw_practice_checklist();
-		} else if (g_overlay.on) {
-			draw_card_page_at(g_overlay.id, g_overlay.owner, g_overlay.deck, NULL, card_page);
-		} else if (long_msg) {
-			panel(LEFT - 6, BOARD_Y, RIGHT - LEFT + 12, BOARD_H);
-			for (int i = 0; i < nl; i++)
-				print(LEFT, BOARD_Y + 4 + i * LH, C_TEXT, lines[i]);
-			/* the practice duel labels Dr. Mason's explanations (wTextBoxLabel) */
-			const uint8_t *label = &tcg_wram()[ADDR_wTextBoxLabel - WRAM_START];
-			if (g_mode == MODE_PRACTICE && rd16(label)) {
-				char lb[24];
-				text_of(rd16(label), lb, sizeof(lb));
-				int w = (int)strlen(lb) * CW + 8;
-				fill(RIGHT + 2 - w, BOARD_Y + BOARD_H - 14, w, 10, C_PANEL2);
-				print(RIGHT + 6 - w, BOARD_Y + BOARD_H - 13, C_HI, lb);
+		if(begin_reused_frame(&reuse,((uint64_t)(uint32_t)speech_first<<32)|((uint32_t)card_page<<1)|(!reading?((g_frame/16)&1):0))) {
+			if(reading) {
+				draw_practice_reading(speech_first);
+			} else if (checklist) {
+				draw_practice_checklist();
+			} else if (g_overlay.on) {
+				draw_card_page_at(g_overlay.id, g_overlay.owner, g_overlay.deck, NULL, card_page);
+			} else if (long_msg) {
+				panel(LEFT - 6, BOARD_Y, RIGHT - LEFT + 12, BOARD_H);
+				for (int i = 0; i < nl; i++)
+					print(LEFT, BOARD_Y + 4 + i * LH, C_TEXT, lines[i]);
+				/* the practice duel labels Dr. Mason's explanations (wTextBoxLabel) */
+				const uint8_t *label = &tcg_wram()[ADDR_wTextBoxLabel - WRAM_START];
+				if (g_mode == MODE_PRACTICE && rd16(label)) {
+					char lb[24];
+					text_of(rd16(label), lb, sizeof(lb));
+					int w = (int)strlen(lb) * CW + 8;
+					fill(RIGHT + 2 - w, BOARD_Y + BOARD_H - 14, w, 10, C_PANEL2);
+					print(RIGHT + 6 - w, BOARD_Y + BOARD_H - 13, C_HI, lb);
+				}
+			} else if (list_n) {
+				int cur = hCurMenuItem < list_n ? hCurMenuItem : 0; /* the card the engine is talking about */
+				draw_card_list_screen(NULL, NULL, list, list_n, r->shown, cur, &top);
+			} else {
+				draw_board(0, -1);
+				if(g_result>=0)draw_match_plaque(true);
+				else if(!g_turn_holder&&g_screen==TCG_SCREEN_EMPTY)draw_match_plaque(false);
+				else if (g_screen == TCG_SCREEN_COIN_TOSS) {
+					draw_coin_panel(-1);
+				} else if (g_screen == TCG_SCREEN_BOX_MESSAGE && g_boxmsg <= BOXMSG_COIN_TOSS) {
+					static const char *const box[] = { "%s's turn", "%s's turn", "Between turns", "Decision",
+						"Bench Pokemon", "Arena Pokemon", "Coin toss" };
+					char b[40];
+					uint8_t d = g_boxmsg == BOXMSG_OPPONENTS_TURN ? TCG_OPPONENT : TCG_PLAYER;
+					snprintf(b, sizeof(b), box[g_boxmsg], who(d));
+					draw_duel_banner(b);
+				}
 			}
-		} else if (list_n) {
-			int cur = hCurMenuItem < list_n ? hCurMenuItem : 0; /* the card the engine is talking about */
-			draw_card_list_screen(NULL, NULL, list, list_n, r->shown, cur, &top);
-		} else {
-			draw_board(0, -1);
-			if(g_result>=0)draw_match_plaque(true);
-			else if(!g_turn_holder&&g_screen==TCG_SCREEN_EMPTY)draw_match_plaque(false);
-			else if (g_screen == TCG_SCREEN_COIN_TOSS) {
-				draw_coin_panel(-1);
-			} else if (g_screen == TCG_SCREEN_BOX_MESSAGE && g_boxmsg <= BOXMSG_COIN_TOSS) {
-				static const char *const box[] = { "%s's turn", "%s's turn", "Between turns", "Decision",
-					"Bench Pokemon", "Arena Pokemon", "Coin toss" };
-				char b[40];
-				uint8_t d = g_boxmsg == BOXMSG_OPPONENTS_TURN ? TCG_OPPONENT : TCG_PLAYER;
-				snprintf(b, sizeof(b), box[g_boxmsg], who(d));
-				draw_duel_banner(b);
-			}
+			if(reading)draw_practice_continue(speech_first);else draw_textbox();
+			if (!reading&&(g_frame / 16) & 1)
+				print(RIGHT-CW,checklist?BOARD_Y+BOARD_H-15:TBOX_LINE(TBOX_LINES-1),C_HI,"v");
 		}
-		if(reading)draw_practice_continue(speech_first);else draw_textbox();
-		if (!reading&&(g_frame / 16) & 1)
-			print(RIGHT-CW,checklist?BOARD_Y+BOARD_H-15:TBOX_LINE(TBOX_LINES-1),C_HI,"v");
-		end_frame_poll();
+		end_reused_frame(&reuse);
 #if ADVENTURE_DIAGNOSTIC == 3
 		if(review_snapshot())return 0;
 #endif
 		Keys k = keys(ports);
+		if(fresh_confirm&&!duel_fresh_confirm_step(&confirm,confirm_buttons_held(ports)))k.a=k.b=false;
 		if(g_overlay.on) {
 			int pages=(g_rule_count+RULES_PER_PAGE-1)/RULES_PER_PAGE;
 			if((k.r||k.right||k.down)&&card_page+1<pages)card_page++;
@@ -2232,50 +2331,90 @@ static int ui_ack(const TcgRequest *r, int ports)
 			view_slot(r->shown, 0, ports);
 	}
 	g_overlay.on = false;
+	g_drawn_card_fresh_ack=g_placement_ack=false;
 	return 0;
 }
 
 static void check_screen(int ports);
 
-static void draw_duel_choices(uint8_t duelist,int cur)
+static void draw_duel_actions(uint8_t duelist,int cur,bool board_focus)
 {
 	static const char *const items[6]={"Hand","Attack","Check","PKMN Pwr","Retreat","Done"};
-	draw_board(0, -1);
 	panel(LEFT - 6, TBOX_Y, RIGHT - LEFT + 12, TBOX_LINES * TLH + 5);
 	print(LEFT,TBOX_LINE(0),C_DIM,who(duelist));
-	print(RIGHT-21*CW,TBOX_LINE(0),C_HI,"START: card  Z: check");
+	const char *hint=board_focus?"A: info  B: actions":"START: card  Z: check";
+	print(RIGHT-(int)strlen(hint)*CW,TBOX_LINE(0),C_HI,hint);
 	for (int i = 0; i < 6; i++) {
 		int x=LEFT+8+(i/2)*96,y=TBOX_Y+14+(i&1)*14;
-		if(i==cur)focus_row(x-10,y-1,91,14);
-		body(x+2,y,i==cur?C_INK:C_TEXT,items[i],78);
+		bool selected=!board_focus&&i==cur;
+		if(selected)focus_row(x-10,y-1,91,14);
+		body(x+2,y,selected?C_INK:C_TEXT,items[i],78);
 	}
+}
+
+static void draw_duel_choices(uint8_t duelist,int cur)
+{draw_board(0,-1);draw_duel_actions(duelist,cur,false);}
+
+static uint8_t board_occupied(uint8_t duelist)
+{
+	uint8_t mask=0;Slot slot;
+	for(int loc=0;loc<MAX_PLAY_AREA_POKEMON;loc++)if(get_slot(duelist,loc,&slot))mask|=1u<<loc;
+	return mask;
 }
 
 static int ui_duel_menu(const TcgRequest *r, int ports)
 {
-	int cur = r->cursor < 6 ? r->cursor : 0;
+	bool fresh_confirm=g_actions_fresh_owner==r->duelist;
+	if(fresh_confirm)g_actions_fresh_owner=0;
+	DuelFreshConfirm confirm={0};
+	DuelBoardFocus focus;duel_board_focus_init(&focus,r->cursor);
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_duel_choices(r->duelist,cur);
-		end_frame_poll();
+		uint8_t bottom=board_occupied(TCG_PLAYER),top=board_occupied(TCG_OPPONENT);
+		duel_board_focus_refresh(&focus,bottom,top);
+		unsigned side,loc;
+		bool on_board=duel_board_focus_target(&focus,&side,&loc);
+		uint64_t key=((uint64_t)focus.row<<40)|((uint64_t)focus.slot<<32)|focus.action;
+		if(begin_reused_frame(&reuse,key)) {
+			if(on_board) {
+				draw_board(side?TCG_OPPONENT:TCG_PLAYER,(int)loc);
+				draw_duel_actions(r->duelist,focus.action,true);
+			} else draw_duel_choices(r->duelist,focus.action);
+		}
+		end_reused_frame(&reuse);
 #if ADVENTURE_DIAGNOSTIC == 3
-		if(review_snapshot())return cur;
+		if(review_snapshot())return focus.action;
 #endif
 		Keys k = keys(ports);
-		if (k.up || k.down)
-			cur ^= 1;
-		if (k.left)
-			cur = (cur + 4) % 6;
-		if (k.right)
-			cur = (cur + 2) % 6;
-		if (k.start)
-			view_slot(r->shown, 0, ports);
-		if (k.z)
-			check_screen(ports);
+		if(fresh_confirm&&!duel_fresh_confirm_step(&confirm,confirm_buttons_held(ports)))
+			k.a=k.b=k.start=k.z=false;
+		if(k.up)duel_board_focus_move(&focus,DUEL_BOARD_UP,bottom,top);
+		if(k.down)duel_board_focus_move(&focus,DUEL_BOARD_DOWN,bottom,top);
+		if(k.left)duel_board_focus_move(&focus,DUEL_BOARD_LEFT,bottom,top);
+		if(k.right)duel_board_focus_move(&focus,DUEL_BOARD_RIGHT,bottom,top);
+		if(k.b) {
+			bool leaving_board=on_board||duel_board_focus_target(&focus,NULL,NULL);
+			duel_board_focus_move(&focus,DUEL_BOARD_BACK,bottom,top);
+			if(leaving_board)continue;
+		}
+		if(duel_board_focus_target(&focus,&side,&loc)) {
+			if(k.a||k.start) {
+#ifdef TCGN64_HOST_TEST
+				debugf("BOARD INSPECT %s slot=%u\n",who(side?TCG_OPPONENT:TCG_PLAYER),loc);
+#endif
+				view_slot(side?TCG_OPPONENT:TCG_PLAYER,(int)loc,ports);
+			}
+			else if(k.z)check_screen(ports);
+			/* A board inspection never answers the engine's action request,
+			 * and the opening press cannot select an action after returning. */
+			continue;
+		}
+		if(k.start){view_slot(r->shown,0,ports);continue;}
+		if(k.z){check_screen(ports);continue;}
 		if (k.a) {
-			if (cur == 2) /* the engine's check menu is a no-op shim: browse here */
+			if (focus.action == 2) /* the engine's check menu is a no-op shim: browse here */
 				check_screen(ports);
-			return cur;
+			return focus.action;
 		}
 	}
 }
@@ -2299,11 +2438,13 @@ static int ui_card_list(const TcgRequest *r, int ports)
 	int cur = r->cursor < n ? r->cursor : 0, top = 0;
 	const char *hints = r->arg[0] ? "A: view  B: back" : r->arg[1] ? "A: choose  B: back  START: info"
 	                                                                : "A: select  B: back  START: info";
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_card_list_screen(title, info, items, n, r->shown, cur, &top);
-		draw_textbox_hint(hints);
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			draw_card_list_screen(title, info, items, n, r->shown, cur, &top);
+			draw_textbox_hint(hints);
+		}
+		end_reused_frame(&reuse);
 #if ADVENTURE_DIAGNOSTIC == 3
 		if(review_snapshot())return cur;
 #endif
@@ -2385,13 +2526,15 @@ static int ui_item_menu(const TcgRequest *r, int ports)
 	uint8_t deck = r->arg[0] < DECK_SIZE ? r->arg[0] : 0;
 	uint8_t id = tcg_card_id(r->shown, deck);
 	int cur = 0;
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_card_page(id, r->shown, deck, NULL);
-		chosen_corners(RIGHT-69,BOARD_Y+3,70,54);
-		draw_choice_popup(RIGHT - 100, BOARD_Y + 130, NULL, labels, 2, cur);
-		draw_textbox_hint("A: choose  B: back  START: card");
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			draw_card_page(id, r->shown, deck, NULL);
+			chosen_corners(RIGHT-69,BOARD_Y+3,70,54);
+			draw_choice_popup(RIGHT - 100, BOARD_Y + 130, NULL, labels, 2, cur);
+			draw_textbox_hint("A: choose  B: back  START: card");
+		}
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		if(k.start)view_card(id,r->shown,deck,ports);
 		if (k.up || k.down || k.left || k.right)
@@ -2431,12 +2574,14 @@ static int pick_slot(uint8_t duelist, int start, int n, int cur, bool can_cancel
 		n = 1;
 	if (cur < start || cur >= start + n)
 		cur = start;
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_board(duelist, cur);
-		slot_hint(duelist, cur);
-		draw_textbox_hint(hints);
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			draw_board(duelist, cur);
+			slot_hint(duelist, cur);
+			draw_textbox_hint(hints);
+		}
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		if (k.left || k.up)
 			cur = cur > start ? cur - 1 : start + n - 1;
@@ -2476,45 +2621,46 @@ static int ui_attacks(const TcgRequest *r, int ports)
 		memcpy(pairs, r->items, (size_t)(n * 2));
 	Slot slot;
 	bool have_slot = get_slot(r->shown, 0, &slot);
+	uint8_t deck=pairs[0]<DECK_SIZE?pairs[0]:0,id=tcg_card_id(r->shown,deck);
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_board(0, -1);
-		int py = BOARD_Y + 88, ph = TBOX_Y - 1 - (BOARD_Y + 88);
-		panel(LEFT - 6, py, RIGHT - LEFT + 12, ph);
-		char name[32];
-		uint8_t deck = pairs[0] < DECK_SIZE ? pairs[0] : 0;
-		uint8_t id = tcg_card_id(r->shown, deck);
-		card_name(id, name, sizeof(name));
-		bodyf(LEFT,py+3,C_DIM,204,"%s's attacks",name);
-		if (have_slot) /* the attacker's energy */
-			energy_icons(RIGHT - 8 * 9, py + 4, slot.energy, 8);
-		const struct CardData *c = card_data(id);
-		int y = py + 19;
-		for (int i = 0; i < n; i++, y += LIST_LH + 1) {
-			const struct AtkData *atk = pairs[i * 2 + 1] ? &c->Atk2 : &c->Atk1;
-			if (i == cur)
-				focus_row(LEFT-4,y-1,RIGHT-LEFT+8,LIST_LH);
-			int w = cost_icons(LEFT + 8, y + 2, atk);
-			text_of(rd16(atk->Name), name, sizeof(name));
-			bool ok = !have_slot || r->shown != g_turn_holder || can_pay(atk, &slot);
-			int tx=LEFT+12+(w>36?w:36);
-			body(tx,y,i==cur?C_INK:ok?C_TEXT:C_DIM,name,RIGHT-tx-30);
-			if (atk->Damage) {
-				static const char suffix[] = { 0, '+', '-', 'x' };
-				char d[8];
-				snprintf(d, sizeof(d), "%d%c", atk->Damage, suffix[atk->Category & 3]);
-				body(RIGHT-4-body_width(d),y,i==cur?C_INK:C_TEXT,d,32);
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			draw_board(0, -1);
+			int py = BOARD_Y + 88, ph = TBOX_Y - 1 - (BOARD_Y + 88);
+			panel(LEFT - 6, py, RIGHT - LEFT + 12, ph);
+			char name[32];
+			card_name(id, name, sizeof(name));
+			bodyf(LEFT,py+3,C_DIM,204,"%s's attacks",name);
+			if (have_slot) /* the attacker's energy */
+				energy_icons(RIGHT - 8 * 9, py + 4, slot.energy, 8);
+			const struct CardData *c = card_data(id);
+			int y = py + 19;
+			for (int i = 0; i < n; i++, y += LIST_LH + 1) {
+				const struct AtkData *atk = pairs[i * 2 + 1] ? &c->Atk2 : &c->Atk1;
+				if (i == cur)
+					focus_row(LEFT-4,y-1,RIGHT-LEFT+8,LIST_LH);
+				int w = cost_icons(LEFT + 8, y + 2, atk);
+				text_of(rd16(atk->Name), name, sizeof(name));
+				bool ok = !have_slot || r->shown != g_turn_holder || can_pay(atk, &slot);
+				int tx=LEFT+12+(w>36?w:36);
+				body(tx,y,i==cur?C_INK:ok?C_TEXT:C_DIM,name,RIGHT-tx-30);
+				if (atk->Damage) {
+					static const char suffix[] = { 0, '+', '-', 'x' };
+					char d[8];
+					snprintf(d, sizeof(d), "%d%c", atk->Damage, suffix[atk->Category & 3]);
+					body(RIGHT-4-body_width(d),y,i==cur?C_INK:C_TEXT,d,32);
+				}
 			}
+			/* description of the attack under the cursor */
+			const struct AtkData *atk = pairs[cur * 2 + 1] ? &c->Atk2 : &c->Atk1;
+			char lines[8][COLS + 1], desc[400];
+			attack_description(atk, desc, sizeof(desc));
+			int nl = wrap(desc, COLS, lines, 6);
+			for (int i = 0; i < nl && y < py + ph - 9; i++, y += 9)
+				print(LEFT, y + 2, C_TEXT, lines[i]);
+			draw_textbox_hint("A: attack  B: back  START: card");
 		}
-		/* description of the attack under the cursor */
-		const struct AtkData *atk = pairs[cur * 2 + 1] ? &c->Atk2 : &c->Atk1;
-		char lines[8][COLS + 1], desc[400];
-		attack_description(atk, desc, sizeof(desc));
-		int nl = wrap(desc, COLS, lines, 6);
-		for (int i = 0; i < nl && y < py + ph - 9; i++, y += 9)
-			print(LEFT, y + 2, C_TEXT, lines[i]);
-		draw_textbox_hint("A: attack  B: back  START: card");
-		end_frame_poll();
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		if (k.up || k.down)
 			cur = n > 1 ? cur ^ 1 : 0;
@@ -2538,27 +2684,30 @@ static int label_text(void *ctx, int i, char *out, int n, int *icon)
 static int choose(const char *title,const char *const *labels,const int *icons,int n,int cur,bool can_cancel,int ports)
 {
 	if(cur<0||cur>=n)cur=0;
+	UiCanvasReuse reuse={0};
 	for(;;) {
-		begin_frame();draw_board(0,-1);
-		int width=0;
-		for(int i=0;i<n;i++)if(body_width(labels[i])>width)width=body_width(labels[i]);
-		if(title&&body_width(title)>width)width=body_width(title);
-		if(width>256)width=256;
-		int rows=n>10?10:n,top=cur>=rows?cur-rows+1:0;
-		int pw=width+40;if(pw>300)pw=300;
-		int x=(SCREEN_W-pw)/2,y=BOARD_Y+10;
-		if(icons) {
-			panel(x,y,pw,rows*LIST_LH+24);
-			body(x+7,y+4,C_HI,title?title:"",pw-14);
-			for(int i=top;i<n&&i<top+rows;i++) {
-				int ly=y+21+(i-top)*LIST_LH;
-				if(i==cur)focus_row(x+3,ly-1,pw-6,LIST_LH);
-				if(icons[i]>=0)energy_icon(x+15,ly+2,icons[i]);
-				body(x+27,ly,i==cur?C_INK:C_TEXT,labels[i],pw-32);
-			}
-		} else draw_list(x,y,pw,rows,title,n,cur,&top,label_text,(void *)labels);
-		draw_textbox_hint(can_cancel?"A: choose  B: back":"A: choose");
-		end_frame_poll();Keys k=keys(ports);
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			draw_board(0,-1);
+			int width=0;
+			for(int i=0;i<n;i++)if(body_width(labels[i])>width)width=body_width(labels[i]);
+			if(title&&body_width(title)>width)width=body_width(title);
+			if(width>256)width=256;
+			int rows=n>10?10:n,top=cur>=rows?cur-rows+1:0;
+			int pw=width+40;if(pw>300)pw=300;
+			int x=(SCREEN_W-pw)/2,y=BOARD_Y+10;
+			if(icons) {
+				panel(x,y,pw,rows*LIST_LH+24);
+				body(x+7,y+4,C_HI,title?title:"",pw-14);
+				for(int i=top;i<n&&i<top+rows;i++) {
+					int ly=y+21+(i-top)*LIST_LH;
+					if(i==cur)focus_row(x+3,ly-1,pw-6,LIST_LH);
+					if(icons[i]>=0)energy_icon(x+15,ly+2,icons[i]);
+					body(x+27,ly,i==cur?C_INK:C_TEXT,labels[i],pw-32);
+				}
+			} else draw_list(x,y,pw,rows,title,n,cur,&top,label_text,(void *)labels);
+			draw_textbox_hint(can_cancel?"A: choose  B: back":"A: choose");
+		}
+		end_reused_frame(&reuse);Keys k=keys(ports);
 		if(k.up)cur=cur>0?cur-1:n-1;
 		if(k.down)cur=cur<n-1?cur+1:0;
 		if(k.a)return cur;
@@ -2600,12 +2749,14 @@ static int ui_menu_two_items(const TcgRequest *r, int ports)
 	const char *labels[2] = { a, b };
 	two_labels(r->text ? tcg_text(r->text) : g_log_n ? g_log[g_log_n - 1] : "", a, b, sizeof(a), "Left", "Right");
 	int cur = r->cursor < 2 ? r->cursor : 0;
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_board(0, -1);
-		draw_textbox_hint("A: choose");
-		draw_choice_popup(RIGHT - 120, TBOX_Y - 40, NULL, labels, 2, cur);
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			draw_board(0, -1);
+			draw_textbox_hint("A: choose");
+			draw_choice_popup(RIGHT - 120, TBOX_Y - 40, NULL, labels, 2, cur);
+		}
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		if (k.up || k.down || k.left || k.right)
 			cur ^= 1;
@@ -2622,12 +2773,14 @@ static int ui_peek_area(const TcgRequest *r, int ports)
 	snprintf(b, sizeof(b), "%.15s's play area", who(r->shown == TCG_PLAYER ? TCG_OPPONENT : TCG_PLAYER));
 	const char *labels[2] = { a, b };
 	int cur = r->cursor < 2 ? r->cursor : 0;
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_board(0, -1);
-		draw_textbox_hint("A: choose");
-		draw_choice_popup(LEFT + 60, BOARD_Y + 60, "Peek at", labels, 2, cur);
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			draw_board(0, -1);
+			draw_textbox_hint("A: choose");
+			draw_choice_popup(LEFT + 60, BOARD_Y + 60, "Peek at", labels, 2, cur);
+		}
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		if (k.up || k.down || k.left || k.right)
 			cur ^= 1;
@@ -2645,28 +2798,30 @@ static int ui_peek_target(const TcgRequest *r, int ports)
 	int cur = r->cursor < 8 ? r->cursor : 7;
 	char title[48];
 	snprintf(title, sizeof(title), "%s: which card?", who(r->shown));
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_board(0, -1);
-		int x0 = LEFT + 40, y0 = BOARD_Y + 36;
-		panel(x0 - 10, y0 - 18, 236, 128);
-		print(x0, y0 - 12, C_HI, title);
-		for (int i = 0; i < 8; i++) {
-			int x = i < 6 ? x0 + (i % 3) * 40 : x0 + 130, y = i < 6 ? y0 + (i / 3) * 48 : y0 + (i - 6) * 48;
-			bool ok = i < 6 ? (prizes & (1 << i)) != 0 : i == 7 || hand;
-			if (ok)
-				card_back(x+2,y,28,40);
-			else
-				rect(x, y, 32, 40, C_MID);
-			if (i >= 6)
-				print(x + 38, y + 16, ok ? C_TEXT : C_DIM, i == 6 ? "Hand" : "Deck");
-			if (i == cur) {
-				rect(x - 2, y - 2, 36, 44, C_HI);
-				rect(x - 3, y - 3, 38, 46, C_HI);
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			draw_board(0, -1);
+			int x0 = LEFT + 40, y0 = BOARD_Y + 36;
+			panel(x0 - 10, y0 - 18, 236, 128);
+			print(x0, y0 - 12, C_HI, title);
+			for (int i = 0; i < 8; i++) {
+				int x = i < 6 ? x0 + (i % 3) * 40 : x0 + 130, y = i < 6 ? y0 + (i / 3) * 48 : y0 + (i - 6) * 48;
+				bool ok = i < 6 ? (prizes & (1 << i)) != 0 : i == 7 || hand;
+				if (ok)
+					card_back(x+2,y,28,40);
+				else
+					rect(x, y, 32, 40, C_MID);
+				if (i >= 6)
+					print(x + 38, y + 16, ok ? C_TEXT : C_DIM, i == 6 ? "Hand" : "Deck");
+				if (i == cur) {
+					rect(x - 2, y - 2, 36, 44, C_HI);
+					rect(x - 3, y - 3, 38, 46, C_HI);
+				}
 			}
+			draw_textbox_hint("A: look  B: back");
 		}
-		draw_textbox_hint("A: look  B: back");
-		end_frame_poll();
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		/* prizes in 2 rows of 3, then hand (row 1) and deck (row 2) on the right */
 		if (k.left)
@@ -2690,11 +2845,13 @@ static int ui_menu_card_list(const TcgRequest *r, int ports)
 		return TCG_CANCEL;
 	memcpy(items, r->items, (size_t)n);
 	int cur = r->cursor < n ? r->cursor : 0, top = 0;
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_card_list_screen("Choose a card", NULL, items, n, r->shown, cur, &top);
-		draw_textbox_hint("A: choose  B: back  START: info");
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			draw_card_list_screen("Choose a card", NULL, items, n, r->shown, cur, &top);
+			draw_textbox_hint("A: choose  B: back  START: info");
+		}
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		list_nav(k, n, &cur);
 		if (k.a && n > 0)
@@ -2710,12 +2867,14 @@ static int ui_yes_no(const TcgRequest *r, int ports)
 {
 	const char *labels[2] = { "Yes", "No" };
 	int cur = r->cursor ? 0 : 1; /* ui item 0 = yes / first item = answer 1 */
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_board(0, -1);
-		draw_textbox_hint("A: choose  B: no");
-		draw_choice_popup(RIGHT - 80, TBOX_Y - 40, NULL, labels, 2, cur);
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			draw_board(0, -1);
+			draw_textbox_hint("A: choose  B: no");
+			draw_choice_popup(RIGHT - 80, TBOX_Y - 40, NULL, labels, 2, cur);
+		}
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		if (k.up || k.down || k.left || k.right)
 			cur ^= 1;
@@ -2737,11 +2896,13 @@ static int ui_energy_discard(const TcgRequest *r, int ports)
 		n = 0;
 	snprintf(title, sizeof(title), "Discard energy  %d/%d", r->arg[0], r->arg[1]);
 	int cur = 0, top = 0;
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_card_list_screen(title, NULL, items, n, r->shown, cur, &top);
-		draw_textbox_hint("A: discard  B: back");
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			draw_card_list_screen(title, NULL, items, n, r->shown, cur, &top);
+			draw_textbox_hint("A: discard  B: back");
+		}
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		list_nav(k, n, &cur);
 		if (k.a && n > 0)
@@ -2775,10 +2936,12 @@ static int ui_prize(const TcgRequest *r, int ports)
 {
 	uint8_t mask = r->arg[0];
 	int cur = r->cursor < 6 ? r->cursor : 0;
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_prize_choices(mask,cur);
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			draw_prize_choices(mask,cur);
+		}
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		if (k.left)
 			cur = cur % 3 ? cur - 1 : cur + 2;
@@ -2820,11 +2983,13 @@ static int ui_confirm(const TcgRequest *r, int ports)
 	int loc = w[ADDR_wCurPlayAreaSlot - WRAM_START];
 	if (loc >= num_in_play(r->shown))
 		loc = -1;
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_board(r->shown, loc);
-		draw_textbox_hint("A: continue  B: stop");
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,(uint32_t)loc)) {
+			draw_board(r->shown, loc);
+			draw_textbox_hint("A: continue  B: stop");
+		}
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		if (k.a)
 			return 0;
@@ -2839,14 +3004,16 @@ static int ui_number(const TcgRequest *r, int ports)
 {
 	int n = r->num_items ? r->num_items : 1;
 	int v = r->cursor < n ? r->cursor : 0;
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		draw_board(0, -1);
-		panel(SCREEN_W / 2 - 60, BOARD_Y + 60, 120, 40);
-		print(SCREEN_W / 2 - 52, BOARD_Y + 66, C_DIM, "Choose a number");
-		printf_at(SCREEN_W / 2 - 12, BOARD_Y + 82, C_HI, "< %d >", v);
-		draw_textbox_hint("A: ok  B: back");
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,(uint32_t)v)) {
+			draw_board(0, -1);
+			panel(SCREEN_W / 2 - 60, BOARD_Y + 60, 120, 40);
+			print(SCREEN_W / 2 - 52, BOARD_Y + 66, C_DIM, "Choose a number");
+			printf_at(SCREEN_W / 2 - 12, BOARD_Y + 82, C_HI, "< %d >", v);
+			draw_textbox_hint("A: ok  B: back");
+		}
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		if (k.up || k.right)
 			v = v < n - 1 ? v + 1 : 0;
@@ -2882,6 +3049,7 @@ static void check_screen(int ports)
 {
 	static const char *const tabs[4] = { "%s's play area", "%s's play area", "%s's discard pile", "%s's discard pile" };
 	int tab = 0, cur = 0, top = 0;
+	UiCanvasReuse reuse={0};
 	for (;;) {
 		CheckCtx c;
 		c.duelist = tab & 1 ? TCG_OPPONENT : TCG_PLAYER;
@@ -2891,10 +3059,11 @@ static void check_screen(int ports)
 			cur = c.n ? c.n - 1 : 0;
 		char title[48];
 		snprintf(title, sizeof(title), tabs[tab], who(c.duelist));
-		begin_frame();
-		draw_card_list_screen(title, "L/R: switch view", c.cards, c.n, c.duelist, cur, &top);
-		draw_textbox_hint("L/R: view  START: card  B: back");
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,((uint64_t)(uint32_t)tab<<32)|(uint32_t)cur)) {
+			draw_card_list_screen(title, "L/R: switch view", c.cards, c.n, c.duelist, cur, &top);
+			draw_textbox_hint("L/R: view  START: card  B: back");
+		}
+		end_reused_frame(&reuse);
 		Keys k = keys(ports);
 		if (k.up)
 			cur = cur > 0 ? cur - 1 : (c.n ? c.n - 1 : 0);
@@ -3029,12 +3198,21 @@ static const char *const kReqName[] = { "?", "ack", "duel_menu", "card_list", "i
 static void on_event(void *ctx, const TcgEvent *ev)
 {
 	(void)ctx;
+	g_ui_revision++;
 #ifdef TCGN64_ADVENTURE
 	if(ev->type==TCG_EV_MUSIC)adventure_audio_event(0,ev->arg[0]);
 	if(ev->type==TCG_EV_SFX)adventure_audio_event(1,ev->arg[0]);
 #endif
 	switch (ev->type) {
 	case TCG_EV_TEXT:
+		g_placement_ack=ev->text==PlacedOnTheBenchText&&ev->arg[0]&&!g_overlay.on&&g_turn_holder&&
+			g_turn_holder==hWhoseTurn&&g_kind[side_of(hWhoseTurn)]==PK_HUMAN;
+		if(g_placement_ack) {
+			/* Human Basic play has already mutated the Bench, but its source
+			 * message arrives before the next MAIN screen event. */
+			g_screen=TCG_SCREEN_MAIN;g_screen_arg=0;g_boxmsg=0xff;
+			g_actions_fresh_owner=hWhoseTurn;
+		}
 		if(ev->arg[1]==TCG_TEXT_PRACTICE_CHECKLIST) {
 			sanitize(ev->str?ev->str:"",g_practice_checklist,sizeof(g_practice_checklist));
 			g_practice_checklist_on=g_practice_checklist[0]!=0;
@@ -3058,8 +3236,10 @@ static void on_event(void *ctx, const TcgEvent *ev)
 		}
 		if (g_screen == TCG_SCREEN_BOX_MESSAGE)
 			g_boxmsg = ev->arg[2];
-		if (g_screen != TCG_SCREEN_LARGE_CARD)
+		if (g_screen != TCG_SCREEN_LARGE_CARD) {
 			g_overlay.on = false;
+			g_drawn_card_fresh_ack=false;
+		}
 		break;
 	case TCG_EV_CARD:
 		g_overlay.on = true;
@@ -3067,6 +3247,7 @@ static void on_event(void *ctx, const TcgEvent *ev)
 		g_overlay.owner = ev->arg[1];
 		g_overlay.id = ev->arg[2];
 		g_overlay.page = ev->arg[3];
+		g_drawn_card_fresh_ack=ev->text==YouDrewText;
 		break;
 	case TCG_EV_COIN:
 		coin_record(ev);
@@ -3090,6 +3271,7 @@ static void on_event(void *ctx, const TcgEvent *ev)
 		show_frames((ev->arg[0] > 60 ? 60 : ev->arg[0]) / 2);
 		break;
 	case TCG_EV_TURN:
+		g_actions_fresh_owner=0;
 		g_practice_checklist[0]=0;g_practice_checklist_on=false;
 		g_practice_reading_on=false;
 		g_result=-1;
@@ -3121,6 +3303,7 @@ static void on_event(void *ctx, const TcgEvent *ev)
 
 static int on_request(void *ctx, const TcgRequest *r)
 {
+	g_ui_revision++;
 	(void)ctx;
 	if(r->type!=TCG_REQ_ACK){g_practice_checklist_on=false;g_practice_reading_on=false;}
 #ifdef TCGN64_ADVENTURE
@@ -3627,6 +3810,7 @@ static void reset_duel_ui(void)
 	input_discard_pending();
 	log_clear();
 	memset(&g_overlay, 0, sizeof(g_overlay));
+	g_drawn_card_fresh_ack=g_placement_ack=false;g_actions_fresh_owner=0;
 	memset(&g_coin, 0, sizeof(g_coin));
 	memset(&g_dmg, 0, sizeof(g_dmg));
 	g_turn_holder = 0;
@@ -3878,19 +4062,21 @@ void n64_message(const char *title,const char *text)
 	static char clean[8192], lines[256][COLS+1];
 	sanitize(text,clean,sizeof(clean));
 	int n=wrap(clean,COLS,lines,256),page=0,visible=0;
+	UiCanvasReuse reuse={0};
 	for (;;) {
 		int characters=0;
 		for(int i=0;i<17&&page+i<n;i++)characters+=(int)strlen(lines[page+i]);
 		static const int characters_per_frame[]={1,2,3,6,COLS*17};
 		visible+=characters_per_frame[g_message_speed];
 		if(visible>characters)visible=characters;
-		begin_frame();
-		paper_panel(8,6,304,228);fill(LEFT,27,RIGHT-LEFT,1,C_PAPERSHADE);
-		print_n(LEFT,12,C_INK,title?title:"",COLS);
-		int remaining=visible;
-		for(int i=0;i<17 && page+i<n;i++){int length=(int)strlen(lines[page+i]);print_n(LEFT,32+i*LH,C_INK,lines[page+i],remaining<length?remaining:length);remaining-=length;if(remaining<0)remaining=0;}
-		print(LEFT,218,C_INK,page+17<n?"A: next   B: back":"A/B: close");
-		end_frame_poll();
+		if(begin_reused_frame(&reuse,((uint64_t)(uint32_t)page<<32)|(uint32_t)visible)) {
+			paper_panel(8,6,304,228);fill(LEFT,27,RIGHT-LEFT,1,C_PAPERSHADE);
+			print_n(LEFT,12,C_INK,title?title:"",COLS);
+			int remaining=visible;
+			for(int i=0;i<17 && page+i<n;i++){int length=(int)strlen(lines[page+i]);print_n(LEFT,32+i*LH,C_INK,lines[page+i],remaining<length?remaining:length);remaining-=length;if(remaining<0)remaining=0;}
+			print(LEFT,218,C_INK,page+17<n?"A: next   B: back":"A/B: close");
+		}
+		end_reused_frame(&reuse);
 		Keys k=keys(1);
 		if(k.a || k.b) {
 			if(visible<characters){visible=characters;continue;}
@@ -3904,19 +4090,21 @@ int n64_menu(const char *title,const char *const *items,int count,int initial,bo
 {
 	if(count<=0) return TCG_CANCEL;
 	int cur=initial>=0 && initial<count?initial:0;
+	UiCanvasReuse reuse={0};
 	for (;;) {
-		begin_frame();
-		paper_panel(8,6,304,228);fill(LEFT,27,RIGHT-LEFT,1,C_PAPERSHADE);
-		print_n(LEFT,12,C_INK,title?title:"",COLS);
-		int top=cur<14?0:cur-13;
-		for(int i=top;i<count && i<top+15;i++) {
-			char clean[256];sanitize(items[i],clean,sizeof(clean));
-			int y=35+(i-top)*11;
-			if(i==cur) fill(LEFT-4,y-1,RIGHT-LEFT+8,11,C_STORYSEL);
-			print_n(LEFT,y,i==cur?C_TEXT:C_INK,clean,COLS);
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			paper_panel(8,6,304,228);fill(LEFT,27,RIGHT-LEFT,1,C_PAPERSHADE);
+			print_n(LEFT,12,C_INK,title?title:"",COLS);
+			int top=cur<14?0:cur-13;
+			for(int i=top;i<count && i<top+15;i++) {
+				char clean[256];sanitize(items[i],clean,sizeof(clean));
+				int y=35+(i-top)*11;
+				if(i==cur) fill(LEFT-4,y-1,RIGHT-LEFT+8,11,C_STORYSEL);
+				print_n(LEFT,y,i==cur?C_TEXT:C_INK,clean,COLS);
+			}
+			print(LEFT,216,C_INK,cancel?"A: select   B: back":"A: select");
 		}
-		print(LEFT,216,C_INK,cancel?"A: select   B: back":"A: select");
-		end_frame_poll();
+		end_reused_frame(&reuse);
 		Keys k=keys(1);
 		if(list_nav(k,count,&cur))adventure_audio_event(1,SFX_CURSOR);
 		if(k.a){adventure_audio_event(1,SFX_CONFIRM);return cur;}

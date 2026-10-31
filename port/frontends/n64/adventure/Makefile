@@ -14,6 +14,7 @@ ROM ?= poketcg-adventure
 DIAGNOSTIC ?= 0
 HIGH_RES ?= 0
 RSPQ_WAKE_FIX ?= 1
+FPS_FOCUS ?= 0
 ifneq ($(filter 5 6 7 8 12,$(DIAGNOSTIC)),)
 SCENE_T3D ?= 0
 else
@@ -24,7 +25,7 @@ ENGINE_SOURCES := $(wildcard $(PORT)/src/*.c $(PORT)/src/gen/*.c $(PORT)/src/eff
 ENGINE_OBJECTS := $(ENGINE_SOURCES:$(PORT)/src/%.c=$(BUILD_DIR)/engine/%.o)
 GAME_SOURCES := $(wildcard $(PORT)/gameplay/*.c $(PORT)/gameplay/gen/*.c $(PORT)/overworld/*.c $(PORT)/overworld/gen/*.c)
 GAME_OBJECTS := $(GAME_SOURCES:$(PORT)/%.c=$(BUILD_DIR)/game/%.o)
-FRONT_OBJECTS := $(addprefix $(BUILD_DIR)/,main.o menus.o profiles.o extra_ui.o intro.o naming.o presentation.o dialogue.o audio.o wav64_vadpcm_fixed.o scene.o video.o save_sram.o duel_frontend.o)
+FRONT_OBJECTS := $(addprefix $(BUILD_DIR)/,main.o menus.o profiles.o extra_ui.o intro.o naming.o presentation.o dialogue.o pack.o audio.o wav64_vadpcm_fixed.o scene.o video.o save_sram.o duel_frontend.o)
 ifeq ($(RSPQ_WAKE_FIX),1)
 FRONT_OBJECTS += $(BUILD_DIR)/rspq_fixed.o
 endif
@@ -42,6 +43,14 @@ FRONT_OBJECTS += $(BUILD_DIR)/camera_preview.o
 endif
 ifeq ($(DIAGNOSTIC),17)
 FRONT_OBJECTS += $(BUILD_DIR)/audio_reward.o
+endif
+ifeq ($(DIAGNOSTIC),20)
+FRONT_OBJECTS += $(BUILD_DIR)/fps_sweep.o
+N64_LDFLAGS += --wrap=display_get --wrap=n64_video_present --wrap=adventure_audio_poll
+endif
+ifeq ($(DIAGNOSTIC),24)
+FRONT_OBJECTS += $(BUILD_DIR)/pack_native.o
+N64_LDFLAGS += --wrap=joypad_get_inputs --wrap=joypad_is_connected --wrap=n64_card_detail
 endif
 ifeq ($(DIAGNOSTIC),8)
 FRONT_OBJECTS += $(BUILD_DIR)/face_preview.o
@@ -71,6 +80,8 @@ AUDIO_ASSETS := $(wildcard $(PORT)/audio/generated/*.wav64)
 AUDIO_FILES := $(AUDIO_ASSETS:$(PORT)/audio/generated/%=$(N64_MKDFS_ROOT)/audio/%)
 INTRO_PNGS := $(wildcard assets/intro/*.png)
 INTRO_SPRITES := $(INTRO_PNGS:assets/intro/%.png=$(N64_MKDFS_ROOT)/intro/%.sprite)
+PACK_PNGS := $(wildcard assets/packs/*.png)
+PACK_SPRITES := $(PACK_PNGS:assets/packs/%.png=$(N64_MKDFS_ROOT)/packs/%.sprite)
 
 .PHONY: all bundle clean assets diagnostic video-diagnostic review-diagnostic
 all:
@@ -93,6 +104,9 @@ $(BUILD_DIR)/engine/%.o: $(PORT)/src/%.c
 $(BUILD_DIR)/game/%.o: $(PORT)/%.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+$(BUILD_DIR)/pack.o: pack.c $(BUILD_DIR)/cardart_table.h
+	@mkdir -p $(dir $@)
+	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -MMD -c $< -o $@
 $(BUILD_DIR)/duel_frontend.o: ../tcgn64.c $(BUILD_DIR)/cardart_table.h
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -DTCGN64_ADVENTURE -DTCGN64_CARD_ART -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -MMD -c $< -o $@
 $(BUILD_DIR)/mips_story.o: tests/mips_story.c
@@ -110,9 +124,19 @@ $(BUILD_DIR)/leads_preview.o: tests/leads_preview.c
 $(BUILD_DIR)/camera_preview.o: tests/camera_preview.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+$(BUILD_DIR)/pack_native.o: tests/pack_native.c tests/pack_native.h
+	@mkdir -p $(dir $@)
+	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -MMD -c $< -o $@
 $(BUILD_DIR)/audio_reward.o: tests/audio_reward.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+$(BUILD_DIR)/fps-config-$(FPS_FOCUS):
+	@mkdir -p $(BUILD_DIR)
+	@rm -f $(BUILD_DIR)/fps-config-*
+	@touch $@
+$(BUILD_DIR)/fps_sweep.o: tests/fps_sweep.c $(BUILD_DIR)/fps-config-$(FPS_FOCUS)
+	@mkdir -p $(dir $@)
+	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -DFPS_SWEEP_FOCUS=$(FPS_FOCUS) -MMD -c $< -o $@
 $(BUILD_DIR)/wav64_vadpcm_fixed.o: vendor/libdragon-audio/wav64_vadpcm.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
@@ -134,6 +158,9 @@ $(N64_MKDFS_ROOT)/cards/%.sprite: $(REPO)/src/gfx/cards/%.png
 $(N64_MKDFS_ROOT)/intro/%.sprite: assets/intro/%.png
 	@mkdir -p $(dir $@)
 	$(N64_MKSPRITE) -f RGBA16 -o $(dir $@) $<
+$(N64_MKDFS_ROOT)/packs/%.sprite: assets/packs/%.png
+	@mkdir -p $(dir $@)
+	$(N64_MKSPRITE) -f RGBA16 -o $(dir $@) $<
 $(N64_MKDFS_ROOT)/world/textures/%.sprite: $(PORT)/world3d/generated/textures/%.png
 	@mkdir -p $(dir $@)
 	$(N64_MKSPRITE) -f RGBA16 -o $(dir $@) $<
@@ -146,7 +173,7 @@ $(N64_MKDFS_ROOT)/audio/%.wav64: $(PORT)/audio/generated/%.wav64
 $(N64_MKDFS_ROOT)/buildinfo.txt:
 	@mkdir -p $(dir $@)
 	@echo ai=1 > $@
-$(BUILD_DIR)/$(ROM).dfs: $(CARD_SPRITES) $(WORLD_SPRITES) $(WORLD_FILES) $(AUDIO_FILES) $(INTRO_SPRITES) $(N64_MKDFS_ROOT)/buildinfo.txt
+$(BUILD_DIR)/$(ROM).dfs: $(CARD_SPRITES) $(WORLD_SPRITES) $(WORLD_FILES) $(AUDIO_FILES) $(INTRO_SPRITES) $(PACK_SPRITES) $(N64_MKDFS_ROOT)/buildinfo.txt
 $(BUILD_DIR)/$(ROM).elf: $(ENGINE_OBJECTS) $(GAME_OBJECTS) $(FRONT_OBJECTS)
 $(ROM).z64: N64_ROM_TITLE="Pokemon TCG"
 $(ROM).z64: N64_ROM_SAVETYPE=sram256k
@@ -181,6 +208,9 @@ test:
 	python3 $(PORT)/characters/tools/check_skin.py
 	python3 $(PORT)/audio/tools/check_audio.py
 	python3 tools/build_intro.py --check
+	$(HOST_CC) -std=c11 -Wall -Wextra -Werror tests/pack_flow.c -o $(BUILD_DIR)/host/test_pack_flow
+	./$(BUILD_DIR)/host/test_pack_flow
+	python3 tools/build_packs.py --check
 HOST_CC ?= cc
 validate: diagnostic
 	python3 tools/validate.py poketcg-diagnostic.z64 --frames 42

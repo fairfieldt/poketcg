@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "ram_mib": 4,
+  "cases": [
+    {
+      "booster": 0,
+      "receipt_frames": 47,
+      "check_frames": 9,
+      "opening_frames": 9,
+      "list_frames": 20,
+      "detail": 1
+    },
+    {
+      "booster": 7,
+      "receipt_frames": 48,
+      "check_frames": 9,
+      "opening_frames": 9,
+      "list_frames": 16,
+      "detail": 0
+    },
+    {
+      "booster": 14,
+      "receipt_frames": 47,
+      "check_frames": 9,
+      "opening_frames": 9,
+      "list_frames": 15,
+      "detail": 0
+    },
+    {
+      "booster": 20,
+      "receipt_frames": 48,
+      "check_frames": 9,
+      "opening_frames": 9,
+      "list_frames": 16,
+      "detail": 0
+    }
+  ],
+  "summary": "PACK NATIVE PASS sets=4 cards=40 grants=4 frames=702 ram=4194304 width=320 free_heap=1567952",
+  "wall_seconds": 13.98,
+  "rom_sha256": "2460adc9b1ceb292fc1734aaee6992e874970dcce96fb3fa30b71af0762080a0",
+  "method": "Actual game_show_booster with real compressed music, nested world/PC/fanfare, synthetic SDK joypad reads through production VI edge capture; real card-detail roundtrip; no installed settings/saves touched",
+  "minimum_live_pack_free_heap": 1331840,
+  "scope": "Full resident game code, actual wrapper and UI/input/audio paths; world models are not all loaded simultaneously."
+}

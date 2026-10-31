@@ -1,0 +1,3553 @@
+{
+  "passed": true,
+  "diagnostic": 20,
+  "ram_mib": 4,
+  "native_dimensions": [
+    320,
+    240
+  ],
+  "target_game_fps": 30,
+  "timing": "emulated N64 CP0 ticks",
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-fps-survey.z64",
+  "rom_sha256": "656723ffd0cf378881c421725cb721f93b197ac5c035267d6cc35d3c16ddc8d5",
+  "wall_seconds": 294.47,
+  "cases": [
+    {
+      "case": "map_00_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 0,
+      "x": 10,
+      "y": 14,
+      "npc_count": 0,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1227408,
+      "cadence": {
+        "mean_us": 33416,
+        "median_us": 33420,
+        "p95_us": 35745,
+        "min_us": 30908,
+        "max_us": 35789
+      },
+      "work": {
+        "mean_us": 31888,
+        "median_us": 32182,
+        "p95_us": 32435,
+        "min_us": 29936,
+        "max_us": 32520
+      },
+      "draw": {
+        "mean_us": 29751,
+        "median_us": 29741,
+        "p95_us": 29833,
+        "min_us": 29676,
+        "max_us": 29881
+      },
+      "acquire": {
+        "mean_us": 1528,
+        "median_us": 1223,
+        "p95_us": 3450,
+        "min_us": 899,
+        "max_us": 3484
+      },
+      "present": {
+        "mean_us": 231,
+        "median_us": 229,
+        "p95_us": 249,
+        "min_us": 226,
+        "max_us": 250
+      },
+      "audio": {
+        "mean_us": 1904,
+        "median_us": 2202,
+        "p95_us": 2437,
+        "min_us": 10,
+        "max_us": 2452
+      },
+      "mean_game_fps": 29.93,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_01_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 14,
+      "y": 26,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1287600,
+      "cadence": {
+        "mean_us": 33396,
+        "median_us": 33696,
+        "p95_us": 34321,
+        "min_us": 30749,
+        "max_us": 35020
+      },
+      "work": {
+        "mean_us": 33292,
+        "median_us": 33592,
+        "p95_us": 34202,
+        "min_us": 30732,
+        "max_us": 34303
+      },
+      "draw": {
+        "mean_us": 31043,
+        "median_us": 31051,
+        "p95_us": 31490,
+        "min_us": 30427,
+        "max_us": 31628
+      },
+      "acquire": {
+        "mean_us": 104,
+        "median_us": 16,
+        "p95_us": 740,
+        "min_us": 16,
+        "max_us": 1452
+      },
+      "present": {
+        "mean_us": 280,
+        "median_us": 274,
+        "p95_us": 304,
+        "min_us": 271,
+        "max_us": 395
+      },
+      "audio": {
+        "mean_us": 1967,
+        "median_us": 2273,
+        "p95_us": 2562,
+        "min_us": 10,
+        "max_us": 2616
+      },
+      "mean_game_fps": 29.94,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_02_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 2,
+      "x": 12,
+      "y": 26,
+      "npc_count": 4,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1377016,
+      "cadence": {
+        "mean_us": 33245,
+        "median_us": 33367,
+        "p95_us": 35948,
+        "min_us": 23488,
+        "max_us": 36004
+      },
+      "work": {
+        "mean_us": 23178,
+        "median_us": 23498,
+        "p95_us": 23775,
+        "min_us": 21090,
+        "max_us": 24258
+      },
+      "draw": {
+        "mean_us": 20956,
+        "median_us": 20945,
+        "p95_us": 21097,
+        "min_us": 20798,
+        "max_us": 21112
+      },
+      "acquire": {
+        "mean_us": 10067,
+        "median_us": 9903,
+        "p95_us": 12246,
+        "min_us": 16,
+        "max_us": 12322
+      },
+      "present": {
+        "mean_us": 294,
+        "median_us": 275,
+        "p95_us": 303,
+        "min_us": 271,
+        "max_us": 1138
+      },
+      "audio": {
+        "mean_us": 1926,
+        "median_us": 2220,
+        "p95_us": 2449,
+        "min_us": 10,
+        "max_us": 2467
+      },
+      "mean_game_fps": 30.08,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_03_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 3,
+      "x": 10,
+      "y": 20,
+      "npc_count": 3,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1234832,
+      "cadence": {
+        "mean_us": 33240,
+        "median_us": 33205,
+        "p95_us": 36446,
+        "min_us": 20882,
+        "max_us": 37494
+      },
+      "work": {
+        "mean_us": 20546,
+        "median_us": 20826,
+        "p95_us": 21514,
+        "min_us": 18068,
+        "max_us": 22350
+      },
+      "draw": {
+        "mean_us": 18331,
+        "median_us": 18322,
+        "p95_us": 18762,
+        "min_us": 17785,
+        "max_us": 18781
+      },
+      "acquire": {
+        "mean_us": 12693,
+        "median_us": 12592,
+        "p95_us": 15144,
+        "min_us": 16,
+        "max_us": 15353
+      },
+      "present": {
+        "mean_us": 312,
+        "median_us": 274,
+        "p95_us": 337,
+        "min_us": 270,
+        "max_us": 1211
+      },
+      "audio": {
+        "mean_us": 1902,
+        "median_us": 2211,
+        "p95_us": 2457,
+        "min_us": 10,
+        "max_us": 2493
+      },
+      "mean_game_fps": 30.08,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_04_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 4,
+      "x": 10,
+      "y": 14,
+      "npc_count": 1,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1398192,
+      "cadence": {
+        "mean_us": 33415,
+        "median_us": 33748,
+        "p95_us": 36143,
+        "min_us": 30359,
+        "max_us": 36355
+      },
+      "work": {
+        "mean_us": 13555,
+        "median_us": 13789,
+        "p95_us": 14405,
+        "min_us": 11139,
+        "max_us": 14619
+      },
+      "draw": {
+        "mean_us": 11364,
+        "median_us": 11330,
+        "p95_us": 11971,
+        "min_us": 10856,
+        "max_us": 11984
+      },
+      "acquire": {
+        "mean_us": 19860,
+        "median_us": 19634,
+        "p95_us": 21994,
+        "min_us": 18796,
+        "max_us": 22295
+      },
+      "present": {
+        "mean_us": 270,
+        "median_us": 269,
+        "p95_us": 288,
+        "min_us": 264,
+        "max_us": 306
+      },
+      "audio": {
+        "mean_us": 1920,
+        "median_us": 2202,
+        "p95_us": 2454,
+        "min_us": 10,
+        "max_us": 2468
+      },
+      "mean_game_fps": 29.93,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_05_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 5,
+      "x": 14,
+      "y": 22,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1040928,
+      "cadence": {
+        "mean_us": 33390,
+        "median_us": 33529,
+        "p95_us": 35789,
+        "min_us": 30458,
+        "max_us": 36101
+      },
+      "work": {
+        "mean_us": 32986,
+        "median_us": 33244,
+        "p95_us": 33931,
+        "min_us": 30441,
+        "max_us": 34129
+      },
+      "draw": {
+        "mean_us": 30775,
+        "median_us": 30757,
+        "p95_us": 31292,
+        "min_us": 30159,
+        "max_us": 31405
+      },
+      "acquire": {
+        "mean_us": 403,
+        "median_us": 17,
+        "p95_us": 2238,
+        "min_us": 14,
+        "max_us": 2625
+      },
+      "present": {
+        "mean_us": 275,
+        "median_us": 273,
+        "p95_us": 302,
+        "min_us": 269,
+        "max_us": 305
+      },
+      "audio": {
+        "mean_us": 1935,
+        "median_us": 2236,
+        "p95_us": 2473,
+        "min_us": 10,
+        "max_us": 2575
+      },
+      "mean_game_fps": 29.95,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_06_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 6,
+      "x": 12,
+      "y": 14,
+      "npc_count": 4,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1250040,
+      "cadence": {
+        "mean_us": 33414,
+        "median_us": 33696,
+        "p95_us": 36033,
+        "min_us": 30229,
+        "max_us": 36182
+      },
+      "work": {
+        "mean_us": 25612,
+        "median_us": 25869,
+        "p95_us": 26452,
+        "min_us": 23158,
+        "max_us": 27130
+      },
+      "draw": {
+        "mean_us": 23422,
+        "median_us": 23421,
+        "p95_us": 23853,
+        "min_us": 22856,
+        "max_us": 23865
+      },
+      "acquire": {
+        "mean_us": 7801,
+        "median_us": 7547,
+        "p95_us": 9968,
+        "min_us": 6281,
+        "max_us": 10266
+      },
+      "present": {
+        "mean_us": 297,
+        "median_us": 275,
+        "p95_us": 306,
+        "min_us": 271,
+        "max_us": 1136
+      },
+      "audio": {
+        "mean_us": 1892,
+        "median_us": 2171,
+        "p95_us": 2393,
+        "min_us": 10,
+        "max_us": 2404
+      },
+      "mean_game_fps": 29.93,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_07_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 7,
+      "x": 10,
+      "y": 14,
+      "npc_count": 1,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1398192,
+      "cadence": {
+        "mean_us": 33244,
+        "median_us": 33399,
+        "p95_us": 36267,
+        "min_us": 19381,
+        "max_us": 36381
+      },
+      "work": {
+        "mean_us": 13499,
+        "median_us": 13777,
+        "p95_us": 14507,
+        "min_us": 11176,
+        "max_us": 15169
+      },
+      "draw": {
+        "mean_us": 11358,
+        "median_us": 11322,
+        "p95_us": 11957,
+        "min_us": 10856,
+        "max_us": 12012
+      },
+      "acquire": {
+        "mean_us": 19745,
+        "median_us": 19622,
+        "p95_us": 22223,
+        "min_us": 5558,
+        "max_us": 22256
+      },
+      "present": {
+        "mean_us": 292,
+        "median_us": 274,
+        "p95_us": 293,
+        "min_us": 269,
+        "max_us": 1133
+      },
+      "audio": {
+        "mean_us": 1847,
+        "median_us": 2152,
+        "p95_us": 2386,
+        "min_us": 10,
+        "max_us": 2398
+      },
+      "mean_game_fps": 30.08,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_08_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 8,
+      "x": 14,
+      "y": 22,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1035408,
+      "cadence": {
+        "mean_us": 33385,
+        "median_us": 33698,
+        "p95_us": 34224,
+        "min_us": 30958,
+        "max_us": 34352
+      },
+      "work": {
+        "mean_us": 33368,
+        "median_us": 33681,
+        "p95_us": 34207,
+        "min_us": 30942,
+        "max_us": 34336
+      },
+      "draw": {
+        "mean_us": 31176,
+        "median_us": 31184,
+        "p95_us": 31641,
+        "min_us": 30613,
+        "max_us": 31689
+      },
+      "acquire": {
+        "mean_us": 16,
+        "median_us": 16,
+        "p95_us": 17,
+        "min_us": 16,
+        "max_us": 17
+      },
+      "present": {
+        "mean_us": 280,
+        "median_us": 275,
+        "p95_us": 304,
+        "min_us": 270,
+        "max_us": 401
+      },
+      "audio": {
+        "mean_us": 1910,
+        "median_us": 2222,
+        "p95_us": 2430,
+        "min_us": 10,
+        "max_us": 2529
+      },
+      "mean_game_fps": 29.95,
+      "work_over_30fps_budget_us": 35
+    },
+    {
+      "case": "map_09_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 9,
+      "x": 14,
+      "y": 26,
+      "npc_count": 3,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1147488,
+      "cadence": {
+        "mean_us": 33252,
+        "median_us": 33206,
+        "p95_us": 35451,
+        "min_us": 24763,
+        "max_us": 36601
+      },
+      "work": {
+        "mean_us": 24060,
+        "median_us": 24348,
+        "p95_us": 24903,
+        "min_us": 21700,
+        "max_us": 25002
+      },
+      "draw": {
+        "mean_us": 21905,
+        "median_us": 21899,
+        "p95_us": 22341,
+        "min_us": 21338,
+        "max_us": 22353
+      },
+      "acquire": {
+        "mean_us": 9191,
+        "median_us": 9068,
+        "p95_us": 11290,
+        "min_us": 15,
+        "max_us": 11716
+      },
+      "present": {
+        "mean_us": 287,
+        "median_us": 275,
+        "p95_us": 313,
+        "min_us": 271,
+        "max_us": 1125
+      },
+      "audio": {
+        "mean_us": 1868,
+        "median_us": 2145,
+        "p95_us": 2368,
+        "min_us": 10,
+        "max_us": 2388
+      },
+      "mean_game_fps": 30.07,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_10_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 10,
+      "x": 10,
+      "y": 14,
+      "npc_count": 1,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1398184,
+      "cadence": {
+        "mean_us": 33439,
+        "median_us": 33792,
+        "p95_us": 36162,
+        "min_us": 30302,
+        "max_us": 36346
+      },
+      "work": {
+        "mean_us": 13507,
+        "median_us": 13733,
+        "p95_us": 14487,
+        "min_us": 11134,
+        "max_us": 14628
+      },
+      "draw": {
+        "mean_us": 11360,
+        "median_us": 11338,
+        "p95_us": 11971,
+        "min_us": 10834,
+        "max_us": 11986
+      },
+      "acquire": {
+        "mean_us": 19931,
+        "median_us": 19699,
+        "p95_us": 22050,
+        "min_us": 18795,
+        "max_us": 22298
+      },
+      "present": {
+        "mean_us": 271,
+        "median_us": 269,
+        "p95_us": 293,
+        "min_us": 265,
+        "max_us": 300
+      },
+      "audio": {
+        "mean_us": 1876,
+        "median_us": 2160,
+        "p95_us": 2399,
+        "min_us": 10,
+        "max_us": 2406
+      },
+      "mean_game_fps": 29.91,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_11_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 11,
+      "x": 14,
+      "y": 22,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1035408,
+      "cadence": {
+        "mean_us": 33412,
+        "median_us": 33564,
+        "p95_us": 35978,
+        "min_us": 30221,
+        "max_us": 36975
+      },
+      "work": {
+        "mean_us": 32058,
+        "median_us": 32348,
+        "p95_us": 32933,
+        "min_us": 29611,
+        "max_us": 33166
+      },
+      "draw": {
+        "mean_us": 29873,
+        "median_us": 29865,
+        "p95_us": 30343,
+        "min_us": 29305,
+        "max_us": 30349
+      },
+      "acquire": {
+        "mean_us": 1354,
+        "median_us": 1060,
+        "p95_us": 3414,
+        "min_us": 241,
+        "max_us": 3808
+      },
+      "present": {
+        "mean_us": 294,
+        "median_us": 274,
+        "p95_us": 304,
+        "min_us": 270,
+        "max_us": 1135
+      },
+      "audio": {
+        "mean_us": 1889,
+        "median_us": 2171,
+        "p95_us": 2396,
+        "min_us": 10,
+        "max_us": 2404
+      },
+      "mean_game_fps": 29.93,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_12_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 12,
+      "x": 14,
+      "y": 28,
+      "npc_count": 4,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1137784,
+      "cadence": {
+        "mean_us": 33272,
+        "median_us": 33125,
+        "p95_us": 36269,
+        "min_us": 26493,
+        "max_us": 36472
+      },
+      "work": {
+        "mean_us": 28874,
+        "median_us": 29123,
+        "p95_us": 29704,
+        "min_us": 26462,
+        "max_us": 30324
+      },
+      "draw": {
+        "mean_us": 26711,
+        "median_us": 26718,
+        "p95_us": 27110,
+        "min_us": 26164,
+        "max_us": 27124
+      },
+      "acquire": {
+        "mean_us": 4397,
+        "median_us": 4281,
+        "p95_us": 6605,
+        "min_us": 16,
+        "max_us": 6962
+      },
+      "present": {
+        "mean_us": 292,
+        "median_us": 274,
+        "p95_us": 279,
+        "min_us": 270,
+        "max_us": 1140
+      },
+      "audio": {
+        "mean_us": 1870,
+        "median_us": 2155,
+        "p95_us": 2368,
+        "min_us": 10,
+        "max_us": 2386
+      },
+      "mean_game_fps": 30.06,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_13_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 13,
+      "x": 10,
+      "y": 14,
+      "npc_count": 1,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1398192,
+      "cadence": {
+        "mean_us": 33244,
+        "median_us": 33726,
+        "p95_us": 35975,
+        "min_us": 16952,
+        "max_us": 36363
+      },
+      "work": {
+        "mean_us": 13563,
+        "median_us": 13801,
+        "p95_us": 14490,
+        "min_us": 11202,
+        "max_us": 14613
+      },
+      "draw": {
+        "mean_us": 11425,
+        "median_us": 11415,
+        "p95_us": 12034,
+        "min_us": 10917,
+        "max_us": 12046
+      },
+      "acquire": {
+        "mean_us": 19680,
+        "median_us": 19609,
+        "p95_us": 21983,
+        "min_us": 2938,
+        "max_us": 22225
+      },
+      "present": {
+        "mean_us": 288,
+        "median_us": 269,
+        "p95_us": 295,
+        "min_us": 264,
+        "max_us": 1130
+      },
+      "audio": {
+        "mean_us": 1849,
+        "median_us": 2152,
+        "p95_us": 2385,
+        "min_us": 10,
+        "max_us": 2394
+      },
+      "mean_game_fps": 30.08,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_14_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 14,
+      "x": 14,
+      "y": 22,
+      "npc_count": 6,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1104168,
+      "cadence": {
+        "mean_us": 33204,
+        "median_us": 33047,
+        "p95_us": 36123,
+        "min_us": 28552,
+        "max_us": 36429
+      },
+      "work": {
+        "mean_us": 30166,
+        "median_us": 30396,
+        "p95_us": 31048,
+        "min_us": 27864,
+        "max_us": 31135
+      },
+      "draw": {
+        "mean_us": 28021,
+        "median_us": 28017,
+        "p95_us": 28412,
+        "min_us": 27572,
+        "max_us": 28427
+      },
+      "acquire": {
+        "mean_us": 3037,
+        "median_us": 2971,
+        "p95_us": 5292,
+        "min_us": 17,
+        "max_us": 5551
+      },
+      "present": {
+        "mean_us": 286,
+        "median_us": 275,
+        "p95_us": 280,
+        "min_us": 271,
+        "max_us": 1122
+      },
+      "audio": {
+        "mean_us": 1859,
+        "median_us": 2163,
+        "p95_us": 2389,
+        "min_us": 10,
+        "max_us": 2447
+      },
+      "mean_game_fps": 30.12,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_15_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 15,
+      "x": 14,
+      "y": 28,
+      "npc_count": 4,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1197696,
+      "cadence": {
+        "mean_us": 33418,
+        "median_us": 33593,
+        "p95_us": 35973,
+        "min_us": 30256,
+        "max_us": 36289
+      },
+      "work": {
+        "mean_us": 23680,
+        "median_us": 23962,
+        "p95_us": 24519,
+        "min_us": 21280,
+        "max_us": 24573
+      },
+      "draw": {
+        "mean_us": 21553,
+        "median_us": 21557,
+        "p95_us": 21985,
+        "min_us": 20994,
+        "max_us": 22002
+      },
+      "acquire": {
+        "mean_us": 9738,
+        "median_us": 9454,
+        "p95_us": 11735,
+        "min_us": 8853,
+        "max_us": 12144
+      },
+      "present": {
+        "mean_us": 287,
+        "median_us": 274,
+        "p95_us": 304,
+        "min_us": 270,
+        "max_us": 1140
+      },
+      "audio": {
+        "mean_us": 1839,
+        "median_us": 2152,
+        "p95_us": 2389,
+        "min_us": 10,
+        "max_us": 2397
+      },
+      "mean_game_fps": 29.92,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_16_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 16,
+      "x": 10,
+      "y": 14,
+      "npc_count": 2,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1338112,
+      "cadence": {
+        "mean_us": 33436,
+        "median_us": 33449,
+        "p95_us": 35779,
+        "min_us": 31086,
+        "max_us": 35853
+      },
+      "work": {
+        "mean_us": 16081,
+        "median_us": 16364,
+        "p95_us": 16943,
+        "min_us": 13678,
+        "max_us": 17450
+      },
+      "draw": {
+        "mean_us": 13912,
+        "median_us": 13907,
+        "p95_us": 14411,
+        "min_us": 13328,
+        "max_us": 14464
+      },
+      "acquire": {
+        "mean_us": 17354,
+        "median_us": 17053,
+        "p95_us": 19397,
+        "min_us": 15960,
+        "max_us": 19762
+      },
+      "present": {
+        "mean_us": 282,
+        "median_us": 270,
+        "p95_us": 305,
+        "min_us": 265,
+        "max_us": 1138
+      },
+      "audio": {
+        "mean_us": 1886,
+        "median_us": 2170,
+        "p95_us": 2399,
+        "min_us": 10,
+        "max_us": 2413
+      },
+      "mean_game_fps": 29.91,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_17_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 17,
+      "x": 14,
+      "y": 22,
+      "npc_count": 6,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1080512,
+      "cadence": {
+        "mean_us": 33237,
+        "median_us": 33101,
+        "p95_us": 36006,
+        "min_us": 29392,
+        "max_us": 36341
+      },
+      "work": {
+        "mean_us": 30498,
+        "median_us": 30726,
+        "p95_us": 31344,
+        "min_us": 28153,
+        "max_us": 32121
+      },
+      "draw": {
+        "mean_us": 28311,
+        "median_us": 28302,
+        "p95_us": 28704,
+        "min_us": 27846,
+        "max_us": 28748
+      },
+      "acquire": {
+        "mean_us": 2739,
+        "median_us": 2651,
+        "p95_us": 4989,
+        "min_us": 17,
+        "max_us": 5269
+      },
+      "present": {
+        "mean_us": 295,
+        "median_us": 275,
+        "p95_us": 281,
+        "min_us": 271,
+        "max_us": 1235
+      },
+      "audio": {
+        "mean_us": 1892,
+        "median_us": 2173,
+        "p95_us": 2395,
+        "min_us": 10,
+        "max_us": 2415
+      },
+      "mean_game_fps": 30.09,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_18_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 18,
+      "x": 14,
+      "y": 28,
+      "npc_count": 3,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1006944,
+      "cadence": {
+        "mean_us": 36542,
+        "median_us": 36709,
+        "p95_us": 37228,
+        "min_us": 33930,
+        "max_us": 37403
+      },
+      "work": {
+        "mean_us": 36524,
+        "median_us": 36691,
+        "p95_us": 37210,
+        "min_us": 33912,
+        "max_us": 37385
+      },
+      "draw": {
+        "mean_us": 34178,
+        "median_us": 34162,
+        "p95_us": 34630,
+        "min_us": 33595,
+        "max_us": 34730
+      },
+      "acquire": {
+        "mean_us": 17,
+        "median_us": 17,
+        "p95_us": 18,
+        "min_us": 15,
+        "max_us": 18
+      },
+      "present": {
+        "mean_us": 283,
+        "median_us": 276,
+        "p95_us": 319,
+        "min_us": 270,
+        "max_us": 380
+      },
+      "audio": {
+        "mean_us": 2062,
+        "median_us": 2172,
+        "p95_us": 2399,
+        "min_us": 10,
+        "max_us": 2486
+      },
+      "mean_game_fps": 27.37,
+      "work_over_30fps_budget_us": 3191
+    },
+    {
+      "case": "map_19_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 19,
+      "x": 10,
+      "y": 14,
+      "npc_count": 2,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1335840,
+      "cadence": {
+        "mean_us": 33242,
+        "median_us": 33474,
+        "p95_us": 35731,
+        "min_us": 16796,
+        "max_us": 35882
+      },
+      "work": {
+        "mean_us": 16075,
+        "median_us": 16278,
+        "p95_us": 17061,
+        "min_us": 13695,
+        "max_us": 17418
+      },
+      "draw": {
+        "mean_us": 13897,
+        "median_us": 13860,
+        "p95_us": 14436,
+        "min_us": 13373,
+        "max_us": 14468
+      },
+      "acquire": {
+        "mean_us": 17166,
+        "median_us": 17139,
+        "p95_us": 19496,
+        "min_us": 17,
+        "max_us": 19732
+      },
+      "present": {
+        "mean_us": 290,
+        "median_us": 270,
+        "p95_us": 309,
+        "min_us": 264,
+        "max_us": 1130
+      },
+      "audio": {
+        "mean_us": 1887,
+        "median_us": 2185,
+        "p95_us": 2403,
+        "min_us": 10,
+        "max_us": 2422
+      },
+      "mean_game_fps": 30.08,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_20_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 20,
+      "x": 14,
+      "y": 22,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1005440,
+      "cadence": {
+        "mean_us": 33183,
+        "median_us": 33397,
+        "p95_us": 35275,
+        "min_us": 30528,
+        "max_us": 35908
+      },
+      "work": {
+        "mean_us": 32953,
+        "median_us": 33220,
+        "p95_us": 33846,
+        "min_us": 30510,
+        "max_us": 34090
+      },
+      "draw": {
+        "mean_us": 30798,
+        "median_us": 30807,
+        "p95_us": 31333,
+        "min_us": 30191,
+        "max_us": 31420
+      },
+      "acquire": {
+        "mean_us": 230,
+        "median_us": 17,
+        "p95_us": 1914,
+        "min_us": 16,
+        "max_us": 2472
+      },
+      "present": {
+        "mean_us": 277,
+        "median_us": 274,
+        "p95_us": 304,
+        "min_us": 269,
+        "max_us": 373
+      },
+      "audio": {
+        "mean_us": 1876,
+        "median_us": 2183,
+        "p95_us": 2416,
+        "min_us": 10,
+        "max_us": 2464
+      },
+      "mean_game_fps": 30.14,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_21_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 21,
+      "x": 14,
+      "y": 24,
+      "npc_count": 4,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1174440,
+      "cadence": {
+        "mean_us": 33407,
+        "median_us": 33594,
+        "p95_us": 36012,
+        "min_us": 30284,
+        "max_us": 36294
+      },
+      "work": {
+        "mean_us": 24618,
+        "median_us": 24902,
+        "p95_us": 25425,
+        "min_us": 22201,
+        "max_us": 25493
+      },
+      "draw": {
+        "mean_us": 22465,
+        "median_us": 22487,
+        "p95_us": 22901,
+        "min_us": 21895,
+        "max_us": 22925
+      },
+      "acquire": {
+        "mean_us": 8788,
+        "median_us": 8499,
+        "p95_us": 10813,
+        "min_us": 7927,
+        "max_us": 11222
+      },
+      "present": {
+        "mean_us": 280,
+        "median_us": 277,
+        "p95_us": 309,
+        "min_us": 273,
+        "max_us": 310
+      },
+      "audio": {
+        "mean_us": 1871,
+        "median_us": 2148,
+        "p95_us": 2374,
+        "min_us": 10,
+        "max_us": 2402
+      },
+      "mean_game_fps": 29.93,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_22_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 22,
+      "x": 10,
+      "y": 14,
+      "npc_count": 1,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1398200,
+      "cadence": {
+        "mean_us": 33439,
+        "median_us": 33717,
+        "p95_us": 36239,
+        "min_us": 30329,
+        "max_us": 36360
+      },
+      "work": {
+        "mean_us": 13592,
+        "median_us": 13873,
+        "p95_us": 14509,
+        "min_us": 11211,
+        "max_us": 14705
+      },
+      "draw": {
+        "mean_us": 11426,
+        "median_us": 11387,
+        "p95_us": 12034,
+        "min_us": 10906,
+        "max_us": 12051
+      },
+      "acquire": {
+        "mean_us": 19847,
+        "median_us": 19564,
+        "p95_us": 22173,
+        "min_us": 18714,
+        "max_us": 22221
+      },
+      "present": {
+        "mean_us": 293,
+        "median_us": 274,
+        "p95_us": 298,
+        "min_us": 268,
+        "max_us": 1136
+      },
+      "audio": {
+        "mean_us": 1872,
+        "median_us": 2163,
+        "p95_us": 2384,
+        "min_us": 10,
+        "max_us": 2401
+      },
+      "mean_game_fps": 29.91,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_23_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 23,
+      "x": 14,
+      "y": 22,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1047304,
+      "cadence": {
+        "mean_us": 33241,
+        "median_us": 33504,
+        "p95_us": 35888,
+        "min_us": 30225,
+        "max_us": 36118
+      },
+      "work": {
+        "mean_us": 31833,
+        "median_us": 32124,
+        "p95_us": 32667,
+        "min_us": 29408,
+        "max_us": 32852
+      },
+      "draw": {
+        "mean_us": 29668,
+        "median_us": 29671,
+        "p95_us": 30124,
+        "min_us": 29109,
+        "max_us": 30170
+      },
+      "acquire": {
+        "mean_us": 1407,
+        "median_us": 1240,
+        "p95_us": 3640,
+        "min_us": 17,
+        "max_us": 4016
+      },
+      "present": {
+        "mean_us": 295,
+        "median_us": 275,
+        "p95_us": 306,
+        "min_us": 271,
+        "max_us": 1143
+      },
+      "audio": {
+        "mean_us": 1869,
+        "median_us": 2170,
+        "p95_us": 2397,
+        "min_us": 10,
+        "max_us": 2470
+      },
+      "mean_game_fps": 30.08,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_24_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 24,
+      "x": 14,
+      "y": 28,
+      "npc_count": 4,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1246544,
+      "cadence": {
+        "mean_us": 33208,
+        "median_us": 33555,
+        "p95_us": 36010,
+        "min_us": 23434,
+        "max_us": 36125
+      },
+      "work": {
+        "mean_us": 23734,
+        "median_us": 24058,
+        "p95_us": 24608,
+        "min_us": 21314,
+        "max_us": 25289
+      },
+      "draw": {
+        "mean_us": 21566,
+        "median_us": 21569,
+        "p95_us": 22003,
+        "min_us": 20981,
+        "max_us": 22039
+      },
+      "acquire": {
+        "mean_us": 9474,
+        "median_us": 9338,
+        "p95_us": 11729,
+        "min_us": 17,
+        "max_us": 12124
+      },
+      "present": {
+        "mean_us": 296,
+        "median_us": 274,
+        "p95_us": 306,
+        "min_us": 270,
+        "max_us": 1138
+      },
+      "audio": {
+        "mean_us": 1871,
+        "median_us": 2172,
+        "p95_us": 2394,
+        "min_us": 10,
+        "max_us": 2405
+      },
+      "mean_game_fps": 30.11,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_25_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 25,
+      "x": 10,
+      "y": 14,
+      "npc_count": 1,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1398240,
+      "cadence": {
+        "mean_us": 33245,
+        "median_us": 33717,
+        "p95_us": 36212,
+        "min_us": 17392,
+        "max_us": 36389
+      },
+      "work": {
+        "mean_us": 13564,
+        "median_us": 13836,
+        "p95_us": 14553,
+        "min_us": 11199,
+        "max_us": 14699
+      },
+      "draw": {
+        "mean_us": 11428,
+        "median_us": 11389,
+        "p95_us": 12056,
+        "min_us": 10916,
+        "max_us": 12069
+      },
+      "acquire": {
+        "mean_us": 19680,
+        "median_us": 19570,
+        "p95_us": 22157,
+        "min_us": 3463,
+        "max_us": 22220
+      },
+      "present": {
+        "mean_us": 270,
+        "median_us": 269,
+        "p95_us": 291,
+        "min_us": 264,
+        "max_us": 294
+      },
+      "audio": {
+        "mean_us": 1864,
+        "median_us": 2147,
+        "p95_us": 2384,
+        "min_us": 10,
+        "max_us": 2394
+      },
+      "mean_game_fps": 30.08,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_26_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 26,
+      "x": 14,
+      "y": 22,
+      "npc_count": 6,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1088416,
+      "cadence": {
+        "mean_us": 33423,
+        "median_us": 33223,
+        "p95_us": 36246,
+        "min_us": 30616,
+        "max_us": 36430
+      },
+      "work": {
+        "mean_us": 29939,
+        "median_us": 30219,
+        "p95_us": 30822,
+        "min_us": 27645,
+        "max_us": 30846
+      },
+      "draw": {
+        "mean_us": 27808,
+        "median_us": 27801,
+        "p95_us": 28190,
+        "min_us": 27356,
+        "max_us": 28218
+      },
+      "acquire": {
+        "mean_us": 3483,
+        "median_us": 3198,
+        "p95_us": 5506,
+        "min_us": 2562,
+        "max_us": 5773
+      },
+      "present": {
+        "mean_us": 275,
+        "median_us": 275,
+        "p95_us": 278,
+        "min_us": 271,
+        "max_us": 280
+      },
+      "audio": {
+        "mean_us": 1855,
+        "median_us": 2161,
+        "p95_us": 2378,
+        "min_us": 10,
+        "max_us": 2393
+      },
+      "mean_game_fps": 29.92,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_27_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 27,
+      "x": 14,
+      "y": 28,
+      "npc_count": 4,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1108552,
+      "cadence": {
+        "mean_us": 33413,
+        "median_us": 33649,
+        "p95_us": 36002,
+        "min_us": 30346,
+        "max_us": 36172
+      },
+      "work": {
+        "mean_us": 25165,
+        "median_us": 25450,
+        "p95_us": 25946,
+        "min_us": 22755,
+        "max_us": 26039
+      },
+      "draw": {
+        "mean_us": 23024,
+        "median_us": 23036,
+        "p95_us": 23459,
+        "min_us": 22451,
+        "max_us": 23488
+      },
+      "acquire": {
+        "mean_us": 8248,
+        "median_us": 7964,
+        "p95_us": 10395,
+        "min_us": 7390,
+        "max_us": 10664
+      },
+      "present": {
+        "mean_us": 286,
+        "median_us": 273,
+        "p95_us": 304,
+        "min_us": 270,
+        "max_us": 1134
+      },
+      "audio": {
+        "mean_us": 1854,
+        "median_us": 2152,
+        "p95_us": 2376,
+        "min_us": 10,
+        "max_us": 2385
+      },
+      "mean_game_fps": 29.93,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_28_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 28,
+      "x": 10,
+      "y": 14,
+      "npc_count": 1,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1398216,
+      "cadence": {
+        "mean_us": 33221,
+        "median_us": 33789,
+        "p95_us": 36174,
+        "min_us": 15090,
+        "max_us": 36303
+      },
+      "work": {
+        "mean_us": 13556,
+        "median_us": 13831,
+        "p95_us": 14527,
+        "min_us": 11209,
+        "max_us": 15232
+      },
+      "draw": {
+        "mean_us": 11427,
+        "median_us": 11427,
+        "p95_us": 12038,
+        "min_us": 10911,
+        "max_us": 12046
+      },
+      "acquire": {
+        "mean_us": 19664,
+        "median_us": 19568,
+        "p95_us": 21920,
+        "min_us": 2770,
+        "max_us": 22207
+      },
+      "present": {
+        "mean_us": 288,
+        "median_us": 269,
+        "p95_us": 292,
+        "min_us": 263,
+        "max_us": 1129
+      },
+      "audio": {
+        "mean_us": 1840,
+        "median_us": 2141,
+        "p95_us": 2370,
+        "min_us": 10,
+        "max_us": 2377
+      },
+      "mean_game_fps": 30.1,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_29_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 29,
+      "x": 14,
+      "y": 22,
+      "npc_count": 9,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 873392,
+      "cadence": {
+        "mean_us": 38817,
+        "median_us": 38890,
+        "p95_us": 39405,
+        "min_us": 36364,
+        "max_us": 39607
+      },
+      "work": {
+        "mean_us": 38799,
+        "median_us": 38872,
+        "p95_us": 39387,
+        "min_us": 36346,
+        "max_us": 39589
+      },
+      "draw": {
+        "mean_us": 36336,
+        "median_us": 36339,
+        "p95_us": 36741,
+        "min_us": 35777,
+        "max_us": 36940
+      },
+      "acquire": {
+        "mean_us": 17,
+        "median_us": 17,
+        "p95_us": 18,
+        "min_us": 15,
+        "max_us": 18
+      },
+      "present": {
+        "mean_us": 280,
+        "median_us": 275,
+        "p95_us": 306,
+        "min_us": 271,
+        "max_us": 325
+      },
+      "audio": {
+        "mean_us": 2182,
+        "median_us": 2258,
+        "p95_us": 2384,
+        "min_us": 10,
+        "max_us": 2496
+      },
+      "mean_game_fps": 25.76,
+      "work_over_30fps_budget_us": 5466
+    },
+    {
+      "case": "map_30_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 30,
+      "x": 16,
+      "y": 28,
+      "npc_count": 4,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1188256,
+      "cadence": {
+        "mean_us": 33265,
+        "median_us": 33700,
+        "p95_us": 35943,
+        "min_us": 25642,
+        "max_us": 36272
+      },
+      "work": {
+        "mean_us": 25331,
+        "median_us": 25569,
+        "p95_us": 26127,
+        "min_us": 22892,
+        "max_us": 26799
+      },
+      "draw": {
+        "mean_us": 23171,
+        "median_us": 23194,
+        "p95_us": 23602,
+        "min_us": 22600,
+        "max_us": 23638
+      },
+      "acquire": {
+        "mean_us": 7934,
+        "median_us": 7845,
+        "p95_us": 10102,
+        "min_us": 17,
+        "max_us": 10524
+      },
+      "present": {
+        "mean_us": 296,
+        "median_us": 274,
+        "p95_us": 306,
+        "min_us": 271,
+        "max_us": 1140
+      },
+      "audio": {
+        "mean_us": 1863,
+        "median_us": 2141,
+        "p95_us": 2368,
+        "min_us": 10,
+        "max_us": 2380
+      },
+      "mean_game_fps": 30.06,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_31_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 31,
+      "x": 16,
+      "y": 14,
+      "npc_count": 0,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1438256,
+      "cadence": {
+        "mean_us": 33419,
+        "median_us": 33416,
+        "p95_us": 35712,
+        "min_us": 30941,
+        "max_us": 36268
+      },
+      "work": {
+        "mean_us": 11864,
+        "median_us": 12175,
+        "p95_us": 12642,
+        "min_us": 9486,
+        "max_us": 12729
+      },
+      "draw": {
+        "mean_us": 9738,
+        "median_us": 9804,
+        "p95_us": 10056,
+        "min_us": 9184,
+        "max_us": 10094
+      },
+      "acquire": {
+        "mean_us": 21555,
+        "median_us": 21259,
+        "p95_us": 23623,
+        "min_us": 20698,
+        "max_us": 23942
+      },
+      "present": {
+        "mean_us": 270,
+        "median_us": 269,
+        "p95_us": 289,
+        "min_us": 264,
+        "max_us": 297
+      },
+      "audio": {
+        "mean_us": 1855,
+        "median_us": 2142,
+        "p95_us": 2367,
+        "min_us": 10,
+        "max_us": 2382
+      },
+      "mean_game_fps": 29.92,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_32_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 32,
+      "x": 16,
+      "y": 28,
+      "npc_count": 5,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 897992,
+      "cadence": {
+        "mean_us": 33406,
+        "median_us": 33409,
+        "p95_us": 35767,
+        "min_us": 31038,
+        "max_us": 35801
+      },
+      "work": {
+        "mean_us": 31190,
+        "median_us": 31473,
+        "p95_us": 31702,
+        "min_us": 29303,
+        "max_us": 31714
+      },
+      "draw": {
+        "mean_us": 29027,
+        "median_us": 29026,
+        "p95_us": 29038,
+        "min_us": 29009,
+        "max_us": 29069
+      },
+      "acquire": {
+        "mean_us": 2216,
+        "median_us": 1935,
+        "p95_us": 4105,
+        "min_us": 1089,
+        "max_us": 4133
+      },
+      "present": {
+        "mean_us": 277,
+        "median_us": 277,
+        "p95_us": 279,
+        "min_us": 274,
+        "max_us": 281
+      },
+      "audio": {
+        "mean_us": 1886,
+        "median_us": 2169,
+        "p95_us": 2397,
+        "min_us": 10,
+        "max_us": 2406
+      },
+      "mean_game_fps": 29.93,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_33_entrance",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 33,
+      "x": 12,
+      "y": 22,
+      "npc_count": 6,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1413320,
+      "cadence": {
+        "mean_us": 33417,
+        "median_us": 33579,
+        "p95_us": 36032,
+        "min_us": 30232,
+        "max_us": 36217
+      },
+      "work": {
+        "mean_us": 13875,
+        "median_us": 14169,
+        "p95_us": 14711,
+        "min_us": 11381,
+        "max_us": 15288
+      },
+      "draw": {
+        "mean_us": 11726,
+        "median_us": 11787,
+        "p95_us": 12177,
+        "min_us": 11101,
+        "max_us": 12223
+      },
+      "acquire": {
+        "mean_us": 19542,
+        "median_us": 19236,
+        "p95_us": 21837,
+        "min_us": 18121,
+        "max_us": 22043
+      },
+      "present": {
+        "mean_us": 289,
+        "median_us": 269,
+        "p95_us": 297,
+        "min_us": 265,
+        "max_us": 1125
+      },
+      "audio": {
+        "mean_us": 1859,
+        "median_us": 2142,
+        "p95_us": 2376,
+        "min_us": 10,
+        "max_us": 2402
+      },
+      "mean_game_fps": 29.92,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_01_center",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 14,
+      "y": 15,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1287592,
+      "cadence": {
+        "mean_us": 33236,
+        "median_us": 33577,
+        "p95_us": 35910,
+        "min_us": 30106,
+        "max_us": 36017
+      },
+      "work": {
+        "mean_us": 31624,
+        "median_us": 31897,
+        "p95_us": 32543,
+        "min_us": 29235,
+        "max_us": 33042
+      },
+      "draw": {
+        "mean_us": 29479,
+        "median_us": 29499,
+        "p95_us": 29933,
+        "min_us": 28901,
+        "max_us": 29949
+      },
+      "acquire": {
+        "mean_us": 1612,
+        "median_us": 1382,
+        "p95_us": 3873,
+        "min_us": 17,
+        "max_us": 4164
+      },
+      "present": {
+        "mean_us": 288,
+        "median_us": 275,
+        "p95_us": 305,
+        "min_us": 271,
+        "max_us": 1136
+      },
+      "audio": {
+        "mean_us": 1856,
+        "median_us": 2156,
+        "p95_us": 2393,
+        "min_us": 10,
+        "max_us": 2417
+      },
+      "mean_game_fps": 30.09,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_12_center",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 12,
+      "x": 14,
+      "y": 16,
+      "npc_count": 4,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1137792,
+      "cadence": {
+        "mean_us": 33236,
+        "median_us": 33179,
+        "p95_us": 36106,
+        "min_us": 25545,
+        "max_us": 37238
+      },
+      "work": {
+        "mean_us": 27398,
+        "median_us": 27669,
+        "p95_us": 28274,
+        "min_us": 25052,
+        "max_us": 28863
+      },
+      "draw": {
+        "mean_us": 25228,
+        "median_us": 25236,
+        "p95_us": 25633,
+        "min_us": 24733,
+        "max_us": 25638
+      },
+      "acquire": {
+        "mean_us": 5838,
+        "median_us": 5736,
+        "p95_us": 8077,
+        "min_us": 17,
+        "max_us": 8374
+      },
+      "present": {
+        "mean_us": 293,
+        "median_us": 275,
+        "p95_us": 281,
+        "min_us": 271,
+        "max_us": 1137
+      },
+      "audio": {
+        "mean_us": 1876,
+        "median_us": 2196,
+        "p95_us": 2417,
+        "min_us": 10,
+        "max_us": 2448
+      },
+      "mean_game_fps": 30.09,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_15_center",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 15,
+      "x": 14,
+      "y": 16,
+      "npc_count": 4,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1197688,
+      "cadence": {
+        "mean_us": 33394,
+        "median_us": 33718,
+        "p95_us": 36090,
+        "min_us": 30380,
+        "max_us": 36256
+      },
+      "work": {
+        "mean_us": 22133,
+        "median_us": 22401,
+        "p95_us": 22961,
+        "min_us": 19718,
+        "max_us": 23107
+      },
+      "draw": {
+        "mean_us": 19974,
+        "median_us": 19990,
+        "p95_us": 20405,
+        "min_us": 19415,
+        "max_us": 20413
+      },
+      "acquire": {
+        "mean_us": 11260,
+        "median_us": 11006,
+        "p95_us": 13305,
+        "min_us": 10307,
+        "max_us": 13704
+      },
+      "present": {
+        "mean_us": 288,
+        "median_us": 275,
+        "p95_us": 308,
+        "min_us": 271,
+        "max_us": 1140
+      },
+      "audio": {
+        "mean_us": 1869,
+        "median_us": 2194,
+        "p95_us": 2432,
+        "min_us": 10,
+        "max_us": 2446
+      },
+      "mean_game_fps": 29.95,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_18_center",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 18,
+      "x": 14,
+      "y": 16,
+      "npc_count": 3,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1006976,
+      "cadence": {
+        "mean_us": 34940,
+        "median_us": 35124,
+        "p95_us": 35727,
+        "min_us": 32409,
+        "max_us": 36856
+      },
+      "work": {
+        "mean_us": 34922,
+        "median_us": 35106,
+        "p95_us": 35709,
+        "min_us": 32391,
+        "max_us": 36838
+      },
+      "draw": {
+        "mean_us": 32600,
+        "median_us": 32603,
+        "p95_us": 33022,
+        "min_us": 32028,
+        "max_us": 33166
+      },
+      "acquire": {
+        "mean_us": 17,
+        "median_us": 17,
+        "p95_us": 18,
+        "min_us": 16,
+        "max_us": 18
+      },
+      "present": {
+        "mean_us": 297,
+        "median_us": 275,
+        "p95_us": 315,
+        "min_us": 267,
+        "max_us": 1150
+      },
+      "audio": {
+        "mean_us": 2023,
+        "median_us": 2220,
+        "p95_us": 2464,
+        "min_us": 10,
+        "max_us": 2534
+      },
+      "mean_game_fps": 28.62,
+      "work_over_30fps_budget_us": 1589
+    },
+    {
+      "case": "map_32_center",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 32,
+      "x": 16,
+      "y": 16,
+      "npc_count": 5,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 898048,
+      "cadence": {
+        "mean_us": 33406,
+        "median_us": 33411,
+        "p95_us": 35788,
+        "min_us": 31031,
+        "max_us": 35817
+      },
+      "work": {
+        "mean_us": 29981,
+        "median_us": 30278,
+        "p95_us": 30484,
+        "min_us": 28082,
+        "max_us": 30518
+      },
+      "draw": {
+        "mean_us": 27809,
+        "median_us": 27808,
+        "p95_us": 27832,
+        "min_us": 27783,
+        "max_us": 27846
+      },
+      "acquire": {
+        "mean_us": 3424,
+        "median_us": 3127,
+        "p95_us": 5333,
+        "min_us": 2276,
+        "max_us": 5338
+      },
+      "present": {
+        "mean_us": 276,
+        "median_us": 276,
+        "p95_us": 278,
+        "min_us": 272,
+        "max_us": 280
+      },
+      "audio": {
+        "mean_us": 1896,
+        "median_us": 2189,
+        "p95_us": 2407,
+        "min_us": 10,
+        "max_us": 2431
+      },
+      "mean_game_fps": 29.93,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "map_33_center",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 33,
+      "x": 12,
+      "y": 13,
+      "npc_count": 6,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1413304,
+      "cadence": {
+        "mean_us": 33241,
+        "median_us": 33595,
+        "p95_us": 36056,
+        "min_us": 17143,
+        "max_us": 36159
+      },
+      "work": {
+        "mean_us": 12296,
+        "median_us": 12565,
+        "p95_us": 13222,
+        "min_us": 9942,
+        "max_us": 13981
+      },
+      "draw": {
+        "mean_us": 10163,
+        "median_us": 10210,
+        "p95_us": 10610,
+        "min_us": 9518,
+        "max_us": 10684
+      },
+      "acquire": {
+        "mean_us": 20944,
+        "median_us": 20838,
+        "p95_us": 23276,
+        "min_us": 4407,
+        "max_us": 23490
+      },
+      "present": {
+        "mean_us": 291,
+        "median_us": 271,
+        "p95_us": 298,
+        "min_us": 266,
+        "max_us": 1130
+      },
+      "audio": {
+        "mean_us": 1842,
+        "median_us": 2160,
+        "p95_us": 2388,
+        "min_us": 10,
+        "max_us": 2413
+      },
+      "mean_game_fps": 30.08,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "source_mason_conversation_world",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 14,
+      "y": 8,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1287608,
+      "cadence": {
+        "mean_us": 33249,
+        "median_us": 33223,
+        "p95_us": 36307,
+        "min_us": 23059,
+        "max_us": 36478
+      },
+      "work": {
+        "mean_us": 22582,
+        "median_us": 22809,
+        "p95_us": 23456,
+        "min_us": 20190,
+        "max_us": 23771
+      },
+      "draw": {
+        "mean_us": 20408,
+        "median_us": 20396,
+        "p95_us": 20846,
+        "min_us": 19818,
+        "max_us": 20865
+      },
+      "acquire": {
+        "mean_us": 10667,
+        "median_us": 10612,
+        "p95_us": 12966,
+        "min_us": 17,
+        "max_us": 13240
+      },
+      "present": {
+        "mean_us": 296,
+        "median_us": 275,
+        "p95_us": 314,
+        "min_us": 271,
+        "max_us": 1135
+      },
+      "audio": {
+        "mean_us": 1877,
+        "median_us": 2160,
+        "p95_us": 2399,
+        "min_us": 10,
+        "max_us": 2411
+      },
+      "mean_game_fps": 30.08,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "source_mason-dialogue-full",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 14,
+      "y": 8,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1235208,
+      "cadence": {
+        "mean_us": 33663,
+        "median_us": 33930,
+        "p95_us": 34735,
+        "min_us": 30814,
+        "max_us": 34853
+      },
+      "work": {
+        "mean_us": 33653,
+        "median_us": 33921,
+        "p95_us": 34725,
+        "min_us": 30804,
+        "max_us": 34843
+      },
+      "draw": {
+        "mean_us": 31621,
+        "median_us": 31692,
+        "p95_us": 32290,
+        "min_us": 30643,
+        "max_us": 32338
+      },
+      "acquire": {
+        "mean_us": 9,
+        "median_us": 9,
+        "p95_us": 10,
+        "min_us": 8,
+        "max_us": 10
+      },
+      "present": {
+        "mean_us": 152,
+        "median_us": 151,
+        "p95_us": 153,
+        "min_us": 149,
+        "max_us": 273
+      },
+      "audio": {
+        "mean_us": 1879,
+        "median_us": 2168,
+        "p95_us": 2378,
+        "min_us": 7,
+        "max_us": 2498
+      },
+      "mean_game_fps": 29.71,
+      "work_over_30fps_budget_us": 320
+    },
+    {
+      "case": "source_mason-dialogue-reveal",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 14,
+      "y": 8,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1235208,
+      "cadence": {
+        "mean_us": 33422,
+        "median_us": 33846,
+        "p95_us": 36108,
+        "min_us": 29519,
+        "max_us": 36402
+      },
+      "work": {
+        "mean_us": 32349,
+        "median_us": 32566,
+        "p95_us": 34089,
+        "min_us": 28605,
+        "max_us": 34370
+      },
+      "draw": {
+        "mean_us": 30342,
+        "median_us": 30392,
+        "p95_us": 31850,
+        "min_us": 28202,
+        "max_us": 32141
+      },
+      "acquire": {
+        "mean_us": 1073,
+        "median_us": 826,
+        "p95_us": 3409,
+        "min_us": 10,
+        "max_us": 4790
+      },
+      "present": {
+        "mean_us": 151,
+        "median_us": 151,
+        "p95_us": 152,
+        "min_us": 149,
+        "max_us": 153
+      },
+      "audio": {
+        "mean_us": 1856,
+        "median_us": 2135,
+        "p95_us": 2358,
+        "min_us": 7,
+        "max_us": 2374
+      },
+      "mean_game_fps": 29.92,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "source_mason-choice-2",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 14,
+      "y": 8,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1218736,
+      "cadence": {
+        "mean_us": 35452,
+        "median_us": 35648,
+        "p95_us": 36462,
+        "min_us": 32418,
+        "max_us": 36579
+      },
+      "work": {
+        "mean_us": 35443,
+        "median_us": 35640,
+        "p95_us": 36454,
+        "min_us": 32408,
+        "max_us": 36570
+      },
+      "draw": {
+        "mean_us": 33325,
+        "median_us": 33357,
+        "p95_us": 34011,
+        "min_us": 32246,
+        "max_us": 34066
+      },
+      "acquire": {
+        "mean_us": 9,
+        "median_us": 8,
+        "p95_us": 10,
+        "min_us": 8,
+        "max_us": 10
+      },
+      "present": {
+        "mean_us": 155,
+        "median_us": 153,
+        "p95_us": 163,
+        "min_us": 150,
+        "max_us": 251
+      },
+      "audio": {
+        "mean_us": 1962,
+        "median_us": 2135,
+        "p95_us": 2385,
+        "min_us": 7,
+        "max_us": 2525
+      },
+      "mean_game_fps": 28.21,
+      "work_over_30fps_budget_us": 2110
+    },
+    {
+      "case": "source_mason-choice-3",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 14,
+      "y": 8,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1210880,
+      "cadence": {
+        "mean_us": 37684,
+        "median_us": 37744,
+        "p95_us": 38027,
+        "min_us": 35407,
+        "max_us": 38884
+      },
+      "work": {
+        "mean_us": 37675,
+        "median_us": 37735,
+        "p95_us": 38018,
+        "min_us": 35399,
+        "max_us": 38874
+      },
+      "draw": {
+        "mean_us": 35393,
+        "median_us": 35401,
+        "p95_us": 35527,
+        "min_us": 35148,
+        "max_us": 35613
+      },
+      "acquire": {
+        "mean_us": 9,
+        "median_us": 8,
+        "p95_us": 10,
+        "min_us": 7,
+        "max_us": 10
+      },
+      "present": {
+        "mean_us": 189,
+        "median_us": 152,
+        "p95_us": 240,
+        "min_us": 149,
+        "max_us": 1026
+      },
+      "audio": {
+        "mean_us": 2093,
+        "median_us": 2169,
+        "p95_us": 2405,
+        "min_us": 7,
+        "max_us": 2522
+      },
+      "mean_game_fps": 26.54,
+      "work_over_30fps_budget_us": 4342
+    },
+    {
+      "case": "source_sam_table_exploration",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 10,
+      "y": 14,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1287608,
+      "cadence": {
+        "mean_us": 33225,
+        "median_us": 33578,
+        "p95_us": 35935,
+        "min_us": 30068,
+        "max_us": 36152
+      },
+      "work": {
+        "mean_us": 31674,
+        "median_us": 31950,
+        "p95_us": 32554,
+        "min_us": 29228,
+        "max_us": 32856
+      },
+      "draw": {
+        "mean_us": 29497,
+        "median_us": 29512,
+        "p95_us": 29945,
+        "min_us": 28933,
+        "max_us": 29964
+      },
+      "acquire": {
+        "mean_us": 1550,
+        "median_us": 1349,
+        "p95_us": 3865,
+        "min_us": 17,
+        "max_us": 4184
+      },
+      "present": {
+        "mean_us": 297,
+        "median_us": 276,
+        "p95_us": 305,
+        "min_us": 272,
+        "max_us": 1174
+      },
+      "audio": {
+        "mean_us": 1880,
+        "median_us": 2171,
+        "p95_us": 2395,
+        "min_us": 10,
+        "max_us": 2430
+      },
+      "mean_game_fps": 30.1,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "source_sam_table_conversation_world",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 10,
+      "y": 14,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1287608,
+      "cadence": {
+        "mean_us": 33416,
+        "median_us": 33217,
+        "p95_us": 36213,
+        "min_us": 30761,
+        "max_us": 36508
+      },
+      "work": {
+        "mean_us": 23495,
+        "median_us": 23785,
+        "p95_us": 24362,
+        "min_us": 21069,
+        "max_us": 24440
+      },
+      "draw": {
+        "mean_us": 21336,
+        "median_us": 21334,
+        "p95_us": 21775,
+        "min_us": 20779,
+        "max_us": 21796
+      },
+      "acquire": {
+        "mean_us": 9921,
+        "median_us": 9630,
+        "p95_us": 12093,
+        "min_us": 8991,
+        "max_us": 12358
+      },
+      "present": {
+        "mean_us": 277,
+        "median_us": 274,
+        "p95_us": 312,
+        "min_us": 270,
+        "max_us": 316
+      },
+      "audio": {
+        "mean_us": 1880,
+        "median_us": 2163,
+        "p95_us": 2390,
+        "min_us": 10,
+        "max_us": 2412
+      },
+      "mean_game_fps": 29.93,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "source_sam-dialogue-full",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 10,
+      "y": 14,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1235208,
+      "cadence": {
+        "mean_us": 34350,
+        "median_us": 34629,
+        "p95_us": 35426,
+        "min_us": 31466,
+        "max_us": 35627
+      },
+      "work": {
+        "mean_us": 34340,
+        "median_us": 34620,
+        "p95_us": 35416,
+        "min_us": 31456,
+        "max_us": 35616
+      },
+      "draw": {
+        "mean_us": 32246,
+        "median_us": 32278,
+        "p95_us": 32951,
+        "min_us": 31295,
+        "max_us": 32989
+      },
+      "acquire": {
+        "mean_us": 10,
+        "median_us": 9,
+        "p95_us": 11,
+        "min_us": 8,
+        "max_us": 12
+      },
+      "present": {
+        "mean_us": 155,
+        "median_us": 152,
+        "p95_us": 169,
+        "min_us": 149,
+        "max_us": 238
+      },
+      "audio": {
+        "mean_us": 1938,
+        "median_us": 2237,
+        "p95_us": 2384,
+        "min_us": 7,
+        "max_us": 2514
+      },
+      "mean_game_fps": 29.11,
+      "work_over_30fps_budget_us": 1007
+    },
+    {
+      "case": "source_sam-dialogue-reveal",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 10,
+      "y": 14,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1235208,
+      "cadence": {
+        "mean_us": 33125,
+        "median_us": 33283,
+        "p95_us": 35241,
+        "min_us": 29105,
+        "max_us": 35966
+      },
+      "work": {
+        "mean_us": 33056,
+        "median_us": 33254,
+        "p95_us": 34992,
+        "min_us": 29095,
+        "max_us": 35956
+      },
+      "draw": {
+        "mean_us": 31026,
+        "median_us": 31004,
+        "p95_us": 32473,
+        "min_us": 28935,
+        "max_us": 33013
+      },
+      "acquire": {
+        "mean_us": 68,
+        "median_us": 9,
+        "p95_us": 187,
+        "min_us": 8,
+        "max_us": 2743
+      },
+      "present": {
+        "mean_us": 182,
+        "median_us": 151,
+        "p95_us": 245,
+        "min_us": 149,
+        "max_us": 1054
+      },
+      "audio": {
+        "mean_us": 1847,
+        "median_us": 2143,
+        "p95_us": 2386,
+        "min_us": 7,
+        "max_us": 2444
+      },
+      "mean_game_fps": 30.19,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "source_sam-choice-2",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 10,
+      "y": 14,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1218736,
+      "cadence": {
+        "mean_us": 36479,
+        "median_us": 36590,
+        "p95_us": 37472,
+        "min_us": 34307,
+        "max_us": 38173
+      },
+      "work": {
+        "mean_us": 36471,
+        "median_us": 36582,
+        "p95_us": 37464,
+        "min_us": 34298,
+        "max_us": 38164
+      },
+      "draw": {
+        "mean_us": 34264,
+        "median_us": 34298,
+        "p95_us": 34966,
+        "min_us": 33248,
+        "max_us": 35112
+      },
+      "acquire": {
+        "mean_us": 8,
+        "median_us": 8,
+        "p95_us": 10,
+        "min_us": 8,
+        "max_us": 10
+      },
+      "present": {
+        "mean_us": 193,
+        "median_us": 153,
+        "p95_us": 270,
+        "min_us": 149,
+        "max_us": 1129
+      },
+      "audio": {
+        "mean_us": 2013,
+        "median_us": 2140,
+        "p95_us": 2369,
+        "min_us": 7,
+        "max_us": 2432
+      },
+      "mean_game_fps": 27.41,
+      "work_over_30fps_budget_us": 3138
+    },
+    {
+      "case": "source_sam-choice-3",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 1,
+      "x": 10,
+      "y": 14,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1210880,
+      "cadence": {
+        "mean_us": 38635,
+        "median_us": 38694,
+        "p95_us": 38988,
+        "min_us": 36460,
+        "max_us": 39089
+      },
+      "work": {
+        "mean_us": 38625,
+        "median_us": 38685,
+        "p95_us": 38980,
+        "min_us": 36452,
+        "max_us": 39080
+      },
+      "draw": {
+        "mean_us": 36345,
+        "median_us": 36359,
+        "p95_us": 36506,
+        "min_us": 36049,
+        "max_us": 36568
+      },
+      "acquire": {
+        "mean_us": 10,
+        "median_us": 8,
+        "p95_us": 10,
+        "min_us": 8,
+        "max_us": 114
+      },
+      "present": {
+        "mean_us": 154,
+        "median_us": 152,
+        "p95_us": 154,
+        "min_us": 149,
+        "max_us": 273
+      },
+      "audio": {
+        "mean_us": 2125,
+        "median_us": 2148,
+        "p95_us": 2367,
+        "min_us": 7,
+        "max_us": 2462
+      },
+      "mean_game_fps": 25.88,
+      "work_over_30fps_budget_us": 5292
+    },
+    {
+      "case": "ronald_lobby_conversation_world",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 14,
+      "x": 14,
+      "y": 10,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 1022952,
+      "cadence": {
+        "mean_us": 33403,
+        "median_us": 33251,
+        "p95_us": 35544,
+        "min_us": 30757,
+        "max_us": 36484
+      },
+      "work": {
+        "mean_us": 23286,
+        "median_us": 23535,
+        "p95_us": 24126,
+        "min_us": 20834,
+        "max_us": 24206
+      },
+      "draw": {
+        "mean_us": 21106,
+        "median_us": 21096,
+        "p95_us": 21538,
+        "min_us": 20549,
+        "max_us": 21550
+      },
+      "acquire": {
+        "mean_us": 10117,
+        "median_us": 9875,
+        "p95_us": 12097,
+        "min_us": 8647,
+        "max_us": 12592
+      },
+      "present": {
+        "mean_us": 278,
+        "median_us": 275,
+        "p95_us": 312,
+        "min_us": 271,
+        "max_us": 316
+      },
+      "audio": {
+        "mean_us": 1901,
+        "median_us": 2181,
+        "p95_us": 2394,
+        "min_us": 10,
+        "max_us": 2412
+      },
+      "mean_game_fps": 29.94,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "ronald_lobby-dialogue-full",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 14,
+      "x": 14,
+      "y": 10,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 970552,
+      "cadence": {
+        "mean_us": 34228,
+        "median_us": 34458,
+        "p95_us": 35244,
+        "min_us": 31743,
+        "max_us": 35320
+      },
+      "work": {
+        "mean_us": 34217,
+        "median_us": 34447,
+        "p95_us": 35234,
+        "min_us": 31733,
+        "max_us": 35310
+      },
+      "draw": {
+        "mean_us": 32175,
+        "median_us": 32196,
+        "p95_us": 32833,
+        "min_us": 31184,
+        "max_us": 32899
+      },
+      "acquire": {
+        "mean_us": 10,
+        "median_us": 10,
+        "p95_us": 11,
+        "min_us": 9,
+        "max_us": 12
+      },
+      "present": {
+        "mean_us": 151,
+        "median_us": 150,
+        "p95_us": 153,
+        "min_us": 148,
+        "max_us": 167
+      },
+      "audio": {
+        "mean_us": 1890,
+        "median_us": 2141,
+        "p95_us": 2378,
+        "min_us": 7,
+        "max_us": 2489
+      },
+      "mean_game_fps": 29.22,
+      "work_over_30fps_budget_us": 884
+    },
+    {
+      "case": "ronald_lobby-dialogue-reveal",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 14,
+      "x": 14,
+      "y": 10,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 970552,
+      "cadence": {
+        "mean_us": 33226,
+        "median_us": 33476,
+        "p95_us": 34933,
+        "min_us": 29466,
+        "max_us": 36071
+      },
+      "work": {
+        "mean_us": 33029,
+        "median_us": 33101,
+        "p95_us": 34850,
+        "min_us": 29456,
+        "max_us": 35968
+      },
+      "draw": {
+        "mean_us": 30970,
+        "median_us": 30961,
+        "p95_us": 32521,
+        "min_us": 28903,
+        "max_us": 32887
+      },
+      "acquire": {
+        "mean_us": 197,
+        "median_us": 10,
+        "p95_us": 1465,
+        "min_us": 10,
+        "max_us": 2454
+      },
+      "present": {
+        "mean_us": 206,
+        "median_us": 151,
+        "p95_us": 998,
+        "min_us": 149,
+        "max_us": 1056
+      },
+      "audio": {
+        "mean_us": 1852,
+        "median_us": 2161,
+        "p95_us": 2369,
+        "min_us": 7,
+        "max_us": 2438
+      },
+      "mean_game_fps": 30.1,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "ronald_lobby-choice-2",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 14,
+      "x": 14,
+      "y": 10,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 954080,
+      "cadence": {
+        "mean_us": 36271,
+        "median_us": 36336,
+        "p95_us": 37216,
+        "min_us": 34218,
+        "max_us": 37333
+      },
+      "work": {
+        "mean_us": 36262,
+        "median_us": 36326,
+        "p95_us": 37207,
+        "min_us": 34209,
+        "max_us": 37324
+      },
+      "draw": {
+        "mean_us": 34038,
+        "median_us": 34082,
+        "p95_us": 34705,
+        "min_us": 32939,
+        "max_us": 34754
+      },
+      "acquire": {
+        "mean_us": 9,
+        "median_us": 9,
+        "p95_us": 10,
+        "min_us": 7,
+        "max_us": 10
+      },
+      "present": {
+        "mean_us": 173,
+        "median_us": 153,
+        "p95_us": 187,
+        "min_us": 149,
+        "max_us": 1033
+      },
+      "audio": {
+        "mean_us": 2050,
+        "median_us": 2263,
+        "p95_us": 2414,
+        "min_us": 7,
+        "max_us": 2501
+      },
+      "mean_game_fps": 27.57,
+      "work_over_30fps_budget_us": 2929
+    },
+    {
+      "case": "ronald_lobby-choice-3",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 14,
+      "x": 14,
+      "y": 10,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 946224,
+      "cadence": {
+        "mean_us": 38342,
+        "median_us": 38409,
+        "p95_us": 38675,
+        "min_us": 36156,
+        "max_us": 39378
+      },
+      "work": {
+        "mean_us": 38333,
+        "median_us": 38399,
+        "p95_us": 38666,
+        "min_us": 36148,
+        "max_us": 39369
+      },
+      "draw": {
+        "mean_us": 36070,
+        "median_us": 36077,
+        "p95_us": 36233,
+        "min_us": 35807,
+        "max_us": 36314
+      },
+      "acquire": {
+        "mean_us": 9,
+        "median_us": 9,
+        "p95_us": 10,
+        "min_us": 8,
+        "max_us": 11
+      },
+      "present": {
+        "mean_us": 162,
+        "median_us": 152,
+        "p95_us": 161,
+        "min_us": 150,
+        "max_us": 1046
+      },
+      "audio": {
+        "mean_us": 2100,
+        "median_us": 2136,
+        "p95_us": 2374,
+        "min_us": 7,
+        "max_us": 2473
+      },
+      "mean_game_fps": 26.08,
+      "work_over_30fps_budget_us": 5000
+    },
+    {
+      "case": "intro-charizard",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 14,
+      "x": 14,
+      "y": 10,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 814208,
+      "cadence": {
+        "mean_us": 33400,
+        "median_us": 33413,
+        "p95_us": 34251,
+        "min_us": 30978,
+        "max_us": 35720
+      },
+      "work": {
+        "mean_us": 2489,
+        "median_us": 2258,
+        "p95_us": 3941,
+        "min_us": 1373,
+        "max_us": 4057
+      },
+      "draw": {
+        "mean_us": 1401,
+        "median_us": 1388,
+        "p95_us": 1571,
+        "min_us": 1169,
+        "max_us": 1599
+      },
+      "acquire": {
+        "mean_us": 30911,
+        "median_us": 31168,
+        "p95_us": 31908,
+        "min_us": 29348,
+        "max_us": 32052
+      },
+      "present": {
+        "mean_us": 176,
+        "median_us": 171,
+        "p95_us": 207,
+        "min_us": 167,
+        "max_us": 236
+      },
+      "audio": {
+        "mean_us": 911,
+        "median_us": 694,
+        "p95_us": 2325,
+        "min_us": 9,
+        "max_us": 2366
+      },
+      "mean_game_fps": 29.94,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "intro-scyther",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 14,
+      "x": 14,
+      "y": 10,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 814208,
+      "cadence": {
+        "mean_us": 33232,
+        "median_us": 33412,
+        "p95_us": 34477,
+        "min_us": 18941,
+        "max_us": 35684
+      },
+      "work": {
+        "mean_us": 2482,
+        "median_us": 2258,
+        "p95_us": 3962,
+        "min_us": 1429,
+        "max_us": 4731
+      },
+      "draw": {
+        "mean_us": 1399,
+        "median_us": 1383,
+        "p95_us": 1561,
+        "min_us": 1173,
+        "max_us": 1591
+      },
+      "acquire": {
+        "mean_us": 30750,
+        "median_us": 31149,
+        "p95_us": 31911,
+        "min_us": 15209,
+        "max_us": 32006
+      },
+      "present": {
+        "mean_us": 194,
+        "median_us": 171,
+        "p95_us": 213,
+        "min_us": 167,
+        "max_us": 1081
+      },
+      "audio": {
+        "mean_us": 888,
+        "median_us": 694,
+        "p95_us": 2326,
+        "min_us": 9,
+        "max_us": 2363
+      },
+      "mean_game_fps": 30.09,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "intro-aerodactyl",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 14,
+      "x": 14,
+      "y": 10,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 814208,
+      "cadence": {
+        "mean_us": 33232,
+        "median_us": 33418,
+        "p95_us": 34284,
+        "min_us": 16244,
+        "max_us": 35744
+      },
+      "work": {
+        "mean_us": 2605,
+        "median_us": 2399,
+        "p95_us": 4031,
+        "min_us": 1536,
+        "max_us": 4190
+      },
+      "draw": {
+        "mean_us": 1472,
+        "median_us": 1488,
+        "p95_us": 1628,
+        "min_us": 1211,
+        "max_us": 1690
+      },
+      "acquire": {
+        "mean_us": 30626,
+        "median_us": 31005,
+        "p95_us": 31839,
+        "min_us": 14555,
+        "max_us": 31894
+      },
+      "present": {
+        "mean_us": 203,
+        "median_us": 174,
+        "p95_us": 236,
+        "min_us": 168,
+        "max_us": 1079
+      },
+      "audio": {
+        "mean_us": 929,
+        "median_us": 698,
+        "p95_us": 2308,
+        "min_us": 9,
+        "max_us": 2349
+      },
+      "mean_game_fps": 30.09,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "intro-title-arrival",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 14,
+      "x": 14,
+      "y": 10,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 812984,
+      "cadence": {
+        "mean_us": 33208,
+        "median_us": 33407,
+        "p95_us": 35858,
+        "min_us": 14747,
+        "max_us": 37070
+      },
+      "work": {
+        "mean_us": 3898,
+        "median_us": 3947,
+        "p95_us": 5483,
+        "min_us": 1501,
+        "max_us": 5869
+      },
+      "draw": {
+        "mean_us": 1515,
+        "median_us": 1505,
+        "p95_us": 1729,
+        "min_us": 1282,
+        "max_us": 1772
+      },
+      "acquire": {
+        "mean_us": 29309,
+        "median_us": 29443,
+        "p95_us": 31872,
+        "min_us": 12830,
+        "max_us": 31931
+      },
+      "present": {
+        "mean_us": 180,
+        "median_us": 173,
+        "p95_us": 206,
+        "min_us": 164,
+        "max_us": 224
+      },
+      "audio": {
+        "mean_us": 2202,
+        "median_us": 2278,
+        "p95_us": 3847,
+        "min_us": 9,
+        "max_us": 3958
+      },
+      "mean_game_fps": 30.11,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "title-idle",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 14,
+      "x": 14,
+      "y": 10,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 812984,
+      "cadence": {
+        "mean_us": 33447,
+        "median_us": 33446,
+        "p95_us": 35777,
+        "min_us": 30837,
+        "max_us": 35916
+      },
+      "work": {
+        "mean_us": 3163,
+        "median_us": 3444,
+        "p95_us": 3824,
+        "min_us": 1049,
+        "max_us": 3922
+      },
+      "draw": {
+        "mean_us": 1114,
+        "median_us": 1089,
+        "p95_us": 1346,
+        "min_us": 799,
+        "max_us": 1403
+      },
+      "acquire": {
+        "mean_us": 30284,
+        "median_us": 29972,
+        "p95_us": 32258,
+        "min_us": 29486,
+        "max_us": 32417
+      },
+      "present": {
+        "mean_us": 172,
+        "median_us": 170,
+        "p95_us": 194,
+        "min_us": 162,
+        "max_us": 206
+      },
+      "audio": {
+        "mean_us": 1876,
+        "median_us": 2152,
+        "p95_us": 2393,
+        "min_us": 9,
+        "max_us": 2416
+      },
+      "mean_game_fps": 29.9,
+      "work_over_30fps_budget_us": 0
+    },
+    {
+      "case": "naming-keyboard",
+      "width": 320,
+      "height": 240,
+      "ram_mib": 4,
+      "map": 14,
+      "x": 14,
+      "y": 10,
+      "npc_count": 7,
+      "warmup": 32,
+      "samples": 96,
+      "free_heap": 649056,
+      "cadence": {
+        "mean_us": 33181,
+        "median_us": 33711,
+        "p95_us": 37864,
+        "min_us": 27006,
+        "max_us": 39943
+      },
+      "work": {
+        "mean_us": 31874,
+        "median_us": 33552,
+        "p95_us": 34088,
+        "min_us": 26997,
+        "max_us": 34892
+      },
+      "draw": {
+        "mean_us": 29773,
+        "median_us": 31203,
+        "p95_us": 31430,
+        "min_us": 26798,
+        "max_us": 31537
+      },
+      "acquire": {
+        "mean_us": 1307,
+        "median_us": 9,
+        "p95_us": 5068,
+        "min_us": 6,
+        "max_us": 6335
+      },
+      "present": {
+        "mean_us": 209,
+        "median_us": 187,
+        "p95_us": 219,
+        "min_us": 184,
+        "max_us": 1044
+      },
+      "audio": {
+        "mean_us": 1891,
+        "median_us": 2279,
+        "p95_us": 2494,
+        "min_us": 11,
+        "max_us": 2535
+      },
+      "mean_game_fps": 30.14,
+      "work_over_30fps_budget_us": 0
+    }
+  ],
+  "method": "32 warmup +96 sampled frames per case; persistent scene/UI assets; production draw/present/audio; linker wraps measure display acquisition, presentation and audio; no framebuffer dumps or per-frame logs.",
+  "population": "Generic map cases use the full authored NPC definition population. Mason/Sam use actual original opening VM states; Ronald is a controlled source-position lobby fixture.",
+  "limits": "Emulator CP0 timings include emulated RSP and host-backed RDP wait behavior; they are not physical-console FPS. Steady frame callbacks exclude controller polling/VM work outside rendering. Work subtracts only display_get acquisition/pacing wait."
+}

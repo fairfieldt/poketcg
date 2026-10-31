@@ -1,0 +1,484 @@
+Loaded poketcg-fps-survey
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-10-31 12:18:17.685 ares[25296:18825458] Resizing output buffers to 1536, 1152
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 69132 bytes
+FPS_SURVEY_BEGIN width=480 height=360 ram=8 target_fps=30 warmup=32 samples=96 timing=emulated_CP0_ticks
+Scene rom:/world/maps/overworld.l64: 18 batches, 17 textures, 292664 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 10970.583 us (mode: sync, success: yes).
+FPS_CASE {"case":"map_00_entrance","width":480,"height":360,"ram_mib":8,"map":0,"x":10,"y":14,"npc_count":0,"warmup":32,"samples":96,"free_heap":4459472,"cadence":{"mean_us":33991,"median_us":34232,"p95_us":34542,"min_us":31939,"max_us":36472},"work":{"mean_us":33974,"median_us":34214,"p95_us":34524,"min_us":31922,"max_us":36455},"draw":{"mean_us":31754,"median_us":31735,"p95_us":31883,"min_us":31656,"max_us":31931},"acquire":{"mean_us":17,"median_us":17,"p95_us":17,"min_us":16,"max_us":18},"present":{"mean_us":289,"median_us":223,"p95_us":254,"min_us":220,"max_us":2288},"audio":{"mean_us":1929,"median_us":2208,"p95_us":2454,"min_us":9,"max_us":2594}}
+Scene rom:/world/maps/mason_laboratory.l64: 24 batches, 23 textures, 43128 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_dr_mason.l64: 6 batches, 1 textures, 35504 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_dr_mason.l64: 6 batches, 1 textures, 26084 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+FPS_CASE {"case":"map_01_entrance","width":480,"height":360,"ram_mib":8,"map":1,"x":14,"y":26,"npc_count":7,"warmup":32,"samples":96,"free_heap":4519664,"cadence":{"mean_us":33221,"median_us":33544,"p95_us":34164,"min_us":30747,"max_us":34241},"work":{"mean_us":33204,"median_us":33527,"p95_us":34147,"min_us":30730,"max_us":34224},"draw":{"mean_us":30990,"median_us":31015,"p95_us":31432,"min_us":30437,"max_us":31480},"acquire":{"mean_us":16,"median_us":16,"p95_us":17,"min_us":15,"max_us":17},"present":{"mean_us":286,"median_us":280,"p95_us":310,"min_us":275,"max_us":398},"audio":{"mean_us":1928,"median_us":2243,"p95_us":2543,"min_us":10,"max_us":2599}}
+Scene rom:/world/maps/deck_machine_room_dynamic.l64: 13 batches, 12 textures, 23280 bytes
+Scene rom:/world/maps/deck_machine_2_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_3_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_4_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_5_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_6_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_7_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_8_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_9_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+FPS_CASE {"case":"map_02_entrance","width":480,"height":360,"ram_mib":8,"map":2,"x":12,"y":26,"npc_count":4,"warmup":32,"samples":96,"free_heap":4609080,"cadence":{"mean_us":33183,"median_us":33306,"p95_us":35845,"min_us":21281,"max_us":35879},"work":{"mean_us":23203,"median_us":23481,"p95_us":23794,"min_us":21119,"max_us":25809},"draw":{"mean_us":20959,"median_us":20949,"p95_us":21098,"min_us":20793,"max_us":21114},"acquire":{"mean_us":9979,"median_us":9865,"p95_us":12165,"min_us":16,"max_us":12230},"present":{"mean_us":322,"median_us":276,"p95_us":306,"min_us":273,"max_us":2373},"audio":{"mean_us":1921,"median_us":2210,"p95_us":2438,"min_us":10,"max_us":2459}}
+Scene rom:/world/maps/ishiharas_house.l64: 21 batches, 20 textures, 30888 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_ishihara.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_nikki.l64: 6 batches, 1 textures, 29300 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_ishihara.l64: 6 batches, 1 textures, 24860 bytes
+Scene rom:/world/lod/actor_nikki.l64: 6 batches, 1 textures, 23984 bytes
+FPS_CASE {"case":"map_03_entrance","width":480,"height":360,"ram_mib":8,"map":3,"x":10,"y":20,"npc_count":3,"warmup":32,"samples":96,"free_heap":4466896,"cadence":{"mean_us":33175,"median_us":33136,"p95_us":36328,"min_us":20323,"max_us":37415},"work":{"mean_us":20560,"median_us":20813,"p95_us":21416,"min_us":18086,"max_us":23103},"draw":{"mean_us":18313,"median_us":18304,"p95_us":18759,"min_us":17795,"max_us":18767},"acquire":{"mean_us":12615,"median_us":12519,"p95_us":14940,"min_us":16,"max_us":15267},"present":{"mean_us":353,"median_us":277,"p95_us":337,"min_us":273,"max_us":2421},"audio":{"mean_us":1894,"median_us":2204,"p95_us":2473,"min_us":10,"max_us":2488}}
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_fighting_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+FPS_CASE {"case":"map_04_entrance","width":480,"height":360,"ram_mib":8,"map":4,"x":10,"y":14,"npc_count":1,"warmup":32,"samples":96,"free_heap":4630256,"cadence":{"mean_us":33354,"median_us":33611,"p95_us":36228,"min_us":30217,"max_us":36335},"work":{"mean_us":13521,"median_us":13781,"p95_us":14406,"min_us":11163,"max_us":14674},"draw":{"mean_us":11357,"median_us":11326,"p95_us":11971,"min_us":10855,"max_us":11985},"acquire":{"mean_us":19833,"median_us":19563,"p95_us":21977,"min_us":18688,"max_us":22201},"present":{"mean_us":274,"median_us":273,"p95_us":295,"min_us":268,"max_us":307},"audio":{"mean_us":1889,"median_us":2194,"p95_us":2441,"min_us":10,"max_us":2463}}
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_specs.l64: 6 batches, 1 textures, 28800 bytes
+Scene rom:/world/maps/actor_butch.l64: 6 batches, 1 textures, 29144 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_granny.l64: 6 batches, 1 textures, 39320 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_specs.l64: 6 batches, 1 textures, 22176 bytes
+Scene rom:/world/lod/actor_butch.l64: 6 batches, 1 textures, 22208 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_granny.l64: 6 batches, 1 textures, 27368 bytes
+FPS_CASE {"case":"map_05_entrance","width":480,"height":360,"ram_mib":8,"map":5,"x":14,"y":22,"npc_count":7,"warmup":32,"samples":96,"free_heap":4272992,"cadence":{"mean_us":33330,"median_us":33465,"p95_us":35474,"min_us":30470,"max_us":35958},"work":{"mean_us":32970,"median_us":33261,"p95_us":34002,"min_us":30453,"max_us":34042},"draw":{"mean_us":30759,"median_us":30742,"p95_us":31284,"min_us":30142,"max_us":31368},"acquire":{"mean_us":360,"median_us":17,"p95_us":2035,"min_us":15,"max_us":2589},"present":{"mean_us":281,"median_us":277,"p95_us":306,"min_us":273,"max_us":393},"audio":{"mean_us":1929,"median_us":2236,"p95_us":2470,"min_us":10,"max_us":2530}}
+Scene rom:/world/maps/fighting_club.l64: 12 batches, 11 textures, 64092 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_mitch.l64: 6 batches, 1 textures, 30320 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_lass3.l64: 6 batches, 1 textures, 36344 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_mitch.l64: 6 batches, 1 textures, 28952 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_lass3.l64: 6 batches, 1 textures, 29732 bytes
+FPS_CASE {"case":"map_06_entrance","width":480,"height":360,"ram_mib":8,"map":6,"x":12,"y":14,"npc_count":4,"warmup":32,"samples":96,"free_heap":4482104,"cadence":{"mean_us":33350,"median_us":33562,"p95_us":35962,"min_us":30185,"max_us":36137},"work":{"mean_us":25616,"median_us":25806,"p95_us":26431,"min_us":23164,"max_us":28328},"draw":{"mean_us":23414,"median_us":23417,"p95_us":23850,"min_us":22862,"max_us":23896},"acquire":{"mean_us":7734,"median_us":7523,"p95_us":9819,"min_us":5024,"max_us":10193},"present":{"mean_us":324,"median_us":277,"p95_us":309,"min_us":274,"max_us":2369},"audio":{"mean_us":1877,"median_us":2152,"p95_us":2374,"min_us":9,"max_us":2386}}
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_rock_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+FPS_CASE {"case":"map_07_entrance","width":480,"height":360,"ram_mib":8,"map":7,"x":10,"y":14,"npc_count":1,"warmup":32,"samples":96,"free_heap":4630256,"cadence":{"mean_us":33180,"median_us":33691,"p95_us":36069,"min_us":13610,"max_us":36232},"work":{"mean_us":13518,"median_us":13727,"p95_us":14548,"min_us":11149,"max_us":16062},"draw":{"mean_us":11356,"median_us":11335,"p95_us":11952,"min_us":10865,"max_us":11957},"acquire":{"mean_us":19662,"median_us":19620,"p95_us":22136,"min_us":2088,"max_us":22203},"present":{"mean_us":317,"median_us":273,"p95_us":295,"min_us":267,"max_us":2371},"audio":{"mean_us":1843,"median_us":2140,"p95_us":2386,"min_us":10,"max_us":2394}}
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_lass1.l64: 6 batches, 1 textures, 31652 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_woman.l64: 6 batches, 1 textures, 29756 bytes
+Scene rom:/world/maps/actor_mania_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_lass1.l64: 6 batches, 1 textures, 26000 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_woman.l64: 6 batches, 1 textures, 24056 bytes
+Scene rom:/world/lod/actor_mania_palette2.l64: 6 batches, 1 textures, 22280 bytes
+FPS_CASE {"case":"map_08_entrance","width":480,"height":360,"ram_mib":8,"map":8,"x":14,"y":22,"npc_count":7,"warmup":32,"samples":96,"free_heap":4267472,"cadence":{"mean_us":33347,"median_us":33635,"p95_us":34202,"min_us":30961,"max_us":34328},"work":{"mean_us":33330,"median_us":33618,"p95_us":34186,"min_us":30944,"max_us":34311},"draw":{"mean_us":31168,"median_us":31171,"p95_us":31632,"min_us":30629,"max_us":31641},"acquire":{"mean_us":16,"median_us":16,"p95_us":17,"min_us":16,"max_us":17},"present":{"mean_us":281,"median_us":279,"p95_us":308,"min_us":274,"max_us":311},"audio":{"mean_us":1880,"median_us":2158,"p95_us":2381,"min_us":10,"max_us":2396}}
+Scene rom:/world/maps/rock_club.l64: 37 batches, 36 textures, 75780 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_gene.l64: 6 batches, 1 textures, 35400 bytes
+Scene rom:/world/maps/actor_boy.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_gene.l64: 6 batches, 1 textures, 23412 bytes
+Scene rom:/world/lod/actor_boy.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+FPS_CASE {"case":"map_09_entrance","width":480,"height":360,"ram_mib":8,"map":9,"x":14,"y":26,"npc_count":3,"warmup":32,"samples":96,"free_heap":4379552,"cadence":{"mean_us":33151,"median_us":33178,"p95_us":35405,"min_us":22280,"max_us":36489},"work":{"mean_us":24045,"median_us":24292,"p95_us":24917,"min_us":21735,"max_us":26855},"draw":{"mean_us":21898,"median_us":21891,"p95_us":22340,"min_us":21362,"max_us":22351},"acquire":{"mean_us":9106,"median_us":9017,"p95_us":11376,"min_us":16,"max_us":11618},"present":{"mean_us":302,"median_us":278,"p95_us":318,"min_us":272,"max_us":2335},"audio":{"mean_us":1843,"median_us":2139,"p95_us":2364,"min_us":10,"max_us":2386}}
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_water_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+FPS_CASE {"case":"map_10_entrance","width":480,"height":360,"ram_mib":8,"map":10,"x":10,"y":14,"npc_count":1,"warmup":32,"samples":96,"free_heap":4630248,"cadence":{"mean_us":33355,"median_us":33635,"p95_us":36146,"min_us":30329,"max_us":36339},"work":{"mean_us":13496,"median_us":13725,"p95_us":14479,"min_us":11159,"max_us":14597},"draw":{"mean_us":11356,"median_us":11322,"p95_us":11967,"min_us":10851,"max_us":11975},"acquire":{"mean_us":19859,"median_us":19617,"p95_us":22143,"min_us":18745,"max_us":22203},"present":{"mean_us":273,"median_us":272,"p95_us":294,"min_us":266,"max_us":305},"audio":{"mean_us":1865,"median_us":2147,"p95_us":2384,"min_us":10,"max_us":2398}}
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/maps/actor_pappy.l64: 6 batches, 1 textures, 36992 bytes
+Scene rom:/world/maps/actor_lass2.l64: 6 batches, 1 textures, 31772 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+Scene rom:/world/lod/actor_pappy.l64: 6 batches, 1 textures, 25364 bytes
+Scene rom:/world/lod/actor_lass2.l64: 6 batches, 1 textures, 26576 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+FPS_CASE {"case":"map_11_entrance","width":480,"height":360,"ram_mib":8,"map":11,"x":14,"y":22,"npc_count":7,"warmup":32,"samples":96,"free_heap":4267472,"cadence":{"mean_us":33369,"median_us":33542,"p95_us":35880,"min_us":30181,"max_us":35960},"work":{"mean_us":32019,"median_us":32291,"p95_us":32854,"min_us":29615,"max_us":32989},"draw":{"mean_us":29858,"median_us":29841,"p95_us":30326,"min_us":29320,"max_us":30339},"acquire":{"mean_us":1350,"median_us":1054,"p95_us":3410,"min_us":360,"max_us":3745},"present":{"mean_us":283,"median_us":281,"p95_us":310,"min_us":277,"max_us":312},"audio":{"mean_us":1877,"median_us":2160,"p95_us":2382,"min_us":10,"max_us":2392}}
+Scene rom:/world/maps/water_club.l64: 20 batches, 19 textures, 98712 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_joshua.l64: 6 batches, 1 textures, 31868 bytes
+Scene rom:/world/maps/actor_swimmer.l64: 6 batches, 1 textures, 29684 bytes
+Scene rom:/world/maps/actor_swimmer_palette2.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/maps/actor_amy__lying.l64: 6 batches, 1 textures, 30452 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_joshua.l64: 6 batches, 1 textures, 21620 bytes
+Scene rom:/world/lod/actor_swimmer.l64: 6 batches, 1 textures, 24476 bytes
+Scene rom:/world/lod/actor_swimmer_palette2.l64: 6 batches, 1 textures, 24404 bytes
+Scene rom:/world/lod/actor_amy__lying.l64: 6 batches, 1 textures, 25316 bytes
+FPS_CASE {"case":"map_12_entrance","width":480,"height":360,"ram_mib":8,"map":12,"x":14,"y":28,"npc_count":4,"warmup":32,"samples":96,"free_heap":4369848,"cadence":{"mean_us":33159,"median_us":33069,"p95_us":36068,"min_us":26845,"max_us":36376},"work":{"mean_us":28903,"median_us":29124,"p95_us":29786,"min_us":26563,"max_us":31612},"draw":{"mean_us":26739,"median_us":26744,"p95_us":27144,"min_us":26271,"max_us":27181},"acquire":{"mean_us":4256,"median_us":4222,"p95_us":6514,"min_us":16,"max_us":6793},"present":{"mean_us":321,"median_us":277,"p95_us":282,"min_us":274,"max_us":2373},"audio":{"mean_us":1842,"median_us":2144,"p95_us":2364,"min_us":10,"max_us":2383}}
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_lightning_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+FPS_CASE {"case":"map_13_entrance","width":480,"height":360,"ram_mib":8,"map":13,"x":10,"y":14,"npc_count":1,"warmup":32,"samples":96,"free_heap":4630256,"cadence":{"mean_us":33181,"median_us":33658,"p95_us":36139,"min_us":16161,"max_us":36329},"work":{"mean_us":13589,"median_us":13782,"p95_us":14441,"min_us":11219,"max_us":16557},"draw":{"mean_us":11428,"median_us":11399,"p95_us":12032,"min_us":10915,"max_us":12056},"acquire":{"mean_us":19592,"median_us":19563,"p95_us":21910,"min_us":2567,"max_us":22141},"present":{"mean_us":317,"median_us":272,"p95_us":295,"min_us":266,"max_us":2367},"audio":{"mean_us":1843,"median_us":2143,"p95_us":2375,"min_us":9,"max_us":2389}}
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_hood.l64: 6 batches, 1 textures, 26800 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_lass1.l64: 6 batches, 1 textures, 31652 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_hood.l64: 6 batches, 1 textures, 21484 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_lass1.l64: 6 batches, 1 textures, 26000 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+FPS_CASE {"case":"map_14_entrance","width":480,"height":360,"ram_mib":8,"map":14,"x":14,"y":22,"npc_count":6,"warmup":32,"samples":96,"free_heap":4336232,"cadence":{"mean_us":33149,"median_us":33066,"p95_us":36020,"min_us":28306,"max_us":36383},"work":{"mean_us":30171,"median_us":30427,"p95_us":31050,"min_us":27860,"max_us":32306},"draw":{"mean_us":28014,"median_us":28012,"p95_us":28411,"min_us":27566,"max_us":28417},"acquire":{"mean_us":2978,"median_us":2892,"p95_us":5222,"min_us":17,"max_us":5495},"present":{"mean_us":299,"median_us":278,"p95_us":282,"min_us":273,"max_us":2328},"audio":{"mean_us":1856,"median_us":2153,"p95_us":2380,"min_us":10,"max_us":2394}}
+Scene rom:/world/maps/lightning_club.l64: 35 batches, 34 textures, 34584 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_isaac.l64: 6 batches, 1 textures, 32616 bytes
+Scene rom:/world/maps/actor_hood.l64: 6 batches, 1 textures, 26800 bytes
+Scene rom:/world/maps/actor_girl.l64: 6 batches, 1 textures, 35344 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_isaac.l64: 6 batches, 1 textures, 23904 bytes
+Scene rom:/world/lod/actor_hood.l64: 6 batches, 1 textures, 21484 bytes
+Scene rom:/world/lod/actor_girl.l64: 6 batches, 1 textures, 24052 bytes
+FPS_CASE {"case":"map_15_entrance","width":480,"height":360,"ram_mib":8,"map":15,"x":14,"y":28,"npc_count":4,"warmup":32,"samples":96,"free_heap":4429760,"cadence":{"mean_us":33355,"median_us":33586,"p95_us":35934,"min_us":30169,"max_us":36150},"work":{"mean_us":23685,"median_us":23936,"p95_us":24511,"min_us":21303,"max_us":24660},"draw":{"mean_us":21546,"median_us":21544,"p95_us":21980,"min_us":20991,"max_us":21997},"acquire":{"mean_us":9670,"median_us":9406,"p95_us":11690,"min_us":8719,"max_us":12044},"present":{"mean_us":281,"median_us":277,"p95_us":308,"min_us":273,"max_us":311},"audio":{"mean_us":1857,"median_us":2143,"p95_us":2376,"min_us":10,"max_us":2398}}
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_grass_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+FPS_CASE {"case":"map_16_entrance","width":480,"height":360,"ram_mib":8,"map":16,"x":10,"y":14,"npc_count":2,"warmup":32,"samples":96,"free_heap":4570176,"cadence":{"mean_us":33352,"median_us":33406,"p95_us":35730,"min_us":28925,"max_us":35815},"work":{"mean_us":16080,"median_us":16340,"p95_us":16977,"min_us":13677,"max_us":18829},"draw":{"mean_us":13913,"median_us":13896,"p95_us":14371,"min_us":13348,"max_us":14452},"acquire":{"mean_us":17271,"median_us":17032,"p95_us":19298,"min_us":14527,"max_us":19644},"present":{"mean_us":298,"median_us":272,"p95_us":312,"min_us":267,"max_us":2413},"audio":{"mean_us":1869,"median_us":2147,"p95_us":2379,"min_us":10,"max_us":2447}}
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_girl.l64: 6 batches, 1 textures, 35344 bytes
+Scene rom:/world/maps/actor_lass2.l64: 6 batches, 1 textures, 31772 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/maps/actor_granny.l64: 6 batches, 1 textures, 39320 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_girl.l64: 6 batches, 1 textures, 24052 bytes
+Scene rom:/world/lod/actor_lass2.l64: 6 batches, 1 textures, 26576 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+Scene rom:/world/lod/actor_granny.l64: 6 batches, 1 textures, 27368 bytes
+FPS_CASE {"case":"map_17_entrance","width":480,"height":360,"ram_mib":8,"map":17,"x":14,"y":22,"npc_count":6,"warmup":32,"samples":96,"free_heap":4312576,"cadence":{"mean_us":33152,"median_us":33015,"p95_us":35978,"min_us":28848,"max_us":37305},"work":{"mean_us":30483,"median_us":30700,"p95_us":31315,"min_us":28144,"max_us":32778},"draw":{"mean_us":28305,"median_us":28295,"p95_us":28702,"min_us":27851,"max_us":28710},"acquire":{"mean_us":2669,"median_us":2607,"p95_us":4916,"min_us":17,"max_us":5213},"present":{"mean_us":325,"median_us":282,"p95_us":285,"min_us":278,"max_us":2361},"audio":{"mean_us":1853,"median_us":2149,"p95_us":2375,"min_us":10,"max_us":2503}}
+Scene rom:/world/maps/grass_club.l64: 36 batches, 35 textures, 227688 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_nikki.l64: 6 batches, 1 textures, 29300 bytes
+Scene rom:/world/maps/actor_lass1.l64: 6 batches, 1 textures, 31652 bytes
+Scene rom:/world/maps/actor_lass2.l64: 6 batches, 1 textures, 31772 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_nikki.l64: 6 batches, 1 textures, 23984 bytes
+Scene rom:/world/lod/actor_lass1.l64: 6 batches, 1 textures, 26000 bytes
+Scene rom:/world/lod/actor_lass2.l64: 6 batches, 1 textures, 26576 bytes
+FPS_CASE {"case":"map_18_entrance","width":480,"height":360,"ram_mib":8,"map":18,"x":14,"y":28,"npc_count":3,"warmup":32,"samples":96,"free_heap":4239008,"cadence":{"mean_us":36528,"median_us":36696,"p95_us":37237,"min_us":33925,"max_us":37411},"work":{"mean_us":36510,"median_us":36678,"p95_us":37219,"min_us":33907,"max_us":37394},"draw":{"mean_us":34167,"median_us":34152,"p95_us":34593,"min_us":33619,"max_us":34663},"acquire":{"mean_us":17,"median_us":17,"p95_us":18,"min_us":16,"max_us":18},"present":{"mean_us":285,"median_us":279,"p95_us":321,"min_us":273,"max_us":385},"audio":{"mean_us":2057,"median_us":2161,"p95_us":2422,"min_us":10,"max_us":2551}}
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_psychic_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+FPS_CASE {"case":"map_19_entrance","width":480,"height":360,"ram_mib":8,"map":19,"x":10,"y":14,"npc_count":2,"warmup":32,"samples":96,"free_heap":4567904,"cadence":{"mean_us":33177,"median_us":33396,"p95_us":35724,"min_us":14520,"max_us":37736},"work":{"mean_us":16076,"median_us":16239,"p95_us":17065,"min_us":13720,"max_us":18804},"draw":{"mean_us":13903,"median_us":13851,"p95_us":14449,"min_us":13405,"max_us":14512},"acquire":{"mean_us":17100,"median_us":17110,"p95_us":19424,"min_us":16,"max_us":19668},"present":{"mean_us":318,"median_us":272,"p95_us":311,"min_us":266,"max_us":2373},"audio":{"mean_us":1855,"median_us":2159,"p95_us":2393,"min_us":10,"max_us":2400}}
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_pappy.l64: 6 batches, 1 textures, 36992 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/maps/actor_boy_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_pappy.l64: 6 batches, 1 textures, 25364 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+Scene rom:/world/lod/actor_boy_palette2.l64: 6 batches, 1 textures, 22280 bytes
+FPS_CASE {"case":"map_20_entrance","width":480,"height":360,"ram_mib":8,"map":20,"x":14,"y":22,"npc_count":7,"warmup":32,"samples":96,"free_heap":4237504,"cadence":{"mean_us":33076,"median_us":33366,"p95_us":34013,"min_us":30525,"max_us":35357},"work":{"mean_us":32977,"median_us":33312,"p95_us":33911,"min_us":30507,"max_us":33996},"draw":{"mean_us":30821,"median_us":30820,"p95_us":31325,"min_us":30207,"max_us":31373},"acquire":{"mean_us":98,"median_us":17,"p95_us":440,"min_us":14,"max_us":2181},"present":{"mean_us":283,"median_us":278,"p95_us":308,"min_us":273,"max_us":390},"audio":{"mean_us":1873,"median_us":2162,"p95_us":2428,"min_us":10,"max_us":2533}}
+Scene rom:/world/maps/psychic_club.l64: 33 batches, 32 textures, 43644 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_murray.l64: 6 batches, 1 textures, 37424 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_girl.l64: 6 batches, 1 textures, 35344 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_murray.l64: 6 batches, 1 textures, 25076 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_girl.l64: 6 batches, 1 textures, 24052 bytes
+FPS_CASE {"case":"map_21_entrance","width":480,"height":360,"ram_mib":8,"map":21,"x":14,"y":24,"npc_count":4,"warmup":32,"samples":96,"free_heap":4406504,"cadence":{"mean_us":33352,"median_us":33515,"p95_us":35954,"min_us":30431,"max_us":36099},"work":{"mean_us":24611,"median_us":24896,"p95_us":25404,"min_us":22222,"max_us":25520},"draw":{"mean_us":22463,"median_us":22467,"p95_us":22900,"min_us":21911,"max_us":22912},"acquire":{"mean_us":8741,"median_us":8438,"p95_us":10768,"min_us":7824,"max_us":11144},"present":{"mean_us":281,"median_us":277,"p95_us":308,"min_us":274,"max_us":310},"audio":{"mean_us":1866,"median_us":2139,"p95_us":2362,"min_us":10,"max_us":2381}}
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_science_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+FPS_CASE {"case":"map_22_entrance","width":480,"height":360,"ram_mib":8,"map":22,"x":10,"y":14,"npc_count":1,"warmup":32,"samples":96,"free_heap":4630264,"cadence":{"mean_us":33354,"median_us":33627,"p95_us":36207,"min_us":30324,"max_us":36338},"work":{"mean_us":13590,"median_us":13829,"p95_us":14543,"min_us":11264,"max_us":15612},"draw":{"mean_us":11428,"median_us":11402,"p95_us":12028,"min_us":10924,"max_us":12046},"acquire":{"mean_us":19764,"median_us":19536,"p95_us":22072,"min_us":17732,"max_us":22107},"present":{"mean_us":294,"median_us":271,"p95_us":293,"min_us":266,"max_us":2374},"audio":{"mean_us":1867,"median_us":2148,"p95_us":2377,"min_us":10,"max_us":2404}}
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_specs.l64: 6 batches, 1 textures, 28800 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_specs.l64: 6 batches, 1 textures, 22176 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+FPS_CASE {"case":"map_23_entrance","width":480,"height":360,"ram_mib":8,"map":23,"x":14,"y":22,"npc_count":7,"warmup":32,"samples":96,"free_heap":4279368,"cadence":{"mean_us":33199,"median_us":33494,"p95_us":35946,"min_us":29938,"max_us":36675},"work":{"mean_us":31869,"median_us":32112,"p95_us":32787,"min_us":29413,"max_us":34046},"draw":{"mean_us":29668,"median_us":29701,"p95_us":30127,"min_us":29109,"max_us":30300},"acquire":{"mean_us":1329,"median_us":1138,"p95_us":3463,"min_us":17,"max_us":3940},"present":{"mean_us":323,"median_us":278,"p95_us":306,"min_us":272,"max_us":2366},"audio":{"mean_us":1878,"median_us":2156,"p95_us":2380,"min_us":10,"max_us":2398}}
+Scene rom:/world/maps/science_club.l64: 39 batches, 38 textures, 30864 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_rick.l64: 6 batches, 1 textures, 32448 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_rick.l64: 6 batches, 1 textures, 23856 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+FPS_CASE {"case":"map_24_entrance","width":480,"height":360,"ram_mib":8,"map":24,"x":14,"y":28,"npc_count":4,"warmup":32,"samples":96,"free_heap":4478608,"cadence":{"mean_us":33154,"median_us":33560,"p95_us":35916,"min_us":23568,"max_us":36048},"work":{"mean_us":23735,"median_us":24036,"p95_us":24526,"min_us":21313,"max_us":26533},"draw":{"mean_us":21555,"median_us":21559,"p95_us":21992,"min_us":21007,"max_us":22032},"acquire":{"mean_us":9418,"median_us":9310,"p95_us":11807,"min_us":18,"max_us":12046},"present":{"mean_us":325,"median_us":277,"p95_us":309,"min_us":273,"max_us":2416},"audio":{"mean_us":1854,"median_us":2158,"p95_us":2374,"min_us":10,"max_us":2385}}
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_fire_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+FPS_CASE {"case":"map_25_entrance","width":480,"height":360,"ram_mib":8,"map":25,"x":10,"y":14,"npc_count":1,"warmup":32,"samples":96,"free_heap":4630304,"cadence":{"mean_us":33181,"median_us":33611,"p95_us":36227,"min_us":13808,"max_us":36436},"work":{"mean_us":13582,"median_us":13787,"p95_us":14570,"min_us":11224,"max_us":14691},"draw":{"mean_us":11429,"median_us":11414,"p95_us":12024,"min_us":10927,"max_us":12042},"acquire":{"mean_us":19598,"median_us":19559,"p95_us":21855,"min_us":2310,"max_us":22131},"present":{"mean_us":272,"median_us":271,"p95_us":289,"min_us":265,"max_us":294},"audio":{"mean_us":1881,"median_us":2178,"p95_us":2450,"min_us":10,"max_us":2467}}
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_lass3.l64: 6 batches, 1 textures, 36344 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_boy_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_lass3.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_boy_palette2.l64: 6 batches, 1 textures, 22280 bytes
+FPS_CASE {"case":"map_26_entrance","width":480,"height":360,"ram_mib":8,"map":26,"x":14,"y":22,"npc_count":6,"warmup":32,"samples":96,"free_heap":4320480,"cadence":{"mean_us":33385,"median_us":33190,"p95_us":36097,"min_us":30472,"max_us":36319},"work":{"mean_us":29993,"median_us":30353,"p95_us":30770,"min_us":27651,"max_us":30823},"draw":{"mean_us":27800,"median_us":27793,"p95_us":28184,"min_us":27343,"max_us":28199},"acquire":{"mean_us":3391,"median_us":3015,"p95_us":5453,"min_us":2517,"max_us":5723},"present":{"mean_us":279,"median_us":279,"p95_us":283,"min_us":275,"max_us":312},"audio":{"mean_us":1913,"median_us":2190,"p95_us":2443,"min_us":10,"max_us":2453}}
+Scene rom:/world/maps/fire_club.l64: 35 batches, 34 textures, 38976 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ken.l64: 6 batches, 1 textures, 37176 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_specs.l64: 6 batches, 1 textures, 28800 bytes
+Scene rom:/world/maps/actor_boy_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ken.l64: 6 batches, 1 textures, 35808 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_specs.l64: 6 batches, 1 textures, 22176 bytes
+Scene rom:/world/lod/actor_boy_palette2.l64: 6 batches, 1 textures, 22280 bytes
+FPS_CASE {"case":"map_27_entrance","width":480,"height":360,"ram_mib":8,"map":27,"x":14,"y":28,"npc_count":4,"warmup":32,"samples":96,"free_heap":4340616,"cadence":{"mean_us":33374,"median_us":33560,"p95_us":36129,"min_us":30173,"max_us":38106},"work":{"mean_us":25247,"median_us":25471,"p95_us":26040,"min_us":22772,"max_us":28014},"draw":{"mean_us":23019,"median_us":23024,"p95_us":23452,"min_us":22469,"max_us":23459},"acquire":{"mean_us":8127,"median_us":7877,"p95_us":10213,"min_us":5331,"max_us":10575},"present":{"mean_us":303,"median_us":277,"p95_us":310,"min_us":273,"max_us":2367},"audio":{"mean_us":1924,"median_us":2202,"p95_us":2452,"min_us":10,"max_us":2471}}
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_challenge_hall_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+FPS_CASE {"case":"map_28_entrance","width":480,"height":360,"ram_mib":8,"map":28,"x":10,"y":14,"npc_count":1,"warmup":32,"samples":96,"free_heap":4630280,"cadence":{"mean_us":33181,"median_us":33748,"p95_us":36003,"min_us":17232,"max_us":38149},"work":{"mean_us":13627,"median_us":13779,"p95_us":14677,"min_us":11221,"max_us":16344},"draw":{"mean_us":11429,"median_us":11391,"p95_us":12035,"min_us":10928,"max_us":12050},"acquire":{"mean_us":19554,"median_us":19587,"p95_us":21730,"min_us":2858,"max_us":22132},"present":{"mean_us":315,"median_us":269,"p95_us":292,"min_us":264,"max_us":2373},"audio":{"mean_us":1883,"median_us":2179,"p95_us":2457,"min_us":10,"max_us":2479}}
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_hood.l64: 6 batches, 1 textures, 26800 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_pappy.l64: 6 batches, 1 textures, 36992 bytes
+Scene rom:/world/maps/actor_lass3.l64: 6 batches, 1 textures, 36344 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_hood.l64: 6 batches, 1 textures, 21484 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_pappy.l64: 6 batches, 1 textures, 25364 bytes
+Scene rom:/world/lod/actor_lass3.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+[96m[unusual] [0mSP DMA writing to RDRAM address 0x139f48 which is cached (missing cache invalidation?)
+	Cacheline was loaded at CPU PC: 0xffffffff8008e258
+	SP DMA started at RSP PC: 0x03c
+
+FPS_CASE {"case":"map_29_entrance","width":480,"height":360,"ram_mib":8,"map":29,"x":14,"y":22,"npc_count":9,"warmup":32,"samples":96,"free_heap":4105456,"cadence":{"mean_us":38866,"median_us":38970,"p95_us":39463,"min_us":36144,"max_us":39599},"work":{"mean_us":38847,"median_us":38952,"p95_us":39444,"min_us":36126,"max_us":39581},"draw":{"mean_us":36336,"median_us":36337,"p95_us":36751,"min_us":35794,"max_us":36921},"acquire":{"mean_us":18,"median_us":17,"p95_us":18,"min_us":16,"max_us":45},"present":{"mean_us":290,"median_us":282,"p95_us":315,"min_us":278,"max_us":409},"audio":{"mean_us":2220,"median_us":2261,"p95_us":2461,"min_us":10,"max_us":2498}}
+Scene rom:/world/maps/challenge_hall.l64: 49 batches, 48 textures, 45408 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+FPS_CASE {"case":"map_30_entrance","width":480,"height":360,"ram_mib":8,"map":30,"x":16,"y":28,"npc_count":4,"warmup":32,"samples":96,"free_heap":4420320,"cadence":{"mean_us":33158,"median_us":33472,"p95_us":36032,"min_us":22985,"max_us":37914},"work":{"mean_us":25376,"median_us":25633,"p95_us":26254,"min_us":22909,"max_us":27851},"draw":{"mean_us":23165,"median_us":23172,"p95_us":23606,"min_us":22618,"max_us":23639},"acquire":{"mean_us":7781,"median_us":7671,"p95_us":10066,"min_us":17,"max_us":10427},"present":{"mean_us":324,"median_us":277,"p95_us":309,"min_us":269,"max_us":2366},"audio":{"mean_us":1886,"median_us":2185,"p95_us":2459,"min_us":9,"max_us":2481}}
+Scene rom:/world/maps/pokemon_dome_entrance.l64: 27 batches, 26 textures, 22248 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+FPS_CASE {"case":"map_31_entrance","width":480,"height":360,"ram_mib":8,"map":31,"x":16,"y":14,"npc_count":0,"warmup":32,"samples":96,"free_heap":4670320,"cadence":{"mean_us":33161,"median_us":33340,"p95_us":35750,"min_us":14186,"max_us":36260},"work":{"mean_us":11889,"median_us":12167,"p95_us":12704,"min_us":9488,"max_us":12839},"draw":{"mean_us":9736,"median_us":9792,"p95_us":10055,"min_us":9204,"max_us":10070},"acquire":{"mean_us":21272,"median_us":21177,"p95_us":23499,"min_us":3971,"max_us":23861},"present":{"mean_us":272,"median_us":271,"p95_us":293,"min_us":266,"max_us":300},"audio":{"mean_us":1879,"median_us":2189,"p95_us":2459,"min_us":10,"max_us":2477}}
+Scene rom:/world/maps/pokemon_dome.l64: 54 batches, 53 textures, 75396 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_courtney.l64: 6 batches, 1 textures, 34460 bytes
+Scene rom:/world/maps/actor_steve.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_jack.l64: 6 batches, 1 textures, 32076 bytes
+Scene rom:/world/maps/actor_rod.l64: 6 batches, 1 textures, 37668 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_courtney.l64: 6 batches, 1 textures, 27176 bytes
+Scene rom:/world/lod/actor_steve.l64: 6 batches, 1 textures, 24332 bytes
+Scene rom:/world/lod/actor_jack.l64: 6 batches, 1 textures, 23460 bytes
+Scene rom:/world/lod/actor_rod.l64: 6 batches, 1 textures, 25596 bytes
+FPS_CASE {"case":"map_32_entrance","width":480,"height":360,"ram_mib":8,"map":32,"x":16,"y":28,"npc_count":5,"warmup":32,"samples":96,"free_heap":4130056,"cadence":{"mean_us":33374,"median_us":33349,"p95_us":35665,"min_us":30951,"max_us":35761},"work":{"mean_us":31214,"median_us":31496,"p95_us":31722,"min_us":29315,"max_us":31737},"draw":{"mean_us":29040,"median_us":29039,"p95_us":29056,"min_us":29022,"max_us":29071},"acquire":{"mean_us":2160,"median_us":1847,"p95_us":4034,"min_us":1612,"max_us":4049},"present":{"mean_us":276,"median_us":276,"p95_us":279,"min_us":273,"max_us":294},"audio":{"mean_us":1897,"median_us":2183,"p95_us":2407,"min_us":10,"max_us":2416}}
+Scene rom:/world/maps/hall_of_honor.l64: 27 batches, 26 textures, 25644 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_legendary_card__bottom_left.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__bottom_right.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__left_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/actor_legendary_card__right_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/actor_legendary_card__top_left.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__top_right.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+FPS_CASE {"case":"map_33_entrance","width":480,"height":360,"ram_mib":8,"map":33,"x":12,"y":22,"npc_count":6,"warmup":32,"samples":96,"free_heap":4645384,"cadence":{"mean_us":33375,"median_us":33515,"p95_us":35869,"min_us":30177,"max_us":36132},"work":{"mean_us":13920,"median_us":14168,"p95_us":14730,"min_us":11412,"max_us":16092},"draw":{"mean_us":11734,"median_us":11794,"p95_us":12221,"min_us":11116,"max_us":12265},"acquire":{"mean_us":19454,"median_us":19184,"p95_us":21426,"min_us":17262,"max_us":21955},"present":{"mean_us":317,"median_us":272,"p95_us":302,"min_us":267,"max_us":2387},"audio":{"mean_us":1868,"median_us":2157,"p95_us":2385,"min_us":9,"max_us":2395}}
+Scene rom:/world/maps/mason_laboratory.l64: 24 batches, 23 textures, 43128 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_dr_mason.l64: 6 batches, 1 textures, 35504 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_dr_mason.l64: 6 batches, 1 textures, 26084 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+FPS_CASE {"case":"map_01_center","width":480,"height":360,"ram_mib":8,"map":1,"x":14,"y":15,"npc_count":7,"warmup":32,"samples":96,"free_heap":4519656,"cadence":{"mean_us":33173,"median_us":33456,"p95_us":35827,"min_us":29636,"max_us":38032},"work":{"mean_us":31699,"median_us":31920,"p95_us":32554,"min_us":29222,"max_us":34129},"draw":{"mean_us":29486,"median_us":29496,"p95_us":29939,"min_us":28935,"max_us":29955},"acquire":{"mean_us":1473,"median_us":1234,"p95_us":3745,"min_us":17,"max_us":4119},"present":{"mean_us":344,"median_us":276,"p95_us":305,"min_us":273,"max_us":2403},"audio":{"mean_us":1868,"median_us":2172,"p95_us":2403,"min_us":9,"max_us":2482}}
+Scene rom:/world/maps/water_club.l64: 20 batches, 19 textures, 98712 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_joshua.l64: 6 batches, 1 textures, 31868 bytes
+Scene rom:/world/maps/actor_swimmer.l64: 6 batches, 1 textures, 29684 bytes
+Scene rom:/world/maps/actor_swimmer_palette2.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/maps/actor_amy__lying.l64: 6 batches, 1 textures, 30452 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_joshua.l64: 6 batches, 1 textures, 21620 bytes
+Scene rom:/world/lod/actor_swimmer.l64: 6 batches, 1 textures, 24476 bytes
+Scene rom:/world/lod/actor_swimmer_palette2.l64: 6 batches, 1 textures, 24404 bytes
+Scene rom:/world/lod/actor_amy__lying.l64: 6 batches, 1 textures, 25316 bytes
+FPS_CASE {"case":"map_12_center","width":480,"height":360,"ram_mib":8,"map":12,"x":14,"y":16,"npc_count":4,"warmup":32,"samples":96,"free_heap":4369856,"cadence":{"mean_us":33161,"median_us":33075,"p95_us":36211,"min_us":25922,"max_us":36393},"work":{"mean_us":27405,"median_us":27639,"p95_us":28232,"min_us":25064,"max_us":30200},"draw":{"mean_us":25232,"median_us":25236,"p95_us":25632,"min_us":24761,"max_us":25641},"acquire":{"mean_us":5756,"median_us":5691,"p95_us":8015,"min_us":17,"max_us":8292},"present":{"mean_us":321,"median_us":277,"p95_us":282,"min_us":274,"max_us":2394},"audio":{"mean_us":1851,"median_us":2158,"p95_us":2381,"min_us":10,"max_us":2419}}
+Scene rom:/world/maps/lightning_club.l64: 35 batches, 34 textures, 34584 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_isaac.l64: 6 batches, 1 textures, 32616 bytes
+Scene rom:/world/maps/actor_hood.l64: 6 batches, 1 textures, 26800 bytes
+Scene rom:/world/maps/actor_girl.l64: 6 batches, 1 textures, 35344 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_isaac.l64: 6 batches, 1 textures, 23904 bytes
+Scene rom:/world/lod/actor_hood.l64: 6 batches, 1 textures, 21484 bytes
+Scene rom:/world/lod/actor_girl.l64: 6 batches, 1 textures, 24052 bytes
+FPS_CASE {"case":"map_15_center","width":480,"height":360,"ram_mib":8,"map":15,"x":14,"y":16,"npc_count":4,"warmup":32,"samples":96,"free_heap":4429752,"cadence":{"mean_us":33181,"median_us":33622,"p95_us":36054,"min_us":19733,"max_us":36174},"work":{"mean_us":22134,"median_us":22393,"p95_us":22998,"min_us":19712,"max_us":24324},"draw":{"mean_us":19962,"median_us":19965,"p95_us":20395,"min_us":19410,"max_us":20400},"acquire":{"mean_us":11046,"median_us":10956,"p95_us":13268,"min_us":18,"max_us":13640},"present":{"mean_us":324,"median_us":277,"p95_us":308,"min_us":273,"max_us":2367},"audio":{"mean_us":1847,"median_us":2162,"p95_us":2395,"min_us":9,"max_us":2407}}
+Scene rom:/world/maps/grass_club.l64: 36 batches, 35 textures, 227688 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_nikki.l64: 6 batches, 1 textures, 29300 bytes
+Scene rom:/world/maps/actor_lass1.l64: 6 batches, 1 textures, 31652 bytes
+Scene rom:/world/maps/actor_lass2.l64: 6 batches, 1 textures, 31772 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_nikki.l64: 6 batches, 1 textures, 23984 bytes
+Scene rom:/world/lod/actor_lass1.l64: 6 batches, 1 textures, 26000 bytes
+Scene rom:/world/lod/actor_lass2.l64: 6 batches, 1 textures, 26576 bytes
+FPS_CASE {"case":"map_18_center","width":480,"height":360,"ram_mib":8,"map":18,"x":14,"y":16,"npc_count":3,"warmup":32,"samples":96,"free_heap":4239040,"cadence":{"mean_us":34930,"median_us":35096,"p95_us":35729,"min_us":32362,"max_us":37605},"work":{"mean_us":34912,"median_us":35077,"p95_us":35713,"min_us":32343,"max_us":37587},"draw":{"mean_us":32590,"median_us":32581,"p95_us":33013,"min_us":32044,"max_us":33138},"acquire":{"mean_us":17,"median_us":17,"p95_us":18,"min_us":16,"max_us":18},"present":{"mean_us":321,"median_us":277,"p95_us":316,"min_us":268,"max_us":2273},"audio":{"mean_us":2000,"median_us":2192,"p95_us":2410,"min_us":10,"max_us":2480}}
+Scene rom:/world/maps/pokemon_dome.l64: 54 batches, 53 textures, 75396 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_courtney.l64: 6 batches, 1 textures, 34460 bytes
+Scene rom:/world/maps/actor_steve.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_jack.l64: 6 batches, 1 textures, 32076 bytes
+Scene rom:/world/maps/actor_rod.l64: 6 batches, 1 textures, 37668 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_courtney.l64: 6 batches, 1 textures, 27176 bytes
+Scene rom:/world/lod/actor_steve.l64: 6 batches, 1 textures, 24332 bytes
+Scene rom:/world/lod/actor_jack.l64: 6 batches, 1 textures, 23460 bytes
+Scene rom:/world/lod/actor_rod.l64: 6 batches, 1 textures, 25596 bytes
+FPS_CASE {"case":"map_32_center","width":480,"height":360,"ram_mib":8,"map":32,"x":16,"y":16,"npc_count":5,"warmup":32,"samples":96,"free_heap":4130112,"cadence":{"mean_us":33330,"median_us":33353,"p95_us":35724,"min_us":30965,"max_us":35749},"work":{"mean_us":29976,"median_us":30262,"p95_us":30486,"min_us":28081,"max_us":30507},"draw":{"mean_us":27806,"median_us":27805,"p95_us":27827,"min_us":27780,"max_us":27874},"acquire":{"mean_us":3353,"median_us":3079,"p95_us":5264,"min_us":1015,"max_us":5271},"present":{"mean_us":278,"median_us":277,"p95_us":281,"min_us":274,"max_us":315},"audio":{"mean_us":1891,"median_us":2173,"p95_us":2402,"min_us":10,"max_us":2425}}
+Scene rom:/world/maps/hall_of_honor.l64: 27 batches, 26 textures, 25644 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_legendary_card__bottom_left.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__bottom_right.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__left_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/actor_legendary_card__right_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/actor_legendary_card__top_left.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__top_right.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+FPS_CASE {"case":"map_33_center","width":480,"height":360,"ram_mib":8,"map":33,"x":12,"y":13,"npc_count":6,"warmup":32,"samples":96,"free_heap":4645368,"cadence":{"mean_us":33177,"median_us":33602,"p95_us":35898,"min_us":13744,"max_us":36007},"work":{"mean_us":12319,"median_us":12563,"p95_us":13191,"min_us":9835,"max_us":15154},"draw":{"mean_us":10164,"median_us":10210,"p95_us":10603,"min_us":9540,"max_us":10676},"acquire":{"mean_us":20857,"median_us":20788,"p95_us":23312,"min_us":3729,"max_us":23524},"present":{"mean_us":318,"median_us":272,"p95_us":303,"min_us":267,"max_us":2420},"audio":{"mean_us":1836,"median_us":2145,"p95_us":2384,"min_us":10,"max_us":2401}}
+Scene rom:/world/maps/mason_laboratory.l64: 24 batches, 23 textures, 43128 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_dr_mason.l64: 6 batches, 1 textures, 35504 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_dr_mason.l64: 6 batches, 1 textures, 26084 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+FPS_CASE {"case":"source_mason_conversation_world","width":480,"height":360,"ram_mib":8,"map":1,"x":14,"y":8,"npc_count":7,"warmup":32,"samples":96,"free_heap":4519672,"cadence":{"mean_us":33165,"median_us":33139,"p95_us":36136,"min_us":20846,"max_us":36341},"work":{"mean_us":22574,"median_us":22794,"p95_us":23481,"min_us":20227,"max_us":25326},"draw":{"mean_us":20405,"median_us":20391,"p95_us":20840,"min_us":19853,"max_us":20856},"acquire":{"mean_us":10590,"median_us":10538,"p95_us":12777,"min_us":17,"max_us":13139},"present":{"mean_us":324,"median_us":277,"p95_us":317,"min_us":273,"max_us":2368},"audio":{"mean_us":1844,"median_us":2147,"p95_us":2386,"min_us":9,"max_us":2400}}
+FPS_CASE {"case":"source_mason-dialogue-full","width":480,"height":360,"ram_mib":8,"map":1,"x":14,"y":8,"npc_count":7,"warmup":32,"samples":96,"free_heap":4403272,"cadence":{"mean_us":46085,"median_us":45884,"p95_us":48214,"min_us":44812,"max_us":48571},"work":{"mean_us":46075,"median_us":45874,"p95_us":48204,"min_us":44802,"max_us":48561},"draw":{"mean_us":43385,"median_us":43456,"p95_us":43987,"min_us":42590,"max_us":44049},"acquire":{"mean_us":10,"median_us":9,"p95_us":11,"min_us":9,"max_us":11},"present":{"mean_us":150,"median_us":148,"p95_us":150,"min_us":147,"max_us":261},"audio":{"mean_us":2540,"median_us":2288,"p95_us":4403,"min_us":1985,"max_us":4586}}
+FPS_CASE {"case":"source_mason-dialogue-reveal","width":480,"height":360,"ram_mib":8,"map":1,"x":14,"y":8,"npc_count":7,"warmup":32,"samples":96,"free_heap":4403272,"cadence":{"mean_us":43775,"median_us":43742,"p95_us":46996,"min_us":40623,"max_us":47491},"work":{"mean_us":43765,"median_us":43732,"p95_us":46986,"min_us":40614,"max_us":47481},"draw":{"mean_us":41039,"median_us":41179,"p95_us":43171,"min_us":38323,"max_us":43915},"acquire":{"mean_us":9,"median_us":9,"p95_us":11,"min_us":8,"max_us":11},"present":{"mean_us":309,"median_us":148,"p95_us":2024,"min_us":147,"max_us":2147},"audio":{"mean_us":2416,"median_us":2162,"p95_us":4464,"min_us":1982,"max_us":4652}}
+FPS_CASE {"case":"source_mason-choice-2","width":480,"height":360,"ram_mib":8,"map":1,"x":14,"y":8,"npc_count":7,"warmup":32,"samples":96,"free_heap":4366560,"cadence":{"mean_us":50210,"median_us":49867,"p95_us":52230,"min_us":48735,"max_us":52413},"work":{"mean_us":50201,"median_us":49858,"p95_us":52222,"min_us":48727,"max_us":52403},"draw":{"mean_us":47256,"median_us":47351,"p95_us":47714,"min_us":46467,"max_us":47749},"acquire":{"mean_us":9,"median_us":8,"p95_us":10,"min_us":8,"max_us":10},"present":{"mean_us":154,"median_us":150,"p95_us":179,"min_us":146,"max_us":257},"audio":{"mean_us":2790,"median_us":2309,"p95_us":4455,"min_us":2049,"max_us":4750}}
+FPS_CASE {"case":"source_mason-choice-3","width":480,"height":360,"ram_mib":8,"map":1,"x":14,"y":8,"npc_count":7,"warmup":32,"samples":96,"free_heap":4351344,"cadence":{"mean_us":53117,"median_us":52754,"p95_us":55056,"min_us":51573,"max_us":55146},"work":{"mean_us":53108,"median_us":52745,"p95_us":55047,"min_us":51564,"max_us":55137},"draw":{"mean_us":50001,"median_us":50085,"p95_us":50479,"min_us":49208,"max_us":50521},"acquire":{"mean_us":9,"median_us":8,"p95_us":10,"min_us":8,"max_us":11},"present":{"mean_us":152,"median_us":149,"p95_us":174,"min_us":145,"max_us":175},"audio":{"mean_us":2954,"median_us":2355,"p95_us":4578,"min_us":2017,"max_us":4655}}
+FPS_CASE {"case":"source_sam_table_exploration","width":480,"height":360,"ram_mib":8,"map":1,"x":10,"y":14,"npc_count":7,"warmup":32,"samples":96,"free_heap":4519672,"cadence":{"mean_us":33175,"median_us":33414,"p95_us":35844,"min_us":29891,"max_us":36014},"work":{"mean_us":31700,"median_us":31926,"p95_us":32528,"min_us":29244,"max_us":34220},"draw":{"mean_us":29504,"median_us":29549,"p95_us":29955,"min_us":28953,"max_us":29982},"acquire":{"mean_us":1475,"median_us":1338,"p95_us":3638,"min_us":17,"max_us":4111},"present":{"mean_us":322,"median_us":277,"p95_us":306,"min_us":273,"max_us":2370},"audio":{"mean_us":1872,"median_us":2212,"p95_us":2382,"min_us":10,"max_us":2446}}
+FPS_CASE {"case":"source_sam_table_conversation_world","width":480,"height":360,"ram_mib":8,"map":1,"x":10,"y":14,"npc_count":7,"warmup":32,"samples":96,"free_heap":4519672,"cadence":{"mean_us":33176,"median_us":33178,"p95_us":36156,"min_us":23607,"max_us":37329},"work":{"mean_us":23464,"median_us":23735,"p95_us":24324,"min_us":21137,"max_us":25577},"draw":{"mean_us":21327,"median_us":21324,"p95_us":21774,"min_us":20792,"max_us":21793},"acquire":{"mean_us":9712,"median_us":9586,"p95_us":12000,"min_us":18,"max_us":12227},"present":{"mean_us":302,"median_us":277,"p95_us":316,"min_us":273,"max_us":2338},"audio":{"mean_us":1834,"median_us":2144,"p95_us":2378,"min_us":9,"max_us":2397}}
+FPS_CASE {"case":"source_sam-dialogue-full","width":480,"height":360,"ram_mib":8,"map":1,"x":10,"y":14,"npc_count":7,"warmup":32,"samples":96,"free_heap":4403272,"cadence":{"mean_us":46549,"median_us":46392,"p95_us":48622,"min_us":45270,"max_us":50526},"work":{"mean_us":46539,"median_us":46382,"p95_us":48614,"min_us":45260,"max_us":50516},"draw":{"mean_us":43786,"median_us":43855,"p95_us":44358,"min_us":43009,"max_us":44394},"acquire":{"mean_us":9,"median_us":9,"p95_us":10,"min_us":8,"max_us":11},"present":{"mean_us":195,"median_us":149,"p95_us":250,"min_us":147,"max_us":2007},"audio":{"mean_us":2557,"median_us":2270,"p95_us":4410,"min_us":2013,"max_us":4660}}
+FPS_CASE {"case":"source_sam-dialogue-reveal","width":480,"height":360,"ram_mib":8,"map":1,"x":10,"y":14,"npc_count":7,"warmup":32,"samples":96,"free_heap":4403272,"cadence":{"mean_us":44168,"median_us":44132,"p95_us":47094,"min_us":41067,"max_us":48546},"work":{"mean_us":44158,"median_us":44121,"p95_us":47084,"min_us":41057,"max_us":48536},"draw":{"mean_us":41466,"median_us":41442,"p95_us":43638,"min_us":38828,"max_us":44109},"acquire":{"mean_us":10,"median_us":9,"p95_us":11,"min_us":8,"max_us":11},"present":{"mean_us":252,"median_us":149,"p95_us":2004,"min_us":147,"max_us":2083},"audio":{"mean_us":2439,"median_us":2247,"p95_us":4273,"min_us":2013,"max_us":4503}}
+FPS_CASE {"case":"source_sam-choice-2","width":480,"height":360,"ram_mib":8,"map":1,"x":10,"y":14,"npc_count":7,"warmup":32,"samples":96,"free_heap":4366560,"cadence":{"mean_us":51332,"median_us":50855,"p95_us":53171,"min_us":49850,"max_us":55333},"work":{"mean_us":51323,"median_us":50845,"p95_us":53162,"min_us":49841,"max_us":55324},"draw":{"mean_us":48200,"median_us":48297,"p95_us":48674,"min_us":47498,"max_us":48724},"acquire":{"mean_us":9,"median_us":8,"p95_us":10,"min_us":8,"max_us":10},"present":{"mean_us":271,"median_us":150,"p95_us":2006,"min_us":146,"max_us":2055},"audio":{"mean_us":2850,"median_us":2315,"p95_us":4580,"min_us":2019,"max_us":4822}}
+FPS_CASE {"case":"source_sam-choice-3","width":480,"height":360,"ram_mib":8,"map":1,"x":10,"y":14,"npc_count":7,"warmup":32,"samples":96,"free_heap":4351344,"cadence":{"mean_us":54191,"median_us":53683,"p95_us":56124,"min_us":52426,"max_us":57708},"work":{"mean_us":54182,"median_us":53675,"p95_us":56115,"min_us":52418,"max_us":57699},"draw":{"mean_us":50933,"median_us":50984,"p95_us":51425,"min_us":50242,"max_us":51524},"acquire":{"mean_us":9,"median_us":8,"p95_us":10,"min_us":8,"max_us":21},"present":{"mean_us":232,"median_us":150,"p95_us":256,"min_us":145,"max_us":2068},"audio":{"mean_us":3016,"median_us":2317,"p95_us":4572,"min_us":2022,"max_us":4703}}
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_hood.l64: 6 batches, 1 textures, 26800 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_lass1.l64: 6 batches, 1 textures, 31652 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_hood.l64: 6 batches, 1 textures, 21484 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_lass1.l64: 6 batches, 1 textures, 26000 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+FPS_CASE {"case":"ronald_lobby_conversation_world","width":480,"height":360,"ram_mib":8,"map":14,"x":14,"y":10,"npc_count":7,"warmup":32,"samples":96,"free_heap":4255016,"cadence":{"mean_us":33154,"median_us":33191,"p95_us":36230,"min_us":23339,"max_us":37366},"work":{"mean_us":23284,"median_us":23560,"p95_us":24163,"min_us":20841,"max_us":26064},"draw":{"mean_us":21094,"median_us":21090,"p95_us":21540,"min_us":20532,"max_us":21564},"acquire":{"mean_us":9869,"median_us":9766,"p95_us":12194,"min_us":18,"max_us":12518},"present":{"mean_us":324,"median_us":277,"p95_us":317,"min_us":273,"max_us":2362},"audio":{"mean_us":1866,"median_us":2261,"p95_us":2372,"min_us":10,"max_us":2386}}
+FPS_CASE {"case":"ronald_lobby-dialogue-full","width":480,"height":360,"ram_mib":8,"map":14,"x":14,"y":10,"npc_count":7,"warmup":32,"samples":96,"free_heap":4138616,"cadence":{"mean_us":46581,"median_us":46455,"p95_us":48262,"min_us":45353,"max_us":49044},"work":{"mean_us":46571,"median_us":46444,"p95_us":48253,"min_us":45342,"max_us":49034},"draw":{"mean_us":43852,"median_us":43870,"p95_us":44416,"min_us":43072,"max_us":44518},"acquire":{"mean_us":10,"median_us":10,"p95_us":11,"min_us":9,"max_us":12},"present":{"mean_us":153,"median_us":149,"p95_us":175,"min_us":147,"max_us":177},"audio":{"mean_us":2565,"median_us":2285,"p95_us":4427,"min_us":2012,"max_us":4569}}
+FPS_CASE {"case":"ronald_lobby-dialogue-reveal","width":480,"height":360,"ram_mib":8,"map":14,"x":14,"y":10,"npc_count":7,"warmup":32,"samples":96,"free_heap":4138616,"cadence":{"mean_us":44274,"median_us":44332,"p95_us":47065,"min_us":41254,"max_us":49867},"work":{"mean_us":44264,"median_us":44322,"p95_us":47054,"min_us":41244,"max_us":49857},"draw":{"mean_us":41518,"median_us":41568,"p95_us":43626,"min_us":38845,"max_us":44180},"acquire":{"mean_us":10,"median_us":10,"p95_us":11,"min_us":10,"max_us":12},"present":{"mean_us":271,"median_us":149,"p95_us":2020,"min_us":148,"max_us":2071},"audio":{"mean_us":2473,"median_us":2285,"p95_us":4495,"min_us":2016,"max_us":4706}}
+FPS_CASE {"case":"ronald_lobby-choice-2","width":480,"height":360,"ram_mib":8,"map":14,"x":14,"y":10,"npc_count":7,"warmup":32,"samples":96,"free_heap":4101904,"cadence":{"mean_us":50944,"median_us":50518,"p95_us":52932,"min_us":49388,"max_us":53315},"work":{"mean_us":50934,"median_us":50509,"p95_us":52923,"min_us":49379,"max_us":53306},"draw":{"mean_us":47947,"median_us":48038,"p95_us":48425,"min_us":47139,"max_us":48524},"acquire":{"mean_us":9,"median_us":9,"p95_us":11,"min_us":8,"max_us":30},"present":{"mean_us":152,"median_us":150,"p95_us":176,"min_us":145,"max_us":181},"audio":{"mean_us":2835,"median_us":2322,"p95_us":4587,"min_us":2023,"max_us":4790}}
+FPS_CASE {"case":"ronald_lobby-choice-3","width":480,"height":360,"ram_mib":8,"map":14,"x":14,"y":10,"npc_count":7,"warmup":32,"samples":96,"free_heap":4086688,"cadence":{"mean_us":53804,"median_us":53323,"p95_us":55626,"min_us":52148,"max_us":55845},"work":{"mean_us":53794,"median_us":53314,"p95_us":55617,"min_us":52139,"max_us":55835},"draw":{"mean_us":50657,"median_us":50750,"p95_us":51151,"min_us":49783,"max_us":51233},"acquire":{"mean_us":9,"median_us":9,"p95_us":10,"min_us":8,"max_us":30},"present":{"mean_us":155,"median_us":149,"p95_us":176,"min_us":146,"max_us":271},"audio":{"mean_us":2981,"median_us":2301,"p95_us":4539,"min_us":2019,"max_us":4755}}
+FPS_CASE {"case":"intro-charizard","width":480,"height":360,"ram_mib":8,"map":14,"x":14,"y":10,"npc_count":7,"warmup":32,"samples":96,"free_heap":4046272,"cadence":{"mean_us":33169,"median_us":33354,"p95_us":35257,"min_us":16054,"max_us":35641},"work":{"mean_us":2524,"median_us":2300,"p95_us":3967,"min_us":1421,"max_us":4170},"draw":{"mean_us":1402,"median_us":1393,"p95_us":1552,"min_us":1172,"max_us":1579},"acquire":{"mean_us":30644,"median_us":31045,"p95_us":31840,"min_us":13068,"max_us":31930},"present":{"mean_us":222,"median_us":176,"p95_us":210,"min_us":172,"max_us":2163},"audio":{"mean_us":900,"median_us":694,"p95_us":2321,"min_us":8,"max_us":2372}}
+FPS_CASE {"case":"intro-scyther","width":480,"height":360,"ram_mib":8,"map":14,"x":14,"y":10,"npc_count":7,"warmup":32,"samples":96,"free_heap":4046272,"cadence":{"mean_us":33164,"median_us":33352,"p95_us":35275,"min_us":15892,"max_us":35543},"work":{"mean_us":2503,"median_us":2273,"p95_us":4021,"min_us":1341,"max_us":4307},"draw":{"mean_us":1395,"median_us":1374,"p95_us":1552,"min_us":1156,"max_us":1596},"acquire":{"mean_us":30661,"median_us":31071,"p95_us":31848,"min_us":14311,"max_us":32014},"present":{"mean_us":221,"median_us":176,"p95_us":217,"min_us":162,"max_us":2201},"audio":{"mean_us":886,"median_us":694,"p95_us":2325,"min_us":9,"max_us":2382}}
+FPS_CASE {"case":"intro-aerodactyl","width":480,"height":360,"ram_mib":8,"map":14,"x":14,"y":10,"npc_count":7,"warmup":32,"samples":96,"free_heap":4046272,"cadence":{"mean_us":33342,"median_us":33347,"p95_us":34224,"min_us":31117,"max_us":35807},"work":{"mean_us":2582,"median_us":2369,"p95_us":3975,"min_us":1411,"max_us":4197},"draw":{"mean_us":1457,"median_us":1437,"p95_us":1643,"min_us":1218,"max_us":1658},"acquire":{"mean_us":30760,"median_us":30987,"p95_us":31761,"min_us":29161,"max_us":31916},"present":{"mean_us":186,"median_us":177,"p95_us":227,"min_us":165,"max_us":240},"audio":{"mean_us":938,"median_us":698,"p95_us":2280,"min_us":9,"max_us":2363}}
+FPS_CASE {"case":"intro-title-arrival","width":480,"height":360,"ram_mib":8,"map":14,"x":14,"y":10,"npc_count":7,"warmup":32,"samples":96,"free_heap":4045048,"cadence":{"mean_us":33345,"median_us":33398,"p95_us":35756,"min_us":29403,"max_us":37145},"work":{"mean_us":3953,"median_us":3963,"p95_us":5683,"min_us":1497,"max_us":5825},"draw":{"mean_us":1511,"median_us":1497,"p95_us":1724,"min_us":1246,"max_us":1749},"acquire":{"mean_us":29391,"median_us":29398,"p95_us":31769,"min_us":27526,"max_us":31861},"present":{"mean_us":201,"median_us":175,"p95_us":209,"min_us":162,"max_us":2113},"audio":{"mean_us":2239,"median_us":2290,"p95_us":3829,"min_us":8,"max_us":3974}}
+FPS_CASE {"case":"title-idle","width":480,"height":360,"ram_mib":8,"map":14,"x":14,"y":10,"npc_count":7,"warmup":32,"samples":96,"free_heap":4045048,"cadence":{"mean_us":33184,"median_us":33380,"p95_us":35627,"min_us":14550,"max_us":37750},"work":{"mean_us":3170,"median_us":3435,"p95_us":3851,"min_us":1015,"max_us":5558},"draw":{"mean_us":1104,"median_us":1100,"p95_us":1334,"min_us":828,"max_us":1369},"acquire":{"mean_us":30013,"median_us":29924,"p95_us":32147,"min_us":13224,"max_us":32363},"present":{"mean_us":215,"median_us":174,"p95_us":198,"min_us":167,"max_us":2172},"audio":{"mean_us":1851,"median_us":2152,"p95_us":2373,"min_us":9,"max_us":2436}}
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+FPS_CASE {"case":"naming-keyboard","width":480,"height":360,"ram_mib":8,"map":14,"x":14,"y":10,"npc_count":7,"warmup":32,"samples":96,"free_heap":3497120,"cadence":{"mean_us":60985,"median_us":61451,"p95_us":63940,"min_us":56954,"max_us":64046},"work":{"mean_us":60976,"median_us":61442,"p95_us":63931,"min_us":56945,"max_us":64037},"draw":{"mean_us":57392,"median_us":58986,"p95_us":59240,"min_us":54566,"max_us":59392},"acquire":{"mean_us":9,"median_us":9,"p95_us":9,"min_us":7,"max_us":9},"present":{"mean_us":195,"median_us":189,"p95_us":218,"min_us":181,"max_us":219},"audio":{"mean_us":3389,"median_us":4156,"p95_us":4601,"min_us":2033,"max_us":4676}}
+FPS_SURVEY_PASS cases=62

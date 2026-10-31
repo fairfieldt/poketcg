@@ -1,17 +1,18 @@
 #include <libdragon.h>
 #include "audio.h"
 #include "../../../audio/generated/audio_assets.h"
+#include "gen/constants.h"
 typedef struct {wav64_t wave;unsigned id;bool open;} MusicSlot;
-/* Keep a paused compressed decoder and its mixer samplebuffer intact. Source
-   fanfares use the other stereo pair; VADPCM cannot seek to an arbitrary
-   saved sample after closing/reopening a song. Pair 2/3 belongs to SFX. */
-static MusicSlot music[2];
+/* Keep paused compressed decoders and their mixer samplebuffers intact.
+   World -> PC -> booster can nest twice. Pair 2/3 belongs to SFX. */
+static MusicSlot music[3];
 static unsigned active_music;
-static int paused_music=-1;
+static int paused_music=-1,paused_parent=-1;
 static wav64_t sfx;
 static bool ready,sfx_open;
 static unsigned sfx_priority=255;
-static unsigned music_channel(unsigned slot){return slot?4:0;}
+static unsigned music_channel(unsigned slot)
+{static const unsigned channels[]={0,4,6};return channels[slot];}
 extern void game_draw(void);
 extern void game_tick(void);
 
@@ -34,7 +35,7 @@ void adventure_audio_review_report(const char *phase)
 void adventure_audio_init(void)
 {
  audio_init(32000,8);mixer_init(8);
- mixer_ch_set_vol(0,.65f,.65f);mixer_ch_set_vol(4,.65f,.65f);
+ mixer_ch_set_vol(0,.65f,.65f);mixer_ch_set_vol(4,.65f,.65f);mixer_ch_set_vol(6,.65f,.65f);
  mixer_ch_set_vol(2,.8f,.8f);ready=true;
 }
 void adventure_audio_poll(void)
@@ -98,17 +99,22 @@ void adventure_audio_event(unsigned kind,unsigned id)
  case 0:case 0x48:play_music(id);break;
  case 1:case 0x49:play_sfx(id);break;
  case 0x4a:
-  if(music[active_music].open&&paused_music<0){
+  if(music[active_music].open){
+   unsigned available=3;
+   for(unsigned slot=0;slot<3;slot++)if(slot!=active_music&&
+      (int)slot!=paused_music&&(int)slot!=paused_parent){available=slot;break;}
+   if(available==3)break;
    unsigned channel=music_channel(active_music);
    /* A zero playback rate holds the exact fractional sample and decoder
       cache. Muting the master also mutes its stereo secondary channel. */
    mixer_ch_set_vol(channel,0,0);mixer_ch_set_freq(channel,0);
-   paused_music=(int)active_music;active_music^=1;
+   paused_parent=paused_music;paused_music=(int)active_music;active_music=available;
   }
   break;
  case 0x4b:
   if(paused_music>=0){
-   stop_music(active_music);active_music=(unsigned)paused_music;paused_music=-1;
+   stop_music(active_music);active_music=(unsigned)paused_music;
+   paused_music=paused_parent;paused_parent=-1;
    unsigned channel=music_channel(active_music);
    mixer_ch_set_freq(channel,music[active_music].wave.wave.frequency);
    mixer_ch_set_vol(channel,.65f,.65f);
@@ -121,7 +127,10 @@ void adventure_audio_event(unsigned kind,unsigned id)
  }
 }
 
-#if ADVENTURE_DIAGNOSTIC == 17
+bool adventure_audio_music_playing(void)
+{return ready&&music[active_music].open&&mixer_ch_playing(music_channel(active_music));}
+
+#if ADVENTURE_DIAGNOSTIC == 17 || ADVENTURE_DIAGNOSTIC == 23
 /* Exercise the real mixer/RSP decoder, without waiting for AI playback time. */
 static int16_t regression_pcm[2048*2] __attribute__((aligned(16)));
 static void regression_mix(unsigned frames)
@@ -129,6 +138,52 @@ static void regression_mix(unsigned frames)
  while(frames){unsigned count=frames>2048?2048:frames;
   mixer_poll(regression_pcm,count);frames-=count;}
 }
+
+void adventure_audio_nested_regression(void)
+{
+ for(unsigned slot=0;slot<3;slot++)stop_music(slot);
+ active_music=0;paused_music=paused_parent=-1;play_sfx(0);
+ adventure_audio_event(0,9);regression_mix(4096);
+ unsigned warm_heap=0;
+ for(unsigned repeat=0;repeat<12;repeat++){
+  double world_pos=mixer_ch_get_pos(0);
+  uint32_t world_uuid=music[0].wave.wave.__uuid;
+  adventure_audio_event(0x4a,0);adventure_audio_event(0x4a,0);
+  adventure_audio_event(0,MUSIC_PC_MAIN_MENU);regression_mix(4096);
+  assertf(active_music==1&&paused_music==0&&paused_parent<0,"PC lost the world song");
+  double pc_pos=mixer_ch_get_pos(4);uint32_t pc_uuid=music[1].wave.wave.__uuid;
+  adventure_audio_event(0x4a,0);adventure_audio_event(0x4a,0);
+  adventure_audio_event(0,MUSIC_BOOSTER_PACK);adventure_audio_event(1,SFX_CONFIRM);
+  assertf(active_music==2&&paused_music==1&&paused_parent==0&&
+   adventure_audio_music_playing(),"Booster did not use its own stereo pair");
+  regression_mix(32000*2);
+  assertf(!adventure_audio_music_playing()&&mixer_ch_get_pos(0)==world_pos&&
+   mixer_ch_get_pos(4)==pc_pos,"Nested fanfare advanced paused music");
+  adventure_audio_event(0x4b,0);
+  assertf(active_music==1&&paused_music==0&&paused_parent<0&&
+   music[1].wave.wave.__uuid==pc_uuid&&mixer_ch_get_pos(4)==pc_pos&&
+   !music[2].open&&adventure_audio_music_playing(),"Booster failed to restore PC music");
+  regression_mix(128);
+  assertf(mixer_ch_get_pos(4)>pc_pos&&mixer_ch_get_pos(0)==world_pos,
+   "Restored PC/world playback rates are wrong");
+  adventure_audio_event(0x4b,0);
+  assertf(active_music==0&&paused_music<0&&paused_parent<0&&
+   music[0].wave.wave.__uuid==world_uuid&&mixer_ch_get_pos(0)==world_pos&&
+   !music[1].open&&!music[2].open&&adventure_audio_music_playing(),
+   "Closing PC failed to restore the world decoder");
+  regression_mix(128);
+  assertf(mixer_ch_get_pos(0)>world_pos,"World song remained paused");
+  heap_stats_t heap;sys_get_heap_stats(&heap);
+  if(!repeat)warm_heap=heap.used;
+  else assertf(heap.used<=warm_heap+256,"Nested fanfares leaked heap");
+ }
+ play_sfx(0);adventure_audio_event(0,0);
+ assertf(!adventure_audio_music_playing()&&!music[0].open&&!music[1].open&&!music[2].open,
+  "Nested music handles were not released");
+ debugf("AUDIO NESTED REGRESSION PASS: 12 world-PC-booster cycles, exact positions/decoder IDs, stereo pairs, heap stability\n");
+}
+
+#if ADVENTURE_DIAGNOSTIC == 17
 static void regression_reward_point(void)
 {
  unsigned ch=music_channel(active_music);
@@ -223,4 +278,5 @@ void adventure_audio_regression(void)
  adventure_audio_event(0x4b,0);adventure_audio_event(1,0);
  debugf("AUDIO RESUME REGRESSION PASS\n");
 }
+#endif
 #endif

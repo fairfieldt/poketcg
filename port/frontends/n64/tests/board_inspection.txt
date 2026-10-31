@@ -1,0 +1,33 @@
+# Up from the actions browses public Pokemon without answering a duel command.
+wait 5
+press RIGHT
+press START
+until ASK~duel_menu~PLAYER 100000 3 P1
+expect_none REQ~duel_menu~PLAYER
+# The non-answering controller cannot enter or inspect the board.
+press UP P2
+press A P2
+expect_none BOARD~INSPECT
+press UP
+shot board_bottom_focus
+press A
+shot board_bottom_card
+expect BOARD~INSPECT~PLAYER~slot=
+press B
+expect_none REQ~duel_menu~PLAYER
+# Cross the Active rows; an empty Bench is skipped automatically.
+repeat 3 press UP
+shot board_top_focus
+press START+A
+shot board_top_card
+expect BOARD~INSPECT~BOT~slot=
+press B
+expect_none REQ~duel_menu~PLAYER
+# B restores Hand; a simultaneous A must not answer the pending request.
+press B+A
+expect_none REQ~duel_menu~PLAYER
+shot board_back_to_actions
+press A
+expect REQ~duel_menu~PLAYER~n=6~->~0
+shot board_hand_after_inspection
+press B

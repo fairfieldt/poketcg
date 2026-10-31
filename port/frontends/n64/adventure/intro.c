@@ -273,6 +273,34 @@ struct surface_s *adventure_intro_preview(unsigned scene,unsigned source_frame)
  assets_close(&assets);return frame;
 }
 
+#if ADVENTURE_DIAGNOSTIC == 20
+#include "tests/fps_sweep.h"
+typedef struct {IntroAssets *assets;unsigned scene;bool idle;int started[7];} IntroSurvey;
+static surface_t *intro_survey_draw(void *opaque,unsigned frame)
+{
+ IntroSurvey *ctx=opaque;unsigned time=60+(frame*2)%28;
+ if(ctx->idle) {
+  time=64+frame*2;
+  if(!(frame%32))ctx->started[(frame/32)%7]=(int)time;
+ }
+ return draw_frame(ctx->assets,ctx->scene,time,ctx->idle,ctx->idle,
+  ctx->idle?ctx->started:NULL,0);
+}
+void adventure_intro_fps_survey(void)
+{
+ IntroAssets assets=assets_open();IntroSurvey ctx={.assets=&assets};
+ static const char *const cases[]={"intro-charizard","intro-scyther","intro-aerodactyl","intro-title-arrival"};
+ adventure_audio_event(0,MUSIC_STOP);
+ for(unsigned scene=0;scene<4;scene++) {
+  if(scene==3)adventure_audio_event(0,MUSIC_TITLESCREEN);
+  adventure_audio_event(1,scene==3?SFX_INTRO_ORB_TITLE:scene==2?SFX_INTRO_ORB_SWOOP:SFX_INTRO_ORB);
+  ctx.scene=scene;fps_sweep_case(cases[scene],intro_survey_draw,&ctx);
+ }
+ ctx.idle=true;for(unsigned i=0;i<7;i++)ctx.started[i]=-1;
+ fps_sweep_case("title-idle",intro_survey_draw,&ctx);assets_close(&assets);
+}
+#endif
+
 #if ADVENTURE_DIAGNOSTIC == 14
 void adventure_audio_review(void)
 {

@@ -1,0 +1,88 @@
+{
+  "key_comparisons": [
+    {
+      "case": "source_mason_conversation_world",
+      "fps320": 30.08,
+      "fps480": 30.15,
+      "work320_us": 22582,
+      "work480_us": 22574
+    },
+    {
+      "case": "source_mason-dialogue-full",
+      "fps320": 29.71,
+      "fps480": 21.7,
+      "work320_us": 33653,
+      "work480_us": 46075
+    },
+    {
+      "case": "source_sam_table_exploration",
+      "fps320": 30.1,
+      "fps480": 30.14,
+      "work320_us": 31674,
+      "work480_us": 31700
+    },
+    {
+      "case": "source_sam_table_conversation_world",
+      "fps320": 29.93,
+      "fps480": 30.14,
+      "work320_us": 23495,
+      "work480_us": 23464
+    },
+    {
+      "case": "source_sam-dialogue-full",
+      "fps320": 29.11,
+      "fps480": 21.48,
+      "work320_us": 34340,
+      "work480_us": 46539
+    },
+    {
+      "case": "source_sam-choice-2",
+      "fps320": 27.41,
+      "fps480": 19.48,
+      "work320_us": 36471,
+      "work480_us": 51323
+    },
+    {
+      "case": "source_sam-choice-3",
+      "fps320": 25.88,
+      "fps480": 18.45,
+      "work320_us": 38625,
+      "work480_us": 54182
+    },
+    {
+      "case": "naming-keyboard",
+      "fps320": 30.14,
+      "fps480": 16.4,
+      "work320_us": 31874,
+      "work480_us": 60976
+    },
+    {
+      "case": "map_00_entrance",
+      "fps320": 29.93,
+      "fps480": 29.42,
+      "work320_us": 31888,
+      "work480_us": 33974
+    },
+    {
+      "case": "map_18_entrance",
+      "fps320": 27.37,
+      "fps480": 27.38,
+      "work320_us": 36524,
+      "work480_us": 36510
+    },
+    {
+      "case": "map_29_entrance",
+      "fps320": 25.76,
+      "fps480": 25.73,
+      "work320_us": 38799,
+      "work480_us": 38847
+    }
+  ],
+  "priority_order": [
+    "Common2D card-list/detail/popup canvas retention",
+    "Dialogue and naming canvas recomposition; preserve moving3D scene",
+    "Challenge Hall lobby and Grass geometry/submissions",
+    "Overworld label caching; most other rooms already meet30 in this proxy"
+  ],
+  "baseline_rom_sha256": "656723ffd0cf378881c421725cb721f93b197ac5c035267d6cc35d3c16ddc8d5"
+}

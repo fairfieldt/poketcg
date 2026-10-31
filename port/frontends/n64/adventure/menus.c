@@ -1,4 +1,5 @@
 #include "game.h"
+#include "pack.h"
 #include "duel_bridge.h"
 #include "gen/text.h"
 #include <stdio.h>
@@ -182,9 +183,13 @@ void game_deck_machine(unsigned machine)
 void game_show_booster(unsigned booster)
 {
  uint8_t cards[10];game_rng_to_cards();bool opened=gp_open_booster(&game.cards,booster,cards);game_rng_to_story();if(!opened)return;
+#ifdef N64
+ adventure_pack_open(booster,cards,game.name);
+#else
  char labels[10][40];const char *items[10];
  for(unsigned i=0;i<10;i++){n64_card_name(cards[i],labels[i],40);items[i]=labels[i];}
  int cur=0;for(;;){cur=menu("Booster pack",items,10,cur);if(cur<0)return;n64_card_detail(cards[cur]);}
+#endif
 }
 void game_pause(void)
 {

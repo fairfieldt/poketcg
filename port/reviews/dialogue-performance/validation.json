@@ -1,0 +1,1657 @@
+{
+  "passed": true,
+  "runs": [
+    {
+      "passed": true,
+      "diagnostic": 20,
+      "focus": true,
+      "ram_mib": 4,
+      "native_dimensions": [
+        320,
+        240
+      ],
+      "target_game_fps": 30,
+      "timing": "emulated N64 CP0 ticks",
+      "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-dialogue-cache.z64",
+      "rom_sha256": "af9e406457b834538b229cbbabeb2bf7d0c8fae13c28bf6651b8fdafabc67578",
+      "wall_seconds": 32.73,
+      "cases": [
+        {
+          "case": "source_sam_conversation_world",
+          "width": 320,
+          "height": 240,
+          "ram_mib": 4,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 1298136,
+          "cadence": {
+            "mean_us": 33430,
+            "median_us": 33259,
+            "p95_us": 36528,
+            "min_us": 30688,
+            "max_us": 36582
+          },
+          "work": {
+            "mean_us": 23478,
+            "median_us": 23776,
+            "p95_us": 24349,
+            "min_us": 20993,
+            "max_us": 24445
+          },
+          "draw": {
+            "mean_us": 21418,
+            "median_us": 21406,
+            "p95_us": 21990,
+            "min_us": 20779,
+            "max_us": 22043
+          },
+          "acquire": {
+            "mean_us": 9951,
+            "median_us": 9658,
+            "p95_us": 12431,
+            "min_us": 8968,
+            "max_us": 12439
+          },
+          "present": {
+            "mean_us": 213,
+            "median_us": 209,
+            "p95_us": 250,
+            "min_us": 205,
+            "max_us": 250
+          },
+          "audio": {
+            "mean_us": 1846,
+            "median_us": 2131,
+            "p95_us": 2377,
+            "min_us": 6,
+            "max_us": 2393
+          },
+          "mean_game_fps": 29.91,
+          "work_over_30fps_budget_us": 0
+        },
+        {
+          "case": "source_sam_uncached-dialogue-full",
+          "width": 320,
+          "height": 240,
+          "ram_mib": 4,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 1245736,
+          "cadence": {
+            "mean_us": 34121,
+            "median_us": 34506,
+            "p95_us": 34997,
+            "min_us": 31485,
+            "max_us": 35033
+          },
+          "work": {
+            "mean_us": 34112,
+            "median_us": 34497,
+            "p95_us": 34988,
+            "min_us": 31475,
+            "max_us": 35022
+          },
+          "draw": {
+            "mean_us": 32046,
+            "median_us": 32122,
+            "p95_us": 32472,
+            "min_us": 31315,
+            "max_us": 32492
+          },
+          "acquire": {
+            "mean_us": 9,
+            "median_us": 9,
+            "p95_us": 9,
+            "min_us": 9,
+            "max_us": 10
+          },
+          "present": {
+            "mean_us": 151,
+            "median_us": 151,
+            "p95_us": 153,
+            "min_us": 149,
+            "max_us": 154
+          },
+          "audio": {
+            "mean_us": 1915,
+            "median_us": 2285,
+            "p95_us": 2402,
+            "min_us": 7,
+            "max_us": 2448
+          },
+          "panel_cpu": {
+            "mean_us": 9800,
+            "median_us": 9845,
+            "p95_us": 9888,
+            "min_us": 9670,
+            "max_us": 9923
+          },
+          "panel_compose": {
+            "mean_us": 883,
+            "median_us": 895,
+            "p95_us": 923,
+            "min_us": 771,
+            "max_us": 998
+          },
+          "mean_game_fps": 29.31,
+          "work_over_30fps_budget_us": 779
+        },
+        {
+          "case": "source_sam_uncached-dialogue-reveal",
+          "width": 320,
+          "height": 240,
+          "ram_mib": 4,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 1245736,
+          "cadence": {
+            "mean_us": 33405,
+            "median_us": 33730,
+            "p95_us": 35169,
+            "min_us": 29576,
+            "max_us": 35866
+          },
+          "work": {
+            "mean_us": 32769,
+            "median_us": 32606,
+            "p95_us": 34840,
+            "min_us": 29566,
+            "max_us": 35078
+          },
+          "draw": {
+            "mean_us": 30724,
+            "median_us": 30616,
+            "p95_us": 32171,
+            "min_us": 29258,
+            "max_us": 32306
+          },
+          "acquire": {
+            "mean_us": 636,
+            "median_us": 9,
+            "p95_us": 2739,
+            "min_us": 9,
+            "max_us": 2929
+          },
+          "present": {
+            "mean_us": 181,
+            "median_us": 151,
+            "p95_us": 249,
+            "min_us": 148,
+            "max_us": 1015
+          },
+          "audio": {
+            "mean_us": 1863,
+            "median_us": 2158,
+            "p95_us": 2384,
+            "min_us": 7,
+            "max_us": 2492
+          },
+          "panel_cpu": {
+            "mean_us": 8460,
+            "median_us": 8079,
+            "p95_us": 9761,
+            "min_us": 7164,
+            "max_us": 9791
+          },
+          "panel_compose": {
+            "mean_us": 876,
+            "median_us": 893,
+            "p95_us": 919,
+            "min_us": 767,
+            "max_us": 926
+          },
+          "mean_game_fps": 29.94,
+          "work_over_30fps_budget_us": 0
+        },
+        {
+          "case": "source_sam_uncached-choice-2",
+          "width": 320,
+          "height": 240,
+          "ram_mib": 4,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 1229264,
+          "cadence": {
+            "mean_us": 36209,
+            "median_us": 36397,
+            "p95_us": 36853,
+            "min_us": 33540,
+            "max_us": 36880
+          },
+          "work": {
+            "mean_us": 36200,
+            "median_us": 36387,
+            "p95_us": 36844,
+            "min_us": 33531,
+            "max_us": 36869
+          },
+          "draw": {
+            "mean_us": 34023,
+            "median_us": 33981,
+            "p95_us": 34480,
+            "min_us": 33345,
+            "max_us": 34597
+          },
+          "acquire": {
+            "mean_us": 9,
+            "median_us": 9,
+            "p95_us": 10,
+            "min_us": 8,
+            "max_us": 10
+          },
+          "present": {
+            "mean_us": 181,
+            "median_us": 153,
+            "p95_us": 171,
+            "min_us": 150,
+            "max_us": 1021
+          },
+          "audio": {
+            "mean_us": 1995,
+            "median_us": 2127,
+            "p95_us": 2379,
+            "min_us": 7,
+            "max_us": 2439
+          },
+          "panel_cpu": {
+            "mean_us": 9581,
+            "median_us": 9563,
+            "p95_us": 9704,
+            "min_us": 9480,
+            "max_us": 9749
+          },
+          "panel_compose": {
+            "mean_us": 875,
+            "median_us": 896,
+            "p95_us": 915,
+            "min_us": 770,
+            "max_us": 972
+          },
+          "choices_cpu": {
+            "mean_us": 1700,
+            "median_us": 1732,
+            "p95_us": 1863,
+            "min_us": 1600,
+            "max_us": 1870
+          },
+          "choices_compose": {
+            "mean_us": 501,
+            "median_us": 496,
+            "p95_us": 538,
+            "min_us": 464,
+            "max_us": 566
+          },
+          "mean_game_fps": 27.62,
+          "work_over_30fps_budget_us": 2867
+        },
+        {
+          "case": "source_sam_uncached-choice-3",
+          "width": 320,
+          "height": 240,
+          "ram_mib": 4,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 1221408,
+          "cadence": {
+            "mean_us": 38141,
+            "median_us": 38278,
+            "p95_us": 38466,
+            "min_us": 36020,
+            "max_us": 38555
+          },
+          "work": {
+            "mean_us": 38131,
+            "median_us": 38269,
+            "p95_us": 38457,
+            "min_us": 36011,
+            "max_us": 38546
+          },
+          "draw": {
+            "mean_us": 35889,
+            "median_us": 35883,
+            "p95_us": 36016,
+            "min_us": 35726,
+            "max_us": 36073
+          },
+          "acquire": {
+            "mean_us": 9,
+            "median_us": 9,
+            "p95_us": 9,
+            "min_us": 8,
+            "max_us": 9
+          },
+          "present": {
+            "mean_us": 152,
+            "median_us": 152,
+            "p95_us": 154,
+            "min_us": 150,
+            "max_us": 154
+          },
+          "audio": {
+            "mean_us": 2090,
+            "median_us": 2192,
+            "p95_us": 2379,
+            "min_us": 8,
+            "max_us": 2413
+          },
+          "panel_cpu": {
+            "mean_us": 9601,
+            "median_us": 9628,
+            "p95_us": 9692,
+            "min_us": 9481,
+            "max_us": 9696
+          },
+          "panel_compose": {
+            "mean_us": 913,
+            "median_us": 913,
+            "p95_us": 928,
+            "min_us": 883,
+            "max_us": 959
+          },
+          "choices_cpu": {
+            "mean_us": 3066,
+            "median_us": 3052,
+            "p95_us": 3216,
+            "min_us": 2994,
+            "max_us": 3235
+          },
+          "choices_compose": {
+            "mean_us": 573,
+            "median_us": 566,
+            "p95_us": 660,
+            "min_us": 539,
+            "max_us": 662
+          },
+          "mean_game_fps": 26.22,
+          "work_over_30fps_budget_us": 4798
+        },
+        {
+          "case": "source_sam_cached-dialogue-full",
+          "width": 320,
+          "height": 240,
+          "ram_mib": 4,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 1245736,
+          "cadence": {
+            "mean_us": 33408,
+            "median_us": 33627,
+            "p95_us": 35856,
+            "min_us": 30676,
+            "max_us": 35876
+          },
+          "work": {
+            "mean_us": 23972,
+            "median_us": 24230,
+            "p95_us": 24761,
+            "min_us": 21820,
+            "max_us": 24773
+          },
+          "draw": {
+            "mean_us": 21937,
+            "median_us": 21970,
+            "p95_us": 22282,
+            "min_us": 21317,
+            "max_us": 22287
+          },
+          "acquire": {
+            "mean_us": 9435,
+            "median_us": 9179,
+            "p95_us": 11300,
+            "min_us": 8618,
+            "max_us": 11590
+          },
+          "present": {
+            "mean_us": 152,
+            "median_us": 151,
+            "p95_us": 156,
+            "min_us": 149,
+            "max_us": 178
+          },
+          "audio": {
+            "mean_us": 1882,
+            "median_us": 2176,
+            "p95_us": 2376,
+            "min_us": 7,
+            "max_us": 2384
+          },
+          "panel_cpu": {
+            "mean_us": 77,
+            "median_us": 77,
+            "p95_us": 78,
+            "min_us": 75,
+            "max_us": 78
+          },
+          "panel_compose": {
+            "mean_us": 547,
+            "median_us": 567,
+            "p95_us": 589,
+            "min_us": 436,
+            "max_us": 593
+          },
+          "mean_game_fps": 29.93,
+          "work_over_30fps_budget_us": 0
+        },
+        {
+          "case": "source_sam_cached-dialogue-reveal",
+          "width": 320,
+          "height": 240,
+          "ram_mib": 4,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 1245736,
+          "cadence": {
+            "mean_us": 32856,
+            "median_us": 33565,
+            "p95_us": 36025,
+            "min_us": 22739,
+            "max_us": 40940
+          },
+          "work": {
+            "mean_us": 24398,
+            "median_us": 24590,
+            "p95_us": 25109,
+            "min_us": 22119,
+            "max_us": 31664
+          },
+          "draw": {
+            "mean_us": 22412,
+            "median_us": 22234,
+            "p95_us": 22593,
+            "min_us": 21550,
+            "max_us": 29388
+          },
+          "acquire": {
+            "mean_us": 8458,
+            "median_us": 8758,
+            "p95_us": 11027,
+            "min_us": 9,
+            "max_us": 11308
+          },
+          "present": {
+            "mean_us": 179,
+            "median_us": 151,
+            "p95_us": 154,
+            "min_us": 150,
+            "max_us": 1027
+          },
+          "audio": {
+            "mean_us": 1807,
+            "median_us": 2128,
+            "p95_us": 2377,
+            "min_us": 7,
+            "max_us": 2381
+          },
+          "panel_cpu": {
+            "mean_us": 399,
+            "median_us": 183,
+            "p95_us": 200,
+            "min_us": 167,
+            "max_us": 7166
+          },
+          "panel_compose": {
+            "mean_us": 703,
+            "median_us": 716,
+            "p95_us": 738,
+            "min_us": 585,
+            "max_us": 891
+          },
+          "mean_game_fps": 30.44,
+          "work_over_30fps_budget_us": 0
+        },
+        {
+          "case": "source_sam_cached-choice-2",
+          "width": 320,
+          "height": 240,
+          "ram_mib": 4,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 1229264,
+          "cadence": {
+            "mean_us": 33376,
+            "median_us": 33482,
+            "p95_us": 35635,
+            "min_us": 31113,
+            "max_us": 35770
+          },
+          "work": {
+            "mean_us": 24219,
+            "median_us": 24421,
+            "p95_us": 25004,
+            "min_us": 22155,
+            "max_us": 25017
+          },
+          "draw": {
+            "mean_us": 22177,
+            "median_us": 22161,
+            "p95_us": 22553,
+            "min_us": 21520,
+            "max_us": 24162
+          },
+          "acquire": {
+            "mean_us": 9157,
+            "median_us": 8962,
+            "p95_us": 11203,
+            "min_us": 7700,
+            "max_us": 11273
+          },
+          "present": {
+            "mean_us": 152,
+            "median_us": 151,
+            "p95_us": 156,
+            "min_us": 150,
+            "max_us": 156
+          },
+          "audio": {
+            "mean_us": 1889,
+            "median_us": 2182,
+            "p95_us": 2381,
+            "min_us": 7,
+            "max_us": 2386
+          },
+          "panel_cpu": {
+            "mean_us": 70,
+            "median_us": 70,
+            "p95_us": 72,
+            "min_us": 69,
+            "max_us": 72
+          },
+          "panel_compose": {
+            "mean_us": 547,
+            "median_us": 566,
+            "p95_us": 580,
+            "min_us": 438,
+            "max_us": 583
+          },
+          "choices_cpu": {
+            "mean_us": 64,
+            "median_us": 7,
+            "p95_us": 7,
+            "min_us": 7,
+            "max_us": 1820
+          },
+          "choices_compose": {
+            "mean_us": 240,
+            "median_us": 231,
+            "p95_us": 243,
+            "min_us": 228,
+            "max_us": 491
+          },
+          "mean_game_fps": 29.96,
+          "work_over_30fps_budget_us": 0
+        },
+        {
+          "case": "source_sam_cached-choice-3",
+          "width": 320,
+          "height": 240,
+          "ram_mib": 4,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 1221408,
+          "cadence": {
+            "mean_us": 33412,
+            "median_us": 33406,
+            "p95_us": 35764,
+            "min_us": 30272,
+            "max_us": 38832
+          },
+          "work": {
+            "mean_us": 24733,
+            "median_us": 24976,
+            "p95_us": 25110,
+            "min_us": 22733,
+            "max_us": 28153
+          },
+          "draw": {
+            "mean_us": 22695,
+            "median_us": 22594,
+            "p95_us": 22646,
+            "min_us": 22548,
+            "max_us": 25916
+          },
+          "acquire": {
+            "mean_us": 8679,
+            "median_us": 8480,
+            "p95_us": 10678,
+            "min_us": 5181,
+            "max_us": 10682
+          },
+          "present": {
+            "mean_us": 151,
+            "median_us": 151,
+            "p95_us": 153,
+            "min_us": 150,
+            "max_us": 155
+          },
+          "audio": {
+            "mean_us": 1885,
+            "median_us": 2156,
+            "p95_us": 2372,
+            "min_us": 7,
+            "max_us": 2388
+          },
+          "panel_cpu": {
+            "mean_us": 70,
+            "median_us": 70,
+            "p95_us": 72,
+            "min_us": 69,
+            "max_us": 72
+          },
+          "panel_compose": {
+            "mean_us": 578,
+            "median_us": 578,
+            "p95_us": 581,
+            "min_us": 576,
+            "max_us": 582
+          },
+          "choices_cpu": {
+            "mean_us": 103,
+            "median_us": 7,
+            "p95_us": 7,
+            "min_us": 7,
+            "max_us": 3082
+          },
+          "choices_compose": {
+            "mean_us": 294,
+            "median_us": 284,
+            "p95_us": 307,
+            "min_us": 284,
+            "max_us": 567
+          },
+          "mean_game_fps": 29.93,
+          "work_over_30fps_budget_us": 0
+        },
+        {
+          "case": "naming-keyboard",
+          "width": 320,
+          "height": 240,
+          "ram_mib": 4,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 941480,
+          "cadence": {
+            "mean_us": 33473,
+            "median_us": 33337,
+            "p95_us": 38042,
+            "min_us": 26746,
+            "max_us": 41957
+          },
+          "work": {
+            "mean_us": 31323,
+            "median_us": 33026,
+            "p95_us": 33930,
+            "min_us": 26577,
+            "max_us": 35138
+          },
+          "draw": {
+            "mean_us": 29214,
+            "median_us": 30764,
+            "p95_us": 30936,
+            "min_us": 26360,
+            "max_us": 30981
+          },
+          "acquire": {
+            "mean_us": 2150,
+            "median_us": 548,
+            "p95_us": 6755,
+            "min_us": 8,
+            "max_us": 6819
+          },
+          "present": {
+            "mean_us": 214,
+            "median_us": 158,
+            "p95_us": 998,
+            "min_us": 157,
+            "max_us": 1012
+          },
+          "audio": {
+            "mean_us": 1895,
+            "median_us": 2240,
+            "p95_us": 2396,
+            "min_us": 7,
+            "max_us": 4142
+          },
+          "mean_game_fps": 29.87,
+          "work_over_30fps_budget_us": 0
+        }
+      ],
+      "method": "32 warmup +32 sampled frames per case; persistent scene/UI assets; production draw/present/audio; linker wraps measure display acquisition, presentation and audio; no framebuffer dumps or per-frame logs.",
+      "population": "Generic map cases use the full authored NPC definition population. Mason/Sam use actual original opening VM states; Ronald is a controlled source-position lobby fixture.",
+      "limits": "Emulator CP0 timings include emulated RSP and host-backed RDP wait behavior; they are not physical-console FPS. Steady frame callbacks exclude controller polling/VM work outside rendering. Work subtracts only display_get acquisition/pacing wait.",
+      "pixel_checks": {
+        "cpu_states": 480,
+        "native_frame_pairs": 24
+      }
+    },
+    {
+      "passed": true,
+      "diagnostic": 20,
+      "focus": true,
+      "ram_mib": 8,
+      "native_dimensions": [
+        480,
+        360
+      ],
+      "target_game_fps": 30,
+      "timing": "emulated N64 CP0 ticks",
+      "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-dialogue-cache.z64",
+      "rom_sha256": "af9e406457b834538b229cbbabeb2bf7d0c8fae13c28bf6651b8fdafabc67578",
+      "wall_seconds": 46.06,
+      "cases": [
+        {
+          "case": "source_sam_conversation_world",
+          "width": 480,
+          "height": 360,
+          "ram_mib": 8,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 4530200,
+          "cadence": {
+            "mean_us": 32922,
+            "median_us": 33159,
+            "p95_us": 35959,
+            "min_us": 23150,
+            "max_us": 36408
+          },
+          "work": {
+            "mean_us": 23591,
+            "median_us": 23757,
+            "p95_us": 24550,
+            "min_us": 21453,
+            "max_us": 25807
+          },
+          "draw": {
+            "mean_us": 21369,
+            "median_us": 21389,
+            "p95_us": 21851,
+            "min_us": 20750,
+            "max_us": 21866
+          },
+          "acquire": {
+            "mean_us": 9331,
+            "median_us": 9511,
+            "p95_us": 11895,
+            "min_us": 9,
+            "max_us": 12406
+          },
+          "present": {
+            "mean_us": 325,
+            "median_us": 212,
+            "p95_us": 1956,
+            "min_us": 207,
+            "max_us": 1994
+          },
+          "audio": {
+            "mean_us": 1897,
+            "median_us": 2196,
+            "p95_us": 2472,
+            "min_us": 6,
+            "max_us": 2485
+          },
+          "mean_game_fps": 30.37,
+          "work_over_30fps_budget_us": 0
+        },
+        {
+          "case": "source_sam_uncached-dialogue-full",
+          "width": 480,
+          "height": 360,
+          "ram_mib": 8,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 4413800,
+          "cadence": {
+            "mean_us": 46941,
+            "median_us": 46871,
+            "p95_us": 49502,
+            "min_us": 45538,
+            "max_us": 49522
+          },
+          "work": {
+            "mean_us": 46932,
+            "median_us": 46862,
+            "p95_us": 49492,
+            "min_us": 45529,
+            "max_us": 49513
+          },
+          "draw": {
+            "mean_us": 44121,
+            "median_us": 44255,
+            "p95_us": 44739,
+            "min_us": 43249,
+            "max_us": 44744
+          },
+          "acquire": {
+            "mean_us": 9,
+            "median_us": 9,
+            "p95_us": 9,
+            "min_us": 8,
+            "max_us": 9
+          },
+          "present": {
+            "mean_us": 153,
+            "median_us": 148,
+            "p95_us": 175,
+            "min_us": 146,
+            "max_us": 176
+          },
+          "audio": {
+            "mean_us": 2657,
+            "median_us": 2316,
+            "p95_us": 4665,
+            "min_us": 2012,
+            "max_us": 4714
+          },
+          "panel_cpu": {
+            "mean_us": 21363,
+            "median_us": 21339,
+            "p95_us": 21534,
+            "min_us": 21274,
+            "max_us": 21537
+          },
+          "panel_compose": {
+            "mean_us": 1383,
+            "median_us": 1390,
+            "p95_us": 1502,
+            "min_us": 1218,
+            "max_us": 1579
+          },
+          "mean_game_fps": 21.3,
+          "work_over_30fps_budget_us": 13599
+        },
+        {
+          "case": "source_sam_uncached-dialogue-reveal",
+          "width": 480,
+          "height": 360,
+          "ram_mib": 8,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 4413800,
+          "cadence": {
+            "mean_us": 44379,
+            "median_us": 44376,
+            "p95_us": 47528,
+            "min_us": 41246,
+            "max_us": 47884
+          },
+          "work": {
+            "mean_us": 44370,
+            "median_us": 44367,
+            "p95_us": 47519,
+            "min_us": 41237,
+            "max_us": 47875
+          },
+          "draw": {
+            "mean_us": 41606,
+            "median_us": 41027,
+            "p95_us": 44045,
+            "min_us": 38954,
+            "max_us": 44231
+          },
+          "acquire": {
+            "mean_us": 9,
+            "median_us": 9,
+            "p95_us": 9,
+            "min_us": 8,
+            "max_us": 9
+          },
+          "present": {
+            "mean_us": 263,
+            "median_us": 148,
+            "p95_us": 1897,
+            "min_us": 146,
+            "max_us": 1926
+          },
+          "audio": {
+            "mean_us": 2500,
+            "median_us": 2200,
+            "p95_us": 4470,
+            "min_us": 2007,
+            "max_us": 4502
+          },
+          "panel_cpu": {
+            "mean_us": 18845,
+            "median_us": 18107,
+            "p95_us": 21210,
+            "min_us": 16360,
+            "max_us": 21273
+          },
+          "panel_compose": {
+            "mean_us": 1381,
+            "median_us": 1389,
+            "p95_us": 1496,
+            "min_us": 1203,
+            "max_us": 1497
+          },
+          "mean_game_fps": 22.53,
+          "work_over_30fps_budget_us": 11037
+        },
+        {
+          "case": "source_sam_uncached-choice-2",
+          "width": 480,
+          "height": 360,
+          "ram_mib": 8,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 4377088,
+          "cadence": {
+            "mean_us": 51622,
+            "median_us": 51322,
+            "p95_us": 53656,
+            "min_us": 50177,
+            "max_us": 53718
+          },
+          "work": {
+            "mean_us": 51612,
+            "median_us": 51313,
+            "p95_us": 53647,
+            "min_us": 50168,
+            "max_us": 53708
+          },
+          "draw": {
+            "mean_us": 48557,
+            "median_us": 48571,
+            "p95_us": 49071,
+            "min_us": 47658,
+            "max_us": 49089
+          },
+          "acquire": {
+            "mean_us": 9,
+            "median_us": 9,
+            "p95_us": 9,
+            "min_us": 8,
+            "max_us": 18
+          },
+          "present": {
+            "mean_us": 152,
+            "median_us": 149,
+            "p95_us": 176,
+            "min_us": 148,
+            "max_us": 179
+          },
+          "audio": {
+            "mean_us": 2902,
+            "median_us": 2397,
+            "p95_us": 4576,
+            "min_us": 2076,
+            "max_us": 4811
+          },
+          "panel_cpu": {
+            "mean_us": 20917,
+            "median_us": 20879,
+            "p95_us": 21056,
+            "min_us": 20824,
+            "max_us": 21072
+          },
+          "panel_compose": {
+            "mean_us": 1379,
+            "median_us": 1389,
+            "p95_us": 1525,
+            "min_us": 1195,
+            "max_us": 1615
+          },
+          "choices_cpu": {
+            "mean_us": 4083,
+            "median_us": 4041,
+            "p95_us": 4226,
+            "min_us": 4004,
+            "max_us": 4235
+          },
+          "choices_compose": {
+            "mean_us": 716,
+            "median_us": 719,
+            "p95_us": 748,
+            "min_us": 664,
+            "max_us": 752
+          },
+          "mean_game_fps": 19.37,
+          "work_over_30fps_budget_us": 18279
+        },
+        {
+          "case": "source_sam_uncached-choice-3",
+          "width": 480,
+          "height": 360,
+          "ram_mib": 8,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 4361872,
+          "cadence": {
+            "mean_us": 54529,
+            "median_us": 53838,
+            "p95_us": 56532,
+            "min_us": 52866,
+            "max_us": 56580
+          },
+          "work": {
+            "mean_us": 54520,
+            "median_us": 53829,
+            "p95_us": 56523,
+            "min_us": 52857,
+            "max_us": 56570
+          },
+          "draw": {
+            "mean_us": 51263,
+            "median_us": 51300,
+            "p95_us": 51786,
+            "min_us": 50496,
+            "max_us": 51796
+          },
+          "acquire": {
+            "mean_us": 9,
+            "median_us": 9,
+            "p95_us": 9,
+            "min_us": 8,
+            "max_us": 10
+          },
+          "present": {
+            "mean_us": 152,
+            "median_us": 149,
+            "p95_us": 172,
+            "min_us": 148,
+            "max_us": 173
+          },
+          "audio": {
+            "mean_us": 3104,
+            "median_us": 2434,
+            "p95_us": 4616,
+            "min_us": 2081,
+            "max_us": 4737
+          },
+          "panel_cpu": {
+            "mean_us": 20901,
+            "median_us": 20875,
+            "p95_us": 21061,
+            "min_us": 20824,
+            "max_us": 21069
+          },
+          "panel_compose": {
+            "mean_us": 1392,
+            "median_us": 1387,
+            "p95_us": 1541,
+            "min_us": 1213,
+            "max_us": 1542
+          },
+          "choices_cpu": {
+            "mean_us": 6712,
+            "median_us": 6683,
+            "p95_us": 6825,
+            "min_us": 6616,
+            "max_us": 6848
+          },
+          "choices_compose": {
+            "mean_us": 834,
+            "median_us": 835,
+            "p95_us": 904,
+            "min_us": 755,
+            "max_us": 932
+          },
+          "mean_game_fps": 18.34,
+          "work_over_30fps_budget_us": 21187
+        },
+        {
+          "case": "source_sam_cached-dialogue-full",
+          "width": 480,
+          "height": 360,
+          "ram_mib": 8,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 4413800,
+          "cadence": {
+            "mean_us": 33323,
+            "median_us": 33049,
+            "p95_us": 35461,
+            "min_us": 30951,
+            "max_us": 35762
+          },
+          "work": {
+            "mean_us": 24274,
+            "median_us": 24424,
+            "p95_us": 25306,
+            "min_us": 22894,
+            "max_us": 25314
+          },
+          "draw": {
+            "mean_us": 22193,
+            "median_us": 22120,
+            "p95_us": 22768,
+            "min_us": 21440,
+            "max_us": 22798
+          },
+          "acquire": {
+            "mean_us": 9049,
+            "median_us": 8909,
+            "p95_us": 10459,
+            "min_us": 8019,
+            "max_us": 10464
+          },
+          "present": {
+            "mean_us": 146,
+            "median_us": 146,
+            "p95_us": 149,
+            "min_us": 145,
+            "max_us": 149
+          },
+          "audio": {
+            "mean_us": 1934,
+            "median_us": 2209,
+            "p95_us": 2456,
+            "min_us": 7,
+            "max_us": 2463
+          },
+          "panel_cpu": {
+            "mean_us": 85,
+            "median_us": 85,
+            "p95_us": 86,
+            "min_us": 83,
+            "max_us": 86
+          },
+          "panel_compose": {
+            "mean_us": 871,
+            "median_us": 864,
+            "p95_us": 1034,
+            "min_us": 693,
+            "max_us": 1036
+          },
+          "mean_game_fps": 30.01,
+          "work_over_30fps_budget_us": 0
+        },
+        {
+          "case": "source_sam_cached-dialogue-reveal",
+          "width": 480,
+          "height": 360,
+          "ram_mib": 8,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 4413800,
+          "cadence": {
+            "mean_us": 32810,
+            "median_us": 33137,
+            "p95_us": 37129,
+            "min_us": 23059,
+            "max_us": 49669
+          },
+          "work": {
+            "mean_us": 25301,
+            "median_us": 24871,
+            "p95_us": 27149,
+            "min_us": 23049,
+            "max_us": 41202
+          },
+          "draw": {
+            "mean_us": 23243,
+            "median_us": 22867,
+            "p95_us": 23323,
+            "min_us": 21937,
+            "max_us": 38589
+          },
+          "acquire": {
+            "mean_us": 7509,
+            "median_us": 8315,
+            "p95_us": 10272,
+            "min_us": 9,
+            "max_us": 10279
+          },
+          "present": {
+            "mean_us": 202,
+            "median_us": 147,
+            "p95_us": 150,
+            "min_us": 145,
+            "max_us": 1918
+          },
+          "audio": {
+            "mean_us": 1854,
+            "median_us": 2168,
+            "p95_us": 2450,
+            "min_us": 7,
+            "max_us": 2464
+          },
+          "panel_cpu": {
+            "mean_us": 733,
+            "median_us": 237,
+            "p95_us": 263,
+            "min_us": 201,
+            "max_us": 16337
+          },
+          "panel_compose": {
+            "mean_us": 1215,
+            "median_us": 1258,
+            "p95_us": 1366,
+            "min_us": 1017,
+            "max_us": 1367
+          },
+          "mean_game_fps": 30.48,
+          "work_over_30fps_budget_us": 0
+        },
+        {
+          "case": "source_sam_cached-choice-2",
+          "width": 480,
+          "height": 360,
+          "ram_mib": 8,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 4377088,
+          "cadence": {
+            "mean_us": 33323,
+            "median_us": 33087,
+            "p95_us": 36496,
+            "min_us": 30100,
+            "max_us": 36638
+          },
+          "work": {
+            "mean_us": 24900,
+            "median_us": 25222,
+            "p95_us": 25764,
+            "min_us": 22054,
+            "max_us": 27377
+          },
+          "draw": {
+            "mean_us": 22806,
+            "median_us": 22774,
+            "p95_us": 23171,
+            "min_us": 21898,
+            "max_us": 27218
+          },
+          "acquire": {
+            "mean_us": 8422,
+            "median_us": 8062,
+            "p95_us": 10859,
+            "min_us": 5933,
+            "max_us": 11296
+          },
+          "present": {
+            "mean_us": 149,
+            "median_us": 147,
+            "p95_us": 170,
+            "min_us": 146,
+            "max_us": 171
+          },
+          "audio": {
+            "mean_us": 1944,
+            "median_us": 2227,
+            "p95_us": 2453,
+            "min_us": 7,
+            "max_us": 2458
+          },
+          "panel_cpu": {
+            "mean_us": 78,
+            "median_us": 78,
+            "p95_us": 79,
+            "min_us": 76,
+            "max_us": 79
+          },
+          "panel_compose": {
+            "mean_us": 863,
+            "median_us": 889,
+            "p95_us": 1019,
+            "min_us": 689,
+            "max_us": 1020
+          },
+          "choices_cpu": {
+            "mean_us": 135,
+            "median_us": 7,
+            "p95_us": 7,
+            "min_us": 7,
+            "max_us": 4100
+          },
+          "choices_compose": {
+            "mean_us": 398,
+            "median_us": 391,
+            "p95_us": 420,
+            "min_us": 341,
+            "max_us": 716
+          },
+          "mean_game_fps": 30.01,
+          "work_over_30fps_budget_us": 0
+        },
+        {
+          "case": "source_sam_cached-choice-3",
+          "width": 480,
+          "height": 360,
+          "ram_mib": 8,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 4361872,
+          "cadence": {
+            "mean_us": 33343,
+            "median_us": 33649,
+            "p95_us": 36466,
+            "min_us": 25792,
+            "max_us": 40708
+          },
+          "work": {
+            "mean_us": 25091,
+            "median_us": 25151,
+            "p95_us": 25867,
+            "min_us": 22120,
+            "max_us": 32576
+          },
+          "draw": {
+            "mean_us": 22980,
+            "median_us": 22832,
+            "p95_us": 23264,
+            "min_us": 21948,
+            "max_us": 30281
+          },
+          "acquire": {
+            "mean_us": 8252,
+            "median_us": 8185,
+            "p95_us": 10928,
+            "min_us": 717,
+            "max_us": 11224
+          },
+          "present": {
+            "mean_us": 150,
+            "median_us": 147,
+            "p95_us": 167,
+            "min_us": 146,
+            "max_us": 167
+          },
+          "audio": {
+            "mean_us": 1960,
+            "median_us": 2289,
+            "p95_us": 2459,
+            "min_us": 7,
+            "max_us": 2472
+          },
+          "panel_cpu": {
+            "mean_us": 79,
+            "median_us": 78,
+            "p95_us": 79,
+            "min_us": 76,
+            "max_us": 108
+          },
+          "panel_compose": {
+            "mean_us": 881,
+            "median_us": 873,
+            "p95_us": 1033,
+            "min_us": 708,
+            "max_us": 1034
+          },
+          "choices_cpu": {
+            "mean_us": 216,
+            "median_us": 7,
+            "p95_us": 7,
+            "min_us": 7,
+            "max_us": 6709
+          },
+          "choices_compose": {
+            "mean_us": 467,
+            "median_us": 472,
+            "p95_us": 497,
+            "min_us": 391,
+            "max_us": 760
+          },
+          "mean_game_fps": 29.99,
+          "work_over_30fps_budget_us": 0
+        },
+        {
+          "case": "naming-keyboard",
+          "width": 480,
+          "height": 360,
+          "ram_mib": 8,
+          "map": 1,
+          "x": 10,
+          "y": 14,
+          "npc_count": 7,
+          "warmup": 32,
+          "samples": 32,
+          "free_heap": 3789544,
+          "cadence": {
+            "mean_us": 60727,
+            "median_us": 60984,
+            "p95_us": 63531,
+            "min_us": 56542,
+            "max_us": 65512
+          },
+          "work": {
+            "mean_us": 60719,
+            "median_us": 60975,
+            "p95_us": 63522,
+            "min_us": 56533,
+            "max_us": 65503
+          },
+          "draw": {
+            "mean_us": 56992,
+            "median_us": 58524,
+            "p95_us": 58776,
+            "min_us": 54151,
+            "max_us": 58778
+          },
+          "acquire": {
+            "mean_us": 8,
+            "median_us": 8,
+            "p95_us": 9,
+            "min_us": 8,
+            "max_us": 9
+          },
+          "present": {
+            "mean_us": 282,
+            "median_us": 158,
+            "p95_us": 1905,
+            "min_us": 154,
+            "max_us": 2005
+          },
+          "audio": {
+            "mean_us": 3444,
+            "median_us": 4257,
+            "p95_us": 4819,
+            "min_us": 2121,
+            "max_us": 4819
+          },
+          "mean_game_fps": 16.47,
+          "work_over_30fps_budget_us": 27386
+        }
+      ],
+      "method": "32 warmup +32 sampled frames per case; persistent scene/UI assets; production draw/present/audio; linker wraps measure display acquisition, presentation and audio; no framebuffer dumps or per-frame logs.",
+      "population": "Generic map cases use the full authored NPC definition population. Mason/Sam use actual original opening VM states; Ronald is a controlled source-position lobby fixture.",
+      "limits": "Emulator CP0 timings include emulated RSP and host-backed RDP wait behavior; they are not physical-console FPS. Steady frame callbacks exclude controller polling/VM work outside rendering. Work subtracts only display_get acquisition/pacing wait.",
+      "pixel_checks": {
+        "cpu_states": 480,
+        "native_frame_pairs": 24
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "ram_mib": 4,
+      "width": 320,
+      "case": "dialogue-full",
+      "before_fps": 29.31,
+      "after_fps": 29.93,
+      "before_work_us": 34112,
+      "after_work_us": 23972,
+      "before_p95_work_us": 34988,
+      "after_p95_work_us": 24761,
+      "before_cpu_paint_us": 9800,
+      "after_cpu_paint_us": 77,
+      "before_compose_us": 883,
+      "after_compose_us": 547
+    },
+    {
+      "ram_mib": 4,
+      "width": 320,
+      "case": "dialogue-reveal",
+      "before_fps": 29.94,
+      "after_fps": 30.44,
+      "before_work_us": 32769,
+      "after_work_us": 24398,
+      "before_p95_work_us": 34840,
+      "after_p95_work_us": 25109,
+      "before_cpu_paint_us": 8460,
+      "after_cpu_paint_us": 399,
+      "before_compose_us": 876,
+      "after_compose_us": 703
+    },
+    {
+      "ram_mib": 4,
+      "width": 320,
+      "case": "choice-2",
+      "before_fps": 27.62,
+      "after_fps": 29.96,
+      "before_work_us": 36200,
+      "after_work_us": 24219,
+      "before_p95_work_us": 36844,
+      "after_p95_work_us": 25004,
+      "before_cpu_paint_us": 9581,
+      "after_cpu_paint_us": 70,
+      "before_compose_us": 875,
+      "after_compose_us": 547
+    },
+    {
+      "ram_mib": 4,
+      "width": 320,
+      "case": "choice-3",
+      "before_fps": 26.22,
+      "after_fps": 29.93,
+      "before_work_us": 38131,
+      "after_work_us": 24733,
+      "before_p95_work_us": 38457,
+      "after_p95_work_us": 25110,
+      "before_cpu_paint_us": 9601,
+      "after_cpu_paint_us": 70,
+      "before_compose_us": 913,
+      "after_compose_us": 578
+    },
+    {
+      "ram_mib": 8,
+      "width": 480,
+      "case": "dialogue-full",
+      "before_fps": 21.3,
+      "after_fps": 30.01,
+      "before_work_us": 46932,
+      "after_work_us": 24274,
+      "before_p95_work_us": 49492,
+      "after_p95_work_us": 25306,
+      "before_cpu_paint_us": 21363,
+      "after_cpu_paint_us": 85,
+      "before_compose_us": 1383,
+      "after_compose_us": 871
+    },
+    {
+      "ram_mib": 8,
+      "width": 480,
+      "case": "dialogue-reveal",
+      "before_fps": 22.53,
+      "after_fps": 30.48,
+      "before_work_us": 44370,
+      "after_work_us": 25301,
+      "before_p95_work_us": 47519,
+      "after_p95_work_us": 27149,
+      "before_cpu_paint_us": 18845,
+      "after_cpu_paint_us": 733,
+      "before_compose_us": 1381,
+      "after_compose_us": 1215
+    },
+    {
+      "ram_mib": 8,
+      "width": 480,
+      "case": "choice-2",
+      "before_fps": 19.37,
+      "after_fps": 30.01,
+      "before_work_us": 51612,
+      "after_work_us": 24900,
+      "before_p95_work_us": 53647,
+      "after_p95_work_us": 25764,
+      "before_cpu_paint_us": 20917,
+      "after_cpu_paint_us": 78,
+      "before_compose_us": 1379,
+      "after_compose_us": 863
+    },
+    {
+      "ram_mib": 8,
+      "width": 480,
+      "case": "choice-3",
+      "before_fps": 18.34,
+      "after_fps": 29.99,
+      "before_work_us": 54520,
+      "after_work_us": 25091,
+      "before_p95_work_us": 56523,
+      "after_p95_work_us": 25867,
+      "before_cpu_paint_us": 20901,
+      "after_cpu_paint_us": 79,
+      "before_compose_us": 1392,
+      "after_compose_us": 881
+    }
+  ],
+  "frontend_object_sha256": "6cf2a62b3e52e0c7b36e04680ff0014468e330580dea91ad5fe122f1548f7b00",
+  "frontend_provenance": "Frozen shipped3d53 object; child generic-UI WIP excluded.",
+  "queue": "Project-local wake-only fix4d0b4a50, installed SDK untouched.",
+  "runtime_source_sha256": "76d58d2549d4c5c3cf2d7164df284a707d2f871f7d7c799a59d8985382373b4d",
+  "production_memory": "Existing panel and popup surfaces retained; cache metadata on the stack, no extra image allocation.",
+  "limits": "Same-ROM cached/uncached production rendering in ares; CP0/emulatedRSP/hostRDP timing, not physical-console FPS."
+}

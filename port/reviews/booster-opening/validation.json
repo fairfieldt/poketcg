@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "native_frames": 21,
+  "actual_4mib_and_8mib": true,
+  "identical_320_pixels_between_memory_sizes": true,
+  "minimum_pressure_fixture_free_bytes": 632952,
+  "canonical_GpState_card_order_WRAM_HRAM_unchanged": true,
+  "audio": "Native preview uses audio stubs; root owns separate retained three-pair music-stack validation",
+  "input": "Host state/VI-edge test checks receipt/fanfare/checked/skippable transition/list/inspection/exit",
+  "asset_check": "four original64x96 CGB scenes with exact32-tile OBJ logo records"
+}

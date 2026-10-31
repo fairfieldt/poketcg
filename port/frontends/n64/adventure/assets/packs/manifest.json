@@ -1,0 +1,47 @@
+{
+  "source": "src/data/scenes.asm + src/engine/scenes.asm:BoosterLogoOAM",
+  "art_source": "src/gfx/booster_packs/",
+  "format": "Exact CGB tilemap/palette/OBJ composition; no redrawing",
+  "assets": [
+    {
+      "file": "colosseum.png",
+      "size": [
+        64,
+        96
+      ],
+      "tilemap": "TILEMAP_COLOSSEUM_CGB",
+      "palette": "PALETTE_COLOSSEUM_BOOSTER_CGB",
+      "sha256": "0b9c61e60c75a3dbe9e66ec81b1a6a1fbf425a731a46cec198c072b12897c383"
+    },
+    {
+      "file": "evolution.png",
+      "size": [
+        64,
+        96
+      ],
+      "tilemap": "TILEMAP_EVOLUTION_CGB",
+      "palette": "PALETTE_EVOLUTION_BOOSTER_CGB",
+      "sha256": "fb06d0ea8a86d671d31a8047c9cf057b26700cb9a859aba872a0d5e72558f5e5"
+    },
+    {
+      "file": "mystery.png",
+      "size": [
+        64,
+        96
+      ],
+      "tilemap": "TILEMAP_MYSTERY_CGB",
+      "palette": "PALETTE_MYSTERY_BOOSTER_CGB",
+      "sha256": "b532df6a48abe2d4d318fcfdafe71b808fe43db7041b3168eb29d9692151c3ad"
+    },
+    {
+      "file": "laboratory.png",
+      "size": [
+        64,
+        96
+      ],
+      "tilemap": "TILEMAP_LABORATORY_CGB",
+      "palette": "PALETTE_LABORATORY_BOOSTER_CGB",
+      "sha256": "ed6e13bb4d7fb69459e8dbb7f2a63d70dd135c8f319836cbdd691ddf6b18ac0c"
+    }
+  ]
+}

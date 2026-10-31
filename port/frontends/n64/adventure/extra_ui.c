@@ -1,4 +1,5 @@
 #include "game.h"
+#include "pack.h"
 #include "duel_bridge.h"
 #include "gen/constants.h"
 #include "gen/text.h"
@@ -73,10 +74,15 @@ static void show_mail(void)
   if(game.cards.pc_packs[slot]&128) {
    uint8_t cards[20];game_rng_to_cards();unsigned drawn=gp_open_mail(&game.cards,slot,cards);game_rng_to_story();
    if(drawn) {
+#ifdef N64
+    for(unsigned pack=0;pack<drawn/10;pack++)
+     adventure_pack_open(gp_mail_boosters[id][pack],cards+pack*10,game.name);
+#else
     char names[20][40];const char *cards_menu[20];
     for(unsigned i=0;i<drawn;i++){n64_card_name(cards[i],names[i],40);cards_menu[i]=names[i];}
     int card=0;
     for(;;){card=n64_menu("Received cards",cards_menu,(int)drawn,card,true);if(card<0)break;n64_card_detail(cards[card]);}
+#endif
     game_save();
    }
   }

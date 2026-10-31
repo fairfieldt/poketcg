@@ -1,0 +1,56 @@
+Loaded poketcg-pack-native
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-10-31 13:11:44.546 ares[43244:19190553] Resizing output buffers to 1536, 1152
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 69132 bytes
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 11116.792 us (mode: sync, success: yes).
+PACK HEAP width=480 used=2497552 free=4411584
+PACK NATIVE phase=0 set=0 vi=24
+GAME FPS 33 frames=18 ticks=47755200
+GAME FPS 30 frames=33 ticks=71215633
+GAME FPS 30 frames=48 ticks=94593469
+PACK NATIVE phase=1 set=0 vi=117
+GAME FPS 30 frames=63 ticks=118057240
+PACK NATIVE phase=2 set=0 vi=138
+GAME FPS 30 frames=78 ticks=141514209
+PACK NATIVE phase=3 set=0 vi=157
+GAME FPS 27 frames=93 ticks=167359870
+DUEL INPUT VI samples=14
+GAME FPS 31 frames=109 ticks=191658050
+PACK NATIVE CASE PASS booster=0 receipt_frames=47 check_frames=10 opening_frames=9 list_frames=28 detail=1
+PACK HEAP width=480 used=2537232 free=4371904
+PACK NATIVE phase=0 set=1 vi=227
+GAME FPS 30 frames=124 ticks=215105867
+GAME FPS 30 frames=139 ticks=238492193
+GAME FPS 30 frames=154 ticks=261944201
+PACK NATIVE phase=1 set=1 vi=319
+GAME FPS 30 frames=169 ticks=285411185
+PACK NATIVE phase=2 set=1 vi=340
+PACK NATIVE phase=3 set=1 vi=358
+GAME FPS 31 frames=185 ticks=309735628
+PACK NATIVE CASE PASS booster=7 receipt_frames=47 check_frames=10 opening_frames=9 list_frames=21 detail=0
+PACK HEAP width=480 used=2537232 free=4371904
+GAME FPS 27 frames=200 ticks=335333172
+PACK NATIVE phase=0 set=2 vi=400
+GAME FPS 33 frames=217 ticks=359787778
+GAME FPS 30 frames=232 ticks=383257131
+GAME FPS 30 frames=247 ticks=406626463
+PACK NATIVE phase=1 set=2 vi=495
+PACK NATIVE phase=2 set=2 vi=515
+GAME FPS 27 frames=262 ticks=432621047
+PACK NATIVE phase=3 set=2 vi=534
+GAME FPS 33 frames=279 ticks=456765469
+PACK NATIVE CASE PASS booster=14 receipt_frames=48 check_frames=10 opening_frames=9 list_frames=21 detail=0
+PACK HEAP width=480 used=2537232 free=4371904
+PACK NATIVE phase=0 set=3 vi=576
+GAME FPS 30 frames=294 ticks=480219483
+GAME FPS 30 frames=309 ticks=503595408
+GAME FPS 30 frames=324 ticks=527056270
+PACK NATIVE phase=1 set=3 vi=671
+GAME FPS 30 frames=339 ticks=550516894
+PACK NATIVE phase=2 set=3 vi=692
+GAME FPS 31 frames=355 ticks=574838878
+PACK NATIVE phase=3 set=3 vi=711
+GAME FPS 27 frames=370 ticks=600483405
+PACK NATIVE CASE PASS booster=20 receipt_frames=48 check_frames=11 opening_frames=9 list_frames=21 detail=0
+PACK NATIVE PASS sets=4 cards=40 grants=4 frames=760 ram=8388608 width=480 free_heap=4800016

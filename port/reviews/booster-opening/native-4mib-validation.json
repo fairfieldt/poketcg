@@ -1,0 +1,101 @@
+{
+  "passed": true,
+  "case": "native-4mib",
+  "frames": [
+    {
+      "file": "colosseum-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "a682c485451e2710e838d1c2ec844af2f83416e0377318af9aa52c8291865885"
+    },
+    {
+      "file": "evolution-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "fd7e44cf582c2afa2cbc25845030f5adacf4255110508629495c852f657830f2"
+    },
+    {
+      "file": "mystery-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "de960737079dd45fa8f00e9ab3cceb41cdad6e4ba6f1b291a33d3afd829d2047"
+    },
+    {
+      "file": "laboratory-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "7bb46bf489db0845e9bdcbd509bd9822a57600b4a6f8397877c59a0a8806f337"
+    },
+    {
+      "file": "checked-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "1424dd2f03227394b42a6186ca20b0adea3db528cc9fd79d2fd45e01a6368aff"
+    },
+    {
+      "file": "cards-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "2b28fb88c5a03e4a8c86ede2b91b842c58f56fa84753d0f5c19f72a1bbede8d1"
+    },
+    {
+      "file": "energy-cards-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "e0b347ab5815efe8879baa65c9eb0b89b9cc98543201248eea4ad2ce4d0f4abc"
+    }
+  ],
+  "heap": [
+    [
+      320,
+      2918272,
+      634752
+    ],
+    [
+      320,
+      2920072,
+      632952
+    ],
+    [
+      320,
+      2920072,
+      632952
+    ],
+    [
+      320,
+      2920072,
+      632952
+    ],
+    [
+      320,
+      2920072,
+      632952
+    ],
+    [
+      320,
+      2920072,
+      632952
+    ],
+    [
+      320,
+      2920072,
+      632952
+    ]
+  ],
+  "wall_seconds": 12.34,
+  "method": "N64 RDP framebuffer read after detach_wait, same production duel UI/video code; privateAres/noVIbreakpoints"
+}

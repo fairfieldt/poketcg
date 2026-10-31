@@ -101,7 +101,7 @@ void n64_video_present(surface_t *frame)
  rdpq_mode_pop();rdpq_detach_wait();
  display_show(frame);
  presented_frames++;
-#if ADVENTURE_DIAGNOSTIC
+#if ADVENTURE_DIAGNOSTIC && ADVENTURE_DIAGNOSTIC != 20
  if(sampled)debugf("GAME FPS %u frames=%lu ticks=%llu\n",frame_rate.fps,
   (unsigned long)presented_frames,(unsigned long long)get_ticks());
 #else

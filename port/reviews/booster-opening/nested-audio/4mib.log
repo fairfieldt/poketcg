@@ -1,0 +1,6 @@
+Loaded poketcg-audio-nested
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=320 height=240 ram=4194304 highres=0
+2026-10-31 12:47:57.612 ares[94226:19039432] Resizing output buffers to 1536, 1152
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 69132 bytes
+AUDIO NESTED REGRESSION PASS: 12 world-PC-booster cycles, exact positions/decoder IDs, stereo pairs, heap stability

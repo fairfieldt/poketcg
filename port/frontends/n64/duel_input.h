@@ -25,4 +25,15 @@ static inline uint16_t duel_input_take(volatile DuelInputCapture *capture,unsign
 {
  uint16_t pending=capture->pending[port];capture->pending[port]=0;return pending;
 }
+
+/* Important new content needs a press after it has actually appeared. The
+ * first completed presentation consumes old edges; a held confirm must be
+ * released before a later edge can act. There is no fixed time delay. */
+typedef struct {bool presented,armed;} DuelFreshConfirm;
+static inline bool duel_fresh_confirm_step(DuelFreshConfirm *confirm,bool held)
+{
+ if(!confirm->presented){confirm->presented=true;confirm->armed=!held;return false;}
+ if(!confirm->armed){if(!held)confirm->armed=true;return false;}
+ return true;
+}
 #endif

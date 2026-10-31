@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "ram_mib": 8,
+  "diagnostic": 23,
+  "rom_sha256": "f4f255a9009ba2f673caf3a4c5dc475d4429059c45ef496fbda7b0f6e68846ec",
+  "wall_seconds": 3.94,
+  "markers": [
+    "AUDIO NESTED REGRESSION PASS"
+  ],
+  "source_fixture": "world -> PC -> booster -> PC -> world, 12 cycles",
+  "native_dimensions": [
+    320,
+    240
+  ],
+  "checks": [
+    "12 complete world-PC-booster-PC-world cycles",
+    "Exact fractional mixer positions and retained decoder IDs",
+    "Three stereo pairs plus independent SFX",
+    "Finished-fanfare detection",
+    "Stable heap and closed temporary music handles"
+  ]
+}
