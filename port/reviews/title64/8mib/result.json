@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "case": "8mib",
+  "ram": 8388608,
+  "width": 480,
+  "opening_exact_pixels": 518400,
+  "copyright_exact_pixels": 27360,
+  "input_cases": 3,
+  "source_orbs": true,
+  "real_audio": true,
+  "canonical_memory_unchanged": true,
+  "free_heap": 6742536,
+  "frames": [
+    {
+      "file": "opening-charizard-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "6d407f84c3a3822c5609ab6ccd9d6a1c42d5f31729a4a7d5a00cfe068e718666"
+    },
+    {
+      "file": "title64-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "62cbaa179cbb3760e00a3250b5f853fbfdb2041a77e54a42ff1a7cf3f44a18bb"
+    },
+    {
+      "file": "title64-prompt-off-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "8401cef78e822e56f1a1aa27787abe26c9a62928ad2847cc90aef5464c6f61ef"
+    }
+  ],
+  "wall_seconds": 12.33,
+  "method": "Completed raw N64 RDP framebuffer after fences in private Ares. Original3 opening scenes and copyright region compare pixel-exact against prior intro.c in same ELF. PNGs are before VI output filtering."
+}

@@ -4,12 +4,18 @@
 #include <stdio.h>
 #include <string.h>
 
+#ifndef ADVENTURE_SHOW_FPS
+#define ADVENTURE_SHOW_FPS 1
+#endif
+
 unsigned n64_video_width=320,n64_video_height=240;
 float n64_video_scale=1.0f;
 static FrameRate frame_rate;
+#if ADVENTURE_SHOW_FPS
 static surface_t fps_badge;
 static unsigned badge_value;
 static bool badge_ready,badge_sampled;
+#endif
 static uint64_t presented_frames;
 
 resolution_t n64_video_init(bool high_resolution)
@@ -17,7 +23,10 @@ resolution_t n64_video_init(bool high_resolution)
  bool expanded=high_resolution&&get_memory_size()>=8*1024*1024;
  n64_video_width=expanded?480:320;n64_video_height=expanded?360:240;
  n64_video_scale=expanded?1.5f:1.0f;
- memset(&frame_rate,0,sizeof(frame_rate));badge_ready=false;presented_frames=0;
+ memset(&frame_rate,0,sizeof(frame_rate));presented_frames=0;
+#if ADVENTURE_SHOW_FPS
+ badge_ready=false;
+#endif
  resolution_t resolution={.width=(int)n64_video_width,.height=(int)n64_video_height,
   .interlaced=expanded?INTERLACE_HALF:INTERLACE_OFF};
  debugf("VIDEO MODE width=%u height=%u ram=%d highres=%u\n",
@@ -54,6 +63,7 @@ void n64_video_blit(const surface_t *source,int x,int y)
 void n64_video_blit_physical(const surface_t *source,int x,int y)
 {rdpq_tex_blit(source,n64_video_x(x),n64_video_y(y),NULL);}
 
+#if ADVENTURE_SHOW_FPS
 static void update_fps_badge(void)
 {
  int width=n64_video_x(64),height=n64_video_y(14);
@@ -90,15 +100,19 @@ static void update_fps_badge(void)
  badge_value=frame_rate.fps;badge_ready=true;badge_sampled=frame_rate.ready;
 }
 
+#endif
+
 void n64_video_present(surface_t *frame)
 {
  bool sampled=frame_rate_present(&frame_rate,get_ticks(),TICKS_PER_SECOND);
+#if ADVENTURE_SHOW_FPS
  update_fps_badge();
  /* Never CPU-write an RDP framebuffer or touch it after display_show. */
  rdpq_attach(frame,NULL);rdpq_mode_push();rdpq_set_mode_copy(false);
  rdpq_set_scissor(0,0,n64_video_width,n64_video_height);
  n64_video_blit_physical(&fps_badge,4,2);
  rdpq_mode_pop();rdpq_detach_wait();
+#endif
  display_show(frame);
  presented_frames++;
 #if ADVENTURE_DIAGNOSTIC && ADVENTURE_DIAGNOSTIC != 20

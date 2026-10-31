@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "case": "8mib",
+  "method": "Completed N64 RDP framebuffer after fence; native input and real audio; private Ares with VI processing enabled. PNGs are raw framebuffer, not post-VI output.",
+  "ram": 8388608,
+  "width": 480,
+  "designs": 8,
+  "exact_source_texels": 4608,
+  "exact_collection_texels": 21312,
+  "read_only": true,
+  "held_then_fresh_input": true,
+  "live_frames": 292,
+  "live_vi": 438,
+  "free_heap": 6339416,
+  "frames": [
+    {
+      "file": "water-collected-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "23f33810e6fb3111520d822a38b40444f2937f0009894b52d9d128cf38dcff93"
+    },
+    {
+      "file": "psychic-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "9c73aca385350b49f998c38b4e1ab3e40f3d1d8a885f06cfdebf06b6d9fac3df"
+    },
+    {
+      "file": "all-medals-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "7ad497ebf2e6d56e089f3927be117fad43d50c04cbeba5931e62f454a64d3eb9"
+    },
+    {
+      "file": "water-award-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "12ab8cf190f1eeffa8b054d39f85d36c8b4debeebbba4ee72480b180e3ac8f19"
+    }
+  ],
+  "wall_seconds": 17.24
+}

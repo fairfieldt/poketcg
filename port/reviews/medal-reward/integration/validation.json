@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "source_changes": [
+    "port/overworld/tests/medal_awards.c"
+  ],
+  "production_changes": false,
+  "native_emulator_run": false,
+  "user_saves_modified": false,
+  "feature_argument": "Original EVENT_BEAT_* IDs 8 through 15, event order Grass/Science/Fire/Water/Lightning/Psychic/Rock/Fighting",
+  "cases": {
+    "all_eight_real_reward_scripts": true,
+    "already_owned_event_at_callback": true,
+    "all_eight_bit_identities": true,
+    "source_booster_identities": true,
+    "ceremony_before_master_record_and_rewards": true,
+    "rematches_do_not_repeat_ceremony": true,
+    "cumulative_count_and_milestone_mail_order": true,
+    "in_memory_save_roundtrips": true,
+    "actual_amy_post_duel_handler": true,
+    "amy_exact_reward_sequence": true,
+    "existing_story_714_encounters": true,
+    "existing_campaign_73_duels_1337_cards": true,
+    "milestone_mail_callbacks_precede_ceremony": true
+  },
+  "logs": {
+    "medal-awards.log": "7a2898845d796e6369d9240fbf301dcb981be0fe9fe40aaeff0233abe1c1276d",
+    "story.log": "81f163f2ac04d4ffb438a7a6e5189193a08ac66894083dcba625f6c7a87d2d33",
+    "campaign.log": "10c128adf712ae2a1c9e2eb25023da7c9aa11a474230323788b6f00373916a36"
+  },
+  "sources": {
+    "port/overworld/tests/medal_awards.c": "a7c3267541f2557750fad827cf1c38bcf24fc25e0a19559ed79656bac90157dd",
+    "port/overworld/overworld.c": "54780d29634ee1b15d177709995c2bb4de63ce97a22f039064bfa0cfaac48815",
+    "port/overworld/gen/data.c": "93bc4dd6a8bfaddceead2bbfd20c5d3d00c1375895cb019ac04608913718bacf",
+    "src/engine/menus/medal.asm": "6abd4f22ab3d5b8fc9d5d9fc05d242f12915d7f8fa11509415f398e1ce41df46",
+    "src/engine/menus/print_stats.asm": "4d37d67004dfe86bfb9433d299e6e5ed90f692b728813b84b8ce477deac3a553",
+    "src/engine/menus/init_menu.asm": "cc06bbf0c7674cd9b43bff7aeab8ea6d077be0ec9d36945624ae00bc5742330c",
+    "src/scripts/water_club.asm": "08824feb3c74e873015d4f6c69c612cb0b906377e00823132953cc0e6295fa93",
+    "src/data/palettes2.asm": "cee59661c035d5cc5e03a1747010ce9f7a0d907d60fe76e6adaad597602fff20",
+    "src/gfx.asm": "c5cdf9987d8f0179ddafab101cf98331c29ec48754c763041a80d5e8f96c2c04"
+  },
+  "independent_review": "No substantive blocker; review found one missing explicit mail-before-ceremony assertion, now added inside the medal callback and passing."
+}

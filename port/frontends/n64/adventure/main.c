@@ -15,6 +15,7 @@
 #include "presentation.h"
 #include "visibility.h"
 #include "dialogue.h"
+#include "medal.h"
 #include "video.h"
 #include "generated/world3d_maps.h"
 #include "generated/character_lods.h"
@@ -437,10 +438,7 @@ bool game_feature(unsigned feature,unsigned argument)
   if(argument==255){const unsigned legendary[]={MOLTRES_LV37,ZAPDOS_LV68,ARTICUNO_LV37,DRAGONITE_LV41};for(unsigned i=0;i<4;i++)n64_card_detail(legendary[i]);}
   else n64_card_detail(argument?argument:game.ow.received_card);
   return true;
- case OW_FEATURE_MEDAL: {
-  static const char *const names[]={"Grass Medal","Science Medal","Fire Medal","Water Medal","Lightning Medal","Psychic Medal","Rock Medal","Fighting Medal"};
-  n64_message("Master Medal",argument>=EVENT_BEAT_NIKKI&&argument<=EVENT_BEAT_MITCH?names[argument-EVENT_BEAT_NIKKI]:"Master Medal received.");return true;
- }
+ case OW_FEATURE_MEDAL:adventure_show_medal(argument,&game.ow);return true;
  case OW_FEATURE_MAP_PATCH:loaded_map=-1;return true;
  case OW_FEATURE_BATTLE_CENTER:return game_link(4);
  case OW_FEATURE_GIFT_CENTER:return game_link(argument);

@@ -1,0 +1,40 @@
+{
+  "title": "Pokémon Trading Card Game 64",
+  "provenance": "Built-in image_gen edit/reference generation; exact prompt in prompt.txt",
+  "source_sha256": "86aa55fe1f197282752c3ad20fae9355155ade842d04bce90b6fe3895d2fa370",
+  "prompt_sha256": "e0547e7abb59db2be92159fe9dcbd14146704c7f9e75b57b4b227ef4506c6ba5",
+  "source_size": [
+    1774,
+    887
+  ],
+  "source_visible_bbox": [
+    78,
+    16,
+    1730,
+    873
+  ],
+  "original_reference": "../intro/title.png",
+  "original_reference_sha256": "e9fffb8d3fca322c8b23a52b09bb010a46db611dcc27f89fdc62d4cec4eed6fb",
+  "processing": "Premultiplied LANCZOS downsample, straight-alpha storage, nearest edge RGB in zero-alpha pixels; no redrawing",
+  "runtime": "Only the selected derivative is loaded; source.png is excluded from the ROM",
+  "assets": {
+    "320": {
+      "file": "logo-320.png",
+      "size": [
+        280,
+        140
+      ],
+      "sha256": "83baa87b6555a9fe1a0e9457f2faa735073b0cac443b254aae4e2bfca63a5985",
+      "rgba16_bytes": 78400
+    },
+    "480": {
+      "file": "logo-480.png",
+      "size": [
+        420,
+        210
+      ],
+      "sha256": "90c6aec27e526e70e1afdb57825de73dff118f0d2cd1c721e7eb451f712a2dba",
+      "rgba16_bytes": 176400
+    }
+  }
+}

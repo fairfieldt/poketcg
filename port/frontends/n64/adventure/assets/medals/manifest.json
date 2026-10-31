@@ -1,0 +1,301 @@
+{
+  "format": "Exact opaque CGB24x24 composition; cream background and all four palette colors retained",
+  "source": "ShowMedalReceivedScreen/DrawCollectedMedals, MedalGfx, individual CGB tilemaps, MedalsPal loaded at BG1",
+  "sources": {
+    "src/gfx/medals.png": "c363063ea61f07445b1976bb9e6b49f92dfe640fd88729175968b34bdac17cc2",
+    "src/gfx.asm": "c5cdf9987d8f0179ddafab101cf98331c29ec48754c763041a80d5e8f96c2c04",
+    "src/data/palettes2.asm": "cee59661c035d5cc5e03a1747010ce9f7a0d907d60fe76e6adaad597602fff20",
+    "src/engine/menus/medal.asm": "6abd4f22ab3d5b8fc9d5d9fc05d242f12915d7f8fa11509415f398e1ce41df46",
+    "src/engine/menus/print_stats.asm": "4d37d67004dfe86bfb9433d299e6e5ed90f692b728813b84b8ce477deac3a553",
+    "src/data/maps/tiles/cgb/grass_medal.bin": "4002f8b29231bf7d71635d4ab441d7b0d58c825ff2d750b3981797657b7c4a98",
+    "src/data/maps/tiles/cgb/science_medal.bin": "16c595fcbffaf9e5d4dbd37667f37a55203fc01639d0df85ebeb519c4693f9ba",
+    "src/data/maps/tiles/cgb/fire_medal.bin": "0fb268580aee582acaf4730b33c68d72371df93002aa5b162075e008740b605f",
+    "src/data/maps/tiles/cgb/water_medal.bin": "e54ae92486120f87a69637e28c960d906d20d045fdf3dc8c6a6efe21b1d1b09b",
+    "src/data/maps/tiles/cgb/lightning_medal.bin": "06d76b6d57c7636db18b289a2ac4aeae7d6c3ae82263280fbec18a87cd1ab76b",
+    "src/data/maps/tiles/cgb/psychic_medal.bin": "e773c9eee2f053e8d1ffad41ba2a35abdf5b51effcce0818364aba1e6216e50e",
+    "src/data/maps/tiles/cgb/rock_medal.bin": "1d0a7697de0f2f1440c641d7f109822928ae98444ecafd7532add2567d96dac6",
+    "src/data/maps/tiles/cgb/fighting_medal.bin": "25571e6c2ad49ad8dce9052cf5089c251fa5f166b746fdab1bc7cb00396dee6e"
+  },
+  "assets": [
+    {
+      "name": "grass",
+      "file": "grass.png",
+      "event": 8,
+      "flag": 128,
+      "tilemap_id": 62,
+      "palette": 1,
+      "sha256": "4ae266d716c01d664d651636b16eeff7d46410042255925059ac0f38590bae36",
+      "colors": [
+        [
+          0,
+          0,
+          0,
+          255
+        ],
+        [
+          33,
+          247,
+          165,
+          255
+        ],
+        [
+          66,
+          132,
+          66,
+          255
+        ],
+        [
+          231,
+          231,
+          198,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "science",
+      "file": "science.png",
+      "event": 9,
+      "flag": 64,
+      "tilemap_id": 63,
+      "palette": 1,
+      "sha256": "783c5c049e26f9c9adedd06f0a55ec1a0d110425f6c808f24f98e0dffead6904",
+      "colors": [
+        [
+          0,
+          0,
+          0,
+          255
+        ],
+        [
+          33,
+          247,
+          165,
+          255
+        ],
+        [
+          66,
+          132,
+          66,
+          255
+        ],
+        [
+          231,
+          231,
+          198,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "fire",
+      "file": "fire.png",
+      "event": 10,
+      "flag": 32,
+      "tilemap_id": 64,
+      "palette": 2,
+      "sha256": "e79edba8802b1e1c0611f100789598476f1f923a7e45c2b944da3a853f771a26",
+      "colors": [
+        [
+          0,
+          0,
+          0,
+          255
+        ],
+        [
+          156,
+          74,
+          66,
+          255
+        ],
+        [
+          231,
+          231,
+          198,
+          255
+        ],
+        [
+          255,
+          90,
+          82,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "water",
+      "file": "water.png",
+      "event": 11,
+      "flag": 16,
+      "tilemap_id": 65,
+      "palette": 3,
+      "sha256": "615cabc99dd12f9be5abb4e738110a0823d7888f5730f36ad2a3f8deacd4af76",
+      "colors": [
+        [
+          0,
+          0,
+          0,
+          255
+        ],
+        [
+          49,
+          165,
+          231,
+          255
+        ],
+        [
+          66,
+          66,
+          255,
+          255
+        ],
+        [
+          231,
+          231,
+          198,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "lightning",
+      "file": "lightning.png",
+      "event": 12,
+      "flag": 8,
+      "tilemap_id": 66,
+      "palette": 4,
+      "sha256": "6f1ee977b355428170cb37a84287a85168768bc41691ebffc9cc019cb805621a",
+      "colors": [
+        [
+          0,
+          0,
+          0,
+          255
+        ],
+        [
+          198,
+          107,
+          66,
+          255
+        ],
+        [
+          231,
+          231,
+          198,
+          255
+        ],
+        [
+          255,
+          173,
+          0,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "psychic",
+      "file": "psychic.png",
+      "event": 13,
+      "flag": 4,
+      "tilemap_id": 69,
+      "palette": 6,
+      "sha256": "d44f397e22fe9115c69ee528779284fe1c8407bbada38ca1bb6c302188660483",
+      "colors": [
+        [
+          0,
+          0,
+          0,
+          255
+        ],
+        [
+          156,
+          0,
+          206,
+          255
+        ],
+        [
+          231,
+          231,
+          198,
+          255
+        ],
+        [
+          239,
+          90,
+          247,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "rock",
+      "file": "rock.png",
+      "event": 14,
+      "flag": 2,
+      "tilemap_id": 68,
+      "palette": 5,
+      "sha256": "d1e53f7fc5a6d6562713bccbfdf6ea99696109af4938e4db4cafb02a18a6825b",
+      "colors": [
+        [
+          0,
+          0,
+          0,
+          255
+        ],
+        [
+          123,
+          123,
+          0,
+          255
+        ],
+        [
+          189,
+          115,
+          49,
+          255
+        ],
+        [
+          231,
+          231,
+          198,
+          255
+        ]
+      ]
+    },
+    {
+      "name": "fighting",
+      "file": "fighting.png",
+      "event": 15,
+      "flag": 1,
+      "tilemap_id": 67,
+      "palette": 5,
+      "sha256": "628137cd32c744deaf9e318baf51e996f55d3ef85d019bae8e523762847a79b9",
+      "colors": [
+        [
+          0,
+          0,
+          0,
+          255
+        ],
+        [
+          123,
+          123,
+          0,
+          255
+        ],
+        [
+          189,
+          115,
+          49,
+          255
+        ],
+        [
+          231,
+          231,
+          198,
+          255
+        ]
+      ]
+    }
+  ]
+}

@@ -36,4 +36,12 @@ configuration. The launcher restores the previous Steam overlay settings on
 exit unless the user changes them. Keep gameplay layout independent of these
 development overlays.
 
+For recordings, build a separate ROM with the native counter disabled:
+
+```sh
+make BUILD_DIR=build/capture ROM=poketcg-capture HIGH_RES=1 SHOW_FPS=0 bundle
+```
+
+Normal builds default to `SHOW_FPS=1` for playtesting.
+
 Host setup and recovery: `~/dev/homelab/hosts/steamdeck/README.md`.

@@ -1,0 +1,19 @@
+Loaded title64-review
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=320 height=240 ram=4194304 highres=0
+2026-10-31 15:08:20.737 ares[28659:19567025] Resizing output buffers to 1536, 1152
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 11617.292 us (mode: sync, success: yes).
+FRAMEBUFFER opening-charizard-320 320 240
+FRAMEBUFFER END
+GAME FPS 2 frames=3 ticks=63364119
+FRAMEBUFFER title64-320 320 240
+FRAMEBUFFER END
+GAME FPS 5 frames=9 ticks=120044121
+FRAMEBUFFER title64-prompt-off-320 320 240
+FRAMEBUFFER END
+GAME FPS 1 frames=10 ticks=166621738
+GAME FPS 62 frames=41 ticks=190082971
+GAME FPS 60 frames=71 ticks=213583103
+GAME FPS 60 frames=101 ticks=237083822
+GAME FPS 60 frames=131 ticks=260581152
+TITLE64 NATIVE PASS ram=4194304 width=320 opening_pixels=230400 footer_pixels=12240 input_cases=3 source_orbs=1 audio=1 readonly=1 free_heap=3124232

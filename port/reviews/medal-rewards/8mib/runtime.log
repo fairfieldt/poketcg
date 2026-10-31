@@ -1,0 +1,27 @@
+Loaded medal-review
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-10-31 15:03:52.016 ares[24436:19540697] Resizing output buffers to 1536, 1152
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 10735.583 us (mode: sync, success: yes).
+FRAMEBUFFER water-collected-480 480 360
+FRAMEBUFFER END
+GAME FPS 2 frames=5 ticks=119801479
+FRAMEBUFFER psychic-480 480 360
+FRAMEBUFFER END
+GAME FPS 1 frames=7 ticks=216018451
+FRAMEBUFFER all-medals-480 480 360
+FRAMEBUFFER END
+GAME FPS 1 frames=9 ticks=308888739
+GAME FPS 51 frames=35 ticks=332670623
+GAME FPS 52 frames=63 ticks=357818798
+GAME FPS 53 frames=91 ticks=382730847
+GAME FPS 52 frames=119 ticks=407860700
+GAME FPS 53 frames=147 ticks=432786888
+GAME FPS 52 frames=175 ticks=457915587
+GAME FPS 53 frames=203 ticks=482845620
+GAME FPS 51 frames=229 ticks=506903444
+GAME FPS 60 frames=259 ticks=530367372
+GAME FPS 60 frames=289 ticks=553737704
+FRAMEBUFFER water-award-480 480 360
+FRAMEBUFFER END
+MEDAL NATIVE PASS ram=8388608 width=480 designs=8 hero_texels=4608 collection_texels=21312 read_only=1 held_fresh=1 frames=292 vi=438 free_heap=6339416

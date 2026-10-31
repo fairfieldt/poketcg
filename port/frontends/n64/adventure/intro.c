@@ -7,6 +7,7 @@
 #include "video.h"
 #include "gen/constants.h"
 #include "assets/intro/intro_assets.h"
+#include "assets/title64/title64_assets.h"
 
 /* Original 160x144 composition, centered without changing its aspect ratio. */
 #define INTRO_SCALE 1.5f
@@ -18,7 +19,7 @@
 #define SCATTER_SOUND_TICKS 61u
 
 typedef struct {
- sprite_t *background[4], *press_start;
+ sprite_t *background[4], *press_start, *title64;
  surface_t orbs[7];
 } IntroAssets;
 typedef struct { int x,y; bool visible,done; } OrbFrame;
@@ -66,6 +67,7 @@ static IntroAssets assets_open(void)
   assets.orbs[i]=orb_surface(orb);sprite_free(orb);
  }
  assets.press_start=sprite_load("rom:/intro/press_start.sprite");assert(assets.press_start);
+ assets.title64=sprite_load(n64_video_width>320?TITLE64_LOGO_480:TITLE64_LOGO_320);assert(assets.title64);
  return assets;
 }
 
@@ -75,6 +77,7 @@ static void assets_close(IntroAssets *assets)
  for(unsigned i=0;i<4;i++)sprite_free(assets->background[i]);
  for(unsigned i=0;i<7;i++)surface_free(&assets->orbs[i]);
  sprite_free(assets->press_start);
+ sprite_free(assets->title64);
 }
 
 /* Read the disassembly's literal frame_data records. Translation is applied
@@ -176,9 +179,14 @@ static surface_t *draw_frame(const IntroAssets *assets,unsigned scene,unsigned t
  rdpq_fill_rectangle(0,0,n64_video_width,n64_video_height);
  rdpq_set_mode_standard();rdpq_mode_filter(FILTER_BILINEAR);
  rdpq_mode_combiner(RDPQ_COMBINER_TEX);rdpq_mode_alphacompare(1);
- blit(assets->background[scene],0,0);
- if(scene==3) {
-  /* The logo is filtered artwork; its small copyright lettering stays crisp. */
+ if(scene<3)blit(assets->background[scene],0,0);
+ else {
+  /* Native-size title art has its own alpha edge colors. Only the chosen
+     resolution is resident; the original title remains the footer source. */
+  rdpq_mode_blender(RDPQ_BLENDER_MULTIPLY);
+  rdpq_sprite_blit(assets->title64,n64_video_x(TITLE64_LEFT),n64_video_y(TITLE64_TOP),NULL);
+  rdpq_mode_blender(0);
+  /* Keep the original copyright lettering and its exact source crop. */
   rdpq_mode_filter(FILTER_POINT);
   rdpq_sprite_blit(assets->background[scene],INTRO_LEFT*n64_video_scale,(INTRO_TOP+110*INTRO_SCALE)*n64_video_scale,
    &(rdpq_blitparms_t){.s0=0,.t0=110,.width=160,.height=34,.scale_x=INTRO_SCALE*n64_video_scale,.scale_y=INTRO_SCALE*n64_video_scale});
