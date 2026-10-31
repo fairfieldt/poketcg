@@ -25,6 +25,8 @@ bool game_credits_finished;
 static Scene *room,*overlay,*actors,*switches[8];
 static Scene *actor_scenes[256];
 static surface_t depth;
+static surface_t *last_world_frame;
+static unsigned last_world_map;
 static int loaded_map=-1;
 static const char *loaded_path;
 static Presentation presentation;
@@ -113,6 +115,11 @@ static void draw_presented_actor(unsigned model,const PresentationPose *pose,flo
  scene_draw_actor_tilt(actor_scene(model),model,0,0,0,pose->gait,tilt);
  glPopMatrix();
 }
+static void copy_frame(surface_t *destination,const surface_t *source)
+{
+ rdpq_attach(destination,NULL);rdpq_mode_push();rdpq_set_mode_copy(false);
+ rdpq_tex_blit(source,0,0,NULL);rdpq_mode_pop();rdpq_detach_wait();
+}
 surface_t *game_render_frame(void)
 {
  assertf(!rendering,"Reentrant world frame");
@@ -123,7 +130,9 @@ surface_t *game_render_frame(void)
  const PresentationCamera *camera=presentation_camera(&presentation);
  surface_t *frame=display_get();rdpq_attach(frame,&depth);gl_context_begin();
  glViewport(0,0,320,240);
- glClearColor(.02,.025,.055,1);glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
+ if(game.ow.map)glClearColor(26/255.0f,18/255.0f,14/255.0f,1);
+ else glClearColor(.02,.025,.055,1);
+ glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
  glMatrixMode(GL_PROJECTION);glLoadIdentity();gluPerspective(camera->fov,4.0/3.0,1.5,90);
  glMatrixMode(GL_MODELVIEW);glLoadIdentity();
  gluLookAt(camera->eye[0],camera->eye[1],camera->eye[2],camera->target[0],camera->target[1],camera->target[2],0,1,0);
@@ -138,6 +147,17 @@ surface_t *game_render_frame(void)
   glPushMatrix();glTranslatef(cursor->x,1.8f+cursor->bob,cursor->z);glScalef(.55f,.55f,.55f);
   scene_draw_actor(actors,6,0,0,0,0);glPopMatrix();
  } else {
+  float contacts[OW_NPC_LIMIT+1][2];unsigned contact_count=0;
+  const PresentationPose *player=presentation_player(&presentation);
+  contacts[contact_count][0]=player->x;contacts[contact_count++][1]=player->z;
+  for(unsigned i=0;i<game.ow.npc_count;i++) {
+   const OwNpc *npc=&game.ow.npcs[i];
+   if(!npc->visible||(npc->id>=NPC_TORCH&&npc->id<=NPC_LEGENDARY_CARD_RIGHT_SPARK)||
+      game.ow.npc_animation[i]==SPRITE_ANIM_CGB_AMY_LAYING)continue;
+   const PresentationPose *pose=presentation_npc(&presentation,npc->id);if(!pose)continue;
+   contacts[contact_count][0]=pose->x;contacts[contact_count++][1]=pose->z;
+  }
+  scene_draw_contact_shadows(contacts,contact_count);
   for(unsigned i=0;i<game.ow.npc_count;i++) {
    const OwNpc *npc=&game.ow.npcs[i];if(!npc->visible)continue;
    unsigned model=npc_model(i);
@@ -156,12 +176,32 @@ surface_t *game_render_frame(void)
  assertf(glGetError()==GL_NO_ERROR,"Map render GL error");
  if(capture_next){capture(frame,NULL);capture_next=false;}
 #endif
+ last_world_frame=frame;last_world_map=game.ow.map;
  rendering=false;return frame;
 }
 void game_draw(void)
 {
  if(rendering)return;
  display_show(game_render_frame());adventure_audio_poll();
+}
+static void warp_fade(bool revealing,unsigned map,const surface_t *snapshot)
+{
+ for(unsigned step=1;step<=6;step++) {
+  surface_t *frame;
+  if(revealing)frame=game_render_frame();
+  else {frame=display_get();copy_frame(frame,snapshot);}
+  unsigned alpha=(revealing?6-step:step)*255/6;
+  rdpq_attach(frame,NULL);rdpq_mode_push();
+  color_t tint=map?RGBA32(26,18,14,alpha):RGBA32(5,6,14,alpha);
+  if(alpha==255)rdpq_set_mode_fill(tint);
+  else {
+   rdpq_set_mode_standard();rdpq_mode_combiner(RDPQ_COMBINER_FLAT);
+   rdpq_set_prim_color(tint);rdpq_mode_alphacompare(0);
+   rdpq_mode_blender(RDPQ_BLENDER_MULTIPLY);
+  }
+  rdpq_fill_rectangle(0,0,320,240);
+  rdpq_mode_pop();rdpq_detach_wait();display_show(frame);adventure_audio_poll();
+ }
 }
 
 static void format_story(uint16_t id,char *out,size_t capacity,unsigned depth_level)
@@ -257,7 +297,22 @@ static void finish_save(void)
 static bool host_save(void *ctx,const OwState *state){(void)ctx;OwState old=game.ow;game.ow=*state;bool saved=game_save();game.ow=old;return saved;}
 static void host_changed(void *ctx,OwState *state)
 {
- (void)ctx;unsigned changed=presentation_sync(&presentation,state,player_running);
+ (void)ctx;
+ bool map_change=presentation.initialized&&presentation.map!=state->map;
+ bool intro_arrival=presentation.map==OVERWORLD_MAP&&state->map==MASON_LABORATORY&&
+  ow_event(state,EVENT_MASON_LAB_STATE)<MASON_LAB_RECEIVED_STARTER_DECK;
+ bool fade=map_change&&session_active&&last_world_frame&&last_world_map==presentation.map&&!intro_arrival;
+ if(fade) {
+  /* Copy the completed old image before display_get can recycle its surface.
+     The temporary is released before loading the destination room. */
+  surface_t snapshot=surface_alloc(FMT_RGBA16,320,240);
+  if(snapshot.buffer) {
+   copy_frame(&snapshot,last_world_frame);
+   warp_fade(false,presentation.map,&snapshot);surface_free(&snapshot);
+  } else fade=false;
+ }
+ unsigned changed=presentation_sync(&presentation,state,player_running);
+ if(fade){warp_fade(true,state->map,NULL);return;}
  bool scripted=(changed&PRESENTATION_WORLD)||((changed&PRESENTATION_PLAYER)&&presentation_scripted_player(state));
  if(scripted){do{game_draw();}while(presentation_moving(&presentation));}
  else if(changed&PRESENTATION_MAP)game_draw();
@@ -349,7 +404,7 @@ int main(void)
    game.ow.npc_flags[index]=ow_npc_headers[npc->id].flags;
    game.ow.npc_animation[index]=npc->id==NPC_AMY?SPRITE_ANIM_CGB_AMY_LAYING:ow_npc_headers[npc->id].animation;
   }
-  capture_next=ADVENTURE_DIAGNOSTIC==1;game_draw();
+  capture_next=ADVENTURE_DIAGNOSTIC!=2;game_draw();
   heap_stats_t stats;sys_get_heap_stats(&stats);debugf("MEMORY map=%u total=%d used=%d free=%d\n",map,stats.total,stats.used,stats.total-stats.used);
   debugf("MAP PASS %u\n",map);
  }
@@ -358,11 +413,11 @@ int main(void)
  static const char *const intro_labels[]={"intro-charizard","intro-scyther","intro-aerodactyl","title"};
  for(unsigned i=0;i<4;i++) {
   surface_t *intro=adventure_intro_preview(i,intro_times[i]);
-  if(ADVENTURE_DIAGNOSTIC==1)capture(intro,intro_labels[i]);
+  if(ADVENTURE_DIAGNOSTIC!=2)capture(intro,intro_labels[i]);
  }
  assertf(adventure_naming_check(),"Player naming rules failed");
  assertf(adventure_dialogue_check(),"Story dialogue rules failed");
- surface_t *naming=adventure_name_player_preview();if(ADVENTURE_DIAGNOSTIC==1)capture(naming,"naming");
+ surface_t *naming=adventure_name_player_preview();if(ADVENTURE_DIAGNOSTIC!=2)capture(naming,"naming");
  debugf("ADVENTURE INTRO PASS\n");
  extern bool adventure_story_diagnostic(void);assertf(adventure_story_diagnostic(),"MIPS story campaign failed");
  TcgDuelSetup duel_test={0};duel_test.prizes=2;duel_test.animations_disabled=1;duel_test.skip_delay_allowed=1;duel_test.rng[0]=0x57;duel_test.rng[1]=0x31;
@@ -374,7 +429,7 @@ int main(void)
  duel_test.duelist[1].kind=TCG_AI;duel_test.duelist[1].deck_id=SAMS_NORMAL_DECK_ID;duel_test.duelist[1].name="SAM";
  n64_duel_automated(true);int duel_result=n64_duel_play(&duel_test,NULL);n64_duel_automated(false);
  assertf(duel_result==0||duel_result==1,"Native duel did not finish");
- if(ADVENTURE_DIAGNOSTIC==1)capture(n64_ui_frame(),"duel");
+ if(ADVENTURE_DIAGNOSTIC!=2)capture(n64_ui_frame(),"duel");
  debugf("ADVENTURE NATIVE DUEL PASS result=%d\n",duel_result);save_store_remove(SAVE_STORE_DUEL);
  const uint8_t seed[3]={1,2,3};memset(&game,0,sizeof(game));game.ow=(OwState){.version=OW_SAVE_VERSION,.rng=0x030201,.map=1,.x=14,.y=26};
  strcpy(game.name,"TEST");gp_init(&game.cards,seed);gp_give_starter(&game.cards,0);gp_name_encode(&game.cards,game.name,game.link_name);
@@ -386,8 +441,19 @@ int main(void)
  debugf("ADVENTURE SRAM PASS\n");
  presentation_init(&presentation,NULL,true);
  extern bool adventure_cinematic_diagnostic(void (*)(surface_t *,const char *));
- assertf(adventure_cinematic_diagnostic(ADVENTURE_DIAGNOSTIC==1?capture:NULL),"Opening choreography failed");
+ assertf(adventure_cinematic_diagnostic(ADVENTURE_DIAGNOSTIC!=2?capture:NULL),"Opening choreography failed");
  debugf("ADVENTURE CINEMATIC PASS\n");
+#if ADVENTURE_DIAGNOSTIC == 3
+ /* Exercise the production fade and shutter paths on real RDP surfaces. */
+ session_active=true;
+ game.ow.map=14;game.ow.x=14;game.ow.y=22;game.ow.npc_count=0;
+ host_changed(NULL,&game.ow);
+ adventure_duel_transition(true);
+ const uint16_t *closed=UncachedAddr(last_world_frame->buffer);
+ assertf(!(closed[120*(last_world_frame->stride/2)+160]&0xfffe),"Duel shutter did not close");
+ adventure_duel_transition(false);session_active=false;
+ debugf("ADVENTURE WARP TRANSITION PASS\n");
+#endif
  debugf("ADVENTURE MAP TOUR PASS\n");
 #if ADVENTURE_DIAGNOSTIC >= 2
  for(unsigned cycle=0;;cycle++) {
@@ -410,7 +476,7 @@ int main(void)
 #endif
 #else
 restart_title:
- session_active=false;game_credits_finished=false;
+ session_active=false;game_credits_finished=false;last_world_frame=NULL;
  adventure_intro_play(!opening_shown);opening_shown=true;
  adventure_audio_event(0,MUSIC_PC_MAIN_MENU);
  bool loaded=false,new_game=false;

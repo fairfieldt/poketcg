@@ -62,9 +62,17 @@ static void border(surface_t *canvas,int x,int y,int width,int height,uint32_t v
 {
  graphics_draw_box(canvas,x,y,width,2,value);graphics_draw_box(canvas,x,y+height-2,width,2,value);
  graphics_draw_box(canvas,x,y,2,height,value);graphics_draw_box(canvas,x+width-2,y,2,height,value);
+ graphics_draw_box(canvas,x+2,y+2,width-4,1,color(255,255,247));
+ graphics_draw_box(canvas,x+2,y+2,1,height-4,color(255,255,247));
+ graphics_draw_box(canvas,x+2,y+height-3,width-4,1,color(169,188,204));
+ graphics_draw_box(canvas,x+width-3,y+2,1,height-4,color(169,188,204));
 }
 static void print(surface_t *canvas,int x,int y,uint32_t value,const char *text)
-{graphics_set_color(value,0);graphics_draw_text(canvas,x,y,text);}
+{
+ graphics_set_color(value==color(24,48,80)?color(185,199,199):color(16,40,68),0);
+ graphics_draw_text(canvas,x+1,y+1,text);
+ graphics_set_color(value,0);graphics_draw_text(canvas,x,y,text);
+}
 static void compose(surface_t *frame,surface_t *canvas,int x,int y)
 {
  data_cache_hit_writeback_invalidate(canvas->buffer,(unsigned long)canvas->stride*canvas->height);
@@ -78,11 +86,11 @@ static void draw_panel(surface_t *frame,surface_t *storage,const char *speaker,
  surface_t canvas=*storage;canvas.buffer=CachedAddr(canvas.buffer);
  uint32_t ink=color(24,48,80),paper=color(247,247,222),edge=color(74,115,156);
  graphics_fill_screen(&canvas,0);
- graphics_draw_box(&canvas,8,10,304,66,paper);border(&canvas,8,10,304,66,edge);
+ graphics_draw_box(&canvas,8,18,304,58,paper);border(&canvas,8,18,304,58,edge);
  if(speaker&&speaker[0]) {
   char clean[35];n64_ui_sanitize_text(speaker,clean,sizeof(clean));
   unsigned width=(unsigned)strlen(clean)*8+16;
-  graphics_draw_box(&canvas,16,0,width,18,paper);border(&canvas,16,0,width,18,edge);
+  graphics_draw_box(&canvas,16,0,width,17,paper);border(&canvas,16,0,width,17,edge);
   print(&canvas,24,5,ink,clean);
  }
  unsigned remaining=page->visible;
@@ -172,9 +180,11 @@ int adventure_story_choice(const char *question,const char *const *items,
 
 void adventure_duel_transition(bool entering)
 {
- for(unsigned step=0;step<12;step++) {
+ for(unsigned step=0;step<16;step++) {
   surface_t *frame=game_render_frame();assert(frame);
-  unsigned extent=(entering?step:11-step)*120/11;
+  unsigned progress=entering?(step<12?step:11):(step<4?0:step-4);
+  float t=progress/11.0f,inverse=1-t;
+  unsigned extent=(unsigned)(120*(entering?1-inverse*inverse:inverse*inverse)+.5f);
   rdpq_attach(frame,NULL);rdpq_mode_push();rdpq_set_mode_fill(RGBA32(0,0,0,255));
   if(extent){rdpq_fill_rectangle(0,0,320,extent);rdpq_fill_rectangle(0,240-extent,320,240);}
   rdpq_mode_pop();rdpq_detach_wait();display_show(frame);adventure_audio_poll();

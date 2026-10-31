@@ -4,6 +4,7 @@
 
 const DEG = Math.PI / 180;
 const AMY_LYING = 0x2e;
+const NPC_TORCH = 0x67, NPC_LEGENDARY_CARD_RIGHT_SPARK = 0x6d;
 const IDENTITY = new Float32Array([1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1]);
 
 /** Parse a complete big-endian native scene without any browser dependency. */
@@ -161,6 +162,20 @@ export class World3D {
         gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([255, 255, 255, 255]));
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+        // Same small floor fan as the cartridge; it never follows gait bob.
+        const ring = [[1, 0], [.8660254, .5], [.5, .8660254], [0, 1], [-.5, .8660254], [-.8660254, .5], [-1, 0], [-.8660254, -.5], [-.5, -.8660254], [0, -1], [.5, -.8660254], [.8660254, -.5], [1, 0]];
+        const shadowVertices = new ArrayBuffer(14 * 24), shadowData = new DataView(shadowVertices);
+        const shadowVertex = (index, x, z, alpha) => {
+            const offset = index * 24;
+            shadowData.setFloat32(offset, x * .56, true); shadowData.setFloat32(offset + 4, .045, true); shadowData.setFloat32(offset + 8, z * .40, true);
+            [16, 22, 32, alpha].forEach((value, component) => shadowData.setUint8(offset + 20 + component, value));
+        };
+        shadowVertex(0, 0, 0, 64); ring.forEach(([x, z], index) => shadowVertex(index + 1, x, z, 0));
+        const shadowIndices = new Uint16Array(36);
+        for (let i = 0; i < 12; i++) shadowIndices.set([0, i + 1, i + 2], i * 3);
+        this.contactShadow = { texture: -1, indexCount: shadowIndices.length, vertexBuffer: gl.createBuffer(), indexBuffer: gl.createBuffer() };
+        gl.bindBuffer(gl.ARRAY_BUFFER, this.contactShadow.vertexBuffer); gl.bufferData(gl.ARRAY_BUFFER, shadowVertices, gl.STATIC_DRAW);
+        gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, this.contactShadow.indexBuffer); gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, shadowIndices, gl.STATIC_DRAW);
         this.anisotropy = gl.getExtension('EXT_texture_filter_anisotropic') || gl.getExtension('WEBKIT_EXT_texture_filter_anisotropic');
     }
     async load() {
@@ -332,12 +347,21 @@ export class World3D {
     _pose(key, view) {
         const presentation = view.presentation;
         if (presentation) {
-            if (key === 'player' || key === 'world' || key === 'cursor') return presentation[key]?.pose || presentation[key];
+            if (key === 'player' || key === 'world' || key === 'cursor') {
+                const pose = presentation[key]?.pose || presentation[key];
+                return key === 'cursor' ? pose : this._idlePose(pose, 0);
+            }
             const id = Number(key.slice(4));
             const npc = Array.isArray(presentation.npcs) ? presentation.npcs.find(npc => npc.id === id) : presentation.npcs?.[id];
-            return npc?.pose || npc;
+            return this._idlePose(npc?.pose || npc, id);
         }
         return this.poses.get(key);
+    }
+    _idlePose(pose, id) {
+        // Host callbacks retain canonical movement poses. Between callbacks,
+        // continue the same 30 Hz, 0.008-unit idle breath in presentation only.
+        if (!pose || pose.gait || pose.lean || (id >= NPC_TORCH && id <= NPC_LEGENDARY_CARD_RIGHT_SPARK)) return pose;
+        return { ...pose, bob: .008 * Math.sin((this.lastTime || 0) * .003 + id * .7) };
     }
     _begin(camera, clear = [.02, .025, .055, 1]) {
         const gl = this.gl, ratio = Math.min(this.options.pixelRatio || globalThis.devicePixelRatio || 1, this.options.maxPixelRatio || 2);
@@ -380,6 +404,21 @@ export class World3D {
     _room(scene) {
         for (const mesh of scene.meshes) if (!mesh.model) this._batch(scene, mesh, translation(...mesh.pivot));
     }
+    _contactShadows(view) {
+        const gl = this.gl;
+        // _begin enables source-alpha blending. Test against room depth while
+        // leaving it intact for all opaque actors drawn after this pass.
+        gl.depthMask(false);
+        const draw = pose => { if (pose) this._batch(null, this.contactShadow, translation(pose.x, 0, pose.z)); };
+        try {
+            draw(this._pose('player', view));
+            for (const npc of view.npcs || []) if (visible(npc)) {
+                const id = npc.id ?? npc.npc;
+                if ((id >= NPC_TORCH && id <= NPC_LEGENDARY_CARD_RIGHT_SPARK) || (npc.animation ?? npc.anim) === AMY_LYING) continue;
+                draw(this._pose(`npc:${id}`, view));
+            }
+        } finally { gl.depthMask(true); }
+    }
     _actor(model, pose, actorScale = 1, floor = 0, tilt = 0) {
         if (!pose) return;
         const scene = this.actorScenes?.get(model) || this.fallback;
@@ -405,7 +444,7 @@ export class World3D {
         this.lastTime = now; this._step(now, dt);
         const map = this.metadata.maps[view.map];
         const camera = view.presentation?.camera || view.camera || map.camera;
-        this._begin(camera);
+        this._begin(camera, view.map ? [26 / 255, 18 / 255, 14 / 255, 1] : [.02, .025, .055, 1]);
         for (const scene of this.roomScenes) this._room(scene);
         if (!view.map) {
             // Map actors are foreground markers, as in the source sprite layer.
@@ -415,6 +454,7 @@ export class World3D {
             const cursor = this._pose('cursor', view);
             if (cursor) this._actor(6, { ...cursor, heading: 0, gait: 0, bob: (cursor.bob || 0) + Math.sin(now * .003) * .06 }, .55, 1.8);
         } else {
+            this._contactShadows(view);
             for (const npc of view.npcs || []) if (visible(npc)) {
                 const id = npc.id ?? npc.npc, model = this._npcModel(npc);
                 const tilt = (npc.animation ?? npc.anim) === AMY_LYING && !this.metadata.npc_pose_models?.[id] ? 90 : 0;
@@ -455,6 +495,7 @@ export class World3D {
             for (const mesh of scene.meshes) { gl.deleteBuffer(mesh.vertexBuffer); gl.deleteBuffer(mesh.indexBuffer); }
         }).catch(() => {});
         for (const promise of this.textures.values()) promise.then(texture => gl.deleteTexture(texture)).catch(() => {});
+        gl.deleteBuffer(this.contactShadow.vertexBuffer); gl.deleteBuffer(this.contactShadow.indexBuffer);
         gl.deleteTexture(this.white); gl.deleteProgram(this.program);
         this.scenes.clear(); this.textures.clear(); this.roomScenes = [];
     }

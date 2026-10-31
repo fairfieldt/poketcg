@@ -46,6 +46,10 @@ texture_rows={}
 all_land=[]
 building_footprints=[]
 landmarks=[]
+ground_casters=[]
+# SUN is in Blender axes (Z up, Y north). Ground coordinates use Z south.
+SUN_GROUND=(-SUN.x/SUN.z,SUN.y/SUN.z)
+GROUND_SPLIT_BUDGET=32
 
 
 def group(name):
@@ -88,7 +92,7 @@ def make_texture(kind):
         'cliff':((89,67,43),(207,173,99)),
         'rock':((115,86,45),(225,187,109)),
         'sand':((180,152,91),(241,221,165)),
-        'water':((17,65,161),(40,129,217)),
+        'water':((20,68,188),(43,126,247)),
         'stone':((159,155,139),(239,231,202)),
         'wood':((72,44,25),(177,132,66)),
         'red_roof':((128,19,23),(236,62,39)),
@@ -181,7 +185,7 @@ PATH=material('Paths — sand and small stones','dirt',tile=True,scale=1.2)
 CLIFF=material('Cliffs — layered warm rock','cliff')
 ROCK=material('Rocks — ochre facets','rock')
 SAND=material('Beach — pale sand','sand',tile=True,scale=1.2)
-WATER=material('Sea — blue wavelets','water',tile=True,scale=3)
+WATER=material('Sea — blue wavelets','water',color=(255,255,255,255),tile=True,scale=3)
 STONE=material('Buildings — pale masonry','stone')
 WOOD=material('Bridge and doors — timber','wood')
 REDROOF=material('Roof — red tiles','red_roof')
@@ -195,8 +199,8 @@ DARKMAT=material('Inset — blue charcoal',color=DARK)
 REDMAT=material('Accent — red',color=RED)
 GOLDMAT=material('Accent — gold',color=GOLD)
 BLUEMAT=material('Accent — blue',color=BLUE)
-FOAM=material('Foam — pale cyan',color=(145,193,207,255))
-FOAMWHITE=material('Foam — white tips',color=(237,244,221,255))
+FOAM=material('Foam — pale cyan',color=(176,225,235,255))
+FOAMWHITE=material('Foam — white tips',color=(246,249,230,255))
 
 
 def world(v):
@@ -205,6 +209,142 @@ def world(v):
 
 def height(x,z):
     return .35+.035*math.sin(x*.7)+.026*math.cos(z*.9)
+
+
+def smoothstep(lo,hi,value):
+    t=max(0,min(1,(value-lo)/(hi-lo)))
+    return t*t*(3-2*t)
+
+
+def footprint_distance(x,z,caster,dx=0,dz=0,contact=False):
+    px,pz=x-caster['x']-dx,z-caster['z']-dz
+    if caster['shape']=='rect':
+        return math.hypot(max(abs(px)-caster['w']/2,0),max(abs(pz)-caster['d']/2,0))
+    radius=caster['contact_radius'] if contact else caster['radius']
+    return max(0,math.hypot(px,pz)-radius)
+
+
+def rect_caster(name,x,z,w,d,h):
+    ground_casters.append(dict(name=name,shape='rect',x=x+w/2,z=z+d/2,
+        w=w,d=d,height=h,base=height(x+w/2,z+d/2)))
+
+
+def round_caster(name,x,z,r,h,contact_radius=None):
+    ground_casters.append(dict(name=name,shape='round',x=x,z=z,radius=r,
+        contact_radius=r if contact_radius is None else contact_radius,
+        height=h,base=height(x,z)))
+
+
+def grounding_factor(x,z,y,casters=None):
+    """Soft contact and short sunward projections, evaluated on real ground.
+
+    Only ground vertex colors receive this field. A shadow cannot extend a
+    polygon into the sea, climb a wall, or become a stack of black tree discs.
+    Overlapping casters use the strongest term rather than accumulating ink.
+    """
+    occlusion=0
+    for caster in ground_casters if casters is None else casters:
+        building=caster['shape']=='rect' or caster['contact_radius']==caster.get('radius')
+        contact=(.23 if building else .18)*(1-smoothstep(0,.32 if building else .28,
+            footprint_distance(x,z,caster,contact=True)))
+        rise=max(0,min(caster['height'],caster['base']+caster['height']*.7-y))
+        dx,dz=(c*rise*.5 for c in SUN_GROUND)
+        cast=(.23 if building else .18)*(1-smoothstep(0,.34,
+            footprint_distance(x,z,caster,dx,dz)))
+        occlusion=max(occlusion,1-(1-contact)*(1-cast))
+    return max(.60,1-occlusion)
+
+
+def coast_distance(x,z):
+    best=float('inf')
+    for outline in all_land:
+        if inside(x,z,outline):return 0
+        for (ax,az),(bx,bz) in zip(outline,outline[1:]+outline[:1]):
+            dx,dz=bx-ax,bz-az
+            t=max(0,min(1,((x-ax)*dx+(z-az)*dz)/(dx*dx+dz*dz)))
+            best=min(best,math.hypot(x-ax-dx*t,z-az-dz*t))
+    return best
+
+
+def shoreline_distance(x,z):
+    """Distance to the nearest shoreline from either side, for small beaches."""
+    best=float('inf')
+    for outline in all_land:
+        for (ax,az),(bx,bz) in zip(outline,outline[1:]+outline[:1]):
+            dx,dz=bx-ax,bz-az
+            t=max(0,min(1,((x-ax)*dx+(z-az)*dz)/(dx*dx+dz*dz)))
+            best=min(best,math.hypot(x-ax-dx*t,z-az-dz*t))
+    return best
+
+
+def prepare_ground_samples():
+    """Add a few samples around casters, without making shadow overlay meshes."""
+    import bmesh
+    budget=GROUND_SPLIT_BUDGET
+    for obj in scene.objects:
+        if not obj.get('ground_receiver') or obj.get('ground_prepared'):continue
+        data=obj.data
+        if obj.get('grass_shelf') and budget:
+            bm=bmesh.new();bm.from_mesh(data)
+            candidates=[]
+            for edge in bm.edges:
+                if edge.calc_length()<.55:continue
+                v=(edge.verts[0].co+edge.verts[1].co)*.5
+                midpoint=grounding_factor(v.x,-v.y,v.z)
+                endpoints=sum(grounding_factor(p.co.x,-p.co.y,p.co.z) for p in edge.verts)*.5
+                error=abs(midpoint-endpoints)
+                # Spend the tiny refinement budget where a small contact or
+                # cast shadow would otherwise disappear between two samples.
+                if error>.025:candidates.append((error,edge))
+            edges=[edge for error,edge in sorted(candidates,key=lambda item:-item[0])[:budget]]
+            if edges:
+                bmesh.ops.subdivide_edges(bm,edges=edges,cuts=1,use_grid_fill=True)
+                budget-=len(edges)
+            bm.to_mesh(data);bm.free();data.update()
+        if obj.get('grass_shelf'):
+            if SAND.name not in data.materials:data.materials.append(SAND)
+            sand_index=list(data.materials).index(SAND)
+            uv=data.uv_layers.active.data
+            for poly in data.polygons:
+                coords=[data.vertices[i].co for i in poly.vertices]
+                x=sum(v.x for v in coords)/len(coords);z=-sum(v.y for v in coords)/len(coords)
+                beach=(.8<x<6.6 and 15.65<z<17.3) or (13.4<x<15.8 and 13.85<z<14.7)
+                if not beach or shoreline_distance(x,z)>.38:continue
+                if max(shoreline_distance(v.x,-v.y) for v in coords)>.75:continue
+                poly.material_index=sand_index
+                for li in poly.loop_indices:
+                    v=data.vertices[data.loops[li].vertex_index].co
+                    uv[li].uv=(v.x/SAND['native_scale'],-v.y/SAND['native_scale'])
+        obj['ground_prepared']=True
+
+
+def bake_ground_lighting():
+    prepare_ground_samples()
+    shaded_vertices=0
+    for obj in scene.objects:
+        ground=obj.get('ground_receiver');sea=obj.get('sea_receiver')
+        if not ground and not sea:continue
+        data=obj.data;colors=data.color_attributes['Color']
+        original=data.color_attributes.get('UnbakedColor')
+        if original is None:
+            original=data.color_attributes.new(name='UnbakedColor',type='FLOAT_COLOR',domain='CORNER')
+            for i,color in enumerate(colors.data):original.data[i].color=color.color
+        factors={}
+        for li,loop in enumerate(data.loops):
+            v=obj.matrix_world@data.vertices[loop.vertex_index].co
+            key=(round(v.x,6),round(-v.y,6),round(v.z,6))
+            if key not in factors:
+                if sea:
+                    factors[key]=.9+.1*smoothstep(0,4.5,coast_distance(v.x,-v.y))
+                elif abs(v.z-height(v.x,-v.y))<.1 and any(inside(v.x,-v.y,p) for p in all_land):
+                    factors[key]=grounding_factor(v.x,-v.y,v.z)
+                else:factors[key]=1
+            factor=factors[key]
+            base=original.data[li].color
+            colors.data[li].color=tuple(linear(round(srgb(c)*factor)) for c in base[:3])+(base[3],)
+            shaded_vertices+=factor<.999
+    scene['grounding_bake']=json.dumps(dict(casters=len(ground_casters),shaded_corners=shaded_vertices,
+        split_edge_budget=GROUND_SPLIT_BUDGET,sun_ground=list(SUN_GROUND),opaque_overlays=False))
 
 
 def mesh(name,verts,faces,mat,up=False,uvs=None,shade=1):
@@ -237,6 +377,7 @@ def mesh(name,verts,faces,mat,up=False,uvs=None,shade=1):
             if mat==GRASS:
                 normal=Vector((-.0245*math.cos(v.x*.7),-.0234*math.sin(-v.y*.9),1)).normalized()
                 local=(.83+.17*max(0,normal.dot(SUN)))*(.96+.04*math.sin(v.x*.6+v.y*.4)**2)
+            elif mat==WATER:local=1
             col.data[li].color=tuple(linear(min(255,round(c*local))) for c in base[:3])+(1,)
     obj=bpy.data.objects.new(name,data);active_collection.objects.link(obj)
     obj['native_export']=True
@@ -319,7 +460,8 @@ def island(name,control):
     edges=[(i,(i+1)%len(outline)) for i in range(len(outline))]
     vv,ee,ff,*_=delaunay_2d_cdt(points,edges,[list(range(len(outline)))],1,.00001)
     verts=[(v.x,height(v.x,-v.y),-v.y) for v in vv]
-    mesh(name+' grass shelf',verts,ff,GRASS,up=True)
+    ground=mesh(name+' grass shelf',verts,ff,GRASS,up=True)
+    ground['ground_receiver']=True;ground['grass_shelf']=True
     # All cliff and foam rings share the same displaced point at each coast
     # vertex; independently offset edge normals would leave blue cracks.
     coast_rings=[[],[],[],[]];normals=[]
@@ -341,8 +483,13 @@ def island(name,control):
         oa,ob=normals[i],normals[j]
         def point(x,z,o,d,y):return (x+o[0]*d,y,z+o[1]*d)
         inner=[point(x,z,oa,.205,SEA+.018),point(nx,nz,ob,.205,SEA+.018)]
-        outer=[point(x,z,oa,.29,SEA+.018),point(nx,nz,ob,.29,SEA+.018)]
-        mesh(name+' foam wash',[inner[0],inner[1],outer[1],outer[0]],[(0,1,2,3)],FOAM,up=True)
+        outer=[point(x,z,oa,.31,SEA+.018),point(nx,nz,ob,.31,SEA+.018)]
+        wash=mesh(name+' foam wash',[inner[0],inner[1],outer[1],outer[0]],[(0,1,2,3)],FOAM,up=True)
+        # Color interpolation fades a narrow cyan wash into cobalt water;
+        # white breaker tips stay sparse rather than outlining every cliff.
+        for li,loop in enumerate(wash.data.loops):
+            if loop.vertex_index>=2:
+                wash.data.color_attributes['Color'].data[li].color=tuple(linear(c) for c in (45,112,213))+(1,)
         if i%4==0:
             mesh(name+' white breaker',[inner[0],inner[1],
                  point(nx,nz,ob,.24,SEA+.028),point(x,z,oa,.24,SEA+.028)],[(0,1,2,3)],FOAMWHITE,up=True)
@@ -350,7 +497,13 @@ def island(name,control):
 
 
 group('Ocean and organic coast')
-mesh('Sea', [(-12,SEA,-12),(32,SEA,-12),(32,SEA,32),(-12,SEA,32)],[(0,1,2,3)],WATER,up=True)
+sea_axis=(-12,-4,4,12,20,32)
+sea_vertices=[(x,SEA,z) for z in sea_axis for x in sea_axis]
+sea_faces=[]
+for z in range(5):
+    for x in range(5):
+        a=z*6+x;sea_faces.append((a,a+1,a+7,a+6))
+ocean=mesh('Sea',sea_vertices,sea_faces,WATER,up=True);ocean['sea_receiver']=True
 main=[(3.25,4.7),(4.4,4.6),(5.3,5.2),(6.5,5.45),(7.2,4.35),(7.45,3.8),(9.0,3.75),(9.7,4.6),(9.7,5.65),
       (11.1,5.2),(11.15,3.7),(12.1,3.2),(12.9,3.15),(13.2,2.05),(14.45,1.75),(15.4,.85),(16.6,1.05),
       (17.65,2.2),(18.05,3.65),(17.85,4.9),(18.65,6.0),(19.1,7.4),(19.0,9.4),(18.65,10.7),(18.9,12.2),
@@ -380,7 +533,9 @@ def path(name,points,width=.24,mat=PATH):
             coords=[(x-ox,z-oz),(nx-ox,nz-oz),(nx+ox,nz+oz),(x+ox,z+oz)]
             base=len(verts);verts.extend((p,height(p,q)+.026,q) for p,q in coords)
             faces.append(tuple(range(base,base+4)))
-    return mesh(name,verts,faces,mat,up=True)
+    ground=mesh(name,verts,faces,mat,up=True)
+    ground['ground_receiver']=True
+    return ground
 
 
 group('Sandy routes and beaches')
@@ -440,6 +595,7 @@ def front(name,x,z,w,base,roof_y):
 def hall(name,node,w=1.25,d=.95,roofmat=GREENROOF,roof_type='flat'):
     x,z=node;center_z=z-d*.46
     y=height(x,z)
+    rect_caster(name,x-w*.55,center_z-d*.55,w*1.1,d*1.1,1.1 if roof_type!='flat' else .9)
     landmarks.append(dict(name=name,x=x,y=z,width=w,depth=d))
     building_footprints.append((x-w*.64,center_z-d*.64,w*1.28,d*1.28))
     box(name+' foundation',x-w*.55,center_z-d*.55,w*1.1,d*1.1,.13,STONE,y=y)
@@ -483,6 +639,7 @@ for x,z,sx,sy,sz in [(2.2,7.5,.75,.95,.75),(3.1,6.9,.8,1.25,.65),(4.3,7.0,1,1.05
                      (5.2,7.7,.7,.75,.9),(4.9,9.2,.65,.9,.8),(2.1,9.1,.9,1.2,.8),(3.6,9.8,1.2,.62,.65)]:
     rock('Rock Club ridge',x,z,(sx,sy,sz))
 y=height(3.5,8)
+rect_caster('Rock Club gate',2.9,7.61,1.19,.5,.95)
 box('Rock Club gate recess',2.98,7.66,1.04,.35,.68,DARKMAT,y=y)
 for x in (2.91,3.93):box('Rock Club stone jamb',x,7.61,.15,.5,.85,STONE,y=y)
 box('Rock Club gate lintel',2.9,7.61,1.19,.5,.17,STONE,y=y+.78)
@@ -495,6 +652,7 @@ mesh('Small cave mouth',[(4.45,height(4.6,9.6)+.02,9.6),(4.95,height(4.6,9.6)+.0
 
 group('05 Water Club stadium')
 x,z=14.5,12.98;y=height(x,z)
+round_caster('Water Club',x,z,.77,1.2)
 landmarks.append(dict(name='Water Club',x=14.5,y=13.5,width=1.5,depth=1.4))
 building_footprints.append((13.7,12.15,1.6,1.6))
 cylinder('Water Club octagonal walls',x,z,y,.7,.69,STONE,n=8)
@@ -516,6 +674,7 @@ hall('Grass Club',(16.5,9),1.45,.9,GREENROOF)
 
 group('08 Psychic Club obelisk')
 x,z=12.5,6.15;y=height(x,z)
+rect_caster('Psychic Club',x-.37,z-.28,.74,.62,1.5)
 box('Psychic Club plinth',x-.37,z-.28,.74,.62,.18,STONE,y=y)
 box('Psychic Club obelisk',x-.21,z-.19,.42,.4,1.02,STONE,y=y+.18)
 roof('Psychic Club pointed crown',x-.22,z-.2,.44,.42,y+1.19,.31,TRIM)
@@ -553,6 +712,7 @@ mesh('Volcano red flag',[(cx,3.43,cz),(cx+.48,3.4,cz+.03),(cx+.3,3.15,cz+.12),(c
 
 def round_hall(name,x,z):
     y=height(x,z)
+    round_caster(name,x,z,.72,1.32)
     cylinder(name+' lower tower',x,z,y,.62,.58,STONE,n=8)
     cylinder(name+' window row',x,z,y+.58,.63,.35,GLASS,n=8)
     for i in range(8):
@@ -587,6 +747,7 @@ group('Conifer groves and ground shadows')
 tree_templates=[]
 def tree(x,z,scale=1):
     y=height(x,z)
+    round_caster('Conifer',x,z,.35*scale,1.07*scale,contact_radius=.095*scale)
     # One linked template is reused by every conifer; instance transforms are
     # baked only when exporting the static native room.
     if not tree_templates:
@@ -731,6 +892,8 @@ def native_export():
     write_world_metadata(OUT,doc)
     (OUT/'overworld_authoring.json').write_text(json.dumps(dict(record=record,camera=doc['maps'][0]['camera'],
         blend='overworld.blend',script='tools/author_overworld.py',native_uv_wrap='repeat when outside [0,1]',
+        material_textures=dict(water=WATER['native_texture'],grass=GRASS['native_texture'],
+            sand=SAND['native_texture'],cliff=CLIFF['native_texture']),
         fixed_camera_backface_optimization=True),indent=2)+'\n')
     return record
 
@@ -751,6 +914,7 @@ scene['native_scene']='map 0; all original logical destinations and routes uncha
 scene['visual_reference']='port/maps/prototypes/overworld_n64_concept_v1.png'
 scene['material_rules']='Opaque RGBA16 <=4 KiB TMEM; actual UVs and baked vertex shade exported'
 bpy.context.view_layer.update()
+bake_ground_lighting()
 record=native_export()
 bpy.ops.wm.save_as_mainfile(filepath=str(OUT/'overworld.blend'))
 (OUT/'previews').mkdir(exist_ok=True)

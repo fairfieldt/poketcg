@@ -2,14 +2,14 @@
  * pixel (set from JavaScript to fit the window); art is scaled with nearest-neighbor. */
 :root {
 	--u: 3;
-	--bg: #e8e8d0;
-	--screen: #f8f8f0;
-	--ink: #181818;
-	--mid: #585858;
-	--light: #a8a8a8;
-	--accent: #d83818;
-	--sel: #fff4a8;
-	--frame: #282828;
+	--bg: #e7e7ce;
+	--screen: #f7f7de;
+	--ink: #183050;
+	--mid: #506c87;
+	--light: #a9bccc;
+	--accent: #204878;
+	--sel: #dbe7e8;
+	--frame: #4a739c;
 	--ok: #187818;
 	--warn: #a86800;
 	--err: #b81808;
@@ -119,10 +119,29 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 .duel-bar { display: flex; align-items: center; gap: 0.8em; width: calc(240px * var(--u)); max-width: 100%; margin: 0 auto 4px; font-size: 13px; }
 .duel-title { color: var(--mid); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .duel { width: calc(240px * var(--u)); max-width: 100%; margin: 0 auto; font-size: calc(7px * var(--u)); line-height: 1.25; }
+.duel {
+	--screen: #182840;
+	--ink: #f7f7de;
+	--mid: #a9bccc;
+	--light: #6790b1;
+	--accent: #ffdd70;
+	--sel: #28507c;
+	--frame: #4a739c;
+	color: var(--ink);
+	text-shadow: 1px 1px 0 #0a121e;
+}
 .field-wrap {
 	position: relative; background: var(--screen); border: calc(var(--u) * 2px) solid var(--frame);
 	border-radius: calc(var(--u) * 3px) calc(var(--u) * 3px) 0 0; overflow: hidden;
 }
+.duel .field-wrap {
+	background-color: #183830;
+	background-image: repeating-linear-gradient(38deg, #ffffff04 0 1px, transparent 1px 3px), repeating-linear-gradient(128deg, #0000000a 0 1px, transparent 1px 4px);
+	border-radius: 2px 2px 0 0;
+	box-shadow: inset 1px 1px 0 #6790b1, inset -1px -1px 0 #0a121e;
+}
+.duel .btn.primary { background: #204878; }
+.duel .sym:not(.esym):not(.trainer-icon) { filter: brightness(0) invert(1); }
 .field { display: flex; flex-direction: column; padding: calc(var(--u) * 2px) calc(var(--u) * 3px); gap: calc(var(--u) * 2px); }
 .info-row { display: flex; justify-content: space-between; align-items: center; gap: 0.5em; font-size: 0.85em; }
 .duelist-name { font-weight: bold; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
@@ -294,6 +313,21 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 .textbox.menu-only .tb-text:empty { display: none; }
 .tb-menu { display: flex; align-items: center; }
 .textbox.menu-only .tb-menu { flex: 1; }
+.duel .textbox, .duel .overlay {
+	box-shadow: inset 1px 1px 0 #6790b1, inset -1px -1px 0 #0a121e;
+}
+.textbox.coin-present { flex-direction: column; }
+.textbox > .overlay.ov-coin {
+	position: static;
+	background: transparent;
+	padding: 0 0 0.4em;
+	border-bottom: 1px solid var(--frame);
+	box-shadow: none;
+	overflow: visible;
+}
+.textbox > .ov-coin .coin-box { flex-direction: row; flex-wrap: wrap; width: 100%; justify-content: center; gap: 0.5em; }
+.textbox > .ov-coin .coin { width: 2.2em; height: 2.2em; font-size: 1em; border-width: 2px; }
+.coin, .coin-chip { color: #183050; text-shadow: none; }
 .tb-ack { position: absolute; right: calc(var(--u) * 4px); bottom: calc(var(--u) * 1px); animation: blink 0.8s steps(1) infinite; }
 .tb-ack.remote { color: var(--light); }
 @keyframes blink { 50% { opacity: 0; } }

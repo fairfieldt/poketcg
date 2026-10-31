@@ -30,8 +30,8 @@ PROPS={
     P('machine',2,1,4,4,2),P('table',4,2,6,3,1,2),
     *[P('cabinet',x,1,3,4,2) for x in (17,20,23)],
     *[P('cabinet',x,14,2,3,1.7) for x in (20,22,24)],
-    P('counter',18,26,8,2,.8),P('machine',8,14,5,6,2.4,3),P('palm',2,22,3,5,2.4),
-    *[P('balloon',x,y,1,1,1.8,.3) for x,y in [(5,14),(11,14),(5,17),(11,17)]]],
+    P('counter',18,26,8,2,.8),P('table',6,14,4,5,.85,4),P('palm',2,22,3,5,2.4),
+    *[P('balloon',x,y,2,2,1.8,.3) for x,y in [(4,14),(10,14),(4,17),(10,17)]]],
 'deck_machine_room':[
     *[P('machine',x,1,4,4,1.8) for x in (2,6,10,14,18)],
     *[P('machine',x,y,4,5,1.8) for x,y in [(14,8),(18,8),(2,16),(14,16),(18,16)]]],
@@ -42,7 +42,7 @@ PROPS={
 'fighting_club':[
     *[P('weight',x,y,2,2,.6) for x,y in [(20,3),(2,3),(20,5),(2,7),(20,7),(20,9)]],
     P('balloon',2,5,2,2,1.2),
-    *[P('weight',x,12,1,2,.25,1) for x in range(3,22,2)]],
+    P('rack',3,12,19,2,1.05,1.4)],
 'rock_club':[
     *[P('statue',x,y,2,4,2.3) for x in (10,16) for y in (3,10,18)],
     *[P('boulder',x,y,4,4,1.6,3) for x in (2,22) for y in (3,22)],

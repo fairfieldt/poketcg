@@ -64,6 +64,8 @@
 enum {
 	C_BG, C_MID, C_PANEL, C_PANEL2, C_BORDER, C_TEXT, C_DIM, C_HI, C_SEL, C_RED, C_GREEN,
 	C_BLACK, C_HPBG, C_CARDBACK, C_FATAL,
+	C_PAPER, C_INK, C_EDGE, C_PAPERLIGHT, C_PAPERSHADE, C_STORYSEL,
+	C_PANELLIGHT, C_PANELSHADE,
 	C_E0,                /* energy colors: FIRE GRASS LIGHTNING WATER FIGHTING PSYCHIC COLORLESS */
 	C_T0 = C_E0 + 7,     /* darker type colors for card backgrounds */
 	NUM_COLORS = C_T0 + 7
@@ -71,13 +73,17 @@ enum {
 
 static const uint8_t kRGB[NUM_COLORS][3] = {
 	[C_BG] = { 0x10, 0x30, 0x28 },     [C_MID] = { 0x30, 0x60, 0x50 },
-	[C_PANEL] = { 0x18, 0x20, 0x48 },  [C_PANEL2] = { 0x28, 0x30, 0x60 },
-	[C_BORDER] = { 0xb0, 0xb8, 0xd0 }, [C_TEXT] = { 0xff, 0xff, 0xff },
-	[C_DIM] = { 0x98, 0xa0, 0xa8 },    [C_HI] = { 0xff, 0xe0, 0x40 },
-	[C_SEL] = { 0x50, 0x68, 0xc0 },    [C_RED] = { 0xf0, 0x40, 0x30 },
+	[C_PANEL] = { 0x18, 0x28, 0x40 },  [C_PANEL2] = { 0x24, 0x3d, 0x5b },
+	[C_BORDER] = { 0x4a, 0x73, 0x9c }, [C_TEXT] = { 0xf7, 0xf7, 0xde },
+	[C_DIM] = { 0xa9, 0xbc, 0xcc },    [C_HI] = { 0xff, 0xdd, 0x70 },
+	[C_SEL] = { 0x28, 0x50, 0x7c },    [C_RED] = { 0xf0, 0x50, 0x40 },
 	[C_GREEN] = { 0x40, 0xd0, 0x50 },  [C_BLACK] = { 0x00, 0x00, 0x00 },
 	[C_HPBG] = { 0x40, 0x10, 0x10 },   [C_CARDBACK] = { 0x30, 0x50, 0xc0 },
 	[C_FATAL] = { 0x80, 0x10, 0x10 },
+	[C_PAPER] = { 0xf7, 0xf7, 0xde }, [C_INK] = { 0x18, 0x30, 0x50 },
+	[C_EDGE] = { 0x4a, 0x73, 0x9c }, [C_PAPERLIGHT] = { 0xff, 0xff, 0xf7 },
+	[C_PAPERSHADE] = { 0xa9, 0xbc, 0xcc }, [C_STORYSEL] = { 0x20, 0x48, 0x78 },
+	[C_PANELLIGHT] = { 0x67, 0x90, 0xb1 }, [C_PANELSHADE] = { 0x0a, 0x12, 0x1e },
 	[C_E0 + 0] = { 0xe8, 0x48, 0x30 }, [C_E0 + 1] = { 0x48, 0xb8, 0x40 },
 	[C_E0 + 2] = { 0xf0, 0xd0, 0x20 }, [C_E0 + 3] = { 0x40, 0x88, 0xf0 },
 	[C_E0 + 4] = { 0xc0, 0x78, 0x40 }, [C_E0 + 5] = { 0xb0, 0x58, 0xd0 },
@@ -406,7 +412,23 @@ static void panel(int x, int y, int w, int h)
 {
 	fill(x, y, w, h, C_PANEL);
 	rect(x, y, w, h, C_BORDER);
+	fill(x + 1, y + 1, w - 2, 1, C_PANELLIGHT);
+	fill(x + 1, y + 1, 1, h - 2, C_PANELLIGHT);
+	fill(x + 1, y + h - 2, w - 2, 1, C_PANELSHADE);
+	fill(x + w - 2, y + 1, 1, h - 2, C_PANELSHADE);
 }
+
+#ifdef TCGN64_ADVENTURE
+static void paper_panel(int x, int y, int w, int h)
+{
+	fill(x, y, w, h, C_PAPER);
+	rect(x, y, w, h, C_EDGE);rect(x + 1, y + 1, w - 2, h - 2, C_EDGE);
+	fill(x + 2, y + 2, w - 4, 1, C_PAPERLIGHT);
+	fill(x + 2, y + 2, 1, h - 4, C_PAPERLIGHT);
+	fill(x + 2, y + h - 3, w - 4, 1, C_PAPERSHADE);
+	fill(x + w - 3, y + 2, 1, h - 4, C_PAPERSHADE);
+}
+#endif
 
 /* draw at most `max` characters of one line (clipped to the screen) */
 static void print_n(int x, int y, int c, const char *s, int max)
@@ -427,6 +449,10 @@ static void print_n(int x, int y, int c, const char *s, int max)
 	buf[n] = 0;
 	if (!n)
 		return;
+	if(c != C_BLACK && x + n * CW < SCREEN_W && y + 8 < SCREEN_H) {
+		graphics_set_color(g_col[c == C_INK ? C_PAPERSHADE : C_PANELSHADE],0);
+		graphics_draw_text(g_fb,x + 1,y + 1,buf);
+	}
 	graphics_set_color(g_col[c], 0);
 	graphics_draw_text(g_fb, x, y, buf);
 }
@@ -554,6 +580,58 @@ static void card_art(int x, int y, uint8_t id)
 	energy_icon(x + 28, y + 20, color);
 }
 
+static void bench_art(int x,int y,uint8_t id)
+{
+#ifdef TCGN64_CARD_ART
+	sprite_t *sprite=art_get(id);
+	if(sprite) {
+#ifdef TCGN64_HOST_TEST
+		const uint16_t *pixels=sprite->pixels;unsigned stride=sprite->width;
+#else
+		surface_t source=sprite_get_pixels(sprite);
+		const uint16_t *pixels=source.buffer;unsigned stride=source.stride/2;
+#endif
+		/* Cartridge card sprites and the offscreen UI canvas are RGBA16.
+		   Quarter-size art identifies a bench card without hiding its stats. */
+		for(unsigned row=0;row<12;row++) {
+			uint16_t *dest=(uint16_t *)((uint8_t *)g_fb->buffer+(y+(int)row)*g_fb->stride)+x;
+			for(unsigned column=0;column<16;column++)
+				dest[column]=pixels[(row*sprite->height/12)*stride+column*sprite->width/16];
+		}
+		return;
+	}
+#endif
+	fill(x,y,16,12,C_T0+card_color(card_data(id)));
+	energy_icon(x+4,y+2,card_color(card_data(id)));
+}
+
+static void damage_number(int x,int y,unsigned amount)
+{
+	char text[12];snprintf(text,sizeof(text),"-%u",amount);
+	print(x-1,y,C_BLACK,text);print(x+1,y,C_BLACK,text);
+	print(x,y-1,C_BLACK,text);print(x,y+1,C_BLACK,text);print(x,y,C_TEXT,text);
+}
+
+static void draw_felt(void)
+{
+	static uint16_t tile[32][32];static bool ready;
+	if(!ready) {
+		static const uint8_t palette[3][3]={{20,48,40},{24,56,48},{28,60,52}};
+		for(unsigned y=0;y<32;y++)for(unsigned x=0;x<32;x++) {
+			unsigned grain=((x*13+y*7)^(x*y*3))&7;
+			const uint8_t *rgb=palette[grain<2?0:grain>5?2:1];
+			tile[y][x]=(uint16_t)graphics_make_color(rgb[0],rgb[1],rgb[2],255);
+		}
+		ready=true;
+	}
+	/* Copy only into the reserved CPU canvas. end_frame presents it through
+	   RDP after cache writeback, exactly like the rest of the duel UI. */
+	for(int y=BOARD_Y;y<BOARD_Y+BOARD_H;y++) {
+		uint16_t *row=(uint16_t *)((uint8_t *)g_fb->buffer+y*g_fb->stride);
+		for(int x=LEFT-6;x<RIGHT+6;x++)row[x]=tile[y&31][x&31];
+	}
+}
+
 /* ---- board */
 
 static void draw_side(uint8_t duelist, bool top, int hl_loc)
@@ -595,17 +673,19 @@ static void draw_side(uint8_t duelist, bool top, int hl_loc)
 			rect(x + 1, bench_y + 1, 54, 28, C_HI);
 		card_name(s.id, name, sizeof(name));
 		print_n(x + 2, bench_y + 2, C_TEXT, name, 6);
-		printf_at(x + 2, bench_y + 11, s.hp * 4 <= s.maxhp ? C_RED : C_TEXT, "%d/%d", s.hp, s.maxhp);
+		bench_art(x+2,bench_y+11,s.id);
+		printf_at(x + 24, bench_y + 11, s.hp * 4 <= s.maxhp ? C_RED : C_TEXT, "%d", s.hp);
+		hp_bar(x+22,bench_y+20,30,s.hp,s.maxhp);
 		uint8_t e[7];
 		memcpy(e, s.energy, sizeof(e));
 		/* compact energy line: up to 6 small squares */
 		int k = 0;
 		for (int c = 0; c < 7; c++)
 			for (int i = 0; i < e[c] && k < 9; i++, k++)
-				fill(x + 2 + k * 6, bench_y + 21, 5, 6, C_E0 + c);
+				fill(x + 2 + k * 6, bench_y + 25, 5, 3, C_E0 + c);
 		if (g_dmg.timer && side_of(g_dmg.side) == side && g_dmg.loc == b) {
 			fill(x + 20, bench_y + 9, 34, 12, C_RED);
-			printf_at(x + 22, bench_y + 11, C_TEXT, "-%u", g_dmg.amount);
+			damage_number(x + 22, bench_y + 11, g_dmg.amount);
 		}
 	}
 
@@ -648,7 +728,7 @@ static void draw_side(uint8_t duelist, bool top, int hl_loc)
 	card_art(RIGHT - 64, act_art_y, s.id);
 	if (g_dmg.timer && side_of(g_dmg.side) == side && g_dmg.loc == 0) {
 		fill(RIGHT - 52, act_art_y + 16, 40, 16, C_RED);
-		printf_at(RIGHT - 48, act_art_y + 20, C_TEXT, "-%u", g_dmg.amount);
+		damage_number(RIGHT - 48, act_art_y + 20, g_dmg.amount);
 	}
 }
 
@@ -679,6 +759,7 @@ static void draw_textbox(void) { draw_textbox_hint(NULL); }
 /* the board: opponent (TCG_OPPONENT) on top, player at the bottom */
 static void draw_board(uint8_t hl_duelist, int hl_loc)
 {
+	draw_felt();
 	fill(LEFT - 4, SLOT_INFO_Y + 4, RIGHT - LEFT + 8, 1, C_MID);
 	draw_side(TCG_OPPONENT, true, hl_duelist == TCG_OPPONENT ? hl_loc : -1);
 	draw_side(TCG_PLAYER, false, hl_duelist == TCG_PLAYER ? hl_loc : -1);
@@ -1245,16 +1326,16 @@ static int ui_ack(const TcgRequest *r, int ports)
 		} else {
 			draw_board(0, -1);
 			if (g_screen == TCG_SCREEN_COIN_TOSS) {
-				fill(LEFT + 80, BOARD_Y + 60, 150, 40, C_PANEL2);
-				rect(LEFT + 80, BOARD_Y + 60, 150, 40, C_HI);
+				int x=RIGHT-150,y=TBOX_Y-36;
+				panel(x,y,150,34);
 				if (g_coin.n == 0) {
-					print(LEFT + 88, BOARD_Y + 66, C_TEXT, "Coin toss");
-					print(LEFT + 88, BOARD_Y + 80, C_HI, "A: toss!");
+					print(x+8,y+6,C_TEXT,"Coin toss");
+					print(x+8,y+20,C_HI,"A: toss");
 				} else {
-					printf_at(LEFT + 88, BOARD_Y + 66, C_TEXT, "Coin %d/%d", g_coin.n, g_coin.total ? g_coin.total : 1);
+					printf_at(x+8,y+6,C_TEXT,"Coin %d/%d",g_coin.n,g_coin.total?g_coin.total:1);
 					for (int i = 0; i < g_coin.n && i < 12; i++) {
-						fill(LEFT + 88 + i * 11, BOARD_Y + 80, 9, 9, g_coin.res[i] ? C_HI : C_DIM);
-						print(LEFT + 88 + i * 11, BOARD_Y + 81, C_BLACK, g_coin.res[i] ? "H" : "T");
+						fill(x+8+i*11,y+20,9,9,g_coin.res[i]?C_HI:C_DIM);
+						print(x+8+i*11,y+21,C_BLACK,g_coin.res[i]?"H":"T");
 					}
 				}
 			} else if (g_screen == TCG_SCREEN_BOX_MESSAGE && g_boxmsg <= BOXMSG_COIN_TOSS) {
@@ -1264,9 +1345,8 @@ static int ui_ack(const TcgRequest *r, int ports)
 				uint8_t d = g_boxmsg == BOXMSG_OPPONENTS_TURN ? TCG_OPPONENT : TCG_PLAYER;
 				snprintf(b, sizeof(b), box[g_boxmsg], who(d));
 				int w = (int)strlen(b) * CW + 24;
-				fill((SCREEN_W - w) / 2, BOARD_Y + 74, w, 28, C_PANEL2);
-				rect((SCREEN_W - w) / 2, BOARD_Y + 74, w, 28, C_HI);
-				print((SCREEN_W - w) / 2 + 12, BOARD_Y + 84, C_HI, b);
+				panel((SCREEN_W-w)/2,TBOX_Y-30,w,28);
+				print((SCREEN_W-w)/2+12,TBOX_Y-20,C_HI,b);
 			}
 		}
 		draw_textbox();
@@ -1421,7 +1501,8 @@ static void draw_choice_popup(int x, int y, const char *title, const char *const
 	int pw = w * CW + 28, ph = (n + (title ? 1 : 0)) * LH + 8;
 	if (x + pw > RIGHT + 6)
 		x = RIGHT + 6 - pw;
-	if (y + ph > TBOX_Y - 2)
+	/* Keep short action popups below both active names, HP and card art. */
+	if (y + ph != TBOX_Y - 2)
 		y = TBOX_Y - 2 - ph;
 	panel(x, y, pw, ph);
 	int ly = y + 4;
@@ -2646,13 +2727,13 @@ void n64_map_label(surface_t *frame,const char *name)
 {
 	surface_t cached=g_ui_canvas;cached.buffer=CachedAddr(cached.buffer);
 	char clean[40];sanitize(name,clean,sizeof(clean));
-	graphics_set_color(g_col[C_PANEL],g_col[C_PANEL]);
-	graphics_draw_box(&cached,8,6,176,16,g_col[C_PANEL]);
-	graphics_set_color(g_col[C_TEXT],g_col[C_PANEL]);
-	graphics_draw_text(&cached,12,10,clean);
+	int width=(int)strlen(clean)*CW+16;if(width>304)width=304;
+	if(width<96)width=96;
+	surface_t *previous=g_fb;g_fb=&cached;
+	paper_panel(8,6,width,20);print_n(16,12,C_INK,clean,(width-16)/CW);g_fb=previous;
 	data_cache_hit_writeback_invalidate(cached.buffer,(unsigned long)cached.stride*cached.height);
 	rdpq_attach(frame,NULL);rdpq_mode_push();rdpq_set_mode_copy(false);
-	rdpq_tex_blit(&cached,8,6,&(rdpq_blitparms_t){.s0=8,.t0=6,.width=176,.height=16});
+	rdpq_tex_blit(&cached,8,6,&(rdpq_blitparms_t){.s0=8,.t0=6,.width=width,.height=20});
 	rdpq_mode_pop();rdpq_detach_wait();
 }
 void n64_ui_text_speed(unsigned speed) {g_message_speed=speed<5?speed:2;}
@@ -2715,10 +2796,11 @@ void n64_message(const char *title,const char *text)
 		visible+=characters_per_frame[g_message_speed];
 		if(visible>characters)visible=characters;
 		begin_frame();
-		print_n(LEFT,12,C_HI,title?title:"",COLS);
+		paper_panel(8,6,304,228);fill(LEFT,27,RIGHT-LEFT,1,C_PAPERSHADE);
+		print_n(LEFT,12,C_INK,title?title:"",COLS);
 		int remaining=visible;
-		for(int i=0;i<17 && page+i<n;i++){int length=(int)strlen(lines[page+i]);print_n(LEFT,32+i*LH,C_TEXT,lines[page+i],remaining<length?remaining:length);remaining-=length;if(remaining<0)remaining=0;}
-		print(LEFT,218,C_DIM,page+17<n?"A: next   B: back":"A/B: close");
+		for(int i=0;i<17 && page+i<n;i++){int length=(int)strlen(lines[page+i]);print_n(LEFT,32+i*LH,C_INK,lines[page+i],remaining<length?remaining:length);remaining-=length;if(remaining<0)remaining=0;}
+		print(LEFT,218,C_INK,page+17<n?"A: next   B: back":"A/B: close");
 		end_frame_poll();
 		Keys k=keys(1);
 		if(k.a || k.b) {
@@ -2735,15 +2817,16 @@ int n64_menu(const char *title,const char *const *items,int count,int initial,bo
 	int cur=initial>=0 && initial<count?initial:0;
 	for (;;) {
 		begin_frame();
-		print_n(LEFT,12,C_HI,title?title:"",COLS);
+		paper_panel(8,6,304,228);fill(LEFT,27,RIGHT-LEFT,1,C_PAPERSHADE);
+		print_n(LEFT,12,C_INK,title?title:"",COLS);
 		int top=cur<14?0:cur-13;
 		for(int i=top;i<count && i<top+15;i++) {
 			char clean[256];sanitize(items[i],clean,sizeof(clean));
 			int y=35+(i-top)*11;
-			if(i==cur) fill(LEFT-4,y-1,RIGHT-LEFT+8,11,C_SEL);
-			print_n(LEFT,y,i==cur?C_HI:C_TEXT,clean,COLS);
+			if(i==cur) fill(LEFT-4,y-1,RIGHT-LEFT+8,11,C_STORYSEL);
+			print_n(LEFT,y,i==cur?C_TEXT:C_INK,clean,COLS);
 		}
-		print(LEFT,216,C_DIM,cancel?"A: select   B: back":"A: select");
+		print(LEFT,216,C_INK,cancel?"A: select   B: back":"A: select");
 		end_frame_poll();
 		Keys k=keys(1);
 		if(list_nav(k,count,&cur))adventure_audio_event(1,SFX_CURSOR);

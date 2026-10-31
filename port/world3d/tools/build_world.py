@@ -20,6 +20,7 @@ sys.path.insert(0,str(REPO/'port/tools'))
 from png import read_png,write_png
 from render_maps import Game,Decompressor,parse_consts
 from scene_specs import PROPS,FOYER,LOBBY,Prop
+from room_style import material_pixel,wall_paint,bake_lighting
 OUT=ROOT/'generated'
 TEX=OUT/'textures'
 MAPS=OUT/'maps'
@@ -51,8 +52,39 @@ def texture(rows):
 def rgb(hexcolor):
     return tuple(bytes.fromhex(hexcolor.lstrip('#')))+(255,)
 
-WHITE=rgb('ffffde'); BLACK=rgb('080829'); BROWN=rgb('a55a21'); GREEN=rgb('21ad08')
-DARKGREEN=rgb('085200'); GOLD=rgb('ffbd21'); RED=rgb('ff1029'); BLUE=rgb('3142ff')
+WHITE=rgb('efebda'); BLACK=rgb('181b2b'); BROWN=rgb('955f35'); GREEN=rgb('469d35')
+DARKGREEN=rgb('1b5523'); GOLD=rgb('d4a836'); RED=rgb('d62824'); BLUE=rgb('374fb7')
+
+def pool_rows():
+    return [(z,(14-z if z<11 else 4),17 if z<11 else 13) for z in range(3,17)]
+
+POOL_CELLS={(x,z) for z,left,right in pool_rows() for x in range(left,right+1)}
+
+def swimming_pool(scene):
+    rows=[]
+    for y in range(32):
+        row=[]
+        for x in range(32):
+            wave=math.sin((x+y*2)*math.tau/16)*.5+.5
+            glint=10 if (x+y*3)%29<2 else 0
+            row.append((28+glint,90+round(wave*15)+glint,170+round(wave*23)+glint,255))
+        rows.append(row)
+    tex=texture(rows)
+    for z,left,right in pool_rows():
+        scene.polygon([(left,-.24,z),(right+1,-.24,z),(right+1,-.24,z+1),(left,-.24,z+1)],
+            tex=tex,uv=[(left/4,z/4),((right+1)/4,z/4),((right+1)/4,(z+1)/4),(left/4,(z+1)/4)])
+    for x,z in sorted(POOL_CELLS):
+        edges=[((x,z-1),(x,z),(x+1,z),(0,-.15)),((x+1,z),(x+1,z),(x+1,z+1),(.15,0)),
+               ((x,z+1),(x+1,z+1),(x,z+1),(0,.15)),((x-1,z),(x,z+1),(x,z),(-.15,0))]
+        for neighbor,a,b,outward in edges:
+            if neighbor in POOL_CELLS:continue
+            ax,az=a;bx,bz=b;dx,dz=outward
+            scene.polygon([(ax,-.44,az),(bx,-.44,bz),(bx,.06,bz),(ax,.06,az)],rgb('688e9c'))
+            scene.polygon([(ax,.07,az),(bx,.07,bz),(bx+dx,.07,bz+dz),(ax+dx,.07,az+dz)],WHITE)
+    # Two little fish retain the original pool's decorative occupants.
+    for x,z,heading in ((16.7,5.8,1),(4.8,12.7,-1)):
+        scene.ball(x,z,-.17,.45,.075,.18,rgb('94d5df'),segments=6,rings=3)
+        scene.polygon([(x-heading*.33,-.10,z),(x-heading*.68,-.10,z-.22),(x-heading*.68,-.10,z+.22)],rgb('477fbc'))
 
 class Scene:
     def __init__(self,name):
@@ -60,7 +92,9 @@ class Scene:
         self.batches=defaultdict(lambda:([],[],{}))
         self.props=[]
         self.switchable=False
-    def polygon(self,points,color=WHITE,tex=None,uv=None,model=0,part=0,pivot=(0,0,0)):
+        self.bounds=None
+        self.lighting_baked=False
+    def polygon(self,points,color=WHITE,tex=None,uv=None,model=0,part=0,pivot=(0,0,0),vertex_colors=None):
         key=(model,part,tex,pivot)
         vs,inds,cache=self.batches[key]
         if uv is None: uv=[(0,0),(1,0),(1,1),(0,1)]
@@ -71,7 +105,7 @@ class Scene:
             cross=[ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0]]
             if sum(v*v for v in cross)<1e-13:continue
             for j in tri:
-                v=(*points[j],*uv[j%len(uv)],*color)
+                v=(*points[j],*uv[j%len(uv)],*(vertex_colors[j] if vertex_colors else color))
                 if v not in cache:
                     cache[v]=len(vs);vs.append(v)
                 inds.append(cache[v])
@@ -84,7 +118,8 @@ class Scene:
             # Front textures replace, rather than overlay, the side plane.
             t=front if fi==3 and front else tex
             shade=(.6,.78,.86,1,.72,1)[fi]
-            c=WHITE if t else tuple(int(v*shade) for v in color[:3])+(255,)
+            pigment=WHITE if t else color
+            c=tuple(int(v*shade) for v in pigment[:3])+(255,)
             uv=[(1,1),(0,1),(0,0),(1,0)] if fi==3 else [(0,1),(1,1),(1,0),(0,0)] if fi!=5 else None
             self.polygon([points[i] for i in face],c,t,uv)
     def cylinder(self,x,z,y,r,h,color=WHITE,segments=8,top_r=None):
@@ -116,6 +151,7 @@ class Scene:
     def floor(self,img,erase,base_rect=(16,64,16,16),exclude_emblem=False):
         w,h=img.width//8,img.height//8
         if self.name=='psychic_club':h=28
+        self.bounds=(w,h)
         # Most frequent original 16x16 patch is the repeating room floor.
         patches=[]
         for y in range(4,h-4,2):
@@ -126,18 +162,36 @@ class Scene:
         if patches:
             best=Counter(p for p,_ in patches).most_common(1)[0][0]
             bx,by=next(pos for p,pos in patches if p==best)
-        else: bx,by=base_rect[:2]
+        else: bx,by=base_rect[:2];best=tuple(img.at(bx+i,by+j) for j in range(16) for i in range(16))
+        palette=set(best)
+        plain={}
+        for ty in range(h):
+            for tx in range(w):
+                plain[tx,ty]=all(img.at(tx*8+i,ty*8+j) in palette for j in range(8) for i in range(8))
         def pixel(x,y):
             tx,ty=x/8,y/8
             if any(p.x<=tx<p.x+p.w and p.y<=ty<p.y+p.h for p in erase) or (exclude_emblem and 8<=tx<12 and 6<=ty<10):
-                return img.at(bx+x%16,by+y%16)
-            return img.at(x,y)
+                return material_pixel(self.name,x,y,img.at(bx+x%16,by+y%16),True)
+            return material_pixel(self.name,x,y,img.at(x,y),plain.get((int(tx),int(ty)),False))
         for z in range(2,h-1,4):
             for x in range(2,w-2,4):
                 cw=min(4,w-2-x);cd=min(4,h-1-z)
                 rows=[[pixel(x*8+i*cw/4,z*8+j*cd/4) for i in range(32)] for j in range(32)]
-                self.polygon([(x,0,z),(x+cw,0,z),(x+cw,0,z+cd),(x,0,z+cd)],tex=texture(rows))
+                tex=texture(rows)
+                # Four quads share the same tiny texture, adding room-scale
+                # light gradients without another material or runtime light.
+                divisions=4 if self.name=='water_club' else 2
+                for iz in range(divisions):
+                    for ix in range(divisions):
+                        a,b=x+cw*ix/divisions,z+cd*iz/divisions;c,d=a+cw/divisions,b+cd/divisions
+                        if self.name=='water_club' and (int((a+c)/2),int((b+d)/2)) in POOL_CELLS:continue
+                        points=[(a,0,b),(c,0,b),(c,0,d),(a,0,d)]
+                        self.polygon(points,tex=tex,
+                            uv=[(ix/divisions,iz/divisions),((ix+1)/divisions,iz/divisions),((ix+1)/divisions,(iz+1)/divisions),(ix/divisions,(iz+1)/divisions)])
+        if self.name=='water_club':swimming_pool(self)
     def save(self,path):
+        if self.bounds and not self.lighting_baked:
+            bake_lighting(self,*self.bounds);self.lighting_baked=True
         tex=sorted({key[2] for key in self.batches if key[2] is not None})
         with Path(path).open('wb') as f:
             f.write(struct.pack('>4sHH',b'L643',len(self.batches),len(tex)))
@@ -189,7 +243,7 @@ def prop(scene,img,p):
             scene.ball(x,z,h*.7,.8,h*.45,.8,GREEN if kind!='flowers' else rgb('ffb5ff'))
     elif kind in ('boulder','statue','serpent','horse'):
         if kind=='boulder':
-            scene.ball(x,z,h*.5,p.w*.48,h*.5,p.depth*.48,rgb('9c9c9c') if p.w<=1 else rgb('b58463'),segments=6 if p.w<=1 else 8,rings=3 if p.w<=1 else 4)
+            scene.ball(x,z,h*.5,p.w*.48,h*.5,p.depth*.48,rgb('968c80') if p.w<=1 else rgb('ad8460'),segments=6 if p.w<=1 else 8,rings=3 if p.w<=1 else 4)
             if p.w>2:scene.ball(x-.7,z+.3,h*.3,p.w*.3,h*.3,p.depth*.35,rgb('efa518'))
         elif kind=='statue':
             scene.box(p.x,z-.7,p.w,1.4,.4,GOLD,front=face)
@@ -206,16 +260,16 @@ def prop(scene,img,p):
             scene.box(x-.7,z-.25,.3,.5,.8,WHITE,y=.7)
             scene.box(x-.75,z-.28,.4,.56,.1,RED,y=1.45)
     elif kind in ('brazier','torch'):
-        scene.cylinder(x,z,0,.35,h*.66,GREEN if kind=='brazier' else BLACK,top_r=.2)
-        if kind=='brazier':
-            scene.cylinder(x,z,h*.65,.23,.25,WHITE)
-            scene.ball(x,z,h*.9,.85,h*.2,.7,RED)
-        else:
-            scene.ball(x,z,h*.86,.43,h*.25,.36,rgb('9c6bff') if scene.name=='psychic_club' else RED,segments=6,rings=3)
-            scene.ball(x,z,h*.88,.20,h*.17,.18,WHITE,segments=4,rings=3)
+        scene.cylinder(x,z,0,.32,h*.63,rgb('65533c') if kind=='brazier' else BLACK,top_r=.20)
+        scene.cylinder(x,z,h*.60,.26,h*.15,rgb('a18a5d'),top_r=.52)
+        flame=rgb('ac70dc') if scene.name=='psychic_club' else RED
+        core=rgb('e6c8ff') if scene.name=='psychic_club' else rgb('ffe59c')
+        scene.cylinder(x,z,h*.73,.36,h*.35,flame,segments=6,top_r=0)
+        scene.cylinder(x-.06,z-.03,h*.74,.19,h*.24,core,segments=5,top_r=0)
+        scene.cylinder(x+.19,z+.04,h*.76,.14,h*.25,flame,segments=4,top_r=0)
     elif kind=='balloon':
         scene.cylinder(x,z,0,.04,h*.7,BLACK,segments=4)
-        scene.ball(x,z,h*.85,p.w*.38,h*.23,p.w*.38,rgb('ff00ff'))
+        scene.ball(x,z,h*.85,.34,h*.25,.34,rgb('e94ac9'))
     elif kind=='ball':scene.ball(x,z,2.5,p.w/2,h/2,p.depth/2,rgb('000052'))
     elif kind=='chair':
         scene.box(x-.6,z-.6,1.2,1.2,.15,RED,y=.5)
@@ -230,15 +284,26 @@ def prop(scene,img,p):
     elif kind=='weight':
         scene.box(x-.75,z-.1,1.5,.2,.18,rgb('9494c6'),y=.12)
         for dx in (-.7,.55):scene.box(x+dx,z-.35,.22,.7,.65,BLACK)
+    elif kind=='rack':
+        metal=rgb('66747d')
+        for px in (p.x+.6,p.x+p.w-.6):
+            scene.box(px-.12,z-.45,.24,.9,h,metal)
+            scene.box(px-.45,z-.65,.9,1.3,.12,BLACK)
+        scene.box(p.x,z-.07,p.w,.14,.14,metal,y=h*.70)
+        for i in range(6):
+            px=p.x+1+i*(p.w-2)/5
+            for dx in (-.18,.18):scene.ball(px+dx,z,h*.70,.13,.40,.40,BLACK,segments=6,rings=3)
 
 
-def walls(scene,img,warps,height=4):
+def walls(scene,img,warps,height=5):
     w,h=img.width/8,img.height/8
     if scene.name=='psychic_club':h=28
     if scene.name in ('grass_club','challenge_hall'):height=2
     if scene.name=='pokemon_dome_entrance':height=3.5
     # Sample south livery so north cabinetry doesn't get duplicated on walls.
     wall_tex=texture(img.crop(16,(h-3)*8,32,16,32,16))
+    cornice_tex=texture(img.crop(16,(h-3)*8,32,8,32,8))
+    paint=wall_paint(scene.name)
     brown=img.at(4,4)
     if max(brown[:3])<20:brown=rgb('521800')
     def isdoor(side,a,b):
@@ -256,6 +321,20 @@ def walls(scene,img,warps,height=4):
                 if start is not None:yield start,a;start=None
             elif start is None:start=a
         if start is not None:yield start,int(stop)-2
+    def bands(side,start,end):
+        # Source livery is wainscot and cornice, never a wall-sized stripe.
+        span=end-start
+        def face(lo,hi,color=WHITE,tex=None):
+            if side=='north':points=[(start,lo,1.83),(end,lo,1.83),(end,hi,1.83),(start,hi,1.83)]
+            else:
+                ix=1.83 if side=='west' else w-1.83
+                points=[(ix,lo,start),(ix,lo,end),(ix,hi,end),(ix,hi,start)]
+            scene.polygon(points,color,tex,[(0,1),(span/2,1),(span/2,0),(0,0)])
+        waist=min(1.45,height-.4)
+        face(0,waist,tex=wall_tex)
+        face(waist,waist+.065,GOLD)
+        if height>waist+.4:face(waist+.065,height-.3,paint)
+        face(height-.3,height,tex=cornice_tex)
     # One continuous face per uninterrupted wall. Adjacent antialiased quads
     # exposed their backing along every two-tile seam; repeat UVs preserve the
     # original livery without geometric cracks or coincident internal caps.
@@ -264,8 +343,7 @@ def walls(scene,img,warps,height=4):
             span=end-x
             if side=='north':
                 scene.box(x,.8,span,1,height,brown,omit=(3,))
-                scene.polygon([(x,0,1.83),(end,0,1.83),(end,height,1.83),(x,height,1.83)],tex=wall_tex,
-                              uv=[(0,1),(span/2,1),(span/2,0),(0,0)])
+                bands(side,x,end)
             else:
                 scene.box(x,h-2.0,span,.8,.9,brown)
                 scene.box(x-.03,h-2.03,span+.06,.86,.12,GOLD,y=.9)
@@ -273,9 +351,7 @@ def walls(scene,img,warps,height=4):
         for z,end in runs(side,h):
             span=end-z
             scene.box(x,z,1,span,height,brown,omit=(2,) if side=='west' else (4,))
-            ix=x+1.03 if side=='west' else x-.03
-            scene.polygon([(ix,0,z),(ix,0,end),(ix,height,end),(ix,height,z)],tex=wall_tex,
-                          uv=[(0,1),(span/2,1),(span/2,0),(0,0)])
+            bands(side,z,end)
 
 
 def terrain(scene,img):
@@ -511,6 +587,9 @@ def copy_lightning():
         scene=actors if model else room
         key=(model,part,remap[t] if t>=0 else None,tuple(pivot))
         scene.batches[key]=(list(vs),list(inds),{})
+    room.bounds=(28,32)
+    for x,z,right,bottom in json.loads((assets/'scene.json').read_text())['colliders']:
+        room.props.append(asdict(Prop('pillar',x,z,right-x,bottom-z,2.5,bottom-z)))
     # Non-human legendary-card/spark actors are actual small meshes.
     card=Scene('cards')
     card.box(-.32,-.08,.64,.16,.9,GOLD,y=.12)
@@ -637,6 +716,7 @@ def main():
             data['scene']='rom:/world/maps/club_foyer.l64'
             data['overlay']='rom:/world/maps/emblem_'+slug+'.l64'
             emblem=Scene('emblem_'+slug)
+            emblem.bounds=(data['width'],data['height'])
             emblem.polygon([(8,.06,6),(12,.06,6),(12,.06,10),(8,.06,10)],tex=texture(img.crop(64,48,32,32,32,32)))
             rec=emblem.save(MAPS/(emblem.name+'.l64'));records[emblem.name]=rec
             if foyer_done:continue

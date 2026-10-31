@@ -87,6 +87,24 @@ int main(void)
  Presentation timing={0};assert(presentation_wait_frames(&timing,60)==30);
  assert(presentation_wait_frames(&timing,120)==60);
  assert(presentation_wait_frames(&timing,1)==0&&presentation_wait_frames(&timing,1)==1);
+ /* Breathing is rendering state: it stays tiny, has distinct NPC phases,
+    keeps props fixed, and never makes script waits think an actor is walking. */
+ OwState idle={.map=1,.x=14,.y=26,.npc_count=3,
+  .npcs={{NPC_SAM,10,8,SOUTH,1,0},{NPC_DRMASON,14,6,SOUTH,1,0},{NPC_TORCH,2,2,SOUTH,1,0}}};
+ OwState idle_before=idle;Presentation resting;presentation_init(&resting,&idle,false);
+ bool distinct=false,changed_bob=false;float previous_bob=0;
+ for(unsigned i=0;i<90;i++) {
+  presentation_step(&resting,&idle,&lab);
+  const PresentationPose *sam=presentation_npc(&resting,NPC_SAM);
+  const PresentationPose *mason=presentation_npc(&resting,NPC_DRMASON);
+  assert(fabsf(sam->bob)<=.00801f&&fabsf(mason->bob)<=.00801f);
+  assert(sam->gait==0&&sam->lean==0&&!presentation_moving(&resting));
+  close_to(presentation_npc(&resting,NPC_TORCH)->bob,0);
+  if(fabsf(sam->bob-mason->bob)>.001f)distinct=true;
+  if(i&&fabsf(sam->bob-previous_bob)>.00001f)changed_bob=true;
+  previous_bob=sam->bob;
+ }
+ assert(distinct&&changed_bob&&!memcmp(&idle,&idle_before,sizeof(idle)));
  /* The exact original routes finish at every destination without snapping
     long segments or moving the player merely because the cursor changed. */
  for(unsigned from=1;from<=12;from++)for(unsigned to=1;to<=12;to++) {

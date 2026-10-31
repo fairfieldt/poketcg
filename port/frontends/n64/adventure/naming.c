@@ -77,11 +77,19 @@ static uint32_t color(unsigned r,unsigned g,unsigned b)
 static void box(surface_t *canvas,int x,int y,int w,int h,uint32_t foreground)
 {graphics_draw_box(canvas,x,y,w,h,foreground);}
 static void text(surface_t *canvas,int x,int y,uint32_t foreground,const char *value)
-{graphics_set_color(foreground,0);graphics_draw_text(canvas,x,y,value);}
+{
+ graphics_set_color(foreground==color(24,48,80)?color(185,199,199):color(16,40,68),0);
+ graphics_draw_text(canvas,x+1,y+1,value);
+ graphics_set_color(foreground,0);graphics_draw_text(canvas,x,y,value);
+}
 static void border(surface_t *canvas,int x,int y,int w,int h,uint32_t foreground)
 {
  box(canvas,x,y,w,2,foreground);box(canvas,x,y+h-2,w,2,foreground);
  box(canvas,x,y,2,h,foreground);box(canvas,x+w-2,y,2,h,foreground);
+ if(w>40&&h>30) {
+  box(canvas,x+2,y+2,w-4,1,color(255,255,247));box(canvas,x+2,y+2,1,h-4,color(255,255,247));
+  box(canvas,x+2,y+h-3,w-4,1,color(169,188,204));box(canvas,x+w-3,y+2,1,h-4,color(169,188,204));
+ }
 }
 static void draw_keyboard(NameAssets *assets,const NameState *state,unsigned frame)
 {

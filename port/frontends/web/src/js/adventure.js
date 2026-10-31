@@ -164,14 +164,54 @@ function card(id) {
 		};
 	});
 }
+const videoFrame = () => fast ? Promise.resolve() : new Promise((resolve) => setTimeout(resolve, 1000 / 30));
+function transitionLayer() {
+	const layer = el('div', '');
+	layer.style.cssText = 'position:absolute;inset:0;pointer-events:none;z-index:5';
+	app.root.appendChild(layer);
+	return layer;
+}
+async function warpFade(layer, revealing, map) {
+	layer.style.background = map ? 'rgb(26,18,14)' : 'rgb(5,6,14)';
+	for (let step = 1; step <= 6; step++) {
+		layer.style.opacity = String((revealing ? 6 - step : step) / 6);
+		await videoFrame();
+	}
+}
+async function duelShutters(entering) {
+	const layer = transitionLayer();
+	const bars = [el('div', ''), el('div', '')];
+	bars.forEach((bar, index) => {
+		bar.style.cssText = `position:absolute;left:0;right:0;${index ? 'bottom' : 'top'}:0;background:#000`;
+		layer.appendChild(bar);
+	});
+	for (let step = 0; step < 16; step++) {
+		const progress = entering ? Math.min(step, 11) : Math.max(0, step - 4);
+		const inverse = 1 - progress / 11;
+		const extent = entering ? 1 - inverse * inverse : inverse * inverse;
+		bars.forEach((bar) => { bar.style.height = `${extent * 50}%`; });
+		await videoFrame();
+	}
+	return layer;
+}
 async function frame(view) {
-	await app.world.update(view);
-	app.view = view;
-	const selected = view.overworldSelection || 1;
-	app.location.textContent =
-		view.map === 0 ? app.duel.text(T.OverworldMapMasonLaboratoryText + selected - 1) : '';
-	if (selected === 2 && !app.engine.x.web_adv_event(C.EVENT_ISHIHARAS_HOUSE_MENTIONED))
-		app.location.textContent = app.duel.text(T.OverworldMapMysteryHouseText);
+	const oldMap = app.view?.map;
+	const introArrival = oldMap === 0 && view.map === C.MASON_LABORATORY &&
+		app.engine.x.web_adv_event(C.EVENT_MASON_LAB_STATE) < C.MASON_LAB_RECEIVED_STARTER_DECK;
+	const fade = oldMap !== undefined && oldMap !== view.map && !introArrival && !fast;
+	const layer = fade ? transitionLayer() : null;
+	try {
+		if (layer) await warpFade(layer, false, oldMap);
+		await app.world.update(view);
+		app.view = view;
+		const selected = view.overworldSelection || 1;
+		app.location.textContent =
+			view.map === 0 ? app.duel.text(T.OverworldMapMasonLaboratoryText + selected - 1) : '';
+		if (selected === 2 && !app.engine.x.web_adv_event(C.EVENT_ISHIHARAS_HOUSE_MENTIONED))
+			app.location.textContent = app.duel.text(T.OverworldMapMysteryHouseText);
+		app.world.draw(view);
+		if (layer) await warpFade(layer, true, view.map);
+	} finally { layer?.remove(); }
 	if (!fast) await new Promise((r) => setTimeout(r, 33));
 }
 const padStates = new Map();
@@ -433,6 +473,7 @@ async function playerName() {
 }
 async function playDuel(setup, save) {
 	closeModal();
+	const closing = await duelShutters(true);
 	app.mode = 'duel';
 	app.duelLayer.classList.remove('hidden');
 	clear(app.duelLayer);
@@ -473,6 +514,7 @@ async function playDuel(setup, save) {
 		},
 	};
 	try {
+		closing.remove();
 		const result = await (save
 			? app.duel.continueDuel(setup, save, handlers)
 			: app.duel.run(setup, handlers));
@@ -483,6 +525,8 @@ async function playDuel(setup, save) {
 		app.ui = null;
 		app.duelLayer.classList.add('hidden');
 		app.mode = 'world';
+		const opening = await duelShutters(false);
+		opening.remove();
 	}
 }
 
@@ -494,8 +538,9 @@ async function showTitle(opening = true) {
 	closeModal();
 	const title = el('div', 'adventure-title');
 	const canvas = el('canvas', '');
-	canvas.width = 160;
-	canvas.height = 144;
+	const artScale = Math.max(2, Math.min(8, Math.ceil(window.innerHeight * .92 / 144 * (window.devicePixelRatio || 1))));
+	canvas.width = 160 * artScale;
+	canvas.height = 144 * artScale;
 	title.appendChild(canvas);
 	const startButton = button('Start', () => advance(), 'adventure-title-start');
 	startButton.disabled = true;
@@ -518,7 +563,8 @@ async function showTitle(opening = true) {
 		),
 	);
 	const ctx = canvas.getContext('2d');
-	ctx.imageSmoothingEnabled = false;
+	ctx.scale(artScale, artScale);
+	ctx.imageSmoothingEnabled = true;
 	let began = performance.now(),
 		showOpening = opening,
 		done = false;
@@ -604,7 +650,13 @@ async function showTitle(opening = true) {
 		}
 		ctx.fillStyle = '#e7e7c6';
 		ctx.fillRect(0, 0, 160, 144);
+		ctx.imageSmoothingEnabled = true;
 		ctx.drawImage(pictures[imageNames[scene]], 0, 0);
+		if (scene === 3) {
+			ctx.imageSmoothingEnabled = false;
+			ctx.drawImage(pictures.title, 0, 110, 160, 34, 0, 110, 160, 34);
+			ctx.imageSmoothingEnabled = true;
+		}
 		if (showOpening) {
 			let opacity = 0;
 			if (scene < 3) {
@@ -640,7 +692,10 @@ async function showTitle(opening = true) {
 					const position = orb(216, 248, 14, t - idleStarted[i]);
 					if (position) ctx.drawImage(pictures[`orb_${orbNames[i]}`], ...position);
 				}
-			if (t >= 60 && (t - 60) % 63 < 37) ctx.drawImage(pictures.press_start, 35, 94);
+			if (t >= 60 && (t - 60) % 63 < 37) {
+				ctx.imageSmoothingEnabled = false;
+				ctx.drawImage(pictures.press_start, 35, 94);
+			}
 		}
 		requestAnimationFrame(draw);
 	}

@@ -1,11 +1,12 @@
 {
   "record": {
     "file": "maps/overworld.l64",
-    "vertices": 11901,
-    "triangles": 5774,
+    "vertices": 11977,
+    "triangles": 5873,
     "batches": 15,
     "textures": [
       "t10e0038945313eb8",
+      "t1be80a1c7bb22f33",
       "t231f74feec91db8e",
       "t25fa21fce63252dd",
       "t36aeca753d8bf26c",
@@ -13,7 +14,6 @@
       "t46f3c2fff5e813bf",
       "t490be39a65b800e7",
       "t4dd7fe7276ae012f",
-      "t62e606a8c4af0112",
       "tb1bb3af3564d9a28",
       "tbd44b6c80d177d03",
       "tdd8e4bcdec0340fc",
@@ -123,5 +123,11 @@
   "blend": "overworld.blend",
   "script": "tools/author_overworld.py",
   "native_uv_wrap": "repeat when outside [0,1]",
+  "material_textures": {
+    "water": "t1be80a1c7bb22f33",
+    "grass": "tdd8e4bcdec0340fc",
+    "sand": "tbd44b6c80d177d03",
+    "cliff": "t4dd7fe7276ae012f"
+  },
   "fixed_camera_backface_optimization": true
 }

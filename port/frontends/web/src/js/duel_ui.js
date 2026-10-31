@@ -335,12 +335,18 @@ export class DuelUI {
 
 	showOverlay(kind, node) {
 		this.overlayKind = kind;
+		this.$textbox.classList.toggle('coin-present', kind === 'coin');
+		// Coins share the bottom panel, leaving both active cards and HP visible.
+		if (kind === 'coin') this.$textbox.prepend(this.$overlay);
+		else this.$fieldWrap.appendChild(this.$overlay);
 		clear(this.$overlay).appendChild(node);
 		this.$overlay.className = 'overlay ov-' + kind;
 	}
 
 	hideOverlay() {
 		this.overlayKind = null;
+		this.$textbox.classList.remove('coin-present');
+		this.$fieldWrap.appendChild(this.$overlay);
 		clear(this.$overlay);
 		this.$overlay.className = 'overlay hidden';
 	}

@@ -9,7 +9,7 @@ typedef struct {
 } PresentationPose;
 typedef struct {
  PresentationPose pose;
- float from_x,from_z,target_x,target_z,target_heading,phase;
+ float from_x,from_z,target_x,target_z,target_heading,phase,idle_phase;
  unsigned elapsed,duration;
  uint8_t id,visible;
  bool running;

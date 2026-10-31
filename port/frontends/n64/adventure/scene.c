@@ -149,6 +149,33 @@ Scene *scene_open(const char *path, const char *texture_root)
 
 void scene_draw_room(const Scene *scene) { if(scene) glCallList(room_list); }
 
+void scene_draw_contact_shadows(const float (*positions)[2],unsigned count)
+{
+    if(!count)return;
+    static const float ring[13][2]={
+        {1,0},{.8660254f,.5f},{.5f,.8660254f},{0,1},
+        {-.5f,.8660254f},{-.8660254f,.5f},{-1,0},
+        {-.8660254f,-.5f},{-.5f,-.8660254f},{0,-1},
+        {.5f,-.8660254f},{.8660254f,-.5f},{1,0}
+    };
+    /* A transparent rim keeps this small at native resolution. The fan sits
+       on the floor, independent of actor bob, and furniture still occludes it.
+       libdragon has no polygon offset or attribute stack. Restore explicitly. */
+    glDisable(GL_TEXTURE_2D);
+    glDepthMask(GL_FALSE);
+    glEnable(GL_BLEND);glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
+    for(unsigned i=0;i<count;i++) {
+        float x=positions[i][0],z=positions[i][1];
+        glBegin(GL_TRIANGLE_FAN);
+        glColor4ub(16,22,32,64);glVertex3f(x,.045f,z);
+        glColor4ub(16,22,32,0);
+        for(unsigned j=0;j<13;j++)
+            glVertex3f(x+ring[j][0]*.56f,.045f,z+ring[j][1]*.40f);
+        glEnd();
+    }
+    glDepthMask(GL_TRUE);glDisable(GL_BLEND);glColor4ub(255,255,255,255);
+}
+
 void scene_close(Scene *scene)
 {
  if(!scene) return;

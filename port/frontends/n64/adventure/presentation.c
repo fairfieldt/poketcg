@@ -35,6 +35,7 @@ static unsigned player_duration(const OwState *s,bool running)
 static void snap(PresentationActor *a,float x,float z,unsigned d,unsigned id)
 {
  memset(a,0,sizeof(*a));a->id=id;a->visible=1;
+ a->idle_phase=fmodf(id*.7f,2*PI);
  a->pose.x=a->from_x=a->target_x=x;
  a->pose.z=a->from_z=a->target_z=z;
  a->pose.heading=a->target_heading=heading(d);
@@ -70,7 +71,11 @@ static void step_actor(PresentationActor *a)
   a->pose.bob=fabsf(sinf(a->phase))*(a->running?.065f:.035f);
   a->pose.lean=a->running?6:0;
  } else {
-  a->pose.gait=0;a->pose.bob=0;a->pose.lean=0;
+  a->idle_phase=fmodf(a->idle_phase+.1f,2*PI);
+  a->pose.gait=0;a->pose.lean=0;
+  /* These IDs are props rather than people. Keep cards and torches fixed. */
+  a->pose.bob=a->id>=NPC_TORCH&&a->id<=NPC_LEGENDARY_CARD_RIGHT_SPARK?
+   0:.008f*sinf(a->idle_phase);
  }
 }
 static void world_position(unsigned location,float *x,float *z)

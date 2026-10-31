@@ -1,7 +1,7 @@
 body.adventure {
 	overflow: hidden;
 	background: #07101c;
-	color: #182e49;
+	color: #183050;
 	font-family: var(--font);
 }
 .adventure #app {
@@ -27,9 +27,10 @@ body.adventure {
 .adventure-dialog {
 	pointer-events: auto;
 	background: #f7f7de;
-	border: 3px solid #52759b;
-	border-radius: 8px;
-	box-shadow: 0 8px 36px #0007;
+	border: 3px solid #4a739c;
+	border-radius: 2px;
+	box-shadow: inset 1px 1px 0 #fffff7, inset -1px -1px 0 #a9bccc, 3px 3px 0 #0a121e66;
+	text-shadow: 1px 1px 0 #c3cecb;
 	max-width: min(860px, 94vw);
 	max-height: 80vh;
 	overflow: auto;
@@ -60,6 +61,14 @@ body.adventure {
 .adventure-options .btn {
 	text-align: left;
 	white-space: pre-line;
+	border-radius: 2px;
+	box-shadow: inset 1px 1px 0 #fffff7, inset -1px -1px 0 #a9bccc;
+}
+.adventure-options .btn.cur, .adventure-options .btn:hover {
+	background: #204878;
+	color: #f7f7de;
+	text-shadow: 1px 1px 0 #0a121e;
+	box-shadow: inset 1px 1px 0 #6790b1, inset -1px -1px 0 #0a121e;
 }
 .adventure-back {
 	margin-top: 12px;
@@ -90,10 +99,13 @@ body.adventure {
 	position: absolute;
 	top: 18px;
 	left: 18px;
-	background: #172644e8;
-	color: #fff;
+	background: #f7f7de;
+	color: #183050;
+	border: 2px solid #4a739c;
+	box-shadow: inset 1px 1px 0 #fffff7, inset -1px -1px 0 #a9bccc, 2px 2px 0 #0a121e66;
+	text-shadow: 1px 1px 0 #c3cecb;
 	padding: 9px 15px;
-	border-radius: 3px;
+	border-radius: 2px;
 	font-weight: bold;
 	font-size: 18px;
 	pointer-events: none;
@@ -115,7 +127,7 @@ body.adventure {
 	width: auto;
 	max-width: 96vw;
 	object-fit: contain;
-	image-rendering: pixelated;
+	image-rendering: auto;
 }
 .adventure-title-start {
 	position: absolute;
