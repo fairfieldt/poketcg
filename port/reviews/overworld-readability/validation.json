@@ -1,0 +1,230 @@
+{
+  "source_base_commit": "0c54664e356729427853e836606403254eca11b1",
+  "production_rom": "port/frontends/n64/adventure/poketcg-adventure.z64",
+  "production_rom_sha256": "8f84aa397b10bd373ee947eab25535e9303c9008f1ab98eb39603a1adcba45ee",
+  "production_rom_bytes": 36454400,
+  "post_vi_capture_rom_sha256": "eb11731e837be1a8b4dced4eeec2c73607e756b0df8e300481a9a45366b62809",
+  "world_sha256": "08a9054c1a8f15b7c5c19cba59b2ee2dee5af46e1b661c4b05bb9ca47687f4fd",
+  "island": {
+    "vertices": 11114,
+    "triangles": 5560,
+    "batches": 16
+  },
+  "island_textures": 15,
+  "vi_filter": "FILTERS_RESAMPLE",
+  "framebuffer": [
+    320,
+    240
+  ],
+  "post_vi_pixels": [
+    640,
+    240
+  ],
+  "display_aspect": "4:3",
+  "capture": "ares v148 SD Tools \u2192 Capture Screenshot, after VI processing and before window shaders/scaling",
+  "checks": {
+    "all_map_webgl": true,
+    "world_meshes_and_prop_clearance": true,
+    "source_maps_routes_and_interior_meshes_unchanged": true,
+    "full_native_game_4mib": true,
+    "actual_post_vi_static_ui_repeated_pixel_identical": true
+  },
+  "source_camera_and_nodes_unchanged": true,
+  "images": {
+    "before-post-vi.png": "dababbf9729b2977eb5e6a6215c52f38b7622e8a607393d47138a8e640d55aef",
+    "after-post-vi.png": "526a655abf157e6805f9c7c4fde667e0e9aaeb57fe2313533751112f183029f9",
+    "comparison.png": "bdb397c54d4229bd5fd40dd668b5165f10e4a16a9edca070ededff756769aea1"
+  },
+  "native": {
+    "rom_sha256": "c53ce057df25b344606deee24f6bc3ec3f0debe9eea5f4cf5594f72ec397eacb",
+    "passed": true,
+    "worst_heap": {
+      "map": 0,
+      "total": 2778288,
+      "used": 1725712,
+      "free": 1052576
+    },
+    "wall_seconds": 130.1,
+    "maps": 34,
+    "captures": 42,
+    "rdram_bytes": 4194304,
+    "source": "port/frontends/n64/adventure/build/readability-native-final/result.json",
+    "source_sha256": "5cd320264e3097f3beb8ea667a2203addd74d91701d6bfdcc39a1beb09d6837b",
+    "archived_source": "final-scanout/native-validation.json"
+  },
+  "video": {
+    "passed": true,
+    "ram_mib": 4,
+    "vi_filter": "FILTERS_RESAMPLE",
+    "rom_sha256": "3c46e86ea8e1642c285524328abfb2f69cdca55fc3adb48f84e24c56af4f67d0",
+    "cycles": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "ui_frames": 2160,
+    "room_frames": 720,
+    "phases": [
+      {
+        "phase": "dialogue",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "88536e81"
+      },
+      {
+        "phase": "duel",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "8b8a5863"
+      },
+      {
+        "phase": "card",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "48c318b3"
+      },
+      {
+        "phase": "dialogue",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "88536e81"
+      },
+      {
+        "phase": "duel",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "8b8a5863"
+      },
+      {
+        "phase": "card",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "48c318b3"
+      },
+      {
+        "phase": "dialogue",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "88536e81"
+      },
+      {
+        "phase": "duel",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "8b8a5863"
+      },
+      {
+        "phase": "card",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "48c318b3"
+      },
+      {
+        "phase": "dialogue",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "88536e81"
+      },
+      {
+        "phase": "duel",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "8b8a5863"
+      },
+      {
+        "phase": "card",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "48c318b3"
+      },
+      {
+        "phase": "dialogue",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "88536e81"
+      },
+      {
+        "phase": "duel",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "8b8a5863"
+      },
+      {
+        "phase": "card",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "48c318b3"
+      },
+      {
+        "phase": "dialogue",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "88536e81"
+      },
+      {
+        "phase": "duel",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "8b8a5863"
+      },
+      {
+        "phase": "card",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "48c318b3"
+      },
+      {
+        "phase": "dialogue",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "88536e81"
+      },
+      {
+        "phase": "duel",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "8b8a5863"
+      },
+      {
+        "phase": "card",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "48c318b3"
+      },
+      {
+        "phase": "dialogue",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "88536e81"
+      },
+      {
+        "phase": "duel",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "8b8a5863"
+      },
+      {
+        "phase": "card",
+        "frames": 90,
+        "buffers": 3,
+        "hash": "48c318b3"
+      }
+    ],
+    "worst_heap": {
+      "map": 0,
+      "total": 2776832,
+      "used": 1725648,
+      "free": 1051184
+    },
+    "wall_seconds": 178.41,
+    "notes": "RDP framebuffer hashes verify static UI across all3 buffers; actual post-VI PNG exports are separate evidence.",
+    "archived_source": "final-scanout/video-validation.json"
+  },
+  "final_scanout_manifest": "final-scanout/manifest.json",
+  "final_scanout_manifest_sha256": "163ed0544c6723e963400ffe2088b50cb2fa5d4f5776bd0db2bdc1e5950b982f"
+}

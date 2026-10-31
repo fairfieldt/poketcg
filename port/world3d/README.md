@@ -8,15 +8,18 @@ The island is authored in Blender against the approved
 shelves, layered rock cliffs, sandy routes and beaches, small foam breakers,
 timber bridges, boats, and linked conifer models. Each of the twelve source
 locations has its own detailed building group, including doors, blue windows,
-roof trim, steps, and its original broad silhouette. Logical destinations and
-routes remain the original data. The selected name is drawn by the frontend.
+roof trim, steps, and its original broad silhouette. Landmark bodies use larger
+footprints and broad roof/rune identifiers that survive the native video output.
+Nearby trees leave their silhouettes clear. Logical destinations, routes and
+the island camera remain the original data. The selected name is drawn by the
+frontend.
 
 `generated/overworld.blend` preserves the complete editable models and material
 hierarchy. `tools/author_overworld.py` creates that scene with `bpy`, then exports
 its actual mesh positions, UVs, and baked vertex colors into the native island.
-Fourteen opaque 32/64-pixel textures supply grass, rock, stone, timber, roofs,
-water, and foliage; each fits RGBA16 TMEM. The native fixed-camera export omits
-unseen back/bottom faces, retaining 5,774 triangles in 321,152 bytes. Repeated
+Small opaque 32/64-pixel textures supply grass, rock, stone, timber, roofs,
+water, foliage and the roof badge; each fits RGBA16 TMEM. The native fixed-camera export omits
+unseen back/bottom faces, retaining about 5,600 triangles in 300 KiB. Repeated
 textures retain their original UVs; the renderer selects `GL_REPEAT` for these
 batches rather than subdividing geometry at every texture boundary. The complete
 Blender models retain their hidden faces.

@@ -384,16 +384,25 @@ bool game_feature(unsigned feature,unsigned argument)
 int main(void)
 {
  debug_init_isviewer();debug_init_usblog();
- /* Every displayed pixel now comes through RDP, including completed CPU UI
-    canvases. VI can safely use RDP coverage for the antialiased 3D geometry;
-    direct CPU writes to display buffers were not coherent with ares v148's
-    hidden coverage state. */
- display_init(RESOLUTION_320x240,DEPTH_16_BPP,3,GAMMA_NONE,FILTERS_RESAMPLE_ANTIALIAS_DEDITHER);
+ /* Completed CPU UI canvases are copied through RDP before presentation.
+    Resample-only scanout keeps 320-wide landmarks and text readable: the
+    extra VI AA/divot/dedither chain smeared their narrow features. Coverage
+    remains coherent because displayed buffers are never edited by the CPU. */
+ display_init(RESOLUTION_320x240,DEPTH_16_BPP,3,GAMMA_NONE,ADVENTURE_VI_FILTER);
  display_set_fps_limit(30);dfs_init(DFS_DEFAULT_LOCATION);joypad_init();rdpq_init();gl_init();
  depth=surface_alloc(FMT_RGBA16,320,240);glEnable(GL_DEPTH_TEST);glDepthFunc(GL_LESS_INTERPENETRATING_N64);
  glEnable(GL_MULTISAMPLE_ARB);glDisable(GL_CULL_FACE);glDisable(GL_LIGHTING);
  adventure_audio_init();n64_ui_init();actors=scene_open(W3_ACTOR_SCENE,W3_TEXTURE_ROOT);
-#if ADVENTURE_DIAGNOSTIC
+#if ADVENTURE_DIAGNOSTIC == 4
+ /* Hold the production island for reviewing the actual VI/display output.
+    The ordinary framebuffer capture is retained as a separate reference. */
+ memset(&game,0,sizeof(game));game.ow.overworld_selection=OWMAP_MASON_LABORATORY;
+ presentation_init(&presentation,NULL,false);capture_next=true;
+ for(unsigned f=0;;f++) {
+  game_draw();
+  if(f==4)debugf("OVERWORLD VI READY filter=%u\n",(unsigned)ADVENTURE_VI_FILTER);
+ }
+#elif ADVENTURE_DIAGNOSTIC
  memset(&game,0,sizeof(game));presentation_init(&presentation,NULL,false);
  adventure_audio_event(0,MUSIC_OVERWORLD);adventure_audio_event(1,SFX_CURSOR);
  for(unsigned map=0;map<34;map++){

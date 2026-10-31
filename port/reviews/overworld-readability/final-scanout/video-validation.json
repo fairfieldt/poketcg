@@ -1,0 +1,172 @@
+{
+  "passed": true,
+  "ram_mib": 4,
+  "vi_filter": "FILTERS_RESAMPLE",
+  "rom_sha256": "3c46e86ea8e1642c285524328abfb2f69cdca55fc3adb48f84e24c56af4f67d0",
+  "cycles": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "ui_frames": 2160,
+  "room_frames": 720,
+  "phases": [
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "88536e81"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "8b8a5863"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "48c318b3"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "88536e81"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "8b8a5863"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "48c318b3"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "88536e81"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "8b8a5863"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "48c318b3"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "88536e81"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "8b8a5863"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "48c318b3"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "88536e81"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "8b8a5863"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "48c318b3"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "88536e81"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "8b8a5863"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "48c318b3"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "88536e81"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "8b8a5863"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "48c318b3"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "88536e81"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "8b8a5863"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "48c318b3"
+    }
+  ],
+  "worst_heap": {
+    "map": 0,
+    "total": 2776832,
+    "used": 1725648,
+    "free": 1051184
+  },
+  "wall_seconds": 178.41,
+  "notes": "RDP framebuffer hashes verify static UI across all3 buffers; actual post-VI PNG exports are separate evidence."
+}

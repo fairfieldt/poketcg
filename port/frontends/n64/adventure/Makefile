@@ -12,6 +12,7 @@ PORT := ../../..
 REPO := $(PORT)/..
 ROM ?= poketcg-adventure
 DIAGNOSTIC ?= 0
+VI_FILTER ?= FILTERS_RESAMPLE
 ENGINE_SOURCES := $(wildcard $(PORT)/src/*.c $(PORT)/src/gen/*.c $(PORT)/src/effects/*.c $(PORT)/src/ai/*.c)
 ENGINE_OBJECTS := $(ENGINE_SOURCES:$(PORT)/src/%.c=$(BUILD_DIR)/engine/%.o)
 GAME_SOURCES := $(wildcard $(PORT)/gameplay/*.c $(PORT)/gameplay/gen/*.c $(PORT)/overworld/*.c $(PORT)/overworld/gen/*.c)
@@ -20,8 +21,9 @@ FRONT_OBJECTS := $(addprefix $(BUILD_DIR)/,main.o menus.o profiles.o extra_ui.o 
 ifneq ($(DIAGNOSTIC),0)
 FRONT_OBJECTS += $(BUILD_DIR)/mips_story.o $(BUILD_DIR)/cinematic.o
 endif
+VIDEO_CONFIG := $(BUILD_DIR)/config-$(DIAGNOSTIC)-$(VI_FILTER)
 INCLUDES := -I$(PORT)/src -I$(PORT)/overworld -I$(PORT)/gameplay -I$(PORT)/world3d -I$(BUILD_DIR)
-CFLAGS += $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC)
+CFLAGS += $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -DADVENTURE_VI_FILTER=$(VI_FILTER)
 CARD_PNGS := $(wildcard $(REPO)/src/gfx/cards/*.png)
 CARD_SPRITES := $(CARD_PNGS:$(REPO)/src/gfx/cards/%.png=$(N64_MKDFS_ROOT)/cards/%.sprite)
 WORLD_TEXTURES := $(wildcard $(PORT)/world3d/generated/textures/*.png)
@@ -40,6 +42,11 @@ all:
 bundle: $(ROM).z64
 assets:
 	python3 $(PORT)/world3d/tools/build_world.py
+$(VIDEO_CONFIG):
+	@mkdir -p $(BUILD_DIR)
+	@rm -f $(BUILD_DIR)/config-*
+	@touch $@
+$(FRONT_OBJECTS): $(VIDEO_CONFIG)
 $(BUILD_DIR)/engine/%.o: $(PORT)/src/%.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(filter-out -Werror,$(N64_CFLAGS)) $(INCLUDES) -DTCG_NO_DEFAULT_FATAL -MMD -c $< -o $@

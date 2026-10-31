@@ -155,7 +155,7 @@ def make_texture(kind):
     return key
 
 
-def material(name,kind=None,color=WHITE,tile=False,scale=1):
+def material(name,kind=None,color=WHITE,tile=False,scale=1,rows=None):
     mat=bpy.data.materials.new(name)
     mat.use_nodes=True
     nodes=mat.node_tree.nodes;nodes.clear()
@@ -163,8 +163,9 @@ def material(name,kind=None,color=WHITE,tile=False,scale=1):
     shader=nodes.new('ShaderNodeEmission')
     mat.node_tree.links.new(shader.outputs[0],out.inputs[0])
     col=nodes.new('ShaderNodeVertexColor');col.layer_name='Color'
-    if kind:
-        key=make_texture(kind)
+    if kind or rows is not None:
+        key=make_texture(kind) if rows is None else texture(rows)
+        if rows is not None:texture_rows[key]=rows
         image=bpy.data.images.load(str(OUT/'textures'/(key+'.png')),check_existing=True)
         image.pack()
         tex=nodes.new('ShaderNodeTexImage');tex.image=image;tex.interpolation='Linear';tex.extension='REPEAT'
@@ -199,6 +200,7 @@ DARKMAT=material('Inset — blue charcoal',color=DARK)
 REDMAT=material('Accent — red',color=RED)
 GOLDMAT=material('Accent — gold',color=GOLD)
 BLUEMAT=material('Accent — blue',color=BLUE)
+LEAFMAT=material('Accent — leaf green',color=(157,201,76,255))
 FOAM=material('Foam — pale cyan',color=(176,225,235,255))
 FOAMWHITE=material('Foam — white tips',color=(246,249,230,255))
 
@@ -647,6 +649,7 @@ box('Rock Club timber door',3.08,7.97,.85,.04,.62,WOOD,y=y+.04)
 for x in (3.23,3.65):box('Rock gate gold hinge',x,8.0,.11,.035,.06,GOLDMAT,y=y+.3)
 box('Rock Club approach step',3.0,8.0,1,.32,.07,STONE,y=y)
 landmarks.append(dict(name='Rock Club',x=3.5,y=8,width=1.2,depth=.7))
+building_footprints.append((2.9,7.5,1.2,.7))
 rock('Cave frame',4.75,9.25,(.55,.55,.55))
 mesh('Small cave mouth',[(4.45,height(4.6,9.6)+.02,9.6),(4.95,height(4.6,9.6)+.02,9.6),(4.72,height(4.6,9.6)+.46,9.48)],[(0,1,2)],DARKMAT)
 
@@ -667,10 +670,31 @@ front('Water Club',x,13.70,1.1,y+.03,y+.8)
 for i in range(8):box('Water Club stair',x-.21,13.56+i*.085,.42,.09,.07,STONE,y=y+.035-i*.025)
 
 group('06 Lightning Club')
-hall('Lightning Club',(5.5,11),1.2,.87,GOLDROOF)
+y,cz=hall('Lightning Club',(5.5,11),1.2,.87,GOLDMAT)
+# Paint the bolt into the top face. Separate tiny overlay triangles lose
+# fragments against the roof in the N64's compressed depth buffer.
+bolt=[(17,3),(25,3),(18,13),(25,13),(8,29),(13,18),(7,18)]
+rows=[[DARK if inside(x+.5,z+.5,bolt) else GOLD for x in range(32)] for z in range(32)]
+bolt_material=material('Roof — Lightning bolt',rows=rows)
+roof_object=bpy.data.objects['Lightning Club roof']
+data=roof_object.data;data.materials.append(bolt_material)
+for poly in data.polygons:
+    if poly.normal.z<.9:continue
+    poly.material_index=len(data.materials)-1
+    coords=[data.vertices[i].co for i in poly.vertices]
+    left,right=min(v.x for v in coords),max(v.x for v in coords)
+    north,south=min(-v.y for v in coords),max(-v.y for v in coords)
+    light=.72+.28*max(0,poly.normal.dot(SUN))
+    for li in poly.loop_indices:
+        vertex=data.vertices[data.loops[li].vertex_index].co
+        data.uv_layers.active.data[li].uv=((vertex.x-left)/(right-left),(-vertex.y-north)/(south-north))
+        data.color_attributes['Color'].data[li].color=(linear(round(255*light)),)*3+(1,)
 
 group('07 Grass Club')
-hall('Grass Club',(16.5,9),1.45,.9,GREENROOF)
+y,cz=hall('Grass Club',(16.5,9),1.45,.9,GREENROOF,'hip')
+mesh('Grass roof leaf',[(16.5-.31,y+1.13,cz+.12),(16.5-.07,y+1.23,cz-.25),
+                        (16.5+.31,y+1.13,cz-.12),(16.5+.07,y+1.13,cz+.25)],
+     [(0,1,2),(0,2,3)],LEAFMAT,up=True)
 
 group('08 Psychic Club obelisk')
 x,z=12.5,6.15;y=height(x,z)
@@ -678,9 +702,11 @@ rect_caster('Psychic Club',x-.37,z-.28,.74,.62,1.5)
 box('Psychic Club plinth',x-.37,z-.28,.74,.62,.18,STONE,y=y)
 box('Psychic Club obelisk',x-.21,z-.19,.42,.4,1.02,STONE,y=y+.18)
 roof('Psychic Club pointed crown',x-.22,z-.2,.44,.42,y+1.19,.31,TRIM)
-for layer in range(3):
-    for dx in (-.12,.07):box('Psychic blue glyph',x+dx,z+.216,.055,.018,.13,BLUEMAT,y=y+.37+layer*.25)
-    box('Psychic blue glyph cross',x-.12,z+.216,.25,.018,.045,BLUEMAT,y=y+.45+layer*.25)
+# One blocky rune replaces three subpixel glyphs. Its bars project at least
+# two native pixels after the landmark's footprint enlargement below.
+for dx in (-.19,.06):
+    box('Psychic blue glyph upright',x+dx,z+.225,.13,.025,.64,BLUEMAT,y=y+.36)
+box('Psychic blue glyph cross',x-.19,z+.225,.38,.025,.22,BLUEMAT,y=y+.57)
 for dx in (-.52,.52):
     box('Psychic sentinel',x+dx-.1,z+.34,.2,.2,.3,STONE,y=y)
     cone('Psychic sentinel cap',x+dx,z+.44,y+.3,.15,.17,TRIM,n=4)
@@ -688,8 +714,9 @@ landmarks.append(dict(name='Psychic Club',x=12.5,y=6.5,width=1.4,depth=1))
 building_footprints.append((11.8,5.8,1.4,1.1))
 
 group('09 Science Club')
-y,cz=hall('Science Club',(16.5,5),1.35,.92,GREENROOF)
-box('Science Club vent',16.8,cz-.18,.19,.25,.13,STONE,y=y+.91)
+y,cz=hall('Science Club',(16.5,5),1.35,.92,BLUEROOF)
+box('Science Club vent',16.7,cz-.24,.34,.38,.29,TRIM,y=y+.86)
+box('Science Club vent inset',16.73,cz-.20,.28,.30,.055,DARKMAT,y=y+1.15)
 
 group('10 Fire Club volcano')
 cx,cz=16.2,2.08;n=12
@@ -736,11 +763,67 @@ cylinder('Pokemon Dome roof center',9.5,cz,y+1.05,.45,.12,REDROOF,n=8,top_r=.38)
 # The front badge and white roof belt make this a Poké Ball stadium, rather
 # than another red building. The badge is real opaque geometry.
 for half,mat in ((0,REDMAT),(1,TRIM)):
-    verts=[(9.5,y+.82,9.575)]
-    verts += [(9.5+.15*math.cos((i+half*6)*math.pi/6),y+.82+.15*math.sin((i+half*6)*math.pi/6),9.575) for i in range(7)]
+    verts=[(9.5,y+.86,9.65)]
+    verts += [(9.5+.33*math.cos((i+half*6)*math.pi/6),y+.86+.33*math.sin((i+half*6)*math.pi/6),9.65) for i in range(7)]
     mesh('Dome Pokeball badge',verts,[tuple(range(8))],mat)
-box('Dome badge band',9.35,9.583,.3,.012,.035,DARKMAT,y=y+.802)
-box('Dome badge button',9.465,9.595,.07,.014,.07,TRIM,y=y+.785)
+box('Dome badge band',9.17,9.66,.66,.035,.13,DARKMAT,y=y+.795)
+box('Dome badge button',9.41,9.70,.18,.04,.18,TRIM,y=y+.77)
+
+
+def enlarge_landmarks():
+    """Grow readable silhouettes about unchanged source entrance anchors.
+
+    Hills, volcano, routes and coastline stay authored at their existing size.
+    The islets and Lightning's north ridge limit depth growth. Foundations
+    retain their height above local terrain, and lighting/tree masks follow
+    exactly the same horizontal transform as their building.
+    """
+    specs=[('01 Mason Laboratory','Mason Laboratory',1.4,1.0),
+           ('02 Ishihara House','Ishihara House',1.25,1.0),
+           ('03 Fighting Club','Fighting Club',1.4,1.4),
+           ('04 Rock Club and western hills','Rock Club',1.4,1.4),
+           ('05 Water Club stadium','Water Club',1.18,1.18),
+           ('06 Lightning Club','Lightning Club',1.4,1.1),
+           ('07 Grass Club','Grass Club',1.4,1.4),
+           ('08 Psychic Club obelisk','Psychic Club',1.5,1.5),
+           ('09 Science Club','Science Club',1.4,1.4),
+           ('10 Fire Club volcano','Fire Club',1.4,1.4),
+           ('11 Challenge Hall','Challenge Hall',1.4,1.4),
+           ('12 Pokemon Dome','Pokemon Dome',1.4,1.4)]
+    assert len(landmarks)==len(building_footprints)==len(specs)
+    for index,(collection_name,name,sx,sz) in enumerate(specs):
+        landmark=landmarks[index]
+        assert landmark['name']==name
+        ax,az=landmark['x'],landmark['y']
+        def point(x,z):return ax+(x-ax)*sx,az+(z-az)*sz
+        for obj in bpy.data.collections[collection_name].objects:
+            if obj.type!='MESH':continue
+            if name=='Rock Club' and not obj.name.startswith(('Rock Club gate','Rock Club stone',
+                    'Rock Club timber','Rock gate gold','Rock Club approach')):continue
+            if name=='Fire Club' and (not obj.name.startswith('Fire Club') or 'volcano' in obj.name.lower()):continue
+            inverse=obj.matrix_world.inverted()
+            for vertex in obj.data.vertices:
+                old=obj.matrix_world@vertex.co
+                x,z=old.x,-old.y
+                nx,nz=point(x,z)
+                vertex.co=inverse@Vector((nx,-nz,old.z+height(nx,nz)-height(x,z)))
+            obj.data.update()
+        x,z,w,d=building_footprints[index]
+        nx,nz=point(x,z)
+        building_footprints[index]=(nx,nz,w*sx,d*sz)
+        for caster in ground_casters:
+            if not caster['name'].startswith(name):continue
+            caster['x'],caster['z']=point(caster['x'],caster['z'])
+            if caster['shape']=='rect':caster['w']*=sx;caster['d']*=sz
+            else:
+                assert sx==sz
+                caster['radius']*=sx;caster['contact_radius']*=sx
+            caster['base']=height(caster['x'],caster['z'])
+        landmark['width']*=sx;landmark['depth']*=sz
+    scene['landmark_footprint_scales']=json.dumps({name:[sx,sz] for _,name,sx,sz in specs})
+
+
+enlarge_landmarks()
 
 
 group('Conifer groves and ground shadows')
@@ -764,7 +847,7 @@ def tree(x,z,scale=1):
 
 def available(x,z):
     if not any(inside(x,z,p) for p in all_land):return False
-    if any(a-.2<x<a+w+.2 and b-.2<z<b+d+.2 for a,b,w,d in building_footprints):return False
+    if any(a-.42<x<a+w+.42 and b-.42<z<b+d+.42 for a,b,w,d in building_footprints):return False
     return True
 
 for iz in range(10):

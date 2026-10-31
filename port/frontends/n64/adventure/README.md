@@ -7,6 +7,9 @@ the third-person room view established by the Lightning prototype.
 
 ![Native N64 scenes and duel screen](../../../world3d/generated/native/all-maps-native.png)
 
+This gallery contains framebuffer pixels before VI video filtering. Use ares
+Tools → Capture Screenshot to inspect the actual post-VI image.
+
 ## Build and play
 
 ```sh
@@ -55,6 +58,31 @@ in a four-line panel over the 3D scene. Scripted movement uses the original
 60 Hz timing converted to 30 Hz, distance-based footsteps, and Mason/Sam
 camera framing. On the island, the destination cursor and walking Mark are
 separate, as in the source game.
+
+## Video output
+
+The renderer uses 320 × 240 RGBA16 with resample-only VI output. The additional
+VI antialiasing/divot/dedither chain softened small landmark features and text;
+resampling retains more detail while still scaling the native image. Landmark
+footprints and their major roof/rune details are sized for this output.
+
+[Overworld before/after from ares](../../../reviews/overworld-readability/comparison.png)
+
+Ares screenshots from Tools → Capture Screenshot include VI processing, before
+window shaders/scaling. At SD quality, its progressive 640 × 240 captures should
+be displayed at a 4:3 aspect ratio. The diagnostic framebuffer PNGs are a
+separate, sharper pre-VI reference.
+
+To hold the production island for display comparisons:
+
+```sh
+make -C port/frontends/n64/adventure BUILD_DIR=build/vi-review \
+  ROM=poketcg-vi-review DIAGNOSTIC=4 bundle
+```
+
+`VI_FILTER=FILTERS_RESAMPLE_ANTIALIAS_DEDITHER` restores the earlier filter for
+comparison. The build tracks the diagnostic/filter configuration and rebuilds
+its frontend objects when either changes.
 
 ## Diaries and multiplayer
 

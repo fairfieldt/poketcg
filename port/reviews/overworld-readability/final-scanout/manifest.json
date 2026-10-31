@@ -1,0 +1,107 @@
+{
+  "provenance": "Ares built-in Tools > Capture Screenshot exports after N64 VI processing, before host window scaling. Unmodified raw PNGs are 640x240; contact sheet duplicates rows to display at 4:3.",
+  "settings": {
+    "quality": "SD",
+    "expansion_pak": false,
+    "video_interface_processing": true,
+    "supersampling": false,
+    "shader": "None",
+    "vi_filter": "FILTERS_RESAMPLE"
+  },
+  "rom": "port/frontends/n64/adventure/poketcg-video.z64",
+  "rom_sha256": "3c46e86ea8e1642c285524328abfb2f69cdca55fc3adb48f84e24c56af4f67d0",
+  "captures": [
+    {
+      "name": "dialogue",
+      "file": "dialogue-post-vi.png",
+      "source_exports": [
+        "poketcg-video 2026-10-30 23-04-06.png",
+        "poketcg-video 2026-10-30 23-04-08.png"
+      ],
+      "source_dimensions": [
+        640,
+        240
+      ],
+      "sha256": "c540de415701bd69f1067d01c55ba54a52f4575c9173b7092d55a86afd2ddc16",
+      "repeated_export_count": 2,
+      "changed_pixels_between_repeats": [
+        0
+      ],
+      "pixel_rgb_sha256": "65621039652ecfa088bc450390d5ade16922001f00dd409dba3389ace53aa593"
+    },
+    {
+      "name": "duel",
+      "file": "duel-post-vi.png",
+      "source_exports": [
+        "poketcg-video 2026-10-30 23-03-29.png",
+        "poketcg-video 2026-10-30 23-03-43.png",
+        "poketcg-video 2026-10-30 23-04-09.png",
+        "poketcg-video 2026-10-30 23-04-10.png",
+        "poketcg-video 2026-10-30 23-04-12.png"
+      ],
+      "source_dimensions": [
+        640,
+        240
+      ],
+      "sha256": "f5c29708e130b8ea3eb72af7b86a63271ee1bf3e2c7167d330b6bd10007d2982",
+      "repeated_export_count": 5,
+      "changed_pixels_between_repeats": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "pixel_rgb_sha256": "e4b18e2a10c5041abe087628de06560867f18afd2627a4a0f596a06caaa2751f"
+    },
+    {
+      "name": "card",
+      "file": "card-post-vi.png",
+      "source_exports": [
+        "poketcg-video 2026-10-30 23-03-59.png",
+        "poketcg-video 2026-10-30 23-04-00.png",
+        "poketcg-video 2026-10-30 23-04-02.png"
+      ],
+      "source_dimensions": [
+        640,
+        240
+      ],
+      "sha256": "f1fba8059ae7d65fc42c00d2fd386dce1b57051eb9529cf1a9e6adc83f7b899e",
+      "repeated_export_count": 3,
+      "changed_pixels_between_repeats": [
+        0,
+        0
+      ],
+      "pixel_rgb_sha256": "e3c0cdae0d31b6ac17ce311460f74bd9d1011c0f259d2242333c5c36c06723a0"
+    },
+    {
+      "name": "lightning",
+      "file": "lightning-post-vi.png",
+      "source_exports": [
+        "poketcg-video 2026-10-30 23-04-03.png"
+      ],
+      "source_dimensions": [
+        640,
+        240
+      ],
+      "sha256": "a952947bc683e6f5df0940e7566fa71944106805c6bd2e3729272edba09ead06",
+      "repeated_export_count": 1,
+      "changed_pixels_between_repeats": [],
+      "pixel_rgb_sha256": "1c9e0f481a67ca88f318bdb824fe6f309f99da580979b56d2bbea0506b6a563e"
+    }
+  ],
+  "limitation": "Diagnostic2 alternates a moving Lightning room with static dialogue, actual native duel board, and card surfaces. Repeated static exports establish absence of flashing in these sampled UI states; they do not prove every production animation.",
+  "validation": {
+    "native": "native-validation.json",
+    "video": "video-validation.json",
+    "native_map_count": 34,
+    "native_raw_rdp_capture_count": 42,
+    "static_ui_frames": 2160,
+    "moving_room_frames": 720,
+    "video_cycles": 8,
+    "all_three_framebuffers": true,
+    "lowest_free_heap_bytes": 1051184,
+    "ram_mib": 4
+  },
+  "reproduce_native": "cd port/frontends/n64/adventure && make BUILD_DIR=build/diagnostic ROM=poketcg-diagnostic DIAGNOSTIC=1 -j8 bundle && python3 tools/validate.py poketcg-diagnostic.z64 --output build/readability-native-final --frames 42 --timeout 240",
+  "notes": "Native raw RDP captures are not final VI screenshots. This directory contains actual ares post-VI exports; the contact sheet changes only pixel aspect ratio by duplicating scanlines."
+}

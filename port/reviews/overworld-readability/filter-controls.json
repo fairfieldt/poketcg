@@ -1,0 +1,44 @@
+{
+  "readability": {
+    "rom": "port/frontends/n64/adventure/poketcg-vi-readability.z64",
+    "sha256": "f50c23d4f9a5c8b1649ffafa800d01dc193f0ab32250bcaccc9f1210c3127ff1",
+    "post_vi_png": "port/frontends/n64/adventure/build/vi-readability/before-post-vi.png",
+    "post_vi_sha256": "dababbf9729b2977eb5e6a6215c52f38b7622e8a607393d47138a8e640d55aef",
+    "dfs_sha256": "d680696ffb54e73b40571c14fc30108086ea84910cfb4157ea3aaee131910397"
+  },
+  "aa": {
+    "rom": "port/frontends/n64/adventure/poketcg-vi-aa.z64",
+    "sha256": "db8a0577ea9fb8a16377d61bf263dfe32d6cd97c6962b71c98c3ba0399deeff9",
+    "post_vi_png": "port/frontends/n64/adventure/build/vi-readability/aa-post-vi.png",
+    "post_vi_sha256": "4899eb3826f5fc86ddf4206d55905ba9dded1fb15ecb3080c9e16781d30f7f73",
+    "dfs_sha256": "d680696ffb54e73b40571c14fc30108086ea84910cfb4157ea3aaee131910397"
+  },
+  "resample": {
+    "rom": "port/frontends/n64/adventure/poketcg-vi-resample.z64",
+    "sha256": "4130aacf0f4a378bb76bc5b6920481555f5573d7c995e9d4b1884645146d3a66",
+    "post_vi_png": "port/frontends/n64/adventure/build/vi-readability/resample-post-vi.png",
+    "post_vi_sha256": "c0362f553b95555ebe114ae8581bc436c1755fbd164d0aff24b0636d9128d45b",
+    "dfs_sha256": "d680696ffb54e73b40571c14fc30108086ea84910cfb4157ea3aaee131910397"
+  },
+  "point": {
+    "rom": "port/frontends/n64/adventure/poketcg-vi-point.z64",
+    "sha256": "9fabebc69b0afea8cf757eda29ce2684b0a0ff552e5462a951a7714de37899c5",
+    "post_vi_png": "port/frontends/n64/adventure/build/vi-readability/point-post-vi.png",
+    "post_vi_sha256": "f70b080699a40b99eed59e720aa08b49df848722c7d54d0b2ae837d062b96bba",
+    "dfs_sha256": "d680696ffb54e73b40571c14fc30108086ea84910cfb4157ea3aaee131910397"
+  },
+  "capture": {
+    "stage": "ares v148 Tools Capture Screenshot; post VI, before Ruby window shaders/scaling",
+    "raw_size": [
+      640,
+      240
+    ],
+    "display_aspect": "4:3",
+    "internal_quality": "SD",
+    "rom_framebuffer": [
+      320,
+      240
+    ],
+    "same_baseline_assets": true
+  }
+}

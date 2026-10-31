@@ -10055,9 +10055,9 @@
   "meshes": {
     "overworld": {
       "file": "maps/overworld.l64",
-      "vertices": 11977,
-      "triangles": 5873,
-      "batches": 15,
+      "vertices": 11114,
+      "triangles": 5560,
+      "batches": 16,
       "textures": [
         "t10e0038945313eb8",
         "t1be80a1c7bb22f33",
@@ -10072,6 +10072,7 @@
         "tbd44b6c80d177d03",
         "tdd8e4bcdec0340fc",
         "te7294b59c60589cd",
+        "te88883a6abcf9922",
         "tfeec08aef9335440"
       ],
       "props": [
@@ -10079,85 +10080,85 @@
           "name": "Mason Laboratory",
           "x": 2.5,
           "y": 14,
-          "width": 1.25,
+          "width": 1.75,
           "depth": 1.05
         },
         {
           "name": "Ishihara House",
           "x": 1.5,
           "y": 4,
-          "width": 0.95,
+          "width": 1.1875,
           "depth": 0.8
         },
         {
           "name": "Fighting Club",
           "x": 7.5,
           "y": 14,
-          "width": 1.25,
-          "depth": 0.9
+          "width": 1.75,
+          "depth": 1.26
         },
         {
           "name": "Rock Club",
           "x": 3.5,
           "y": 8,
-          "width": 1.2,
-          "depth": 0.7
+          "width": 1.68,
+          "depth": 0.9799999999999999
         },
         {
           "name": "Water Club",
           "x": 14.5,
           "y": 13.5,
-          "width": 1.5,
-          "depth": 1.4
+          "width": 1.77,
+          "depth": 1.652
         },
         {
           "name": "Lightning Club",
           "x": 5.5,
           "y": 11,
-          "width": 1.2,
-          "depth": 0.87
+          "width": 1.68,
+          "depth": 0.9570000000000001
         },
         {
           "name": "Grass Club",
           "x": 16.5,
           "y": 9,
-          "width": 1.45,
-          "depth": 0.9
+          "width": 2.03,
+          "depth": 1.26
         },
         {
           "name": "Psychic Club",
           "x": 12.5,
           "y": 6.5,
-          "width": 1.4,
-          "depth": 1
+          "width": 2.0999999999999996,
+          "depth": 1.5
         },
         {
           "name": "Science Club",
           "x": 16.5,
           "y": 5,
-          "width": 1.35,
-          "depth": 0.92
+          "width": 1.89,
+          "depth": 1.288
         },
         {
           "name": "Fire Club",
           "x": 14.5,
           "y": 3,
-          "width": 1.13,
-          "depth": 0.85
+          "width": 1.5819999999999999,
+          "depth": 1.19
         },
         {
           "name": "Challenge Hall",
           "x": 8.5,
           "y": 5,
-          "width": 1.5,
-          "depth": 1.5
+          "width": 2.0999999999999996,
+          "depth": 2.0999999999999996
         },
         {
           "name": "Pokemon Dome",
           "x": 9.5,
           "y": 9.5,
-          "width": 1.53,
-          "depth": 1.03
+          "width": 2.142,
+          "depth": 1.442
         }
       ]
     },
@@ -21429,7 +21430,7 @@
     "actors": "actors.l64",
     "textures": "content-addressed PNG files, global deduplication"
   },
-  "texture_count": 430,
+  "texture_count": 431,
   "individual_characters": [
     {
       "file": "maps/actor_mark.l64",
