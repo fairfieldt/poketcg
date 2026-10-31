@@ -1,0 +1,21 @@
+{
+  "host_ui_scripts_per_resolution": 10,
+  "host_resolutions": [
+    [
+      320,
+      240
+    ],
+    [
+      480,
+      360
+    ]
+  ],
+  "card_records": 228,
+  "card_descriptions": 316,
+  "exact_rules_pages": "all rendered at both resolutions",
+  "two_controller_ownership": "pass",
+  "web_pointer_selection": "pass: actual compiled C hand selection and taken Prize masks",
+  "web_full_gameplay": "pass: hotseat, AI, online replay, save/continue, practice, widgets and deckbuilder",
+  "web_viewports": "pass: both entry points at 1280x720, 800x600, 320x480",
+  "live_gallery": "pass: image loading, 4:3 display and no browser/HTTP errors"
+}

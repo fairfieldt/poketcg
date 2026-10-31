@@ -1,0 +1,83 @@
+{
+  "description": "International English-language Pok\u00e9mon TCG card back: original yellow logos, Pok\u00e9 Ball and blue/white swirl.",
+  "source": {
+    "file": "source.jpg",
+    "url": "https://archives.bulbagarden.net/media/upload/1/17/Cardback.jpg",
+    "page": "https://archives.bulbagarden.net/wiki/File:Cardback.jpg",
+    "permanent_page": "https://archives.bulbagarden.net/w/index.php?title=File:Cardback.jpg&oldid=1200019",
+    "retrieved": "2026-10-31",
+    "size": [
+      745,
+      1040
+    ],
+    "sha256": "7fa2a729bc7d214b50215596a8aace9acc0fb57211c2c15b3f8747810ce10edb",
+    "published_revision": "2024-03-22 14:47 UTC",
+    "uploader": "C.Ezra.M",
+    "file_history_credit": "From Alternative Play Handbook; credit to JP from pkmncards.com."
+  },
+  "official_reference": {
+    "rules_page": "https://play.pokemon.com/en-gb/resources/rules/",
+    "handbook": "https://www.pokemon.com/static-assets/content-assets/cms2/pdf/trading-card-game/tcg-alternative-play-handbook-en.pdf",
+    "provenance_note": "The official Rules & Formats page links this handbook. The Bulbagarden file history identifies the handbook as its source; the JPEG here is the exact published Bulbagarden file, not a new PDF extraction."
+  },
+  "rights": "Pok\u00e9mon TCG artwork \u00a9 The Pok\u00e9mon Company / Nintendo / Creatures / GAME FREAK. Copyrighted artwork; no free-content license is asserted.",
+  "transforms": [
+    "Retain original downloaded JPEG bytes.",
+    "Mask white outer corners with a 36px rounded rectangle at source resolution.",
+    "Resize from original source with Lanczos; no recoloring, invented lettering, or reconstructed artwork.",
+    "Native variants quantize RGB to five bits and alpha to one bit.",
+    "Renderer selects exact native size for 24x34/32x44 at 320x240 and 36x51/48x66 at 480x360."
+  ],
+  "outputs": [
+    {
+      "path": "port/assets/ui/card-back/native-small.png",
+      "size": [
+        24,
+        34
+      ],
+      "format": "RGBA5551",
+      "bytes": 1632,
+      "sha256": "f5bee1a35d0689bb257b63e6654136b4c5d4185204db15f5c2788cffdb384b8b"
+    },
+    {
+      "path": "port/assets/ui/card-back/native-standard.png",
+      "size": [
+        32,
+        44
+      ],
+      "format": "RGBA5551",
+      "bytes": 2816,
+      "sha256": "6088394ba54ed1ea7d542f44960f318bf29e80436e476a40dc793f7c513e8cad"
+    },
+    {
+      "path": "port/assets/ui/card-back/native-small_hi.png",
+      "size": [
+        36,
+        51
+      ],
+      "format": "RGBA5551",
+      "bytes": 3672,
+      "sha256": "08a7294934380c4a5db5fbafc145c64beff80cdb484fd312c0c3bac4c3f4e8ef"
+    },
+    {
+      "path": "port/assets/ui/card-back/native-high.png",
+      "size": [
+        48,
+        66
+      ],
+      "format": "RGBA5551",
+      "bytes": 6336,
+      "sha256": "1be6c137113df4f29a6e2b65bf5ae160e04be94ada12b247a9fdd80865d0edfb"
+    },
+    {
+      "path": "port/frontends/web/src/img/card-back.png",
+      "size": [
+        256,
+        357
+      ],
+      "format": "RGBA8 PNG",
+      "sha256": "994df93424a2f4e8d004d700483124313b80ace71be5673fa64473be8aca2855"
+    }
+  ],
+  "native_total_bytes": 14456
+}

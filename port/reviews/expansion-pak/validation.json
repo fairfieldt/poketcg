@@ -1,6 +1,6 @@
 {
   "passed": true,
-  "source_commit": "30149082349e2bf91aa88b7d0e56762b33df3ae1",
+  "source_commit": "5720fb5bd2299d77040ce63e86141fed3432c0fe",
   "capture_cases": {
     "game480": {
       "source": "port/reviews/expansion-pak/cases/game-480x360-8mib-v3/capture-provenance.json",
@@ -473,6 +473,6 @@
   "extra_proofs": {
     "controlled_baseline": "baseline-assets.json",
     "face_pixel_changes": "face-pixel-proof.json",
-    "card_back_source": "../../assets/ui/card-back/manifest.json"
+    "card_back_source": "authoring/card-back/manifest.json"
   }
 }

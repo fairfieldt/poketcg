@@ -169,7 +169,7 @@ def main():
     for resolution in (320,480):
         tiles=[(crops[resolution,when,slug],f'{name} · {when}') for when in ('before','after') for slug,name,_ in FAMILIES]
         sheet(HERE/f'face-before-after-{resolution}.png',tiles,4,250,260,f'Faces · {resolution}×{240 if resolution==320 else 360} · before / after')
-    selections=['overworld','lab','lightning','dome','board','hand-pokemon','pokemon-rules-1']
+    selections=['overworld','lab','lightning','dome','board','hand-pokemon','pokemon-rules-1','prize']
     tiles=[(display_frame(post_vi(cases['game'+str(res)],stage)),f'{LABELS[stage]} · {res}×{240 if res==320 else 360}')
            for stage in selections for res in (320,480)]
     sheet(HERE/'resolution-comparison.png',tiles,2,640,480,'Native resolution · 320×240 / 480×360 · ares post-VI')
@@ -194,6 +194,9 @@ def main():
             higher_resolution_display='640x480 scanout unchanged'),
         renderer_timing=dict(source='ares emulated N64 timer_ticks around scene render and RDP completion',
             physical_console_fps_measured=False,eight_actor_room=timing))
+    validation['regressions']=json.loads((HERE/'regression-checks.json').read_text())
+    validation['extra_proofs']={'controlled_baseline':'baseline-assets.json',
+        'face_pixel_changes':'face-pixel-proof.json','card_back_source':'authoring/card-back/manifest.json'}
     (HERE/'validation.json').write_text(json.dumps(validation,indent=2)+'\n')
     resolution_html=''.join('<h3>'+escaped(LABELS[stage])+'</h3><div class="pair">'+figure(cases['game320'],stage,'320×240 · 4 MiB')+figure(cases['game480'],stage,'480×360 · 8 MiB')+'</div>' for stage in selections)
     face_html=''.join(f'<figure><a href="{escaped(post_vi(cases["after480"],slug+"-portrait").relative_to(HERE))}"><img class="crop" src="derived/480-after-{slug}.png" alt="{escaped(name)}"><figcaption>{escaped(name)} · {escaped(note)}</figcaption></a></figure>' for slug,name,note in FAMILIES)
@@ -207,6 +210,7 @@ body{margin:0;background:#111b29;color:#edf1f2;font:16px/1.5 system-ui,sans-seri
 <h1>N64 resolution and lead faces</h1><p>320×240 and 480×360, captured through ares with VI processing enabled. The Expansion Pak build selects 480×360 with 8 MiB and falls back to 320×240 with 4 MiB.</p><nav><a href="#resolution">Scenes and duels</a><a href="#faces">Lead faces</a><a href="#before">Before and after</a><a href="#captures">Full captures</a><a href="#validation">Validation</a></nav>
 <h2 id="faces">Lead faces</h2><p>The new face paint keeps the existing models, UVs, rig and camera. These are fixed crops from emulator captures.</p><div class="faces">'''+face_html+'''</div>'''+distance_html+'''
 <h2 id="resolution">Scenes and duels</h2><p>Each pair uses the new faces. Original captures open when clicked. <a href="resolution-comparison.png">Open the comparison sheet</a>.</p>'''+resolution_html+'''
+<p>The card backs use the original international artwork, sampled for each resolution. <a href="authoring/card-back/manifest.json">Source and conversion record</a> · <a href="https://archives.bulbagarden.net/wiki/File:Cardback.jpg">Published artwork</a>. Pokémon artwork © The Pokémon Company / Nintendo / Creatures / GAME FREAK.</p>
 <h2 id="before">Before and after</h2><p>Identical camera, geometry, pose and crop within each resolution. Only the four lead face textures changed.</p><h3>480×360</h3><a href="face-before-after-480.png"><img class="comparison" src="face-before-after-480.png" alt="Four lead faces before and after at480×360"></a><h3>320×240</h3><a href="face-before-after-320.png"><img class="comparison" src="face-before-after-320.png" alt="Four lead faces before and after at320×240"></a><p><a href="../../../characters/review/distinctive-leads/face-paint-comparison.png">Source texture comparison</a> · <a href="../../../characters/review/distinctive-leads/blender-comparison.png">Blender inspection</a>. Those are asset inspections, not N64 screenshots.</p>
 <h2 id="captures">Full captures</h2><p>Original post-VI PNGs, plus native RDP captures and capture records.</p>'''+all_html+'''
 <h2 id="validation">Validation</h2><div class="evidence"><p>74 post-VI captures pass exact PNG-to-callback RGB checks. Every stage waits for its matching native framebuffer header, six later valid callbacks and six stable frames.</p><p>Both complete native suites pass: 34 maps, 42 captures, story, opening, SRAM and an actual engine duel per RAM mode. The 4 MiB and 8 MiB scene comparisons use the same diagnostic ROM.</p><p>All four lead meshes and aliases remain unchanged; the cast stays within 906 triangles and six batches per actor.</p>'''+timing_text+'''<p><a href="validation.json">Combined validation</a> · <a href="README.md">Build and capture notes</a></p></div><p class="small">Raw 640×240 VI captures are shown at 4:3; comparison sheets duplicate rows exactly. Raw 640×480 captures remain unchanged. Head crops use the same rectangle on a 640×480 display canvas, then 2× nearest scaling. Original files remain available.</p></main></html>'''
@@ -216,6 +220,7 @@ body{margin:0;background:#111b29;color:#edf1f2;font:16px/1.5 system-ui,sans-seri
     import shutil
     for file in ('face-paint-comparison.png','blender-comparison.png'):
         shutil.copy2(geometry.parent/file,inspections/file)
+    shutil.copytree(ROOT/'port/assets/ui/card-back',inspections/'card-back',dirs_exist_ok=True)
     page=page.replace('../../../characters/review/distinctive-leads/','authoring/')
     page=page.replace('74 post-VI captures',f'{validation["post_vi_pngs"]} post-VI captures')
     (HERE/'index.html').write_text(page)
