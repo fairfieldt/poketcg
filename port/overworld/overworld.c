@@ -1206,14 +1206,19 @@ void ow_run(OwState *s, const OwHost *h, uint16_t pc, unsigned id) {
       feature(s, h, OW_FEATURE_MAP_PATCH, a);
       break;
     case 0x37:
-      s->native_vars[11] = (uint8_t)choice(s, h, OW_CHOICE_AARON, 0, 4, 0);
+      s->native_vars[11] = (uint8_t)choice(s, h, OW_CHOICE_AARON, SelectDeckToDuelText, 4, 0);
+      /* Aaron uses the same multichoice text-entry side effect as starters;
+         the fourth entry is NULL when the player cancels. */
+      s->txram[0] = s->native_vars[11] < 4 ? word(ow_script_address(
+          "ScriptCommand_ChooseDeckToDuelAgainstMultichoice.text_entries") +
+          s->native_vars[11] * 2) : 0;
       ow_set_event(s, EVENT_AARON_DECK_MENU_CHOICE, s->native_vars[11]);
       break;
     case 0x38:
       feature(s, h, OW_FEATURE_DECK_MACHINE, a);
       break;
     case 0x39:
-      s->starter = (uint8_t)choice(s, h, OW_CHOICE_STARTER, 0, 3, 0);
+      s->starter = (uint8_t)choice(s, h, OW_CHOICE_STARTER, SelectDeckToTakeText, 3, 0);
       /* ShowMultichoiceTextbox also puts the chosen entry in wTxRam2.
          The confirmation and starter reward both interpolate that text. */
       if (s->starter < 3)
@@ -1332,7 +1337,8 @@ void ow_run(OwState *s, const OwHost *h, uint16_t pc, unsigned id) {
     case 0x50:
     case 0x51: {
       unsigned answer =
-          choice(s, h, op == 0x50 ? OW_CHOICE_SAM : OW_CHOICE_SAM_RULES, 0,
+          choice(s, h, op == 0x50 ? OW_CHOICE_SAM : OW_CHOICE_SAM_RULES,
+                 op == 0x50 ? HowCanIHelpText : 0,
                  op == 0x50 ? 4 : 8, 0);
       ow_set_event(s, EVENT_SAM_MENU_CHOICE, answer);
       break;

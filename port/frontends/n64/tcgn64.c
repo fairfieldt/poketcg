@@ -469,20 +469,43 @@ static void compact_text(int x,int y,uint32_t color,const char *text,int limit)
 		}
 		line[count]=0;graphics_set_color(color,0);graphics_draw_text(g_fb,x,y,line);return;
 	}
+	/* At 1.5x, source pixels alternate between one and two physical pixels.
+	 * The character advance is even, so its horizontal phase stays constant.
+	 * Write the cached canvas directly instead of calling graphics_draw_box
+	 * for each lit source pixel (and again for each shadow pixel). */
+	static const uint8_t offsets[2][9]={{0,1,3,4,6,7,9,10,12},{0,2,3,5,6,8,9,11,12}};
 	for(;*text&&*text!='\n';text++,x+=CW) {
 		unsigned ch=(unsigned char)*text;if(ch<32||ch>126)ch='?';
 		if(x+CW>limit)break;
+		int px=ui_x(x);
+		bool full_row=x>=0&&px+12<=g_fb->width;
+		const uint8_t *columns=offsets[(unsigned)x&1];
 		for(int row=0;row<8;row++) {
 #ifdef TCGN64_HOST_TEST
 			unsigned bits=mock_font_row(ch,(unsigned)row);
 #else
 			unsigned bits=__font_data[ch*8+(unsigned)row];
 #endif
-			for(int col=0;col<8;col++)if(bits&(0x80>>col)) {
-				int px=ui_x(x+col),py=ui_y(y+row);
-				int w=ui_x(x+col+1)-px,h=ui_y(y+row+1)-py;
-				if(px<0||py<0||px+w>g_fb->width||py+h>g_fb->height)continue;
-				graphics_draw_box(g_fb,px,py,w,h,color);
+			int py=ui_y(y+row),height=ui_y(y+row+1)-py;
+			if(!bits||py<0||py+height>g_fb->height)continue;
+			if(full_row) {
+				uint16_t *dest=(uint16_t *)((uint8_t *)g_fb->buffer+py*g_fb->stride)+px;
+				uint16_t *second=height==2?(uint16_t *)((uint8_t *)dest+g_fb->stride):NULL;
+				for(int col=0;col<8;col++)if(bits&(0x80>>col)) {
+					unsigned at=columns[col];dest[at]=(uint16_t)color;
+					if(columns[col+1]-at==2)dest[at+1]=(uint16_t)color;
+					if(second){second[at]=(uint16_t)color;if(columns[col+1]-at==2)second[at+1]=(uint16_t)color;}
+				}
+			} else {
+				/* Preserve whole-source-pixel clipping at partial canvas edges. */
+				for(int col=0;col<8;col++)if(bits&(0x80>>col)) {
+					int dx=ui_x(x+col),width=ui_x(x+col+1)-dx;
+					if(dx<0||dx+width>g_fb->width)continue;
+					for(int yy=0;yy<height;yy++) {
+						uint16_t *dest=(uint16_t *)((uint8_t *)g_fb->buffer+(py+yy)*g_fb->stride)+dx;
+						for(int xx=0;xx<width;xx++)dest[xx]=(uint16_t)color;
+					}
+				}
 			}
 		}
 	}
@@ -727,6 +750,30 @@ static sprite_t *art_get(uint8_t id)
 }
 #endif
 
+/* Both card pictures and backs use the same nearest-neighbor source texels.
+ * Build source columns once per blit, rather than divide for every pixel on
+ * every destination row. Clip before allocating this small stack lookup. */
+static void blit_rgba16_logical(int x,int y,int width,int height,
+	const uint16_t *pixels,int source_width,int source_height,unsigned source_stride)
+{
+	int px=ui_x(x),py=ui_y(y),w=ui_x(x+width)-px,h=ui_y(y+height)-py;
+	if(w<=0||h<=0)return;
+	int first=px<0?-px:0,last=w;
+	if(px+last>g_fb->width)last=g_fb->width-px;
+	int top=py<0?-py:0,bottom=h;
+	if(py+bottom>g_fb->height)bottom=g_fb->height-py;
+	if(first>=last||top>=bottom)return;
+	uint16_t columns[last-first];
+	for(int col=first;col<last;col++)columns[col-first]=(uint16_t)(col*source_width/w);
+	for(int row=top;row<bottom;row++) {
+		uint16_t *dest=(uint16_t *)((uint8_t *)g_fb->buffer+(py+row)*g_fb->stride)+px+first;
+		const uint16_t *src=pixels+(row*source_height/h)*source_stride;
+		for(int col=0;col<last-first;col++) {
+			uint16_t color=src[columns[col]];if(color&1)dest[col]=color;
+		}
+	}
+}
+
 #ifdef TCGN64_CARD_ART
 /* Source card art is the original 64x48 image. Scale that image into the
  * physical destination; every other UI element is rasterized at destination
@@ -739,16 +786,7 @@ static void sprite_logical(int x,int y,int width,int height,sprite_t *sprite)
 	surface_t source=sprite_get_pixels(sprite);
 	const uint16_t *pixels=source.buffer;unsigned stride=source.stride/2;
 #endif
-	int px=ui_x(x),py=ui_y(y),w=ui_x(x+width)-px,h=ui_y(y+height)-py;
-	for(int row=0;row<h;row++) {
-		int dy=py+row;if(dy<0||dy>=g_fb->height)continue;
-		uint16_t *dest=(uint16_t *)((uint8_t *)g_fb->buffer+dy*g_fb->stride);
-		const uint16_t *src=pixels+(row*sprite->height/h)*stride;
-		for(int col=0;col<w;col++) {
-			int dx=px+col;if(dx<0||dx>=g_fb->width)continue;
-			uint16_t color=src[col*sprite->width/w];if(color&1)dest[dx]=color;
-		}
-	}
+	blit_rgba16_logical(x,y,width,height,pixels,sprite->width,sprite->height,stride);
 }
 #endif
 
@@ -1059,19 +1097,184 @@ static void draw_practice_continue(int first)
 	if(pages>1)printf_at(RIGHT-6*CW,TBOX_LINE(1),C_DIM,"%d / %d",first/PRACTICE_PAGE_LINES+1,pages);
 }
 
-/* the board: opponent (TCG_OPPONENT) on top, player at the bottom */
-static void draw_board(uint8_t hl_duelist, int hl_loc)
+static void draw_board_thinking(int hl_loc)
 {
-	draw_felt();
-	fill(LEFT - 4, SLOT_INFO_Y + 4, RIGHT - LEFT + 8, 1, C_MID);
-	draw_side(TCG_OPPONENT, true, hl_duelist == TCG_OPPONENT ? hl_loc : -1);
-	draw_side(TCG_PLAYER, false, hl_duelist == TCG_PLAYER ? hl_loc : -1);
 	if (g_thinking && hl_loc < 0) { /* TCG_EV_THINKING: the AI is deciding */
 		char buf[40];
 		snprintf(buf, sizeof(buf), "%s is thinking%s", g_name[side_of(g_thinking)], (g_frame / 16) & 1 ? "..." : "");
 		fill(LEFT - 2, SLOT_INFO_Y - 1, (int)strlen(buf) * CW + 4, 10, C_BLACK);
 		print(LEFT, SLOT_INFO_Y, C_HI, buf);
 	}
+}
+
+/* the board: opponent (TCG_OPPONENT) on top, player at the bottom */
+static void draw_board_uncached(uint8_t hl_duelist, int hl_loc)
+{
+	draw_felt();
+	fill(LEFT - 4, SLOT_INFO_Y + 4, RIGHT - LEFT + 8, 1, C_MID);
+	draw_side(TCG_OPPONENT, true, hl_duelist == TCG_OPPONENT ? hl_loc : -1);
+	draw_side(TCG_PLAYER, false, hl_duelist == TCG_PLAYER ? hl_loc : -1);
+	draw_board_thinking(hl_loc);
+}
+
+/* Requests can wait for input for many frames without changing the board.
+ * Keep only its rows, independently of the shared UI canvas: card views and
+ * popups are free to overwrite that canvas. The exact engine snapshot also
+ * covers silent mutations between requests, including both deck-ID arrays. */
+typedef struct {
+	surface_t image;
+	unsigned raster_width, canvas_height;
+	uint8_t wram[WRAM_SIZE], hram[HRAM_SIZE];
+	char names[2][16];
+	uint8_t turn_holder;
+	bool damage_visible, valid;
+	uint8_t damage_side, damage_loc;
+	unsigned damage_amount;
+} BoardCache;
+static BoardCache g_board_cache;
+
+static void board_cache_release(void)
+{
+	if(g_board_cache.image.buffer) {
+#ifdef TCGN64_ADVENTURE
+		/* Every read/write of this surface has already been fenced. */
+		surface_free(&g_board_cache.image);
+#else
+		free(g_board_cache.image.buffer);
+#endif
+	}
+	memset(&g_board_cache,0,sizeof(g_board_cache));
+}
+
+static bool board_cache_matches(uint8_t duelist,int loc)
+{
+	(void)duelist;
+	(void)loc;
+	const BoardCache *cache=&g_board_cache;
+	return cache->valid&&cache->image.width==g_fb->width&&
+		cache->image.height==ui_y(BOARD_Y+BOARD_H)-ui_y(BOARD_Y)&&
+		cache->raster_width==g_raster_width&&cache->canvas_height==g_fb->height&&
+		cache->turn_holder==g_turn_holder&&
+		cache->damage_visible==(g_dmg.timer!=0)&&cache->damage_side==g_dmg.side&&
+		cache->damage_loc==g_dmg.loc&&cache->damage_amount==g_dmg.amount&&
+		!memcmp(cache->names,g_name,sizeof(g_name))&&
+		!memcmp(cache->wram,gWRAM,sizeof(gWRAM))&&!memcmp(cache->hram,gHRAM,sizeof(gHRAM));
+}
+
+/* Selection changes only these borders. Paint the few overlapping details
+ * again in their original order, rather than rebuilding all twelve cards. */
+static void draw_board_highlight(uint8_t duelist,int loc)
+{
+	if(duelist!=TCG_PLAYER&&duelist!=TCG_OPPONENT)return;
+	Slot slot;if(!get_slot(duelist,loc,&slot))return;
+	bool top=duelist==TCG_OPPONENT;
+	if(loc) {
+		/* An unusually wide damage number can extend into the next card,
+		 * whose later drawing normally clips it. Preserve that ordering. */
+		if(g_dmg.timer&&side_of(g_dmg.side)==side_of(duelist)&&g_dmg.loc==loc&&g_dmg.amount>=1000) {
+			draw_board_uncached(duelist,loc);return;
+		}
+		int x=LEFT+(loc-1)*58,y=top?BOARD_Y+10:BOARD_Y+141;
+		rect(x,y,56,30,C_HI);rect(x+1,y+1,54,28,C_HI);
+		/* The ninth energy square covers part of the inner right border. */
+		int k=0;
+		for(int c=0;c<7;c++)for(int i=0;i<slot.energy[c]&&k<9;i++,k++)
+			fill(x+2+k*6,y+25,5,3,C_E0+c);
+		if(g_dmg.timer&&side_of(g_dmg.side)==side_of(duelist)&&g_dmg.loc==loc) {
+			fill(x+20,y+9,34,12,C_RED);damage_number(x+22,y+11,g_dmg.amount);
+		}
+		/* The far-right opponent bench borders meet the active portrait's
+		 * top frame, which draw_side paints after every bench card. */
+		Slot active;
+		if(top&&get_slot(duelist,0,&active))fill(RIGHT-65,BOARD_Y+39,66,1,C_BORDER);
+	} else {
+		int y=top?BOARD_Y+42:BOARD_Y+93,art_y=top?BOARD_Y+40:BOARD_Y+91;
+		rect(LEFT-4,y-1,RIGHT-LEFT+8,47,C_HI);
+		chosen_corners(LEFT-5,y-2,RIGHT-LEFT+10,49);
+		/* The portrait was drawn after the outline in draw_side. Replaying
+		 * it also preserves transparent sprite pixels and its frame. */
+		card_art(RIGHT-64,art_y,slot.id);
+		if(g_dmg.timer&&side_of(g_dmg.side)==side_of(duelist)&&g_dmg.loc==0) {
+			fill(RIGHT-52,art_y+16,40,16,C_RED);damage_number(RIGHT-48,art_y+20,g_dmg.amount);
+		}
+	}
+}
+
+static void board_cache_copy(bool restore)
+{
+	BoardCache *cache=&g_board_cache;
+	int top=ui_y(BOARD_Y);
+#ifdef TCGN64_ADVENTURE
+	/* CPU owns the canvas between frames. Flush/invalidate before the RDP
+	 * reads it or writes restored rows, then wait before CPU overlays resume.
+	 * COPY mode restores every pixel, including transparent-looking colors. */
+	data_cache_hit_writeback_invalidate(g_fb->buffer,(unsigned long)g_fb->stride*g_fb->height);
+	if(!restore)data_cache_hit_writeback_invalidate(CachedAddr(cache->image.buffer),
+		(unsigned long)cache->image.stride*cache->image.height);
+	rdpq_attach(restore?g_fb:&cache->image,NULL);
+	rdpq_mode_push();rdpq_set_mode_copy(false);
+	rdpq_set_scissor(0,0,restore?g_fb->width:cache->image.width,
+		restore?g_fb->height:cache->image.height);
+	if(restore)rdpq_tex_blit(&cache->image,0,top,NULL);
+	else rdpq_tex_blit(g_fb,0,0,&(rdpq_blitparms_t){.t0=top,
+		.width=cache->image.width,.height=cache->image.height});
+	rdpq_mode_pop();rdpq_detach_wait();
+#else
+	uint8_t *canvas=(uint8_t *)g_fb->buffer+top*g_fb->stride;
+	uint8_t *image=cache->image.buffer;
+	for(unsigned y=0;y<cache->image.height;y++) {
+		if(restore)memcpy(canvas,image,cache->image.width*sizeof(uint16_t));
+		else memcpy(image,canvas,cache->image.width*sizeof(uint16_t));
+		canvas+=g_fb->stride;image+=cache->image.stride;
+	}
+#endif
+}
+
+static void draw_board(uint8_t hl_duelist,int hl_loc)
+{
+	if(board_cache_matches(hl_duelist,hl_loc)) {
+		board_cache_copy(true);
+		/* The opponent's one-line bar bevel starts above the felt rows. */
+		fill(LEFT-2,BOARD_Y-1,RIGHT-LEFT+4,1,g_turn_holder==TCG_OPPONENT?C_PANEL2:C_BG);
+		draw_board_highlight(hl_duelist,hl_loc);
+		draw_board_thinking(hl_loc);
+		return;
+	}
+	/* Selection and the blinking thinking caption are small dynamic layers.
+	 * Keep both out of the backing so neither forces a full card redraw. */
+	draw_board_uncached(0,0);
+	unsigned height=ui_y(BOARD_Y+BOARD_H)-ui_y(BOARD_Y);
+	/* Small utility canvases use the same glyph renderer, but cannot hold a
+	 * complete board. Keep the uncached path for those surfaces. */
+	if(ui_y(BOARD_Y)<0||ui_y(BOARD_Y)+height>g_fb->height) {
+		draw_board_highlight(hl_duelist,hl_loc);draw_board_thinking(hl_loc);return;
+	}
+	BoardCache *cache=&g_board_cache;
+	if(!cache->image.buffer||cache->image.width!=g_fb->width||cache->image.height!=height) {
+		board_cache_release();
+#ifdef TCGN64_ADVENTURE
+		cache->image=surface_alloc(FMT_RGBA16,g_fb->width,height);
+#else
+		cache->image=(surface_t){.width=g_fb->width,.height=height,.stride=g_fb->width*sizeof(uint16_t),
+			.buffer=malloc(g_fb->width*height*sizeof(uint16_t))};
+#endif
+		if(!cache->image.buffer) {
+			/* This is an optional speed cache. A fragmented or exhausted
+			 * heap can keep using the board already drawn above. */
+			draw_board_highlight(hl_duelist,hl_loc);draw_board_thinking(hl_loc);
+			return;
+		}
+	}
+	board_cache_copy(false);
+	cache->raster_width=g_raster_width;cache->canvas_height=g_fb->height;
+	cache->turn_holder=g_turn_holder;
+	cache->damage_visible=g_dmg.timer!=0;cache->damage_side=g_dmg.side;
+	cache->damage_loc=g_dmg.loc;cache->damage_amount=g_dmg.amount;
+	memcpy(cache->names,g_name,sizeof(g_name));
+	memcpy(cache->wram,gWRAM,sizeof(gWRAM));memcpy(cache->hram,gHRAM,sizeof(gHRAM));
+	cache->valid=true;
+	draw_board_highlight(hl_duelist,hl_loc);
+	draw_board_thinking(hl_loc);
 }
 
 /* The display surfaces are uncached memory, where the CPU drawing functions
@@ -1104,7 +1307,20 @@ static void begin_frame_canvas(bool clear)
 #endif
 	g_fb_cached.buffer = CachedAddr(g_fb_cached.buffer);
 	g_fb = &g_fb_cached;
-	if(clear)graphics_fill_screen(g_fb, g_col[C_BG]);
+	if(clear) {
+#ifdef TCGN64_ADVENTURE
+		/* A CPU clear costs a store for every physical pixel. The RDP can
+		 * clear the offscreen canvas before ownership returns to the CPU. */
+		data_cache_hit_writeback_invalidate(g_fb->buffer,(unsigned long)g_fb->stride*g_fb->height);
+		rdpq_attach(g_fb,NULL);rdpq_mode_push();
+		rdpq_set_mode_fill(RGBA32(kRGB[C_BG][0],kRGB[C_BG][1],kRGB[C_BG][2],255));
+		rdpq_set_scissor(0,0,g_fb->width,g_fb->height);
+		rdpq_fill_rectangle(0,0,g_fb->width,g_fb->height);
+		rdpq_mode_pop();rdpq_detach_wait();
+#else
+		graphics_fill_screen(g_fb,g_col[C_BG]);
+#endif
+	}
 }
 
 static void begin_frame(void) {begin_frame_canvas(true);}
@@ -1654,19 +1870,34 @@ static void draw_card_page(uint8_t id,uint8_t owner,int deck,const char *title)
 { (void)draw_card_page_at(id,owner,deck,title,0); }
 
 /* view a card until A/B/START; page input never changes the caller's cursor. */
-static void view_card(uint8_t id,uint8_t owner,int deck,int ports)
+static int draw_card_view_page(uint8_t id,uint8_t owner,int deck,int page,bool duel_log)
+{
+	int pages=draw_card_page_at(id,owner,deck,NULL,page);
+	const char *hint=pages>1?"L/R: page  B: back":"B: back";
+	if(duel_log)draw_textbox_hint(hint);
+	else {
+		/* Cards received or inspected in the adventure have no duel log. */
+		panel(LEFT-6,TBOX_Y,RIGHT-LEFT+12,TBOX_LINES*TLH+5);
+		print(RIGHT-(int)strlen(hint)*CW,TBOX_LINE(TBOX_LINES-1),C_HI,hint);
+	}
+	return pages;
+}
+
+static void view_card_context(uint8_t id,uint8_t owner,int deck,int ports,bool duel_log)
 {
 	int page=0;
 	for(;;) {
 		begin_frame();
-		int pages=draw_card_page_at(id,owner,deck,NULL,page);
-		draw_textbox_hint(pages>1?"L/R: page  B: back":"B: back");
+		int pages=draw_card_view_page(id,owner,deck,page,duel_log);
 		end_frame_poll();Keys k=keys(ports);
 		if(k.a||k.b||k.start)return;
 		if((k.r||k.right||k.down)&&page+1<pages)page++;
 		if((k.l||k.left||k.up)&&page>0)page--;
 	}
 }
+
+static void view_card(uint8_t id,uint8_t owner,int deck,int ports)
+{view_card_context(id,owner,deck,ports,true);}
 
 static void view_slot(uint8_t duelist, int loc, int ports)
 {
@@ -1889,16 +2120,7 @@ static void card_back(int x,int y,int width,int height)
 		sw=ui_high_res()?CARD_BACK_HIGH_W:CARD_BACK_STANDARD_W;
 		sh=ui_high_res()?CARD_BACK_HIGH_H:CARD_BACK_STANDARD_H;
 	}
-	int px=ui_x(x),py=ui_y(y),w=ui_x(x+width)-px,h=ui_y(y+height)-py;
-	for(int row=0;row<h;row++) {
-		int dy=py+row;if(dy<0||dy>=g_fb->height)continue;
-		uint16_t *dest=(uint16_t *)((uint8_t *)g_fb->buffer+dy*g_fb->stride);
-		for(int col=0;col<w;col++) {
-			int dx=px+col;if(dx<0||dx>=g_fb->width)continue;
-			uint16_t color=source[(row*sh/h)*sw+col*sw/w];
-			if(color&1)dest[dx]=color;
-		}
-	}
+	blit_rgba16_logical(x,y,width,height,source,sw,sh,(unsigned)sw);
 }
 
 /* Start and result share the paper turn-plaque language. They occupy waits
@@ -3401,6 +3623,7 @@ static void result_screen(int result)
 
 static void reset_duel_ui(void)
 {
+	board_cache_release();
 	input_discard_pending();
 	log_clear();
 	memset(&g_overlay, 0, sizeof(g_overlay));
@@ -3704,7 +3927,7 @@ int n64_menu(const char *title,const char *const *items,int count,int initial,bo
 void n64_card_detail(unsigned id)
 {
 	bool owned=!g_input_service;if(owned)input_begin();
-	view_card((uint8_t)id,TCG_PLAYER,-1,1);
+	view_card_context((uint8_t)id,TCG_PLAYER,-1,1,false);
 	if(owned)input_end();
 }
 
@@ -3727,6 +3950,7 @@ int n64_duel_play(const TcgDuelSetup *setup,const uint8_t *saved)
 	input_begin();
 	int result=saved?tcg_continue_duel(setup,saved,TCG_SAVE_SIZE):tcg_run_duel(setup);
 	input_end();
+	board_cache_release();
 	g_save_ok=save_enabled;
 	/* The adventure commits the resumed story before deleting this duel save. */
 	return result;

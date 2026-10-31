@@ -11,12 +11,15 @@ typedef struct {
   int outcome;
   unsigned collection;
   unsigned starter_choice, starter_choices, confirmations, reward_messages;
+  unsigned aaron_choice, aaron_confirmations;
   bool reselect;
   uint8_t saved[2048];
   size_t saved_size;
 } Test;
 static const uint16_t starter_texts[] = {CharmanderAndFriendsDeckChoiceText,
     SquirtleAndFriendsDeckChoiceText, BulbasaurAndFriendsDeckChoiceText};
+static const uint16_t aaron_texts[] = {LightningAndFireDeckChoiceText,
+    WaterAndFightingDeckChoiceText, GrassAndPsychicDeckChoiceText, 0};
 static void text(void *ctx, OwState *s, uint16_t id, uint8_t npc) {
   (void)s;
   (void)npc;
@@ -32,8 +35,17 @@ static int choice(void *ctx, OwState *s, unsigned kind, uint16_t id,
   Test *t=ctx;
   (void)count;
   (void)initial;
-  if(kind==OW_CHOICE_STARTER)
+  if(kind==OW_CHOICE_STARTER){
+    assert(id==SelectDeckToTakeText);
     return t->reselect&&t->starter_choices++ ? 2 : (int)t->starter_choice;
+  }
+  if(kind==OW_CHOICE_AARON){assert(id==SelectDeckToDuelText);return (int)t->aaron_choice;}
+  if(kind==OW_CHOICE_SAM)assert(id==HowCanIHelpText);
+  if(kind==OW_CHOICE_SAM_RULES)assert(!id);
+  if(kind==OW_CHOICE_YES_NO&&id==Text0601){
+    assert(t->aaron_choice<3&&s->txram[0]==aaron_texts[t->aaron_choice]);
+    t->aaron_confirmations++;return 0;
+  }
   if(kind==OW_CHOICE_YES_NO&&id==Text05f3){
     assert(s->starter<3&&s->txram[0]==starter_texts[s->starter]);
     return !t->reselect||t->confirmations++>0;
@@ -110,6 +122,17 @@ int main(void) {
     if(selected==3)assert(names.confirmations==2&&names.starter_choices==2);
   }
   puts("Starter text PASS: all three complete deck names, confirmation/reward and reselection");
+  OwState coach={.version=OW_SAVE_VERSION,.rng=123};
+  ow_set_event(&coach,EVENT_MASON_LAB_STATE,MASON_LAB_RECEIVED_STARTER_DECK);
+  ow_load_map(&coach,&h,DECK_MACHINE_ROOM,8,8,NORTH);
+  for(unsigned selected=0;selected<4;selected++){
+    Test names={.aaron_choice=selected};OwHost names_host=host(&names);
+    coach.txram[0]=CharmanderAndFriendsDeckChoiceText;
+    ow_run(&coach,&names_host,ow_script_address("Script_Aaron"),NPC_AARON);
+    assert(!coach.error[0]&&coach.txram[0]==aaron_texts[selected]);
+    assert(names.aaron_confirmations==(selected<3)&&!names.duels);
+  }
+  puts("Aaron text PASS: all three deck names and cancel replace stale text; source menu prompts");
   ow_new_game(&s, &h, 123);
   assert(!s.error[0]);
   assert(s.map == MASON_LABORATORY);

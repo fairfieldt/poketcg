@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "method": "Isolated real N64 code in ares; 8 warmup +12 timed full-board/text draws per resolution, original fonts and card sprites. CPU drawing excludes presentation/audio/framebuffer checksum. Frozen renderer variant differs only in the raster patch; board cache is not included.",
+  "native_canvas_hashes": {
+    "320": "c16242f3",
+    "480": "e08501d4"
+  },
+  "cases": {
+    "320": {
+      "before_median_us": 50843,
+      "after_median_us": 49936,
+      "ratio": 1.0182
+    },
+    "480": {
+      "before_median_us": 138368,
+      "after_median_us": 109922,
+      "ratio": 1.2588
+    }
+  },
+  "host_pixel_cases": {
+    "glyph": 1992,
+    "scaled_blit": 3276,
+    "card_back": 936,
+    "resolutions": [
+      [
+        320,
+        240
+      ],
+      [
+        480,
+        360
+      ],
+      [
+        113,
+        47
+      ]
+    ],
+    "checks": [
+      "both axis phases",
+      "clipped edges",
+      "transparent texels",
+      "padded source and destination stride",
+      "guard bytes",
+      "untouched pixels"
+    ]
+  }
+}

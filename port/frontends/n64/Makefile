@@ -6,6 +6,8 @@
 #                    the scripted UI tests in tests/*.txt (logs and screenshots
 #                    in build/host/)
 #   make felttest    compare the cached felt pixels with the scalar reference
+#   make boardtest   compare board caching and selection against fresh drawing
+#   make rastertest  compare scaled glyphs, pictures and backs pixel for pixel
 #   make inputtest   verify VI-rate taps and frontend one-press consumption
 #   make endiancheck run tools/endian_check.c (36 deterministic duels, digest of
 #                    every event/request/answer and of the final WRAM/HRAM)
@@ -177,6 +179,22 @@ $(HOST_BUILD)/felt_cache: tests/felt_cache.c tcgn64.c mock/libdragon.h
 felttest: $(HOST_BUILD)/felt_cache
 	./$(HOST_BUILD)/felt_cache
 
+$(HOST_BUILD)/raster_paths: tests/raster_paths.c tcgn64.c mock/libdragon.h $(ART_HDR)
+	@mkdir -p $(dir $@)
+	$(HOST_CC) -std=gnu11 -O2 -Wall -Wextra -Wno-unused-parameter -Werror \
+		-ffunction-sections -fdata-sections -Imock -I$(ENGINE) -I$(BUILD_DIR) $< $(HOST_DEAD_STRIP) -o $@
+rastertest: $(HOST_BUILD)/raster_paths
+	./$(HOST_BUILD)/raster_paths
+
+$(HOST_BUILD)/board_cache.o: tests/board_cache.c tcgn64.c mock/libdragon.h
+	@mkdir -p $(dir $@)
+	$(HOST_CC) -c $(HOST_FRONT_CFLAGS) -UTCGN64_CARD_ART -ffunction-sections -fdata-sections -o $@ $<
+$(HOST_BUILD)/board_cache: $(HOST_BUILD)/board_cache.o $(HOST_CORE_OBJS) $(HOST_BUILD)/save_store_n64.o $(HOST_BUILD)/mock_libdragon.o $(HOST_BUILD)/optional.lst
+	$(HOST_CC) -o $@ $(HOST_BUILD)/board_cache.o $(HOST_CORE_OBJS) $(HOST_BUILD)/save_store_n64.o $(HOST_BUILD)/mock_libdragon.o $$(cat $(HOST_BUILD)/optional.lst) $(HOST_DEAD_STRIP)
+boardtest: $(HOST_BUILD)/board_cache
+	./$(HOST_BUILD)/board_cache
+.PHONY: boardtest rastertest
+
 $(HOST_BUILD)/input_capture: tests/input_capture.c duel_input.h
 	@mkdir -p $(dir $@)
 	$(HOST_CC) -std=c11 -O2 -Wall -Wextra -Werror $< -o $@
@@ -239,7 +257,7 @@ $(HOST_ROMFS)/buildinfo.txt: $(HOST_BUILD)/optional.lst $(CARD_SPRITES)
 	cp $(HOST_BUILD)/optional.info $@
 	@if [ -n "$(CARD_SPRITES)" ]; then rm -rf $(HOST_ROMFS)/cards; ln -s ../../filesystem/cards $(HOST_ROMFS)/cards; fi
 
-hosttest: felttest inputtest cointest $(HOST_BUILD)/tcgn64_host $(HOST_ROMFS)/buildinfo.txt
+hosttest: felttest inputtest cointest boardtest rastertest $(HOST_BUILD)/tcgn64_host $(HOST_ROMFS)/buildinfo.txt
 	@fail=0; for t in $(HOST_TESTS); do \
 		n=$$(basename $$t .txt); mkdir -p $(HOST_BUILD)/shots/$$n; \
 		printf '    [TEST] %-24s' $$n; \

@@ -1,0 +1,42 @@
+Loaded raster-review
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=320 height=240 ram=8388608 highres=0
+TEXT Mark's turn. Choose a card from your hand, or choose an attack.
+2026-10-31 12:07:50.229 ares[4396:18782477] Resizing output buffers to 1536, 1152
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 10708.125 us (mode: sync, success: yes).
+GAME FPS 12 frames=7 ticks=41966688
+RASTER SAMPLE width=320 us=50837 hash=c16242f3
+RASTER SAMPLE width=320 us=50850 hash=c16242f3
+RASTER SAMPLE width=320 us=50830 hash=c16242f3
+RASTER SAMPLE width=320 us=50832 hash=c16242f3
+GAME FPS 12 frames=13 ticks=65692695
+RASTER SAMPLE width=320 us=50843 hash=c16242f3
+RASTER SAMPLE width=320 us=50854 hash=c16242f3
+RASTER SAMPLE width=320 us=51004 hash=c16242f3
+RASTER SAMPLE width=320 us=50853 hash=c16242f3
+RASTER SAMPLE width=320 us=50869 hash=c16242f3
+RASTER SAMPLE width=320 us=50832 hash=c16242f3
+GAME FPS 12 frames=19 ticks=89447193
+RASTER SAMPLE width=320 us=50784 hash=c16242f3
+RASTER SAMPLE width=320 us=50789 hash=c16242f3
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+TEXT Mark's turn. Choose a card from your hand, or choose an attack.
+GAME FPS 5 frames=4 ticks=134757545
+GAME FPS 5 frames=7 ticks=164661898
+RASTER SAMPLE width=480 us=138508 hash=e08501d4
+GAME FPS 5 frames=10 ticks=194583674
+RASTER SAMPLE width=480 us=138261 hash=e08501d4
+RASTER SAMPLE width=480 us=138321 hash=e08501d4
+RASTER SAMPLE width=480 us=138372 hash=e08501d4
+GAME FPS 5 frames=13 ticks=224522527
+RASTER SAMPLE width=480 us=138449 hash=e08501d4
+RASTER SAMPLE width=480 us=138280 hash=e08501d4
+RASTER SAMPLE width=480 us=138307 hash=e08501d4
+GAME FPS 5 frames=16 ticks=254452604
+RASTER SAMPLE width=480 us=138479 hash=e08501d4
+RASTER SAMPLE width=480 us=138449 hash=e08501d4
+RASTER SAMPLE width=480 us=138313 hash=e08501d4
+GAME FPS 5 frames=19 ticks=284375676
+RASTER SAMPLE width=480 us=138310 hash=e08501d4
+RASTER SAMPLE width=480 us=138368 hash=e08501d4
+RASTER REVIEW PASS

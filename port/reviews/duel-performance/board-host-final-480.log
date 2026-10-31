@@ -1,0 +1,74 @@
+INPUT CAPTURE PASS: one-VI taps across1..12-VI redraws, release/hold/freshpress, two independent controllers, unplug reset
+felt 320x240: exact, 32 rows, 19200 cached bytes, padded stride
+felt 480x360: exact, 48 rows, 43200 cached bytes, padded stride
+felt 320x240: exact, 32 rows, 19200 cached bytes, padded stride
+felt cache: PASS
+FRONTEND INPUT PASS: tap survives slow/passive redraws; one press/one action; held ACK safe; ports/start/dpad/unplug
+MOCK: [frame 1] wait 100000
+COIN 1/1 tails
+COIN 1/1 tails
+COIN CONTEXT PASS opening coins=1 owner=194 animations preserve RNG/result
+COIN 1/3 tails
+COIN 2/3 heads
+COIN 3/3 tails
+COIN 1/3 tails
+COIN 2/3 heads
+COIN 3/3 tails
+COIN CONTEXT PASS attack-multiple coins=3 owner=194 animations preserve RNG/result
+COIN 1/1 tails
+COIN 1/1 tails
+COIN CONTEXT PASS opponent-attack coins=1 owner=195 animations preserve RNG/result
+COIN 1/1 tails
+COIN 1/1 tails
+COIN CONTEXT PASS between-turn-status coins=1 owner=195 animations preserve RNG/result
+COIN 1/1 heads
+COIN ANIMATION PASS: event order, results, RNG, disabled option, controller ownership
+raster 320x240, padded stride656, logical raster320: exact
+raster 480x360, padded stride976, logical raster480: exact
+raster 113x47, padded stride242, logical raster480: exact
+raster paths: PASS glyphs1992 scaled blits3276 backs936; parity, clips, alpha, strides and guards
+MOCK: [frame 1] wait 100000
+COIN 1/1 tails
+COIN 1/1 tails
+COIN CONTEXT PASS opening coins=1 owner=194 animations preserve RNG/result
+COIN 1/3 tails
+COIN 2/3 heads
+COIN 3/3 tails
+COIN 1/3 tails
+COIN 2/3 heads
+COIN 3/3 tails
+COIN CONTEXT PASS attack-multiple coins=3 owner=194 animations preserve RNG/result
+COIN 1/1 tails
+COIN 1/1 tails
+COIN CONTEXT PASS opponent-attack coins=1 owner=195 animations preserve RNG/result
+COIN 1/1 tails
+COIN 1/1 tails
+COIN CONTEXT PASS between-turn-status coins=1 owner=195 animations preserve RNG/result
+COIN 1/1 heads
+COIN ANIMATION PASS: event order, results, RNG, disabled option, controller ownership
+TEXT Mark's Turn.
+TEXT all the Prizes
+TEXT Decision
+TEXT You won the Duel
+board cache 320x240: exact, allocation 116480 bytes
+TEXT Mark's Turn.
+TEXT all the Prizes
+TEXT Decision
+TEXT You won the Duel
+board cache 480x360: exact, allocation 262080 bytes
+TEXT Mark's Turn.
+TEXT all the Prizes
+TEXT Decision
+TEXT You won the Duel
+board cache 320x240: exact, allocation 116480 bytes
+BOARD CACHE PASS: 357 frames (213 hits/144 invalidations), decks/state/names/selection/effects/resizing/release; adventure card footer isolated from duel log
+    [TEST] card_layout             ok   (0 turns, 0 requests, PRACTICE LAYOUT PASS lessons=25 uniform_full_panel=1 hint_only_footer=1 dimensions=480x360)
+    [TEST] hotseat                 ok   (77 turns, 4563 requests, MOCK: eeprom writes=1729 (stalling=3) most writes to one block=77)
+    [TEST] hotseat_ports           ok   (2 turns, 174 requests, MOCK: eeprom writes=36 (stalling=3) most writes to one block=2)
+    [TEST] practice                ok   (3 turns, 2972 requests, MOCK: eeprom writes=218 (stalling=3) most writes to one block=2)
+    [TEST] save_continue           ok   (38 turns, 1264 requests, MOCK: shot build/host/shots/save_continue/title_after.ppm (frame 6))
+    [TEST] tour_bot                ok   (72 turns, 3875 requests, MOCK: eeprom writes=1861 (stalling=3) most writes to one block=71)
+    [TEST] ui_tour                 ok   (6 turns, 435 requests, MOCK: eeprom writes=312 (stalling=3) most writes to one block=6)
+    [TEST] vs_ai                   ok   (67 turns, 2762 requests, MOCK: eeprom writes=1358 (stalling=3) most writes to one block=35)
+    [TEST] vs_bot                  ok   (6 turns, 186 requests, MOCK: eeprom writes=273 (stalling=3) most writes to one block=5)
+    [TEST] widgets                 ok   (8 turns, 349 requests, MOCK: eeprom writes=351 (stalling=3) most writes to one block=8)

@@ -1,0 +1,21 @@
+    [OPT] effects: 4/4 linked  ai: 16/16 linked
+    [OPT] ai=1
+TEXT Mark's Turn.
+TEXT all the Prizes
+TEXT Decision
+TEXT You won the Duel
+TEXT Mark's Turn.
+board cache 320x240: exact, allocation 116480 bytes; allocation failure falls back
+TEXT Mark's Turn.
+TEXT all the Prizes
+TEXT Decision
+TEXT You won the Duel
+TEXT Mark's Turn.
+board cache 480x360: exact, allocation 262080 bytes; allocation failure falls back
+TEXT Mark's Turn.
+TEXT all the Prizes
+TEXT Decision
+TEXT You won the Duel
+TEXT Mark's Turn.
+board cache 320x240: exact, allocation 116480 bytes; allocation failure falls back
+BOARD CACHE PASS: 369 frames (216 hits/153 invalidations), decks/state/names/selection/effects/resizing/release; adventure card footer isolated from duel log

@@ -1,0 +1,19 @@
+.DEFAULT_GOAL := all
+N64_INST := /opt/libdragon
+export N64_INST
+BUILD_DIR := .
+SOURCE_DIR := .
+N64_MKDFS_ROOT := filesystem
+LIBDRAGON_PREVIEW := 2
+include $(N64_INST)/include/n64.mk
+CFLAGS += -I/Users/fairfieldt/dev/poketcg/port/src -I/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build
+ENGINE_OBJECTS := $(shell rg --files --no-ignore /Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/engine -g '*.o')
+all: board-perf.z64
+$(BUILD_DIR)/board-perf.elf: $(BUILD_DIR)/bench.o $(ENGINE_OBJECTS) /Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/save_sram.o
+board-perf.z64: N64_ROM_TITLE = "Battle performance review"
+board-perf.z64: N64_ROM_SAVETYPE = none
+board-perf.z64: board-perf.dfs
+board-perf.dfs: $(wildcard filesystem/cards/*.sprite) filesystem/buildinfo.txt
+-include $(wildcard *.d)
+
+CFLAGS += -I/Users/fairfieldt/dev/poketcg/port/frontends/n64

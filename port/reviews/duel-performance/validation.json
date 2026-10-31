@@ -1,0 +1,52 @@
+{
+  "native_pixel_checks": [
+    {
+      "width": 320,
+      "frames": 64,
+      "full_canvas_exact": true
+    },
+    {
+      "width": 480,
+      "frames": 64,
+      "full_canvas_exact": true
+    }
+  ],
+  "backing_release": [
+    {
+      "width": 320,
+      "backing_bytes": 116480,
+      "free_before_release": 6765208,
+      "free_after_release": 6881696,
+      "key_bytes": 8384,
+      "retained_image": 0
+    },
+    {
+      "width": 480,
+      "backing_bytes": 262080,
+      "free_before_release": 5825368,
+      "free_after_release": 6087456,
+      "key_bytes": 8384,
+      "retained_image": 0
+    }
+  ],
+  "host_board": {
+    "frames": 369,
+    "hits": 216,
+    "invalidations": 153,
+    "modes": [
+      "320x240",
+      "480x360",
+      "320x240"
+    ],
+    "card_footer_context": true,
+    "forced_allocation_failure": true
+  },
+  "raster": {
+    "glyphs": 1992,
+    "scaled_blits": 3276,
+    "card_backs": 936
+  },
+  "input_and_coin_tests": true,
+  "full_host_scripts_per_resolution": 10,
+  "sanitizers": "Final board/context test passed ASAN and UBSAN"
+}

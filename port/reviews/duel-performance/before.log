@@ -1,0 +1,207 @@
+Loaded board-perf
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=320 height=240 ram=8388608 highres=0
+TEXT Mark's Turn.
+2026-10-31 12:08:54.035 ares[4827:18785057] Resizing output buffers to 1536, 1152
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 10679.542 us (mode: sync, success: yes).
+BOARD PERF case=full-board-ack width=320 frame=0 acquire_us=8 clear_us=9456 board_us=47470 overlay_us=2629 present_us=2024 total_us=61589
+BOARD PERF case=full-board-ack width=320 frame=1 acquire_us=7 clear_us=9256 board_us=47505 overlay_us=2625 present_us=1929 total_us=61323
+BOARD PERF case=full-board-ack width=320 frame=2 acquire_us=7 clear_us=9307 board_us=47407 overlay_us=2625 present_us=1699 total_us=61047
+BOARD PERF case=full-board-ack width=320 frame=3 acquire_us=8 clear_us=9452 board_us=47454 overlay_us=2625 present_us=1939 total_us=61480
+BOARD PERF case=full-board-ack width=320 frame=4 acquire_us=7 clear_us=9256 board_us=47481 overlay_us=2625 present_us=1999 total_us=61370
+BOARD PERF case=full-board-ack width=320 frame=5 acquire_us=7 clear_us=9307 board_us=47404 overlay_us=2625 present_us=1765 total_us=61110
+BOARD PERF case=full-board-ack width=320 frame=6 acquire_us=8 clear_us=9441 board_us=47463 overlay_us=2625 present_us=2485 total_us=62023
+BOARD PERF case=full-board-ack width=320 frame=7 acquire_us=7 clear_us=9405 board_us=47338 overlay_us=2784 present_us=1944 total_us=61480
+BOARD PERF case=full-board-ack width=320 frame=8 acquire_us=7 clear_us=9261 board_us=47423 overlay_us=2625 present_us=1833 total_us=61151
+BOARD PERF case=full-board-ack width=320 frame=9 acquire_us=8 clear_us=9450 board_us=47397 overlay_us=2624 present_us=1680 total_us=61161
+BOARD PERF case=full-board-ack width=320 frame=10 acquire_us=7 clear_us=9423 board_us=47321 overlay_us=2781 present_us=1944 total_us=61478
+BOARD PERF case=full-board-ack width=320 frame=11 acquire_us=7 clear_us=9262 board_us=47418 overlay_us=2625 present_us=1902 total_us=61215
+BOARD PERF case=full-board-ack width=320 frame=12 acquire_us=8 clear_us=9441 board_us=47434 overlay_us=2624 present_us=1751 total_us=61260
+BOARD PERF case=full-board-ack width=320 frame=13 acquire_us=7 clear_us=9415 board_us=47431 overlay_us=2830 present_us=1805 total_us=61490
+BOARD PERF case=full-board-ack width=320 frame=14 acquire_us=7 clear_us=9260 board_us=47424 overlay_us=2649 present_us=1971 total_us=61313
+BOARD PERF case=full-board-ack width=320 frame=15 acquire_us=8 clear_us=9450 board_us=47393 overlay_us=2649 present_us=1817 total_us=61318
+BOARD PERF case=full-board-ack width=320 frame=16 acquire_us=7 clear_us=9404 board_us=47285 overlay_us=2799 present_us=1638 total_us=61136
+BOARD PERF case=full-board-ack width=320 frame=17 acquire_us=7 clear_us=9260 board_us=47410 overlay_us=2649 present_us=2001 total_us=61329
+BOARD DURATION case=full-board-ack width=320 frames=18 elapsed_us=1104516
+TEXT Mark's Turn.
+BOARD PERF case=full-actions-idle width=320 frame=0 acquire_us=9 clear_us=9317 board_us=55728 overlay_us=2 present_us=1994 total_us=67052
+BOARD PERF case=full-actions-idle width=320 frame=1 acquire_us=8 clear_us=9305 board_us=55739 overlay_us=2 present_us=1839 total_us=66895
+BOARD PERF case=full-actions-idle width=320 frame=2 acquire_us=8 clear_us=9287 board_us=55741 overlay_us=2 present_us=2544 total_us=67584
+BOARD PERF case=full-actions-idle width=320 frame=3 acquire_us=9 clear_us=9258 board_us=55876 overlay_us=0 present_us=1957 total_us=67102
+BOARD PERF case=full-actions-idle width=320 frame=4 acquire_us=8 clear_us=9263 board_us=55869 overlay_us=0 present_us=1826 total_us=66968
+BOARD PERF case=full-actions-idle width=320 frame=5 acquire_us=8 clear_us=9262 board_us=55875 overlay_us=0 present_us=1683 total_us=66830
+BOARD PERF case=full-actions-idle width=320 frame=6 acquire_us=9 clear_us=9262 board_us=55867 overlay_us=0 present_us=1825 total_us=66965
+BOARD PERF case=full-actions-idle width=320 frame=7 acquire_us=8 clear_us=9261 board_us=55974 overlay_us=0 present_us=1886 total_us=67132
+BOARD PERF case=full-actions-idle width=320 frame=8 acquire_us=8 clear_us=9262 board_us=55872 overlay_us=0 present_us=1732 total_us=66876
+BOARD PERF case=full-actions-idle width=320 frame=9 acquire_us=9 clear_us=9262 board_us=55873 overlay_us=0 present_us=1579 total_us=66724
+BOARD PERF case=full-actions-idle width=320 frame=10 acquire_us=8 clear_us=9262 board_us=55883 overlay_us=0 present_us=1968 total_us=67124
+BOARD PERF case=full-actions-idle width=320 frame=11 acquire_us=8 clear_us=9263 board_us=55871 overlay_us=0 present_us=1803 total_us=66947
+BOARD PERF case=full-actions-idle width=320 frame=12 acquire_us=9 clear_us=9262 board_us=55876 overlay_us=0 present_us=1654 total_us=66802
+BOARD PERF case=full-actions-idle width=320 frame=13 acquire_us=8 clear_us=9262 board_us=55869 overlay_us=0 present_us=1881 total_us=67023
+BOARD PERF case=full-actions-idle width=320 frame=14 acquire_us=8 clear_us=9262 board_us=55888 overlay_us=0 present_us=1846 total_us=67007
+BOARD PERF case=full-actions-idle width=320 frame=15 acquire_us=9 clear_us=9261 board_us=55904 overlay_us=0 present_us=1691 total_us=66867
+BOARD PERF case=full-actions-idle width=320 frame=16 acquire_us=8 clear_us=9260 board_us=55902 overlay_us=0 present_us=1540 total_us=66712
+BOARD PERF case=full-actions-idle width=320 frame=17 acquire_us=8 clear_us=9260 board_us=55889 overlay_us=0 present_us=1937 total_us=67096
+BOARD DURATION case=full-actions-idle width=320 frames=18 elapsed_us=1205949
+TEXT Mark's Turn.
+BOARD PERF case=full-actions-cursor width=320 frame=0 acquire_us=9 clear_us=9409 board_us=55788 overlay_us=0 present_us=1856 total_us=67064
+BOARD PERF case=full-actions-cursor width=320 frame=1 acquire_us=8 clear_us=9414 board_us=55748 overlay_us=0 present_us=1697 total_us=66869
+BOARD PERF case=full-actions-cursor width=320 frame=2 acquire_us=9 clear_us=9405 board_us=55730 overlay_us=1 present_us=1637 total_us=66784
+BOARD PERF case=full-actions-cursor width=320 frame=3 acquire_us=9 clear_us=9413 board_us=55485 overlay_us=1 present_us=1934 total_us=66844
+BOARD PERF case=full-actions-cursor width=320 frame=4 acquire_us=8 clear_us=9411 board_us=55641 overlay_us=1 present_us=1780 total_us=66843
+BOARD PERF case=full-actions-cursor width=320 frame=5 acquire_us=8 clear_us=9409 board_us=55769 overlay_us=1 present_us=1644 total_us=66833
+BOARD PERF case=full-actions-cursor width=320 frame=6 acquire_us=9 clear_us=9401 board_us=55811 overlay_us=1 present_us=1936 total_us=67159
+BOARD PERF case=full-actions-cursor width=320 frame=7 acquire_us=8 clear_us=9399 board_us=55636 overlay_us=1 present_us=1847 total_us=66894
+BOARD PERF case=full-actions-cursor width=320 frame=8 acquire_us=8 clear_us=9400 board_us=55716 overlay_us=1 present_us=1694 total_us=66822
+BOARD PERF case=full-actions-cursor width=320 frame=9 acquire_us=9 clear_us=9398 board_us=55454 overlay_us=1 present_us=1694 total_us=66559
+BOARD PERF case=full-actions-cursor width=320 frame=10 acquire_us=8 clear_us=9413 board_us=55650 overlay_us=1 present_us=1916 total_us=66991
+BOARD PERF case=full-actions-cursor width=320 frame=11 acquire_us=8 clear_us=9399 board_us=55796 overlay_us=1 present_us=1779 total_us=66986
+BOARD PERF case=full-actions-cursor width=320 frame=12 acquire_us=9 clear_us=9398 board_us=55766 overlay_us=1 present_us=1609 total_us=66786
+BOARD PERF case=full-actions-cursor width=320 frame=13 acquire_us=8 clear_us=9399 board_us=55656 overlay_us=1 present_us=1944 total_us=67010
+BOARD PERF case=full-actions-cursor width=320 frame=14 acquire_us=8 clear_us=9399 board_us=55716 overlay_us=1 present_us=1837 total_us=66963
+BOARD PERF case=full-actions-cursor width=320 frame=15 acquire_us=9 clear_us=9467 board_us=55403 overlay_us=1 present_us=1682 total_us=66564
+BOARD PERF case=full-actions-cursor width=320 frame=16 acquire_us=8 clear_us=9396 board_us=55638 overlay_us=1 present_us=1806 total_us=66852
+BOARD PERF case=full-actions-cursor width=320 frame=17 acquire_us=8 clear_us=9410 board_us=55822 overlay_us=1 present_us=1918 total_us=67162
+BOARD DURATION case=full-actions-cursor width=320 frames=18 elapsed_us=1204228
+TEXT Mark's Turn.
+BOARD PERF case=full-slot-cursor width=320 frame=0 acquire_us=8 clear_us=9323 board_us=47641 overlay_us=3987 present_us=1868 total_us=62828
+BOARD PERF case=full-slot-cursor width=320 frame=1 acquire_us=8 clear_us=9442 board_us=47432 overlay_us=3628 present_us=1705 total_us=62218
+BOARD PERF case=full-slot-cursor width=320 frame=2 acquire_us=8 clear_us=9394 board_us=47288 overlay_us=4166 present_us=1837 total_us=62695
+BOARD PERF case=full-slot-cursor width=320 frame=3 acquire_us=8 clear_us=9254 board_us=47455 overlay_us=3978 present_us=1923 total_us=62620
+BOARD PERF case=full-slot-cursor width=320 frame=4 acquire_us=8 clear_us=9314 board_us=47427 overlay_us=3537 present_us=1773 total_us=62060
+BOARD PERF case=full-slot-cursor width=320 frame=5 acquire_us=8 clear_us=9451 board_us=47481 overlay_us=3567 present_us=1624 total_us=62133
+BOARD PERF case=full-slot-cursor width=320 frame=6 acquire_us=8 clear_us=9402 board_us=47561 overlay_us=4183 present_us=2004 total_us=63159
+BOARD PERF case=full-slot-cursor width=320 frame=7 acquire_us=8 clear_us=9258 board_us=47449 overlay_us=3627 present_us=1846 total_us=62189
+BOARD PERF case=full-slot-cursor width=320 frame=8 acquire_us=8 clear_us=9455 board_us=47401 overlay_us=3975 present_us=1693 total_us=62535
+BOARD PERF case=full-slot-cursor width=320 frame=9 acquire_us=8 clear_us=9443 board_us=47474 overlay_us=3983 present_us=2770 total_us=63679
+BOARD PERF case=full-slot-cursor width=320 frame=10 acquire_us=8 clear_us=9399 board_us=47324 overlay_us=3735 present_us=1892 total_us=62360
+BOARD PERF case=full-slot-cursor width=320 frame=11 acquire_us=8 clear_us=9257 board_us=47437 overlay_us=3564 present_us=1763 total_us=62031
+BOARD PERF case=full-slot-cursor width=320 frame=12 acquire_us=8 clear_us=9450 board_us=47709 overlay_us=3987 present_us=1615 total_us=62771
+BOARD PERF case=full-slot-cursor width=320 frame=13 acquire_us=8 clear_us=9451 board_us=47467 overlay_us=3634 present_us=1985 total_us=62546
+BOARD PERF case=full-slot-cursor width=320 frame=14 acquire_us=8 clear_us=9409 board_us=47328 overlay_us=4124 present_us=1850 total_us=62720
+BOARD PERF case=full-slot-cursor width=320 frame=15 acquire_us=8 clear_us=9256 board_us=47447 overlay_us=3978 present_us=1676 total_us=62368
+BOARD PERF case=full-slot-cursor width=320 frame=16 acquire_us=8 clear_us=9441 board_us=47439 overlay_us=3537 present_us=1981 total_us=62408
+BOARD PERF case=full-slot-cursor width=320 frame=17 acquire_us=8 clear_us=9441 board_us=47449 overlay_us=3621 present_us=1902 total_us=62424
+BOARD DURATION case=full-slot-cursor width=320 frames=18 elapsed_us=1125988
+TEXT Mark's Turn.
+BOARD PERF case=sparse-actions-idle width=320 frame=0 acquire_us=9 clear_us=9464 board_us=49368 overlay_us=0 present_us=1764 total_us=60606
+BOARD PERF case=sparse-actions-idle width=320 frame=1 acquire_us=8 clear_us=9263 board_us=49441 overlay_us=1 present_us=1626 total_us=60341
+BOARD PERF case=sparse-actions-idle width=320 frame=2 acquire_us=8 clear_us=9467 board_us=49332 overlay_us=0 present_us=1929 total_us=60737
+BOARD PERF case=sparse-actions-idle width=320 frame=3 acquire_us=9 clear_us=9257 board_us=49418 overlay_us=2 present_us=1983 total_us=60671
+BOARD PERF case=sparse-actions-idle width=320 frame=4 acquire_us=8 clear_us=9316 board_us=49411 overlay_us=1 present_us=1698 total_us=60436
+BOARD PERF case=sparse-actions-idle width=320 frame=5 acquire_us=8 clear_us=9440 board_us=49407 overlay_us=0 present_us=1706 total_us=60563
+BOARD PERF case=sparse-actions-idle width=320 frame=6 acquire_us=9 clear_us=9259 board_us=49435 overlay_us=2 present_us=1918 total_us=60625
+BOARD PERF case=sparse-actions-idle width=320 frame=7 acquire_us=8 clear_us=9450 board_us=49476 overlay_us=0 present_us=1754 total_us=60690
+BOARD PERF case=sparse-actions-idle width=320 frame=8 acquire_us=9 clear_us=9452 board_us=49382 overlay_us=0 present_us=1595 total_us=60440
+BOARD PERF case=sparse-actions-idle width=320 frame=9 acquire_us=9 clear_us=9262 board_us=49414 overlay_us=1 present_us=1962 total_us=60650
+BOARD PERF case=sparse-actions-idle width=320 frame=10 acquire_us=8 clear_us=9439 board_us=49420 overlay_us=0 present_us=1811 total_us=60680
+BOARD PERF case=sparse-actions-idle width=320 frame=11 acquire_us=8 clear_us=9260 board_us=49421 overlay_us=2 present_us=1808 total_us=60501
+BOARD PERF case=sparse-actions-idle width=320 frame=12 acquire_us=9 clear_us=9312 board_us=49409 overlay_us=1 present_us=1816 total_us=60548
+BOARD PERF case=sparse-actions-idle width=320 frame=13 acquire_us=8 clear_us=9450 board_us=49388 overlay_us=0 present_us=1869 total_us=60716
+BOARD PERF case=sparse-actions-idle width=320 frame=14 acquire_us=8 clear_us=9260 board_us=49430 overlay_us=2 present_us=2570 total_us=61272
+BOARD PERF case=sparse-actions-idle width=320 frame=15 acquire_us=9 clear_us=9442 board_us=49411 overlay_us=1 present_us=1593 total_us=60458
+BOARD PERF case=sparse-actions-idle width=320 frame=16 acquire_us=8 clear_us=9437 board_us=49404 overlay_us=0 present_us=1933 total_us=60784
+BOARD PERF case=sparse-actions-idle width=320 frame=17 acquire_us=8 clear_us=9262 board_us=49401 overlay_us=2 present_us=1822 total_us=60497
+BOARD DURATION case=sparse-actions-idle width=320 frames=18 elapsed_us=1091459
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+TEXT Mark's Turn.
+BOARD PERF case=full-board-ack width=480 frame=0 acquire_us=8 clear_us=21405 board_us=126776 overlay_us=6928 present_us=3272 total_us=158391
+BOARD PERF case=full-board-ack width=480 frame=1 acquire_us=8 clear_us=21223 board_us=126933 overlay_us=6742 present_us=4615 total_us=159522
+BOARD PERF case=full-board-ack width=480 frame=2 acquire_us=8 clear_us=21271 board_us=126745 overlay_us=6926 present_us=3078 total_us=158031
+BOARD PERF case=full-board-ack width=480 frame=3 acquire_us=8 clear_us=21214 board_us=126883 overlay_us=6741 present_us=2978 total_us=157827
+BOARD PERF case=full-board-ack width=480 frame=4 acquire_us=8 clear_us=21395 board_us=126801 overlay_us=7034 present_us=2998 total_us=158238
+BOARD PERF case=full-board-ack width=480 frame=5 acquire_us=8 clear_us=21230 board_us=127062 overlay_us=6849 present_us=3029 total_us=158180
+BOARD PERF case=full-board-ack width=480 frame=6 acquire_us=8 clear_us=21397 board_us=126821 overlay_us=7035 present_us=3032 total_us=158294
+BOARD PERF case=full-board-ack width=480 frame=7 acquire_us=8 clear_us=21219 board_us=126977 overlay_us=6852 present_us=3163 total_us=158220
+BOARD PERF case=full-board-ack width=480 frame=8 acquire_us=8 clear_us=21394 board_us=126777 overlay_us=7038 present_us=2950 total_us=158168
+BOARD PERF case=full-board-ack width=480 frame=9 acquire_us=8 clear_us=21234 board_us=126946 overlay_us=6851 present_us=3125 total_us=158165
+BOARD PERF case=full-board-ack width=480 frame=10 acquire_us=8 clear_us=21412 board_us=126790 overlay_us=7036 present_us=3249 total_us=158497
+BOARD PERF case=full-board-ack width=480 frame=11 acquire_us=8 clear_us=21215 board_us=126966 overlay_us=6851 present_us=2940 total_us=157982
+BOARD PERF case=full-board-ack width=480 frame=12 acquire_us=8 clear_us=21415 board_us=126876 overlay_us=7034 present_us=3035 total_us=158370
+BOARD PERF case=full-board-ack width=480 frame=13 acquire_us=8 clear_us=21227 board_us=126938 overlay_us=6852 present_us=2981 total_us=158007
+BOARD PERF case=full-board-ack width=480 frame=14 acquire_us=8 clear_us=21357 board_us=126782 overlay_us=6996 present_us=3001 total_us=158146
+BOARD PERF case=full-board-ack width=480 frame=15 acquire_us=8 clear_us=21216 board_us=126974 overlay_us=6853 present_us=3029 total_us=158082
+BOARD PERF case=full-board-ack width=480 frame=16 acquire_us=8 clear_us=21353 board_us=126793 overlay_us=6998 present_us=3030 total_us=158184
+BOARD PERF case=full-board-ack width=480 frame=17 acquire_us=7 clear_us=21228 board_us=126916 overlay_us=6852 present_us=3169 total_us=158173
+BOARD DURATION case=full-board-ack width=480 frames=18 elapsed_us=2848729
+TEXT Mark's Turn.
+BOARD PERF case=full-actions-idle width=480 frame=0 acquire_us=9 clear_us=21418 board_us=147067 overlay_us=1 present_us=3030 total_us=171527
+BOARD PERF case=full-actions-idle width=480 frame=1 acquire_us=8 clear_us=21222 board_us=147206 overlay_us=0 present_us=2995 total_us=171434
+BOARD PERF case=full-actions-idle width=480 frame=2 acquire_us=8 clear_us=21219 board_us=147202 overlay_us=0 present_us=2920 total_us=171351
+BOARD PERF case=full-actions-idle width=480 frame=3 acquire_us=9 clear_us=21217 board_us=147305 overlay_us=1 present_us=2961 total_us=171495
+BOARD PERF case=full-actions-idle width=480 frame=4 acquire_us=8 clear_us=21391 board_us=147252 overlay_us=0 present_us=2956 total_us=171610
+BOARD PERF case=full-actions-idle width=480 frame=5 acquire_us=8 clear_us=21240 board_us=147200 overlay_us=0 present_us=2985 total_us=171435
+BOARD PERF case=full-actions-idle width=480 frame=6 acquire_us=9 clear_us=21216 board_us=147210 overlay_us=0 present_us=3104 total_us=171541
+BOARD PERF case=full-actions-idle width=480 frame=7 acquire_us=8 clear_us=21352 board_us=147056 overlay_us=1 present_us=3205 total_us=171625
+BOARD PERF case=full-actions-idle width=480 frame=8 acquire_us=8 clear_us=21289 board_us=147216 overlay_us=0 present_us=3045 total_us=171560
+BOARD PERF case=full-actions-idle width=480 frame=9 acquire_us=9 clear_us=21229 board_us=147315 overlay_us=0 present_us=3211 total_us=171766
+BOARD PERF case=full-actions-idle width=480 frame=10 acquire_us=8 clear_us=21227 board_us=147141 overlay_us=1 present_us=2883 total_us=171262
+BOARD PERF case=full-actions-idle width=480 frame=11 acquire_us=8 clear_us=21403 board_us=147210 overlay_us=0 present_us=3035 total_us=171659
+BOARD PERF case=full-actions-idle width=480 frame=12 acquire_us=9 clear_us=21218 board_us=147207 overlay_us=0 present_us=2906 total_us=171342
+BOARD PERF case=full-actions-idle width=480 frame=13 acquire_us=8 clear_us=21215 board_us=147150 overlay_us=0 present_us=2953 total_us=171329
+BOARD PERF case=full-actions-idle width=480 frame=14 acquire_us=8 clear_us=21352 board_us=147054 overlay_us=1 present_us=2976 total_us=171394
+BOARD PERF case=full-actions-idle width=480 frame=15 acquire_us=9 clear_us=21273 board_us=147288 overlay_us=0 present_us=2969 total_us=171542
+BOARD PERF case=full-actions-idle width=480 frame=16 acquire_us=8 clear_us=21227 board_us=147205 overlay_us=0 present_us=3101 total_us=171544
+BOARD PERF case=full-actions-idle width=480 frame=17 acquire_us=8 clear_us=21230 board_us=147172 overlay_us=1 present_us=2915 total_us=171329
+BOARD DURATION case=full-actions-idle width=480 frames=18 elapsed_us=3086998
+TEXT Mark's Turn.
+BOARD PERF case=full-actions-cursor width=480 frame=0 acquire_us=9 clear_us=21403 board_us=147245 overlay_us=0 present_us=3017 total_us=171677
+BOARD PERF case=full-actions-cursor width=480 frame=1 acquire_us=8 clear_us=21229 board_us=146962 overlay_us=0 present_us=2907 total_us=171108
+BOARD PERF case=full-actions-cursor width=480 frame=2 acquire_us=8 clear_us=21226 board_us=147073 overlay_us=1 present_us=2963 total_us=171274
+BOARD PERF case=full-actions-cursor width=480 frame=3 acquire_us=9 clear_us=21355 board_us=146307 overlay_us=1 present_us=3054 total_us=170728
+BOARD PERF case=full-actions-cursor width=480 frame=4 acquire_us=8 clear_us=21267 board_us=146810 overlay_us=0 present_us=2993 total_us=171080
+BOARD PERF case=full-actions-cursor width=480 frame=5 acquire_us=8 clear_us=21218 board_us=147235 overlay_us=1 present_us=3129 total_us=171593
+BOARD PERF case=full-actions-cursor width=480 frame=6 acquire_us=9 clear_us=21215 board_us=147276 overlay_us=1 present_us=2907 total_us=171410
+BOARD PERF case=full-actions-cursor width=480 frame=7 acquire_us=8 clear_us=21368 board_us=146869 overlay_us=1 present_us=3197 total_us=171447
+BOARD PERF case=full-actions-cursor width=480 frame=8 acquire_us=8 clear_us=21278 board_us=147084 overlay_us=0 present_us=3181 total_us=171553
+BOARD PERF case=full-actions-cursor width=480 frame=9 acquire_us=9 clear_us=21228 board_us=146482 overlay_us=0 present_us=2887 total_us=170608
+BOARD PERF case=full-actions-cursor width=480 frame=10 acquire_us=8 clear_us=21223 board_us=146800 overlay_us=1 present_us=3023 total_us=171059
+BOARD PERF case=full-actions-cursor width=480 frame=11 acquire_us=8 clear_us=21391 board_us=147046 overlay_us=1 present_us=3063 total_us=171512
+BOARD PERF case=full-actions-cursor width=480 frame=12 acquire_us=9 clear_us=21305 board_us=147179 overlay_us=0 present_us=2927 total_us=171422
+BOARD PERF case=full-actions-cursor width=480 frame=13 acquire_us=8 clear_us=21216 board_us=147013 overlay_us=0 present_us=2965 total_us=171205
+BOARD PERF case=full-actions-cursor width=480 frame=14 acquire_us=8 clear_us=21215 board_us=147096 overlay_us=1 present_us=3007 total_us=171330
+BOARD PERF case=full-actions-cursor width=480 frame=15 acquire_us=9 clear_us=21389 board_us=146450 overlay_us=0 present_us=3179 total_us=171029
+BOARD PERF case=full-actions-cursor width=480 frame=16 acquire_us=8 clear_us=21231 board_us=146833 overlay_us=0 present_us=2907 total_us=170981
+BOARD PERF case=full-actions-cursor width=480 frame=17 acquire_us=8 clear_us=21226 board_us=147207 overlay_us=1 present_us=3088 total_us=171534
+BOARD DURATION case=full-actions-cursor width=480 frames=18 elapsed_us=3082801
+TEXT Mark's Turn.
+BOARD PERF case=full-slot-cursor width=480 frame=0 acquire_us=9 clear_us=21231 board_us=127302 overlay_us=12959 present_us=2970 total_us=164472
+BOARD PERF case=full-slot-cursor width=480 frame=1 acquire_us=8 clear_us=21215 board_us=127015 overlay_us=11361 present_us=3162 total_us=162763
+BOARD PERF case=full-slot-cursor width=480 frame=2 acquire_us=8 clear_us=21222 board_us=126832 overlay_us=13061 present_us=3030 total_us=164155
+BOARD PERF case=full-slot-cursor width=480 frame=3 acquire_us=9 clear_us=21397 board_us=126929 overlay_us=13047 present_us=3057 total_us=164441
+BOARD PERF case=full-slot-cursor width=480 frame=4 acquire_us=8 clear_us=21348 board_us=126861 overlay_us=11228 present_us=3168 total_us=162615
+BOARD PERF case=full-slot-cursor width=480 frame=5 acquire_us=8 clear_us=21245 board_us=127008 overlay_us=11303 present_us=2946 total_us=162512
+BOARD PERF case=full-slot-cursor width=480 frame=6 acquire_us=9 clear_us=21223 board_us=127323 overlay_us=12739 present_us=3209 total_us=164504
+BOARD PERF case=full-slot-cursor width=480 frame=7 acquire_us=8 clear_us=21227 board_us=126944 overlay_us=11421 present_us=3279 total_us=162881
+BOARD PERF case=full-slot-cursor width=480 frame=8 acquire_us=8 clear_us=21400 board_us=126875 overlay_us=13077 present_us=2942 total_us=164304
+BOARD PERF case=full-slot-cursor width=480 frame=9 acquire_us=9 clear_us=21355 board_us=126911 overlay_us=13002 present_us=3080 total_us=164358
+BOARD PERF case=full-slot-cursor width=480 frame=10 acquire_us=8 clear_us=21215 board_us=127000 overlay_us=11260 present_us=2967 total_us=162452
+BOARD PERF case=full-slot-cursor width=480 frame=11 acquire_us=8 clear_us=21214 board_us=127019 overlay_us=11091 present_us=3151 total_us=162484
+BOARD PERF case=full-slot-cursor width=480 frame=12 acquire_us=8 clear_us=21276 board_us=127298 overlay_us=12814 present_us=3036 total_us=164434
+BOARD PERF case=full-slot-cursor width=480 frame=13 acquire_us=8 clear_us=21397 board_us=126826 overlay_us=11545 present_us=3053 total_us=162830
+BOARD PERF case=full-slot-cursor width=480 frame=14 acquire_us=8 clear_us=21223 board_us=127011 overlay_us=13088 present_us=3163 total_us=164495
+BOARD PERF case=full-slot-cursor width=480 frame=15 acquire_us=9 clear_us=21223 board_us=127075 overlay_us=13045 present_us=2963 total_us=164316
+BOARD PERF case=full-slot-cursor width=480 frame=16 acquire_us=8 clear_us=21223 board_us=127042 overlay_us=11035 present_us=3207 total_us=162518
+BOARD PERF case=full-slot-cursor width=480 frame=17 acquire_us=8 clear_us=21228 board_us=126949 overlay_us=11152 present_us=3276 total_us=162615
+BOARD DURATION case=full-slot-cursor width=480 frames=18 elapsed_us=2943399
+TEXT Mark's Turn.
+BOARD PERF case=sparse-actions-idle width=480 frame=0 acquire_us=9 clear_us=21239 board_us=128330 overlay_us=0 present_us=2952 total_us=152533
+BOARD PERF case=sparse-actions-idle width=480 frame=1 acquire_us=8 clear_us=21364 board_us=128273 overlay_us=1 present_us=2975 total_us=152624
+BOARD PERF case=sparse-actions-idle width=480 frame=2 acquire_us=8 clear_us=21392 board_us=128192 overlay_us=1 present_us=3085 total_us=152680
+BOARD PERF case=sparse-actions-idle width=480 frame=3 acquire_us=9 clear_us=21270 board_us=128338 overlay_us=0 present_us=4658 total_us=154277
+BOARD PERF case=sparse-actions-idle width=480 frame=4 acquire_us=8 clear_us=21227 board_us=128320 overlay_us=0 present_us=2889 total_us=152447
+BOARD PERF case=sparse-actions-idle width=480 frame=5 acquire_us=8 clear_us=21216 board_us=128310 overlay_us=0 present_us=3056 total_us=152592
+BOARD PERF case=sparse-actions-idle width=480 frame=6 acquire_us=9 clear_us=21225 board_us=128341 overlay_us=0 present_us=3214 total_us=152791
+BOARD PERF case=sparse-actions-idle width=480 frame=7 acquire_us=8 clear_us=21353 board_us=128293 overlay_us=1 present_us=2884 total_us=152543
+BOARD PERF case=sparse-actions-idle width=480 frame=8 acquire_us=8 clear_us=21392 board_us=128184 overlay_us=1 present_us=3026 total_us=152613
+BOARD PERF case=sparse-actions-idle width=480 frame=9 acquire_us=9 clear_us=21277 board_us=128318 overlay_us=0 present_us=2899 total_us=152505
+BOARD PERF case=sparse-actions-idle width=480 frame=10 acquire_us=8 clear_us=21219 board_us=128256 overlay_us=0 present_us=2923 total_us=152408
+BOARD PERF case=sparse-actions-idle width=480 frame=11 acquire_us=8 clear_us=21228 board_us=128309 overlay_us=0 present_us=2951 total_us=152498
+BOARD PERF case=sparse-actions-idle width=480 frame=12 acquire_us=9 clear_us=21243 board_us=128306 overlay_us=0 present_us=2989 total_us=152550
+BOARD PERF case=sparse-actions-idle width=480 frame=13 acquire_us=8 clear_us=21215 board_us=128343 overlay_us=0 present_us=3107 total_us=152675
+BOARD PERF case=sparse-actions-idle width=480 frame=14 acquire_us=8 clear_us=21360 board_us=128303 overlay_us=1 present_us=2917 total_us=152592
+BOARD PERF case=sparse-actions-idle width=480 frame=15 acquire_us=9 clear_us=21392 board_us=128200 overlay_us=1 present_us=3068 total_us=152672
+BOARD PERF case=sparse-actions-idle width=480 frame=16 acquire_us=8 clear_us=21269 board_us=128338 overlay_us=0 present_us=3218 total_us=152836
+BOARD PERF case=sparse-actions-idle width=480 frame=17 acquire_us=8 clear_us=21238 board_us=128295 overlay_us=0 present_us=2860 total_us=152403
+BOARD DURATION case=sparse-actions-idle width=480 frames=18 elapsed_us=2748490
+BOARD PERF PASS
