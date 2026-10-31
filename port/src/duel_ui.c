@@ -1149,6 +1149,8 @@ u8 PrintPlayAreaCardList_EnableLCD(void)
 	return wNumPlayAreaItems;
 }
 
+static bool display_play_area_screen(u8 keys,int preferred_cursor);
+
 bool OpenPlayAreaScreenForViewing(void)
 {
 	return DisplayPlayAreaScreen(PAD_START + PAD_A);
@@ -1159,7 +1161,17 @@ bool OpenPlayAreaScreenForSelection(void)
 	return DisplayPlayAreaScreen(PAD_START);
 }
 
+bool OpenPlayAreaScreenForEvolutionSelection(u8 cursor)
+{
+	return display_play_area_screen(PAD_START,cursor);
+}
+
 bool DisplayPlayAreaScreen(u8 keys)
+{
+	return display_play_area_screen(keys,-1);
+}
+
+static bool display_play_area_screen(u8 keys,int preferred_cursor)
 {
 	wNoItemSelectionMenuKeys = keys;
 	u8 saved_ff98 = hTempCardIndex_ff98;
@@ -1184,6 +1196,9 @@ bool DisplayPlayAreaScreen(u8 keys)
 		r.type = TCG_REQ_PLAY_AREA;
 		r.num_items = wNumPlayAreaItems;
 		r.cursor = (u8)(wSelectedDuelSubMenuItem + wExcludeArenaPokemon);
+		if (preferred_cursor >= wExcludeArenaPokemon &&
+		    preferred_cursor < wExcludeArenaPokemon + wNumPlayAreaItems)
+			r.cursor = (u8)preferred_cursor;
 		r.arg[0] = wExcludeArenaPokemon;
 		r.arg[1] = (keys & PAD_A) ? 1 : 0; /* view only */
 		r.items = wDuelTempList;

@@ -1,0 +1,458 @@
+    [OPT] effects: 4/4 linked  ai: 16/16 linked
+    [OPT] ai=1
+CHECK_FLOW_BEGIN postko-P1
+ASK play_area P1 n=3 cursor=0
+MOCK: [frame 1] wait 6
+MOCK: [frame 7] expect CHECK_FLOW_BEGIN~postko-P1
+MOCK: expect 'CHECK_FLOW_BEGIN~postko-P1' >= 1: 1
+MOCK: [frame 7] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 7] press RIGHT
+MOCK: [frame 11] press RIGHT
+MOCK: [frame 15] press Z+A
+CHECK BEGIN ports=1
+MOCK: [frame 19] wait 4
+MOCK: [frame 23] expect CHECK~BEGIN~ports=1
+MOCK: expect 'CHECK~BEGIN~ports=1' >= 1: 1
+MOCK: [frame 23] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 23] shot postko-P1-check
+MOCK: shot build/host/shots/check-selector-320/postko-P1-check.ppm (frame 24)
+MOCK: [frame 24] press B
+MOCK: [frame 28] press START
+VIEW SLOT P1 loc=2 card=153
+MOCK: [frame 32] expect VIEW~SLOT~P1~loc=2
+MOCK: expect 'VIEW~SLOT~P1~loc=2' >= 1: 1
+MOCK: [frame 32] shot postko-P1-selected-card
+MOCK: shot build/host/shots/check-selector-320/postko-P1-selected-card.ppm (frame 33)
+MOCK: [frame 33] press B
+MOCK: [frame 37] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 37] press LEFT
+MOCK: [frame 41] press Z
+CHECK BEGIN ports=1
+MOCK: [frame 45] press B
+MOCK: [frame 49] shot postko-P1-same-selector
+MOCK: shot build/host/shots/check-selector-320/postko-P1-same-selector.ppm (frame 50)
+MOCK: [frame 50] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 50] press A
+REQ play_area P1 n=3 -> 1
+CHECK_FLOW_RETURN postko-P1 answer=1 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN postko-P2
+ASK play_area P2 n=3 cursor=0
+MOCK: [frame 54] wait 6
+MOCK: [frame 60] expect CHECK_FLOW_BEGIN~postko-P2
+MOCK: expect 'CHECK_FLOW_BEGIN~postko-P2' >= 1: 1
+MOCK: [frame 60] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 60] press RIGHT P2
+MOCK: [frame 64] press RIGHT P2
+MOCK: [frame 68] press Z+A P2
+CHECK BEGIN ports=2
+MOCK: [frame 72] wait 4
+MOCK: [frame 76] expect CHECK~BEGIN~ports=2
+MOCK: expect 'CHECK~BEGIN~ports=2' >= 1: 1
+MOCK: [frame 76] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 76] shot postko-P2-check
+MOCK: shot build/host/shots/check-selector-320/postko-P2-check.ppm (frame 77)
+MOCK: [frame 77] press B P2
+MOCK: [frame 81] press START P2
+VIEW SLOT P2 loc=2 card=153
+MOCK: [frame 85] expect VIEW~SLOT~P2~loc=2
+MOCK: expect 'VIEW~SLOT~P2~loc=2' >= 1: 1
+MOCK: [frame 85] shot postko-P2-selected-card
+MOCK: shot build/host/shots/check-selector-320/postko-P2-selected-card.ppm (frame 86)
+MOCK: [frame 86] press B P2
+MOCK: [frame 90] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 90] press LEFT P2
+MOCK: [frame 94] press Z P2
+CHECK BEGIN ports=2
+MOCK: [frame 98] press B P2
+MOCK: [frame 102] shot postko-P2-same-selector
+MOCK: shot build/host/shots/check-selector-320/postko-P2-same-selector.ppm (frame 103)
+MOCK: [frame 103] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 103] press A P2
+REQ play_area P2 n=3 -> 1
+CHECK_FLOW_RETURN postko-P2 answer=1 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN menu-P1
+ASK menu/play_area P1 n=2 cursor=0
+MOCK: [frame 107] wait 6
+MOCK: [frame 113] expect CHECK_FLOW_BEGIN~menu-P1
+MOCK: expect 'CHECK_FLOW_BEGIN~menu-P1' >= 1: 1
+MOCK: [frame 113] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 113] press RIGHT
+MOCK: [frame 117] press Z+A
+CHECK BEGIN ports=1
+MOCK: [frame 121] wait 4
+MOCK: [frame 125] expect CHECK~BEGIN~ports=1
+MOCK: expect 'CHECK~BEGIN~ports=1' >= 1: 3
+MOCK: [frame 125] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 125] shot menu-P1-check
+MOCK: shot build/host/shots/check-selector-320/menu-P1-check.ppm (frame 126)
+MOCK: [frame 126] press B
+MOCK: [frame 130] press START
+VIEW SLOT P1 loc=2 card=153
+MOCK: [frame 134] expect VIEW~SLOT~P1~loc=2
+MOCK: expect 'VIEW~SLOT~P1~loc=2' >= 1: 2
+MOCK: [frame 134] shot menu-P1-selected-card
+MOCK: shot build/host/shots/check-selector-320/menu-P1-selected-card.ppm (frame 135)
+MOCK: [frame 135] press B
+MOCK: [frame 139] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 139] press LEFT
+MOCK: [frame 143] press Z
+CHECK BEGIN ports=1
+MOCK: [frame 147] press B
+MOCK: [frame 151] shot menu-P1-same-selector
+MOCK: shot build/host/shots/check-selector-320/menu-P1-same-selector.ppm (frame 152)
+MOCK: [frame 152] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 152] press A
+REQ menu/play_area P1 n=2 -> 0
+CHECK_FLOW_RETURN menu-P1 answer=0 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN menu-P2
+ASK menu/play_area P2 n=2 cursor=0
+MOCK: [frame 156] wait 6
+MOCK: [frame 162] expect CHECK_FLOW_BEGIN~menu-P2
+MOCK: expect 'CHECK_FLOW_BEGIN~menu-P2' >= 1: 1
+MOCK: [frame 162] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 162] press RIGHT P2
+MOCK: [frame 166] press Z+A P2
+CHECK BEGIN ports=2
+MOCK: [frame 170] wait 4
+MOCK: [frame 174] expect CHECK~BEGIN~ports=2
+MOCK: expect 'CHECK~BEGIN~ports=2' >= 1: 3
+MOCK: [frame 174] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 174] shot menu-P2-check
+MOCK: shot build/host/shots/check-selector-320/menu-P2-check.ppm (frame 175)
+MOCK: [frame 175] press B P2
+MOCK: [frame 179] press START P2
+VIEW SLOT P2 loc=2 card=153
+MOCK: [frame 183] expect VIEW~SLOT~P2~loc=2
+MOCK: expect 'VIEW~SLOT~P2~loc=2' >= 1: 2
+MOCK: [frame 183] shot menu-P2-selected-card
+MOCK: shot build/host/shots/check-selector-320/menu-P2-selected-card.ppm (frame 184)
+MOCK: [frame 184] press B P2
+MOCK: [frame 188] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 188] press LEFT P2
+MOCK: [frame 192] press Z P2
+CHECK BEGIN ports=2
+MOCK: [frame 196] press B P2
+MOCK: [frame 200] shot menu-P2-same-selector
+MOCK: shot build/host/shots/check-selector-320/menu-P2-same-selector.ppm (frame 201)
+MOCK: [frame 201] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 201] press A P2
+REQ menu/play_area P2 n=2 -> 0
+CHECK_FLOW_RETURN menu-P2 answer=0 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN lesson
+TEXT Press Z to check Pokemon data./Check your cards and the status/of your Pokemon before choosing.
+ASK ack/text P1
+MOCK: [frame 205] wait 6
+MOCK: [frame 211] expect CHECK_FLOW_BEGIN~lesson
+MOCK: expect 'CHECK_FLOW_BEGIN~lesson' >= 1: 1
+MOCK: [frame 211] expect_none CHECK_FLOW_RETURN~lesson
+MOCK: expect_none 'CHECK_FLOW_RETURN~lesson': 0
+MOCK: [frame 211] press Z+A
+CHECK BEGIN ports=1
+MOCK: [frame 215] wait 4
+MOCK: [frame 219] expect_none CHECK_FLOW_RETURN~lesson
+MOCK: expect_none 'CHECK_FLOW_RETURN~lesson': 0
+MOCK: [frame 219] shot lesson-check
+MOCK: shot build/host/shots/check-selector-320/lesson-check.ppm (frame 220)
+MOCK: [frame 220] press B
+MOCK: [frame 224] wait 4
+MOCK: [frame 228] expect_none CHECK_FLOW_RETURN~lesson
+MOCK: expect_none 'CHECK_FLOW_RETURN~lesson': 0
+MOCK: [frame 228] shot lesson-return
+MOCK: shot build/host/shots/check-selector-320/lesson-return.ppm (frame 229)
+MOCK: [frame 229] press A
+REQ ack P1 n=0 -> 0
+CHECK_FLOW_RETURN lesson answer=0 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN evolution-P1
+ASK play_area P1 n=3 cursor=1
+MOCK: [frame 233] wait 6
+MOCK: [frame 239] expect CHECK_FLOW_RETURN~lesson
+MOCK: expect 'CHECK_FLOW_RETURN~lesson' >= 1: 1
+MOCK: [frame 239] expect CHECK_FLOW_BEGIN~evolution-P1
+MOCK: expect 'CHECK_FLOW_BEGIN~evolution-P1' >= 1: 1
+MOCK: [frame 239] expect_none CHECK_FLOW_RETURN~evolution-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P1': 0
+MOCK: [frame 239] press START
+VIEW SLOT P1 loc=1 card=85
+MOCK: [frame 243] expect VIEW~SLOT~P1~loc=1
+MOCK: expect 'VIEW~SLOT~P1~loc=1' >= 1: 1
+MOCK: [frame 243] shot evolution-P1-default-card
+MOCK: shot build/host/shots/check-selector-320/evolution-P1-default-card.ppm (frame 24MOCK: end of script
+MOCK: frames=277 polls=277
+4)
+MOCK: [frame 244] press B
+MOCK: [frame 248] expect_none CHECK_FLOW_RETURN~evolution-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P1': 0
+MOCK: [frame 248] press A
+REQ play_area P1 n=3 -> 1
+CHECK_FLOW_RETURN evolution-P1 answer=1 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN evolution-P2
+ASK play_area P2 n=3 cursor=1
+MOCK: [frame 252] wait 6
+MOCK: [frame 258] expect CHECK_FLOW_RETURN~evolution-P1
+MOCK: expect 'CHECK_FLOW_RETURN~evolution-P1' >= 1: 1
+MOCK: [frame 258] expect CHECK_FLOW_BEGIN~evolution-P2
+MOCK: expect 'CHECK_FLOW_BEGIN~evolution-P2' >= 1: 1
+MOCK: [frame 258] expect_none CHECK_FLOW_RETURN~evolution-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P2': 0
+MOCK: [frame 258] press START P2
+VIEW SLOT P2 loc=1 card=85
+MOCK: [frame 262] expect VIEW~SLOT~P2~loc=1
+MOCK: expect 'VIEW~SLOT~P2~loc=1' >= 1: 1
+MOCK: [frame 262] shot evolution-P2-default-card
+MOCK: shot build/host/shots/check-selector-320/evolution-P2-default-card.ppm (frame 263)
+MOCK: [frame 263] press B P2
+MOCK: [frame 267] expect_none CHECK_FLOW_RETURN~evolution-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P2': 0
+MOCK: [frame 267] press A P2
+REQ play_area P2 n=3 -> 1
+CHECK_FLOW_RETURN evolution-P2 answer=1 unchanged_engine_requests_rng=1
+CHECK_SELECTOR_PASS postko_P1_P2_START_Z_B_cursor_Z_A_priority_lesson_engine_rng=1 evolution_default_P1_P2=1
+MOCK: [frame 271] wait 6
+MOCK: [frame 277] expect CHECK_FLOW_RETURN~evolution-P2
+MOCK: expect 'CHECK_FLOW_RETURN~evolution-P2' >= 1: 1
+MOCK: [frame 277] expect CHECK_SELECTOR_PASS
+MOCK: expect 'CHECK_SELECTOR_PASS' >= 1: 1
+CHECK_FLOW_BEGIN postko-P1
+ASK play_area P1 n=3 cursor=0
+MOCK: [frame 1] wait 6
+MOCK: [frame 7] expect CHECK_FLOW_BEGIN~postko-P1
+MOCK: expect 'CHECK_FLOW_BEGIN~postko-P1' >= 1: 1
+MOCK: [frame 7] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 7] press RIGHT
+MOCK: [frame 11] press RIGHT
+MOCK: [frame 15] press Z+A
+CHECK BEGIN ports=1
+MOCK: [frame 19] wait 4
+MOCK: [frame 23] expect CHECK~BEGIN~ports=1
+MOCK: expect 'CHECK~BEGIN~ports=1' >= 1: 1
+MOCK: [frame 23] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 23] shot postko-P1-check
+MOCK: shot build/host/shots/check-selector-480/postko-P1-check.ppm (frame 24)
+MOCK: [frame 24] press B
+MOCK: [frame 28] press START
+VIEW SLOT P1 loc=2 card=153
+MOCK: [frame 32] expect VIEW~SLOT~P1~loc=2
+MOCK: expect 'VIEW~SLOT~P1~loc=2' >= 1: 1
+MOCK: [frame 32] shot postko-P1-selected-card
+MOCK: shot build/host/shots/check-selector-480/postko-P1-selected-card.ppm (frame 33)
+MOCK: [frame 33] press B
+MOCK: [frame 37] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 37] press LEFT
+MOCK: [frame 41] press Z
+CHECK BEGIN ports=1
+MOCK: [frame 45] press B
+MOCK: [frame 49] shot postko-P1-same-selector
+MOCK: shot build/host/shots/check-selector-480/postko-P1-same-selector.ppm (frame 50)
+MOCK: [frame 50] expect_none CHECK_FLOW_RETURN~postko-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P1': 0
+MOCK: [frame 50] press A
+REQ play_area P1 n=3 -> 1
+CHECK_FLOW_RETURN postko-P1 answer=1 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN postko-P2
+ASK play_area P2 n=3 cursor=0
+MOCK: [frame 54] wait 6
+MOCK: [frame 60] expect CHECK_FLOW_BEGIN~postko-P2
+MOCK: expect 'CHECK_FLOW_BEGIN~postko-P2' >= 1: 1
+MOCK: [frame 60] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 60] press RIGHT P2
+MOCK: [frame 64] press RIGHT P2
+MOCK: [frame 68] press Z+A P2
+CHECK BEGIN ports=2
+MOCK: [frame 72] wait 4
+MOCK: [frame 76] expect CHECK~BEGIN~ports=2
+MOCK: expect 'CHECK~BEGIN~ports=2' >= 1: 1
+MOCK: [frame 76] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 76] shot postko-P2-check
+MOCK: shot build/host/shots/check-selector-480/postko-P2-check.ppm (frame 77)
+MOCK: [frame 77] press B P2
+MOCK: [frame 81] press START P2
+VIEW SLOT P2 loc=2 card=153
+MOCK: [frame 85] expect VIEW~SLOT~P2~loc=2
+MOCK: expect 'VIEW~SLOT~P2~loc=2' >= 1: 1
+MOCK: [frame 85] shot postko-P2-selected-card
+MOCK: shot build/host/shots/check-selector-480/postko-P2-selected-card.ppm (frame 86)
+MOCK: [frame 86] press B P2
+MOCK: [frame 90] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 90] press LEFT P2
+MOCK: [frame 94] press Z P2
+CHECK BEGIN ports=2
+MOCK: [frame 98] press B P2
+MOCK: [frame 102] shot postko-P2-same-selector
+MOCK: shot build/host/shots/check-selector-480/postko-P2-same-selector.ppm (frame 103)
+MOCK: [frame 103] expect_none CHECK_FLOW_RETURN~postko-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~postko-P2': 0
+MOCK: [frame 103] press A P2
+REQ play_area P2 n=3 -> 1
+CHECK_FLOW_RETURN postko-P2 answer=1 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN menu-P1
+ASK menu/play_area P1 n=2 cursor=0
+MOCK: [frame 107] wait 6
+MOCK: [frame 113] expect CHECK_FLOW_BEGIN~menu-P1
+MOCK: expect 'CHECK_FLOW_BEGIN~menu-P1' >= 1: 1
+MOCK: [frame 113] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 113] press RIGHT
+MOCK: [frame 117] press Z+A
+CHECK BEGIN ports=1
+MOCK: [frame 121] wait 4
+MOCK: [frame 125] expect CHECK~BEGIN~ports=1
+MOCK: expect 'CHECK~BEGIN~ports=1' >= 1: 3
+MOCK: [frame 125] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 125] shot menu-P1-check
+MOCK: shot build/host/shots/check-selector-480/menu-P1-check.ppm (frame 126)
+MOCK: [frame 126] press B
+MOCK: [frame 130] press START
+VIEW SLOT P1 loc=2 card=153
+MOCK: [frame 134] expect VIEW~SLOT~P1~loc=2
+MOCK: expect 'VIEW~SLOT~P1~loc=2' >= 1: 2
+MOCK: [frame 134] shot menu-P1-selected-card
+MOCK: shot build/host/shots/check-selector-480/menu-P1-selected-card.ppm (frame 135)
+MOCK: [frame 135] press B
+MOCK: [frame 139] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 139] press LEFT
+MOCK: [frame 143] press Z
+CHECK BEGIN ports=1
+MOCK: [frame 147] press B
+MOCK: [frame 151] shot menu-P1-same-selector
+MOCK: shot build/host/shots/check-selector-480/menu-P1-same-selector.ppm (frame 152)
+MOCK: [frame 152] expect_none CHECK_FLOW_RETURN~menu-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P1': 0
+MOCK: [frame 152] press A
+REQ menu/play_area P1 n=2 -> 0
+CHECK_FLOW_RETURN menu-P1 answer=0 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN menu-P2
+ASK menu/play_area P2 n=2 cursor=0
+MOCK: [frame 156] wait 6
+MOCK: [frame 162] expect CHECK_FLOW_BEGIN~menu-P2
+MOCK: expect 'CHECK_FLOW_BEGIN~menu-P2' >= 1: 1
+MOCK: [frame 162] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 162] press RIGHT P2
+MOCK: [frame 166] press Z+A P2
+CHECK BEGIN ports=2
+MOCK: [frame 170] wait 4
+MOCK: [frame 174] expect CHECK~BEGIN~ports=2
+MOCK: expect 'CHECK~BEGIN~ports=2' >= 1: 3
+MOCK: [frame 174] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 174] shot menu-P2-check
+MOCK: shot build/host/shots/check-selector-480/menu-P2-check.ppm (frame 175)
+MOCK: [frame 175] press B P2
+MOCK: [frame 179] press START P2
+VIEW SLOT P2 loc=2 card=153
+MOCK: [frame 183] expect VIEW~SLOT~P2~loc=2
+MOCK: expect 'VIEW~SLOT~P2~loc=2' >= 1: 2
+MOCK: [frame 183] shot menu-P2-selected-card
+MOCK: shot build/host/shots/check-selector-480/menu-P2-selected-card.ppm (frame 184)
+MOCK: [frame 184] press B P2
+MOCK: [frame 188] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 188] press LEFT P2
+MOCK: [frame 192] press Z P2
+CHECK BEGIN ports=2
+MOCK: [frame 196] press B P2
+MOCK: [frame 200] shot menu-P2-same-selector
+MOCK: shot build/host/shots/check-selector-480/menu-P2-same-selector.ppm (frame 201)
+MOCK: [frame 201] expect_none CHECK_FLOW_RETURN~menu-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~menu-P2': 0
+MOCK: [frame 201] press A P2
+REQ menu/play_area P2 n=2 -> 0
+CHECK_FLOW_RETURN menu-P2 answer=0 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN lesson
+TEXT Press Z to check Pokemon data./Check your cards and the status/of your Pokemon before choosing.
+ASK ack/text P1
+MOCK: [frame 205] wait 6
+MOCK: [frame 211] expect CHECK_FLOW_BEGIN~lesson
+MOCK: expect 'CHECK_FLOW_BEGIN~lesson' >= 1: 1
+MOCK: [frame 211] expect_none CHECK_FLOW_RETURN~lesson
+MOCK: expect_none 'CHECK_FLOW_RETURN~lesson': 0
+MOCK: [frame 211] press Z+A
+CHECK BEGIN ports=1
+MOCK: [frame 215] wait 4
+MOCK: [frame 219] expect_none CHECK_FLOW_RETURN~lesson
+MOCK: expect_none 'CHECK_FLOW_RETURN~lesson': 0
+MOCK: [frame 219] shot lesson-check
+MOCK: shot build/host/shots/check-selector-480/lesson-check.ppm (frame 220)
+MOCK: [frame 220] press B
+MOCK: [frame 224] wait 4
+MOCK: [frame 228] expect_none CHECK_FLOW_RETURN~lesson
+MOCK: expect_none 'CHECK_FLOW_RETURN~lesson': 0
+MOCK: [frame 228] shot lesson-return
+MOCK: shot build/host/shots/check-selector-480/lesson-return.ppm (frame 229)
+MOCK: [frame 229] press A
+REQ ack P1 n=0 -> 0
+CHECK_FLOW_RETURN lesson answer=0 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN evolution-P1
+ASK play_area P1 n=3 cursor=1
+MOCK: [frame 233] wait 6
+MOCK: [frame 239] expect CHECK_FLOW_RETURN~lesson
+MOCK: expect 'CHECK_FLOW_RETURN~lesson' >= 1: 1
+MOCK: [frame 239] expect CHECK_FLOW_BEGIN~evolution-P1
+MOCK: expect 'CHECK_FLOW_BEGIN~evolution-P1' >= 1: 1
+MOCK: [frame 239] expect_none CHECK_FLOW_RETURN~evolution-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P1': 0
+MOCK: [frame 239] press START
+VIEW SLOT P1 loc=1 card=85
+MOCK: [frame 243] expect VIEW~SLOT~P1~loc=1
+MOCK: expect 'VIEW~SLOT~P1~loc=1' >= 1: 1
+MOCK: [frame 243] shot evolution-P1-default-card
+MOCK: shot build/host/shots/check-selector-480/evolution-P1-default-card.ppm (frame 24MOCK: end of script
+MOCK: frames=277 polls=277
+4)
+MOCK: [frame 244] press B
+MOCK: [frame 248] expect_none CHECK_FLOW_RETURN~evolution-P1
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P1': 0
+MOCK: [frame 248] press A
+REQ play_area P1 n=3 -> 1
+CHECK_FLOW_RETURN evolution-P1 answer=1 unchanged_engine_requests_rng=1
+CHECK_FLOW_BEGIN evolution-P2
+ASK play_area P2 n=3 cursor=1
+MOCK: [frame 252] wait 6
+MOCK: [frame 258] expect CHECK_FLOW_RETURN~evolution-P1
+MOCK: expect 'CHECK_FLOW_RETURN~evolution-P1' >= 1: 1
+MOCK: [frame 258] expect CHECK_FLOW_BEGIN~evolution-P2
+MOCK: expect 'CHECK_FLOW_BEGIN~evolution-P2' >= 1: 1
+MOCK: [frame 258] expect_none CHECK_FLOW_RETURN~evolution-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P2': 0
+MOCK: [frame 258] press START P2
+VIEW SLOT P2 loc=1 card=85
+MOCK: [frame 262] expect VIEW~SLOT~P2~loc=1
+MOCK: expect 'VIEW~SLOT~P2~loc=1' >= 1: 1
+MOCK: [frame 262] shot evolution-P2-default-card
+MOCK: shot build/host/shots/check-selector-480/evolution-P2-default-card.ppm (frame 263)
+MOCK: [frame 263] press B P2
+MOCK: [frame 267] expect_none CHECK_FLOW_RETURN~evolution-P2
+MOCK: expect_none 'CHECK_FLOW_RETURN~evolution-P2': 0
+MOCK: [frame 267] press A P2
+REQ play_area P2 n=3 -> 1
+CHECK_FLOW_RETURN evolution-P2 answer=1 unchanged_engine_requests_rng=1
+CHECK_SELECTOR_PASS postko_P1_P2_START_Z_B_cursor_Z_A_priority_lesson_engine_rng=1 evolution_default_P1_P2=1
+MOCK: [frame 271] wait 6
+MOCK: [frame 277] expect CHECK_FLOW_RETURN~evolution-P2
+MOCK: expect 'CHECK_FLOW_RETURN~evolution-P2' >= 1: 1
+MOCK: [frame 277] expect CHECK_SELECTOR_PASS
+MOCK: expect 'CHECK_SELECTOR_PASS' >= 1: 1

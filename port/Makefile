@@ -51,6 +51,14 @@ $(BUILD)/harness/practice_check: harness/practice_check.c $(HARNESS_ENGINE)
 practicecheck: $(BUILD)/harness/practice_check
 	./$(BUILD)/harness/practice_check
 
+$(BUILD)/harness/evolution_cursor: harness/evolution_cursor.c $(HARNESS_ENGINE) $(wildcard src/*.h src/gen/*.h)
+	@mkdir -p $(dir $@)
+	$(CC) $(HARNESS_CFLAGS) -o $@ $< $(filter-out src/duel_core.c,$(HARNESS_ENGINE))
+
+.PHONY: evolutiontest
+evolutiontest: $(BUILD)/harness/evolution_cursor
+	./$(BUILD)/harness/evolution_cursor
+
 $(BUILD)/frontends/control_text: frontends/tests/control_text.c frontends/control_text.h $(BUILD)/libtcg.a
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -o $@ $< $(BUILD)/libtcg.a

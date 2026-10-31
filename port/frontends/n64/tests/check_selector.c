@@ -12,7 +12,7 @@ typedef struct {uint8_t wram[WRAM_SIZE],hram[HRAM_SIZE];unsigned requests;uint32
 static Outcome result;
 static bool interactive;
 static unsigned stage;
-static const char *const names[]={"postko-P1","postko-P2","menu-P1","menu-P2","lesson"};
+static const char *const names[]={"postko-P1","postko-P2","menu-P1","menu-P2","lesson","evolution-P1","evolution-P2"};
 static void fold(unsigned n){result.digest=(result.digest^n)*16777619u;}
 static void event(void *ctx,const TcgEvent *e)
 {
@@ -23,7 +23,8 @@ static int request(void *ctx,const TcgRequest *r)
 {
  (void)ctx;fold(r->type);fold(r->menu);fold(r->duelist);fold(r->shown);fold(r->num_items);fold(r->cursor);
  for(unsigned i=0;i<4;i++)fold(r->arg[i]);result.requests++;
- int answer=interactive?on_request(NULL,r):stage<2?1:0;
+ if(stage>=5)assert(r->type==TCG_REQ_PLAY_AREA&&r->cursor==1);
+ int answer=interactive?on_request(NULL,r):(stage<2||stage>=5)?1:0;
  fold((unsigned)answer);return answer;
 }
 static void callbacks(bool ui)
@@ -49,6 +50,7 @@ static void fixture(unsigned side)
 static int select_case(unsigned side)
 {
  if(stage<2){assert(!OpenPlayAreaScreenForSelection());assert(hTempPlayAreaLocation_ff9d==1);return 1;}
+ if(stage>=5){assert(!OpenPlayAreaScreenForEvolutionSelection(1));assert(hTempPlayAreaLocation_ff9d==1);return 1;}
  if(stage<4){TcgRequest r={.type=TCG_REQ_MENU,.menu=TCG_MENU_PLAY_AREA,.duelist=side?TCG_OPPONENT:TCG_PLAYER,.shown=side?TCG_OPPONENT:TCG_PLAYER,.num_items=2,.cursor=0,.arg={1}};return request(NULL,&r);}
  tcg_ui_practice_speech(SamTurn4DrMason2PracticeDuelText);return 0;
 }
@@ -56,14 +58,14 @@ int main(void)
 {
  display_init(getenv("MOCK_HIGH_RES")?(resolution_t){480,360,0}:RESOLUTION_320x240,DEPTH_16_BPP,3,GAMMA_NONE,FILTERS_RESAMPLE);joypad_init();
  for(unsigned i=0;i<NUM_COLORS;i++)g_col[i]=graphics_make_color(kRGB[i][0],kRGB[i][1],kRGB[i][2],255);
- for(stage=0;stage<5;stage++){
-  unsigned side=stage<4?stage&1:0;fixture(side);callbacks(false);int expected=select_case(side);Outcome reference=snapshot();
+ for(stage=0;stage<sizeof(names)/sizeof(names[0]);stage++){
+  unsigned side=stage>=5?(stage-5)&1:stage<4?stage&1:0;fixture(side);callbacks(false);int expected=select_case(side);Outcome reference=snapshot();
   fixture(side);callbacks(true);debugf("CHECK_FLOW_BEGIN %s\n",names[stage]);int answer=select_case(side);Outcome actual=snapshot();
   assert(answer==expected&&reference.requests==actual.requests&&reference.digest==actual.digest);
   assert(!memcmp(reference.wram,actual.wram,sizeof(gWRAM))&&!memcmp(reference.hram,actual.hram,sizeof(gHRAM)));
   if(stage==4)assert(g_practice_reading_on);
   debugf("CHECK_FLOW_RETURN %s answer=%d unchanged_engine_requests_rng=1\n",names[stage],answer);
  }
- debugf("CHECK_SELECTOR_PASS postko_P1_P2_START_Z_B_cursor_Z_A_priority_lesson_engine_rng=1\n");
+ debugf("CHECK_SELECTOR_PASS postko_P1_P2_START_Z_B_cursor_Z_A_priority_lesson_engine_rng=1 evolution_default_P1_P2=1\n");
  for(;;){begin_frame();draw_board(0,-1);draw_textbox();end_frame_poll();}
 }

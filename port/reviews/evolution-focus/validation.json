@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "real_engine_cases": 26,
+  "engine_target": "make -C port evolutiontest",
+  "native_frontend_target": "make -C port/frontends/n64 checktest -j6",
+  "frontend_cases_per_resolution": 7,
+  "frontend_evolution_cases_per_resolution": 2,
+  "frontend_resolutions": [
+    [
+      320,
+      240
+    ],
+    [
+      480,
+      360
+    ]
+  ],
+  "controllers": [
+    1,
+    2
+  ],
+  "coverage": [
+    "Active before Bench",
+    "all six play-area positions",
+    "first of multiple legal Bench targets",
+    "newly played and already evolved flags",
+    "zero HP skipped",
+    "Stage 1 to Stage 2",
+    "Mysterious Fossil conversion",
+    "Prehistoric Power and suppression",
+    "cancellation and manual alternative",
+    "same-answer WRAM/HRAM parity before and after selector",
+    "unchanged RNG"
+  ],
+  "canonical_eight_turn_tutorial": true,
+  "actual_wasm_duels_and_save_continue_and_practice": true,
+  "production_roms_built": true,
+  "new_native_emulator_run": false
+}

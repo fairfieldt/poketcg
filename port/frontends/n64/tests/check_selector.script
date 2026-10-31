@@ -98,4 +98,24 @@ shot lesson-return
 press A
 wait 6
 expect CHECK_FLOW_RETURN~lesson
+expect CHECK_FLOW_BEGIN~evolution-P1
+expect_none CHECK_FLOW_RETURN~evolution-P1
+press START
+expect VIEW~SLOT~P1~loc=1
+shot evolution-P1-default-card
+press B
+expect_none CHECK_FLOW_RETURN~evolution-P1
+press A
+wait 6
+expect CHECK_FLOW_RETURN~evolution-P1
+expect CHECK_FLOW_BEGIN~evolution-P2
+expect_none CHECK_FLOW_RETURN~evolution-P2
+press START P2
+expect VIEW~SLOT~P2~loc=1
+shot evolution-P2-default-card
+press B P2
+expect_none CHECK_FLOW_RETURN~evolution-P2
+press A P2
+wait 6
+expect CHECK_FLOW_RETURN~evolution-P2
 expect CHECK_SELECTOR_PASS

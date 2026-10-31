@@ -155,6 +155,8 @@ bool HasAlivePokemonInPlayArea(u8 *count);
 /* selection of a turn holder's play area Pokemon (not empty/KO'd). returns carry if B;
  * location in hTempPlayAreaLocation_ff9d and hCurMenuItem. honours wExcludeArenaPokemon. */
 bool OpenPlayAreaScreenForSelection(void);
+/* Prefer this absolute slot in the frontend without changing menu WRAM. */
+bool OpenPlayAreaScreenForEvolutionSelection(u8 cursor);
 bool OpenPlayAreaScreenForViewing(void);
 bool DisplayPlayAreaScreen(u8 keys);
 void SetupPlayAreaScreen(void);

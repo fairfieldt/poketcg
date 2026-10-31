@@ -511,7 +511,9 @@ static bool PlayPokemonCard(void)
 		u8 n = c, ee = e;
 		bool found = false;
 		do {
-			if (!CheckIfCanEvolveInto(d, ee, NULL)) {
+			if (!CheckIfCanEvolveInto(d, ee, NULL) &&
+			    GetTurnDuelistVariable((u8)(DUELVARS_ARENA_CARD_HP + ee))) {
+				e = ee;
 				found = true;
 				break;
 			}
@@ -523,8 +525,9 @@ static bool PlayPokemonCard(void)
 			ee = e;
 			do {
 				u8 reason;
-				CheckIfCanEvolveInto(d, ee, &reason);
-				if (reason) {
+				bool cannot_evolve = CheckIfCanEvolveInto(d, ee, &reason);
+				if (cannot_evolve && reason &&
+				    GetTurnDuelistVariable((u8)(DUELVARS_ARENA_CARD_HP + ee))) {
 					text = CantEvolvePokemonInSameTurnItsPlacedText;
 					break;
 				}
@@ -542,7 +545,7 @@ static bool PlayPokemonCard(void)
 	}
 	HasAlivePokemonInPlayArea(NULL);
 	for (;;) {
-		if (OpenPlayAreaScreenForSelection())
+		if (OpenPlayAreaScreenForEvolutionSelection(e))
 			return false;
 		hTemp_ffa0 = hTempCardIndex_ff98;
 		hTempPlayAreaLocation_ffa1 = hTempPlayAreaLocation_ff9d;

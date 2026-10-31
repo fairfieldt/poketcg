@@ -1,0 +1,13 @@
+engine build: full-game
+seed 1 (deck 5 vs 28): finished: P2 won (wDuelFinished=1, turns=64, requests=1620) [963 texts, 27 ms]
+seed 2 (deck 7 vs 45): finished: P2 won (wDuelFinished=1, turns=72, requests=1916) [1164 texts, 23 ms]
+
+2 finished, 0 stopped at an unported stub, 0 failures
+requests by type: {"ACK":1510,"CARD_LIST":547,"CARD_ITEM_MENU":481,"DUEL_MENU":320,"MENU/1":418,"PLAY_AREA":68,"CONFIRM":4,"MENU/2":181,"ENERGY_DISCARD":7}
+save/continue hot-seat seed 3: stopped at turn 5 after 23 saves, continued to the end (90 turns, 554 saves)
+save/continue vs AI seed 5: stopped at turn 6 after 10 saves, continued to the end (24 turns, 34 saves)
+save/continue hot-seat seed 8: stopped at turn 5 after 22 saves, continued to the end (66 turns, 395 saves)
+save/continue vs AI seed 13: stopped at turn 6 after 17 saves, continued to the end (54 turns, 106 saves)
+broken save: "Back Up is broken." -> TCG_CONTINUE_BROKEN
+practice duel: finished (player won, 14 turns, 23639 requests); 102 different texts, e.g. "Since this is just practice,"
+all save/continue and practice checks passed
