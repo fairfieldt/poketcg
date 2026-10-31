@@ -29,10 +29,11 @@ The left trigger is N64 Z (duel inspection); Steam ||| is N64 START
 (card details during a duel). View/Back reloads the game in the emulator and
 is reserved for that function.
 
-The ROM's `Game` counter measures completed game frames over N64 time. The
-Steam overlay's `Output` counter measures emulator output. At 4K, the game
-badge occupies x516..1092, y18..144; the Steam launcher stages `Output` at
-x1200,y32, font size96. These changes require a full quit/relaunch to apply
-the launcher configuration. The ROM counter works in both resolution modes.
+The ROM's `Game` counter is a development overlay measuring completed game
+frames over N64 time. It works in both resolution modes. The external `Output`
+counter is disabled for both Steam entries, including the current overlay
+configuration. The launcher restores the previous Steam overlay settings on
+exit unless the user changes them. Keep gameplay layout independent of these
+development overlays.
 
 Host setup and recovery: `~/dev/homelab/hosts/steamdeck/README.md`.
