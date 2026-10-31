@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "sharedLogoExact": true,
+  "results": [
+    {
+      "width": 320,
+      "height": 240,
+      "scene": 0,
+      "exact": true
+    },
+    {
+      "width": 320,
+      "height": 240,
+      "scene": 1,
+      "exact": true
+    },
+    {
+      "width": 320,
+      "height": 240,
+      "scene": 2,
+      "exact": true
+    },
+    {
+      "width": 320,
+      "height": 240,
+      "scene": 3,
+      "exact": true
+    },
+    {
+      "width": 480,
+      "height": 360,
+      "scene": 0,
+      "exact": true
+    },
+    {
+      "width": 480,
+      "height": 360,
+      "scene": 1,
+      "exact": true
+    },
+    {
+      "width": 480,
+      "height": 360,
+      "scene": 2,
+      "exact": true
+    },
+    {
+      "width": 480,
+      "height": 360,
+      "scene": 3,
+      "exact": true
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "openingSkip": true,
+      "secondPressOpensDiary": true,
+      "centerStable": true,
+      "titleMusicId": 1
+    },
+    {
+      "viewport": {
+        "width": 320,
+        "height": 480
+      },
+      "openingSkip": true,
+      "secondPressOpensDiary": true,
+      "centerStable": true,
+      "titleMusicId": 1
+    }
+  ],
+  "errors": []
+}

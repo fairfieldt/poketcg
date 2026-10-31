@@ -5,6 +5,7 @@ import { DuelUI, keyOf, K } from './duel_ui.js';
 import { el, clear, cardPage, richText, plainText } from './gfx.js';
 import { exportFile, importFile } from './save_store.js';
 import { AdventureAudio } from './adventure_audio.js';
+import { INTRO_VIEW, drawIntroBackdrop, beginIntroSprites } from './intro_art.js';
 
 const fast = new URLSearchParams(location.search).has('fast');
 const app = {
@@ -656,9 +657,9 @@ async function showTitle(opening = true) {
 	closeModal();
 	const title = el('div', 'adventure-title');
 	const canvas = el('canvas', '');
-	const artScale = Math.max(2, Math.min(8, Math.ceil(window.innerHeight * .92 / 144 * (window.devicePixelRatio || 1))));
-	canvas.width = 160 * artScale;
-	canvas.height = 144 * artScale;
+	const artScale = Math.max(2, Math.min(8, Math.ceil(window.innerHeight * .92 / INTRO_VIEW.height * (window.devicePixelRatio || 1))));
+	canvas.width = INTRO_VIEW.width * artScale;
+	canvas.height = INTRO_VIEW.height * artScale;
 	title.appendChild(canvas);
 	const startButton = button('Start', () => advance(), 'adventure-title-start');
 	startButton.disabled = true;
@@ -667,7 +668,7 @@ async function showTitle(opening = true) {
 	const metadata = await fetch('intro/intro_assets.json').then((r) => r.json());
 	const pictures = {};
 	await Promise.all(
-		metadata.assets.map(
+		[...metadata.assets, { name: 'title64', url: 'intro/title64-logo.png' }].map(
 			(a) =>
 				new Promise((resolve, reject) => {
 					const image = new Image();
@@ -676,7 +677,7 @@ async function showTitle(opening = true) {
 						resolve();
 					};
 					image.onerror = reject;
-					image.src = `intro/${a.name}.png`;
+					image.src = a.url || `intro/${a.name}.png`;
 				}),
 		),
 	);
@@ -694,8 +695,7 @@ async function showTitle(opening = true) {
 		titleMusic = false;
 	const idleStarted = Array(7).fill(-1);
 	const idleLength = metadata.animations[25].reduce((total, frame) => total + Math.max(0, frame[0]), 0);
-	const imageNames = ['charizard', 'scyther', 'aerodactyl', 'title'],
-		orbNames = ['grass', 'fire', 'water', 'colorless', 'lightning', 'psychic', 'fighting'];
+	const orbNames = ['grass', 'fire', 'water', 'colorless', 'lightning', 'psychic', 'fighting'];
 	function orb(id, x, y, time) {
 		const frames = metadata.animations[id - 191];
 		let visible = id !== 216;
@@ -766,15 +766,7 @@ async function showTitle(opening = true) {
 			requestAnimationFrame(draw);
 			return;
 		}
-		ctx.fillStyle = '#e7e7c6';
-		ctx.fillRect(0, 0, 160, 144);
-		ctx.imageSmoothingEnabled = true;
-		ctx.drawImage(pictures[imageNames[scene]], 0, 0);
-		if (scene === 3) {
-			ctx.imageSmoothingEnabled = false;
-			ctx.drawImage(pictures.title, 0, 110, 160, 34, 0, 110, 160, 34);
-			ctx.imageSmoothingEnabled = true;
-		}
+		drawIntroBackdrop(ctx, pictures, scene);
 		if (showOpening) {
 			let opacity = 0;
 			if (scene < 3) {
@@ -783,8 +775,9 @@ async function showTitle(opening = true) {
 			} else opacity = t < 112 ? 1 : t < 128 ? (128 - t) / 16 : 0;
 			if (opacity) {
 				ctx.fillStyle = `rgba(255,255,255,${opacity})`;
-				ctx.fillRect(0, 0, 160, 144);
+				ctx.fillRect(0, 0, INTRO_VIEW.width, INTRO_VIEW.height);
 			}
+			beginIntroSprites(ctx);
 			const stage = scene < 3 ? scene : t < 128 ? 3 : 4,
 				local = scene < 3 ? t : t < 128 ? t : t - 128;
 			for (let i = 0; i < 7; i++) {
@@ -792,6 +785,7 @@ async function showTitle(opening = true) {
 					p = orb(metadata.orb_animation_ids[stage][i], (pair[0] + 8) & 255, (pair[1] + 16) & 255, local);
 				if (p) ctx.drawImage(pictures[`orb_${orbNames[i]}`], ...p);
 			}
+			ctx.restore();
 		} else {
 			const spawn = Math.floor(t / 64);
 			if (spawn !== idleSpawn) {
@@ -805,6 +799,7 @@ async function showTitle(opening = true) {
 					}
 				}
 			}
+			beginIntroSprites(ctx);
 			for (let i = 0; i < 7; i++)
 				if (idleStarted[i] >= 0) {
 					const position = orb(216, 248, 14, t - idleStarted[i]);
@@ -814,6 +809,7 @@ async function showTitle(opening = true) {
 				ctx.imageSmoothingEnabled = false;
 				ctx.drawImage(pictures.press_start, 35, 94);
 			}
+			ctx.restore();
 		}
 		requestAnimationFrame(draw);
 	}

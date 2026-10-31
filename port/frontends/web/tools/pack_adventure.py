@@ -13,6 +13,8 @@ for name in ('world.json','actors.l64'):
     shutil.copy2(SOURCE/name,world/name)
 intro=PORT/'frontends/n64/adventure/assets/intro'
 shutil.copytree(intro,OUT/'intro',dirs_exist_ok=True)
+# The browser uses the exact N64 Expansion-Pak title derivative.
+shutil.copy2(intro.parent/'title64/logo-480.png',OUT/'intro/title64-logo.png')
 manifest=json.loads((PORT/'audio/generated/audio.json').read_text())
 audio=OUT/'audio';audio.mkdir(exist_ok=True)
 ffmpeg=shutil.which('ffmpeg')
