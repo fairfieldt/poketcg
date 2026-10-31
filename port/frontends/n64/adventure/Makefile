@@ -12,17 +12,21 @@ PORT := ../../..
 REPO := $(PORT)/..
 ROM ?= poketcg-adventure
 DIAGNOSTIC ?= 0
+HIGH_RES ?= 0
 VI_FILTER ?= FILTERS_RESAMPLE
 ENGINE_SOURCES := $(wildcard $(PORT)/src/*.c $(PORT)/src/gen/*.c $(PORT)/src/effects/*.c $(PORT)/src/ai/*.c)
 ENGINE_OBJECTS := $(ENGINE_SOURCES:$(PORT)/src/%.c=$(BUILD_DIR)/engine/%.o)
 GAME_SOURCES := $(wildcard $(PORT)/gameplay/*.c $(PORT)/gameplay/gen/*.c $(PORT)/overworld/*.c $(PORT)/overworld/gen/*.c)
 GAME_OBJECTS := $(GAME_SOURCES:$(PORT)/%.c=$(BUILD_DIR)/game/%.o)
-FRONT_OBJECTS := $(addprefix $(BUILD_DIR)/,main.o menus.o profiles.o extra_ui.o intro.o naming.o presentation.o dialogue.o audio.o scene.o save_sram.o duel_frontend.o)
+FRONT_OBJECTS := $(addprefix $(BUILD_DIR)/,main.o menus.o profiles.o extra_ui.o intro.o naming.o presentation.o dialogue.o audio.o scene.o video.o save_sram.o duel_frontend.o)
 ifneq ($(DIAGNOSTIC),0)
 FRONT_OBJECTS += $(BUILD_DIR)/mips_story.o $(BUILD_DIR)/cinematic.o
 endif
 ifneq ($(filter 5 6 7,$(DIAGNOSTIC)),)
 FRONT_OBJECTS += $(BUILD_DIR)/visual_sweep.o
+endif
+ifeq ($(DIAGNOSTIC),11)
+FRONT_OBJECTS += $(BUILD_DIR)/leads_preview.o
 endif
 ifeq ($(DIAGNOSTIC),8)
 FRONT_OBJECTS += $(BUILD_DIR)/face_preview.o
@@ -31,9 +35,9 @@ face-preview-assets:
 	python3 tools/pack_face_preview.py --output $(N64_MKDFS_ROOT)/faces --mksprite $(N64_MKSPRITE)
 $(BUILD_DIR)/$(ROM).dfs: face-preview-assets
 endif
-VIDEO_CONFIG := $(BUILD_DIR)/config-$(DIAGNOSTIC)-$(VI_FILTER)
+VIDEO_CONFIG := $(BUILD_DIR)/config-$(DIAGNOSTIC)-$(VI_FILTER)-$(HIGH_RES)
 INCLUDES := -I$(PORT)/src -I$(PORT)/overworld -I$(PORT)/gameplay -I$(PORT)/world3d -I$(BUILD_DIR)
-CFLAGS += $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -DADVENTURE_VI_FILTER=$(VI_FILTER)
+CFLAGS += $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -DADVENTURE_VI_FILTER=$(VI_FILTER) -DADVENTURE_HIGH_RES=$(HIGH_RES)
 CARD_PNGS := $(wildcard $(REPO)/src/gfx/cards/*.png)
 CARD_SPRITES := $(CARD_PNGS:$(REPO)/src/gfx/cards/%.png=$(N64_MKDFS_ROOT)/cards/%.sprite)
 WORLD_TEXTURES := $(wildcard $(PORT)/world3d/generated/textures/*.png)
@@ -50,6 +54,8 @@ all:
 	python3 $(PORT)/world3d/tools/sync_characters.py
 	$(MAKE) bundle
 bundle: $(ROM).z64
+expansion:
+	$(MAKE) BUILD_DIR=build/expansion ROM=poketcg-expansion HIGH_RES=1 bundle
 assets:
 	python3 $(PORT)/world3d/tools/build_world.py
 $(VIDEO_CONFIG):
@@ -72,6 +78,9 @@ $(BUILD_DIR)/cinematic.o: tests/cinematic.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 $(BUILD_DIR)/face_preview.o: tests/face_preview.c
+	@mkdir -p $(dir $@)
+	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+$(BUILD_DIR)/leads_preview.o: tests/leads_preview.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 $(BUILD_DIR)/visual_sweep.o: tests/visual_sweep.c
@@ -111,7 +120,7 @@ visual-diagnostic:
 	$(MAKE) BUILD_DIR=build/visual ROM=poketcg-visual DIAGNOSTIC=5
 review-diagnostic:
 	$(MAKE) BUILD_DIR=build/review ROM=poketcg-review DIAGNOSTIC=3
-.PHONY: test validate visual-diagnostic
+.PHONY: test validate visual-diagnostic expansion
 test:
 	$(MAKE) -C $(PORT) practicecheck
 	$(MAKE) -C $(PORT)/gameplay test

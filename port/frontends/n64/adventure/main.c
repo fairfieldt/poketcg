@@ -14,6 +14,7 @@
 #include "naming.h"
 #include "presentation.h"
 #include "dialogue.h"
+#include "video.h"
 #include "generated/world3d_maps.h"
 #include "gen/constants.h"
 #include "gen/text.h"
@@ -49,8 +50,8 @@ static bool capture_next;
 static void capture(surface_t *frame,const char *label)
 {
  const uint16_t *pixels=UncachedAddr(frame->buffer);
- if(label)debugf("FRAMEBUFFER %s 320 240\n",label);else debugf("FRAMEBUFFER map-%02u 320 240\n",game.ow.map);
- for(unsigned y=0;y<240;y++)for(unsigned x=0;x<320;x+=32){char line[129];for(unsigned i=0;i<32;i++)snprintf(line+i*4,5,"%04x",pixels[y*(frame->stride/2)+x+i]);debugf("PIXELS %u %u %s\n",x,y,line);}
+ if(label)debugf("FRAMEBUFFER %s %u %u\n",label,frame->width,frame->height);else debugf("FRAMEBUFFER map-%02u %u %u\n",game.ow.map,frame->width,frame->height);
+ for(unsigned y=0;y<frame->height;y++)for(unsigned x=0;x<frame->width;x+=32){char line[129];unsigned count=frame->width-x;if(count>32)count=32;for(unsigned i=0;i<count;i++)snprintf(line+i*4,5,"%04x",pixels[y*(frame->stride/2)+x+i]);debugf("PIXELS %u %u %s\n",x,y,line);}
  debugf("FRAMEBUFFER END\n");
 }
 #endif
@@ -129,7 +130,10 @@ surface_t *game_render_frame(void)
  presentation_step(&presentation,&game.ow,map);
  const PresentationCamera *camera=presentation_camera(&presentation);
  surface_t *frame=display_get();rdpq_attach(frame,&depth);gl_context_begin();scene_begin_opaque();
- glViewport(0,0,320,240);
+#if ADVENTURE_DIAGNOSTIC == 10
+ uint32_t render_started=timer_ticks();
+#endif
+ glViewport(0,0,n64_video_width,n64_video_height);
  if(game.ow.map)glClearColor(26/255.0f,18/255.0f,14/255.0f,1);
  else glClearColor(.02,.025,.055,1);
  glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
@@ -167,6 +171,9 @@ surface_t *game_render_frame(void)
   draw_presented_actor(W3_PLAYER_MODEL,presentation_player(&presentation),1,0,0);
  }
  gl_context_end();rdpq_detach_wait();
+#if ADVENTURE_DIAGNOSTIC == 10
+ debugf("VIDEO FRAME map=%u render_us=%u\n",game.ow.map,(unsigned)TICKS_TO_US((uint32_t)(timer_ticks()-render_started)));
+#endif
  unsigned selection=game.ow.overworld_selection;
  if(selection<1||selection>12)selection=1;
  unsigned map_name=OverworldMapMasonLaboratoryText+selection-1;
@@ -199,7 +206,7 @@ static void warp_fade(bool revealing,unsigned map,const surface_t *snapshot)
    rdpq_set_prim_color(tint);rdpq_mode_alphacompare(0);
    rdpq_mode_blender(RDPQ_BLENDER_MULTIPLY);
   }
-  rdpq_fill_rectangle(0,0,320,240);
+  rdpq_fill_rectangle(0,0,n64_video_width,n64_video_height);
   rdpq_mode_pop();rdpq_detach_wait();display_show(frame);adventure_audio_poll();
  }
 }
@@ -305,7 +312,7 @@ static void host_changed(void *ctx,OwState *state)
  if(fade) {
   /* Copy the completed old image before display_get can recycle its surface.
      The temporary is released before loading the destination room. */
-  surface_t snapshot=surface_alloc(FMT_RGBA16,320,240);
+  surface_t snapshot=n64_video_surface();
   if(snapshot.buffer) {
    copy_frame(&snapshot,last_world_frame);
    warp_fade(false,presentation.map,&snapshot);surface_free(&snapshot);
@@ -388,12 +395,54 @@ int main(void)
     Resample-only scanout keeps 320-wide landmarks and text readable: the
     extra VI AA/divot/dedither chain smeared their narrow features. Coverage
     remains coherent because displayed buffers are never edited by the CPU. */
- display_init(RESOLUTION_320x240,DEPTH_16_BPP,3,GAMMA_NONE,ADVENTURE_VI_FILTER);
+ display_init(n64_video_init(ADVENTURE_HIGH_RES!=0),DEPTH_16_BPP,3,GAMMA_NONE,ADVENTURE_VI_FILTER);
  display_set_fps_limit(30);dfs_init(DFS_DEFAULT_LOCATION);joypad_init();rdpq_init();gl_init();
- depth=surface_alloc(FMT_RGBA16,320,240);scene_begin_opaque();
+ depth=n64_video_surface();scene_begin_opaque();
  glEnable(GL_MULTISAMPLE_ARB);glDisable(GL_CULL_FACE);glDisable(GL_LIGHTING);
  adventure_audio_init();n64_ui_init();actors=scene_open(W3_ACTOR_SCENE,W3_TEXTURE_ROOT);
-#if ADVENTURE_DIAGNOSTIC == 9
+#if ADVENTURE_DIAGNOSTIC == 11
+ extern void adventure_leads_preview(surface_t *,void (*)(surface_t *,const char *));
+ adventure_leads_preview(&depth,capture);
+ for(;;)adventure_audio_poll();
+#elif ADVENTURE_DIAGNOSTIC == 10
+ static const unsigned review_maps[]={0,1,15,32};
+ static const char *const review_names[]={"overworld","lab","lightning","dome"};
+ for(unsigned i=0;i<4;i++) {
+  unsigned map=review_maps[i];memset(&game,0,sizeof(game));
+  game.ow.map=map;game.ow.x=w3_maps[map].width/2;game.ow.y=w3_maps[map].height-4;
+  game.ow.direction=2;game.ow.overworld_selection=OWMAP_MASON_LABORATORY;
+  for(const OwNpcDef *npc=ow_map_npcs[map];npc&&npc->id;npc++)if(npc->id!=255&&npc->x<w3_maps[map].width&&npc->y<w3_maps[map].height&&game.ow.npc_count<OW_NPC_LIMIT) {
+   unsigned index=game.ow.npc_count++;
+   game.ow.npcs[index]=(OwNpc){npc->id,npc->x,npc->y,npc->dir,1,ow_npc_headers[npc->id].sprite};
+   game.ow.npc_flags[index]=ow_npc_headers[npc->id].flags;
+   game.ow.npc_animation[index]=npc->id==NPC_AMY?SPRITE_ANIM_CGB_AMY_LAYING:ow_npc_headers[npc->id].animation;
+  }
+  debugf("VIDEO REVIEW %s BEGIN\n",review_names[i]);
+  for(unsigned f=0;f<24;f++) {
+   /* A fixed presentation pose compares raster resolution independently of
+      a running gait, cursor bob, or camera interpolation. */
+   presentation_init(&presentation,NULL,false);surface_t *frame=game_render_frame();
+   if(f==4)capture(frame,review_names[i]);
+   display_show(frame);adventure_audio_poll();
+  }
+  heap_stats_t stats;sys_get_heap_stats(&stats);
+  debugf("VIDEO HEAP stage=%s total=%d used=%d free=%d\n",review_names[i],stats.total,stats.used,stats.total-stats.used);
+ }
+ debugf("VIDEO REVIEW naming BEGIN\n");
+ for(unsigned f=0;f<24;f++) {
+  surface_t *frame=adventure_name_player_preview();if(f==4)capture(frame,"naming");
+ }
+ memset(&game,0,sizeof(game));game.ow.map=1;game.ow.x=14;game.ow.y=20;
+ debugf("VIDEO REVIEW dialogue BEGIN\n");
+ for(unsigned f=0;f<24;f++) {
+  presentation_init(&presentation,NULL,false);
+  surface_t *frame=adventure_story_message_preview("Dr. Mason","Welcome to the world of Pokemon cards!\nLet's learn how to play together.");
+  if(f==4)capture(frame,"dialogue");
+ }
+ n64_ui_polish_preview();
+ debugf("VIDEO REVIEW PASS\n");
+ for(;;)adventure_audio_poll();
+#elif ADVENTURE_DIAGNOSTIC == 9
  n64_ui_polish_preview();
  for(;;)adventure_audio_poll();
 #elif ADVENTURE_DIAGNOSTIC == 8

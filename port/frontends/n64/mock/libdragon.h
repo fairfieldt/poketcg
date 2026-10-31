@@ -44,6 +44,8 @@ void graphics_fill_screen(surface_t *surf, uint32_t c);
 void graphics_draw_box(surface_t *surf, int x, int y, int width, int height, uint32_t color);
 void graphics_set_color(uint32_t forecolor, uint32_t backcolor);
 void graphics_draw_text(surface_t *surf, int x, int y, const char *const msg);
+/* Same compact-font rows used by libdragon, for scaled per-glyph tests. */
+unsigned mock_font_row(unsigned character,unsigned row);
 
 /* sprite.h */
 typedef struct sprite_s {

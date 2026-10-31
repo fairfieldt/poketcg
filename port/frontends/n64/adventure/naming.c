@@ -9,6 +9,8 @@
 #include "naming.h"
 #include "scene.h"
 #include "audio.h"
+#include "video.h"
+#include "duel_bridge.h"
 #include "generated/world3d_maps.h"
 #include "gen/constants.h"
 
@@ -26,9 +28,18 @@ static NameAssets assets_open(void)
  NameAssets assets={0};
  assets.model=w3_actor_scenes[W3_PLAYER_MODEL]?W3_PLAYER_MODEL:1;
  assets.player=scene_open(w3_actor_scenes[W3_PLAYER_MODEL]?w3_actor_scenes[W3_PLAYER_MODEL]:W3_ACTOR_SCENE,W3_TEXTURE_ROOT);
- assets.depth=surface_alloc(FMT_RGBA16,320,240);
- assets.canvas=surface_alloc(FMT_RGBA16,320,240);
- assert(assets.player&&assets.depth.buffer&&assets.canvas.buffer);return assets;
+ assets.depth=n64_video_surface();
+ assets.canvas=n64_video_surface();
+ assert(assets.player&&assets.depth.buffer&&assets.canvas.buffer);
+#if ADVENTURE_DIAGNOSTIC == 10
+ static bool measured;
+ if(!measured) {
+  heap_stats_t stats;sys_get_heap_stats(&stats);
+  debugf("VIDEO HEAP stage=naming total=%d used=%d free=%d\n",stats.total,stats.used,stats.total-stats.used);
+  measured=true;
+ }
+#endif
+ return assets;
 }
 static void assets_close(NameAssets *assets)
 {
@@ -75,12 +86,12 @@ static bool choose(NameState *state)
 static uint32_t color(unsigned r,unsigned g,unsigned b)
 {return graphics_make_color(r,g,b,255);}
 static void box(surface_t *canvas,int x,int y,int w,int h,uint32_t foreground)
-{graphics_draw_box(canvas,x,y,w,h,foreground);}
+{n64_video_box(canvas,x,y,w,h,foreground);}
 static void text(surface_t *canvas,int x,int y,uint32_t foreground,const char *value)
 {
- graphics_set_color(foreground==color(24,48,80)?color(185,199,199):color(16,40,68),0);
- graphics_draw_text(canvas,x+1,y+1,value);
- graphics_set_color(foreground,0);graphics_draw_text(canvas,x,y,value);
+ uint32_t shadow=foreground==color(24,48,80)?color(185,199,199):color(16,40,68);
+ n64_ui_draw_text(canvas,x+1,y+1,shadow,value,N64_UI_FONT_COMPACT,320-x-1);
+ n64_ui_draw_text(canvas,x,y,foreground,value,N64_UI_FONT_COMPACT,320-x);
 }
 static void border(surface_t *canvas,int x,int y,int w,int h,uint32_t foreground)
 {
@@ -125,14 +136,14 @@ static void draw_keyboard(NameAssets *assets,const NameState *state,unsigned fra
  text(&canvas,20,219,ink,"A: choose  B: delete  START: End");
  data_cache_hit_writeback_invalidate(canvas.buffer,(unsigned long)canvas.stride*canvas.height);
  rdpq_mode_push();rdpq_set_mode_standard();rdpq_mode_filter(FILTER_POINT);
- rdpq_mode_alphacompare(1);rdpq_tex_blit(&canvas,0,0,NULL);rdpq_mode_pop();
+ rdpq_mode_alphacompare(1);n64_video_blit_physical(&canvas,0,0);rdpq_mode_pop();
 }
 
 static surface_t *draw_frame(NameAssets *assets,const NameState *state,unsigned frame)
 {
  surface_t *display=display_get();rdpq_attach(display,&assets->depth);gl_context_begin();scene_begin_opaque();
  glClearColor(.69f,.82f,.86f,1);glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
- glViewport(14,44,104,154);
+ glViewport(n64_video_x(14),n64_video_y(44),n64_video_x(104),n64_video_y(154));
  glMatrixMode(GL_PROJECTION);glPushMatrix();glLoadIdentity();gluPerspective(34,104.0/154.0,.1,20);
  glMatrixMode(GL_MODELVIEW);glPushMatrix();glLoadIdentity();gluLookAt(0,1.28,4.7,0,1.08,0,0,1,0);
  glDisable(GL_TEXTURE_2D);glColor4f(.24f,.36f,.46f,1);
@@ -141,7 +152,7 @@ static surface_t *draw_frame(NameAssets *assets,const NameState *state,unsigned 
  glEnd();
  scene_draw_actor(assets->player,assets->model,0,0,-12+sinf(frame*.025f)*5,0);
  glPopMatrix();glMatrixMode(GL_PROJECTION);glPopMatrix();glMatrixMode(GL_MODELVIEW);
- glViewport(0,0,320,240);gl_context_end();
+ glViewport(0,0,n64_video_width,n64_video_height);gl_context_end();
  draw_keyboard(assets,state,frame);rdpq_detach_wait();display_show(display);
  adventure_audio_poll();return display;
 }

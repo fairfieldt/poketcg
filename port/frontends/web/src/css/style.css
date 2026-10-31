@@ -303,10 +303,11 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 .prizes-box { display: flex; flex-direction: column; align-items: center; gap: calc(var(--u) * 4px); }
 .prize-grid { display: grid; grid-template-columns: repeat(3, auto); gap: calc(var(--u) * 4px); }
 .prize-card {
-	width: calc(var(--u) * 28px); height: calc(var(--u) * 36px); border: calc(var(--u) * 1px) solid var(--frame); border-radius: calc(var(--u) * 2px);
-	background: repeating-linear-gradient(45deg, #2858b8, #2858b8 4px, #3868c8 4px, #3868c8 8px); cursor: pointer; font-size: calc(var(--u) * 12px);
+	width: calc(var(--u) * 28px); height: calc(var(--u) * 39px); border: calc(var(--u) * 1px) solid #164e89; border-radius: calc(var(--u) * 1.25px);
+	background: #104d88 url(../img/card-back.png) center / 100% 100% no-repeat; cursor: pointer; font-size: calc(var(--u) * 12px);
 	display: flex; align-items: center; justify-content: center;
 }
+.prize-card > .sym { display: none; }
 .prize-card.taken { opacity: 0.15; cursor: default; }
 .prize-card.cur { outline: calc(var(--u) * 1px) solid var(--accent); outline-offset: calc(var(--u) * 1px); }
 .peek-extra { display: flex; gap: calc(var(--u) * 3px); }
@@ -393,7 +394,8 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 .duel .count.prizes { color: #ffe2a0; }
 .duel .pile-back {
 	width: calc(5px * var(--u)); height: calc(7px * var(--u)); flex: none;
-	border: calc(0.5px * var(--u)) solid #a1b5c4; background: #28507c;
+	border: calc(0.5px * var(--u)) solid #164e89;
+	background: #104d88 url(../img/card-back.png) center / 100% 100% no-repeat;
 	box-shadow: calc(1px * var(--u)) calc(1px * var(--u)) 0 #081d25;
 }
 .duel .bench-row { background: #21473f; padding: calc(1px * var(--u)); }
@@ -492,7 +494,7 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 	border: calc(1px * var(--u)) solid #bdb8a3; padding: calc(4px * var(--u)) calc(8px * var(--u));
 	box-shadow: 0 calc(2px * var(--u)) 0 #0c1b29;
 }
-.duel .prize-card { background: #28507c; border-color: #a8b9c8; box-shadow: calc(1px * var(--u)) calc(2px * var(--u)) 0 #0a1928, inset 0 0 0 calc(2px * var(--u)) #193b60; }
+.duel .prize-card { border-color: #164e89; box-shadow: calc(1px * var(--u)) calc(2px * var(--u)) 0 #0a1928; }
 .duel .prize-card.cur { border-color: #fff0bd; outline: calc(2px * var(--u)) solid #e4b75b; outline-offset: calc(1px * var(--u)); }
 .duel .card-page, .duel .dialog {
 	background: var(--paper); color: var(--paper-ink); text-shadow: 0 1px 0 #fffdf2;

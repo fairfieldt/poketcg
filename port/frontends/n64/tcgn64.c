@@ -29,6 +29,9 @@
 #include <string.h>
 
 #include <libdragon.h>
+#ifndef TCGN64_HOST_TEST
+#include <font.h>
+#endif
 
 #include "tcg.h"
 #include "common.h"
@@ -38,6 +41,7 @@
 #include "save_store_n64.h"
 #include "banner_font.h"
 #include "body_font.h"
+#include "card_back.h"
 #ifdef TCGN64_ADVENTURE
 #include "adventure/audio.h"
 #endif
@@ -108,6 +112,7 @@ enum { MODE_VS_AI, MODE_VS_BOT, MODE_HOTSEAT, MODE_PRACTICE, NUM_MODES };
 enum { PK_HUMAN, PK_AI, PK_BOT };       /* who answers a duelist's requests */
 
 static uint32_t g_col[NUM_COLORS];
+static unsigned g_raster_width=SCREEN_W;
 static surface_t *g_fb;
 static unsigned g_frame;
 static int g_mode;
@@ -394,6 +399,13 @@ static bool can_pay(const struct AtkData *atk, const Slot *s)
 
 /* ------------------------------------------------------------------ drawing */
 
+/* The layout remains in 320x240 TV coordinates. Rasterization and the cached
+ * canvas use the active physical resolution, including true 480x360 glyphs. */
+static int ui_x(int x) { return x*(int)g_raster_width/SCREEN_W; }
+/* Dialogues and popups can use partial-height or partial-width canvases. */
+static int ui_y(int y) { return y*(int)g_raster_width/SCREEN_W; }
+static bool ui_high_res(void) { return g_raster_width==480; }
+
 static void fill(int x, int y, int w, int h, int c)
 {
 	if (x < 0) { w += x; x = 0; }
@@ -402,7 +414,8 @@ static void fill(int x, int y, int w, int h, int c)
 	if (y + h > SCREEN_H) h = SCREEN_H - y;
 	if (w <= 0 || h <= 0)
 		return;
-	graphics_draw_box(g_fb, x, y, w, h, g_col[c]);
+	int px=ui_x(x),py=ui_y(y);
+	graphics_draw_box(g_fb,px,py,ui_x(x+w)-px,ui_y(y+h)-py,g_col[c]);
 }
 
 static void rect(int x, int y, int w, int h, int c)
@@ -434,6 +447,36 @@ static void paper_panel(int x, int y, int w, int h)
 }
 
 /* draw at most `max` characters of one line (clipped to the screen) */
+static void compact_text(int x,int y,uint32_t color,const char *text,int limit)
+{
+	if(!ui_high_res()) {
+		char line[SCREEN_W/CW+1];int count=0;
+		if(limit>g_fb->width)limit=g_fb->width;
+		if(x<0||y<0||y+8>g_fb->height)return;
+		while(text[count]&&text[count]!='\n'&&count<SCREEN_W/CW&&x+(count+1)*CW<=limit) {
+			line[count]=text[count];count++;
+		}
+		line[count]=0;graphics_set_color(color,0);graphics_draw_text(g_fb,x,y,line);return;
+	}
+	for(;*text&&*text!='\n';text++,x+=CW) {
+		unsigned ch=(unsigned char)*text;if(ch<32||ch>126)ch='?';
+		if(x+CW>limit)break;
+		for(int row=0;row<8;row++) {
+#ifdef TCGN64_HOST_TEST
+			unsigned bits=mock_font_row(ch,(unsigned)row);
+#else
+			unsigned bits=__font_data[ch*8+(unsigned)row];
+#endif
+			for(int col=0;col<8;col++)if(bits&(0x80>>col)) {
+				int px=ui_x(x+col),py=ui_y(y+row);
+				int w=ui_x(x+col+1)-px,h=ui_y(y+row+1)-py;
+				if(px<0||py<0||px+w>g_fb->width||py+h>g_fb->height)continue;
+				graphics_draw_box(g_fb,px,py,w,h,color);
+			}
+		}
+	}
+}
+
 static void print_n(int x, int y, int c, const char *s, int max)
 {
 	char buf[COLS + 8];
@@ -453,11 +496,9 @@ static void print_n(int x, int y, int c, const char *s, int max)
 	if (!n)
 		return;
 	if(c != C_BLACK && x + n * CW < SCREEN_W && y + 8 < SCREEN_H) {
-		graphics_set_color(g_col[c == C_INK ? C_PAPERSHADE : C_PANELSHADE],0);
-		graphics_draw_text(g_fb,x + 1,y + 1,buf);
+		compact_text(x+1,y+1,g_col[c==C_INK?C_PAPERSHADE:C_PANELSHADE],buf,SCREEN_W);
 	}
-	graphics_set_color(g_col[c], 0);
-	graphics_draw_text(g_fb, x, y, buf);
+	compact_text(x,y,g_col[c],buf,SCREEN_W);
 }
 
 static void print(int x, int y, int c, const char *s) { print_n(x, y, c, s, COLS + 4); }
@@ -487,29 +528,37 @@ static int body_width(const char *text)
 	return width;
 }
 
-static void body_mask(int x,int y,int color,const char *text,int limit)
+static void raster_glyph(int x,int y,uint16_t foreground,const uint8_t *mask,int width,int height,int limit)
 {
-	uint16_t foreground=(uint16_t)g_col[color];
+	for(int row=0;row<height;row++)for(int col=0;col<width;col++) {
+		int p=row*width+col;
+		unsigned coverage=(mask[p/2]>>(p&1?0:4))&15;
+		int px=x+col,py=y+row;
+		if(!coverage||px<0||px>=limit||px>=g_fb->width||py<0||py>=g_fb->height)continue;
+		uint16_t *pixel=(uint16_t *)((uint8_t *)g_fb->buffer+py*g_fb->stride)+px;
+		uint16_t background=*pixel;
+		unsigned r=(((foreground>>11)&31)*coverage+((background>>11)&31)*(15-coverage)+7)/15;
+		unsigned g=(((foreground>>6)&31)*coverage+((background>>6)&31)*(15-coverage)+7)/15;
+		unsigned b=(((foreground>>1)&31)*coverage+((background>>1)&31)*(15-coverage)+7)/15;
+		*pixel=(uint16_t)((r<<11)|(g<<6)|(b<<1)|1);
+	}
+}
+
+static void body_run(int x,int y,uint32_t color,const char *text,int limit)
+{
 	for(;*text&&*text!='\n';text++) {
 		unsigned ch=(unsigned char)*text;if(ch<32||ch>126)ch='?';
 		int advance=body_advance(ch);
 		if(x+advance>limit)break;
-		const uint8_t *mask=body_font_coverage[ch-BODY_FONT_FIRST];
-		for(int row=0;row<BODY_FONT_HEIGHT;row++)for(int col=0;col<BODY_FONT_WIDTH;col++) {
-			int p=row*BODY_FONT_WIDTH+col;
-			unsigned coverage=(mask[p/2]>>(p&1?0:4))&15;
-			int px=x+col,py=y+row;
-			if(!coverage||px<0||px>=limit||px>=g_fb->width||py<0||py>=g_fb->height)continue;
-			uint16_t *pixel=(uint16_t *)((uint8_t *)g_fb->buffer+py*g_fb->stride)+px;
-			uint16_t background=*pixel;
-			unsigned r=(((foreground>>11)&31)*coverage+((background>>11)&31)*(15-coverage)+7)/15;
-			unsigned g=(((foreground>>6)&31)*coverage+((background>>6)&31)*(15-coverage)+7)/15;
-			unsigned b=(((foreground>>1)&31)*coverage+((background>>1)&31)*(15-coverage)+7)/15;
-			*pixel=(uint16_t)((r<<11)|(g<<6)|(b<<1)|1);
-		}
+		unsigned glyph=ch-BODY_FONT_FIRST;
+		if(ui_high_res())raster_glyph(ui_x(x),ui_y(y),(uint16_t)color,body_hi_coverage[glyph],BODY_HI_WIDTH,BODY_HI_HEIGHT,ui_x(limit));
+		else raster_glyph(x,y,(uint16_t)color,body_font_coverage[glyph],BODY_FONT_WIDTH,BODY_FONT_HEIGHT,limit);
 		x+=advance;
 	}
 }
+
+static void body_mask(int x,int y,int color,const char *text,int limit)
+{ body_run(x,y,g_col[color],text,limit); }
 
 static void body(int x,int y,int color,const char *text,int width)
 {
@@ -668,13 +717,39 @@ static sprite_t *art_get(uint8_t id)
 }
 #endif
 
+#ifdef TCGN64_CARD_ART
+/* Source card art is the original 64x48 image. Scale that image into the
+ * physical destination; every other UI element is rasterized at destination
+ * resolution instead of enlarging a completed 320x240 framebuffer. */
+static void sprite_logical(int x,int y,int width,int height,sprite_t *sprite)
+{
+#ifdef TCGN64_HOST_TEST
+	const uint16_t *pixels=sprite->pixels;unsigned stride=sprite->width;
+#else
+	surface_t source=sprite_get_pixels(sprite);
+	const uint16_t *pixels=source.buffer;unsigned stride=source.stride/2;
+#endif
+	int px=ui_x(x),py=ui_y(y),w=ui_x(x+width)-px,h=ui_y(y+height)-py;
+	for(int row=0;row<h;row++) {
+		int dy=py+row;if(dy<0||dy>=g_fb->height)continue;
+		uint16_t *dest=(uint16_t *)((uint8_t *)g_fb->buffer+dy*g_fb->stride);
+		const uint16_t *src=pixels+(row*sprite->height/h)*stride;
+		for(int col=0;col<w;col++) {
+			int dx=px+col;if(dx<0||dx>=g_fb->width)continue;
+			uint16_t color=src[col*sprite->width/w];if(color&1)dest[dx]=color;
+		}
+	}
+}
+#endif
+
 /* 64x48 card picture (or a placeholder with the type letter) */
 static void card_art(int x, int y, uint8_t id)
 {
 #ifdef TCGN64_CARD_ART
 	sprite_t *s = art_get(id);
 	if (s) {
-		graphics_draw_sprite(g_fb, x, y, s);
+		if(ui_high_res())sprite_logical(x,y,64,48,s);
+		else graphics_draw_sprite(g_fb,x,y,s);
 		rect(x - 1, y - 1, 66, 50, C_BORDER);
 		return;
 	}
@@ -691,19 +766,9 @@ static void bench_art(int x,int y,uint8_t id)
 #ifdef TCGN64_CARD_ART
 	sprite_t *sprite=art_get(id);
 	if(sprite) {
-#ifdef TCGN64_HOST_TEST
-		const uint16_t *pixels=sprite->pixels;unsigned stride=sprite->width;
-#else
-		surface_t source=sprite_get_pixels(sprite);
-		const uint16_t *pixels=source.buffer;unsigned stride=source.stride/2;
-#endif
 		/* Cartridge card sprites and the offscreen UI canvas are RGBA16.
 		   Quarter-size art identifies a bench card without hiding its stats. */
-		for(unsigned row=0;row<12;row++) {
-			uint16_t *dest=(uint16_t *)((uint8_t *)g_fb->buffer+(y+(int)row)*g_fb->stride)+x;
-			for(unsigned column=0;column<16;column++)
-				dest[column]=pixels[(row*sprite->height/12)*stride+column*sprite->width/16];
-		}
+		sprite_logical(x,y,16,12,sprite);
 		return;
 	}
 #endif
@@ -732,9 +797,10 @@ static void draw_felt(void)
 	}
 	/* Copy only into the reserved CPU canvas. end_frame presents it through
 	   RDP after cache writeback, exactly like the rest of the duel UI. */
-	for(int y=BOARD_Y;y<BOARD_Y+BOARD_H;y++) {
+	for(int y=ui_y(BOARD_Y);y<ui_y(BOARD_Y+BOARD_H);y++) {
 		uint16_t *row=(uint16_t *)((uint8_t *)g_fb->buffer+y*g_fb->stride);
-		for(int x=LEFT-6;x<RIGHT+6;x++)row[x]=tile[y&31][x&31];
+		for(int x=ui_x(LEFT-6);x<ui_x(RIGHT+6);x++)
+			row[x]=tile[(y*SCREEN_H/g_fb->height)&31][(x*SCREEN_W/g_fb->width)&31];
 	}
 }
 
@@ -903,6 +969,7 @@ static unsigned g_review_seen;
 static void begin_frame(void)
 {
 	g_disp = display_get();
+	g_raster_width=g_disp->width;
 	/* The adventure presents a completed CPU canvas through RDP, keeping
 	 * partial CPU drawing away from the displayed framebuffer chain. */
 #ifdef TCGN64_ADVENTURE
@@ -1045,10 +1112,11 @@ static bool review_snapshot(void)
 	if(!g_review_label)return false;
 	surface_t *frame=g_last_ui_frame;
 	const uint16_t *pixels=UncachedAddr(frame->buffer);
-	debugf("FRAMEBUFFER %s 320 240\n",g_review_label);
-	for(unsigned y=0;y<240;y++)for(unsigned x=0;x<320;x+=32) {
+	debugf("FRAMEBUFFER %s %u %u\n",g_review_label,frame->width,frame->height);
+	for(unsigned y=0;y<frame->height;y++)for(unsigned x=0;x<frame->width;x+=32) {
 		char line[129];
-		for(unsigned i=0;i<32;i++)snprintf(line+i*4,5,"%04x",pixels[y*(frame->stride/2)+x+i]);
+		unsigned count=frame->width-x;if(count>32)count=32;
+		for(unsigned i=0;i<count;i++)snprintf(line+i*4,5,"%04x",pixels[y*(frame->stride/2)+x+i]);
 		debugf("PIXELS %u %u %s\n",x,y,line);
 	}
 	debugf("FRAMEBUFFER END\n");g_review_label=NULL;
@@ -1329,7 +1397,8 @@ static void draw_card_summary(int x,int y,int w,uint8_t id)
 	for(int i=0;i<count&&i<2;i++)body(x+4,y+i*BODY_LH,C_INK,lines[i],w-8);
 	/* Name, stats and illustration occupy stable slots for all card classes. */
 	if(is_pokemon(c)) {
-		bodyf(x+4,y+27,C_INK,w-8,"HP %d  Lv%d  %s",c->HP,c->Level,c->Stage?"Evolved":"Basic");
+		energy_icon(x+4,y+29,card_color(c));
+		bodyf(x+17,y+27,C_INK,w-21,"HP %d  Lv%d",c->HP,c->Level);
 	} else body(x+4,y+27,C_INK,is_energy(c)?"Energy":"Trainer",w-8);
 	card_art(x+(w-64)/2,y+43,id);
 	int ly=y+97;
@@ -1406,29 +1475,21 @@ static int banner_text_width(const char *text)
 	return width;
 }
 
-static void banner_text(int x,int y,int color,const char *text)
+static void banner_run(int x,int y,uint32_t color,const char *text,int limit)
 {
-	uint16_t foreground=(uint16_t)g_col[color];
-	uint16_t *pixels=g_fb->buffer;
-	for(;*text;text++) {
-		unsigned ch=(unsigned char)*text;
-		if(ch<32||ch>126)ch='?';
-		const uint8_t *mask=banner_font_coverage[ch-BANNER_FONT_FIRST];
-		for(int row=0;row<BANNER_FONT_HEIGHT;row++)for(int col=0;col<BANNER_FONT_WIDTH;col++) {
-			int p=row*BANNER_FONT_WIDTH+col;
-			unsigned coverage=(mask[p/2]>>(p&1?0:4))&15;
-			int px=x+col,py=y+row;
-			if(!coverage||px<0||px>=g_fb->width||py<0||py>=g_fb->height)continue;
-			uint16_t *pixel=&pixels[py*(g_fb->stride/2)+px];
-			uint16_t background=*pixel;
-			unsigned r=(((foreground>>11)&31)*coverage+((background>>11)&31)*(15-coverage)+7)/15;
-			unsigned g=(((foreground>>6)&31)*coverage+((background>>6)&31)*(15-coverage)+7)/15;
-			unsigned b=(((foreground>>1)&31)*coverage+((background>>1)&31)*(15-coverage)+7)/15;
-			*pixel=(uint16_t)((r<<11)|(g<<6)|(b<<1)|1);
-		}
-		x+=banner_font_advance[ch-BANNER_FONT_FIRST];
+	for(;*text&&*text!='\n';text++) {
+		unsigned ch=(unsigned char)*text;if(ch<32||ch>126)ch='?';
+		unsigned glyph=ch-BANNER_FONT_FIRST;
+		int advance=banner_font_advance[glyph];
+		if(x+advance>limit)break;
+		if(ui_high_res())raster_glyph(ui_x(x),ui_y(y),(uint16_t)color,banner_hi_coverage[glyph],BANNER_HI_WIDTH,BANNER_HI_HEIGHT,ui_x(limit));
+		else raster_glyph(x,y,(uint16_t)color,banner_font_coverage[glyph],BANNER_FONT_WIDTH,BANNER_FONT_HEIGHT,limit);
+		x+=advance;
 	}
 }
+
+static void banner_text(int x,int y,int color,const char *text)
+{ banner_run(x,y,g_col[color],text,SCREEN_W); }
 
 static void draw_duel_banner(const char *text)
 {
@@ -1457,12 +1518,29 @@ static void draw_duel_banner(const char *text)
 static void card_back(int x,int y,int width,int height)
 {
 	fill(x+2,y+2,width,height,C_PANELSHADE);
-	fill(x,y,width,height,C_PAPER);rect(x,y,width,height,C_EDGE);
-	fill(x+2,y+2,width-4,height-4,C_CARDBACK);
-	rect(x+4,y+4,width-8,height-8,C_HI);
-	int cx=x+width/2,cy=y+height/2;
-	for(int i=-5;i<=5;i++)fill(cx-(5-abs(i)),cy+i,2*(5-abs(i))+1,1,C_PAPER);
-	fill(cx-1,cy-2,3,5,C_EDGE);
+	const uint16_t *source;int sw,sh;
+	/* Both display modes receive a direct reduction of the published back.
+	 * The small plaque keeps its own filtered LOD instead of losing the logo
+	 * to a second nearest-neighbor reduction of the Prize image. */
+	if(width<=24) {
+		source=ui_high_res()?card_back_small_hi:card_back_small;
+		sw=ui_high_res()?CARD_BACK_SMALL_HI_W:CARD_BACK_SMALL_W;
+		sh=ui_high_res()?CARD_BACK_SMALL_HI_H:CARD_BACK_SMALL_H;
+	} else {
+		source=ui_high_res()?card_back_high:card_back_standard;
+		sw=ui_high_res()?CARD_BACK_HIGH_W:CARD_BACK_STANDARD_W;
+		sh=ui_high_res()?CARD_BACK_HIGH_H:CARD_BACK_STANDARD_H;
+	}
+	int px=ui_x(x),py=ui_y(y),w=ui_x(x+width)-px,h=ui_y(y+height)-py;
+	for(int row=0;row<h;row++) {
+		int dy=py+row;if(dy<0||dy>=g_fb->height)continue;
+		uint16_t *dest=(uint16_t *)((uint8_t *)g_fb->buffer+dy*g_fb->stride);
+		for(int col=0;col<w;col++) {
+			int dx=px+col;if(dx<0||dx>=g_fb->width)continue;
+			uint16_t color=source[(row*sh/h)*sw+col*sw/w];
+			if(color&1)dest[dx]=color;
+		}
+	}
 }
 
 /* Start and result share the paper turn-plaque language. They occupy waits
@@ -1999,7 +2077,7 @@ static int ui_peek_target(const TcgRequest *r, int ports)
 			int x = i < 6 ? x0 + (i % 3) * 40 : x0 + 130, y = i < 6 ? y0 + (i / 3) * 48 : y0 + (i - 6) * 48;
 			bool ok = i < 6 ? (prizes & (1 << i)) != 0 : i == 7 || hand;
 			if (ok)
-				fill(x, y, 32, 40, i < 6 ? C_CARDBACK : C_PANEL2);
+				card_back(x+2,y,28,40);
 			else
 				rect(x, y, 32, 40, C_MID);
 			if (i >= 6)
@@ -2628,7 +2706,7 @@ static int on_request_selftest(void *ctx, const TcgRequest *menu)
 #define on_request on_request_selftest
 #endif
 
-#if defined(TCGN64_HOST_TEST) || ADVENTURE_DIAGNOSTIC == 9
+#if defined(TCGN64_HOST_TEST) || ADVENTURE_DIAGNOSTIC == 9 || ADVENTURE_DIAGNOSTIC == 10
 /* Verify reflow against every card's actual source text, independent of the
  * renderer: punctuation and conditions must survive, and no line may exceed
  * its measured pixel allocation. Runs in the diagnostic/host builds only. */
@@ -2953,9 +3031,21 @@ static int saved_duel_mode(const TcgSavedDuel *info)
 #ifdef TCGN64_ADVENTURE
 #include "adventure/duel_bridge.h"
 
+void n64_ui_draw_text(surface_t *canvas,int x,int y,uint32_t color,const char *text,int font,int width)
+{
+	if(!canvas||!text||width<=0)return;
+	surface_t *previous=g_fb;g_fb=canvas;
+	int limit=x+width;if(limit>SCREEN_W)limit=SCREEN_W;
+	if(font==N64_UI_FONT_HEADING)banner_run(x,y,color,text,limit);
+	else if(font==N64_UI_FONT_BODY)body_run(x,y,color,text,limit);
+	else compact_text(x,y,color,text,limit);
+	g_fb=previous;
+}
+
 void n64_ui_init(void)
 {
-	g_ui_canvas=surface_alloc(FMT_RGBA16,SCREEN_W,SCREEN_H);
+	g_raster_width=display_get_width();
+	g_ui_canvas=surface_alloc(FMT_RGBA16,display_get_width(),display_get_height());
 	assertf(g_ui_canvas.buffer,"UI canvas allocation failed");
 	for (int i=0;i<NUM_COLORS;i++)
 		g_col[i]=graphics_make_color(kRGB[i][0],kRGB[i][1],kRGB[i][2],255);
@@ -2991,7 +3081,9 @@ void n64_map_label(surface_t *frame,const char *name)
 	paper_panel(8,6,width,20);print_n(16,12,C_INK,clean,(width-16)/CW);g_fb=previous;
 	data_cache_hit_writeback_invalidate(cached.buffer,(unsigned long)cached.stride*cached.height);
 	rdpq_attach(frame,NULL);rdpq_mode_push();rdpq_set_mode_copy(false);
-	rdpq_tex_blit(&cached,8,6,&(rdpq_blitparms_t){.s0=8,.t0=6,.width=width,.height=20});
+	int px=8*cached.width/SCREEN_W,py=6*cached.height/SCREEN_H;
+	int pw=(8+width)*cached.width/SCREEN_W-px,ph=26*cached.height/SCREEN_H-py;
+	rdpq_tex_blit(&cached,px,py,&(rdpq_blitparms_t){.s0=px,.t0=py,.width=pw,.height=ph});
 	rdpq_mode_pop();rdpq_detach_wait();
 }
 void n64_ui_text_speed(unsigned speed) {g_message_speed=speed<5?speed:2;}
@@ -3042,7 +3134,7 @@ void n64_ui_video_probe(unsigned phase,unsigned frames)
 }
 #endif
 
-#if ADVENTURE_DIAGNOSTIC == 9
+#if ADVENTURE_DIAGNOSTIC == 9 || ADVENTURE_DIAGNOSTIC == 10
 /* Deliberately constructed UI stress states; this ROM never submits them to
  * the duel engine. All card names, pictures and rules are the real database. */
 static void polish_fixture(bool energy_stress)
@@ -3086,9 +3178,10 @@ static void polish_fixture(bool energy_stress)
 static void polish_capture(const char *name)
 {
  surface_t *frame=g_last_ui_frame;const uint16_t *pixels=UncachedAddr(frame->buffer);
- debugf("FRAMEBUFFER duel-ui-%s 320 240\n",name);
- for(unsigned y=0;y<240;y++)for(unsigned x=0;x<320;x+=32) {
-  char text[129];for(unsigned i=0;i<32;i++)snprintf(text+i*4,5,"%04x",pixels[y*(frame->stride/2)+x+i]);
+ debugf("FRAMEBUFFER duel-ui-%s %u %u\n",name,frame->width,frame->height);
+ for(unsigned y=0;y<frame->height;y++)for(unsigned x=0;x<frame->width;x+=32) {
+  char text[129];unsigned count=frame->width-x;if(count>32)count=32;
+  for(unsigned i=0;i<count;i++)snprintf(text+i*4,5,"%04x",pixels[y*(frame->stride/2)+x+i]);
   debugf("PIXELS %u %u %s\n",x,y,text);
  }
  debugf("FRAMEBUFFER END\n");
@@ -3226,7 +3319,11 @@ int main(void)
 {
 	debug_init_isviewer();
 	debug_init_usblog();
-	display_init(RESOLUTION_320x240, DEPTH_16_BPP, 3, GAMMA_NONE, FILTERS_RESAMPLE);
+	resolution_t resolution=RESOLUTION_320x240;
+#ifdef TCGN64_HOST_TEST
+	if(getenv("MOCK_HIGH_RES"))resolution=(resolution_t){480,360,0};
+#endif
+	display_init(resolution, DEPTH_16_BPP, 3, GAMMA_NONE, FILTERS_RESAMPLE);
 	for (int i = 0; i < NUM_COLORS; i++)
 		g_col[i] = graphics_make_color(kRGB[i][0], kRGB[i][1], kRGB[i][2], 255);
 	joypad_init();

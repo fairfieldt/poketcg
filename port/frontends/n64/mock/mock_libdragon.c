@@ -55,10 +55,13 @@
 #define HAVE_FONT 1
 #endif
 
-#define W 320
-#define H 240
+#define MAX_W 480
+#define MAX_H 360
+static int g_width=320,g_height=240;
+#define W g_width
+#define H g_height
 
-static uint16_t g_buf[3][W * H];
+static uint16_t g_buf[3][MAX_W * MAX_H];
 static surface_t g_surf[3];
 static int g_next, g_held_surface = -1;
 static bool g_inited;
@@ -89,8 +92,10 @@ void display_init(resolution_t res, bitdepth_t bit, uint32_t num_buffers, gamma_
 {
 	(void)gamma;
 	(void)filters;
-	if (res.width != W || res.height != H || bit != DEPTH_16_BPP || num_buffers < 1 || num_buffers > 3)
+	if (!((res.width==320&&res.height==240)||(res.width==480&&res.height==360)) ||
+	    bit != DEPTH_16_BPP || num_buffers < 1 || num_buffers > 3)
 		die(2, "unsupported display_init");
+	g_width=res.width;g_height=res.height;
 	for (int i = 0; i < 3; i++)
 		g_surf[i] = (surface_t){ 0, W, H, W * 2, g_buf[i] };
 	g_inited = true;
@@ -122,7 +127,7 @@ static unsigned long g_writebacks;
 
 void data_cache_hit_writeback_invalidate(volatile void *addr, unsigned long length)
 {
-	if (g_held_surface >= 0 && addr == g_surf[g_held_surface].buffer && length >= W * H * 2)
+	if (g_held_surface >= 0 && addr == g_surf[g_held_surface].buffer && length >= (unsigned long)W * H * 2)
 		g_writebacks++;
 }
 
@@ -164,6 +169,15 @@ void graphics_set_color(uint32_t fg, uint32_t bg)
 	g_bg = bg;
 }
 
+unsigned mock_font_row(unsigned character,unsigned row)
+{
+#ifdef HAVE_FONT
+	return __font_data[(character&255)*8+(row&7)];
+#else
+	return (row==0||row==7)?0:0x7e;
+#endif
+}
+
 void graphics_draw_text(surface_t *s, int x, int y, const char *const msg)
 {
 	check_surface(s);
@@ -182,11 +196,7 @@ void graphics_draw_text(surface_t *s, int x, int y, const char *const msg)
 			die(2, "graphics_draw_text with a non-ASCII byte 0x%02x (indexes the font out of bounds on N64)",
 			    (unsigned char)*p);
 		for (int row = 0; row < 8; row++) {
-#ifdef HAVE_FONT
-			unsigned char bits = __font_data[(unsigned char)*p * 8 + row];
-#else
-			unsigned char bits = (row == 0 || row == 7) ? 0 : 0x7e;
-#endif
+			unsigned char bits=(unsigned char)mock_font_row((unsigned char)*p,(unsigned)row);
 			for (int col = 0; col < 8; col++) {
 				bool on = (bits & (0x80 >> col)) != 0;
 				if (on)

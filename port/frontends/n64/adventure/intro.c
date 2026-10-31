@@ -4,6 +4,7 @@
 #include <string.h>
 #include "intro.h"
 #include "audio.h"
+#include "video.h"
 #include "gen/constants.h"
 #include "assets/intro/intro_assets.h"
 
@@ -98,8 +99,8 @@ static unsigned white_fade(unsigned time,unsigned begin,unsigned end)
 
 static void blit(sprite_t *sprite,int x,int y)
 {
- rdpq_sprite_blit(sprite,INTRO_LEFT+x*INTRO_SCALE,INTRO_TOP+y*INTRO_SCALE,
-  &(rdpq_blitparms_t){.scale_x=INTRO_SCALE,.scale_y=INTRO_SCALE});
+ rdpq_sprite_blit(sprite,(INTRO_LEFT+x*INTRO_SCALE)*n64_video_scale,(INTRO_TOP+y*INTRO_SCALE)*n64_video_scale,
+  &(rdpq_blitparms_t){.scale_x=INTRO_SCALE*n64_video_scale,.scale_y=INTRO_SCALE*n64_video_scale});
 }
 
 static void draw_orbs(const IntroAssets *assets,unsigned stage,unsigned time)
@@ -119,7 +120,7 @@ static void draw_white(unsigned alpha)
   rdpq_mode_combiner(RDPQ_COMBINER_FLAT);rdpq_set_prim_color(RGBA32(255,255,255,alpha));
   rdpq_mode_alphacompare(0);rdpq_mode_blender(RDPQ_BLENDER_MULTIPLY);
  }
- rdpq_fill_rectangle(0,0,320,240);
+ rdpq_fill_rectangle(0,0,n64_video_width,n64_video_height);
  rdpq_set_mode_standard();rdpq_mode_filter(FILTER_BILINEAR);
  rdpq_mode_combiner(RDPQ_COMBINER_TEX);rdpq_mode_alphacompare(1);
 }
@@ -131,22 +132,22 @@ static surface_t *draw_frame(const IntroAssets *assets,unsigned scene,unsigned t
 {
  surface_t *frame=display_get();rdpq_attach(frame,NULL);rdpq_mode_push();
  rdpq_set_mode_fill(RGBA32(intro_clear_rgb[scene][0],intro_clear_rgb[scene][1],intro_clear_rgb[scene][2],255));
- rdpq_fill_rectangle(0,0,320,240);
+ rdpq_fill_rectangle(0,0,n64_video_width,n64_video_height);
  rdpq_set_mode_standard();rdpq_mode_filter(FILTER_BILINEAR);
  rdpq_mode_combiner(RDPQ_COMBINER_TEX);rdpq_mode_alphacompare(1);
  blit(assets->background[scene],0,0);
  if(scene==3) {
   /* The logo is filtered artwork; its small copyright lettering stays crisp. */
   rdpq_mode_filter(FILTER_POINT);
-  rdpq_sprite_blit(assets->background[scene],INTRO_LEFT,INTRO_TOP+110*INTRO_SCALE,
-   &(rdpq_blitparms_t){.s0=0,.t0=110,.width=160,.height=34,.scale_x=INTRO_SCALE,.scale_y=INTRO_SCALE});
+  rdpq_sprite_blit(assets->background[scene],INTRO_LEFT*n64_video_scale,(INTRO_TOP+110*INTRO_SCALE)*n64_video_scale,
+   &(rdpq_blitparms_t){.s0=0,.t0=110,.width=160,.height=34,.scale_x=INTRO_SCALE*n64_video_scale,.scale_y=INTRO_SCALE*n64_video_scale});
  }
  unsigned fade=0;
  unsigned arrival=title_arrival_ticks();
  if(!idle)fade=scene<3?white_fade(time,44,scene==2?144:88):white_fade(time,arrival,UINT32_MAX-16);
  if(fade)draw_white(fade);
  rdpq_mode_filter(FILTER_BILINEAR);
- rdpq_set_scissor(INTRO_LEFT,INTRO_TOP,INTRO_RIGHT,INTRO_BOTTOM);
+ rdpq_set_scissor(n64_video_x(INTRO_LEFT),n64_video_y(INTRO_TOP),n64_video_x(INTRO_RIGHT),n64_video_y(INTRO_BOTTOM));
  if(!idle) {
   if(scene<3)draw_orbs(assets,scene,time);
   else if(time<arrival+16)draw_orbs(assets,3,time);
@@ -161,7 +162,7 @@ static surface_t *draw_frame(const IntroAssets *assets,unsigned scene,unsigned t
  if(prompt&&time>=60&&(time-60)%63<37) {
   rdpq_mode_filter(FILTER_POINT);blit(assets->press_start,35,94);
  }
- rdpq_set_scissor(0,0,320,240);if(extra_white)draw_white(extra_white);
+ rdpq_set_scissor(0,0,n64_video_width,n64_video_height);if(extra_white)draw_white(extra_white);
  rdpq_mode_pop();rdpq_detach_wait();display_show(frame);
  adventure_audio_poll();return frame;
 }

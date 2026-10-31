@@ -7,6 +7,7 @@
 #include "dialogue.h"
 #include "duel_bridge.h"
 #include "audio.h"
+#include "video.h"
 #include "game.h"
 #include "gen/constants.h"
 
@@ -60,24 +61,24 @@ static uint32_t color(unsigned r,unsigned g,unsigned b)
 {return graphics_make_color(r,g,b,255);}
 static void border(surface_t *canvas,int x,int y,int width,int height,uint32_t value)
 {
- graphics_draw_box(canvas,x,y,width,2,value);graphics_draw_box(canvas,x,y+height-2,width,2,value);
- graphics_draw_box(canvas,x,y,2,height,value);graphics_draw_box(canvas,x+width-2,y,2,height,value);
- graphics_draw_box(canvas,x+2,y+2,width-4,1,color(255,255,247));
- graphics_draw_box(canvas,x+2,y+2,1,height-4,color(255,255,247));
- graphics_draw_box(canvas,x+2,y+height-3,width-4,1,color(169,188,204));
- graphics_draw_box(canvas,x+width-3,y+2,1,height-4,color(169,188,204));
+ n64_video_box(canvas,x,y,width,2,value);n64_video_box(canvas,x,y+height-2,width,2,value);
+ n64_video_box(canvas,x,y,2,height,value);n64_video_box(canvas,x+width-2,y,2,height,value);
+ n64_video_box(canvas,x+2,y+2,width-4,1,color(255,255,247));
+ n64_video_box(canvas,x+2,y+2,1,height-4,color(255,255,247));
+ n64_video_box(canvas,x+2,y+height-3,width-4,1,color(169,188,204));
+ n64_video_box(canvas,x+width-3,y+2,1,height-4,color(169,188,204));
 }
 static void print(surface_t *canvas,int x,int y,uint32_t value,const char *text)
 {
- graphics_set_color(value==color(24,48,80)?color(185,199,199):color(16,40,68),0);
- graphics_draw_text(canvas,x+1,y+1,text);
- graphics_set_color(value,0);graphics_draw_text(canvas,x,y,text);
+ uint32_t shadow=value==color(24,48,80)?color(185,199,199):color(16,40,68);
+ n64_ui_draw_text(canvas,x+1,y+1,shadow,text,N64_UI_FONT_COMPACT,320-x-1);
+ n64_ui_draw_text(canvas,x,y,value,text,N64_UI_FONT_COMPACT,320-x);
 }
 static void compose(surface_t *frame,surface_t *canvas,int x,int y)
 {
  data_cache_hit_writeback_invalidate(canvas->buffer,(unsigned long)canvas->stride*canvas->height);
  rdpq_attach(frame,NULL);rdpq_mode_push();rdpq_set_mode_standard();
- rdpq_mode_filter(FILTER_POINT);rdpq_mode_alphacompare(1);rdpq_tex_blit(canvas,x,y,NULL);
+ rdpq_mode_filter(FILTER_POINT);rdpq_mode_alphacompare(1);n64_video_blit_physical(canvas,x,y);
  rdpq_mode_pop();rdpq_detach_wait();
 }
 static void draw_panel(surface_t *frame,surface_t *storage,const char *speaker,
@@ -86,11 +87,11 @@ static void draw_panel(surface_t *frame,surface_t *storage,const char *speaker,
  surface_t canvas=*storage;canvas.buffer=CachedAddr(canvas.buffer);
  uint32_t ink=color(24,48,80),paper=color(247,247,222),edge=color(74,115,156);
  graphics_fill_screen(&canvas,0);
- graphics_draw_box(&canvas,8,18,304,58,paper);border(&canvas,8,18,304,58,edge);
+ n64_video_box(&canvas,8,18,304,58,paper);border(&canvas,8,18,304,58,edge);
  if(speaker&&speaker[0]) {
   char clean[35];n64_ui_sanitize_text(speaker,clean,sizeof(clean));
   unsigned width=(unsigned)strlen(clean)*8+16;
-  graphics_draw_box(&canvas,16,0,width,17,paper);border(&canvas,16,0,width,17,edge);
+  n64_video_box(&canvas,16,0,width,17,paper);border(&canvas,16,0,width,17,edge);
   print(&canvas,24,5,ink,clean);
  }
  unsigned remaining=page->visible;
@@ -108,7 +109,7 @@ void adventure_story_message(const char *speaker,const char *text,unsigned speed
 {
  if(!text||!text[0])return;
  TextLines lines=wrap_all(text,DIALOGUE_COLUMNS);TextPage page={0};
- surface_t canvas=surface_alloc(FMT_RGBA16,320,PANEL_HEIGHT);assert(canvas.buffer);
+ surface_t canvas=surface_alloc(FMT_RGBA16,n64_video_width,n64_video_y(PANEL_HEIGHT));assert(canvas.buffer);
  for(;;) {
   joypad_poll();joypad_buttons_t pressed=joypad_get_buttons_pressed(JOYPAD_PORT_1);
   if((pressed.a||pressed.b)&&advance(&lines,&page))break;
@@ -125,16 +126,18 @@ static void draw_choices(surface_t *frame,surface_t *storage,const ChoiceItem *i
 {
  surface_t canvas=*storage;canvas.buffer=CachedAddr(canvas.buffer);
  uint32_t ink=color(24,48,80),paper=color(247,247,222),edge=color(74,115,156),highlight=color(32,72,120),white=color(255,255,247);
- graphics_fill_screen(&canvas,paper);border(&canvas,0,0,canvas.width,canvas.height,edge);
+ unsigned logical_height=12;
+ for(unsigned item=0;item<count;item++)logical_height+=items[item].height;
+ graphics_fill_screen(&canvas,paper);border(&canvas,0,0,184,(int)logical_height,edge);
  unsigned y=6;
  for(unsigned item=0;item<count;item++) {
-  if(item==selected)graphics_draw_box(&canvas,4,y-2,canvas.width-8,items[item].height,highlight);
+  if(item==selected)n64_video_box(&canvas,4,y-2,176,items[item].height,highlight);
   if(item==selected)print(&canvas,7,y+2,white,">");
   for(unsigned row=0;row<items[item].text.count;row++)
    print(&canvas,18,y+2+(int)row*12,item==selected?white:ink,items[item].text.line[row]);
   y+=items[item].height;
  }
- compose(frame,&canvas,128,(int)bottom-(int)canvas.height);
+ compose(frame,&canvas,128,(int)bottom-(int)logical_height);
 }
 
 int adventure_story_choice(const char *question,const char *const *items,
@@ -149,7 +152,7 @@ int adventure_story_choice(const char *question,const char *const *items,
   height+=choices[i].height;
  }
  assertf(height<=136,"Story choice is too tall");
- surface_t canvas=surface_alloc(FMT_RGBA16,320,PANEL_HEIGHT),popup=surface_alloc(FMT_RGBA16,184,height);
+ surface_t canvas=surface_alloc(FMT_RGBA16,n64_video_width,n64_video_y(PANEL_HEIGHT)),popup=surface_alloc(FMT_RGBA16,n64_video_x(184),n64_video_y(height));
  assert(canvas.buffer&&popup.buffer);
  unsigned current=initial>=0&&(unsigned)initial<count?(unsigned)initial:0,cooldown=0;
  int result=-1,previous=-1;bool open=false;
@@ -186,7 +189,7 @@ void adventure_duel_transition(bool entering)
   float t=progress/11.0f,inverse=1-t;
   unsigned extent=(unsigned)(120*(entering?1-inverse*inverse:inverse*inverse)+.5f);
   rdpq_attach(frame,NULL);rdpq_mode_push();rdpq_set_mode_fill(RGBA32(0,0,0,255));
-  if(extent){rdpq_fill_rectangle(0,0,320,extent);rdpq_fill_rectangle(0,240-extent,320,240);}
+  if(extent){rdpq_fill_rectangle(0,0,n64_video_width,n64_video_y(extent));rdpq_fill_rectangle(0,n64_video_y(240-extent),n64_video_width,n64_video_height);}
   rdpq_mode_pop();rdpq_detach_wait();display_show(frame);adventure_audio_poll();
  }
 }
@@ -194,8 +197,16 @@ void adventure_duel_transition(bool entering)
 struct surface_s *adventure_story_message_preview(const char *speaker,const char *text)
 {
  TextLines lines=wrap_all(text,DIALOGUE_COLUMNS);TextPage page={.visible=page_characters(&lines,0)};
- surface_t canvas=surface_alloc(FMT_RGBA16,320,PANEL_HEIGHT);assert(canvas.buffer);
+ surface_t canvas=surface_alloc(FMT_RGBA16,n64_video_width,n64_video_y(PANEL_HEIGHT));assert(canvas.buffer);
  surface_t *frame=game_render_frame();assert(frame);
+#if ADVENTURE_DIAGNOSTIC == 10
+ static bool measured;
+ if(!measured) {
+  heap_stats_t stats;sys_get_heap_stats(&stats);
+  debugf("VIDEO HEAP stage=dialogue total=%d used=%d free=%d\n",stats.total,stats.used,stats.total-stats.used);
+  measured=true;
+ }
+#endif
  draw_panel(frame,&canvas,speaker,&lines,&page,"A/B: continue");display_show(frame);
  adventure_audio_poll();surface_free(&canvas);free(lines.line);return frame;
 }
