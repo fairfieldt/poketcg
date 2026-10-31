@@ -1,6 +1,6 @@
 {
   "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-review.z64",
-  "rom_sha256": "349287dcb57b58ae247f02ef72264695c54a085d29a188f06ba44b62b0e14cb4",
+  "rom_sha256": "f4fde4d74ced5afd7c867b73218b9b74d7d6d998eee8f54414191de995e1202d",
   "ram_mib": 4,
   "passed": true,
   "sram_passed": true,
@@ -287,305 +287,302 @@
     {
       "name": "duel-card-detail",
       "file": "duel-card-detail.png",
-      "colors": 12,
-      "sha256": "929f69583d30a56e92449e41f5019efab944c379f67346266839f165d91a1a92"
+      "colors": 15,
+      "sha256": "fc06f86f345f06804342c56d4320bae0e4a5566991d83b626e2547cb30ad11f6"
     },
     {
       "name": "duel-coin",
       "file": "duel-coin.png",
-      "colors": 26,
-      "sha256": "50a1a5a7235f0fae5cf88b306f3c938b9d22acb353c684e2a48c570b48ea3094"
+      "colors": 22,
+      "sha256": "a4fab44345b2a8d1e0f0865e4e4ff78f5c2e99810a48195f317b714b467579c5"
+    },
+    {
+      "name": "duel-player-turn",
+      "file": "duel-player-turn.png",
+      "colors": 102,
+      "sha256": "305c192475d1bc942d767643982ff6134af744dec717463808ea15b89c60d752"
     },
     {
       "name": "duel-action-menu",
       "file": "duel-action-menu.png",
-      "colors": 28,
-      "sha256": "81ce8dd640cdc1f8cd262a0d77c7ac052f5b0876917abf654995a290eab41d12"
+      "colors": 24,
+      "sha256": "1853317bd44bd83a8b8348d6d2b13c31b8a29831a354176f49cadbb85f8185c8"
+    },
+    {
+      "name": "duel-opponent-turn",
+      "file": "duel-opponent-turn.png",
+      "colors": 104,
+      "sha256": "53fa6725940fcb9fabf871825520b4a2541993ecbff5e0945c30494fd6d661b7"
     },
     {
       "name": "duel",
       "file": "duel.png",
-      "colors": 30,
-      "sha256": "555688339bd55f78009f6f61966023b418aff8a0729198662eecb62e1fbc43f5"
+      "colors": 36,
+      "sha256": "a4df485d9807ca919fb99d6aefcb7d4ce64e41550c40a20d8210dcaba5d35604"
     },
     {
       "name": "mason-dialogue",
       "file": "mason-dialogue.png",
-      "colors": 1281,
-      "sha256": "15c0ffc142bd2bdaa775089860ecdc5851c7926c04fcd6a510d36f0c1eb222e2"
+      "colors": 1313,
+      "sha256": "b7226319fa8b3f13bf53ab49a76fbb6cedc2f74874429cbeca3722a02f506480"
     },
     {
       "name": "sam-table",
       "file": "sam-table.png",
-      "colors": 1293,
-      "sha256": "7a7ac8f02261a36d59907c6ee97afe8ad24057b899aab7a42113f5a24540042c"
+      "colors": 1296,
+      "sha256": "69501dc930d799074af88f02436a70d7ed1e88c1ea6caf8fbac5ca894a51f839"
     }
   ],
   "memory": [
-    "MEMORY map=0 total=2789200 used=1717264 free=1071936",
-    "MEMORY map=1 total=2789200 used=1439456 free=1349744",
-    "MEMORY map=2 total=2789200 used=1359480 free=1429720",
-    "MEMORY map=3 total=2789200 used=1458656 free=1330544",
-    "MEMORY map=4 total=2789200 used=1346296 free=1442904",
-    "MEMORY map=5 total=2789200 used=1595256 free=1193944",
-    "MEMORY map=6 total=2789200 used=1445624 free=1343576",
-    "MEMORY map=7 total=2789200 used=1346296 free=1442904",
-    "MEMORY map=8 total=2789200 used=1611632 free=1177568",
-    "MEMORY map=9 total=2789200 used=1474264 free=1314936",
-    "MEMORY map=10 total=2789200 used=1346296 free=1442904",
-    "MEMORY map=11 total=2789200 used=1595208 free=1193992",
-    "MEMORY map=12 total=2789200 used=1632528 free=1156672",
-    "MEMORY map=13 total=2789200 used=1346296 free=1442904",
-    "MEMORY map=14 total=2789200 used=1557384 free=1231816",
-    "MEMORY map=15 total=2789200 used=1514008 free=1275192",
-    "MEMORY map=16 total=2789200 used=1384168 free=1405032",
-    "MEMORY map=17 total=2789200 used=1590144 free=1199056",
-    "MEMORY map=18 total=2789200 used=1720016 free=1069184",
-    "MEMORY map=19 total=2789200 used=1384168 free=1405032",
-    "MEMORY map=20 total=2789200 used=1595224 free=1193976",
-    "MEMORY map=21 total=2789200 used=1433688 free=1355512",
-    "MEMORY map=22 total=2789200 used=1346296 free=1442904",
-    "MEMORY map=23 total=2789200 used=1578856 free=1210344",
-    "MEMORY map=24 total=2789200 used=1441744 free=1347456",
-    "MEMORY map=25 total=2789200 used=1346296 free=1442904",
-    "MEMORY map=26 total=2789200 used=1557368 free=1231832",
-    "MEMORY map=27 total=2789200 used=1455176 free=1334024",
-    "MEMORY map=28 total=2789200 used=1346296 free=1442904",
-    "MEMORY map=29 total=2789200 used=1687344 free=1101856",
-    "MEMORY map=30 total=2789200 used=1492160 free=1297040",
-    "MEMORY map=31 total=2789200 used=1294832 free=1494368",
-    "MEMORY map=32 total=2789200 used=1688832 free=1100368",
-    "MEMORY map=33 total=2789200 used=1340696 free=1448504"
+    "MEMORY map=0 total=2773440 used=1717272 free=1056168",
+    "MEMORY map=1 total=2773440 used=1439464 free=1333976",
+    "MEMORY map=2 total=2773440 used=1359488 free=1413952",
+    "MEMORY map=3 total=2773440 used=1458664 free=1314776",
+    "MEMORY map=4 total=2773440 used=1346304 free=1427136",
+    "MEMORY map=5 total=2773440 used=1595264 free=1178176",
+    "MEMORY map=6 total=2773440 used=1445632 free=1327808",
+    "MEMORY map=7 total=2773440 used=1346304 free=1427136",
+    "MEMORY map=8 total=2773440 used=1611640 free=1161800",
+    "MEMORY map=9 total=2773440 used=1474272 free=1299168",
+    "MEMORY map=10 total=2773440 used=1346304 free=1427136",
+    "MEMORY map=11 total=2773440 used=1595216 free=1178224",
+    "MEMORY map=12 total=2773440 used=1632536 free=1140904",
+    "MEMORY map=13 total=2773440 used=1346304 free=1427136",
+    "MEMORY map=14 total=2773440 used=1557392 free=1216048",
+    "MEMORY map=15 total=2773440 used=1514016 free=1259424",
+    "MEMORY map=16 total=2773440 used=1384176 free=1389264",
+    "MEMORY map=17 total=2773440 used=1590152 free=1183288",
+    "MEMORY map=18 total=2773440 used=1720024 free=1053416",
+    "MEMORY map=19 total=2773440 used=1384176 free=1389264",
+    "MEMORY map=20 total=2773440 used=1595232 free=1178208",
+    "MEMORY map=21 total=2773440 used=1433696 free=1339744",
+    "MEMORY map=22 total=2773440 used=1346304 free=1427136",
+    "MEMORY map=23 total=2773440 used=1578864 free=1194576",
+    "MEMORY map=24 total=2773440 used=1441752 free=1331688",
+    "MEMORY map=25 total=2773440 used=1346304 free=1427136",
+    "MEMORY map=26 total=2773440 used=1557376 free=1216064",
+    "MEMORY map=27 total=2773440 used=1455184 free=1318256",
+    "MEMORY map=28 total=2773440 used=1346304 free=1427136",
+    "MEMORY map=29 total=2773440 used=1687352 free=1086088",
+    "MEMORY map=30 total=2773440 used=1492168 free=1281272",
+    "MEMORY map=31 total=2773440 used=1294840 free=1478600",
+    "MEMORY map=32 total=2773440 used=1688840 free=1084600",
+    "MEMORY map=33 total=2773440 used=1340704 free=1432736"
   ],
   "heap": [
     {
       "map": 0,
-      "total": 2789200,
-      "used": 1717264,
-      "free": 1071936
+      "total": 2773440,
+      "used": 1717272,
+      "free": 1056168
     },
     {
       "map": 1,
-      "total": 2789200,
-      "used": 1439456,
-      "free": 1349744
+      "total": 2773440,
+      "used": 1439464,
+      "free": 1333976
     },
     {
       "map": 2,
-      "total": 2789200,
-      "used": 1359480,
-      "free": 1429720
+      "total": 2773440,
+      "used": 1359488,
+      "free": 1413952
     },
     {
       "map": 3,
-      "total": 2789200,
-      "used": 1458656,
-      "free": 1330544
+      "total": 2773440,
+      "used": 1458664,
+      "free": 1314776
     },
     {
       "map": 4,
-      "total": 2789200,
-      "used": 1346296,
-      "free": 1442904
+      "total": 2773440,
+      "used": 1346304,
+      "free": 1427136
     },
     {
       "map": 5,
-      "total": 2789200,
-      "used": 1595256,
-      "free": 1193944
+      "total": 2773440,
+      "used": 1595264,
+      "free": 1178176
     },
     {
       "map": 6,
-      "total": 2789200,
-      "used": 1445624,
-      "free": 1343576
+      "total": 2773440,
+      "used": 1445632,
+      "free": 1327808
     },
     {
       "map": 7,
-      "total": 2789200,
-      "used": 1346296,
-      "free": 1442904
+      "total": 2773440,
+      "used": 1346304,
+      "free": 1427136
     },
     {
       "map": 8,
-      "total": 2789200,
-      "used": 1611632,
-      "free": 1177568
+      "total": 2773440,
+      "used": 1611640,
+      "free": 1161800
     },
     {
       "map": 9,
-      "total": 2789200,
-      "used": 1474264,
-      "free": 1314936
+      "total": 2773440,
+      "used": 1474272,
+      "free": 1299168
     },
     {
       "map": 10,
-      "total": 2789200,
-      "used": 1346296,
-      "free": 1442904
+      "total": 2773440,
+      "used": 1346304,
+      "free": 1427136
     },
     {
       "map": 11,
-      "total": 2789200,
-      "used": 1595208,
-      "free": 1193992
+      "total": 2773440,
+      "used": 1595216,
+      "free": 1178224
     },
     {
       "map": 12,
-      "total": 2789200,
-      "used": 1632528,
-      "free": 1156672
+      "total": 2773440,
+      "used": 1632536,
+      "free": 1140904
     },
     {
       "map": 13,
-      "total": 2789200,
-      "used": 1346296,
-      "free": 1442904
+      "total": 2773440,
+      "used": 1346304,
+      "free": 1427136
     },
     {
       "map": 14,
-      "total": 2789200,
-      "used": 1557384,
-      "free": 1231816
+      "total": 2773440,
+      "used": 1557392,
+      "free": 1216048
     },
     {
       "map": 15,
-      "total": 2789200,
-      "used": 1514008,
-      "free": 1275192
+      "total": 2773440,
+      "used": 1514016,
+      "free": 1259424
     },
     {
       "map": 16,
-      "total": 2789200,
-      "used": 1384168,
-      "free": 1405032
+      "total": 2773440,
+      "used": 1384176,
+      "free": 1389264
     },
     {
       "map": 17,
-      "total": 2789200,
-      "used": 1590144,
-      "free": 1199056
+      "total": 2773440,
+      "used": 1590152,
+      "free": 1183288
     },
     {
       "map": 18,
-      "total": 2789200,
-      "used": 1720016,
-      "free": 1069184
+      "total": 2773440,
+      "used": 1720024,
+      "free": 1053416
     },
     {
       "map": 19,
-      "total": 2789200,
-      "used": 1384168,
-      "free": 1405032
+      "total": 2773440,
+      "used": 1384176,
+      "free": 1389264
     },
     {
       "map": 20,
-      "total": 2789200,
-      "used": 1595224,
-      "free": 1193976
+      "total": 2773440,
+      "used": 1595232,
+      "free": 1178208
     },
     {
       "map": 21,
-      "total": 2789200,
-      "used": 1433688,
-      "free": 1355512
+      "total": 2773440,
+      "used": 1433696,
+      "free": 1339744
     },
     {
       "map": 22,
-      "total": 2789200,
-      "used": 1346296,
-      "free": 1442904
+      "total": 2773440,
+      "used": 1346304,
+      "free": 1427136
     },
     {
       "map": 23,
-      "total": 2789200,
-      "used": 1578856,
-      "free": 1210344
+      "total": 2773440,
+      "used": 1578864,
+      "free": 1194576
     },
     {
       "map": 24,
-      "total": 2789200,
-      "used": 1441744,
-      "free": 1347456
+      "total": 2773440,
+      "used": 1441752,
+      "free": 1331688
     },
     {
       "map": 25,
-      "total": 2789200,
-      "used": 1346296,
-      "free": 1442904
+      "total": 2773440,
+      "used": 1346304,
+      "free": 1427136
     },
     {
       "map": 26,
-      "total": 2789200,
-      "used": 1557368,
-      "free": 1231832
+      "total": 2773440,
+      "used": 1557376,
+      "free": 1216064
     },
     {
       "map": 27,
-      "total": 2789200,
-      "used": 1455176,
-      "free": 1334024
+      "total": 2773440,
+      "used": 1455184,
+      "free": 1318256
     },
     {
       "map": 28,
-      "total": 2789200,
-      "used": 1346296,
-      "free": 1442904
+      "total": 2773440,
+      "used": 1346304,
+      "free": 1427136
     },
     {
       "map": 29,
-      "total": 2789200,
-      "used": 1687344,
-      "free": 1101856
+      "total": 2773440,
+      "used": 1687352,
+      "free": 1086088
     },
     {
       "map": 30,
-      "total": 2789200,
-      "used": 1492160,
-      "free": 1297040
+      "total": 2773440,
+      "used": 1492168,
+      "free": 1281272
     },
     {
       "map": 31,
-      "total": 2789200,
-      "used": 1294832,
-      "free": 1494368
+      "total": 2773440,
+      "used": 1294840,
+      "free": 1478600
     },
     {
       "map": 32,
-      "total": 2789200,
-      "used": 1688832,
-      "free": 1100368
+      "total": 2773440,
+      "used": 1688840,
+      "free": 1084600
     },
     {
       "map": 33,
-      "total": 2789200,
-      "used": 1340696,
-      "free": 1448504
+      "total": 2773440,
+      "used": 1340704,
+      "free": 1432736
     }
   ],
   "worst_heap": {
     "map": 18,
-    "total": 2789200,
-    "used": 1720016,
-    "free": 1069184
+    "total": 2773440,
+    "used": 1720024,
+    "free": 1053416
   },
   "audio": [],
-  "wall_seconds": 126.44,
+  "wall_seconds": 129.67,
   "parse_only": false,
-  "renderer": "ares/paraLLEl-RDP; framebuffer before VI filtering",
-  "warp_transition_passed": true,
-  "production_source_commit": "e5a8fae3f81ba617dd1e6c3e38327171fafc3c09",
-  "release_rom": {
-    "path": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-adventure.z64",
-    "bytes": 36470784,
-    "sha256": "5a547ea05d9739b8b7669f68dcdcc42104515d451f5adf783642983b4b9a839f"
-  },
-  "web_checks": {
-    "all_34_maps_and_source_event_variants": true,
-    "portable_c_wasm_features_and_diaries": true,
-    "live_tailnet_opening_naming_mason_sam_duel": true,
-    "http_gamepad_security_error_fallback": true,
-    "url": "http://ms.tdf.sh:8091/",
-    "wasm_sha256": "f8271fa9b60febf882f11fd60b42790b01eee32c974d22ed73c2de75246f5a90"
-  }
+  "renderer": "ares/paraLLEl-RDP; framebuffer before VI filtering"
 }

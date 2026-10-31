@@ -1,0 +1,21 @@
+{
+  "source_commit": "455c0b000676712791555771d5c862125e03497a",
+  "brief_sha256": "0f5bc7fed8e86d16a41ea9d16032834eb2d5844f90808740e43ea1f3bd632ce8",
+  "capture_manifest_sha256": "e87ddb312aa5b626c81cc10c0b65cc1ad0b30ebf07460606f6da0b1d2b8654fe",
+  "prompt_sha256": "09ca7232d46a780990635c3a4e9012e31660d47a80a7abaecb78152c164b3af9",
+  "reviewers": [
+    {
+      "model": "claude-fable-5-1",
+      "effort": "high",
+      "harness": "claude",
+      "task": 1709
+    },
+    {
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "harness": "collaboration",
+      "task": "/root/presentation_review",
+      "fork_turns": "none"
+    }
+  ]
+}

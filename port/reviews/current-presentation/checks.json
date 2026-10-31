@@ -1,0 +1,27 @@
+{
+  "release": {
+    "source_commit": "ea28475a",
+    "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-adventure.z64",
+    "bytes": 36470784,
+    "sha256": "f8371f9d9af521f639b68a29f1255c92642e8eb9f31b71f980dfeecfdbd376e8",
+    "native_validation": "/Users/fairfieldt/dev/poketcg/port/reviews/current-presentation/native-validation.json"
+  },
+  "native": {
+    "passed": true,
+    "maps": 34,
+    "captures": 48,
+    "ram_mib": 4,
+    "minimum_free_heap": 1053416,
+    "warp_transition_passed": true
+  },
+  "web": {
+    "live_url": "http://ms.tdf.sh:8091/",
+    "pointer_selection_regression": true,
+    "unlimited_diary_storage": true,
+    "actual_saved_duel_resume_state_hashes": true,
+    "diary_browser_desktop_mobile": true,
+    "source_intro_to_sam_browser_flow": true,
+    "tutorial_checkpoint_generator": true,
+    "duel_banner_native_and_retina_browser": true
+  }
+}
