@@ -1,0 +1,71 @@
+Loaded coin-lifecycle
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=320 height=240 ram=4194304 highres=0
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 11538.666 us (mode: sync, success: yes).
+2026-10-31 16:24:13.007 ares[99850:19883812] Resizing output buffers to 1536, 1152
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+FRAMEBUFFER coin-ready 320 240
+FRAMEBUFFER END
+COIN 1/3 tails
+GAME FPS 2 frames=3 ticks=59069230
+GAME FPS 32 frames=20 ticks=83641855
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+COIN 2/3 heads
+GAME FPS 30 frames=35 ticks=107125082
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+COIN 3/3 tails
+GAME FPS 30 frames=50 ticks=130643786
+GAME FPS 30 frames=65 ticks=154174200
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+FRAMEBUFFER coin-result 320 240
+FRAMEBUFFER END
+DAMAGE Amy slot 0: 40
+GAME FPS 3 frames=68 ticks=198123328
+GAME FPS 32 frames=85 ticks=223123986
+FRAMEBUFFER damage-board 320 240
+FRAMEBUFFER END
+TEXT Goldeen was/Knocked Out!
+GAME FPS 4 frames=89 ticks=266494212
+GAME FPS 34 frames=107 ticks=291293521
+ASK ack/text Mark
+REQ ack Mark n=0 -> 0
+FRAMEBUFFER goldeen-knockout 320 240
+FRAMEBUFFER END
+DUEL INPUT VI samples=408
+GAME FPS 5 frames=112 ticks=336922481
+ASK ack/coin Amy
+REQ ack Amy n=0 -> 0
+COIN 1/3 tails
+GAME FPS 30 frames=128 ticks=361755870
+ASK ack/coin Amy
+REQ ack Amy n=0 -> 0
+ASK ack/coin Amy
+REQ ack Amy n=0 -> 0
+COIN 2/3 heads
+GAME FPS 30 frames=143 ticks=385284625
+ASK ack/coin Amy
+REQ ack Amy n=0 -> 0
+ASK ack/coin Amy
+GAME FPS 28 frames=157 ticks=408809841
+REQ ack Amy n=0 -> 0
+COIN 3/3 tails
+GAME FPS 32 frames=173 ticks=432302639
+ASK ack/coin Amy
+REQ ack Amy n=0 -> 0
+DAMAGE Mark slot 0: 40
+GAME FPS 28 frames=187 ticks=455815925
+TEXT Goldeen was/Knocked Out!
+GAME FPS 30 frames=202 ticks=479337329
+GAME FPS 30 frames=217 ticks=502846142
+ASK ack/text Amy
+REQ ack Amy n=0 -> 0
+DUEL INPUT VI samples=226
+COIN LIFECYCLE NATIVE PASS width=320 ready_acks=6 result_acks=6 damage_checks=2 ko_checks=2 exact_board=1 owners=2

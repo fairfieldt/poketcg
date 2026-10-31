@@ -1722,6 +1722,13 @@ static void coin_record(const TcgEvent *ev)
 	g_coin.number=ev->arg[1];g_coin.total=ev->arg[2];g_coin.owner=ev->arg[3];g_coin.ready=false;
 }
 
+static void coin_return_to_board(void)
+{
+	/* Original attack commands switch to the main scene after all coin
+	 * acknowledgements. Keep history until the next coin-screen event. */
+	if(g_screen==TCG_SCREEN_COIN_TOSS){g_screen=TCG_SCREEN_MAIN;g_screen_arg=0;g_boxmsg=0xff;}
+}
+
 static bool coin_fast_forward(int ports)
 {
 	Keys pressed=keys(ports);
@@ -3362,10 +3369,12 @@ static void on_event(void *ctx, const TcgEvent *ev)
 		break;
 	case TCG_EV_ANIM:
 		if(ev->arg[1]&&ev->arg[0]==DUEL_ANIM_COIN_SPIN) {
-			g_coin.ready=true;g_coin.owner=ev->arg[2];
+			g_screen=TCG_SCREEN_COIN_TOSS;g_coin.ready=true;g_coin.owner=ev->arg[2];
 		}
+		else if(!ev->arg[1])coin_return_to_board();
 		break;
 	case TCG_EV_DAMAGE:
+		coin_return_to_board();
 		g_dmg.side = ev->arg[0];
 		g_dmg.loc = ev->arg[1];
 		g_dmg.amount = (unsigned)(ev->arg[2] | ev->arg[3] << 8);

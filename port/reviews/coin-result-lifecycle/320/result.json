@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "ram_mib": 4,
+  "proof": [
+    "COIN LIFECYCLE NATIVE PASS width=320 ready_acks=6 result_acks=6 damage_checks=2 ko_checks=2 exact_board=1 owners=2"
+  ],
+  "wall_seconds": 12.82,
+  "scope": "Real native UI/engine component fixture, automatic ACK only in private copied frontend, audio stubs; PNGs are completed raw RDP frames, not post-VI. Real-control/full-Amy proof is captured separately.",
+  "images": [
+    {
+      "file": "coin-ready.png",
+      "sha256": "ee31c308ee2cb4814489b57f86c70bbe2ce82d521bc49bc224be5d47750b23a7"
+    },
+    {
+      "file": "coin-result.png",
+      "sha256": "fdbf8f0ec6dad75d8ea2883515f256f2f17ccdf081cc2a7bd0e0f83ec6fbbc9b"
+    },
+    {
+      "file": "damage-board.png",
+      "sha256": "17d3998e149e9ab88ee8d8c2e6cff5b4dcc9453cf146414fa9ec5a76f0d759a8"
+    },
+    {
+      "file": "goldeen-knockout.png",
+      "sha256": "da0a869dcb1c17a5795128028e71d72b5c66e10aaa46d9093f7b1676d68245dd"
+    }
+  ]
+}

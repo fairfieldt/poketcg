@@ -1,0 +1,72 @@
+Loaded coin-lifecycle
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 11016.333 us (mode: sync, success: yes).
+2026-10-31 16:24:44.748 ares[123:19886201] Resizing output buffers to 1536, 1152
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+FRAMEBUFFER coin-ready 480 360
+FRAMEBUFFER END
+COIN 1/3 tails
+GAME FPS 1 frames=3 ticks=114499353
+GAME FPS 32 frames=20 ticks=139374783
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+COIN 2/3 heads
+GAME FPS 20 frames=30 ticks=162825750
+ASK ack/coin Mark
+GAME FPS 24 frames=45 ticks=191732356
+REQ ack Mark n=0 -> 0
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+COIN 3/3 tails
+GAME FPS 27 frames=59 ticks=216029595
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+FRAMEBUFFER coin-result 480 360
+FRAMEBUFFER END
+DAMAGE Amy slot 0: 40
+GAME FPS 4 frames=68 ticks=319981794
+GAME FPS 32 frames=84 ticks=343512024
+FRAMEBUFFER damage-board 480 360
+FRAMEBUFFER END
+TEXT Goldeen was/Knocked Out!
+GAME FPS 3 frames=89 ticks=436944295
+GAME FPS 31 frames=105 ticks=460836024
+ASK ack/text Mark
+REQ ack Mark n=0 -> 0
+FRAMEBUFFER goldeen-knockout 480 360
+FRAMEBUFFER END
+DUEL INPUT VI samples=691
+GAME FPS 3 frames=112 ticks=562001353
+ASK ack/coin Amy
+REQ ack Amy n=0 -> 0
+COIN 1/3 tails
+GAME FPS 21 frames=123 ticks=586684764
+ASK ack/coin Amy
+REQ ack Amy n=0 -> 0
+ASK ack/coin Amy
+GAME FPS 24 frames=135 ticks=610502062
+REQ ack Amy n=0 -> 0
+COIN 2/3 heads
+GAME FPS 27 frames=149 ticks=635176851
+ASK ack/coin Amy
+REQ ack Amy n=0 -> 0
+ASK ack/coin Amy
+REQ ack Amy n=0 -> 0
+COIN 3/3 tails
+GAME FPS 18 frames=158 ticks=658714110
+GAME FPS 32 frames=175 ticks=683680708
+ASK ack/coin Amy
+REQ ack Amy n=0 -> 0
+DAMAGE Mark slot 0: 40
+GAME FPS 20 frames=185 ticks=707157136
+TEXT Goldeen was/Knocked Out!
+GAME FPS 25 frames=200 ticks=735833794
+GAME FPS 32 frames=217 ticks=760365166
+ASK ack/text Amy
+REQ ack Amy n=0 -> 0
+DUEL INPUT VI samples=278
+COIN LIFECYCLE NATIVE PASS width=480 ready_acks=6 result_acks=6 damage_checks=2 ko_checks=2 exact_board=1 owners=2
