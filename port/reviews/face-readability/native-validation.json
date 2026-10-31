@@ -1,0 +1,148 @@
+{
+  "passed": true,
+  "ram_mib": 4,
+  "capture_stage": "N64 RDP framebuffer before VI",
+  "frames": [
+    {
+      "file": "face-baseline-portrait.png",
+      "sha256": "ace6a4fc8fa7adac82727ec08c5a3f2f924ef24d66de82871fa412cd48540b10"
+    },
+    {
+      "file": "face-baseline-room.png",
+      "sha256": "9ea2ea7038629c8c1904cf0e31b8cb39fcdb4a1a29da9478c86d5bd883152e89"
+    },
+    {
+      "file": "face-baseline-conversation.png",
+      "sha256": "a69600d7e05e7301d0b7c77d0d436be4a342037224b02bb5575960ba375e944c"
+    },
+    {
+      "file": "face-moderate-portrait.png",
+      "sha256": "a167200e58a46775e76db156205c80620901fc606578f2481857bf0aeb0157a3"
+    },
+    {
+      "file": "face-moderate-room.png",
+      "sha256": "a8d76f953db7cb717f2f257cd230ca7d7d113e375153219d300dbe23945aa178"
+    },
+    {
+      "file": "face-moderate-conversation.png",
+      "sha256": "08441fa3e9b77ab1b158c7c1f886aa8ba4211c2a6cae521b7434ac9a8bc65674"
+    },
+    {
+      "file": "face-bold-portrait.png",
+      "sha256": "33d597ba838d5a12b9f52f7ea5e90dc808903c8f9aee96babddcf13c8b10864d"
+    },
+    {
+      "file": "face-bold-room.png",
+      "sha256": "83c76d9f13480a29ca032e4296fb8a6808fc9b8787f2fedd7163720a25e49634"
+    },
+    {
+      "file": "face-bold-conversation.png",
+      "sha256": "e7fc3715892a406e17e4b6ebeacb3e1ca0d5d0b0699fc565a2e393394397e00c"
+    },
+    {
+      "file": "face-large-portrait.png",
+      "sha256": "7844a3405dc03d3a9c2c2ac34205bf0fc7bf2ec277742ae62e77313f0cc4050d"
+    },
+    {
+      "file": "face-large-room.png",
+      "sha256": "d56f909bd49532494f10e75fbb74fc1f6c77a899c88529964dabcb31d8cd27bb"
+    },
+    {
+      "file": "face-large-conversation.png",
+      "sha256": "2722bebe2fc995ac479ec986930baaafc4a5f1b5c64172b003062cf13f090d7b"
+    }
+  ],
+  "heap": [
+    {
+      "option": "baseline",
+      "view": "portrait",
+      "total": 2941808,
+      "used": 1566928,
+      "free": 1374880
+    },
+    {
+      "option": "baseline",
+      "view": "room",
+      "total": 2941808,
+      "used": 1566928,
+      "free": 1374880
+    },
+    {
+      "option": "baseline",
+      "view": "conversation",
+      "total": 2941808,
+      "used": 1566928,
+      "free": 1374880
+    },
+    {
+      "option": "moderate",
+      "view": "portrait",
+      "total": 2941808,
+      "used": 1566928,
+      "free": 1374880
+    },
+    {
+      "option": "moderate",
+      "view": "room",
+      "total": 2941808,
+      "used": 1566928,
+      "free": 1374880
+    },
+    {
+      "option": "moderate",
+      "view": "conversation",
+      "total": 2941808,
+      "used": 1566928,
+      "free": 1374880
+    },
+    {
+      "option": "bold",
+      "view": "portrait",
+      "total": 2941808,
+      "used": 1566912,
+      "free": 1374896
+    },
+    {
+      "option": "bold",
+      "view": "room",
+      "total": 2941808,
+      "used": 1566912,
+      "free": 1374896
+    },
+    {
+      "option": "bold",
+      "view": "conversation",
+      "total": 2941808,
+      "used": 1566912,
+      "free": 1374896
+    },
+    {
+      "option": "large",
+      "view": "portrait",
+      "total": 2941808,
+      "used": 1566952,
+      "free": 1374856
+    },
+    {
+      "option": "large",
+      "view": "room",
+      "total": 2941808,
+      "used": 1566952,
+      "free": 1374856
+    },
+    {
+      "option": "large",
+      "view": "conversation",
+      "total": 2941808,
+      "used": 1566952,
+      "free": 1374856
+    }
+  ],
+  "worst_free_heap": 1374856,
+  "rom_sha256": "96939b834e9ab66d433c2ccd6c14dbe3938af92b02fd88008d86c080b6778339",
+  "serial_reconstruction": {
+    "removed_debugger_callback_records": 38,
+    "method": "Strip only complete VI_CALLBACK JSON records and their own newline, rejoining interrupted native serial lines. Every pixel coordinate and complete frame validated.",
+    "source_log_sha256": "00ec28701a0a32c5e2765c8a23e672fe76b9601be553ab3afe581577e34d7cc1"
+  }
+}

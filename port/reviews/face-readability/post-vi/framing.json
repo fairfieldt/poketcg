@@ -1,0 +1,685 @@
+{
+  "passed": true,
+  "models": 6,
+  "camera_model_checks": 15,
+  "no_clipped_vertices": true,
+  "no_faces_occluded_by_review_label": true,
+  "geometry_unchanged_across_options": true,
+  "cases": [
+    {
+      "view": "portrait",
+      "model": 7,
+      "slug": "mark",
+      "position": [
+        0,
+        0
+      ],
+      "camera": {
+        "eye": [
+          0,
+          1.28,
+          4.7
+        ],
+        "target": [
+          0,
+          1.08,
+          0
+        ],
+        "fov": 34,
+        "near": 0.1,
+        "far": 20
+      },
+      "viewport": [
+        2,
+        38,
+        104,
+        154
+      ],
+      "body_pixel_bounds": [
+        23.621,
+        68.048,
+        84.379,
+        185.748
+      ],
+      "face_pixel_bounds": [
+        38.347,
+        85.984,
+        69.653,
+        103.99
+      ],
+      "face_pixel_width": 31.307,
+      "face_pixel_height": 18.006,
+      "geometry_sha256": "6f9fc73f80c7a6c139de7becc6bbd0df31d35d277a2e3976116e7b37696b8496"
+    },
+    {
+      "view": "portrait",
+      "model": 9,
+      "slug": "dr_mason",
+      "position": [
+        0,
+        0
+      ],
+      "camera": {
+        "eye": [
+          0,
+          1.28,
+          4.7
+        ],
+        "target": [
+          0,
+          1.08,
+          0
+        ],
+        "fov": 34,
+        "near": 0.1,
+        "far": 20
+      },
+      "viewport": [
+        108,
+        38,
+        104,
+        154
+      ],
+      "body_pixel_bounds": [
+        126.219,
+        62.564,
+        193.781,
+        186.1
+      ],
+      "face_pixel_bounds": [
+        142.526,
+        79.311,
+        177.474,
+        98.774
+      ],
+      "face_pixel_width": 34.949,
+      "face_pixel_height": 19.463,
+      "geometry_sha256": "7861e1808aa9aa401aaa52d35d1b9fa3e207b0f4d9f82bfaded8e9d7d2e69da6"
+    },
+    {
+      "view": "portrait",
+      "model": 12,
+      "slug": "nikki",
+      "position": [
+        0,
+        0
+      ],
+      "camera": {
+        "eye": [
+          0,
+          1.28,
+          4.7
+        ],
+        "target": [
+          0,
+          1.08,
+          0
+        ],
+        "fov": 34,
+        "near": 0.1,
+        "far": 20
+      },
+      "viewport": [
+        214,
+        38,
+        104,
+        154
+      ],
+      "body_pixel_bounds": [
+        234.257,
+        63.687,
+        297.743,
+        185.688
+      ],
+      "face_pixel_bounds": [
+        249.633,
+        79.484,
+        282.367,
+        98.813
+      ],
+      "face_pixel_width": 32.733,
+      "face_pixel_height": 19.329,
+      "geometry_sha256": "85a5832ca2ccb80ff169395e75f8854fa24d3abadf7b63e47675e344a84adadb"
+    },
+    {
+      "view": "room",
+      "model": 7,
+      "slug": "mark",
+      "position": [
+        10,
+        20
+      ],
+      "camera": {
+        "eye": [
+          14.0,
+          8.4375,
+          32
+        ],
+        "target": [
+          14.0,
+          0,
+          20.1
+        ],
+        "fov": 58,
+        "near": 1.5,
+        "far": 90
+      },
+      "viewport": [
+        0,
+        0,
+        320,
+        240
+      ],
+      "body_pixel_bounds": [
+        90.25,
+        89.933,
+        107.773,
+        121.481
+      ],
+      "face_pixel_bounds": [
+        91.332,
+        97.231,
+        101.07,
+        102.371
+      ],
+      "face_pixel_width": 9.738,
+      "face_pixel_height": 5.14,
+      "geometry_sha256": "6f9fc73f80c7a6c139de7becc6bbd0df31d35d277a2e3976116e7b37696b8496"
+    },
+    {
+      "view": "room",
+      "model": 9,
+      "slug": "dr_mason",
+      "position": [
+        14,
+        20
+      ],
+      "camera": {
+        "eye": [
+          14.0,
+          8.4375,
+          32
+        ],
+        "target": [
+          14.0,
+          0,
+          20.1
+        ],
+        "fov": 58,
+        "near": 1.5,
+        "far": 90
+      },
+      "viewport": [
+        0,
+        0,
+        320,
+        240
+      ],
+      "body_pixel_bounds": [
+        150.397,
+        89.0,
+        169.603,
+        121.693
+      ],
+      "face_pixel_bounds": [
+        154.996,
+        95.728,
+        165.004,
+        101.259
+      ],
+      "face_pixel_width": 10.008,
+      "face_pixel_height": 5.531,
+      "geometry_sha256": "7861e1808aa9aa401aaa52d35d1b9fa3e207b0f4d9f82bfaded8e9d7d2e69da6"
+    },
+    {
+      "view": "room",
+      "model": 12,
+      "slug": "nikki",
+      "position": [
+        18,
+        20
+      ],
+      "camera": {
+        "eye": [
+          14.0,
+          8.4375,
+          32
+        ],
+        "target": [
+          14.0,
+          0,
+          20.1
+        ],
+        "fov": 58,
+        "near": 1.5,
+        "far": 90
+      },
+      "viewport": [
+        0,
+        0,
+        320,
+        240
+      ],
+      "body_pixel_bounds": [
+        211.942,
+        88.835,
+        230.569,
+        121.468
+      ],
+      "face_pixel_bounds": [
+        218.967,
+        95.625,
+        229.204,
+        101.082
+      ],
+      "face_pixel_width": 10.237,
+      "face_pixel_height": 5.457,
+      "geometry_sha256": "85a5832ca2ccb80ff169395e75f8854fa24d3abadf7b63e47675e344a84adadb"
+    },
+    {
+      "view": "room",
+      "model": 8,
+      "slug": "ronald",
+      "position": [
+        10,
+        10
+      ],
+      "camera": {
+        "eye": [
+          14.0,
+          8.4375,
+          32
+        ],
+        "target": [
+          14.0,
+          0,
+          20.1
+        ],
+        "fov": 58,
+        "near": 1.5,
+        "far": 90
+      },
+      "viewport": [
+        0,
+        0,
+        320,
+        240
+      ],
+      "body_pixel_bounds": [
+        114.296,
+        40.041,
+        127.371,
+        65.566
+      ],
+      "face_pixel_bounds": [
+        116.741,
+        46.934,
+        123.289,
+        50.606
+      ],
+      "face_pixel_width": 6.548,
+      "face_pixel_height": 3.672,
+      "geometry_sha256": "25f17922002e30c4183bbbc3ed20227e86d4614b19ca88507df18c998f49a1e3"
+    },
+    {
+      "view": "room",
+      "model": 14,
+      "slug": "ken",
+      "position": [
+        14,
+        10
+      ],
+      "camera": {
+        "eye": [
+          14.0,
+          8.4375,
+          32
+        ],
+        "target": [
+          14.0,
+          0,
+          20.1
+        ],
+        "fov": 58,
+        "near": 1.5,
+        "far": 90
+      },
+      "viewport": [
+        0,
+        0,
+        320,
+        240
+      ],
+      "body_pixel_bounds": [
+        153.165,
+        39.708,
+        166.835,
+        65.597
+      ],
+      "face_pixel_bounds": [
+        156.511,
+        46.559,
+        163.489,
+        50.32
+      ],
+      "face_pixel_width": 6.978,
+      "face_pixel_height": 3.761,
+      "geometry_sha256": "fb7f30c2bcff4ac3498022590b10dbceba09e0888fbd5b58c18c6911b3ce93ba"
+    },
+    {
+      "view": "room",
+      "model": 43,
+      "slug": "granny",
+      "position": [
+        18,
+        10
+      ],
+      "camera": {
+        "eye": [
+          14.0,
+          8.4375,
+          32
+        ],
+        "target": [
+          14.0,
+          0,
+          20.1
+        ],
+        "fov": 58,
+        "near": 1.5,
+        "far": 90
+      },
+      "viewport": [
+        0,
+        0,
+        320,
+        240
+      ],
+      "body_pixel_bounds": [
+        192.428,
+        43.711,
+        204.842,
+        65.586
+      ],
+      "face_pixel_bounds": [
+        196.468,
+        49.216,
+        203.06,
+        52.466
+      ],
+      "face_pixel_width": 6.591,
+      "face_pixel_height": 3.25,
+      "geometry_sha256": "58c991b139bcc7e87cb9f69f83ab151d20c35d483f49d7382fd0b8c8ab2bd051"
+    },
+    {
+      "view": "conversation",
+      "model": 7,
+      "slug": "mark",
+      "position": [
+        9,
+        20
+      ],
+      "camera": {
+        "eye": [
+          14.5,
+          10,
+          30
+        ],
+        "target": [
+          14,
+          1,
+          20
+        ],
+        "fov": 50,
+        "near": 1.5,
+        "far": 90
+      },
+      "viewport": [
+        0,
+        0,
+        320,
+        240
+      ],
+      "body_pixel_bounds": [
+        53.448,
+        97.636,
+        77.373,
+        133.898
+      ],
+      "face_pixel_bounds": [
+        55.461,
+        107.068,
+        67.815,
+        113.319
+      ],
+      "face_pixel_width": 12.354,
+      "face_pixel_height": 6.25,
+      "geometry_sha256": "6f9fc73f80c7a6c139de7becc6bbd0df31d35d277a2e3976116e7b37696b8496"
+    },
+    {
+      "view": "conversation",
+      "model": 9,
+      "slug": "dr_mason",
+      "position": [
+        11,
+        20
+      ],
+      "camera": {
+        "eye": [
+          14.5,
+          10,
+          30
+        ],
+        "target": [
+          14,
+          1,
+          20
+        ],
+        "fov": 50,
+        "near": 1.5,
+        "far": 90
+      },
+      "viewport": [
+        0,
+        0,
+        320,
+        240
+      ],
+      "body_pixel_bounds": [
+        92.029,
+        97.911,
+        115.464,
+        135.518
+      ],
+      "face_pixel_bounds": [
+        93.545,
+        106.703,
+        106.774,
+        113.483
+      ],
+      "face_pixel_width": 13.229,
+      "face_pixel_height": 6.78,
+      "geometry_sha256": "7861e1808aa9aa401aaa52d35d1b9fa3e207b0f4d9f82bfaded8e9d7d2e69da6"
+    },
+    {
+      "view": "conversation",
+      "model": 12,
+      "slug": "nikki",
+      "position": [
+        13,
+        20
+      ],
+      "camera": {
+        "eye": [
+          14.5,
+          10,
+          30
+        ],
+        "target": [
+          14,
+          1,
+          20
+        ],
+        "fov": 50,
+        "near": 1.5,
+        "far": 90
+      },
+      "viewport": [
+        0,
+        0,
+        320,
+        240
+      ],
+      "body_pixel_bounds": [
+        130.015,
+        99.172,
+        152.282,
+        136.497
+      ],
+      "face_pixel_bounds": [
+        133.837,
+        107.811,
+        145.781,
+        114.486
+      ],
+      "face_pixel_width": 11.944,
+      "face_pixel_height": 6.674,
+      "geometry_sha256": "85a5832ca2ccb80ff169395e75f8854fa24d3abadf7b63e47675e344a84adadb"
+    },
+    {
+      "view": "conversation",
+      "model": 8,
+      "slug": "ronald",
+      "position": [
+        15,
+        20
+      ],
+      "camera": {
+        "eye": [
+          14.5,
+          10,
+          30
+        ],
+        "target": [
+          14,
+          1,
+          20
+        ],
+        "fov": 50,
+        "near": 1.5,
+        "far": 90
+      },
+      "viewport": [
+        0,
+        0,
+        320,
+        240
+      ],
+      "body_pixel_bounds": [
+        166.983,
+        95.222,
+        192.365,
+        138.167
+      ],
+      "face_pixel_bounds": [
+        173.533,
+        109.249,
+        186.371,
+        116.083
+      ],
+      "face_pixel_width": 12.838,
+      "face_pixel_height": 6.834,
+      "geometry_sha256": "25f17922002e30c4183bbbc3ed20227e86d4614b19ca88507df18c998f49a1e3"
+    },
+    {
+      "view": "conversation",
+      "model": 14,
+      "slug": "ken",
+      "position": [
+        17,
+        20
+      ],
+      "camera": {
+        "eye": [
+          14.5,
+          10,
+          30
+        ],
+        "target": [
+          14,
+          1,
+          20
+        ],
+        "fov": 50,
+        "near": 1.5,
+        "far": 90
+      },
+      "viewport": [
+        0,
+        0,
+        320,
+        240
+      ],
+      "body_pixel_bounds": [
+        203.665,
+        97.933,
+        232.216,
+        139.638
+      ],
+      "face_pixel_bounds": [
+        212.998,
+        109.966,
+        228.261,
+        117.055
+      ],
+      "face_pixel_width": 15.263,
+      "face_pixel_height": 7.089,
+      "geometry_sha256": "fb7f30c2bcff4ac3498022590b10dbceba09e0888fbd5b58c18c6911b3ce93ba"
+    },
+    {
+      "view": "conversation",
+      "model": 43,
+      "slug": "granny",
+      "position": [
+        19,
+        20
+      ],
+      "camera": {
+        "eye": [
+          14.5,
+          10,
+          30
+        ],
+        "target": [
+          14,
+          1,
+          20
+        ],
+        "fov": 50,
+        "near": 1.5,
+        "far": 90
+      },
+      "viewport": [
+        0,
+        0,
+        320,
+        240
+      ],
+      "body_pixel_bounds": [
+        242.965,
+        103.28,
+        269.251,
+        140.901
+      ],
+      "face_pixel_bounds": [
+        253.193,
+        115.352,
+        267.62,
+        121.553
+      ],
+      "face_pixel_width": 14.427,
+      "face_pixel_height": 6.201,
+      "geometry_sha256": "58c991b139bcc7e87cb9f69f83ab151d20c35d483f49d7382fd0b8c8ab2bd051"
+    }
+  ]
+}

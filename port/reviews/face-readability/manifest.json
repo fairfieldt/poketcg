@@ -1,0 +1,211 @@
+{
+  "experiment_only": true,
+  "options": [
+    {
+      "id": "baseline",
+      "label": "A \u00b7 Current",
+      "description": "Existing faces."
+    },
+    {
+      "id": "moderate",
+      "label": "B \u00b7 Larger classic",
+      "description": "Larger whites and pupils."
+    },
+    {
+      "id": "bold",
+      "label": "C \u00b7 Simple dark",
+      "description": "Dark eyes with small highlights."
+    },
+    {
+      "id": "large",
+      "label": "D \u00b7 Big cartoon",
+      "description": "Oversized whites and pupils."
+    }
+  ],
+  "native_validation": "native-validation.json",
+  "post_vi_provenance": "post-vi/capture-provenance.json",
+  "geometry_proof": "geometry-proof.json",
+  "crop_metadata": "crop-metadata.json",
+  "files": [
+    {
+      "file": "README.md",
+      "sha256": "077ba99f0f58ce2bad128c52bff439fb8d49dd8e54def4f004a3df018e36ff33"
+    },
+    {
+      "file": "art-manifest.json",
+      "sha256": "6e601a94a4daa9a645482c4c5c1a9fe5ca21640a5c3c97903da35e0f8c536dae"
+    },
+    {
+      "file": "conversation-face-comparison.png",
+      "sha256": "21db8fec22e2425e637feb31eeabcd04c10f44834b44fd0e0db622d03d9fbcf9"
+    },
+    {
+      "file": "conversation-full-comparison.png",
+      "sha256": "8dfab5de0ee1f0ee3f0749550259c3d67a9eaecc517d11d4a7865e370e7f0413"
+    },
+    {
+      "file": "crop-metadata.json",
+      "sha256": "422835f1b6a7c6a14bc159a6eea1c6ca58299ec7d7422b8da402a46c528a8fc2"
+    },
+    {
+      "file": "design-review.md",
+      "sha256": "a72f95f0c2475bcf54e15e3319736e784e6edab0edea04f12da4611a1bea401d"
+    },
+    {
+      "file": "gallery-validation.json",
+      "sha256": "229543e09d06d440b940d0b997f1eff2982f8de8b3357d6ab76015d7c1d9d043"
+    },
+    {
+      "file": "geometry-proof.json",
+      "sha256": "ae05f8e1e99d25286db37ae0b31b060293362948234dd48df253a6dd5078db0c"
+    },
+    {
+      "file": "index.html",
+      "sha256": "4ebbdcdcec6face8eb43226885a875a83c387c8443c962422312582b84e0a473"
+    },
+    {
+      "file": "native/face-baseline-conversation.png",
+      "sha256": "a69600d7e05e7301d0b7c77d0d436be4a342037224b02bb5575960ba375e944c"
+    },
+    {
+      "file": "native/face-baseline-portrait.png",
+      "sha256": "ace6a4fc8fa7adac82727ec08c5a3f2f924ef24d66de82871fa412cd48540b10"
+    },
+    {
+      "file": "native/face-baseline-room.png",
+      "sha256": "9ea2ea7038629c8c1904cf0e31b8cb39fcdb4a1a29da9478c86d5bd883152e89"
+    },
+    {
+      "file": "native/face-bold-conversation.png",
+      "sha256": "e7fc3715892a406e17e4b6ebeacb3e1ca0d5d0b0699fc565a2e393394397e00c"
+    },
+    {
+      "file": "native/face-bold-portrait.png",
+      "sha256": "33d597ba838d5a12b9f52f7ea5e90dc808903c8f9aee96babddcf13c8b10864d"
+    },
+    {
+      "file": "native/face-bold-room.png",
+      "sha256": "83c76d9f13480a29ca032e4296fb8a6808fc9b8787f2fedd7163720a25e49634"
+    },
+    {
+      "file": "native/face-large-conversation.png",
+      "sha256": "2722bebe2fc995ac479ec986930baaafc4a5f1b5c64172b003062cf13f090d7b"
+    },
+    {
+      "file": "native/face-large-portrait.png",
+      "sha256": "7844a3405dc03d3a9c2c2ac34205bf0fc7bf2ec277742ae62e77313f0cc4050d"
+    },
+    {
+      "file": "native/face-large-room.png",
+      "sha256": "d56f909bd49532494f10e75fbb74fc1f6c77a899c88529964dabcb31d8cd27bb"
+    },
+    {
+      "file": "native/face-moderate-conversation.png",
+      "sha256": "08441fa3e9b77ab1b158c7c1f886aa8ba4211c2a6cae521b7434ac9a8bc65674"
+    },
+    {
+      "file": "native/face-moderate-portrait.png",
+      "sha256": "a167200e58a46775e76db156205c80620901fc606578f2481857bf0aeb0157a3"
+    },
+    {
+      "file": "native/face-moderate-room.png",
+      "sha256": "a8d76f953db7cb717f2f257cd230ca7d7d113e375153219d300dbe23945aa178"
+    },
+    {
+      "file": "native-validation.json",
+      "sha256": "9ed81586d9510678014ae8d808ea6015bcfea7ee9bc1efba77ad351bd8dc09c5"
+    },
+    {
+      "file": "portrait-face-comparison.png",
+      "sha256": "055f9ea0428461e6c17801481bb9e008d43d40d654a340c17e42056e0d840a7b"
+    },
+    {
+      "file": "portrait-full-comparison.png",
+      "sha256": "edd058dd292741cf22d2c4d570f3e41f0486da4a0924af64d8f250c8b7490ab8"
+    },
+    {
+      "file": "post-vi/README.md",
+      "sha256": "9da9c871b1aad53e5f2bb0ecf50822a2f65a7fc26efb3286993377344e26691a"
+    },
+    {
+      "file": "post-vi/baseline-conversation.png",
+      "sha256": "25b3061e1685a25c24ff59c3d0c5dc37639b003e34a5784fa50229226080be73"
+    },
+    {
+      "file": "post-vi/baseline-portrait.png",
+      "sha256": "a060219009a6ed92fa64011b7961a0b402aef25d609da0275f31ad2ca6fca30f"
+    },
+    {
+      "file": "post-vi/baseline-room.png",
+      "sha256": "54477e5ab52097221a40536810760383bebeb2e386f555745f15907aafa96344"
+    },
+    {
+      "file": "post-vi/bold-conversation.png",
+      "sha256": "adaeacbd61cfc174d43e57ea8190d60e9a70cb781610edf7e37cd01f68a0c028"
+    },
+    {
+      "file": "post-vi/bold-portrait.png",
+      "sha256": "5b06f24444c32961a6dcd0c620b30eb537ae72f1940aa889fced4743d74857c8"
+    },
+    {
+      "file": "post-vi/bold-room.png",
+      "sha256": "890fad14981c04efabb7ad92b83094254dda16510e8e4aebb342bad1f765e550"
+    },
+    {
+      "file": "post-vi/callback-events.jsonl",
+      "sha256": "b128f1ff0c2dd57d769f8320bb9dd1767c4c836faa65880b9e9dd5ec71722022"
+    },
+    {
+      "file": "post-vi/capture-provenance.json",
+      "sha256": "4b482d5a9772fcb8cb1b8b877d2db6292d9cef4e85bebc1b7c0c4b0758c477e9"
+    },
+    {
+      "file": "post-vi/check_framing.py",
+      "sha256": "b2666fdac4e6a46c1a17a0ad3ad906259d3dcbf0d6910a4b5252195271ffcfd7"
+    },
+    {
+      "file": "post-vi/comparison-control.json",
+      "sha256": "614a46145f5f9fb563c05825de2c5ab3466c8b90db230344f6a1e541166b8103"
+    },
+    {
+      "file": "post-vi/framing.json",
+      "sha256": "2eb41469bfb588739306e9b8957821f35d771e1d7636ffeba240cfcff89ae588"
+    },
+    {
+      "file": "post-vi/large-conversation.png",
+      "sha256": "9a17e84ae76e530987180af9677fe47736cbe8b75e85c0c205e5c2e812181c26"
+    },
+    {
+      "file": "post-vi/large-portrait.png",
+      "sha256": "f86bf9881f6d05fb6006470beca81decd89a2f65f2ec340e38a265621756bd82"
+    },
+    {
+      "file": "post-vi/large-room.png",
+      "sha256": "b98a52ef20ed00ffd1934e6e425ff0643e2b47353fac497f1ff06b6699185099"
+    },
+    {
+      "file": "post-vi/moderate-conversation.png",
+      "sha256": "ac9c00a541319da717680b4133ce68aa0a4e5cdc665daa378fb671a52bea7e17"
+    },
+    {
+      "file": "post-vi/moderate-portrait.png",
+      "sha256": "7049b4a60a07dcd856c9a6287748b1348a54263f37762149065c86fbd0270d9d"
+    },
+    {
+      "file": "post-vi/moderate-room.png",
+      "sha256": "3240248b9180963127af0f33ccedc5f13fd1e7828cfcd4d072c0604e082fa37b"
+    },
+    {
+      "file": "post-vi/vi_capture.py",
+      "sha256": "fe2681e72c20f9be3d1a051f377541e031069214159c9123f60c1371291f295c"
+    },
+    {
+      "file": "room-face-comparison.png",
+      "sha256": "7f6ff6ace71977d50bc0ea504ea177ba94e30ad55ad5ad7f5c39056115cc10f4"
+    },
+    {
+      "file": "room-full-comparison.png",
+      "sha256": "dfcb5d0c072607ff895fdc6df885d1cfd69fc098c97ec2f6ffbbf1762b09da0c"
+    }
+  ]
+}

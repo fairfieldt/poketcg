@@ -1,0 +1,2070 @@
+{
+  "purpose": "Review-only N64 face paint options; production assets unchanged",
+  "size": [
+    32,
+    32
+  ],
+  "format": "Opaque RGBA PNG for RGBA16 conversion",
+  "skin_rgb8": [
+    231,
+    173,
+    99
+  ],
+  "native_texture_groups": {
+    "t6d59bc388d91e451": [
+      "fc_e7ad63_gentle"
+    ],
+    "tcd457a01e99e92b3": [
+      "fc_e7ad63_glasses",
+      "fc_e7ad63_round_glasses"
+    ],
+    "t3bcdeca17a85e16d": [
+      "fc_e7ad63_imakuni"
+    ],
+    "tc1137760b72f27ca": [
+      "fc_e7ad63_mason"
+    ],
+    "t2f5cf497984d058c": [
+      "fc_e7ad63_mature",
+      "fc_e7ad63_stern"
+    ],
+    "tda3c45e6517cea3d": [
+      "fc_e7ad63_old"
+    ],
+    "t20e89bac43201d18": [
+      "fc_e7ad63_old_glasses"
+    ],
+    "tafd4af8dd8e57b95": [
+      "fc_e7ad63_ronald"
+    ],
+    "t10c908d3d5164363": [
+      "fc_e7ad63_smile"
+    ]
+  },
+  "options": [
+    {
+      "id": "baseline",
+      "label": "Current",
+      "description": "Current production face paint.",
+      "textures": [
+        {
+          "source_face": "fc_e7ad63_gentle",
+          "style": "gentle",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_gentle.png",
+          "source_sha256": "98669a491c9582bc800c32053e59430a189ab6416ec4ccf0a229b702a47cd61f",
+          "native_texture": "t6d59bc388d91e451",
+          "native_file": "world/textures/t6d59bc388d91e451.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 12,
+              "slug": "nikki",
+              "family": "nikki"
+            },
+            {
+              "model": 15,
+              "slug": "amy",
+              "family": "amy"
+            },
+            {
+              "model": 20,
+              "slug": "courtney",
+              "family": "courtney"
+            },
+            {
+              "model": 37,
+              "slug": "lass2",
+              "family": "lass2"
+            },
+            {
+              "model": 38,
+              "slug": "lass3",
+              "family": "lass3"
+            },
+            {
+              "model": 40,
+              "slug": "clerk",
+              "family": "clerk"
+            },
+            {
+              "model": 41,
+              "slug": "gal",
+              "family": "gal"
+            },
+            {
+              "model": 42,
+              "slug": "woman",
+              "family": "woman"
+            },
+            {
+              "model": 160,
+              "slug": "amy__lying",
+              "family": "amy"
+            }
+          ],
+          "file": "options/baseline/textures/fc_e7ad63_gentle.png",
+          "sha256": "98669a491c9582bc800c32053e59430a189ab6416ec4ccf0a229b702a47cd61f",
+          "proposed_content_hash": "t6d59bc388d91e451"
+        },
+        {
+          "source_face": "fc_e7ad63_glasses",
+          "style": "glasses",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_glasses.png",
+          "source_sha256": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+          "native_texture": "tcd457a01e99e92b3",
+          "native_file": "world/textures/tcd457a01e99e92b3.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 13,
+              "slug": "rick",
+              "family": "rick"
+            },
+            {
+              "model": 16,
+              "slug": "isaac",
+              "family": "isaac"
+            },
+            {
+              "model": 19,
+              "slug": "murray",
+              "family": "murray"
+            },
+            {
+              "model": 26,
+              "slug": "specs",
+              "family": "specs"
+            },
+            {
+              "model": 31,
+              "slug": "tech",
+              "family": "tech"
+            }
+          ],
+          "file": "options/baseline/textures/fc_e7ad63_glasses.png",
+          "sha256": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+          "proposed_content_hash": "tcd457a01e99e92b3"
+        },
+        {
+          "source_face": "fc_e7ad63_imakuni",
+          "style": "imakuni",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_imakuni.png",
+          "source_sha256": "854d2a0bc78d1dc3c1412b9531460ecc13e3b8e531d3d099afb4e8dbe49f77fb",
+          "native_texture": "t3bcdeca17a85e16d",
+          "native_file": "world/textures/t3bcdeca17a85e16d.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 11,
+              "slug": "imakuni",
+              "family": "imakuni"
+            }
+          ],
+          "file": "options/baseline/textures/fc_e7ad63_imakuni.png",
+          "sha256": "854d2a0bc78d1dc3c1412b9531460ecc13e3b8e531d3d099afb4e8dbe49f77fb",
+          "proposed_content_hash": "t3bcdeca17a85e16d"
+        },
+        {
+          "source_face": "fc_e7ad63_mason",
+          "style": "mason",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_mason.png",
+          "source_sha256": "104cf3caf48ea3e071bde7f30f5d7e2c08b6107cdc095e5a3d2bf3b4666249b4",
+          "native_texture": "tc1137760b72f27ca",
+          "native_file": "world/textures/tc1137760b72f27ca.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 9,
+              "slug": "dr_mason",
+              "family": "dr_mason"
+            }
+          ],
+          "file": "options/baseline/textures/fc_e7ad63_mason.png",
+          "sha256": "104cf3caf48ea3e071bde7f30f5d7e2c08b6107cdc095e5a3d2bf3b4666249b4",
+          "proposed_content_hash": "tc1137760b72f27ca"
+        },
+        {
+          "source_face": "fc_e7ad63_mature",
+          "style": "mature",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_mature.png",
+          "source_sha256": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+          "native_texture": "t2f5cf497984d058c",
+          "native_file": "world/textures/t2f5cf497984d058c.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 10,
+              "slug": "ishihara",
+              "family": "ishihara"
+            },
+            {
+              "model": 14,
+              "slug": "ken",
+              "family": "ken"
+            },
+            {
+              "model": 17,
+              "slug": "mitch",
+              "family": "mitch"
+            },
+            {
+              "model": 18,
+              "slug": "gene",
+              "family": "gene"
+            },
+            {
+              "model": 21,
+              "slug": "steve",
+              "family": "steve"
+            },
+            {
+              "model": 22,
+              "slug": "jack",
+              "family": "jack"
+            },
+            {
+              "model": 23,
+              "slug": "rod",
+              "family": "rod"
+            },
+            {
+              "model": 27,
+              "slug": "butch",
+              "family": "butch"
+            },
+            {
+              "model": 29,
+              "slug": "joshua",
+              "family": "joshua"
+            },
+            {
+              "model": 30,
+              "slug": "hood",
+              "family": "hood"
+            },
+            {
+              "model": 32,
+              "slug": "chap",
+              "family": "chap"
+            },
+            {
+              "model": 33,
+              "slug": "man",
+              "family": "man"
+            }
+          ],
+          "file": "options/baseline/textures/fc_e7ad63_mature.png",
+          "sha256": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+          "proposed_content_hash": "t2f5cf497984d058c"
+        },
+        {
+          "source_face": "fc_e7ad63_old",
+          "style": "old",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_old.png",
+          "source_sha256": "3e9f9d7da06e2bdf620053bfbc1a9024f54e851a3390cf3da8bbdafc7d142f4e",
+          "native_texture": "tda3c45e6517cea3d",
+          "native_file": "world/textures/tda3c45e6517cea3d.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 34,
+              "slug": "pappy",
+              "family": "pappy"
+            }
+          ],
+          "file": "options/baseline/textures/fc_e7ad63_old.png",
+          "sha256": "3e9f9d7da06e2bdf620053bfbc1a9024f54e851a3390cf3da8bbdafc7d142f4e",
+          "proposed_content_hash": "tda3c45e6517cea3d"
+        },
+        {
+          "source_face": "fc_e7ad63_old_glasses",
+          "style": "old_glasses",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_old_glasses.png",
+          "source_sha256": "00f5749f5af4a2a263789281990cb401a70e3c0b08d0f64a25d2f3fbe0cda250",
+          "native_texture": "t20e89bac43201d18",
+          "native_file": "world/textures/t20e89bac43201d18.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 43,
+              "slug": "granny",
+              "family": "granny"
+            }
+          ],
+          "file": "options/baseline/textures/fc_e7ad63_old_glasses.png",
+          "sha256": "00f5749f5af4a2a263789281990cb401a70e3c0b08d0f64a25d2f3fbe0cda250",
+          "proposed_content_hash": "t20e89bac43201d18"
+        },
+        {
+          "source_face": "fc_e7ad63_ronald",
+          "style": "ronald",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_ronald.png",
+          "source_sha256": "19fa63b67ebd0469565fafdcb579babaade64d650f009ed3fec3ccbcbbf6eade",
+          "native_texture": "tafd4af8dd8e57b95",
+          "native_file": "world/textures/tafd4af8dd8e57b95.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 8,
+              "slug": "ronald",
+              "family": "ronald"
+            }
+          ],
+          "file": "options/baseline/textures/fc_e7ad63_ronald.png",
+          "sha256": "19fa63b67ebd0469565fafdcb579babaade64d650f009ed3fec3ccbcbbf6eade",
+          "proposed_content_hash": "tafd4af8dd8e57b95"
+        },
+        {
+          "source_face": "fc_e7ad63_round_glasses",
+          "style": "round_glasses",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_round_glasses.png",
+          "source_sha256": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+          "native_texture": "tcd457a01e99e92b3",
+          "native_file": "world/textures/tcd457a01e99e92b3.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 13,
+              "slug": "rick",
+              "family": "rick"
+            },
+            {
+              "model": 16,
+              "slug": "isaac",
+              "family": "isaac"
+            },
+            {
+              "model": 19,
+              "slug": "murray",
+              "family": "murray"
+            },
+            {
+              "model": 26,
+              "slug": "specs",
+              "family": "specs"
+            },
+            {
+              "model": 31,
+              "slug": "tech",
+              "family": "tech"
+            }
+          ],
+          "file": "options/baseline/textures/fc_e7ad63_round_glasses.png",
+          "sha256": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+          "proposed_content_hash": "tcd457a01e99e92b3"
+        },
+        {
+          "source_face": "fc_e7ad63_smile",
+          "style": "smile",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_smile.png",
+          "source_sha256": "5b1d14ae4706c3dbdf29044d7294474f5b20a0318483e62c027338f02e75c26b",
+          "native_texture": "t10c908d3d5164363",
+          "native_file": "world/textures/t10c908d3d5164363.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 7,
+              "slug": "mark",
+              "family": "mark"
+            },
+            {
+              "model": 24,
+              "slug": "boy",
+              "family": "boy"
+            },
+            {
+              "model": 25,
+              "slug": "lad",
+              "family": "lad"
+            },
+            {
+              "model": 28,
+              "slug": "mania",
+              "family": "mania"
+            },
+            {
+              "model": 35,
+              "slug": "girl",
+              "family": "girl"
+            },
+            {
+              "model": 36,
+              "slug": "lass1",
+              "family": "lass1"
+            },
+            {
+              "model": 39,
+              "slug": "swimmer",
+              "family": "swimmer"
+            },
+            {
+              "model": 128,
+              "slug": "boy_palette2",
+              "family": "boy"
+            },
+            {
+              "model": 129,
+              "slug": "mania_palette2",
+              "family": "mania"
+            },
+            {
+              "model": 130,
+              "slug": "swimmer_palette2",
+              "family": "swimmer"
+            }
+          ],
+          "file": "options/baseline/textures/fc_e7ad63_smile.png",
+          "sha256": "5b1d14ae4706c3dbdf29044d7294474f5b20a0318483e62c027338f02e75c26b",
+          "proposed_content_hash": "t10c908d3d5164363"
+        },
+        {
+          "source_face": "fc_e7ad63_stern",
+          "style": "stern",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_stern.png",
+          "source_sha256": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+          "native_texture": "t2f5cf497984d058c",
+          "native_file": "world/textures/t2f5cf497984d058c.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 10,
+              "slug": "ishihara",
+              "family": "ishihara"
+            },
+            {
+              "model": 14,
+              "slug": "ken",
+              "family": "ken"
+            },
+            {
+              "model": 17,
+              "slug": "mitch",
+              "family": "mitch"
+            },
+            {
+              "model": 18,
+              "slug": "gene",
+              "family": "gene"
+            },
+            {
+              "model": 21,
+              "slug": "steve",
+              "family": "steve"
+            },
+            {
+              "model": 22,
+              "slug": "jack",
+              "family": "jack"
+            },
+            {
+              "model": 23,
+              "slug": "rod",
+              "family": "rod"
+            },
+            {
+              "model": 27,
+              "slug": "butch",
+              "family": "butch"
+            },
+            {
+              "model": 29,
+              "slug": "joshua",
+              "family": "joshua"
+            },
+            {
+              "model": 30,
+              "slug": "hood",
+              "family": "hood"
+            },
+            {
+              "model": 32,
+              "slug": "chap",
+              "family": "chap"
+            },
+            {
+              "model": 33,
+              "slug": "man",
+              "family": "man"
+            }
+          ],
+          "file": "options/baseline/textures/fc_e7ad63_stern.png",
+          "sha256": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+          "proposed_content_hash": "t2f5cf497984d058c"
+        }
+      ],
+      "native_replacements": {
+        "t6d59bc388d91e451": "options/baseline/textures/fc_e7ad63_gentle.png",
+        "tcd457a01e99e92b3": "options/baseline/textures/fc_e7ad63_glasses.png",
+        "t3bcdeca17a85e16d": "options/baseline/textures/fc_e7ad63_imakuni.png",
+        "tc1137760b72f27ca": "options/baseline/textures/fc_e7ad63_mason.png",
+        "t2f5cf497984d058c": "options/baseline/textures/fc_e7ad63_mature.png",
+        "tda3c45e6517cea3d": "options/baseline/textures/fc_e7ad63_old.png",
+        "t20e89bac43201d18": "options/baseline/textures/fc_e7ad63_old_glasses.png",
+        "tafd4af8dd8e57b95": "options/baseline/textures/fc_e7ad63_ronald.png",
+        "t10c908d3d5164363": "options/baseline/textures/fc_e7ad63_smile.png"
+      }
+    },
+    {
+      "id": "moderate",
+      "label": "Larger classic",
+      "description": "Larger whites, four-texel pupils, thicker brows and mouth.",
+      "textures": [
+        {
+          "source_face": "fc_e7ad63_gentle",
+          "style": "gentle",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_gentle.png",
+          "source_sha256": "98669a491c9582bc800c32053e59430a189ab6416ec4ccf0a229b702a47cd61f",
+          "native_texture": "t6d59bc388d91e451",
+          "native_file": "world/textures/t6d59bc388d91e451.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 12,
+              "slug": "nikki",
+              "family": "nikki"
+            },
+            {
+              "model": 15,
+              "slug": "amy",
+              "family": "amy"
+            },
+            {
+              "model": 20,
+              "slug": "courtney",
+              "family": "courtney"
+            },
+            {
+              "model": 37,
+              "slug": "lass2",
+              "family": "lass2"
+            },
+            {
+              "model": 38,
+              "slug": "lass3",
+              "family": "lass3"
+            },
+            {
+              "model": 40,
+              "slug": "clerk",
+              "family": "clerk"
+            },
+            {
+              "model": 41,
+              "slug": "gal",
+              "family": "gal"
+            },
+            {
+              "model": 42,
+              "slug": "woman",
+              "family": "woman"
+            },
+            {
+              "model": 160,
+              "slug": "amy__lying",
+              "family": "amy"
+            }
+          ],
+          "file": "options/moderate/textures/fc_e7ad63_gentle.png",
+          "sha256": "782b0107a9bb99437251d3c548b1592c578db8eb016fe2c4f435ea93c1f08843",
+          "proposed_content_hash": "t50feedfde03c6e56"
+        },
+        {
+          "source_face": "fc_e7ad63_glasses",
+          "style": "glasses",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_glasses.png",
+          "source_sha256": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+          "native_texture": "tcd457a01e99e92b3",
+          "native_file": "world/textures/tcd457a01e99e92b3.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 13,
+              "slug": "rick",
+              "family": "rick"
+            },
+            {
+              "model": 16,
+              "slug": "isaac",
+              "family": "isaac"
+            },
+            {
+              "model": 19,
+              "slug": "murray",
+              "family": "murray"
+            },
+            {
+              "model": 26,
+              "slug": "specs",
+              "family": "specs"
+            },
+            {
+              "model": 31,
+              "slug": "tech",
+              "family": "tech"
+            }
+          ],
+          "file": "options/moderate/textures/fc_e7ad63_glasses.png",
+          "sha256": "38381ec1218744f07b1a029c4b54070bbd46a8e5dd5e543646a260dc1f08f404",
+          "proposed_content_hash": "t791027670ace5ccc"
+        },
+        {
+          "source_face": "fc_e7ad63_imakuni",
+          "style": "imakuni",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_imakuni.png",
+          "source_sha256": "854d2a0bc78d1dc3c1412b9531460ecc13e3b8e531d3d099afb4e8dbe49f77fb",
+          "native_texture": "t3bcdeca17a85e16d",
+          "native_file": "world/textures/t3bcdeca17a85e16d.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 11,
+              "slug": "imakuni",
+              "family": "imakuni"
+            }
+          ],
+          "file": "options/moderate/textures/fc_e7ad63_imakuni.png",
+          "sha256": "fb917a8e7b76bc959d00183a2e4b4dc621c1cf9e6d7781de4b580dca15c00f4d",
+          "proposed_content_hash": "t8cf8f10c043b8a15"
+        },
+        {
+          "source_face": "fc_e7ad63_mason",
+          "style": "mason",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_mason.png",
+          "source_sha256": "104cf3caf48ea3e071bde7f30f5d7e2c08b6107cdc095e5a3d2bf3b4666249b4",
+          "native_texture": "tc1137760b72f27ca",
+          "native_file": "world/textures/tc1137760b72f27ca.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 9,
+              "slug": "dr_mason",
+              "family": "dr_mason"
+            }
+          ],
+          "file": "options/moderate/textures/fc_e7ad63_mason.png",
+          "sha256": "798cab96178df95157b3de5d4520d6c8da734a71bdf6164083862a52dcf20467",
+          "proposed_content_hash": "t88a7daf3f97361b9"
+        },
+        {
+          "source_face": "fc_e7ad63_mature",
+          "style": "mature",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_mature.png",
+          "source_sha256": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+          "native_texture": "t2f5cf497984d058c",
+          "native_file": "world/textures/t2f5cf497984d058c.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 10,
+              "slug": "ishihara",
+              "family": "ishihara"
+            },
+            {
+              "model": 14,
+              "slug": "ken",
+              "family": "ken"
+            },
+            {
+              "model": 17,
+              "slug": "mitch",
+              "family": "mitch"
+            },
+            {
+              "model": 18,
+              "slug": "gene",
+              "family": "gene"
+            },
+            {
+              "model": 21,
+              "slug": "steve",
+              "family": "steve"
+            },
+            {
+              "model": 22,
+              "slug": "jack",
+              "family": "jack"
+            },
+            {
+              "model": 23,
+              "slug": "rod",
+              "family": "rod"
+            },
+            {
+              "model": 27,
+              "slug": "butch",
+              "family": "butch"
+            },
+            {
+              "model": 29,
+              "slug": "joshua",
+              "family": "joshua"
+            },
+            {
+              "model": 30,
+              "slug": "hood",
+              "family": "hood"
+            },
+            {
+              "model": 32,
+              "slug": "chap",
+              "family": "chap"
+            },
+            {
+              "model": 33,
+              "slug": "man",
+              "family": "man"
+            }
+          ],
+          "file": "options/moderate/textures/fc_e7ad63_mature.png",
+          "sha256": "134edecce54d96f8cab7f2cb41d253c7e23d3fc1c1f07f0c0a8a990cbc4fb242",
+          "proposed_content_hash": "tf82707c6d5546e4c"
+        },
+        {
+          "source_face": "fc_e7ad63_old",
+          "style": "old",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_old.png",
+          "source_sha256": "3e9f9d7da06e2bdf620053bfbc1a9024f54e851a3390cf3da8bbdafc7d142f4e",
+          "native_texture": "tda3c45e6517cea3d",
+          "native_file": "world/textures/tda3c45e6517cea3d.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 34,
+              "slug": "pappy",
+              "family": "pappy"
+            }
+          ],
+          "file": "options/moderate/textures/fc_e7ad63_old.png",
+          "sha256": "bb81f838100d66b88476dac10d083e584456263baf382ed8a90d600f47f2e0f3",
+          "proposed_content_hash": "tea6b90d8b5064057"
+        },
+        {
+          "source_face": "fc_e7ad63_old_glasses",
+          "style": "old_glasses",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_old_glasses.png",
+          "source_sha256": "00f5749f5af4a2a263789281990cb401a70e3c0b08d0f64a25d2f3fbe0cda250",
+          "native_texture": "t20e89bac43201d18",
+          "native_file": "world/textures/t20e89bac43201d18.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 43,
+              "slug": "granny",
+              "family": "granny"
+            }
+          ],
+          "file": "options/moderate/textures/fc_e7ad63_old_glasses.png",
+          "sha256": "81c126628873f40667417b7a199c3947927c1e749691a9e147a34495b001ee95",
+          "proposed_content_hash": "t31f6f3e783f8029c"
+        },
+        {
+          "source_face": "fc_e7ad63_ronald",
+          "style": "ronald",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_ronald.png",
+          "source_sha256": "19fa63b67ebd0469565fafdcb579babaade64d650f009ed3fec3ccbcbbf6eade",
+          "native_texture": "tafd4af8dd8e57b95",
+          "native_file": "world/textures/tafd4af8dd8e57b95.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 8,
+              "slug": "ronald",
+              "family": "ronald"
+            }
+          ],
+          "file": "options/moderate/textures/fc_e7ad63_ronald.png",
+          "sha256": "b03c6dddf05a62ead37aa7db17de6a41342463716f3e63f4d65300adbed5bff0",
+          "proposed_content_hash": "t481b67f103023fa8"
+        },
+        {
+          "source_face": "fc_e7ad63_round_glasses",
+          "style": "round_glasses",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_round_glasses.png",
+          "source_sha256": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+          "native_texture": "tcd457a01e99e92b3",
+          "native_file": "world/textures/tcd457a01e99e92b3.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 13,
+              "slug": "rick",
+              "family": "rick"
+            },
+            {
+              "model": 16,
+              "slug": "isaac",
+              "family": "isaac"
+            },
+            {
+              "model": 19,
+              "slug": "murray",
+              "family": "murray"
+            },
+            {
+              "model": 26,
+              "slug": "specs",
+              "family": "specs"
+            },
+            {
+              "model": 31,
+              "slug": "tech",
+              "family": "tech"
+            }
+          ],
+          "file": "options/moderate/textures/fc_e7ad63_round_glasses.png",
+          "sha256": "38381ec1218744f07b1a029c4b54070bbd46a8e5dd5e543646a260dc1f08f404",
+          "proposed_content_hash": "t791027670ace5ccc"
+        },
+        {
+          "source_face": "fc_e7ad63_smile",
+          "style": "smile",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_smile.png",
+          "source_sha256": "5b1d14ae4706c3dbdf29044d7294474f5b20a0318483e62c027338f02e75c26b",
+          "native_texture": "t10c908d3d5164363",
+          "native_file": "world/textures/t10c908d3d5164363.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 7,
+              "slug": "mark",
+              "family": "mark"
+            },
+            {
+              "model": 24,
+              "slug": "boy",
+              "family": "boy"
+            },
+            {
+              "model": 25,
+              "slug": "lad",
+              "family": "lad"
+            },
+            {
+              "model": 28,
+              "slug": "mania",
+              "family": "mania"
+            },
+            {
+              "model": 35,
+              "slug": "girl",
+              "family": "girl"
+            },
+            {
+              "model": 36,
+              "slug": "lass1",
+              "family": "lass1"
+            },
+            {
+              "model": 39,
+              "slug": "swimmer",
+              "family": "swimmer"
+            },
+            {
+              "model": 128,
+              "slug": "boy_palette2",
+              "family": "boy"
+            },
+            {
+              "model": 129,
+              "slug": "mania_palette2",
+              "family": "mania"
+            },
+            {
+              "model": 130,
+              "slug": "swimmer_palette2",
+              "family": "swimmer"
+            }
+          ],
+          "file": "options/moderate/textures/fc_e7ad63_smile.png",
+          "sha256": "84bff27acc8c7dcc73a2f531668c6c96e42c72584809aecdca5d92da997f87c8",
+          "proposed_content_hash": "t44bc19fe0828f8d3"
+        },
+        {
+          "source_face": "fc_e7ad63_stern",
+          "style": "stern",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_stern.png",
+          "source_sha256": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+          "native_texture": "t2f5cf497984d058c",
+          "native_file": "world/textures/t2f5cf497984d058c.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 10,
+              "slug": "ishihara",
+              "family": "ishihara"
+            },
+            {
+              "model": 14,
+              "slug": "ken",
+              "family": "ken"
+            },
+            {
+              "model": 17,
+              "slug": "mitch",
+              "family": "mitch"
+            },
+            {
+              "model": 18,
+              "slug": "gene",
+              "family": "gene"
+            },
+            {
+              "model": 21,
+              "slug": "steve",
+              "family": "steve"
+            },
+            {
+              "model": 22,
+              "slug": "jack",
+              "family": "jack"
+            },
+            {
+              "model": 23,
+              "slug": "rod",
+              "family": "rod"
+            },
+            {
+              "model": 27,
+              "slug": "butch",
+              "family": "butch"
+            },
+            {
+              "model": 29,
+              "slug": "joshua",
+              "family": "joshua"
+            },
+            {
+              "model": 30,
+              "slug": "hood",
+              "family": "hood"
+            },
+            {
+              "model": 32,
+              "slug": "chap",
+              "family": "chap"
+            },
+            {
+              "model": 33,
+              "slug": "man",
+              "family": "man"
+            }
+          ],
+          "file": "options/moderate/textures/fc_e7ad63_stern.png",
+          "sha256": "134edecce54d96f8cab7f2cb41d253c7e23d3fc1c1f07f0c0a8a990cbc4fb242",
+          "proposed_content_hash": "tf82707c6d5546e4c"
+        }
+      ],
+      "native_replacements": {
+        "t6d59bc388d91e451": "options/moderate/textures/fc_e7ad63_gentle.png",
+        "tcd457a01e99e92b3": "options/moderate/textures/fc_e7ad63_glasses.png",
+        "t3bcdeca17a85e16d": "options/moderate/textures/fc_e7ad63_imakuni.png",
+        "tc1137760b72f27ca": "options/moderate/textures/fc_e7ad63_mason.png",
+        "t2f5cf497984d058c": "options/moderate/textures/fc_e7ad63_mature.png",
+        "tda3c45e6517cea3d": "options/moderate/textures/fc_e7ad63_old.png",
+        "t20e89bac43201d18": "options/moderate/textures/fc_e7ad63_old_glasses.png",
+        "tafd4af8dd8e57b95": "options/moderate/textures/fc_e7ad63_ronald.png",
+        "t10c908d3d5164363": "options/moderate/textures/fc_e7ad63_smile.png"
+      }
+    },
+    {
+      "id": "bold",
+      "label": "Simple dark",
+      "description": "Solid dark eye shapes with small glints; clear glasses frames.",
+      "textures": [
+        {
+          "source_face": "fc_e7ad63_gentle",
+          "style": "gentle",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_gentle.png",
+          "source_sha256": "98669a491c9582bc800c32053e59430a189ab6416ec4ccf0a229b702a47cd61f",
+          "native_texture": "t6d59bc388d91e451",
+          "native_file": "world/textures/t6d59bc388d91e451.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 12,
+              "slug": "nikki",
+              "family": "nikki"
+            },
+            {
+              "model": 15,
+              "slug": "amy",
+              "family": "amy"
+            },
+            {
+              "model": 20,
+              "slug": "courtney",
+              "family": "courtney"
+            },
+            {
+              "model": 37,
+              "slug": "lass2",
+              "family": "lass2"
+            },
+            {
+              "model": 38,
+              "slug": "lass3",
+              "family": "lass3"
+            },
+            {
+              "model": 40,
+              "slug": "clerk",
+              "family": "clerk"
+            },
+            {
+              "model": 41,
+              "slug": "gal",
+              "family": "gal"
+            },
+            {
+              "model": 42,
+              "slug": "woman",
+              "family": "woman"
+            },
+            {
+              "model": 160,
+              "slug": "amy__lying",
+              "family": "amy"
+            }
+          ],
+          "file": "options/bold/textures/fc_e7ad63_gentle.png",
+          "sha256": "d2d8632a478bf511b1aed43e89213ca70855a20935b6ffd4b6a806b2bd5fdedd",
+          "proposed_content_hash": "tb76ace51de5a62bf"
+        },
+        {
+          "source_face": "fc_e7ad63_glasses",
+          "style": "glasses",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_glasses.png",
+          "source_sha256": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+          "native_texture": "tcd457a01e99e92b3",
+          "native_file": "world/textures/tcd457a01e99e92b3.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 13,
+              "slug": "rick",
+              "family": "rick"
+            },
+            {
+              "model": 16,
+              "slug": "isaac",
+              "family": "isaac"
+            },
+            {
+              "model": 19,
+              "slug": "murray",
+              "family": "murray"
+            },
+            {
+              "model": 26,
+              "slug": "specs",
+              "family": "specs"
+            },
+            {
+              "model": 31,
+              "slug": "tech",
+              "family": "tech"
+            }
+          ],
+          "file": "options/bold/textures/fc_e7ad63_glasses.png",
+          "sha256": "768adf50ab84038ce3418d75d0ed4ce62135cf0e9f5f8aeb68b85acacb035963",
+          "proposed_content_hash": "t26249cfc2d89ae7c"
+        },
+        {
+          "source_face": "fc_e7ad63_imakuni",
+          "style": "imakuni",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_imakuni.png",
+          "source_sha256": "854d2a0bc78d1dc3c1412b9531460ecc13e3b8e531d3d099afb4e8dbe49f77fb",
+          "native_texture": "t3bcdeca17a85e16d",
+          "native_file": "world/textures/t3bcdeca17a85e16d.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 11,
+              "slug": "imakuni",
+              "family": "imakuni"
+            }
+          ],
+          "file": "options/bold/textures/fc_e7ad63_imakuni.png",
+          "sha256": "5c88a2f283216bdfce3c6182f2e966e9e494884f1641c30e3f8cba86bc82bb7d",
+          "proposed_content_hash": "tbae62a4256cc645a"
+        },
+        {
+          "source_face": "fc_e7ad63_mason",
+          "style": "mason",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_mason.png",
+          "source_sha256": "104cf3caf48ea3e071bde7f30f5d7e2c08b6107cdc095e5a3d2bf3b4666249b4",
+          "native_texture": "tc1137760b72f27ca",
+          "native_file": "world/textures/tc1137760b72f27ca.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 9,
+              "slug": "dr_mason",
+              "family": "dr_mason"
+            }
+          ],
+          "file": "options/bold/textures/fc_e7ad63_mason.png",
+          "sha256": "030e8789b67424284e011dd2c4a297de1221b8b881ece8de3644cc8fce67aa0d",
+          "proposed_content_hash": "t06ba749708ccbc4a"
+        },
+        {
+          "source_face": "fc_e7ad63_mature",
+          "style": "mature",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_mature.png",
+          "source_sha256": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+          "native_texture": "t2f5cf497984d058c",
+          "native_file": "world/textures/t2f5cf497984d058c.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 10,
+              "slug": "ishihara",
+              "family": "ishihara"
+            },
+            {
+              "model": 14,
+              "slug": "ken",
+              "family": "ken"
+            },
+            {
+              "model": 17,
+              "slug": "mitch",
+              "family": "mitch"
+            },
+            {
+              "model": 18,
+              "slug": "gene",
+              "family": "gene"
+            },
+            {
+              "model": 21,
+              "slug": "steve",
+              "family": "steve"
+            },
+            {
+              "model": 22,
+              "slug": "jack",
+              "family": "jack"
+            },
+            {
+              "model": 23,
+              "slug": "rod",
+              "family": "rod"
+            },
+            {
+              "model": 27,
+              "slug": "butch",
+              "family": "butch"
+            },
+            {
+              "model": 29,
+              "slug": "joshua",
+              "family": "joshua"
+            },
+            {
+              "model": 30,
+              "slug": "hood",
+              "family": "hood"
+            },
+            {
+              "model": 32,
+              "slug": "chap",
+              "family": "chap"
+            },
+            {
+              "model": 33,
+              "slug": "man",
+              "family": "man"
+            }
+          ],
+          "file": "options/bold/textures/fc_e7ad63_mature.png",
+          "sha256": "2930913bd715dfc2da49f748dda81bba18e0dc200383fde4bbd005dfb189e3b5",
+          "proposed_content_hash": "t8dbb1e7f121244b2"
+        },
+        {
+          "source_face": "fc_e7ad63_old",
+          "style": "old",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_old.png",
+          "source_sha256": "3e9f9d7da06e2bdf620053bfbc1a9024f54e851a3390cf3da8bbdafc7d142f4e",
+          "native_texture": "tda3c45e6517cea3d",
+          "native_file": "world/textures/tda3c45e6517cea3d.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 34,
+              "slug": "pappy",
+              "family": "pappy"
+            }
+          ],
+          "file": "options/bold/textures/fc_e7ad63_old.png",
+          "sha256": "95ce1369795802dddaa546f8df513f47da27a31fb1121fcd01afea5fba49a492",
+          "proposed_content_hash": "t4382a4550c93fe26"
+        },
+        {
+          "source_face": "fc_e7ad63_old_glasses",
+          "style": "old_glasses",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_old_glasses.png",
+          "source_sha256": "00f5749f5af4a2a263789281990cb401a70e3c0b08d0f64a25d2f3fbe0cda250",
+          "native_texture": "t20e89bac43201d18",
+          "native_file": "world/textures/t20e89bac43201d18.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 43,
+              "slug": "granny",
+              "family": "granny"
+            }
+          ],
+          "file": "options/bold/textures/fc_e7ad63_old_glasses.png",
+          "sha256": "93d4df3b9b0db2b0a7bdfa34f4a30413489592bc08b023ffcae8261dfe48d679",
+          "proposed_content_hash": "t532a09d7241c7c85"
+        },
+        {
+          "source_face": "fc_e7ad63_ronald",
+          "style": "ronald",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_ronald.png",
+          "source_sha256": "19fa63b67ebd0469565fafdcb579babaade64d650f009ed3fec3ccbcbbf6eade",
+          "native_texture": "tafd4af8dd8e57b95",
+          "native_file": "world/textures/tafd4af8dd8e57b95.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 8,
+              "slug": "ronald",
+              "family": "ronald"
+            }
+          ],
+          "file": "options/bold/textures/fc_e7ad63_ronald.png",
+          "sha256": "c1704b96e2b4c7a9815ff4d4ea5731b1552f00d4f004d789759b7c6461a19721",
+          "proposed_content_hash": "t9a8f5e354099ffc4"
+        },
+        {
+          "source_face": "fc_e7ad63_round_glasses",
+          "style": "round_glasses",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_round_glasses.png",
+          "source_sha256": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+          "native_texture": "tcd457a01e99e92b3",
+          "native_file": "world/textures/tcd457a01e99e92b3.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 13,
+              "slug": "rick",
+              "family": "rick"
+            },
+            {
+              "model": 16,
+              "slug": "isaac",
+              "family": "isaac"
+            },
+            {
+              "model": 19,
+              "slug": "murray",
+              "family": "murray"
+            },
+            {
+              "model": 26,
+              "slug": "specs",
+              "family": "specs"
+            },
+            {
+              "model": 31,
+              "slug": "tech",
+              "family": "tech"
+            }
+          ],
+          "file": "options/bold/textures/fc_e7ad63_round_glasses.png",
+          "sha256": "768adf50ab84038ce3418d75d0ed4ce62135cf0e9f5f8aeb68b85acacb035963",
+          "proposed_content_hash": "t26249cfc2d89ae7c"
+        },
+        {
+          "source_face": "fc_e7ad63_smile",
+          "style": "smile",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_smile.png",
+          "source_sha256": "5b1d14ae4706c3dbdf29044d7294474f5b20a0318483e62c027338f02e75c26b",
+          "native_texture": "t10c908d3d5164363",
+          "native_file": "world/textures/t10c908d3d5164363.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 7,
+              "slug": "mark",
+              "family": "mark"
+            },
+            {
+              "model": 24,
+              "slug": "boy",
+              "family": "boy"
+            },
+            {
+              "model": 25,
+              "slug": "lad",
+              "family": "lad"
+            },
+            {
+              "model": 28,
+              "slug": "mania",
+              "family": "mania"
+            },
+            {
+              "model": 35,
+              "slug": "girl",
+              "family": "girl"
+            },
+            {
+              "model": 36,
+              "slug": "lass1",
+              "family": "lass1"
+            },
+            {
+              "model": 39,
+              "slug": "swimmer",
+              "family": "swimmer"
+            },
+            {
+              "model": 128,
+              "slug": "boy_palette2",
+              "family": "boy"
+            },
+            {
+              "model": 129,
+              "slug": "mania_palette2",
+              "family": "mania"
+            },
+            {
+              "model": 130,
+              "slug": "swimmer_palette2",
+              "family": "swimmer"
+            }
+          ],
+          "file": "options/bold/textures/fc_e7ad63_smile.png",
+          "sha256": "7ae02699ccf1972c71e2e0c16eb7366debc489b3240d7e605610889852b5f9cf",
+          "proposed_content_hash": "t3028bd526f6dda43"
+        },
+        {
+          "source_face": "fc_e7ad63_stern",
+          "style": "stern",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_stern.png",
+          "source_sha256": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+          "native_texture": "t2f5cf497984d058c",
+          "native_file": "world/textures/t2f5cf497984d058c.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 10,
+              "slug": "ishihara",
+              "family": "ishihara"
+            },
+            {
+              "model": 14,
+              "slug": "ken",
+              "family": "ken"
+            },
+            {
+              "model": 17,
+              "slug": "mitch",
+              "family": "mitch"
+            },
+            {
+              "model": 18,
+              "slug": "gene",
+              "family": "gene"
+            },
+            {
+              "model": 21,
+              "slug": "steve",
+              "family": "steve"
+            },
+            {
+              "model": 22,
+              "slug": "jack",
+              "family": "jack"
+            },
+            {
+              "model": 23,
+              "slug": "rod",
+              "family": "rod"
+            },
+            {
+              "model": 27,
+              "slug": "butch",
+              "family": "butch"
+            },
+            {
+              "model": 29,
+              "slug": "joshua",
+              "family": "joshua"
+            },
+            {
+              "model": 30,
+              "slug": "hood",
+              "family": "hood"
+            },
+            {
+              "model": 32,
+              "slug": "chap",
+              "family": "chap"
+            },
+            {
+              "model": 33,
+              "slug": "man",
+              "family": "man"
+            }
+          ],
+          "file": "options/bold/textures/fc_e7ad63_stern.png",
+          "sha256": "2930913bd715dfc2da49f748dda81bba18e0dc200383fde4bbd005dfb189e3b5",
+          "proposed_content_hash": "t8dbb1e7f121244b2"
+        }
+      ],
+      "native_replacements": {
+        "t6d59bc388d91e451": "options/bold/textures/fc_e7ad63_gentle.png",
+        "tcd457a01e99e92b3": "options/bold/textures/fc_e7ad63_glasses.png",
+        "t3bcdeca17a85e16d": "options/bold/textures/fc_e7ad63_imakuni.png",
+        "tc1137760b72f27ca": "options/bold/textures/fc_e7ad63_mason.png",
+        "t2f5cf497984d058c": "options/bold/textures/fc_e7ad63_mature.png",
+        "tda3c45e6517cea3d": "options/bold/textures/fc_e7ad63_old.png",
+        "t20e89bac43201d18": "options/bold/textures/fc_e7ad63_old_glasses.png",
+        "tafd4af8dd8e57b95": "options/bold/textures/fc_e7ad63_ronald.png",
+        "t10c908d3d5164363": "options/bold/textures/fc_e7ad63_smile.png"
+      }
+    },
+    {
+      "id": "large",
+      "label": "Big cartoon",
+      "description": "Oversized white eyes and broad pupils with small glints.",
+      "textures": [
+        {
+          "source_face": "fc_e7ad63_gentle",
+          "style": "gentle",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_gentle.png",
+          "source_sha256": "98669a491c9582bc800c32053e59430a189ab6416ec4ccf0a229b702a47cd61f",
+          "native_texture": "t6d59bc388d91e451",
+          "native_file": "world/textures/t6d59bc388d91e451.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 12,
+              "slug": "nikki",
+              "family": "nikki"
+            },
+            {
+              "model": 15,
+              "slug": "amy",
+              "family": "amy"
+            },
+            {
+              "model": 20,
+              "slug": "courtney",
+              "family": "courtney"
+            },
+            {
+              "model": 37,
+              "slug": "lass2",
+              "family": "lass2"
+            },
+            {
+              "model": 38,
+              "slug": "lass3",
+              "family": "lass3"
+            },
+            {
+              "model": 40,
+              "slug": "clerk",
+              "family": "clerk"
+            },
+            {
+              "model": 41,
+              "slug": "gal",
+              "family": "gal"
+            },
+            {
+              "model": 42,
+              "slug": "woman",
+              "family": "woman"
+            },
+            {
+              "model": 160,
+              "slug": "amy__lying",
+              "family": "amy"
+            }
+          ],
+          "file": "options/large/textures/fc_e7ad63_gentle.png",
+          "sha256": "4a159141d916d55a7803ac0f3d6b8c7e9176d32c9d399a7543197eca93023fba",
+          "proposed_content_hash": "t611faa00ff73dd49"
+        },
+        {
+          "source_face": "fc_e7ad63_glasses",
+          "style": "glasses",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_glasses.png",
+          "source_sha256": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+          "native_texture": "tcd457a01e99e92b3",
+          "native_file": "world/textures/tcd457a01e99e92b3.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 13,
+              "slug": "rick",
+              "family": "rick"
+            },
+            {
+              "model": 16,
+              "slug": "isaac",
+              "family": "isaac"
+            },
+            {
+              "model": 19,
+              "slug": "murray",
+              "family": "murray"
+            },
+            {
+              "model": 26,
+              "slug": "specs",
+              "family": "specs"
+            },
+            {
+              "model": 31,
+              "slug": "tech",
+              "family": "tech"
+            }
+          ],
+          "file": "options/large/textures/fc_e7ad63_glasses.png",
+          "sha256": "8977567d959d2e7fed2e6267b26b463756d471bc384256455329417ca7b837e9",
+          "proposed_content_hash": "t17d56442ec223bb6"
+        },
+        {
+          "source_face": "fc_e7ad63_imakuni",
+          "style": "imakuni",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_imakuni.png",
+          "source_sha256": "854d2a0bc78d1dc3c1412b9531460ecc13e3b8e531d3d099afb4e8dbe49f77fb",
+          "native_texture": "t3bcdeca17a85e16d",
+          "native_file": "world/textures/t3bcdeca17a85e16d.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 11,
+              "slug": "imakuni",
+              "family": "imakuni"
+            }
+          ],
+          "file": "options/large/textures/fc_e7ad63_imakuni.png",
+          "sha256": "242e32b83ff09d25de1ed573ba7a9c4e3d21c7ae42865a6deda4a15db5c70e60",
+          "proposed_content_hash": "t45d9961ddaa5c98f"
+        },
+        {
+          "source_face": "fc_e7ad63_mason",
+          "style": "mason",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_mason.png",
+          "source_sha256": "104cf3caf48ea3e071bde7f30f5d7e2c08b6107cdc095e5a3d2bf3b4666249b4",
+          "native_texture": "tc1137760b72f27ca",
+          "native_file": "world/textures/tc1137760b72f27ca.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 9,
+              "slug": "dr_mason",
+              "family": "dr_mason"
+            }
+          ],
+          "file": "options/large/textures/fc_e7ad63_mason.png",
+          "sha256": "c54a9e4402c28213fe7aea88230198718f6151a5ef1901ba19eac7b403e2b78b",
+          "proposed_content_hash": "tb459b635acbfcec2"
+        },
+        {
+          "source_face": "fc_e7ad63_mature",
+          "style": "mature",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_mature.png",
+          "source_sha256": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+          "native_texture": "t2f5cf497984d058c",
+          "native_file": "world/textures/t2f5cf497984d058c.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 10,
+              "slug": "ishihara",
+              "family": "ishihara"
+            },
+            {
+              "model": 14,
+              "slug": "ken",
+              "family": "ken"
+            },
+            {
+              "model": 17,
+              "slug": "mitch",
+              "family": "mitch"
+            },
+            {
+              "model": 18,
+              "slug": "gene",
+              "family": "gene"
+            },
+            {
+              "model": 21,
+              "slug": "steve",
+              "family": "steve"
+            },
+            {
+              "model": 22,
+              "slug": "jack",
+              "family": "jack"
+            },
+            {
+              "model": 23,
+              "slug": "rod",
+              "family": "rod"
+            },
+            {
+              "model": 27,
+              "slug": "butch",
+              "family": "butch"
+            },
+            {
+              "model": 29,
+              "slug": "joshua",
+              "family": "joshua"
+            },
+            {
+              "model": 30,
+              "slug": "hood",
+              "family": "hood"
+            },
+            {
+              "model": 32,
+              "slug": "chap",
+              "family": "chap"
+            },
+            {
+              "model": 33,
+              "slug": "man",
+              "family": "man"
+            }
+          ],
+          "file": "options/large/textures/fc_e7ad63_mature.png",
+          "sha256": "ff06996e6861aa5515402754a679ddfdf4d04b2fa9d72ea5b8f186c3335902c6",
+          "proposed_content_hash": "tff529763a7d3653b"
+        },
+        {
+          "source_face": "fc_e7ad63_old",
+          "style": "old",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_old.png",
+          "source_sha256": "3e9f9d7da06e2bdf620053bfbc1a9024f54e851a3390cf3da8bbdafc7d142f4e",
+          "native_texture": "tda3c45e6517cea3d",
+          "native_file": "world/textures/tda3c45e6517cea3d.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 34,
+              "slug": "pappy",
+              "family": "pappy"
+            }
+          ],
+          "file": "options/large/textures/fc_e7ad63_old.png",
+          "sha256": "4d2348b9a47761c05d53d3f6e946a40b50a86f17e2b27c951bfffdf7061a51ee",
+          "proposed_content_hash": "tb4bfae4f445903e1"
+        },
+        {
+          "source_face": "fc_e7ad63_old_glasses",
+          "style": "old_glasses",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_old_glasses.png",
+          "source_sha256": "00f5749f5af4a2a263789281990cb401a70e3c0b08d0f64a25d2f3fbe0cda250",
+          "native_texture": "t20e89bac43201d18",
+          "native_file": "world/textures/t20e89bac43201d18.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 43,
+              "slug": "granny",
+              "family": "granny"
+            }
+          ],
+          "file": "options/large/textures/fc_e7ad63_old_glasses.png",
+          "sha256": "0fbfd6ed09c5d34899db8fbef3802f8c30b7bae8d28f6535948485e42934e4a7",
+          "proposed_content_hash": "t0766e697a6377c08"
+        },
+        {
+          "source_face": "fc_e7ad63_ronald",
+          "style": "ronald",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_ronald.png",
+          "source_sha256": "19fa63b67ebd0469565fafdcb579babaade64d650f009ed3fec3ccbcbbf6eade",
+          "native_texture": "tafd4af8dd8e57b95",
+          "native_file": "world/textures/tafd4af8dd8e57b95.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 8,
+              "slug": "ronald",
+              "family": "ronald"
+            }
+          ],
+          "file": "options/large/textures/fc_e7ad63_ronald.png",
+          "sha256": "a764561f749f9fdd28b27e5ea8eb767cadd36ca41f2b4efe1ecca72e20737ec2",
+          "proposed_content_hash": "t953d939caf50d9bf"
+        },
+        {
+          "source_face": "fc_e7ad63_round_glasses",
+          "style": "round_glasses",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_round_glasses.png",
+          "source_sha256": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+          "native_texture": "tcd457a01e99e92b3",
+          "native_file": "world/textures/tcd457a01e99e92b3.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 13,
+              "slug": "rick",
+              "family": "rick"
+            },
+            {
+              "model": 16,
+              "slug": "isaac",
+              "family": "isaac"
+            },
+            {
+              "model": 19,
+              "slug": "murray",
+              "family": "murray"
+            },
+            {
+              "model": 26,
+              "slug": "specs",
+              "family": "specs"
+            },
+            {
+              "model": 31,
+              "slug": "tech",
+              "family": "tech"
+            }
+          ],
+          "file": "options/large/textures/fc_e7ad63_round_glasses.png",
+          "sha256": "8977567d959d2e7fed2e6267b26b463756d471bc384256455329417ca7b837e9",
+          "proposed_content_hash": "t17d56442ec223bb6"
+        },
+        {
+          "source_face": "fc_e7ad63_smile",
+          "style": "smile",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_smile.png",
+          "source_sha256": "5b1d14ae4706c3dbdf29044d7294474f5b20a0318483e62c027338f02e75c26b",
+          "native_texture": "t10c908d3d5164363",
+          "native_file": "world/textures/t10c908d3d5164363.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 7,
+              "slug": "mark",
+              "family": "mark"
+            },
+            {
+              "model": 24,
+              "slug": "boy",
+              "family": "boy"
+            },
+            {
+              "model": 25,
+              "slug": "lad",
+              "family": "lad"
+            },
+            {
+              "model": 28,
+              "slug": "mania",
+              "family": "mania"
+            },
+            {
+              "model": 35,
+              "slug": "girl",
+              "family": "girl"
+            },
+            {
+              "model": 36,
+              "slug": "lass1",
+              "family": "lass1"
+            },
+            {
+              "model": 39,
+              "slug": "swimmer",
+              "family": "swimmer"
+            },
+            {
+              "model": 128,
+              "slug": "boy_palette2",
+              "family": "boy"
+            },
+            {
+              "model": 129,
+              "slug": "mania_palette2",
+              "family": "mania"
+            },
+            {
+              "model": 130,
+              "slug": "swimmer_palette2",
+              "family": "swimmer"
+            }
+          ],
+          "file": "options/large/textures/fc_e7ad63_smile.png",
+          "sha256": "225980ba52ac5a4cc74b63d99f3a1a64238f713a38381eed340d018780e32411",
+          "proposed_content_hash": "tc5880cb9bba4c882"
+        },
+        {
+          "source_face": "fc_e7ad63_stern",
+          "style": "stern",
+          "source_file": "port/characters/assets/textures/fc_e7ad63_stern.png",
+          "source_sha256": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+          "native_texture": "t2f5cf497984d058c",
+          "native_file": "world/textures/t2f5cf497984d058c.sprite",
+          "skin_rgb8": [
+            231,
+            173,
+            99
+          ],
+          "models": [
+            {
+              "model": 10,
+              "slug": "ishihara",
+              "family": "ishihara"
+            },
+            {
+              "model": 14,
+              "slug": "ken",
+              "family": "ken"
+            },
+            {
+              "model": 17,
+              "slug": "mitch",
+              "family": "mitch"
+            },
+            {
+              "model": 18,
+              "slug": "gene",
+              "family": "gene"
+            },
+            {
+              "model": 21,
+              "slug": "steve",
+              "family": "steve"
+            },
+            {
+              "model": 22,
+              "slug": "jack",
+              "family": "jack"
+            },
+            {
+              "model": 23,
+              "slug": "rod",
+              "family": "rod"
+            },
+            {
+              "model": 27,
+              "slug": "butch",
+              "family": "butch"
+            },
+            {
+              "model": 29,
+              "slug": "joshua",
+              "family": "joshua"
+            },
+            {
+              "model": 30,
+              "slug": "hood",
+              "family": "hood"
+            },
+            {
+              "model": 32,
+              "slug": "chap",
+              "family": "chap"
+            },
+            {
+              "model": 33,
+              "slug": "man",
+              "family": "man"
+            }
+          ],
+          "file": "options/large/textures/fc_e7ad63_stern.png",
+          "sha256": "ff06996e6861aa5515402754a679ddfdf4d04b2fa9d72ea5b8f186c3335902c6",
+          "proposed_content_hash": "tff529763a7d3653b"
+        }
+      ],
+      "native_replacements": {
+        "t6d59bc388d91e451": "options/large/textures/fc_e7ad63_gentle.png",
+        "tcd457a01e99e92b3": "options/large/textures/fc_e7ad63_glasses.png",
+        "t3bcdeca17a85e16d": "options/large/textures/fc_e7ad63_imakuni.png",
+        "tc1137760b72f27ca": "options/large/textures/fc_e7ad63_mason.png",
+        "t2f5cf497984d058c": "options/large/textures/fc_e7ad63_mature.png",
+        "tda3c45e6517cea3d": "options/large/textures/fc_e7ad63_old.png",
+        "t20e89bac43201d18": "options/large/textures/fc_e7ad63_old_glasses.png",
+        "tafd4af8dd8e57b95": "options/large/textures/fc_e7ad63_ronald.png",
+        "t10c908d3d5164363": "options/large/textures/fc_e7ad63_smile.png"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "width": 1440,
+      "overflow": false,
+      "cards": 10,
+      "images": true
+    },
+    {
+      "width": 390,
+      "overflow": false,
+      "cards": 10,
+      "images": true
+    }
+  ]
+}

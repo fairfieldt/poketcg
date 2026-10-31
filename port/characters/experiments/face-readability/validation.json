@@ -1,0 +1,69 @@
+{
+  "passed": true,
+  "options": [
+    {
+      "option": "baseline",
+      "textures": 11,
+      "native_replacements": 9,
+      "production_source_hashes_match": true,
+      "opaque": true,
+      "size": [
+        32,
+        32
+      ],
+      "skin_rgb8": [
+        231,
+        173,
+        99
+      ]
+    },
+    {
+      "option": "moderate",
+      "textures": 11,
+      "native_replacements": 9,
+      "production_source_hashes_match": true,
+      "opaque": true,
+      "size": [
+        32,
+        32
+      ],
+      "skin_rgb8": [
+        231,
+        173,
+        99
+      ]
+    },
+    {
+      "option": "bold",
+      "textures": 11,
+      "native_replacements": 9,
+      "production_source_hashes_match": true,
+      "opaque": true,
+      "size": [
+        32,
+        32
+      ],
+      "skin_rgb8": [
+        231,
+        173,
+        99
+      ]
+    },
+    {
+      "option": "large",
+      "textures": 11,
+      "native_replacements": 9,
+      "production_source_hashes_match": true,
+      "opaque": true,
+      "size": [
+        32,
+        32
+      ],
+      "skin_rgb8": [
+        231,
+        173,
+        99
+      ]
+    }
+  ]
+}

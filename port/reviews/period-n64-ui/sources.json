@@ -1,0 +1,228 @@
+{
+  "title": "Original-era N64 2D interface references",
+  "date": "2026-10-31",
+  "scope": "Ten distinct original Nintendo 64 games. No ROMs, generated mockups, remasters, replacement assets or deliberately enhanced renders were used.",
+  "method": "Raw published image bytes retained. Capture hardware, VI and prior resizing are often undocumented. Treat these as design references, not proof of native framebuffer texel size or original hardware output.",
+  "references": [
+    {
+      "slug": "pokemon-stadium",
+      "title": "Pokémon Stadium",
+      "screen": "PC party / box transfer",
+      "original_release": "Europe 2000-04-07",
+      "release_source": "https://www.nintendo.com/en-gb/Games/Nintendo-64/Pokemon-Stadium-269679.html",
+      "source_page": "https://www.serebii.net/stadium/pokemonlab.shtml",
+      "image_url": "https://www.serebii.net/stadium/labpc.jpg",
+      "credit": "Serebii.net; Nintendo / HAL Laboratory",
+      "capture_note": "Published 300×225 JPEG, already resized by source. Hardware / VI / scaling unspecified. Western Stadium (JP Stadium 2); distinct from the Japan-only 1998 Stadium.",
+      "lessons": [
+        "Give separate lists their own heading and aligned count columns.",
+        "Use a filled selected row and an obvious directional cursor."
+      ],
+      "file": "screenshots/01-pokemon-stadium.jpg",
+      "width": 300,
+      "height": 225,
+      "format": "JPEG",
+      "sha256": "2bb46378d234f8659ff4039ab132499187c42181fe535e9928791634ea2e3abe",
+      "accessed": "2026-10-31",
+      "platform": "Nintendo 64 original release"
+    },
+    {
+      "slug": "pokemon-stadium-2",
+      "title": "Pokémon Stadium 2",
+      "screen": "Academy library: Pokémon / moves",
+      "original_release": "Europe 2001-10-19",
+      "release_source": "https://www.nintendo.com/en-gb/Games/Nintendo-64/Pokemon-Stadium-2-269690.html",
+      "source_page": "https://www.serebii.net/stadium2/academy.shtml",
+      "image_url": "https://www.serebii.net/stadium2/librarypokemon.jpg",
+      "credit": "Serebii.net; Nintendo / HAL Laboratory",
+      "capture_note": "Published 300×225 JPEG, already resized by source. English N64 library UI; hardware / VI unspecified.",
+      "lessons": [
+        "Warm paper, colored tabs and one active list create a strong physical metaphor.",
+        "Reserve a predictable area for the selected move or card description."
+      ],
+      "file": "screenshots/02-pokemon-stadium-2.jpg",
+      "width": 300,
+      "height": 225,
+      "format": "JPEG",
+      "sha256": "eaf45dd06bb5e0d96c1743e1744c35633d3cedeabd82537d410d38b9d1fb3289",
+      "accessed": "2026-10-31",
+      "platform": "Nintendo 64 original release"
+    },
+    {
+      "slug": "paper-mario",
+      "title": "Paper Mario",
+      "screen": "Mario Story status page (Japanese)",
+      "original_release": "Japan 2000-08-11",
+      "release_source": "https://www.nintendo.co.jp/wii/vc/vc_ms/vc_ms_01.html",
+      "source_page": "https://www.rpgfan.com/gallery/paper-mario-screenshots/",
+      "image_url": "https://www.rpgfan.com/wp-content/uploads/2020/08/Paper-Mario-Screenshot-051.jpg",
+      "credit": "RPGFan archive; Nintendo / Intelligent Systems",
+      "capture_note": "Published 640×480 JPEG, Japanese N64 UI with black border. Hardware / VI / resizing and retail-versus-press build unspecified. Use for hierarchy, not exact glyph measurements.",
+      "lessons": [
+        "Make names, vital statistics and category tabs visibly different sizes.",
+        "Broad low-contrast paper checks give personality without fine grain behind text."
+      ],
+      "file": "screenshots/03-paper-mario.jpg",
+      "width": 640,
+      "height": 480,
+      "format": "JPEG",
+      "sha256": "ca78b8e5ade8df459f3c94358c095f0955604576e7e17ba9f4e04cb1fc41ec39",
+      "accessed": "2026-10-31",
+      "platform": "Nintendo 64 original release"
+    },
+    {
+      "slug": "ogre-battle-64",
+      "title": "Ogre Battle 64",
+      "screen": "Equipment and comparison status",
+      "original_release": "Japan 1999-07-14; English press image June 2000",
+      "release_source": "https://www.nintendo.co.jp/wii/vc/vc_ob64/vc_ob64_01.html",
+      "source_page": "https://archive.rpgamer.com/games/ob/ob64/ob64ss.html",
+      "image_url": "https://archive.rpgamer.com/games/ob/ob64/screens/ob35.jpg",
+      "credit": "Nintendo promotional screenshot, RPGamer June 2000 E3 group; Quest / Nintendo / Atlus",
+      "capture_note": "640×480 publisher-supplied original-era English localization press screenshot. The source labels its June 2000 group Nintendo. May precede final English retail; not hardware VI proof.",
+      "lessons": [
+        "Split persistent character state, the actionable list and the effect comparison into regions.",
+        "A solid blue focus band, hand cursor and semantic comparison colors keep dense data readable."
+      ],
+      "file": "screenshots/04-ogre-battle-64.jpg",
+      "width": 640,
+      "height": 480,
+      "format": "JPEG",
+      "sha256": "f552fefe62114549f46da7bee98c45999cde0cceac6174e37db8d4d342bf13df",
+      "accessed": "2026-10-31",
+      "platform": "Nintendo 64 original release"
+    },
+    {
+      "slug": "quest-64",
+      "title": "Quest 64",
+      "screen": "Item selection and effect description",
+      "original_release": "North America 1998-06-01",
+      "release_source": "https://gamefaqs.gamespot.com/n64/198386-quest-64/data",
+      "source_page": "https://www.rpgfan.com/gallery/quest-64-screenshots/",
+      "image_url": "https://www.rpgfan.com/wp-content/uploads/2025/03/Quest-64-Screenshot-014.jpg",
+      "credit": "RPGFan archive; Imagineer / THQ",
+      "capture_note": "Published 920×670 JPEG of original N64 UI, rescaled/cropped. Hardware / VI / filtering unspecified. Use for composition, not native pixel measurements.",
+      "lessons": [
+        "Pair a large selected-item symbol with a short effect description.",
+        "Opaque panels and a small cast shadow separate text from a busy scene."
+      ],
+      "file": "screenshots/05-quest-64.jpg",
+      "width": 920,
+      "height": 670,
+      "format": "JPEG",
+      "sha256": "2e749b7307b429d02df6f7d73da7053e2044bbff4777b5ea78eecd2b30ee6954",
+      "accessed": "2026-10-31",
+      "platform": "Nintendo 64 original release"
+    },
+    {
+      "slug": "hybrid-heaven",
+      "title": "Hybrid Heaven",
+      "screen": "Status and body-part offense",
+      "original_release": "Japan 1999-08-05",
+      "release_source": "https://www.nintendo.co.jp/n01/n64/software/1999.html",
+      "source_page": "https://www.kenchron.com/blog/ode2hybridheaven",
+      "image_url": "https://images.squarespace-cdn.com/content/v1/5e98753e5110f87abc7bb229/c4904845-feae-458f-b1ac-cb4b1472c2e1/Screen%2BShot%2B2025-05-01%2Bat%2B12.33.05%2BPM.png",
+      "credit": "Kenta / Kentendo Chronicles; Konami",
+      "capture_note": "Published 579×443 crop/rescale, original N64 status UI in a modern retrospective. Pipeline unspecified. Author discusses original Expansion Pak high-resolution mode; do not infer a 320×240 text budget from this sample.",
+      "lessons": [
+        "Large numeric values on dark backing keep vital statistics prominent.",
+        "A restrained cyan / amber / white vocabulary assigns colors a clear job."
+      ],
+      "file": "screenshots/06-hybrid-heaven.png",
+      "width": 579,
+      "height": 443,
+      "format": "PNG",
+      "sha256": "22a32bfab532b981d98916e5a3be1764324e12d7eca5110285251f45c9847da4",
+      "accessed": "2026-10-31",
+      "platform": "Nintendo 64 original release"
+    },
+    {
+      "slug": "mario-golf",
+      "title": "Mario Golf",
+      "screen": "Final results board",
+      "original_release": "Japan 1999-06-11",
+      "release_source": "https://www.nintendo.co.jp/n01/n64/software/nus_p_nmfj/index.html",
+      "source_page": "https://www.vgmuseum.com/end/n64/a/mgolf.htm",
+      "image_url": "https://www.vgmuseum.com/end/n64/a/mgolf-2.png",
+      "credit": "VGMuseum / Rey; Nintendo / Camelot",
+      "capture_note": "Published 640×480 PNG from original N64 ending sequence. Hardware / VI / scaling unspecified. Use for emphasis and materials.",
+      "lessons": [
+        "Give a result one large score, a strong headline and a recognizable reward symbol.",
+        "Broad wood and bold outlined numerals provide period character without sacrificing hierarchy."
+      ],
+      "file": "screenshots/07-mario-golf.png",
+      "width": 640,
+      "height": 480,
+      "format": "PNG",
+      "sha256": "c21dcdf29bbea1adbf280df9a2f1801d355fd94c17354f5a5fd13fa612c2a9b2",
+      "accessed": "2026-10-31",
+      "platform": "Nintendo 64 original release"
+    },
+    {
+      "slug": "mario-tennis",
+      "title": "Mario Tennis",
+      "screen": "Transfer Pak character slots and commands",
+      "original_release": "Japan 2000-07-21",
+      "release_source": "https://www.nintendo.co.jp/wii/vc/vc_mt64/vc_mt64_01.html",
+      "source_page": "https://www.mariowiki.com/File:Mario_Tennis_64_Transfer_Pak_Mode.png",
+      "image_url": "https://www.mariowiki.com/images/1/1c/Mario_Tennis_64_Transfer_Pak_Mode.png?4430f",
+      "credit": "Super Mario Wiki / Wildgoosespeeder; Nintendo / Camelot",
+      "capture_note": "304×222 PNG. File history explicitly says cropped from a 320×237 N64 screenshot to remove black border. Hardware / VI unspecified. No additional resampling here.",
+      "lessons": [
+        "Paired character slots and arrows make relationships clear without extra prose.",
+        "Bright active commands and subdued unavailable icons need distinct, consistent states."
+      ],
+      "file": "screenshots/08-mario-tennis.png",
+      "width": 304,
+      "height": 222,
+      "format": "PNG",
+      "sha256": "6261396a5cc2c0355d26bb431249f4459c4c07027770ba64e90f938c4e48b5db",
+      "accessed": "2026-10-31",
+      "platform": "Nintendo 64 original release"
+    },
+    {
+      "slug": "pokemon-puzzle-league",
+      "title": "Pokémon Puzzle League",
+      "screen": "Options menu",
+      "original_release": "North America 2000",
+      "release_source": "https://www.nintendo.com/us/whatsnew/nintendo-switch-online-expansion-pack-pokemon-puzzle-league-is-now-available/",
+      "source_page": "https://www.vgmuseum.com/images/n64/01/pokemonpuzzle.html",
+      "image_url": "https://www.vgmuseum.com/images/n64/01/pokemonpuzzle-17.png",
+      "credit": "VGMuseum / Rey; Nintendo / NST / Intelligent Systems",
+      "capture_note": "Published 640×480 PNG from N64 gallery. Hardware / VI / scaling unspecified. Original N64 UI, distinct from Game Boy Color Puzzle Challenge.",
+      "lessons": [
+        "Let one large portrait or card illustration accompany a clear list instead of illustrating every row.",
+        "Keep A/B glyphs and short command labels together in a predictable corner."
+      ],
+      "file": "screenshots/09-pokemon-puzzle-league.png",
+      "width": 640,
+      "height": 480,
+      "format": "PNG",
+      "sha256": "9eddf722b4991bfb3bd8088377f8194854f31a16ebc9baa649cb98a653fd5665",
+      "accessed": "2026-10-31",
+      "platform": "Nintendo 64 original release"
+    },
+    {
+      "slug": "mario-party",
+      "title": "Mario Party",
+      "screen": "Final ranked results",
+      "original_release": "Japan 1998-12-18",
+      "release_source": "https://www.nintendo.co.jp/n01/n64/software/nus_p_clbj/index.html",
+      "source_page": "https://www.vgmuseum.com/end/n64/a/mparty.htm",
+      "image_url": "https://www.vgmuseum.com/end/n64/a/mparty-29.png",
+      "credit": "VGMuseum / Rey; Nintendo / Hudson Soft",
+      "capture_note": "Published 640×480 PNG from original N64 ending sequence. Hardware / VI / scaling unspecified. Not the Superstars remake.",
+      "lessons": [
+        "Aligned portraits, symbols and numerals communicate several resource counts compactly.",
+        "One large ordinal establishes the result before secondary numbers are read."
+      ],
+      "file": "screenshots/10-mario-party.png",
+      "width": 640,
+      "height": 480,
+      "format": "PNG",
+      "sha256": "0092efa10596ecfb2632059f7ded9ccb464ac42e228d18900326721289ccc191",
+      "accessed": "2026-10-31",
+      "platform": "Nintendo 64 original release"
+    }
+  ]
+}

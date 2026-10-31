@@ -1,0 +1,88 @@
+{
+  "research_only": true,
+  "references": "sources.json",
+  "games": 10,
+  "report": "report.md",
+  "files": [
+    {
+      "file": "contact-sheet.png",
+      "sha256": "5ef028aac0b987ddf1f7e11856fedc65fb235b68491fcb506a0388bf88c87608"
+    },
+    {
+      "file": "current/actions.png",
+      "sha256": "1853317bd44bd83a8b8348d6d2b13c31b8a29831a354176f49cadbb85f8185c8"
+    },
+    {
+      "file": "current/board.png",
+      "sha256": "db99fb5d8013522f2db159c02737170245cfd4ae9550a9b26f1dd2e6f5f43cbe"
+    },
+    {
+      "file": "current/detail.png",
+      "sha256": "fc06f86f345f06804342c56d4320bae0e4a5566991d83b626e2547cb30ad11f6"
+    },
+    {
+      "file": "current/hand.png",
+      "sha256": "ab0af6963a0b451c461268c38919e5a95a77ed15ee4ab9b48d8cd4e8aa1e9188"
+    },
+    {
+      "file": "gallery-validation.json",
+      "sha256": "071e32e59c23e0b304acf4830c4556ed45ddd3ebc1bfb882c3bbb62d7db20112"
+    },
+    {
+      "file": "gallery.html",
+      "sha256": "957c3a3516173b6eeb9a6c0e5a488fd773a4788a02a6976eaddc8496f07199cf"
+    },
+    {
+      "file": "index.html",
+      "sha256": "957c3a3516173b6eeb9a6c0e5a488fd773a4788a02a6976eaddc8496f07199cf"
+    },
+    {
+      "file": "report.md",
+      "sha256": "46f28c68c111481b6f6d66bd1655416bcce0214312ac1cbc9c011941c1de8645"
+    },
+    {
+      "file": "screenshots/01-pokemon-stadium.jpg",
+      "sha256": "2bb46378d234f8659ff4039ab132499187c42181fe535e9928791634ea2e3abe"
+    },
+    {
+      "file": "screenshots/02-pokemon-stadium-2.jpg",
+      "sha256": "eaf45dd06bb5e0d96c1743e1744c35633d3cedeabd82537d410d38b9d1fb3289"
+    },
+    {
+      "file": "screenshots/03-paper-mario.jpg",
+      "sha256": "ca78b8e5ade8df459f3c94358c095f0955604576e7e17ba9f4e04cb1fc41ec39"
+    },
+    {
+      "file": "screenshots/04-ogre-battle-64.jpg",
+      "sha256": "f552fefe62114549f46da7bee98c45999cde0cceac6174e37db8d4d342bf13df"
+    },
+    {
+      "file": "screenshots/05-quest-64.jpg",
+      "sha256": "2e749b7307b429d02df6f7d73da7053e2044bbff4777b5ea78eecd2b30ee6954"
+    },
+    {
+      "file": "screenshots/06-hybrid-heaven.png",
+      "sha256": "22a32bfab532b981d98916e5a3be1764324e12d7eca5110285251f45c9847da4"
+    },
+    {
+      "file": "screenshots/07-mario-golf.png",
+      "sha256": "c21dcdf29bbea1adbf280df9a2f1801d355fd94c17354f5a5fd13fa612c2a9b2"
+    },
+    {
+      "file": "screenshots/08-mario-tennis.png",
+      "sha256": "6261396a5cc2c0355d26bb431249f4459c4c07027770ba64e90f938c4e48b5db"
+    },
+    {
+      "file": "screenshots/09-pokemon-puzzle-league.png",
+      "sha256": "9eddf722b4991bfb3bd8088377f8194854f31a16ebc9baa649cb98a653fd5665"
+    },
+    {
+      "file": "screenshots/10-mario-party.png",
+      "sha256": "0092efa10596ecfb2632059f7ded9ccb464ac42e228d18900326721289ccc191"
+    },
+    {
+      "file": "sources.json",
+      "sha256": "4ad65d676f3bd21a1a834e10befc18ef547631ea058ff63ab1491d8b8328da1a"
+    }
+  ]
+}

@@ -1,0 +1,468 @@
+{
+  "status": "verified-face-option-captures",
+  "experiment_only": true,
+  "captured_utc": "2026-10-31T16:30:53.552848+00:00",
+  "rom": {
+    "file": "port/frontends/n64/adventure/poketcg-face-options.z64",
+    "sha256": "96939b834e9ab66d433c2ccd6c14dbe3938af92b02fd88008d86c080b6778339",
+    "diagnostic": 8,
+    "stage_render_frames": 24
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 8,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": [
+        18,
+        8,
+        366,
+        23
+      ],
+      "stage_pattern": "^FACE PHASE ([A-Za-z0-9_-]+) ([A-Za-z0-9_-]+) BEGIN\\r?$"
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 4,
+    "private_settings": true
+  },
+  "raw_format": {
+    "width": 640,
+    "height": 240,
+    "pitch": 2560,
+    "pixel_order": "BGRA little endian",
+    "display_aspect": "4:3; exact row duplication only for integer-size derived review displays"
+  },
+  "finished": {
+    "callbacks": 578,
+    "captures": 12,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "baseline-portrait.png",
+      "variant": "baseline",
+      "view": "portrait",
+      "png_sha256": "a060219009a6ed92fa64011b7961a0b402aef25d609da0275f31ad2ca6fca30f",
+      "callback_sha256": "57a217ea4a66b6b885a851470a9cdf2c247a298e1defce9418df8283abefd70d",
+      "rgb_sha256": "9a322ba7c82cf17be55f9ddbb3f056063ececb78eacaaa8653dd1340b3f00272",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 49,
+      "breakpoint_hits": 49,
+      "valid_frames": 16,
+      "label_sha256": "625c6755d75499d39e62a7f069fe97b3acd90a475573d4aa4d3f7eeb506a1825"
+    },
+    {
+      "file": "baseline-room.png",
+      "variant": "baseline",
+      "view": "room",
+      "png_sha256": "54477e5ab52097221a40536810760383bebeb2e386f555745f15907aafa96344",
+      "callback_sha256": "1357acaa2c7ffa9ef03658104e71dc8312a4395ee338c488da4d2c5869be0add",
+      "rgb_sha256": "55cc032f3e89dfde9668e92eca535a838c38a68ccded8c822c628320d40c12b9",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 81,
+      "breakpoint_hits": 161,
+      "valid_frames": 48,
+      "label_sha256": "4c6289d1bff56adf1e588cd167318c64b1b992510e00a11205809cf7781b03c0"
+    },
+    {
+      "file": "baseline-conversation.png",
+      "variant": "baseline",
+      "view": "conversation",
+      "png_sha256": "25b3061e1685a25c24ff59c3d0c5dc37639b003e34a5784fa50229226080be73",
+      "callback_sha256": "eb71d0736784d81fe86e770531d0df97eb5fbdeb68305c2218739314be4b9797",
+      "rgb_sha256": "efc1816b290f954d4ef9c56809d7a4d24d6732ee0e8457bf8c342006332b4a6c",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 132,
+      "breakpoint_hits": 356,
+      "valid_frames": 99,
+      "label_sha256": "3a1cf3998595b18f69b29962e2ab53931f457c757d37a9079ecd37d93b139758"
+    },
+    {
+      "file": "moderate-portrait.png",
+      "variant": "moderate",
+      "view": "portrait",
+      "png_sha256": "7049b4a60a07dcd856c9a6287748b1348a54263f37762149065c86fbd0270d9d",
+      "callback_sha256": "64aeccbabff80ebe7ebf2fb734c5562884c0b7808244956b417c9c895beefd56",
+      "rgb_sha256": "6dd4205dbc311826510ffb1b8f5d4278739377e6f2e7b76b5fe6900890e302bf",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 184,
+      "breakpoint_hits": 564,
+      "valid_frames": 151,
+      "label_sha256": "664b04d969f1c98085111943c076aa37d3ef2d38d7a45dafa656cb40eb56bd63"
+    },
+    {
+      "file": "moderate-room.png",
+      "variant": "moderate",
+      "view": "room",
+      "png_sha256": "3240248b9180963127af0f33ccedc5f13fd1e7828cfcd4d072c0604e082fa37b",
+      "callback_sha256": "ea1f9808c5730f7e49cad8aaf08e34d8ed0eaf11644f865de73d98bf08e64c7e",
+      "rgb_sha256": "159ed30c96f3ec8c62dc4b20fb0cb6c0b5c15d8f2acbf8cfa43304f72518bee0",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 218,
+      "breakpoint_hits": 682,
+      "valid_frames": 185,
+      "label_sha256": "9feef0cdc3f99d44cf3cbd6412b39536570c7571093b42fac0941a84a24cb55c"
+    },
+    {
+      "file": "moderate-conversation.png",
+      "variant": "moderate",
+      "view": "conversation",
+      "png_sha256": "ac9c00a541319da717680b4133ce68aa0a4e5cdc665daa378fb671a52bea7e17",
+      "callback_sha256": "4b43414502e822784d7ca1c7f1e58db0de8aba6e3468da7717a5fe227ad241f1",
+      "rgb_sha256": "1115d33e91fcb4c100524903bf591a3d47b267795f6eb8336b564d85fe613456",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 269,
+      "breakpoint_hits": 877,
+      "valid_frames": 236,
+      "label_sha256": "5dd934b6e81f7a50c2844af8ee75d6176e5c22a0013fe76271db2f9138406b3c"
+    },
+    {
+      "file": "bold-portrait.png",
+      "variant": "bold",
+      "view": "portrait",
+      "png_sha256": "5b06f24444c32961a6dcd0c620b30eb537ae72f1940aa889fced4743d74857c8",
+      "callback_sha256": "654b3024c1cd8ff70f98b5d623a2ee050d647add422b82f09cb601e2b10eca89",
+      "rgb_sha256": "59518ce9bd657c97da116f235144c7378458accbb0cd29b7efb2355faba4b91f",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 317,
+      "breakpoint_hits": 1085,
+      "valid_frames": 284,
+      "label_sha256": "93f6b0ada58d36a3a982fa01ca71426efe61894bcc34c8c3463622b5b970cdcc"
+    },
+    {
+      "file": "bold-room.png",
+      "variant": "bold",
+      "view": "room",
+      "png_sha256": "890fad14981c04efabb7ad92b83094254dda16510e8e4aebb342bad1f765e550",
+      "callback_sha256": "d715bb127a875f5037da39287dec247a75dec936043a04394dcf87996245d4fe",
+      "rgb_sha256": "b79690a9ee3a967e50d8e93aedb824eb403b02108164e6b9729e956b2a451433",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 352,
+      "breakpoint_hits": 1204,
+      "valid_frames": 319,
+      "label_sha256": "1b50491336b41dbb035d2f13e4ed438f70c83391aa877f4976cb30895108f9fa"
+    },
+    {
+      "file": "bold-conversation.png",
+      "variant": "bold",
+      "view": "conversation",
+      "png_sha256": "adaeacbd61cfc174d43e57ea8190d60e9a70cb781610edf7e37cd01f68a0c028",
+      "callback_sha256": "83805c717d120a62941ad788b21089ce6a9df9497249293a2e50efceff0580ea",
+      "rgb_sha256": "770f5621c11fcd5d5b4195c0ff4c6316725b7373e82cfa7827acbe471049fb4d",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 403,
+      "breakpoint_hits": 1399,
+      "valid_frames": 370,
+      "label_sha256": "6cf1ce61b4a3c1e1e319674cadfae1048f76c9b628a6b78c32756fedc49ba817"
+    },
+    {
+      "file": "large-portrait.png",
+      "variant": "large",
+      "view": "portrait",
+      "png_sha256": "f86bf9881f6d05fb6006470beca81decd89a2f65f2ec340e38a265621756bd82",
+      "callback_sha256": "8b45c03641e56768d54ef21e8e7431f0fbd27087d29fbb031a18980f080b8c16",
+      "rgb_sha256": "0fbbf2130b4829e857b096b52aab2fa5a12c9be44ece3b0c50e611924e8b269d",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 451,
+      "breakpoint_hits": 1607,
+      "valid_frames": 418,
+      "label_sha256": "a8df2506f3cf87c2a730b5f7ecf438d0c9186d179b1e88261e64a9d6f33ca5d0"
+    },
+    {
+      "file": "large-room.png",
+      "variant": "large",
+      "view": "room",
+      "png_sha256": "b98a52ef20ed00ffd1934e6e425ff0643e2b47353fac497f1ff06b6699185099",
+      "callback_sha256": "1fcbb8231b8283966db3d7e949bee6100066517fd476ff2c6528a875ec3cf885",
+      "rgb_sha256": "17ce04e2f672526c2f498e9c94fa916ffcf851e9223e42213d31ea20368bca37",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 487,
+      "breakpoint_hits": 1727,
+      "valid_frames": 454,
+      "label_sha256": "a5d9900617e39c1435d740ddf8f587032cf5c8c05f53f6a8df7b186e5b98e87e"
+    },
+    {
+      "file": "large-conversation.png",
+      "variant": "large",
+      "view": "conversation",
+      "png_sha256": "9a17e84ae76e530987180af9677fe47736cbe8b75e85c0c205e5c2e812181c26",
+      "callback_sha256": "6b0a944e6690f4d4771a26fe33d5ddacbe951ee0959e3dd9801db43a1b91bc40",
+      "rgb_sha256": "b481801215c665704555d3427eac8917fa1cf61e36ab967ec022c819136ac06b",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 538,
+      "breakpoint_hits": 1922,
+      "valid_frames": 505,
+      "label_sha256": "a073c3708d7b85376901b1c15c52112b1bd1a877f18cfd1527973d343be3c969"
+    }
+  ],
+  "all_callback_rgb_pixels_equal": true,
+  "total_exact_callback_rgb_pixels": 1843200,
+  "production_unchanged": true,
+  "production_asset_hashes": {
+    "port/frontends/n64/adventure/poketcg-adventure.z64": "6def5e2be7c65c074ac696158f12f758255f0664a22a187e683127be85ab06b5",
+    "port/world3d/generated/world.json": "9b411f629669af94f43ea500da5ba7bf75f860c850b2ca18977ee193228c1731",
+    "port/characters/assets/textures/face_gentle.png": "16c8887a04b47a2830814347e8711e4fe91b7028396c7d95054cfe9387e037b3",
+    "port/characters/assets/textures/face_glasses.png": "3b19730d47e45f072cadc709fff4d14315b26a8636e15d2c10ad61f4464de3d7",
+    "port/characters/assets/textures/face_imakuni.png": "6d7ef20493a5585823d04132f184eac3d2604da9d61eb941c647e9d259e5a7f9",
+    "port/characters/assets/textures/face_mature.png": "4c73a25a565c03539484a111425e0f0294229953abb64b81e9e2468d04c91fc3",
+    "port/characters/assets/textures/face_old.png": "64534b401012d2e400a4ca982e4461c3d575773e9bb5c162218b30fa653bc3cc",
+    "port/characters/assets/textures/face_old_glasses.png": "0a0a4473887554c9d0a32947806773bfa41d2b413735563d64e13b285bf7a813",
+    "port/characters/assets/textures/face_round_glasses.png": "3b19730d47e45f072cadc709fff4d14315b26a8636e15d2c10ad61f4464de3d7",
+    "port/characters/assets/textures/face_smile.png": "89b95742c197aef5e9c915e80e4424ab6bd58c2880c937d91c69c979bc48e99e",
+    "port/characters/assets/textures/face_stern.png": "4c73a25a565c03539484a111425e0f0294229953abb64b81e9e2468d04c91fc3",
+    "port/characters/assets/textures/fc_e7ad63_gentle.png": "98669a491c9582bc800c32053e59430a189ab6416ec4ccf0a229b702a47cd61f",
+    "port/characters/assets/textures/fc_e7ad63_glasses.png": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+    "port/characters/assets/textures/fc_e7ad63_imakuni.png": "854d2a0bc78d1dc3c1412b9531460ecc13e3b8e531d3d099afb4e8dbe49f77fb",
+    "port/characters/assets/textures/fc_e7ad63_mason.png": "104cf3caf48ea3e071bde7f30f5d7e2c08b6107cdc095e5a3d2bf3b4666249b4",
+    "port/characters/assets/textures/fc_e7ad63_mature.png": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+    "port/characters/assets/textures/fc_e7ad63_old.png": "3e9f9d7da06e2bdf620053bfbc1a9024f54e851a3390cf3da8bbdafc7d142f4e",
+    "port/characters/assets/textures/fc_e7ad63_old_glasses.png": "00f5749f5af4a2a263789281990cb401a70e3c0b08d0f64a25d2f3fbe0cda250",
+    "port/characters/assets/textures/fc_e7ad63_ronald.png": "19fa63b67ebd0469565fafdcb579babaade64d650f009ed3fec3ccbcbbf6eade",
+    "port/characters/assets/textures/fc_e7ad63_round_glasses.png": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+    "port/characters/assets/textures/fc_e7ad63_smile.png": "5b1d14ae4706c3dbdf29044d7294474f5b20a0318483e62c027338f02e75c26b",
+    "port/characters/assets/textures/fc_e7ad63_stern.png": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+    "port/characters/assets/textures/mason_face.png": "3bd445a4fefc36e374cd473817b651401de785515067656415e161274cca3851",
+    "port/characters/assets/textures/ronald_face.png": "ac07c032f1a5ab20f909b6a1598af456a7d87757dbec65943f3efe6006e1901d",
+    "port/world3d/generated/textures/t10c908d3d5164363.png": "5b1d14ae4706c3dbdf29044d7294474f5b20a0318483e62c027338f02e75c26b",
+    "port/world3d/generated/textures/tcd457a01e99e92b3.png": "f01600a31270846f6cc7d0e071494a96c0daac3428d1e9d5850b453791fb6e64",
+    "port/world3d/generated/textures/tda3c45e6517cea3d.png": "3e9f9d7da06e2bdf620053bfbc1a9024f54e851a3390cf3da8bbdafc7d142f4e",
+    "port/world3d/generated/textures/t3bcdeca17a85e16d.png": "854d2a0bc78d1dc3c1412b9531460ecc13e3b8e531d3d099afb4e8dbe49f77fb",
+    "port/world3d/generated/textures/tc1137760b72f27ca.png": "104cf3caf48ea3e071bde7f30f5d7e2c08b6107cdc095e5a3d2bf3b4666249b4",
+    "port/world3d/generated/textures/t20e89bac43201d18.png": "00f5749f5af4a2a263789281990cb401a70e3c0b08d0f64a25d2f3fbe0cda250",
+    "port/world3d/generated/textures/t2f5cf497984d058c.png": "8c0c6e23a021d882c6f62764cd2cb246b4deb161b0bf1416ceb1dbb506eb1a54",
+    "port/world3d/generated/textures/tafd4af8dd8e57b95.png": "19fa63b67ebd0469565fafdcb579babaade64d650f009ed3fec3ccbcbbf6eade",
+    "port/world3d/generated/textures/t6d59bc388d91e451.png": "98669a491c9582bc800c32053e59430a189ab6416ec4ccf0a229b702a47cd61f"
+  },
+  "experiment_manifest": {
+    "file": "port/characters/experiments/face-readability/manifest.json",
+    "sha256": "6e601a94a4daa9a645482c4c5c1a9fe5ca21640a5c3c97903da35e0f8c536dae"
+  },
+  "native_serial_evidence": {
+    "log": "port/frontends/n64/adventure/build/face-vi/lldb.log",
+    "completion_marker": "FACE PREVIEW PASS",
+    "frame_names": [
+      "face-baseline-portrait",
+      "face-baseline-room",
+      "face-baseline-conversation",
+      "face-moderate-portrait",
+      "face-moderate-room",
+      "face-moderate-conversation",
+      "face-bold-portrait",
+      "face-bold-room",
+      "face-bold-conversation",
+      "face-large-portrait",
+      "face-large-room",
+      "face-large-conversation"
+    ],
+    "heaps": [
+      {
+        "option": "baseline",
+        "view": "portrait",
+        "total": 2941808,
+        "used": 1566928,
+        "free": 1374880
+      },
+      {
+        "option": "baseline",
+        "view": "room",
+        "total": 2941808,
+        "used": 1566928,
+        "free": 1374880
+      },
+      {
+        "option": "baseline",
+        "view": "conversation",
+        "total": 2941808,
+        "used": 1566928,
+        "free": 1374880
+      },
+      {
+        "option": "moderate",
+        "view": "portrait",
+        "total": 2941808,
+        "used": 1566928,
+        "free": 1374880
+      },
+      {
+        "option": "moderate",
+        "view": "room",
+        "total": 2941808,
+        "used": 1566928,
+        "free": 1374880
+      },
+      {
+        "option": "moderate",
+        "view": "conversation",
+        "total": 2941808,
+        "used": 1566928,
+        "free": 1374880
+      },
+      {
+        "option": "bold",
+        "view": "portrait",
+        "total": 2941808,
+        "used": 1566912,
+        "free": 1374896
+      },
+      {
+        "option": "bold",
+        "view": "room",
+        "total": 2941808,
+        "used": 1566912,
+        "free": 1374896
+      },
+      {
+        "option": "bold",
+        "view": "conversation",
+        "total": 2941808,
+        "used": 1566912,
+        "free": 1374896
+      },
+      {
+        "option": "large",
+        "view": "portrait",
+        "total": 2941808,
+        "used": 1566952,
+        "free": 1374856
+      },
+      {
+        "option": "large",
+        "view": "room",
+        "total": 2941808,
+        "used": 1566952,
+        "free": 1374856
+      },
+      {
+        "option": "large",
+        "view": "conversation",
+        "total": 2941808,
+        "used": 1566952,
+        "free": 1374856
+      }
+    ],
+    "minimum_free_heap": 1374856,
+    "note": "Combined run was kept alive through all native framebuffer dumps, heap records and completion marker before process termination."
+  },
+  "verification_files": [
+    {
+      "file": "framing.json",
+      "sha256": "2eb41469bfb588739306e9b8957821f35d771e1d7636ffeba240cfcff89ae588"
+    },
+    {
+      "file": "comparison-control.json",
+      "sha256": "614a46145f5f9fb563c05825de2c5ab3466c8b90db230344f6a1e541166b8103"
+    },
+    {
+      "file": "vi_capture.py",
+      "sha256": "fe2681e72c20f9be3d1a051f377541e031069214159c9123f60c1371291f295c"
+    },
+    {
+      "file": "check_framing.py",
+      "sha256": "b2666fdac4e6a46c1a17a0ad3ad906259d3dcbf0d6910a4b5252195271ffcfd7"
+    },
+    {
+      "file": "callback-events.jsonl",
+      "sha256": "b128f1ff0c2dd57d769f8320bb9dd1767c4c836faa65880b9e9dd5ec71722022"
+    }
+  ]
+}

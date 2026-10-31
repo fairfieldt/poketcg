@@ -24,6 +24,13 @@ endif
 ifneq ($(filter 5 6 7,$(DIAGNOSTIC)),)
 FRONT_OBJECTS += $(BUILD_DIR)/visual_sweep.o
 endif
+ifeq ($(DIAGNOSTIC),8)
+FRONT_OBJECTS += $(BUILD_DIR)/face_preview.o
+.PHONY: face-preview-assets
+face-preview-assets:
+	python3 tools/pack_face_preview.py --output $(N64_MKDFS_ROOT)/faces --mksprite $(N64_MKSPRITE)
+$(BUILD_DIR)/$(ROM).dfs: face-preview-assets
+endif
 VIDEO_CONFIG := $(BUILD_DIR)/config-$(DIAGNOSTIC)-$(VI_FILTER)
 INCLUDES := -I$(PORT)/src -I$(PORT)/overworld -I$(PORT)/gameplay -I$(PORT)/world3d -I$(BUILD_DIR)
 CFLAGS += $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -DADVENTURE_VI_FILTER=$(VI_FILTER)
@@ -62,6 +69,9 @@ $(BUILD_DIR)/mips_story.o: tests/mips_story.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 $(BUILD_DIR)/cinematic.o: tests/cinematic.c
+	@mkdir -p $(dir $@)
+	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+$(BUILD_DIR)/face_preview.o: tests/face_preview.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 $(BUILD_DIR)/visual_sweep.o: tests/visual_sweep.c

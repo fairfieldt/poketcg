@@ -1,0 +1,113 @@
+{
+  "method": "Actual post-VI crops, identical ROI across all options, nearest-neighbor scaling only, 4:3 pixel aspect correction",
+  "crops": [
+    {
+      "view": "room",
+      "model": 7,
+      "roi_raw_post_vi": [
+        176,
+        94,
+        209,
+        106
+      ],
+      "scale_x": 4,
+      "scale_y": 8
+    },
+    {
+      "view": "room",
+      "model": 9,
+      "roi_raw_post_vi": [
+        303,
+        92,
+        337,
+        105
+      ],
+      "scale_x": 4,
+      "scale_y": 8
+    },
+    {
+      "view": "room",
+      "model": 12,
+      "roi_raw_post_vi": [
+        431,
+        92,
+        465,
+        105
+      ],
+      "scale_x": 4,
+      "scale_y": 8
+    },
+    {
+      "view": "conversation",
+      "model": 7,
+      "roi_raw_post_vi": [
+        104,
+        104,
+        142,
+        117
+      ],
+      "scale_x": 4,
+      "scale_y": 8
+    },
+    {
+      "view": "conversation",
+      "model": 9,
+      "roi_raw_post_vi": [
+        181,
+        103,
+        220,
+        117
+      ],
+      "scale_x": 4,
+      "scale_y": 8
+    },
+    {
+      "view": "conversation",
+      "model": 12,
+      "roi_raw_post_vi": [
+        261,
+        104,
+        298,
+        118
+      ],
+      "scale_x": 4,
+      "scale_y": 8
+    },
+    {
+      "view": "portrait",
+      "model": 7,
+      "roi_raw_post_vi": [
+        70,
+        82,
+        146,
+        107
+      ],
+      "scale_x": 2,
+      "scale_y": 4
+    },
+    {
+      "view": "portrait",
+      "model": 9,
+      "roi_raw_post_vi": [
+        279,
+        76,
+        361,
+        102
+      ],
+      "scale_x": 2,
+      "scale_y": 4
+    },
+    {
+      "view": "portrait",
+      "model": 12,
+      "roi_raw_post_vi": [
+        493,
+        76,
+        571,
+        102
+      ],
+      "scale_x": 2,
+      "scale_y": 4
+    }
+  ]
+}

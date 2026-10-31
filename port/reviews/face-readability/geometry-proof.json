@@ -1,0 +1,147 @@
+{
+  "passed": true,
+  "geometry_unchanged": true,
+  "baseline_textures_exact": true,
+  "options": [
+    {
+      "option": "baseline",
+      "models": [
+        {
+          "model": 7,
+          "file": "maps/actor_mark.l64",
+          "sha256": "6f9fc73f80c7a6c139de7becc6bbd0df31d35d277a2e3976116e7b37696b8496"
+        },
+        {
+          "model": 9,
+          "file": "maps/actor_dr_mason.l64",
+          "sha256": "7861e1808aa9aa401aaa52d35d1b9fa3e207b0f4d9f82bfaded8e9d7d2e69da6"
+        },
+        {
+          "model": 12,
+          "file": "maps/actor_nikki.l64",
+          "sha256": "85a5832ca2ccb80ff169395e75f8854fa24d3abadf7b63e47675e344a84adadb"
+        },
+        {
+          "model": 8,
+          "file": "maps/actor_ronald.l64",
+          "sha256": "25f17922002e30c4183bbbc3ed20227e86d4614b19ca88507df18c998f49a1e3"
+        },
+        {
+          "model": 14,
+          "file": "maps/actor_ken.l64",
+          "sha256": "fb7f30c2bcff4ac3498022590b10dbceba09e0888fbd5b58c18c6911b3ce93ba"
+        },
+        {
+          "model": 43,
+          "file": "maps/actor_granny.l64",
+          "sha256": "58c991b139bcc7e87cb9f69f83ab151d20c35d483f49d7382fd0b8c8ab2bd051"
+        }
+      ]
+    },
+    {
+      "option": "moderate",
+      "models": [
+        {
+          "model": 7,
+          "file": "maps/actor_mark.l64",
+          "sha256": "6f9fc73f80c7a6c139de7becc6bbd0df31d35d277a2e3976116e7b37696b8496"
+        },
+        {
+          "model": 9,
+          "file": "maps/actor_dr_mason.l64",
+          "sha256": "7861e1808aa9aa401aaa52d35d1b9fa3e207b0f4d9f82bfaded8e9d7d2e69da6"
+        },
+        {
+          "model": 12,
+          "file": "maps/actor_nikki.l64",
+          "sha256": "85a5832ca2ccb80ff169395e75f8854fa24d3abadf7b63e47675e344a84adadb"
+        },
+        {
+          "model": 8,
+          "file": "maps/actor_ronald.l64",
+          "sha256": "25f17922002e30c4183bbbc3ed20227e86d4614b19ca88507df18c998f49a1e3"
+        },
+        {
+          "model": 14,
+          "file": "maps/actor_ken.l64",
+          "sha256": "fb7f30c2bcff4ac3498022590b10dbceba09e0888fbd5b58c18c6911b3ce93ba"
+        },
+        {
+          "model": 43,
+          "file": "maps/actor_granny.l64",
+          "sha256": "58c991b139bcc7e87cb9f69f83ab151d20c35d483f49d7382fd0b8c8ab2bd051"
+        }
+      ]
+    },
+    {
+      "option": "bold",
+      "models": [
+        {
+          "model": 7,
+          "file": "maps/actor_mark.l64",
+          "sha256": "6f9fc73f80c7a6c139de7becc6bbd0df31d35d277a2e3976116e7b37696b8496"
+        },
+        {
+          "model": 9,
+          "file": "maps/actor_dr_mason.l64",
+          "sha256": "7861e1808aa9aa401aaa52d35d1b9fa3e207b0f4d9f82bfaded8e9d7d2e69da6"
+        },
+        {
+          "model": 12,
+          "file": "maps/actor_nikki.l64",
+          "sha256": "85a5832ca2ccb80ff169395e75f8854fa24d3abadf7b63e47675e344a84adadb"
+        },
+        {
+          "model": 8,
+          "file": "maps/actor_ronald.l64",
+          "sha256": "25f17922002e30c4183bbbc3ed20227e86d4614b19ca88507df18c998f49a1e3"
+        },
+        {
+          "model": 14,
+          "file": "maps/actor_ken.l64",
+          "sha256": "fb7f30c2bcff4ac3498022590b10dbceba09e0888fbd5b58c18c6911b3ce93ba"
+        },
+        {
+          "model": 43,
+          "file": "maps/actor_granny.l64",
+          "sha256": "58c991b139bcc7e87cb9f69f83ab151d20c35d483f49d7382fd0b8c8ab2bd051"
+        }
+      ]
+    },
+    {
+      "option": "large",
+      "models": [
+        {
+          "model": 7,
+          "file": "maps/actor_mark.l64",
+          "sha256": "6f9fc73f80c7a6c139de7becc6bbd0df31d35d277a2e3976116e7b37696b8496"
+        },
+        {
+          "model": 9,
+          "file": "maps/actor_dr_mason.l64",
+          "sha256": "7861e1808aa9aa401aaa52d35d1b9fa3e207b0f4d9f82bfaded8e9d7d2e69da6"
+        },
+        {
+          "model": 12,
+          "file": "maps/actor_nikki.l64",
+          "sha256": "85a5832ca2ccb80ff169395e75f8854fa24d3abadf7b63e47675e344a84adadb"
+        },
+        {
+          "model": 8,
+          "file": "maps/actor_ronald.l64",
+          "sha256": "25f17922002e30c4183bbbc3ed20227e86d4614b19ca88507df18c998f49a1e3"
+        },
+        {
+          "model": 14,
+          "file": "maps/actor_ken.l64",
+          "sha256": "fb7f30c2bcff4ac3498022590b10dbceba09e0888fbd5b58c18c6911b3ce93ba"
+        },
+        {
+          "model": 43,
+          "file": "maps/actor_granny.l64",
+          "sha256": "58c991b139bcc7e87cb9f69f83ab151d20c35d483f49d7382fd0b8c8ab2bd051"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "method": "Post-VI RGB comparison outside projected facial bounds padded by3nativepixels and header rows0..27",
+  "results": [
+    {
+      "option": "moderate",
+      "view": "portrait",
+      "changed_rgb_pixels": 2775,
+      "changed_pixels_outside_face_and_label_bounds": 0
+    },
+    {
+      "option": "bold",
+      "view": "portrait",
+      "changed_rgb_pixels": 3337,
+      "changed_pixels_outside_face_and_label_bounds": 0
+    },
+    {
+      "option": "large",
+      "view": "portrait",
+      "changed_rgb_pixels": 3345,
+      "changed_pixels_outside_face_and_label_bounds": 0
+    },
+    {
+      "option": "moderate",
+      "view": "room",
+      "changed_rgb_pixels": 1253,
+      "changed_pixels_outside_face_and_label_bounds": 0
+    },
+    {
+      "option": "bold",
+      "view": "room",
+      "changed_rgb_pixels": 1917,
+      "changed_pixels_outside_face_and_label_bounds": 0
+    },
+    {
+      "option": "large",
+      "view": "room",
+      "changed_rgb_pixels": 1453,
+      "changed_pixels_outside_face_and_label_bounds": 0
+    },
+    {
+      "option": "moderate",
+      "view": "conversation",
+      "changed_rgb_pixels": 1499,
+      "changed_pixels_outside_face_and_label_bounds": 0
+    },
+    {
+      "option": "bold",
+      "view": "conversation",
+      "changed_rgb_pixels": 2109,
+      "changed_pixels_outside_face_and_label_bounds": 0
+    },
+    {
+      "option": "large",
+      "view": "conversation",
+      "changed_rgb_pixels": 1748,
+      "changed_pixels_outside_face_and_label_bounds": 0
+    }
+  ]
+}
