@@ -31,7 +31,7 @@ static int request(void *ctx,const TcgRequest *r)
 static void host(bool ui)
 {
  interactive=ui;observed=(Outcome){.digest=2166136261u};
- TcgHost callbacks={event,request,NULL,NULL};tcg_set_host(&callbacks);
+ static const TcgHost callbacks={event,request,NULL,NULL};tcg_set_host(&callbacks);
 }
 static Outcome outcome(void)
 {

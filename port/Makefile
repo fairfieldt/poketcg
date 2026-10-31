@@ -51,6 +51,14 @@ $(BUILD)/harness/practice_check: harness/practice_check.c $(HARNESS_ENGINE)
 practicecheck: $(BUILD)/harness/practice_check
 	./$(BUILD)/harness/practice_check
 
+$(BUILD)/frontends/control_text: frontends/tests/control_text.c frontends/control_text.h $(BUILD)/libtcg.a
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -o $@ $< $(BUILD)/libtcg.a
+
+.PHONY: controltest
+controltest: $(BUILD)/frontends/control_text
+	./$(BUILD)/frontends/control_text
+
 $(BUILD)/harness/trace_points.txt: $(ENGINE_SRCS) tools/trace_points.py
 	@mkdir -p $(dir $@)
 	python3 tools/trace_points.py src > $@

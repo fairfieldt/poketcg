@@ -1,0 +1,30 @@
+
+port/frontends/n64/adventure/build/poketcg-adventure.elf:     file format elf32-bigmips
+
+
+Disassembly of section .intvectors:
+
+Disassembly of section .text:
+
+8001a160 <tcg_text>:
+8001a160:	2c820bae 	sltiu	v0,a0,2990
+8001a164:	14400004 	bnez	v0,8001a178 <tcg_text+0x18>
+8001a168:	3c028010 	lui	v0,0x8010
+8001a16c:	03e00008 	jr	ra
+8001a170:	244286f8 	addiu	v0,v0,-30984
+8001a174:	00000000 	nop
+8001a178:	27bdffd0 	addiu	sp,sp,-48
+8001a17c:	ffb00020 	sd	s0,32(sp)
+8001a180:	ffbf0028 	sd	ra,40(sp)
+8001a184:	0c01fca0 	jal	8007f280 <tcg_text_override>
+8001a188:	00808025 	move	s0,a0
+8001a18c:	14400006 	bnez	v0,8001a1a8 <tcg_text+0x48>
+8001a190:	dfbf0028 	ld	ra,40(sp)
+8001a194:	3c028011 	lui	v0,0x8011
+8001a198:	244200a8 	addiu	v0,v0,168
+8001a19c:	00108080 	sll	s0,s0,0x2
+8001a1a0:	02028021 	addu	s0,s0,v0
+8001a1a4:	8e020000 	lw	v0,0(s0)
+8001a1a8:	dfb00020 	ld	s0,32(sp)
+8001a1ac:	03e00008 	jr	ra
+8001a1b0:	27bd0030 	addiu	sp,sp,48

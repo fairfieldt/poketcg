@@ -169,6 +169,10 @@ MOCK_FONT := $(N64_INST)/mips64-elf/include/font.h
 HOST_ROMFS := $(HOST_BUILD)/filesystem
 HOST_TESTS := $(wildcard tests/*.txt)
 
+$(HOST_BUILD)/tcgn64.o $(HOST_BUILD)/felt_cache $(HOST_BUILD)/raster_paths \
+$(HOST_BUILD)/board_cache.o $(HOST_BUILD)/retained_ui.o $(HOST_BUILD)/duel_ack_flow.o \
+$(HOST_BUILD)/check_selector.o $(HOST_BUILD)/input_frontend $(HOST_BUILD)/coin_animation.o: ../control_text.h
+
 # Compare the actual felt renderer at both display resolutions without linking
 # the rest of the engine; unreachable frontend sections are discarded.
 HOST_DEAD_STRIP := $(if $(filter Darwin,$(shell uname -s)),-Wl$(COMMA)-dead_strip,-Wl$(COMMA)--gc-sections)
@@ -221,6 +225,17 @@ acktest: $(HOST_BUILD)/duel_ack_flow
 	MOCK_SCRIPT=tests/duel_ack_flow.script MOCK_SHOTS=$(HOST_BUILD)/shots/ack-flow-320 ./$(HOST_BUILD)/duel_ack_flow
 	MOCK_SCRIPT=tests/duel_ack_flow.script MOCK_SHOTS=$(HOST_BUILD)/shots/ack-flow-480 MOCK_HIGH_RES=1 ./$(HOST_BUILD)/duel_ack_flow
 .PHONY: acktest
+
+$(HOST_BUILD)/check_selector.o: tests/check_selector.c tcgn64.c duel_input.h mock/libdragon.h
+	@mkdir -p $(dir $@)
+	$(HOST_CC) -c $(HOST_FRONT_CFLAGS) -UTCGN64_CARD_ART -ffunction-sections -fdata-sections -o $@ $<
+$(HOST_BUILD)/check_selector: $(HOST_BUILD)/check_selector.o $(HOST_CORE_OBJS) $(HOST_BUILD)/save_store_n64.o $(HOST_BUILD)/mock_libdragon.o $(HOST_BUILD)/optional.lst
+	$(HOST_CC) -o $@ $(HOST_BUILD)/check_selector.o $(HOST_CORE_OBJS) $(HOST_BUILD)/save_store_n64.o $(HOST_BUILD)/mock_libdragon.o $$(cat $(HOST_BUILD)/optional.lst) $(HOST_DEAD_STRIP)
+checktest: $(HOST_BUILD)/check_selector
+	@mkdir -p $(HOST_BUILD)/shots/check-selector-320 $(HOST_BUILD)/shots/check-selector-480
+	MOCK_SCRIPT=tests/check_selector.script MOCK_SHOTS=$(HOST_BUILD)/shots/check-selector-320 ./$(HOST_BUILD)/check_selector
+	MOCK_SCRIPT=tests/check_selector.script MOCK_SHOTS=$(HOST_BUILD)/shots/check-selector-480 MOCK_HIGH_RES=1 ./$(HOST_BUILD)/check_selector
+.PHONY: checktest
 
 $(HOST_BUILD)/input_capture: tests/input_capture.c duel_input.h
 	@mkdir -p $(dir $@)
@@ -284,7 +299,7 @@ $(HOST_ROMFS)/buildinfo.txt: $(HOST_BUILD)/optional.lst $(CARD_SPRITES)
 	cp $(HOST_BUILD)/optional.info $@
 	@if [ -n "$(CARD_SPRITES)" ]; then rm -rf $(HOST_ROMFS)/cards; ln -s ../../filesystem/cards $(HOST_ROMFS)/cards; fi
 
-hosttest: felttest inputtest cointest boardtest rastertest focustest retainedtest acktest $(HOST_BUILD)/tcgn64_host $(HOST_ROMFS)/buildinfo.txt
+hosttest: felttest inputtest cointest boardtest rastertest focustest retainedtest acktest checktest $(HOST_BUILD)/tcgn64_host $(HOST_ROMFS)/buildinfo.txt
 	@fail=0; for t in $(HOST_TESTS); do \
 		n=$$(basename $$t .txt); mkdir -p $(HOST_BUILD)/shots/$$n; \
 		printf '    [TEST] %-24s' $$n; \

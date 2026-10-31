@@ -25,6 +25,10 @@ not restart the emulator. Quit the game and launch it again to load an update.
 Saves are separate from the ROM releases; publishing never deletes saves.
 Do not ship debug/diagnostic ROMs under the normal game entry unless requested.
 
+The left trigger is N64 Z (duel inspection); Steam ||| is N64 START
+(card details during a duel). View/Back reloads the game in the emulator and
+is reserved for that function.
+
 The ROM's `Game` counter measures completed game frames over N64 time. The
 Steam overlay's `Output` counter measures emulator output. At 4K, the game
 badge occupies x516..1092, y18..144; the Steam launcher stages `Output` at

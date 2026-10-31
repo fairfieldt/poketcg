@@ -44,5 +44,6 @@
     "map_blit_bottom_y": 32,
     "host_retained_pixel_checks": "pass both resolutions",
     "native_artifacts": "captured before heading-only adjustment"
-  }
+  },
+  "object_size_measurement_stage": "Before final heading-only adjustment"
 }

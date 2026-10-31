@@ -1,0 +1,5 @@
+cc -std=c11 -O2 -g -Isrc -DTCG_NO_DEFAULT_FATAL -Wall -Wno-unused-parameter -o build/harness/practice_check harness/practice_check.c src/ai_stubs.c src/duel_core.c src/duel_ui.c src/home_duel.c src/home_misc.c src/practice.c src/substatus.c src/tcg.c src/gen/cards.c src/gen/decks.c src/gen/effect_commands.c src/gen/effect_functions_by_address.c src/gen/effect_stubs.c src/gen/rom_blobs.c src/gen/text.c src/effects/part1.c src/effects/part2.c src/effects/part3.c src/effects/part4.c src/ai/ai_trainer_card_logic.c src/ai/attacks.c src/ai/boss_deck_set_up.c src/ai/common.c src/ai/core.c src/ai/damage_calculation.c src/ai/deck_ai.c src/ai/deck_ai_pointers.c src/ai/energy.c src/ai/hand_pokemon.c src/ai/home_ai.c src/ai/init.c src/ai/pkmn_powers.c src/ai/retreat.c src/ai/special_attacks.c src/ai/trainer_cards.c
+./build/harness/practice_check
+PRACTICE TRACE wrong=0 requests=200 memory=d4027b58c8a5c77
+PRACTICE TRACE wrong=1 requests=63 memory=14b6a98d0ce934ec
+PRACTICE PASS: all eight turns; persistent checklist and fresh Mason ACKs; Finally/recap ordering; exact original memory/RNG/request traces; Psychic advances and wrong Water rewinds

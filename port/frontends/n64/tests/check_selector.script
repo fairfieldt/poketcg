@@ -1,0 +1,101 @@
+wait 6
+expect CHECK_FLOW_BEGIN~postko-P1
+expect_none CHECK_FLOW_RETURN~postko-P1
+press RIGHT
+press RIGHT
+press Z+A
+wait 4
+expect CHECK~BEGIN~ports=1
+expect_none CHECK_FLOW_RETURN~postko-P1
+shot postko-P1-check
+press B
+press START
+expect VIEW~SLOT~P1~loc=2
+shot postko-P1-selected-card
+press B
+expect_none CHECK_FLOW_RETURN~postko-P1
+press LEFT
+press Z
+press B
+shot postko-P1-same-selector
+expect_none CHECK_FLOW_RETURN~postko-P1
+press A
+wait 6
+expect CHECK_FLOW_BEGIN~postko-P2
+expect_none CHECK_FLOW_RETURN~postko-P2
+press RIGHT P2
+press RIGHT P2
+press Z+A P2
+wait 4
+expect CHECK~BEGIN~ports=2
+expect_none CHECK_FLOW_RETURN~postko-P2
+shot postko-P2-check
+press B P2
+press START P2
+expect VIEW~SLOT~P2~loc=2
+shot postko-P2-selected-card
+press B P2
+expect_none CHECK_FLOW_RETURN~postko-P2
+press LEFT P2
+press Z P2
+press B P2
+shot postko-P2-same-selector
+expect_none CHECK_FLOW_RETURN~postko-P2
+press A P2
+wait 6
+expect CHECK_FLOW_BEGIN~menu-P1
+expect_none CHECK_FLOW_RETURN~menu-P1
+press RIGHT
+press Z+A
+wait 4
+expect CHECK~BEGIN~ports=1
+expect_none CHECK_FLOW_RETURN~menu-P1
+shot menu-P1-check
+press B
+press START
+expect VIEW~SLOT~P1~loc=2
+shot menu-P1-selected-card
+press B
+expect_none CHECK_FLOW_RETURN~menu-P1
+press LEFT
+press Z
+press B
+shot menu-P1-same-selector
+expect_none CHECK_FLOW_RETURN~menu-P1
+press A
+wait 6
+expect CHECK_FLOW_BEGIN~menu-P2
+expect_none CHECK_FLOW_RETURN~menu-P2
+press RIGHT P2
+press Z+A P2
+wait 4
+expect CHECK~BEGIN~ports=2
+expect_none CHECK_FLOW_RETURN~menu-P2
+shot menu-P2-check
+press B P2
+press START P2
+expect VIEW~SLOT~P2~loc=2
+shot menu-P2-selected-card
+press B P2
+expect_none CHECK_FLOW_RETURN~menu-P2
+press LEFT P2
+press Z P2
+press B P2
+shot menu-P2-same-selector
+expect_none CHECK_FLOW_RETURN~menu-P2
+press A P2
+wait 6
+expect CHECK_FLOW_BEGIN~lesson
+expect_none CHECK_FLOW_RETURN~lesson
+press Z+A
+wait 4
+expect_none CHECK_FLOW_RETURN~lesson
+shot lesson-check
+press B
+wait 4
+expect_none CHECK_FLOW_RETURN~lesson
+shot lesson-return
+press A
+wait 6
+expect CHECK_FLOW_RETURN~lesson
+expect CHECK_SELECTOR_PASS

@@ -207,6 +207,10 @@ int tcg_saved_duel_info(const uint8_t *data, uint32_t size, TcgSavedDuel *out);
 int tcg_format_text(uint16_t text_id, char *out, int out_size);
 /* Plain string of a text id (no substitution), "" if invalid. */
 const char *tcg_text(uint16_t text_id);
+/* Optional frontend control-copy lookup. Return NULL to keep the source text.
+ * The engine supplies a weak default; replacements also apply before text
+ * formatting and tutorial checklist composition. */
+const char *tcg_text_override(uint16_t text_id);
 
 /* engine memory */
 uint8_t *tcg_wram(void);              /* 8KB, $c000 */

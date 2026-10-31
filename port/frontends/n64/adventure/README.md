@@ -66,8 +66,8 @@ another diary. The title menu also offers Card Pop! between the two diaries.
 | A | Talk, inspect, enter, confirm; complete text / advance page |
 | B | Back; hold while walking to move faster |
 | START | Adventure menu; card details during a duel |
-| L/R | Page through lists |
-| Z | Check play areas during a duel |
+| L/R | Page through lists; switch Check views |
+| Z | Check play areas and discard piles, including while choosing a Pokemon |
 
 The original island connections, room permissions, NPC preload conditions,
 story movement, rewards, conditional doors, dialogue, win/loss branches, and

@@ -45,6 +45,7 @@
 #include "card_back.h"
 #include "duel_input.h"
 #include "duel_board_focus.h"
+#include "../control_text.h"
 #include "coin_art.h"
 #ifdef TCGN64_ADVENTURE
 #include "adventure/audio.h"
@@ -262,6 +263,9 @@ static int wrap(const char *s, int width, char (*lines)[COLS + 1], int max)
 	}
 	return n;
 }
+
+const char *tcg_text_override(uint16_t id)
+{ return tcg_control_text(TCG_CONTROLS_N64,id); }
 
 static void text_of(uint16_t id, char *out, int n)
 {
@@ -1996,8 +2000,12 @@ static void view_card(uint8_t id,uint8_t owner,int deck,int ports)
 static void view_slot(uint8_t duelist, int loc, int ports)
 {
 	Slot s;
-	if (get_slot(duelist, loc, &s))
+	if (get_slot(duelist, loc, &s)) {
+#ifdef TCGN64_HOST_TEST
+		debugf("VIEW SLOT %s loc=%d card=%u\n",g_name[side_of(duelist)],loc,s.id);
+#endif
 		view_card(s.id, duelist, s.deck, ports);
+	}
 }
 
 /* ------------------------------------------------------------------ lists */
@@ -2238,6 +2246,8 @@ static void draw_match_plaque(bool result)
 
 static const char *who(uint8_t duelist) { return g_name[side_of(duelist)]; }
 
+static void check_screen(int ports);
+
 static int ui_ack(const TcgRequest *r, int ports)
 {
 	bool fresh_confirm=(g_overlay.on&&g_drawn_card_fresh_ack)||g_placement_ack;
@@ -2317,6 +2327,9 @@ static int ui_ack(const TcgRequest *r, int ports)
 		if(review_snapshot())return 0;
 #endif
 		Keys k = keys(ports);
+		if(k.z&&g_mode==MODE_PRACTICE&&(reading||checklist)) {
+			check_screen(ports);continue;
+		}
 		if(fresh_confirm&&!duel_fresh_confirm_step(&confirm,confirm_buttons_held(ports)))k.a=k.b=false;
 		if(g_overlay.on) {
 			int pages=(g_rule_count+RULES_PER_PAGE-1)/RULES_PER_PAGE;
@@ -2334,8 +2347,6 @@ static int ui_ack(const TcgRequest *r, int ports)
 	g_drawn_card_fresh_ack=g_placement_ack=false;
 	return 0;
 }
-
-static void check_screen(int ports);
 
 static void draw_duel_actions(uint8_t duelist,int cur,bool board_focus)
 {
@@ -2583,6 +2594,7 @@ static int pick_slot(uint8_t duelist, int start, int n, int cur, bool can_cancel
 		}
 		end_reused_frame(&reuse);
 		Keys k = keys(ports);
+		if(k.z){check_screen(ports);continue;}
 		if (k.left || k.up)
 			cur = cur > start ? cur - 1 : start + n - 1;
 		if (k.right || k.down)
@@ -2599,7 +2611,7 @@ static int pick_slot(uint8_t duelist, int start, int n, int cur, bool can_cancel
 static int ui_play_area(const TcgRequest *r, int ports)
 {
 	int loc = pick_slot(r->shown, r->arg[0], r->num_items, r->cursor, true, ports,
-	                    r->arg[1] ? "A: view  B: back" : "A: choose  B: back  START: info");
+	                    r->arg[1] ? "A: view  B: back  Z: check" : "A: pick  B: back  Z: check");
 	return loc < 0 ? TCG_CANCEL : loc;
 }
 
@@ -2608,7 +2620,7 @@ static int ui_menu_play_area(const TcgRequest *r, int ports)
 	/* item i is play area location arg[0] + i (arg[0] = wExcludeArenaPokemon: 1 for the bench menus) */
 	int start = r->arg[0] <= 1 ? r->arg[0] : 0;
 	int loc = pick_slot(r->shown, start, r->num_items, start + r->cursor, true, ports,
-	                    "A: choose  B: back  START: info");
+	                    "A: pick  B: back  Z: check");
 	return loc < 0 ? TCG_CANCEL : loc - start;
 }
 
@@ -3047,6 +3059,9 @@ static void check_collect(CheckCtx *c)
 
 static void check_screen(int ports)
 {
+#ifdef TCGN64_HOST_TEST
+	debugf("CHECK BEGIN ports=%d\n",ports);
+#endif
 	static const char *const tabs[4] = { "%s's play area", "%s's play area", "%s's discard pile", "%s's discard pile" };
 	int tab = 0, cur = 0, top = 0;
 	UiCanvasReuse reuse={0};

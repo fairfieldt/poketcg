@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "command": "make -C port/frontends/n64 checktest inputtest acktest -j6",
+  "resolutions": [
+    [
+      320,
+      240
+    ],
+    [
+      480,
+      360
+    ]
+  ],
+  "cases": [
+    "postko-P1",
+    "postko-P2",
+    "menu-P1",
+    "menu-P2",
+    "SamTurn4DrMason2PracticeDuelText"
+  ],
+  "checks": {
+    "actual_engine_forced_replacement": true,
+    "controller_ownership_P1_P2": true,
+    "Z_plus_A_does_not_answer": true,
+    "Z_B_preserves_cursor": true,
+    "START_inspects_selected_card": true,
+    "lesson_returns_without_ACK": true,
+    "headless_WRAM_HRAM_event_request_answer_RNG_equal": true,
+    "physical_Z_edge_consumed_once": true,
+    "existing_fresh_card_placement_ACK_regressions": true
+  },
+  "capture_type": "host-mock CPU renderer; no VI or hardware claim",
+  "production_build_or_commit": false
+}

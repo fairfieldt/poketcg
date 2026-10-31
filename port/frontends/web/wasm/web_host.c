@@ -17,6 +17,10 @@
 #include "common.h"
 #include "gen/decks.h"
 #include "gen/text.h"
+#include "../../control_text.h"
+
+const char *tcg_text_override(uint16_t id)
+{ return tcg_control_text(TCG_CONTROLS_WEB,id); }
 
 #define IMPORT(name) __attribute__((import_module("env"), import_name(name)))
 #define EXPORT(name) __attribute__((export_name(name)))

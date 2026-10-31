@@ -102,10 +102,19 @@ static int format_number(char *buf, unsigned v)
 	return n;
 }
 
+__attribute__((weak)) const char *tcg_text_override(uint16_t id)
+{
+	(void)id;
+	return NULL;
+}
+
 const char *tcg_text(uint16_t id)
 {
 	if (id >= NUM_TEXTS)
 		return "";
+	const char *replacement = tcg_text_override(id);
+	if (replacement)
+		return replacement;
 	return gTexts[id];
 }
 

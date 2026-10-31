@@ -45,6 +45,9 @@ int main(void)
  input_poll();assert(!keys(1).a);
  physical[0].btn.d_down=true;input_sample();assert(keys(1).down);
  input_poll();assert(!keys(1).down);
+ /* Physical Z follows the same VI edge latch and is consumed once. */
+ physical[0].btn.z=true;input_sample();physical[0].btn.z=false;input_sample();input_poll();
+ assert(keys(1).z);assert(!keys(1).z);
  /* A complete tap queued before the first card presentation cannot dismiss
     it. A later fresh press can; the captured edge is still consumed once. */
  memset(physical,0,sizeof(physical));input_reset();DuelFreshConfirm card={0};
