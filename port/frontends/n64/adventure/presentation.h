@@ -10,7 +10,7 @@ typedef struct {
 typedef struct {
  PresentationPose pose;
  float from_x,from_z,target_x,target_z,target_heading,phase,idle_phase;
- unsigned elapsed,duration;
+ unsigned elapsed,duration,movement_remainder;
  uint8_t id,visible;
  bool running;
 } PresentationActor;
@@ -25,7 +25,7 @@ typedef struct {
  uint8_t world_points[64][2];
  unsigned world_count,world_index,source_remainder,render_frames;
  uint16_t world_script;
- bool initialized,camera_initialized,cinematic;
+ bool initialized,camera_initialized,cinematic,tutorial_motion;
  unsigned intro_stage;
 } Presentation;
 

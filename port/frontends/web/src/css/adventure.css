@@ -64,12 +64,13 @@ body.adventure {
 	border-radius: 2px;
 	box-shadow: inset 1px 1px 0 #fffff7, inset -1px -1px 0 #a9bccc;
 }
-.adventure-options .btn.cur, .adventure-options .btn:hover {
+.adventure-options .btn.cur {
 	background: #204878;
 	color: #f7f7de;
 	text-shadow: 1px 1px 0 #0a121e;
 	box-shadow: inset 1px 1px 0 #6790b1, inset -1px -1px 0 #0a121e;
 }
+.adventure-options .btn:hover:not(.cur) { background: #e7ebdd; }
 .adventure-back {
 	margin-top: 12px;
 }
@@ -136,6 +137,7 @@ body.adventure {
 	transform: translateX(-50%);
 	font-size: 18px;
 }
+.adventure-title-start:active { transform: translateX(-50%) translateY(1px); }
 .adventure-name {
 	align-self: center;
 	position: absolute;

@@ -58,7 +58,7 @@ button { font-family: inherit; color: inherit; }
 	font: inherit; font-weight: bold; padding: 0.35em 0.8em; border: 2px solid var(--frame); background: var(--screen);
 	border-radius: 4px; cursor: pointer; box-shadow: 0 2px 0 var(--frame);
 }
-.btn:hover, .btn.cur { background: var(--sel); }
+.btn.cur { background: var(--sel); }
 .btn:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--frame); }
 .btn:disabled { opacity: 0.4; cursor: default; }
 .btn.primary { background: #ffd8a0; }
@@ -96,7 +96,7 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 	display: flex; gap: 8px; align-items: center; text-align: left; padding: 6px; border: 2px solid var(--frame);
 	border-radius: 6px; background: var(--screen); cursor: pointer; font: inherit;
 }
-.deck-tile:hover, .deck-tile.cur { background: var(--sel); }
+.deck-tile.cur { background: var(--sel); }
 .deck-tile:disabled { opacity: 0.45; }
 .dt-name { font-weight: bold; }
 .dt-sub { color: var(--mid); font-size: 0.9em; }
@@ -193,12 +193,27 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 .overlay.ov-largecard, .overlay.ov-cardpage, .overlay.ov-coin, .overlay.ov-prize { align-items: center; justify-content: center; }
 .banner { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; z-index: 6; pointer-events: none; }
 .boxmsg {
-	width: calc(80px * var(--u) * 1.5); height: calc(32px * var(--u) * 1.5); background-image: url(../gfx/box_messages.png);
-	background-size: calc(80px * var(--u) * 1.5) auto; background-position: 0 calc(-32px * var(--u) * 1.5 * var(--i));
-	image-rendering: pixelated; box-shadow: 0 0 0 calc(var(--u) * 2px) var(--screen), 0 0 0 calc(var(--u) * 3px) var(--frame);
-	animation: pop 0.25s ease-out;
+	position: relative; display: flex; align-items: center; justify-content: center;
+	width: clamp(172px, calc(112px * var(--u)), 440px); max-width: calc(100% - 24px);
+	min-height: clamp(48px, calc(28px * var(--u)), 96px); padding: 10px 18px;
+	border: 3px solid; border-color: #c4d5df #26394f #26394f #c4d5df; border-radius: 5px;
+	background: linear-gradient(#fff9e8 0%, #f2e9cf 48%, #dfcfac 100%);
+	box-shadow: 0 0 0 1px #14243a, 0 4px 0 #111e30, inset 0 2px 0 #fffff5, inset 0 -2px 0 #b7b4a4;
+	image-rendering: auto;
+	animation: banner-appear 0.16s ease-out;
 }
-@keyframes pop { from { transform: scale(0.6); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.boxmsg::before {
+	content: ""; position: absolute; inset: 4px; border: 1px solid #7d95a7; border-radius: 1px;
+	box-shadow: inset 0 1px 0 #fffdf0; pointer-events: none;
+}
+.duel-banner-label {
+	position: relative; color: #20374f; font-family: "Trebuchet MS", Verdana, sans-serif;
+	font-size: clamp(14px, calc(10px * var(--u)), 34px); font-weight: 700;
+	line-height: 1.15; letter-spacing: 0.025em; white-space: nowrap; text-align: center;
+	text-shadow: 0 1px 0 #fffff2;
+}
+@media (prefers-reduced-motion: reduce) { .boxmsg { animation: none; } }
+@keyframes banner-appear { from { opacity: 0; } to { opacity: 1; } }
 .modal { position: absolute; inset: 0; z-index: 20; background: rgba(24, 24, 24, 0.55); display: flex; align-items: center; justify-content: center; padding: 8px; }
 .deckbuilder .modal, .db-root .modal { position: fixed; }
 
@@ -338,7 +353,7 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 	position: relative; border-radius: 3px; display: flex; align-items: center; gap: 0.2em;
 }
 .tm-item.cur::before { content: "▶"; position: absolute; left: 0.1em; }
-.tm-item:hover, .tm-item.cur { background: var(--sel); }
+.tm-item.cur { background: var(--sel); }
 .tm-item.disabled { color: var(--light); }
 .duel-menu { grid-template-columns: repeat(3, 1fr); font-weight: bold; }
 .attack-menu { grid-template-columns: 1fr; }

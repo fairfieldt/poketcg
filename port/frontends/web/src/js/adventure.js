@@ -83,9 +83,17 @@ function choose(title, items, initial = 0, cancel = true) {
 		select(current);
 	});
 }
-function platformMenu(title, items, initial, cancel) {
+async function platformMenu(title, items, initial, cancel) {
 	if (title === 'Save text to Controller Pak')
 		return choose('Download report', ['Download', 'Cancel'], 0, false).then((v) => (v === 0 ? 0 : 2));
+	if (title === 'Menu' && items.includes('Diary') && items.at(-1) === 'Return') {
+		const selected = await choose(title, [...items, 'Choose diary'], initial, cancel);
+		if (selected === items.length) {
+			app.chooseDiaryNext = true;
+			return items.length - 1;
+		}
+		return selected;
+	}
 	return choose(title, items, initial, cancel);
 }
 function message(title, text) {
@@ -305,8 +313,14 @@ function runAction(action, arg = 0) {
 	if (!app.active || app.engine.busy || app.modal || app.mode === 'duel') return;
 	app.engine
 		.action(action, arg)
-		.then((result) => {
-			if (result === 1) showTitle(false);
+		.then(async (result) => {
+			if (result === 1) return showTitle(false);
+			if (app.chooseDiaryNext) {
+				app.chooseDiaryNext = false;
+				await app.engine.action(6);
+				app.active = false;
+				return diaryMenu();
+			}
 		})
 		.catch(showError);
 }
@@ -361,7 +375,7 @@ async function start(profile, fresh) {
 	let result;
 	if (fresh) {
 		const name = await playerName();
-		if (name === null) return;
+		if (name === null) return false;
 		app.mode = 'world';
 		app.active = true;
 		result = await app.engine.start(profile, { fresh: true, name });
@@ -374,30 +388,49 @@ async function start(profile, fresh) {
 		app.active = false;
 		await message(
 			'Diary',
-			result === -2 ? 'Finish the saved duel in the other diary first.' : 'This diary could not be read.',
+			result === -3 ? 'This diary could not be saved.' : 'This diary could not be read.',
 		);
-		return diaryMenu();
+		return false;
 	}
 	await frame(app.engine.view);
+	return true;
+}
+const diaryLabel = (diary) => `Diary ${diary.id}${diary.name ? `: ${diary.name}` : ''}`;
+async function choosePeer({ activeId, diaries }) {
+	const others = diaries.filter((diary) => diary.id !== activeId);
+	if (!others.length) {
+		await message('Other diary', 'Create another diary first.');
+		return 0;
+	}
+	const selected = await choose('Choose other diary', others.map(diaryLabel), 0, true);
+	return selected < 0 ? 0 : others[selected].id;
 }
 async function diaryMenu() {
 	app.mode = 'world';
 	for (;;) {
+		const diaries = app.engine.diaries();
+		if (!diaries.some((diary) => diary.id === 1)) diaries.unshift({ id: 1, name: '' });
+		const actions = ['New diary', 'Duel modes', 'Export cartridge', 'Import cartridge'];
 		const p = await choose(
 			'Choose diary',
-			['Diary 1', 'Diary 2', 'Duel modes', 'Export cartridge', 'Import cartridge'],
+			[...diaries.map(diaryLabel), ...actions],
 			0,
 			false,
 		);
-		if (p === 2) {
+		const action = p - diaries.length;
+		if (action === 0) {
+			if (await start(app.engine.nextDiaryId(), true)) return;
+			continue;
+		}
+		if (action === 1) {
 			location.href = 'duel.html';
 			return;
 		}
-		if (p === 3) {
+		if (action === 2) {
 			await exportFile(app.engine.cartridge.export(), 'poketcg-cartridge.json');
 			continue;
 		}
-		if (p === 4) {
+		if (action === 3) {
 			const bytes = await importFile({
 				types: [{ description: 'Pokémon TCG cartridge', accept: { 'application/json': ['.json'] } }],
 				accept: '.json,application/json',
@@ -406,36 +439,30 @@ async function diaryMenu() {
 				await message('Import', 'The cartridge file could not be read.');
 			continue;
 		}
-		const profile = p + 1;
-		const owner = app.engine.cartridge.read('duelowner')?.[0];
-		if ((owner === 1 || owner === 2) && owner !== profile && app.engine.cartridge.read('duel')) {
-			await message('Saved duel', `Finish the saved duel in Diary ${owner} first.`);
-			continue;
-		}
+		const profile = diaries[p].id;
 		if (!app.engine.profile(profile)) {
-			await start(profile, true);
-			return;
+			if (await start(profile, true)) return;
+			continue;
 		}
 		const option = await choose(
 			`Diary ${profile}`,
-			['Continue', 'Card Pop!', 'New game', 'Other diary'],
+			['Continue', 'Card Pop!', 'New game', 'Choose diary'],
 			0,
 			false,
 		);
 		if (option === 3) continue;
 		if (option === 2) {
 			if ((await choose('Replace this diary?', ['Keep diary', 'Start a new game'], 0, false)) !== 1) continue;
-			await start(profile, true);
-			return;
+			if (await start(profile, true)) return;
+			continue;
 		}
 		if (option === 1) {
-			await app.engine.call('web_adv_load_only', profile);
+			await app.engine.loadProfile(profile);
 			await frame(app.engine.view);
 			await app.engine.action(7);
 			continue;
 		}
-		await start(profile, false);
-		return;
+		if (await start(profile, false)) return;
 	}
 }
 async function playerName() {
@@ -459,10 +486,14 @@ async function playerName() {
 			resolve(name.slice(0, 6));
 		};
 		m.element.appendChild(button('Continue', finish, 'primary'));
+		const back = () => { closeModal(); resolve(null); };
+		m.element.appendChild(button('Back', back, 'small'));
 		m.key = (k) => {
 			if (k === K.A || k === K.START) finish();
+			if (k === K.B) back();
 		};
 		input.addEventListener('keydown', (e) => {
+			if (e.key === 'Escape') { e.preventDefault(); back(); }
 			if (e.key === 'Enter') {
 				e.preventDefault();
 				finish();
@@ -510,7 +541,7 @@ async function playDuel(setup, save) {
 		},
 		onRequest: (r) => ui.onRequest(r),
 		onSave: (bytes) => {
-			if (setup.duelists[1].kind === 'ai') app.engine.cartridge.commit({ duel: bytes });
+			if (setup.duelists[1].kind === 'ai') app.engine.saveDuel(bytes);
 		},
 	};
 	try {
@@ -748,6 +779,7 @@ async function boot() {
 			menu: platformMenu,
 			card,
 			duel: playDuel,
+			peer: choosePeer,
 			report: async (name, text) => {
 				await exportFile(new TextEncoder().encode(text), name.trim() || 'tcg-report.txt');
 				return 0;
@@ -759,6 +791,14 @@ async function boot() {
 		},
 		new Cartridge(),
 	);
+	if (!Object.hasOwn(app.engine.cartridge.files, 'adventure2')) {
+		const response = await fetch('saves/diary2-after-tutorial.json');
+		if (!response.ok) throw new Error('Diary 2 could not be loaded.');
+		const diary = await response.json();
+		if (diary.version !== 1 || diary.profile !== 2 || typeof diary.save !== 'string' ||
+			!app.engine.installDiary(2, Uint8Array.from(atob(diary.save), (c) => c.charCodeAt(0))))
+			throw new Error('Diary 2 could not be saved.');
+	}
 	requestAnimationFrame(animate);
 	document.addEventListener('keydown', (e) => {
 		if (app.mode === 'title' || app.mode === 'duel' || e.target.tagName === 'INPUT') return;

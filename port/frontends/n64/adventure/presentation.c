@@ -40,12 +40,19 @@ static void snap(PresentationActor *a,float x,float z,unsigned d,unsigned id)
  a->pose.z=a->from_z=a->target_z=z;
  a->pose.heading=a->target_heading=heading(d);
 }
-static bool target(PresentationActor *a,float x,float z,unsigned d,unsigned frames,bool running,bool teleport)
+static bool target(PresentationActor *a,float x,float z,unsigned d,unsigned frames,bool running,bool teleport,bool tutorial)
 {
  a->target_heading=heading(d);a->running=running;
  if(x==a->target_x&&z==a->target_z)return false;
  if(teleport) {
   unsigned id=a->id;snap(a,x,z,d,id);return true;
+ }
+ if(tutorial) {
+  /* Tutorial motion runs at 70% speed. Carry the fractional rendered frame
+     across steps per actor, rather than rounding every short step upward.
+     This affects presentation only; source waits keep their own remainder. */
+  unsigned scaled=frames*10+a->movement_remainder;
+  frames=scaled/7;a->movement_remainder=scaled%7;
  }
  a->from_x=a->pose.x;a->from_z=a->pose.z;
  a->target_x=x;a->target_z=z;a->elapsed=0;a->duration=frames?frames:1;
@@ -94,7 +101,8 @@ static void world_segment(Presentation *p)
   if(distance<.001f)continue;
   unsigned direction=fabsf(dx)>=fabsf(dz)?(dx>=0?EAST:WEST):(dz>=0?SOUTH:NORTH);
   /* The source island path walks its dominant axis one pixel/GB frame. */
-  target(&p->world,x,z,direction,(unsigned)ceilf(distance*4),false,false);
+  target(&p->world,x,z,direction,(unsigned)ceilf(distance*4),false,false,
+         p->tutorial_motion&&p->world_script);
   return;
  }
  p->world_count=p->world_index=0;p->world_location=p->world_destination;
@@ -117,6 +125,9 @@ void presentation_init(Presentation *p,const OwState *s,bool cinematic)
 }
 unsigned presentation_sync(Presentation *p,const OwState *s,bool running)
 {
+ p->tutorial_motion=p->cinematic&&
+  (s->map==OVERWORLD_MAP||s->map==MASON_LABORATORY)&&
+  ow_event(s,EVENT_MASON_LAB_STATE)<MASON_LAB_RECEIVED_STARTER_DECK;
  unsigned changes=0;bool map_change=!p->initialized||p->map!=s->map;
  if(map_change) {
   p->initialized=true;p->map=s->map;p->camera_initialized=false;
@@ -127,7 +138,8 @@ unsigned presentation_sync(Presentation *p,const OwState *s,bool running)
   changes|=PRESENTATION_MAP;
  } else if(s->map&&target(&p->player,coordinate(s->x),coordinate(s->y),s->direction,
                          player_duration(s,running),running||player_duration(s,false)<8,
-                         magnitude(coordinate(s->x)-p->player.pose.x,coordinate(s->y)-p->player.pose.z)>5))
+                         magnitude(coordinate(s->x)-p->player.pose.x,coordinate(s->y)-p->player.pose.z)>5,
+                         p->tutorial_motion&&presentation_scripted_player(s)))
   changes|=PRESENTATION_PLAYER;
  PresentationActor next[OW_NPC_LIMIT];memset(next,0,sizeof(next));
  unsigned count=s->npc_count<OW_NPC_LIMIT?s->npc_count:OW_NPC_LIMIT;
@@ -138,7 +150,8 @@ unsigned presentation_sync(Presentation *p,const OwState *s,bool running)
   else snap(&next[i],coordinate(n->x),coordinate(n->y),n->direction,n->id);
   next[i].visible=n->visible;
   if(old&&target(&next[i],coordinate(n->x),coordinate(n->y),n->direction,8,false,
-                 opcode(s)==0x23||magnitude(coordinate(n->x)-next[i].pose.x,coordinate(n->y)-next[i].pose.z)>5))
+                 opcode(s)==0x23||magnitude(coordinate(n->x)-next[i].pose.x,coordinate(n->y)-next[i].pose.z)>5,
+                 p->tutorial_motion))
    changes|=PRESENTATION_NPC;
  }
  memcpy(p->npcs,next,sizeof(next));p->npc_count=count;

@@ -36,6 +36,7 @@
 #include "gen/text.h"
 #include "../common/save_store.h"
 #include "save_store_n64.h"
+#include "banner_font.h"
 #ifdef TCGN64_ADVENTURE
 #include "adventure/audio.h"
 #endif
@@ -1276,6 +1277,60 @@ static void draw_card_list_screen(const char *title, const char *info, const uin
 
 /* ------------------------------------------------------------------ requests */
 
+static int banner_text_width(const char *text)
+{
+	int width=0;
+	for(;*text;text++) {
+		unsigned ch=(unsigned char)*text;
+		if(ch<32||ch>126)ch='?';
+		width+=banner_font_advance[ch-BANNER_FONT_FIRST];
+	}
+	return width;
+}
+
+static void banner_text(int x,int y,int color,const char *text)
+{
+	uint16_t foreground=(uint16_t)g_col[color];
+	uint16_t *pixels=g_fb->buffer;
+	for(;*text;text++) {
+		unsigned ch=(unsigned char)*text;
+		if(ch<32||ch>126)ch='?';
+		const uint8_t *mask=banner_font_coverage[ch-BANNER_FONT_FIRST];
+		for(int row=0;row<BANNER_FONT_HEIGHT;row++)for(int col=0;col<BANNER_FONT_WIDTH;col++) {
+			int p=row*BANNER_FONT_WIDTH+col;
+			unsigned coverage=(mask[p/2]>>(p&1?0:4))&15;
+			int px=x+col,py=y+row;
+			if(!coverage||px<0||px>=g_fb->width||py<0||py>=g_fb->height)continue;
+			uint16_t *pixel=&pixels[py*(g_fb->stride/2)+px];
+			uint16_t background=*pixel;
+			unsigned r=(((foreground>>11)&31)*coverage+((background>>11)&31)*(15-coverage)+7)/15;
+			unsigned g=(((foreground>>6)&31)*coverage+((background>>6)&31)*(15-coverage)+7)/15;
+			unsigned b=(((foreground>>1)&31)*coverage+((background>>1)&31)*(15-coverage)+7)/15;
+			*pixel=(uint16_t)((r<<11)|(g<<6)|(b<<1)|1);
+		}
+		x+=banner_font_advance[ch-BANNER_FONT_FIRST];
+	}
+}
+
+static void draw_duel_banner(const char *text)
+{
+	int text_width=banner_text_width(text),w=text_width+28;
+	if(w<156)w=156;
+	if(w>SCREEN_W-24)w=SCREEN_W-24;
+	int x=(SCREEN_W-w)/2,y=TBOX_Y-36,h=32;
+	fill(x+3,y+3,w,h,C_PANELSHADE);
+	fill(x,y,w,h,C_EDGE);
+	fill(x+2,y+2,w-4,h-4,C_PAPER);
+	fill(x+1,y+1,w-2,1,C_PAPERLIGHT);
+	fill(x+1,y+1,1,h-2,C_PAPERLIGHT);
+	fill(x+1,y+h-2,w-2,1,C_PAPERSHADE);
+	fill(x+w-2,y+1,1,h-2,C_PAPERSHADE);
+	rect(x+5,y+5,w-10,h-10,C_PAPERSHADE);
+	int tx=x+(w-text_width)/2;
+	banner_text(tx+1,y+6,C_PAPERSHADE,text);
+	banner_text(tx,y+5,C_INK,text);
+}
+
 static const char *who(uint8_t duelist) { return g_name[side_of(duelist)]; }
 
 static int ui_ack(const TcgRequest *r, int ports)
@@ -1340,13 +1395,11 @@ static int ui_ack(const TcgRequest *r, int ports)
 				}
 			} else if (g_screen == TCG_SCREEN_BOX_MESSAGE && g_boxmsg <= BOXMSG_COIN_TOSS) {
 				static const char *const box[] = { "%s's turn", "%s's turn", "Between turns", "Decision",
-					"Bench Pokemon", "Active Pokemon", "Coin toss" };
+					"Bench Pokemon", "Arena Pokemon", "Coin toss" };
 				char b[40];
 				uint8_t d = g_boxmsg == BOXMSG_OPPONENTS_TURN ? TCG_OPPONENT : TCG_PLAYER;
 				snprintf(b, sizeof(b), box[g_boxmsg], who(d));
-				int w = (int)strlen(b) * CW + 24;
-				panel((SCREEN_W-w)/2,TBOX_Y-30,w,28);
-				print((SCREEN_W-w)/2+12,TBOX_Y-20,C_HI,b);
+				draw_duel_banner(b);
 			}
 		}
 		draw_textbox();
@@ -2264,6 +2317,8 @@ static int on_request(void *ctx, const TcgRequest *r)
 		else if(r->type==TCG_REQ_CARD_LIST&&r->num_items>0) {bit=2;g_review_label="duel-card-list";}
 		else if(r->type==TCG_REQ_ACK&&g_overlay.on) {bit=4;g_review_label="duel-card-detail";}
 		else if(r->type==TCG_REQ_ACK&&g_screen==TCG_SCREEN_COIN_TOSS) {bit=8;g_review_label="duel-coin";}
+		else if(r->type==TCG_REQ_ACK&&g_screen==TCG_SCREEN_BOX_MESSAGE&&g_boxmsg==BOXMSG_PLAYERS_TURN) {bit=16;g_review_label="duel-player-turn";}
+		else if(r->type==TCG_REQ_ACK&&g_screen==TCG_SCREEN_BOX_MESSAGE&&g_boxmsg==BOXMSG_OPPONENTS_TURN) {bit=32;g_review_label="duel-opponent-turn";}
 		if(bit&&!(g_review_seen&bit)) {
 			g_review_seen|=bit;
 			if(r->type==TCG_REQ_DUEL_MENU)ui_duel_menu(r,1);

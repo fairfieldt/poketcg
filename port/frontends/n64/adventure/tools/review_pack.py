@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Build a labelled N64 screenshot gallery without changing the before baseline.
+"""Build a standalone labelled N64 screenshot gallery from native captures.
 
 Examples (run from any working directory; paths below are repository relative):
   python3 port/frontends/n64/adventure/tools/review_pack.py \
-    --output port/reviews/n64-polish/after \
+    --output port/reviews/n64-current \
     --native port/frontends/n64/adventure/build/validation \
     --log port/frontends/n64/adventure/build/review-captures/ares.log \
     --rom port/frontends/n64/adventure/poketcg-review.z64
 
 --log is repeatable and accepts both DIAGNOSTIC=1 map/intro/cinematic dumps and
 DIAGNOSTIC=3 real duel request dumps. Explicit logs override matching PNGs from
---native. A new after gallery never silently imports the old before duel log.
+--native. New galleries never silently import a different capture session's log.
 All native pixels are before VI filtering. Labels stay outside image pixels.
 Pillow is optional and adds contact-sheet.png; the HTML gallery always works.
 """
@@ -56,6 +56,8 @@ LABELS={
     'duel-card-detail':'Duel: card detail',
     'duel-coin':'Duel: coin toss',
     'duel-action-menu':'Duel: action menu',
+    'duel-player-turn':"Duel: player's turn",
+    'duel-opponent-turn':"Duel: opponent's turn",
 }
 RAW_CAPTURE='Native N64 RDP RGBA16 framebuffer after completion fence, before VI filtering'
 
@@ -117,7 +119,7 @@ def gallery(root,items,title):
     figures=''.join('<figure><a href="'+html.escape(i['file'])+'"><img src="'+html.escape(i['file'])+'"></a><figcaption>'+html.escape(i['label'])+'</figcaption></figure>' for i in items)
     (root/'index.html').write_text('''<!doctype html><meta charset="utf-8"><title>'''+escaped+'''</title>
 <style>body{background:#171923;color:#eee;font:16px system-ui;margin:24px}main{display:grid;grid-template-columns:repeat(auto-fit,minmax(640px,1fr));gap:24px}figure{margin:0}img{width:640px;height:480px;image-rendering:pixelated;max-width:100%;object-fit:contain}figcaption{padding:8px 0}p{max-width:900px;line-height:1.5}</style>
-<h1>'''+escaped+'''</h1><p>Native 320 × 240 RDP captures before VI antialiasing and dedithering. Labels are outside the game images. Assess composition, lighting, shadows, material and texture variety, character scale, camera, UI hierarchy, and game feel. Final VI processing softens these raw framebuffer pixels.</p><main>'''+figures+'</main>')
+<h1>'''+escaped+'''</h1><p>Screenshots from the N64 renderer at 320 × 240, shown at twice their original size. Labels sit outside the game images. Captures precede VI antialiasing and dedithering; final output is softer.</p><main>'''+figures+'</main>')
     try:
         from PIL import Image,ImageDraw
     except ImportError:
@@ -138,10 +140,10 @@ def main():
     p.add_argument('--native',type=Path,default=DEFAULT_NATIVE,help='Fresh DIAG1 PNGs and result.json/validation.json (default: generated/native)')
     p.add_argument('--log',type=Path,action='append',help='DIAG1 or DIAG3 framebuffer log; repeat to combine captures')
     p.add_argument('--rom',type=Path,action='append',help='Exact capture ROM for each --log, repeated in matching order; omit when unknown')
-    p.add_argument('--title',help='Gallery heading (default: N64 <output directory name> review)')
+    p.add_argument('--title',default='N64 game presentation',help='Standalone gallery heading (default: N64 game presentation)')
     args=p.parse_args();root=repo_path(args.output);native=repo_path(args.native)
     if root.is_relative_to(BEFORE) and BEFORE.exists() and any(BEFORE.iterdir()):
-        p.error('The existing before gallery is immutable. Choose --output port/reviews/n64-polish/after (or a temporary directory).')
+        p.error('The existing baseline gallery is immutable. Choose a new --output directory.')
     if root==native:
         p.error('--output must differ from --native so source captures remain untouched.')
     logs=[repo_path(path) for path in (args.log or [])]
@@ -187,14 +189,14 @@ def main():
     items=[images[name] for name in LABELS if name in images]
     try:commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=REPO,text=True).strip()
     except (OSError,subprocess.CalledProcessError):commit=None
-    manifest=dict(purpose='N64 art direction, design, texture, lighting, shadow, material, camera and game-feel review',
+    manifest=dict(purpose='N64 game presentation screenshots for independent review',
                   capture_notes='Original native 320x240 pixels before final VI antialiasing/dedithering. Labels are outside screenshots. No final-VI scanout is claimed.',
                   source_commit=commit,native_source=relative(native),
                   native_validation_source=relative(metadata_path) if metadata_path else None,
                   native_validation_rom_sha256=validation_hash,
                   logs=log_records,images=items)
     if len(roms)==1:manifest['log_rom_sha256']=sha256(roms[0])
-    manifest['contact_sheet']=gallery(root,items,args.title or f'N64 {root.name} review')
+    manifest['contact_sheet']=gallery(root,items,args.title)
     (root/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     missing=[name for name in LABELS if name not in images]
     print(f'{len(items)} labelled native screenshots: {root}')

@@ -7,6 +7,7 @@
 // Board state is read straight from engine memory (duel.duelvars) whenever something changes.
 import { C, T, W, EV, SCREEN, REQ, MENU, TCG_PLAYER, TCG_OPPONENT, TCG_CANCEL } from './engine.js';
 import { el, clear, art, sym, esym, typeIcon, richText, plainText, cardTitle, costIcons, cardPage, COLOR_NAMES, STATUS_NAMES } from './gfx.js';
+import { duelBanner } from './duel_banners.js';
 
 export const K = { UP: 'up', DOWN: 'down', LEFT: 'left', RIGHT: 'right', A: 'a', B: 'b', START: 'start' };
 
@@ -55,6 +56,7 @@ export class DuelUI {
 		this.text = '';
 		this.playAreaExclude = 0;
 		this.overlayKind = null;
+		this.pendingCardSelection = null;
 		this.controls = []; // input controller stack, top gets the keys
 		this.coins = [];
 		this.ended = null;
@@ -353,8 +355,8 @@ export class DuelUI {
 
 	showBanner(boxmsg) {
 		clear(this.$banner);
-		const b = el('div', 'boxmsg');
-		b.style.setProperty('--i', boxmsg);
+		const b = duelBanner(boxmsg);
+		if (!b) { this.hideBanner(); return; }
 		this.$banner.appendChild(b);
 		this.$banner.className = 'banner';
 	}
@@ -419,8 +421,11 @@ export class DuelUI {
 			const row = el('div', 'cl-item');
 			row.append(typeIcon(card), el('span', 'cl-name', cardTitle(card)));
 			if (card.isPokemon) row.appendChild(el('span', 'cl-stage', ['', '1', '2', '2'][card.stage] ? `St${['', '1', '2', '2'][card.stage]}` : 'Basic'));
-			row.addEventListener('mouseenter', () => ctl.move(i));
-			row.addEventListener('click', () => { ctl.move(i); if (selectable) ctl.select(); });
+			// Hover never changes the card that a later confirm will use.
+			row.addEventListener('click', () => {
+				ctl.move(i);
+				if (selectable) { if (ctl.pointerSelect) ctl.pointerSelect(i); else ctl.select(); }
+			});
 			list.appendChild(row);
 			return { row, card };
 		});
@@ -455,7 +460,7 @@ export class DuelUI {
 				else if (k === K.START) { if (rows.length) this.showCardPage(rows[ctl.cursor].card); }
 				return true;
 			},
-			rows, wrap,
+			rows, wrap, owner: d, deckIndexes: items,
 		};
 		if (rows.length) ctl.move(ctl.cursor);
 		return ctl;
@@ -493,7 +498,6 @@ export class DuelUI {
 			row.appendChild(info);
 			const ok = selectable(i);
 			if (!ok) row.classList.add('disabled');
-			row.addEventListener('mouseenter', () => { if (ok) ctl.moveTo(i); });
 			row.addEventListener('click', () => { if (ok) { ctl.moveTo(i); ctl.select(); } else this.showCardPage(slot.card, { hp: slot.hp }); });
 			wrap.appendChild(row);
 			rows.push({ slot: i, row, ok, data: slot });
@@ -540,7 +544,6 @@ export class DuelUI {
 			const b = el('button', 'tm-item');
 			if (it.node) b.appendChild(it.node); else b.appendChild(richText(it.label));
 			if (it.disabled) b.classList.add('disabled');
-			b.addEventListener('mouseenter', () => ctl.move(i));
 			b.addEventListener('click', (e) => { e.stopPropagation(); ctl.move(i); ctl.select(); });
 			if (grid) { b.style.gridRow = grid[i][0] + 1; b.style.gridColumn = grid[i][1] + 1; }
 			box.appendChild(b);
@@ -748,6 +751,7 @@ export class DuelUI {
 	/* answer a request: opts.remote = the answer comes from the network (show nothing to pick) */
 	onRequest(req, opts = {}) {
 		this.req = req;
+		if (req.type !== REQ.CARD_LIST) this.pendingCardSelection = null;
 		if (req.type !== REQ.ACK) {
 			this.setPerspective(req.duelist);
 			this.hideBanner();
@@ -849,8 +853,7 @@ export class DuelUI {
 		box.appendChild(list);
 		const els = entries.map(([label, fn], i) => {
 			const b = el('button', 'tm-item', label);
-			b.addEventListener('click', (e) => { e.stopPropagation(); ctl.cursor = i; open(); });
-			b.addEventListener('mouseenter', () => move(i));
+			b.addEventListener('click', (e) => { e.stopPropagation(); move(i); open(); });
 			list.appendChild(b);
 			return b;
 		});
@@ -916,10 +919,14 @@ export class DuelUI {
 	reqCardList(req) {
 		const items = Array.from(req.items.slice(0, req.numItems));
 		const viewOnly = !!req.arg[0];
+		const pending = this.pendingCardSelection;
+		this.pendingCardSelection = null;
+		const reselect = pending && pending.owner === req.shown && pending.menuType === req.arg[1] && !viewOnly
+			? items.indexOf(pending.deckIndex) : -1;
 		this.setText(req.text2Str || this.text);
 		return this.ask((done) => {
 			const ctl = this.cardListView({
-				d: req.shown, items, header: req.textStr, cursor: req.cursor,
+				d: req.shown, items, header: req.textStr, cursor: reselect >= 0 ? reselect : req.cursor,
 				onSelect: (i) => done(i),
 				onCancel: () => done(TCG_CANCEL),
 			});
@@ -932,23 +939,38 @@ export class DuelUI {
 			ctl.wrap.appendChild(bar);
 			this.showOverlay('cardlist', ctl.wrap);
 			this.cardListCtl = ctl;
+			ctl.menuType = req.arg[1];
+			// An explicit click on another hand card cancels Play/Check first.
+			// Replay only that click once the C loop requests the same list again.
+			if (reselect >= 0) queueMicrotask(() => {
+				if (this.controls.at(-1) === ctl) ctl.select();
+			});
 			return ctl;
 		});
 	}
 
 	reqCardItemMenu(req) {
 		const labels = (req.textStr || 'Play\nCheck').split('\n').map((s) => s.trim()).filter(Boolean);
-		if (this.cardListCtl && this.cardListCtl.rows) {
+		const list = this.cardListCtl;
+		if (list && list.rows) {
 			// keep the list visible with the chosen card highlighted
-			this.cardListCtl.rows.forEach((r) => r.row.classList.remove('picked'));
-			const cur = this.cardListCtl.rows[this.cardListCtl.cursor];
+			list.rows.forEach((r) => r.row.classList.remove('picked'));
+			const cur = list.rows[list.cursor];
 			if (cur) cur.row.classList.add('picked');
 		}
 		this.setText(cardTitle(this.duel.card(this.duel.cardId(req.shown, req.arg[0]))));
-		return this.ask((done) => this.textMenu({
-			items: labels.slice(0, 2).map((label) => ({ label })), cursor: 0, cls: 'item-menu',
-			onSelect: (i) => done(i), onCancel: () => done(TCG_CANCEL),
-		}));
+		return this.ask((done) => {
+			if (list && list.owner === req.shown && this.$overlay.contains(list.wrap)) list.pointerSelect = i => {
+				const deckIndex = list.deckIndexes[i];
+				if (deckIndex === req.arg[0]) return;
+				this.pendingCardSelection = { owner: req.shown, deckIndex, menuType: list.menuType };
+				done(TCG_CANCEL);
+			};
+			return this.textMenu({
+				items: labels.slice(0, 2).map((label) => ({ label })), cursor: 0, cls: 'item-menu',
+				onSelect: (i) => done(i), onCancel: () => done(TCG_CANCEL),
+			});
+		}).finally(() => { if (list) list.pointerSelect = null; });
 	}
 
 	reqPlayArea(req) {
@@ -1135,7 +1157,6 @@ export class DuelUI {
 				const p = el('button', 'prize-card' + (mask & (1 << i) ? '' : ' taken'));
 				p.appendChild(sym(SYM_PRIZE));
 				p.addEventListener('click', (e) => { e.stopPropagation(); if (mask & (1 << i)) done(i); });
-				p.addEventListener('mouseenter', () => move(i));
 				grid.appendChild(p);
 				els.push(p);
 			}
@@ -1195,7 +1216,6 @@ export class DuelUI {
 			const add = (parent, i, b, ok) => {
 				if (!ok) b.classList.add('taken');
 				b.addEventListener('click', (e) => { e.stopPropagation(); if (ok) done(i); });
-				b.addEventListener('mouseenter', () => move(items.findIndex((x) => x.i === i)));
 				parent.appendChild(b);
 				items.push({ i, b, ok });
 			};

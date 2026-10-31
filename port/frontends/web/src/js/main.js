@@ -112,7 +112,8 @@ function menuKeys(buttons, onBack) {
 		buttons.forEach((b, k) => b.classList.toggle('cur', k === cur));
 		buttons[cur].scrollIntoView({ block: 'nearest' });
 	};
-	buttons.forEach((b, i) => b.addEventListener('mouseenter', () => move(i)));
+	// Select only through a click or navigation key, never incidental hover.
+	buttons.forEach((b, i) => b.addEventListener('click', () => move(i), { capture: true }));
 	app.keyHandler = (e) => {
 		if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'SELECT' || e.target.tagName === 'TEXTAREA')) return;
 		const k = keyOf(e);

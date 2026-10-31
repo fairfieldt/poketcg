@@ -55,9 +55,15 @@ bool game_save_peer(Game *peer)
 static Game *read_peer(void)
 {
  if(game.ow.duel_pending){n64_message("Diary","Finish the saved duel before connecting.");return NULL;}
+#ifdef TCG_WEB_ADVENTURE
+ extern bool game_choose_peer(void);
+ if(!game_choose_peer())return NULL;
+#endif
  Game *peer=malloc(sizeof(*peer));if(!peer)return NULL;
  if(!game_read_profile(3-game_profile,peer)){free(peer);n64_message("Other diary","Create the other diary before connecting.");return NULL;}
+#ifndef TCG_WEB_ADVENTURE
  if(peer->ow.duel_pending){free(peer);n64_message("Other diary","Finish the saved duel before connecting.");return NULL;}
+#endif
  return peer;
 }
 bool game_card_pop(void)

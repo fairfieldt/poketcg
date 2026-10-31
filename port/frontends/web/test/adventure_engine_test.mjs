@@ -96,14 +96,43 @@ assert(frames.some(view => view.map === 1 && view.x === 10 && view.y === 14));
 await fs.writeFile(path.join(isolated,'world-travel.json'),JSON.stringify(frames.find(view=>view.map===0&&view.presentation.world.x>5&&view.presentation.world.x<7),null,2));
 assert.equal(profile(1).total, 90);
 assert(engine.profile(1)); assert(!engine.profile(2));
+// Install the shipped tutorial-complete diary without replacing either an
+// existing diary or another diary's interrupted duel.
+const seedFixture=JSON.parse(await fs.readFile(path.join(web,'src/saves/diary2-after-tutorial.json'),'utf8'));
+const seedSave=new Uint8Array(Buffer.from(seedFixture.save,'base64'));
+const seedStorage=new MemoryStorage(),seedCartridge=new Cartridge(seedStorage);
+const firstDiary=cartridge.read('adventure1'),pendingBytes=new Uint8Array(1660).fill(37);
+assert(seedCartridge.commit({adventure1:firstDiary,duel:pendingBytes,duelowner:new Uint8Array([1])}));
+const seedEngine=await AdventureEngine.load(module,{},seedCartridge);
+assert(seedEngine.installDiary(2,seedSave));assert(seedEngine.profile(2));
+assert.deepEqual(seedCartridge.read('adventure1'),firstDiary);
+assert.deepEqual(seedCartridge.read('duel'),pendingBytes);
+assert.deepEqual(seedCartridge.read('duelowner'),new Uint8Array([1]));
+const withSeed=seedCartridge.export();
+assert(!seedEngine.installDiary(2,seedSave));assert.deepEqual(seedCartridge.export(),withSeed);
+assert(seedCartridge.commit({adventure2:null}));
+const corruptSeed=seedSave.slice();corruptSeed[corruptSeed.length-1]^=1;
+const withoutSeed=seedCartridge.export();
+assert(!seedEngine.installDiary(2,corruptSeed));assert.deepEqual(seedCartridge.export(),withoutSeed);
+seedStorage.failNext=true;
+assert(!seedEngine.installDiary(2,seedSave));assert.deepEqual(seedCartridge.export(),withoutSeed);
+assert(seedEngine.installDiary(2,seedSave));
+assert(seedCartridge.commit({duel:null,duelowner:null}));
+const seedReload=await AdventureEngine.load(module,{
+    message(){throw new Error('Tutorial replayed from Diary2 checkpoint');},
+    duel(){throw new Error('Practice duel replayed from Diary2 checkpoint');},
+},new Cartridge(seedStorage));
+assert.equal(await seedReload.start(2),0);
+assert.equal(seedReload.x.web_adv_event(C.EVENT_MASON_LAB_STATE),C.MASON_LAB_RECEIVED_STARTER_DECK);
+assert.equal(seedReload.view.totalCards,90);assert.equal(seedReload.view.map,C.MASON_LABORATORY);
 starterChoice=1;await engine.start(2, { fresh: true, name: 'RONALD', seed: 456 });starterChoice=0;
 assert.equal(engine.name, 'RONALD'); assert.equal(profile(2).total, 90); assert.equal(profile(1).total, 90);
 assert(engine.profile(1) && engine.profile(2));
 const cleanCartridge=cartridge.export();
-assert(cartridge.commit({duelowner:new Uint8Array([1]),duel:new Uint8Array(1660)}));
-const blockedCartridge=cartridge.export();
-assert.equal(await engine.start(2),-2,'The other diary must not replace a pending single-player duel');
-assert.deepEqual(cartridge.export(),blockedCartridge);
+assert(cartridge.commit({'duelowner-1':new Uint8Array([1]),'duel-1':new Uint8Array(1660)}));
+const otherPending=cartridge.read('duel-1');
+assert.equal(await engine.start(2),0,'An independent diary must remain playable');
+assert.deepEqual(cartridge.read('duel-1'),otherPending);
 assert(cartridge.import(cleanCartridge));
 await fs.writeFile(path.join(isolated,'cartridge.json'),cartridge.export());
 const exported = cartridge.export();
@@ -197,4 +226,4 @@ assert(frames.slice(atIsland).some(view=>view.map===0&&view.presentation.world.x
 await engine.action(6);
 cartridge=new Cartridge(storage);engine=await AdventureEngine.load(module,handlers,cartridge);await engine.start(1);
 assert.equal(engine.view.map,C.LIGHTNING_CLUB_ENTRANCE);assert.equal(engine.view.totalCards,afterMail);
-console.log(`ADVENTURE WASM PASS: actual source intro+practice setup, ${frameCount} animated frames, 90-card starters, two canonical diaries/reload/export/import and pending-duel owner guard, paired Card Pop/history, card/recipe gifts, interrupted pair rollback, two-human selected-deck1/2 Battle Center, one-time mail/glossary/print export, collision-grid exit and animated island navigation`);
+console.log(`ADVENTURE WASM PASS: actual source intro+practice setup, ${frameCount} animated frames, 90-card starters, two canonical diaries/reload/export/import and independent pending-duel namespaces, paired Card Pop/history, card/recipe gifts, interrupted pair rollback, two-human selected-deck1/2 Battle Center, one-time mail/glossary/print export, collision-grid exit and animated island navigation`);

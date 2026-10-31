@@ -1,4 +1,4 @@
-/* Browser platform for the same native story, inventory, menus and two diaries.
+/* Browser platform for the same native story, inventory, menus and diary sessions.
  * Only host I/O crosses into JS; source gameplay always stays in portable C. */
 #include "../../../overworld/gen/data.h"
 #include "../../common/save_store.h"
@@ -24,8 +24,9 @@ int js_adv_store(int kind, const char *name, uint8_t *data, unsigned size, const
 IMPORT("js_adv_clock") double js_adv_clock(void);
 IMPORT("js_adv_sound") void js_adv_sound(int kind, int id);
 
-/* JS event kinds: frame, message, menu, card, duel, report. */
-enum { AV_FRAME = 1, AV_MESSAGE, AV_MENU, AV_CARD, AV_DUEL, AV_REPORT, AV_AUDIO_WAIT };
+/* JS event kinds: frame, message, menu, card, duel, report, wait, peer. */
+enum { AV_FRAME = 1, AV_MESSAGE, AV_MENU, AV_CARD, AV_DUEL, AV_REPORT, AV_AUDIO_WAIT, AV_SELECT_PEER };
+bool game_choose_peer(void) { return js_adventure(AV_SELECT_PEER, 0, 0, 0, 0, 0, 0) != 0; }
 Game game;
 bool game_credits_finished;
 static Presentation presentation;
@@ -440,12 +441,9 @@ EXPORT("web_adv_profile") int web_adv_profile(unsigned number) {
   return game_read_profile(number, &other);
 }
 EXPORT("web_adv_start") int web_adv_start(unsigned profile, unsigned fresh, unsigned seed) {
-  unsigned selected = profile == 2 ? 2 : 1;
+  (void)profile;
+  unsigned selected = 1;
   uint8_t owner = 0;
-  if (save_store_read("duelowner", &owner, 1) == 1 && owner >= 1 && owner <= 2 &&
-      owner != selected &&
-      save_store_read(SAVE_STORE_DUEL, saved_duel, sizeof(saved_duel)) == TCG_SAVE_SIZE)
-    return -2;
   game_profile = selected;
   game_credits_finished = false;
   presentation_init(&presentation, NULL, true);

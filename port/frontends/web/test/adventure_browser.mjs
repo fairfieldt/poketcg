@@ -53,7 +53,16 @@ try {
 	await page.waitForFunction(() => window.tcgAdventure?.engine, { timeout: 60000 });
 	console.log('boot ready');
 	await page.screenshot({ path: path.join(out, 'opening.png') });
-	await page.getByRole('button', { name: 'Start', exact: true }).click();
+	const startButton=page.getByRole('button',{name:'Start',exact:true});
+	await page.waitForSelector('.adventure-title-start:not([disabled])');
+	const beforeStart=await startButton.boundingBox();
+	await page.mouse.move(beforeStart.x+beforeStart.width/2,beforeStart.y+beforeStart.height/2);
+	await page.mouse.down();
+	const pressedStart=await startButton.boundingBox();
+	assert(Math.abs(pressedStart.x-beforeStart.x)<.1,'Start stays centered while pressed');
+	await page.mouse.up();
+	const afterStart=await startButton.boundingBox();
+	assert(Math.abs(afterStart.x-beforeStart.x)<.1,'Start stays centered after skipping intro');
 	await page.getByRole('button', { name: 'Start', exact: true }).click();
 	console.log('diary selector');
 	await page.getByRole('button', { name: 'Diary 1', exact: true }).click();
@@ -112,7 +121,7 @@ try {
 		}, Array.from(bytes));
 		await page.getByRole('button', { name: 'Start', exact: true }).click();
 		await page.getByRole('button', { name: 'Start', exact: true }).click();
-		await page.getByRole('button', { name: 'Diary 1', exact: true }).click();
+		await page.getByRole('button', { name: /^Diary 1(?::|$)/ }).click();
 		await page.getByRole('button', { name: 'Continue', exact: true }).click();
 		await page.waitForFunction(() => window.tcgAdventure.active && !window.tcgAdventure.engine.busy, {
 			timeout: 30000,

@@ -1,0 +1,51 @@
+Review the presentation of this Pokemon Trading Card Game port as a game
+shipping on Nintendo 64. Assess polish, look and feel, art direction, and what
+would most improve the impression of a finished game.
+
+Inspect the complete supplied screenshot set first: captures/contact-sheet.png,
+then individual PNGs and captures/manifest.json. It covers the opening/title,
+naming, island world map, Mason laboratory and scripted conversations, every
+club, a shared lobby, Pokemon Dome, Hall of Honor, and real duel screens
+including hand selection, card details, coin toss, actions and turn banners.
+The PNGs are native 320x240 RDP output before VI antialias/dedither filtering.
+Judge composition, materials and hierarchy at native size and zoom. Account
+for the filtering caveat when discussing pixel noise or edge artifacts.
+
+The target is 320x240, 16-bit color, 30Hz presentation and 4MiB RAM. Favor plausible
+N64 methods: low-poly silhouettes, small filtered textures, vertex lighting,
+baked shading, inexpensive shadows, restrained animation and readable UI.
+Do not assume modern PBR, bloom or high-resolution text is the design goal.
+
+Focus on look and feel and design as well as defects. Consider lighting and
+shadow direction/contact, texture content/scale/repetition, material contrast,
+palette/value hierarchy, prop and character modeling, depth and scale,
+distinctive room atmosphere, composition/cameras, character readability,
+dialogue and duel UI, transitions, animation and feedback. Explain the largest
+weaknesses candidly and identify which qualities are already effective.
+
+Static screenshots cannot establish movement or input feel. Inspect the listed
+presentation code for timing and label code-based inferences clearly. Do not
+claim to have played the game or viewed final VI output if you have not.
+
+Source scope:
+  port/world3d/tools/{build_world.py,room_style.py,scene_specs.py,author_overworld.py}
+  port/frontends/n64/adventure/{main,scene,presentation,dialogue,intro,naming}.c
+  port/frontends/n64/tcgn64.c and banner_font.h
+  port/frontends/web/src/js/{world3d,duel_ui,duel_banners,adventure}.js
+  port/frontends/web/src/css/{style,adventure}.css
+Original room images/descriptions: port/maps/*.png and *.txt.
+Visual concepts: port/maps/prototypes/lightning_club_n64_v1.png and
+port/maps/prototypes/overworld_n64_concept_v1.png.
+Source positions, collision, story outcomes and character rigs are deliberate
+constraints; propose presentation changes without casually changing game rules.
+
+Use only the supplied capture bundle, this brief and the listed source/maps.
+Do not read unrelated project notes, git history, task discussions or reports.
+Do not edit production code, launch an emulator, commit, push or delegate.
+
+Return a prioritized, concrete review. Cite screenshot filenames and relevant
+functions/files. Separate high-impact feasible work from optional experiments.
+Give a coherent art-direction target and practical validation for proposed
+changes. Include aesthetic/design recommendations, not only rendering bugs.
+Write the complete report to review.txt next to this brief and summarize the
+five highest-impact recommendations in your final response.
