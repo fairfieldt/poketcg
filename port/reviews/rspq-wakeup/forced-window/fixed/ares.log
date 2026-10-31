@@ -1,0 +1,19 @@
+Loaded rspq-forced-fixed
+Vulkan Enabled: using paraLLEl-RDP
+RSPQ FORCED WAKE WINDOW pc=18 status=3023
+ASSERTION FAILED: *SP_PC==8
+file "main.c", line 24, function: main
+Emulator did not single-step the queue status read
+
+2026-10-31 12:43:45.059 ares[68696:18978822] Resizing output buffers to 1536, 1152
+Backtrace:
+    inspector_page_exception+0xa24 (libdragon/src/inspector.c:353) [0x80017a84] (inline)
+    inspector+0xa24 (libdragon/src/inspector.c:640) [0x80017a84]
+    handler+0x24 (libdragon/src/inspector.c:738) [0x80018124] (inline)
+    handler+0x24 (libdragon/src/inspector.c:736) [0x80018124]
+    __onSyscallException+0xbc (libdragon/src/exception.c:564) [0x80019f1c]
+    <EXCEPTION HANDLER>+0x0 (inthandler.o:0) [0x80000554]
+    __inspector_assertion+0xc (libdragon/src/inspector.c:711) [0x8001816c]
+    debug_assert_func_f+0xb4 (libdragon/src/debug.c:370) [0x80013854]
+    main+0x1f0 (main.c:24) [0x80010a10]
+    __text_start+0x64 (??:0) [0x80000464]

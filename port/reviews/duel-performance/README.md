@@ -28,6 +28,8 @@ The final battle cases reach the 30 fps cap at both resolutions. This is actual 
 
 The 480×360 canvas clear fell from approximately 21.25 ms of CPU work to 1.03 ms including the RDP fence. A board restore takes approximately 3.1 ms instead of a roughly 127 ms full board rebuild. Fresh engine-state changes still build a new board once.
 
+A separate [4 MiB native gate](native-4m-gate.json) then ran this same frozen harness with `ExpansionPak:false`. Both requested modes correctly used 320×240, all 128 complete-frame comparisons passed, and the 116,480-byte image allocated and released in both passes. This verifies the real 4 MiB emulator configuration for the renderer; it does not substitute for the full adventure residency budget.
+
 The broader sample identifies the next work separately:
 
 | Common UI case | 320×240 median work | 480×360 median work |

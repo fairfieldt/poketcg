@@ -1,0 +1,16 @@
+{
+  "variant": "nop-control",
+  "passed": true,
+  "rom_sha256": "03574d8d8642fd0033e608b0545213b8c15794e8d8ad78a8286369d57672c884",
+  "wall_seconds": 2.83,
+  "last_log_lines": [
+    "RSPQ WAKE STRESS progress=1024 callbacks=1023",
+    "RSPQ WAKE STRESS progress=1536 callbacks=1535",
+    "RSPQ WAKE STRESS progress=2048 callbacks=2046",
+    "RSPQ WAKE STRESS progress=2560 callbacks=2559",
+    "RSPQ WAKE STRESS progress=3072 callbacks=3070",
+    "RSPQ WAKE STRESS progress=3584 callbacks=3582",
+    "RSPQ WAKE STRESS progress=4096 callbacks=4094",
+    "RSPQ WAKE STRESS PASS callbacks=4096"
+  ]
+}

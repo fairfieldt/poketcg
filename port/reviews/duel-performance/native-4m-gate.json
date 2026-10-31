@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "ram_bytes": 4194304,
+  "source": "Same frozen native board harness as final.json, explicit ExpansionPak:false settings; both requested video modes fall back to320x240",
+  "full_canvas_exact": [
+    {
+      "width": 320,
+      "frames": 64
+    },
+    {
+      "width": 320,
+      "frames": 64
+    }
+  ],
+  "image_allocation_and_release": [
+    {
+      "width": 320,
+      "backing_bytes": 116480,
+      "free_before_release": 2570904,
+      "free_after_release": 2687392,
+      "key_bytes": 8384
+    },
+    {
+      "width": 320,
+      "backing_bytes": 116480,
+      "free_before_release": 2570904,
+      "free_after_release": 2687392,
+      "key_bytes": 8384
+    }
+  ],
+  "rom_sha256": "7ad8db787c67fe08a7d2d6bf837f3524f8efde69339de1dd3db1e9ffec06aebc",
+  "minimum_free_heap_scope": "Isolated renderer+engine+reference harness, not full production adventure residency"
+}

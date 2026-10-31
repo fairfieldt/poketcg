@@ -1,4 +1,5 @@
 #include <libdragon.h>
+#include <rspq_constants.h>
 #include <stdint.h>
 
 static unsigned callbacks;
@@ -8,6 +9,23 @@ static void completed(void *ctx)
 int main(void)
 {
  debug_init_isviewer();debug_init_usblog();timer_init();rspq_init();
+#if RSPQ_FORCE_WINDOW
+ /* Force the real queue engine into the exact race window: it has read
+    MORE=0, but has not executed the following ANDI/branch/BREAK yet. The
+    test uses normal architectural single-step, not patched emulator code. */
+ rspq_wait();
+ RSP_WAIT_LOOP(200){if(*SP_STATUS&SP_STATUS_HALTED)break;}
+ assertf(*SP_PC==0x18,"Queue did not reach its ordinary empty-input halt");
+ *SP_PC=4;
+ *SP_STATUS=SP_WSTATUS_CLEAR_SIG_MORE|SP_WSTATUS_SET_SSTEP|
+  SP_WSTATUS_CLEAR_HALT|SP_WSTATUS_CLEAR_BROKE;
+ RSP_WAIT_LOOP(200){if(*SP_STATUS&SP_STATUS_HALTED)break;}
+ debugf("RSPQ FORCED WAKE WINDOW pc=%lx status=%lx\n",(unsigned long)*SP_PC,(unsigned long)*SP_STATUS);
+ assertf(*SP_PC==8,"Emulator did not single-step the queue status read");
+ *SP_STATUS=SP_WSTATUS_CLEAR_SSTEP;
+ rspq_noop();rspq_wait();
+ debugf("RSPQ FORCED WAKE WINDOW PASS\n");
+#endif
  debugf("RSPQ WAKE STRESS BEGIN: normal/highpri wraps, idle wakes, ordered callbacks\n");
  for(unsigned i=0;i<4096;i++){
   /* Cross the normal512-word and highpri128-word buffer boundaries at varied

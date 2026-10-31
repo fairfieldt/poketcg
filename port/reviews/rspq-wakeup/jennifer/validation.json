@@ -1,0 +1,30 @@
+{
+  "private_saved_game_material": "Raw SRAM, fixtures and logs remain private ignored build artifacts; do not copy into public reports",
+  "baseline": {
+    "last_complete_request": {
+      "request": 212,
+      "frame": 3777,
+      "type": 6,
+      "answer": 0,
+      "turn": 13
+    },
+    "result": "No timeout during bounded original-SDK replay",
+    "limitation": "Exact duel fixture, actual audio and SRAM writes, but initial journal was empty; exclude from full-journal validation"
+  },
+  "wake_fix": {
+    "commit": "cd5b8f567006c551b20fce07ae2503d592f93197",
+    "source": "Pinned project-local rspq.c override; installed SDK unchanged",
+    "completed_frames": 2002,
+    "requests": 112,
+    "turn": 7,
+    "actual_loaded_journal_sizes": {
+      "adventure1": 6571,
+      "duelowner": 1,
+      "duel": 1660
+    },
+    "actual_loaded_journal_byte_comparisons": "duel and adventure1 match the original read-only extracted snapshot",
+    "result": "PASS: no RSP timeout/assertion/game-state error",
+    "frontend_audio_video": "git3d53af92; test-only auto-ack and non-ACK answer driver; real renderer/mixer/VADPCM/save_store"
+  },
+  "causality": "Original rare failure not reproduced locally; upstream backport matches observed PC018/HALT/BROKE+MORE signature. Targeted SDK stress/control belongs to parent report."
+}
