@@ -13,6 +13,11 @@ REPO := $(PORT)/..
 ROM ?= poketcg-adventure
 DIAGNOSTIC ?= 0
 HIGH_RES ?= 0
+ifneq ($(filter 5 6 7 8 12,$(DIAGNOSTIC)),)
+SCENE_T3D ?= 0
+else
+SCENE_T3D ?= 1
+endif
 VI_FILTER ?= FILTERS_RESAMPLE
 ENGINE_SOURCES := $(wildcard $(PORT)/src/*.c $(PORT)/src/gen/*.c $(PORT)/src/effects/*.c $(PORT)/src/ai/*.c)
 ENGINE_OBJECTS := $(ENGINE_SOURCES:$(PORT)/src/%.c=$(BUILD_DIR)/engine/%.o)
@@ -38,14 +43,22 @@ face-preview-assets:
 	python3 tools/pack_face_preview.py --output $(N64_MKDFS_ROOT)/faces --mksprite $(N64_MKSPRITE)
 $(BUILD_DIR)/$(ROM).dfs: face-preview-assets
 endif
-VIDEO_CONFIG := $(BUILD_DIR)/config-$(DIAGNOSTIC)-$(VI_FILTER)-$(HIGH_RES)
+VIDEO_CONFIG := $(BUILD_DIR)/config-$(DIAGNOSTIC)-$(VI_FILTER)-$(HIGH_RES)-$(SCENE_T3D)
 INCLUDES := -I$(PORT)/src -I$(PORT)/overworld -I$(PORT)/gameplay -I$(PORT)/world3d -I$(BUILD_DIR)
 CFLAGS += $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -DADVENTURE_VI_FILTER=$(VI_FILTER) -DADVENTURE_HIGH_RES=$(HIGH_RES)
+ifeq ($(SCENE_T3D),1)
+T3D_ROOT := $(CURDIR)/build/tiny3d-experiment
+T3D_CORE := $(T3D_ROOT)/build/libt3d-poketcg.a
+CFLAGS += -DSCENE_T3D=1 -I$(T3D_ROOT)/src
+$(T3D_CORE):
+	python3 tools/fetch_tiny3d.py
+$(BUILD_DIR)/$(ROM).elf: $(T3D_CORE)
+endif
 CARD_PNGS := $(wildcard $(REPO)/src/gfx/cards/*.png)
 CARD_SPRITES := $(CARD_PNGS:$(REPO)/src/gfx/cards/%.png=$(N64_MKDFS_ROOT)/cards/%.sprite)
 WORLD_TEXTURES := $(wildcard $(PORT)/world3d/generated/textures/*.png)
 WORLD_SPRITES := $(WORLD_TEXTURES:$(PORT)/world3d/generated/textures/%.png=$(N64_MKDFS_ROOT)/world/textures/%.sprite)
-WORLD_MESHES := $(wildcard $(PORT)/world3d/generated/maps/*.l64) $(PORT)/world3d/generated/actors.l64
+WORLD_MESHES := $(wildcard $(PORT)/world3d/generated/maps/*.l64 $(PORT)/world3d/generated/lod/*.l64) $(PORT)/world3d/generated/actors.l64
 WORLD_FILES := $(WORLD_MESHES:$(PORT)/world3d/generated/%=$(N64_MKDFS_ROOT)/world/%)
 AUDIO_ASSETS := $(wildcard $(PORT)/audio/generated/*.wav64)
 AUDIO_FILES := $(AUDIO_ASSETS:$(PORT)/audio/generated/%=$(N64_MKDFS_ROOT)/audio/%)
@@ -80,7 +93,7 @@ $(BUILD_DIR)/mips_story.o: tests/mips_story.c
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 $(BUILD_DIR)/cinematic.o: tests/cinematic.c
 	@mkdir -p $(dir $@)
-	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -MMD -c $< -o $@
 $(BUILD_DIR)/face_preview.o: tests/face_preview.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
@@ -141,6 +154,8 @@ test:
 	./$(BUILD_DIR)/host/test_sram
 	python3 $(PORT)/world3d/tools/check_world.py
 	python3 $(PORT)/world3d/tools/check_characters.py
+	python3 $(PORT)/world3d/tools/check_character_lods.py
+	sh tools/test_visibility.sh
 	python3 $(PORT)/characters/tools/check_skin.py
 	python3 $(PORT)/audio/tools/check_audio.py
 	python3 tools/build_intro.py --check

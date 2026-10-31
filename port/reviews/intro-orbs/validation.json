@@ -1,0 +1,109 @@
+{
+  "passed": true,
+  "capture_scope": "Actual completed native N64 RDP framebuffers before VI filtering, read after rdpq_detach_wait in private Ares. No screenshots of the source art are substituted for game output.",
+  "frames_before": 6,
+  "frames_after": 6,
+  "native_resolutions": [
+    [
+      320,
+      240
+    ],
+    [
+      480,
+      360
+    ]
+  ],
+  "source_images": [
+    {
+      "file": "port/frontends/n64/adventure/assets/intro/orb_grass.png",
+      "sha256": "b74c254f50d19301e279ce8866cc2f399fa5841908f5aa407342ddbae97d2ac8",
+      "unchanged_from_HEAD": true,
+      "matches_manifest": true,
+      "dimensions": [
+        16,
+        16
+      ],
+      "alpha_symmetric_x_and_y": true
+    },
+    {
+      "file": "port/frontends/n64/adventure/assets/intro/orb_fire.png",
+      "sha256": "42880a38b2620372e4ed11431df488ce9c5a33763353cddd0315b0052871bfc0",
+      "unchanged_from_HEAD": true,
+      "matches_manifest": true,
+      "dimensions": [
+        16,
+        16
+      ],
+      "alpha_symmetric_x_and_y": true
+    },
+    {
+      "file": "port/frontends/n64/adventure/assets/intro/orb_water.png",
+      "sha256": "0f76dd5ae2d1d9adb2effc127f2e0df5c04c45a4a2eb3c76919b030b86aaa2a8",
+      "unchanged_from_HEAD": true,
+      "matches_manifest": true,
+      "dimensions": [
+        16,
+        16
+      ],
+      "alpha_symmetric_x_and_y": true
+    },
+    {
+      "file": "port/frontends/n64/adventure/assets/intro/orb_colorless.png",
+      "sha256": "873e06dacafdf41a91501bb6ecd307af3f94e40375238ae06bfdc82ccde93c22",
+      "unchanged_from_HEAD": true,
+      "matches_manifest": true,
+      "dimensions": [
+        16,
+        16
+      ],
+      "alpha_symmetric_x_and_y": true
+    },
+    {
+      "file": "port/frontends/n64/adventure/assets/intro/orb_lightning.png",
+      "sha256": "43e3483e6258d86130d59adf0312a45ffb1786d468d91cc00c3ce292038610a1",
+      "unchanged_from_HEAD": true,
+      "matches_manifest": true,
+      "dimensions": [
+        16,
+        16
+      ],
+      "alpha_symmetric_x_and_y": true
+    },
+    {
+      "file": "port/frontends/n64/adventure/assets/intro/orb_psychic.png",
+      "sha256": "9ae7c45b86afc0e5233aefeb19b2f1bf23e425d2b89962d9dcdb80755894faad",
+      "unchanged_from_HEAD": true,
+      "matches_manifest": true,
+      "dimensions": [
+        16,
+        16
+      ],
+      "alpha_symmetric_x_and_y": true
+    },
+    {
+      "file": "port/frontends/n64/adventure/assets/intro/orb_fighting.png",
+      "sha256": "be215dd5346f63f54d1964b867cb6ee70184fad0e88915ea4636b2c7795a1478",
+      "unchanged_from_HEAD": true,
+      "matches_manifest": true,
+      "dimensions": [
+        16,
+        16
+      ],
+      "alpha_symmetric_x_and_y": true
+    }
+  ],
+  "all_seven_source_masks_identical": true,
+  "source_animation_tables": 26,
+  "source_check_passed": true,
+  "native_animation_check_both_modes_passed": true,
+  "canonical_images_or_metadata_changed": false,
+  "semantic_center_equation": "(x-1)+18/2 = x+16/2; same for y. Source content origin subtracts the one-texel sampling gutter before scaling.",
+  "pixel_payload_bytes": {
+    "before": 3584,
+    "after": 4536
+  },
+  "raw_capture_logs": [
+    "port/frontends/n64/adventure/build/intro-orb-check/before/runtime.log",
+    "port/frontends/n64/adventure/build/intro-orb-check/after/runtime.log"
+  ]
+}

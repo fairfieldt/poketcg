@@ -1,5 +1,7 @@
 # Real N64 performance projection
 
+This records the **pre-optimization baseline**. Subsequent measured changes are documented in the [packed backend comparison](backend/) and [felt optimization](felt-optimization/README.md).
+
 2026-10-31. Read-only analysis of the current cartridge renderer, generated assets, installed libdragon preview, shipping ELF, and existing native ares captures. No physical console measurement, new emulator run, production edit, or SDK change was made. The recorded binary hashes identify the audit snapshot; the conversation camera adjustment being integrated afterward does not reduce submitted meshes or actors.
 
 **The game fits in both RAM configurations, but the current renderer is not a credible steady 30 fps design yet.** Two separate costs matter: several thousand transformed triangles every world frame, and an avoidable CPU division loop in the duel background. The Expansion Pak supplies memory; it does not accelerate the CPU, RSP, or RDP. Its 480×360 mode draws 2.25 times as many pixels.

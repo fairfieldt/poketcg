@@ -1,0 +1,124 @@
+{
+  "resolution": [
+    480,
+    360
+  ],
+  "ram_mib": 8,
+  "samples_per_stage": 24,
+  "timer": "emulated CP0 elapsed around attach/GL/render/RDP completion; not hardware FPS",
+  "tiny3d_revision": "f2eccc3998967f1915be58d52f1c5bb6d5598a8c",
+  "same_non_LOD_world_asset_files": 610,
+  "stages": {
+    "mark-portrait": {
+      "gl": {
+        "count": 24,
+        "minimum_us": 16046,
+        "median_us": 16159.5,
+        "maximum_us": 16352
+      },
+      "t3d": {
+        "count": 24,
+        "minimum_us": 5740,
+        "median_us": 6222.0,
+        "maximum_us": 6308
+      },
+      "median_speedup": 2.5971552555448407
+    },
+    "ronald-portrait": {
+      "gl": {
+        "count": 24,
+        "minimum_us": 16100,
+        "median_us": 16213.5,
+        "maximum_us": 16394
+      },
+      "t3d": {
+        "count": 24,
+        "minimum_us": 5765,
+        "median_us": 6128.5,
+        "maximum_us": 6324
+      },
+      "median_speedup": 2.6455902749449294
+    },
+    "mason-portrait": {
+      "gl": {
+        "count": 24,
+        "minimum_us": 13282,
+        "median_us": 13382.5,
+        "maximum_us": 13573
+      },
+      "t3d": {
+        "count": 24,
+        "minimum_us": 4975,
+        "median_us": 5348.5,
+        "maximum_us": 5546
+      },
+      "median_speedup": 2.502103393474806
+    },
+    "imakuni-portrait": {
+      "gl": {
+        "count": 24,
+        "minimum_us": 10095,
+        "median_us": 10213.5,
+        "maximum_us": 10393
+      },
+      "t3d": {
+        "count": 24,
+        "minimum_us": 4113,
+        "median_us": 4626.0,
+        "maximum_us": 4754
+      },
+      "median_speedup": 2.2078469520103763
+    },
+    "leads-room": {
+      "gl": {
+        "count": 24,
+        "minimum_us": 114907,
+        "median_us": 115379.5,
+        "maximum_us": 115867
+      },
+      "t3d": {
+        "count": 24,
+        "minimum_us": 36541,
+        "median_us": 37116.5,
+        "maximum_us": 37529
+      },
+      "median_speedup": 3.108577047943637
+    },
+    "leads-conversation": {
+      "gl": {
+        "count": 24,
+        "minimum_us": 63776,
+        "median_us": 64334.5,
+        "maximum_us": 64815
+      },
+      "t3d": {
+        "count": 24,
+        "minimum_us": 20849,
+        "median_us": 21347.0,
+        "maximum_us": 21828
+      },
+      "median_speedup": 3.013749004543964
+    }
+  },
+  "cases": {
+    "gl": {
+      "heap": {
+        "total": 7037872,
+        "used": 2400320,
+        "free": 4637552
+      },
+      "capture_provenance": "cases/gl-480-v1/capture-provenance.json",
+      "native_log": "port/frontends/n64/adventure/build/expansion-pak/backend-gl-480-v1/native.log"
+    },
+    "t3d": {
+      "heap": {
+        "total": 7016368,
+        "used": 2331072,
+        "free": 4685296
+      },
+      "capture_provenance": "cases/t3d-480-v1/capture-provenance.json",
+      "native_log": "port/frontends/n64/adventure/build/expansion-pak/backend-t3d-480-v1/native.log"
+    }
+  },
+  "scope": "unchanged high-detail room/actor meshes, same camera/materials/rigid part poses; no LOD or application culling in fixture"
+}

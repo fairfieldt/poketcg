@@ -1,0 +1,57 @@
+{
+  "passed": true,
+  "case": "before",
+  "frames": [
+    {
+      "file": "opening-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "4d68a845279386d3cfc0f539f89791ad7b9df0703bdadc35ce8f53bf71605345"
+    },
+    {
+      "file": "title-orbs-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "6b3ba42269dc9edcf2e98604d2295c0accaaef191ea1709d1e52cdbca54807ef"
+    },
+    {
+      "file": "swatches-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "5b76afcdc3d29ca9a1824d4e2903de45e5a46b7884d9cc7e068d701d78e71269"
+    },
+    {
+      "file": "opening-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "caf98cc92566d820f995960f9babd91c40265b974e994f6846e88ce567996740"
+    },
+    {
+      "file": "title-orbs-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "9270cf36f90758e33b3b477da7b2b36fc22ea18b68c2e38341657036aafe2463"
+    },
+    {
+      "file": "swatches-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "124a99e253f0bbd87026834ba16abe49ac26c77f2c13b9235aa0d81e172158f3"
+    }
+  ],
+  "wall_seconds": 30.11,
+  "method": "N64 RDP framebuffer read after detach_wait, same production intro/video code; privateAres/noVIbreakpoints",
+  "rom_sha256": "ae34b209a4dfeab21f8ebbdfd590072d6f12556d8259ea09a90d2b5a613e9249"
+}

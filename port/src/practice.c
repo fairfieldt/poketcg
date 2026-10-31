@@ -12,7 +12,7 @@ static bool ReturnWrongAction(void)
 static void PrintPracticeDuelDrMasonInstructions(u16 text)
 {
 	wr16(wTextBoxLabel, DrMasonText);
-	PrintScrollableText_NoTextBoxLabel(text);
+	tcg_ui_practice_speech(text);
 }
 
 /* used only during the practice duel with Sam.
@@ -37,6 +37,7 @@ static void PrintPracticeDuelInstructionsTextBoxLabel(void)
  * instructions for the next player action will be written into */
 static void DrawPracticeDuelInstructionsTextBox(void)
 {
+	tcg_ui_practice_checklist(0,NULL,0);
 	EmptyScreen();
 	PrintPracticeDuelInstructionsTextBoxLabel();
 }
@@ -47,17 +48,25 @@ static const u8 *PracticeText(u16 addr)
 	return RomPtr(0x01, addr);
 }
 
+/* The GBC redraws these lines in its main-area instruction panel, while
+ * Mason's scrollable speech remains below. Redraws never request input. */
+static void PublishPracticeChecklist(u16 addr,u8 through_y)
+{
+	u16 steps[8];unsigned count=0;
+	const u8 *entry=PracticeText(addr);
+	while(entry[0]&&entry[0]<=through_y&&count<sizeof(steps)/sizeof(*steps)) {
+		steps[count++]=rd16(&entry[3]);entry+=5;
+	}
+	tcg_ui_practice_checklist(wDuelTurns==7?ReplaceDueToKnockoutPracticeDuelText:
+		PlayersTurnPracticeDuelText,steps,count);
+}
+
 /* print a single instruction bullet for the current turn */
 static void PrintNextPracticeDuelInstruction(void)
 {
 	hffb0 = 1;
 	PrintPracticeDuelInstructionsTextBoxLabel();
-	const u8 *hl = PracticeText(rd16(wPracticeDuelTextPointer));
-	while (!(wPracticeDuelTextY < hl[0]) && hl[0]) {
-		u16 instr = rd16(&hl[3]);
-		print_ui_text(instr);
-		hl += 5;
-	}
+	PublishPracticeChecklist(rd16(wPracticeDuelTextPointer),wPracticeDuelTextY);
 	hffb0 = 0;
 }
 
@@ -82,7 +91,7 @@ static void PrintPracticeDuelInstructions(u16 addr)
 			break;
 		PrintPracticeDuelDrMasonInstructions(rd16(hl));
 		hl += 2;
-		print_ui_text(rd16(hl));
+		PublishPracticeChecklist(addr,wPracticeDuelTextY);
 		hl += 2;
 	}
 	PrintPracticeDuelLetsPlayTheGame();
@@ -92,11 +101,7 @@ static void PrintPracticeDuelInstructions(u16 addr)
  * and instead places the point-by-point instructions all at once. */
 static void PrintPracticeDuelInstructions_Fast(u16 addr)
 {
-	const u8 *hl = PracticeText(addr);
-	while (*hl) {
-		print_ui_text(rd16(&hl[3]));
-		hl += 5;
-	}
+	PublishPracticeChecklist(addr,255);
 	PrintPracticeDuelLetsPlayTheGame();
 }
 

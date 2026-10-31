@@ -8,6 +8,7 @@ body{max-width:900px;margin:48px auto;padding:0 22px;font:17px/1.55 system-ui,sa
 </style>
 <main>
 <h1>N64 hardware performance analysis</h1>
+<p><strong>Baseline audit.</strong> See the <a href="backend/">packed renderer comparison</a> and <a href="felt-optimization/README.md">felt optimization results</a> for subsequent improvements.</p>
 <p>The game fits in both RAM configurations. <strong>The current renderer needs optimization to hold 30 fps.</strong> The largest opportunities are the duel background and the world geometry pipeline.</p>
 <p class="note">October 31, 2026. Source, asset and binary analysis using existing ares captures. Physical console frame rates remain unmeasured. The audit hashes identify the inspected binaries; subsequent camera changes do not reduce submitted geometry.</p>
 <nav><a href="README.md">Full analysis</a><a href="geometry.md">Geometry and timing tables</a><a href="budgets.json">Budget calculations</a><a href="felt-disassembly.txt">Duel assembly evidence</a></nav>
@@ -44,5 +45,6 @@ body{max-width:900px;margin:48px auto;padding:0 22px;font:17px/1.55 system-ui,sa
 </table>
 <p class="note">Heap captures predate approximately 5 KiB of added Ronald geometry. Expansion mode draws 2.25× as many pixels; additional RAM does not raise processor clocks.</p>
 <p><a href="README.md">Read the assumptions, ranked changes and profiling plan.</a></p>
+<p><a href="audio-hazards.md">Audio follow-up: confirmed stereo conversion defect and playback checks.</a></p>
 </main>
 </html>

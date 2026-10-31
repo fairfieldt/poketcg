@@ -45,3 +45,7 @@ def write_world_metadata(out,doc):
     # Actor files and textures must already exist before publishing the header.
     write_if_changed(Path(out)/'world3d_maps.h','\n'.join(header)+'\n')
     write_if_changed(Path(out)/'world.json',json.dumps(doc,indent=2)+'\n')
+    # Optional gameplay-detail exports are accepted only for the exact current
+    # source mesh. New character exports keep working through the full model.
+    from build_character_lods import update_header
+    update_header(Path(out))

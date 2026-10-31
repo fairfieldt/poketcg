@@ -5,7 +5,7 @@
 //   duel.run(setup, { onEvent: (ev) => ui.onEvent(ev), onRequest: (req) => ui.onRequest(req) });
 //
 // Board state is read straight from engine memory (duel.duelvars) whenever something changes.
-import { C, T, W, EV, SCREEN, REQ, MENU, TCG_PLAYER, TCG_OPPONENT, TCG_CANCEL } from './engine.js';
+import { C, T, W, EV, TEXT_MODE, SCREEN, REQ, MENU, TCG_PLAYER, TCG_OPPONENT, TCG_CANCEL } from './engine.js';
 import { el, clear, art, sym, esym, typeIcon, richText, plainText, reflowRules, cardTitle, costIcons, cardPage, COLOR_NAMES, STATUS_NAMES } from './gfx.js';
 import { duelBanner } from './duel_banners.js';
 
@@ -49,11 +49,17 @@ export class DuelUI {
 		this.remoteAckDelay = opts.remoteAckDelay ?? 1400;
 		this.skipping = false; // fast-forward (online replay): no pacing, auto ACK
 		this.skipDelay = !!opts.skipDelay; // sSkipDelayAllowed: holding B skips pacing and animations
+		this.animationsDisabled = !!opts.animationsDisabled;
+		this.onCoinSound = opts.onCoinSound;
 		this.bHeld = false;
 		this.screen = SCREEN.MAIN;
 		this.screenArg = [0, 0, 0, 0];
 		this.lastTextId = 0;
 		this.text = '';
+		this.practiceChecklist = '';
+		this.practiceReading = false;
+		this.practicePages = [];
+		this.practicePage = 0;
 		this.playAreaExclude = 0;
 		this.overlayKind = null;
 		this.pendingCardSelection = null;
@@ -107,12 +113,17 @@ export class DuelUI {
 		this.$fieldWrap.appendChild(this.$fx);
 		this.$modal = el('div', 'modal hidden');
 		this.$fieldWrap.appendChild(this.$modal);
+		this.$practice = el('section', 'practice-reading hidden');
+		this.$practice.setAttribute('aria-label', 'Dr. Mason');
+		this.$fieldWrap.appendChild(this.$practice);
 		r.appendChild(this.$fieldWrap);
 		this.$textbox = el('div', 'textbox');
 		this.$text = el('div', 'tb-text');
 		this.$menu = el('div', 'tb-menu');
 		this.$ack = el('div', 'tb-ack hidden', '▼');
 		this.$textbox.append(this.$text, this.$menu, this.$ack);
+		this.$practiceHint = el('div', 'practice-continue hidden', 'A/B: continue');
+		this.$textbox.appendChild(this.$practiceHint);
 		r.appendChild(this.$textbox);
 		this.$status = el('div', 'status-line');
 		r.appendChild(this.$status);
@@ -123,6 +134,9 @@ export class DuelUI {
 		this.$overlay.addEventListener('click', (e) => {
 			const c = this.controls[this.controls.length - 1];
 			if (c && c.overlayClick && e.target === this.$overlay) c.overlayClick();
+		});
+		this.$practice.addEventListener('click', () => {
+			this.controls[this.controls.length - 1]?.textboxClick?.();
 		});
 		this.render();
 	}
@@ -342,6 +356,41 @@ export class DuelUI {
 		clear(this.$text).appendChild(richText(this.text));
 	}
 
+	hidePracticeReading() {
+		this.practiceReading = false;
+		this.$practice.classList.add('hidden');
+		this.$practiceHint.classList.add('hidden');
+		this.$textbox.classList.remove('practice-reading-active');
+	}
+
+	showPracticeReading(ev) {
+		this.practiceReading = true;
+		let message = ev.str || '';
+		if (ev.text === T.LetsPlayTheGamePracticeDuelText && this.practiceChecklist.includes('\n'))
+			message += '\n\n' + this.practiceChecklist.slice(this.practiceChecklist.indexOf('\n')).trim();
+		const lines = message.split('\n');
+		this.practicePages = [];
+		for (let i = 0; i < lines.length; i += 11) this.practicePages.push(lines.slice(i, i + 11).join('\n'));
+		if (!this.practicePages.length) this.practicePages.push('');
+		this.practicePage = 0;
+		this.paintPracticeReading();
+	}
+
+	paintPracticeReading() {
+		clear(this.$practice);
+		const heading = el('header', 'practice-heading');
+		heading.appendChild(el('h2', '', 'Dr. Mason'));
+		if (this.practiceChecklist) heading.appendChild(el('span', '', this.practiceChecklist.split('\n')[0]));
+		const message = el('div', 'practice-message');
+		message.appendChild(richText(this.practicePages[this.practicePage]));
+		this.$practice.append(heading, message);
+		this.$practice.classList.remove('hidden');
+		this.$practiceHint.classList.remove('hidden');
+		this.$practiceHint.textContent = 'A/B: continue' + (this.practicePages.length > 1 ?
+			`    ${this.practicePage + 1} / ${this.practicePages.length}` : '');
+		this.$textbox.classList.add('practice-reading-active');
+	}
+
 	clearMenu() {
 		clear(this.$menu);
 		this.$textbox.classList.remove('with-menu', 'menu-only');
@@ -357,10 +406,8 @@ export class DuelUI {
 
 	showOverlay(kind, node) {
 		this.overlayKind = kind;
-		this.$textbox.classList.toggle('coin-present', kind === 'coin');
-		// Coins share the bottom panel, leaving both active cards and HP visible.
-		if (kind === 'coin') this.$textbox.prepend(this.$overlay);
-		else this.$fieldWrap.appendChild(this.$overlay);
+		this.$textbox.classList.remove('coin-present');
+		this.$fieldWrap.appendChild(this.$overlay);
 		clear(this.$overlay).appendChild(node);
 		this.$overlay.className = 'overlay ov-' + kind;
 	}
@@ -644,8 +691,14 @@ export class DuelUI {
 		const a = ev.arg;
 		switch (ev.type) {
 		case EV.TEXT:
+			if (a[1] === TEXT_MODE.PRACTICE_CHECKLIST) {
+				this.practiceChecklist = ev.str || '';
+				return undefined;
+			}
 			this.lastTextId = ev.text;
 			this.setText(ev.str);
+			if (a[1] === TEXT_MODE.PRACTICE_SPEECH) this.showPracticeReading(ev);
+			else this.hidePracticeReading();
 			return undefined;
 		case EV.SCREEN:
 			return this.onScreen(a);
@@ -672,6 +725,8 @@ export class DuelUI {
 		case EV.WAIT:
 			return this.pace(Math.min(a[0] * 12, 700));
 		case EV.TURN:
+			this.practiceChecklist = '';
+			this.hidePracticeReading();
 			this.turnHolder = a[0];
 			this.turnNumber = a[1];
 			if (this.mode === 'hotseat' && this.perspective !== a[0]) { this.perspective = a[0]; clear(this.$fx); }
@@ -693,6 +748,7 @@ export class DuelUI {
 		const screen = a[0];
 		this.screen = screen;
 		this.screenArg = a;
+		if (screen !== SCREEN.EMPTY) this.hidePracticeReading();
 		if (screen !== SCREEN.BOX_MESSAGE) this.hideBanner();
 		switch (screen) {
 		case SCREEN.MAIN: // main scene drawn: back from any other screen (arg[2] = 1: HUDs redrawn only)
@@ -738,9 +794,20 @@ export class DuelUI {
 
 	coinView() {
 		const box = el('div', 'coin-box');
+		box.addEventListener('click', () => {
+			const control = this.controls[this.controls.length - 1];
+			if (control && control.key) control.key(K.A);
+		});
 		box.appendChild(el('div', 'coin-title', this.coinTotal > 1 ? `Coin toss ×${this.coinTotal}` : 'Coin toss'));
-		this.$coin = el('div', 'coin');
-		box.appendChild(this.$coin);
+		const stage = el('div', 'coin-stage');
+		stage.appendChild(el('div', 'coin-shadow'));
+		this.$coin = el('div', 'coin heads');
+		this.$coin.setAttribute('role', 'img');
+		this.$coin.setAttribute('aria-label', 'Coin ready');
+		stage.appendChild(this.$coin);
+		box.appendChild(stage);
+		this.$coinResult = el('div', 'coin-result');
+		box.appendChild(this.$coinResult);
 		this.$coinRow = el('div', 'coin-row');
 		box.appendChild(this.$coinRow);
 		this.$coinCount = el('div', 'coin-count');
@@ -748,26 +815,53 @@ export class DuelUI {
 		return box;
 	}
 
-	onCoin(a) {
+	async onCoin(a) {
 		if (this.overlayKind !== 'coin') { this.coins = []; this.coinTotal = a[2] || 1; this.showOverlay('coin', this.coinView()); }
 		const heads = a[0] === C.HEADS;
+		this.$coinResult.textContent = '';
+		const motion = this.pacing && !this.skipping && !this.animationsDisabled && !(this.skipDelay && this.bHeld);
+		if (motion) {
+			if (this.onCoinSound) this.onCoinSound();
+			let skip = false;
+			const control = { key: (k) => { if (k === K.A || k === K.B) skip = true; return true; } };
+			this.controls.push(control);
+			try {
+				const widths = [1, 0.75, 0.125, 0.75, 1, 0.75, 0.125, 0.75];
+				for (let frame = 0; frame < 30; frame++) {
+					if (skip || this.skipping || (this.skipDelay && this.bHeld) || !this.$coin.isConnected) break;
+					const spin = frame < 24, phase = frame % 8;
+					const face = spin ? phase < 4 : heads;
+					const rise = spin ? frame * (24 - frame) * 28 / 144 : -[4, 2, 0, -1, 0, 0][frame - 24];
+					this.$coin.className = 'coin ' + (face ? 'heads' : 'tails');
+					this.$coin.style.transform = `translateY(${-rise * this.$coin.clientWidth / 48}px) scaleX(${spin ? widths[phase] : 1})`;
+					await delay(1000 / 30);
+				}
+			} finally {
+				const at = this.controls.indexOf(control);
+				if (at >= 0) this.controls.splice(at, 1);
+			}
+		}
 		this.coins.push(heads);
 		this.$coin.className = 'coin ' + (heads ? 'heads' : 'tails');
-		this.$coin.textContent = heads ? 'H' : 'T';
+		this.$coin.style.transform = '';
+		this.$coin.setAttribute('aria-label', heads ? 'Heads' : 'Tails');
+		this.$coinResult.textContent = heads ? 'Heads' : 'Tails';
 		const chip = el('span', 'coin-chip ' + (heads ? 'heads' : 'tails'), heads ? 'H' : 'T');
 		this.$coinRow.appendChild(chip);
 		const nh = this.coins.filter(Boolean).length;
 		this.$coinCount.textContent = (a[2] > 1 ? `${a[1]}/${a[2]}: ` : '') + `${nh} heads, ${this.coins.length - nh} tails`;
-		return this.pace(450);
+		return this.pace(motion ? 120 : 0);
 	}
 
 	onAnim(a) {
 		const [id, isDuelAnim, side, loc] = a;
 		if (isDuelAnim) {
 			if (id === C.DUEL_ANIM_COIN_SPIN && this.$coin) {
-				this.$coin.className = 'coin spin';
-				this.$coin.textContent = '';
-				return this.pace(350);
+				this.$coin.className = 'coin heads';
+				this.$coin.style.transform = '';
+				this.$coinResult.textContent = '';
+				this.$coin.setAttribute('aria-label', 'Coin ready');
+				return undefined;
 			}
 			if (id >= C.DUEL_ANIM_PLAYER_SHUFFLE && id <= C.DUEL_ANIM_BOTH_SHUFFLE) {
 				this.flash('shuffle');
@@ -809,6 +903,7 @@ export class DuelUI {
 		this.req = req;
 		if (req.type !== REQ.CARD_LIST) this.pendingCardSelection = null;
 		if (req.type !== REQ.ACK) {
+			this.hidePracticeReading();
 			this.setPerspective(req.duelist);
 			this.hideBanner();
 			this.setStatus('');
@@ -852,12 +947,18 @@ export class DuelUI {
 		const remote = !!opts.remote;
 		if (remote) this.$ack.classList.add('remote');
 		const p = this.ask((done) => {
-			const ctl = {
-				key: (k) => { if (k === K.A || k === K.B) done(0); return true; },
-				textboxClick: () => done(0),
-				overlayClick: () => done(0),
+			const advance = () => {
+				if (this.practiceReading && this.practicePage + 1 < this.practicePages.length) {
+					this.practicePage++;
+					this.paintPracticeReading();
+				} else done(0);
 			};
-			this.$overlay.onclick = (e) => { if (!e.target.closest('button')) done(0); };
+			const ctl = {
+				key: (k) => { if (k === K.A || k === K.B) advance(); return true; },
+				textboxClick: advance,
+				overlayClick: advance,
+			};
+			this.$overlay.onclick = (e) => { if (!e.target.closest('button')) advance(); };
 			if (remote) setTimeout(() => done(0), this.remoteAckDelay);
 			return ctl;
 		});

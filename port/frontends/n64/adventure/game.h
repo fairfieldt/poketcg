@@ -36,6 +36,8 @@ void game_deck_machine(unsigned machine);
 void game_name(const char *title,char *out,unsigned capacity);
 void game_show_booster(unsigned booster);
 void game_draw(void);
+/* NPC framing is transient presentation state, never part of the diary. */
+void game_conversation(unsigned npc);
 /* A fenced world frame owned by the caller until display_show(). */
 struct surface_s *game_render_frame(void);
 void game_story_format(unsigned text,char *out,unsigned capacity);

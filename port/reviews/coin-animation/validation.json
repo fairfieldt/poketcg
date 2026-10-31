@@ -1,0 +1,22 @@
+{
+  "passed": true,
+  "native_capture_scope": "Completed production N64 CPU-canvas/RDP-copy frames before VI filtering; 8full frames at320x240/480x360 and30native196x156coin-panel frames at320x240.",
+  "gif_scope": "Actual native320coin-panel frames composited onto its unchanging nativeboard capture; GIF palette quantization for preview. PNGs preserve native pixels.",
+  "host_event_tests": "Actual TossCoin/TossCoinATimes via production on_event atbothres: opening,single,multiple,AI,status; compare final engine RNG andresults motionon/off;20coinorderedhistory;ownercontroller skip;disabled motion.",
+  "host_ui_suites": {
+    "320x240": 10,
+    "480x360": 10
+  },
+  "web_browser_tests": "Original face/back art, flight hides result, orderedheads/tails, animationdisabled, heldB/pressedA/click skip, control removal,320pxviewport, no browser errors.",
+  "web_duel_presentation_suite": true,
+  "engine_rng_or_result_logic_modified": false,
+  "canvas_writeback_copy_fence_preserved": true,
+  "source_art_manifest": "port/assets/ui/coin/manifest.json",
+  "explicit_layout_checks": {
+    "cards": 228,
+    "descriptions": 316,
+    "practice_lessons": 25,
+    "both_resolutions": true,
+    "script": "nonempty idle script; verify semantic PASS markers, not only process exit"
+  }
+}

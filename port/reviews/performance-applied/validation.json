@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "cases": {
+    "320": {
+      "manifest": "cases/320/capture-provenance.json",
+      "sha256": "3e7bfaf23b9e675fefc6a1de8846052040b37d8ab2b699e7e0b4c853e5328909",
+      "rom": {
+        "file": "port/frontends/n64/adventure/poketcg-performance-final-review.z64",
+        "sha256": "1c90bb62cf079fbe8957691b89f31209b5cba39d073962d9e5f514edd63fe34e",
+        "diagnostic": 15
+      }
+    },
+    "480": {
+      "manifest": "cases/480/capture-provenance.json",
+      "sha256": "bf0607c074874cf03b46077144f5714f16c81922adc1a5226b1023cb074bf113",
+      "rom": {
+        "file": "port/frontends/n64/adventure/poketcg-performance-final-review.z64",
+        "sha256": "1c90bb62cf079fbe8957691b89f31209b5cba39d073962d9e5f514edd63fe34e",
+        "diagnostic": 15
+      }
+    }
+  },
+  "original_post_vi_images": 12,
+  "exact_callback_rgb_pixels": 2764800,
+  "same_review_rom_both_ram_modes": true,
+  "timings": {
+    "320": {
+      "overworld": {
+        "samples": 24,
+        "median_us": 27406.0
+      },
+      "lab": {
+        "samples": 24,
+        "median_us": 30410.0
+      },
+      "lightning": {
+        "samples": 24,
+        "median_us": 20929.0
+      },
+      "dome": {
+        "samples": 24,
+        "median_us": 28807.5
+      },
+      "dialogue": {
+        "samples": 24,
+        "median_us": 9420.5
+      }
+    },
+    "480": {
+      "overworld": {
+        "samples": 24,
+        "median_us": 27433.0
+      },
+      "lab": {
+        "samples": 24,
+        "median_us": 30424.5
+      },
+      "lightning": {
+        "samples": 24,
+        "median_us": 20929.0
+      },
+      "dome": {
+        "samples": 24,
+        "median_us": 28825.0
+      },
+      "dialogue": {
+        "samples": 24,
+        "median_us": 9230.5
+      }
+    }
+  },
+  "detail": {
+    "models": 49,
+    "full_triangles": 27984,
+    "lod_triangles": 19858,
+    "textured_face_batches_unchanged": true
+  },
+  "production_roms": {
+    "standard": {
+      "file": "port/frontends/n64/adventure/poketcg-adventure.z64",
+      "sha256": "c719ce8c0aed170ba0effec5702a1c1129e1cba8f3b28f24004e2805afe7bf18",
+      "bytes": 37453824
+    },
+    "expansion": {
+      "file": "port/frontends/n64/adventure/poketcg-expansion.z64",
+      "sha256": "4adfdd9faff9ab0e7bf9950b644a2d73570f48fe4dc11b695f4ce031a1141def",
+      "bytes": 37453824
+    }
+  },
+  "timing_scope": "Emulated CP0 world rendering intervals; not end-to-end or physical console FPS."
+}

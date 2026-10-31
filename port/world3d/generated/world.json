@@ -10056,7 +10056,7 @@
     "overworld": {
       "file": "maps/overworld.l64",
       "vertices": 10835,
-      "triangles": 5511,
+      "triangles": 5259,
       "batches": 18,
       "textures": [
         "t1061656e9659e580",
@@ -10162,7 +10162,18 @@
           "width": 2.142,
           "depth": 1.442
         }
-      ]
+      ],
+      "visibility": {
+        "input_triangles": 5511,
+        "kept_triangles": 5259,
+        "occluded_triangles": 252,
+        "camera_sha256": "0fb7e44c9eaeda16d494a68cf672f4e56b3cac59568f68eb3a9cf96159b4bc79",
+        "source_sha256": "8f7c5d577b1c28685ac6ce14fd1ef17575c51f2cfe0d712d98b1d978a9cea730",
+        "output_sha256": "1b23d9b2cab8dc27ef6f0975b9704b1a82140f89510163e2df52686d42571863",
+        "aa_margin_pixels": 1.0,
+        "depth_margin_world": 0.04,
+        "native_protected_triangles": 127
+      }
     },
     "mason_laboratory": {
       "file": "maps/mason_laboratory.l64",

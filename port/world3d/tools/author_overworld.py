@@ -1078,10 +1078,16 @@ def native_export():
     temp=OUT/'maps/overworld-authoring.l64'
     record=native.save(temp)
     assert record['triangles']<7500,record
+    native_camera=dict(eye=[10,22,24.6],target=[10,.25,8.8],fov=38)
+    from island_visibility import apply_validated_optimization
+    visibility=apply_validated_optimization(temp,native_camera)
+    if visibility:
+        record['triangles']=visibility['kept_triangles']
+        record['visibility']=visibility
     doc=json.loads((OUT/'world.json').read_text())
     before_nodes=doc['overworld_nodes']
     doc['meshes']['overworld']=record
-    doc['maps'][0]['camera']=dict(eye=[10,22,24.6],target=[10,.25,8.8],fov=38)
+    doc['maps'][0]['camera']=native_camera
     doc['overworld_authoring']=dict(blend='overworld.blend',script='tools/author_overworld.py',
         concept='port/maps/prototypes/overworld_n64_concept_v1.png',sea_height=SEA,ground_height=.35)
     doc['texture_count']=len({t for r in doc['meshes'].values() for t in r['textures']})

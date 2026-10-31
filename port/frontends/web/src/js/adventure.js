@@ -43,9 +43,15 @@ function closeModal() {
 	app.modal.element.remove();
 	app.modal = null;
 }
+function refreshConversationCamera() {
+	if (!app.active || app.mode !== 'world' || !app.view || !app.engine) return;
+	app.engine.x.web_adv_camera_step();
+	app.view = app.engine.view;
+}
 function modal(title, cls = '') {
 	clearMovementInput();
 	closeModal();
+	refreshConversationCamera();
 	const element = el('section', 'adventure-dialog ' + cls);
 	element.setAttribute('role', 'dialog');
 	if (title) element.appendChild(el('h2', '', translate(title)));
@@ -227,6 +233,7 @@ async function frame(view) {
 }
 const padStates = new Map();
 let lastClock = 0;
+let lastCameraFrame = 0;
 let keyboardBHeld = false;
 let shiftHeld = false, inputFocused = true, actionInFlight = false, padFocusReset = false;
 let pendingAction = null, movementNeedsIdle = false, blockedMovement = false, movementRetryAt = 0;
@@ -376,6 +383,12 @@ function animate(time) {
 	if (app.active && app.engine && time - lastClock >= 1000) {
 		app.engine.x.web_adv_tick();
 		lastClock = time;
+	}
+	// Story frame callbacks advance the camera while scripts run. During a
+	// dialogue suspension or idle input, advance only its transient blend.
+	if (time - lastCameraFrame >= 1000 / 30 && (app.modal || !app.engine?.busy)) {
+		refreshConversationCamera();
+		lastCameraFrame = time;
 	}
 	if (app.mode === 'portrait') app.world.drawPortrait(time);
 	else if (app.view && app.mode !== 'duel') app.world.draw(app.view, time);
@@ -602,6 +615,8 @@ async function playDuel(setup, save) {
 		localSide: TCG_PLAYER,
 		pacing: !fast,
 		skipDelay: setup.skipDelayAllowed,
+		animationsDisabled: setup.animationsDisabled,
+		onCoinSound: () => app.audio.event(1, C.SFX_COIN_TOSS),
 	});
 	ui.names = setup.duelists.map((d) => d.name);
 	app.ui = ui;

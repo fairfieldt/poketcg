@@ -1,0 +1,38 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>N64 renderer comparison</title><style>body{max-width:1320px;margin:40px auto;padding:0 20px;background:#f6f5ef;color:#172333;font:17px/1.5 system-ui,sans-serif}h1{font-size:30px}h2{font-size:22px;margin-top:34px}a{color:#164e8c}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0}img{display:block;width:100%;height:auto;background:#111}figcaption{padding:8px 0}.note{font-size:15px;color:#465261}table{border-collapse:collapse;width:100%;max-width:850px}th,td{text-align:left;padding:9px;border-bottom:1px solid #cdcfc8}@media(max-width:760px){.pair{grid-template-columns:1fr}}</style><main>
+<h1>N64 renderer comparison</h1><p>The packed backend processes the same high-detail geometry about <strong>3× faster</strong> in the populated lab and conversation fixtures. Source meshes, textures, cameras and poses are unchanged.</p>
+<p class="note">480×360, 8 MiB RAM, 24 samples per stage. Timings are ares-emulated CP0 intervals, not measured console frame rates. Both capture suites passed. Small edge and texture differences come from the rendering pipelines.</p>
+<p><a href="README.md">Method and adoption checks</a> · <a href="results.json">Measurements</a> · <a href="../">Hardware analysis</a></p>
+<table><thead><tr><th>Workload</th><th>Cached GL</th><th>Packed</th><th>Speedup</th></tr></thead><tbody>
+<tr><td>Mark</td><td>16.16 ms</td><td>6.22 ms</td><td>2.60×</td></tr>
+<tr><td>Ronald</td><td>16.21 ms</td><td>6.13 ms</td><td>2.65×</td></tr>
+<tr><td>Dr. Mason</td><td>13.38 ms</td><td>5.35 ms</td><td>2.50×</td></tr>
+<tr><td>Imakuni</td><td>10.21 ms</td><td>4.63 ms</td><td>2.21×</td></tr>
+<tr><td>Lab: eight actors</td><td>115.38 ms</td><td>37.12 ms</td><td>3.11×</td></tr>
+<tr><td>Conversation: four actors</td><td>64.33 ms</td><td>21.35 ms</td><td>3.01×</td></tr>
+</tbody></table>
+<h2>Lab: eight actors</h2><div class="pair">
+<figure><a href="cases/gl-480-v1/post-vi/leads-room.png"><img src="cases/gl-480-v1/post-vi/leads-room.png" alt="Lab: eight actors, Cached GL" width="640" height="480"></a><figcaption>Cached GL</figcaption></figure>
+<figure><a href="cases/t3d-480-v1/post-vi/leads-room.png"><img src="cases/t3d-480-v1/post-vi/leads-room.png" alt="Lab: eight actors, Packed" width="640" height="480"></a><figcaption>Packed</figcaption></figure>
+</div>
+<h2>Conversation: four actors</h2><div class="pair">
+<figure><a href="cases/gl-480-v1/post-vi/leads-conversation.png"><img src="cases/gl-480-v1/post-vi/leads-conversation.png" alt="Conversation: four actors, Cached GL" width="640" height="480"></a><figcaption>Cached GL</figcaption></figure>
+<figure><a href="cases/t3d-480-v1/post-vi/leads-conversation.png"><img src="cases/t3d-480-v1/post-vi/leads-conversation.png" alt="Conversation: four actors, Packed" width="640" height="480"></a><figcaption>Packed</figcaption></figure>
+</div>
+<h2>Mark</h2><div class="pair">
+<figure><a href="cases/gl-480-v1/post-vi/mark-portrait.png"><img src="cases/gl-480-v1/post-vi/mark-portrait.png" alt="Mark, Cached GL" width="640" height="480"></a><figcaption>Cached GL</figcaption></figure>
+<figure><a href="cases/t3d-480-v1/post-vi/mark-portrait.png"><img src="cases/t3d-480-v1/post-vi/mark-portrait.png" alt="Mark, Packed" width="640" height="480"></a><figcaption>Packed</figcaption></figure>
+</div>
+<h2>Ronald</h2><div class="pair">
+<figure><a href="cases/gl-480-v1/post-vi/ronald-portrait.png"><img src="cases/gl-480-v1/post-vi/ronald-portrait.png" alt="Ronald, Cached GL" width="640" height="480"></a><figcaption>Cached GL</figcaption></figure>
+<figure><a href="cases/t3d-480-v1/post-vi/ronald-portrait.png"><img src="cases/t3d-480-v1/post-vi/ronald-portrait.png" alt="Ronald, Packed" width="640" height="480"></a><figcaption>Packed</figcaption></figure>
+</div>
+<h2>Dr. Mason</h2><div class="pair">
+<figure><a href="cases/gl-480-v1/post-vi/mason-portrait.png"><img src="cases/gl-480-v1/post-vi/mason-portrait.png" alt="Dr. Mason, Cached GL" width="640" height="480"></a><figcaption>Cached GL</figcaption></figure>
+<figure><a href="cases/t3d-480-v1/post-vi/mason-portrait.png"><img src="cases/t3d-480-v1/post-vi/mason-portrait.png" alt="Dr. Mason, Packed" width="640" height="480"></a><figcaption>Packed</figcaption></figure>
+</div>
+<h2>Imakuni</h2><div class="pair">
+<figure><a href="cases/gl-480-v1/post-vi/imakuni-portrait.png"><img src="cases/gl-480-v1/post-vi/imakuni-portrait.png" alt="Imakuni, Cached GL" width="640" height="480"></a><figcaption>Cached GL</figcaption></figure>
+<figure><a href="cases/t3d-480-v1/post-vi/imakuni-portrait.png"><img src="cases/t3d-480-v1/post-vi/imakuni-portrait.png" alt="Imakuni, Packed" width="640" height="480"></a><figcaption>Packed</figcaption></figure>
+</div>
+</main></html>

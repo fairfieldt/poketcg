@@ -1,0 +1,306 @@
+{
+  "status": "verified-expansion-pak-trial-captures",
+  "rom": {
+    "file": "port/frontends/n64/adventure/poketcg-conversation-applied.z64",
+    "sha256": "c3272f5396d05c09a1244c6e424f17daacc1caa7c01088c0721aae6c7f4d51e1",
+    "diagnostic": 13
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 6,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": "full observed callback dimensions",
+      "stage_pattern": "^(?:VIDEO REVIEW|DUEL UI) ([A-Za-z0-9_-]+) BEGIN\\r?$",
+      "require_native_frame": true,
+      "native_lead_frames": 6
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 4,
+    "private_settings": true,
+    "ExpansionPak": false
+  },
+  "runtime_video_modes": [
+    {
+      "width": 320,
+      "height": 240,
+      "ram": 4194304,
+      "highres": 0
+    }
+  ],
+  "raw_format": {
+    "pixel_order": "BGRA little endian; padding excluded from RGB proof",
+    "dimensions": "Recorded per image from Program::video registers",
+    "display_aspect": "4:3"
+  },
+  "finished": {
+    "callbacks": 4397,
+    "captures": 6,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "mason-dialogue.png",
+      "stage": "mason-dialogue",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "04116e4557c89129d74bfed1f405ea4009ec6375231c48a7365b1f7bf74c2ab4",
+      "callback_sha256": "601560ea86962e0e4ab818376826e9ddb71aff3f50e92c7720e3020210e7a5bc",
+      "rgb_sha256": "cb5efcb1aa4ff02823285c20c7ab60982fa62f5493626c61303ea13e06910db1",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 1665,
+      "stage_gate": {
+        "stage_started_callback": 1653,
+        "native_frame": "mason-dialogue",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 1660,
+        "native_ready_valid_frames": 1616,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": null
+      }
+    },
+    {
+      "file": "sam-table.png",
+      "stage": "sam-table",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "2eb8445cb1bfdddb98b98a2d509fbf4c63e343048ddc22743e89f469bbdcc147",
+      "callback_sha256": "d392dbf761c63ac32a1ace0828444f13de6a1fe97bf5fec3166f309697143a37",
+      "rgb_sha256": "573b5bc16bd123aba9839b6d89e747ef1b53098e4ba39c123b94956b60f206dc",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 2923,
+      "stage_gate": {
+        "stage_started_callback": 2911,
+        "native_frame": "sam-table",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 2918,
+        "native_ready_valid_frames": 2870,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "33ce0d4078358d6119d7730b23fa1b17a0813f302a3ae8da81e5276717552746"
+      }
+    },
+    {
+      "file": "sam-exploration.png",
+      "stage": "sam-exploration",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "311cfa947406b27450a7df441f443c6d19d379d32e0b8c9911bf9b33993644e5",
+      "callback_sha256": "99e0a5f10b7c7be7bc3f94bcd4e16a2c939122d7799b51d6332c684909fc3567",
+      "rgb_sha256": "6117dabb893cca2773fbc0dd6ee1b726ef65e266816ed6afe31073c96d46fa7a",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 3246,
+      "stage_gate": {
+        "stage_started_callback": 3233,
+        "native_frame": "sam-exploration",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 3241,
+        "native_ready_valid_frames": 3193,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "786e64491582b5253483a21cdd82aa4f15be0684cb9c186b04f656fcce29f467"
+      }
+    },
+    {
+      "file": "ronald-dialogue.png",
+      "stage": "ronald-dialogue",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "439b353b29d5f7584df373b701eaade6af5ff0d6b9794a85c8f6d6fe9ccccf9d",
+      "callback_sha256": "db49ab4be29efb0433d2af23a1b175cbbf2f483918a1e5c1c2b6fe7e622d12b8",
+      "rgb_sha256": "9a7ea7cdb5db2c02605052a507198cbdac9bfde273e3adc5ce76da27a3bcf414",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 3599,
+      "stage_gate": {
+        "stage_started_callback": 3588,
+        "native_frame": "ronald-dialogue",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 3594,
+        "native_ready_valid_frames": 3546,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "f594b7f18d7b2219769cd7bcc4342b9163296fbf2a205ef5df3d19dfb0e28c4a"
+      }
+    },
+    {
+      "file": "clerk-dialogue.png",
+      "stage": "clerk-dialogue",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "3e3fd8bf3f02817823dba49d2622e6fa7804d7647900c524e81026c899ca0e61",
+      "callback_sha256": "7b815e1c78386156f1923fed59dbd0854aebf40e7ab896a653a952569b4d20fa",
+      "rgb_sha256": "0975f2b2d98d93e707b09b5db4188b19ec4607d3959074acdc4f9e0f78935976",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 4062,
+      "stage_gate": {
+        "stage_started_callback": 4049,
+        "native_frame": "clerk-dialogue",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 4057,
+        "native_ready_valid_frames": 4009,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "52c97d3d53615cfa1d172cfebdff300bf13f53a16c33a1786e9a77856e196183"
+      }
+    },
+    {
+      "file": "clerk-exploration.png",
+      "stage": "clerk-exploration",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "102614ab2242417266209f470cc224f869cb438a1bb4b20a2ac98900c995687b",
+      "callback_sha256": "e0c094890b0a2de7c375ecea55ab7aab8c5d57b047ae7099c11e93023b1a1e6e",
+      "rgb_sha256": "afd78b985a56f69c17754ba55180e3cd5a0295f7e5bd1b53a8c6d6ad025a4564",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 4289,
+      "stage_gate": {
+        "stage_started_callback": 4276,
+        "native_frame": "clerk-exploration",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 4284,
+        "native_ready_valid_frames": 4236,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "8d8c3298735d66ff1cef448c474b0b8b539007aaebd001a171f6c3b92188788e"
+      }
+    }
+  ],
+  "native_frames": [
+    {
+      "file": "mason-dialogue.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "b6bb624664307e1823909455424457162580006d365221b85ae10bad6d2a9acb",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "sam-table.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "ea548a782cc944be642d77ae6eb2da2236bc09f2b7d8a84063df233f106af93d",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "sam-exploration.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "d7a35b4ea496d2c2945c39f1d8857bfe0e4e777d60364e6e4dc20eab753a2d8f",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "ronald-dialogue.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "edb2e6be554eabf2c059b0b33c9ca371e0a85df7bbb0d31acbef6b5455b89084",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "clerk-dialogue.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "6a55d20f7b11a053459e715bf6e10ddc8b0fcb519ef3ed0a22b537f49049f127",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "clerk-exploration.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "ee57e99e2fa7ec133edcd2ab6a4f83154a497404cbefc69642380496815bbf7e",
+      "exact_native_pixels": 76800
+    }
+  ],
+  "memory": [],
+  "source_logs": {
+    "path": "port/frontends/n64/adventure/build/expansion-pak/conversation-applied-320-v2/lldb.log",
+    "sha256": "21304713a32e3ec53bd5b1066e386db46685d01f36fa17e966a10ac6ded8564f"
+  }
+}

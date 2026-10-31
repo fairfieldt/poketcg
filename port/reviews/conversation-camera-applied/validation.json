@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "production_camera_changed": true,
+  "cases": {
+    "320": {
+      "manifest": "cases/320/capture-provenance.json",
+      "sha256": "24b9efa3a341d828a81ae0ffd6e14e3e64188eb5c127a8e12e569b217228f310",
+      "rom": {
+        "file": "port/frontends/n64/adventure/poketcg-conversation-applied.z64",
+        "sha256": "c3272f5396d05c09a1244c6e424f17daacc1caa7c01088c0721aae6c7f4d51e1",
+        "diagnostic": 13
+      },
+      "frames": 6
+    },
+    "480": {
+      "manifest": "cases/480/capture-provenance.json",
+      "sha256": "e5db37cdee3ed8ba86185baa0f42684d15e7aeef4c53f63b2ade7a24e403fa74",
+      "rom": {
+        "file": "port/frontends/n64/adventure/poketcg-conversation-applied.z64",
+        "sha256": "c3272f5396d05c09a1244c6e424f17daacc1caa7c01088c0721aae6c7f4d51e1",
+        "diagnostic": 13
+      },
+      "frames": 6
+    }
+  },
+  "original_post_vi_images": 12,
+  "same_diagnostic_rom": true,
+  "production_roms": {
+    "standard": {
+      "file": "port/frontends/n64/adventure/poketcg-adventure.z64",
+      "sha256": "ec6611017227c1936ddc3757c9464c89d387bacc88f498d1f99169c6461ff43e",
+      "bytes": 36372480
+    },
+    "expansion": {
+      "file": "port/frontends/n64/adventure/poketcg-expansion.z64",
+      "sha256": "d82db25de93f14e9b973a763f4f4caece95674556142ff59dd16713ad0740f6f",
+      "bytes": 36372480
+    }
+  },
+  "canonical_actor_positions_and_headings_preserved": true
+}

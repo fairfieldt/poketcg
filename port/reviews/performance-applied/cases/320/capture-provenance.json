@@ -1,0 +1,306 @@
+{
+  "status": "verified-expansion-pak-trial-captures",
+  "rom": {
+    "file": "port/frontends/n64/adventure/poketcg-performance-final-review.z64",
+    "sha256": "1c90bb62cf079fbe8957691b89f31209b5cba39d073962d9e5f514edd63fe34e",
+    "diagnostic": 15
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 6,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": "full observed callback dimensions",
+      "stage_pattern": "^(?:VIDEO REVIEW|DUEL UI) ([A-Za-z0-9_-]+) BEGIN\\r?$",
+      "require_native_frame": true,
+      "native_lead_frames": 6
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 4,
+    "private_settings": true,
+    "ExpansionPak": false
+  },
+  "runtime_video_modes": [
+    {
+      "width": 320,
+      "height": 240,
+      "ram": 4194304,
+      "highres": 0
+    }
+  ],
+  "raw_format": {
+    "pixel_order": "BGRA little endian; padding excluded from RGB proof",
+    "dimensions": "Recorded per image from Program::video registers",
+    "display_aspect": "4:3"
+  },
+  "finished": {
+    "callbacks": 824,
+    "captures": 6,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "overworld.png",
+      "stage": "overworld",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "02f27e13e451585edf5d83a40a3311e128844afda22bb9e6a2161cd2b92d0d3f",
+      "callback_sha256": "71e1de96765dcee24d2aed67e074fa0328f618f538786e04fa5667fa1cdf5867",
+      "rgb_sha256": "32f47f7cb891b78ae132c7e0386bbad99363af608f140abef635617c7b2bdfa4",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 51,
+      "stage_gate": {
+        "stage_started_callback": 6,
+        "native_frame": "overworld",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 42,
+        "native_ready_valid_frames": 6,
+        "post_native_valid_callbacks": 10,
+        "stable_callbacks": 10,
+        "previous_captured_sha256": null
+      }
+    },
+    {
+      "file": "lab.png",
+      "stage": "lab",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "41cb8babe5ffba302d75cac7014a5b673ea95a93e5aae96a016d5ead15e74a8d",
+      "callback_sha256": "03b1cf0acbc228bfdddb76fcdbf1221f3c534519f14050ec460b0d29293302bb",
+      "rgb_sha256": "a780d639908295e78a6f3f1ce7871dc03cb9acc30dc905c96b0e324e28b5c0fb",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 170,
+      "stage_gate": {
+        "stage_started_callback": 137,
+        "native_frame": "lab",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 165,
+        "native_ready_valid_frames": 129,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "b9b575a91316619561a29fc7abbd2fc01182baf419ddf404d3724b4c33a1ebc5"
+      }
+    },
+    {
+      "file": "lightning.png",
+      "stage": "lightning",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "cd67033e27cfbf0b5f65a5cf1be3461100bbe630f62796d9bd3851dac99359cc",
+      "callback_sha256": "743599685fa1ec101d815d65d29fbb5416105b733fbb3b74cd2aac19122b8b39",
+      "rgb_sha256": "09379df820b1b34d8230386f4cd478781214ad4e1a7b2ca0a04f876de05b9c79",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 296,
+      "stage_gate": {
+        "stage_started_callback": 261,
+        "native_frame": "lightning",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 291,
+        "native_ready_valid_frames": 255,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "ef402f8ccce54f79a50a1b2151875e8235579ac9e775b985b8daabe19b31a423"
+      }
+    },
+    {
+      "file": "dome.png",
+      "stage": "dome",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "4aa50fbe4b0b001f99d113c49ca6329d79533780c58f0e1cfc6f892ea276368a",
+      "callback_sha256": "88a314e2406b6af5ac7a6ea72a558b7353528c17797d1afa4a6d9bac581c7f9b",
+      "rgb_sha256": "e2d0796e0fe3b9a9f3d98fa09723c51a9a59eed0031ff036db9674cee530d711",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 437,
+      "stage_gate": {
+        "stage_started_callback": 386,
+        "native_frame": "dome",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 432,
+        "native_ready_valid_frames": 396,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "dedec5c0be46dc68540f6381eea4b3992a8b61c5a86cb5f367dd9b645250d05d"
+      }
+    },
+    {
+      "file": "naming.png",
+      "stage": "naming",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "40289c1a05e1321cbc18a5249917477d94c1714511c53af7fde6f2c97a6708d9",
+      "callback_sha256": "208828e2dc513669140c83287b96aae85a1eca3009d2e42f06e98fdf8be33334",
+      "rgb_sha256": "ada5f66f218773b57a6d5dc01847bd035ee17ca8a17c0d51c714fbe932ddc61f",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 559,
+      "stage_gate": {
+        "stage_started_callback": 528,
+        "native_frame": "naming",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 554,
+        "native_ready_valid_frames": 518,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "328c61e56eaa1b73531395b50492da8dc78def5032389418049c83219bc0f4ec"
+      }
+    },
+    {
+      "file": "dialogue.png",
+      "stage": "dialogue",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "eb7775dcb615b0a2adebff22ed9a604285b219706c80df5a4b228573b630dbfa",
+      "callback_sha256": "478a48422f6d15c9350d146efdb6c2fa91c9bd114f9760663cdaeb3dc1fc9873",
+      "rgb_sha256": "4314dab9131c70c3e827346c2fa7a0a512e44f48bf9afa5a0b6be8642200e573",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 732,
+      "stage_gate": {
+        "stage_started_callback": 709,
+        "native_frame": "dialogue",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 727,
+        "native_ready_valid_frames": 691,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "37c1d2badb383d9a39e245232c9e9c643af7adcd853d05f41fc14d9f6a541d26"
+      }
+    }
+  ],
+  "native_frames": [
+    {
+      "file": "overworld.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "425bb968dc6220fde0d8f1962d24b3ee6c10dd455de7e551ac298311d854e5c1",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "lab.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "df3178c3e7317b5e41e5437402802504572f656cf38d04636487299b8a6f31d4",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "lightning.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "1d35c08ef33108c7c0fe5527fa3fe7eaace99af3ef55b3988f05163ebd72164d",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "dome.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "2947af8c28252936091d886d95c1a95f0caeaf6021ac49d77318f967d153e7f4",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "naming.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "3e9e52784fbd792cccc6e4d909f483d19e214d97551a87879a13b5bd1beb27e8",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "dialogue.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "453b50364b881398cf0fff3523278e917db6bb8482d9ca31b909dc7c8bad8d10",
+      "exact_native_pixels": 76800
+    }
+  ],
+  "memory": [],
+  "source_logs": {
+    "path": "port/frontends/n64/adventure/build/expansion-pak/performance-final-320-v2/lldb.log",
+    "sha256": "b253f26f100ef534480731d004d0af06ff88d395b26211bacfcf4a9548ada1d4"
+  }
+}

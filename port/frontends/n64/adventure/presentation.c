@@ -131,6 +131,8 @@ unsigned presentation_sync(Presentation *p,const OwState *s,bool running)
  unsigned changes=0;bool map_change=!p->initialized||p->map!=s->map;
  if(map_change) {
   p->initialized=true;p->map=s->map;p->camera_initialized=false;
+  p->conversation_anchor_npc=0;
+  p->conversation_camera_locked=false;
   p->npc_count=0;p->world_count=p->world_index=0;p->world_script=0;
   snap(&p->player,coordinate(s->x),coordinate(s->y),s->direction,0);
   p->world_location=p->world_destination=s->overworld_selection;
@@ -170,7 +172,123 @@ unsigned presentation_sync(Presentation *p,const OwState *s,bool running)
  }
  return changes;
 }
-static void update_camera(Presentation *p,const OwState *s,const W3Map *map)
+void presentation_conversation(Presentation *p,unsigned npc)
+{
+ p->conversation_npc=npc<NUM_NPCS?(uint8_t)npc:0;
+}
+
+/* The source walk permissions also identify furniture footprints. They are
+   a preference rather than a visibility veto: a camera can see over a desk. */
+static bool camera_solid(const OwState *s,float x,float z)
+{
+ const OwMap *m=&ow_maps[s->map];
+ int ix=(int)floorf(x+.5f),iz=(int)floorf(z+.5f);
+ if(ix<0||iz<0||ix>=m->width||iz>=m->height)return true;
+ unsigned value=m->permissions[(iz/2)*((m->width+1)/2)+ix/2];
+ for(unsigned i=0;i<11;i++) {
+  const OwPermissionPatch *patch=&ow_permission_patches[i];
+  if(s->map_patch[i]&&patch->map==s->map&&patch->permissions&&ix>=patch->x&&iz>=patch->y&&
+     ix<patch->x+patch->w&&iz<patch->y+patch->h)
+   value=patch->permissions[((iz-patch->y)/2)*((patch->w+1)/2)+(ix-patch->x)/2];
+ }
+ return (value&128)!=0;
+}
+
+static bool conversation_fits(const PresentationCamera *camera,const PresentationPose *a,
+ const PresentationPose *b)
+{
+ const float sine=.3420201433f,cosine=.9396926208f,tangent=.4663076582f;
+ float dx=camera->eye[0]-camera->target[0],dz=camera->eye[2]-camera->target[2];
+ float horizontal=magnitude(dx,dz),radius=horizontal/cosine;
+ if(horizontal<3.4f)return false;
+ float ux=dx/horizontal,uz=dz/horizontal;
+ const PresentationPose *actors[]={a,b};
+ for(unsigned actor=0;actor<2;actor++)for(unsigned corner=0;corner<8;corner++) {
+  float x=actors[actor]->x+(corner&1?.7f:-.7f)-camera->target[0];
+  float y=actors[actor]->floor+(corner&2?2.65f:1.05f)-camera->target[1];
+  float z=actors[actor]->z+(corner&4?.5f:-.5f)-camera->target[2];
+  float along=x*ux+z*uz,depth=radius-cosine*along-sine*y;
+  if(depth<1.6f)return false;
+  float sx=(x*uz-z*ux)/(depth*tangent*(4.0f/3.0f));
+  float sy=(cosine*y-sine*along)/(depth*tangent);
+  /* TV-safe sides/top and upper bodies above the dialogue name plate. */
+  if(fabsf(sx)>.88f||sy>.85f||sy<-.28f)return false;
+ }
+ return true;
+}
+
+static bool conversation_candidate(const Presentation *p,const OwState *s,const W3Map *map,
+ const PresentationActor *npc,float azimuth,PresentationCamera *camera,float *score)
+{
+ const PresentationPose *mark=&p->player.pose,*other=&npc->pose;
+ float x=(mark->x+other->x)*.5f,z=(mark->z+other->z)*.5f;
+ float ux=sinf(azimuth),uz=cosf(azimuth);
+ camera->target[0]=x;camera->target[1]=1+maxf(mark->floor,other->floor)*.5f;
+ camera->target[2]=z;camera->fov=50;
+ for(unsigned step=0;step<29;step++) {
+  float wanted=6.8f+step*.4f;
+  float ex=clampf(x+ux*wanted,1.25f,map->width-1.25f);
+  float ez=clampf(z+uz*wanted,1.25f,map->height-1.25f);
+  float distance=magnitude(ex-x,ez-z);
+  camera->eye[0]=ex;camera->eye[1]=camera->target[1]+distance*.3639702343f;
+  camera->eye[2]=ez;
+  if(!conversation_fits(camera,mark,other))continue;
+  float actual=atan2f(ex-x,ez-z)*180/PI;
+  float front=fabsf(angle_delta(actual,npc->target_heading));
+  if(front>105)continue;
+  float correction=magnitude(ex-(x+ux*wanted),ez-(z+uz*wanted));
+  *score=fabsf(front-55)*.025f+fabsf(distance-6.8f)*.18f+correction*.15f;
+  if(camera_solid(s,ex,ez))*score+=.7f;
+  for(unsigned sample=1;sample<8;sample++) {
+   float t=(float)sample/8;
+   if(camera_solid(s,other->x+(ex-other->x)*t,other->z+(ez-other->z)*t))*score+=.12f;
+  }
+  /* A small preference for the existing viewing side avoids gratuitous cuts. */
+  float previous=atan2f(p->camera.eye[0]-x,p->camera.eye[2]-z)*180/PI;
+  *score+=fabsf(angle_delta(actual,previous))*.001f;
+  return true;
+ }
+ return false;
+}
+
+static bool conversation_camera(Presentation *p,const OwState *s,const W3Map *map,
+ PresentationCamera *camera)
+{
+ if(!p->conversation_npc||!s->map||map->width<4||map->height<4)return false;
+ if(p->conversation_npc>=NPC_TORCH&&p->conversation_npc<=NPC_LEGENDARY_CARD_RIGHT_SPARK)return false;
+ const PresentationActor *npc=NULL;
+ for(unsigned i=0;i<p->npc_count;i++)
+  if(p->npcs[i].id==p->conversation_npc&&p->npcs[i].visible){npc=&p->npcs[i];break;}
+ if(!npc)return false;
+ const PresentationPose *mark=&p->player.pose,*other=&npc->pose;
+ /* Offstage callers and reclining/elevated special poses retain room framing. */
+ if(other->x<0||other->z<0||other->x>=map->width||other->z>=map->height||other->floor>.4f||
+    mark->x<0||mark->z<0||mark->x>=map->width||mark->z>=map->height||
+    magnitude(other->x-mark->x,other->z-mark->z)>12)return false;
+ float score;
+ PresentationCamera cached;
+ if(p->conversation_camera_locked&&p->conversation_anchor_npc==p->conversation_npc&&
+    fabsf(angle_delta(p->conversation_heading,npc->target_heading))<1&&
+    conversation_candidate(p,s,map,npc,p->conversation_azimuth,&cached,&score)) {
+  *camera=cached;return true;
+ }
+ static const float offsets[]={55,-55,75,-75,35,-35,90,-90,0,105,-105};
+ bool found=false;float best=1e9f,best_azimuth=0;
+ for(unsigned i=0;i<sizeof(offsets)/sizeof(offsets[0]);i++) {
+  PresentationCamera candidate;
+  float azimuth=(npc->target_heading+offsets[i])*PI/180;
+  if(conversation_candidate(p,s,map,npc,azimuth,&candidate,&score)&&score<best) {
+   best=score;best_azimuth=azimuth;*camera=candidate;found=true;
+  }
+ }
+ if(found) {
+  p->conversation_camera_locked=true;p->conversation_anchor_npc=p->conversation_npc;
+  p->conversation_heading=npc->target_heading;p->conversation_azimuth=best_azimuth;
+ }
+ return found;
+}
+
+void presentation_camera_step(Presentation *p,const OwState *s,const W3Map *map)
 {
  PresentationCamera desired;
  memcpy(desired.eye,map->eye,sizeof(desired.eye));
@@ -193,6 +311,8 @@ static void update_camera(Presentation *p,const OwState *s,const W3Map *map)
    desired.fov=50;
   }
  }
+ /* Dialogue owns a close shot only while its host explicitly requests it. */
+ conversation_camera(p,s,map,&desired);
  if(!p->camera_initialized) {p->camera=desired;p->camera_initialized=true;return;}
  for(unsigned i=0;i<3;i++) {
   p->camera.eye[i]+=(desired.eye[i]-p->camera.eye[i])*.24f;
@@ -207,7 +327,7 @@ void presentation_step(Presentation *p,const OwState *s,const W3Map *map)
  step_actor(&p->world);
  p->cursor.bob=.08f*sinf(++p->render_frames*.12f);
  if(p->world_count&&p->world.elapsed>=p->world.duration)world_segment(p);
- update_camera(p,s,map);
+ presentation_camera_step(p,s,map);
 }
 bool presentation_moving(const Presentation *p)
 {

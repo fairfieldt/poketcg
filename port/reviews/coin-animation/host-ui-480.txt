@@ -1,0 +1,52 @@
+felt 320x240: exact, 32 rows, 19200 cached bytes, padded stride
+felt 480x360: exact, 48 rows, 43200 cached bytes, padded stride
+felt 320x240: exact, 32 rows, 19200 cached bytes, padded stride
+felt cache: PASS
+MOCK: [frame 1] wait 100000
+COIN 1/1 tails
+COIN 1/1 tails
+COIN CONTEXT PASS opening coins=1 owner=194 animations preserve RNG/result
+COIN 1/3 tails
+COIN 2/3 heads
+COIN 3/3 tails
+COIN 1/3 tails
+COIN 2/3 heads
+COIN 3/3 tails
+COIN CONTEXT PASS attack-multiple coins=3 owner=194 animations preserve RNG/result
+COIN 1/1 tails
+COIN 1/1 tails
+COIN CONTEXT PASS opponent-attack coins=1 owner=195 animations preserve RNG/result
+COIN 1/1 tails
+COIN 1/1 tails
+COIN CONTEXT PASS between-turn-status coins=1 owner=195 animations preserve RNG/result
+COIN 1/1 heads
+COIN ANIMATION PASS: event order, results, RNG, disabled option, controller ownership
+MOCK: [frame 1] wait 100000
+COIN 1/1 tails
+COIN 1/1 tails
+COIN CONTEXT PASS opening coins=1 owner=194 animations preserve RNG/result
+COIN 1/3 tails
+COIN 2/3 heads
+COIN 3/3 tails
+COIN 1/3 tails
+COIN 2/3 heads
+COIN 3/3 tails
+COIN CONTEXT PASS attack-multiple coins=3 owner=194 animations preserve RNG/result
+COIN 1/1 tails
+COIN 1/1 tails
+COIN CONTEXT PASS opponent-attack coins=1 owner=195 animations preserve RNG/result
+COIN 1/1 tails
+COIN 1/1 tails
+COIN CONTEXT PASS between-turn-status coins=1 owner=195 animations preserve RNG/result
+COIN 1/1 heads
+COIN ANIMATION PASS: event order, results, RNG, disabled option, controller ownership
+    [TEST] card_layout             ok   (0 turns, 0 requests, MOCK: frames=0 polls=1)
+    [TEST] hotseat                 ok   (72 turns, 3770 requests, MOCK: eeprom writes=1679 (stalling=3) most writes to one block=71)
+    [TEST] hotseat_ports           ok   (2 turns, 174 requests, MOCK: eeprom writes=36 (stalling=3) most writes to one block=2)
+    [TEST] practice                ok   (3 turns, 2972 requests, MOCK: eeprom writes=218 (stalling=3) most writes to one block=2)
+    [TEST] save_continue           ok   (38 turns, 1264 requests, MOCK: shot build/host/shots/save_continue/title_after.ppm (frame 6))
+    [TEST] tour_bot                ok   (72 turns, 3875 requests, MOCK: eeprom writes=1861 (stalling=3) most writes to one block=71)
+    [TEST] ui_tour                 ok   (6 turns, 435 requests, MOCK: eeprom writes=312 (stalling=3) most writes to one block=6)
+    [TEST] vs_ai                   ok   (13 turns, 725 requests, MOCK: eeprom writes=409 (stalling=3) most writes to one block=8)
+    [TEST] vs_bot                  ok   (6 turns, 186 requests, MOCK: eeprom writes=273 (stalling=3) most writes to one block=5)
+    [TEST] widgets                 ok   (8 turns, 349 requests, MOCK: eeprom writes=351 (stalling=3) most writes to one block=8)

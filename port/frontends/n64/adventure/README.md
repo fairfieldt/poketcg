@@ -35,6 +35,13 @@ uses 320 × 240. The standard `poketcg-adventure.z64` keeps its 320 × 240 mode.
 Both use the same game and save format. Enable the Expansion Pak in ares to try
 the higher resolution.
 
+The default 3D backend is Tiny3D with libdragon. The first build fetches a
+pinned Tiny3D core under `build/`; it does not replace the installed SDK.
+`SCENE_T3D=0` selects the cached GL fallback. Distant characters use optional
+lower-detail meshes, while conversation speakers and Mark retain full detail.
+Normal builds use the checked-in exports; regenerate optional detail meshes
+with `python3 port/world3d/tools/build_character_lods.py` when authoring changes.
+
 Builds first scan the character catalog and completed native character exports.
 All 39 canonical characters now use their detailed models, including palette
 variants, Amy's lying pose, and separate legendary-card components. Later exports
@@ -70,6 +77,27 @@ in a four-line panel over the 3D scene. Scripted movement uses the original
 60 Hz timing converted to 30 Hz, distance-based footsteps, and Mason/Sam
 camera framing. On the island, the destination cursor and walking Mark are
 separate, as in the source game.
+
+Named conversations blend to a closer 20-degree camera, with both upper bodies
+above the dialogue panel. The camera favors the speaker's face and pulls back
+when actors are separated, including Sam's table. Closing dialogue restores the
+exploration view. This presentation is shared with the browser build and does
+not change source positions, headings or diary data.
+[Applied conversation captures](../../../reviews/conversation-camera-applied/index.html)
+include the original opening and wall-adjacent cases at both resolutions.
+
+[Real-hardware performance analysis](../../../reviews/hardware-performance/index.html)
+records the current geometry, memory, CPU bottlenecks and optimization priorities.
+Frame-rate projections remain estimates pending console measurements.
+[Applied optimizations and native screenshots](../../../reviews/performance-applied/index.html)
+include the complete validation runs and measured emulator rendering intervals.
+
+During Sam's tutorial, Mason's explanations use a consistent large reading
+panel with a continue-only footer. The numbered action list is persistent and
+the completed list appears in the final recap. Each reading page needs a fresh
+press. Duel input is captured at VI rate so short taps survive slower redraws;
+each press is consumed once. Coin tosses now use the original Pikachu coin with
+a flip, landing and result reveal, respecting animation and skip settings.
 
 ## Video output
 

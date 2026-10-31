@@ -131,6 +131,18 @@ def check(out):
         if asset['name'].startswith('orb_') or asset['name'] == 'press_start':
             assert any(pixel[3] == 0 for pixel in colors), path
             assert any(pixel[3] == 255 for pixel in colors), path
+        if asset['name'].startswith('orb_'):
+            # The N64 adds a sampling gutter without altering these original
+            # pixels. Its transparent RGB bleed uses this single outline color.
+            assert (width,height) == (16,16), path
+            opaque = [[bool(pixel[3]) for pixel in row] for row in pixels]
+            assert all(opaque[y][x] == opaque[y][width-1-x] ==
+                       opaque[height-1-y][x] for y in range(height) for x in range(width)), path
+            outline = {pixels[y][x][:3] for y in range(height) for x in range(width)
+                       if opaque[y][x] and any(nx < 0 or ny < 0 or nx >= width or ny >= height or
+                                              not opaque[ny][nx] for nx,ny in
+                                              ((x-1,y),(x+1,y),(x,y-1),(x,y+1)))}
+            assert len(outline) == 1, path
     animations = manifest['animations']
     assert len(animations) == 26
     for frames in animations:

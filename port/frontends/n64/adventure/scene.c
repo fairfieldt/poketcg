@@ -20,7 +20,8 @@ typedef struct {
     float pivot[3];
 } MeshHeader;
 _Static_assert(sizeof(MeshHeader) == 28, "L643 mesh layout");
-typedef struct { MeshHeader h; GLuint list; } Mesh;
+typedef struct PackedMesh PackedMesh;
+typedef struct { MeshHeader h; GLuint list; PackedMesh *packed; } Mesh;
 
 struct Scene {
  Mesh *meshes;
@@ -28,12 +29,46 @@ struct Scene {
  GLuint room_list;
  sprite_t **sprites;
  GLuint *textures;
+ rspq_block_t *packed_room;
 };
 #define meshes (scene->meshes)
 #define mesh_count (scene->mesh_count)
 #define room_list (scene->room_list)
 #define sprites (scene->sprites)
 #define textures (scene->textures)
+
+#if SCENE_T3D
+#include "scene_packed.inc"
+#endif
+
+void scene_camera(float fov,float aspect,float near,float far,const float eye[3],const float target[3],int x,int y,int width,int height)
+{
+#if SCENE_T3D
+    packed_init();
+    assertf(!packed_camera_active,"End the prior packed camera frame before replacing DMA matrices");
+    /* Call once per frame after acquiring a safe display surface. Every
+       existing presentation ends with detach_wait, so prior DMA is complete. */
+    packed_matrix_count=0;
+    packed_camera_active=true;
+    t3d_viewport_set_area(&packed_viewport,x,y,width,height);
+    t3d_viewport_set_perspective(&packed_viewport,fov*.01745329252f,aspect,near,far);
+    T3DVec3 e={{eye[0],eye[1],eye[2]}},t={{target[0],target[1],target[2]}},up={{0,1,0}};
+    t3d_viewport_look_at(&packed_viewport,&e,&t,&up);t3d_viewport_attach(&packed_viewport);
+#else
+    (void)fov;(void)aspect;(void)near;(void)far;(void)eye;(void)target;(void)x;(void)y;(void)width;(void)height;
+#endif
+}
+
+void scene_frame_end(void)
+{
+#if SCENE_T3D
+    if(packed_camera_active)t3d_tri_sync();
+    packed_camera_active=false;
+    /* Native viewports set the physical RDP scissor. Restore the full UI area
+       before a portrait frame composites its keyboard or dialogue canvas. */
+    rdpq_set_scissor(0,0,display_get_width(),display_get_height());
+#endif
+}
 
 void scene_begin_opaque(void)
 {
@@ -122,6 +157,11 @@ Scene *scene_open(const char *path, const char *texture_root)
         assertf(fread(batch,1,bytes,f)==bytes,"Scene batch read failed");
         const Vertex *vertices=(const Vertex *)batch;
         const uint16_t *indices=(const uint16_t *)(batch+h->vertices*sizeof(Vertex));
+        for(unsigned index=0;index<h->indices;index++)
+            assertf(indices[index]<h->vertices,"Scene vertex index exceeds its batch");
+#if SCENE_T3D
+        mesh->packed=packed_create(vertices,indices,h->indices,h->texture>=0?sprites[h->texture]:NULL,h->texture>=0&&repeat[h->texture]);
+#else
         glEnableClientState(GL_VERTEX_ARRAY);
         glEnableClientState(GL_COLOR_ARRAY);
         glVertexPointer(3, GL_FLOAT, sizeof(Vertex), vertices->position);
@@ -139,6 +179,7 @@ Scene *scene_open(const char *path, const char *texture_root)
         }
         glDrawElements(GL_TRIANGLES, h->indices, GL_UNSIGNED_SHORT, indices);
         glEndList();
+#endif
         /* libdragon's list compiler copies each vertex attribute into its RSP
            command stream. The source arrays need not stay resident. Streaming
            one batch at a time also avoids a full-file loading peak. */
@@ -152,16 +193,32 @@ Scene *scene_open(const char *path, const char *texture_root)
     glTexCoordPointer(2,GL_FLOAT,sizeof(Vertex),NULL);
     /* Batches are material sorted offline. Nested lists cache the room's state
        changes and RSP transforms rather than resubmitting arrays every frame. */
+#if SCENE_T3D
+    rspq_block_begin();
+    for(unsigned i=0;i<mesh_count;i++)if(!meshes[i].h.model)rspq_block_run(meshes[i].packed->list);
+    scene->packed_room=rspq_block_end();
+#else
     room_list = glGenLists(1);
     glNewList(room_list, GL_COMPILE);
     for (unsigned i = 0; i < mesh_count; i++)
         if (!meshes[i].h.model) glCallList(meshes[i].list);
     glEndList();
+#endif
     debugf("Scene %s: %u batches, %u textures, %ld bytes\n",path,mesh_count,texture_count,size);
     return scene;
 }
 
-void scene_draw_room(const Scene *scene) { if(scene) glCallList(room_list); }
+void scene_draw_room(const Scene *scene)
+{
+    if(!scene)return;
+#if SCENE_T3D
+    T3DMat4 identity;t3d_mat4_identity(&identity);
+    rdpq_mode_push();t3d_frame_start();rdpq_mode_antialias(AA_NONE);
+    packed_matrix(&identity);rspq_block_run(scene->packed_room);t3d_matrix_pop(1);t3d_tri_sync();rdpq_mode_pop();
+#else
+    glCallList(room_list);
+#endif
+}
 
 void scene_draw_contact_shadows(const float (*positions)[2],unsigned count)
 {
@@ -194,8 +251,13 @@ void scene_close(Scene *scene)
 {
  if(!scene) return;
  rspq_wait();
+#if SCENE_T3D
+ rspq_block_free(scene->packed_room);
+ for(unsigned i=0;i<mesh_count;i++)packed_close(meshes[i].packed);
+#else
  glDeleteLists(room_list,1);
- for(unsigned i=0;i<mesh_count;i++) glDeleteLists(meshes[i].list,1);
+ for(unsigned i=0;i<mesh_count;i++)glDeleteLists(meshes[i].list,1);
+#endif
  glDeleteTextures(scene->texture_count,textures);
  for(unsigned i=0;i<scene->texture_count;i++) sprite_free(sprites[i]);
  free(meshes); free(sprites); free(textures); free(scene);
@@ -203,6 +265,9 @@ void scene_close(Scene *scene)
 
 void scene_draw_actor_tilt(const Scene *scene,unsigned model, float x, float z, float heading, float gait,float tilt)
 {
+#if SCENE_T3D
+    T3DMat4 identity;t3d_mat4_identity(&identity);packed_draw_actor(scene,model,&identity,x,z,heading,gait,tilt);
+#else
     glPushMatrix();
     glTranslatef(x, tilt?1.0f:0, z);
     glRotatef(heading, 0, 1, 0);
@@ -222,7 +287,21 @@ void scene_draw_actor_tilt(const Scene *scene,unsigned model, float x, float z, 
         glPopMatrix();
     }
     glPopMatrix();
+#endif
 }
 
 void scene_draw_actor(const Scene *scene,unsigned model,float x,float z,float heading,float gait)
 {scene_draw_actor_tilt(scene,model,x,z,heading,gait,0);}
+
+void scene_draw_actor_presented(const Scene *scene,unsigned model,float x,float y,float z,float heading,float scale,float lean,float gait,float tilt)
+{
+#if SCENE_T3D
+    T3DMat4 outer;t3d_mat4_identity(&outer);packed_translate(&outer,x,y,z);packed_rotate(&outer,heading,1);
+    t3d_mat4_scale(&outer,scale,scale,scale);if(lean)packed_rotate(&outer,lean,0);
+    packed_draw_actor(scene,model,&outer,0,0,0,gait,tilt);
+#else
+    glPushMatrix();glTranslatef(x,y,z);glRotatef(heading,0,1,0);glScalef(scale,scale,scale);
+    if(lean)glRotatef(lean,1,0,0);
+    scene_draw_actor_tilt(scene,model,0,0,0,gait,tilt);glPopMatrix();
+#endif
+}

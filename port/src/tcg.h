@@ -31,7 +31,7 @@
 #define TCG_OPPONENT 0xc3  /* OPPONENT_TURN: duelist 1 (wOpponentDuelVariables) */
 
 enum TcgEventType {
-	TCG_EV_TEXT = 1,      /* text box printed: text, str. arg[0] = 1 if the engine waits for an ACK next */
+	TCG_EV_TEXT = 1,      /* text, str. arg[0] = waits for ACK; arg[1] = TcgTextMode */
 	TCG_EV_SCREEN,        /* screen drawn: arg[0] = TCG_SCREEN_*, arg[1] = duelist shown (hWhoseTurn), arg[2..] screen specific */
 	TCG_EV_CARD,          /* a card is shown big (drawn/played/detail): arg[0] = deck index, arg[1] = owner, text = caption */
 	TCG_EV_ANIM,          /* attack/duel animation: arg[0] = id, arg[1] = 0 attack anim / 1 duel anim, arg[2] = side, arg[3] = location */
@@ -43,6 +43,16 @@ enum TcgEventType {
 	TCG_EV_TURN,          /* new turn: arg[0] = turn holder, arg[1] = wDuelTurns */
 	TCG_EV_DUEL_END,      /* arg[0] = wDuelFinished, arg[1] = turn holder at the end */
 	TCG_EV_THINKING,      /* AI is deciding: arg[0] = duelist */
+};
+
+enum TcgTextMode {
+	TCG_TEXT_MESSAGE = 0,
+	/* Complete persistent tutorial checklist, separate from acknowledged
+	 * speech. str="" clears it; text=heading ID; arg[2]=number of steps. */
+	TCG_TEXT_PRACTICE_CHECKLIST = 1,
+	/* Dr. Mason's acknowledged tutorial explanation. Frontends use one
+	 * consistent reading panel; local page turns do not add engine requests. */
+	TCG_TEXT_PRACTICE_SPEECH = 2,
 };
 
 enum TcgScreen {

@@ -1,0 +1,306 @@
+{
+  "status": "verified-expansion-pak-trial-captures",
+  "rom": {
+    "file": "port/frontends/n64/adventure/poketcg-performance-final-review.z64",
+    "sha256": "1c90bb62cf079fbe8957691b89f31209b5cba39d073962d9e5f514edd63fe34e",
+    "diagnostic": 15
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 6,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": "full observed callback dimensions",
+      "stage_pattern": "^(?:VIDEO REVIEW|DUEL UI) ([A-Za-z0-9_-]+) BEGIN\\r?$",
+      "require_native_frame": true,
+      "native_lead_frames": 6
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 8,
+    "private_settings": true,
+    "ExpansionPak": true
+  },
+  "runtime_video_modes": [
+    {
+      "width": 480,
+      "height": 360,
+      "ram": 8388608,
+      "highres": 1
+    }
+  ],
+  "raw_format": {
+    "pixel_order": "BGRA little endian; padding excluded from RGB proof",
+    "dimensions": "Recorded per image from Program::video registers",
+    "display_aspect": "4:3"
+  },
+  "finished": {
+    "callbacks": 1342,
+    "captures": 6,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "overworld.png",
+      "stage": "overworld",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "7aa377f00c6d61fae9383d6a301be517f4c42fe726b6403c02fe4eaf0252f51b",
+      "callback_sha256": "068c02abd9eb652d69710f7b6aed529a9a8c412d03b356341a5b173b53d550a1",
+      "rgb_sha256": "dd19879c72102406040d675cfe3371a02b1ca976f453bb65a36c080d47f71002",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 51,
+      "stage_gate": {
+        "stage_started_callback": 7,
+        "native_frame": "overworld",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 43,
+        "native_ready_valid_frames": 7,
+        "post_native_valid_callbacks": 9,
+        "stable_callbacks": 9,
+        "previous_captured_sha256": null
+      }
+    },
+    {
+      "file": "lab.png",
+      "stage": "lab",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "ca20a8ff23cc23ef3b1105abf80d9d1132304046dbe34c9f05b2861e4f23011a",
+      "callback_sha256": "a68ad2126032c04d752854f924a1fabcb3ebcff042c8c40adc4fbcc67dba91d3",
+      "rgb_sha256": "2dfa0a5cec185d448d5e8cdd335beb27906a7d110562e198c9b2846cc8965da7",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 250,
+      "stage_gate": {
+        "stage_started_callback": 216,
+        "native_frame": "lab",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 244,
+        "native_ready_valid_frames": 208,
+        "post_native_valid_callbacks": 7,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "92e6556be125278ac489838b8260a8808d8be90e8812eeccd71a2fc609a12de4"
+      }
+    },
+    {
+      "file": "lightning.png",
+      "stage": "lightning",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "bfd743a35a208a918b7e4295ac5057a67500aced71c4ce04b4868674200fc1aa",
+      "callback_sha256": "f6b82735c50d40dbff9495cd586e563a4e5047467a131b894c59bdd67a69f0cd",
+      "rgb_sha256": "2648d92726d6910a6a52cab3de16f3f1dea14d78f5f859b377c928eaac9ee13a",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 450,
+      "stage_gate": {
+        "stage_started_callback": 415,
+        "native_frame": "lightning",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 444,
+        "native_ready_valid_frames": 408,
+        "post_native_valid_callbacks": 7,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "ba9f26bcad3d341f3d55ca409f16d732998faf76fcfad51bae1fabd504ae08a4"
+      }
+    },
+    {
+      "file": "dome.png",
+      "stage": "dome",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "86a3cc24ac1b2282716d55aed7ce1a2be4e7270ac4361f07dffa6e489ecae945",
+      "callback_sha256": "126e308e6d7eaadc48040b4ed59512d4bbe13a21d3f82dc4371b22ae4e8cb10d",
+      "rgb_sha256": "7a85ec2b8160711a024813cb820eb851dd43fbf5ec3fbf8cf184d77edd3d9ca0",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 666,
+      "stage_gate": {
+        "stage_started_callback": 614,
+        "native_frame": "dome",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 660,
+        "native_ready_valid_frames": 624,
+        "post_native_valid_callbacks": 7,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "015ddcbca195d6a996b6c9270ad094113ec6a21d9233db57829e9b48541a7f86"
+      }
+    },
+    {
+      "file": "naming.png",
+      "stage": "naming",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "20218713c6a656fab9b410e3717e05401be3a68b632d54dcf8b534d913800922",
+      "callback_sha256": "de2a35ab39836af29273c437be703a08fd9f0baf36a943b7984f6a2ed97b9fd9",
+      "rgb_sha256": "120aea9205d108a6a4f6ae42a7d5d7080423c89c40b72a5a212a28bf3720a827",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 876,
+      "stage_gate": {
+        "stage_started_callback": 831,
+        "native_frame": "naming",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 868,
+        "native_ready_valid_frames": 832,
+        "post_native_valid_callbacks": 9,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "314fbd09feddff74a54e0ce75a2b675f1b0b89d9514d85bc11f6dd4f400d5103"
+      }
+    },
+    {
+      "file": "dialogue.png",
+      "stage": "dialogue",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "f50e1e4c25c5eee5d6bb1d8fb67566f96bdb2f8cb83d8bc2426db3448f5c0483",
+      "callback_sha256": "f7839ba47b2fc1f44311bb57e7b1019cf94f4c0efd3a10919235b6e4e934369a",
+      "rgb_sha256": "a0dec355f4323b6534d68d71491d270b23400d3a54c498baef6a1367619240bc",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 1168,
+      "stage_gate": {
+        "stage_started_callback": 1141,
+        "native_frame": "dialogue",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 1162,
+        "native_ready_valid_frames": 1126,
+        "post_native_valid_callbacks": 7,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "efa122a2029238fac2a815975bed308bc51478922ee068bee004f766917fe4c9"
+      }
+    }
+  ],
+  "native_frames": [
+    {
+      "file": "overworld.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "2a02425b0a86f8bc134beaa28e83433f7d39eb9ca41cb8768390bb151a65e5d5",
+      "exact_native_pixels": 172800
+    },
+    {
+      "file": "lab.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "fbaa1e7c7ccf0ca71350c7d9d01ab20c8fbb0ac39eea740a72c042b95dc41413",
+      "exact_native_pixels": 172800
+    },
+    {
+      "file": "lightning.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "bf8333a7d9f51a8dc6581141ae44456b1032c55816c42a2f2e602af0f0b8302e",
+      "exact_native_pixels": 172800
+    },
+    {
+      "file": "dome.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "eaecf04de15d42816bb7a9ae8e9ec741c97c2a36771eea3f5f5281a23c9b28cb",
+      "exact_native_pixels": 172800
+    },
+    {
+      "file": "naming.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "7e2b5e1690517f8e31ba2eef14f220f72bc199420f7d4a5b8417e1e7fbe0eb5f",
+      "exact_native_pixels": 172800
+    },
+    {
+      "file": "dialogue.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "5ca5fb3d2fec105ee4c5b37c394b38a544def909862fc6dc2754763f572601ab",
+      "exact_native_pixels": 172800
+    }
+  ],
+  "memory": [],
+  "source_logs": {
+    "path": "port/frontends/n64/adventure/build/expansion-pak/performance-final-480-v2/lldb.log",
+    "sha256": "45c764399973e15e0e27aa4966d0d8f6b66bf01d16a4dc08d7d189a5cc7ed08f"
+  }
+}

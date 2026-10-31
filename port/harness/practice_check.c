@@ -13,8 +13,20 @@ static struct {
 	bool started, wrong_energy, retry_seen, retry_restored;
 	unsigned player_turns, requests;
 	u8 selected_card;
+	bool speech_waiting,finally_seen,recap_seen;
+	unsigned speeches,speech_acks,checklist_updates;
+	u16 speech_text;
+	char checklist[1024];
 } test;
 static jmp_buf finished;
+
+static unsigned long long state_hash(void)
+{
+	unsigned long long hash=1469598103934665603ULL;
+	for(unsigned i=0;i<8192;i++)hash=(hash^tcg_wram()[i])*1099511628211ULL;
+	for(unsigned i=0;i<128;i++)hash=(hash^tcg_hram()[i])*1099511628211ULL;
+	return hash;
+}
 
 void tcg_fatal(const char *message)
 {
@@ -57,6 +69,31 @@ static u8 next_card(void)
 static void event(void *ctx, const TcgEvent *ev)
 {
 	(void)ctx;
+	if(ev->type==TCG_EV_TEXT) {
+		if(ev->arg[1]==TCG_TEXT_PRACTICE_CHECKLIST) {
+			assert(!ev->arg[0]&&!test.speech_waiting&&ev->str);
+			assert(strlen(ev->str)<sizeof(test.checklist)-1);
+			snprintf(test.checklist,sizeof(test.checklist),"%s",ev->str);
+			if(ev->str[0])test.checklist_updates++;
+		} else {
+			/* Numbered lines are persistent panel redraws, never transient
+			 * messages that replace Mason's speech for one rendered frame. */
+			assert(ev->text<Turn1Instr1PracticeDuelText||ev->text>SamTurn4Instr2PracticeDuelText);
+			if(ev->arg[1]==TCG_TEXT_PRACTICE_SPEECH) {
+				assert(ev->arg[0]==1&&!test.speech_waiting);
+				assert(rd16(wTextBoxLabel)==DrMasonText);
+				test.speech_waiting=true;test.speech_text=ev->text;test.speeches++;
+				if(ev->text==Turn1DrMason3PracticeDuelText) {
+					assert(strstr(test.checklist,"1. Choose Hand")&&strstr(test.checklist,"2. Attach"));
+					assert(!strstr(test.checklist,"3. Choose Attack"));
+					test.finally_seen=true;
+				}
+				if(ev->text==LetsPlayTheGamePracticeDuelText&&wDuelTurns==0) {
+					assert(strstr(test.checklist,"3. Choose Attack"));test.recap_seen=true;
+				}
+			}
+		}
+	}
 	if (ev->type == TCG_EV_TURN) {
 		test.started = true;
 		if (ev->arg[0] == TCG_PLAYER) test.player_turns++;
@@ -74,6 +111,10 @@ static int request(void *ctx, const TcgRequest *r)
 {
 	(void)ctx;
 	assert(++test.requests < 1000);
+	if(test.speech_waiting) {
+		assert(r->type==TCG_REQ_ACK);
+		test.speech_waiting=false;test.speech_acks++;
+	}
 	switch (r->type) {
 	case TCG_REQ_ACK: case TCG_REQ_CONFIRM: return 0;
 	case TCG_REQ_YES_NO: return 1;
@@ -83,6 +124,7 @@ static int request(void *ctx, const TcgRequest *r)
 			assert(!wAlreadyPlayedEnergy && attached(WATER_ENERGY, PLAY_AREA_ARENA) == 1);
 			assert(!attached(PSYCHIC_ENERGY, PLAY_AREA_ARENA));
 			test.retry_restored = true;
+			assert(strstr(test.checklist,"Psychic Energy")&&strstr(test.checklist,"Waterfall"));
 			longjmp(finished, 1);
 		}
 		return next_card() ? 0 : 1; /* Hand or Attack */
@@ -140,12 +182,19 @@ static void run(bool wrong_energy)
 	} else {
 		assert(wrong_energy && test.retry_seen && test.retry_restored);
 	}
+	assert(test.finally_seen&&test.recap_seen&&test.checklist_updates>0);
+	assert(!test.speech_waiting&&test.speeches==test.speech_acks);
+	/* Recorded before the presentation fix, including all8KB WRAM+128B HRAM.
+	 * The correct duel and the wrong-Energy rewind retain exact source state. */
+	assert(test.requests==(wrong_energy?63u:200u));
+	assert(state_hash()==(wrong_energy?0x14b6a98d0ce934ecULL:0x0d4027b58c8a5c77ULL));
+	printf("PRACTICE TRACE wrong=%d requests=%u memory=%llx\n",wrong_energy,test.requests,state_hash());
 }
 
 int main(void)
 {
 	run(false);
 	run(true);
-	puts("PRACTICE PASS: all eight player turns; Seaking/Psychic/Waterfall advances; wrong Water restores the original turn");
+	puts("PRACTICE PASS: all eight turns; persistent checklist and fresh Mason ACKs; Finally/recap ordering; exact original memory/RNG/request traces; Psychic advances and wrong Water rewinds");
 	return 0;
 }

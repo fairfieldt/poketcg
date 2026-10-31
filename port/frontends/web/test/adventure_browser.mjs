@@ -71,7 +71,27 @@ try {
 	await page.screenshot({ path: path.join(out, 'naming.png') });
 	await page.getByRole('button', { name: 'Continue', exact: true }).click();
 	console.log('source intro');
-	let shots = 0;
+	let shots = 0, samCamera = false;
+	async function checkConversation(npc, name) {
+		const before = await page.evaluate(() => window.tcgAdventure.engine.view);
+		await page.waitForFunction(() => {
+			const c = window.tcgAdventure.engine.view.presentation.camera;
+			return Math.abs(Math.atan2(c.eye[1] - c.target[1],
+				Math.hypot(c.eye[0] - c.target[0], c.eye[2] - c.target[2])) * 180 / Math.PI - 20) < .1;
+		}, null, { timeout: 30000 });
+		const after = await page.evaluate(() => window.tcgAdventure.engine.view);
+		assert.equal(after.presentation.conversationNpc, npc, `${name} retains focus while Asyncify waits`);
+		const camera = after.presentation.camera;
+		const pitch = Math.atan2(camera.eye[1] - camera.target[1],
+			Math.hypot(camera.eye[0] - camera.target[0], camera.eye[2] - camera.target[2])) * 180 / Math.PI;
+		assert(Math.abs(pitch - 20) < .1, `${name} settles at20 degrees: ${pitch}`);
+		assert(Math.abs(camera.fov - 50) < .02);
+		for (const key of ['map', 'x', 'y', 'direction', 'npcs', 'totalCards'])
+			assert.deepEqual(after[key], before[key], `${name} camera leaves source ${key} unchanged`);
+		assert.deepEqual(after.presentation.player, before.presentation.player,
+			'Camera-only RAF does not advance actor movement or idle phase');
+		await page.screenshot({ path: path.join(out, name + '.png') });
+	}
 	for (let i = 0; i < 180; i++) {
 		if (i % 10 === 0) {
 			console.log(
@@ -91,7 +111,11 @@ try {
 				.textContent()
 				.catch(() => '');
 			if (heading.includes('Mason') && shots++ === 0)
-				await page.screenshot({ path: path.join(out, 'mason-dialogue.png') });
+				await checkConversation(1, 'mason-dialogue');
+			if (!samCamera && heading === 'Sam' && await page.evaluate(() =>
+				window.tcgAdventure.view.x === 10 && window.tcgAdventure.view.y === 14)) {
+				await checkConversation(7, 'sam-conversation');samCamera = true;
+			}
 			const buttons = await modal.locator('button').allTextContents();
 			const target = buttons.includes('Continue')
 				? 'Continue'
@@ -104,6 +128,7 @@ try {
 		} else await page.waitForTimeout(40);
 	}
 	await page.waitForFunction(() => !!window.tcgAdventure.ui, { timeout: 30000 });
+	assert(shots > 0 && samCamera, 'Actual source opening exercises Mason and Sam conversation cameras');
 	await page.waitForTimeout(200);
 	await page.screenshot({ path: path.join(out, 'sam-duel.png') });
 	assert(

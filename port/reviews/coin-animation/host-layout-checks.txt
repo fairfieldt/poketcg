@@ -1,0 +1,11 @@
+Explicit layout verification with a nonempty idle script, after the input buffering change:
+
+320x240:
+UI LAYOUT PASS cards=228 descriptions=316 max_pages=3 max_card=10 trainer=216 trainer_pages=1 trainer_lines=7
+PRACTICE LAYOUT PASS lessons=25 uniform_full_panel=1 hint_only_footer=1 dimensions=320x240
+
+480x360:
+UI LAYOUT PASS cards=228 descriptions=316 max_pages=3 max_card=10 trainer=216 trainer_pages=1 trainer_lines=7
+PRACTICE LAYOUT PASS lessons=25 uniform_full_panel=1 hint_only_footer=1 dimensions=480x360
+
+Command per mode: TCGN64_LAYOUT_TEST=1 MOCK_SCRIPT=build/host/coin-idle.script [MOCK_HIGH_RES=1] ./build/host/tcgn64_host

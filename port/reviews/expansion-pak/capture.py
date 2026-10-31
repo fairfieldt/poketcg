@@ -163,6 +163,9 @@ quit
         assert mode['ram']==args.ram_mib*1024*1024,mode
     frames=[]
     for name,width,height,rows in native_frames(text,(args.width,args.height)):
+        # A combined diagnostic may emit additional duel/UI frames after the
+        # requested world shots. Keep this case scoped to its requested stages.
+        if name not in args.stages and not any(name=='duel-ui-'+stage for stage in args.stages):continue
         file=native/(name+'.png');write_png(file,width,height,rows)
         frames.append(dict(file=file.name,dimensions=[width,height],sha256=sha(file),exact_native_pixels=width*height))
     assert len(frames)==len(args.stages),(len(frames),args.stages)

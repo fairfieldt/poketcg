@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "protocol": {
+    "checklist_mode": 1,
+    "speech_mode": 2,
+    "event": "TCG_EV_TEXT.arg[1]",
+    "checklist": "Complete persistent UTF-8 summary; empty clears; never a speech/ACK replacement",
+    "speech": "Uniform full reading panel; hint-only bottom; local page turns require fresh presses"
+  },
+  "source_regression": {
+    "correct": {
+      "player_turns": 8,
+      "requests": 200,
+      "wram_hram_fnv64": "0d4027b58c8a5c77"
+    },
+    "wrong_energy_retry": {
+      "requests": 63,
+      "wram_hram_fnv64": "14b6a98d0ce934ec"
+    },
+    "hashes_recorded_before_fix": true,
+    "all_numbered_redraws_separate_from_speech": true,
+    "all_mason_speech_waits_ack": true,
+    "finally_follows_first_two_steps": true,
+    "complete_recap_before_duel_menu": true
+  },
+  "frontend_regression": {
+    "native_dimensions": [
+      [
+        320,
+        240
+      ],
+      [
+        480,
+        360
+      ]
+    ],
+    "native_turn_lessons": 25,
+    "native_no_out_of_bounds": true,
+    "native_short_long_footer_byte_identical": true,
+    "web_widths": [
+      320,
+      960
+    ],
+    "web_no_duplicate_bottom_speech": true,
+    "web_short_long_panel_bounds_identical": true,
+    "web_complete_recap_fits": true,
+    "web_fresh_press_between_lessons_and_pages": true,
+    "web_one_engine_ack_across_local_pages": true,
+    "new_turn_clears_checklist": true
+  },
+  "checks": [
+    "make -C port practicecheck",
+    "make -C port/frontends/n64 build/host/tcgn64_host",
+    "TCGN64_LAYOUT_TEST=1 MOCK_ROMFS=port/frontends/n64/build/host/filesystem port/frontends/n64/build/host/tcgn64_host",
+    "TCGN64_LAYOUT_TEST=1 MOCK_HIGH_RES=1 MOCK_ROMFS=port/frontends/n64/build/host/filesystem port/frontends/n64/build/host/tcgn64_host",
+    "node port/frontends/web/test/practice_reading.mjs"
+  ],
+  "native_capture": {
+    "passed": true,
+    "case": "native-final",
+    "frames": [
+      {
+        "file": "mason-long-320.png",
+        "dimensions": [
+          320,
+          240
+        ],
+        "sha256": "59ea6e1fcde02500cfd7e6d6fb865ab242dffc52d9c319f8ea4191622dfa74c2"
+      },
+      {
+        "file": "mason-finally-320.png",
+        "dimensions": [
+          320,
+          240
+        ],
+        "sha256": "e3d5c2bff3d58ef10ce17c248e19cccb3e24bc1d2cbaa6c4435358a15ec28aee"
+      },
+      {
+        "file": "mason-recap-320.png",
+        "dimensions": [
+          320,
+          240
+        ],
+        "sha256": "e8b8c5788b35f7edc7a1bc6ee73f7330e2b47162e5c5dc2d4aead800b75a7a2c"
+      },
+      {
+        "file": "mason-long-480.png",
+        "dimensions": [
+          480,
+          360
+        ],
+        "sha256": "74d5c992e139674f57ce844ba2e8cf0e5bedbbf63e93f48d46dc39fae3037214"
+      },
+      {
+        "file": "mason-finally-480.png",
+        "dimensions": [
+          480,
+          360
+        ],
+        "sha256": "c4d55c99066b5597349f9319fb8e03887d1259fb1e579490bd8c9261f59c0fd9"
+      },
+      {
+        "file": "mason-recap-480.png",
+        "dimensions": [
+          480,
+          360
+        ],
+        "sha256": "2731575c879e4cb4df1123d3b13d808fecf3b1a97f2950323905a88378567255"
+      }
+    ],
+    "wall_seconds": 21.48,
+    "method": "N64 RDP framebuffer read after detach_wait, same production duel UI/video code; privateAres/noVIbreakpoints",
+    "rom_sha256": "1b7e670b62a8e03c417242c69f69dd196891c69cbc8d67b48bfc32b2427ad670",
+    "source_log_sha256": "3308353cf1846a269dccfefd9724bc0e3035db3084868ef24df6a7b4705f4229",
+    "combined_adventure_mode_cases": 3,
+    "combined_adventure_mode_pass": true,
+    "fixture_scope": "Actual source checklist/speech helpers and production UI/video renderer; static source-text fixture, not an automatically played tutorial. Eight-turn engine ordering/state is verified by practice_check.c."
+  }
+}

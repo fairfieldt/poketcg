@@ -1,0 +1,24 @@
+{
+  "rom_sha256": "2033d2f40aade86ee3717841dd3a3076564613b855d21fd90ef579f87a1b69a1",
+  "method": "Unmodified ares v148 executable code, private settings, diagnostic14, no debugger/frame breakpoints",
+  "wall_seconds": 53.245,
+  "phases": [
+    {
+      "phase": "opening",
+      "polls": 328,
+      "buffers": 280,
+      "underruns": 0,
+      "max_poll_us": 33680,
+      "max_mix_us": 2066
+    },
+    {
+      "phase": "title",
+      "polls": 1378,
+      "buffers": 1159,
+      "underruns": 0,
+      "max_poll_us": 33680,
+      "max_mix_us": 2080
+    }
+  ],
+  "scope": "AI busy state measures the emulated N64 output queue. Host audio-device underruns and listening quality are not measured."
+}

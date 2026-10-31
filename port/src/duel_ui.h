@@ -31,6 +31,8 @@ extern u8 gUIDecider;
 
 /* ---------------------------------------------------------------- text (home/print_text.asm, text_box.asm, menus.asm) */
 void print_ui_text(u16 text);                       /* print a text without a text box routine (instructions etc.) */
+void tcg_ui_practice_checklist(u16 label,const u16 *steps,unsigned count);
+void tcg_ui_practice_speech(u16 text);
 void LoadTxRam2(u16 text);
 void LoadTxRam3(u16 number);
 void DrawWideTextBox(void);

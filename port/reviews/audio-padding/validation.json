@@ -1,0 +1,1319 @@
+{
+  "cause": "Installed audioconv64 stereo VADPCM padding uses a scalar-sample pointer with a frame count, overwriting 16 frames near the midpoint of 16-modulo-32 input and leaving its DMA tail uninitialized.",
+  "fix": "Prealign stereo loop copies and zero-pad transport PCM to 32 frames before audioconv64. Restore exact original playback/loop header lengths after encoding; canonical source PCM is unchanged.",
+  "title_midpoint": {
+    "start_frame": 408600,
+    "frames": 16,
+    "seconds": 17.025,
+    "source_rms": 9166.84297481963,
+    "old_decoded_rms": 387.8678898800467,
+    "new_decoded_rms": 9087.234187996917
+  },
+  "coverage": {
+    "tracks": 127,
+    "corrected": 54,
+    "canonical_pcm_and_timing_unchanged": true,
+    "all_playback_headers_byte_identical": true,
+    "normal_cache_check": "PASS",
+    "empty_temporary_cache_check": "PASS",
+    "finite_stereo_decoder_regression": "PASS",
+    "misaligned_loop_decoder_regression": "PASS",
+    "real_title_decoder_regression": "PASS"
+  },
+  "tracks": [
+    {
+      "name": "MUSIC_STOP",
+      "file": "music_00.wav64",
+      "source_pcm_sha256": "52f716c3b9c916575a44b7b2f68504e6206f8c184f84fe9abdc3e4256848ddeb",
+      "source_samples": 2800,
+      "playback_header_sha256": "7a5f580cc2804489e35560a5db7cc37080e43412fddd4b113562114e37dc8f22",
+      "old_wav64_sha256": "a2ebc5b8e134e042f70e5325185fa768bb4051110e37b5e1ee379387a6f07784",
+      "new_wav64_sha256": "a2ebc5b8e134e042f70e5325185fa768bb4051110e37b5e1ee379387a6f07784",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_TITLESCREEN",
+      "file": "music_01.wav64",
+      "source_pcm_sha256": "c103d0912593d18b936ea202bc298816d410aae1a9022ee5afaedd6e8298788c",
+      "source_samples": 817200,
+      "playback_header_sha256": "746eb64ca199109c715da4d14d88abe1c770fac291f97f4eac3a0fb5c4ffa0ab",
+      "old_wav64_sha256": "56851042197ae17b493e4f9914c369fde37b843e15286fb8686541aff620dd08",
+      "new_wav64_sha256": "809581966431774dec289b11e39a9c28628a830e031bee6b995017c0a45c3475",
+      "corrected": true
+    },
+    {
+      "name": "MUSIC_DUEL_THEME_1",
+      "file": "music_02.wav64",
+      "source_pcm_sha256": "b63c9e4c45c401b88f10e3b29d49f7b39e57f7f3484d9e18603a5ccaad318e32",
+      "source_samples": 3124160,
+      "playback_header_sha256": "9143d997bed9fa4914820553cfd8d065a07b09551175dbdf09bde4b3561e6b70",
+      "old_wav64_sha256": "75957131ffe70d68f5ac247397c1ab65322217c1f671f50954d20270cc09fa11",
+      "new_wav64_sha256": "75957131ffe70d68f5ac247397c1ab65322217c1f671f50954d20270cc09fa11",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_DUEL_THEME_2",
+      "file": "music_03.wav64",
+      "source_pcm_sha256": "e9af75f542d1e204b7cfda4b0b3f924b9b0e6c11b086abe98b0ba0a3a668c519",
+      "source_samples": 2582288,
+      "playback_header_sha256": "e0e6b989b0061f3392e06ee0077875995127f636caecc149f08c0fe838651e7b",
+      "old_wav64_sha256": "f93aacf1f9e475269eb3ad7e81bd0109d1fc64439cb8e3c681d464f5ce8eec8c",
+      "new_wav64_sha256": "f93aacf1f9e475269eb3ad7e81bd0109d1fc64439cb8e3c681d464f5ce8eec8c",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_DUEL_THEME_3",
+      "file": "music_04.wav64",
+      "source_pcm_sha256": "bbe02f54be365397957a2f76be1a48cb726d09547856797ea2e50e1fcdec1b69",
+      "source_samples": 3892336,
+      "playback_header_sha256": "d62d8097b63c248b15e4aa7ce5a50028726f9125c4f585342d8cb1267ee9a21d",
+      "old_wav64_sha256": "bca19ff99e45766c4c644b5fbb6802da3c3aae39fe14cc88b387475f34880e57",
+      "new_wav64_sha256": "08791f18c4d9e4716d3e8a5983b382776a139c987240bdebc2c441370efb41b1",
+      "corrected": true
+    },
+    {
+      "name": "MUSIC_PAUSE_MENU",
+      "file": "music_05.wav64",
+      "source_pcm_sha256": "bf83c69ff146140b6777d1253195efe9bbacd5c0cd91962aedfc00e2050d322b",
+      "source_samples": 725568,
+      "playback_header_sha256": "82431ee8be3635b7fe38d6edbe3ba32c84a6b48a73b6ee0908fa066dfe2a4b69",
+      "old_wav64_sha256": "3735814aa89bdb074faec49fa2b1661b3ad93ec83936692b2d7b0713105a48f6",
+      "new_wav64_sha256": "3735814aa89bdb074faec49fa2b1661b3ad93ec83936692b2d7b0713105a48f6",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_PC_MAIN_MENU",
+      "file": "music_06.wav64",
+      "source_pcm_sha256": "70095a324e936578169c5ab300744d28c7669a50ffaa18426ed3cc80618fa30a",
+      "source_samples": 357408,
+      "playback_header_sha256": "b6325488b4ca0b6eee67c5ae66f7195eeb92490d049921c250ca539e8b4960ef",
+      "old_wav64_sha256": "37168c79a4ec47f02e879dd791f49be72ba584326ee56a57d13491b271c594bc",
+      "new_wav64_sha256": "37168c79a4ec47f02e879dd791f49be72ba584326ee56a57d13491b271c594bc",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_DECK_MACHINE",
+      "file": "music_07.wav64",
+      "source_pcm_sha256": "3c408c8e84d17031188cf13511816bbfbb44035e504eda2ccd0dfba40363731c",
+      "source_samples": 478528,
+      "playback_header_sha256": "9c1525775b5879bc4064cfcb803a625b913d4e7b03072e436dcc27f23107ad63",
+      "old_wav64_sha256": "07bfe9edccaa6d145158d6f5d9f543208695bb9cfc24d036f8b0818bfd9d54ad",
+      "new_wav64_sha256": "07bfe9edccaa6d145158d6f5d9f543208695bb9cfc24d036f8b0818bfd9d54ad",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_CARD_POP",
+      "file": "music_08.wav64",
+      "source_pcm_sha256": "a21d06e791221d080a44da98b8237c2d62ec2141f582797e05725f935654dea6",
+      "source_samples": 612400,
+      "playback_header_sha256": "e55659711b906409db0b168cff7f3b675ded956a2885a33f0021e4a41b6760e2",
+      "old_wav64_sha256": "26519fc95baaa34b784f64ca51ab23553fd76eb886707dd407d44548ec1e22f7",
+      "new_wav64_sha256": "60b48114a36de2098854579dcfc64d524c9b6fc02cc8970b3a4820f90eddc74b",
+      "corrected": true
+    },
+    {
+      "name": "MUSIC_OVERWORLD",
+      "file": "music_09.wav64",
+      "source_pcm_sha256": "40442a401c50e3bb428be65b69dd9d1aa3f62f2e67c9b4dafba65845121e0524",
+      "source_samples": 1481392,
+      "playback_header_sha256": "48569ea916a554eee3f46633de9a5a9be64738e423c9084da91a8b64ff9a025e",
+      "old_wav64_sha256": "c1dd5b4693c506c9bc97bfef2b043edf793c8d7a0865bf1418643883730418e4",
+      "new_wav64_sha256": "c1dd5b4693c506c9bc97bfef2b043edf793c8d7a0865bf1418643883730418e4",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_POKEMON_DOME",
+      "file": "music_10.wav64",
+      "source_pcm_sha256": "1072842e124112fbc735602884846181b72dc4a5ba0d9e94701b376f931dbf69",
+      "source_samples": 1015632,
+      "playback_header_sha256": "01afa8f9493fc397238ec1910f97c5e46c0de0f3fe10a017573eb6763641f9ac",
+      "old_wav64_sha256": "37feacf6abde0363259951930203864bad508f1e1697cc1356ffb112b922e8c9",
+      "new_wav64_sha256": "3baa61a8c0422821a8a6abd5565fccad196a5e3496670fd712ac4d1f7c1fbd07",
+      "corrected": true
+    },
+    {
+      "name": "MUSIC_CHALLENGE_HALL",
+      "file": "music_11.wav64",
+      "source_pcm_sha256": "8aaa42aa9215fe47efccbdca08b20a0da33756821d7b6f6c528a0714b447bfe5",
+      "source_samples": 908848,
+      "playback_header_sha256": "67b81b99a46b7debd1f1e5604227699623412b1b3923bf4311945b535de3dd7a",
+      "old_wav64_sha256": "c92321720bbe17b4d5903de1d00aa4e8e35dd4ec2fdbf9f56390deba1760f273",
+      "new_wav64_sha256": "c92321720bbe17b4d5903de1d00aa4e8e35dd4ec2fdbf9f56390deba1760f273",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_CLUB_1",
+      "file": "music_12.wav64",
+      "source_pcm_sha256": "35d9c68bdf5ee021d3f81636645a6ef26d6bd00f4f2ca276626ceb11851c303e",
+      "source_samples": 861024,
+      "playback_header_sha256": "5f2d61433b52b12f021270cdb48124b83fd9009e1071008347de3568258b1673",
+      "old_wav64_sha256": "2cbe23d78c77f3385a56e2ad0a3117a02bccd2f52db0a6105c27399218085c53",
+      "new_wav64_sha256": "6d0ebf8fb910d5fb9944215f7ed2dab6a657148f1f52ffd62b84426e955f8d7a",
+      "corrected": true
+    },
+    {
+      "name": "MUSIC_CLUB_2",
+      "file": "music_13.wav64",
+      "source_pcm_sha256": "c294bd601f6959f75dd500819763ea571bc978220947f24f3634df4237436dd1",
+      "source_samples": 1683408,
+      "playback_header_sha256": "2f58d80b0240ab16a7d5f23f16e90aaa92a9c161a43f2c718643dd2da2e17f65",
+      "old_wav64_sha256": "15b5d9d9cf56f7432fb81ba9d11085b782ca39ac8bdc0a4fb63101ee854782ac",
+      "new_wav64_sha256": "256df819457d30e47cdb0399f5ab483ecbafb526fc6563f375317801c34f8b5d",
+      "corrected": true
+    },
+    {
+      "name": "MUSIC_CLUB_3",
+      "file": "music_14.wav64",
+      "source_pcm_sha256": "86392662295cbc3dcbad3dafcfcea937800b3edacd0bf8857fc32763a38ebaa2",
+      "source_samples": 1377408,
+      "playback_header_sha256": "0f4e96861fa4bd1a94ecfd76ca6b4981732343636afba13686cc20e151caa1f7",
+      "old_wav64_sha256": "a13b6a3619e5c161e4550c3d6adf2dfc48c8bc21dac07bbbfb8219a01fa25bdd",
+      "new_wav64_sha256": "a13b6a3619e5c161e4550c3d6adf2dfc48c8bc21dac07bbbfb8219a01fa25bdd",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_RONALD",
+      "file": "music_15.wav64",
+      "source_pcm_sha256": "0cc31c2ff10bdbf714364cfdd8d24cc6014fe1bef4ea2e93f50d14a763ff22e9",
+      "source_samples": 1989408,
+      "playback_header_sha256": "34715ad7c839fdc106320334c323b1a9a16afa67c4cc10d62dabec1c756e80e9",
+      "old_wav64_sha256": "eed00377e7137ab6ebe1344d67e93935de16d68e6c4ccb94adb04c2eca651976",
+      "new_wav64_sha256": "eed00377e7137ab6ebe1344d67e93935de16d68e6c4ccb94adb04c2eca651976",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_IMAKUNI",
+      "file": "music_16.wav64",
+      "source_pcm_sha256": "e35148ce8e15450d5efbf25081cf32a61ac6b4715d7080502565a5e3729c76b6",
+      "source_samples": 1147904,
+      "playback_header_sha256": "7309064bf0379e575a61e555f0e95650c0865a7e9e03c1d71c73e99ba9413930",
+      "old_wav64_sha256": "f6ba295ce62fcafbcda3d51d43683cae09953173fa26f9cc73faec8edca12125",
+      "new_wav64_sha256": "f6ba295ce62fcafbcda3d51d43683cae09953173fa26f9cc73faec8edca12125",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_HALL_OF_HONOR",
+      "file": "music_17.wav64",
+      "source_pcm_sha256": "1ac9975641b17427540eb1105f68b8b62a2110e9e8b23a81566558142601ea60",
+      "source_samples": 1414464,
+      "playback_header_sha256": "2d36e5a544e236d3a992fcae79dc79b95c116ddd6654654a9cb2fb0e92515128",
+      "old_wav64_sha256": "2c7b000d63581920a4760643f48422872eb12f6d7280d96fd93ccde18345b407",
+      "new_wav64_sha256": "1dc42e583fdb11462ef6c60490af07fbac39553f0d002ab46798015482d34a06",
+      "corrected": true
+    },
+    {
+      "name": "MUSIC_CREDITS",
+      "file": "music_18.wav64",
+      "source_pcm_sha256": "01eede759017dc4a94e2961cb08d51d4454687b1cd05fa14df56a419c61f9f43",
+      "source_samples": 5073712,
+      "playback_header_sha256": "628bd8ad7a9ec1facbba039eb42463d19f42f5d057a81c1c3688e8a93b9908bd",
+      "old_wav64_sha256": "efa863ccab4b98d48d55c83fd0f64cc29146a63d1475a9f784329b8181a325a5",
+      "new_wav64_sha256": "ff72d66a88c0fcf424d6c462132d8768ea7ac572acb891b0a934190059bce8c9",
+      "corrected": true
+    },
+    {
+      "name": "MUSIC_UNUSED_13",
+      "file": "music_19.wav64",
+      "source_pcm_sha256": "52f716c3b9c916575a44b7b2f68504e6206f8c184f84fe9abdc3e4256848ddeb",
+      "source_samples": 2800,
+      "playback_header_sha256": "7a5f580cc2804489e35560a5db7cc37080e43412fddd4b113562114e37dc8f22",
+      "old_wav64_sha256": "a2ebc5b8e134e042f70e5325185fa768bb4051110e37b5e1ee379387a6f07784",
+      "new_wav64_sha256": "a2ebc5b8e134e042f70e5325185fa768bb4051110e37b5e1ee379387a6f07784",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_UNUSED_14",
+      "file": "music_20.wav64",
+      "source_pcm_sha256": "52f716c3b9c916575a44b7b2f68504e6206f8c184f84fe9abdc3e4256848ddeb",
+      "source_samples": 2800,
+      "playback_header_sha256": "7a5f580cc2804489e35560a5db7cc37080e43412fddd4b113562114e37dc8f22",
+      "old_wav64_sha256": "a2ebc5b8e134e042f70e5325185fa768bb4051110e37b5e1ee379387a6f07784",
+      "new_wav64_sha256": "a2ebc5b8e134e042f70e5325185fa768bb4051110e37b5e1ee379387a6f07784",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_MATCH_START_1",
+      "file": "music_21.wav64",
+      "source_pcm_sha256": "c69fc175707db0e46705093ff77f9f75badfc1104046feadc44b2b49c8f064ca",
+      "source_samples": 23520,
+      "playback_header_sha256": "a3b4b433808d0b1565cb7186c286d6f6e9a29cd4c29dcfd2256a1f08afddbbcb",
+      "old_wav64_sha256": "e0df09ca2512d52a1444ada75d79ca8afaaf320cc260cf23e3c89bacec88e7e9",
+      "new_wav64_sha256": "e0df09ca2512d52a1444ada75d79ca8afaaf320cc260cf23e3c89bacec88e7e9",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_MATCH_START_2",
+      "file": "music_22.wav64",
+      "source_pcm_sha256": "9fc90b8f142acf00238766bc66c74bfe836e3b33e61edc79028635251cb80310",
+      "source_samples": 26304,
+      "playback_header_sha256": "434ab580f041f86311b6fb031c8860668b70e1b9324684b7638e04be1027cfd3",
+      "old_wav64_sha256": "16a30046b6bf579bef91facc3bec5bc23dfe70d04f521ea5b6c2e68b2253f2a3",
+      "new_wav64_sha256": "16a30046b6bf579bef91facc3bec5bc23dfe70d04f521ea5b6c2e68b2253f2a3",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_MATCH_START_3",
+      "file": "music_23.wav64",
+      "source_pcm_sha256": "3ef5697dd314302ee04153f5fe30df062f867a5b662b3802ad1cd423ed2525ec",
+      "source_samples": 46224,
+      "playback_header_sha256": "c13e58f0438b6dc6a587bdf9a0e0c0eab5bc121dd78345647600914ea2445d7b",
+      "old_wav64_sha256": "727da91d6229e1deabd5e79ea6c24b32fd1d78ec2d9e3877a6ca30da343af80a",
+      "new_wav64_sha256": "587401d9f483fd860e982beb47a68cf6cec5dffee788d06fa28458815e112d2b",
+      "corrected": true
+    },
+    {
+      "name": "MUSIC_MATCH_VICTORY",
+      "file": "music_24.wav64",
+      "source_pcm_sha256": "39d37d0448fbe51db330be3f164bd6df468b0ae4e10018ac771a2f3467853541",
+      "source_samples": 114352,
+      "playback_header_sha256": "de4c553bd028ec92fbeea2f3d420f6fba08f2a74bfedbed4959861552ce95ac7",
+      "old_wav64_sha256": "3b2af13287a6869d8620f1447c5a7998f44d5f76bebb14f92e20c293e02a6fad",
+      "new_wav64_sha256": "a4bbe5060e533c377880aef4c0d1e67dc58386de5f5ff7a36c00d941b19dd56e",
+      "corrected": true
+    },
+    {
+      "name": "MUSIC_MATCH_LOSS",
+      "file": "music_25.wav64",
+      "source_pcm_sha256": "713f4020f3074ef4fd4bc365fb1a4a5ca7c8668d96f1f5605eef2c22ebb7c9ae",
+      "source_samples": 132288,
+      "playback_header_sha256": "89d253f79e6f77b5068f87b2cdf12477be4084bc101794f23365d046677cfcc1",
+      "old_wav64_sha256": "d118ef2ded9925e510d32ba5c33f2e80d5bd262e39aa5e916c85c20cfbb74abb",
+      "new_wav64_sha256": "d118ef2ded9925e510d32ba5c33f2e80d5bd262e39aa5e916c85c20cfbb74abb",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_MATCH_DRAW",
+      "file": "music_26.wav64",
+      "source_pcm_sha256": "476c9c1dae3f7470a0e6ed4bdec3780aecb1678f56542b32e7fdd9e9f31326ad",
+      "source_samples": 74512,
+      "playback_header_sha256": "c946e99db61b626ba98ecd57d77fa7a557e4c5066286d05bfb0291cae537c6b1",
+      "old_wav64_sha256": "d8ee1a2357ab124e6e4e324c70cfa3f49f7bc5c09f9c2ca7b00dd054937bc00e",
+      "new_wav64_sha256": "6beb34d710e2cd28f708653235381d6545d9eee409da59875d599a121f41908c",
+      "corrected": true
+    },
+    {
+      "name": "MUSIC_UNUSED_1B",
+      "file": "music_27.wav64",
+      "source_pcm_sha256": "52f716c3b9c916575a44b7b2f68504e6206f8c184f84fe9abdc3e4256848ddeb",
+      "source_samples": 2800,
+      "playback_header_sha256": "7a5f580cc2804489e35560a5db7cc37080e43412fddd4b113562114e37dc8f22",
+      "old_wav64_sha256": "a2ebc5b8e134e042f70e5325185fa768bb4051110e37b5e1ee379387a6f07784",
+      "new_wav64_sha256": "a2ebc5b8e134e042f70e5325185fa768bb4051110e37b5e1ee379387a6f07784",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_BOOSTER_PACK",
+      "file": "music_28.wav64",
+      "source_pcm_sha256": "adc5ec2db03b46977fd0ac394ede7737e7aab254f444ba4784100d1424c18352",
+      "source_samples": 36672,
+      "playback_header_sha256": "ff01e8c90c9a1752eb29991d16436e53a65d1b88169f1b8d0384b8ff249221c9",
+      "old_wav64_sha256": "0f5f67197714730d082ff5beefa8dbd265f2747e8ebf0a08a2ce7e9ab990fc9d",
+      "new_wav64_sha256": "0f5f67197714730d082ff5beefa8dbd265f2747e8ebf0a08a2ce7e9ab990fc9d",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_MEDAL",
+      "file": "music_29.wav64",
+      "source_pcm_sha256": "5f03264a4728a91f9b6297a9bba56a8ae615d52f5d14767615f2735e236852b7",
+      "source_samples": 129504,
+      "playback_header_sha256": "d20090a86ef902c7540e61aad08ba10aad6fcb4b531ef5f6eae55c9ece5941e6",
+      "old_wav64_sha256": "f1bd43afb3ed9fab4e67644c1f893b11f69749bd20ef514824f967092e7540f6",
+      "new_wav64_sha256": "f1bd43afb3ed9fab4e67644c1f893b11f69749bd20ef514824f967092e7540f6",
+      "corrected": false
+    },
+    {
+      "name": "MUSIC_UNUSED_1E",
+      "file": "music_30.wav64",
+      "source_pcm_sha256": "52f716c3b9c916575a44b7b2f68504e6206f8c184f84fe9abdc3e4256848ddeb",
+      "source_samples": 2800,
+      "playback_header_sha256": "7a5f580cc2804489e35560a5db7cc37080e43412fddd4b113562114e37dc8f22",
+      "old_wav64_sha256": "a2ebc5b8e134e042f70e5325185fa768bb4051110e37b5e1ee379387a6f07784",
+      "new_wav64_sha256": "a2ebc5b8e134e042f70e5325185fa768bb4051110e37b5e1ee379387a6f07784",
+      "corrected": false
+    },
+    {
+      "name": "SFX_STOP",
+      "file": "sfx_00.wav64",
+      "source_pcm_sha256": "52f716c3b9c916575a44b7b2f68504e6206f8c184f84fe9abdc3e4256848ddeb",
+      "source_samples": 2800,
+      "playback_header_sha256": "7a5f580cc2804489e35560a5db7cc37080e43412fddd4b113562114e37dc8f22",
+      "old_wav64_sha256": "a2ebc5b8e134e042f70e5325185fa768bb4051110e37b5e1ee379387a6f07784",
+      "new_wav64_sha256": "a2ebc5b8e134e042f70e5325185fa768bb4051110e37b5e1ee379387a6f07784",
+      "corrected": false
+    },
+    {
+      "name": "SFX_CURSOR",
+      "file": "sfx_01.wav64",
+      "source_pcm_sha256": "a246f9669a3a2e4f40df423fb9dc68fd3ed2007ae235d1a3d7bf6197a24d93ce",
+      "source_samples": 4384,
+      "playback_header_sha256": "7092ed312c5f4b795794049199fb0aba854b39820793b285a1e51f57d32a0225",
+      "old_wav64_sha256": "313373680c444de41c1bf0d4dc556ab792d7a588ba078b0bfcd34dc6d9395f25",
+      "new_wav64_sha256": "313373680c444de41c1bf0d4dc556ab792d7a588ba078b0bfcd34dc6d9395f25",
+      "corrected": false
+    },
+    {
+      "name": "SFX_CONFIRM",
+      "file": "sfx_02.wav64",
+      "source_pcm_sha256": "8bd243c2be428c2ed0a903c1471506d95d024655a2bec8c47f6f84ed33e2c3e9",
+      "source_samples": 12352,
+      "playback_header_sha256": "c4207a72b89872814a156694c3f451be441dd902a7bdd9e68a8fe1a546a17b25",
+      "old_wav64_sha256": "c52463d5d05667e1b207183f2ade5ff58e323f40fe2f1f40b64a7f2aac88c0e7",
+      "new_wav64_sha256": "c52463d5d05667e1b207183f2ade5ff58e323f40fe2f1f40b64a7f2aac88c0e7",
+      "corrected": false
+    },
+    {
+      "name": "SFX_CANCEL",
+      "file": "sfx_03.wav64",
+      "source_pcm_sha256": "54c227f6ee1441b384d8ca7e9e3f41b429fde5002d9e6d0f336b5fa1f0f6a1b3",
+      "source_samples": 7184,
+      "playback_header_sha256": "e25d868ccc104e726eae1f244b2ef2291c46ff99d7d8e117c18d8315ab0a725b",
+      "old_wav64_sha256": "2848e72704663582f0aa954a3e55193a24803ede77cbaab03f41530de14f8f20",
+      "new_wav64_sha256": "09c403ed9f6faf6574ebc6c4d98e40249a86cbdea82959665883c7080e845ffd",
+      "corrected": true
+    },
+    {
+      "name": "SFX_DENIED",
+      "file": "sfx_04.wav64",
+      "source_pcm_sha256": "3e8f9f44bfb524ec85391890a147d182db0241c1641b2406c7cd94fae71f5f8a",
+      "source_samples": 8768,
+      "playback_header_sha256": "81bf20f9bd233e211eb2c2379e9a5f13a591fe29cf0fa94a1811a2d87d4c649e",
+      "old_wav64_sha256": "1bf39d0ffaab277e5c298346f882acc70dbbb6d9935694148acd3225f665f472",
+      "new_wav64_sha256": "1bf39d0ffaab277e5c298346f882acc70dbbb6d9935694148acd3225f665f472",
+      "corrected": false
+    },
+    {
+      "name": "SFX_UNUSED_05",
+      "file": "sfx_05.wav64",
+      "source_pcm_sha256": "18e2f57530196acd799c4c97cb2a29ac825eeb7805d02ed5dc1f54efda24e0a6",
+      "source_samples": 20720,
+      "playback_header_sha256": "1371a37a009893288d92cc6d1922b35682ec30b932214c838d00c9bd42d993b8",
+      "old_wav64_sha256": "a06d7ebc6ac8afee9f9507edf35d679ed730e13a70c8c6da19dd68c82d5d18dd",
+      "new_wav64_sha256": "cd8e6153575e38e31d64262441f86321f8799240d0ec30e70784f33921f29bf2",
+      "corrected": true
+    },
+    {
+      "name": "SFX_UNUSED_06",
+      "file": "sfx_06.wav64",
+      "source_pcm_sha256": "9f258625f6efda904e5f48ca03f83f0ecbfdf12382480feefa264b9233d76430",
+      "source_samples": 21920,
+      "playback_header_sha256": "b54590c73dddf0c0964d2e800717acc2b3672ecf621c844329e91423a79b015a",
+      "old_wav64_sha256": "ac7245868d5470908b9fd380ce945fdcb02159e778fa286d1673f1efd6bb10b3",
+      "new_wav64_sha256": "ac7245868d5470908b9fd380ce945fdcb02159e778fa286d1673f1efd6bb10b3",
+      "corrected": false
+    },
+    {
+      "name": "SFX_CARD_SHUFFLE",
+      "file": "sfx_07.wav64",
+      "source_pcm_sha256": "f8282e2b234d018c06482cd5ba79a458e08b73e802fb29ee0399e9d8217520f5",
+      "source_samples": 13152,
+      "playback_header_sha256": "bd2d02211f30f54a180b58266dac8bc757c68436f785e257e8c23afaa0ab16e6",
+      "old_wav64_sha256": "bb2b478722f4acaaa5ba8ed596f066c36917bf6b27b8a0184532a33b87f69729",
+      "new_wav64_sha256": "bb2b478722f4acaaa5ba8ed596f066c36917bf6b27b8a0184532a33b87f69729",
+      "corrected": false
+    },
+    {
+      "name": "SFX_PLACE_PRIZE",
+      "file": "sfx_08.wav64",
+      "source_pcm_sha256": "b8ff9b2ec2051ee8e81c12c4d9d17c2e124a8dfea2d5ac8b85f578260cd0c999",
+      "source_samples": 9568,
+      "playback_header_sha256": "5101ed3c40524b7be2b78195ed84955bfc7d74828728c772e1782334676aed51",
+      "old_wav64_sha256": "3183b2d09a9527173c394b75b70bf191630497286c14a7b45dfefb0478117abc",
+      "new_wav64_sha256": "3183b2d09a9527173c394b75b70bf191630497286c14a7b45dfefb0478117abc",
+      "corrected": false
+    },
+    {
+      "name": "SFX_UNUSED_09",
+      "file": "sfx_09.wav64",
+      "source_pcm_sha256": "d4d10d103e3f3a7d732d93f587dffeca7a6591922a9fc48989879decaf806a98",
+      "source_samples": 20336,
+      "playback_header_sha256": "db682f917266aa267a578b4ea4135d0b285442a116d1bdb27dd35514a2325285",
+      "old_wav64_sha256": "e97df6f49ca162b367377310f56a48f52fe74ae756669d066bab673aaf87712d",
+      "new_wav64_sha256": "e76226dcbdf1a716517899dc1cb07dab7f01ae86e1dc3f272283bda5f9dd7c15",
+      "corrected": true
+    },
+    {
+      "name": "SFX_UNUSED_0A",
+      "file": "sfx_10.wav64",
+      "source_pcm_sha256": "099442f095ee92fc16ece2e3ef1af3335007e436f7444386cf1067c0254f7e34",
+      "source_samples": 21920,
+      "playback_header_sha256": "b54590c73dddf0c0964d2e800717acc2b3672ecf621c844329e91423a79b015a",
+      "old_wav64_sha256": "651ccfffbcac8dda7e17534dceb121a57e4d6b808f37031f69d228d017a4a920",
+      "new_wav64_sha256": "651ccfffbcac8dda7e17534dceb121a57e4d6b808f37031f69d228d017a4a920",
+      "corrected": false
+    },
+    {
+      "name": "SFX_COIN_TOSS",
+      "file": "sfx_11.wav64",
+      "source_pcm_sha256": "99c0951e583643ed219b1ed9366aabd92f93fd3da33ad690b7f383ca7dc0f8ee",
+      "source_samples": 29088,
+      "playback_header_sha256": "901b158487e149acccde534bb71587ba93fb6c0a081d9725d740d51c3d54b5e6",
+      "old_wav64_sha256": "b01a55875d7a771e124c4b8374e62dc7610c81a342083865c21cabd861d09b2a",
+      "new_wav64_sha256": "b01a55875d7a771e124c4b8374e62dc7610c81a342083865c21cabd861d09b2a",
+      "corrected": false
+    },
+    {
+      "name": "SFX_WARP",
+      "file": "sfx_12.wav64",
+      "source_pcm_sha256": "cc353c1ceaec7eecd245672884480dc663d42707b750b0daffb4afe2ecaaf19b",
+      "source_samples": 17936,
+      "playback_header_sha256": "662c5d25fde4ead59f6238f7bb826f98c5e63fddf3958c82a6598bedc598e284",
+      "old_wav64_sha256": "66f0cc1a0bbcce6639ad013d7edc98b738261d8a886ff80d4d7656d5ea8de464",
+      "new_wav64_sha256": "76727d06363876bad71c4e8ed5e4490052371cba63a0554931c8c7e2ac087ad3",
+      "corrected": true
+    },
+    {
+      "name": "SFX_UNUSED_0D",
+      "file": "sfx_13.wav64",
+      "source_pcm_sha256": "f969692daef441322d6b5ddc0a7ff0d0f1e85cdb379d3ca596d79044b07969a7",
+      "source_samples": 72528,
+      "playback_header_sha256": "bdbd9b214e552a6590750f3d1c137933b95ad88cfe2b4b5937a32112c2155bf5",
+      "old_wav64_sha256": "64437e9a6b6f0a8f48e2f859ad6db0657574760cd65e1e8898b4f08b81793c0d",
+      "new_wav64_sha256": "965870d8205d49e1a752271016ab0f2bb5a86fcf06d6730dec27b48852e30643",
+      "corrected": true
+    },
+    {
+      "name": "SFX_UNUSED_0E",
+      "file": "sfx_14.wav64",
+      "source_pcm_sha256": "71d4675e686d6e14282645899c47d231ae8c600fcc33ee0fc05d4757f0454cff",
+      "source_samples": 15552,
+      "playback_header_sha256": "a4bb2f35b21aa95c9a5485800c1e71def7b84a4ffa4b3f0c35a0dca035e437e3",
+      "old_wav64_sha256": "c1b9e02a4d760eb7623d5b92b2f92de26099d53e77007ef8e2de49578f74358c",
+      "new_wav64_sha256": "c1b9e02a4d760eb7623d5b92b2f92de26099d53e77007ef8e2de49578f74358c",
+      "corrected": false
+    },
+    {
+      "name": "SFX_POKEMON_DOME_DOORS",
+      "file": "sfx_15.wav64",
+      "source_pcm_sha256": "a783cb1336149da346320b5a68bb2db1dad168aa8a3280033dcc05ba72c4de1e",
+      "source_samples": 13952,
+      "playback_header_sha256": "31105b1745fbb0a6439534cfdcc5349898a04cbf8f70a406da6fb1285e55d4e9",
+      "old_wav64_sha256": "15c7f469123775a34db62bfeb56a7af40019e15a6957ffce580275e63726d77e",
+      "new_wav64_sha256": "15c7f469123775a34db62bfeb56a7af40019e15a6957ffce580275e63726d77e",
+      "corrected": false
+    },
+    {
+      "name": "SFX_LEGENDARY_CARDS",
+      "file": "sfx_16.wav64",
+      "source_pcm_sha256": "5c2ca7fadf3db912cdd3f4d016dab695b90673c708df7842ecbb8ca9caf27205",
+      "source_samples": 98416,
+      "playback_header_sha256": "0ded7ab8cd5434fe67631e00cdddec10d78d0946d6ce370e17209ebda8288bef",
+      "old_wav64_sha256": "60b3af72033d5b3cea4df580175cbec45bbcc63be448fc458a1e870a913cd49c",
+      "new_wav64_sha256": "a64fd9b3cab1f97daf649b211e89af22a4cad2f3d46f9303d3e88ab88559d218",
+      "corrected": true
+    },
+    {
+      "name": "SFX_GLOW",
+      "file": "sfx_17.wav64",
+      "source_pcm_sha256": "6d188ef92118365de0a7797c573edaf0bba7280105ee02f52fccbc16eaf7bbb2",
+      "source_samples": 26704,
+      "playback_header_sha256": "32e5744d373fbff57ccc8a190241615de059f6b532d5254ae1f12c9ab02fb472",
+      "old_wav64_sha256": "7186fbabe6120855947b20bd8f678480257a761c7bae3dbc626152935121e7e4",
+      "new_wav64_sha256": "0f23053b78397ae41778dcdb63101a898d8ae6b08fb597845791b1cc3713c11b",
+      "corrected": true
+    },
+    {
+      "name": "SFX_PARALYSIS",
+      "file": "sfx_18.wav64",
+      "source_pcm_sha256": "dde4f89f6408572ba58ff6c60291e9b83c37ee5cad08f059dd26dfcb0f7b9ce9",
+      "source_samples": 20336,
+      "playback_header_sha256": "db682f917266aa267a578b4ea4135d0b285442a116d1bdb27dd35514a2325285",
+      "old_wav64_sha256": "b260562d9b8b9ff790cdeba3ea1d2fb3e5d9f9e5f557d6cd07b71b7fcbcdd15e",
+      "new_wav64_sha256": "dfa01d0307c58b9f7dbc305abdb5efcceb3239b438325c82a64e654e3ca07862",
+      "corrected": true
+    },
+    {
+      "name": "SFX_SLEEP",
+      "file": "sfx_19.wav64",
+      "source_pcm_sha256": "31c951e1c3753a1142d5d7581c7faecd05444144bcc462c6618d40bf7f10b866",
+      "source_samples": 31488,
+      "playback_header_sha256": "22515c1732ebd43b1f6bc681f920e4663661eb5ad4030ac8b0af27823eeea49e",
+      "old_wav64_sha256": "09b4ae44dbd51d0fe83ba7f7d016356c72413d55a6fea08f1cd227f3f68a824c",
+      "new_wav64_sha256": "09b4ae44dbd51d0fe83ba7f7d016356c72413d55a6fea08f1cd227f3f68a824c",
+      "corrected": false
+    },
+    {
+      "name": "SFX_CONFUSION",
+      "file": "sfx_20.wav64",
+      "source_pcm_sha256": "438fa3f94e1ae8a3fb649f00f6f88e1bd35e0976963ab4f96cbc2facea7dbd61",
+      "source_samples": 31488,
+      "playback_header_sha256": "22515c1732ebd43b1f6bc681f920e4663661eb5ad4030ac8b0af27823eeea49e",
+      "old_wav64_sha256": "0ae455319d42b78293a129b244f8e71828c50c72b6da2d62d48aa78462807c6d",
+      "new_wav64_sha256": "0ae455319d42b78293a129b244f8e71828c50c72b6da2d62d48aa78462807c6d",
+      "corrected": false
+    },
+    {
+      "name": "SFX_POISON",
+      "file": "sfx_21.wav64",
+      "source_pcm_sha256": "e79b451b1280443936d8badd63b51af3167719bb8fb86914a084efa91212f389",
+      "source_samples": 32288,
+      "playback_header_sha256": "a97a78edf8cf6a4c76889b5303da01c8d8addf23ece5fea08258614d8cd4e4c7",
+      "old_wav64_sha256": "aa7e39f15361a8aed241348146d5688d1a0c6f5726f6889b104fe09b01073aa9",
+      "new_wav64_sha256": "aa7e39f15361a8aed241348146d5688d1a0c6f5726f6889b104fe09b01073aa9",
+      "corrected": false
+    },
+    {
+      "name": "SFX_SINGLE_HIT",
+      "file": "sfx_22.wav64",
+      "source_pcm_sha256": "bc9f92cae4f5f8784b685cc66d9653540a92233e5ff657fa17cdbb7add303ab6",
+      "source_samples": 12352,
+      "playback_header_sha256": "c4207a72b89872814a156694c3f451be441dd902a7bdd9e68a8fe1a546a17b25",
+      "old_wav64_sha256": "f073cc4152358e9aeb367035c1a86c9c0bcda5fc6eec5e148e1b29e017e71892",
+      "new_wav64_sha256": "f073cc4152358e9aeb367035c1a86c9c0bcda5fc6eec5e148e1b29e017e71892",
+      "corrected": false
+    },
+    {
+      "name": "SFX_BIG_HIT",
+      "file": "sfx_23.wav64",
+      "source_pcm_sha256": "e2c89459cc561b2b9a863592628708fd8292b66273ca6807de686c06d698ade4",
+      "source_samples": 23920,
+      "playback_header_sha256": "1926097d16cafc5a826d4fcad9110459fc1634191620d0cecf3eff54e7a0635f",
+      "old_wav64_sha256": "87d4693f20ca0d15bde2d21b4e51772fd5574d968a63fb141bf667a2255c292f",
+      "new_wav64_sha256": "4539a5e7ce3f2c7959680c10419abbb96480c6a45ac3bc2b25c239b601dd4a27",
+      "corrected": true
+    },
+    {
+      "name": "SFX_THUNDER_SHOCK",
+      "file": "sfx_24.wav64",
+      "source_pcm_sha256": "a83b89129b2537d5228774725869c5f888a1f51d1994bec262e2ab0356f49c78",
+      "source_samples": 20720,
+      "playback_header_sha256": "1371a37a009893288d92cc6d1922b35682ec30b932214c838d00c9bd42d993b8",
+      "old_wav64_sha256": "844831dcd79e6fe8c644f1aab947354b0b124e6201c152bc6498211fa01a0d21",
+      "new_wav64_sha256": "e9259866c24868c6f0014d3a5794efaddebab5d59c3359a80b844c0b7c1ca86d",
+      "corrected": true
+    },
+    {
+      "name": "SFX_LIGHTNING",
+      "file": "sfx_25.wav64",
+      "source_pcm_sha256": "e71bceb0066bdde3d7245e828f95893f4c3c51d010858827fcebf05bcb22f165",
+      "source_samples": 26704,
+      "playback_header_sha256": "32e5744d373fbff57ccc8a190241615de059f6b532d5254ae1f12c9ab02fb472",
+      "old_wav64_sha256": "cf77454c7c3c745e2101f9c3c8eab8c203cb46d6e19943f2ccf12e0d2028cc20",
+      "new_wav64_sha256": "7aeac38e95d1c1c709a7c00778365d82df230bd8fbb6b7be534776c853cadd34",
+      "corrected": true
+    },
+    {
+      "name": "SFX_BORDER_SPARK",
+      "file": "sfx_26.wav64",
+      "source_pcm_sha256": "fe87ca57b417feb6b65130df019279b8c8b9aaee6f7b3dbded10b718efd47f45",
+      "source_samples": 7984,
+      "playback_header_sha256": "21dbbaee94d28d36bb8254e0b2a2376a33dd50c066e34ce0fa35b9a822e34db3",
+      "old_wav64_sha256": "d4487625088d932dfaa883705c38b49253766e18e7a4977b636953fe3c5c9b8f",
+      "new_wav64_sha256": "7937d1e9af07a000e05ee42684a4733e05531921d0e25469f2f0565688798f78",
+      "corrected": true
+    },
+    {
+      "name": "SFX_BIG_LIGHTNING",
+      "file": "sfx_27.wav64",
+      "source_pcm_sha256": "858ab61dadd73088b3c32ad95c5b9490248b39acb98e03330c62502b8227e9f6",
+      "source_samples": 37056,
+      "playback_header_sha256": "40986cd47f40e3a72c67ec8332b13fe0a3f98a7aa6730dc013f13b550a7e12ff",
+      "old_wav64_sha256": "5e828a119b6072f32d0023235b2b6078ca7a5f7bdd1a4e4d97317c8ff8ec5977",
+      "new_wav64_sha256": "5e828a119b6072f32d0023235b2b6078ca7a5f7bdd1a4e4d97317c8ff8ec5977",
+      "corrected": false
+    },
+    {
+      "name": "SFX_SMALL_FLAME",
+      "file": "sfx_28.wav64",
+      "source_pcm_sha256": "18f1c5e8a7f82a7345a5a53a2df59995649846209d24094e8be78f01f17b2992",
+      "source_samples": 37456,
+      "playback_header_sha256": "39358b8854fe3ec935b94374f46d3ade7f5dc2e6bd15fe7304d1437582e8d967",
+      "old_wav64_sha256": "551b23c272cf2ac3e9890cbb1b42783c8a56042654e3df4f95ffac8bcc9e8d7a",
+      "new_wav64_sha256": "74ed38b8af08e724174f86ac3766fa05fc082c3c5ee52b37825c11381b3e391a",
+      "corrected": true
+    },
+    {
+      "name": "SFX_BIG_FLAME",
+      "file": "sfx_29.wav64",
+      "source_pcm_sha256": "af77ce32294ad2e5edf856c641e8e15cade3126ccd4d14a23290b322d981e763",
+      "source_samples": 38656,
+      "playback_header_sha256": "4b5c9cc301a2d47558aa3430e2eee39981147cc6ad656c6969787e71c813adff",
+      "old_wav64_sha256": "3b513787cff838e0d5047a1dd213f180079a8509db812f90f6d02776e4bc40ef",
+      "new_wav64_sha256": "3b513787cff838e0d5047a1dd213f180079a8509db812f90f6d02776e4bc40ef",
+      "corrected": false
+    },
+    {
+      "name": "SFX_FIRE_SPIN",
+      "file": "sfx_30.wav64",
+      "source_pcm_sha256": "6cf11526785f5fd3dce070ea077370d2b171ac0f7d6b9ea5683b4a3bd3e16036",
+      "source_samples": 50608,
+      "playback_header_sha256": "eac1e76cea40516bca8d663a142f498cd521297645bfdfbf3c7496565741613b",
+      "old_wav64_sha256": "12bac36675cd58b58bb09444eeddd7d0befd66744a09f460ce143691dec049e0",
+      "new_wav64_sha256": "789cc7a2128eb4872e41d43a67c9d7102cd984e252cff7a7592b1e117f66d9ee",
+      "corrected": true
+    },
+    {
+      "name": "SFX_DIVE_BOMB",
+      "file": "sfx_31.wav64",
+      "source_pcm_sha256": "cb937aa1b5921a17d93eaeea84bec8a1098219baeaf8b8957e38548ef540a6b6",
+      "source_samples": 69728,
+      "playback_header_sha256": "b57147bbb98b7fe8158a457699d3cf2f417ba3988e7182f71170a677b93028b6",
+      "old_wav64_sha256": "f42864df60d63f6023c1569842764ba257b16e74b4a683f004b6ca53896fe3b2",
+      "new_wav64_sha256": "f42864df60d63f6023c1569842764ba257b16e74b4a683f004b6ca53896fe3b2",
+      "corrected": false
+    },
+    {
+      "name": "SFX_WATER_JETS",
+      "file": "sfx_32.wav64",
+      "source_pcm_sha256": "ddce89920378f9dc7d4d2cb0d3b059543600568b1940e086f2c0a70f04bc5e82",
+      "source_samples": 44240,
+      "playback_header_sha256": "579cad612214135256f6919bf5a4eca2ee90f232a37eb02db72245406d5812d4",
+      "old_wav64_sha256": "354fe52fcd197f8fa01ab382f810a05800a51ca29921147ebda16e710facb912",
+      "new_wav64_sha256": "c5aa0e6289dc30323332ab05c76e1a743726467d38ed4243a06b85d7f695ced8",
+      "corrected": true
+    },
+    {
+      "name": "SFX_WATER_GUN",
+      "file": "sfx_33.wav64",
+      "source_pcm_sha256": "04de92926a29a0c6512970d608dbd3220717c0fc079ca71ee0c7f39f14529b50",
+      "source_samples": 29088,
+      "playback_header_sha256": "901b158487e149acccde534bb71587ba93fb6c0a081d9725d740d51c3d54b5e6",
+      "old_wav64_sha256": "aa1fc73ce7ea016e8b933cd9324e0e8a18d0e0a3ea5f1f6ddf0ea769a8b39ed4",
+      "new_wav64_sha256": "aa1fc73ce7ea016e8b933cd9324e0e8a18d0e0a3ea5f1f6ddf0ea769a8b39ed4",
+      "corrected": false
+    },
+    {
+      "name": "SFX_WHIRLPOOL",
+      "file": "sfx_34.wav64",
+      "source_pcm_sha256": "9d5595b83674a10d2db5468b3b2ca321e74e18c3771584bbaac90ecf547757b2",
+      "source_samples": 37856,
+      "playback_header_sha256": "760a8753a1f11b19ce2cd36af93c672b0c7da1a1fd7fba1f05fff082b8048894",
+      "old_wav64_sha256": "628f384a54966c4bbe717af3d74ac2404675a2c564b87c7b1f8a7109e5f98b0f",
+      "new_wav64_sha256": "628f384a54966c4bbe717af3d74ac2404675a2c564b87c7b1f8a7109e5f98b0f",
+      "corrected": false
+    },
+    {
+      "name": "SFX_HYDRO_PUMP",
+      "file": "sfx_35.wav64",
+      "source_pcm_sha256": "898095ecf4bd070086f1e5aaef16ffe9c4a56fdd6d4865ed66fbcfb59c7b0c75",
+      "source_samples": 47424,
+      "playback_header_sha256": "db948a3a0b0037f75090132245fdf4848db3625353468c19c9fdd5301d26641e",
+      "old_wav64_sha256": "39115c0fb3cf97c9f246550305e931c89ca179b65e403024dabe6eab6e73a2cd",
+      "new_wav64_sha256": "39115c0fb3cf97c9f246550305e931c89ca179b65e403024dabe6eab6e73a2cd",
+      "corrected": false
+    },
+    {
+      "name": "SFX_BLIZZARD",
+      "file": "sfx_36.wav64",
+      "source_pcm_sha256": "e8b8adff45181dc073ae5a2d59316c622779804b07c809bbf82a469af726ef07",
+      "source_samples": 47424,
+      "playback_header_sha256": "db948a3a0b0037f75090132245fdf4848db3625353468c19c9fdd5301d26641e",
+      "old_wav64_sha256": "536459551f86ec2b17aa56af07027ad6d4df08141e95e950d94c7f451fe6d78e",
+      "new_wav64_sha256": "536459551f86ec2b17aa56af07027ad6d4df08141e95e950d94c7f451fe6d78e",
+      "corrected": false
+    },
+    {
+      "name": "SFX_PSYCHIC",
+      "file": "sfx_37.wav64",
+      "source_pcm_sha256": "66b03dd762b269c10aebae33e462e03c2440fa6ecf80f6ad60a42c4890c72afb",
+      "source_samples": 53392,
+      "playback_header_sha256": "cf292375ea3d6f62bc4f582820928d8d0e2ce1db6a9ce4e3ddad0037bc026d77",
+      "old_wav64_sha256": "63715d7bc10b2cbf6161e455aedc71a7cc6ed55a109761a36d8fbc8b6a0be82f",
+      "new_wav64_sha256": "b40df365b4cdcd4a3573a0f0427255a0eb89b3d554a9ec937ae35798fca6b2f2",
+      "corrected": true
+    },
+    {
+      "name": "SFX_LEER",
+      "file": "sfx_38.wav64",
+      "source_pcm_sha256": "9adc23875e9134019237f15e4a2b85d8b4f7c9f686ec47d9ba0ec0c431fc65aa",
+      "source_samples": 22320,
+      "playback_header_sha256": "21a206820bba994af3a97a7a7146361c4a00aa145b797224faec53cce10bd442",
+      "old_wav64_sha256": "c7c2055a0d834acd014c04b7e13dbd6f16d71125952aef9cc1193202d5ccad89",
+      "new_wav64_sha256": "4dd3c5b2285c10e272ceba773040482aba2e34b3345d86ce06d7af3dca250579",
+      "corrected": true
+    },
+    {
+      "name": "SFX_BEAM",
+      "file": "sfx_39.wav64",
+      "source_pcm_sha256": "f712b1682f2e5d0da473d6923e57a579a8b1e3754737a01190d07f0a5fdbda94",
+      "source_samples": 20336,
+      "playback_header_sha256": "db682f917266aa267a578b4ea4135d0b285442a116d1bdb27dd35514a2325285",
+      "old_wav64_sha256": "a115cb8a21a52b2c27d63b530e3af0318c8d4ece70f113b949e92989eb92ed8f",
+      "new_wav64_sha256": "a3e61d3826a8f029f633cec794683a496fc50bc2ef8fc83844668991614485ff",
+      "corrected": true
+    },
+    {
+      "name": "SFX_HYPER_BEAM",
+      "file": "sfx_40.wav64",
+      "source_pcm_sha256": "76abf6280cb289332de55ff6f1a10d540411a57dffe725cead9cc08764111830",
+      "source_samples": 27904,
+      "playback_header_sha256": "d32b87da9b027ba7f63df04e68f9ec5297858e7fb6bd56d8825edc29b798404c",
+      "old_wav64_sha256": "13230a98185ce6c8ff40a6f13769825f305990a2356989b599f231b1d61d0585",
+      "new_wav64_sha256": "13230a98185ce6c8ff40a6f13769825f305990a2356989b599f231b1d61d0585",
+      "corrected": false
+    },
+    {
+      "name": "SFX_ROCK_THROW",
+      "file": "sfx_41.wav64",
+      "source_pcm_sha256": "718a8844dc2bc8fa6d1671f00116d9615919765cf03ddd0a219261191ce052e1",
+      "source_samples": 41040,
+      "playback_header_sha256": "eea557ecf006071a7dfc2ecfe6beebca965641af5c5c871132870c686beef32a",
+      "old_wav64_sha256": "3fe33bb1e011bf179b3b4fbde719cdbcde7be6ee0e6140c06cb6ad839e1fd96b",
+      "new_wav64_sha256": "ab59964be8216256a1cbc5270ea92902d5b885c453492cc9eb5c5a917c49806f",
+      "corrected": true
+    },
+    {
+      "name": "SFX_STONE_BARRAGE",
+      "file": "sfx_42.wav64",
+      "source_pcm_sha256": "868fa82d5f2c402ee8781612d5c4b0bb79555d57f67e7a30eb53ac2aaf73cd96",
+      "source_samples": 47424,
+      "playback_header_sha256": "db948a3a0b0037f75090132245fdf4848db3625353468c19c9fdd5301d26641e",
+      "old_wav64_sha256": "b4a13492bdb5da99572f2c3cfb51f1316bb63dd961a3c2eb88412ffa71460d99",
+      "new_wav64_sha256": "b4a13492bdb5da99572f2c3cfb51f1316bb63dd961a3c2eb88412ffa71460d99",
+      "corrected": false
+    },
+    {
+      "name": "SFX_PUNCH",
+      "file": "sfx_43.wav64",
+      "source_pcm_sha256": "226fb423797a19ae07df23230a34f7a8e9b1b0b766190ae6f23ae3709c474024",
+      "source_samples": 21920,
+      "playback_header_sha256": "b54590c73dddf0c0964d2e800717acc2b3672ecf621c844329e91423a79b015a",
+      "old_wav64_sha256": "2475dbd47cec668367be2830f86a2556f7657994ecfe5dfe17aa66e15d153518",
+      "new_wav64_sha256": "2475dbd47cec668367be2830f86a2556f7657994ecfe5dfe17aa66e15d153518",
+      "corrected": false
+    },
+    {
+      "name": "SFX_STRETCH_KICK",
+      "file": "sfx_44.wav64",
+      "source_pcm_sha256": "82060e824139907cd6be61aad131fa10bb69bcb497b49ba65695429d4a10c751",
+      "source_samples": 9568,
+      "playback_header_sha256": "5101ed3c40524b7be2b78195ed84955bfc7d74828728c772e1782334676aed51",
+      "old_wav64_sha256": "0e1786ec62b909e3a407e6695835f9261ea21c2edb4e14ffaae46f59deee28d8",
+      "new_wav64_sha256": "0e1786ec62b909e3a407e6695835f9261ea21c2edb4e14ffaae46f59deee28d8",
+      "corrected": false
+    },
+    {
+      "name": "SFX_SLASH",
+      "file": "sfx_45.wav64",
+      "source_pcm_sha256": "26903ccf51c8087c78f57341154bdeb4428ea79f07fe16cd39d9cb0581c71dd6",
+      "source_samples": 14352,
+      "playback_header_sha256": "dcece074370fe57024122e1666ac99e21b979e85cfdd54cc6cb44be171b9b030",
+      "old_wav64_sha256": "20c40bf1d9acf6d6df347f37dd2e141cb22ac5c10c8cc86e25d51456455b822b",
+      "new_wav64_sha256": "c17e37dc8f38870aff7e0266f87ae2ecfccb1ee168cf7a96ecd5f672fdf7826f",
+      "corrected": true
+    },
+    {
+      "name": "SFX_SONICBOOM",
+      "file": "sfx_46.wav64",
+      "source_pcm_sha256": "755b50b7115673c3cdecc7a2d00bcda6ead5d63a55d86ee85bc1497cca89d4f4",
+      "source_samples": 24704,
+      "playback_header_sha256": "dae2e4adc088b00a99a1dc7e2e4ededaf5740999cab3f24c3de6b32c5c62ba29",
+      "old_wav64_sha256": "ae257c01b5948d59a9d088fd267a7c8e32bfa4fbfff17b3469609964a8718bba",
+      "new_wav64_sha256": "ae257c01b5948d59a9d088fd267a7c8e32bfa4fbfff17b3469609964a8718bba",
+      "corrected": false
+    },
+    {
+      "name": "SFX_FURY_SWIPES",
+      "file": "sfx_47.wav64",
+      "source_pcm_sha256": "54c42f04dc3934a9d64cbf74b125d699de93bc575e07d836976d2434a466c11e",
+      "source_samples": 29488,
+      "playback_header_sha256": "cf4609aa574c127dd1fd658d326dfc1e97f622d03b982cd2a35b80fdab675b6c",
+      "old_wav64_sha256": "ea893e1fe03c916de9e4166c89e31596e577a415c721de95bbcf02e34ad87c3d",
+      "new_wav64_sha256": "a54f94dd900157a54106351dd090224416b3b8c2b1784aec942b499b8c97e7ba",
+      "corrected": true
+    },
+    {
+      "name": "SFX_DRILL",
+      "file": "sfx_48.wav64",
+      "source_pcm_sha256": "463b3093417cd0060a02146e11511fa1e761d4285a407ae81dfb0551cbfdae72",
+      "source_samples": 27504,
+      "playback_header_sha256": "0733cc299d7413f4fe22b80633086f515180abe8cae329d90c65b57beefbc50d",
+      "old_wav64_sha256": "c696389279de93ff271950f576dc4fe49254137b790e975e21ae4efa040f83a1",
+      "new_wav64_sha256": "54857483b3b87000364948fac8a6de4f861ccf2f0778c714bb48097152b527e1",
+      "corrected": true
+    },
+    {
+      "name": "SFX_POT_SMASH",
+      "file": "sfx_49.wav64",
+      "source_pcm_sha256": "25f6ac3da98aa7b2ff5764af681a25b8870c0fba2a45eec23a9d242d44031fee",
+      "source_samples": 31088,
+      "playback_header_sha256": "26898a5969b1506b608c753d11caca584f47c5ae36aa9306f72382c50f8c2016",
+      "old_wav64_sha256": "368d49ba99ed4c1d513ed375ecb8166be1cfec84dc36dc79b90ba0c4fbaefbcf",
+      "new_wav64_sha256": "42b6d7b8398b097bb85c832bd3580f0fb68463429485b4949f2fe5e80abf1793",
+      "corrected": true
+    },
+    {
+      "name": "SFX_BONEMERANG",
+      "file": "sfx_50.wav64",
+      "source_pcm_sha256": "0fb41546da4c4b9ed92e70925e396641135871218f95f205262587f4fc8aa76a",
+      "source_samples": 43440,
+      "playback_header_sha256": "dec8d1aaad30f59162bb50a6355ff6bf28d7b4c93a4170719026750a8df71a30",
+      "old_wav64_sha256": "4e8671867425bf6620addd4236c62a9569f5a70d81691b468f2ea55a6b2ff5c8",
+      "new_wav64_sha256": "d51c865122f24be132a9c3b4940e5edc885bba60b2466c4f3273021c3a8fdb36",
+      "corrected": true
+    },
+    {
+      "name": "SFX_SEISMIC_TOSS",
+      "file": "sfx_51.wav64",
+      "source_pcm_sha256": "394455122fa51f85f0c8c62f63efefa12504f3859f506f76d3cad7bf81022b37",
+      "source_samples": 22720,
+      "playback_header_sha256": "5a82e77d46a4287e1cc89e2fb4247da52a2d7e50c69f968862c46446fb34dd7a",
+      "old_wav64_sha256": "f8aae4b4cddd2a6dc3088bb690e50d7334e11a562baeccfbacd8d3b42fd33b89",
+      "new_wav64_sha256": "f8aae4b4cddd2a6dc3088bb690e50d7334e11a562baeccfbacd8d3b42fd33b89",
+      "corrected": false
+    },
+    {
+      "name": "SFX_NEEDLES",
+      "file": "sfx_52.wav64",
+      "source_pcm_sha256": "2d47f484392f1c9a76df7fedc80a519d9930d6f32134133cac44c79c2bbb965e",
+      "source_samples": 20720,
+      "playback_header_sha256": "1371a37a009893288d92cc6d1922b35682ec30b932214c838d00c9bd42d993b8",
+      "old_wav64_sha256": "c231d4450a0fe238c46c2a7516d4fc83abb55d61c6b7ba868dd47172b8f9cd7e",
+      "new_wav64_sha256": "c231d4450a0fe238c46c2a7516d4fc83abb55d61c6b7ba868dd47172b8f9cd7e",
+      "corrected": false
+    },
+    {
+      "name": "SFX_WHITE_GAS",
+      "file": "sfx_53.wav64",
+      "source_pcm_sha256": "c9473d39968dee68e1bd2458112840c7ee319ef10a9dcb4b41b48345392ccb82",
+      "source_samples": 43440,
+      "playback_header_sha256": "dec8d1aaad30f59162bb50a6355ff6bf28d7b4c93a4170719026750a8df71a30",
+      "old_wav64_sha256": "48dbbf6ccb028f16ad9c77c215ca5375ac44a1d094f054551abe70ce7caca715",
+      "new_wav64_sha256": "d57b0d16b0ba033e61f20dd997b1a83495f49d95e64a637ef9fc6b8f415dfbbb",
+      "corrected": true
+    },
+    {
+      "name": "SFX_POWDER",
+      "file": "sfx_54.wav64",
+      "source_pcm_sha256": "efe088d3dea124020e4b31c149c555711f4fb47a8ddae3dcd10f461116de1699",
+      "source_samples": 60176,
+      "playback_header_sha256": "de7eaf38b7f8614a78ecf690f16f554bf2da4ec7c9d7770fabd732ef17f49cb7",
+      "old_wav64_sha256": "b7d609574fcd1c597b80f62bc07f9e7940d36df4ad674ccdb4d6d8f42e582e74",
+      "new_wav64_sha256": "32eab518a33990a871599b60b58def553ca1d8542e9ed26a2b5cdcc002b82a11",
+      "corrected": true
+    },
+    {
+      "name": "SFX_GOO",
+      "file": "sfx_55.wav64",
+      "source_pcm_sha256": "a19575ce91497653b3fc56ec3eff6bd4baf6860408de37081af63ce80c9aed77",
+      "source_samples": 22720,
+      "playback_header_sha256": "5a82e77d46a4287e1cc89e2fb4247da52a2d7e50c69f968862c46446fb34dd7a",
+      "old_wav64_sha256": "e2ae0a1a2409f7b7f794c54eab02a5529cfb4d5b824a74c5af267fa531a50fa0",
+      "new_wav64_sha256": "e2ae0a1a2409f7b7f794c54eab02a5529cfb4d5b824a74c5af267fa531a50fa0",
+      "corrected": false
+    },
+    {
+      "name": "SFX_BUBBLES",
+      "file": "sfx_56.wav64",
+      "source_pcm_sha256": "98f4bcb28b27e18f6474f5dd84903776531701fea791ee91224837b52ed73148",
+      "source_samples": 50608,
+      "playback_header_sha256": "eac1e76cea40516bca8d663a142f498cd521297645bfdfbf3c7496565741613b",
+      "old_wav64_sha256": "a75838a2175e07341e854266636316d26a71afca149830fb26e3eb922d3d7731",
+      "new_wav64_sha256": "4427ae750db824fef05a86261bdb148dbb878cc20ff736fc37d627a7eecd6fed",
+      "corrected": true
+    },
+    {
+      "name": "SFX_STRING_SHOT",
+      "file": "sfx_57.wav64",
+      "source_pcm_sha256": "1d307a126840367f206ca0c140529e52008de185b426c80d01bfef1e9328e718",
+      "source_samples": 29888,
+      "playback_header_sha256": "434cdde5fb9948269079c6dba70cfd725f15889fe2e1b05e43ebe692ecc3a580",
+      "old_wav64_sha256": "bbaebf38859cc030fdb7a182713d1c5b57f11196370c40b3e45849e90fccdd5b",
+      "new_wav64_sha256": "bbaebf38859cc030fdb7a182713d1c5b57f11196370c40b3e45849e90fccdd5b",
+      "corrected": false
+    },
+    {
+      "name": "SFX_BOYFRIENDS",
+      "file": "sfx_58.wav64",
+      "source_pcm_sha256": "bc0e784ab43cb7267c0132a67f594dce9df37d4b45d4912f89e54cda93b0d24e",
+      "source_samples": 44240,
+      "playback_header_sha256": "579cad612214135256f6919bf5a4eca2ee90f232a37eb02db72245406d5812d4",
+      "old_wav64_sha256": "398ad1448de7c01a6c8cc7c37b80e7578933014bf8c40c7034f4c91dd4073b9e",
+      "new_wav64_sha256": "fabbb8e0c5e300ce2ef701043083b8028ae6aad260653d2174b44538788142d5",
+      "corrected": true
+    },
+    {
+      "name": "SFX_LURE",
+      "file": "sfx_59.wav64",
+      "source_pcm_sha256": "63d31822570138f1e34c42d6dd781e1a9aead9a843a0c132137d71e35b4dcd64",
+      "source_samples": 31488,
+      "playback_header_sha256": "22515c1732ebd43b1f6bc681f920e4663661eb5ad4030ac8b0af27823eeea49e",
+      "old_wav64_sha256": "b3b734f9e0f76dccb78e14cd5b520e3b738238ce73cadb1434074c45d9787a86",
+      "new_wav64_sha256": "b3b734f9e0f76dccb78e14cd5b520e3b738238ce73cadb1434074c45d9787a86",
+      "corrected": false
+    },
+    {
+      "name": "SFX_TOXIC",
+      "file": "sfx_60.wav64",
+      "source_pcm_sha256": "2fa0761169d12175b84a173fd3f8d9bfd18e88a294a8629d59eeb46ce2e69536",
+      "source_samples": 61760,
+      "playback_header_sha256": "8d1d02c2469634ed6d3b2ec9f5b06974be2823125496741d30b4b8b7d5d47517",
+      "old_wav64_sha256": "fcfcc24d36cdc7cc2b64501dc7f550e8a106a51651022091a35882ae6143f502",
+      "new_wav64_sha256": "fcfcc24d36cdc7cc2b64501dc7f550e8a106a51651022091a35882ae6143f502",
+      "corrected": false
+    },
+    {
+      "name": "SFX_CONFUSE_RAY",
+      "file": "sfx_61.wav64",
+      "source_pcm_sha256": "d14904765519536100c1ff93f66290982fb639dff8d346503275fed270d2ad8a",
+      "source_samples": 26704,
+      "playback_header_sha256": "32e5744d373fbff57ccc8a190241615de059f6b532d5254ae1f12c9ab02fb472",
+      "old_wav64_sha256": "56b8ffae67fb96f818c5590b1ce822e9e6bb80714dfdebac2cea021a8ac55b9c",
+      "new_wav64_sha256": "6ccfd5f103edd1cd213a1afaf2d041df323c31bed8f4d4aac7b3da6c77c8ed85",
+      "corrected": true
+    },
+    {
+      "name": "SFX_SING",
+      "file": "sfx_62.wav64",
+      "source_pcm_sha256": "54608984f0e5f9ec86dbb96d36a467cd31308af1ae372adf488f86077e85de16",
+      "source_samples": 37856,
+      "playback_header_sha256": "760a8753a1f11b19ce2cd36af93c672b0c7da1a1fd7fba1f05fff082b8048894",
+      "old_wav64_sha256": "4b9cfcfabf642855ed210014b45ea15a946707ee43773698ad15b2b1803c615a",
+      "new_wav64_sha256": "4b9cfcfabf642855ed210014b45ea15a946707ee43773698ad15b2b1803c615a",
+      "corrected": false
+    },
+    {
+      "name": "SFX_SUPERSONIC",
+      "file": "sfx_63.wav64",
+      "source_pcm_sha256": "97b801dd85b67a73220c9bdadbf17f76832efbfb21965fa149491a0a0a93af17",
+      "source_samples": 50608,
+      "playback_header_sha256": "eac1e76cea40516bca8d663a142f498cd521297645bfdfbf3c7496565741613b",
+      "old_wav64_sha256": "2ad99d8da42960f4b8652ae1d0c624c5ab6c781509b736982031a37178eeb238",
+      "new_wav64_sha256": "db4d1ff1426407b100f453f2a9d64f087d35ebac72c82361bf176b7d49466b0e",
+      "corrected": true
+    },
+    {
+      "name": "SFX_PETAL_DANCE",
+      "file": "sfx_64.wav64",
+      "source_pcm_sha256": "aef9565d00eea5dab5b7d68aec18dcebdbaeb451d09662691fa177c364edfb99",
+      "source_samples": 50608,
+      "playback_header_sha256": "eac1e76cea40516bca8d663a142f498cd521297645bfdfbf3c7496565741613b",
+      "old_wav64_sha256": "92baa06898ad1d083870010f19afc221e2e0bf50e0069ac083b570b55663a6fc",
+      "new_wav64_sha256": "cdd8568c5919c623375ad8a2ed1a5d37e80ec405c8599cb641e97113e4af3396",
+      "corrected": true
+    },
+    {
+      "name": "SFX_PROTECT",
+      "file": "sfx_65.wav64",
+      "source_pcm_sha256": "1e00e8ff68f283082e524a095ed750c4e4968560e4573ac5bcafdb02f4bc65cb",
+      "source_samples": 41440,
+      "playback_header_sha256": "8ee5a71bfde472a38e46daf1a725e7214193d3f2a84c96d3cb9b442518516eb4",
+      "old_wav64_sha256": "ffbe84ab816a424f8da8b937eef520070754e7903ec5c1868a211579a12d9488",
+      "new_wav64_sha256": "ffbe84ab816a424f8da8b937eef520070754e7903ec5c1868a211579a12d9488",
+      "corrected": false
+    },
+    {
+      "name": "SFX_BARRIER",
+      "file": "sfx_66.wav64",
+      "source_pcm_sha256": "04045b21d805704e762be7b9b6575f40844890b25e94b115be2add30d6d9176b",
+      "source_samples": 20720,
+      "playback_header_sha256": "1371a37a009893288d92cc6d1922b35682ec30b932214c838d00c9bd42d993b8",
+      "old_wav64_sha256": "17b9dbbf6e1874eb69649650038d9b55cd6830da86ad2fe6cba4d53b8b9ded03",
+      "new_wav64_sha256": "8e96a9dbff36fc368c499d97b6683a1cdfdda738068f473cb15e1707db835cb3",
+      "corrected": true
+    },
+    {
+      "name": "SFX_SPEED",
+      "file": "sfx_67.wav64",
+      "source_pcm_sha256": "872284f0a7f6e79a506a978efc37751ba7b4b46fcc073fc898f69bd9b928eeef",
+      "source_samples": 26704,
+      "playback_header_sha256": "32e5744d373fbff57ccc8a190241615de059f6b532d5254ae1f12c9ab02fb472",
+      "old_wav64_sha256": "a204809781c3c8e8dff6d1c70f294646215f0218d4718f8aa186ce738b365e7a",
+      "new_wav64_sha256": "e44f9b1962663c2ff6813758ce50ec99258690bcf32482d0b0933d6cb3ec0412",
+      "corrected": true
+    },
+    {
+      "name": "SFX_WHIRLWIND",
+      "file": "sfx_68.wav64",
+      "source_pcm_sha256": "ef638458e0795ccfa3aa68185e1aa1198d812bad7f122e4969f4950fe521a5b7",
+      "source_samples": 34272,
+      "playback_header_sha256": "9a1cff316d126ad7c1dff028573b368b5a62def1d6e46cce41d3a54be8f282f0",
+      "old_wav64_sha256": "d80df89c9fdc6190147530243bc15401dabd17d72d7896dd16db50650af070a8",
+      "new_wav64_sha256": "d80df89c9fdc6190147530243bc15401dabd17d72d7896dd16db50650af070a8",
+      "corrected": false
+    },
+    {
+      "name": "SFX_CRY",
+      "file": "sfx_69.wav64",
+      "source_pcm_sha256": "89084be78c321150be5127762d7dc6ee3569e3e6d18cf33403a95883b2bec2be",
+      "source_samples": 68144,
+      "playback_header_sha256": "751db066bac9b82bee861d7a9effe05169da98bcc5cbe5f2de795c595e38e0eb",
+      "old_wav64_sha256": "d8766f114791cffc0ec2cce92628272c11381af7425050546cc5d61840287164",
+      "new_wav64_sha256": "0d9bcadab0f7720d32680f3acb283950e634a93187af90b887e00682e2cd11e4",
+      "corrected": true
+    },
+    {
+      "name": "SFX_QUESTION_MARK",
+      "file": "sfx_70.wav64",
+      "source_pcm_sha256": "06a230abc04cb4194f3d280c2fd95d50151a4d6e057fea1eb8844e06080bc77d",
+      "source_samples": 73328,
+      "playback_header_sha256": "38cde47ce4de1ceaba3a56a242a026ab86471f182cb84d305a4ae5aa501c75df",
+      "old_wav64_sha256": "72e11f01c45f7a8017b689b602296607b9f7effbafc774d407d0230d566a40ee",
+      "new_wav64_sha256": "72e11f01c45f7a8017b689b602296607b9f7effbafc774d407d0230d566a40ee",
+      "corrected": false
+    },
+    {
+      "name": "SFX_SELFDESTRUCT",
+      "file": "sfx_71.wav64",
+      "source_pcm_sha256": "283140609f92d07e6df3e0fb4a68ccf1c7cd5d0a73d58f28ee7c682375785838",
+      "source_samples": 16336,
+      "playback_header_sha256": "ee54d2fce1b6a2bd68bd31975ce5531550b4f890a997e6b051c8ef4b4793a9ae",
+      "old_wav64_sha256": "e9f6d4298d275bed1a5aee9ae660726c9baaf1e90bdbeed60dea06ceb283f3ba",
+      "new_wav64_sha256": "fe66fada13e5253c625df6b067cbf229dfaba59413fc39ab584aa8914885bfcc",
+      "corrected": true
+    },
+    {
+      "name": "SFX_BIG_SELFDESTRUCT",
+      "file": "sfx_72.wav64",
+      "source_pcm_sha256": "0c58465c400baec63a7f53c08cdd1e4ba4e827456acaaca7c16c544f4d80a2ea",
+      "source_samples": 23520,
+      "playback_header_sha256": "a3b4b433808d0b1565cb7186c286d6f6e9a29cd4c29dcfd2256a1f08afddbbcb",
+      "old_wav64_sha256": "6370e3330bd9e2deba68eaa6c0736a53a503eb4451e40166b1c8897f6af0bdd9",
+      "new_wav64_sha256": "6370e3330bd9e2deba68eaa6c0736a53a503eb4451e40166b1c8897f6af0bdd9",
+      "corrected": false
+    },
+    {
+      "name": "SFX_HEAL",
+      "file": "sfx_73.wav64",
+      "source_pcm_sha256": "7ba5c41ab8403f72d6d678e049a463d26930570d440666383f31ab34e9da8dfe",
+      "source_samples": 30688,
+      "playback_header_sha256": "00ad5614f19991b8c14faeaf00ae48eed2b5450016e2ad91950d0a24f9ab8ea5",
+      "old_wav64_sha256": "040d699e6ab5eeca3bf0d6f36b08e89977c0b1bfd7cf30f35d94d7450d60732e",
+      "new_wav64_sha256": "040d699e6ab5eeca3bf0d6f36b08e89977c0b1bfd7cf30f35d94d7450d60732e",
+      "corrected": false
+    },
+    {
+      "name": "SFX_DRAIN",
+      "file": "sfx_74.wav64",
+      "source_pcm_sha256": "9a67f223e1be389cbe93d920eb6b94936cb86a00d9ad79c03f95217bccceda3a",
+      "source_samples": 27904,
+      "playback_header_sha256": "d32b87da9b027ba7f63df04e68f9ec5297858e7fb6bd56d8825edc29b798404c",
+      "old_wav64_sha256": "01fe25ffdb2e2555eb6afaae85213a71b63daa228b3a3360d01ef30b2c62ed29",
+      "new_wav64_sha256": "01fe25ffdb2e2555eb6afaae85213a71b63daa228b3a3360d01ef30b2c62ed29",
+      "corrected": false
+    },
+    {
+      "name": "SFX_DARK_GAS",
+      "file": "sfx_75.wav64",
+      "source_pcm_sha256": "98fc640a031d662cdd6e35c5aac4ac18f0240bbf3cfe08b31fd4dab16c9c3e18",
+      "source_samples": 43440,
+      "playback_header_sha256": "dec8d1aaad30f59162bb50a6355ff6bf28d7b4c93a4170719026750a8df71a30",
+      "old_wav64_sha256": "a99480c1ef0018902a629a5eece3f357b9f63ba7740afd2e60120b15e55788a0",
+      "new_wav64_sha256": "d82cf2fd8ffdf6c7ca7323c3e31821a97431120cceaefc517d12328f5f759101",
+      "corrected": true
+    },
+    {
+      "name": "SFX_HEALING_WIND",
+      "file": "sfx_76.wav64",
+      "source_pcm_sha256": "011553fb3e8ea5befc9e99c426f0398af799e76d98350638dfc4d2d927bc1cb2",
+      "source_samples": 53008,
+      "playback_header_sha256": "e51a964f3147f3d96819c0a17a740ccefc7c1806138f41752fc7fd8f29f82fca",
+      "old_wav64_sha256": "40e2d1c514c01a2ad0ab5f687ddd9bd469b42908dc6b1a1d4cb45cc3c4b58c72",
+      "new_wav64_sha256": "e5e96b64cb9107e23fb9212e6fbbbacda1ca5d800f38e0f0dea24beb49e27f14",
+      "corrected": true
+    },
+    {
+      "name": "SFX_BENCH_WHIRLWIND",
+      "file": "sfx_77.wav64",
+      "source_pcm_sha256": "29abe4bbc51eefa607f24a0e31ea6c833950bc857505d9cfc7346fb41501de59",
+      "source_samples": 60176,
+      "playback_header_sha256": "de7eaf38b7f8614a78ecf690f16f554bf2da4ec7c9d7770fabd732ef17f49cb7",
+      "old_wav64_sha256": "8b5340770a7edb71b6f7964af2c1b5a5871d3f36ddd7b77cf4ba0d8a4db65373",
+      "new_wav64_sha256": "62caa296c6fbc8509212d4ef9f9b8f4699c6cc88ba170548d1c3737c2cfdd6c3",
+      "corrected": true
+    },
+    {
+      "name": "SFX_EXPAND",
+      "file": "sfx_78.wav64",
+      "source_pcm_sha256": "fca141ae8073cf31a71a8e1979ee7bab7a886856c9649efa3934247faba9e649",
+      "source_samples": 35872,
+      "playback_header_sha256": "61e6d89d9d07386d2b604db1e0bde1006933e34de37e1f0471840af7e5a7be22",
+      "old_wav64_sha256": "bd2df2ee47bbaa073a4df957fd469fea9e0b9211e771234fbb33fc0d908321dc",
+      "new_wav64_sha256": "bd2df2ee47bbaa073a4df957fd469fea9e0b9211e771234fbb33fc0d908321dc",
+      "corrected": false
+    },
+    {
+      "name": "SFX_CAT_PUNCH",
+      "file": "sfx_79.wav64",
+      "source_pcm_sha256": "d77689f61300a1c0102ca93af4c37226d92e2df984b90a562371c5b2600ef5df",
+      "source_samples": 13552,
+      "playback_header_sha256": "94a26b87e93cdf1b146c8efe5888b429c8d7a4686bc759e720172809b3168066",
+      "old_wav64_sha256": "401a623c72916d88b64e3d680bd91861781142a4544e52416d1399c14062a932",
+      "new_wav64_sha256": "5c26039784513dc0c6a4e46fcf66c9ba1b4fda384bd377eaf378d45de27159af",
+      "corrected": true
+    },
+    {
+      "name": "SFX_THUNDER_WAVE",
+      "file": "sfx_80.wav64",
+      "source_pcm_sha256": "6ecb8dfd550bed89786691912e539220bc294e48806508d5d8882b99697811e5",
+      "source_samples": 36672,
+      "playback_header_sha256": "ff01e8c90c9a1752eb29991d16436e53a65d1b88169f1b8d0384b8ff249221c9",
+      "old_wav64_sha256": "8d04990219a75ce764f5081405f0f3219818ef2d355c9c5cde89b0e5850fb7ad",
+      "new_wav64_sha256": "8d04990219a75ce764f5081405f0f3219818ef2d355c9c5cde89b0e5850fb7ad",
+      "corrected": false
+    },
+    {
+      "name": "SFX_FIREGIVER",
+      "file": "sfx_81.wav64",
+      "source_pcm_sha256": "c3ab0a53c14ab2014fc67748be2d1a02e2ea18792c1ba7b6490a5f9414c2fac8",
+      "source_samples": 85280,
+      "playback_header_sha256": "a7fec4a5ac18ea9d222a3a704d33651f9950fd791ee5dda442a3a6dc35b75581",
+      "old_wav64_sha256": "3a2b6721d535f53a5ca41d6efb5884d4d2ef9fcea5986e406177eff8a02faf0d",
+      "new_wav64_sha256": "3a2b6721d535f53a5ca41d6efb5884d4d2ef9fcea5986e406177eff8a02faf0d",
+      "corrected": false
+    },
+    {
+      "name": "SFX_THUNDERPUNCH",
+      "file": "sfx_82.wav64",
+      "source_pcm_sha256": "45d93a6cca6ac27b62df58e2aa9b34a60473320dff9de47e056c58e5f4529982",
+      "source_samples": 38656,
+      "playback_header_sha256": "4b5c9cc301a2d47558aa3430e2eee39981147cc6ad656c6969787e71c813adff",
+      "old_wav64_sha256": "fb977dd053f23766ed745920017551ca269fbc045e220f528131f96d707a14d0",
+      "new_wav64_sha256": "fb977dd053f23766ed745920017551ca269fbc045e220f528131f96d707a14d0",
+      "corrected": false
+    },
+    {
+      "name": "SFX_FIRE_PUNCH",
+      "file": "sfx_83.wav64",
+      "source_pcm_sha256": "de1eb69a9e60ac889eb4188cfa880592aad0870f3f2aa89ce878749b8212748d",
+      "source_samples": 46624,
+      "playback_header_sha256": "5f0e2643bf8f808ff3556ab35e39bd004a4b091d68931a1eecc99032eef67a6f",
+      "old_wav64_sha256": "f7e3d54203dd193831865697625e54531904debbb2aec3b96d424a72e95dfec1",
+      "new_wav64_sha256": "f7e3d54203dd193831865697625e54531904debbb2aec3b96d424a72e95dfec1",
+      "corrected": false
+    },
+    {
+      "name": "SFX_COIN_TOSS_HEADS",
+      "file": "sfx_84.wav64",
+      "source_pcm_sha256": "51ef8d6ebc27a24224dc7bbbb8215dec4193bcdd9f382825514cfbf71dbc7c08",
+      "source_samples": 7584,
+      "playback_header_sha256": "5d4838de65985f018a69a2c0a810d75621f96217160ba587992acaf5b5bf05a3",
+      "old_wav64_sha256": "40745994698c7cf00bb015ca7ac5d74287edef14f0cb8bc21754c0911a80ac4f",
+      "new_wav64_sha256": "40745994698c7cf00bb015ca7ac5d74287edef14f0cb8bc21754c0911a80ac4f",
+      "corrected": false
+    },
+    {
+      "name": "SFX_COIN_TOSS_TAILS",
+      "file": "sfx_85.wav64",
+      "source_pcm_sha256": "fb06ea493b9ff33c2bad58352ed3ad8e3dbc2967ce6e9c771548623209b2940d",
+      "source_samples": 6784,
+      "playback_header_sha256": "f78214b0426cf559731c8b6f916cae958c777d93e63913aeaffe7d0e1e7510ae",
+      "old_wav64_sha256": "8d091b6c42e85e531c91f0df6f476d1068328592fcbb9a3d962ea42afa65dbca",
+      "new_wav64_sha256": "8d091b6c42e85e531c91f0df6f476d1068328592fcbb9a3d962ea42afa65dbca",
+      "corrected": false
+    },
+    {
+      "name": "SFX_SAVE_GAME",
+      "file": "sfx_86.wav64",
+      "source_pcm_sha256": "5bb84ae829ba9c46d1de3d6fe0b3a407908c1a3f468b8fd12e353a308a6256f5",
+      "source_samples": 19536,
+      "playback_header_sha256": "a11a56bb82c039fbb69b79b0dc11b63c65097ff084fa743d84b7a68caf661d4c",
+      "old_wav64_sha256": "7f33a0d06aecbeba1bb8d2d76b7e28ac3a7b890b9309c9097bbbd559f00a151a",
+      "new_wav64_sha256": "3e9eb5c12ddc0d5a25c246cb90c5ecce19a3f0a6db69335ef417a0676acf61f3",
+      "corrected": true
+    },
+    {
+      "name": "SFX_PLAYER_WALK_MAP",
+      "file": "sfx_87.wav64",
+      "source_pcm_sha256": "5a1db7bcff7a49e6b8e3ed404b8f0b757a2d032b87f88e439a05d4c9f0cd9b5d",
+      "source_samples": 341472,
+      "playback_header_sha256": "1d8db4ef43e62cea952c4d75ee858c50f0d191914ea3c5ac8d289f9ad7a9fe0b",
+      "old_wav64_sha256": "94a5e4d8919b8ec4d8d909017f38f30dc6e109663b946a2b0cdfe1c219464f14",
+      "new_wav64_sha256": "94a5e4d8919b8ec4d8d909017f38f30dc6e109663b946a2b0cdfe1c219464f14",
+      "corrected": false
+    },
+    {
+      "name": "SFX_INTRO_ORB",
+      "file": "sfx_88.wav64",
+      "source_pcm_sha256": "3908c94a65830da530eae02bcbdbdd4393fd6ddd7233243b6282b61543a00bc5",
+      "source_samples": 44240,
+      "playback_header_sha256": "579cad612214135256f6919bf5a4eca2ee90f232a37eb02db72245406d5812d4",
+      "old_wav64_sha256": "41488676ac13a575ed2ca35ce0d38fd1d0cd5954ec3064f08342b5015e5d5e60",
+      "new_wav64_sha256": "91a3e5efd83a36d8a8fc8719d9b81b67e06677c24d584b945074ddb1f7bf7e9e",
+      "corrected": true
+    },
+    {
+      "name": "SFX_INTRO_ORB_SWOOP",
+      "file": "sfx_89.wav64",
+      "source_pcm_sha256": "3b6853411588ca1d557127f863f207a87dbcd388d7b2d99894a961f5ce2bfd6d",
+      "source_samples": 47424,
+      "playback_header_sha256": "db948a3a0b0037f75090132245fdf4848db3625353468c19c9fdd5301d26641e",
+      "old_wav64_sha256": "5df11f0bcc4a3b39acc13d81657b675ca903a1aee5ec157156d2db65eea6b625",
+      "new_wav64_sha256": "5df11f0bcc4a3b39acc13d81657b675ca903a1aee5ec157156d2db65eea6b625",
+      "corrected": false
+    },
+    {
+      "name": "SFX_INTRO_ORB_TITLE",
+      "file": "sfx_90.wav64",
+      "source_pcm_sha256": "7828e7cb81b0af11508bd9cdd822444b88cde1db463215525c40f41cdc288da1",
+      "source_samples": 48624,
+      "playback_header_sha256": "f1c595c4ee7af53cf76ade4416301691ce02afec0ee87c1148b537509cd6aeba",
+      "old_wav64_sha256": "3e910273d03ccae58a1569a19f737851ae0f89cc43182408c903ad6b0493c7ed",
+      "new_wav64_sha256": "3e910273d03ccae58a1569a19f737851ae0f89cc43182408c903ad6b0493c7ed",
+      "corrected": false
+    },
+    {
+      "name": "SFX_INTRO_ORB_SCATTER",
+      "file": "sfx_91.wav64",
+      "source_pcm_sha256": "12d7de68e6bfcca5e7cd22a7e670cbbd617b4d397417be026a554e00d9ab328f",
+      "source_samples": 24320,
+      "playback_header_sha256": "b35509f6a04246412b10dbd5f44f50869e5d6e5df4e8771051bdd3fba8b38961",
+      "old_wav64_sha256": "6392483ec8b1489f833fd52c57b280881242545136086f8cd9618879a5eeddb9",
+      "new_wav64_sha256": "6392483ec8b1489f833fd52c57b280881242545136086f8cd9618879a5eeddb9",
+      "corrected": false
+    },
+    {
+      "name": "SFX_FIREGIVER_START",
+      "file": "sfx_92.wav64",
+      "source_pcm_sha256": "7468e94995c2f3eb536e44a88a3fdbd1e530bc86a2dee8bbbe0feb757346122e",
+      "source_samples": 43440,
+      "playback_header_sha256": "dec8d1aaad30f59162bb50a6355ff6bf28d7b4c93a4170719026750a8df71a30",
+      "old_wav64_sha256": "e63dd37bd511405c6697f1b3a33c40100813622f00a593d2bb049a51f6a7848f",
+      "new_wav64_sha256": "7f84c49e11e4bb96de14a0dcabce14b27e107419eda194c4e0dd553fbf40dfe1",
+      "corrected": true
+    },
+    {
+      "name": "SFX_RECEIVE_CARD_POP",
+      "file": "sfx_93.wav64",
+      "source_pcm_sha256": "04588f42d7d0966d6cce7d1d26df14d2b27be09791816fa15dc04f8745134601",
+      "source_samples": 21920,
+      "playback_header_sha256": "b54590c73dddf0c0964d2e800717acc2b3672ecf621c844329e91423a79b015a",
+      "old_wav64_sha256": "79a2eb08c0f4057e1a18b08071dc43e75a72498072eed988d2da724d20152864",
+      "new_wav64_sha256": "79a2eb08c0f4057e1a18b08071dc43e75a72498072eed988d2da724d20152864",
+      "corrected": false
+    },
+    {
+      "name": "SFX_POKEMON_EVOLUTION",
+      "file": "sfx_94.wav64",
+      "source_pcm_sha256": "ba70f954596c887e45aa8f85220008b9b7261edd0e2c7b67aa8cafc70deb00ba",
+      "source_samples": 22720,
+      "playback_header_sha256": "5a82e77d46a4287e1cc89e2fb4247da52a2d7e50c69f968862c46446fb34dd7a",
+      "old_wav64_sha256": "15fce82183d446569fed19515ad1f59a99c151ef2abf7fff624b69e6169e510f",
+      "new_wav64_sha256": "15fce82183d446569fed19515ad1f59a99c151ef2abf7fff624b69e6169e510f",
+      "corrected": false
+    },
+    {
+      "name": "SFX_UNUSED_5F",
+      "file": "sfx_95.wav64",
+      "source_pcm_sha256": "3c8ddb06aaf0bc59ae6e6c55de38221546472b9d5d6bc66330a5940bbdbf8094",
+      "source_samples": 13552,
+      "playback_header_sha256": "94a26b87e93cdf1b146c8efe5888b429c8d7a4686bc759e720172809b3168066",
+      "old_wav64_sha256": "8c2d74294caeb18edf06d7f152566fbad1a6ada020071941e819aa06a020181f",
+      "new_wav64_sha256": "a8f419d84a25fe112ee5b4215606e448bc87784188133af28914f11f48b7a55a",
+      "corrected": true
+    }
+  ],
+  "runtime": {
+    "rom_sha256": "2033d2f40aade86ee3717841dd3a3076564613b855d21fd90ef579f87a1b69a1",
+    "method": "Unmodified ares v148 executable code, private settings, diagnostic14, no debugger/frame breakpoints",
+    "wall_seconds": 53.245,
+    "phases": [
+      {
+        "phase": "opening",
+        "polls": 328,
+        "buffers": 280,
+        "underruns": 0,
+        "max_poll_us": 33680,
+        "max_mix_us": 2066
+      },
+      {
+        "phase": "title",
+        "polls": 1378,
+        "buffers": 1159,
+        "underruns": 0,
+        "max_poll_us": 33680,
+        "max_mix_us": 2080
+      }
+    ],
+    "scope": "AI busy state measures the emulated N64 output queue. Host audio-device underruns and listening quality are not measured."
+  }
+}

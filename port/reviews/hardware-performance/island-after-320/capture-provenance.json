@@ -1,0 +1,126 @@
+{
+  "status": "verified-expansion-pak-trial-captures",
+  "rom": {
+    "file": "port/frontends/n64/adventure/poketcg-island-after.z64",
+    "sha256": "6c3dffaa64748b931516d9aa386ee052e7cd8743b735ddf7e673099fcf4b3e19",
+    "diagnostic": 10
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 6,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": "full observed callback dimensions",
+      "stage_pattern": "^(?:VIDEO REVIEW|DUEL UI) ([A-Za-z0-9_-]+) BEGIN\\r?$",
+      "require_native_frame": true,
+      "native_lead_frames": 6
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 4,
+    "private_settings": true,
+    "ExpansionPak": false
+  },
+  "runtime_video_modes": [
+    {
+      "width": 320,
+      "height": 240,
+      "ram": 4194304,
+      "highres": 0
+    }
+  ],
+  "raw_format": {
+    "pixel_order": "BGRA little endian; padding excluded from RGB proof",
+    "dimensions": "Recorded per image from Program::video registers",
+    "display_aspect": "4:3"
+  },
+  "finished": {
+    "callbacks": 129,
+    "captures": 1,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "overworld.png",
+      "stage": "overworld",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "a86217af122a2f08b0853fa94968ad9b84b0739e5c8fc21dc5c756bcac5a03f1",
+      "callback_sha256": "ab21d084c8f46d03513d07c5d58e4a28e51d229286a11e4c3e6c9bebe48b42eb",
+      "rgb_sha256": "4c6bcf64fbd9207e51ca5a99d7070c533b1eff42ebca04ead594b57bed5b1527",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 72,
+      "stage_gate": {
+        "stage_started_callback": 8,
+        "native_frame": "overworld",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 67,
+        "native_ready_valid_frames": 25,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": null
+      }
+    }
+  ],
+  "native_frames": [
+    {
+      "file": "overworld.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "75e37fe724939a935e9c2b764c4d62dcb6ae4efb773bbf44838ec2aabd3d49b4",
+      "exact_native_pixels": 76800
+    }
+  ],
+  "memory": [],
+  "source_logs": {
+    "path": "port/frontends/n64/adventure/build/island-occlusion-after-320/lldb.log",
+    "sha256": "727f1414610abe39bc44b818c21f63787b3f4bcb6fb71220458264ff3bc24e47"
+  }
+}

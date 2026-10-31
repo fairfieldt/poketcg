@@ -27,6 +27,9 @@ typedef struct {
  uint16_t world_script;
  bool initialized,camera_initialized,cinematic,tutorial_motion;
  unsigned intro_stage;
+ uint8_t conversation_npc,conversation_anchor_npc;
+ float conversation_azimuth,conversation_heading;
+ bool conversation_camera_locked;
 } Presentation;
 
 enum {
@@ -37,6 +40,11 @@ enum {
 void presentation_init(Presentation *,const OwState *,bool cinematic);
 unsigned presentation_sync(Presentation *,const OwState *,bool running);
 void presentation_step(Presentation *,const OwState *,const W3Map *);
+/* NPC speech/choices own this override explicitly; zero returns to exploration.
+   It changes only presentation, and repeated bubbles retain their camera side. */
+void presentation_conversation(Presentation *,unsigned npc);
+/* Browser modals advance the camera without advancing movement a second time. */
+void presentation_camera_step(Presentation *,const OwState *,const W3Map *);
 bool presentation_moving(const Presentation *);
 bool presentation_scripted_player(const OwState *);
 unsigned presentation_wait_frames(Presentation *,unsigned source_frames);

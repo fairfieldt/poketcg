@@ -1,0 +1,34 @@
+{
+  "source": "src/gfx/duel/anims/coin.png + original OAM and CoinPal",
+  "result_mapping": "src/engine/duel/core.asm .done_toss_anim: e=HEADS selects animation170, TAILS171",
+  "source_sha256": "907879eafad58d3a4ad4af76935c281156465f81c1ce69b6c8d640260649e4f5",
+  "format": "native RGBA5551; web RGBA PNG; original 24x24 pixels",
+  "outputs": [
+    {
+      "name": "tails",
+      "animation": 171,
+      "offset": [
+        -12,
+        -12
+      ],
+      "dimensions": [
+        24,
+        24
+      ],
+      "sha256": "be67f1ed70e8e4e3ab9e0724cf02aabc275c43ff72d05a9480fb23f30e55a210"
+    },
+    {
+      "name": "heads",
+      "animation": 170,
+      "offset": [
+        -12,
+        -12
+      ],
+      "dimensions": [
+        24,
+        24
+      ],
+      "sha256": "5d1a342063490634a0cdd0597bd5ced0446709ae119e362c7f11e818e1586b20"
+    }
+  ]
+}

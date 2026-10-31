@@ -27,6 +27,8 @@ static surface_t *draw(surface_t *depth,Scene *room,Scene **actors,unsigned view
   glViewport(n64_video_x(14),n64_video_y(44),n64_video_x(104),n64_video_y(154));
   glMatrixMode(GL_PROJECTION);glLoadIdentity();gluPerspective(34,104.0/154.0,.1,20);
   glMatrixMode(GL_MODELVIEW);glLoadIdentity();gluLookAt(0,1.28,4.7,0,1.08,0,0,1,0);
+  scene_camera(34,104.0/154.0,.1,20,(const float[]){0,1.28f,4.7f},(const float[]){0,1.08f,0},
+   n64_video_x(14),n64_video_y(44),n64_video_x(104),n64_video_y(154));
   glDisable(GL_TEXTURE_2D);glColor4f(.24f,.36f,.46f,1);
   glBegin(GL_TRIANGLE_FAN);glVertex3f(0,-.025f,0);
   for(unsigned i=0;i<=24;i++) {
@@ -41,6 +43,9 @@ static surface_t *draw(surface_t *depth,Scene *room,Scene **actors,unsigned view
   glMatrixMode(GL_MODELVIEW);glLoadIdentity();
   if(view==4)gluLookAt(14,8.4375,32,14,0,20.1,0,1,0);
   else gluLookAt(14.5,10,30,14,1,20,0,1,0);
+  scene_camera(view==4?58:50,4.0/3.0,1.5,90,
+   view==4?(const float[]){14,8.4375f,32}:(const float[]){14.5f,10,30},
+   (const float[]){14,view==4?0:1,view==4?20.1f:20},0,0,n64_video_width,n64_video_height);
   scene_draw_room(room);
   float positions[8][2];unsigned count=view==4?8:4;
   for(unsigned i=0;i<count;i++) {
@@ -52,7 +57,7 @@ static surface_t *draw(surface_t *depth,Scene *room,Scene **actors,unsigned view
    scene_draw_actor(actors[i%4],models[i%4],positions[i][0],positions[i][1],0,0);
  }
  glViewport(0,0,n64_video_width,n64_video_height);
- gl_context_end();rdpq_detach_wait();
+ gl_context_end();scene_frame_end();rdpq_detach_wait();
  debugf("VIDEO FRAME stage=%s render_us=%u\n",stages[view],
   (unsigned)TICKS_TO_US((uint32_t)(timer_ticks()-started)));
  n64_map_label(frame,view<4?labels[view]:view==4?"Lead characters: room":"Lead characters: conversation");

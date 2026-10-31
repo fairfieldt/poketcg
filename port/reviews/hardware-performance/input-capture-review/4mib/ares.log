@@ -1,0 +1,530 @@
+Loaded poketcg-input-isr-gate
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=320 height=240 ram=4194304 highres=0
+2026-10-31 11:35:54.229 ares[97397:18592444] Resizing output buffers to 1536, 1152
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 69132 bytes
+Scene rom:/world/maps/overworld.l64: 18 batches, 17 textures, 292664 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 14239.167 us (mode: sync, success: yes).
+MEMORY map=0 total=2638992 used=1515584 free=1123408
+MAP PASS 0
+Scene rom:/world/maps/mason_laboratory.l64: 24 batches, 23 textures, 43128 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_dr_mason.l64: 6 batches, 1 textures, 35504 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_dr_mason.l64: 6 batches, 1 textures, 26084 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+MEMORY map=1 total=2638992 used=1455400 free=1183592
+MAP PASS 1
+Scene rom:/world/maps/deck_machine_room_dynamic.l64: 13 batches, 12 textures, 23280 bytes
+Scene rom:/world/maps/deck_machine_2_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_3_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_4_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_5_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_6_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_7_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_8_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_9_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+MEMORY map=2 total=2638992 used=1365904 free=1273088
+MAP PASS 2
+Scene rom:/world/maps/ishiharas_house.l64: 21 batches, 20 textures, 30888 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_ishihara.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_nikki.l64: 6 batches, 1 textures, 29300 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_ishihara.l64: 6 batches, 1 textures, 24860 bytes
+Scene rom:/world/lod/actor_nikki.l64: 6 batches, 1 textures, 23984 bytes
+MEMORY map=3 total=2638992 used=1508168 free=1130824
+MAP PASS 3
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_fighting_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+MEMORY map=4 total=2638992 used=1344784 free=1294208
+MAP PASS 4
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_specs.l64: 6 batches, 1 textures, 28800 bytes
+Scene rom:/world/maps/actor_butch.l64: 6 batches, 1 textures, 29144 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_granny.l64: 6 batches, 1 textures, 39320 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_specs.l64: 6 batches, 1 textures, 22176 bytes
+Scene rom:/world/lod/actor_butch.l64: 6 batches, 1 textures, 22208 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_granny.l64: 6 batches, 1 textures, 27368 bytes
+MEMORY map=5 total=2638992 used=1702096 free=936896
+MAP PASS 5
+Scene rom:/world/maps/fighting_club.l64: 12 batches, 11 textures, 64092 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_mitch.l64: 6 batches, 1 textures, 30320 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_lass3.l64: 6 batches, 1 textures, 36344 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_mitch.l64: 6 batches, 1 textures, 28952 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_lass3.l64: 6 batches, 1 textures, 29732 bytes
+MEMORY map=6 total=2638992 used=1492968 free=1146024
+MAP PASS 6
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_rock_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+MEMORY map=7 total=2638992 used=1344768 free=1294224
+MAP PASS 7
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_lass1.l64: 6 batches, 1 textures, 31652 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_woman.l64: 6 batches, 1 textures, 29756 bytes
+Scene rom:/world/maps/actor_mania_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_lass1.l64: 6 batches, 1 textures, 26000 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_woman.l64: 6 batches, 1 textures, 24056 bytes
+Scene rom:/world/lod/actor_mania_palette2.l64: 6 batches, 1 textures, 22280 bytes
+MEMORY map=8 total=2638992 used=1707592 free=931400
+MAP PASS 8
+Scene rom:/world/maps/rock_club.l64: 37 batches, 36 textures, 75780 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_gene.l64: 6 batches, 1 textures, 35400 bytes
+Scene rom:/world/maps/actor_boy.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_gene.l64: 6 batches, 1 textures, 23412 bytes
+Scene rom:/world/lod/actor_boy.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+MEMORY map=9 total=2638992 used=1595544 free=1043448
+MAP PASS 9
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_water_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+MEMORY map=10 total=2638992 used=1344784 free=1294208
+MAP PASS 10
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/maps/actor_pappy.l64: 6 batches, 1 textures, 36992 bytes
+Scene rom:/world/maps/actor_lass2.l64: 6 batches, 1 textures, 31772 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+Scene rom:/world/lod/actor_pappy.l64: 6 batches, 1 textures, 25364 bytes
+Scene rom:/world/lod/actor_lass2.l64: 6 batches, 1 textures, 26576 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+MEMORY map=11 total=2638992 used=1707600 free=931392
+MAP PASS 11
+Scene rom:/world/maps/water_club.l64: 20 batches, 19 textures, 98712 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_joshua.l64: 6 batches, 1 textures, 31868 bytes
+Scene rom:/world/maps/actor_swimmer.l64: 6 batches, 1 textures, 29684 bytes
+Scene rom:/world/maps/actor_swimmer_palette2.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/maps/actor_amy__lying.l64: 6 batches, 1 textures, 30452 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_joshua.l64: 6 batches, 1 textures, 21620 bytes
+Scene rom:/world/lod/actor_swimmer.l64: 6 batches, 1 textures, 24476 bytes
+Scene rom:/world/lod/actor_swimmer_palette2.l64: 6 batches, 1 textures, 24404 bytes
+Scene rom:/world/lod/actor_amy__lying.l64: 6 batches, 1 textures, 25316 bytes
+MEMORY map=12 total=2638992 used=1605200 free=1033792
+MAP PASS 12
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_lightning_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+MEMORY map=13 total=2638992 used=1344800 free=1294192
+MAP PASS 13
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_hood.l64: 6 batches, 1 textures, 26800 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_lass1.l64: 6 batches, 1 textures, 31652 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_hood.l64: 6 batches, 1 textures, 21484 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_lass1.l64: 6 batches, 1 textures, 26000 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+MEMORY map=14 total=2638992 used=1638856 free=1000136
+MAP PASS 14
+Scene rom:/world/maps/lightning_club.l64: 35 batches, 34 textures, 34584 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_isaac.l64: 6 batches, 1 textures, 32616 bytes
+Scene rom:/world/maps/actor_hood.l64: 6 batches, 1 textures, 26800 bytes
+Scene rom:/world/maps/actor_girl.l64: 6 batches, 1 textures, 35344 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_isaac.l64: 6 batches, 1 textures, 23904 bytes
+Scene rom:/world/lod/actor_hood.l64: 6 batches, 1 textures, 21484 bytes
+Scene rom:/world/lod/actor_girl.l64: 6 batches, 1 textures, 24052 bytes
+MEMORY map=15 total=2638992 used=1545296 free=1093696
+MAP PASS 15
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_grass_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+MEMORY map=16 total=2638992 used=1404928 free=1234064
+MAP PASS 16
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_girl.l64: 6 batches, 1 textures, 35344 bytes
+Scene rom:/world/maps/actor_lass2.l64: 6 batches, 1 textures, 31772 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/maps/actor_granny.l64: 6 batches, 1 textures, 39320 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_girl.l64: 6 batches, 1 textures, 24052 bytes
+Scene rom:/world/lod/actor_lass2.l64: 6 batches, 1 textures, 26576 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+Scene rom:/world/lod/actor_granny.l64: 6 batches, 1 textures, 27368 bytes
+MEMORY map=17 total=2638992 used=1662464 free=976528
+MAP PASS 17
+Scene rom:/world/maps/grass_club.l64: 36 batches, 35 textures, 227688 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_nikki.l64: 6 batches, 1 textures, 29300 bytes
+Scene rom:/world/maps/actor_lass1.l64: 6 batches, 1 textures, 31652 bytes
+Scene rom:/world/maps/actor_lass2.l64: 6 batches, 1 textures, 31772 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_nikki.l64: 6 batches, 1 textures, 23984 bytes
+Scene rom:/world/lod/actor_lass1.l64: 6 batches, 1 textures, 26000 bytes
+Scene rom:/world/lod/actor_lass2.l64: 6 batches, 1 textures, 26576 bytes
+MEMORY map=18 total=2638992 used=1736032 free=902960
+MAP PASS 18
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_psychic_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+MEMORY map=19 total=2638992 used=1407176 free=1231816
+MAP PASS 19
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_pappy.l64: 6 batches, 1 textures, 36992 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/maps/actor_boy_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_pappy.l64: 6 batches, 1 textures, 25364 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+Scene rom:/world/lod/actor_boy_palette2.l64: 6 batches, 1 textures, 22280 bytes
+MEMORY map=20 total=2638992 used=1737568 free=901424
+MAP PASS 20
+Scene rom:/world/maps/psychic_club.l64: 33 batches, 32 textures, 43644 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_murray.l64: 6 batches, 1 textures, 37424 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_girl.l64: 6 batches, 1 textures, 35344 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_murray.l64: 6 batches, 1 textures, 25076 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_girl.l64: 6 batches, 1 textures, 24052 bytes
+MEMORY map=21 total=2638992 used=1568568 free=1070424
+MAP PASS 21
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_science_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+MEMORY map=22 total=2638992 used=1344784 free=1294208
+MAP PASS 22
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_specs.l64: 6 batches, 1 textures, 28800 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_specs.l64: 6 batches, 1 textures, 22176 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+MEMORY map=23 total=2638992 used=1695720 free=943272
+MAP PASS 23
+Scene rom:/world/maps/science_club.l64: 39 batches, 38 textures, 30864 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_rick.l64: 6 batches, 1 textures, 32448 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_rick.l64: 6 batches, 1 textures, 23856 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+MEMORY map=24 total=2638992 used=1496432 free=1142560
+MAP PASS 24
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_fire_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+MEMORY map=25 total=2638992 used=1344792 free=1294200
+MAP PASS 25
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_lass3.l64: 6 batches, 1 textures, 36344 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_boy_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_lass3.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_boy_palette2.l64: 6 batches, 1 textures, 22280 bytes
+MEMORY map=26 total=2638992 used=1654592 free=984400
+MAP PASS 26
+Scene rom:/world/maps/fire_club.l64: 35 batches, 34 textures, 38976 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ken.l64: 6 batches, 1 textures, 37176 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_specs.l64: 6 batches, 1 textures, 28800 bytes
+Scene rom:/world/maps/actor_boy_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ken.l64: 6 batches, 1 textures, 35808 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_specs.l64: 6 batches, 1 textures, 22176 bytes
+Scene rom:/world/lod/actor_boy_palette2.l64: 6 batches, 1 textures, 22280 bytes
+MEMORY map=27 total=2638992 used=1634464 free=1004528
+MAP PASS 27
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_challenge_hall_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+MEMORY map=28 total=2638992 used=1344800 free=1294192
+MAP PASS 28
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_hood.l64: 6 batches, 1 textures, 26800 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_pappy.l64: 6 batches, 1 textures, 36992 bytes
+Scene rom:/world/maps/actor_lass3.l64: 6 batches, 1 textures, 36344 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_hood.l64: 6 batches, 1 textures, 21484 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_pappy.l64: 6 batches, 1 textures, 25364 bytes
+Scene rom:/world/lod/actor_lass3.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+MEMORY map=29 total=2638992 used=1869520 free=769472
+MAP PASS 29
+Scene rom:/world/maps/challenge_hall.l64: 49 batches, 48 textures, 45408 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+MEMORY map=30 total=2638992 used=1554752 free=1084240
+MAP PASS 30
+Scene rom:/world/maps/pokemon_dome_entrance.l64: 27 batches, 26 textures, 22248 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+MEMORY map=31 total=2638992 used=1304712 free=1334280
+MAP PASS 31
+Scene rom:/world/maps/pokemon_dome.l64: 54 batches, 53 textures, 75396 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_courtney.l64: 6 batches, 1 textures, 34460 bytes
+Scene rom:/world/maps/actor_steve.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_jack.l64: 6 batches, 1 textures, 32076 bytes
+Scene rom:/world/maps/actor_rod.l64: 6 batches, 1 textures, 37668 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_courtney.l64: 6 batches, 1 textures, 27176 bytes
+Scene rom:/world/lod/actor_steve.l64: 6 batches, 1 textures, 24332 bytes
+Scene rom:/world/lod/actor_jack.l64: 6 batches, 1 textures, 23460 bytes
+Scene rom:/world/lod/actor_rod.l64: 6 batches, 1 textures, 25596 bytes
+MEMORY map=32 total=2638992 used=1844968 free=794024
+MAP PASS 32
+Scene rom:/world/maps/hall_of_honor.l64: 27 batches, 26 textures, 25644 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_legendary_card__bottom_left.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__bottom_right.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__left_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/actor_legendary_card__right_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/actor_legendary_card__top_left.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__top_right.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+MEMORY map=33 total=2638992 used=1329704 free=1309288
+MAP PASS 33
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+ADVENTURE INTRO PASS
+MIPS STORY BEGIN: production Ow/Gp engine, scripted duel outcomes
+MIPS CAMPAIGN PASS: new game, eight medals, Grand Masters, Ronald, four legendary cards, credits, postgame Cup
+MIPS NPC MATRIX PASS: 714 original encounters, win/loss branches
+MIPS NAVIGATION PASS: 144 source paths, cursor graph, real door patches/warps, canonical LE save
+ADVENTURE MIPS STORY PASS
+TEXT Each player will/shuffle the opponent's Deck.
+TEXT Each player will draw 7 cards.
+TEXT Placing the Prizes...
+TEXT Please place/2 Prizes.
+TEXT A coin will be tossed/to decide who plays first.
+TEXT If heads,/MARK plays first.
+COIN 1/1 tails
+TEXT You play second.
+TEXT SAM's Turn.
+TURN 1 SAM
+TEXT Draw 1 card(s) from the Deck.
+TEXT SAM is thinking.
+TEXT Placed Diglett Lv8/on the Bench.
+TEXT SAM is thinking.
+TEXT Attached Fighting Energy/to Machop.
+TEXT SAM is thinking.
+TEXT Machop Lv20's/Low Kick!
+DAMAGE MARK slot 0: 20
+TEXT MARK's Turn.
+TURN 2 MARK
+TEXT Draw 1 card(s) from the Deck.
+TEXT MARK is thinking.
+TEXT Attached Fire Energy/to Charmander.
+TEXT MARK is thinking.
+TEXT Charmander Lv10's/Scratch!
+DAMAGE SAM slot 0: 10
+TEXT SAM's Turn.
+TURN 3 SAM
+TEXT Draw 1 card(s) from the Deck.
+TEXT SAM is thinking.
+TEXT Attached Fighting Energy/to Diglett.
+TEXT SAM is thinking.
+TEXT Machop Lv20's/Low Kick!
+DAMAGE MARK slot 0: 20
+TEXT MARK's Turn.
+TURN 4 MARK
+TEXT Draw 1 card(s) from the Deck.
+TEXT MARK is thinking.
+TEXT Placed Machop Lv20/on the Bench.
+TEXT MARK is thinking.
+TEXT Attached Lightning Energy/to Magnemite.
+TEXT MARK is thinking.
+TEXT Charmander Lv10's/Scratch!
+DAMAGE SAM slot 0: 10
+TEXT SAM's Turn.
+TURN 5 SAM
+TEXT Draw 1 card(s) from the Deck.
+TEXT SAM is thinking.
+TEXT Attached Fighting Energy/to Diglett.
+TEXT SAM is thinking.
+TEXT Machop Lv20's/Low Kick!
+DAMAGE MARK slot 0: 20
+TEXT Charmander was/Knocked Out!
+TEXT SAM will draw 1 Prize(s).
+TEXT SAM drew 1 Prize(s).
+TEXT MARK placed/a Machop Lv20.
+TEXT MARK's Turn.
+TURN 6 MARK
+TEXT Draw 1 card(s) from the Deck.
+TEXT MARK is thinking.
+TEXT Attached Fighting Energy/to Machop.
+TEXT MARK is thinking.
+TEXT Machop Lv20's/Low Kick!
+DAMAGE SAM slot 0: 20
+TEXT SAM's Turn.
+TURN 7 SAM
+TEXT Draw 1 card(s) from the Deck.
+TEXT SAM is thinking.
+TEXT Placed Machop Lv20/on the Bench.
+TEXT SAM is thinking.
+TEXT Diglett evolved/into Dugtrio.
+TEXT SAM is thinking.
+TEXT Attached Lightning Energy/to Dugtrio.
+TEXT SAM is thinking.
+TEXT Machop Lv20's/Low Kick!
+DAMAGE MARK slot 0: 20
+TEXT MARK's Turn.
+TURN 8 MARK
+TEXT Draw 1 card(s) from the Deck.
+TEXT MARK is thinking.
+TEXT Attached Lightning Energy/to Magnemite.
+TEXT MARK is thinking.
+TEXT Machop Lv20's/Low Kick!
+DAMAGE SAM slot 0: 20
+TEXT Machop was/Knocked Out!
+TEXT MARK will draw 1 Prize(s).
+TEXT MARK drew 1 Prize(s).
+TEXT SAM placed/a Dugtrio Lv36.
+TEXT SAM's Turn.
+TURN 9 SAM
+TEXT Draw 1 card(s) from the Deck.
+TEXT SAM is thinking.
+TEXT Dugtrio Lv36's/Slash!
+DAMAGE MARK slot 0: 40
+TEXT Machop was/Knocked Out!
+TEXT SAM will draw 1 Prize(s).
+TEXT SAM drew 1 Prize(s).
+TEXT SAM took/all the Prizes!
+TEXT Decision...
+TEXT You lost the Duel/with SAM...
+DUEL_END finished=1 holder=SAM
+DUEL INPUT VI samples=68
+ADVENTURE NATIVE DUEL PASS result=1
+ADVENTURE SRAM PASS
+Scene rom:/world/maps/overworld.l64: 18 batches, 17 textures, 292664 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/maps/mason_laboratory.l64: 24 batches, 23 textures, 43128 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_dr_mason.l64: 6 batches, 1 textures, 35504 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_dr_mason.l64: 6 batches, 1 textures, 26084 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+ADVENTURE CINEMATIC PASS
+ADVENTURE MAP TOUR PASS
+VIDEO PHASE room cycle=0 frames=90
+Scene rom:/world/maps/lightning_club.l64: 35 batches, 34 textures, 34584 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes

@@ -5,6 +5,12 @@ tiles, tilemaps, object layouts, and palettes. The opening presents Charizard,
 Scyther, and Aerodactyl booster packs, then the title and original PRESS START
 sprite. No new title art or text is substituted.
 
+The shared orb PNGs stay at their original 16x16 size. The N64 copies them
+into an 18x18 surface with a transparent sampling border, then offsets the
+draw by one source pixel to preserve the original position. Transparent
+pixels retain the outline's RGB and the orb draw uses alpha blending, so
+bilinear filtering keeps the round edge without a clipped rim or dark halo.
+
 `intro_assets.h` retains all 26 original animation tables (191 through 216),
 the five sets of orb coordinates, and their animation IDs. `intro.c` applies
 the source frame durations and translations, including 8-bit OAM wrapping,

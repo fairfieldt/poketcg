@@ -776,7 +776,13 @@ def camera(data):
     w,h=data['width'],data['height']
     if data['id']==0:
         authored=OUT/'overworld_authoring.json'
-        if authored.exists():return json.loads(authored.read_text())['camera']
+        if authored.exists():
+            record=json.loads(authored.read_text())
+            visibility=record['record'].get('visibility')
+            if visibility:
+                from island_visibility import camera_hash
+                assert camera_hash(record['camera'])==visibility['camera_sha256'],'Island camera changed; rebuild the authored overworld before publishing.'
+            return record['camera']
         return dict(eye=[w/2,27,h/2+3.5],target=[w/2,0,h/2],fov=40)
     if data['slug']=='lightning_club':return dict(eye=[14,9,34],target=[14,0,21.5],fov=58)
     if data['slug']=='psychic_club':h=28

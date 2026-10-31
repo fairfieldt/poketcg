@@ -17,6 +17,10 @@ python3 port/audio/tools/build_audio.py
 python3 port/audio/tools/check_audio.py
 ```
 
+Use `build_audio.py --cached` to re-encode existing source WAVs after changing
+the transport/converter pipeline. Reuse requires both the assembled sound
+driver hash and each original PCM hash to match the manifest.
+
 The builder includes the original `src/audio/music1.asm`, `music2.asm`, and
 `sfx.asm` unchanged, assembles their three banks at 1/2/3, and includes the
 original bank callback and WRAM definitions. Only the harness, ROM bank numbers,
@@ -35,7 +39,11 @@ to finish the last register update and leave a short silence tail. SFX
 frequency commands and explicit waits retain their original tick durations.
 
 `audioconv64` encodes these waveforms to VADPCM, aligning loop points to its
-16-sample blocks. This is a compressed, sampled rendering of the original
+32-frame DMA blocks. The builder performs stereo loop realignment and tail
+padding before conversion to avoid a stereo padding defect in some converter
+versions. It restores the original playback lengths after encoding. Manifest
+`samples` and PCM hashes describe the original recording; `transport_samples`
+includes alignment and zero padding. This is a compressed, sampled rendering of the original
 sound, rather than new synthesized approximations of its melodies. Playback
 of a recorded loop does not keep the Game Boy oscillator/noise phase running
 indefinitely across repetitions, and VADPCM is lossy.
@@ -54,7 +62,10 @@ the audio output path while both the world and duel screens run.
 `generated/audio.json` records original names/IDs, channel timing, loop
 positions, raw PCM SHA-256 hashes, sample counts, and the assembled GBS hash.
 `tools/check_audio.py` verifies every file's header and loop range, reparses all
-original sequences, and rerenders representative music/SFX to verify identical
-PCM hashes. `build/` holds temporary WAV files, assembly objects, and GBS data.
+original sequences, reconstructs missing source WAVs, and checks unchanged PCM
+hashes and zero-padded transport. It also exercises the installed converter's
+decoder on stereo finite/loop fixtures and the actual title track to catch
+mid-recording dropouts. `build/` holds temporary WAV files, assembly objects,
+and GBS data.
 
 Primary API reference: [Game Music Emu](https://github.com/libgme/game-music-emu).

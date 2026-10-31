@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate all exported meshes and the disassembly-to-scene manifest."""
 from pathlib import Path
-import json,math,struct,subprocess,sys
+import json,math,struct,subprocess,sys,hashlib
 ROOT=Path(__file__).resolve().parents[1]
 REPO=ROOT.parents[1]
 sys.path.insert(0,str(REPO/'port/frontends/web/tools'))
@@ -14,6 +14,11 @@ foyers=[m for m in world['maps'] if m['slug'].endswith('_club_entrance') or m['s
 assert len(foyers)==9 and len({m['scene'] for m in foyers})==1
 assert len({m['overlay'] for m in foyers})==9
 assert len(world['overworld_nodes'])==12
+visibility=world['meshes']['overworld'].get('visibility')
+if visibility:
+    from island_visibility import camera_hash
+    assert camera_hash(world['maps'][0]['camera'])==visibility['camera_sha256'],'Island visibility bake camera changed'
+    assert hashlib.sha256((out/'maps/overworld.l64').read_bytes()).hexdigest()==visibility['output_sha256'],'Island visibility bake mesh changed'
 # Dynamic fronts replace eight ordinary faces; they must not overlay them.
 assert world['meshes']['deck_machine_room_dynamic']['triangles']==world['meshes']['deck_machine_room']['triangles']-16
 vertices=triangles=0;max_textures=max_batches=0

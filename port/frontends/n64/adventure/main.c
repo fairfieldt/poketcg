@@ -13,9 +13,11 @@
 #include "intro.h"
 #include "naming.h"
 #include "presentation.h"
+#include "visibility.h"
 #include "dialogue.h"
 #include "video.h"
 #include "generated/world3d_maps.h"
+#include "generated/character_lods.h"
 #include "gen/constants.h"
 #include "gen/text.h"
 #include "../../../overworld/gen/data.h"
@@ -25,6 +27,9 @@ Game game;
 bool game_credits_finished;
 static Scene *room,*overlay,*actors,*switches[8];
 static Scene *actor_scenes[256];
+static Scene *actor_lod_scenes[256];
+static bool actor_low_detail[256];
+static AdventureFrustum frame_frustum;
 static surface_t depth;
 static surface_t *last_world_frame;
 static unsigned last_world_map;
@@ -72,7 +77,13 @@ static void load_scene(void)
 {
  const char *path=map_path();
  if(loaded_map==game.ow.map && loaded_path==path)return;
- if(loaded_map!=game.ow.map)for(unsigned model=7;model<256;model++){scene_close(actor_scenes[model]);actor_scenes[model]=NULL;}
+ if(loaded_map!=game.ow.map) {
+  for(unsigned model=7;model<256;model++) {
+   scene_close(actor_scenes[model]);actor_scenes[model]=NULL;
+   scene_close(actor_lod_scenes[model]);actor_lod_scenes[model]=NULL;
+  }
+  memset(actor_low_detail,0,sizeof(actor_low_detail));
+ }
  scene_close(overlay);scene_close(room);overlay=NULL;
  for(unsigned i=0;i<8;i++){scene_close(switches[i]);switches[i]=NULL;}
  room=scene_open(path,W3_TEXTURE_ROOT);
@@ -102,25 +113,73 @@ static void load_characters(void)
  }
  for(unsigned model=7;model<256;model++) {
   if(actor_scenes[model]&&!needed[model]){scene_close(actor_scenes[model]);actor_scenes[model]=NULL;}
+  if(actor_lod_scenes[model]&&!needed[model]){scene_close(actor_lod_scenes[model]);actor_lod_scenes[model]=NULL;}
  }
  for(unsigned model=7;model<256;model++)if(needed[model]&&w3_actor_scenes[model]&&!actor_scenes[model])actor_scenes[model]=scene_open(w3_actor_scenes[model],W3_TEXTURE_ROOT);
+ for(unsigned model=7;model<256;model++)if(needed[model]&&w3_actor_lod_scenes[model]&&!actor_lod_scenes[model])actor_lod_scenes[model]=scene_open(w3_actor_lod_scenes[model],W3_TEXTURE_ROOT);
 }
-static const Scene *actor_scene(unsigned model)
-{return model<256&&actor_scenes[model]?actor_scenes[model]:actors;}
-static void draw_presented_actor(unsigned model,const PresentationPose *pose,float scale,float floor,float tilt)
+static const Scene *actor_scene(unsigned model,unsigned npc,const PresentationPose *pose,float scale,float floor)
+{
+ const Scene *full=model<256&&actor_scenes[model]?actor_scenes[model]:actors;
+ if(model>=256||!actor_lod_scenes[model]||!frame_frustum.valid)return full;
+ /* Close conversations retain the exact lead heads before the camera moves.
+    Hysteresis prevents a distant character flickering between detail levels. */
+ bool focus=presentation.conversation_npc&&(!npc||npc==presentation.conversation_npc);
+ float position[3]={pose->x-frame_frustum.eye[0],floor+pose->floor+1.3f*scale-frame_frustum.eye[1],pose->z-frame_frustum.eye[2]};
+ float depth=0;for(unsigned c=0;c<3;c++)depth+=position[c]*frame_frustum.forward[c];
+ float pixels=depth>1?3*scale*120/(depth*frame_frustum.tan_y):1000;
+ bool low=!focus&&pixels<(actor_low_detail[npc]?60:48);
+ actor_low_detail[npc]=low;
+ return low?actor_lod_scenes[model]:full;
+}
+static void draw_presented_actor(unsigned model,const PresentationPose *pose,float scale,float floor,float tilt,unsigned npc)
 {
  if(!pose)return;
- glPushMatrix();glTranslatef(pose->x,floor+pose->floor+pose->bob*scale,pose->z);
- glRotatef(pose->heading,0,1,0);glScalef(scale,scale,scale);
- if(pose->lean)glRotatef(pose->lean,1,0,0);
- scene_draw_actor_tilt(actor_scene(model),model,0,0,0,pose->gait,tilt);
- glPopMatrix();
+ scene_draw_actor_presented(actor_scene(model,npc,pose,scale,floor),model,pose->x,
+  floor+pose->floor+pose->bob*scale,pose->z,pose->heading,scale,pose->lean,pose->gait,tilt);
 }
 static void copy_frame(surface_t *destination,const surface_t *source)
 {
  rdpq_attach(destination,NULL);rdpq_mode_push();rdpq_set_mode_copy(false);
  rdpq_tex_blit(source,0,0,NULL);rdpq_mode_pop();rdpq_detach_wait();
 }
+#if ADVENTURE_DIAGNOSTIC == 13
+/* Hold a completed production frame for the VI encoder. The game and its
+   presentation are frozen only after the real dialogue camera has settled. */
+static void conversation_capture(surface_t *source,const char *label)
+{
+ surface_t still=n64_video_surface();copy_frame(&still,source);
+ debugf("VIDEO REVIEW %s BEGIN\n",label);
+ for(unsigned f=0;f<24;f++) {
+  surface_t *frame=display_get();copy_frame(frame,&still);
+  if(f==4)capture(frame,label);
+  display_show(frame);adventure_audio_poll();
+ }
+ surface_free(&still);
+}
+static void conversation_fixture(unsigned map,unsigned npc,unsigned x,unsigned z,unsigned direction,const char *label)
+{
+ memset(&game,0,sizeof(game));strcpy(game.name,"MARK");game.text_speed=2;
+ game.ow.map=map;game.ow.x=x;game.ow.y=z;game.ow.direction=direction;
+ for(const OwNpcDef *n=ow_map_npcs[map];n&&n->id;n++) {
+  if(n->id==255||n->x>=w3_maps[map].width||n->y>=w3_maps[map].height)continue;
+  unsigned i=game.ow.npc_count++;assert(i<OW_NPC_LIMIT);
+  game.ow.npcs[i]=(OwNpc){n->id,n->x,n->y,n->dir,1,ow_npc_headers[n->id].sprite};
+  game.ow.npc_flags[i]=ow_npc_headers[n->id].flags;
+  game.ow.npc_animation[i]=ow_npc_headers[n->id].animation;
+ }
+ presentation_init(&presentation,NULL,false);game_conversation(npc);
+ /* Match ow_interact's source facing without moving any source positions. */
+ for(unsigned i=0;i<game.ow.npc_count;i++)if(game.ow.npcs[i].id==npc)
+  game.ow.npcs[i].direction=(direction+2)&3;
+ OwState before=game.ow;
+ for(unsigned f=0;f<40;f++)game_draw();
+ conversation_capture(adventure_story_message_preview(ow_npc_name(npc),
+  npc==NPC_RONALD1?"Hey, MARK!\nI'm not gonna lose to you!":"Welcome!"),label);
+ assertf(!memcmp(&before,&game.ow,sizeof(before)),"Camera changed canonical state");
+ game_conversation(0);for(unsigned f=0;f<40;f++)game_draw();
+}
+#endif
 surface_t *game_render_frame(void)
 {
  assertf(!rendering,"Reentrant world frame");
@@ -129,8 +188,10 @@ surface_t *game_render_frame(void)
  presentation_sync(&presentation,&game.ow,player_running);
  presentation_step(&presentation,&game.ow,map);
  const PresentationCamera *camera=presentation_camera(&presentation);
+ AdventureFrustum frustum;adventure_frustum_init(&frustum,camera,4.0f/3.0f,1.5f,90);
+ frame_frustum=frustum;
  surface_t *frame=display_get();rdpq_attach(frame,&depth);gl_context_begin();scene_begin_opaque();
-#if ADVENTURE_DIAGNOSTIC == 10
+#if ADVENTURE_DIAGNOSTIC == 10 || ADVENTURE_DIAGNOSTIC == 15
  uint32_t render_started=timer_ticks();
 #endif
  glViewport(0,0,n64_video_width,n64_video_height);
@@ -140,38 +201,49 @@ surface_t *game_render_frame(void)
  glMatrixMode(GL_PROJECTION);glLoadIdentity();gluPerspective(camera->fov,4.0/3.0,1.5,90);
  glMatrixMode(GL_MODELVIEW);glLoadIdentity();
  gluLookAt(camera->eye[0],camera->eye[1],camera->eye[2],camera->target[0],camera->target[1],camera->target[2],0,1,0);
+ scene_camera(camera->fov,4.0f/3.0f,1.5f,90,camera->eye,camera->target,0,0,n64_video_width,n64_video_height);
  scene_draw_room(room);scene_draw_room(overlay);
  for(unsigned i=0;i<8;i++)scene_draw_room(switches[i]);
  if(game.ow.map==0) {
   /* The source map draws its player and selection cursor in front of the
      landmark icons. Keep their own 3D depth while clearing the island's Z. */
   glClear(GL_DEPTH_BUFFER_BIT);
-  draw_presented_actor(W3_PLAYER_MODEL,presentation_world(&presentation),.48f,.35f,0);
+  const PresentationPose *world_player=presentation_world(&presentation);
+  if(adventure_frustum_actor(&frustum,world_player,.48f,.35f,0))
+   draw_presented_actor(W3_PLAYER_MODEL,world_player,.48f,.35f,0,0);
   const PresentationPose *cursor=presentation_world_cursor(&presentation);
-  glPushMatrix();glTranslatef(cursor->x,1.8f+cursor->bob,cursor->z);glScalef(.55f,.55f,.55f);
-  scene_draw_actor(actors,6,0,0,0,0);glPopMatrix();
+  if(adventure_frustum_sphere(&frustum,cursor->x,1.8f+cursor->bob+ADVENTURE_ACTOR_CENTER*.55f,
+      cursor->z,ADVENTURE_ACTOR_RADIUS*.55f)) {
+   scene_draw_actor_presented(actors,6,cursor->x,1.8f+cursor->bob,cursor->z,0,.55f,0,0,0);
+  }
  } else {
   float contacts[OW_NPC_LIMIT+1][2];unsigned contact_count=0;
   const PresentationPose *player=presentation_player(&presentation);
-  contacts[contact_count][0]=player->x;contacts[contact_count++][1]=player->z;
+  bool draw_player=adventure_frustum_actor(&frustum,player,1,0,0);
+  bool draw_npc[OW_NPC_LIMIT]={0};
+  float tilt[OW_NPC_LIMIT]={0};
+  if(draw_player){contacts[contact_count][0]=player->x;contacts[contact_count++][1]=player->z;}
   for(unsigned i=0;i<game.ow.npc_count;i++) {
    const OwNpc *npc=&game.ow.npcs[i];
-   if(!npc->visible||(npc->id>=NPC_TORCH&&npc->id<=NPC_LEGENDARY_CARD_RIGHT_SPARK)||
+   if(!npc->visible)continue;
+   const PresentationPose *pose=presentation_npc(&presentation,npc->id);
+   tilt[i]=game.ow.npc_animation[i]==SPRITE_ANIM_CGB_AMY_LAYING&&!w3_npc_pose_models[npc->id]?90:0;
+   draw_npc[i]=adventure_frustum_actor(&frustum,pose,1,0,tilt[i]);
+   if(!draw_npc[i]||(npc->id>=NPC_TORCH&&npc->id<=NPC_LEGENDARY_CARD_RIGHT_SPARK)||
       game.ow.npc_animation[i]==SPRITE_ANIM_CGB_AMY_LAYING)continue;
-   const PresentationPose *pose=presentation_npc(&presentation,npc->id);if(!pose||pose->floor)continue;
+   if(pose->floor)continue;
    contacts[contact_count][0]=pose->x;contacts[contact_count++][1]=pose->z;
   }
   scene_draw_contact_shadows(contacts,contact_count);
   for(unsigned i=0;i<game.ow.npc_count;i++) {
-   const OwNpc *npc=&game.ow.npcs[i];if(!npc->visible)continue;
+   const OwNpc *npc=&game.ow.npcs[i];if(!draw_npc[i])continue;
    unsigned model=npc_model(i);
-   float tilt=game.ow.npc_animation[i]==SPRITE_ANIM_CGB_AMY_LAYING&&!w3_npc_pose_models[npc->id]?90:0;
-   draw_presented_actor(model,presentation_npc(&presentation,npc->id),1,0,tilt);
+   draw_presented_actor(model,presentation_npc(&presentation,npc->id),1,0,tilt[i],npc->id);
   }
-  draw_presented_actor(W3_PLAYER_MODEL,presentation_player(&presentation),1,0,0);
+  if(draw_player)draw_presented_actor(W3_PLAYER_MODEL,player,1,0,0,0);
  }
- gl_context_end();rdpq_detach_wait();
-#if ADVENTURE_DIAGNOSTIC == 10
+ gl_context_end();scene_frame_end();rdpq_detach_wait();
+#if ADVENTURE_DIAGNOSTIC == 10 || ADVENTURE_DIAGNOSTIC == 15
  debugf("VIDEO FRAME map=%u render_us=%u\n",game.ow.map,(unsigned)TICKS_TO_US((uint32_t)(timer_ticks()-render_started)));
 #endif
  unsigned selection=game.ow.overworld_selection;
@@ -227,6 +299,8 @@ static void format_story(uint16_t id,char *out,size_t capacity,unsigned depth_le
 }
 void game_story_format(unsigned text,char *out,unsigned capacity)
 {format_story(text,out,capacity,0);}
+void game_conversation(unsigned npc)
+{presentation_conversation(&presentation,npc);}
 static void host_text(void *ctx,OwState *state,uint16_t text,uint8_t npc)
 {
  (void)ctx;(void)state;
@@ -235,7 +309,9 @@ static void host_text(void *ctx,OwState *state,uint16_t text,uint8_t npc)
 #else
  n64_ui_text_speed(game.text_speed);
  static char formatted[8192];format_story(text,formatted,sizeof(formatted),0);
+ game_conversation(npc);
  adventure_story_message(npc?ow_npc_name(npc):"",formatted,game.text_speed);
+ game_conversation(0);
 #endif
 }
 static int host_choice(void *ctx,OwState *state,unsigned kind,uint16_t text,unsigned count,unsigned initial)
@@ -257,7 +333,9 @@ static int host_choice(void *ctx,OwState *state,unsigned kind,uint16_t text,unsi
  if(kind==OW_CHOICE_SAM_RULES){items=rules;n=8;}
  if(kind==OW_CHOICE_GIFT){items=gifts;n=5;}
  char title[256];format_story(text,title,sizeof(title),0);
+ game_conversation(state->active_npc?state->dialog_npc:0);
  int result=n<=4?adventure_story_choice(title,items,n,kind==OW_CHOICE_YES_NO?(initial?0:1):(int)initial,kind!=OW_CHOICE_STARTER):n64_menu(title,items,n,(int)initial,true);
+ game_conversation(0);
  if(result<0&&kind!=OW_CHOICE_YES_NO)result=kind==OW_CHOICE_SAM_RULES?7:kind==OW_CHOICE_GIFT?4:3;
  return kind==OW_CHOICE_YES_NO?(result==0):result;
 #endif
@@ -400,7 +478,22 @@ int main(void)
  depth=n64_video_surface();scene_begin_opaque();
  glEnable(GL_MULTISAMPLE_ARB);glDisable(GL_CULL_FACE);glDisable(GL_LIGHTING);
  adventure_audio_init();n64_ui_init();actors=scene_open(W3_ACTOR_SCENE,W3_TEXTURE_ROOT);
-#if ADVENTURE_DIAGNOSTIC == 12
+#if ADVENTURE_DIAGNOSTIC == 14
+ adventure_audio_review();
+ for(;;)adventure_audio_poll();
+#elif ADVENTURE_DIAGNOSTIC == 13
+ presentation_init(&presentation,NULL,true);
+ extern bool adventure_cinematic_diagnostic(void (*)(surface_t *,const char *));
+ assertf(adventure_cinematic_diagnostic(conversation_capture),"Conversation opening failed");
+ game_conversation(0);for(unsigned f=0;f<40;f++)game_draw();
+ surface_t *exploration=game_render_frame();display_show(exploration);
+ conversation_capture(exploration,"sam-exploration");
+ conversation_fixture(PSYCHIC_CLUB_LOBBY,NPC_RONALD1,14,10,WEST,"ronald-dialogue");
+ conversation_fixture(PSYCHIC_CLUB_ENTRANCE,NPC_CLERK6,6,4,NORTH,"clerk-dialogue");
+ exploration=game_render_frame();display_show(exploration);
+ conversation_capture(exploration,"clerk-exploration");
+ debugf("VIDEO REVIEW PASS\n");for(;;)adventure_audio_poll();
+#elif ADVENTURE_DIAGNOSTIC == 12
  extern void adventure_camera_preview(surface_t *,void (*)(surface_t *,const char *));
  adventure_camera_preview(&depth,capture);
  for(;;)adventure_audio_poll();
@@ -408,7 +501,7 @@ int main(void)
  extern void adventure_leads_preview(surface_t *,void (*)(surface_t *,const char *));
  adventure_leads_preview(&depth,capture);
  for(;;)adventure_audio_poll();
-#elif ADVENTURE_DIAGNOSTIC == 10
+#elif ADVENTURE_DIAGNOSTIC == 10 || ADVENTURE_DIAGNOSTIC == 15
  static const unsigned review_maps[]={0,1,15,32};
  static const char *const review_names[]={"overworld","lab","lightning","dome"};
  for(unsigned i=0;i<4;i++) {
@@ -443,7 +536,9 @@ int main(void)
   surface_t *frame=adventure_story_message_preview("Dr. Mason","Welcome to the world of Pokemon cards!\nLet's learn how to play together.");
   if(f==4)capture(frame,"dialogue");
  }
+#if ADVENTURE_DIAGNOSTIC == 10
  n64_ui_polish_preview();
+#endif
  debugf("VIDEO REVIEW PASS\n");
  for(;;)adventure_audio_poll();
 #elif ADVENTURE_DIAGNOSTIC == 9

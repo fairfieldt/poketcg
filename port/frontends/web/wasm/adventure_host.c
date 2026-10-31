@@ -238,7 +238,10 @@ static void text(void *ctx, OwState *state, uint16_t id, uint8_t npc) {
   (void)ctx;
   (void)state;
   format_story(id, text_buffer, sizeof(text_buffer), 0);
+  presentation_conversation(&presentation,npc);
+  presentation_camera_step(&presentation,&game.ow,&w3_maps[game.ow.map]);
   n64_message(npc ? ow_npc_name(npc) : "", text_buffer);
+  presentation_conversation(&presentation,0);
 }
 static int choice(void *ctx, OwState *state, unsigned kind, uint16_t id, unsigned count,
                   unsigned initial) {
@@ -276,9 +279,12 @@ static int choice(void *ctx, OwState *state, unsigned kind, uint16_t id, unsigne
     n = 5;
   }
   format_story(id, text_buffer, sizeof(text_buffer), 0);
+  presentation_conversation(&presentation,state->active_npc?state->dialog_npc:0);
+  presentation_camera_step(&presentation,&game.ow,&w3_maps[game.ow.map]);
   int result =
       n64_menu(text_buffer, items, n, kind == OW_CHOICE_YES_NO ? (initial ? 0 : 1) : initial,
                kind != OW_CHOICE_STARTER);
+  presentation_conversation(&presentation,0);
   if (result < 0 && kind != OW_CHOICE_YES_NO)
     result = kind == OW_CHOICE_SAM_RULES ? 7 : kind == OW_CHOICE_GIFT ? 4 : 3;
   return kind == OW_CHOICE_YES_NO ? result == 0 : result;
@@ -570,7 +576,7 @@ EXPORT("web_adv_view") const char *web_adv_view(void) {
            i ? "," : "", n->id, n->x, n->y, n->direction, n->visible, n->sprite,
            game.ow.npc_animation[i]);
   }
-  append(&p, &left, "],\"presentation\":{\"player\":");
+  append(&p, &left, "],\"presentation\":{\"conversationNpc\":%u,\"player\":",presentation.conversation_npc);
   pose(&p, &left, presentation_player(&presentation));
   append(&p, &left, ",\"world\":");
   pose(&p, &left, presentation_world(&presentation));
@@ -601,3 +607,9 @@ EXPORT("web_adv_load_only") int web_adv_load_only(unsigned profile) {
 }
 
 EXPORT("web_adv_tick") void web_adv_tick(void) { game_tick(); }
+/* This export has no host callbacks and is safe while a dialogue suspends the
+ * story coroutine. Only the transient camera advances, never actor movement. */
+EXPORT("web_adv_camera_step") void web_adv_camera_step(void) {
+  presentation_sync(&presentation,&game.ow,running);
+  presentation_camera_step(&presentation,&game.ow,&w3_maps[game.ow.map]);
+}

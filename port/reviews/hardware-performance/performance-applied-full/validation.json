@@ -1,0 +1,57 @@
+{
+  "4": {
+    "rom_sha256": "5d77371349d3096d30204a0827ad5b44a056dc5b42efd6b0e9e8af051a66f7a9",
+    "native_dimensions": [
+      320,
+      240
+    ],
+    "ram_mib": 4,
+    "mips_story_passed": true,
+    "sram_passed": true,
+    "native_duel_passed": true,
+    "intro_passed": true,
+    "worst_heap": {
+      "map": 29,
+      "total": 2653744,
+      "used": 1869584,
+      "free": 784160
+    },
+    "wall_seconds": 140.49,
+    "frame_count": 42,
+    "private_save_files": 1,
+    "result": "cases/4mib/result.json",
+    "native_log": "port/frontends/n64/adventure/build/performance-applied-full-4mib-v2/ares.log"
+  },
+  "8": {
+    "rom_sha256": "5d77371349d3096d30204a0827ad5b44a056dc5b42efd6b0e9e8af051a66f7a9",
+    "native_dimensions": [
+      480,
+      360
+    ],
+    "ram_mib": 8,
+    "mips_story_passed": true,
+    "sram_passed": true,
+    "native_duel_passed": true,
+    "intro_passed": true,
+    "worst_heap": {
+      "map": 29,
+      "total": 6848048,
+      "used": 2829584,
+      "free": 4018464
+    },
+    "wall_seconds": 218.81,
+    "frame_count": 42,
+    "private_save_files": 1,
+    "result": "cases/8mib/result.json",
+    "native_log": "port/frontends/n64/adventure/build/performance-applied-full-8mib-v2/ares.log"
+  },
+  "compile": {
+    "DIAGNOSTIC": 1,
+    "HIGH_RES": 1,
+    "SCENE_T3D": 1,
+    "build_dir": "build/packed-full-v2",
+    "rom": "poketcg-packed-full-v2.z64"
+  },
+  "scissor_regression": "Full-display RDP scissor restored at scene_frame_end; naming header/keyboard/footer paper anchors checked in validator.",
+  "scope": "Both complete native gates use the same immutable diagnostic ROM; pixels are before VI filtering. Real hardware FPS remains unmeasured."
+}

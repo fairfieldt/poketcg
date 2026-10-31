@@ -17,10 +17,12 @@ static void text(void *ctx,OwState *state,uint16_t id,uint8_t npc)
  (void)ctx;(void)npc;last_text=id;
  if(state->map==MASON_LABORATORY&&state->x==14&&state->y==8&&!mason_seen) {
   mason_seen=true;
-  for(unsigned i=0;i<12;i++)game_draw();
+  game_conversation(NPC_DRMASON);
+  for(unsigned i=0;i<(ADVENTURE_DIAGNOSTIC==13?40:12);i++)game_draw();
   char formatted[8192];game_story_format(id,formatted,sizeof(formatted));
   surface_t *frame=adventure_story_message_preview("Dr. Mason",formatted);
   if(snapshot)snapshot(frame,"mason-dialogue");
+  game_conversation(0);
  }
 }
 static int choice(void *ctx,OwState *state,unsigned kind,uint16_t id,unsigned count,unsigned initial)
@@ -32,10 +34,12 @@ static int duel(void *ctx,OwState *state,const OwDuel *duel)
  (void)ctx;
  assertf(duel->npc==NPC_SAM&&duel->deck==SAMS_PRACTICE_DECK_ID,"Opening did not reach Sam's practice duel");
  assertf(state->x==10&&state->y==14,"Player did not reach Sam's table");
- for(unsigned i=0;i<12;i++)game_draw();
+ game_conversation(NPC_SAM);
+ for(unsigned i=0;i<(ADVENTURE_DIAGNOSTIC==13?40:12);i++)game_draw();
  char formatted[8192];game_story_format(last_text,formatted,sizeof(formatted));
  surface_t *frame=adventure_story_message_preview("Sam",formatted);
  if(snapshot)snapshot(frame,"sam-table");
+ game_conversation(0);
  sam_seen=true;longjmp(at_practice,1);
 }
 bool adventure_cinematic_diagnostic(void (*capture_frame)(surface_t *,const char *))

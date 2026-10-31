@@ -39,6 +39,7 @@ def main():
     if args.parse_only:
         text=args.parse_only.read_text(errors='replace')
     else:
+        saves=out/'saves';saves.mkdir(parents=True,exist_ok=True)
         settings.write_text(f'''Video
   Driver: Metal
   Quality: SD
@@ -46,12 +47,14 @@ def main():
   FixedScale: 2
 Input
   Driver: SDL
-  Defocus: Block
+  Defocus: Allow
 General
   HomebrewMode: true
   NoFilePrompt: true
 Nintendo64
   ExpansionPak: {'true' if args.ram_mib==8 else 'false'}
+Paths
+  Saves: {saves}/
 ''')
         with log.open('w') as stream:
             process=subprocess.Popen([args.ares,'--settings-file',str(settings),'--no-file-prompt',str(args.rom.resolve())],stdout=stream,stderr=subprocess.STDOUT)
@@ -86,6 +89,12 @@ Nintendo64
                 pixels[pos]=tuple(((v>>shift)&31)*255//31 for shift in (11,6,1))+(255,)
         elif line=='FRAMEBUFFER END':
             assert name is not None and len(pixels)==width*height,(name,len(pixels))
+            if name=='naming':
+                # A valid portrait alone can still have its entire keyboard
+                # clipped by a leaked 3D scissor. Check the three UI panels.
+                for lx,ly in ((8,8),(132,80),(8,212)):
+                    r,g,b,_=pixels[lx*width//320,ly*height//240]
+                    assert r>220 and g>220 and b>180,('Naming UI panel missing',lx,ly,r,g,b)
             path=out/(name+'.png')
             write_png(path,width,height,[bytes(c for x in range(width) for c in pixels[x,y]) for y in range(height)])
             colors=len(set(pixels.values()))

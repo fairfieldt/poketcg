@@ -169,36 +169,91 @@ class Emulator:
         return path
     def close(self):self.lib.gme_delete(self.emu)
 
+def cached_wave(record):
+    """Reuse source PCM only when it matches the original driver's manifest."""
+    path=WORK/(record['kind']+'_'+str(record['id']).zfill(2)+'.wav')
+    try:
+        with wave.open(str(path),'rb') as source:
+            if source.getparams()[:3]!=(2,2,RATE) or source.getnframes()!=record['samples']:
+                return None
+            raw=source.readframes(source.getnframes())
+        return path if hashlib.sha256(raw).hexdigest()==record['pcm_sha256'] else None
+    except (OSError,wave.Error,KeyError):return None
+
+def transport_wave(path,loop_offset=None):
+    """Give VADPCM complete DMA blocks without changing the source recording.
+
+    Some audioconv64 versions pad stereo input at a scalar-sample index instead
+    of a frame index, erasing 16 frames halfway through a clip. Supplying an
+    already aligned input avoids that path and gives the encoded tail zeros.
+    """
+    with wave.open(str(path),'rb') as source:
+        params=source.getparams();frames=source.getnframes()
+        raw=source.readframes(frames)
+    frame_bytes=params.nchannels*params.sampwidth
+    # Do the converter's loop realignment before padding as well. Otherwise
+    # its 16-frame loop copy can make a 32-aligned input misaligned again.
+    aligned_loop=0
+    if loop_offset is not None:
+        aligned_loop=(loop_offset+31)&~31
+        copied=aligned_loop-loop_offset
+        loop=raw[loop_offset*frame_bytes:]
+        assert loop and 0<=loop_offset<frames
+        raw+=(loop*((copied*frame_bytes+len(loop)-1)//len(loop)))[:copied*frame_bytes]
+        frames+=copied
+    padded=(frames+31)&~31
+    raw+=bytes((padded-frames)*frame_bytes)
+    target=WORK/'transport'/path.name;target.parent.mkdir(parents=True,exist_ok=True)
+    with wave.open(str(target),'wb') as output:
+        output.setparams(params._replace(nframes=padded));output.writeframes(raw)
+    return target,padded,frames,aligned_loop
+
+def playback_header(path,frames,loop_start):
+    """Keep the original playback duration; DMA padding is transport only."""
+    with path.open('r+b') as output:
+        output.seek(12)
+        output.write(struct.pack('>II',frames,frames-loop_start if loop_start is not None else 0))
+
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--only',help='Comma-separated MUSIC_/SFX_ names for a quick validation render')
     p.add_argument('--audioconv',default='/opt/libdragon/bin/audioconv64')
     p.add_argument('--metadata-only',action='store_true')
+    p.add_argument('--cached',action='store_true',help='Reuse source WAVs with manifest-matching PCM hashes')
     args=p.parse_args()
     sym,rom,gbs=harness();records=tracks(sym,rom)
     print('Timing parsed for',len(records),'original music/SFX sequences; looping music seconds:',sum(r['end_ticks']*TICK_CYCLES/CLOCK for r in records if r['kind']=='music'),flush=True)
     if args.metadata_only:
         (WORK/'timing.json').write_text(json.dumps(dict(tracks=records),indent=2)+'\n');return
-    if args.only and (OUT/'audio.json').exists():
+    if (args.only or args.cached) and (OUT/'audio.json').exists():
         old=json.loads((OUT/'audio.json').read_text())
-        previous={(r['kind'],r['id']):r for r in old.get('tracks',[])}
+        same_driver=old.get('gbs_sha256')==hashlib.sha256(gbs.read_bytes()).hexdigest()
+        if args.only and not same_driver:
+            p.error('Sound driver changed; rebuild all tracks before using --only.')
+        previous={(r['kind'],r['id']):r for r in old.get('tracks',[])} if same_driver else {}
         for r in records:
             prior=previous.get((r['kind'],r['id']),{})
             if all(prior.get(k)==r[k] for k in ('name','end_ticks','loop_start_ticks')):
                 r.update(prior)
-    emu=Emulator(gbs)
+    emu=None
     for r in records:
         if args.only and r['name'] not in args.only.split(','):continue
-        path=emu.render(r)
+        path=cached_wave(r) if args.cached else None
+        if path is None:
+            if emu is None:emu=Emulator(gbs)
+            path=emu.render(r)
         loop=r['loop_ticks']>0
         offset=round(r['loop_start_ticks']*TICK_CYCLES*RATE/CLOCK)//16*16
+        transport,r['transport_samples'],r['playback_samples'],aligned=transport_wave(path,offset if loop else None)
         command=[args.audioconv,'--wav-compress','1','--wav-loop',str(loop).lower()]
-        if loop:command+=['--wav-loop-offset',str(offset)]
-        command+=['-o',str(OUT),str(path)]
+        if loop:command+=['--wav-loop-offset',str(aligned)]
+        command+=['-o',str(OUT),str(transport)]
         run(command)
         r['file']=path.stem+'.wav64';r['loop_start_sample']=offset
+        r['playback_loop_start_sample']=aligned
+        playback_header(OUT/r['file'],r['playback_samples'],aligned if loop else None)
         print(r['name'],round(r['seconds'],3),'s',flush=True)
-    emu.close()
+    if emu:emu.close()
     priority_bank,priority_addr=sym['Music1_SFXPriorities']
     priority_offset=priority_bank*0x4000+priority_addr-0x4000
     priorities=list(rom[priority_offset:priority_offset+SFX])

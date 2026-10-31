@@ -21,6 +21,7 @@
  * Hot-seat: each duelist answers with their own controller (controller 2 for
  * the second duelist; controller 1 when no second controller is connected).
  */
+#include <assert.h>
 #include <stdarg.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -42,6 +43,8 @@
 #include "banner_font.h"
 #include "body_font.h"
 #include "card_back.h"
+#include "duel_input.h"
+#include "coin_art.h"
 #ifdef TCGN64_ADVENTURE
 #include "adventure/audio.h"
 #endif
@@ -67,6 +70,8 @@
 #define TBOX_LINE(i) (TBOX_Y + 3 + (i) * TLH)
 #define SLOT_INFO_Y 90              /* between the two halves of the board */
 #define BODY_LH 13                  /* measured proportional duel text */
+#define RULE_COLS 96
+#define PRACTICE_PAGE_LINES 11
 #define LIST_LH 14
 
 enum {
@@ -128,13 +133,18 @@ static uint32_t g_rng = 0x2545f491;
 static char g_log[LOG_LINES][COLS + 1];
 static int g_log_n;                     /* lines in the log */
 static int g_log_newest;                /* first line of the newest message */
+static char g_practice_checklist[1024];
+static bool g_practice_checklist_on;
+static bool g_practice_reading_on;
+static char g_practice_reading[24][RULE_COLS];
+static int g_practice_reading_count;
 
 /* things events asked us to show */
 static int g_screen;                    /* last TCG_SCREEN_* */
 static uint8_t g_screen_arg;            /* its arg[2] */
 static uint8_t g_boxmsg = 0xff;
 static struct { bool on; uint8_t id, deck, owner, page; } g_overlay;  /* TCG_EV_CARD */
-static struct { uint8_t res[16]; int n, total; } g_coin;              /* TCG_EV_COIN */
+static struct { uint8_t res[16], owner; int n, total, number; bool ready; } g_coin;
 static struct { int timer; uint8_t side, loc; unsigned amount; } g_dmg;
 static uint8_t g_thinking;
 static uint8_t g_asking;                /* duelist answering the current request (0: none) */
@@ -575,7 +585,6 @@ static void bodyf(int x,int y,int color,int width,const char *fmt,...)
 	body(x,y,color,text,width);
 }
 
-#define RULE_COLS 96
 /* Pixel-width wrapping also bounds the destination in bytes. A single long
  * word is split, never discarded; spaces/newlines retain ordinary wrapping. */
 static int body_wrap(const char *text,int width,char lines[][RULE_COLS],int capacity)
@@ -783,6 +792,12 @@ static void damage_number(int x,int y,unsigned amount)
 	print(x,y-1,C_BLACK,text);print(x,y+1,C_BLACK,text);print(x,y,C_TEXT,text);
 }
 
+typedef struct {
+	uint16_t *rows;
+	unsigned width, height, raster_width, row_pixels, period;
+} FeltCache;
+static FeltCache g_felt;
+
 static void draw_felt(void)
 {
 	static uint16_t tile[32][32];static bool ready;
@@ -795,12 +810,44 @@ static void draw_felt(void)
 		}
 		ready=true;
 	}
+	int left=ui_x(LEFT-6),right=ui_x(RIGHT+6);
+	if(!g_felt.rows||g_felt.width!=g_fb->width||g_felt.height!=g_fb->height||
+	   g_felt.raster_width!=g_raster_width) {
+		/* floor(y*240/height) modulo 32 repeats every 32 physical rows at
+		 * 320x240, or 48 at 480x360. Cache those rows (19,200/43,200 bytes)
+		 * rather than a complete board-sized backing. */
+		unsigned numerator=32u*g_fb->height,divisor=SCREEN_H;
+		for(unsigned remainder;divisor;numerator=divisor,divisor=remainder)
+			remainder=numerator%divisor;
+		unsigned period=32u*g_fb->height/numerator;
+		unsigned row_pixels=(unsigned)(right-left);
+		free(g_felt.rows);
+		g_felt=(FeltCache){.width=g_fb->width,.height=g_fb->height,
+			.raster_width=g_raster_width,.row_pixels=row_pixels,.period=period};
+		g_felt.rows=malloc(period*row_pixels*sizeof(*g_felt.rows));
+		assert(g_felt.rows);
+		uint8_t columns[row_pixels];
+		for(unsigned x=0;x<row_pixels;x++)
+			columns[x]=((x+(unsigned)left)*SCREEN_W/g_fb->width)&31;
+		for(unsigned y=0;y<period;y++) {
+			const uint16_t *tile_row=tile[(y*SCREEN_H/g_fb->height)&31];
+			for(unsigned x=0;x<row_pixels;x++)
+				g_felt.rows[y*row_pixels+x]=tile_row[columns[x]];
+		}
+	}
 	/* Copy only into the reserved CPU canvas. end_frame presents it through
-	   RDP after cache writeback, exactly like the rest of the duel UI. */
-	for(int y=ui_y(BOARD_Y);y<ui_y(BOARD_Y+BOARD_H);y++) {
-		uint16_t *row=(uint16_t *)((uint8_t *)g_fb->buffer+y*g_fb->stride);
-		for(int x=ui_x(LEFT-6);x<ui_x(RIGHT+6);x++)
-			row[x]=tile[(y*SCREEN_H/g_fb->height)&31][(x*SCREEN_W/g_fb->width)&31];
+	   RDP after cache writeback, exactly like the rest of the duel UI.
+	   The steady loop has no pixel scaling, division, or modulo. */
+	int top=ui_y(BOARD_Y),bottom=ui_y(BOARD_Y+BOARD_H);
+	unsigned cached_y=(unsigned)top;
+	while(cached_y>=g_felt.period)cached_y-=g_felt.period;
+	const uint16_t *source=g_felt.rows+cached_y*g_felt.row_pixels;
+	const uint16_t *end=g_felt.rows+g_felt.period*g_felt.row_pixels;
+	uint8_t *destination=(uint8_t *)g_fb->buffer+top*g_fb->stride+left*sizeof(*source);
+	for(int y=top;y<bottom;y++) {
+		memcpy(destination,source,g_felt.row_pixels*sizeof(*source));
+		destination+=g_fb->stride;source+=g_felt.row_pixels;
+		if(source==end)source=g_felt.rows;
 	}
 }
 
@@ -881,11 +928,11 @@ static void draw_side(uint8_t duelist, bool top, int hl_loc)
 		chosen_corners(LEFT-5,act_y-2,RIGHT-LEFT+10,49);
 	}
 	card_name(s.id, name, sizeof(name));
-	energy_icon(LEFT, act_y, s.color);
-	body(LEFT+12,act_y,C_INK,name,156);
+	energy_icon(LEFT, act_y+2, s.color);
+	body(LEFT+12,act_y+2,C_INK,name,156);
 	if(is_pokemon(c)&&c->Level)printf_at(LEFT+174,act_y+2,C_INK,"Lv%d",c->Level);
 	hp_bar(LEFT,act_y+19,96,s.hp,s.maxhp);
-	bodyf(LEFT+104,act_y+13,s.hp*4<=s.maxhp?C_RED:C_INK,112,"HP %d/%d",s.hp,s.maxhp);
+	bodyf(LEFT+104,act_y+17,s.hp*4<=s.maxhp?C_RED:C_INK,112,"HP %d/%d",s.hp,s.maxhp);
 	int n = energy_icons(LEFT, act_y + 27, s.energy, 12);
 	if (!n)
 		print(LEFT, act_y + 27, C_INK, "no energy");
@@ -933,6 +980,73 @@ static void draw_textbox_hint(const char *hint)
 }
 
 static void draw_textbox(void) { draw_textbox_hint(NULL); }
+
+static bool practice_checklist_visible(void)
+{
+	return g_mode==MODE_PRACTICE&&g_screen==TCG_SCREEN_EMPTY&&
+		g_practice_checklist_on&&g_practice_checklist[0];
+}
+
+static void draw_practice_checklist(void)
+{
+	char heading[96],lines[18][RULE_COLS];
+	const char *instructions=strchr(g_practice_checklist,'\n');
+	size_t length=instructions?(size_t)(instructions-g_practice_checklist):strlen(g_practice_checklist);
+	if(length>=sizeof(heading))length=sizeof(heading)-1;
+	memcpy(heading,g_practice_checklist,length);heading[length]=0;
+	paper_panel(LEFT-6,BOARD_Y,RIGHT-LEFT+12,BOARD_H);
+	body(LEFT+3,BOARD_Y+8,C_INK,heading,RIGHT-LEFT-6);
+	fill(LEFT+2,BOARD_Y+24,RIGHT-LEFT-4,1,C_EDGE);
+	if(instructions) {
+		while(*instructions=='\n')instructions++;
+		int count=body_wrap(instructions,RIGHT-LEFT-10,lines,18);
+		for(int i=0;i<count&&BOARD_Y+32+i*BODY_LH+BODY_FONT_HEIGHT<BOARD_Y+BOARD_H-18;i++)
+			body(LEFT+4,BOARD_Y+32+i*BODY_LH,C_INK,lines[i],RIGHT-LEFT-10);
+	}
+	body(LEFT+4,BOARD_Y+BOARD_H-15,C_EDGE,"Dr. Mason",RIGHT-LEFT-24);
+}
+
+static bool practice_reading_visible(void)
+{
+	return g_mode==MODE_PRACTICE&&g_practice_reading_on;
+}
+
+static void set_practice_reading(const TcgEvent *ev)
+{
+	char message[1536];sanitize(ev->str?ev->str:"",message,sizeof(message));
+	if(ev->text==LetsPlayTheGamePracticeDuelText&&g_practice_checklist[0]) {
+		const char *steps=strchr(g_practice_checklist,'\n');
+		if(steps) {
+			while(*steps=='\n')steps++;
+			size_t used=strlen(message);
+			snprintf(message+used,sizeof(message)-used,"\n\n%s",steps);
+		}
+	}
+	g_practice_reading_count=body_wrap(message,RIGHT-LEFT-12,g_practice_reading,24);
+}
+
+static void draw_practice_reading(int first)
+{
+	paper_panel(LEFT-6,BOARD_Y,RIGHT-LEFT+12,BOARD_H);
+	body(LEFT+4,BOARD_Y+8,C_INK,"Dr. Mason",100);
+	if(g_practice_checklist_on&&g_practice_checklist[0]) {
+		char heading[96];size_t length=strcspn(g_practice_checklist,"\n");
+		if(length>=sizeof(heading))length=sizeof(heading)-1;
+		memcpy(heading,g_practice_checklist,length);heading[length]=0;
+		int width=body_width(heading);body(RIGHT-4-width,BOARD_Y+8,C_INK,heading,width);
+	}
+	fill(LEFT+3,BOARD_Y+24,RIGHT-LEFT-6,1,C_EDGE);
+	for(int i=0;i<PRACTICE_PAGE_LINES&&first+i<g_practice_reading_count;i++)
+		body(LEFT+4,BOARD_Y+32+i*12,C_INK,g_practice_reading[first+i],RIGHT-LEFT-12);
+}
+
+static void draw_practice_continue(int first)
+{
+	panel(LEFT-6,TBOX_Y,RIGHT-LEFT+12,TBOX_LINES*TLH+5);
+	print(LEFT,TBOX_LINE(1),C_HI,"A/B: continue");
+	int pages=(g_practice_reading_count+PRACTICE_PAGE_LINES-1)/PRACTICE_PAGE_LINES;
+	if(pages>1)printf_at(RIGHT-6*CW,TBOX_LINE(1),C_DIM,"%d / %d",first/PRACTICE_PAGE_LINES+1,pages);
+}
 
 /* the board: opponent (TCG_OPPONENT) on top, player at the bottom */
 static void draw_board(uint8_t hl_duelist, int hl_loc)
@@ -1027,31 +1141,115 @@ typedef struct Keys { bool a, b, z, start, l, r, up, down, left, right; } Keys;
 
 static Keys g_keys[2];
 static uint8_t g_rep[2][4];
+static volatile DuelInputCapture g_input_capture;
+static bool g_input_service;
+#if ADVENTURE_DIAGNOSTIC
+static volatile unsigned g_input_vi_samples;
+#endif
+
+static void input_sample(void)
+{
+#if ADVENTURE_DIAGNOSTIC
+	if(g_input_service)g_input_vi_samples++;
+#endif
+	/* libdragon already reads Joybus asynchronously once per VI. Snapshot that
+	 * completed result at VI rate instead of losing taps between UI redraws. */
+	joypad_poll();
+	for(unsigned p=0;p<2;p++) {
+		joypad_port_t port=p?JOYPAD_PORT_2:JOYPAD_PORT_1;
+		bool connected=joypad_is_connected(port);
+		joypad_inputs_t in=joypad_get_inputs(port);joypad_buttons_t b=in.btn;
+		uint16_t held=(b.a?INPUT_A:0)|(b.b?INPUT_B:0)|(b.z?INPUT_Z:0)|(b.start?INPUT_START:0)|
+			(b.l||b.c_left?INPUT_L:0)|(b.r||b.c_right?INPUT_R:0)|
+			(b.d_up||b.c_up||in.stick_y>40?INPUT_UP:0)|(b.d_down||b.c_down||in.stick_y< -40?INPUT_DOWN:0)|
+			(b.d_left||in.stick_x< -40?INPUT_LEFT:0)|(b.d_right||in.stick_x>40?INPUT_RIGHT:0);
+		duel_input_sample(&g_input_capture,p,held,connected);
+	}
+}
+
+static void input_reset(void)
+{
+#ifndef TCGN64_HOST_TEST
+	disable_interrupts();
+#endif
+	g_input_capture=(DuelInputCapture){0};memset(g_keys,0,sizeof(g_keys));memset(g_rep,0,sizeof(g_rep));
+#ifndef TCGN64_HOST_TEST
+	enable_interrupts();
+#endif
+}
+static void input_discard_pending(void)
+{
+#ifndef TCGN64_HOST_TEST
+	disable_interrupts();
+#endif
+	g_input_capture.pending[0]=g_input_capture.pending[1]=0;
+	memset(g_keys,0,sizeof(g_keys));memset(g_rep,0,sizeof(g_rep));
+#ifndef TCGN64_HOST_TEST
+	enable_interrupts();
+#endif
+}
+static void input_begin(void)
+{
+	if(g_input_service)return;
+#ifndef TCGN64_HOST_TEST
+	/* This SDK mutates the VI handler list without its own critical section. */
+	disable_interrupts();
+#endif
+	input_reset();input_sample();
+#if ADVENTURE_DIAGNOSTIC
+	g_input_vi_samples=0;
+#endif
+	/* A button already held while entering the duel is not a new action. */
+	g_input_capture.pending[0]=g_input_capture.pending[1]=0;
+#ifndef TCGN64_HOST_TEST
+	register_VI_handler(input_sample);
+#endif
+	g_input_service=true;
+#ifndef TCGN64_HOST_TEST
+	enable_interrupts();
+#endif
+}
+#ifdef TCGN64_ADVENTURE
+static void input_end(void)
+{
+	if(!g_input_service)return;
+#ifndef TCGN64_HOST_TEST
+	disable_interrupts();
+	unregister_VI_handler(input_sample);
+#endif
+	g_input_service=false;input_reset();
+#ifndef TCGN64_HOST_TEST
+	enable_interrupts();
+#endif
+#if ADVENTURE_DIAGNOSTIC
+	debugf("DUEL INPUT VI samples=%u\n",g_input_vi_samples);
+#endif
+}
+#endif
 
 static void input_poll(void)
 {
-	joypad_poll();
+#ifdef TCGN64_HOST_TEST
+	input_sample();
+#else
+	if(!g_input_service)input_sample();
+	disable_interrupts();
+#endif
+	DuelInputCapture sampled=g_input_capture;
+	for(unsigned p=0;p<2;p++)sampled.pending[p]=duel_input_take(&g_input_capture,p);
+#ifndef TCGN64_HOST_TEST
+	enable_interrupts();
+#endif
 	for (int p = 0; p < 2; p++) {
-		joypad_port_t port = p ? JOYPAD_PORT_2 : JOYPAD_PORT_1;
-		Keys k = { 0 };
-		if (!joypad_is_connected(port)) {
-			g_keys[p] = k;
+		if (!sampled.connected[p]) {
+			g_keys[p]=(Keys){0};memset(g_rep[p],0,sizeof(g_rep[p]));
 			continue;
 		}
-		joypad_buttons_t pr = joypad_get_buttons_pressed(port);
-		joypad_buttons_t hd = joypad_get_buttons_held(port);
-		joypad_inputs_t in = joypad_get_inputs(port);
-		k.a = pr.a;
-		k.b = pr.b;
-		k.z = pr.z;
-		k.start = pr.start;
-		k.l = pr.l || pr.c_left;
-		k.r = pr.r || pr.c_right;
+		Keys k=g_keys[p];uint16_t edge=sampled.pending[p],down=sampled.held[p];
+		k.a|=(edge&INPUT_A)!=0;k.b|=(edge&INPUT_B)!=0;k.z|=(edge&INPUT_Z)!=0;
+		k.start|=(edge&INPUT_START)!=0;k.l|=(edge&INPUT_L)!=0;k.r|=(edge&INPUT_R)!=0;
 		bool held[4] = {
-			hd.d_up || hd.c_up || in.stick_y > 40,
-			hd.d_down || hd.c_down || in.stick_y < -40,
-			hd.d_left || in.stick_x < -40,
-			hd.d_right || in.stick_x > 40,
+			(down&INPUT_UP)!=0,(down&INPUT_DOWN)!=0,(down&INPUT_LEFT)!=0,(down&INPUT_RIGHT)!=0,
 		};
 		bool fire[4];
 		for (int d = 0; d < 4; d++) {
@@ -1065,28 +1263,41 @@ static void input_poll(void)
 				g_rep[p][d]++;
 			fire[d] = t == 0 || (t >= 18 && (t - 18) % 4 == 0); /* auto-repeat */
 		}
-		k.up = fire[0];
-		k.down = fire[1];
-		k.left = fire[2];
-		k.right = fire[3];
+		k.up|=fire[0]||(edge&INPUT_UP);k.down|=fire[1]||(edge&INPUT_DOWN);
+		k.left|=fire[2]||(edge&INPUT_LEFT);k.right|=fire[3]||(edge&INPUT_RIGHT);
 		g_keys[p] = k;
 	}
 }
 
-/* keys of the controllers in mask (bit 0 = controller 1, bit 1 = controller 2) */
+/* Consume one input snapshot. Never reuse a press for the following request. */
 static Keys keys(int mask)
 {
 	Keys k = { 0 };
+#ifndef TCGN64_HOST_TEST
+	disable_interrupts();
+#endif
 	/* controller 2 unplugged (or never there): controller 1 takes over */
 	if (mask == 2 && !joypad_is_connected(JOYPAD_PORT_2))
 		mask = 1;
 	for (int p = 0; p < 2; p++) {
+		uint16_t edge=duel_input_take(&g_input_capture,(unsigned)p);
 		if (!(mask & (1 << p)))
 			continue;
 		const Keys *q = &g_keys[p];
 		k.a |= q->a; k.b |= q->b; k.z |= q->z; k.start |= q->start; k.l |= q->l; k.r |= q->r;
 		k.up |= q->up; k.down |= q->down; k.left |= q->left; k.right |= q->right;
+		/* Include edges sampled after the render poll, and discard the other
+		 * port's edges in the same transaction so they cannot leak turns. */
+		k.a|=(edge&INPUT_A)!=0;k.b|=(edge&INPUT_B)!=0;k.z|=(edge&INPUT_Z)!=0;
+		k.start|=(edge&INPUT_START)!=0;k.l|=(edge&INPUT_L)!=0;k.r|=(edge&INPUT_R)!=0;
+		k.up|=(edge&INPUT_UP)!=0;k.down|=(edge&INPUT_DOWN)!=0;
+		k.left|=(edge&INPUT_LEFT)!=0;k.right|=(edge&INPUT_RIGHT)!=0;
+		for(unsigned d=0;d<4;d++)if((edge&(INPUT_UP<<d))&&!g_rep[p][d])g_rep[p][d]=1;
 	}
+	memset(g_keys,0,sizeof(g_keys));
+#ifndef TCGN64_HOST_TEST
+	enable_interrupts();
+#endif
 	return k;
 }
 
@@ -1127,6 +1338,96 @@ static bool review_snapshot(void)
 /* render n frames of the board (pacing for events); A/B skips */
 static void draw_match_plaque(bool result);
 
+enum { COIN_SPIN_FRAMES=24, COIN_TOSS_FRAMES=30 };
+
+static void draw_coin_art(int cx,int cy,int width,int height,bool heads)
+{
+	int left=ui_x(cx-width/2),top=ui_y(cy-height/2);
+	int pixels=ui_x(cx-width/2+width)-left,rows=ui_y(cy-height/2+height)-top;
+	assert(pixels>0&&pixels<=72&&rows>0);
+	assert(left>=0&&top>=0&&left+pixels<=g_fb->width&&top+rows<=g_fb->height);
+	uint8_t columns[72];
+	for(int x=0;x<pixels;x++)columns[x]=(unsigned)x*COIN_ART_W/(unsigned)pixels;
+	for(int y=0;y<rows;y++) {
+		const uint16_t *source=coin_art[heads]+((unsigned)y*COIN_ART_H/(unsigned)rows)*COIN_ART_W;
+		uint16_t *destination=(uint16_t *)((uint8_t *)g_fb->buffer+(top+y)*g_fb->stride)+left;
+		for(int x=0;x<pixels;x++)if(source[columns[x]]&1)destination[x]=source[columns[x]];
+	}
+}
+
+static void draw_coin_panel(int animation_frame)
+{
+	bool moving=animation_frame>=0&&animation_frame<COIN_SPIN_FRAMES;
+	bool revealed=animation_frame<0||animation_frame>=COIN_TOSS_FRAMES-2;
+	bool heads=g_coin.ready||!g_coin.n?true:g_coin.res[g_coin.n-1]!=0;
+	int width=48,y=111;
+	if(moving) {
+		static const uint8_t widths[]={48,36,6,36,48,36,6,36};
+		unsigned phase=(unsigned)animation_frame%8;
+		width=widths[phase];heads=phase<4;
+		y-=animation_frame*(COIN_SPIN_FRAMES-animation_frame)*28/144;
+	} else if(animation_frame>=COIN_SPIN_FRAMES&&animation_frame<COIN_TOSS_FRAMES) {
+		static const int8_t bounce[]={4,2,0,-1,0,0};
+		y+=bounce[animation_frame-COIN_SPIN_FRAMES];
+	}
+	paper_panel(62,26,196,156);
+	char heading[32];
+	unsigned number=(unsigned)(g_coin.number+(g_coin.ready?1:0));
+	if(g_coin.total>1)snprintf(heading,sizeof(heading),"Coin %u of %d",number?number:1,g_coin.total);
+	else copy_str(heading,sizeof(heading),"Coin toss");
+	body(160-body_width(heading)/2,36,C_INK,heading,184);
+	fill(145,137,30,2,C_PAPERSHADE);fill(150,139,20,1,C_PAPERSHADE);
+	draw_coin_art(160,y,width,48,heads);
+	if(g_coin.ready) {
+		if(g_kind[side_of(g_coin.owner)]==PK_HUMAN)body(138,145,C_INK,"A: toss",80);
+	} else if(g_coin.n&&revealed) {
+		const char *label=g_coin.res[g_coin.n-1]?"Heads":"Tails";
+		body(160-body_width(label)/2,145,C_INK,label,100);
+	}
+	/* The current result joins the history only when it is revealed. */
+	int available=g_coin.n-((animation_frame>=0&&!revealed&&g_coin.n)?1:0);
+	int shown=available>12?12:available,start=available-shown;
+	for(int i=0;i<shown;i++) {
+		int x=160-shown*11/2+i*11;
+		bool result=g_coin.res[start+i]!=0;
+		fill(x,166,9,9,result?C_HI:C_PANELLIGHT);rect(x,166,9,9,C_EDGE);
+		print(x+1,167,C_INK,result?"H":"T");
+	}
+}
+
+static void coin_record(const TcgEvent *ev)
+{
+	if(g_coin.n==(int)sizeof(g_coin.res)) {
+		memmove(g_coin.res,g_coin.res+1,sizeof(g_coin.res)-1);g_coin.n--;
+	}
+	g_coin.res[g_coin.n++]=ev->arg[0]==HEADS;
+	g_coin.number=ev->arg[1];g_coin.total=ev->arg[2];g_coin.owner=ev->arg[3];g_coin.ready=false;
+}
+
+static bool coin_fast_forward(int ports)
+{
+	Keys pressed=keys(ports);
+	if(pressed.a||pressed.b)return true;
+	if(!wSkipDelayAllowed)return false;
+	if(ports==2&&!joypad_is_connected(JOYPAD_PORT_2))ports=1;
+	for(int p=0;p<2;p++)if((ports&(1<<p))&&joypad_get_buttons_held((joypad_port_t)p).b)return true;
+	return false;
+}
+
+static void animate_coin(void)
+{
+	if(wAnimationsDisabled)return;
+#ifdef TCGN64_ADVENTURE
+	if(g_automated_ui)return;
+	adventure_audio_event(1,SFX_COIN_TOSS);
+#endif
+	int ports=ports_for(g_coin.owner);
+	for(int frame=0;frame<COIN_TOSS_FRAMES;frame++) {
+		begin_frame();draw_board(0,-1);draw_textbox();draw_coin_panel(frame);end_frame_poll();
+		if(coin_fast_forward(ports))break;
+	}
+}
+
 static void show_frames(int n)
 {
 #ifdef TCGN64_ADVENTURE
@@ -1134,18 +1435,19 @@ static void show_frames(int n)
 #endif
 	for (int i = 0; i < n; i++) {
 		begin_frame();
-		draw_board(0, -1);
-		draw_textbox();
+		if(practice_reading_visible()) {
+			draw_practice_reading(0);draw_practice_continue(0);
+		} else {
+			if(practice_checklist_visible())draw_practice_checklist();else draw_board(0,-1);
+			draw_textbox();
+		}
 		if(g_result>=0)draw_match_plaque(true);
 		else if(!g_turn_holder&&g_screen==TCG_SCREEN_EMPTY)draw_match_plaque(false);
-		if (g_coin.n && g_screen == TCG_SCREEN_COIN_TOSS) {
-			int r = g_coin.res[g_coin.n - 1];
-			fill(LEFT + 80, BOARD_Y + 60, 130, 40, C_PANEL2);
-			rect(LEFT + 80, BOARD_Y + 60, 130, 40, C_HI);
-			printf_at(LEFT + 88, BOARD_Y + 66, C_TEXT, "Coin %d/%d", g_coin.n, g_coin.total ? g_coin.total : 1);
-			print(LEFT + 88, BOARD_Y + 80, r ? C_HI : C_DIM, r ? "HEADS" : "TAILS");
-		}
+		if(g_screen==TCG_SCREEN_COIN_TOSS)draw_coin_panel(-1);
 		end_frame_poll();
+		/* A one-frame event is a redraw, not a separate input prompt. Preserve
+		 * its press for the immediately following acknowledgement or menu. */
+		if(n==1)continue;
 		Keys k = keys(3);
 		if (k.a || k.b)
 			break;
@@ -1182,6 +1484,8 @@ static void log_clear(void)
 {
 	g_log_n = 0;
 	g_log_newest = 0;
+	g_practice_checklist[0]=0;g_practice_checklist_on=false;
+	g_practice_reading_on=false;
 }
 
 /* ------------------------------------------------------------------ card page */
@@ -1569,6 +1873,9 @@ static int ui_ack(const TcgRequest *r, int ports)
 	char lines[22][COLS + 1];
 	int msg_lines = g_log_n - g_log_newest;
 	bool long_msg = msg_lines > TBOX_LINES;
+	bool checklist=practice_checklist_visible();
+	bool reading=practice_reading_visible();
+	int speech_first=0;
 	int nl = 0;
 	if (long_msg) {
 		nl = msg_lines > 18 ? 18 : msg_lines;
@@ -1591,7 +1898,11 @@ static int ui_ack(const TcgRequest *r, int ports)
 	       g_screen == TCG_SCREEN_COIN_TOSS ? "coin" : g_screen == TCG_SCREEN_BOX_MESSAGE ? "box" : "text", who(r->duelist));
 	for (;;) {
 		begin_frame();
-		if (g_overlay.on) {
+		if(reading) {
+			draw_practice_reading(speech_first);
+		} else if (checklist) {
+			draw_practice_checklist();
+		} else if (g_overlay.on) {
 			draw_card_page_at(g_overlay.id, g_overlay.owner, g_overlay.deck, NULL, card_page);
 		} else if (long_msg) {
 			panel(LEFT - 6, BOARD_Y, RIGHT - LEFT + 12, BOARD_H);
@@ -1614,18 +1925,7 @@ static int ui_ack(const TcgRequest *r, int ports)
 			if(g_result>=0)draw_match_plaque(true);
 			else if(!g_turn_holder&&g_screen==TCG_SCREEN_EMPTY)draw_match_plaque(false);
 			else if (g_screen == TCG_SCREEN_COIN_TOSS) {
-				int x=RIGHT-150,y=TBOX_Y-36;
-				panel(x,y,150,34);
-				if (g_coin.n == 0) {
-					print(x+8,y+6,C_TEXT,"Coin toss");
-					print(x+8,y+20,C_HI,"A: toss");
-				} else {
-					printf_at(x+8,y+6,C_TEXT,"Coin %d/%d",g_coin.n,g_coin.total?g_coin.total:1);
-					for (int i = 0; i < g_coin.n && i < 12; i++) {
-						fill(x+8+i*11,y+20,9,9,g_coin.res[i]?C_HI:C_DIM);
-						print(x+8+i*11,y+21,C_BLACK,g_coin.res[i]?"H":"T");
-					}
-				}
+				draw_coin_panel(-1);
 			} else if (g_screen == TCG_SCREEN_BOX_MESSAGE && g_boxmsg <= BOXMSG_COIN_TOSS) {
 				static const char *const box[] = { "%s's turn", "%s's turn", "Between turns", "Decision",
 					"Bench Pokemon", "Arena Pokemon", "Coin toss" };
@@ -1635,9 +1935,9 @@ static int ui_ack(const TcgRequest *r, int ports)
 				draw_duel_banner(b);
 			}
 		}
-		draw_textbox();
-		if ((g_frame / 16) & 1)
-			print(RIGHT - CW, TBOX_LINE(TBOX_LINES - 1), C_HI, "v");
+		if(reading)draw_practice_continue(speech_first);else draw_textbox();
+		if (!reading&&(g_frame / 16) & 1)
+			print(RIGHT-CW,checklist?BOARD_Y+BOARD_H-15:TBOX_LINE(TBOX_LINES-1),C_HI,"v");
 		end_frame_poll();
 #if ADVENTURE_DIAGNOSTIC == 3
 		if(review_snapshot())return 0;
@@ -1648,9 +1948,11 @@ static int ui_ack(const TcgRequest *r, int ports)
 			if((k.r||k.right||k.down)&&card_page+1<pages)card_page++;
 			if((k.l||k.left||k.up)&&card_page>0)card_page--;
 		}
-		if (k.a || k.b)
+		if (k.a || k.b) {
+			if(reading&&speech_first+PRACTICE_PAGE_LINES<g_practice_reading_count){speech_first+=PRACTICE_PAGE_LINES;continue;}
 			break;
-		if (k.start && !g_overlay.on && !long_msg)
+		}
+		if (k.start && !g_overlay.on && !long_msg&&!checklist&&!reading)
 			view_slot(r->shown, 0, ports);
 	}
 	g_overlay.on = false;
@@ -2457,6 +2759,13 @@ static void on_event(void *ctx, const TcgEvent *ev)
 #endif
 	switch (ev->type) {
 	case TCG_EV_TEXT:
+		if(ev->arg[1]==TCG_TEXT_PRACTICE_CHECKLIST) {
+			sanitize(ev->str?ev->str:"",g_practice_checklist,sizeof(g_practice_checklist));
+			g_practice_checklist_on=g_practice_checklist[0]!=0;
+			break;
+		}
+		g_practice_reading_on=ev->arg[1]==TCG_TEXT_PRACTICE_SPEECH;
+		if(g_practice_reading_on)set_practice_reading(ev);
 		/* the item labels of the PLAY|CHECK / SELECT|CHECK menus are printed as text: not a message */
 		if (ev->text == PlayCheck1Text || ev->text == PlayCheck2Text || ev->text == SelectCheckText)
 			break;
@@ -2468,8 +2777,8 @@ static void on_event(void *ctx, const TcgEvent *ev)
 		g_screen = ev->arg[0];
 		g_screen_arg = ev->arg[2];
 		if (g_screen == TCG_SCREEN_COIN_TOSS) {
-			g_coin.n = 0;
-			g_coin.total = ev->arg[2];
+			memset(&g_coin,0,sizeof(g_coin));
+			g_coin.total=ev->arg[2];g_coin.owner=ev->arg[1];g_coin.ready=true;
 		}
 		if (g_screen == TCG_SCREEN_BOX_MESSAGE)
 			g_boxmsg = ev->arg[2];
@@ -2484,11 +2793,14 @@ static void on_event(void *ctx, const TcgEvent *ev)
 		g_overlay.page = ev->arg[3];
 		break;
 	case TCG_EV_COIN:
-		if (g_coin.n < (int)sizeof(g_coin.res))
-			g_coin.res[g_coin.n++] = ev->arg[0];
-		g_coin.total = ev->arg[2];
+		coin_record(ev);
 		debugf("COIN %d/%d %s\n", ev->arg[1], ev->arg[2] ? ev->arg[2] : 1, ev->arg[0] ? "heads" : "tails");
-		show_frames(20);
+		animate_coin();
+		break;
+	case TCG_EV_ANIM:
+		if(ev->arg[1]&&ev->arg[0]==DUEL_ANIM_COIN_SPIN) {
+			g_coin.ready=true;g_coin.owner=ev->arg[2];
+		}
 		break;
 	case TCG_EV_DAMAGE:
 		g_dmg.side = ev->arg[0];
@@ -2502,6 +2814,8 @@ static void on_event(void *ctx, const TcgEvent *ev)
 		show_frames((ev->arg[0] > 60 ? 60 : ev->arg[0]) / 2);
 		break;
 	case TCG_EV_TURN:
+		g_practice_checklist[0]=0;g_practice_checklist_on=false;
+		g_practice_reading_on=false;
 		g_result=-1;
 		g_turn_holder = ev->arg[0];
 		g_turn = ev->arg[1];
@@ -2532,6 +2846,7 @@ static void on_event(void *ctx, const TcgEvent *ev)
 static int on_request(void *ctx, const TcgRequest *r)
 {
 	(void)ctx;
+	if(r->type!=TCG_REQ_ACK){g_practice_checklist_on=false;g_practice_reading_on=false;}
 #ifdef TCGN64_ADVENTURE
 	if(g_automated_ui){
 #if ADVENTURE_DIAGNOSTIC == 3
@@ -2728,6 +3043,44 @@ static bool verify_rule_wrap(const char *source,int width)
 	return !*original;
 }
 
+#ifdef TCGN64_HOST_TEST
+static uint64_t practice_footer_hash(void)
+{
+	uint64_t hash=1469598103934665603ULL;
+	const uint8_t *bytes=g_fb->buffer;
+	for(int y=ui_y(TBOX_Y);y<ui_y(TBOX_Y+TBOX_LINES*TLH+5);y++)
+		for(int x=0;x<g_fb->stride;x++)hash=(hash^bytes[y*g_fb->stride+x])*1099511628211ULL;
+	return hash;
+}
+
+static bool verify_practice_reading(void)
+{
+	int mode=g_mode,screen=g_screen;g_mode=MODE_PRACTICE;g_screen=TCG_SCREEN_EMPTY;
+	char summary[1024];snprintf(summary,sizeof(summary),"Mark's turn 2\n\n%s\n\n%s\n\n%s",
+		tcg_text(Turn2Instr1PracticeDuelText),tcg_text(Turn2Instr2PracticeDuelText),tcg_text(Turn2Instr3PracticeDuelText));
+	TcgEvent checklist={TCG_EV_TEXT,{0,TCG_TEXT_PRACTICE_CHECKLIST,3,0},PlayersTurnPracticeDuelText,summary};
+	int messages=g_log_n;on_event(NULL,&checklist);
+	if(g_log_n!=messages||!practice_checklist_visible())return false;
+	uint64_t long_footer=0,short_footer=0;int lessons=0;
+	for(unsigned id=Turn1DrMason1PracticeDuelText;id<=LetsPlayTheGamePracticeDuelText;id++) {
+		char message[512];tcg_format_text((uint16_t)id,message,sizeof(message));
+		TcgEvent lesson={TCG_EV_TEXT,{1,TCG_TEXT_PRACTICE_SPEECH,0,0},(uint16_t)id,message};
+		g_practice_reading_on=true;set_practice_reading(&lesson);
+		if(!practice_reading_visible()||g_practice_reading_count<=0)return false;
+		for(int first=0;first<g_practice_reading_count;first+=PRACTICE_PAGE_LINES) {
+			begin_frame();draw_practice_reading(first);draw_practice_continue(first);end_frame();
+			if(id==Turn1DrMason1PracticeDuelText)long_footer=practice_footer_hash();
+			if(id==Turn1DrMason3PracticeDuelText)short_footer=practice_footer_hash();
+		}
+		lessons++;
+	}
+	if(!long_footer||long_footer!=short_footer)return false;
+	g_mode=mode;g_screen=screen;log_clear();
+	debugf("PRACTICE LAYOUT PASS lessons=%d uniform_full_panel=1 hint_only_footer=1 dimensions=%ux%u\n",lessons,g_fb->width,g_fb->height);
+	return true;
+}
+#endif
+
 static bool verify_card_layout(void)
 {
 	int descriptions=0,max_pages=0,longest_trainer=0,trainer_pages=0,trainer_lines=0,max_card=0;
@@ -2760,6 +3113,9 @@ static bool verify_card_layout(void)
 	}
 	debugf("UI LAYOUT PASS cards=%d descriptions=%d max_pages=%d max_card=%d trainer=%d trainer_pages=%d trainer_lines=%d\n",
 	       NUM_CARDS,descriptions,max_pages,max_card,longest_trainer,trainer_pages,trainer_lines);
+#ifdef TCGN64_HOST_TEST
+	if(!verify_practice_reading())return false;
+#endif
 	return true;
 }
 #endif
@@ -2981,7 +3337,8 @@ static void result_screen(int result)
 		draw_match_plaque(true);
 		body(106,137,C_TEXT,"A: back to title",130);
 		end_frame_poll();
-		if (f > 30 && (keys(3).a || keys(3).start))
+		Keys k=keys(3);
+		if (f > 30 && (k.a || k.start))
 			return;
 	}
 }
@@ -2990,6 +3347,7 @@ static void result_screen(int result)
 
 static void reset_duel_ui(void)
 {
+	input_discard_pending();
 	log_clear();
 	memset(&g_overlay, 0, sizeof(g_overlay));
 	memset(&g_coin, 0, sizeof(g_coin));
@@ -3291,13 +3649,16 @@ int n64_menu(const char *title,const char *const *items,int count,int initial,bo
 
 void n64_card_detail(unsigned id)
 {
+	bool owned=!g_input_service;if(owned)input_begin();
 	view_card((uint8_t)id,TCG_PLAYER,-1,1);
+	if(owned)input_end();
 }
 
 int n64_duel_play(const TcgDuelSetup *setup,const uint8_t *saved)
 {
 	bool save_enabled=g_save_ok;
-	set_mode(setup->duelist[1].kind==TCG_AI?MODE_VS_AI:MODE_HOTSEAT);
+	set_mode(setup->duelist[1].kind==TCG_AI?
+		(setup->duelist[1].deck_id==TCG_SAMS_PRACTICE_DECK_ID?MODE_PRACTICE:MODE_VS_AI):MODE_HOTSEAT);
 	if(setup->duelist[1].kind!=TCG_AI)g_save_ok=false;
 	copy_str(g_name[0],sizeof(g_name[0]),setup->duelist[0].name?setup->duelist[0].name:"MARK");
 	copy_str(g_name[1],sizeof(g_name[1]),setup->duelist[1].name?setup->duelist[1].name:"OPPONENT");
@@ -3309,7 +3670,9 @@ int n64_duel_play(const TcgDuelSetup *setup,const uint8_t *saved)
 	g_duel_decks[1]=setup->duelist[1].deck_id;
 	TcgHost host={on_event,on_request,on_save,NULL};
 	tcg_set_host(&host);
+	input_begin();
 	int result=saved?tcg_continue_duel(setup,saved,TCG_SAVE_SIZE):tcg_run_duel(setup);
+	input_end();
 	g_save_ok=save_enabled;
 	/* The adventure commits the resumed story before deleting this duel save. */
 	return result;
@@ -3331,6 +3694,7 @@ int main(void)
 #ifdef TCGN64_HOST_TEST
 	if(getenv("TCGN64_LAYOUT_TEST"))return verify_card_layout()?0:1;
 #endif
+	input_begin();
 	load_buildinfo();
 	init_decks();
 	g_save_ok = save_store_open(NULL);

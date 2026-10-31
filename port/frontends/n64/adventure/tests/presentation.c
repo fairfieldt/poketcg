@@ -107,8 +107,110 @@ static bool feature(void *ctx,OwState *s,unsigned f,unsigned a)
 {(void)ctx;(void)s;(void)f;(void)a;return true;}
 static void error(void *ctx,const char *s) {(void)ctx;fprintf(stderr,"Presentation script: %s\n",s);assert(false);}
 
+static void camera_settle(Presentation *p,const OwState *s,const W3Map *map)
+{for(unsigned frame=0;frame<60;frame++)presentation_camera_step(p,s,map);}
+
+/* Independent look-at projection checks the visible upper-body envelope,
+   including broad heads/hair, against the actual dialogue panel boundary. */
+static void conversation_visible(const PresentationCamera *c,const PresentationPose *actor)
+{
+ float f[3],r[3],u[3],length=0;
+ for(unsigned i=0;i<3;i++){f[i]=c->target[i]-c->eye[i];length+=f[i]*f[i];}
+ length=sqrtf(length);for(unsigned i=0;i<3;i++)f[i]/=length;
+ length=sqrtf(f[0]*f[0]+f[2]*f[2]);r[0]=-f[2]/length;r[1]=0;r[2]=f[0]/length;
+ u[0]=r[1]*f[2]-r[2]*f[1];u[1]=r[2]*f[0]-r[0]*f[2];u[2]=r[0]*f[1]-r[1]*f[0];
+ float tangent=tanf(c->fov*3.14159265358979323846f/360);
+ for(unsigned corner=0;corner<8;corner++) {
+  float point[3]={actor->x+(corner&1?.65f:-.65f),actor->floor+(corner&2?2.5f:1.2f),
+                  actor->z+(corner&4?.35f:-.35f)};
+  float horizontal=0,vertical=0,depth=0;
+  for(unsigned i=0;i<3;i++){float d=point[i]-c->eye[i];horizontal+=d*r[i];vertical+=d*u[i];depth+=d*f[i];}
+  float x=160+horizontal/(depth*tangent*(4.0f/3.0f))*160;
+  float y=120-vertical/(depth*tangent)*120;
+  assert(depth>1.5f&&x>10&&x<310&&y>12&&y<155);
+ }
+}
+
+static void test_conversation_cameras(void)
+{
+ /* Face the speaker from each source direction without changing either
+    actor's direction/position, and return smoothly to the exploration view. */
+ static const int dx[]={0,2,0,-2},dz[]={-2,0,2,0};
+ unsigned cases=0;
+ for(unsigned direction=0;direction<4;direction++) {
+  OwState state={.map=MASON_LABORATORY,.x=(uint8_t)(14+dx[direction]),
+   .y=(uint8_t)(14+dz[direction]),.direction=(direction+2)&3,.npc_count=1,
+   .npcs={{NPC_RONALD1,14,14,0,1,0}}};
+  state.npcs[0].direction=direction;
+  Presentation p;presentation_init(&p,&state,false);presentation_camera_step(&p,&state,&lab);
+  PresentationCamera wide=p.camera;PresentationPose player=p.player.pose,npc=p.npcs[0].pose;
+  OwState unchanged=state;
+  presentation_conversation(&p,NPC_RONALD1);presentation_camera_step(&p,&state,&lab);
+  assert(fabsf(p.camera.fov-50)>1&&fabsf(p.camera.fov-wide.fov)>1);
+  camera_settle(&p,&state,&lab);
+  float horizontal=hypotf(p.camera.eye[0]-p.camera.target[0],p.camera.eye[2]-p.camera.target[2]);
+  close_to(atan2f(p.camera.eye[1]-p.camera.target[1],horizontal)*180/3.14159265358979323846f,20);
+  close_to(p.camera.fov,50);assert(horizontal>=6.79f&&horizontal<12);
+  conversation_visible(&p.camera,&p.player.pose);conversation_visible(&p.camera,&p.npcs[0].pose);
+  assert(!memcmp(&player,&p.player.pose,sizeof(player))&&!memcmp(&npc,&p.npcs[0].pose,sizeof(npc)));
+  PresentationCamera held=p.camera;
+  presentation_conversation(&p,0);presentation_conversation(&p,NPC_RONALD1);
+  presentation_camera_step(&p,&state,&lab);
+  for(unsigned i=0;i<3;i++){close_to(p.camera.eye[i],held.eye[i]);close_to(p.camera.target[i],held.target[i]);}
+  presentation_conversation(&p,0);presentation_camera_step(&p,&state,&lab);
+  assert(fabsf(p.camera.fov-wide.fov)>1);camera_settle(&p,&state,&lab);
+  for(unsigned i=0;i<3;i++){close_to(p.camera.eye[i],wide.eye[i]);close_to(p.camera.target[i],wide.target[i]);}
+  close_to(p.camera.fov,wide.fov);assert(!memcmp(&state,&unchanged,sizeof(state)));cases++;
+ }
+ /* Real source positions, including the wide six-unit tutorial table and a
+    clerk against the far wall; both upper bodies must clear the text box. */
+ static const struct {unsigned npc,nx,nz,dir,px,pz,pdir;} fixtures[]={
+  {NPC_DRMASON,14,6,SOUTH,14,8,NORTH},
+  {NPC_SAM,4,14,EAST,10,14,WEST},
+  {NPC_RONALD1,12,10,EAST,14,10,WEST},
+  {NPC_RONALD1,6,2,SOUTH,6,4,NORTH},
+  {NPC_RONALD1,2,2,NORTH,2,4,NORTH},
+  {NPC_RONALD1,26,4,WEST,24,4,EAST},
+  {NPC_RONALD1,26,28,NORTH,26,26,SOUTH}};
+ for(unsigned i=0;i<sizeof(fixtures)/sizeof(fixtures[0]);i++) {
+  OwState state={.map=MASON_LABORATORY,.x=fixtures[i].px,.y=fixtures[i].pz,
+   .direction=fixtures[i].pdir,.npc_count=1,
+   .npcs={{fixtures[i].npc,fixtures[i].nx,fixtures[i].nz,fixtures[i].dir,1,0}}};
+  OwState unchanged=state;Presentation p;presentation_init(&p,&state,false);
+  presentation_conversation(&p,fixtures[i].npc);camera_settle(&p,&state,&lab);
+  float horizontal=hypotf(p.camera.eye[0]-p.camera.target[0],p.camera.eye[2]-p.camera.target[2]);
+  close_to(atan2f(p.camera.eye[1]-p.camera.target[1],horizontal)*180/3.14159265358979323846f,20);
+  assert(p.camera.eye[0]>=1.24f&&p.camera.eye[0]<=lab.width-1.24f);
+  assert(p.camera.eye[2]>=1.24f&&p.camera.eye[2]<=lab.height-1.24f);
+  conversation_visible(&p.camera,&p.player.pose);conversation_visible(&p.camera,&p.npcs[0].pose);
+  assert(!memcmp(&state,&unchanged,sizeof(state)));cases++;
+ }
+ /* Invalid speakers, props, offstage actors and the island cannot inherit a
+    previous close camera. These are presentation-only fallbacks. */
+ for(unsigned kind=0;kind<6;kind++) {
+  OwState state={.map=MASON_LABORATORY,.x=14,.y=8,.direction=NORTH,.npc_count=1,
+   .npcs={{NPC_DRMASON,14,6,SOUTH,1,0}}};
+  Presentation p;presentation_init(&p,&state,false);
+  presentation_conversation(&p,NPC_DRMASON);camera_settle(&p,&state,&lab);
+  unsigned speaker=NPC_DRMASON;
+  if(kind==0)speaker=0;
+  if(kind==1)speaker=NUM_NPCS+1;
+  if(kind==2)state.npcs[0].visible=0;
+  if(kind==3){state.npcs[0].id=NPC_TORCH;speaker=NPC_TORCH;}
+  if(kind==4)state.npcs[0].y=255;
+  if(kind==5)state.npcs[0].y=28;
+  presentation_sync(&p,&state,false);presentation_conversation(&p,speaker);camera_settle(&p,&state,&lab);
+  for(unsigned axis=0;axis<3;axis++){close_to(p.camera.eye[axis],lab.eye[axis]);close_to(p.camera.target[axis],lab.target[axis]);}
+ }
+ OwState world={.map=OVERWORLD_MAP,.overworld_selection=OWMAP_MASON_LABORATORY};Presentation p;
+ presentation_init(&p,&world,false);presentation_conversation(&p,NPC_DRMASON);camera_settle(&p,&world,&island);
+ for(unsigned i=0;i<3;i++){close_to(p.camera.eye[i],island.eye[i]);close_to(p.camera.target[i],island.target[i]);}
+ printf("CONVERSATION CAMERA PASS: %u direction/source/edge compositions; speaker faces,20deg/FOV50,dialogue clearance,stable bubbles,exit and invalid-target fallback; canonical state unchanged\n",cases);
+}
+
 int main(void)
 {
+ test_conversation_cameras();
  /* Fractional source waits accumulate instead of doubling one-frame waits. */
  Presentation timing={0};assert(presentation_wait_frames(&timing,60)==30);
  assert(presentation_wait_frames(&timing,120)==60);

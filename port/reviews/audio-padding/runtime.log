@@ -1,0 +1,13 @@
+Loaded poketcg-audio-review
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-10-31 10:58:37.746 ares[45206:18183124] Resizing output buffers to 1536, 1152
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 69132 bytes
+AUDIO REVIEW opening BEGIN
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 16392.167 us (mode: sync, success: yes).
+[WARN]: Stalled compile (compute, 3e6951f83438d8ba): thread 0 - 55793.083 us (mode: fail-on-compile-required, success: yes).
+[WARN]: Stalled compile (compute, ae5c03a112adf2ba): thread 0 - 38335.125 us (mode: fail-on-compile-required, success: yes).
+[WARN]: Stalled compile (compute, 9a419415fd9832ba): thread 0 - 39987.000 us (mode: fail-on-compile-required, success: yes).
+AUDIO REVIEW phase=opening polls=328 buffers=280 underruns=0 max_poll_us=33680 max_mix_us=2066
+AUDIO REVIEW phase=title polls=1378 buffers=1159 underruns=0 max_poll_us=33680 max_mix_us=2080
+AUDIO REVIEW PASS

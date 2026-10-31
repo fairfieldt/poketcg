@@ -18,9 +18,38 @@
 #define SCATTER_SOUND_TICKS 61u
 
 typedef struct {
- sprite_t *background[4], *orbs[7], *press_start;
+ sprite_t *background[4], *press_start;
+ surface_t orbs[7];
 } IntroAssets;
 typedef struct { int x,y; bool visible,done; } OrbFrame;
+
+static surface_t orb_surface(sprite_t *sprite)
+{
+ surface_t source=sprite_get_pixels(sprite);
+ assert(surface_get_format(&source)==FMT_RGBA16);
+ surface_t padded=surface_alloc(FMT_RGBA16,source.width+2,source.height+2);
+ assert(padded.buffer);
+ /* The original circles share one solid outline color. Bleed its RGB into
+    transparent pixels so straight-alpha filtering cannot add a black halo. */
+ uint16_t outline=0;bool found=false;
+ for(unsigned y=0;y<source.height&&!found;y++) {
+  const uint16_t *row=(uint16_t *)((uint8_t *)source.buffer+y*source.stride);
+  for(unsigned x=0;x<source.width;x++)if(row[x]&1) {
+   outline=row[x]&~1u;found=true;break;
+  }
+ }
+ assert(found);
+ for(unsigned y=0;y<padded.height;y++) {
+  uint16_t *row=(uint16_t *)((uint8_t *)padded.buffer+y*padded.stride);
+  for(unsigned x=0;x<padded.width;x++)row[x]=outline;
+ }
+ for(unsigned y=0;y<source.height;y++) {
+  const uint16_t *row=(uint16_t *)((uint8_t *)source.buffer+y*source.stride);
+  uint16_t *destination=(uint16_t *)((uint8_t *)padded.buffer+(y+1)*padded.stride)+1;
+  for(unsigned x=0;x<source.width;x++)if(row[x]&1)destination[x]=row[x];
+ }
+ return padded;
+}
 
 static IntroAssets assets_open(void)
 {
@@ -33,7 +62,8 @@ static IntroAssets assets_open(void)
  }
  for(unsigned i=0;i<7;i++) {
   snprintf(path,sizeof(path),"rom:/intro/orb_%s.sprite",orbs[i]);
-  assets.orbs[i]=sprite_load(path);assert(assets.orbs[i]);
+  sprite_t *orb=sprite_load(path);assert(orb);
+  assets.orbs[i]=orb_surface(orb);sprite_free(orb);
  }
  assets.press_start=sprite_load("rom:/intro/press_start.sprite");assert(assets.press_start);
  return assets;
@@ -43,7 +73,7 @@ static void assets_close(IntroAssets *assets)
 {
  rspq_wait();
  for(unsigned i=0;i<4;i++)sprite_free(assets->background[i]);
- for(unsigned i=0;i<7;i++)sprite_free(assets->orbs[i]);
+ for(unsigned i=0;i<7;i++)surface_free(&assets->orbs[i]);
  sprite_free(assets->press_start);
 }
 
@@ -103,13 +133,24 @@ static void blit(sprite_t *sprite,int x,int y)
   &(rdpq_blitparms_t){.scale_x=INTRO_SCALE*n64_video_scale,.scale_y=INTRO_SCALE*n64_video_scale});
 }
 
+static void blit_orb(const surface_t *orb,int x,int y)
+{
+ /* Preserve the source origin while giving bilinear edge samples a
+    transparent texel outside the original 16x16 circle. */
+ rdpq_mode_blender(RDPQ_BLENDER_MULTIPLY);
+ rdpq_tex_blit(orb,(INTRO_LEFT+(x-1)*INTRO_SCALE)*n64_video_scale,
+  (INTRO_TOP+(y-1)*INTRO_SCALE)*n64_video_scale,
+  &(rdpq_blitparms_t){.scale_x=INTRO_SCALE*n64_video_scale,.scale_y=INTRO_SCALE*n64_video_scale});
+ rdpq_mode_blender(0);
+}
+
 static void draw_orbs(const IntroAssets *assets,unsigned stage,unsigned time)
 {
  for(unsigned i=0;i<7;i++) {
   OrbFrame frame=animation_frame(intro_orb_animation_ids[stage][i],
    (intro_orb_coordinates[stage][i][0]+8)&255,
    (intro_orb_coordinates[stage][i][1]+16)&255,time);
-  if(frame.visible)blit(assets->orbs[i],frame.x,frame.y);
+  if(frame.visible)blit_orb(&assets->orbs[i],frame.x,frame.y);
  }
 }
 
@@ -155,7 +196,7 @@ static surface_t *draw_frame(const IntroAssets *assets,unsigned scene,unsigned t
  } else if(idle_started) {
   for(unsigned i=0;i<7;i++)if(idle_started[i]>=0) {
    OrbFrame orb=animation_frame(216,248,14,time-(unsigned)idle_started[i]);
-   if(orb.visible)blit(assets->orbs[i],orb.x,orb.y);
+   if(orb.visible)blit_orb(&assets->orbs[i],orb.x,orb.y);
   }
  }
  /* The original delays the prompt 60 ticks, then alternates 37 on / 26 off. */
@@ -231,6 +272,24 @@ struct surface_s *adventure_intro_preview(unsigned scene,unsigned source_frame)
  surface_t *frame=draw_frame(&assets,scene,source_frame,scene==3,scene==3,NULL,0);
  assets_close(&assets);return frame;
 }
+
+#if ADVENTURE_DIAGNOSTIC == 14
+void adventure_audio_review(void)
+{
+ IntroAssets assets=assets_open();
+ adventure_audio_review_reset();
+ debugf("AUDIO REVIEW opening BEGIN\n");
+ adventure_audio_event(0,MUSIC_STOP);play_opening(&assets);
+ adventure_audio_review_report("opening");
+ int started[7];for(unsigned i=0;i<7;i++)started[i]=-1;
+ /* The finite original title lasts34 seconds. Exercise its entire sample,
+    including the former17.025-second asset dropout, without debugger stops. */
+ for(unsigned time=0;time<2100;time+=2)
+  draw_frame(&assets,3,time,true,true,started,0);
+ adventure_audio_review_report("title");assets_close(&assets);
+ debugf("AUDIO REVIEW PASS\n");
+}
+#endif
 
 bool adventure_intro_check(void)
 {

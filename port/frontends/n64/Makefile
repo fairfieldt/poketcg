@@ -5,6 +5,8 @@
 #   make hosttest    build tcgn64.c against mock/libdragon.h on the host and run
 #                    the scripted UI tests in tests/*.txt (logs and screenshots
 #                    in build/host/)
+#   make felttest    compare the cached felt pixels with the scalar reference
+#   make inputtest   verify VI-rate taps and frontend one-press consumption
 #   make endiancheck run tools/endian_check.c (36 deterministic duels, digest of
 #                    every event/request/answer and of the final WRAM/HRAM)
 #                    natively and as a big-endian MIPS32 Linux binary under
@@ -55,7 +57,7 @@ all: adventure
 adventure:
 	$(MAKE) -C adventure N64_INST=$(N64_INST)
 duel: $(ROM)
-.PHONY: all adventure duel clean hosttest endiancheck FORCE
+.PHONY: all adventure duel clean hosttest felttest cointest endiancheck FORCE
 .DELETE_ON_ERROR:
 
 # ---------------------------------------------------------------- engine
@@ -165,6 +167,38 @@ MOCK_FONT := $(N64_INST)/mips64-elf/include/font.h
 HOST_ROMFS := $(HOST_BUILD)/filesystem
 HOST_TESTS := $(wildcard tests/*.txt)
 
+# Compare the actual felt renderer at both display resolutions without linking
+# the rest of the engine; unreachable frontend sections are discarded.
+HOST_DEAD_STRIP := $(if $(filter Darwin,$(shell uname -s)),-Wl$(COMMA)-dead_strip,-Wl$(COMMA)--gc-sections)
+$(HOST_BUILD)/felt_cache: tests/felt_cache.c tcgn64.c mock/libdragon.h
+	@mkdir -p $(dir $@)
+	$(HOST_CC) -std=gnu11 -O2 -Wall -Wextra -Wno-unused-parameter -Werror \
+		-ffunction-sections -fdata-sections -Imock -I$(ENGINE) $< $(HOST_DEAD_STRIP) -o $@
+felttest: $(HOST_BUILD)/felt_cache
+	./$(HOST_BUILD)/felt_cache
+
+$(HOST_BUILD)/input_capture: tests/input_capture.c duel_input.h
+	@mkdir -p $(dir $@)
+	$(HOST_CC) -std=c11 -O2 -Wall -Wextra -Werror $< -o $@
+$(HOST_BUILD)/input_frontend: tests/input_frontend.c tcgn64.c duel_input.h mock/libdragon.h
+	@mkdir -p $(dir $@)
+	$(HOST_CC) -std=gnu11 -O2 -Wall -Wextra -Wno-unused-parameter -Werror \
+		-ffunction-sections -fdata-sections -Imock -I$(ENGINE) $< $(HOST_DEAD_STRIP) -lm -o $@
+.PHONY: inputtest
+inputtest: $(HOST_BUILD)/input_capture $(HOST_BUILD)/input_frontend
+	./$(HOST_BUILD)/input_capture
+	./$(HOST_BUILD)/input_frontend
+
+$(HOST_BUILD)/coin_animation.o: tests/coin_animation.c tcgn64.c coin_art.h mock/libdragon.h
+	@mkdir -p $(dir $@)
+	$(HOST_CC) -c $(HOST_FRONT_CFLAGS) -UTCGN64_CARD_ART -ffunction-sections -fdata-sections -o $@ $<
+$(HOST_BUILD)/coin_animation: $(HOST_BUILD)/coin_animation.o $(HOST_CORE_OBJS) $(HOST_BUILD)/save_store_n64.o $(HOST_BUILD)/mock_libdragon.o $(HOST_BUILD)/optional.lst
+	$(HOST_CC) -o $@ $(HOST_BUILD)/coin_animation.o $(HOST_CORE_OBJS) $(HOST_BUILD)/save_store_n64.o $(HOST_BUILD)/mock_libdragon.o $$(cat $(HOST_BUILD)/optional.lst) $(HOST_DEAD_STRIP)
+cointest: $(HOST_BUILD)/coin_animation
+	@printf 'wait 100000\n' > $(HOST_BUILD)/coin-idle.script
+	MOCK_SCRIPT=$(HOST_BUILD)/coin-idle.script ./$(HOST_BUILD)/coin_animation
+	MOCK_SCRIPT=$(HOST_BUILD)/coin-idle.script MOCK_HIGH_RES=1 ./$(HOST_BUILD)/coin_animation
+
 $(HOST_BUILD)/engine/%.o: $(ENGINE)/%.c
 	@mkdir -p $(dir $@)
 	$(HOST_CC) -c $(HOST_ENGINE_CFLAGS) -MMD -o $@ $<
@@ -205,7 +239,7 @@ $(HOST_ROMFS)/buildinfo.txt: $(HOST_BUILD)/optional.lst $(CARD_SPRITES)
 	cp $(HOST_BUILD)/optional.info $@
 	@if [ -n "$(CARD_SPRITES)" ]; then rm -rf $(HOST_ROMFS)/cards; ln -s ../../filesystem/cards $(HOST_ROMFS)/cards; fi
 
-hosttest: $(HOST_BUILD)/tcgn64_host $(HOST_ROMFS)/buildinfo.txt
+hosttest: felttest inputtest cointest $(HOST_BUILD)/tcgn64_host $(HOST_ROMFS)/buildinfo.txt
 	@fail=0; for t in $(HOST_TESTS); do \
 		n=$$(basename $$t .txt); mkdir -p $(HOST_BUILD)/shots/$$n; \
 		printf '    [TEST] %-24s' $$n; \

@@ -146,13 +146,15 @@ static surface_t *draw_frame(NameAssets *assets,const NameState *state,unsigned 
  glViewport(n64_video_x(14),n64_video_y(44),n64_video_x(104),n64_video_y(154));
  glMatrixMode(GL_PROJECTION);glPushMatrix();glLoadIdentity();gluPerspective(34,104.0/154.0,.1,20);
  glMatrixMode(GL_MODELVIEW);glPushMatrix();glLoadIdentity();gluLookAt(0,1.28,4.7,0,1.08,0,0,1,0);
+ scene_camera(34,104.0/154.0,.1,20,(const float[]){0,1.28f,4.7f},(const float[]){0,1.08f,0},
+  n64_video_x(14),n64_video_y(44),n64_video_x(104),n64_video_y(154));
  glDisable(GL_TEXTURE_2D);glColor4f(.24f,.36f,.46f,1);
  glBegin(GL_TRIANGLE_FAN);glVertex3f(0,-.025f,0);
  for(unsigned i=0;i<=24;i++){float angle=i*6.28318530718f/24;glVertex3f(cosf(angle)*.78f,-.025f,sinf(angle)*.6f);}
  glEnd();
  scene_draw_actor(assets->player,assets->model,0,0,-12+sinf(frame*.025f)*5,0);
  glPopMatrix();glMatrixMode(GL_PROJECTION);glPopMatrix();glMatrixMode(GL_MODELVIEW);
- glViewport(0,0,n64_video_width,n64_video_height);gl_context_end();
+ glViewport(0,0,n64_video_width,n64_video_height);gl_context_end();scene_frame_end();
  draw_keyboard(assets,state,frame);rdpq_detach_wait();display_show(display);
  adventure_audio_poll();return display;
 }

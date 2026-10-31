@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Packed N64 renderer validation</title>
+<style>body{max-width:1100px;margin:40px auto;padding:0 20px;font:17px/1.5 system-ui,sans-serif;color:#172333;background:#f6f5ef}h1{font-size:30px}h2{font-size:22px;margin-top:32px}a{color:#164e8c}table{border-collapse:collapse;width:100%;max-width:800px}td,th{text-align:left;padding:10px;border-bottom:1px solid #cdcfc8}.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}figure{margin:0}img{width:100%;height:auto;display:block}figcaption{padding:8px 0}.note{font-size:15px;color:#465261}@media(max-width:760px){.pair{grid-template-columns:1fr}}</style>
+<main>
+<h1>Packed N64 renderer validation</h1>
+<p><strong>Both configurations passed the complete native game checks:</strong> all 34 maps, 42 captures, story, actual engine duel, SRAM, intro and Mason/Sam choreography.</p>
+<table><thead><tr><th>Target</th><th>Captures</th><th>Minimum free heap</th></tr></thead><tbody>
+<tr><td>320×240 / 4 MiB</td><td>42</td><td>784,160 bytes</td></tr>
+<tr><td>480×360 / 8 MiB</td><td>42</td><td>4,018,464 bytes</td></tr>
+</tbody></table>
+<p class="note">Native framebuffer pixels before VI filtering, captured in ares. These functional and memory checks do not establish real-console frame rates. Saves were isolated per test run.</p>
+<p><a href="README.md">Validation details</a> · <a href="validation.json">Results</a> · <a href="../backend/">Renderer timing comparison</a></p>
+<h2>Naming</h2>
+<div class="pair"><figure><a href="cases/4mib/naming.png"><img src="cases/4mib/naming.png" alt="Naming at 320 by 240"></a><figcaption>320×240</figcaption></figure><figure><a href="cases/8mib/naming.png"><img src="cases/8mib/naming.png" alt="Naming at 480 by 360"></a><figcaption>480×360</figcaption></figure></div>
+<h2>Conversation</h2>
+<div class="pair"><figure><a href="cases/8mib/mason-dialogue.png"><img src="cases/8mib/mason-dialogue.png" alt="Dr. Mason conversation"></a><figcaption>Dr. Mason</figcaption></figure><figure><a href="cases/8mib/sam-table.png"><img src="cases/8mib/sam-table.png" alt="Sam across the duel table"></a><figcaption>Sam</figcaption></figure></div>
+<h2>All native scenes</h2>
+<p><a href="cases/4mib/all-maps-native.png">320×240 contact sheet</a> · <a href="cases/8mib/all-maps-native.png">480×360 contact sheet</a></p>
+<a href="cases/8mib/all-maps-native.png"><img src="cases/8mib/all-maps-native.png" alt="All 42 native scene captures at 480 by 360"></a>
+</main></html>

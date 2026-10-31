@@ -176,6 +176,32 @@ void print_ui_text(u16 text)
 	print_text(text, 0);
 }
 
+void tcg_ui_practice_checklist(u16 label,const u16 *steps,unsigned count)
+{
+	char summary[1024],line[512];
+	int used=0;
+	summary[0]=0;
+	if(label) {
+		tcg_format_text(label,line,sizeof(line));
+		used=append(summary,sizeof(summary),used,line);
+	}
+	for(unsigned i=0;i<count;i++) {
+		tcg_format_text(steps[i],line,sizeof(line));
+		if(!line[0])continue;
+		used=append(summary,sizeof(summary),used,"\n\n");
+		used=append(summary,sizeof(summary),used,line);
+	}
+	event(TCG_EV_TEXT,0,TCG_TEXT_PRACTICE_CHECKLIST,(u8)count,0,label,summary);
+}
+
+void tcg_ui_practice_speech(u16 text)
+{
+	char message[512];
+	tcg_format_text(text,message,sizeof(message));
+	event(TCG_EV_TEXT,1,TCG_TEXT_PRACTICE_SPEECH,0,0,text,message);
+	WaitForWideTextBoxInput();
+}
+
 void LoadTxRam2(u16 text)
 {
 	wr16(wTxRam2, text);

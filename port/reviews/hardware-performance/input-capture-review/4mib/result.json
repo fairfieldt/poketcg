@@ -1,0 +1,70 @@
+{
+  "passed": true,
+  "diagnostic": 2,
+  "ram_mib": 4,
+  "native_dimensions": [
+    320,
+    240
+  ],
+  "rom_sha256": "e1df1441e588bedc632a0b1e871797718ed3cfb997630bd84a724151862b58da",
+  "duel_input_vi_samples": [
+    68
+  ],
+  "maps": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33
+  ],
+  "framebuffer_dumps": 0,
+  "required_markers": [
+    "ADVENTURE INTRO PASS",
+    "ADVENTURE MIPS STORY PASS",
+    "ADVENTURE NATIVE DUEL PASS",
+    "ADVENTURE SRAM PASS",
+    "ADVENTURE CINEMATIC PASS",
+    "ADVENTURE MAP TOUR PASS"
+  ],
+  "video_modes": [
+    {
+      "width": 320,
+      "height": 240,
+      "ram": 4194304,
+      "highres": 0
+    }
+  ],
+  "private_save_files": [
+    "saves/Nintendo 64/poketcg-input-isr-gate.ram"
+  ],
+  "note": "DIAG2 intentionally omits DIAG3-only warp-transition assertion; completed native marker set was parsed without relaunch."
+}
