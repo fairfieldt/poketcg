@@ -13,6 +13,7 @@ REPO := $(PORT)/..
 ROM ?= poketcg-adventure
 DIAGNOSTIC ?= 0
 HIGH_RES ?= 0
+RSPQ_WAKE_FIX ?= 1
 ifneq ($(filter 5 6 7 8 12,$(DIAGNOSTIC)),)
 SCENE_T3D ?= 0
 else
@@ -24,6 +25,9 @@ ENGINE_OBJECTS := $(ENGINE_SOURCES:$(PORT)/src/%.c=$(BUILD_DIR)/engine/%.o)
 GAME_SOURCES := $(wildcard $(PORT)/gameplay/*.c $(PORT)/gameplay/gen/*.c $(PORT)/overworld/*.c $(PORT)/overworld/gen/*.c)
 GAME_OBJECTS := $(GAME_SOURCES:$(PORT)/%.c=$(BUILD_DIR)/game/%.o)
 FRONT_OBJECTS := $(addprefix $(BUILD_DIR)/,main.o menus.o profiles.o extra_ui.o intro.o naming.o presentation.o dialogue.o audio.o wav64_vadpcm_fixed.o scene.o video.o save_sram.o duel_frontend.o)
+ifeq ($(RSPQ_WAKE_FIX),1)
+FRONT_OBJECTS += $(BUILD_DIR)/rspq_fixed.o
+endif
 ifneq ($(DIAGNOSTIC),0)
 FRONT_OBJECTS += $(BUILD_DIR)/mips_story.o $(BUILD_DIR)/cinematic.o
 endif
@@ -46,7 +50,7 @@ face-preview-assets:
 	python3 tools/pack_face_preview.py --output $(N64_MKDFS_ROOT)/faces --mksprite $(N64_MKSPRITE)
 $(BUILD_DIR)/$(ROM).dfs: face-preview-assets
 endif
-VIDEO_CONFIG := $(BUILD_DIR)/config-$(DIAGNOSTIC)-$(VI_FILTER)-$(HIGH_RES)-$(SCENE_T3D)
+VIDEO_CONFIG := $(BUILD_DIR)/config-$(DIAGNOSTIC)-$(VI_FILTER)-$(HIGH_RES)-$(SCENE_T3D)-$(RSPQ_WAKE_FIX)
 INCLUDES := -I$(PORT)/src -I$(PORT)/overworld -I$(PORT)/gameplay -I$(PORT)/world3d -I$(BUILD_DIR)
 CFLAGS += $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -DADVENTURE_VI_FILTER=$(VI_FILTER) -DADVENTURE_HIGH_RES=$(HIGH_RES)
 ifeq ($(SCENE_T3D),1)
@@ -112,6 +116,12 @@ $(BUILD_DIR)/audio_reward.o: tests/audio_reward.c
 $(BUILD_DIR)/wav64_vadpcm_fixed.o: vendor/libdragon-audio/wav64_vadpcm.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+.PHONY: rspq-sdk-check
+rspq-sdk-check:
+	python3 tools/check_rspq_sdk.py --sdk $(N64_INST)
+$(BUILD_DIR)/rspq_fixed.o: vendor/libdragon-rspq/src/rspq/rspq.c | rspq-sdk-check
+	@mkdir -p $(dir $@)
+	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -Ivendor/libdragon-rspq/src -MMD -c $< -o $@
 $(BUILD_DIR)/visual_sweep.o: tests/visual_sweep.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -MMD -c $< -o $@

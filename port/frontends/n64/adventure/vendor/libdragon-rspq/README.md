@@ -1,0 +1,7 @@
+# Pinned RSP queue wakeup backport
+
+This copy comes from libdragon preview revision `12bba06615ce9e89185947bbbeba41e290ec0c23`, the installed SDK source. Only one assembly statement changes: the ten-NOP delay in `rspq_flush_internal` includes the branch introduced by [upstream commit cd5b8f567006](https://github.com/DragonMinded/libdragon/commit/cd5b8f567006c551b20fce07ae2503d592f93197). Upstream documents that ares JIT scheduling can otherwise miss both wakeups and leave the RSP asleep at queue PC 0x018. The branch forces the relevant CPU/RSP scheduling boundary. Timeout checks remain intact.
+
+The installed SDK and RSP microcode remain unchanged. The project links this replacement C object before the SDK archive. The copied private headers and original hashes are recorded in `UPSTREAM.json`; the build checks every copied source/private file, the patched C source, the public SDK headers, and the installed queue microcode’s stable allocated sections and exported entry points. Upgrading the SDK requires reviewing and refreshing this pin. `LICENSE.md` preserves the upstream public-domain license.
+
+The later high-priority REQUESTED ordering fix (PR 952) and atomic low-priority buffer handoff are intentionally excluded. Their failure modes and independent tests are considered separately. Use `RSPQ_WAKE_FIX=0` to build the original SDK queue for controlled A/B reproduction; the default is `1`.

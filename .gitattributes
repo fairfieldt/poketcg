@@ -43,3 +43,4 @@
 
 # Keep pinned upstream SDK formatting so its source diff stays reviewable.
 port/frontends/n64/adventure/vendor/libdragon-audio/* whitespace=-blank-at-eol,-blank-at-eof
+port/frontends/n64/adventure/vendor/libdragon-rspq/** whitespace=-blank-at-eol,-blank-at-eof

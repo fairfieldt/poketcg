@@ -1,0 +1,129 @@
+{
+  "repository": "https://github.com/DragonMinded/libdragon",
+  "base_revision": "12bba06615ce9e89185947bbbeba41e290ec0c23",
+  "backport_revision": "cd5b8f567006c551b20fce07ae2503d592f93197",
+  "original_files": {
+    "src/rspq/rspq.c": "8b3ac58857d08870b6126542d34dc6996e50fb9fcbf414649b008f94be261bb1",
+    "src/rspq/rspq_internal.h": "153ce41861c20165d8007d2f5024e6b3dd4c142e46f0dad3fdc0c95656bea4f1",
+    "src/rdpq/rdpq_internal.h": "5c93ace5d2df52ee64478d9d465fe48c5f8d5298a9fcefec8dba18127f0877a3",
+    "src/rdpq/rdpq_debug_internal.h": "7258ca9c1a65f4138f9827e98ff6fa2b058f0fba6743ef0ce1443b1e409fb22e",
+    "src/utils.h": "887610660fa908164c29f5f537f18104c40c4d9734b9229967172893972fb0bd",
+    "LICENSE.md": "88d9b4eb60579c191ec391ca04c16130572d7eedc4a86daa58bf28c6e14c9bcd"
+  },
+  "sdk_public_headers": {
+    "rspq.h": "353116136fd0d1533053682fc5a31274c1b31d9b99a028fe8e55a7e8b35e4e72",
+    "rspq_constants.h": "b5917ffe3566a388babe9832f1ebc19679f0400f183272f58c01e5949ada2199",
+    "rsp.h": "81643d6c7768dbb6c72ac2dbeafea74c5df7e4fd7d81048261e70a1f2292f997",
+    "rspq_profile.h": "137c790e2b0e4976184c324430a35434872d3d144eddf913b7afe5949f1bf8ad",
+    "rdpq_constants.h": "7b73d45c83e2670dd511707800e05da31ddbb9602b11513b16d92ba5aee76a72",
+    "rdpq.h": "07dd489c6179984324e644d9ad2737cee91525d8db8ae4947c9f73d89020123c",
+    "rdpq_attach.h": "8699b97da6a0ed1d395072fefc9d17b000c5f1ac61dfd58a3f697ee7194bb36c"
+  },
+  "patched_files": {
+    "src/rspq/rspq.c": "838197eec47abb2c4fd01ee159230731b1e014c508f3249ed9496f91541182bd"
+  },
+  "sdk_queue_microcode": {
+    "archive": "mips64-elf/lib/libdragon.a",
+    "member": "rsp_queue.o",
+    "image": {
+      "class": 32,
+      "endian": "big",
+      "type": 1,
+      "machine": 8,
+      "flags": 536870912,
+      "sections": [
+        {
+          "name": ".data",
+          "type": 1,
+          "flags": 3,
+          "size": 1169,
+          "alignment": 16,
+          "sha256": "9336b7ba3cf73fa946ec4b612bc52334beeffc191397a93e1d8461525ac62617"
+        }
+      ],
+      "public_symbols": [
+        {
+          "name": "rsp_queue_data_end",
+          "value": 1168,
+          "size": 0,
+          "binding": 1,
+          "type": 0,
+          "visibility": 0,
+          "section": ".data"
+        },
+        {
+          "name": "rsp_queue_data_size",
+          "value": 512,
+          "size": 0,
+          "binding": 1,
+          "type": 0,
+          "visibility": 0,
+          "section": "ABS"
+        },
+        {
+          "name": "rsp_queue_data_start",
+          "value": 656,
+          "size": 0,
+          "binding": 1,
+          "type": 0,
+          "visibility": 0,
+          "section": ".data"
+        },
+        {
+          "name": "rsp_queue_meta_end",
+          "value": 1169,
+          "size": 0,
+          "binding": 1,
+          "type": 0,
+          "visibility": 0,
+          "section": ".data"
+        },
+        {
+          "name": "rsp_queue_meta_size",
+          "value": 1,
+          "size": 0,
+          "binding": 1,
+          "type": 0,
+          "visibility": 0,
+          "section": "ABS"
+        },
+        {
+          "name": "rsp_queue_meta_start",
+          "value": 1168,
+          "size": 0,
+          "binding": 1,
+          "type": 0,
+          "visibility": 0,
+          "section": ".data"
+        },
+        {
+          "name": "rsp_queue_text_end",
+          "value": 648,
+          "size": 0,
+          "binding": 1,
+          "type": 0,
+          "visibility": 0,
+          "section": ".data"
+        },
+        {
+          "name": "rsp_queue_text_size",
+          "value": 648,
+          "size": 0,
+          "binding": 1,
+          "type": 0,
+          "visibility": 0,
+          "section": "ABS"
+        },
+        {
+          "name": "rsp_queue_text_start",
+          "value": 0,
+          "size": 0,
+          "binding": 1,
+          "type": 0,
+          "visibility": 0,
+          "section": ".data"
+        }
+      ]
+    }
+  }
+}
