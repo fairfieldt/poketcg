@@ -1,0 +1,4 @@
+python3 harness/powers_catalog.py --check ../port/reviews/power-audit/catalog.json
+POWER CATALOG PASS: all26 card variants/26 unique chains match original assembly;10 manual,12 passive,4 on-play
+./build/harness/powers_audit
+POWER AUDIT PASS: 624 real-engine outcome cases; all 26 Power mechanisms, both sides, source RNG, status/Muk, once-per-turn, cancellation, damage/energy conservation and on-play suppression

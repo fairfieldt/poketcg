@@ -43,6 +43,8 @@ enum TcgEventType {
 	TCG_EV_TURN,          /* new turn: arg[0] = turn holder, arg[1] = wDuelTurns */
 	TCG_EV_DUEL_END,      /* arg[0] = wDuelFinished, arg[1] = turn holder at the end */
 	TCG_EV_THINKING,      /* AI is deciding: arg[0] = duelist */
+	TCG_EV_PLAY_AREA_MARK,/* presentation only: arg[0]=duelist, arg[1]=slot, arg[2]=TcgPlayAreaMarker */
+	TCG_EV_CARD_ORDER,    /* presentation only: arg[0]=duelist, arg[1]=deck index (FF clears owner), arg[2]=order */
 };
 
 enum TcgTextMode {
@@ -72,8 +74,22 @@ enum TcgScreen {
 enum TcgPlayAreaMode {
 	TCG_PLAY_AREA_NORMAL = 0,
 	TCG_PLAY_AREA_POWER,
+	TCG_PLAY_AREA_PEEK,
 	TCG_PLAY_AREA_ENERGY_FROM,
 	TCG_PLAY_AREA_ENERGY_TO,
+	TCG_PLAY_AREA_DAMAGE_FROM,
+	TCG_PLAY_AREA_DAMAGE_TO,
+	TCG_PLAY_AREA_CURSE_FROM,
+	TCG_PLAY_AREA_CURSE_TO,
+	TCG_PLAY_AREA_STRANGE_BEHAVIOR,
+	TCG_PLAY_AREA_BENCH_MULTI,
+};
+
+enum TcgPlayAreaMarker {
+	TCG_PLAY_AREA_MARK_NONE = 0,
+	TCG_PLAY_AREA_MARK_ENERGY,
+	TCG_PLAY_AREA_MARK_DAMAGE,
+	TCG_PLAY_AREA_MARK_TARGET,
 };
 
 typedef struct TcgEvent {

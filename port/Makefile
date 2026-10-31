@@ -59,6 +59,17 @@ $(BUILD)/harness/evolution_cursor: harness/evolution_cursor.c $(HARNESS_ENGINE) 
 evolutiontest: $(BUILD)/harness/evolution_cursor
 	./$(BUILD)/harness/evolution_cursor
 
+$(BUILD)/harness/powers_audit: harness/powers_audit.c $(HARNESS_ENGINE) $(wildcard src/*.h src/gen/*.h src/effects/*.h)
+	@mkdir -p $(dir $@)
+	$(CC) $(HARNESS_CFLAGS) -o $@ $< $(filter-out src/duel_core.c,$(HARNESS_ENGINE))
+
+.PHONY: poweraudit powercatalog
+powercatalog:
+	python3 harness/powers_catalog.py --check ../port/reviews/power-audit/catalog.json
+
+poweraudit: powercatalog $(BUILD)/harness/powers_audit
+	./$(BUILD)/harness/powers_audit
+
 $(BUILD)/frontends/control_text: frontends/tests/control_text.c frontends/control_text.h $(BUILD)/libtcg.a
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -o $@ $< $(BUILD)/libtcg.a

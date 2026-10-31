@@ -1674,6 +1674,7 @@ start:;
 	u8 n = PrintPlayAreaCardList_EnableLCD();
 	InitializeMenuParameters(hCurSelectionItem, &PlayAreaSelectionMenuParameters);
 	wNumMenuItems = n;
+	tcg_ui_screen(TCG_SCREEN_PLAY_AREA,0,TCG_PLAY_AREA_CURSE_FROM);
 
 	/* first pick a target to take 1 damage counter from. */
 loop_input_first:
@@ -1707,6 +1708,7 @@ loop_input_first:
 
 	/* draw damage counter on cursor */
 	DrawSymbolOnPlayAreaCursor(hTempPlayAreaLocation_ffa1, SYM_HP_NOK);
+	tcg_ui_screen(TCG_SCREEN_PLAY_AREA,0,TCG_PLAY_AREA_CURSE_TO);
 
 	/* handle input to pick the target to receive the damage counter. */
 loop_input_second:
@@ -2278,6 +2280,7 @@ start:;
 	u8 n = PrintPlayAreaCardList_EnableLCD();
 	InitializeMenuParameters(hCurSelectionItem, &PlayAreaSelectionMenuParameters);
 	wNumMenuItems = n;
+	tcg_ui_screen(TCG_SCREEN_PLAY_AREA,0,TCG_PLAY_AREA_DAMAGE_FROM);
 
 	/* handle selection of Pokemon to take damage from */
 loop_input_first:
@@ -2309,6 +2312,7 @@ loop_input_first:
 
 	/* draw damage counter in cursor */
 	DrawSymbolOnPlayAreaCursor(hTempPlayAreaLocation_ffa1, SYM_HP_NOK);
+	tcg_ui_screen(TCG_SCREEN_PLAY_AREA,0,TCG_PLAY_AREA_DAMAGE_TO);
 
 	/* handle selection of Pokemon to give damage to */
 loop_input_second:

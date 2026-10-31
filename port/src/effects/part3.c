@@ -42,6 +42,7 @@ start:;
 	u8 n = PrintPlayAreaCardList_EnableLCD();
 	InitializeMenuParameters(hCurSelectionItem, &PlayAreaSelectionMenuParameters);
 	wNumMenuItems = n;
+	tcg_ui_screen(TCG_SCREEN_PLAY_AREA,0,TCG_PLAY_AREA_STRANGE_BEHAVIOR);
 loop_input:
 	WaitForMenuInput();
 	u8 a = hCurMenuItem;
@@ -1300,6 +1301,7 @@ start:;
 
 	/* exclude Arena Pokemon from number of items */
 	wNumMenuItems = (u8)(n - 1);
+	tcg_ui_screen(TCG_SCREEN_PLAY_AREA,0,TCG_PLAY_AREA_BENCH_MULTI);
 
 loop_input:
 	WaitForMenuInput();

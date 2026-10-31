@@ -146,6 +146,7 @@ static int g_practice_reading_count;
 static int g_screen;                    /* last TCG_SCREEN_* */
 static uint8_t g_screen_arg;            /* its arg[2] */
 static uint8_t g_play_area_mode;
+static uint8_t g_play_area_marks[2][MAX_PLAY_AREA_POKEMON],g_card_order[2][DECK_SIZE];
 static uint8_t g_boxmsg = 0xff;
 static struct { bool on; uint8_t id, deck, owner, page; } g_overlay;  /* TCG_EV_CARD */
 static bool g_drawn_card_fresh_ack,g_placement_ack;
@@ -1051,13 +1052,31 @@ static void draw_prompt_textbox_hint(const char *prompt,const char *hint)
 		print(LEFT,TBOX_LINE(TBOX_LINES-1),C_GREEN,g_name[side_of(g_asking)]);
 }
 
+static void draw_request_textbox_hint(const TcgRequest *request,const char *fallback,const char *hint)
+{
+	char prompt[256];
+	if(request->str&&request->str[0])sanitize(request->str,prompt,sizeof(prompt));
+	else if(request->text)formatted_text(request->text,prompt,sizeof(prompt));
+	else copy_str(prompt,sizeof(prompt),fallback);
+	draw_prompt_textbox_hint(prompt,hint);
+}
+
 static void draw_play_area_textbox_hint(const char *hint)
 {
-	const char *prompt=NULL;
+	const char *prompt="Choose a Pokemon.";
 	if(g_play_area_mode==TCG_PLAY_AREA_POWER)prompt="Choose a Pokemon to use its Power.";
+	else if(g_play_area_mode==TCG_PLAY_AREA_PEEK)prompt="Choose a Play Area to inspect.";
 	else if(g_play_area_mode==TCG_PLAY_AREA_ENERGY_FROM)prompt="Choose a Pokemon to move Grass Energy from.";
 	else if(g_play_area_mode==TCG_PLAY_AREA_ENERGY_TO)prompt="Choose a Pokemon to receive Grass Energy.";
-	if(prompt)draw_prompt_textbox_hint(prompt,hint);else draw_textbox_hint(hint);
+	else if(g_play_area_mode==TCG_PLAY_AREA_DAMAGE_FROM||g_play_area_mode==TCG_PLAY_AREA_CURSE_FROM)
+		prompt="Choose a damaged Pokemon.";
+	else if(g_play_area_mode==TCG_PLAY_AREA_DAMAGE_TO||g_play_area_mode==TCG_PLAY_AREA_CURSE_TO)
+		prompt="Choose a Pokemon to receive the damage counter.";
+	else if(g_play_area_mode==TCG_PLAY_AREA_STRANGE_BEHAVIOR)
+		prompt="Choose a Pokemon to move damage from.";
+	else if(g_play_area_mode==TCG_PLAY_AREA_BENCH_MULTI)
+		prompt="Choose up to 3 Bench Pokemon.";
+	draw_prompt_textbox_hint(prompt,hint);
 }
 
 static bool practice_checklist_visible(void)
@@ -1260,7 +1279,7 @@ static void board_cache_copy(bool restore)
 #endif
 }
 
-static void draw_board(uint8_t hl_duelist,int hl_loc)
+static void draw_board_base(uint8_t hl_duelist,int hl_loc)
 {
 	if(board_cache_matches(hl_duelist,hl_loc)) {
 		board_cache_copy(true);
@@ -1305,6 +1324,21 @@ static void draw_board(uint8_t hl_duelist,int hl_loc)
 	cache->valid=true;
 	draw_board_highlight(hl_duelist,hl_loc);
 	draw_board_thinking(hl_loc);
+}
+
+static void draw_board(uint8_t hl_duelist,int hl_loc)
+{
+	draw_board_base(hl_duelist,hl_loc);
+	for(unsigned side=0;side<2;side++)for(unsigned loc=0;loc<MAX_PLAY_AREA_POKEMON;loc++) {
+		unsigned marker=g_play_area_marks[side][loc];
+		Slot slot;if(!marker||!get_slot(side?TCG_OPPONENT:TCG_PLAYER,(int)loc,&slot))continue;
+		int x=loc?LEFT+((int)loc-1)*58+45:RIGHT-11;
+		int y=loc?(side?BOARD_Y+10:BOARD_Y+141)+18:(side?BOARD_Y+40:BOARD_Y+91)+35;
+		fill(x,y,11,11,C_BLACK);rect(x,y,11,11,C_HI);
+		if(marker==TCG_PLAY_AREA_MARK_ENERGY)energy_icon(x+1,y+1,GRASS);
+		else {fill(x+1,y+1,9,9,marker==TCG_PLAY_AREA_MARK_DAMAGE?C_RED:C_HI);
+			print(x+2,y+1,marker==TCG_PLAY_AREA_MARK_DAMAGE?C_TEXT:C_BLACK,marker==TCG_PLAY_AREA_MARK_DAMAGE?"+":"*");}
+	}
 }
 
 /* The display surfaces are uncached memory, where the CPU drawing functions
@@ -2166,6 +2200,8 @@ static void draw_card_list_screen(const char *title,const char *info,const uint8
 	CardListCtx ctx={items,owner,1};
 	fill(LEFT-6,BOARD_Y,RIGHT-LEFT+12,BOARD_H,C_BG);
 	draw_list(LEFT-6,BOARD_Y,164,9,title?title:"Cards",n,cur,top,label_card,&ctx);
+	for(int i=*top;i<n&&i<*top+9;i++)if(items[i]<DECK_SIZE&&g_card_order[side_of(owner)][items[i]])
+		bodyf(LEFT-2,BOARD_Y+21+(i-*top)*LIST_LH,i==cur?C_INK:C_HI,9,"%u",g_card_order[side_of(owner)][items[i]]);
 	paper_panel(LEFT+161,BOARD_Y,RIGHT-LEFT-155,BOARD_H);
 	if(n>0&&cur<n&&items[cur]<DECK_SIZE)
 		draw_card_summary(LEFT+163,BOARD_Y+5,RIGHT-LEFT-159,tcg_card_id(owner,items[cur]));
@@ -2471,11 +2507,13 @@ static int ui_card_list(const TcgRequest *r, int ports)
 	int cur = r->cursor < n ? r->cursor : 0, top = 0;
 	const char *hints = r->arg[0] ? "A: view  B: back" : r->arg[1] ? "A: choose  B: back  START: info"
 	                                                                : "A: select  B: back  START: info";
+	bool ordinary_hand=r->text==DuelistHandText&&r->text2==PleaseSelectHandText&&!r->arg[0]&&r->arg[1]==PLAY_CHECK;
 	UiCanvasReuse reuse={0};
 	for (;;) {
 		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
 			draw_card_list_screen(title, info, items, n, r->shown, cur, &top);
-			draw_textbox_hint(hints);
+			if(r->text&&!ordinary_hand)draw_prompt_textbox_hint(info[0]?info:title,hints);
+			else draw_textbox_hint(hints);
 		}
 		end_reused_frame(&reuse);
 #if ADVENTURE_DIAGNOSTIC == 3
@@ -2565,7 +2603,8 @@ static int ui_item_menu(const TcgRequest *r, int ports)
 			draw_card_page(id, r->shown, deck, NULL);
 			chosen_corners(RIGHT-69,BOARD_Y+3,70,54);
 			draw_choice_popup(RIGHT - 100, BOARD_Y + 130, NULL, labels, 2, cur);
-			draw_textbox_hint("A: choose  B: back  START: card");
+			if(r->text==SelectCheckText)draw_prompt_textbox_hint("Choose an action.","A: choose  B: back  START: card");
+			else draw_textbox_hint("A: choose  B: back  START: card");
 		}
 		end_reused_frame(&reuse);
 		Keys k = keys(ports);
@@ -2591,7 +2630,8 @@ static void slot_hint(uint8_t duelist, int loc)
 	if (rd16(c->Atk1.Name) && c->Atk1.Category == POKEMON_POWER) {
 		char pw[24];
 		text_of(rd16(c->Atk1.Name), pw, sizeof(pw));
-		snprintf(buf, sizeof(buf), "%s %d/%d Power: %s", name, s.hp, s.maxhp, pw);
+		if(g_play_area_mode==TCG_PLAY_AREA_POWER)snprintf(buf,sizeof(buf),"Power: %s",pw);
+		else snprintf(buf, sizeof(buf), "%s %d/%d Power: %s", name, s.hp, s.maxhp, pw);
 	} else {
 		snprintf(buf, sizeof(buf), "%s %d/%d", name, s.hp, s.maxhp);
 	}
@@ -2641,8 +2681,12 @@ static int ui_menu_play_area(const TcgRequest *r, int ports)
 {
 	/* Item i is location arg[0] + i; the current menu determines its first slot. */
 	int start = r->arg[0] <= 1 ? r->arg[0] : 0;
-	const char *hint=g_play_area_mode==TCG_PLAY_AREA_ENERGY_FROM?"A: take  B: done  Z: check":
-		g_play_area_mode==TCG_PLAY_AREA_ENERGY_TO?"A: move  B: cancel  Z: check":"A: pick  B: back  Z: check";
+	const char *hint="A: pick  B: back  Z: check";
+	if(g_play_area_mode==TCG_PLAY_AREA_ENERGY_FROM||g_play_area_mode==TCG_PLAY_AREA_DAMAGE_FROM)hint="A: take  B: done  Z: check";
+	else if(g_play_area_mode==TCG_PLAY_AREA_CURSE_FROM)hint="A: take  B: back  Z: check";
+	else if(g_play_area_mode==TCG_PLAY_AREA_ENERGY_TO||g_play_area_mode==TCG_PLAY_AREA_DAMAGE_TO||g_play_area_mode==TCG_PLAY_AREA_CURSE_TO)hint="A: move  B: cancel  Z: check";
+	else if(g_play_area_mode==TCG_PLAY_AREA_STRANGE_BEHAVIOR)hint="A: move  B: done  Z: check";
+	else if(g_play_area_mode==TCG_PLAY_AREA_BENCH_MULTI)hint="A: pick  B: undo  Z: check";
 	int loc = pick_slot(r->shown, start, r->num_items, start + r->cursor, true, ports,
 	                    hint);
 	return loc < 0 ? TCG_CANCEL : loc - start;
@@ -2694,7 +2738,7 @@ static int ui_attacks(const TcgRequest *r, int ports)
 			int nl = wrap(desc, COLS, lines, 6);
 			for (int i = 0; i < nl && y < py + ph - 9; i++, y += 9)
 				print(LEFT, y + 2, C_TEXT, lines[i]);
-			draw_textbox_hint("A: attack  B: back  START: card");
+			draw_request_textbox_hint(r,r->shown==g_turn_holder?"Choose an attack.":"Choose an opponent's attack.",r->shown==g_turn_holder?"A: attack  B: back  START: card":"A: choose  B: back  START: card");
 		}
 		end_reused_frame(&reuse);
 		Keys k = keys(ports);
@@ -2714,6 +2758,15 @@ static int label_text(void *ctx, int i, char *out, int n, int *icon)
 	const char *const *labels = ctx;
 	copy_str(out, (size_t)n, labels[i]);
 	return C_TEXT;
+}
+
+/* Forced prompts keep the current instruction without clearing duel history. */
+static void draw_latest_textbox_hint(const char *hint)
+{
+	char prompt[(COLS+1)*(TBOX_LINES-1)+1]={0};int used=0;
+	for(int i=g_log_newest;i<g_log_n&&i<g_log_newest+TBOX_LINES-1;i++)
+		used+=snprintf(prompt+used,sizeof(prompt)-(size_t)used,"%s%s",used?"\n":"",g_log[i]);
+	draw_prompt_textbox_hint(prompt,hint);
 }
 
 /* a popup list of labels; returns the index or TCG_CANCEL */
@@ -2741,7 +2794,8 @@ static int choose(const char *title,const char *const *labels,const int *icons,i
 					body(x+27,ly,i==cur?C_INK:C_TEXT,labels[i],pw-32);
 				}
 			} else draw_list(x,y,pw,rows,title,n,cur,&top,label_text,(void *)labels);
-			draw_textbox_hint(can_cancel?"A: choose  B: back":"A: choose");
+			if(icons)draw_latest_textbox_hint(can_cancel?"A: choose  B: back":"A: choose");
+			else draw_prompt_textbox_hint("Choose an option.",can_cancel?"A: choose  B: back":"A: choose");
 		}
 		end_reused_frame(&reuse);Keys k=keys(ports);
 		if(k.up)cur=cur>0?cur-1:n-1;
@@ -2789,7 +2843,7 @@ static int ui_menu_two_items(const TcgRequest *r, int ports)
 	for (;;) {
 		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
 			draw_board(0, -1);
-			draw_textbox_hint("A: choose");
+			draw_request_textbox_hint(r,"Choose an option.","A: choose");
 			draw_choice_popup(RIGHT - 120, TBOX_Y - 40, NULL, labels, 2, cur);
 		}
 		end_reused_frame(&reuse);
@@ -2813,7 +2867,7 @@ static int ui_peek_area(const TcgRequest *r, int ports)
 	for (;;) {
 		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
 			draw_board(0, -1);
-			draw_textbox_hint("A: choose");
+			draw_prompt_textbox_hint("Choose a Play Area to inspect.","A: choose");
 			draw_choice_popup(LEFT + 60, BOARD_Y + 60, "Peek at", labels, 2, cur);
 		}
 		end_reused_frame(&reuse);
@@ -2855,7 +2909,7 @@ static int ui_peek_target(const TcgRequest *r, int ports)
 					rect(x - 3, y - 3, 38, 46, C_HI);
 				}
 			}
-			draw_textbox_hint("A: look  B: back");
+			draw_prompt_textbox_hint("Choose a card to inspect.","A: look  B: back");
 		}
 		end_reused_frame(&reuse);
 		Keys k = keys(ports);
@@ -2885,7 +2939,7 @@ static int ui_menu_card_list(const TcgRequest *r, int ports)
 	for (;;) {
 		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
 			draw_card_list_screen("Choose a card", NULL, items, n, r->shown, cur, &top);
-			draw_textbox_hint("A: choose  B: back  START: info");
+			draw_request_textbox_hint(r,"Choose a card.","A: choose  B: back  START: info");
 		}
 		end_reused_frame(&reuse);
 		Keys k = keys(ports);
@@ -2907,10 +2961,8 @@ static int ui_yes_no(const TcgRequest *r, int ports)
 	for (;;) {
 		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
 			draw_board(0, -1);
-			if(r->text==UseThisPokemonPowerText) {
-				char prompt[128];text_of(r->text,prompt,sizeof(prompt));
-				draw_prompt_textbox_hint(prompt,"A: choose  B: no");
-			} else draw_textbox_hint("A: choose  B: no");
+			if(r->text||(r->str&&r->str[0]))draw_request_textbox_hint(r,"","A: choose  B: no");
+			else draw_latest_textbox_hint("A: choose  B: no");
 			draw_choice_popup(RIGHT - 80, TBOX_Y - 40, NULL, labels, 2, cur);
 		}
 		end_reused_frame(&reuse);
@@ -2939,7 +2991,7 @@ static int ui_energy_discard(const TcgRequest *r, int ports)
 	for (;;) {
 		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
 			draw_card_list_screen(title, NULL, items, n, r->shown, cur, &top);
-			draw_textbox_hint("A: discard  B: back");
+			draw_request_textbox_hint(r,"Choose an Energy card to discard.","A: discard  B: back");
 		}
 		end_reused_frame(&reuse);
 		Keys k = keys(ports);
@@ -3026,7 +3078,7 @@ static int ui_confirm(const TcgRequest *r, int ports)
 	for (;;) {
 		if(begin_reused_frame(&reuse,(uint32_t)loc)) {
 			draw_board(r->shown, loc);
-			draw_textbox_hint("A: continue  B: stop");
+			draw_latest_textbox_hint("A: continue  B: stop");
 		}
 		end_reused_frame(&reuse);
 		Keys k = keys(ports);
@@ -3050,7 +3102,7 @@ static int ui_number(const TcgRequest *r, int ports)
 			panel(SCREEN_W / 2 - 60, BOARD_Y + 60, 120, 40);
 			print(SCREEN_W / 2 - 52, BOARD_Y + 66, C_DIM, "Choose a number");
 			printf_at(SCREEN_W / 2 - 12, BOARD_Y + 82, C_HI, "< %d >", v);
-			draw_textbox_hint("A: ok  B: back");
+			draw_request_textbox_hint(r,"Choose a number.","A: ok  B: back");
 		}
 		end_reused_frame(&reuse);
 		Keys k = keys(ports);
@@ -3269,8 +3321,19 @@ static void on_event(void *ctx, const TcgEvent *ev)
 			log_message(ev->str);
 		show_frames(1);
 		break;
+	case TCG_EV_PLAY_AREA_MARK:
+		if(ev->arg[1]<MAX_PLAY_AREA_POKEMON&&ev->arg[2]<=TCG_PLAY_AREA_MARK_TARGET)
+			g_play_area_marks[side_of(ev->arg[0])][ev->arg[1]]=ev->arg[2];
+		break;
+	case TCG_EV_CARD_ORDER:
+		if(ev->arg[1]==0xff)memset(g_card_order[side_of(ev->arg[0])],0,DECK_SIZE);
+		else if(ev->arg[1]<DECK_SIZE)g_card_order[side_of(ev->arg[0])][ev->arg[1]]=ev->arg[2];
+		break;
 	case TCG_EV_SCREEN:
 		g_screen = ev->arg[0];
+		if(g_screen==TCG_SCREEN_EMPTY||(g_screen==TCG_SCREEN_MAIN&&!ev->arg[2])) {
+			memset(g_play_area_marks,0,sizeof(g_play_area_marks));memset(g_card_order,0,sizeof(g_card_order));
+		}
 		g_screen_arg = ev->arg[2];
 		g_play_area_mode=g_screen==TCG_SCREEN_PLAY_AREA?ev->arg[3]:TCG_PLAY_AREA_NORMAL;
 		if (g_screen == TCG_SCREEN_COIN_TOSS) {
@@ -3861,6 +3924,7 @@ static void reset_duel_ui(void)
 	g_thinking = 0;
 	g_screen = TCG_SCREEN_NONE;
 	g_play_area_mode=TCG_PLAY_AREA_NORMAL;
+	memset(g_play_area_marks,0,sizeof(g_play_area_marks));memset(g_card_order,0,sizeof(g_card_order));
 	g_result=-1;
 }
 

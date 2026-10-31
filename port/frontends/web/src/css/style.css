@@ -578,3 +578,8 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 @media (prefers-reduced-motion: reduce) {
 	*, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition: none !important; }
 }
+
+/* Original effect cursors and card-order numbers carry gameplay state. */
+.bench-slot, .active, .pa-row { position: relative; }
+.effect-mark { position: absolute; right: 0; top: 0; min-width: 1.1em; text-align: center; font-weight: bold; color: #fff; background: #8d3a24; border: 1px solid #fff2b2; border-radius: 2px; line-height: 1.1; z-index: 2; }
+.cl-order { flex: none; min-width: 1em; text-align: center; font-weight: bold; color: #604311; background: #ffe495; border-radius: 2px; }

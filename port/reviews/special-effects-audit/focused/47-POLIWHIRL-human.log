@@ -1,0 +1,6 @@
+FAIL decks 3 vs 5 seed 0bd823 after 1530 events (401 rng)
+state differs at UseAttackOrPokemonPower (1 bytes):
+    ffa0 hTempList                                port 00 original 0d
+
+ok   decks 3 vs 5 seed 303d23: 3785 events, 527 rng, 22 turns, result 1
+1/2 duels identical

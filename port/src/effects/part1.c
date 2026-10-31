@@ -1238,6 +1238,13 @@ static const u16 ColorToTextSymbol[NUM_COLORED_TYPES] = {
  * writes tile b at x = 0, y = 3 * a + 2 of the play area screen: drawing only */
 void DrawSymbolOnPlayAreaCursor(u8 a, u8 b)
 {
+	u8 marker;
+	if(b==SYM_SPACE)marker=TCG_PLAY_AREA_MARK_NONE;
+	else if(b==SYM_GRASS)marker=TCG_PLAY_AREA_MARK_ENERGY;
+	else if(b==SYM_HP_NOK)marker=TCG_PLAY_AREA_MARK_DAMAGE;
+	else if(b==SYM_LIGHTNING)marker=TCG_PLAY_AREA_MARK_TARGET;
+	else return;
+	tcg_ui_event(TCG_EV_PLAY_AREA_MARK,hWhoseTurn,a,marker,0,0);
 }
 
 /* possibly unreferenced */

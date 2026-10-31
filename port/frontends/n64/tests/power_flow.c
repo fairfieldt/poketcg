@@ -84,14 +84,15 @@ static void run_case(void)
 }
 static void footer(unsigned context)
 {
- if(context<=TCG_PLAY_AREA_ENERGY_TO)draw_play_area_textbox_hint("A: pick  B: back  Z: check");
+ if(context!=0xff)draw_play_area_textbox_hint("A: pick  B: back  Z: check");
  else {char prompt[128];text_of(UseThisPokemonPowerText,prompt,sizeof(prompt));draw_prompt_textbox_hint(prompt,"A: choose  B: no");}
 }
 static void footer_pixels(void)
 {
  begin_frame();size_t bytes=(size_t)g_fb->stride*g_fb->height;void *actual=malloc(bytes);assert(actual);
  char saved_log[sizeof(g_log)];memcpy(saved_log,g_log,sizeof(g_log));int saved_n=g_log_n,saved_newest=g_log_newest;
- for(unsigned context=TCG_PLAY_AREA_POWER;context<=TCG_PLAY_AREA_ENERGY_TO+1;context++) {
+ const unsigned contexts[]={TCG_PLAY_AREA_POWER,TCG_PLAY_AREA_PEEK,TCG_PLAY_AREA_ENERGY_FROM,TCG_PLAY_AREA_ENERGY_TO,TCG_PLAY_AREA_DAMAGE_FROM,TCG_PLAY_AREA_DAMAGE_TO,TCG_PLAY_AREA_CURSE_FROM,TCG_PLAY_AREA_CURSE_TO,TCG_PLAY_AREA_STRANGE_BEHAVIOR,TCG_PLAY_AREA_BENCH_MULTI,0xff};
+ for(unsigned i=0;i<sizeof(contexts)/sizeof(contexts[0]);i++) {unsigned context=contexts[i];
   g_play_area_mode=context;graphics_fill_screen(g_fb,g_col[C_BG]);footer(context);memcpy(actual,g_fb->buffer,bytes);
   assert(g_log_n==saved_n&&g_log_newest==saved_newest&&!memcmp(saved_log,g_log,sizeof(g_log)));
   g_log_n=g_log_newest=0;graphics_fill_screen(g_fb,g_col[C_BG]);footer(context);

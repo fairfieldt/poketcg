@@ -1,0 +1,399 @@
+wait 6
+expect FAMILY_BEGIN~attack~P1
+press A P2
+expect_none FAMILY_RETURN~attack~P1
+shot attack-P1
+press DOWN
+press START
+press B
+press A
+wait 6
+expect FAMILY_RETURN~attack~P1
+wait 6
+expect FAMILY_BEGIN~attack~P2
+press A
+expect_none FAMILY_RETURN~attack~P2
+shot attack-P2
+press DOWN P2
+press START P2
+press B P2
+press A P2
+wait 6
+expect FAMILY_RETURN~attack~P2
+wait 6
+expect FAMILY_BEGIN~attack-cancel~P1
+press A P2
+expect_none FAMILY_RETURN~attack-cancel~P1
+shot attack-cancel-P1
+press B
+wait 6
+expect FAMILY_RETURN~attack-cancel~P1
+wait 6
+expect FAMILY_BEGIN~attack-cancel~P2
+press A
+expect_none FAMILY_RETURN~attack-cancel~P2
+shot attack-cancel-P2
+press B P2
+wait 6
+expect FAMILY_RETURN~attack-cancel~P2
+wait 6
+expect FAMILY_BEGIN~energy~P1
+press A P2
+expect_none FAMILY_RETURN~energy~P1
+shot energy-P1
+press DOWN
+press A
+wait 6
+expect FAMILY_RETURN~energy~P1
+wait 6
+expect FAMILY_BEGIN~energy~P2
+press A
+expect_none FAMILY_RETURN~energy~P2
+shot energy-P2
+press DOWN P2
+press A P2
+wait 6
+expect FAMILY_RETURN~energy~P2
+wait 6
+expect FAMILY_BEGIN~energy-cancel~P1
+press A P2
+expect_none FAMILY_RETURN~energy-cancel~P1
+shot energy-cancel-P1
+press B
+wait 6
+expect FAMILY_RETURN~energy-cancel~P1
+wait 6
+expect FAMILY_BEGIN~energy-cancel~P2
+press A
+expect_none FAMILY_RETURN~energy-cancel~P2
+shot energy-cancel-P2
+press B P2
+wait 6
+expect FAMILY_RETURN~energy-cancel~P2
+wait 6
+expect FAMILY_BEGIN~card~P1
+press A P2
+expect_none FAMILY_RETURN~card~P1
+shot card-P1
+press DOWN
+press START
+press B
+press A
+press A
+wait 6
+expect FAMILY_RETURN~card~P1
+wait 6
+expect FAMILY_BEGIN~card~P2
+press A
+expect_none FAMILY_RETURN~card~P2
+shot card-P2
+press DOWN P2
+press START P2
+press B P2
+press A P2
+press A P2
+wait 6
+expect FAMILY_RETURN~card~P2
+wait 6
+expect FAMILY_BEGIN~card-cancel~P1
+press A P2
+expect_none FAMILY_RETURN~card-cancel~P1
+shot card-cancel-P1
+press B
+wait 6
+expect FAMILY_RETURN~card-cancel~P1
+wait 6
+expect FAMILY_BEGIN~card-cancel~P2
+press A
+expect_none FAMILY_RETURN~card-cancel~P2
+shot card-cancel-P2
+press B P2
+wait 6
+expect FAMILY_RETURN~card-cancel~P2
+wait 6
+expect FAMILY_BEGIN~color~P1
+press A P2
+expect_none FAMILY_RETURN~color~P1
+shot color-P1
+press DOWN
+press DOWN
+press A
+wait 6
+expect FAMILY_RETURN~color~P1
+wait 6
+expect FAMILY_BEGIN~color~P2
+press A
+expect_none FAMILY_RETURN~color~P2
+shot color-P2
+press DOWN P2
+press DOWN P2
+press A P2
+wait 6
+expect FAMILY_RETURN~color~P2
+wait 6
+expect FAMILY_BEGIN~color-cancel~P1
+press A P2
+expect_none FAMILY_RETURN~color-cancel~P1
+shot color-cancel-P1
+press B
+wait 6
+expect FAMILY_RETURN~color-cancel~P1
+wait 6
+expect FAMILY_BEGIN~color-cancel~P2
+press A
+expect_none FAMILY_RETURN~color-cancel~P2
+shot color-cancel-P2
+press B P2
+wait 6
+expect FAMILY_RETURN~color-cancel~P2
+wait 6
+expect FAMILY_BEGIN~two-item~P1
+press A P2
+expect_none FAMILY_RETURN~two-item~P1
+shot two-item-P1
+press RIGHT
+press A
+wait 6
+expect FAMILY_RETURN~two-item~P1
+wait 6
+expect FAMILY_BEGIN~two-item~P2
+press A
+expect_none FAMILY_RETURN~two-item~P2
+shot two-item-P2
+press RIGHT P2
+press A P2
+wait 6
+expect FAMILY_RETURN~two-item~P2
+wait 6
+expect FAMILY_BEGIN~peek-deck~P1
+press A P2
+expect_none FAMILY_RETURN~peek-deck~P1
+shot peek-deck-P1
+press RIGHT
+press A
+press LEFT
+press DOWN
+press A
+wait 6
+expect FAMILY_RETURN~peek-deck~P1
+wait 6
+expect FAMILY_BEGIN~peek-deck~P2
+press A
+expect_none FAMILY_RETURN~peek-deck~P2
+shot peek-deck-P2
+press RIGHT P2
+press A P2
+press LEFT P2
+press DOWN P2
+press A P2
+wait 6
+expect FAMILY_RETURN~peek-deck~P2
+wait 6
+expect FAMILY_BEGIN~peek-back~P1
+press A P2
+expect_none FAMILY_RETURN~peek-back~P1
+shot peek-back-P1
+press RIGHT
+press A
+press B
+press A
+press RIGHT
+press RIGHT
+press A
+wait 6
+expect FAMILY_RETURN~peek-back~P1
+wait 6
+expect FAMILY_BEGIN~peek-back~P2
+press A
+expect_none FAMILY_RETURN~peek-back~P2
+shot peek-back-P2
+press RIGHT P2
+press A P2
+press B P2
+press A P2
+press RIGHT P2
+press RIGHT P2
+press A P2
+wait 6
+expect FAMILY_RETURN~peek-back~P2
+wait 6
+expect FAMILY_BEGIN~confirm~P1
+press A P2
+expect_none FAMILY_RETURN~confirm~P1
+shot confirm-P1
+press START
+press B
+press A
+wait 6
+expect FAMILY_RETURN~confirm~P1
+wait 6
+expect FAMILY_BEGIN~confirm~P2
+press A
+expect_none FAMILY_RETURN~confirm~P2
+shot confirm-P2
+press START P2
+press B P2
+press A P2
+wait 6
+expect FAMILY_RETURN~confirm~P2
+wait 6
+expect FAMILY_BEGIN~confirm-cancel~P1
+press A P2
+expect_none FAMILY_RETURN~confirm-cancel~P1
+shot confirm-cancel-P1
+press B
+wait 6
+expect FAMILY_RETURN~confirm-cancel~P1
+wait 6
+expect FAMILY_BEGIN~confirm-cancel~P2
+press A
+expect_none FAMILY_RETURN~confirm-cancel~P2
+shot confirm-cancel-P2
+press B P2
+wait 6
+expect FAMILY_RETURN~confirm-cancel~P2
+wait 6
+expect FAMILY_BEGIN~bench~P1
+press A P2
+expect_none FAMILY_RETURN~bench~P1
+shot bench-P1
+press RIGHT
+press START
+press B
+press A
+wait 6
+expect FAMILY_RETURN~bench~P1
+wait 6
+expect FAMILY_BEGIN~bench~P2
+press A
+expect_none FAMILY_RETURN~bench~P2
+shot bench-P2
+press RIGHT P2
+press START P2
+press B P2
+press A P2
+wait 6
+expect FAMILY_RETURN~bench~P2
+wait 6
+expect FAMILY_BEGIN~bench-cancel~P1
+press A P2
+expect_none FAMILY_RETURN~bench-cancel~P1
+shot bench-cancel-P1
+press B
+wait 6
+expect FAMILY_RETURN~bench-cancel~P1
+wait 6
+expect FAMILY_BEGIN~bench-cancel~P2
+press A
+expect_none FAMILY_RETURN~bench-cancel~P2
+shot bench-cancel-P2
+press B P2
+wait 6
+expect FAMILY_RETURN~bench-cancel~P2
+wait 6
+expect FAMILY_BEGIN~prophecy~P1
+press A P2
+expect_none FAMILY_RETURN~prophecy~P1
+shot prophecy-P1
+press RIGHT
+press A
+press DOWN
+press DOWN
+press A
+shot prophecy-P1-order-1
+press UP
+press UP
+press A
+shot prophecy-P1-order-2
+press DOWN
+press A
+shot prophecy-P1-order-3
+press LEFT
+press A
+wait 6
+expect FAMILY_RETURN~prophecy~P1
+wait 6
+expect FAMILY_BEGIN~prophecy~P2
+press A
+expect_none FAMILY_RETURN~prophecy~P2
+shot prophecy-P2
+press RIGHT P2
+press A P2
+press DOWN P2
+press DOWN P2
+press A P2
+shot prophecy-P2-order-1
+press UP P2
+press UP P2
+press A P2
+shot prophecy-P2-order-2
+press DOWN P2
+press A P2
+shot prophecy-P2-order-3
+press LEFT P2
+press A P2
+wait 6
+expect FAMILY_RETURN~prophecy~P2
+wait 6
+expect FAMILY_BEGIN~gigashock~P1
+press A P2
+expect_none FAMILY_RETURN~gigashock~P1
+shot gigashock-P1
+press A
+shot gigashock-P1-marked-1
+press A
+press RIGHT
+press A
+shot gigashock-P1-marked-2
+press A
+wait 6
+expect FAMILY_RETURN~gigashock~P1
+wait 6
+expect FAMILY_BEGIN~gigashock~P2
+press A
+expect_none FAMILY_RETURN~gigashock~P2
+shot gigashock-P2
+press A P2
+shot gigashock-P2-marked-1
+press A P2
+press RIGHT P2
+press A P2
+shot gigashock-P2-marked-2
+press A P2
+wait 6
+expect FAMILY_RETURN~gigashock~P2
+wait 6
+expect FAMILY_BEGIN~giga-undo~P1
+press A P2
+expect_none FAMILY_RETURN~giga-undo~P1
+shot giga-undo-P1
+press A
+shot giga-undo-P1-before-undo
+press B
+shot giga-undo-P1-after-undo
+press RIGHT
+press A
+shot giga-undo-P1-marked-2
+press LEFT
+press A
+press A
+wait 6
+expect FAMILY_RETURN~giga-undo~P1
+wait 6
+expect FAMILY_BEGIN~giga-undo~P2
+press A
+expect_none FAMILY_RETURN~giga-undo~P2
+shot giga-undo-P2
+press A P2
+shot giga-undo-P2-before-undo
+press B P2
+shot giga-undo-P2-after-undo
+press RIGHT P2
+press A P2
+shot giga-undo-P2-marked-2
+press LEFT P2
+press A P2
+press A P2
+wait 6
+expect FAMILY_RETURN~giga-undo~P2
+expect SELECTOR_FAMILIES_PASS

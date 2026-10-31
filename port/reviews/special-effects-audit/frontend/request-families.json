@@ -1,0 +1,3393 @@
+{
+  "method": "Conservative static transitive calls, including conditional/AI paths. Runtime copied-attack dispatch inherits the copied attack families; these annotations are not claims that every path was played. Card/chain authenticity is checked by the parent catalogs.",
+  "attacks": 319,
+  "powers": 26,
+  "families": {
+    "acknowledged_text": 178,
+    "absolute_play_area_slot": 19,
+    "menu_context_dispatch": 12,
+    "opposing_attack_pair": 6,
+    "energy_list_position_to_deck_index": 19,
+    "card_list_position_to_deck_index": 11,
+    "select_or_check_card": 11,
+    "color_value_in_menu_order": 3,
+    "two_named_choices": 2,
+    "yes_no": 13,
+    "peek_area_and_private_target": 1,
+    "continue_or_cancel": 4,
+    "coin_result": 135,
+    "held_or_selected_slot_mark": 4,
+    "ordered_card_numbers": 1
+  },
+  "entries": [
+    {
+      "kind": "attack",
+      "card_id": 8,
+      "card": "BULBASAUR",
+      "name": "Leech Seed",
+      "chain": "BulbasaurLeechSeedEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 9,
+      "card": "IVYSAUR",
+      "name": "Vine Whip",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 9,
+      "card": "IVYSAUR",
+      "name": "Poisonpowder",
+      "chain": "IvysaurPoisonPowderEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 10,
+      "card": "VENUSAUR_LV64",
+      "name": "Mega Drain",
+      "chain": "VenusaurMegaDrainEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 11,
+      "card": "VENUSAUR_LV67",
+      "name": "Solarbeam",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 12,
+      "card": "CATERPIE",
+      "name": "String Shot",
+      "chain": "CaterpieStringShotEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 13,
+      "card": "METAPOD",
+      "name": "Stiffen",
+      "chain": "MetapodStiffenEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 13,
+      "card": "METAPOD",
+      "name": "Stun Spore",
+      "chain": "MetapodStunSporeEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 14,
+      "card": "BUTTERFREE",
+      "name": "Whirlwind",
+      "chain": "ButterfreeWhirlwindEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 14,
+      "card": "BUTTERFREE",
+      "name": "Mega Drain",
+      "chain": "ButterfreeMegaDrainEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 15,
+      "card": "WEEDLE",
+      "name": "Poison Sting",
+      "chain": "WeedlePoisonStingEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 16,
+      "card": "KAKUNA",
+      "name": "Stiffen",
+      "chain": "KakunaStiffenEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 16,
+      "card": "KAKUNA",
+      "name": "Poisonpowder",
+      "chain": "KakunaPoisonPowderEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 17,
+      "card": "BEEDRILL",
+      "name": "Twineedle",
+      "chain": "BeedrillTwineedleEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 17,
+      "card": "BEEDRILL",
+      "name": "Poison Sting",
+      "chain": "BeedrillPoisonStingEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 18,
+      "card": "EKANS",
+      "name": "Spit Poison",
+      "chain": "EkansSpitPoisonEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 18,
+      "card": "EKANS",
+      "name": "Wrap",
+      "chain": "EkansWrapEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 19,
+      "card": "ARBOK",
+      "name": "Terror Strike",
+      "chain": "ArbokTerrorStrikeEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 19,
+      "card": "ARBOK",
+      "name": "Poison Fang",
+      "chain": "ArbokPoisonFangEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 20,
+      "card": "NIDORANF",
+      "name": "Fury Swipes",
+      "chain": "NidoranFFurySwipesEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 20,
+      "card": "NIDORANF",
+      "name": "Call for Family",
+      "chain": "NidoranFCallForFamilyEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "card_list_position_to_deck_index",
+        "select_or_check_card",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 21,
+      "card": "NIDORINA",
+      "name": "Supersonic",
+      "chain": "NidorinaSupersonicEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 21,
+      "card": "NIDORINA",
+      "name": "Double Kick",
+      "chain": "NidorinaDoubleKickEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 22,
+      "card": "NIDOQUEEN",
+      "name": "Boyfriends",
+      "chain": "NidoqueenBoyfriendsEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 22,
+      "card": "NIDOQUEEN",
+      "name": "Mega Punch",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 23,
+      "card": "NIDORANM",
+      "name": "Horn Hazard",
+      "chain": "NidoranMHornHazardEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 24,
+      "card": "NIDORINO",
+      "name": "Double Kick",
+      "chain": "NidorinoDoubleKickEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 24,
+      "card": "NIDORINO",
+      "name": "Horn Drill",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 25,
+      "card": "NIDOKING",
+      "name": "Thrash",
+      "chain": "NidokingThrashEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 25,
+      "card": "NIDOKING",
+      "name": "Toxic",
+      "chain": "NidokingToxicEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 26,
+      "card": "ZUBAT",
+      "name": "Supersonic",
+      "chain": "ZubatSupersonicEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 26,
+      "card": "ZUBAT",
+      "name": "Leech Life",
+      "chain": "ZubatLeechLifeEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 27,
+      "card": "GOLBAT",
+      "name": "Wing Attack",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 27,
+      "card": "GOLBAT",
+      "name": "Leech Life",
+      "chain": "GolbatLeechLifeEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 28,
+      "card": "ODDISH",
+      "name": "Stun Spore",
+      "chain": "OddishStunSporeEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 28,
+      "card": "ODDISH",
+      "name": "Sprout",
+      "chain": "OddishSproutEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "card_list_position_to_deck_index",
+        "select_or_check_card",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 29,
+      "card": "GLOOM",
+      "name": "Poisonpowder",
+      "chain": "GloomPoisonPowderEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 29,
+      "card": "GLOOM",
+      "name": "Foul Odor",
+      "chain": "GloomFoulOdorEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 30,
+      "card": "VILEPLUME",
+      "name": "Petal Dance",
+      "chain": "VileplumePetalDanceEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 31,
+      "card": "PARAS",
+      "name": "Scratch",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 31,
+      "card": "PARAS",
+      "name": "Spore",
+      "chain": "ParasSporeEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 32,
+      "card": "PARASECT",
+      "name": "Spore",
+      "chain": "ParasectSporeEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 32,
+      "card": "PARASECT",
+      "name": "Slash",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 33,
+      "card": "VENONAT",
+      "name": "Stun Spore",
+      "chain": "VenonatStunSporeEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 33,
+      "card": "VENONAT",
+      "name": "Leech Life",
+      "chain": "VenonatLeechLifeEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 34,
+      "card": "VENOMOTH",
+      "name": "Venom Powder",
+      "chain": "VenomothVenomPowderEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 35,
+      "card": "BELLSPROUT",
+      "name": "Vine Whip",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 35,
+      "card": "BELLSPROUT",
+      "name": "Call for Family",
+      "chain": "BellsproutCallForFamilyEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "card_list_position_to_deck_index",
+        "select_or_check_card",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 36,
+      "card": "WEEPINBELL",
+      "name": "Poisonpowder",
+      "chain": "WeepinbellPoisonPowderEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 36,
+      "card": "WEEPINBELL",
+      "name": "Razor Leaf",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 37,
+      "card": "VICTREEBEL",
+      "name": "Lure",
+      "chain": "VictreebelLureEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 37,
+      "card": "VICTREEBEL",
+      "name": "Acid",
+      "chain": "VictreebelAcidEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 38,
+      "card": "GRIMER",
+      "name": "Nasty Goo",
+      "chain": "GrimerNastyGooEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 38,
+      "card": "GRIMER",
+      "name": "Minimize",
+      "chain": "GrimerMinimizeEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 39,
+      "card": "MUK",
+      "name": "Sludge",
+      "chain": "MukSludgeEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 40,
+      "card": "EXEGGCUTE",
+      "name": "Hypnosis",
+      "chain": "ExeggcuteHypnosisEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 40,
+      "card": "EXEGGCUTE",
+      "name": "Leech Seed",
+      "chain": "ExeggcuteLeechSeedEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 41,
+      "card": "EXEGGUTOR",
+      "name": "Teleport",
+      "chain": "ExeggutorTeleportEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 41,
+      "card": "EXEGGUTOR",
+      "name": "Big Eggsplosion",
+      "chain": "ExeggutorBigEggsplosionEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 42,
+      "card": "KOFFING",
+      "name": "Foul Gas",
+      "chain": "KoffingFoulGasEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 43,
+      "card": "WEEZING",
+      "name": "Smog",
+      "chain": "WeezingSmogEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 43,
+      "card": "WEEZING",
+      "name": "Selfdestruct",
+      "chain": "WeezingSelfdestructEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 44,
+      "card": "TANGELA_LV8",
+      "name": "Bind",
+      "chain": "TangelaBindEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 44,
+      "card": "TANGELA_LV8",
+      "name": "Poisonpowder",
+      "chain": "TangelaPoisonPowderEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 45,
+      "card": "TANGELA_LV12",
+      "name": "Stun Spore",
+      "chain": "TangelaStunSporeEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 45,
+      "card": "TANGELA_LV12",
+      "name": "Poison Whip",
+      "chain": "TangelaPoisonWhipEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 46,
+      "card": "SCYTHER",
+      "name": "Swords Dance",
+      "chain": "ScytherSwordsDanceEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 46,
+      "card": "SCYTHER",
+      "name": "Slash",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 47,
+      "card": "PINSIR",
+      "name": "Irongrip",
+      "chain": "PinsirIronGripEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 47,
+      "card": "PINSIR",
+      "name": "Guillotine",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 48,
+      "card": "CHARMANDER",
+      "name": "Scratch",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 48,
+      "card": "CHARMANDER",
+      "name": "Ember",
+      "chain": "CharmanderEmberEffectCommands",
+      "families": [
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 49,
+      "card": "CHARMELEON",
+      "name": "Slash",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 49,
+      "card": "CHARMELEON",
+      "name": "Flamethrower",
+      "chain": "CharmeleonFlamethrowerEffectCommands",
+      "families": [
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 50,
+      "card": "CHARIZARD",
+      "name": "Fire Spin",
+      "chain": "CharizardFireSpinEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 51,
+      "card": "VULPIX",
+      "name": "Confuse Ray",
+      "chain": "VulpixConfuseRayEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 52,
+      "card": "NINETALES_LV32",
+      "name": "Lure",
+      "chain": "NinetalesLureEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 52,
+      "card": "NINETALES_LV32",
+      "name": "Fire Blast",
+      "chain": "NinetalesFireBlastEffectCommands",
+      "families": [
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 53,
+      "card": "NINETALES_LV35",
+      "name": "Mix-Up",
+      "chain": "NinetalesMixUpEffectCommands",
+      "families": [
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 53,
+      "card": "NINETALES_LV35",
+      "name": "Dancing Embers",
+      "chain": "NinetalesDancingEmbersEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 54,
+      "card": "GROWLITHE",
+      "name": "Flare",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 55,
+      "card": "ARCANINE_LV34",
+      "name": "Quick Attack",
+      "chain": "ArcanineQuickAttackEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 55,
+      "card": "ARCANINE_LV34",
+      "name": "Flames of Rage",
+      "chain": "ArcanineFlamesOfRageEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 56,
+      "card": "ARCANINE_LV45",
+      "name": "Flamethrower",
+      "chain": "ArcanineFlamethrowerEffectCommands",
+      "families": [
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 56,
+      "card": "ARCANINE_LV45",
+      "name": "Take Down",
+      "chain": "ArcanineTakeDownEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 57,
+      "card": "PONYTA",
+      "name": "Smash Kick",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 57,
+      "card": "PONYTA",
+      "name": "Flame Tail",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 58,
+      "card": "RAPIDASH",
+      "name": "Stomp",
+      "chain": "RapidashStompEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 58,
+      "card": "RAPIDASH",
+      "name": "Agility",
+      "chain": "RapidashAgilityEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 59,
+      "card": "MAGMAR_LV24",
+      "name": "Fire Punch",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 59,
+      "card": "MAGMAR_LV24",
+      "name": "Flamethrower",
+      "chain": "MagmarFlamethrowerEffectCommands",
+      "families": [
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 60,
+      "card": "MAGMAR_LV31",
+      "name": "Smokescreen",
+      "chain": "MagmarSmokescreenEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 60,
+      "card": "MAGMAR_LV31",
+      "name": "Smog",
+      "chain": "MagmarSmogEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 61,
+      "card": "FLAREON_LV22",
+      "name": "Bite",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 61,
+      "card": "FLAREON_LV22",
+      "name": "Rage",
+      "chain": "FlareonRageEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 62,
+      "card": "FLAREON_LV28",
+      "name": "Quick Attack",
+      "chain": "FlareonQuickAttackEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 62,
+      "card": "FLAREON_LV28",
+      "name": "Flamethrower",
+      "chain": "FlareonFlamethrowerEffectCommands",
+      "families": [
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 63,
+      "card": "MOLTRES_LV35",
+      "name": "Wildfire",
+      "chain": "MoltresWildfireEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 63,
+      "card": "MOLTRES_LV35",
+      "name": "Dive Bomb",
+      "chain": "MoltresLv35DiveBombEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 64,
+      "card": "MOLTRES_LV37",
+      "name": "Dive Bomb",
+      "chain": "MoltresLv37DiveBombEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 65,
+      "card": "SQUIRTLE",
+      "name": "Bubble",
+      "chain": "SquirtleBubbleEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 65,
+      "card": "SQUIRTLE",
+      "name": "Withdraw",
+      "chain": "SquirtleWithdrawEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 66,
+      "card": "WARTORTLE",
+      "name": "Withdraw",
+      "chain": "WartortleWithdrawEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 66,
+      "card": "WARTORTLE",
+      "name": "Bite",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 67,
+      "card": "BLASTOISE",
+      "name": "Hydro Pump",
+      "chain": "BlastoiseHydroPumpEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 68,
+      "card": "PSYDUCK",
+      "name": "Headache",
+      "chain": "PsyduckHeadacheEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 68,
+      "card": "PSYDUCK",
+      "name": "Fury Swipes",
+      "chain": "PsyduckFurySwipesEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 69,
+      "card": "GOLDUCK",
+      "name": "Psyshock",
+      "chain": "GolduckPsyshockEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 69,
+      "card": "GOLDUCK",
+      "name": "Hyper Beam",
+      "chain": "GolduckHyperBeamEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 70,
+      "card": "POLIWAG",
+      "name": "Water Gun",
+      "chain": "PoliwagWaterGunEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 71,
+      "card": "POLIWHIRL",
+      "name": "Amnesia",
+      "chain": "PoliwhirlAmnesiaEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "menu_context_dispatch",
+        "opposing_attack_pair"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 71,
+      "card": "POLIWHIRL",
+      "name": "Doubleslap",
+      "chain": "PoliwhirlDoubleslapEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 72,
+      "card": "POLIWRATH",
+      "name": "Water Gun",
+      "chain": "PoliwrathWaterGunEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 72,
+      "card": "POLIWRATH",
+      "name": "Whirlpool",
+      "chain": "PoliwrathWhirlpoolEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 73,
+      "card": "TENTACOOL",
+      "name": "Acid",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 74,
+      "card": "TENTACRUEL",
+      "name": "Supersonic",
+      "chain": "TentacruelSupersonicEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 74,
+      "card": "TENTACRUEL",
+      "name": "Jellyfish Sting",
+      "chain": "TentacruelJellyfishStingEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 75,
+      "card": "SEEL",
+      "name": "Headbutt",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 76,
+      "card": "DEWGONG",
+      "name": "Aurora Beam",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 76,
+      "card": "DEWGONG",
+      "name": "Ice Beam",
+      "chain": "DewgongIceBeamEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 77,
+      "card": "SHELLDER",
+      "name": "Supersonic",
+      "chain": "ShellderSupersonicEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 77,
+      "card": "SHELLDER",
+      "name": "Hide in Shell",
+      "chain": "ShellderHideInShellEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 78,
+      "card": "CLOYSTER",
+      "name": "Clamp",
+      "chain": "CloysterClampEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 78,
+      "card": "CLOYSTER",
+      "name": "Spike Cannon",
+      "chain": "CloysterSpikeCannonEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 79,
+      "card": "KRABBY",
+      "name": "Call for Family",
+      "chain": "KrabbyCallForFamilyEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "card_list_position_to_deck_index",
+        "select_or_check_card",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 79,
+      "card": "KRABBY",
+      "name": "Irongrip",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 80,
+      "card": "KINGLER",
+      "name": "Flail",
+      "chain": "KinglerFlailEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 80,
+      "card": "KINGLER",
+      "name": "Crabhammer",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 81,
+      "card": "HORSEA",
+      "name": "Smokescreen",
+      "chain": "HorseaSmokescreenEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 82,
+      "card": "SEADRA",
+      "name": "Water Gun",
+      "chain": "SeadraWaterGunEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 82,
+      "card": "SEADRA",
+      "name": "Agility",
+      "chain": "SeadraAgilityEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 83,
+      "card": "GOLDEEN",
+      "name": "Horn Attack",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 84,
+      "card": "SEAKING",
+      "name": "Horn Attack",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 84,
+      "card": "SEAKING",
+      "name": "Waterfall",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 85,
+      "card": "STARYU",
+      "name": "Slap",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 86,
+      "card": "STARMIE",
+      "name": "Recover",
+      "chain": "StarmieRecoverEffectCommands",
+      "families": [
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 86,
+      "card": "STARMIE",
+      "name": "Star Freeze",
+      "chain": "StarmieStarFreezeEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 87,
+      "card": "MAGIKARP",
+      "name": "Tackle",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 87,
+      "card": "MAGIKARP",
+      "name": "Flail",
+      "chain": "MagikarpFlailEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 88,
+      "card": "GYARADOS",
+      "name": "Dragon Rage",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 88,
+      "card": "GYARADOS",
+      "name": "Bubblebeam",
+      "chain": "GyaradosBubblebeamEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 89,
+      "card": "LAPRAS",
+      "name": "Water Gun",
+      "chain": "LaprasWaterGunEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 89,
+      "card": "LAPRAS",
+      "name": "Confuse Ray",
+      "chain": "LaprasConfuseRayEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 90,
+      "card": "VAPOREON_LV29",
+      "name": "Focus Energy",
+      "chain": "VaporeonFocusEnergyEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 90,
+      "card": "VAPOREON_LV29",
+      "name": "Bite",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 91,
+      "card": "VAPOREON_LV42",
+      "name": "Quick Attack",
+      "chain": "VaporeonQuickAttackEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 91,
+      "card": "VAPOREON_LV42",
+      "name": "Water Gun",
+      "chain": "VaporeonWaterGunEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 92,
+      "card": "OMANYTE",
+      "name": "Water Gun",
+      "chain": "OmanyteWaterGunEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 93,
+      "card": "OMASTAR",
+      "name": "Water Gun",
+      "chain": "OmastarWaterGunEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 93,
+      "card": "OMASTAR",
+      "name": "Spike Cannon",
+      "chain": "OmastarSpikeCannonEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 94,
+      "card": "ARTICUNO_LV35",
+      "name": "Freeze Dry",
+      "chain": "ArticunoFreezeDryEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 94,
+      "card": "ARTICUNO_LV35",
+      "name": "Blizzard",
+      "chain": "ArticunoBlizzardEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 95,
+      "card": "ARTICUNO_LV37",
+      "name": "Ice Breath",
+      "chain": "ArticunoIceBreathEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 96,
+      "card": "PIKACHU_LV12",
+      "name": "Gnaw",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 96,
+      "card": "PIKACHU_LV12",
+      "name": "Thunder Jolt",
+      "chain": "PikachuThunderJoltEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 97,
+      "card": "PIKACHU_LV14",
+      "name": "Spark",
+      "chain": "PikachuSparkEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 98,
+      "card": "PIKACHU_LV16",
+      "name": "Growl",
+      "chain": "PikachuLv16GrowlEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 98,
+      "card": "PIKACHU_LV16",
+      "name": "Thundershock",
+      "chain": "PikachuLv16ThundershockEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 99,
+      "card": "PIKACHU_ALT_LV16",
+      "name": "Growl",
+      "chain": "PikachuAltLv16GrowlEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 99,
+      "card": "PIKACHU_ALT_LV16",
+      "name": "Thundershock",
+      "chain": "PikachuAltLv16ThundershockEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 100,
+      "card": "FLYING_PIKACHU",
+      "name": "Thundershock",
+      "chain": "FlyingPikachuThundershockEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 100,
+      "card": "FLYING_PIKACHU",
+      "name": "Fly",
+      "chain": "FlyingPikachuFlyEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 101,
+      "card": "SURFING_PIKACHU_LV13",
+      "name": "Surf",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 102,
+      "card": "SURFING_PIKACHU_ALT_LV13",
+      "name": "Surf",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 103,
+      "card": "RAICHU_LV40",
+      "name": "Agility",
+      "chain": "RaichuAgilityEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 103,
+      "card": "RAICHU_LV40",
+      "name": "Thunder",
+      "chain": "RaichuThunderEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 104,
+      "card": "RAICHU_LV45",
+      "name": "Gigashock",
+      "chain": "RaichuGigashockEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result",
+        "continue_or_cancel",
+        "held_or_selected_slot_mark",
+        "menu_context_dispatch"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 105,
+      "card": "MAGNEMITE_LV13",
+      "name": "Thunder Wave",
+      "chain": "MagnemiteThunderWaveEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 105,
+      "card": "MAGNEMITE_LV13",
+      "name": "Selfdestruct",
+      "chain": "MagnemiteSelfdestructEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 106,
+      "card": "MAGNEMITE_LV15",
+      "name": "Tackle",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 106,
+      "card": "MAGNEMITE_LV15",
+      "name": "Magnetic Storm",
+      "chain": "MagnemiteMagneticStormEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "continue_or_cancel"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 107,
+      "card": "MAGNETON_LV28",
+      "name": "Thunder Wave",
+      "chain": "MagnetonThunderWaveEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 107,
+      "card": "MAGNETON_LV28",
+      "name": "Selfdestruct",
+      "chain": "MagnetonLv28SelfdestructEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 108,
+      "card": "MAGNETON_LV35",
+      "name": "Sonicboom",
+      "chain": "MagnetonSonicboomEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 108,
+      "card": "MAGNETON_LV35",
+      "name": "Selfdestruct",
+      "chain": "MagnetonLv35SelfdestructEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 109,
+      "card": "VOLTORB",
+      "name": "Tackle",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 110,
+      "card": "ELECTRODE_LV35",
+      "name": "Sonicboom",
+      "chain": "ElectrodeSonicboomEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 110,
+      "card": "ELECTRODE_LV35",
+      "name": "Energy Spike",
+      "chain": "ElectrodeEnergySpikeEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text",
+        "card_list_position_to_deck_index",
+        "select_or_check_card",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 111,
+      "card": "ELECTRODE_LV42",
+      "name": "Tackle",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 111,
+      "card": "ELECTRODE_LV42",
+      "name": "Chain Lightning",
+      "chain": "ElectrodeChainLightningEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 112,
+      "card": "ELECTABUZZ_LV20",
+      "name": "Light Screen",
+      "chain": "ElectabuzzLightScreenEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 112,
+      "card": "ELECTABUZZ_LV20",
+      "name": "Quick Attack",
+      "chain": "ElectabuzzQuickAttackEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 113,
+      "card": "ELECTABUZZ_LV35",
+      "name": "Thundershock",
+      "chain": "ElectabuzzThundershockEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 113,
+      "card": "ELECTABUZZ_LV35",
+      "name": "Thunderpunch",
+      "chain": "ElectabuzzThunderpunchEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 114,
+      "card": "JOLTEON_LV24",
+      "name": "Double Kick",
+      "chain": "JolteonDoubleKickEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 114,
+      "card": "JOLTEON_LV24",
+      "name": "Stun Needle",
+      "chain": "JolteonStunNeedleEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 115,
+      "card": "JOLTEON_LV29",
+      "name": "Quick Attack",
+      "chain": "JolteonQuickAttackEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 115,
+      "card": "JOLTEON_LV29",
+      "name": "Pin Missile",
+      "chain": "JolteonPinMissileEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 116,
+      "card": "ZAPDOS_LV40",
+      "name": "Thunderstorm",
+      "chain": "ZapdosThunderstormEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 117,
+      "card": "ZAPDOS_LV64",
+      "name": "Thunder",
+      "chain": "ZapdosThunderEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 117,
+      "card": "ZAPDOS_LV64",
+      "name": "Thunderbolt",
+      "chain": "ZapdosThunderboltEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 118,
+      "card": "ZAPDOS_LV68",
+      "name": "Big Thunder",
+      "chain": "ZapdosBigThunderEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 119,
+      "card": "SANDSHREW",
+      "name": "Sand-attack",
+      "chain": "SandshrewSandAttackEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 120,
+      "card": "SANDSLASH",
+      "name": "Slash",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 120,
+      "card": "SANDSLASH",
+      "name": "Fury Swipes",
+      "chain": "SandslashFurySwipesEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 121,
+      "card": "DIGLETT",
+      "name": "Dig",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 121,
+      "card": "DIGLETT",
+      "name": "Mud Slap",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 122,
+      "card": "DUGTRIO",
+      "name": "Slash",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 122,
+      "card": "DUGTRIO",
+      "name": "Earthquake",
+      "chain": "DugtrioEarthquakeEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 123,
+      "card": "MANKEY",
+      "name": "Scratch",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 124,
+      "card": "PRIMEAPE",
+      "name": "Fury Swipes",
+      "chain": "PrimeapeFurySwipesEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 124,
+      "card": "PRIMEAPE",
+      "name": "Tantrum",
+      "chain": "PrimeapeTantrumEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 125,
+      "card": "MACHOP",
+      "name": "Low Kick",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 126,
+      "card": "MACHOKE",
+      "name": "Karate Chop",
+      "chain": "MachokeKarateChopEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 126,
+      "card": "MACHOKE",
+      "name": "Submission",
+      "chain": "MachokeSubmissionEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 127,
+      "card": "MACHAMP",
+      "name": "Seismic Toss",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 128,
+      "card": "GEODUDE",
+      "name": "Stone Barrage",
+      "chain": "GeodudeStoneBarrageEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 129,
+      "card": "GRAVELER",
+      "name": "Harden",
+      "chain": "GravelerHardenEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 129,
+      "card": "GRAVELER",
+      "name": "Rock Throw",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 130,
+      "card": "GOLEM",
+      "name": "Avalanche",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 130,
+      "card": "GOLEM",
+      "name": "Selfdestruct",
+      "chain": "GolemSelfdestructEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 131,
+      "card": "ONIX",
+      "name": "Rock Throw",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 131,
+      "card": "ONIX",
+      "name": "Harden",
+      "chain": "OnixHardenEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 132,
+      "card": "CUBONE",
+      "name": "Snivel",
+      "chain": "CuboneSnivelEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 132,
+      "card": "CUBONE",
+      "name": "Rage",
+      "chain": "CuboneRageEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 133,
+      "card": "MAROWAK_LV26",
+      "name": "Bonemerang",
+      "chain": "MarowakBonemerangEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 133,
+      "card": "MAROWAK_LV26",
+      "name": "Call for Friend",
+      "chain": "MarowakCallforFriendEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "card_list_position_to_deck_index",
+        "select_or_check_card",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 134,
+      "card": "MAROWAK_LV32",
+      "name": "Bone Attack",
+      "chain": "MarowakBoneAttackEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 134,
+      "card": "MAROWAK_LV32",
+      "name": "Wail",
+      "chain": "MarowakWailEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 135,
+      "card": "HITMONLEE",
+      "name": "Stretch Kick",
+      "chain": "HitmonleeStretchKickEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 135,
+      "card": "HITMONLEE",
+      "name": "High Jump Kick",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 136,
+      "card": "HITMONCHAN",
+      "name": "Jab",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 136,
+      "card": "HITMONCHAN",
+      "name": "Special Punch",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 137,
+      "card": "RHYHORN",
+      "name": "Leer",
+      "chain": "RhyhornLeerEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 137,
+      "card": "RHYHORN",
+      "name": "Horn Attack",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 138,
+      "card": "RHYDON",
+      "name": "Horn Attack",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 138,
+      "card": "RHYDON",
+      "name": "Ram",
+      "chain": "RhydonRamEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 139,
+      "card": "KABUTO",
+      "name": "Scratch",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 140,
+      "card": "KABUTOPS",
+      "name": "Sharp Sickle",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 140,
+      "card": "KABUTOPS",
+      "name": "Absorb",
+      "chain": "KabutopsAbsorbEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 141,
+      "card": "AERODACTYL",
+      "name": "Wing Attack",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 142,
+      "card": "ABRA",
+      "name": "Psyshock",
+      "chain": "AbraPsyshockEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 143,
+      "card": "KADABRA",
+      "name": "Recover",
+      "chain": "KadabraRecoverEffectCommands",
+      "families": [
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 143,
+      "card": "KADABRA",
+      "name": "Super Psy",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 144,
+      "card": "ALAKAZAM",
+      "name": "Confuse Ray",
+      "chain": "AlakazamConfuseRayEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 145,
+      "card": "SLOWPOKE_LV9",
+      "name": "Headbutt",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 145,
+      "card": "SLOWPOKE_LV9",
+      "name": "Amnesia",
+      "chain": "SlowpokeAmnesiaEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "menu_context_dispatch",
+        "opposing_attack_pair"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 146,
+      "card": "SLOWPOKE_LV18",
+      "name": "Spacing Out",
+      "chain": "SlowpokeSpacingOutEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 146,
+      "card": "SLOWPOKE_LV18",
+      "name": "Scavenge",
+      "chain": "SlowpokeScavengeEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "card_list_position_to_deck_index",
+        "energy_list_position_to_deck_index",
+        "select_or_check_card"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 147,
+      "card": "SLOWBRO",
+      "name": "Psyshock",
+      "chain": "SlowbroPsyshockEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 148,
+      "card": "GASTLY_LV8",
+      "name": "Sleeping Gas",
+      "chain": "GastlySleepingGasEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 148,
+      "card": "GASTLY_LV8",
+      "name": "Destiny Bond",
+      "chain": "GastlyDestinyBondEffectCommands",
+      "families": [
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 149,
+      "card": "GASTLY_LV17",
+      "name": "Lick",
+      "chain": "GastlyLickEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 149,
+      "card": "GASTLY_LV17",
+      "name": "Energy Conversion",
+      "chain": "GastlyEnergyConversionEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "card_list_position_to_deck_index",
+        "select_or_check_card",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 150,
+      "card": "HAUNTER_LV17",
+      "name": "Nightmare",
+      "chain": "HaunterNightmareEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 151,
+      "card": "HAUNTER_LV22",
+      "name": "Hypnosis",
+      "chain": "HaunterHypnosisEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 151,
+      "card": "HAUNTER_LV22",
+      "name": "Dream Eater",
+      "chain": "HaunterDreamEaterEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 152,
+      "card": "GENGAR",
+      "name": "Dark Mind",
+      "chain": "GengarDarkMindEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 153,
+      "card": "DROWZEE",
+      "name": "Pound",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 153,
+      "card": "DROWZEE",
+      "name": "Confuse Ray",
+      "chain": "DrowzeeConfuseRayEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 154,
+      "card": "HYPNO",
+      "name": "Prophecy",
+      "chain": "HypnoProphecyEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "card_list_position_to_deck_index",
+        "ordered_card_numbers",
+        "select_or_check_card",
+        "two_named_choices",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 154,
+      "card": "HYPNO",
+      "name": "Dark Mind",
+      "chain": "HypnoDarkMindEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 155,
+      "card": "MR_MIME",
+      "name": "Meditate",
+      "chain": "MrMimeMeditateEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 156,
+      "card": "JYNX",
+      "name": "Doubleslap",
+      "chain": "JynxDoubleslapEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 156,
+      "card": "JYNX",
+      "name": "Meditate",
+      "chain": "JynxMeditateEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 157,
+      "card": "MEWTWO_LV53",
+      "name": "Psychic",
+      "chain": "MewtwoPsychicEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 157,
+      "card": "MEWTWO_LV53",
+      "name": "Barrier",
+      "chain": "MewtwoBarrierEffectCommands",
+      "families": [
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 158,
+      "card": "MEWTWO_LV60",
+      "name": "Energy Absorption",
+      "chain": "MewtwoEnergyAbsorptionEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "card_list_position_to_deck_index",
+        "select_or_check_card",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 158,
+      "card": "MEWTWO_LV60",
+      "name": "Psyburn",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 159,
+      "card": "MEWTWO_ALT_LV60",
+      "name": "Energy Absorption",
+      "chain": "MewtwoAltEnergyAbsorptionEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "card_list_position_to_deck_index",
+        "select_or_check_card",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 159,
+      "card": "MEWTWO_ALT_LV60",
+      "name": "Psyburn",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 160,
+      "card": "MEW_LV8",
+      "name": "Psyshock",
+      "chain": "MewPsyshockEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 161,
+      "card": "MEW_LV15",
+      "name": "Mystery Attack",
+      "chain": "MewMysteryAttackEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 162,
+      "card": "MEW_LV23",
+      "name": "Psywave",
+      "chain": "MewPsywaveEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 162,
+      "card": "MEW_LV23",
+      "name": "Devolution Beam",
+      "chain": "MewDevolutionBeamEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text",
+        "coin_result",
+        "two_named_choices",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 163,
+      "card": "PIDGEY",
+      "name": "Whirlwind",
+      "chain": "PidgeyWhirlwindEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 164,
+      "card": "PIDGEOTTO",
+      "name": "Whirlwind",
+      "chain": "PidgeottoWhirlwindEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 164,
+      "card": "PIDGEOTTO",
+      "name": "Mirror Move",
+      "chain": "PidgeottoMirrorMoveEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "energy_list_position_to_deck_index",
+        "menu_context_dispatch",
+        "opposing_attack_pair"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 165,
+      "card": "PIDGEOT_LV38",
+      "name": "Slicing Wind",
+      "chain": "PidgeotSlicingWindEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 165,
+      "card": "PIDGEOT_LV38",
+      "name": "Gale",
+      "chain": "PidgeotGaleEffectCommands",
+      "families": [
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 166,
+      "card": "PIDGEOT_LV40",
+      "name": "Wing Attack",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 166,
+      "card": "PIDGEOT_LV40",
+      "name": "Hurricane",
+      "chain": "PidgeotHurricaneEffectCommands",
+      "families": [
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 167,
+      "card": "RATTATA",
+      "name": "Bite",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 168,
+      "card": "RATICATE",
+      "name": "Bite",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 168,
+      "card": "RATICATE",
+      "name": "Super Fang",
+      "chain": "RaticateSuperFangEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 169,
+      "card": "SPEAROW",
+      "name": "Peck",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 169,
+      "card": "SPEAROW",
+      "name": "Mirror Move",
+      "chain": "SpearowMirrorMoveEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "energy_list_position_to_deck_index",
+        "menu_context_dispatch",
+        "opposing_attack_pair"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 170,
+      "card": "FEAROW",
+      "name": "Agility",
+      "chain": "FearowAgilityEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 170,
+      "card": "FEAROW",
+      "name": "Drill Peck",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 171,
+      "card": "CLEFAIRY",
+      "name": "Sing",
+      "chain": "ClefairySingEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 171,
+      "card": "CLEFAIRY",
+      "name": "Metronome",
+      "chain": "ClefairyMetronomeEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "menu_context_dispatch",
+        "opposing_attack_pair"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 172,
+      "card": "CLEFABLE",
+      "name": "Metronome",
+      "chain": "ClefableMetronomeEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "menu_context_dispatch",
+        "opposing_attack_pair"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 172,
+      "card": "CLEFABLE",
+      "name": "Minimize",
+      "chain": "ClefableMinimizeEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 173,
+      "card": "JIGGLYPUFF_LV12",
+      "name": "First Aid",
+      "chain": "JigglypuffFirstAidEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 173,
+      "card": "JIGGLYPUFF_LV12",
+      "name": "Double-edge",
+      "chain": "JigglypuffDoubleEdgeEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 174,
+      "card": "JIGGLYPUFF_LV13",
+      "name": "Friendship Song",
+      "chain": "JigglypuffFriendshipSongEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 174,
+      "card": "JIGGLYPUFF_LV13",
+      "name": "Expand",
+      "chain": "JigglypuffExpandEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 175,
+      "card": "JIGGLYPUFF_LV14",
+      "name": "Lullaby",
+      "chain": "JigglypuffLullabyEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 175,
+      "card": "JIGGLYPUFF_LV14",
+      "name": "Pound",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 176,
+      "card": "WIGGLYTUFF",
+      "name": "Lullaby",
+      "chain": "WigglytuffLullabyEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 176,
+      "card": "WIGGLYTUFF",
+      "name": "Do the Wave",
+      "chain": "WigglytuffDoTheWaveEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 177,
+      "card": "MEOWTH_LV14",
+      "name": "Cat Punch",
+      "chain": "MeowthCatPunchEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 178,
+      "card": "MEOWTH_LV15",
+      "name": "Pay Day",
+      "chain": "MeowthPayDayEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 179,
+      "card": "PERSIAN",
+      "name": "Scratch",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 179,
+      "card": "PERSIAN",
+      "name": "Pounce",
+      "chain": "PersianPounceEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 180,
+      "card": "FARFETCHD",
+      "name": "Leek Slap",
+      "chain": "FarfetchdLeekSlapEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 180,
+      "card": "FARFETCHD",
+      "name": "Pot Smash",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 181,
+      "card": "DODUO",
+      "name": "Fury Attack",
+      "chain": "DoduoFuryAttackEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 182,
+      "card": "DODRIO",
+      "name": "Rage",
+      "chain": "DodrioRageEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 183,
+      "card": "LICKITUNG",
+      "name": "Tongue Wrap",
+      "chain": "LickitungTongueWrapEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 183,
+      "card": "LICKITUNG",
+      "name": "Supersonic",
+      "chain": "LickitungSupersonicEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 184,
+      "card": "CHANSEY",
+      "name": "Scrunch",
+      "chain": "ChanseyScrunchEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 184,
+      "card": "CHANSEY",
+      "name": "Double-edge",
+      "chain": "ChanseyDoubleEdgeEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 185,
+      "card": "KANGASKHAN",
+      "name": "Fetch",
+      "chain": "KangaskhanFetchEffectCommands",
+      "families": [
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 185,
+      "card": "KANGASKHAN",
+      "name": "Comet Punch",
+      "chain": "KangaskhanCometPunchEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 186,
+      "card": "TAUROS",
+      "name": "Stomp",
+      "chain": "TaurosStompEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 186,
+      "card": "TAUROS",
+      "name": "Rampage",
+      "chain": "TaurosRampageEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 187,
+      "card": "DITTO",
+      "name": "Pound",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 187,
+      "card": "DITTO",
+      "name": "Morph",
+      "chain": "DittoMorphEffectCommands",
+      "families": [
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 188,
+      "card": "EEVEE",
+      "name": "Tail Wag",
+      "chain": "EeveeTailWagEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 188,
+      "card": "EEVEE",
+      "name": "Quick Attack",
+      "chain": "EeveeQuickAttackEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 189,
+      "card": "PORYGON",
+      "name": "Conversion 1",
+      "chain": "PorygonConversion1EffectCommands",
+      "families": [
+        "color_value_in_menu_order"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 189,
+      "card": "PORYGON",
+      "name": "Conversion 2",
+      "chain": "PorygonConversion2EffectCommands",
+      "families": [
+        "color_value_in_menu_order"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 190,
+      "card": "SNORLAX",
+      "name": "Body Slam",
+      "chain": "SnorlaxBodySlamEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 191,
+      "card": "DRATINI",
+      "name": "Pound",
+      "chain": null,
+      "families": []
+    },
+    {
+      "kind": "attack",
+      "card_id": 192,
+      "card": "DRAGONAIR",
+      "name": "Slam",
+      "chain": "DragonairSlamEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 192,
+      "card": "DRAGONAIR",
+      "name": "Hyper Beam",
+      "chain": "DragonairHyperBeamEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "energy_list_position_to_deck_index"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 193,
+      "card": "DRAGONITE_LV41",
+      "name": "Slam",
+      "chain": "DragoniteLv41SlamEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "attack",
+      "card_id": 194,
+      "card": "DRAGONITE_LV45",
+      "name": "Slam",
+      "chain": "DragoniteLv45SlamEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "power",
+      "card_id": 10,
+      "card": "VENUSAUR_LV64",
+      "name": "SolarPowerName",
+      "chain": "VenusaurSolarPowerEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 11,
+      "card": "VENUSAUR_LV67",
+      "name": "EnergyTransName",
+      "chain": "VenusaurEnergyTransEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "held_or_selected_slot_mark",
+        "menu_context_dispatch"
+      ]
+    },
+    {
+      "kind": "power",
+      "card_id": 30,
+      "card": "VILEPLUME",
+      "name": "HealName",
+      "chain": "VileplumeHealEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text",
+        "coin_result",
+        "continue_or_cancel"
+      ]
+    },
+    {
+      "kind": "power",
+      "card_id": 34,
+      "card": "VENOMOTH",
+      "name": "ShiftName",
+      "chain": "VenomothShiftEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "color_value_in_menu_order"
+      ]
+    },
+    {
+      "kind": "power",
+      "card_id": 39,
+      "card": "MUK",
+      "name": "ToxicGasName",
+      "chain": "MukToxicGasEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 50,
+      "card": "CHARIZARD",
+      "name": "EnergyBurnName",
+      "chain": "CharizardEnergyBurnEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 64,
+      "card": "MOLTRES_LV37",
+      "name": "FiregiverName",
+      "chain": "MoltresFiregiverEffectCommands",
+      "families": [
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "power",
+      "card_id": 67,
+      "card": "BLASTOISE",
+      "name": "RainDanceName",
+      "chain": "BlastoiseRainDanceEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 73,
+      "card": "TENTACOOL",
+      "name": "CowardiceName",
+      "chain": "TentacoolCowardiceEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text"
+      ]
+    },
+    {
+      "kind": "power",
+      "card_id": 92,
+      "card": "OMANYTE",
+      "name": "ClairvoyanceName",
+      "chain": "OmanyteClairvoyanceEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 95,
+      "card": "ARTICUNO_LV37",
+      "name": "QuickfreezeName",
+      "chain": "ArticunoQuickfreezeEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "coin_result"
+      ]
+    },
+    {
+      "kind": "power",
+      "card_id": 118,
+      "card": "ZAPDOS_LV68",
+      "name": "PealOfThunderName",
+      "chain": "ZapdosPealOfThunderEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text",
+        "coin_result",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "power",
+      "card_id": 123,
+      "card": "MANKEY",
+      "name": "PeekName",
+      "chain": "MankeyPeekEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "menu_context_dispatch",
+        "peek_area_and_private_target"
+      ]
+    },
+    {
+      "kind": "power",
+      "card_id": 127,
+      "card": "MACHAMP",
+      "name": "StrikesBackName",
+      "chain": "MachampStrikesBackEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 139,
+      "card": "KABUTO",
+      "name": "KabutoArmorName",
+      "chain": "KabutoKabutoArmorEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 141,
+      "card": "AERODACTYL",
+      "name": "PrehistoricPowerName",
+      "chain": "AerodactylPrehistoricPowerEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 144,
+      "card": "ALAKAZAM",
+      "name": "DamageSwapName",
+      "chain": "AlakazamDamageSwapEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "held_or_selected_slot_mark",
+        "menu_context_dispatch"
+      ]
+    },
+    {
+      "kind": "power",
+      "card_id": 147,
+      "card": "SLOWBRO",
+      "name": "StrangeBehaviorName",
+      "chain": "SlowbroStrangeBehaviorEffectCommands",
+      "families": [
+        "acknowledged_text",
+        "menu_context_dispatch"
+      ]
+    },
+    {
+      "kind": "power",
+      "card_id": 150,
+      "card": "HAUNTER_LV17",
+      "name": "TransparencyName",
+      "chain": "HaunterTransparencyEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 152,
+      "card": "GENGAR",
+      "name": "CurseName",
+      "chain": "GengarCurseEffectCommands",
+      "families": [
+        "absolute_play_area_slot",
+        "acknowledged_text",
+        "continue_or_cancel",
+        "held_or_selected_slot_mark",
+        "menu_context_dispatch",
+        "yes_no"
+      ]
+    },
+    {
+      "kind": "power",
+      "card_id": 155,
+      "card": "MR_MIME",
+      "name": "InvisibleWallName",
+      "chain": "MrMimeInvisibleWallEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 160,
+      "card": "MEW_LV8",
+      "name": "NeutralizingShieldName",
+      "chain": "MewNeutralizingShieldEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 182,
+      "card": "DODRIO",
+      "name": "RetreatAidName",
+      "chain": "DodrioRetreatAidEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 190,
+      "card": "SNORLAX",
+      "name": "ThickSkinnedName",
+      "chain": "SnorlaxThickSkinnedEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 193,
+      "card": "DRAGONITE_LV41",
+      "name": "HealingWindName",
+      "chain": "DragoniteHealingWindEffectCommands",
+      "families": []
+    },
+    {
+      "kind": "power",
+      "card_id": 194,
+      "card": "DRAGONITE_LV45",
+      "name": "StepInName",
+      "chain": "DragoniteStepInEffectCommands",
+      "families": []
+    }
+  ]
+}

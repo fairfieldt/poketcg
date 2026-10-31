@@ -1,0 +1,1134 @@
+  [1] StartDuel_VSAIOpp
+  [2] LoadOpponentDeck
+  [3] StartDuel
+  [4] HandleDuelSetup
+  [5] ShuffleDeckAndDrawSevenCards
+  [126] ShuffleDeckAndDrawSevenCards
+  [247] ShuffleDeckAndDrawSevenCards
+  [368] ChooseInitialArenaAndBenchPokemon
+  input DisplayCardList -> 5
+  input CardListItemSelectionMenu -> 0
+  input DisplayCardList -> 2
+  input CardListItemSelectionMenu -> 0
+  input DisplayCardList -> 1
+  input CardListItemSelectionMenu -> 1
+  input DisplayCardList -> 6
+  input CardListItemSelectionMenu -> 0
+  input DisplayCardList -> 3
+  input CardListItemSelectionMenu -> 1
+  input DisplayCardList -> 1
+  input CardListItemSelectionMenu -> 0
+  input DisplayCardList -> -1
+  [382] ChooseInitialArenaAndBenchPokemon
+  [383] AIDoAction_StartDuel
+  [384] AIDoAction
+  [385] InitAIDuelVars
+  [386] AIPlayInitialBasicCards
+  [387] TossCoin
+  [389] HandleTurn
+  input PrintDuelMenuAndHandleInput -> 4
+  input PrintDuelMenuAndHandleInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 0
+  input DisplayCardList -> 5
+  input CardListItemSelectionMenu -> 0
+  [401] PlayTrainerCard
+  [402] PokemonFlute_BenchCheck
+  input DisplayCardList -> 2
+  input CardListItemSelectionMenu -> 0
+  [405] PlayTrainerCard
+  [406] Revive_BenchCheck
+  input DisplayCardList -> 1
+  input CardListItemSelectionMenu -> 0
+  input DisplayCardList -> -1
+  input PrintDuelMenuAndHandleInput -> 5
+  [411] HandleBetweenTurnsEvents
+  [412] HandleTurn
+  [413] AIDoAction_Turn
+  [414] AIDoAction
+  [415] AIMainTurnLogic
+  [416] InitAITurnVars
+  [417] AIProcessHandTrainerCards
+  [418] _AIProcessHandTrainerCards
+  [419] HandleAIAntiMewtwoDeckStrategy
+  [420] HandleAIGoGoRainDanceEnergy
+  [421] HandleAIDamageSwap
+  [422] HandleAIPkmnPowers
+  [423] AIChooseRandomlyNotToDoAction
+  [424] CheckIfNotABossDeckID
+  [425] CheckIfOpponentHasBossDeckID
+  [427] HandleAICowardice
+  [428] AIChooseRandomlyNotToDoAction
+  [429] CheckIfNotABossDeckID
+  [430] CheckIfOpponentHasBossDeckID
+  [432] AIProcessHandTrainerCards
+  [433] _AIProcessHandTrainerCards
+  [434] AIProcessHandTrainerCards
+  [435] _AIProcessHandTrainerCards
+  [436] AIProcessHandTrainerCards
+  [437] _AIProcessHandTrainerCards
+  [438] AIDecidePlayPokemonCard
+  [439] SortTempHandByIDList
+  [440] AIDecidePlayLegendaryBirds
+  [441] CheckIfDefendingPokemonCanKnockOut
+  [442] CheckIfSelectedAttackIsUnusable
+  [443] CheckEnergyNeededForAttack
+  [444] CheckIfSelectedAttackIsUnusable
+  [445] CheckEnergyNeededForAttack
+  [446] GetAttacksEnergyCostBits
+  [447] CheckEnergyFlagsNeededInList
+  [448] CheckForEvolutionInList
+  [449] CheckForEvolutionInDeck
+  [450] CheckIfCardCanBePlayed
+  [451] AIMakeDecision
+  [452] ProcessPlayedPokemonCard
+  [453] AIDecideEvolution
+  [454] AIProcessHandTrainerCards
+  [455] _AIProcessHandTrainerCards
+  [456] AIProcessHandTrainerCards
+  [457] _AIProcessHandTrainerCards
+  [458] AIProcessHandTrainerCards
+  [459] _AIProcessHandTrainerCards
+  [460] AIProcessHandTrainerCards
+  [461] _AIProcessHandTrainerCards
+  [462] AIProcessRetreat
+  [463] AIDecideWhetherToRetreat
+  [464] LoadDefendingPokemonColorWRAndPrizeCards
+  [465] CheckIfAnyAttackKnocksOutDefendingCard
+  [466] EstimateDamage_VersusDefendingCard
+  [467] PoliwagWaterGunEffect
+  [468] CalculateDamage_VersusDefendingPokemon
+  [469] EstimateDamage_VersusDefendingCard
+  [470] CalculateDamage_VersusDefendingPokemon
+  [471] CheckIfDefendingPokemonCanKnockOut
+  [472] CheckIfSelectedAttackIsUnusable
+  [473] CheckEnergyNeededForAttack
+  [474] CheckIfSelectedAttackIsUnusable
+  [475] CheckEnergyNeededForAttack
+  [476] CheckIfNotABossDeckID
+  [477] CheckIfOpponentHasBossDeckID
+  [478] CheckIfAnyAttackKnocksOutDefendingCard
+  [479] EstimateDamage_VersusDefendingCard
+  [480] PoliwagWaterGunEffect
+  [481] CalculateDamage_VersusDefendingPokemon
+  [482] EstimateDamage_VersusDefendingCard
+  [483] CalculateDamage_VersusDefendingPokemon
+  [484] CheckIfArenaCardIsFullyPowered
+  [485] CheckCardEvolutionInHandOrDeck
+  [486] CheckIfSelectedAttackIsUnusable
+  [487] CheckEnergyNeededForAttack
+  [488] CountNumberOfSetUpBenchPokemon
+  [489] CheckCardEvolutionInHandOrDeck
+  [490] CheckIfSelectedAttackIsUnusable
+  [491] CheckEnergyNeededForAttack
+  [492] CheckIfDefendingPokemonCanKnockOut
+  [493] CheckIfSelectedAttackIsUnusable
+  [494] CheckEnergyNeededForAttack
+  [495] CheckIfSelectedAttackIsUnusable
+  [496] CheckEnergyNeededForAttack
+  [497] AIProcessHandTrainerCards
+  [498] _AIProcessHandTrainerCards
+  [499] MrFuji_BenchCheck
+  [500] AIChooseRandomlyNotToDoAction
+  [501] CheckIfNotABossDeckID
+  [502] CheckIfOpponentHasBossDeckID
+  [504] ScoopUp_BenchCheck
+  [505] AIChooseRandomlyNotToDoAction
+  [506] CheckIfNotABossDeckID
+  [507] CheckIfOpponentHasBossDeckID
+  [509] AIDecide_ScoopUp
+  [510] CheckIfAnyAttackKnocksOutDefendingCard
+  [511] EstimateDamage_VersusDefendingCard
+  [512] PoliwagWaterGunEffect
+  [513] CalculateDamage_VersusDefendingPokemon
+  [514] EstimateDamage_VersusDefendingCard
+  [515] CalculateDamage_VersusDefendingPokemon
+  [516] CountNumberOfEnergyCardsAttached
+  [517] AIProcessHandTrainerCards
+  [518] _AIProcessHandTrainerCards
+  [519] AIProcessHandTrainerCards
+  [520] _AIProcessHandTrainerCards
+  [521] EnergySearch_DeckCheck
+  [522] AIChooseRandomlyNotToDoAction
+  [523] CheckIfNotABossDeckID
+  [524] CheckIfOpponentHasBossDeckID
+  [526] AIDecide_EnergySearch
+  [527] CreateEnergyCardListFromHand
+  [528] CheckIfEnergyIsUseful
+  [529] AIProcessAndTryToPlayEnergy
+  [530] CreateEnergyCardListFromHand
+  [531] AIProcessEnergyCards
+  [532] HandleLegendaryArticunoEnergyScoring
+  [533] GetAttacksEnergyCostBits
+  [534] CheckEnergyFlagsNeededInList
+  [535] CheckForEvolutionInList
+  [536] CheckForEvolutionInDeck
+  [537] CheckIfDefendingPokemonCanKnockOut
+  [538] CheckIfSelectedAttackIsUnusable
+  [539] CheckEnergyNeededForAttack
+  [540] CheckIfSelectedAttackIsUnusable
+  [541] CheckEnergyNeededForAttack
+  [542] CheckIfNotABossDeckID
+  [543] CheckIfOpponentHasBossDeckID
+  [544] DetermineAIScoreOfAttackEnergyRequirement
+  [545] CheckEnergyNeededForAttack
+  [546] LookForCardIDInHand
+  [547] EstimateDamage_VersusDefendingCard
+  [548] PoliwagWaterGunEffect
+  [549] CalculateDamage_VersusDefendingPokemon
+  [550] DetermineAIScoreOfAttackEnergyRequirement
+  [551] CheckEnergyNeededForAttack
+  [552] GetAttacksEnergyCostBits
+  [553] CheckEnergyFlagsNeededInList
+  [554] CheckForEvolutionInList
+  [555] CheckForEvolutionInDeck
+  [556] CheckIfNotABossDeckID
+  [557] CheckIfOpponentHasBossDeckID
+  [558] DetermineAIScoreOfAttackEnergyRequirement
+  [559] CheckEnergyNeededForAttack
+  [560] LookForCardIDInHand
+  [561] DetermineAIScoreOfAttackEnergyRequirement
+  [562] CheckEnergyNeededForAttack
+  [563] FindPlayAreaCardWithHighestAIScore
+  [564] CreateEnergyCardListFromHand
+  [565] AITryToPlayEnergyCard
+  [566] CheckEnergyNeededForAttack
+  [567] CheckSpecificDecksToAttachDoubleColorless
+  [568] LookForCardIDInHand
+  [569] AIMakeDecision
+  [570] AIDecidePlayPokemonCard
+  [571] SortTempHandByIDList
+  [572] AIDecideEvolution
+  [573] HandleAIDamageSwap
+  [574] AIChooseRandomlyNotToDoAction
+  [575] CheckIfNotABossDeckID
+  [576] CheckIfOpponentHasBossDeckID
+  [578] HandleAIPkmnPowers
+  [579] AIChooseRandomlyNotToDoAction
+  [580] CheckIfNotABossDeckID
+  [581] CheckIfOpponentHasBossDeckID
+  [583] HandleAIGoGoRainDanceEnergy
+  [584] HandleAIEnergyTrans
+  [585] AIChooseRandomlyNotToDoAction
+  [586] CheckIfNotABossDeckID
+  [587] CheckIfOpponentHasBossDeckID
+  [589] AIProcessHandTrainerCards
+  [590] _AIProcessHandTrainerCards
+  [591] AIProcessHandTrainerCards
+  [592] _AIProcessHandTrainerCards
+  [593] HandleAIEnergyTrans
+  [594] AIChooseRandomlyNotToDoAction
+  [595] CheckIfNotABossDeckID
+  [596] CheckIfOpponentHasBossDeckID
+  [598] AIProcessAndTryToUseAttack
+  [599] AIProcessAttacks
+  [600] GetAIScoreOfAttack
+  [601] CheckIfSelectedAttackIsUnusable
+  [602] CheckEnergyNeededForAttack
+  [603] EstimateDamage_VersusDefendingCard
+  [604] PoliwagWaterGunEffect
+  [605] CalculateDamage_VersusDefendingPokemon
+  [606] CheckIfDefendingPokemonCanKnockOut
+  [607] CheckIfSelectedAttackIsUnusable
+  [608] CheckEnergyNeededForAttack
+  [609] CheckIfSelectedAttackIsUnusable
+  [610] CheckEnergyNeededForAttack
+  [611] GetAIScoreOfAttack
+  [612] CheckIfSelectedAttackIsUnusable
+  [613] CheckEnergyNeededForAttack
+  [614] AIProcessHandTrainerCards
+  [615] _AIProcessHandTrainerCards
+  [616] EstimateDamage_VersusDefendingCard
+  [617] PoliwagWaterGunEffect
+  [618] CalculateDamage_VersusDefendingPokemon
+  [619] AITryUseAttack
+  [620] AIMakeDecision
+  [621] AISelectSpecialAttackParameters
+  [622] AIMakeDecision
+  [623] AIMakeDecision
+  [624] PlayAttackAnimation_DealAttackDamage
+  [625] PoliwagWaterGunEffect
+  [626] HandleAfterDamageEffects
+  [627] ApplyStatusConditionQueue
+  [628] HandleBetweenTurnKnockOuts
+  [629] HandleBetweenTurnsEvents
+  [630] HandleTurn
+  input PrintDuelMenuAndHandleInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 4
+  input PrintDuelMenuAndHandleInput -> 4
+  input PrintDuelMenuAndHandleInput -> 0
+  input DisplayCardList -> 4
+  input CardListItemSelectionMenu -> 0
+  input DisplayPlayAreaScreen -> 0
+  [649] ProcessPlayedPokemonCard
+  input PrintDuelMenuAndHandleInput -> 3
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 5
+  [693] HandleBetweenTurnsEvents
+  [694] HandleTurn
+  [695] AIDoAction_Turn
+  [696] AIDoAction
+  [697] AIMainTurnLogic
+  [698] InitAITurnVars
+  [699] AIProcessHandTrainerCards
+  [700] _AIProcessHandTrainerCards
+  [701] HandleAIAntiMewtwoDeckStrategy
+  [702] HandleAIGoGoRainDanceEnergy
+  [703] HandleAIDamageSwap
+  [704] AIChooseRandomlyNotToDoAction
+  [705] CheckIfNotABossDeckID
+  [706] CheckIfOpponentHasBossDeckID
+  [708] HandleAIPkmnPowers
+  [709] AIChooseRandomlyNotToDoAction
+  [710] CheckIfNotABossDeckID
+  [711] CheckIfOpponentHasBossDeckID
+  [713] HandleAICowardice
+  [714] AIChooseRandomlyNotToDoAction
+  [715] CheckIfNotABossDeckID
+  [716] CheckIfOpponentHasBossDeckID
+  [718] AIProcessHandTrainerCards
+  [719] _AIProcessHandTrainerCards
+  [720] AIProcessHandTrainerCards
+  [721] _AIProcessHandTrainerCards
+  [722] AIProcessHandTrainerCards
+  [723] _AIProcessHandTrainerCards
+  [724] AIDecidePlayPokemonCard
+  [725] SortTempHandByIDList
+  [726] AIDecidePlayLegendaryBirds
+  [727] CheckIfDefendingPokemonCanKnockOut
+  [728] CheckIfSelectedAttackIsUnusable
+  [729] PoliwhirlAmnesia_CheckAttacks
+  [730] CheckEnergyNeededForAttack
+  [731] CheckIfSelectedAttackIsUnusable
+  [732] CheckEnergyNeededForAttack
+  [733] GetAttacksEnergyCostBits
+  [734] CheckEnergyFlagsNeededInList
+  [735] CheckForEvolutionInList
+  [736] CheckForEvolutionInDeck
+  [737] CheckIfCardCanBePlayed
+  [738] AIMakeDecision
+  [739] ProcessPlayedPokemonCard
+  [740] AIDecideEvolution
+  [741] AIProcessHandTrainerCards
+  [742] _AIProcessHandTrainerCards
+  [743] AIProcessHandTrainerCards
+  [744] _AIProcessHandTrainerCards
+  [745] AIProcessHandTrainerCards
+  [746] _AIProcessHandTrainerCards
+  [747] AIProcessHandTrainerCards
+  [748] _AIProcessHandTrainerCards
+  [749] AIProcessRetreat
+  [750] AIDecideWhetherToRetreat
+  [751] LoadDefendingPokemonColorWRAndPrizeCards
+  [752] CheckIfAnyAttackKnocksOutDefendingCard
+  [753] EstimateDamage_VersusDefendingCard
+  [754] PoliwagWaterGunEffect
+  [755] CalculateDamage_VersusDefendingPokemon
+  [756] EstimateDamage_VersusDefendingCard
+  [757] CalculateDamage_VersusDefendingPokemon
+  [758] CheckIfDefendingPokemonCanKnockOut
+  [759] CheckIfSelectedAttackIsUnusable
+  [760] PoliwhirlAmnesia_CheckAttacks
+  [761] CheckEnergyNeededForAttack
+  [762] CheckIfSelectedAttackIsUnusable
+  [763] CheckEnergyNeededForAttack
+  [764] CheckIfNotABossDeckID
+  [765] CheckIfOpponentHasBossDeckID
+  [766] CheckIfAnyAttackKnocksOutDefendingCard
+  [767] EstimateDamage_VersusDefendingCard
+  [768] PoliwagWaterGunEffect
+  [769] CalculateDamage_VersusDefendingPokemon
+  [770] EstimateDamage_VersusDefendingCard
+  [771] CalculateDamage_VersusDefendingPokemon
+  [772] CheckIfAnyAttackKnocksOutDefendingCard
+  [773] EstimateDamage_VersusDefendingCard
+  [774] PoliwagWaterGunEffect
+  [775] CalculateDamage_VersusDefendingPokemon
+  [776] EstimateDamage_VersusDefendingCard
+  [777] CalculateDamage_VersusDefendingPokemon
+  [778] CheckIfArenaCardIsFullyPowered
+  [779] CheckCardEvolutionInHandOrDeck
+  [780] CountNumberOfSetUpBenchPokemon
+  [781] CheckCardEvolutionInHandOrDeck
+  [782] CheckCardEvolutionInHandOrDeck
+  [783] CheckIfDefendingPokemonCanKnockOut
+  [784] CheckIfSelectedAttackIsUnusable
+  [785] PoliwhirlAmnesia_CheckAttacks
+  [786] CheckEnergyNeededForAttack
+  [787] CheckIfSelectedAttackIsUnusable
+  [788] CheckEnergyNeededForAttack
+  [789] AIProcessHandTrainerCards
+  [790] _AIProcessHandTrainerCards
+  [791] MrFuji_BenchCheck
+  [792] AIChooseRandomlyNotToDoAction
+  [793] CheckIfNotABossDeckID
+  [794] CheckIfOpponentHasBossDeckID
+  [796] ScoopUp_BenchCheck
+  [797] AIChooseRandomlyNotToDoAction
+  [798] CheckIfNotABossDeckID
+  [799] CheckIfOpponentHasBossDeckID
+  [801] AIDecide_ScoopUp
+  [802] CheckIfAnyAttackKnocksOutDefendingCard
+  [803] EstimateDamage_VersusDefendingCard
+  [804] PoliwagWaterGunEffect
+  [805] CalculateDamage_VersusDefendingPokemon
+  [806] EstimateDamage_VersusDefendingCard
+  [807] CalculateDamage_VersusDefendingPokemon
+  [808] CountNumberOfEnergyCardsAttached
+  [809] AIProcessHandTrainerCards
+  [810] _AIProcessHandTrainerCards
+  [811] AIProcessHandTrainerCards
+  [812] _AIProcessHandTrainerCards
+  [813] EnergySearch_DeckCheck
+  [814] AIChooseRandomlyNotToDoAction
+  [815] CheckIfNotABossDeckID
+  [816] CheckIfOpponentHasBossDeckID
+  [818] AIProcessAndTryToPlayEnergy
+  [819] CreateEnergyCardListFromHand
+  [820] AIProcessEnergyCards
+  [821] HandleLegendaryArticunoEnergyScoring
+  [822] GetAttacksEnergyCostBits
+  [823] CheckEnergyFlagsNeededInList
+  [824] CheckForEvolutionInList
+  [825] CheckForEvolutionInDeck
+  [826] CheckIfDefendingPokemonCanKnockOut
+  [827] CheckIfSelectedAttackIsUnusable
+  [828] PoliwhirlAmnesia_CheckAttacks
+  [829] CheckEnergyNeededForAttack
+  [830] CheckIfSelectedAttackIsUnusable
+  [831] CheckEnergyNeededForAttack
+  [832] CheckIfNotABossDeckID
+  [833] CheckIfOpponentHasBossDeckID
+  [834] DetermineAIScoreOfAttackEnergyRequirement
+  [835] CheckEnergyNeededForAttack
+  [836] CheckIfNoSurplusEnergyForAttack
+  [837] EstimateDamage_VersusDefendingCard
+  [838] PoliwagWaterGunEffect
+  [839] CalculateDamage_VersusDefendingPokemon
+  [840] DetermineAIScoreOfAttackEnergyRequirement
+  [841] CheckEnergyNeededForAttack
+  [842] GetAttacksEnergyCostBits
+  [843] CheckEnergyFlagsNeededInList
+  [844] CheckForEvolutionInList
+  [845] CheckForEvolutionInDeck
+  [846] CheckIfNotABossDeckID
+  [847] CheckIfOpponentHasBossDeckID
+  [848] DetermineAIScoreOfAttackEnergyRequirement
+  [849] CheckEnergyNeededForAttack
+  [850] LookForCardIDInHand
+  [851] DetermineAIScoreOfAttackEnergyRequirement
+  [852] CheckEnergyNeededForAttack
+  [853] GetAttacksEnergyCostBits
+  [854] CheckEnergyFlagsNeededInList
+  [855] CheckForEvolutionInList
+  [856] CheckForEvolutionInDeck
+  [857] CheckIfNotABossDeckID
+  [858] CheckIfOpponentHasBossDeckID
+  [859] DetermineAIScoreOfAttackEnergyRequirement
+  [860] CheckEnergyNeededForAttack
+  [861] LookForCardIDInHand
+  [862] DetermineAIScoreOfAttackEnergyRequirement
+  [863] CheckEnergyNeededForAttack
+  [864] FindPlayAreaCardWithHighestAIScore
+  [865] CreateEnergyCardListFromHand
+  [866] AITryToPlayEnergyCard
+  [867] CheckEnergyNeededForAttack
+  [868] CheckSpecificDecksToAttachDoubleColorless
+  [869] LookForCardIDInHand
+  [870] AIMakeDecision
+  [871] AIDecidePlayPokemonCard
+  [872] SortTempHandByIDList
+  [873] AIDecideEvolution
+  [874] HandleAIDamageSwap
+  [875] AIChooseRandomlyNotToDoAction
+  [876] CheckIfNotABossDeckID
+  [877] CheckIfOpponentHasBossDeckID
+  [879] HandleAIPkmnPowers
+  [880] AIChooseRandomlyNotToDoAction
+  [881] CheckIfNotABossDeckID
+  [882] CheckIfOpponentHasBossDeckID
+  [884] HandleAIGoGoRainDanceEnergy
+  [885] HandleAIEnergyTrans
+  [886] AIChooseRandomlyNotToDoAction
+  [887] CheckIfNotABossDeckID
+  [888] CheckIfOpponentHasBossDeckID
+  [890] AIProcessHandTrainerCards
+  [891] _AIProcessHandTrainerCards
+  [892] AIProcessHandTrainerCards
+  [893] _AIProcessHandTrainerCards
+  [894] HandleAIEnergyTrans
+  [895] AIChooseRandomlyNotToDoAction
+  [896] CheckIfNotABossDeckID
+  [897] CheckIfOpponentHasBossDeckID
+  [899] AIProcessAndTryToUseAttack
+  [900] AIProcessAttacks
+  [901] GetAIScoreOfAttack
+  [902] CheckIfSelectedAttackIsUnusable
+  [903] CheckEnergyNeededForAttack
+  [904] EstimateDamage_VersusDefendingCard
+  [905] PoliwagWaterGunEffect
+  [906] CalculateDamage_VersusDefendingPokemon
+  [907] CheckIfDefendingPokemonCanKnockOut
+  [908] CheckIfSelectedAttackIsUnusable
+  [909] PoliwhirlAmnesia_CheckAttacks
+  [910] CheckEnergyNeededForAttack
+  [911] CheckIfSelectedAttackIsUnusable
+  [912] CheckEnergyNeededForAttack
+  [913] GetAIScoreOfAttack
+  [914] CheckIfSelectedAttackIsUnusable
+  [915] CheckEnergyNeededForAttack
+  [916] AIProcessHandTrainerCards
+  [917] _AIProcessHandTrainerCards
+  [918] EstimateDamage_VersusDefendingCard
+  [919] PoliwagWaterGunEffect
+  [920] CalculateDamage_VersusDefendingPokemon
+  [921] AITryUseAttack
+  [922] AIMakeDecision
+  [923] AISelectSpecialAttackParameters
+  [924] AIMakeDecision
+  [925] AIMakeDecision
+  [926] PlayAttackAnimation_DealAttackDamage
+  [927] PoliwagWaterGunEffect
+  [928] HandleAfterDamageEffects
+  [929] ApplyStatusConditionQueue
+  [930] HandleBetweenTurnKnockOuts
+  [931] HandleBetweenTurnsEvents
+  [932] HandleTurn
+  input PrintDuelMenuAndHandleInput -> 0
+  input DisplayCardList -> -1
+  input PrintDuelMenuAndHandleInput -> 0
+  input DisplayCardList -> 4
+  input CardListItemSelectionMenu -> 0
+  [938] PlayTrainerCard
+  [939] Revive_BenchCheck
+  input DisplayCardList -> 7
+  input CardListItemSelectionMenu -> 0
+  [942] PlayTrainerCard
+  [943] PlusPowerEffect
+  input PrintDuelMenuAndHandleInput -> 1
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 5
+  [953] HandleBetweenTurnsEvents
+  [954] HandleTurn
+  [955] AIDoAction_Turn
+  [956] AIDoAction
+  [957] AIMainTurnLogic
+  [958] InitAITurnVars
+  [959] AIProcessHandTrainerCards
+  [960] _AIProcessHandTrainerCards
+  [961] HandleAIAntiMewtwoDeckStrategy
+  [962] HandleAIGoGoRainDanceEnergy
+  [963] HandleAIDamageSwap
+  [964] AIChooseRandomlyNotToDoAction
+  [965] CheckIfNotABossDeckID
+  [966] CheckIfOpponentHasBossDeckID
+  [968] HandleAIPkmnPowers
+  [969] AIChooseRandomlyNotToDoAction
+  [970] CheckIfNotABossDeckID
+  [971] CheckIfOpponentHasBossDeckID
+  [973] HandleAICowardice
+  [974] AIChooseRandomlyNotToDoAction
+  [975] CheckIfNotABossDeckID
+  [976] CheckIfOpponentHasBossDeckID
+  [978] AIProcessHandTrainerCards
+  [979] _AIProcessHandTrainerCards
+  [980] AIProcessHandTrainerCards
+  [981] _AIProcessHandTrainerCards
+  [982] AIProcessHandTrainerCards
+  [983] _AIProcessHandTrainerCards
+  [984] AIDecidePlayPokemonCard
+  [985] SortTempHandByIDList
+  [986] AIDecideEvolution
+  [987] AIProcessHandTrainerCards
+  [988] _AIProcessHandTrainerCards
+  [989] MysteriousFossil_BenchCheck
+  [990] AIChooseRandomlyNotToDoAction
+  [991] CheckIfNotABossDeckID
+  [992] CheckIfOpponentHasBossDeckID
+  [994] AIDecide_ClefairyDollOrMysteriousFossil
+  [995] AIMakeDecision
+  [996] AIPlay_ClefairyDollOrMysteriousFossil
+  [997] AIMakeDecision
+  [998] MysteriousFossil_PlaceInPlayAreaEffect
+  [999] AIProcessHandTrainerCards
+  [1000] _AIProcessHandTrainerCards
+  [1001] AIProcessHandTrainerCards
+  [1002] _AIProcessHandTrainerCards
+  [1003] AIProcessHandTrainerCards
+  [1004] _AIProcessHandTrainerCards
+  [1005] AIProcessRetreat
+  [1006] AIDecideWhetherToRetreat
+  [1007] LoadDefendingPokemonColorWRAndPrizeCards
+  [1008] CheckIfAnyAttackKnocksOutDefendingCard
+  [1009] EstimateDamage_VersusDefendingCard
+  [1010] PoliwagWaterGunEffect
+  [1011] CalculateDamage_VersusDefendingPokemon
+  [1012] EstimateDamage_VersusDefendingCard
+  [1013] CalculateDamage_VersusDefendingPokemon
+  [1014] CheckIfDefendingPokemonCanKnockOut
+  [1015] CheckIfSelectedAttackIsUnusable
+  [1016] PoliwhirlAmnesia_CheckAttacks
+  [1017] CheckEnergyNeededForAttack
+  [1018] CheckIfSelectedAttackIsUnusable
+  [1019] CheckEnergyNeededForAttack
+  [1020] CheckIfNotABossDeckID
+  [1021] CheckIfOpponentHasBossDeckID
+  [1022] CheckIfAnyAttackKnocksOutDefendingCard
+  [1023] EstimateDamage_VersusDefendingCard
+  [1024] PoliwagWaterGunEffect
+  [1025] CalculateDamage_VersusDefendingPokemon
+  [1026] EstimateDamage_VersusDefendingCard
+  [1027] CalculateDamage_VersusDefendingPokemon
+  [1028] CheckIfAnyAttackKnocksOutDefendingCard
+  [1029] EstimateDamage_VersusDefendingCard
+  [1030] PoliwagWaterGunEffect
+  [1031] CalculateDamage_VersusDefendingPokemon
+  [1032] EstimateDamage_VersusDefendingCard
+  [1033] CalculateDamage_VersusDefendingPokemon
+  [1034] CheckIfAnyAttackKnocksOutDefendingCard
+  [1035] EstimateDamage_VersusDefendingCard
+  [1036] EstimateDamage_VersusDefendingCard
+  [1037] CalculateDamage_VersusDefendingPokemon
+  [1038] CheckIfArenaCardIsFullyPowered
+  [1039] CheckCardEvolutionInHandOrDeck
+  [1040] CountNumberOfSetUpBenchPokemon
+  [1041] CheckCardEvolutionInHandOrDeck
+  [1042] CheckCardEvolutionInHandOrDeck
+  [1043] CheckIfSelectedAttackIsUnusable
+  [1044] CheckEnergyNeededForAttack
+  [1045] CheckIfDefendingPokemonCanKnockOut
+  [1046] CheckIfSelectedAttackIsUnusable
+  [1047] PoliwhirlAmnesia_CheckAttacks
+  [1048] CheckEnergyNeededForAttack
+  [1049] CheckIfSelectedAttackIsUnusable
+  [1050] CheckEnergyNeededForAttack
+  [1051] AIProcessHandTrainerCards
+  [1052] _AIProcessHandTrainerCards
+  [1053] MrFuji_BenchCheck
+  [1054] AIChooseRandomlyNotToDoAction
+  [1055] CheckIfNotABossDeckID
+  [1056] CheckIfOpponentHasBossDeckID
+  [1058] AIDecide_MrFuji
+  [1059] ScoopUp_BenchCheck
+  [1060] AIChooseRandomlyNotToDoAction
+  [1061] CheckIfNotABossDeckID
+  [1062] CheckIfOpponentHasBossDeckID
+  [1064] AIDecide_ScoopUp
+  [1065] CheckIfAnyAttackKnocksOutDefendingCard
+  [1066] EstimateDamage_VersusDefendingCard
+  [1067] PoliwagWaterGunEffect
+  [1068] CalculateDamage_VersusDefendingPokemon
+  [1069] EstimateDamage_VersusDefendingCard
+  [1070] CalculateDamage_VersusDefendingPokemon
+  [1071] CountNumberOfEnergyCardsAttached
+  [1072] AIProcessHandTrainerCards
+  [1073] _AIProcessHandTrainerCards
+  [1074] AIProcessHandTrainerCards
+  [1075] _AIProcessHandTrainerCards
+  [1076] EnergySearch_DeckCheck
+  [1077] AIChooseRandomlyNotToDoAction
+  [1078] CheckIfNotABossDeckID
+  [1079] CheckIfOpponentHasBossDeckID
+  [1081] AIProcessAndTryToPlayEnergy
+  [1082] CreateEnergyCardListFromHand
+  [1083] AIDecidePlayPokemonCard
+  [1084] SortTempHandByIDList
+  [1085] AIDecideEvolution
+  [1086] HandleAIDamageSwap
+  [1087] AIChooseRandomlyNotToDoAction
+  [1088] CheckIfNotABossDeckID
+  [1089] CheckIfOpponentHasBossDeckID
+  [1091] HandleAIPkmnPowers
+  [1092] AIChooseRandomlyNotToDoAction
+  [1093] CheckIfNotABossDeckID
+  [1094] CheckIfOpponentHasBossDeckID
+  [1096] TrainerCardAsPokemon_BenchCheck
+  [1097] HandleAIGoGoRainDanceEnergy
+  [1098] HandleAIEnergyTrans
+  [1099] AIChooseRandomlyNotToDoAction
+  [1100] CheckIfNotABossDeckID
+  [1101] CheckIfOpponentHasBossDeckID
+  [1103] AIProcessHandTrainerCards
+  [1104] _AIProcessHandTrainerCards
+  [1105] AIProcessHandTrainerCards
+  [1106] _AIProcessHandTrainerCards
+  [1107] HandleAIEnergyTrans
+  [1108] AIChooseRandomlyNotToDoAction
+  [1109] CheckIfNotABossDeckID
+  [1110] CheckIfOpponentHasBossDeckID
+  [1112] AIProcessAndTryToUseAttack
+  [1113] AIProcessAttacks
+  [1114] GetAIScoreOfAttack
+  [1115] CheckIfSelectedAttackIsUnusable
+  [1116] CheckEnergyNeededForAttack
+  [1117] EstimateDamage_VersusDefendingCard
+  [1118] PoliwagWaterGunEffect
+  [1119] CalculateDamage_VersusDefendingPokemon
+  [1120] CheckIfDefendingPokemonCanKnockOut
+  [1121] CheckIfSelectedAttackIsUnusable
+  [1122] PoliwhirlAmnesia_CheckAttacks
+  [1123] CheckEnergyNeededForAttack
+  [1124] CheckIfSelectedAttackIsUnusable
+  [1125] CheckEnergyNeededForAttack
+  [1126] GetAIScoreOfAttack
+  [1127] CheckIfSelectedAttackIsUnusable
+  [1128] CheckEnergyNeededForAttack
+  [1129] AIProcessHandTrainerCards
+  [1130] _AIProcessHandTrainerCards
+  [1131] EstimateDamage_VersusDefendingCard
+  [1132] PoliwagWaterGunEffect
+  [1133] CalculateDamage_VersusDefendingPokemon
+  [1134] AITryUseAttack
+  [1135] AIMakeDecision
+  [1136] AISelectSpecialAttackParameters
+  [1137] AIMakeDecision
+  [1138] AIMakeDecision
+  [1139] PlayAttackAnimation_DealAttackDamage
+  [1140] PoliwagWaterGunEffect
+  [1141] HandleAfterDamageEffects
+  [1142] ApplyStatusConditionQueue
+  [1143] HandleBetweenTurnKnockOuts
+  [1144] HandleBetweenTurnsEvents
+  [1145] HandleTurn
+  input PrintDuelMenuAndHandleInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 3
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 0
+  input DisplayCardList -> -1
+  input PrintDuelMenuAndHandleInput -> 0
+  input DisplayCardList -> 4
+  input CardListItemSelectionMenu -> 0
+  input DisplayCardList -> 7
+  input CardListItemSelectionMenu -> 0
+  [1211] PlayTrainerCard
+  [1212] PokemonFlute_BenchCheck
+  input DisplayCardList -> 3
+  input CardListItemSelectionMenu -> 0
+  input DisplayPlayAreaScreen -> 0
+  input PrintDuelMenuAndHandleInput -> 3
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 3
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 5
+  [1248] HandleBetweenTurnsEvents
+  [1249] HandleTurn
+  [1250] AIDoAction_Turn
+  [1251] AIDoAction
+  [1252] AIMainTurnLogic
+  [1253] InitAITurnVars
+  [1254] AIProcessHandTrainerCards
+  [1255] _AIProcessHandTrainerCards
+  [1256] HandleAIAntiMewtwoDeckStrategy
+  [1257] HandleAIGoGoRainDanceEnergy
+  [1258] HandleAIDamageSwap
+  [1259] AIChooseRandomlyNotToDoAction
+  [1260] CheckIfNotABossDeckID
+  [1261] CheckIfOpponentHasBossDeckID
+  [1263] HandleAIPkmnPowers
+  [1264] AIChooseRandomlyNotToDoAction
+  [1265] CheckIfNotABossDeckID
+  [1266] CheckIfOpponentHasBossDeckID
+  [1268] TrainerCardAsPokemon_BenchCheck
+  [1269] HandleAICowardice
+  [1270] AIChooseRandomlyNotToDoAction
+  [1271] CheckIfNotABossDeckID
+  [1272] CheckIfOpponentHasBossDeckID
+  [1274] AIProcessHandTrainerCards
+  [1275] _AIProcessHandTrainerCards
+  [1276] AIProcessHandTrainerCards
+  [1277] _AIProcessHandTrainerCards
+  [1278] AIProcessHandTrainerCards
+  [1279] _AIProcessHandTrainerCards
+  [1280] AIDecidePlayPokemonCard
+  [1281] SortTempHandByIDList
+  [1282] AIDecideEvolution
+  [1283] AIProcessHandTrainerCards
+  [1284] _AIProcessHandTrainerCards
+  [1285] AIProcessHandTrainerCards
+  [1286] _AIProcessHandTrainerCards
+  [1287] AIProcessHandTrainerCards
+  [1288] _AIProcessHandTrainerCards
+  [1289] AIProcessHandTrainerCards
+  [1290] _AIProcessHandTrainerCards
+  [1291] AIProcessRetreat
+  [1292] AIDecideWhetherToRetreat
+  [1293] LoadDefendingPokemonColorWRAndPrizeCards
+  [1294] CheckIfAnyAttackKnocksOutDefendingCard
+  [1295] EstimateDamage_VersusDefendingCard
+  [1296] PoliwagWaterGunEffect
+  [1297] CalculateDamage_VersusDefendingPokemon
+  [1298] EstimateDamage_VersusDefendingCard
+  [1299] CalculateDamage_VersusDefendingPokemon
+  [1300] CheckIfDefendingPokemonCanKnockOut
+  [1301] CheckIfSelectedAttackIsUnusable
+  [1302] PoliwhirlAmnesia_CheckAttacks
+  [1303] CheckEnergyNeededForAttack
+  [1304] CheckIfSelectedAttackIsUnusable
+  [1305] CheckEnergyNeededForAttack
+  [1306] CheckIfNotABossDeckID
+  [1307] CheckIfOpponentHasBossDeckID
+  [1308] CheckIfAnyAttackKnocksOutDefendingCard
+  [1309] EstimateDamage_VersusDefendingCard
+  [1310] PoliwagWaterGunEffect
+  [1311] CalculateDamage_VersusDefendingPokemon
+  [1312] EstimateDamage_VersusDefendingCard
+  [1313] CalculateDamage_VersusDefendingPokemon
+  [1314] CheckIfAnyAttackKnocksOutDefendingCard
+  [1315] EstimateDamage_VersusDefendingCard
+  [1316] PoliwagWaterGunEffect
+  [1317] CalculateDamage_VersusDefendingPokemon
+  [1318] EstimateDamage_VersusDefendingCard
+  [1319] CalculateDamage_VersusDefendingPokemon
+  [1320] CheckIfAnyAttackKnocksOutDefendingCard
+  [1321] EstimateDamage_VersusDefendingCard
+  [1322] EstimateDamage_VersusDefendingCard
+  [1323] CalculateDamage_VersusDefendingPokemon
+  [1324] CheckIfArenaCardIsFullyPowered
+  [1325] CheckCardEvolutionInHandOrDeck
+  [1326] CountNumberOfSetUpBenchPokemon
+  [1327] CheckCardEvolutionInHandOrDeck
+  [1328] CheckCardEvolutionInHandOrDeck
+  [1329] CheckIfSelectedAttackIsUnusable
+  [1330] CheckEnergyNeededForAttack
+  [1331] CheckIfDefendingPokemonCanKnockOut
+  [1332] CheckIfSelectedAttackIsUnusable
+  [1333] PoliwhirlAmnesia_CheckAttacks
+  [1334] CheckEnergyNeededForAttack
+  [1335] CheckIfSelectedAttackIsUnusable
+  [1336] CheckEnergyNeededForAttack
+  [1337] AIProcessHandTrainerCards
+  [1338] _AIProcessHandTrainerCards
+  [1339] MrFuji_BenchCheck
+  [1340] AIChooseRandomlyNotToDoAction
+  [1341] CheckIfNotABossDeckID
+  [1342] CheckIfOpponentHasBossDeckID
+  [1344] AIDecide_MrFuji
+  [1345] ScoopUp_BenchCheck
+  [1346] AIChooseRandomlyNotToDoAction
+  [1347] CheckIfNotABossDeckID
+  [1348] CheckIfOpponentHasBossDeckID
+  [1350] AIDecide_ScoopUp
+  [1351] CheckIfAnyAttackKnocksOutDefendingCard
+  [1352] EstimateDamage_VersusDefendingCard
+  [1353] PoliwagWaterGunEffect
+  [1354] CalculateDamage_VersusDefendingPokemon
+  [1355] EstimateDamage_VersusDefendingCard
+  [1356] CalculateDamage_VersusDefendingPokemon
+  [1357] CountNumberOfEnergyCardsAttached
+  [1358] AIProcessHandTrainerCards
+  [1359] _AIProcessHandTrainerCards
+  [1360] AIProcessHandTrainerCards
+  [1361] _AIProcessHandTrainerCards
+  [1362] EnergySearch_DeckCheck
+  [1363] AIChooseRandomlyNotToDoAction
+  [1364] CheckIfNotABossDeckID
+  [1365] CheckIfOpponentHasBossDeckID
+  [1367] AIDecide_EnergySearch
+  [1368] CreateEnergyCardListFromHand
+  [1369] CheckIfEnergyIsUseful
+  [1370] AIProcessAndTryToPlayEnergy
+  [1371] CreateEnergyCardListFromHand
+  [1372] AIProcessEnergyCards
+  [1373] HandleLegendaryArticunoEnergyScoring
+  [1374] GetAttacksEnergyCostBits
+  [1375] CheckEnergyFlagsNeededInList
+  [1376] CheckForEvolutionInList
+  [1377] CheckForEvolutionInDeck
+  [1378] CheckIfDefendingPokemonCanKnockOut
+  [1379] CheckIfSelectedAttackIsUnusable
+  [1380] PoliwhirlAmnesia_CheckAttacks
+  [1381] CheckEnergyNeededForAttack
+  [1382] CheckIfSelectedAttackIsUnusable
+  [1383] CheckEnergyNeededForAttack
+  [1384] CheckIfNotABossDeckID
+  [1385] CheckIfOpponentHasBossDeckID
+  [1386] DetermineAIScoreOfAttackEnergyRequirement
+  [1387] CheckEnergyNeededForAttack
+  [1388] CheckIfNoSurplusEnergyForAttack
+  [1389] EstimateDamage_VersusDefendingCard
+  [1390] PoliwagWaterGunEffect
+  [1391] CalculateDamage_VersusDefendingPokemon
+  [1392] DetermineAIScoreOfAttackEnergyRequirement
+  [1393] CheckEnergyNeededForAttack
+  [1394] GetAttacksEnergyCostBits
+  [1395] CheckEnergyFlagsNeededInList
+  [1396] CheckForEvolutionInList
+  [1397] CheckForEvolutionInDeck
+  [1398] CheckIfNotABossDeckID
+  [1399] CheckIfOpponentHasBossDeckID
+  [1400] DetermineAIScoreOfAttackEnergyRequirement
+  [1401] CheckEnergyNeededForAttack
+  [1402] CheckIfNoSurplusEnergyForAttack
+  [1403] EstimateDamage_VersusDefendingCard
+  [1404] PoliwagWaterGunEffect
+  [1405] CalculateDamage_VersusDefendingPokemon
+  [1406] DetermineAIScoreOfAttackEnergyRequirement
+  [1407] CheckEnergyNeededForAttack
+  [1408] GetAttacksEnergyCostBits
+  [1409] CheckEnergyFlagsNeededInList
+  [1410] CheckForEvolutionInList
+  [1411] CheckForEvolutionInDeck
+  [1412] CheckIfNotABossDeckID
+  [1413] CheckIfOpponentHasBossDeckID
+  [1414] DetermineAIScoreOfAttackEnergyRequirement
+  [1415] CheckEnergyNeededForAttack
+  [1416] LookForCardIDInHand
+  [1417] DetermineAIScoreOfAttackEnergyRequirement
+  [1418] CheckEnergyNeededForAttack
+  [1419] GetAttacksEnergyCostBits
+  [1420] CheckEnergyFlagsNeededInList
+  [1421] FindPlayAreaCardWithHighestAIScore
+  [1422] CreateEnergyCardListFromHand
+  [1423] AITryToPlayEnergyCard
+  [1424] CheckEnergyNeededForAttack
+  [1425] CheckSpecificDecksToAttachDoubleColorless
+  [1426] LookForCardIDInHand
+  [1427] AIMakeDecision
+  [1428] AIDecidePlayPokemonCard
+  [1429] SortTempHandByIDList
+  [1430] AIDecideEvolution
+  [1431] HandleAIDamageSwap
+  [1432] AIChooseRandomlyNotToDoAction
+  [1433] CheckIfNotABossDeckID
+  [1434] CheckIfOpponentHasBossDeckID
+  [1436] HandleAIPkmnPowers
+  [1437] AIChooseRandomlyNotToDoAction
+  [1438] CheckIfNotABossDeckID
+  [1439] CheckIfOpponentHasBossDeckID
+  [1441] HandleAIGoGoRainDanceEnergy
+  [1442] HandleAIEnergyTrans
+  [1443] AIChooseRandomlyNotToDoAction
+  [1444] CheckIfNotABossDeckID
+  [1445] CheckIfOpponentHasBossDeckID
+  [1447] AIProcessHandTrainerCards
+  [1448] _AIProcessHandTrainerCards
+  [1449] AIProcessHandTrainerCards
+  [1450] _AIProcessHandTrainerCards
+  [1451] HandleAIEnergyTrans
+  [1452] AIChooseRandomlyNotToDoAction
+  [1453] CheckIfNotABossDeckID
+  [1454] CheckIfOpponentHasBossDeckID
+  [1456] AIProcessAndTryToUseAttack
+  [1457] AIProcessAttacks
+  [1458] GetAIScoreOfAttack
+  [1459] CheckIfSelectedAttackIsUnusable
+  [1460] CheckEnergyNeededForAttack
+  [1461] EstimateDamage_VersusDefendingCard
+  [1462] PoliwagWaterGunEffect
+  [1463] CalculateDamage_VersusDefendingPokemon
+  [1464] CheckIfDefendingPokemonCanKnockOut
+  [1465] CheckIfSelectedAttackIsUnusable
+  [1466] PoliwhirlAmnesia_CheckAttacks
+  [1467] CheckEnergyNeededForAttack
+  [1468] CheckIfSelectedAttackIsUnusable
+  [1469] CheckEnergyNeededForAttack
+  [1470] GetAIScoreOfAttack
+  [1471] CheckIfSelectedAttackIsUnusable
+  [1472] CheckEnergyNeededForAttack
+  [1473] AIProcessHandTrainerCards
+  [1474] _AIProcessHandTrainerCards
+  [1475] EstimateDamage_VersusDefendingCard
+  [1476] PoliwagWaterGunEffect
+  [1477] CalculateDamage_VersusDefendingPokemon
+  [1478] AITryUseAttack
+  [1479] AIMakeDecision
+  [1480] AISelectSpecialAttackParameters
+  [1481] AIMakeDecision
+  [1482] AIMakeDecision
+  [1483] PlayAttackAnimation_DealAttackDamage
+  [1484] PoliwagWaterGunEffect
+  [1485] HandleAfterDamageEffects
+  [1486] ApplyStatusConditionQueue
+  [1487] HandleBetweenTurnKnockOuts
+  [1488] HandleBetweenTurnsEvents
+  [1489] HandleTurn
+  input PrintDuelMenuAndHandleInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> 0
+  input HandleMenuInput -> 1
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 0
+  input DisplayCardList -> 2
+  input CardListItemSelectionMenu -> 0
+  input DisplayPlayAreaScreen -> 0
+  input PrintDuelMenuAndHandleInput -> 0
+  input DisplayCardList -> 0
+  input CardListItemSelectionMenu -> 0
+  [1521] ProcessPlayedPokemonCard
+  input PrintDuelMenuAndHandleInput -> 1
+  input HandleMenuInput -> 0
+  [1524] UseAttackOrPokemonPower
+  [1525] PoliwhirlAmnesia_CheckAttacks
+  [1526] PoliwhirlAmnesia_PlayerSelectEffect
+  input HandleMenuInput -> -1
+  input PrintDuelMenuAndHandleInput -> 1
+  input HandleMenuInput -> 0
+  [1530] UseAttackOrPokemonPower
+FAIL decks 3 vs 5 seed 0bd823 after 1530 events (401 rng)
+state differs at UseAttackOrPokemonPower (1 bytes):
+    ffa0 hTempList                                port 00 original 0d
+
+0/1 duels identical

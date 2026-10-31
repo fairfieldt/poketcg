@@ -1,0 +1,3 @@
+PRACTICE PASS: all eight turns; persistent checklist and fresh Mason ACKs; Finally/recap ordering; exact original memory/RNG/request traces; Psychic advances and wrong Water rewinds
+EVOLUTION CURSOR PASS: 26 real-engine cases; all6 slots, Active/Bench priority, placement/evolution flags, HP0, Stage2, Fossil, P2, Prehistoric/Muk/status, cancel/manual choice, unchanged RNG and exact wrapper WRAM/HRAM parity
+CONTROL TEXT PASS: source/N64/web lookup, all text IDs, composed lesson/checklist/book, unchanged engine state

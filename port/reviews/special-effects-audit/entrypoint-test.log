@@ -1,0 +1,229 @@
+python3 catalog.py
+{
+  "pokemon_cards": 187,
+  "power_entries_excluded": 26,
+  "non_power_attacks": 319,
+  "attacks_with_effect_chains": 249,
+  "distinct_effect_chains": 249,
+  "effect_functions_including_ai": 431,
+  "runtime_functions": 317,
+  "mechanic_tags": {
+    "healing": 14,
+    "prevention": 33,
+    "ordinary_damage": 70,
+    "status": 70,
+    "type_weakness_resistance": 41,
+    "coin": 117,
+    "turn_restriction": 37,
+    "bench_damage": 25,
+    "switch": 9,
+    "damage_modification": 66,
+    "draw_search": 15,
+    "recoil": 16,
+    "energy_removal": 21,
+    "evolution": 9,
+    "hand_manipulation": 5,
+    "copy_attack": 5
+  },
+  "stages": {
+    "EFFECTCMDTYPE_AFTER_DAMAGE": 80,
+    "EFFECTCMDTYPE_BEFORE_DAMAGE": 174,
+    "EFFECTCMDTYPE_AI": 81,
+    "EFFECTCMDTYPE_REQUIRE_SELECTION": 29,
+    "EFFECTCMDTYPE_AI_SWITCH_DEFENDING_PKMN": 5,
+    "EFFECTCMDTYPE_INITIAL_EFFECT_1": 43,
+    "EFFECTCMDTYPE_AI_SELECTION": 44,
+    "EFFECTCMDTYPE_INITIAL_EFFECT_2": 23,
+    "EFFECTCMDTYPE_DISCARD_ENERGY": 15
+  }
+}
+cc -std=c11 -O2 -g -I../../src -DTCG_NO_DEFAULT_FATAL -Wall -Wno-unused-parameter -o ../../build/effects-audit/effect_units effect_units.c ../../harness/gb/gb.c ../../src/ai_stubs.c ../../src/duel_core.c ../../src/duel_ui.c ../../src/home_duel.c ../../src/home_misc.c ../../src/practice.c ../../src/substatus.c ../../src/tcg.c ../../src/gen/cards.c ../../src/gen/decks.c ../../src/gen/effect_commands.c ../../src/gen/effect_functions_by_address.c ../../src/gen/effect_stubs.c ../../src/gen/rom_blobs.c ../../src/gen/text.c ../../src/effects/part1.c ../../src/effects/part2.c ../../src/effects/part3.c ../../src/effects/part4.c ../../src/ai/ai_trainer_card_logic.c ../../src/ai/attacks.c ../../src/ai/boss_deck_set_up.c ../../src/ai/common.c ../../src/ai/core.c ../../src/ai/damage_calculation.c ../../src/ai/deck_ai.c ../../src/ai/deck_ai_pointers.c ../../src/ai/energy.c ../../src/ai/hand_pokemon.c ../../src/ai/home_ai.c ../../src/ai/init.c ../../src/ai/pkmn_powers.c ../../src/ai/retreat.c ../../src/ai/special_attacks.c ../../src/ai/trainer_cards.c
+../../build/effects-audit/effect_units ../../../poketcg.gbc ../../../poketcg.sym 24
+EFFECT_UNIT ArcanineFlamethrower_CheckEnergy PASS variants=24
+EFFECT_UNIT ArcanineFlamethrower_DiscardEffect PASS variants=24
+EFFECT_UNIT Barrier_BarrierEffect PASS variants=24
+EFFECT_UNIT Barrier_CheckEnergy PASS variants=24
+EFFECT_UNIT Barrier_DiscardEffect PASS variants=24
+EFFECT_UNIT BellsproutCallForFamily_CheckDeckAndPlayArea PASS variants=24
+EFFECT_UNIT BoyfriendsEffect PASS variants=24
+EFFECT_UNIT CharmeleonFlamethrower_CheckEnergy PASS variants=24
+EFFECT_UNIT CharmeleonFlamethrower_DiscardEffect PASS variants=24
+EFFECT_UNIT ClefableMetronome_CheckAttacks PASS variants=24
+EFFECT_UNIT ClefableMinimizeEffect PASS variants=24
+EFFECT_UNIT ClefairyMetronome_CheckAttacks PASS variants=24
+EFFECT_UNIT Conversion1_WeaknessCheck PASS variants=24
+EFFECT_UNIT Conversion2_ResistanceCheck PASS variants=24
+EFFECT_UNIT CuboneRage_DamageBoostEffect PASS variants=24
+EFFECT_UNIT DestinyBond_CheckEnergy PASS variants=24
+EFFECT_UNIT DestinyBond_DestinyBondEffect PASS variants=24
+EFFECT_UNIT DestinyBond_DiscardEffect PASS variants=24
+EFFECT_UNIT DevolutionBeam_CheckPlayArea PASS variants=24
+EFFECT_UNIT DevolutionBeam_LoadAnimation PASS variants=24
+EFFECT_UNIT DoTheWaveEffect PASS variants=24
+EFFECT_UNIT DodrioRage_DamageBoostEffect PASS variants=24
+EFFECT_UNIT DreamEaterEffect PASS variants=24
+EFFECT_UNIT ElectrodeSonicboom_NullEffect PASS variants=24
+EFFECT_UNIT ElectrodeSonicboom_UnaffectedByColorEffect PASS variants=24
+EFFECT_UNIT Ember_CheckEnergy PASS variants=24
+EFFECT_UNIT Ember_DiscardEffect PASS variants=24
+EFFECT_UNIT EnergyConversion_CheckEnergy PASS variants=24
+EFFECT_UNIT EnergySpike_DeckCheck PASS variants=24
+EFFECT_UNIT ExpandEffect PASS variants=24
+EFFECT_UNIT FireBlast_CheckEnergy PASS variants=24
+EFFECT_UNIT FireBlast_DiscardEffect PASS variants=24
+EFFECT_UNIT FireSpin_CheckEnergy PASS variants=24
+EFFECT_UNIT FirstAid_DamageCheck PASS variants=24
+EFFECT_UNIT FlamesOfRage_CheckEnergy PASS variants=24
+EFFECT_UNIT FlamesOfRage_DamageBoostEffect PASS variants=24
+EFFECT_UNIT FlareonFlamethrower_CheckEnergy PASS variants=24
+EFFECT_UNIT FlareonFlamethrower_DiscardEffect PASS variants=24
+EFFECT_UNIT FlareonRage_DamageBoostEffect PASS variants=24
+EFFECT_UNIT FocusEnergyEffect PASS variants=24
+EFFECT_UNIT FoulOdorEffect PASS variants=24
+EFFECT_UNIT FriendshipSong_BenchCheck PASS variants=24
+EFFECT_UNIT Gale_LoadAnimation PASS variants=24
+EFFECT_UNIT GravelerHardenEffect PASS variants=24
+EFFECT_UNIT GrimerMinimizeEffect PASS variants=24
+EFFECT_UNIT HeadacheEffect PASS variants=24
+EFFECT_UNIT HydroPumpEffect PASS variants=24
+EFFECT_UNIT IceBreath_ZeroDamage PASS variants=24
+EFFECT_UNIT JynxMeditate_DamageBoostEffect PASS variants=24
+EFFECT_UNIT KadabraRecover_CheckEnergyHP PASS variants=24
+EFFECT_UNIT KadabraRecover_DiscardEffect PASS variants=24
+EFFECT_UNIT KarateChop_DamageSubtractionEffect PASS variants=24
+EFFECT_UNIT KinglerFlail_HPCheck PASS variants=24
+EFFECT_UNIT KrabbyCallForFamily_CheckDeckAndPlayArea PASS variants=24
+EFFECT_UNIT LaprasWaterGunEffect PASS variants=24
+EFFECT_UNIT LeekSlap_OncePerDuelCheck PASS variants=24
+EFFECT_UNIT LeekSlap_SetUsedThisDuelFlag PASS variants=24
+EFFECT_UNIT LightScreenEffect PASS variants=24
+EFFECT_UNIT MagikarpFlail_HPCheck PASS variants=24
+EFFECT_UNIT MagmarFlamethrower_CheckEnergy PASS variants=24
+EFFECT_UNIT MagmarFlamethrower_DiscardEffect PASS variants=24
+EFFECT_UNIT MagnetonSonicboom_NullEffect PASS variants=24
+EFFECT_UNIT MagnetonSonicboom_UnaffectedByColorEffect PASS variants=24
+EFFECT_UNIT MarowakCallForFamily_CheckDeckAndPlayArea PASS variants=24
+EFFECT_UNIT MewtwoAltEnergyAbsorption_CheckDiscardPile PASS variants=24
+EFFECT_UNIT MewtwoEnergyAbsorption_CheckDiscardPile PASS variants=24
+EFFECT_UNIT MrMimeMeditate_DamageBoostEffect PASS variants=24
+EFFECT_UNIT MysteryAttack_RandomEffect PASS variants=24
+EFFECT_UNIT NidoranFCallForFamily_CheckDeckAndPlayArea PASS variants=24
+EFFECT_UNIT NinetalesLure_CheckBench PASS variants=24
+EFFECT_UNIT OmanyteWaterGunEffect PASS variants=24
+EFFECT_UNIT OmastarWaterGunEffect PASS variants=24
+EFFECT_UNIT OnixHardenEffect PASS variants=24
+EFFECT_UNIT PidgeottoMirrorMove_InitialEffect1 PASS variants=24
+EFFECT_UNIT PoisonEffect PASS variants=24
+EFFECT_UNIT PoliwagWaterGunEffect PASS variants=24
+EFFECT_UNIT PoliwhirlAmnesia_CheckAttacks PASS variants=24
+EFFECT_UNIT PoliwrathWaterGunEffect PASS variants=24
+EFFECT_UNIT Prophecy_CheckDeck PASS variants=24
+EFFECT_UNIT Psychic_DamageBoostEffect PASS variants=24
+EFFECT_UNIT PsywaveEffect PASS variants=24
+EFFECT_UNIT Scavenge_CheckDiscardPile PASS variants=24
+EFFECT_UNIT Scavenge_DiscardEffect PASS variants=24
+EFFECT_UNIT SeadraWaterGunEffect PASS variants=24
+EFFECT_UNIT SleepEffect PASS variants=24
+EFFECT_UNIT SlowpokeAmnesia_CheckAttacks PASS variants=24
+EFFECT_UNIT SpacingOut_CheckDamage PASS variants=24
+EFFECT_UNIT SpacingOut_HealEffect PASS variants=24
+EFFECT_UNIT SpearowMirrorMove_InitialEffect1 PASS variants=24
+EFFECT_UNIT Sprout_CheckDeckAndPlayArea PASS variants=24
+EFFECT_UNIT StarmieRecover_CheckEnergyHP PASS variants=24
+EFFECT_UNIT StarmieRecover_DiscardEffect PASS variants=24
+EFFECT_UNIT StretchKick_CheckBench PASS variants=24
+EFFECT_UNIT SuperFang_HalfHPEffect PASS variants=24
+EFFECT_UNIT SwordsDanceEffect PASS variants=24
+EFFECT_UNIT Teleport_CheckBench PASS variants=24
+EFFECT_UNIT Teleport_SwitchEffect PASS variants=24
+EFFECT_UNIT ThunderboltEffect PASS variants=24
+EFFECT_UNIT Toxic_DoublePoisonEffect PASS variants=24
+EFFECT_UNIT VaporeonWaterGunEffect PASS variants=24
+EFFECT_UNIT VictreebelLure_AssertPokemonInBench PASS variants=24
+EFFECT_UNIT Wail_BenchCheck PASS variants=24
+EFFECT_UNIT Wildfire_CheckEnergy PASS variants=24
+EFFECT_UNITS PASS cases=103 variants=24 failures=0
+../../build/effects-audit/mechanics
+SPECIAL MECHANICS PASS cases=30 both_turn_sides=1
+/Applications/Xcode.app/Contents/Developer/usr/bin/make -C ../.. BUILD=build/effects-audit harness
+cc -std=c11 -O2 -g -Isrc -DTCG_NO_DEFAULT_FATAL -Wall -Wno-unused-parameter -DTCG_TRACE -o build/effects-audit/harness/difftest harness/difftest.c harness/ref.c harness/gb/gb.c src/ai_stubs.c src/duel_core.c src/duel_ui.c src/home_duel.c src/home_misc.c src/practice.c src/substatus.c src/tcg.c src/gen/cards.c src/gen/decks.c src/gen/effect_commands.c src/gen/effect_functions_by_address.c src/gen/effect_stubs.c src/gen/rom_blobs.c src/gen/text.c src/effects/part1.c src/effects/part2.c src/effects/part3.c src/effects/part4.c src/ai/ai_trainer_card_logic.c src/ai/attacks.c src/ai/boss_deck_set_up.c src/ai/common.c src/ai/core.c src/ai/damage_calculation.c src/ai/deck_ai.c src/ai/deck_ai_pointers.c src/ai/energy.c src/ai/hand_pokemon.c src/ai/home_ai.c src/ai/init.c src/ai/pkmn_powers.c src/ai/retreat.c src/ai/special_attacks.c src/ai/trainer_cards.c
+cc -std=c11 -O2 -g -Isrc -DTCG_NO_DEFAULT_FATAL -Wall -Wno-unused-parameter -o build/effects-audit/harness/unitdiff harness/unitdiff.c harness/gb/gb.c src/ai_stubs.c src/duel_core.c src/duel_ui.c src/home_duel.c src/home_misc.c src/practice.c src/substatus.c src/tcg.c src/gen/cards.c src/gen/decks.c src/gen/effect_commands.c src/gen/effect_functions_by_address.c src/gen/effect_stubs.c src/gen/rom_blobs.c src/gen/text.c src/effects/part1.c src/effects/part2.c src/effects/part3.c src/effects/part4.c src/ai/ai_trainer_card_logic.c src/ai/attacks.c src/ai/boss_deck_set_up.c src/ai/common.c src/ai/core.c src/ai/damage_calculation.c src/ai/deck_ai.c src/ai/deck_ai_pointers.c src/ai/energy.c src/ai/hand_pokemon.c src/ai/home_ai.c src/ai/init.c src/ai/pkmn_powers.c src/ai/retreat.c src/ai/special_attacks.c src/ai/trainer_cards.c
+python3 tools/trace_points.py src > build/effects-audit/harness/trace_points.txt
+../../build/effects-audit/harness/unitdiff ../../../poketcg.gbc ../../../poketcg.sym 200
+CountPrizes                                        ok
+ShuffleDeck                                        ok
+DrawCardFromDeck                                   ok
+ReturnCardToDeck                                   ok
+SearchCardInDeckAndAddToHand                       ok
+AddCardToHand                                      ok
+RemoveCardFromHand                                 ok
+MoveHandCardToDiscardPile                          ok
+PutCardInDiscardPile                               ok
+MoveDiscardPileCardToHand                          ok
+CreateDiscardPileCardList                          ok
+CreateDeckCardList                                 ok
+CreateArenaOrBenchEnergyCardList                   ok
+CreateHandCardList                                 ok
+SortCardsInDuelTempListByID                        ok
+GetCardIDFromDeckIndex                             ok
+RemoveCardFromDuelTempList                         ok
+CountCardsInDuelTempList                           ok
+LoadCardDataToBuffer1_FromDeckIndex                ok
+LoadCardDataToBuffer2_FromDeckIndex                ok
+EvolvePokemonCard                                  ok
+CheckIfCanEvolveInto                               ok
+CheckIfCanEvolveInto_BasicToStage2                 ok
+ClearAllStatusConditions                           ok
+PutHandPokemonCardInPlayArea                       ok
+MovePlayAreaCardToDiscardPile                      ok
+EmptyPlayAreaSlot                                  ok
+ShiftAllPokemonToFirstPlayAreaSlots                ok
+SwapArenaWithBenchPokemon                          ok
+SwapPlayAreaPokemon                                ok
+GetPlayAreaCardAttachedEnergies                    ok
+CopyAttackDataAndDamage_FromDeckIndex              ok
+UpdateArenaCardIDsAndClearTwoTurnDuelVars          ok
+ApplyDamageModifiers_DamageToSelf                  ok
+GetCardDamageAndMaxHP                              ok
+CheckLoadedAttackFlag                              ok
+SwapTurn                                           ok
+HandleDoubleDamageSubstatus                        ok
+HandleDamageReductionExceptSubstatus2              ok
+HandleCantAttackSubstatus                          ok
+HandleAmnesiaSubstatus                             ok
+CheckSandAttackOrSmokescreenSubstatus              ok
+CheckNoDamageOrEffect                              ok
+IsClairvoyanceActive                               ok
+CheckIsIncapableOfUsingPkmnPower                   ok
+CountPokemonWithActivePkmnPowerInBothPlayAreas     ok
+GetLoadedCard1RetreatCost                          ok
+CheckUnableToRetreatDueToEffect                    ok
+CheckCantUseTrainerDueToEffect                     ok
+IsPrehistoricPowerActive                           ok
+ClearDamageReductionSubstatus2                     ok
+UpdateSubstatusConditions_StartOfTurn              ok
+UpdateSubstatusConditions_EndOfTurn                ok
+IsRainDanceActive                                  ok
+CheckRainDanceScenario                             ok
+ClearChangedTypesIfMuk                             ok
+GetPlayAreaCardColor                               ok
+GetPlayAreaCardWeakness                            ok
+GetPlayAreaCardResistance                          ok
+HandleEnergyBurn                                   ok
+CheckIfEnoughEnergiesForGivenAttack                ok
+CheckIfActiveCardParalyzedOrAsleep                 ok
+CheckIfEnoughEnergiesToRetreat                     ok
+GetCardOneStageBelow                               ok
+CountKnockedOutPokemon                             ok
+CheckIfTurnDuelistPlayAreaPokemonAreAllKnockedOut  ok
+ClearNonTurnTemporaryDuelvars_CopyStatus           ok
+UpdateArenaCardLastTurnDamage                      ok
+SetAllPlayAreaPokemonCanEvolve                     ok
+HasAlivePokemonInPlayArea                          ok
+HasAlivePokemonInBench                             ok
+TakeAPrizes                                        ok
+AddToDamage                                        ok
+SubtractFromDamage                                 ok
+CheckIfEnoughEnergiesToAttack                      ok
+TranslateColorToWR                                 ok
+unitdiff: all tests passed

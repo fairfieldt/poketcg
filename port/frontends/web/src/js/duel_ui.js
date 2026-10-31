@@ -5,7 +5,7 @@
 //   duel.run(setup, { onEvent: (ev) => ui.onEvent(ev), onRequest: (req) => ui.onRequest(req) });
 //
 // Board state is read straight from engine memory (duel.duelvars) whenever something changes.
-import { C, T, W, EV, TEXT_MODE, SCREEN, REQ, MENU, TCG_PLAYER, TCG_OPPONENT, TCG_CANCEL } from './engine.js';
+import { C, T, W, EV, TEXT_MODE, PLAY_AREA_MODE, PLAY_AREA_MARK, SCREEN, REQ, MENU, TCG_PLAYER, TCG_OPPONENT, TCG_CANCEL } from './engine.js';
 import { el, clear, art, sym, esym, typeIcon, richText, plainText, reflowRules, cardTitle, costIcons, cardPage, COLOR_NAMES, STATUS_NAMES } from './gfx.js';
 import { duelBanner } from './duel_banners.js';
 
@@ -61,6 +61,8 @@ export class DuelUI {
 		this.practicePages = [];
 		this.practicePage = 0;
 		this.playAreaExclude = 0;
+		this.playAreaMarks = { [TCG_PLAYER]: new Uint8Array(6), [TCG_OPPONENT]: new Uint8Array(6) };
+		this.cardOrder = { [TCG_PLAYER]: new Uint8Array(60), [TCG_OPPONENT]: new Uint8Array(60) };
 		this.overlayKind = null;
 		this.pendingCardSelection = null;
 		this.controls = []; // input controller stack, top gets the keys
@@ -201,6 +203,25 @@ export class DuelUI {
 		return out;
 	}
 
+	refreshPresentationMarks(root = this.root) {
+		for (const row of root.querySelectorAll('[data-side][data-slot]')) {
+			const mark = row.classList.contains('empty') ? 0 : this.playAreaMarks[row.dataset.side]?.[row.dataset.slot] || 0;
+			let badge = row.querySelector(':scope > .effect-mark');
+			if (!mark) { badge?.remove(); continue; }
+			if (!badge) { badge = el('span', 'effect-mark'); row.appendChild(badge); }
+			badge.textContent = mark === PLAY_AREA_MARK.ENERGY ? 'G' : mark === PLAY_AREA_MARK.DAMAGE ? '+' : '✓';
+			badge.title = mark === PLAY_AREA_MARK.ENERGY ? 'Grass Energy' : mark === PLAY_AREA_MARK.DAMAGE ? 'Damage counter' : 'Selected';
+			badge.setAttribute('aria-label', badge.title);
+		}
+		for (const row of root.querySelectorAll('[data-order-side][data-order-deck]')) {
+			const order = this.cardOrder[row.dataset.orderSide]?.[row.dataset.orderDeck] || 0;
+			let badge = row.querySelector(':scope > .cl-order');
+			if (!order) { badge?.remove(); continue; }
+			if (!badge) { badge = el('span', 'cl-order'); row.prepend(badge); }
+			badge.textContent = String(order); badge.setAttribute('aria-label', `Order ${order}`);
+		}
+	}
+
 	// ---------------------------------------------------------------- rendering the main scene
 	render() {
 		const f = clear(this.$field);
@@ -219,6 +240,7 @@ export class DuelUI {
 		f.appendChild(meRow);
 		f.appendChild(this.renderBench(s[me], 'me'));
 		f.appendChild(this.renderInfo(s[me], 'me'));
+		this.refreshPresentationMarks();
 	}
 
 	renderInfo(st, cls) {
@@ -529,6 +551,7 @@ export class DuelUI {
 		const rows = items.map((idx, i) => {
 			const card = this.duel.card(this.duel.cardId(d, idx));
 			const row = el('div', 'cl-item');
+			row.dataset.orderSide = d; row.dataset.orderDeck = idx;
 			row.append(typeIcon(card), el('span', 'cl-name', cardTitle(card)));
 			if (card.isPokemon) row.appendChild(el('span', 'cl-stage', ['', '1', '2', '2'][card.stage] ? `St${['', '1', '2', '2'][card.stage]}` : 'Basic'));
 			// Hover never changes the card that a later confirm will use.
@@ -566,6 +589,7 @@ export class DuelUI {
 			rows, wrap, owner: d, deckIndexes: items,
 		};
 		if (rows.length) ctl.move(ctl.cursor);
+		this.refreshPresentationMarks(wrap);
 		return ctl;
 	}
 
@@ -578,6 +602,7 @@ export class DuelUI {
 		st.slots.forEach((slot, i) => {
 			if (!slot) return;
 			const row = el('div', 'pa-row');
+			row.dataset.side = d; row.dataset.slot = i;
 			row.appendChild(el('span', 'pa-loc', i === 0 ? 'Active' : `Bench ${i}`));
 			row.appendChild(art(slot.card.id, 0.5));
 			const info = el('div', 'pa-info');
@@ -634,6 +659,7 @@ export class DuelUI {
 			wrap,
 		};
 		ctl.move(ctl.i);
+		this.refreshPresentationMarks(wrap);
 		return ctl;
 	}
 
@@ -700,6 +726,15 @@ export class DuelUI {
 			if (a[1] === TEXT_MODE.PRACTICE_SPEECH) this.showPracticeReading(ev);
 			else this.hidePracticeReading();
 			return undefined;
+		case EV.PLAY_AREA_MARK:
+			if (this.playAreaMarks[a[0]] && a[1] < 6 && a[2] <= PLAY_AREA_MARK.TARGET) this.playAreaMarks[a[0]][a[1]] = a[2];
+			this.refreshPresentationMarks(); return undefined;
+		case EV.CARD_ORDER:
+			if (this.cardOrder[a[0]]) {
+				if (a[1] === 0xff) this.cardOrder[a[0]].fill(0);
+				else if (a[1] < 60) this.cardOrder[a[0]][a[1]] = a[2];
+			}
+			this.refreshPresentationMarks(); return undefined;
 		case EV.SCREEN:
 			return this.onScreen(a);
 		case EV.CARD:
@@ -748,6 +783,11 @@ export class DuelUI {
 		const screen = a[0];
 		this.screen = screen;
 		this.screenArg = a;
+		if (screen === SCREEN.EMPTY || (screen === SCREEN.MAIN && !a[2])) {
+			for (const marks of Object.values(this.playAreaMarks)) marks.fill(0);
+			for (const order of Object.values(this.cardOrder)) order.fill(0);
+			this.refreshPresentationMarks();
+		}
 		if (screen !== SCREEN.EMPTY) this.hidePracticeReading();
 		if (screen !== SCREEN.BOX_MESSAGE) this.hideBanner();
 		switch (screen) {
@@ -763,10 +803,22 @@ export class DuelUI {
 			break;
 		case SCREEN.PLAY_AREA:
 			this.playAreaExclude = a[2];
-			this.pkmnPowerScreen = a[3] === 1;
-			if (a[3] === 1) this.setText('Choose a Pokémon to use its Power.');
-			else if (a[3] === 2) this.setText('Choose a Pokémon to move Grass Energy from.');
-			else if (a[3] === 3) this.setText('Choose a Pokémon to receive Grass Energy.');
+			this.pkmnPowerScreen = a[3] === PLAY_AREA_MODE.POWER;
+			{
+				const prompts = {
+					[PLAY_AREA_MODE.POWER]: 'Choose a Pokémon to use its Power.',
+					[PLAY_AREA_MODE.PEEK]: 'Choose a Play Area to inspect.',
+					[PLAY_AREA_MODE.ENERGY_FROM]: 'Choose a Pokémon to move Grass Energy from.',
+					[PLAY_AREA_MODE.ENERGY_TO]: 'Choose a Pokémon to receive Grass Energy.',
+					[PLAY_AREA_MODE.DAMAGE_FROM]: 'Choose a damaged Pokémon.',
+					[PLAY_AREA_MODE.CURSE_FROM]: 'Choose a damaged Pokémon.',
+					[PLAY_AREA_MODE.DAMAGE_TO]: 'Choose a Pokémon to receive the damage counter.',
+					[PLAY_AREA_MODE.CURSE_TO]: 'Choose a Pokémon to receive the damage counter.',
+					[PLAY_AREA_MODE.STRANGE_BEHAVIOR]: 'Choose a Pokémon to move damage from.',
+					[PLAY_AREA_MODE.BENCH_MULTI]: 'Choose up to 3 Bench Pokémon.',
+				};
+				if (prompts[a[3]]) this.setText(prompts[a[3]]);
+			}
 			this.showOverlay('playarea', this.playAreaView({ d: a[1], selectable: () => false, pkmnPower: this.pkmnPowerScreen }).wrap);
 			break;
 		case SCREEN.CARD_LIST: {
@@ -1360,6 +1412,7 @@ export class DuelUI {
 
 	/* Peek (HandlePeekSelection): which play area */
 	peekAreaMenu(req) {
+		this.setText('Choose a Play Area to inspect.');
 		return this.ask((done) => this.textMenu({
 			items: [{ label: req.shown === this.perspective ? 'Your Play Area' : `${this.name(req.shown)}'s Play Area` },
 				{ label: req.shown === this.perspective ? 'Opp. Play Area' : `${this.name(other(req.shown))}'s Play Area` }],
@@ -1371,7 +1424,7 @@ export class DuelUI {
 	peekTargetMenu(req) {
 		const mask = req.arg[0], hand = !!req.arg[1];
 		const st = this.sideState(req.shown);
-		this.setText(req.textStr || this.text);
+		this.setText(req.textStr || 'Choose a card to inspect.');
 		return this.ask((done) => {
 			const box = el('div', 'prizes-box');
 			box.appendChild(el('div', 'cl-header', `${req.shown === this.perspective ? 'Your' : `${this.name(req.shown)}'s`} cards`));

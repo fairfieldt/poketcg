@@ -1,0 +1,112 @@
+{
+  "catalog_parity": {
+    "all_pokemon_card_bytes_match_rom": true,
+    "all_attack_chains_match_generated_c_and_original_asm_in_order": true,
+    "all_referenced_functions_have_strong_c_implementations": true
+  },
+  "coverage_summary": {
+    "catalog_attacks": 319,
+    "effect_chains": 249,
+    "all_effect_functions": 431,
+    "runtime_effect_functions": 317,
+    "strict_lockstep_functions": 333,
+    "strict_lockstep_runtime_functions": 245,
+    "direct_rom_unit_functions": 103,
+    "direct_rom_unit_fixtures_per_function": 24,
+    "rom_executed_functions_combined": 346,
+    "rom_executed_runtime_functions_combined": 258,
+    "runtime_functions_not_rom_executed": 59
+  },
+  "strict_duel_batches": [
+    {
+      "batch": "baseline",
+      "strictly_matching": 120,
+      "attempted": 120
+    },
+    {
+      "batch": "initial_focus",
+      "strictly_matching": 20,
+      "attempted": 20
+    },
+    {
+      "batch": "per_card_focus",
+      "strictly_matching": 124,
+      "attempted": 125
+    },
+    {
+      "batch": "post_presentation_release",
+      "strictly_matching": 40,
+      "attempted": 40
+    }
+  ],
+  "confirmed_new_non_power_rules_defects": [],
+  "documented_fidelity_boundary": {
+    "mechanic": "Cancelled Amnesia",
+    "strict_seed": "0bd823",
+    "card_focus": "POLIWHIRL",
+    "address": "0xffa0 hTempList[0]",
+    "portable_value": 0,
+    "original_value": 13,
+    "reason": "Original writes leftover E from cursor drawing after cancelled attack selection; the C port explicitly approximates it as zero.",
+    "default_harness": "Unchanged and strict; original failing reproduction retained.",
+    "optional_probe": "Comparator-only allowance restricted to the exact address/value pair and three named checkpoints after known cancelled Amnesia. No engine writes. Re-enabled when byte matches.",
+    "qualified_replay": {
+      "events": 9330,
+      "rng_events": 818,
+      "turns": 51,
+      "ignored_scratch_comparisons": 3,
+      "allowance_outstanding_at_end": false,
+      "conclusion": "State/RNG agree except documented discarded UI scratch."
+    },
+    "regressions": "Poliwhirl and Slowpoke cancellation followed by successful attack1 disable, both turn sides: gameplay/card/HP/disabled-attack state and RNG unchanged on cancel, correct fresh target afterward.",
+    "production_recommendation": "No runtime edit to emulate timing-dependent discarded UI register."
+  },
+  "direct_units": {
+    "functions": 103,
+    "fixtures_per_function": 24,
+    "calls": 2472,
+    "passed": true,
+    "comparison_exclusions": "Original harness excludes GB stack region at/above 0xdf00, hBankROM and final HRAM IE bookkeeping. Meaningful initial-check carry is compared; incidental undefined return flags and text-label registers are not."
+  },
+  "shared_units": {
+    "routines": 76,
+    "iterations_each": 200,
+    "rng_iterations": 200,
+    "passed": true
+  },
+  "real_engine_assertion_cases": {
+    "cases": 30,
+    "both_turn_sides": true,
+    "passed": true,
+    "mechanics": [
+      "Metronome copied-energy requirement, two-card discard and 100 damage, self-copy rejection and cancellation",
+      "Mirror Move no-history rejection, exact damage/status/substatus copy",
+      "Poliwhirl and Slowpoke Amnesia cancellation then second-attack disable",
+      "Ditto Morph ID-copy/max-HP/status behavior without removing source deck card",
+      "Ninetales Mix-Up hand-size/type conservation and non-Pokemon retention",
+      "Moltres Wildfire chosen-energy count and milling clamp at one remaining card",
+      "Mew Devolution Beam own/opponent Bench, preserved damage and KO threshold, evolved card to Hand, flag/type reset"
+    ]
+  },
+  "reproduction": {
+    "main": "make -C port/tests/special_effects test",
+    "bounded_focus": "make -C port/tests/special_effects focus",
+    "optional_scratch_probe": "make -C port/tests/special_effects scratch-probe"
+  },
+  "limits": [
+    "All card/chain data was inventoried and verified; not every conditional/AI branch was executed.",
+    "Trace-entry coverage is not return/branch coverage.",
+    "Structured function operands are not full-game legality fixtures. Complete legal duels are covered separately.",
+    "The focus batch used a 180-second launch deadline and finished its in-flight run at 185.116 seconds; unstarted species remain explicitly uncovered.",
+    "AI heuristic quality, frontend navigation and Power mechanics are separate sibling audits.",
+    "No physical-console or ares run was needed for these portable engine checks."
+  ],
+  "hashes": {
+    "poketcg.gbc": "a54515bb6b3e364964d3c0226f5a6b0c8c0f7318c9296ef2e321df0bbb8541ce",
+    "port/build/effects-audit/harness/difftest": "805820fc1e0511500c67ff03ce3d52d0d3096e29e88cf926bf513bf6153c7e36",
+    "port/build/effects-audit/effect_units": "c517b0b8b6b8fe95911856546f2377f0a3e2bbae1300edfcc01b95435f0628b7",
+    "port/build/effects-audit/mechanics": "6c8d0e37d0859a314f7b45b87d84f03552ceac4d5e59a5acd354519e872345da",
+    "port/build/effects-baseline/harness/difftest": "ed38a879766669d3f5828dabbc9399be0c5cec80466e967d34c7ca987ea9bbdc"
+  },
+  "hashes_description": "Current final reproducer binaries; pre-presentation baseline oracle binary is also pinned below. Focus logs were collected before rebuilding the reproducer against presentation-only metadata changes."
+}

@@ -1,0 +1,65 @@
+{
+  "status": "pass",
+  "catalog": {
+    "non_power_attacks": 319,
+    "power_variants": 26,
+    "mapping": "request-families.json",
+    "method": "conservative static transitive source call survey"
+  },
+  "resolutions": [
+    [
+      320,
+      240
+    ],
+    [
+      480,
+      360
+    ]
+  ],
+  "actual_engine_cases_per_resolution": {
+    "selector_families": 36,
+    "energy_trans": 16,
+    "forced_and_evolution_selector": 7
+  },
+  "host_command": "make -C port/frontends/n64 selectortest powertest checktest acktest boardtest retainedtest rastertest -j6",
+  "pixel_checks": {
+    "board_frames": 369,
+    "board_hits": 216,
+    "board_invalidations": 153,
+    "retained_frames": 276,
+    "retained_reuses": 108,
+    "glyph_cases": 1992,
+    "scaled_blit_cases": 3276,
+    "card_back_cases": 936,
+    "read_only_semantic_emissions": true,
+    "nested_views_preserve": true,
+    "full_redraw_clears": true,
+    "HUD_redraw_preserves": true,
+    "empty_slots_unmarked": true
+  },
+  "parity": [
+    "complete WRAM",
+    "complete HRAM",
+    "event/request/answer digest",
+    "RNG",
+    "P1/P2 request ownership with opposing shown-side cases"
+  ],
+  "browser_command": "node port/frontends/web/test/effect_markers.mjs",
+  "browser": "pass",
+  "sanitizers": {
+    "frontend_and_fixture": "ASan+UBSan both resolutions",
+    "engine_objects": "separately covered by parent audit"
+  },
+  "presentation_state_bytes": {
+    "slot_marks": 12,
+    "card_order": 120,
+    "heap_image_allocations": 0
+  },
+  "events": {
+    "PLAY_AREA_MARK": 13,
+    "CARD_ORDER": 14
+  },
+  "captures": "native-size host mock with placeholder card art; separate browser PNGs; no VI/hardware claim",
+  "production_sources_frozen": true,
+  "native_timing_runs": 0
+}

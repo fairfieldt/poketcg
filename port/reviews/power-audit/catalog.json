@@ -1,0 +1,509 @@
+{
+  "power_card_variants": 26,
+  "unique_chains": 26,
+  "manual": 10,
+  "passive": 12,
+  "on_play": 4,
+  "powers": [
+    {
+      "card": "VENUSAUR_LV64",
+      "name": "SolarPowerName",
+      "chain": "VenusaurSolarPowerEffectCommands",
+      "source": "src/data/cards.asm:340",
+      "card_id": 10,
+      "attack_slot": 0,
+      "kind": "manual",
+      "command_address": "0x4882",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_2",
+          "function": "SolarPower_CheckUse"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_BEFORE_DAMAGE",
+          "function": "SolarPower_RemoveStatusEffect"
+        }
+      ]
+    },
+    {
+      "card": "VENUSAUR_LV67",
+      "name": "EnergyTransName",
+      "chain": "VenusaurEnergyTransEffectCommands",
+      "source": "src/data/cards.asm:391",
+      "card_id": 11,
+      "attack_slot": 0,
+      "kind": "manual",
+      "command_address": "0x4815",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_2",
+          "function": "EnergyTrans_CheckPlayArea"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_BEFORE_DAMAGE",
+          "function": "EnergyTrans_TransferEffect"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_AFTER_DAMAGE",
+          "function": "EnergyTrans_AIEffect"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_REQUIRE_SELECTION",
+          "function": "EnergyTrans_PrintProcedure"
+        }
+      ]
+    },
+    {
+      "card": "VILEPLUME",
+      "name": "HealName",
+      "chain": "VileplumeHealEffectCommands",
+      "source": "src/data/cards.asm:1360",
+      "card_id": 30,
+      "attack_slot": 0,
+      "kind": "manual",
+      "command_address": "0x4869",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_2",
+          "function": "Heal_OncePerTurnCheck"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_BEFORE_DAMAGE",
+          "function": "Heal_RemoveDamageEffect"
+        }
+      ]
+    },
+    {
+      "card": "VENOMOTH",
+      "name": "ShiftName",
+      "chain": "VenomothShiftEffectCommands",
+      "source": "src/data/cards.asm:1564",
+      "card_id": 34,
+      "attack_slot": 0,
+      "kind": "manual",
+      "command_address": "0x484d",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_2",
+          "function": "Shift_OncePerTurnCheck"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_BEFORE_DAMAGE",
+          "function": "Shift_ChangeColorEffect"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_REQUIRE_SELECTION",
+          "function": "Shift_PlayerSelectEffect"
+        }
+      ]
+    },
+    {
+      "card": "MUK",
+      "name": "ToxicGasName",
+      "chain": "MukToxicGasEffectCommands",
+      "source": "src/data/cards.asm:1819",
+      "card_id": 39,
+      "attack_slot": 0,
+      "kind": "passive",
+      "command_address": "0x482a",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "ToxicGasEffect"
+        }
+      ]
+    },
+    {
+      "card": "CHARIZARD",
+      "name": "EnergyBurnName",
+      "chain": "CharizardEnergyBurnEffectCommands",
+      "source": "src/data/cards.asm:2380",
+      "card_id": 50,
+      "attack_slot": 0,
+      "kind": "passive",
+      "command_address": "0x4a53",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "EnergyBurnEffect"
+        }
+      ]
+    },
+    {
+      "card": "MOLTRES_LV37",
+      "name": "FiregiverName",
+      "chain": "MoltresFiregiverEffectCommands",
+      "source": "src/data/cards.asm:3094",
+      "card_id": 64,
+      "attack_slot": 0,
+      "kind": "on-play",
+      "command_address": "0x4a7a",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "Firegiver_InitialEffect"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_PKMN_POWER_TRIGGER",
+          "function": "Firegiver_AddToHandEffect"
+        }
+      ]
+    },
+    {
+      "card": "BLASTOISE",
+      "name": "RainDanceName",
+      "chain": "BlastoiseRainDanceEffectCommands",
+      "source": "src/data/cards.asm:3247",
+      "card_id": 67,
+      "attack_slot": 0,
+      "kind": "passive",
+      "command_address": "0x48aa",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "RainDanceEffect"
+        }
+      ]
+    },
+    {
+      "card": "TENTACOOL",
+      "name": "CowardiceName",
+      "chain": "TentacoolCowardiceEffectCommands",
+      "source": "src/data/cards.asm:3553",
+      "card_id": 73,
+      "attack_slot": 0,
+      "kind": "manual",
+      "command_address": "0x497f",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_2",
+          "function": "Cowardice_CheckUseAndBench"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_BEFORE_DAMAGE",
+          "function": "Cowardice_ReturnToHandEffect"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_REQUIRE_SELECTION",
+          "function": "Cowardice_PlayerSelectEffect"
+        }
+      ]
+    },
+    {
+      "card": "OMANYTE",
+      "name": "ClairvoyanceName",
+      "chain": "OmanyteClairvoyanceEffectCommands",
+      "source": "src/data/cards.asm:4522",
+      "card_id": 92,
+      "attack_slot": 0,
+      "kind": "passive",
+      "command_address": "0x489b",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "ClairvoyanceEffect"
+        }
+      ]
+    },
+    {
+      "card": "ARTICUNO_LV37",
+      "name": "QuickfreezeName",
+      "chain": "ArticunoQuickfreezeEffectCommands",
+      "source": "src/data/cards.asm:4675",
+      "card_id": 95,
+      "attack_slot": 0,
+      "kind": "on-play",
+      "command_address": "0x4994",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "Quickfreeze_InitialEffect"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_PKMN_POWER_TRIGGER",
+          "function": "Quickfreeze_Paralysis50PercentEffect"
+        }
+      ]
+    },
+    {
+      "card": "ZAPDOS_LV68",
+      "name": "PealOfThunderName",
+      "chain": "ZapdosPealOfThunderEffectCommands",
+      "source": "src/data/cards.asm:5848",
+      "card_id": 118,
+      "attack_slot": 0,
+      "kind": "on-play",
+      "command_address": "0x4ce3",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "PealOfThunder_InitialEffect"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_PKMN_POWER_TRIGGER",
+          "function": "PealOfThunder_RandomlyDamageEffect"
+        }
+      ]
+    },
+    {
+      "card": "MANKEY",
+      "name": "PeekName",
+      "chain": "MankeyPeekEffectCommands",
+      "source": "src/data/cards.asm:6103",
+      "card_id": 123,
+      "attack_slot": 0,
+      "kind": "manual",
+      "command_address": "0x4c38",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_2",
+          "function": "Peek_OncePerTurnCheck"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_BEFORE_DAMAGE",
+          "function": "Peek_SelectEffect"
+        }
+      ]
+    },
+    {
+      "card": "MACHAMP",
+      "name": "StrikesBackName",
+      "chain": "MachampStrikesBackEffectCommands",
+      "source": "src/data/cards.asm:6307",
+      "card_id": 127,
+      "attack_slot": 0,
+      "kind": "passive",
+      "command_address": "0x4bcc",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "StrikesBackEffect"
+        }
+      ]
+    },
+    {
+      "card": "KABUTO",
+      "name": "KabutoArmorName",
+      "chain": "KabutoKabutoArmorEffectCommands",
+      "source": "src/data/cards.asm:6919",
+      "card_id": 139,
+      "attack_slot": 0,
+      "kind": "passive",
+      "command_address": "0x4bd0",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "KabutoArmorEffect"
+        }
+      ]
+    },
+    {
+      "card": "AERODACTYL",
+      "name": "PrehistoricPowerName",
+      "chain": "AerodactylPrehistoricPowerEffectCommands",
+      "source": "src/data/cards.asm:7021",
+      "card_id": 141,
+      "attack_slot": 0,
+      "kind": "passive",
+      "command_address": "0x4c34",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "PrehistoricPowerEffect"
+        }
+      ]
+    },
+    {
+      "card": "ALAKAZAM",
+      "name": "DamageSwapName",
+      "chain": "AlakazamDamageSwapEffectCommands",
+      "source": "src/data/cards.asm:7174",
+      "card_id": 144,
+      "attack_slot": 0,
+      "kind": "manual",
+      "command_address": "0x4afb",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_2",
+          "function": "DamageSwap_CheckDamage"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_BEFORE_DAMAGE",
+          "function": "DamageSwap_SelectAndSwapEffect"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_AFTER_DAMAGE",
+          "function": "DamageSwap_SwapEffect"
+        }
+      ]
+    },
+    {
+      "card": "SLOWBRO",
+      "name": "StrangeBehaviorName",
+      "chain": "SlowbroStrangeBehaviorEffectCommands",
+      "source": "src/data/cards.asm:7327",
+      "card_id": 147,
+      "attack_slot": 0,
+      "kind": "manual",
+      "command_address": "0x4b56",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_2",
+          "function": "StrangeBehavior_CheckDamage"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_BEFORE_DAMAGE",
+          "function": "StrangeBehavior_SelectAndSwapEffect"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_AFTER_DAMAGE",
+          "function": "StrangeBehavior_SwapEffect"
+        }
+      ]
+    },
+    {
+      "card": "HAUNTER_LV17",
+      "name": "TransparencyName",
+      "chain": "HaunterTransparencyEffectCommands",
+      "source": "src/data/cards.asm:7480",
+      "card_id": 150,
+      "attack_slot": 0,
+      "kind": "passive",
+      "command_address": "0x4acd",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "TransparencyEffect"
+        }
+      ]
+    },
+    {
+      "card": "GENGAR",
+      "name": "CurseName",
+      "chain": "GengarCurseEffectCommands",
+      "source": "src/data/cards.asm:7582",
+      "card_id": 152,
+      "attack_slot": 0,
+      "kind": "manual",
+      "command_address": "0x4a8c",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_2",
+          "function": "Curse_CheckDamageAndBench"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_BEFORE_DAMAGE",
+          "function": "Curse_TransferDamageEffect"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_REQUIRE_SELECTION",
+          "function": "Curse_PlayerSelectEffect"
+        }
+      ]
+    },
+    {
+      "card": "MR_MIME",
+      "name": "InvisibleWallName",
+      "chain": "MrMimeInvisibleWallEffectCommands",
+      "source": "src/data/cards.asm:7735",
+      "card_id": 155,
+      "attack_slot": 0,
+      "kind": "passive",
+      "command_address": "0x4af0",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "InvisibleWallEffect"
+        }
+      ]
+    },
+    {
+      "card": "MEW_LV8",
+      "name": "NeutralizingShieldName",
+      "chain": "MewNeutralizingShieldEffectCommands",
+      "source": "src/data/cards.asm:7990",
+      "card_id": 160,
+      "attack_slot": 0,
+      "kind": "passive",
+      "command_address": "0x4b1d",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "NeutralizingShieldEffect"
+        }
+      ]
+    },
+    {
+      "card": "DODRIO",
+      "name": "RetreatAidName",
+      "chain": "DodrioRetreatAidEffectCommands",
+      "source": "src/data/cards.asm:9112",
+      "card_id": 182,
+      "attack_slot": 0,
+      "kind": "passive",
+      "command_address": "0x4d7c",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "RetreatAidEffect"
+        }
+      ]
+    },
+    {
+      "card": "SNORLAX",
+      "name": "ThickSkinnedName",
+      "chain": "SnorlaxThickSkinnedEffectCommands",
+      "source": "src/data/cards.asm:9520",
+      "card_id": 190,
+      "attack_slot": 0,
+      "kind": "passive",
+      "command_address": "0x4d47",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "ThickSkinnedEffect"
+        }
+      ]
+    },
+    {
+      "card": "DRAGONITE_LV41",
+      "name": "HealingWindName",
+      "chain": "DragoniteHealingWindEffectCommands",
+      "source": "src/data/cards.asm:9673",
+      "card_id": 193,
+      "attack_slot": 0,
+      "kind": "on-play",
+      "command_address": "0x4e3f",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_1",
+          "function": "HealingWind_InitialEffect"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_PKMN_POWER_TRIGGER",
+          "function": "HealingWind_PlayAreaHealEffect"
+        }
+      ]
+    },
+    {
+      "card": "DRAGONITE_LV45",
+      "name": "StepInName",
+      "chain": "DragoniteStepInEffectCommands",
+      "source": "src/data/cards.asm:9724",
+      "card_id": 194,
+      "attack_slot": 0,
+      "kind": "manual",
+      "command_address": "0x4d39",
+      "commands": [
+        {
+          "phase": "EFFECTCMDTYPE_INITIAL_EFFECT_2",
+          "function": "StepIn_BenchCheck"
+        },
+        {
+          "phase": "EFFECTCMDTYPE_BEFORE_DAMAGE",
+          "function": "StepIn_SwitchEffect"
+        }
+      ]
+    }
+  ]
+}

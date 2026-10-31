@@ -39,6 +39,12 @@ static void event(u8 type, u8 a0, u8 a1, u8 a2, u8 a3, u16 text, const char *str
 
 void tcg_ui_event(u8 type, u8 a0, u8 a1, u8 a2, u8 a3, u16 text)
 {
+	if (type == TCG_EV_TEXT && text) {
+		char formatted[512];
+		tcg_format_text(text, formatted, sizeof(formatted));
+		event(type, a0, a1, a2, a3, text, formatted);
+		return;
+	}
 	event(type, a0, a1, a2, a3, text, NULL);
 }
 
@@ -946,7 +952,15 @@ void PrintSortNumberInCardList_SetPointer(void)
 	wSortCardListByID = TRUE;
 }
 
-void PrintSortNumberInCardList_CallFromPointer(void) {}
+void PrintSortNumberInCardList_CallFromPointer(void)
+{
+	/* Snapshot the original ordering glyphs without changing their RAM. */
+	event(TCG_EV_CARD_ORDER,hWhoseTurn,0xff,0,0,0,NULL);
+	if(rd16(wPrintSortNumberInCardListPtr)!=GBADDR_PrintSortNumberInCardList)return;
+	for(u8 i=0;i<5&&wDuelTempList[i]!=0xff;i++)
+		if(wDuelTempList[10+i])event(TCG_EV_CARD_ORDER,hWhoseTurn,
+			wDuelTempList[i],wDuelTempList[10+i],0,0,NULL);
+}
 
 /* LoadSelectedCardGfx: loads the card at the cursor (hCurMenuItem) of wDuelTempList */
 static void LoadSelectedCardGfx(void)
@@ -1549,7 +1563,7 @@ static void DrawYourOrOppPlayAreaScreen(u8 h, u8 l)
 	wCheckMenuPlayAreaWhichDuelist = h;
 	wCheckMenuPlayAreaWhichLayout = l;
 	EmptyScreen();
-	tcg_ui_screen(TCG_SCREEN_PLAY_AREA, 0, 2);
+	tcg_ui_screen(TCG_SCREEN_PLAY_AREA, 0, TCG_PLAY_AREA_PEEK);
 }
 
 /* the player's Peek selection (Mankey's Peek): pick a prize card, the opponent's hand

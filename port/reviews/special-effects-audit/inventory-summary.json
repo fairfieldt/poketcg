@@ -1,0 +1,38 @@
+{
+  "pokemon_cards": 187,
+  "power_entries_excluded": 26,
+  "non_power_attacks": 319,
+  "attacks_with_effect_chains": 249,
+  "distinct_effect_chains": 249,
+  "effect_functions_including_ai": 431,
+  "runtime_functions": 317,
+  "mechanic_tags": {
+    "healing": 14,
+    "prevention": 33,
+    "ordinary_damage": 70,
+    "status": 70,
+    "type_weakness_resistance": 41,
+    "coin": 117,
+    "turn_restriction": 37,
+    "bench_damage": 25,
+    "switch": 9,
+    "damage_modification": 66,
+    "draw_search": 15,
+    "recoil": 16,
+    "energy_removal": 21,
+    "evolution": 9,
+    "hand_manipulation": 5,
+    "copy_attack": 5
+  },
+  "stages": {
+    "EFFECTCMDTYPE_AFTER_DAMAGE": 80,
+    "EFFECTCMDTYPE_BEFORE_DAMAGE": 174,
+    "EFFECTCMDTYPE_AI": 81,
+    "EFFECTCMDTYPE_REQUIRE_SELECTION": 29,
+    "EFFECTCMDTYPE_AI_SWITCH_DEFENDING_PKMN": 5,
+    "EFFECTCMDTYPE_INITIAL_EFFECT_1": 43,
+    "EFFECTCMDTYPE_AI_SELECTION": 44,
+    "EFFECTCMDTYPE_INITIAL_EFFECT_2": 23,
+    "EFFECTCMDTYPE_DISCARD_ENERGY": 15
+  }
+}
