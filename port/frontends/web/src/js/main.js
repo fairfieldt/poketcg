@@ -133,7 +133,6 @@ function showTitle() {
 	const logo = el('div', 'logo');
 	logo.appendChild(el('div', 'logo-1', 'POKéMON'));
 	logo.appendChild(el('div', 'logo-2', 'TRADING CARD GAME'));
-	logo.appendChild(el('div', 'logo-3', 'duel engine · web'));
 	s.appendChild(logo);
 	const arts = el('div', 'title-arts');
 	for (const id of [C.CHARIZARD, C.BLASTOISE, C.VENUSAUR_LV67, C.MEWTWO_LV53, C.PIKACHU_LV12]) if (id) arts.appendChild(art(id, 1));
@@ -171,15 +170,8 @@ function showTitle() {
 	skip.className = 'skip-delay';
 	skip.checked = skipDelayAllowed();
 	skip.addEventListener('change', () => setSkipDelayAllowed(skip.checked));
-	opts.append(skip, document.createTextNode(' Debug option: skip delays while B (X / Esc) is held'));
+	opts.append(skip, document.createTextNode(' Skip delays while B (X / Esc) is held'));
 	s.appendChild(opts);
-	const info = el('div', 'build-info');
-	if (app.info) {
-		const effects = app.info.effects.length ? `${app.info.effects.length} effect file(s)` : 'effect stubs';
-		const ai = app.info.ai.length ? `${app.info.ai.length} AI file(s)` : 'AI stubs (not ported yet)';
-		info.textContent = `Engine build: ${effects}, ${ai}. Unported routines stop the duel with a message.`;
-	}
-	s.appendChild(info);
 	s.appendChild(el('div', 'help', 'Keys: arrows move · Z / Enter = A · X / Esc = B · C = card details. Mouse and touch work too.'));
 	menuKeys(buttons, null);
 }

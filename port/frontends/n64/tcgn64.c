@@ -36,6 +36,9 @@
 #include "gen/text.h"
 #include "../common/save_store.h"
 #include "save_store_n64.h"
+#ifdef TCGN64_ADVENTURE
+#include "adventure/audio.h"
+#endif
 
 #ifdef TCGN64_CARD_ART
 #include "cardart_table.h"
@@ -692,12 +695,25 @@ static void draw_board(uint8_t hl_duelist, int hl_loc)
  * the buffer instead and write the data cache back before showing the frame. */
 static surface_t *g_disp;
 static surface_t g_fb_cached;
+#ifdef TCGN64_ADVENTURE
+static surface_t *g_last_ui_frame;
+static surface_t g_ui_canvas;
+static bool g_automated_ui;
+static unsigned g_automated_events;
+static unsigned g_message_speed=2;
+#endif
 
 static void begin_frame(void)
 {
 	g_disp = display_get();
+	/* The adventure presents a completed CPU canvas through RDP, keeping
+	 * partial CPU drawing away from the displayed framebuffer chain. */
+#ifdef TCGN64_ADVENTURE
+	g_fb_cached = g_ui_canvas;
+#else
 	g_fb_cached = *g_disp;
-	g_fb_cached.buffer = CachedAddr(g_disp->buffer);
+#endif
+	g_fb_cached.buffer = CachedAddr(g_fb_cached.buffer);
 	g_fb = &g_fb_cached;
 	graphics_fill_screen(g_fb, g_col[C_BG]);
 }
@@ -714,7 +730,17 @@ static void end_frame(void)
 	if (pending) /* in the bottom margin, below the text box */
 		print(RIGHT - 7 * CW, SCREEN_H - 8, (g_frame / 8) & 1 ? C_HI : C_DIM, "saving.");
 	data_cache_hit_writeback_invalidate(g_fb->buffer, (unsigned long)g_fb->stride * g_fb->height);
+#ifdef TCGN64_ADVENTURE
+	rdpq_attach(g_disp,NULL);
+	rdpq_mode_push();rdpq_set_mode_copy(false);
+	rdpq_tex_blit(g_fb,0,0,NULL);
+	rdpq_mode_pop();rdpq_detach_wait();
+	/* Finish reading the canvas before the CPU reuses it for another frame. */
+#endif
 	display_show(g_disp);
+#ifdef TCGN64_ADVENTURE
+	g_last_ui_frame=g_disp;
+#endif
 	g_fb = NULL;
 	g_disp = NULL;
 	if (pending) {
@@ -724,6 +750,9 @@ static void end_frame(void)
 			debugf("SAVED (%lu EEPROM block writes since power-on)\n", (unsigned long)save_store_blocks_written());
 	}
 	g_frame++;
+#ifdef TCGN64_ADVENTURE
+	adventure_audio_poll();
+#endif
 	if (g_dmg.timer)
 		g_dmg.timer--;
 }
@@ -814,6 +843,9 @@ static void end_frame_poll(void)
 /* render n frames of the board (pacing for events); A/B skips */
 static void show_frames(int n)
 {
+#ifdef TCGN64_ADVENTURE
+	if(g_automated_ui)n=((++g_automated_events&7)==0)?1:0;
+#endif
 	for (int i = 0; i < n; i++) {
 		begin_frame();
 		draw_board(0, -1);
@@ -2034,6 +2066,10 @@ static const char *const kReqName[] = { "?", "ack", "duel_menu", "card_list", "i
 static void on_event(void *ctx, const TcgEvent *ev)
 {
 	(void)ctx;
+#ifdef TCGN64_ADVENTURE
+	if(ev->type==TCG_EV_MUSIC)adventure_audio_event(0,ev->arg[0]);
+	if(ev->type==TCG_EV_SFX)adventure_audio_event(1,ev->arg[0]);
+#endif
 	switch (ev->type) {
 	case TCG_EV_TEXT:
 		/* the item labels of the PLAY|CHECK / SELECT|CHECK menus are printed as text: not a message */
@@ -2107,6 +2143,9 @@ static void on_event(void *ctx, const TcgEvent *ev)
 static int on_request(void *ctx, const TcgRequest *r)
 {
 	(void)ctx;
+#ifdef TCGN64_ADVENTURE
+	if(g_automated_ui){if(r->type==TCG_REQ_ACK||r->type==TCG_REQ_CONFIRM)return 0;return bot_answer(r);}
+#endif
 	int side = side_of(r->duelist);
 	int ans;
 	g_thinking = 0;
@@ -2523,6 +2562,179 @@ static int saved_duel_mode(const TcgSavedDuel *info)
 	return m;
 }
 
+#ifdef TCGN64_ADVENTURE
+#include "adventure/duel_bridge.h"
+
+void n64_ui_init(void)
+{
+	g_ui_canvas=surface_alloc(FMT_RGBA16,SCREEN_W,SCREEN_H);
+	assertf(g_ui_canvas.buffer,"UI canvas allocation failed");
+	for (int i=0;i<NUM_COLORS;i++)
+		g_col[i]=graphics_make_color(kRGB[i][0],kRGB[i][1],kRGB[i][2],255);
+	load_buildinfo();
+	g_save_ok=save_store_open(NULL);
+}
+
+void n64_card_name(unsigned id,char *out,int capacity) { card_name(id,out,capacity); }
+void n64_ui_sanitize_text(const char *text,char *out,unsigned capacity)
+{sanitize(text,out,(int)capacity);}
+int n64_ui_wrap_columns(const char *text,unsigned columns,char lines[][37],unsigned capacity)
+{
+	if(!capacity||!columns)return 0;
+	if(!text)text="";
+	size_t length=strlen(text)+1;char *clean=malloc(length);
+	assertf(clean,"Text wrapping allocation failed");
+	sanitize(text,clean,(int)length);
+	int count=wrap(clean,(int)columns,lines,(int)capacity);
+	free(clean);return count;
+}
+int n64_ui_wrap_text(const char *text,char lines[][37],unsigned capacity)
+{return n64_ui_wrap_columns(text,36,lines,capacity);}
+void n64_duel_rng(uint8_t out[3]) { out[0]=wRNG1;out[1]=wRNG2;out[2]=wRNGCounter; }
+void n64_duel_automated(bool enabled) {g_automated_ui=enabled;g_automated_events=0;}
+surface_t *n64_ui_frame(void) {return g_last_ui_frame;}
+void n64_map_label(surface_t *frame,const char *name)
+{
+	surface_t cached=g_ui_canvas;cached.buffer=CachedAddr(cached.buffer);
+	char clean[40];sanitize(name,clean,sizeof(clean));
+	graphics_set_color(g_col[C_PANEL],g_col[C_PANEL]);
+	graphics_draw_box(&cached,8,6,176,16,g_col[C_PANEL]);
+	graphics_set_color(g_col[C_TEXT],g_col[C_PANEL]);
+	graphics_draw_text(&cached,12,10,clean);
+	data_cache_hit_writeback_invalidate(cached.buffer,(unsigned long)cached.stride*cached.height);
+	rdpq_attach(frame,NULL);rdpq_mode_push();rdpq_set_mode_copy(false);
+	rdpq_tex_blit(&cached,8,6,&(rdpq_blitparms_t){.s0=8,.t0=6,.width=176,.height=16});
+	rdpq_mode_pop();rdpq_detach_wait();
+}
+void n64_ui_text_speed(unsigned speed) {g_message_speed=speed<5?speed:2;}
+
+#if ADVENTURE_DIAGNOSTIC == 2
+/* These checks deliberately use the production CPU renderer and display
+ * queue. The checksum catches framebuffer corruption; watching the held
+ * phases in ares additionally checks the VI output, which a raw framebuffer
+ * checksum cannot observe (notably the hidden coverage/AA path). */
+void n64_ui_video_probe(unsigned phase,unsigned frames)
+{
+	static const char *const names[]={"dialogue","duel","card"};
+	assertf(phase<3 && frames>=9,"Invalid video test phase");
+	g_denied=0;g_thinking=0;g_dmg.timer=0;
+	surface_t *buffers[3]={0};unsigned count=0;
+	uint32_t expected=0;
+	debugf("VIDEO PHASE %s frames=%u\n",names[phase],frames);
+	for(unsigned f=0;f<frames;f++) {
+		begin_frame();
+		if(phase==N64_VIDEO_DIALOGUE) {
+			print(LEFT,12,C_HI,"Dr. Mason");
+			static const char *const lines[]={
+				"Evolve Goldeen into Seaking.",
+				"Attach Psychic Energy to Seaking.",
+				"Choose Attack, then Waterfall.",
+			};
+			for(unsigned i=0;i<3;i++)print(LEFT,40+i*20,C_TEXT,lines[i]);
+			print(LEFT,218,C_DIM,"A/B: close");
+		} else if(phase==N64_VIDEO_DUEL) {
+			draw_board(0,-1);draw_textbox_hint("A: choose  START: card");
+		} else {
+			draw_card_page(SEAKING,TCG_PLAYER,-1,NULL);
+			print(LEFT,218,C_DIM,"A/B: close");
+		}
+		end_frame();
+		surface_t *frame=g_last_ui_frame;
+		unsigned b=0;while(b<count&&buffers[b]!=frame)b++;
+		if(b==count){assertf(count<3,"Video test expected three buffers");buffers[count++]=frame;}
+		const uint16_t *pixels=UncachedAddr(frame->buffer);
+		uint32_t hash=2166136261u;
+		for(unsigned y=0;y<frame->height;y++)for(unsigned x=0;x<frame->width;x++)
+			hash=(hash^pixels[y*(frame->stride/2)+x])*16777619u;
+		if(!f)expected=hash;
+		assertf(hash==expected,"Video %s changed at frame%u: %08lx != %08lx",names[phase],f,(unsigned long)hash,(unsigned long)expected);
+	}
+	assertf(count==3,"Video phase did not rotate all three buffers");
+	debugf("VIDEO PASS %s frames=%u buffers=%u hash=%08lx\n",names[phase],frames,count,(unsigned long)expected);
+}
+#endif
+
+void n64_message(const char *title,const char *text)
+{
+	static char clean[8192], lines[256][COLS+1];
+	sanitize(text,clean,sizeof(clean));
+	int n=wrap(clean,COLS,lines,256),page=0,visible=0;
+	for (;;) {
+		int characters=0;
+		for(int i=0;i<17&&page+i<n;i++)characters+=(int)strlen(lines[page+i]);
+		static const int characters_per_frame[]={1,2,3,6,COLS*17};
+		visible+=characters_per_frame[g_message_speed];
+		if(visible>characters)visible=characters;
+		begin_frame();
+		print_n(LEFT,12,C_HI,title?title:"",COLS);
+		int remaining=visible;
+		for(int i=0;i<17 && page+i<n;i++){int length=(int)strlen(lines[page+i]);print_n(LEFT,32+i*LH,C_TEXT,lines[page+i],remaining<length?remaining:length);remaining-=length;if(remaining<0)remaining=0;}
+		print(LEFT,218,C_DIM,page+17<n?"A: next   B: back":"A/B: close");
+		end_frame_poll();
+		Keys k=keys(1);
+		if(k.a || k.b) {
+			if(visible<characters){visible=characters;continue;}
+			if(page+17>=n) return;
+			page+=17;visible=0;
+		}
+	}
+}
+
+int n64_menu(const char *title,const char *const *items,int count,int initial,bool cancel)
+{
+	if(count<=0) return TCG_CANCEL;
+	int cur=initial>=0 && initial<count?initial:0;
+	for (;;) {
+		begin_frame();
+		print_n(LEFT,12,C_HI,title?title:"",COLS);
+		int top=cur<14?0:cur-13;
+		for(int i=top;i<count && i<top+15;i++) {
+			char clean[256];sanitize(items[i],clean,sizeof(clean));
+			int y=35+(i-top)*11;
+			if(i==cur) fill(LEFT-4,y-1,RIGHT-LEFT+8,11,C_SEL);
+			print_n(LEFT,y,i==cur?C_HI:C_TEXT,clean,COLS);
+		}
+		print(LEFT,216,C_DIM,cancel?"A: select   B: back":"A: select");
+		end_frame_poll();
+		Keys k=keys(1);
+		if(list_nav(k,count,&cur))adventure_audio_event(1,SFX_CURSOR);
+		if(k.a){adventure_audio_event(1,SFX_CONFIRM);return cur;}
+		if(cancel && k.b){adventure_audio_event(1,SFX_CANCEL);return TCG_CANCEL;}
+	}
+}
+
+void n64_card_detail(unsigned id)
+{
+	for(;;) {
+		begin_frame();
+		draw_card_page((uint8_t)id,TCG_PLAYER,-1,NULL);
+		print(LEFT,218,C_DIM,"A/B: close");
+		end_frame_poll();
+		if(keys(1).a || keys(1).b) return;
+	}
+}
+
+int n64_duel_play(const TcgDuelSetup *setup,const uint8_t *saved)
+{
+	bool save_enabled=g_save_ok;
+	set_mode(setup->duelist[1].kind==TCG_AI?MODE_VS_AI:MODE_HOTSEAT);
+	if(setup->duelist[1].kind!=TCG_AI)g_save_ok=false;
+	copy_str(g_name[0],sizeof(g_name[0]),setup->duelist[0].name?setup->duelist[0].name:"MARK");
+	copy_str(g_name[1],sizeof(g_name[1]),setup->duelist[1].name?setup->duelist[1].name:"OPPONENT");
+	g_rng=(uint32_t)get_ticks()|1;
+	reset_duel_ui();
+	g_save_dirty=false;
+	g_save_mode_written=false;
+	g_duel_decks[0]=setup->duelist[0].deck_id;
+	g_duel_decks[1]=setup->duelist[1].deck_id;
+	TcgHost host={on_event,on_request,on_save,NULL};
+	tcg_set_host(&host);
+	int result=saved?tcg_continue_duel(setup,saved,TCG_SAVE_SIZE):tcg_run_duel(setup);
+	g_save_ok=save_enabled;
+	/* The adventure commits the resumed story before deleting this duel save. */
+	return result;
+}
+#else
 int main(void)
 {
 	debug_init_isviewer();
@@ -2598,3 +2810,4 @@ int main(void)
 		result_screen(result);
 	}
 }
+#endif

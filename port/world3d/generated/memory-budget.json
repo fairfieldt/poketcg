@@ -1,0 +1,420 @@
+{
+  "measured": false,
+  "ram_bytes": 4194304,
+  "elf_text_data_bss": 1271248,
+  "framebuffer_depth_bytes": 614400,
+  "actors": {
+    "name": "actors",
+    "mesh_bytes": 68664,
+    "texture_bytes": 0,
+    "asset_bytes": 68664,
+    "display_list_estimate": 146112,
+    "combined_estimate": 214776
+  },
+  "worst_scene": {
+    "name": "grass_club",
+    "mesh_bytes": 252228,
+    "texture_bytes": 70912,
+    "asset_bytes": 323140,
+    "display_list_estimate": 442432,
+    "combined_estimate": 765572
+  },
+  "other_reserved_bytes": 524288,
+  "total_estimate_bytes": 3390284,
+  "margin_estimate_bytes": 804020,
+  "note": "Display-list/mixer/RSP/stack overhead is estimated; verify native heap statistics from the 4 MiB map tour.",
+  "scenes": [
+    {
+      "name": "grass_club",
+      "mesh_bytes": 252228,
+      "texture_bytes": 70912,
+      "asset_bytes": 323140,
+      "display_list_estimate": 442432,
+      "combined_estimate": 765572
+    },
+    {
+      "name": "pokemon_dome",
+      "mesh_bytes": 108924,
+      "texture_bytes": 88064,
+      "asset_bytes": 196988,
+      "display_list_estimate": 241984,
+      "combined_estimate": 438972
+    },
+    {
+      "name": "pokemon_dome_hall_of_honor_door_open",
+      "mesh_bytes": 108924,
+      "texture_bytes": 88064,
+      "asset_bytes": 196988,
+      "display_list_estimate": 241984,
+      "combined_estimate": 438972
+    },
+    {
+      "name": "overworld",
+      "mesh_bytes": 171504,
+      "texture_bytes": 24320,
+      "asset_bytes": 195824,
+      "display_list_estimate": 442048,
+      "combined_estimate": 637872
+    },
+    {
+      "name": "water_club",
+      "mesh_bytes": 104604,
+      "texture_bytes": 66432,
+      "asset_bytes": 171036,
+      "display_list_estimate": 218016,
+      "combined_estimate": 389052
+    },
+    {
+      "name": "challenge_hall",
+      "mesh_bytes": 74952,
+      "texture_bytes": 89984,
+      "asset_bytes": 164936,
+      "display_list_estimate": 189824,
+      "combined_estimate": 354760
+    },
+    {
+      "name": "rock_club",
+      "mesh_bytes": 108168,
+      "texture_bytes": 39296,
+      "asset_bytes": 147464,
+      "display_list_estimate": 199552,
+      "combined_estimate": 347016
+    },
+    {
+      "name": "mason_laboratory_challenge_machine",
+      "mesh_bytes": 68016,
+      "texture_bytes": 48896,
+      "asset_bytes": 116912,
+      "display_list_estimate": 146016,
+      "combined_estimate": 262928
+    },
+    {
+      "name": "mason_laboratory",
+      "mesh_bytes": 66720,
+      "texture_bytes": 46848,
+      "asset_bytes": 113568,
+      "display_list_estimate": 144096,
+      "combined_estimate": 257664
+    },
+    {
+      "name": "science_club",
+      "mesh_bytes": 58728,
+      "texture_bytes": 54656,
+      "asset_bytes": 113384,
+      "display_list_estimate": 142080,
+      "combined_estimate": 255464
+    },
+    {
+      "name": "lightning_club",
+      "mesh_bytes": 31800,
+      "texture_bytes": 72448,
+      "asset_bytes": 104248,
+      "display_list_estimate": 115936,
+      "combined_estimate": 220184
+    },
+    {
+      "name": "fire_club",
+      "mesh_bytes": 72576,
+      "texture_bytes": 27264,
+      "asset_bytes": 99840,
+      "display_list_estimate": 135296,
+      "combined_estimate": 235136
+    },
+    {
+      "name": "hall_of_honor",
+      "mesh_bytes": 46632,
+      "texture_bytes": 51072,
+      "asset_bytes": 97704,
+      "display_list_estimate": 116288,
+      "combined_estimate": 213992
+    },
+    {
+      "name": "club_lobby",
+      "mesh_bytes": 68280,
+      "texture_bytes": 27264,
+      "asset_bytes": 95544,
+      "display_list_estimate": 128832,
+      "combined_estimate": 224376
+    },
+    {
+      "name": "psychic_club",
+      "mesh_bytes": 67368,
+      "texture_bytes": 27264,
+      "asset_bytes": 94632,
+      "display_list_estimate": 127424,
+      "combined_estimate": 222056
+    },
+    {
+      "name": "ishiharas_house",
+      "mesh_bytes": 49644,
+      "texture_bytes": 32896,
+      "asset_bytes": 82540,
+      "display_list_estimate": 109024,
+      "combined_estimate": 191564
+    },
+    {
+      "name": "fighting_club",
+      "mesh_bytes": 62364,
+      "texture_bytes": 18560,
+      "asset_bytes": 80924,
+      "display_list_estimate": 112096,
+      "combined_estimate": 193020
+    },
+    {
+      "name": "pokemon_dome_entrance",
+      "mesh_bytes": 44844,
+      "texture_bytes": 29824,
+      "asset_bytes": 74668,
+      "display_list_estimate": 101856,
+      "combined_estimate": 176524
+    },
+    {
+      "name": "pokemon_dome_entrance_door_open",
+      "mesh_bytes": 44784,
+      "texture_bytes": 29184,
+      "asset_bytes": 73968,
+      "display_list_estimate": 99808,
+      "combined_estimate": 173776
+    },
+    {
+      "name": "deck_machine_room",
+      "mesh_bytes": 51180,
+      "texture_bytes": 18304,
+      "asset_bytes": 69484,
+      "display_list_estimate": 91680,
+      "combined_estimate": 161164
+    },
+    {
+      "name": "actors",
+      "mesh_bytes": 68664,
+      "texture_bytes": 0,
+      "asset_bytes": 68664,
+      "display_list_estimate": 146112,
+      "combined_estimate": 214776
+    },
+    {
+      "name": "deck_machine_room_all_deck_machines",
+      "mesh_bytes": 51120,
+      "texture_bytes": 16128,
+      "asset_bytes": 67248,
+      "display_list_estimate": 89632,
+      "combined_estimate": 156880
+    },
+    {
+      "name": "deck_machine_room_dynamic",
+      "mesh_bytes": 50196,
+      "texture_bytes": 11904,
+      "asset_bytes": 62100,
+      "display_list_estimate": 86304,
+      "combined_estimate": 148404
+    },
+    {
+      "name": "club_foyer",
+      "mesh_bytes": 23832,
+      "texture_bytes": 20736,
+      "asset_bytes": 44568,
+      "display_list_estimate": 56992,
+      "combined_estimate": 101560
+    },
+    {
+      "name": "deck_machine_6_off",
+      "mesh_bytes": 176,
+      "texture_bytes": 4224,
+      "asset_bytes": 4400,
+      "display_list_estimate": 2208,
+      "combined_estimate": 6608
+    },
+    {
+      "name": "deck_machine_6_on",
+      "mesh_bytes": 176,
+      "texture_bytes": 4224,
+      "asset_bytes": 4400,
+      "display_list_estimate": 2208,
+      "combined_estimate": 6608
+    },
+    {
+      "name": "deck_machine_7_off",
+      "mesh_bytes": 176,
+      "texture_bytes": 4224,
+      "asset_bytes": 4400,
+      "display_list_estimate": 2208,
+      "combined_estimate": 6608
+    },
+    {
+      "name": "deck_machine_7_on",
+      "mesh_bytes": 176,
+      "texture_bytes": 4224,
+      "asset_bytes": 4400,
+      "display_list_estimate": 2208,
+      "combined_estimate": 6608
+    },
+    {
+      "name": "deck_machine_8_off",
+      "mesh_bytes": 176,
+      "texture_bytes": 4224,
+      "asset_bytes": 4400,
+      "display_list_estimate": 2208,
+      "combined_estimate": 6608
+    },
+    {
+      "name": "deck_machine_8_on",
+      "mesh_bytes": 176,
+      "texture_bytes": 4224,
+      "asset_bytes": 4400,
+      "display_list_estimate": 2208,
+      "combined_estimate": 6608
+    },
+    {
+      "name": "deck_machine_9_off",
+      "mesh_bytes": 176,
+      "texture_bytes": 4224,
+      "asset_bytes": 4400,
+      "display_list_estimate": 2208,
+      "combined_estimate": 6608
+    },
+    {
+      "name": "deck_machine_9_on",
+      "mesh_bytes": 176,
+      "texture_bytes": 4224,
+      "asset_bytes": 4400,
+      "display_list_estimate": 2208,
+      "combined_estimate": 6608
+    },
+    {
+      "name": "emblem_fighting_club_entrance",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "emblem_rock_club_entrance",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "emblem_water_club_entrance",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "emblem_lightning_club_entrance",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "emblem_grass_club_entrance",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "emblem_psychic_club_entrance",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "emblem_science_club_entrance",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "emblem_fire_club_entrance",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "emblem_challenge_hall_entrance",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "deck_machine_2_off",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "deck_machine_2_on",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "deck_machine_3_off",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "deck_machine_3_on",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "deck_machine_4_off",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "deck_machine_4_on",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "deck_machine_5_off",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    },
+    {
+      "name": "deck_machine_5_on",
+      "mesh_bytes": 176,
+      "texture_bytes": 2176,
+      "asset_bytes": 2352,
+      "display_list_estimate": 2208,
+      "combined_estimate": 4560
+    }
+  ]
+}

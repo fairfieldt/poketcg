@@ -1,0 +1,83 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_gentle"
+  ],
+  "actors": [
+    {
+      "name": "lass2",
+      "model": 31,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "lass2",
+  "aliases": [
+    "NPC_KRISTIN",
+    "NPC_LASS1",
+    "NPC_LASS2"
+  ],
+  "runtime_model": 31,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "lass2": {
+      "accent": [
+        0.9686274509803922,
+        0.1607843137254902,
+        0.2901960784313726
+      ]
+    }
+  },
+  "design": "long side-swept black hair and wide red headband",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 26
+  },
+  "provenance": {
+    "sprite": 30,
+    "gfx_sha256": "78d3e82fcfa6cdb6184f3c116653610a74f622bf4ade8ce43db0f65a96000a61",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "lass2 \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_gentle",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "lass2",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1126,
+  "triangles": 608,
+  "batches": 6
+}

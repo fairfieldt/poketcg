@@ -1,0 +1,3348 @@
+[
+  {
+    "id": 1,
+    "constant": "NPC_DRMASON",
+    "name": "Dr. Mason",
+    "header": {
+      "id": 1,
+      "sprite": 2,
+      "anim": 0,
+      "anim_cgb": 38,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        38
+      ],
+      [
+        "East",
+        39
+      ],
+      [
+        "South",
+        40
+      ],
+      [
+        "West",
+        41
+      ]
+    ]
+  },
+  {
+    "id": 2,
+    "constant": "NPC_RONALD1",
+    "name": "Ronald",
+    "header": {
+      "id": 2,
+      "sprite": 1,
+      "anim": 4,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 3,
+    "constant": "NPC_ISHIHARA",
+    "name": "Ishihara",
+    "header": {
+      "id": 3,
+      "sprite": 3,
+      "anim": 4,
+      "anim_cgb": 34,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        34
+      ],
+      [
+        "East",
+        35
+      ],
+      [
+        "South",
+        36
+      ],
+      [
+        "West",
+        37
+      ]
+    ]
+  },
+  {
+    "id": 4,
+    "constant": "NPC_IMAKUNI",
+    "name": "Imakuni?",
+    "header": {
+      "id": 4,
+      "sprite": 4,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 5,
+    "constant": "NPC_05",
+    "name": "Dr. Mason (unused)",
+    "header": {
+      "id": 1,
+      "sprite": 2,
+      "anim": 0,
+      "anim_cgb": 38,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        38
+      ],
+      [
+        "East",
+        39
+      ],
+      [
+        "South",
+        40
+      ],
+      [
+        "West",
+        41
+      ]
+    ]
+  },
+  {
+    "id": 6,
+    "constant": "NPC_06",
+    "name": "Dr. Mason (unused)",
+    "header": {
+      "id": 1,
+      "sprite": 2,
+      "anim": 0,
+      "anim_cgb": 38,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        38
+      ],
+      [
+        "East",
+        39
+      ],
+      [
+        "South",
+        40
+      ],
+      [
+        "West",
+        41
+      ]
+    ]
+  },
+  {
+    "id": 7,
+    "constant": "NPC_SAM",
+    "name": "Sam",
+    "header": {
+      "id": 7,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 8,
+    "constant": "NPC_TECH1",
+    "name": "Tech",
+    "header": {
+      "id": 8,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 9,
+    "constant": "NPC_TECH2",
+    "name": "Tech",
+    "header": {
+      "id": 9,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 10,
+    "constant": "NPC_TECH3",
+    "name": "Tech",
+    "header": {
+      "id": 10,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 11,
+    "constant": "NPC_TECH4",
+    "name": "Tech",
+    "header": {
+      "id": 11,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 12,
+    "constant": "NPC_TECH5",
+    "name": "Tech",
+    "header": {
+      "id": 12,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 13,
+    "constant": "NPC_TECH6",
+    "name": "Tech",
+    "header": {
+      "id": 13,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 14,
+    "constant": "NPC_CLERK1",
+    "name": "Clerk",
+    "header": {
+      "id": 14,
+      "sprite": 33,
+      "anim": 10,
+      "anim_cgb": 48,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        48
+      ],
+      [
+        "East",
+        49
+      ],
+      [
+        "South",
+        50
+      ],
+      [
+        "West",
+        51
+      ]
+    ]
+  },
+  {
+    "id": 15,
+    "constant": "NPC_CLERK2",
+    "name": "Clerk",
+    "header": {
+      "id": 15,
+      "sprite": 33,
+      "anim": 10,
+      "anim_cgb": 48,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        48
+      ],
+      [
+        "East",
+        49
+      ],
+      [
+        "South",
+        50
+      ],
+      [
+        "West",
+        51
+      ]
+    ]
+  },
+  {
+    "id": 16,
+    "constant": "NPC_CLERK3",
+    "name": "Clerk",
+    "header": {
+      "id": 16,
+      "sprite": 33,
+      "anim": 10,
+      "anim_cgb": 48,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        48
+      ],
+      [
+        "East",
+        49
+      ],
+      [
+        "South",
+        50
+      ],
+      [
+        "West",
+        51
+      ]
+    ]
+  },
+  {
+    "id": 17,
+    "constant": "NPC_CLERK4",
+    "name": "Clerk",
+    "header": {
+      "id": 17,
+      "sprite": 33,
+      "anim": 10,
+      "anim_cgb": 48,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        48
+      ],
+      [
+        "East",
+        49
+      ],
+      [
+        "South",
+        50
+      ],
+      [
+        "West",
+        51
+      ]
+    ]
+  },
+  {
+    "id": 18,
+    "constant": "NPC_CLERK5",
+    "name": "Clerk",
+    "header": {
+      "id": 18,
+      "sprite": 33,
+      "anim": 10,
+      "anim_cgb": 48,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        48
+      ],
+      [
+        "East",
+        49
+      ],
+      [
+        "South",
+        50
+      ],
+      [
+        "West",
+        51
+      ]
+    ]
+  },
+  {
+    "id": 19,
+    "constant": "NPC_CLERK6",
+    "name": "Clerk",
+    "header": {
+      "id": 19,
+      "sprite": 33,
+      "anim": 10,
+      "anim_cgb": 48,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        48
+      ],
+      [
+        "East",
+        49
+      ],
+      [
+        "South",
+        50
+      ],
+      [
+        "West",
+        51
+      ]
+    ]
+  },
+  {
+    "id": 20,
+    "constant": "NPC_CLERK7",
+    "name": "Clerk",
+    "header": {
+      "id": 20,
+      "sprite": 33,
+      "anim": 10,
+      "anim_cgb": 48,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        48
+      ],
+      [
+        "East",
+        49
+      ],
+      [
+        "South",
+        50
+      ],
+      [
+        "West",
+        51
+      ]
+    ]
+  },
+  {
+    "id": 21,
+    "constant": "NPC_CLERK8",
+    "name": "Clerk",
+    "header": {
+      "id": 21,
+      "sprite": 33,
+      "anim": 10,
+      "anim_cgb": 48,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        48
+      ],
+      [
+        "East",
+        49
+      ],
+      [
+        "South",
+        50
+      ],
+      [
+        "West",
+        51
+      ]
+    ]
+  },
+  {
+    "id": 22,
+    "constant": "NPC_CLERK9",
+    "name": "Clerk",
+    "header": {
+      "id": 22,
+      "sprite": 33,
+      "anim": 10,
+      "anim_cgb": 48,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        48
+      ],
+      [
+        "East",
+        49
+      ],
+      [
+        "South",
+        50
+      ],
+      [
+        "West",
+        51
+      ]
+    ]
+  },
+  {
+    "id": 23,
+    "constant": "NPC_CHRIS",
+    "name": "Chris",
+    "header": {
+      "id": 23,
+      "sprite": 21,
+      "anim": 0,
+      "anim_cgb": 38,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        38
+      ],
+      [
+        "East",
+        39
+      ],
+      [
+        "South",
+        40
+      ],
+      [
+        "West",
+        41
+      ]
+    ]
+  },
+  {
+    "id": 24,
+    "constant": "NPC_MICHAEL",
+    "name": "Michael",
+    "header": {
+      "id": 24,
+      "sprite": 21,
+      "anim": 0,
+      "anim_cgb": 38,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        38
+      ],
+      [
+        "East",
+        39
+      ],
+      [
+        "South",
+        40
+      ],
+      [
+        "West",
+        41
+      ]
+    ]
+  },
+  {
+    "id": 25,
+    "constant": "NPC_JESSICA",
+    "name": "Jessica",
+    "header": {
+      "id": 25,
+      "sprite": 31,
+      "anim": 4,
+      "anim_cgb": 26,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        26
+      ],
+      [
+        "East",
+        27
+      ],
+      [
+        "South",
+        28
+      ],
+      [
+        "West",
+        29
+      ]
+    ]
+  },
+  {
+    "id": 26,
+    "constant": "NPC_MITCH",
+    "name": "Mitch",
+    "header": {
+      "id": 26,
+      "sprite": 10,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 27,
+    "constant": "NPC_MATTHEW",
+    "name": "Matthew",
+    "header": {
+      "id": 27,
+      "sprite": 21,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 28,
+    "constant": "NPC_RYAN",
+    "name": "Ryan",
+    "header": {
+      "id": 28,
+      "sprite": 17,
+      "anim": 0,
+      "anim_cgb": 38,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        38
+      ],
+      [
+        "East",
+        39
+      ],
+      [
+        "South",
+        40
+      ],
+      [
+        "West",
+        41
+      ]
+    ]
+  },
+  {
+    "id": 29,
+    "constant": "NPC_ANDREW",
+    "name": "Andrew",
+    "header": {
+      "id": 29,
+      "sprite": 26,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 30,
+    "constant": "NPC_GENE",
+    "name": "Gene",
+    "header": {
+      "id": 30,
+      "sprite": 11,
+      "anim": 4,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 31,
+    "constant": "NPC_SARA",
+    "name": "Sara",
+    "header": {
+      "id": 31,
+      "sprite": 32,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 32,
+    "constant": "NPC_AMANDA",
+    "name": "Amanda",
+    "header": {
+      "id": 32,
+      "sprite": 32,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 33,
+    "constant": "NPC_JOSHUA",
+    "name": "Joshua",
+    "header": {
+      "id": 33,
+      "sprite": 22,
+      "anim": 0,
+      "anim_cgb": 38,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        38
+      ],
+      [
+        "East",
+        39
+      ],
+      [
+        "South",
+        40
+      ],
+      [
+        "West",
+        41
+      ]
+    ]
+  },
+  {
+    "id": 34,
+    "constant": "NPC_AMY",
+    "name": "Amy",
+    "header": {
+      "id": 34,
+      "sprite": 8,
+      "anim": 8,
+      "anim_cgb": 46,
+      "flags": 16
+    },
+    "facings": [
+      [
+        "Lying",
+        46
+      ],
+      [
+        "Standing",
+        47
+      ]
+    ]
+  },
+  {
+    "id": 35,
+    "constant": "NPC_JENNIFER",
+    "name": "Jennifer",
+    "header": {
+      "id": 35,
+      "sprite": 28,
+      "anim": 4,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 36,
+    "constant": "NPC_NICHOLAS",
+    "name": "Nicholas",
+    "header": {
+      "id": 36,
+      "sprite": 23,
+      "anim": 4,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 37,
+    "constant": "NPC_BRANDON",
+    "name": "Brandon",
+    "header": {
+      "id": 37,
+      "sprite": 23,
+      "anim": 4,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 38,
+    "constant": "NPC_ISAAC",
+    "name": "Isaac",
+    "header": {
+      "id": 38,
+      "sprite": 9,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 39,
+    "constant": "NPC_BRITTANY",
+    "name": "Brittany",
+    "header": {
+      "id": 39,
+      "sprite": 28,
+      "anim": 4,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 40,
+    "constant": "NPC_KRISTIN",
+    "name": "Kristin",
+    "header": {
+      "id": 40,
+      "sprite": 30,
+      "anim": 0,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 41,
+    "constant": "NPC_HEATHER",
+    "name": "Heather",
+    "header": {
+      "id": 41,
+      "sprite": 29,
+      "anim": 4,
+      "anim_cgb": 34,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        34
+      ],
+      [
+        "East",
+        35
+      ],
+      [
+        "South",
+        36
+      ],
+      [
+        "West",
+        37
+      ]
+    ]
+  },
+  {
+    "id": 42,
+    "constant": "NPC_NIKKI",
+    "name": "Nikki",
+    "header": {
+      "id": 42,
+      "sprite": 5,
+      "anim": 0,
+      "anim_cgb": 26,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        26
+      ],
+      [
+        "East",
+        27
+      ],
+      [
+        "South",
+        28
+      ],
+      [
+        "West",
+        29
+      ]
+    ]
+  },
+  {
+    "id": 43,
+    "constant": "NPC_ROBERT",
+    "name": "Robert",
+    "header": {
+      "id": 43,
+      "sprite": 17,
+      "anim": 4,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 44,
+    "constant": "NPC_DANIEL",
+    "name": "Daniel",
+    "header": {
+      "id": 44,
+      "sprite": 18,
+      "anim": 4,
+      "anim_cgb": 26,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        26
+      ],
+      [
+        "East",
+        27
+      ],
+      [
+        "South",
+        28
+      ],
+      [
+        "West",
+        29
+      ]
+    ]
+  },
+  {
+    "id": 45,
+    "constant": "NPC_STEPHANIE",
+    "name": "Stephanie",
+    "header": {
+      "id": 45,
+      "sprite": 28,
+      "anim": 4,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 46,
+    "constant": "NPC_MURRAY1",
+    "name": "Murray",
+    "header": {
+      "id": 46,
+      "sprite": 12,
+      "anim": 0,
+      "anim_cgb": 18,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        18
+      ],
+      [
+        "East",
+        19
+      ],
+      [
+        "South",
+        20
+      ],
+      [
+        "West",
+        21
+      ]
+    ]
+  },
+  {
+    "id": 47,
+    "constant": "NPC_JOSEPH",
+    "name": "Joseph",
+    "header": {
+      "id": 47,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 48,
+    "constant": "NPC_DAVID",
+    "name": "David",
+    "header": {
+      "id": 48,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 49,
+    "constant": "NPC_ERIK",
+    "name": "Erik",
+    "header": {
+      "id": 49,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 50,
+    "constant": "NPC_RICK",
+    "name": "Rick",
+    "header": {
+      "id": 50,
+      "sprite": 6,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 51,
+    "constant": "NPC_JOHN",
+    "name": "John",
+    "header": {
+      "id": 51,
+      "sprite": 18,
+      "anim": 4,
+      "anim_cgb": 26,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        26
+      ],
+      [
+        "East",
+        27
+      ],
+      [
+        "South",
+        28
+      ],
+      [
+        "West",
+        29
+      ]
+    ]
+  },
+  {
+    "id": 52,
+    "constant": "NPC_ADAM",
+    "name": "Adam",
+    "header": {
+      "id": 52,
+      "sprite": 19,
+      "anim": 0,
+      "anim_cgb": 34,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        34
+      ],
+      [
+        "East",
+        35
+      ],
+      [
+        "South",
+        36
+      ],
+      [
+        "West",
+        37
+      ]
+    ]
+  },
+  {
+    "id": 53,
+    "constant": "NPC_JONATHAN",
+    "name": "Jonathan",
+    "header": {
+      "id": 53,
+      "sprite": 17,
+      "anim": 4,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 54,
+    "constant": "NPC_KEN",
+    "name": "Ken",
+    "header": {
+      "id": 54,
+      "sprite": 7,
+      "anim": 4,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 55,
+    "constant": "NPC_COURTNEY",
+    "name": "Courtney",
+    "header": {
+      "id": 55,
+      "sprite": 13,
+      "anim": 0,
+      "anim_cgb": 18,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        18
+      ],
+      [
+        "East",
+        19
+      ],
+      [
+        "South",
+        20
+      ],
+      [
+        "West",
+        21
+      ]
+    ]
+  },
+  {
+    "id": 56,
+    "constant": "NPC_STEVE",
+    "name": "Steve",
+    "header": {
+      "id": 56,
+      "sprite": 14,
+      "anim": 0,
+      "anim_cgb": 42,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        42
+      ],
+      [
+        "East",
+        43
+      ],
+      [
+        "South",
+        44
+      ],
+      [
+        "West",
+        45
+      ]
+    ]
+  },
+  {
+    "id": 57,
+    "constant": "NPC_JACK",
+    "name": "Jack",
+    "header": {
+      "id": 57,
+      "sprite": 15,
+      "anim": 0,
+      "anim_cgb": 38,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        38
+      ],
+      [
+        "East",
+        39
+      ],
+      [
+        "South",
+        40
+      ],
+      [
+        "West",
+        41
+      ]
+    ]
+  },
+  {
+    "id": 58,
+    "constant": "NPC_ROD",
+    "name": "Rod",
+    "header": {
+      "id": 58,
+      "sprite": 16,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 59,
+    "constant": "NPC_CLERK10",
+    "name": "Clerk",
+    "header": {
+      "id": 59,
+      "sprite": 33,
+      "anim": 10,
+      "anim_cgb": 48,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        48
+      ],
+      [
+        "East",
+        49
+      ],
+      [
+        "South",
+        50
+      ],
+      [
+        "West",
+        51
+      ]
+    ]
+  },
+  {
+    "id": 60,
+    "constant": "NPC_GIFT_CENTER_CLERK",
+    "name": "Clerk",
+    "header": {
+      "id": 60,
+      "sprite": 33,
+      "anim": 10,
+      "anim_cgb": 48,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        48
+      ],
+      [
+        "East",
+        49
+      ],
+      [
+        "South",
+        50
+      ],
+      [
+        "West",
+        51
+      ]
+    ]
+  },
+  {
+    "id": 61,
+    "constant": "NPC_MAN1",
+    "name": "Man",
+    "header": {
+      "id": 61,
+      "sprite": 26,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 62,
+    "constant": "NPC_WOMAN1",
+    "name": "Woman",
+    "header": {
+      "id": 62,
+      "sprite": 35,
+      "anim": 4,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 63,
+    "constant": "NPC_CHAP1",
+    "name": "Chap",
+    "header": {
+      "id": 63,
+      "sprite": 25,
+      "anim": 0,
+      "anim_cgb": 26,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        26
+      ],
+      [
+        "East",
+        27
+      ],
+      [
+        "South",
+        28
+      ],
+      [
+        "West",
+        29
+      ]
+    ]
+  },
+  {
+    "id": 64,
+    "constant": "NPC_GAL1",
+    "name": "Gal",
+    "header": {
+      "id": 64,
+      "sprite": 34,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 65,
+    "constant": "NPC_LASS1",
+    "name": "Lass",
+    "header": {
+      "id": 65,
+      "sprite": 30,
+      "anim": 0,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 66,
+    "constant": "NPC_CHAP2",
+    "name": "Chap",
+    "header": {
+      "id": 66,
+      "sprite": 25,
+      "anim": 0,
+      "anim_cgb": 26,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        26
+      ],
+      [
+        "East",
+        27
+      ],
+      [
+        "South",
+        28
+      ],
+      [
+        "West",
+        29
+      ]
+    ]
+  },
+  {
+    "id": 67,
+    "constant": "NPC_LASS2",
+    "name": "Lass",
+    "header": {
+      "id": 67,
+      "sprite": 30,
+      "anim": 0,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 68,
+    "constant": "NPC_PAPPY1",
+    "name": "Pappy",
+    "header": {
+      "id": 68,
+      "sprite": 27,
+      "anim": 0,
+      "anim_cgb": 34,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        34
+      ],
+      [
+        "East",
+        35
+      ],
+      [
+        "South",
+        36
+      ],
+      [
+        "West",
+        37
+      ]
+    ]
+  },
+  {
+    "id": 69,
+    "constant": "NPC_LAD1",
+    "name": "Lad",
+    "header": {
+      "id": 69,
+      "sprite": 18,
+      "anim": 4,
+      "anim_cgb": 26,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        26
+      ],
+      [
+        "East",
+        27
+      ],
+      [
+        "South",
+        28
+      ],
+      [
+        "West",
+        29
+      ]
+    ]
+  },
+  {
+    "id": 70,
+    "constant": "NPC_LAD2",
+    "name": "Lad",
+    "header": {
+      "id": 70,
+      "sprite": 17,
+      "anim": 4,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 71,
+    "constant": "NPC_CHAP3",
+    "name": "Chap",
+    "header": {
+      "id": 71,
+      "sprite": 25,
+      "anim": 0,
+      "anim_cgb": 26,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        26
+      ],
+      [
+        "East",
+        27
+      ],
+      [
+        "South",
+        28
+      ],
+      [
+        "West",
+        29
+      ]
+    ]
+  },
+  {
+    "id": 72,
+    "constant": "NPC_CLERK12",
+    "name": "Clerk",
+    "header": {
+      "id": 72,
+      "sprite": 34,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 73,
+    "constant": "NPC_CLERK13",
+    "name": "Clerk",
+    "header": {
+      "id": 73,
+      "sprite": 34,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 74,
+    "constant": "NPC_HOST",
+    "name": "Host",
+    "header": {
+      "id": 74,
+      "sprite": 34,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 75,
+    "constant": "NPC_SPECS1",
+    "name": "Specs",
+    "header": {
+      "id": 75,
+      "sprite": 19,
+      "anim": 0,
+      "anim_cgb": 34,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        34
+      ],
+      [
+        "East",
+        35
+      ],
+      [
+        "South",
+        36
+      ],
+      [
+        "West",
+        37
+      ]
+    ]
+  },
+  {
+    "id": 76,
+    "constant": "NPC_BUTCH",
+    "name": "Butch",
+    "header": {
+      "id": 76,
+      "sprite": 20,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 77,
+    "constant": "NPC_GRANNY1",
+    "name": "Granny",
+    "header": {
+      "id": 77,
+      "sprite": 36,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 78,
+    "constant": "NPC_LASS3",
+    "name": "Lass",
+    "header": {
+      "id": 78,
+      "sprite": 29,
+      "anim": 4,
+      "anim_cgb": 34,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        34
+      ],
+      [
+        "East",
+        35
+      ],
+      [
+        "South",
+        36
+      ],
+      [
+        "West",
+        37
+      ]
+    ]
+  },
+  {
+    "id": 79,
+    "constant": "NPC_MAN2",
+    "name": "Man",
+    "header": {
+      "id": 79,
+      "sprite": 26,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 80,
+    "constant": "NPC_PAPPY2",
+    "name": "Pappy",
+    "header": {
+      "id": 80,
+      "sprite": 27,
+      "anim": 0,
+      "anim_cgb": 34,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        34
+      ],
+      [
+        "East",
+        35
+      ],
+      [
+        "South",
+        36
+      ],
+      [
+        "West",
+        37
+      ]
+    ]
+  },
+  {
+    "id": 81,
+    "constant": "NPC_LASS4",
+    "name": "Lass",
+    "header": {
+      "id": 81,
+      "sprite": 29,
+      "anim": 4,
+      "anim_cgb": 34,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        34
+      ],
+      [
+        "East",
+        35
+      ],
+      [
+        "South",
+        36
+      ],
+      [
+        "West",
+        37
+      ]
+    ]
+  },
+  {
+    "id": 82,
+    "constant": "NPC_HOOD1",
+    "name": "Hood",
+    "header": {
+      "id": 82,
+      "sprite": 23,
+      "anim": 4,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 83,
+    "constant": "NPC_GRANNY2",
+    "name": "Granny",
+    "header": {
+      "id": 83,
+      "sprite": 36,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 84,
+    "constant": "NPC_GAL2",
+    "name": "Gal",
+    "header": {
+      "id": 84,
+      "sprite": 34,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 85,
+    "constant": "NPC_LAD3",
+    "name": "Lad",
+    "header": {
+      "id": 85,
+      "sprite": 18,
+      "anim": 4,
+      "anim_cgb": 26,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        26
+      ],
+      [
+        "East",
+        27
+      ],
+      [
+        "South",
+        28
+      ],
+      [
+        "West",
+        29
+      ]
+    ]
+  },
+  {
+    "id": 86,
+    "constant": "NPC_GAL3",
+    "name": "Gal",
+    "header": {
+      "id": 86,
+      "sprite": 34,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 87,
+    "constant": "NPC_CHAP4",
+    "name": "Chap",
+    "header": {
+      "id": 87,
+      "sprite": 25,
+      "anim": 0,
+      "anim_cgb": 26,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        26
+      ],
+      [
+        "East",
+        27
+      ],
+      [
+        "South",
+        28
+      ],
+      [
+        "West",
+        29
+      ]
+    ]
+  },
+  {
+    "id": 88,
+    "constant": "NPC_MAN3",
+    "name": "Man",
+    "header": {
+      "id": 88,
+      "sprite": 26,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 89,
+    "constant": "NPC_SPECS2",
+    "name": "Specs",
+    "header": {
+      "id": 89,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 90,
+    "constant": "NPC_SPECS3",
+    "name": "Specs",
+    "header": {
+      "id": 90,
+      "sprite": 19,
+      "anim": 0,
+      "anim_cgb": 34,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        34
+      ],
+      [
+        "East",
+        35
+      ],
+      [
+        "South",
+        36
+      ],
+      [
+        "West",
+        37
+      ]
+    ]
+  },
+  {
+    "id": 91,
+    "constant": "NPC_WOMAN2",
+    "name": "Woman",
+    "header": {
+      "id": 91,
+      "sprite": 35,
+      "anim": 4,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 92,
+    "constant": "NPC_MANIA",
+    "name": "Mania",
+    "header": {
+      "id": 92,
+      "sprite": 21,
+      "anim": 0,
+      "anim_cgb": 38,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        38
+      ],
+      [
+        "East",
+        39
+      ],
+      [
+        "South",
+        40
+      ],
+      [
+        "West",
+        41
+      ]
+    ]
+  },
+  {
+    "id": 93,
+    "constant": "NPC_PAPPY3",
+    "name": "Pappy",
+    "header": {
+      "id": 93,
+      "sprite": 27,
+      "anim": 0,
+      "anim_cgb": 34,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        34
+      ],
+      [
+        "East",
+        35
+      ],
+      [
+        "South",
+        36
+      ],
+      [
+        "West",
+        37
+      ]
+    ]
+  },
+  {
+    "id": 94,
+    "constant": "NPC_GAL4",
+    "name": "Gal",
+    "header": {
+      "id": 94,
+      "sprite": 34,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 95,
+    "constant": "NPC_CHAMP",
+    "name": "Champ",
+    "header": {
+      "id": 95,
+      "sprite": 21,
+      "anim": 0,
+      "anim_cgb": 38,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        38
+      ],
+      [
+        "East",
+        39
+      ],
+      [
+        "South",
+        40
+      ],
+      [
+        "West",
+        41
+      ]
+    ]
+  },
+  {
+    "id": 96,
+    "constant": "NPC_HOOD2",
+    "name": "Hood",
+    "header": {
+      "id": 96,
+      "sprite": 23,
+      "anim": 4,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 97,
+    "constant": "NPC_LASS5",
+    "name": "Lass",
+    "header": {
+      "id": 97,
+      "sprite": 31,
+      "anim": 4,
+      "anim_cgb": 26,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        26
+      ],
+      [
+        "East",
+        27
+      ],
+      [
+        "South",
+        28
+      ],
+      [
+        "West",
+        29
+      ]
+    ]
+  },
+  {
+    "id": 98,
+    "constant": "NPC_CHAP5",
+    "name": "Chap",
+    "header": {
+      "id": 98,
+      "sprite": 25,
+      "anim": 0,
+      "anim_cgb": 26,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        26
+      ],
+      [
+        "East",
+        27
+      ],
+      [
+        "South",
+        28
+      ],
+      [
+        "West",
+        29
+      ]
+    ]
+  },
+  {
+    "id": 99,
+    "constant": "NPC_AARON",
+    "name": "Aaron",
+    "header": {
+      "id": 99,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 100,
+    "constant": "NPC_GUIDE",
+    "name": "Guide",
+    "header": {
+      "id": 100,
+      "sprite": 26,
+      "anim": 0,
+      "anim_cgb": 22,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        22
+      ],
+      [
+        "East",
+        23
+      ],
+      [
+        "South",
+        24
+      ],
+      [
+        "West",
+        25
+      ]
+    ]
+  },
+  {
+    "id": 101,
+    "constant": "NPC_TECH7",
+    "name": "Tech",
+    "header": {
+      "id": 101,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 102,
+    "constant": "NPC_TECH8",
+    "name": "Tech",
+    "header": {
+      "id": 102,
+      "sprite": 24,
+      "anim": 0,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 103,
+    "constant": "NPC_TORCH",
+    "name": "Torch",
+    "header": {
+      "id": 103,
+      "sprite": 38,
+      "anim": 58,
+      "anim_cgb": 58,
+      "flags": 16
+    },
+    "facings": [
+      [
+        "Fixed",
+        58
+      ]
+    ]
+  },
+  {
+    "id": 104,
+    "constant": "NPC_LEGENDARY_CARD_TOP_LEFT",
+    "name": "Legendary Card Top Left",
+    "header": {
+      "id": 104,
+      "sprite": 39,
+      "anim": 59,
+      "anim_cgb": 65,
+      "flags": 80
+    },
+    "facings": [
+      [
+        "Fixed",
+        65
+      ]
+    ]
+  },
+  {
+    "id": 105,
+    "constant": "NPC_LEGENDARY_CARD_TOP_RIGHT",
+    "name": "Legendary Card Top Right",
+    "header": {
+      "id": 105,
+      "sprite": 39,
+      "anim": 60,
+      "anim_cgb": 66,
+      "flags": 80
+    },
+    "facings": [
+      [
+        "Fixed",
+        66
+      ]
+    ]
+  },
+  {
+    "id": 106,
+    "constant": "NPC_LEGENDARY_CARD_LEFT_SPARK",
+    "name": "Legendary Card Left Spark",
+    "header": {
+      "id": 106,
+      "sprite": 39,
+      "anim": 61,
+      "anim_cgb": 67,
+      "flags": 80
+    },
+    "facings": [
+      [
+        "Fixed",
+        67
+      ]
+    ]
+  },
+  {
+    "id": 107,
+    "constant": "NPC_LEGENDARY_CARD_BOTTOM_LEFT",
+    "name": "Legendary Card Bottom Left",
+    "header": {
+      "id": 107,
+      "sprite": 39,
+      "anim": 62,
+      "anim_cgb": 68,
+      "flags": 80
+    },
+    "facings": [
+      [
+        "Fixed",
+        68
+      ]
+    ]
+  },
+  {
+    "id": 108,
+    "constant": "NPC_LEGENDARY_CARD_BOTTOM_RIGHT",
+    "name": "Legendary Card Bottom Right",
+    "header": {
+      "id": 108,
+      "sprite": 39,
+      "anim": 63,
+      "anim_cgb": 69,
+      "flags": 80
+    },
+    "facings": [
+      [
+        "Fixed",
+        69
+      ]
+    ]
+  },
+  {
+    "id": 109,
+    "constant": "NPC_LEGENDARY_CARD_RIGHT_SPARK",
+    "name": "Legendary Card Right Spark",
+    "header": {
+      "id": 109,
+      "sprite": 39,
+      "anim": 64,
+      "anim_cgb": 70,
+      "flags": 80
+    },
+    "facings": [
+      [
+        "Fixed",
+        70
+      ]
+    ]
+  },
+  {
+    "id": 110,
+    "constant": "NPC_6E",
+    "name": "Player (unused)",
+    "header": {
+      "id": 0,
+      "sprite": 0,
+      "anim": 0,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 111,
+    "constant": "NPC_6F",
+    "name": "Player (unused)",
+    "header": {
+      "id": 0,
+      "sprite": 0,
+      "anim": 0,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  },
+  {
+    "id": 112,
+    "constant": "NPC_MURRAY2",
+    "name": "Murray",
+    "header": {
+      "id": 112,
+      "sprite": 12,
+      "anim": 3,
+      "anim_cgb": 21,
+      "flags": 16
+    },
+    "facings": [
+      [
+        "West (fixed)",
+        21
+      ]
+    ]
+  },
+  {
+    "id": 113,
+    "constant": "NPC_RONALD2",
+    "name": "Ronald",
+    "header": {
+      "id": 113,
+      "sprite": 1,
+      "anim": 4,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 114,
+    "constant": "NPC_RONALD3",
+    "name": "Ronald",
+    "header": {
+      "id": 114,
+      "sprite": 1,
+      "anim": 4,
+      "anim_cgb": 14,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        14
+      ],
+      [
+        "East",
+        15
+      ],
+      [
+        "South",
+        16
+      ],
+      [
+        "West",
+        17
+      ]
+    ]
+  },
+  {
+    "id": 115,
+    "constant": "NPC_PLAYER_CREDITS",
+    "name": "Player (credits)",
+    "header": {
+      "id": 0,
+      "sprite": 0,
+      "anim": 0,
+      "anim_cgb": 30,
+      "flags": 0
+    },
+    "facings": [
+      [
+        "North",
+        30
+      ],
+      [
+        "East",
+        31
+      ],
+      [
+        "South",
+        32
+      ],
+      [
+        "West",
+        33
+      ]
+    ]
+  }
+]

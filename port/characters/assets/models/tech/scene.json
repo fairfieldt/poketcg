@@ -1,0 +1,94 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_glasses"
+  ],
+  "actors": [
+    {
+      "name": "tech",
+      "model": 25,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "tech",
+  "aliases": [
+    "NPC_SAM",
+    "NPC_TECH1",
+    "NPC_TECH2",
+    "NPC_TECH3",
+    "NPC_TECH4",
+    "NPC_TECH5",
+    "NPC_TECH6",
+    "NPC_JOSEPH",
+    "NPC_DAVID",
+    "NPC_ERIK",
+    "NPC_SPECS2",
+    "NPC_AARON",
+    "NPC_TECH7",
+    "NPC_TECH8"
+  ],
+  "runtime_model": 25,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "tech": {
+      "accent": [
+        0.19215686274509805,
+        0.4823529411764706,
+        0.807843137254902
+      ]
+    }
+  },
+  "design": "square black hair, round spectacles, blue tie",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 20
+  },
+  "provenance": {
+    "sprite": 24,
+    "gfx_sha256": "13d6d6f229ce9cb124377e4cfd263346c06457cf878b96ebd3cfcb49c952ae59",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "tech \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_glasses",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "e49e8b581871bf6decf832b3fb10add1bc1f47be0e3d3c73298822c0380ee94c",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "tech",
+  "pose": "standing",
+  "component": null,
+  "vertices": 995,
+  "triangles": 531,
+  "batches": 6
+}

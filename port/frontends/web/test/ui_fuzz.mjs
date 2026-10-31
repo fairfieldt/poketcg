@@ -28,7 +28,7 @@ const problems = [];
 page.on('console', (m) => { if (m.type() === 'error' || m.type() === 'warning') problems.push(`console ${m.type()}: ${m.text()}`); });
 page.on('pageerror', (e) => problems.push(`page error: ${e.message}`));
 page.on('dialog', (d) => d.accept());
-await page.goto(`http://localhost:${PORT}/?fast=1`);
+await page.goto(`http://localhost:${PORT}/duel.html?fast=1`);
 
 const TARGETS = [
 	'.overlay .cl-item', '.overlay .pa-row:not(.disabled)', '.textbox .tm-item', '.prize-card:not(.taken)',
@@ -71,7 +71,7 @@ for (let d = 0; d < DUELS; d++) {
 	const reqs = await page.evaluate(() => (window.tcgApp.duel._run ? window.tcgApp.duel._run.requests : 'done'));
 	console.log(`duel ${d + 1}: ${ended || 'still running'} (requests answered: ${reqs})`);
 	if (!ended) await page.evaluate(() => window.tcgApp.duel.abort('fuzz'));
-	await page.goto(`http://localhost:${PORT}/?fast=1`);
+	await page.goto(`http://localhost:${PORT}/duel.html?fast=1`);
 }
 console.log('request types seen:', JSON.stringify(Object.fromEntries(seen)));
 await browser.close();

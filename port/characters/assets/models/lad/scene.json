@@ -1,0 +1,84 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_smile"
+  ],
+  "actors": [
+    {
+      "name": "lad",
+      "model": 19,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "lad",
+  "aliases": [
+    "NPC_DANIEL",
+    "NPC_JOHN",
+    "NPC_LAD1",
+    "NPC_LAD3"
+  ],
+  "runtime_model": 19,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "lad": {
+      "accent": [
+        0.12941176470588237,
+        0.611764705882353,
+        0.09411764705882353
+      ]
+    }
+  },
+  "design": "green cap with short brim, green shirt and shorts",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 25
+  },
+  "provenance": {
+    "sprite": 18,
+    "gfx_sha256": "708caebe4708e43593f6c464fde8363dd78347cab27793e1e9aef6eda94192ad",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "lad \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_smile",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "lad",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1072,
+  "triangles": 578,
+  "batches": 6
+}

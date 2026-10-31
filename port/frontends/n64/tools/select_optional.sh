@@ -119,7 +119,7 @@ xa=$(count "$excluded" ai)
 		ai=1
 		for sym in LoadOpponentDeck AIDoAction_Turn AIDoAction_StartDuel; do
 			# shellcheck disable=SC2086
-			${NM:-nm} -g --defined-only $cands 2>/dev/null | grep -q " [TtW] $sym\$" || ai=0
+			${NM:-nm} -g $cands 2>/dev/null | grep -Eq " [TtW] _?$sym\$" || ai=0
 		done
 	fi
 	[ "$na" -gt 0 ] && [ $ai = 0 ] && echo "AI entry points not ported yet"

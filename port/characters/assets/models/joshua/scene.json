@@ -1,0 +1,81 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_stern"
+  ],
+  "actors": [
+    {
+      "name": "joshua",
+      "model": 23,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "joshua",
+  "aliases": [
+    "NPC_JOSHUA"
+  ],
+  "runtime_model": 23,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "joshua": {
+      "accent": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "design": "white swimming cap, sleeveless top and shorts",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 23
+  },
+  "provenance": {
+    "sprite": 22,
+    "gfx_sha256": "520c590f2ce58df70874f5402edcae67202d5f4ae07a7ff9103d90d4b148d8a7",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "joshua \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_stern",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "joshua",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1025,
+  "triangles": 539,
+  "batches": 6
+}

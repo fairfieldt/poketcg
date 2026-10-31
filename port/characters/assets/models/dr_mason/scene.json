@@ -1,0 +1,83 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_mason"
+  ],
+  "actors": [
+    {
+      "name": "dr_mason",
+      "model": 3,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "dr_mason",
+  "aliases": [
+    "NPC_DRMASON",
+    "NPC_05",
+    "NPC_06"
+  ],
+  "runtime_model": 3,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "dr_mason": {
+      "accent": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    }
+  },
+  "design": "Approved existing concept model; geometry preserved",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 0
+  },
+  "provenance": {
+    "sprite": 2,
+    "gfx_sha256": "417cba50838890c7f7e5b676f5a7d0b2d8c1da4a3f1245263fc076c4d4dd97f7",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "Skin \u00b7 warm ochre",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_mason",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "bbc2c6c78a20040065c0dc520e9b2797bb2b2e529c2568c3acac63475867c8e7",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "dr_mason",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1122,
+  "triangles": 577,
+  "batches": 6
+}

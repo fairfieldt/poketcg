@@ -1,0 +1,83 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_smile"
+  ],
+  "actors": [
+    {
+      "name": "mark",
+      "model": 1,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "mark",
+  "aliases": [
+    "NPC_6E",
+    "NPC_6F",
+    "NPC_PLAYER_CREDITS"
+  ],
+  "runtime_model": 1,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "mark": {
+      "accent": [
+        0.9686274509803922,
+        0.1607843137254902,
+        0.2901960784313726
+      ]
+    }
+  },
+  "design": "red sideways trainer cap, red vest, blue trousers and backpack",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 25
+  },
+  "provenance": {
+    "sprite": 0,
+    "gfx_sha256": "1efd448049335431c59f284962fc78329baeb1406731ab817be8057e837ff3b2",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "mark \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_smile",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "mark",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1212,
+  "triangles": 642,
+  "batches": 6
+}

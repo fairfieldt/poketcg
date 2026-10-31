@@ -21,6 +21,12 @@
 *.bin binary diff=hex
 *.lz.match binary diff=hex
 *.dimensions binary diff=hex
+*.l64 binary
+*.wav64 binary
+*.ogg binary
+*.wav binary
+*.blend binary
+*.zip binary
 
 # Declare files that will always have CRLF line endings on checkout.
 *.patch.template text eol=crlf linguist-language=INI

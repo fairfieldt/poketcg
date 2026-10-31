@@ -40,7 +40,7 @@ const utf8enc = new TextEncoder();
 
 function isThenable(v) { return v && typeof v.then === 'function'; }
 
-async function compileModule(source) {
+export async function compileModule(source) {
 	if (source instanceof WebAssembly.Module) return source;
 	if (source instanceof ArrayBuffer || ArrayBuffer.isView(source)) return WebAssembly.compile(source);
 	const url = source || new URL('../tcg.wasm', import.meta.url);
@@ -101,10 +101,11 @@ function parseCard(id, d, text) {
 	return card;
 }
 
-class Instance {
+export class Instance {
 	constructor(module, imports) {
 		this.instance = new WebAssembly.Instance(module, imports);
 		this.x = this.instance.exports;
+		if (this.x._initialize) this.x._initialize();
 		this.asyncData = this.x.web_asyncify_data();
 		this.asyncSize = this.x.web_asyncify_data_size();
 	}
@@ -188,6 +189,10 @@ export class Duel {
 		const self = this;
 		return {
 			env: {
+				js_adv_clock: () => Date.now(),
+				js_adv_sound: () => {},
+				js_adv_store: () => -1,
+				js_adventure: () => 0,
 				js_fatal(ptr) {
 					const msg = self.inst.cstr(ptr) || 'fatal error';
 					throw new TcgFatal(msg);

@@ -1,0 +1,93 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_gentle"
+  ],
+  "actors": [
+    {
+      "name": "amy",
+      "model": 9,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "amy",
+  "aliases": [
+    "NPC_AMY"
+  ],
+  "runtime_model": 9,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "lying": {
+      "rotation": [
+        -90,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        -0.9,
+        0.35
+      ]
+    }
+  },
+  "appearances": {
+    "amy": {
+      "accent": [
+        0.19215686274509805,
+        0.4823529411764706,
+        0.807843137254902
+      ]
+    }
+  },
+  "design": "long blue hair, sleeveless light dress; standing and lying poses",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 24
+  },
+  "provenance": {
+    "sprite": 8,
+    "gfx_sha256": "7c1d837f1e5cf614ce5ea3ddc8f045aa9e86763e275784e2ddf3bc8630aba942",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "amy \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_gentle",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "amy",
+  "pose": "lying",
+  "component": null,
+  "vertices": 1075,
+  "triangles": 556,
+  "batches": 6
+}

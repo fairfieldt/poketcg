@@ -1,0 +1,11 @@
+{
+  "model": "gene",
+  "triangles": 504,
+  "vertices": 957,
+  "batches": 6,
+  "linked_parts": 20,
+  "appearances": [
+    "gene"
+  ],
+  "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+}

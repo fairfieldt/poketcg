@@ -1,0 +1,360 @@
+{
+  "passed": true,
+  "rom_sha256": "5ebab6c5660ea1e585084b289a2eb673d1f849135264ef16fc4a3517d3d39cda",
+  "ram_mib": 4,
+  "completed_cycles": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17
+  ],
+  "checks": [
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    },
+    {
+      "phase": "duel",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "be623bbd"
+    },
+    {
+      "phase": "card",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "fbfae34f"
+    },
+    {
+      "phase": "dialogue",
+      "frames": 90,
+      "buffers": 3,
+      "hash": "d4530639"
+    }
+  ],
+  "ui_frames": 4950,
+  "video_path": "completed offscreen CPU canvas -> fenced RDP copy -> display queue",
+  "vi_filters": "RESAMPLE_ANTIALIAS_DEDITHER"
+}

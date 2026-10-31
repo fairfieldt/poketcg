@@ -1,0 +1,87 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_gentle"
+  ],
+  "actors": [
+    {
+      "name": "gal",
+      "model": 35,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "gal",
+  "aliases": [
+    "NPC_GAL1",
+    "NPC_CLERK12",
+    "NPC_CLERK13",
+    "NPC_HOST",
+    "NPC_GAL2",
+    "NPC_GAL3",
+    "NPC_GAL4"
+  ],
+  "runtime_model": 35,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "gal": {
+      "accent": [
+        0.9058823529411765,
+        0.7764705882352941,
+        0.1607843137254902
+      ]
+    }
+  },
+  "design": "short tousled dark hair, yellow top and dark skirt",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 23
+  },
+  "provenance": {
+    "sprite": 34,
+    "gfx_sha256": "95e1147935037850bf8ac1bd2140a015d07b629fe04525676b421765ff86c82f",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "gal \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_gentle",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "gal",
+  "pose": "standing",
+  "component": null,
+  "vertices": 982,
+  "triangles": 528,
+  "batches": 6
+}

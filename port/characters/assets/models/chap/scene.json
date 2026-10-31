@@ -1,0 +1,85 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_mature"
+  ],
+  "actors": [
+    {
+      "name": "chap",
+      "model": 26,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "chap",
+  "aliases": [
+    "NPC_CHAP1",
+    "NPC_CHAP2",
+    "NPC_CHAP3",
+    "NPC_CHAP4",
+    "NPC_CHAP5"
+  ],
+  "runtime_model": 26,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "chap": {
+      "accent": [
+        0.12941176470588237,
+        0.611764705882353,
+        0.09411764705882353
+      ]
+    }
+  },
+  "design": "high combed dark hair and green waistcoat",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 22
+  },
+  "provenance": {
+    "sprite": 25,
+    "gfx_sha256": "bf930d7a993fa63810dec409a7257d3658b81adf8d68d495bd0078e12a343482",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "chap \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_mature",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "chap",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1025,
+  "triangles": 544,
+  "batches": 6
+}

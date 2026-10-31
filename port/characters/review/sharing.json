@@ -1,0 +1,233 @@
+{
+  "canonical_models": 39,
+  "npc_ids": 115,
+  "appearances": 42,
+  "shared_library_meshes": 33,
+  "used_shared_meshes": 33,
+  "linked_part_instances": 802,
+  "textures": 11,
+  "shared_mesh_names": [
+    "part_backpack",
+    "part_bare_arm",
+    "part_bare_leg",
+    "part_belt",
+    "part_bob_back",
+    "part_brim",
+    "part_bun",
+    "part_cap",
+    "part_coat_skirt",
+    "part_ear",
+    "part_face",
+    "part_flat_hair",
+    "part_forearm",
+    "part_hair_back",
+    "part_hair_cap",
+    "part_hair_side",
+    "part_hand",
+    "part_head",
+    "part_hood",
+    "part_hood_ear",
+    "part_long_skirt",
+    "part_neck",
+    "part_nose",
+    "part_shadow",
+    "part_shoe",
+    "part_shorts",
+    "part_skirt",
+    "part_sleeve_long",
+    "part_sleeve_short",
+    "part_sole",
+    "part_torso",
+    "part_torso_female",
+    "part_trousers"
+  ],
+  "all_libraries_present": true,
+  "consistent_skin_models": 37,
+  "skin_rgb8_by_model": {
+    "dr_mason": [
+      231,
+      173,
+      99
+    ],
+    "ronald": [
+      231,
+      173,
+      99
+    ],
+    "ishihara": [
+      231,
+      173,
+      99
+    ],
+    "imakuni": [
+      231,
+      173,
+      99
+    ],
+    "tech": [
+      231,
+      173,
+      99
+    ],
+    "clerk": [
+      231,
+      173,
+      99
+    ],
+    "mania": [
+      231,
+      173,
+      99
+    ],
+    "lass3": [
+      231,
+      173,
+      99
+    ],
+    "mitch": [
+      231,
+      173,
+      99
+    ],
+    "boy": [
+      231,
+      173,
+      99
+    ],
+    "man": [
+      231,
+      173,
+      99
+    ],
+    "gene": [
+      231,
+      173,
+      99
+    ],
+    "swimmer": [
+      231,
+      173,
+      99
+    ],
+    "joshua": [
+      231,
+      173,
+      99
+    ],
+    "amy": [
+      231,
+      173,
+      99
+    ],
+    "girl": [
+      231,
+      173,
+      99
+    ],
+    "hood": [
+      231,
+      173,
+      99
+    ],
+    "isaac": [
+      231,
+      173,
+      99
+    ],
+    "lass2": [
+      231,
+      173,
+      99
+    ],
+    "lass1": [
+      231,
+      173,
+      99
+    ],
+    "nikki": [
+      231,
+      173,
+      99
+    ],
+    "lad": [
+      231,
+      173,
+      99
+    ],
+    "murray": [
+      231,
+      173,
+      99
+    ],
+    "rick": [
+      231,
+      173,
+      99
+    ],
+    "specs": [
+      231,
+      173,
+      99
+    ],
+    "ken": [
+      231,
+      173,
+      99
+    ],
+    "courtney": [
+      231,
+      173,
+      99
+    ],
+    "steve": [
+      231,
+      173,
+      99
+    ],
+    "jack": [
+      231,
+      173,
+      99
+    ],
+    "rod": [
+      231,
+      173,
+      99
+    ],
+    "woman": [
+      231,
+      173,
+      99
+    ],
+    "chap": [
+      231,
+      173,
+      99
+    ],
+    "gal": [
+      231,
+      173,
+      99
+    ],
+    "pappy": [
+      231,
+      173,
+      99
+    ],
+    "butch": [
+      231,
+      173,
+      99
+    ],
+    "granny": [
+      231,
+      173,
+      99
+    ],
+    "mark": [
+      231,
+      173,
+      99
+    ]
+  }
+}

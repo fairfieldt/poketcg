@@ -1,0 +1,83 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_smile"
+  ],
+  "actors": [
+    {
+      "name": "lass1",
+      "model": 30,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "lass1",
+  "aliases": [
+    "NPC_HEATHER",
+    "NPC_LASS3",
+    "NPC_LASS4"
+  ],
+  "runtime_model": 30,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "lass1": {
+      "accent": [
+        0.4823529411764706,
+        0.25882352941176473,
+        0.8392156862745098
+      ]
+    }
+  },
+  "design": "rounded purple bob with a long side fringe",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 26
+  },
+  "provenance": {
+    "sprite": 29,
+    "gfx_sha256": "3d3d08437c73381f03dc1764ffed4a35e7668ad1221b8211ec7dd47e36acb2de",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "lass1 \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_smile",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "lass1",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1122,
+  "triangles": 596,
+  "batches": 6
+}

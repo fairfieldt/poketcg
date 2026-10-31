@@ -1,0 +1,55 @@
+{
+  "format": "L643",
+  "textures": [
+    "mason_face"
+  ],
+  "actors": [
+    {
+      "name": "dr_mason",
+      "model": 4,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "camera": {
+    "eye": [
+      3,
+      2.3,
+      5
+    ],
+    "target": [
+      0,
+      1.15,
+      0
+    ],
+    "fov": 35
+  },
+  "note": "Tall source pillar silhouettes represent height; solid feet use 2x2 footprints.",
+  "models": {
+    "1": "Ronald",
+    "2": "Nicholas / Brandon",
+    "3": "Isaac",
+    "4": "Dr. Mason"
+  },
+  "character_pipeline": {
+    "blender": "5.2.1 LTS",
+    "fast64": "2.6.0",
+    "fast64_commit": "566d57b2ec38a968a04dab4bd7ea32ac4e91d55d",
+    "reference": "concept.png",
+    "rig": "Rigid parts: body 0, legs 1/2, arms 3/4",
+    "texture_format": "RGBA16",
+    "face_texture_size": [
+      32,
+      32
+    ]
+  },
+  "character_triangles": {
+    "1": 640,
+    "4": 577
+  },
+  "vertices": 1122,
+  "triangles": 577,
+  "batches": 6
+}

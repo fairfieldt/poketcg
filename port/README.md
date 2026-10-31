@@ -9,6 +9,13 @@ practice duel with Sam, and saving / continuing a duel. The goal is 100%
 behavioural compatibility, which is checked mechanically against the original
 ROM (see *Testing*).
 
+The portable archive now also includes [story/map logic](overworld/README.md)
+and [collection/deck/gameplay logic](gameplay/gameplay.h). The complete
+[N64 adventure frontend](frontends/n64/adventure/README.md) connects these to
+34 3D maps and the existing duel screen, with two local diaries. Its native
+verification and N64 presentation/save/transport adaptations are documented
+separately from the duel compatibility tests below.
+
 ```
 port/
   src/            the engine (C11, no OS dependencies)

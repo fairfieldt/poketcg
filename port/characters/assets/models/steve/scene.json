@@ -1,0 +1,81 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_stern"
+  ],
+  "actors": [
+    {
+      "name": "steve",
+      "model": 15,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "steve",
+  "aliases": [
+    "NPC_STEVE"
+  ],
+  "runtime_model": 15,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "steve": {
+      "accent": [
+        0.2901960784313726,
+        0.2901960784313726,
+        0.8705882352941177
+      ]
+    }
+  },
+  "design": "indigo cap with long brim and white front badge, collared jacket",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 22
+  },
+  "provenance": {
+    "sprite": 14,
+    "gfx_sha256": "1d4bdf01a5f7b9af569de02514d7741be589f9e4482ee15607538f2f429905bb",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "steve \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_stern",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "steve",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1073,
+  "triangles": 566,
+  "batches": 6
+}

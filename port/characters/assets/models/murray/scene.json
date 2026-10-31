@@ -1,0 +1,94 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_round_glasses"
+  ],
+  "actors": [
+    {
+      "name": "murray",
+      "model": 13,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "murray",
+  "aliases": [
+    "NPC_MURRAY1",
+    "NPC_MURRAY2"
+  ],
+  "runtime_model": 13,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "west_fixed": {
+      "rotation": [
+        0,
+        0,
+        -90
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "murray": {
+      "accent": [
+        0.9686274509803922,
+        0.4196078431372549,
+        0.5803921568627451
+      ]
+    }
+  },
+  "design": "large round glasses, domed dark hair, pink shirt and dark vest",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 22
+  },
+  "provenance": {
+    "sprite": 12,
+    "gfx_sha256": "8206420a26bcb472d7add969c932ec4ca7b3de45a81a3efbd9d7f89b35bbb191",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "murray \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_round_glasses",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "e49e8b581871bf6decf832b3fb10add1bc1f47be0e3d3c73298822c0380ee94c",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "murray",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1017,
+  "triangles": 538,
+  "batches": 6
+}

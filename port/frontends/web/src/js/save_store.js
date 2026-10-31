@@ -94,10 +94,13 @@ const PICKER_TYPES = [{ description: 'Pokémon TCG save file', accept: { 'applic
 
 /* writes data to a file the user picks (or downloads it). resolves false if the user cancelled */
 export async function exportFile(data, fileName = 'duel.sav') {
+	const extension=fileName.split('.').pop().toLowerCase();
+	const mime=extension==='json'?'application/json':extension==='txt'?'text/plain':'application/octet-stream';
+	const types=extension==='json'?[{description:'Pokémon TCG cartridge',accept:{'application/json':['.json']}}]:extension==='txt'?[{description:'Text report',accept:{'text/plain':['.txt']}}]:PICKER_TYPES;
 	if (hasFileSystemAccess()) {
 		let handle;
 		try {
-			handle = await globalThis.showSaveFilePicker({ suggestedName: fileName, types: PICKER_TYPES });
+			handle = await globalThis.showSaveFilePicker({ suggestedName: fileName, types });
 		} catch (e) {
 			if (e && e.name === 'AbortError') return false;
 			handle = null; // not allowed here (e.g. no user gesture): fall back to a download
@@ -109,7 +112,7 @@ export async function exportFile(data, fileName = 'duel.sav') {
 			return true;
 		}
 	}
-	const url = URL.createObjectURL(new Blob([data], { type: 'application/octet-stream' }));
+	const url = URL.createObjectURL(new Blob([data], { type: mime }));
 	const a = document.createElement('a');
 	a.href = url;
 	a.download = fileName;
@@ -121,10 +124,11 @@ export async function exportFile(data, fileName = 'duel.sav') {
 }
 
 /* reads a file the user picks: Uint8Array, or null if cancelled */
-export async function importFile() {
+export async function importFile(options = {}) {
+	const types=options.types||PICKER_TYPES;
 	if (hasFileSystemAccess()) {
 		try {
-			const [handle] = await globalThis.showOpenFilePicker({ types: PICKER_TYPES, multiple: false });
+			const [handle] = await globalThis.showOpenFilePicker({ types, multiple: false });
 			const file = await handle.getFile();
 			return new Uint8Array(await file.arrayBuffer());
 		} catch (e) {
@@ -135,7 +139,7 @@ export async function importFile() {
 	return new Promise((resolve) => {
 		const input = document.createElement('input');
 		input.type = 'file';
-		input.accept = '.sav,application/octet-stream';
+		input.accept = options.accept||'.sav,application/octet-stream';
 		input.style.display = 'none';
 		input.addEventListener('change', async () => {
 			const f = input.files && input.files[0];

@@ -1,0 +1,58 @@
+{
+  "format": "L643",
+  "textures": [],
+  "actors": [
+    {
+      "name": "torch",
+      "model": 39,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "torch",
+  "aliases": [
+    "NPC_TORCH"
+  ],
+  "runtime_model": 39,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "torch": {
+      "accent": [
+        0.19215686274509805,
+        0.4823529411764706,
+        0.807843137254902
+      ]
+    }
+  },
+  "design": "faceted blue outer flame with pale inner flame and dark brazier",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 0
+  },
+  "provenance": {
+    "sprite": 38,
+    "gfx_sha256": "a160e56e07f29b3a5da95673259cbf35653bd4b3c77741c6cff4804aaf80dbd6",
+    "fast64": "2.6.0"
+  },
+  "appearance": "torch",
+  "pose": "standing",
+  "component": null,
+  "vertices": 135,
+  "triangles": 68,
+  "batches": 1
+}

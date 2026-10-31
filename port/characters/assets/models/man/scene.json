@@ -1,0 +1,85 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_mature"
+  ],
+  "actors": [
+    {
+      "name": "man",
+      "model": 27,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "man",
+  "aliases": [
+    "NPC_ANDREW",
+    "NPC_MAN1",
+    "NPC_MAN2",
+    "NPC_MAN3",
+    "NPC_GUIDE"
+  ],
+  "runtime_model": 27,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "man": {
+      "accent": [
+        0.9058823529411765,
+        0.7764705882352941,
+        0.1607843137254902
+      ]
+    }
+  },
+  "design": "round cheeks, short receding hair and yellow polo",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 22
+  },
+  "provenance": {
+    "sprite": 26,
+    "gfx_sha256": "c0a9d21f76bcb04828ac39a4ef2bd223a25a0d349a4cfc05a80937854b1800b3",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "man \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_mature",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "man",
+  "pose": "standing",
+  "component": null,
+  "vertices": 941,
+  "triangles": 492,
+  "batches": 6
+}

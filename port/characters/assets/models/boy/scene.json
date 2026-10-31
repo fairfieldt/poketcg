@@ -1,0 +1,91 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_smile"
+  ],
+  "actors": [
+    {
+      "name": "boy",
+      "model": 18,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "boy",
+  "aliases": [
+    "NPC_RYAN",
+    "NPC_ROBERT",
+    "NPC_JONATHAN",
+    "NPC_LAD2"
+  ],
+  "runtime_model": 18,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "boy": {
+      "accent": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "boy_palette2": {
+      "accent": [
+        0.9058823529411765,
+        0.7764705882352941,
+        0.1607843137254902
+      ]
+    }
+  },
+  "design": "side-parted short hair, light shirt; yellow material variant",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 21
+  },
+  "provenance": {
+    "sprite": 17,
+    "gfx_sha256": "ea0f6bbdf34e510fa4727c9a56871aafc125f99f6cb3fcb5ee87adf1af0df407",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "boy \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_smile",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "boy",
+  "pose": "standing",
+  "component": null,
+  "vertices": 942,
+  "triangles": 500,
+  "batches": 6
+}

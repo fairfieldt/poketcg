@@ -1,0 +1,83 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_smile"
+  ],
+  "actors": [
+    {
+      "name": "girl",
+      "model": 29,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "girl",
+  "aliases": [
+    "NPC_JENNIFER",
+    "NPC_BRITTANY",
+    "NPC_STEPHANIE"
+  ],
+  "runtime_model": 29,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "girl": {
+      "accent": [
+        0.19215686274509805,
+        0.4823529411764706,
+        0.807843137254902
+      ]
+    }
+  },
+  "design": "long black hair beneath blue cap, blue top and short skirt",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 28
+  },
+  "provenance": {
+    "sprite": 28,
+    "gfx_sha256": "40fb8db64d3adc094bc5058258d65d8d98664d5d2815d362dda25a5c36cba81e",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "girl \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_smile",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "girl",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1236,
+  "triangles": 664,
+  "batches": 6
+}

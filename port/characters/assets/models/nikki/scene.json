@@ -1,0 +1,81 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_gentle"
+  ],
+  "actors": [
+    {
+      "name": "nikki",
+      "model": 6,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "nikki",
+  "aliases": [
+    "NPC_NIKKI"
+  ],
+  "runtime_model": 6,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "nikki": {
+      "accent": [
+        0.12941176470588237,
+        0.611764705882353,
+        0.09411764705882353
+      ]
+    }
+  },
+  "design": "long dark swept hair, green sleeveless dress and waist band",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 24
+  },
+  "provenance": {
+    "sprite": 5,
+    "gfx_sha256": "efb07eabfb701df8566995d65a74a5fd9e527de584e5700ed137ffccce09c6de",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "nikki \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_gentle",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "nikki",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1034,
+  "triangles": 556,
+  "batches": 6
+}

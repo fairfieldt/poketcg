@@ -1,0 +1,92 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_smile"
+  ],
+  "actors": [
+    {
+      "name": "mania",
+      "model": 22,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "mania",
+  "aliases": [
+    "NPC_CHRIS",
+    "NPC_MICHAEL",
+    "NPC_MATTHEW",
+    "NPC_MANIA",
+    "NPC_CHAMP"
+  ],
+  "runtime_model": 22,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "mania": {
+      "accent": [
+        1.0,
+        1.0,
+        1.0
+      ]
+    },
+    "mania_palette2": {
+      "accent": [
+        0.9058823529411765,
+        0.7764705882352941,
+        0.1607843137254902
+      ]
+    }
+  },
+  "design": "large swept angular forelock, short-sleeved shirt",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 21
+  },
+  "provenance": {
+    "sprite": 21,
+    "gfx_sha256": "e4fcafc558d76f75835c384bb974d7de6eba36c202d40dfebd13f65dee470336",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "mania \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_smile",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "mania_palette2",
+  "pose": "standing",
+  "component": null,
+  "vertices": 944,
+  "triangles": 500,
+  "batches": 6
+}

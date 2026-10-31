@@ -1,0 +1,81 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_glasses"
+  ],
+  "actors": [
+    {
+      "name": "rick",
+      "model": 7,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "rick",
+  "aliases": [
+    "NPC_RICK"
+  ],
+  "runtime_model": 7,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "rick": {
+      "accent": [
+        0.19215686274509805,
+        0.4823529411764706,
+        0.807843137254902
+      ]
+    }
+  },
+  "design": "long side-swept dark science-club hair and round spectacles",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 20
+  },
+  "provenance": {
+    "sprite": 6,
+    "gfx_sha256": "9f0d81b4a86256025a5c0c8c2534df6ddd5aa925561cde27f36ffafbd2fb5f07",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "rick \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_glasses",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "e49e8b581871bf6decf832b3fb10add1bc1f47be0e3d3c73298822c0380ee94c",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "rick",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1015,
+  "triangles": 537,
+  "batches": 6
+}

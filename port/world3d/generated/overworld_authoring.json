@@ -1,0 +1,127 @@
+{
+  "record": {
+    "file": "maps/overworld.l64",
+    "vertices": 11901,
+    "triangles": 5774,
+    "batches": 15,
+    "textures": [
+      "t10e0038945313eb8",
+      "t231f74feec91db8e",
+      "t25fa21fce63252dd",
+      "t36aeca753d8bf26c",
+      "t3e3fcb9d26fa2d89",
+      "t46f3c2fff5e813bf",
+      "t490be39a65b800e7",
+      "t4dd7fe7276ae012f",
+      "t62e606a8c4af0112",
+      "tb1bb3af3564d9a28",
+      "tbd44b6c80d177d03",
+      "tdd8e4bcdec0340fc",
+      "te7294b59c60589cd",
+      "tfeec08aef9335440"
+    ],
+    "props": [
+      {
+        "name": "Mason Laboratory",
+        "x": 2.5,
+        "y": 14,
+        "width": 1.25,
+        "depth": 1.05
+      },
+      {
+        "name": "Ishihara House",
+        "x": 1.5,
+        "y": 4,
+        "width": 0.95,
+        "depth": 0.8
+      },
+      {
+        "name": "Fighting Club",
+        "x": 7.5,
+        "y": 14,
+        "width": 1.25,
+        "depth": 0.9
+      },
+      {
+        "name": "Rock Club",
+        "x": 3.5,
+        "y": 8,
+        "width": 1.2,
+        "depth": 0.7
+      },
+      {
+        "name": "Water Club",
+        "x": 14.5,
+        "y": 13.5,
+        "width": 1.5,
+        "depth": 1.4
+      },
+      {
+        "name": "Lightning Club",
+        "x": 5.5,
+        "y": 11,
+        "width": 1.2,
+        "depth": 0.87
+      },
+      {
+        "name": "Grass Club",
+        "x": 16.5,
+        "y": 9,
+        "width": 1.45,
+        "depth": 0.9
+      },
+      {
+        "name": "Psychic Club",
+        "x": 12.5,
+        "y": 6.5,
+        "width": 1.4,
+        "depth": 1
+      },
+      {
+        "name": "Science Club",
+        "x": 16.5,
+        "y": 5,
+        "width": 1.35,
+        "depth": 0.92
+      },
+      {
+        "name": "Fire Club",
+        "x": 14.5,
+        "y": 3,
+        "width": 1.13,
+        "depth": 0.85
+      },
+      {
+        "name": "Challenge Hall",
+        "x": 8.5,
+        "y": 5,
+        "width": 1.5,
+        "depth": 1.5
+      },
+      {
+        "name": "Pokemon Dome",
+        "x": 9.5,
+        "y": 9.5,
+        "width": 1.53,
+        "depth": 1.03
+      }
+    ]
+  },
+  "camera": {
+    "eye": [
+      10,
+      22,
+      24.6
+    ],
+    "target": [
+      10,
+      0.25,
+      8.8
+    ],
+    "fov": 38
+  },
+  "blend": "overworld.blend",
+  "script": "tools/author_overworld.py",
+  "native_uv_wrap": "repeat when outside [0,1]",
+  "fixed_camera_backface_optimization": true
+}

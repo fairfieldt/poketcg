@@ -21,7 +21,7 @@ const opt = (n, d) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] :
 const PORT = Number(opt('--port', 8130));
 const TURNS = Number(opt('--turns', 4));
 const SHOTS = path.resolve(opt('--shots', path.join(here, 'screenshots')));
-const BASE = `http://localhost:${PORT}/?fast=1`;
+const BASE = `http://localhost:${PORT}/duel.html?fast=1`;
 fs.mkdirSync(SHOTS, { recursive: true });
 
 const REQ = { ACK: 1, DUEL_MENU: 2, CARD_LIST: 3, CARD_ITEM_MENU: 4, PLAY_AREA: 5, MENU: 6, YES_NO: 7, ENERGY_DISCARD: 8, PRIZE: 9, COLOR: 10, NUMBER: 11 };

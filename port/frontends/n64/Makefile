@@ -1,6 +1,7 @@
 # Nintendo 64 frontend (libdragon) for the portable Pokemon TCG duel engine.
 #
-#   make             build tcgn64.z64
+#   make             build adventure/poketcg-adventure.z64
+#   make duel        build tcgn64.z64
 #   make hosttest    build tcgn64.c against mock/libdragon.h on the host and run
 #                    the scripted UI tests in tests/*.txt (logs and screenshots
 #                    in build/host/)
@@ -32,7 +33,8 @@
 # (RGBA16) into the ROM filesystem; tools/cardart.awk maps the cards' gfx
 # pointers to file names. Without the disassembly the ROM builds without art.
 
-N64_INST ?= /home/user/tools/n64/opt/libdragon
+.DEFAULT_GOAL := all
+N64_INST ?= /opt/libdragon
 export N64_INST
 ifeq ($(wildcard $(N64_INST)/include/n64.mk),)
 $(error N64_INST ($(N64_INST)) does not contain include/n64.mk: install libdragon first)
@@ -49,8 +51,11 @@ CARD_GFX := $(REPO)/src/gfx/cards
 GFX_ASM := $(REPO)/src/gfx.asm
 ROM := tcgn64.z64
 
-all: $(ROM)
-.PHONY: all clean hosttest endiancheck FORCE
+all: adventure
+adventure:
+	$(MAKE) -C adventure N64_INST=$(N64_INST)
+duel: $(ROM)
+.PHONY: all adventure duel clean hosttest endiancheck FORCE
 .DELETE_ON_ERROR:
 
 # ---------------------------------------------------------------- engine
@@ -240,6 +245,7 @@ endiancheck: $(HOST_BUILD)/optional.lst tools/endian_check.c tools/endian_check.
 
 clean:
 	rm -rf $(BUILD_DIR) $(ROM)
+	$(MAKE) -C adventure clean
 
 -include $(wildcard $(BUILD_DIR)/*.d $(BUILD_DIR)/engine/*.d $(BUILD_DIR)/engine/*/*.d)
 -include $(wildcard $(HOST_BUILD)/*.d $(HOST_BUILD)/engine/*.d $(HOST_BUILD)/engine/*/*.d)

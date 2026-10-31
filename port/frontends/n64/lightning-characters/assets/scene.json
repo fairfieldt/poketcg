@@ -1,0 +1,157 @@
+{
+  "format": "L643",
+  "textures": [
+    "floor_02_02",
+    "floor_06_02",
+    "floor_10_02",
+    "floor_18_02",
+    "floor_22_02",
+    "floor_02_06",
+    "floor_06_06",
+    "floor_10_06",
+    "floor_14_06",
+    "floor_18_06",
+    "floor_22_06",
+    "floor_02_10",
+    "floor_06_10",
+    "floor_10_10",
+    "floor_14_10",
+    "floor_18_10",
+    "floor_22_10",
+    "floor_02_14",
+    "floor_10_14",
+    "floor_14_14",
+    "floor_18_14",
+    "floor_22_14",
+    "floor_10_18",
+    "floor_14_18",
+    "floor_10_22",
+    "floor_14_22",
+    "floor_02_26",
+    "floor_10_26",
+    "floor_14_26",
+    "hazard",
+    "pillar",
+    "badges_0",
+    "badges_1",
+    "badges_2",
+    "mason_face",
+    "ronald_face"
+  ],
+  "actors": [
+    {
+      "name": "Ronald",
+      "model": 1,
+      "x": 14,
+      "z": 28,
+      "heading": 180
+    },
+    {
+      "name": "Isaac",
+      "model": 3,
+      "x": 12,
+      "z": 4,
+      "heading": 180,
+      "map_x": 12,
+      "map_y": 4
+    },
+    {
+      "name": "Nicholas",
+      "model": 2,
+      "x": 6,
+      "z": 10,
+      "heading": 0,
+      "map_x": 6,
+      "map_y": 10
+    },
+    {
+      "name": "Brandon",
+      "model": 2,
+      "x": 22,
+      "z": 12,
+      "heading": 180,
+      "map_x": 22,
+      "map_y": 12
+    },
+    {
+      "name": "Dr. Mason",
+      "model": 4,
+      "x": 14,
+      "z": 18,
+      "heading": 0,
+      "map_x": 14,
+      "map_y": 18
+    }
+  ],
+  "colliders": [
+    [
+      8,
+      19,
+      10,
+      21
+    ],
+    [
+      17,
+      19,
+      19,
+      21
+    ],
+    [
+      4,
+      3,
+      6,
+      5
+    ],
+    [
+      22,
+      3,
+      24,
+      5
+    ],
+    [
+      8,
+      2,
+      20,
+      3.5
+    ]
+  ],
+  "camera": {
+    "eye": [
+      14,
+      9,
+      34
+    ],
+    "target": [
+      14,
+      0,
+      21.5
+    ],
+    "fov": 58
+  },
+  "note": "Tall source pillar silhouettes represent height; solid feet use 2x2 footprints.",
+  "models": {
+    "1": "Ronald",
+    "2": "Nicholas / Brandon",
+    "3": "Isaac",
+    "4": "Dr. Mason"
+  },
+  "character_pipeline": {
+    "blender": "5.2.1 LTS",
+    "fast64": "2.6.0",
+    "fast64_commit": "566d57b2ec38a968a04dab4bd7ea32ac4e91d55d",
+    "reference": "concept.png",
+    "rig": "Rigid parts: body 0, legs 1/2, arms 3/4",
+    "texture_format": "RGBA16",
+    "face_texture_size": [
+      32,
+      32
+    ]
+  },
+  "character_triangles": {
+    "1": 640,
+    "4": 577
+  },
+  "vertices": 4522,
+  "triangles": 2347,
+  "batches": 57
+}

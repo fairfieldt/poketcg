@@ -1,0 +1,81 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_imakuni"
+  ],
+  "actors": [
+    {
+      "name": "imakuni",
+      "model": 5,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "imakuni",
+  "aliases": [
+    "NPC_IMAKUNI"
+  ],
+  "runtime_model": 5,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "imakuni": {
+      "accent": [
+        0.19215686274509805,
+        0.4823529411764706,
+        0.807843137254902
+      ]
+    }
+  },
+  "design": "black bear-eared hood and full dark suit",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 22
+  },
+  "provenance": {
+    "sprite": 4,
+    "gfx_sha256": "a5fc69b230b0bbaf186eb8fbc920a0ff83a15dff6edf2b63f1cdf549dca8fcb2",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "imakuni \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_imakuni",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "ff9cfb0c3997585b9badce4667773a968010a64bb4e8e893ef4f5d1af91c652b",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "imakuni",
+  "pose": "standing",
+  "component": null,
+  "vertices": 896,
+  "triangles": 534,
+  "batches": 6
+}

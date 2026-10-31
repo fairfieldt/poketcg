@@ -1,0 +1,430 @@
+{
+  "human_families": 37,
+  "native_exports": 49,
+  "geometry_unchanged": true,
+  "opaque_faces": true,
+  "original_facial_detail_preserved": true,
+  "models": {
+    "dr_mason": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "ronald": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "ishihara": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "imakuni": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "tech": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "clerk": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "mania": {
+      "native_face_vertices": 36,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "lass3": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "mitch": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "boy": {
+      "native_face_vertices": 36,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "man": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "gene": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "swimmer": {
+      "native_face_vertices": 36,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "joshua": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "amy": {
+      "native_face_vertices": 36,
+      "maximum_face_solid_rgb_difference": 2
+    },
+    "girl": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "hood": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "isaac": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "lass2": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "lass1": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "nikki": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "lad": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "murray": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "rick": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "specs": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "ken": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "courtney": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "steve": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "jack": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "rod": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "woman": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "chap": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "gal": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "pappy": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "butch": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "granny": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    },
+    "mark": {
+      "native_face_vertices": 18,
+      "maximum_face_solid_rgb_difference": 1
+    }
+  },
+  "geometry": {
+    "assets/models/amy/poses/lying/scene.l64": {
+      "before": "9f2dad4deb7eaa3f3d2c22fb971e75834f5e6da6db96db895028d6dc8b13d367",
+      "after": "9f2dad4deb7eaa3f3d2c22fb971e75834f5e6da6db96db895028d6dc8b13d367"
+    },
+    "assets/models/amy/scene.l64": {
+      "before": "108f962d4c33fa3161d548b9325440af69e0f0ae33cf2df1ca3be2e056135e88",
+      "after": "108f962d4c33fa3161d548b9325440af69e0f0ae33cf2df1ca3be2e056135e88"
+    },
+    "assets/models/boy/scene.l64": {
+      "before": "eb3c456cd457519ca6fb61680b740af608f271352da635fb500e9e0568c0431b",
+      "after": "eb3c456cd457519ca6fb61680b740af608f271352da635fb500e9e0568c0431b"
+    },
+    "assets/models/boy/variants/boy_palette2/scene.l64": {
+      "before": "eb3c456cd457519ca6fb61680b740af608f271352da635fb500e9e0568c0431b",
+      "after": "eb3c456cd457519ca6fb61680b740af608f271352da635fb500e9e0568c0431b"
+    },
+    "assets/models/butch/scene.l64": {
+      "before": "c5910c4e2fef5d57c027cf48d052f628e579e9c4fb9babc53e97390677fad55b",
+      "after": "c5910c4e2fef5d57c027cf48d052f628e579e9c4fb9babc53e97390677fad55b"
+    },
+    "assets/models/chap/scene.l64": {
+      "before": "1ba8e00c5801356ae400c6aa342a7e2ff22c829795dc560a057838155a2c4ba8",
+      "after": "1ba8e00c5801356ae400c6aa342a7e2ff22c829795dc560a057838155a2c4ba8"
+    },
+    "assets/models/clerk/scene.l64": {
+      "before": "0a552bbc361e7f50de72093359cae34b12288953677eff1c7c208dd592caa690",
+      "after": "0a552bbc361e7f50de72093359cae34b12288953677eff1c7c208dd592caa690"
+    },
+    "assets/models/courtney/scene.l64": {
+      "before": "2e8ea1b8716f50e3bef24c7986de0286d2db733131b9985aa22de1b001543efe",
+      "after": "2e8ea1b8716f50e3bef24c7986de0286d2db733131b9985aa22de1b001543efe"
+    },
+    "assets/models/dr_mason/scene.l64": {
+      "before": "f5313ba3d0954f1b270d7f359f1ec6015307616bb1a216b91bea08d11d14c1b3",
+      "after": "f5313ba3d0954f1b270d7f359f1ec6015307616bb1a216b91bea08d11d14c1b3"
+    },
+    "assets/models/gal/scene.l64": {
+      "before": "8deace2575efb7957ae92cc7000b206784afad3b79793941b7e0445ae28a713e",
+      "after": "8deace2575efb7957ae92cc7000b206784afad3b79793941b7e0445ae28a713e"
+    },
+    "assets/models/gene/scene.l64": {
+      "before": "ea0d3f55b57d949356f9cf27eeb545524e882aa66d1e17ce65c3018cfb9952fc",
+      "after": "ea0d3f55b57d949356f9cf27eeb545524e882aa66d1e17ce65c3018cfb9952fc"
+    },
+    "assets/models/girl/scene.l64": {
+      "before": "ea3eb39516b55e7cfb3c466188e2a6be8bbfd09f2ad500ed7bc494abae06c929",
+      "after": "ea3eb39516b55e7cfb3c466188e2a6be8bbfd09f2ad500ed7bc494abae06c929"
+    },
+    "assets/models/granny/scene.l64": {
+      "before": "e5cd80430e6879d8ccf5335eeeb74fe6f9f384fb027b7d531d79fe0b59849122",
+      "after": "e5cd80430e6879d8ccf5335eeeb74fe6f9f384fb027b7d531d79fe0b59849122"
+    },
+    "assets/models/hood/scene.l64": {
+      "before": "371f1c6c8fd935eea86a645ecb68b962aa0f19d35ab702ce6843b4c72a933524",
+      "after": "371f1c6c8fd935eea86a645ecb68b962aa0f19d35ab702ce6843b4c72a933524"
+    },
+    "assets/models/imakuni/scene.l64": {
+      "before": "de35591a2dc17625aaf8cd2fcdb5736e254894b254f1e2d4a874a050686d203f",
+      "after": "de35591a2dc17625aaf8cd2fcdb5736e254894b254f1e2d4a874a050686d203f"
+    },
+    "assets/models/isaac/scene.l64": {
+      "before": "8503e2e3920d82a2d5ae04edd21e8b8a69a359a32897a63db3377bc4ddd93b28",
+      "after": "8503e2e3920d82a2d5ae04edd21e8b8a69a359a32897a63db3377bc4ddd93b28"
+    },
+    "assets/models/ishihara/scene.l64": {
+      "before": "2baffd799a1c26b374ded3431374baba029eaa140d3b2ea6e4426589b2aa88e9",
+      "after": "2baffd799a1c26b374ded3431374baba029eaa140d3b2ea6e4426589b2aa88e9"
+    },
+    "assets/models/jack/scene.l64": {
+      "before": "7c401d64921bfac65c3786d69ce241eda3a94869d02a8b8086229bfc7fc151ef",
+      "after": "7c401d64921bfac65c3786d69ce241eda3a94869d02a8b8086229bfc7fc151ef"
+    },
+    "assets/models/joshua/scene.l64": {
+      "before": "55ae44b763de7f5a901147d136a9981d0d7279a55f28c8cdc51a48e86af11366",
+      "after": "55ae44b763de7f5a901147d136a9981d0d7279a55f28c8cdc51a48e86af11366"
+    },
+    "assets/models/ken/scene.l64": {
+      "before": "7fdee8db70bd329201660f4f83654aebefe93b5260d472f83f2d0093f62c0cf4",
+      "after": "7fdee8db70bd329201660f4f83654aebefe93b5260d472f83f2d0093f62c0cf4"
+    },
+    "assets/models/lad/scene.l64": {
+      "before": "c24fac6c2b00a7173b02c5026c050545b8aa29d31254852d25f5b72f01efb3a2",
+      "after": "c24fac6c2b00a7173b02c5026c050545b8aa29d31254852d25f5b72f01efb3a2"
+    },
+    "assets/models/lass1/scene.l64": {
+      "before": "6e1cc7c8be85c8da46b9193257cdd2e2a96651ef7a72bdd9185d9b7daf38ded4",
+      "after": "6e1cc7c8be85c8da46b9193257cdd2e2a96651ef7a72bdd9185d9b7daf38ded4"
+    },
+    "assets/models/lass2/scene.l64": {
+      "before": "765a6ca41dea97d3ab3296cdd1516da19c611392e7288fe6fab6dd06cd81d05a",
+      "after": "765a6ca41dea97d3ab3296cdd1516da19c611392e7288fe6fab6dd06cd81d05a"
+    },
+    "assets/models/lass3/scene.l64": {
+      "before": "16ba582754fd8825644e8d3d53fe577dbb6e2390f81c10701e2548df581673a6",
+      "after": "16ba582754fd8825644e8d3d53fe577dbb6e2390f81c10701e2548df581673a6"
+    },
+    "assets/models/legendary_card/components/bottom_left/scene.l64": {
+      "before": "b2d0d379000338a9614dd006915150429b187d3249b308d1ad21072136ae0875",
+      "after": "b2d0d379000338a9614dd006915150429b187d3249b308d1ad21072136ae0875"
+    },
+    "assets/models/legendary_card/components/bottom_right/scene.l64": {
+      "before": "5af5972b593dec7708c1a4f40676bd495a4f762b2e7568b2b846729d46a89284",
+      "after": "5af5972b593dec7708c1a4f40676bd495a4f762b2e7568b2b846729d46a89284"
+    },
+    "assets/models/legendary_card/components/left_spark/scene.l64": {
+      "before": "5bc53c00b853cd900dccbb9addccf226835c68c1c8024c8602d8b820fad6a5b9",
+      "after": "5bc53c00b853cd900dccbb9addccf226835c68c1c8024c8602d8b820fad6a5b9"
+    },
+    "assets/models/legendary_card/components/right_spark/scene.l64": {
+      "before": "abae4dbe1aa9143b9a7b7487a0598191cae64bebc5410eba185ebc36ad9b3ccd",
+      "after": "abae4dbe1aa9143b9a7b7487a0598191cae64bebc5410eba185ebc36ad9b3ccd"
+    },
+    "assets/models/legendary_card/components/top_left/scene.l64": {
+      "before": "3b6783c9f327c38d231842a4be98a6aa283a24d20cb9ac424b4c4cba29f53e4e",
+      "after": "3b6783c9f327c38d231842a4be98a6aa283a24d20cb9ac424b4c4cba29f53e4e"
+    },
+    "assets/models/legendary_card/components/top_right/scene.l64": {
+      "before": "b1909135fb6d2a7761a7c5042faa0fd2dc904f17b95b16528616ccba82071ca1",
+      "after": "b1909135fb6d2a7761a7c5042faa0fd2dc904f17b95b16528616ccba82071ca1"
+    },
+    "assets/models/legendary_card/scene.l64": {
+      "before": "30b666cf9d21aba1c6525c714747b067506d3e5dec6687d687ba23687606afd3",
+      "after": "30b666cf9d21aba1c6525c714747b067506d3e5dec6687d687ba23687606afd3"
+    },
+    "assets/models/man/scene.l64": {
+      "before": "22801dedaee1dfd41882d3bdfd871b9e156718c7d14464849bbf005e27b11e4b",
+      "after": "22801dedaee1dfd41882d3bdfd871b9e156718c7d14464849bbf005e27b11e4b"
+    },
+    "assets/models/mania/scene.l64": {
+      "before": "a4104f5798ff8b9ac8549ae919489b3eeced2848f0c4e04e025b04609c9dd2c1",
+      "after": "a4104f5798ff8b9ac8549ae919489b3eeced2848f0c4e04e025b04609c9dd2c1"
+    },
+    "assets/models/mania/variants/mania_palette2/scene.l64": {
+      "before": "a4104f5798ff8b9ac8549ae919489b3eeced2848f0c4e04e025b04609c9dd2c1",
+      "after": "a4104f5798ff8b9ac8549ae919489b3eeced2848f0c4e04e025b04609c9dd2c1"
+    },
+    "assets/models/mark/scene.l64": {
+      "before": "04b13d66c701915cf1f7607e79711751be50da8da5f3eed0812a44e968217bd3",
+      "after": "04b13d66c701915cf1f7607e79711751be50da8da5f3eed0812a44e968217bd3"
+    },
+    "assets/models/mitch/scene.l64": {
+      "before": "3dfe887f88c1c2321f0127a8bf9c12e8e8f2d7e63d36e77755b165b1dc81aa1c",
+      "after": "3dfe887f88c1c2321f0127a8bf9c12e8e8f2d7e63d36e77755b165b1dc81aa1c"
+    },
+    "assets/models/murray/scene.l64": {
+      "before": "b10323ef86e2012ad9b0f7e0d53ec562244f993be3c87ec2dce4be428b645678",
+      "after": "b10323ef86e2012ad9b0f7e0d53ec562244f993be3c87ec2dce4be428b645678"
+    },
+    "assets/models/nikki/scene.l64": {
+      "before": "d191a9784f6900651ae6315b25faaa10722a3320785c4c0935bfbfbec40f1d2d",
+      "after": "d191a9784f6900651ae6315b25faaa10722a3320785c4c0935bfbfbec40f1d2d"
+    },
+    "assets/models/pappy/scene.l64": {
+      "before": "2939445e33772c051a50181fced39c27c081c8435268613aec9fcdaf99103440",
+      "after": "2939445e33772c051a50181fced39c27c081c8435268613aec9fcdaf99103440"
+    },
+    "assets/models/rick/scene.l64": {
+      "before": "b7d5df0893c0e8fa6059414d93cb25d6b6c55f5db5d21676045697ba888ed170",
+      "after": "b7d5df0893c0e8fa6059414d93cb25d6b6c55f5db5d21676045697ba888ed170"
+    },
+    "assets/models/rod/scene.l64": {
+      "before": "61778b5cd89f06c32f97e31fcd2d1e5366c7d7408ca60296ffb4603ddea616df",
+      "after": "61778b5cd89f06c32f97e31fcd2d1e5366c7d7408ca60296ffb4603ddea616df"
+    },
+    "assets/models/ronald/scene.l64": {
+      "before": "80fdff41a18c3627601c813e0d5699fcf078528a7be2ae028d7d1fcdf03ea13d",
+      "after": "80fdff41a18c3627601c813e0d5699fcf078528a7be2ae028d7d1fcdf03ea13d"
+    },
+    "assets/models/specs/scene.l64": {
+      "before": "52e184a4dfbb12b6107d735cd1176b4b6cd2197e100226d3770a0676ea8fa73c",
+      "after": "52e184a4dfbb12b6107d735cd1176b4b6cd2197e100226d3770a0676ea8fa73c"
+    },
+    "assets/models/steve/scene.l64": {
+      "before": "9df23926c205a8b2fa57b6cd890834ad1d1ed2968566333661de0ea8cc30e317",
+      "after": "9df23926c205a8b2fa57b6cd890834ad1d1ed2968566333661de0ea8cc30e317"
+    },
+    "assets/models/swimmer/scene.l64": {
+      "before": "4614fd9bb53cf193e0b0a02e7d518bcc2fa4f6103dfbaef52781b64a6a770262",
+      "after": "4614fd9bb53cf193e0b0a02e7d518bcc2fa4f6103dfbaef52781b64a6a770262"
+    },
+    "assets/models/swimmer/variants/swimmer_palette2/scene.l64": {
+      "before": "4614fd9bb53cf193e0b0a02e7d518bcc2fa4f6103dfbaef52781b64a6a770262",
+      "after": "4614fd9bb53cf193e0b0a02e7d518bcc2fa4f6103dfbaef52781b64a6a770262"
+    },
+    "assets/models/tech/scene.l64": {
+      "before": "228a2c06a8cf0d44432b824c8c1794ec4f9f107f4d3c761c670ffe9419c83cc5",
+      "after": "228a2c06a8cf0d44432b824c8c1794ec4f9f107f4d3c761c670ffe9419c83cc5"
+    },
+    "assets/models/torch/scene.l64": {
+      "before": "a7399ae9bebc9243ae33f5cf8fd5e22f6a095ee697bf70af4772e7a98966f0ab",
+      "after": "a7399ae9bebc9243ae33f5cf8fd5e22f6a095ee697bf70af4772e7a98966f0ab"
+    },
+    "assets/models/woman/scene.l64": {
+      "before": "60786570189ca38835ccf2b1e65bfcdc3d820bcd6a0add4bf4d1f8e078208f60",
+      "after": "60786570189ca38835ccf2b1e65bfcdc3d820bcd6a0add4bf4d1f8e078208f60"
+    }
+  },
+  "n64_gallery": {
+    "rom_sha256": "4f13364ff7aec51add82010031d3695cc7c661c4ba7bf1e78deb13bbe76855cd",
+    "ram_mib": 4,
+    "verified_exports": 49,
+    "headings": 4,
+    "rigid_limb_pose": true,
+    "frames": [
+      "dr_mason",
+      "mania_palette2",
+      "swimmer",
+      "amy_lying",
+      "isaac",
+      "specs",
+      "chap",
+      "legendary_card_bottom_left",
+      "mark"
+    ]
+  },
+  "reviewed_adventure_frames": [
+    "naming",
+    "mason-dialogue",
+    "map-12",
+    "sam-table"
+  ],
+  "native_exports_sha256": {
+    "assets/models/amy/poses/lying/scene.l64": "7b9ca4ed964a8ffb88854db9ad48a4f91ea961dd00cdcc4445c422a3a97ab2b2",
+    "assets/models/amy/scene.l64": "0824e52b9bee410e8611953748cb847b55e9bee96258c4d1422cd08241a74977",
+    "assets/models/boy/scene.l64": "64dcf346004a66daa1fcae428bf5b32544e198719d7184c2abe8020c5ba792cf",
+    "assets/models/boy/variants/boy_palette2/scene.l64": "7d0856b2a93c92db56d07b794c9ea84dd9b48f2c03f95e680f27a1d287a52e84",
+    "assets/models/butch/scene.l64": "1ae7c8587ec35bcbf82cf7270f9978e89cccdba18febe16419585d6f4abc4518",
+    "assets/models/chap/scene.l64": "ac4f65774c60f163931625a844db7025e844dd4aa73dcf4fa048c4e0a0b0b219",
+    "assets/models/clerk/scene.l64": "be81ad274010dd102973b5bc3b678fb5d65498a1c0ddbfe894a79dddc52a7e67",
+    "assets/models/courtney/scene.l64": "75f1419833a7206a57a3165f6b638658fcd7f26cc9cc5e9fe925b0424c02e8c8",
+    "assets/models/dr_mason/scene.l64": "e6c23683df83b906aa8fb7bab1e9284db0ea6eb61bc5fc33b7b80d27c2eac69d",
+    "assets/models/gal/scene.l64": "89e733c845d41679a58dc0af9af32b20448f849dc794793634b51e278eaab239",
+    "assets/models/gene/scene.l64": "2a9d9902749574df46eaed85deeb30226f964a8af2ff1ece7343f7f72351ba46",
+    "assets/models/girl/scene.l64": "b61d51a378b9a725e003e98103e233a893cc7a0d98d009f664c08a3315da7cd5",
+    "assets/models/granny/scene.l64": "7839cf77f97bc66b182bd90277868f418d2cda02520e3ef4f527264597847717",
+    "assets/models/hood/scene.l64": "75bc90f24392e8e968bd4949a4717bbb79b62bdffb9ced0a1c62afe0dca64a2c",
+    "assets/models/imakuni/scene.l64": "1e57cfbcee82dfaaeca56f5fd9a805ce71b5eab234de75e26b3d66bb2e9d8d64",
+    "assets/models/isaac/scene.l64": "326e2be442aeef316119cd576d1dbdf8a48e6b55bc2dd9664ac3b8b386b65c67",
+    "assets/models/ishihara/scene.l64": "539c0d46594d29b9bde0874ea1b7553b639ef5f59f21fc2e727bab1400be0168",
+    "assets/models/jack/scene.l64": "e959f020c043ff060b8e3ed98eacfeb4d8040ffe25ccc0d40a4205ab15544ad7",
+    "assets/models/joshua/scene.l64": "da6af97cf0aff1785d55d016a6846dc0530d6f61b5ec79520cadac1b5a594b93",
+    "assets/models/ken/scene.l64": "19bd5bf1ef7c2f81eb6e9932c1bd09f23420917f3fb604da773da498f36e0d41",
+    "assets/models/lad/scene.l64": "2aacb00871e6b7f2f06f344e3558ad806a67b8cf3dc38e72fa25be015a8dbf9b",
+    "assets/models/lass1/scene.l64": "6b4c85675a472f158765ebd84f824187ebd7070504dbe864711372e5ad759349",
+    "assets/models/lass2/scene.l64": "8ca49588b3034d1e7d6184d7505b7b90e7b766390ac565fd5b42d325efe641df",
+    "assets/models/lass3/scene.l64": "f728138cfd61023df9505d6186b5d3fa3ebc38459f4c9234171a7e8e249cab14",
+    "assets/models/legendary_card/components/bottom_left/scene.l64": "2fb4c74490440e469888de786bfba83823e20035c012ae0c1481b0986f241ae6",
+    "assets/models/legendary_card/components/bottom_right/scene.l64": "ff42bdcc6aef2561475019b2a2991da686885c3ec2419144c8619a4c078d5e3f",
+    "assets/models/legendary_card/components/left_spark/scene.l64": "53ac9a33e796d9ee2137e5cd8b7726a2ce8b2ab92a9085eefc22a05cf1ee4bc9",
+    "assets/models/legendary_card/components/right_spark/scene.l64": "11789df796eaef8eb06faa938df83569838c49318493d38f714349cb4fa0a5e3",
+    "assets/models/legendary_card/components/top_left/scene.l64": "b25a36139ae22593c9f7cc1c07211e59ffe21a1581a4079e9a2323ac341249b0",
+    "assets/models/legendary_card/components/top_right/scene.l64": "30b2bfa872b2c544126b954ee696c59a370a01914b93a313740c9316b490214d",
+    "assets/models/legendary_card/scene.l64": "29cb1a5cdc13638f43e1c822b4941465091aef5f062a510b4174c372a10ffb8b",
+    "assets/models/man/scene.l64": "db3b7eba72adefcbf937527b199a8497bc6eeeeaa833699836f9a9bf41da519a",
+    "assets/models/mania/scene.l64": "196373fa92049f28a5c08c9526ea0153cee212b7ddd33a75e1e9a2b220dfae87",
+    "assets/models/mania/variants/mania_palette2/scene.l64": "786b126e7c1b9a318852f3f1ce43697aba0ec794bd3d300bdafcfc02ae3e373a",
+    "assets/models/mark/scene.l64": "5087cbef35224e2957db6e7a1bf4db0f27a50d9e44b2b3f900590aac63e0584a",
+    "assets/models/mitch/scene.l64": "415d56c83b1d5492a03982edd608333a033e08115065e9a38b4594cbe76face4",
+    "assets/models/murray/scene.l64": "2123243ce07a7837ea2039af0bf98da4c496382210a3ae09c3ec74fe8c5d4336",
+    "assets/models/nikki/scene.l64": "99e5ddebb1b55bd5575842fb433ace86c785ac153da8f3e01b469c2688896f7a",
+    "assets/models/pappy/scene.l64": "9075120ee0069597d2b8efbc36b5c91d62e6d7e26f9043fb9e877a5a498c1b6b",
+    "assets/models/rick/scene.l64": "d3099a27ceea96504afb62997b517b846345bf122c38074adaccd1cbdfce77cf",
+    "assets/models/rod/scene.l64": "5f01e7b95a4ed9231351a6ef3e94c393354800f8262b570dddca76faf55ab814",
+    "assets/models/ronald/scene.l64": "32615638ce1afcfd83b9816efa0fdb5f5aada0df1dd9bd06a21328289618abc6",
+    "assets/models/specs/scene.l64": "c3cc9a5e5e342d291928eea3290ff72e17c665e6ee685c94626ab2ccf9b1670a",
+    "assets/models/steve/scene.l64": "75a556651f7d9fe850877cefbdbd26f96e324c682fd3b88b0454778d7f23b189",
+    "assets/models/swimmer/scene.l64": "2dd3b74ab3d60e7f3d024e3410263b7d976001c69d87f4310e8d2471414dad4a",
+    "assets/models/swimmer/variants/swimmer_palette2/scene.l64": "fae53543b48614f096b05aa439d252365805f11735573b97663a8e81b37a1023",
+    "assets/models/tech/scene.l64": "343740c282c3c8ddd2871ba053759bbf8c3c59f8d91487ec1d2276596ada04f4",
+    "assets/models/torch/scene.l64": "4ffb9dd06c4f2b0b09ae7ead39829d95f146dff6cfe39f27ec292dbb5a5df373",
+    "assets/models/woman/scene.l64": "53fb6193d967585ee834ac6df8210f05c6d8150a83043e87e1b6962ac8b7256f"
+  }
+}

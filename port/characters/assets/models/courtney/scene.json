@@ -1,0 +1,81 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_gentle"
+  ],
+  "actors": [
+    {
+      "name": "courtney",
+      "model": 14,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "courtney",
+  "aliases": [
+    "NPC_COURTNEY"
+  ],
+  "runtime_model": 14,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "courtney": {
+      "accent": [
+        0.9686274509803922,
+        0.4196078431372549,
+        0.5803921568627451
+      ]
+    }
+  },
+  "design": "pink long hair with lifted side curls, high-neck Grand Master dress",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 26
+  },
+  "provenance": {
+    "sprite": 13,
+    "gfx_sha256": "ad3ce2cb9ed8c370e988967bbd8e060df01326cb9ad4b849e94118f49ec876fb",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "courtney \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_gentle",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "courtney",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1225,
+  "triangles": 644,
+  "batches": 6
+}

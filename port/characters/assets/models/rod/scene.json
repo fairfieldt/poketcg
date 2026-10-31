@@ -1,0 +1,81 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_stern"
+  ],
+  "actors": [
+    {
+      "name": "rod",
+      "model": 17,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "rod",
+  "aliases": [
+    "NPC_ROD"
+  ],
+  "runtime_model": 17,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "rod": {
+      "accent": [
+        0.19215686274509805,
+        0.4823529411764706,
+        0.807843137254902
+      ]
+    }
+  },
+  "design": "center-parted black curtains, blue open vest and light shirt",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 22
+  },
+  "provenance": {
+    "sprite": 16,
+    "gfx_sha256": "2873c9106051817d1f194f0215cb1133a7560c8d17d942659517d1af7fe098d7",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "rod \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_stern",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "rod",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1032,
+  "triangles": 550,
+  "batches": 6
+}

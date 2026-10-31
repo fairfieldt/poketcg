@@ -1,0 +1,82 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_old_glasses"
+  ],
+  "actors": [
+    {
+      "name": "granny",
+      "model": 37,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "granny",
+  "aliases": [
+    "NPC_GRANNY1",
+    "NPC_GRANNY2"
+  ],
+  "runtime_model": 37,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "granny": {
+      "accent": [
+        0.9058823529411765,
+        0.7764705882352941,
+        0.1607843137254902
+      ]
+    }
+  },
+  "design": "silver braided bun, small spectacles, yellow cardigan and long skirt",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 26
+  },
+  "provenance": {
+    "sprite": 36,
+    "gfx_sha256": "af8399aa73bb00a69861a54d2fde3a8bc52389163c5a8c8f38ce27994cbc3519",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "granny \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_old_glasses",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "3e026d51fee15a117e86521ef97d2f342ef0caa95420c5bf46dff00e43ddaffd",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "granny",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1216,
+  "triangles": 638,
+  "batches": 6
+}

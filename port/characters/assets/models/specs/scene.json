@@ -1,0 +1,83 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_glasses"
+  ],
+  "actors": [
+    {
+      "name": "specs",
+      "model": 20,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "specs",
+  "aliases": [
+    "NPC_ADAM",
+    "NPC_SPECS1",
+    "NPC_SPECS3"
+  ],
+  "runtime_model": 20,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "specs": {
+      "accent": [
+        0.4823529411764706,
+        0.25882352941176473,
+        0.8392156862745098
+      ]
+    }
+  },
+  "design": "angular spectacles, tidy side part and purple shirt",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 21
+  },
+  "provenance": {
+    "sprite": 19,
+    "gfx_sha256": "e3ab7062fa800376919570be227e97a33e842224749000083dca5cc7837f0adc",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "specs \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_glasses",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "e49e8b581871bf6decf832b3fb10add1bc1f47be0e3d3c73298822c0380ee94c",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "specs",
+  "pose": "standing",
+  "component": null,
+  "vertices": 940,
+  "triangles": 500,
+  "batches": 6
+}

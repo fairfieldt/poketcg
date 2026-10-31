@@ -1,0 +1,63 @@
+{
+  "format": "L643",
+  "textures": [],
+  "actors": [
+    {
+      "name": "legendary_card",
+      "model": 40,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "legendary_card",
+  "aliases": [
+    "NPC_LEGENDARY_CARD_TOP_LEFT",
+    "NPC_LEGENDARY_CARD_TOP_RIGHT",
+    "NPC_LEGENDARY_CARD_LEFT_SPARK",
+    "NPC_LEGENDARY_CARD_BOTTOM_LEFT",
+    "NPC_LEGENDARY_CARD_BOTTOM_RIGHT",
+    "NPC_LEGENDARY_CARD_RIGHT_SPARK"
+  ],
+  "runtime_model": 40,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "legendary_card": {
+      "accent": [
+        0.9686274509803922,
+        0.4196078431372549,
+        0.5803921568627451
+      ]
+    }
+  },
+  "design": "four reusable rounded card quadrants and two faceted pink star sparks",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 0
+  },
+  "provenance": {
+    "sprite": 39,
+    "gfx_sha256": "de7f37129cc04c80835a0c48966e3ede2636ce325927b7e3fae2d23d0193cc27",
+    "fast64": "2.6.0"
+  },
+  "appearance": "legendary_card",
+  "pose": "standing",
+  "component": "left_spark",
+  "vertices": 40,
+  "triangles": 16,
+  "batches": 1
+}

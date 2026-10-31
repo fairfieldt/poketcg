@@ -1,0 +1,552 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-diagnostic.z64",
+  "rom_sha256": "24bdc9f7d407f37d2cf8bbf7b581ef47f37ac0d33ace2c4c78e26ef1c0618823",
+  "ram_mib": 4,
+  "passed": true,
+  "sram_passed": true,
+  "mips_story_passed": true,
+  "native_duel_passed": true,
+  "intro_passed": true,
+  "maps": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33
+  ],
+  "frames": [
+    {
+      "name": "map-00",
+      "file": "map-00.png",
+      "colors": 1109,
+      "sha256": "a177116e4c399fea8528be9ee374c251846c16200f19f9a998ed55997f1bfead"
+    },
+    {
+      "name": "map-01",
+      "file": "map-01.png",
+      "colors": 1504,
+      "sha256": "fb49a3a3b93ddc731cdc1850e7b48767733551aec48b5edbe4fe133949e31d63"
+    },
+    {
+      "name": "map-02",
+      "file": "map-02.png",
+      "colors": 1380,
+      "sha256": "9278aec6f4478ccba21ec23ec41cb8c9399492ef63c3a79286ad98c8d51285bd"
+    },
+    {
+      "name": "map-03",
+      "file": "map-03.png",
+      "colors": 1276,
+      "sha256": "f01639040b2dbf456e6b28526f8c4bf387043f27841da64fab3bea6e76511dde"
+    },
+    {
+      "name": "map-04",
+      "file": "map-04.png",
+      "colors": 1417,
+      "sha256": "33a2980bb1e6c77c3a21a5e3b72d4d11f207f4290d3f24f654f9a751a0805f4d"
+    },
+    {
+      "name": "map-05",
+      "file": "map-05.png",
+      "colors": 1516,
+      "sha256": "a1c483c599c50aa671764f90e46f4cf7d04a72aa7606569477a56896eec14440"
+    },
+    {
+      "name": "map-06",
+      "file": "map-06.png",
+      "colors": 1932,
+      "sha256": "6cebe886c336273fc3094234cee27a4edf43fe6d2ebe4c845c1de4cb6928c8c4"
+    },
+    {
+      "name": "map-07",
+      "file": "map-07.png",
+      "colors": 1355,
+      "sha256": "d5bb9349012e35cb7399f15478642f73f3d61278a31d9a8ef61311b980b9b31d"
+    },
+    {
+      "name": "map-08",
+      "file": "map-08.png",
+      "colors": 1549,
+      "sha256": "aeb25f0c2e46da0ed30bd12e9022839569d5c3ed28b98346bde646d74986ed6a"
+    },
+    {
+      "name": "map-09",
+      "file": "map-09.png",
+      "colors": 2069,
+      "sha256": "919407cbe3f407912ed60219150e517f4ed352b09cdba22971c31a12c6c75868"
+    },
+    {
+      "name": "map-10",
+      "file": "map-10.png",
+      "colors": 1616,
+      "sha256": "126a59e56f51b152b5637ee04044232a8105d4102090fd3a5d04fffdae88c657"
+    },
+    {
+      "name": "map-11",
+      "file": "map-11.png",
+      "colors": 1495,
+      "sha256": "bd2d5f7704f5b5bb7fd5edb648652b76d9e4d473a5b2686f52af6ef63d95ac3d"
+    },
+    {
+      "name": "map-12",
+      "file": "map-12.png",
+      "colors": 1546,
+      "sha256": "00382fe72dc155a2b0912bc67b098d5fcc43f11e4e49d5897a369d6043c3900e"
+    },
+    {
+      "name": "map-13",
+      "file": "map-13.png",
+      "colors": 1453,
+      "sha256": "4b16a012c95ff5c245feb0ab41f01e99f91a9f15026bea4c4ae633a144fe15f7"
+    },
+    {
+      "name": "map-14",
+      "file": "map-14.png",
+      "colors": 1490,
+      "sha256": "c875fdb797ff1c6a8a57ae8bb24ee0cebe9ace7c78c12a1b01070ec6bd294a80"
+    },
+    {
+      "name": "map-15",
+      "file": "map-15.png",
+      "colors": 2379,
+      "sha256": "94110c4add7ac3bfd06ca42c4d51cc534e660a76c44c8c9891b135ec539c1487"
+    },
+    {
+      "name": "map-16",
+      "file": "map-16.png",
+      "colors": 1595,
+      "sha256": "fc9309ac2b4d24bff62c03d36fabb3df8db293341ad95c4a297b9c6d41a24d6a"
+    },
+    {
+      "name": "map-17",
+      "file": "map-17.png",
+      "colors": 1484,
+      "sha256": "b7aab45c03e2b2720ac5873db69bf60953edfe99729a705ebb5b363b89d36583"
+    },
+    {
+      "name": "map-18",
+      "file": "map-18.png",
+      "colors": 1864,
+      "sha256": "704f1be14a6a2aaf5efecf83b1d55c6aef7d7d27ae54e2b4c97cb935a43f2d26"
+    },
+    {
+      "name": "map-19",
+      "file": "map-19.png",
+      "colors": 1645,
+      "sha256": "927a22df02ddf74371784a9fb7102502826f15411030548422937c8dfd5bb8ac"
+    },
+    {
+      "name": "map-20",
+      "file": "map-20.png",
+      "colors": 1514,
+      "sha256": "390da3d4c7194c5239ef19d344296cc4cf5b407beca5239c63f730968773278c"
+    },
+    {
+      "name": "map-21",
+      "file": "map-21.png",
+      "colors": 1891,
+      "sha256": "d336389aefd98863f1add5e3599f2b2e2426e19c4af5e35f6c09a2608976b0d2"
+    },
+    {
+      "name": "map-22",
+      "file": "map-22.png",
+      "colors": 1426,
+      "sha256": "7dd94914ba1141ddb52f785d86dc51c66a95709ca51d0b0fcadb00d1904e96e6"
+    },
+    {
+      "name": "map-23",
+      "file": "map-23.png",
+      "colors": 1505,
+      "sha256": "0dfc9211d01cd81cad8ce52087a1c6caa2eff75c0ffde73b7bb53ad8bad607be"
+    },
+    {
+      "name": "map-24",
+      "file": "map-24.png",
+      "colors": 2126,
+      "sha256": "17757135fbb066a324c33f66c4f2328a0b1c25086ce128eaccdbd50e9c4f20ed"
+    },
+    {
+      "name": "map-25",
+      "file": "map-25.png",
+      "colors": 1541,
+      "sha256": "c359522620ec4e988245f1ddbaf7ad914f5d033125fd738ca642dd58a9ca5f0d"
+    },
+    {
+      "name": "map-26",
+      "file": "map-26.png",
+      "colors": 1499,
+      "sha256": "6265d482ad63c68a777f07f21d3c2e724b1bd4b03f0a668455c7100a19aba88e"
+    },
+    {
+      "name": "map-27",
+      "file": "map-27.png",
+      "colors": 1717,
+      "sha256": "fb53c185cc8ea545b04e732e3bc21a57c412fe2d4f369edc7d2530e58b649f86"
+    },
+    {
+      "name": "map-28",
+      "file": "map-28.png",
+      "colors": 1231,
+      "sha256": "b1a2dc6bea9f59a9addaa88eaa1dc545f36863ef1473513efc9070a526f2c01c"
+    },
+    {
+      "name": "map-29",
+      "file": "map-29.png",
+      "colors": 1539,
+      "sha256": "ce770e756a8f85a075ede85e2b832273a2408eef7763ae97dd2fb8033be3056d"
+    },
+    {
+      "name": "map-30",
+      "file": "map-30.png",
+      "colors": 1329,
+      "sha256": "100d5284bb4a0bf35cc0743972400f092db27e700ad0318e37bc0cc716628a6f"
+    },
+    {
+      "name": "map-31",
+      "file": "map-31.png",
+      "colors": 1096,
+      "sha256": "49aad6592703bef95b97170fbc6b22aaf3c495355064532f2981b9e088cf95a9"
+    },
+    {
+      "name": "map-32",
+      "file": "map-32.png",
+      "colors": 1796,
+      "sha256": "88981ffe4f76112d1c4057f6164e354ed6f2a7e59ddead9efecf9b4f918b65a5"
+    },
+    {
+      "name": "map-33",
+      "file": "map-33.png",
+      "colors": 1528,
+      "sha256": "9180859c5ef51e848bcc7d03cf9972ebb9be90156dd0c203b0ca3cbbad3548f6"
+    },
+    {
+      "name": "intro-charizard",
+      "file": "intro-charizard.png",
+      "colors": 19,
+      "sha256": "4f6013a28fa6290f8e01139690884741fe4b71dfbf841d9bb3c4c3dacec8febd"
+    },
+    {
+      "name": "intro-scyther",
+      "file": "intro-scyther.png",
+      "colors": 17,
+      "sha256": "d83909bcf39add4cc497e9b2e1c8cac3d4d845570394da024aefaba4394f07e9"
+    },
+    {
+      "name": "intro-aerodactyl",
+      "file": "intro-aerodactyl.png",
+      "colors": 20,
+      "sha256": "dad87117ef4ec9985c6a9e75b36abb8ab60a3ca9b0c7767d82c7f8afc97a427b"
+    },
+    {
+      "name": "title",
+      "file": "title.png",
+      "colors": 9,
+      "sha256": "9209840af2ab966c65e1f79796a34150b8e15bab843e65884f8136274a00ee52"
+    },
+    {
+      "name": "naming",
+      "file": "naming.png",
+      "colors": 175,
+      "sha256": "d58d1353c8963c8d515c15b1d82109c56f735779025058afac4fcdab40d8faf3"
+    },
+    {
+      "name": "duel",
+      "file": "duel.png",
+      "colors": 26,
+      "sha256": "dae3532ea8a015bc2875f3a5fb8fb9aa84c92dd030fa74bdb5d4e4036a670432"
+    },
+    {
+      "name": "mason-dialogue",
+      "file": "mason-dialogue.png",
+      "colors": 1264,
+      "sha256": "e20ee858e0f98c5255a456dfd06557a161a84d2b78faa652ae3bcb1c7cbb0d4b"
+    },
+    {
+      "name": "sam-table",
+      "file": "sam-table.png",
+      "colors": 1360,
+      "sha256": "860c02aec055f9c719cbc373d75414aec07c01be318d74449c3628aab75b2501"
+    }
+  ],
+  "memory": [
+    "MEMORY map=0 total=2792352 used=1713528 free=1078824",
+    "MEMORY map=1 total=2792352 used=1418936 free=1373416",
+    "MEMORY map=2 total=2792352 used=1324736 free=1467616",
+    "MEMORY map=3 total=2792352 used=1449152 free=1343200",
+    "MEMORY map=4 total=2792352 used=1309688 free=1482664",
+    "MEMORY map=5 total=2792352 used=1550072 free=1242280",
+    "MEMORY map=6 total=2792352 used=1433984 free=1358368",
+    "MEMORY map=7 total=2792352 used=1309680 free=1482672",
+    "MEMORY map=8 total=2792352 used=1566440 free=1225912",
+    "MEMORY map=9 total=2792352 used=1460648 free=1331704",
+    "MEMORY map=10 total=2792352 used=1309688 free=1482664",
+    "MEMORY map=11 total=2792352 used=1550024 free=1242328",
+    "MEMORY map=12 total=2792352 used=1565784 free=1226568",
+    "MEMORY map=13 total=2792352 used=1309688 free=1482664",
+    "MEMORY map=14 total=2792352 used=1512200 free=1280152",
+    "MEMORY map=15 total=2792352 used=1511304 free=1281048",
+    "MEMORY map=16 total=2792352 used=1347560 free=1444792",
+    "MEMORY map=17 total=2792352 used=1544952 free=1247400",
+    "MEMORY map=18 total=2792352 used=1708496 free=1083856",
+    "MEMORY map=19 total=2792352 used=1347560 free=1444792",
+    "MEMORY map=20 total=2792352 used=1550032 free=1242320",
+    "MEMORY map=21 total=2792352 used=1419048 free=1373304",
+    "MEMORY map=22 total=2792352 used=1309688 free=1482664",
+    "MEMORY map=23 total=2792352 used=1533672 free=1258680",
+    "MEMORY map=24 total=2792352 used=1404624 free=1387728",
+    "MEMORY map=25 total=2792352 used=1309688 free=1482664",
+    "MEMORY map=26 total=2792352 used=1512184 free=1280168",
+    "MEMORY map=27 total=2792352 used=1442576 free=1349776",
+    "MEMORY map=28 total=2792352 used=1309688 free=1482664",
+    "MEMORY map=29 total=2792352 used=1642152 free=1150200",
+    "MEMORY map=30 total=2792352 used=1480600 free=1311752",
+    "MEMORY map=31 total=2792352 used=1283288 free=1509064",
+    "MEMORY map=32 total=2792352 used=1674160 free=1118192",
+    "MEMORY map=33 total=2792352 used=1330264 free=1462088"
+  ],
+  "heap": [
+    {
+      "map": 0,
+      "total": 2792352,
+      "used": 1713528,
+      "free": 1078824
+    },
+    {
+      "map": 1,
+      "total": 2792352,
+      "used": 1418936,
+      "free": 1373416
+    },
+    {
+      "map": 2,
+      "total": 2792352,
+      "used": 1324736,
+      "free": 1467616
+    },
+    {
+      "map": 3,
+      "total": 2792352,
+      "used": 1449152,
+      "free": 1343200
+    },
+    {
+      "map": 4,
+      "total": 2792352,
+      "used": 1309688,
+      "free": 1482664
+    },
+    {
+      "map": 5,
+      "total": 2792352,
+      "used": 1550072,
+      "free": 1242280
+    },
+    {
+      "map": 6,
+      "total": 2792352,
+      "used": 1433984,
+      "free": 1358368
+    },
+    {
+      "map": 7,
+      "total": 2792352,
+      "used": 1309680,
+      "free": 1482672
+    },
+    {
+      "map": 8,
+      "total": 2792352,
+      "used": 1566440,
+      "free": 1225912
+    },
+    {
+      "map": 9,
+      "total": 2792352,
+      "used": 1460648,
+      "free": 1331704
+    },
+    {
+      "map": 10,
+      "total": 2792352,
+      "used": 1309688,
+      "free": 1482664
+    },
+    {
+      "map": 11,
+      "total": 2792352,
+      "used": 1550024,
+      "free": 1242328
+    },
+    {
+      "map": 12,
+      "total": 2792352,
+      "used": 1565784,
+      "free": 1226568
+    },
+    {
+      "map": 13,
+      "total": 2792352,
+      "used": 1309688,
+      "free": 1482664
+    },
+    {
+      "map": 14,
+      "total": 2792352,
+      "used": 1512200,
+      "free": 1280152
+    },
+    {
+      "map": 15,
+      "total": 2792352,
+      "used": 1511304,
+      "free": 1281048
+    },
+    {
+      "map": 16,
+      "total": 2792352,
+      "used": 1347560,
+      "free": 1444792
+    },
+    {
+      "map": 17,
+      "total": 2792352,
+      "used": 1544952,
+      "free": 1247400
+    },
+    {
+      "map": 18,
+      "total": 2792352,
+      "used": 1708496,
+      "free": 1083856
+    },
+    {
+      "map": 19,
+      "total": 2792352,
+      "used": 1347560,
+      "free": 1444792
+    },
+    {
+      "map": 20,
+      "total": 2792352,
+      "used": 1550032,
+      "free": 1242320
+    },
+    {
+      "map": 21,
+      "total": 2792352,
+      "used": 1419048,
+      "free": 1373304
+    },
+    {
+      "map": 22,
+      "total": 2792352,
+      "used": 1309688,
+      "free": 1482664
+    },
+    {
+      "map": 23,
+      "total": 2792352,
+      "used": 1533672,
+      "free": 1258680
+    },
+    {
+      "map": 24,
+      "total": 2792352,
+      "used": 1404624,
+      "free": 1387728
+    },
+    {
+      "map": 25,
+      "total": 2792352,
+      "used": 1309688,
+      "free": 1482664
+    },
+    {
+      "map": 26,
+      "total": 2792352,
+      "used": 1512184,
+      "free": 1280168
+    },
+    {
+      "map": 27,
+      "total": 2792352,
+      "used": 1442576,
+      "free": 1349776
+    },
+    {
+      "map": 28,
+      "total": 2792352,
+      "used": 1309688,
+      "free": 1482664
+    },
+    {
+      "map": 29,
+      "total": 2792352,
+      "used": 1642152,
+      "free": 1150200
+    },
+    {
+      "map": 30,
+      "total": 2792352,
+      "used": 1480600,
+      "free": 1311752
+    },
+    {
+      "map": 31,
+      "total": 2792352,
+      "used": 1283288,
+      "free": 1509064
+    },
+    {
+      "map": 32,
+      "total": 2792352,
+      "used": 1674160,
+      "free": 1118192
+    },
+    {
+      "map": 33,
+      "total": 2792352,
+      "used": 1330264,
+      "free": 1462088
+    }
+  ],
+  "worst_heap": {
+    "map": 0,
+    "total": 2792352,
+    "used": 1713528,
+    "free": 1078824
+  },
+  "audio": [],
+  "wall_seconds": 116.19,
+  "parse_only": false,
+  "renderer": "ares/paraLLEl-RDP; framebuffer before VI filtering"
+}

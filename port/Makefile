@@ -13,12 +13,14 @@ BUILD   ?= build
 
 ENGINE_SRCS := $(wildcard src/*.c) $(wildcard src/gen/*.c) $(wildcard src/effects/*.c) $(wildcard src/ai/*.c)
 ENGINE_OBJS := $(patsubst %.c,$(BUILD)/%.o,$(ENGINE_SRCS))
+GAME_SRCS := $(wildcard gameplay/*.c gameplay/gen/*.c overworld/*.c overworld/gen/*.c)
+GAME_OBJS := $(patsubst %.c,$(BUILD)/%.o,$(GAME_SRCS))
 
 all: $(BUILD)/libtcg.a
 
 objs: $(ENGINE_OBJS)
 
-$(BUILD)/libtcg.a: $(ENGINE_OBJS)
+$(BUILD)/libtcg.a: $(ENGINE_OBJS) $(GAME_OBJS)
 	@mkdir -p $(dir $@)
 	$(AR) rcs $@ $^
 
@@ -42,6 +44,13 @@ HARNESS_CFLAGS := -std=c11 -O2 -g -Isrc -DTCG_NO_DEFAULT_FATAL -Wall -Wno-unused
 
 harness: $(BUILD)/harness/difftest $(BUILD)/harness/unitdiff $(BUILD)/harness/trace_points.txt
 
+$(BUILD)/harness/practice_check: harness/practice_check.c $(HARNESS_ENGINE)
+	@mkdir -p $(dir $@)
+	$(CC) $(HARNESS_CFLAGS) -o $@ $^
+
+practicecheck: $(BUILD)/harness/practice_check
+	./$(BUILD)/harness/practice_check
+
 $(BUILD)/harness/trace_points.txt: $(ENGINE_SRCS) tools/trace_points.py
 	@mkdir -p $(dir $@)
 	python3 tools/trace_points.py src > $@
@@ -59,7 +68,7 @@ DIFFTEST = $(BUILD)/harness/difftest $(ROM) $(SYM) $(BUILD)/harness/trace_points
 # unit fuzzing of home/core routines, then lockstep duels against the original:
 # AI vs AI and human (random policy) vs AI over many deck pairs, random and focus decks,
 # the practice duel with Sam, and duels continued from a save
-test: harness
+test: harness practicecheck
 	$(BUILD)/harness/unitdiff $(ROM) $(SYM) 2000
 	$(DIFFTEST) --all-pairs --seeds 1 60
 	$(DIFFTEST) --all-pairs --human --seeds 1 40
@@ -82,4 +91,4 @@ test-long: harness
 	$(DIFFTEST) --human --decks 1 0 --prizes 2 --seeds 1 50
 	$(DIFFTEST) --all-pairs --human --seeds 100 100 --continue-at 6
 
-.PHONY: all objs gen clean test test-long harness
+.PHONY: all objs gen clean test test-long harness practicecheck

@@ -1,0 +1,2916 @@
+{
+  "families": [
+    {
+      "slug": "dr_mason",
+      "sprite": 2,
+      "runtime_model": 3,
+      "gfx_sha256": "417cba50838890c7f7e5b676f5a7d0b2d8c1da4a3f1245263fc076c4d4dd97f7",
+      "first_npc": "NPC_DRMASON",
+      "aliases": [
+        "NPC_DRMASON",
+        "NPC_05",
+        "NPC_06"
+      ]
+    },
+    {
+      "slug": "ronald",
+      "sprite": 1,
+      "runtime_model": 2,
+      "gfx_sha256": "f2b43815f3c51681deab2dcf34d025af29d3d177e53f0d2e7f023f6b5b9b16a4",
+      "first_npc": "NPC_RONALD1",
+      "aliases": [
+        "NPC_RONALD1",
+        "NPC_RONALD2",
+        "NPC_RONALD3"
+      ]
+    },
+    {
+      "slug": "ishihara",
+      "sprite": 3,
+      "runtime_model": 4,
+      "gfx_sha256": "e36d1e02539b79d2c68622c819b2e0cf05754a8186a1900e3b671f6d24303eb6",
+      "first_npc": "NPC_ISHIHARA",
+      "aliases": [
+        "NPC_ISHIHARA"
+      ]
+    },
+    {
+      "slug": "imakuni",
+      "sprite": 4,
+      "runtime_model": 5,
+      "gfx_sha256": "a5fc69b230b0bbaf186eb8fbc920a0ff83a15dff6edf2b63f1cdf549dca8fcb2",
+      "first_npc": "NPC_IMAKUNI",
+      "aliases": [
+        "NPC_IMAKUNI"
+      ]
+    },
+    {
+      "slug": "tech",
+      "sprite": 24,
+      "runtime_model": 25,
+      "gfx_sha256": "13d6d6f229ce9cb124377e4cfd263346c06457cf878b96ebd3cfcb49c952ae59",
+      "first_npc": "NPC_SAM",
+      "aliases": [
+        "NPC_SAM",
+        "NPC_TECH1",
+        "NPC_TECH2",
+        "NPC_TECH3",
+        "NPC_TECH4",
+        "NPC_TECH5",
+        "NPC_TECH6",
+        "NPC_JOSEPH",
+        "NPC_DAVID",
+        "NPC_ERIK",
+        "NPC_SPECS2",
+        "NPC_AARON",
+        "NPC_TECH7",
+        "NPC_TECH8"
+      ]
+    },
+    {
+      "slug": "clerk",
+      "sprite": 33,
+      "runtime_model": 34,
+      "gfx_sha256": "c5cfbdbd3188223525857754204504dcef9fe1445f7b07ed902523c79d38134e",
+      "first_npc": "NPC_CLERK1",
+      "aliases": [
+        "NPC_CLERK1",
+        "NPC_CLERK2",
+        "NPC_CLERK3",
+        "NPC_CLERK4",
+        "NPC_CLERK5",
+        "NPC_CLERK6",
+        "NPC_CLERK7",
+        "NPC_CLERK8",
+        "NPC_CLERK9",
+        "NPC_CLERK10",
+        "NPC_GIFT_CENTER_CLERK"
+      ]
+    },
+    {
+      "slug": "mania",
+      "sprite": 21,
+      "runtime_model": 22,
+      "gfx_sha256": "e4fcafc558d76f75835c384bb974d7de6eba36c202d40dfebd13f65dee470336",
+      "first_npc": "NPC_CHRIS",
+      "aliases": [
+        "NPC_CHRIS",
+        "NPC_MICHAEL",
+        "NPC_MATTHEW",
+        "NPC_MANIA",
+        "NPC_CHAMP"
+      ]
+    },
+    {
+      "slug": "lass3",
+      "sprite": 31,
+      "runtime_model": 32,
+      "gfx_sha256": "8680c63e8d8dd990cc87dc379e21130b50e5e5718748accf9a1694482f5e5b95",
+      "first_npc": "NPC_JESSICA",
+      "aliases": [
+        "NPC_JESSICA",
+        "NPC_LASS5"
+      ]
+    },
+    {
+      "slug": "mitch",
+      "sprite": 10,
+      "runtime_model": 11,
+      "gfx_sha256": "d6fffdec1e31b5b09d6f2c42e83f7253e57720ee89422b72c367d10bf9dbfac5",
+      "first_npc": "NPC_MITCH",
+      "aliases": [
+        "NPC_MITCH"
+      ]
+    },
+    {
+      "slug": "boy",
+      "sprite": 17,
+      "runtime_model": 18,
+      "gfx_sha256": "ea0f6bbdf34e510fa4727c9a56871aafc125f99f6cb3fcb5ee87adf1af0df407",
+      "first_npc": "NPC_RYAN",
+      "aliases": [
+        "NPC_RYAN",
+        "NPC_ROBERT",
+        "NPC_JONATHAN",
+        "NPC_LAD2"
+      ]
+    },
+    {
+      "slug": "man",
+      "sprite": 26,
+      "runtime_model": 27,
+      "gfx_sha256": "c0a9d21f76bcb04828ac39a4ef2bd223a25a0d349a4cfc05a80937854b1800b3",
+      "first_npc": "NPC_ANDREW",
+      "aliases": [
+        "NPC_ANDREW",
+        "NPC_MAN1",
+        "NPC_MAN2",
+        "NPC_MAN3",
+        "NPC_GUIDE"
+      ]
+    },
+    {
+      "slug": "gene",
+      "sprite": 11,
+      "runtime_model": 12,
+      "gfx_sha256": "d50f2eb1c1db7240ebf2248ec589abed057747723666191f846c7b2c3ee53d2a",
+      "first_npc": "NPC_GENE",
+      "aliases": [
+        "NPC_GENE"
+      ]
+    },
+    {
+      "slug": "swimmer",
+      "sprite": 32,
+      "runtime_model": 33,
+      "gfx_sha256": "af8c6dd561040929e1eabb403c840414e779881a5f0b8053c05b12da406f323b",
+      "first_npc": "NPC_SARA",
+      "aliases": [
+        "NPC_SARA",
+        "NPC_AMANDA"
+      ]
+    },
+    {
+      "slug": "joshua",
+      "sprite": 22,
+      "runtime_model": 23,
+      "gfx_sha256": "520c590f2ce58df70874f5402edcae67202d5f4ae07a7ff9103d90d4b148d8a7",
+      "first_npc": "NPC_JOSHUA",
+      "aliases": [
+        "NPC_JOSHUA"
+      ]
+    },
+    {
+      "slug": "amy",
+      "sprite": 8,
+      "runtime_model": 9,
+      "gfx_sha256": "7c1d837f1e5cf614ce5ea3ddc8f045aa9e86763e275784e2ddf3bc8630aba942",
+      "first_npc": "NPC_AMY",
+      "aliases": [
+        "NPC_AMY"
+      ]
+    },
+    {
+      "slug": "girl",
+      "sprite": 28,
+      "runtime_model": 29,
+      "gfx_sha256": "40fb8db64d3adc094bc5058258d65d8d98664d5d2815d362dda25a5c36cba81e",
+      "first_npc": "NPC_JENNIFER",
+      "aliases": [
+        "NPC_JENNIFER",
+        "NPC_BRITTANY",
+        "NPC_STEPHANIE"
+      ]
+    },
+    {
+      "slug": "hood",
+      "sprite": 23,
+      "runtime_model": 24,
+      "gfx_sha256": "f09274f6dbd433e5986e3b837a0a3d0d444103dd2a347c6bd145e2dde5cb4c15",
+      "first_npc": "NPC_NICHOLAS",
+      "aliases": [
+        "NPC_NICHOLAS",
+        "NPC_BRANDON",
+        "NPC_HOOD1",
+        "NPC_HOOD2"
+      ]
+    },
+    {
+      "slug": "isaac",
+      "sprite": 9,
+      "runtime_model": 10,
+      "gfx_sha256": "edc8824136a47239f5ab862071519d5af94e6a189cc7350e3cd21592cdbd1afc",
+      "first_npc": "NPC_ISAAC",
+      "aliases": [
+        "NPC_ISAAC"
+      ]
+    },
+    {
+      "slug": "lass2",
+      "sprite": 30,
+      "runtime_model": 31,
+      "gfx_sha256": "78d3e82fcfa6cdb6184f3c116653610a74f622bf4ade8ce43db0f65a96000a61",
+      "first_npc": "NPC_KRISTIN",
+      "aliases": [
+        "NPC_KRISTIN",
+        "NPC_LASS1",
+        "NPC_LASS2"
+      ]
+    },
+    {
+      "slug": "lass1",
+      "sprite": 29,
+      "runtime_model": 30,
+      "gfx_sha256": "3d3d08437c73381f03dc1764ffed4a35e7668ad1221b8211ec7dd47e36acb2de",
+      "first_npc": "NPC_HEATHER",
+      "aliases": [
+        "NPC_HEATHER",
+        "NPC_LASS3",
+        "NPC_LASS4"
+      ]
+    },
+    {
+      "slug": "nikki",
+      "sprite": 5,
+      "runtime_model": 6,
+      "gfx_sha256": "efb07eabfb701df8566995d65a74a5fd9e527de584e5700ed137ffccce09c6de",
+      "first_npc": "NPC_NIKKI",
+      "aliases": [
+        "NPC_NIKKI"
+      ]
+    },
+    {
+      "slug": "lad",
+      "sprite": 18,
+      "runtime_model": 19,
+      "gfx_sha256": "708caebe4708e43593f6c464fde8363dd78347cab27793e1e9aef6eda94192ad",
+      "first_npc": "NPC_DANIEL",
+      "aliases": [
+        "NPC_DANIEL",
+        "NPC_JOHN",
+        "NPC_LAD1",
+        "NPC_LAD3"
+      ]
+    },
+    {
+      "slug": "murray",
+      "sprite": 12,
+      "runtime_model": 13,
+      "gfx_sha256": "8206420a26bcb472d7add969c932ec4ca7b3de45a81a3efbd9d7f89b35bbb191",
+      "first_npc": "NPC_MURRAY1",
+      "aliases": [
+        "NPC_MURRAY1",
+        "NPC_MURRAY2"
+      ]
+    },
+    {
+      "slug": "rick",
+      "sprite": 6,
+      "runtime_model": 7,
+      "gfx_sha256": "9f0d81b4a86256025a5c0c8c2534df6ddd5aa925561cde27f36ffafbd2fb5f07",
+      "first_npc": "NPC_RICK",
+      "aliases": [
+        "NPC_RICK"
+      ]
+    },
+    {
+      "slug": "specs",
+      "sprite": 19,
+      "runtime_model": 20,
+      "gfx_sha256": "e3ab7062fa800376919570be227e97a33e842224749000083dca5cc7837f0adc",
+      "first_npc": "NPC_ADAM",
+      "aliases": [
+        "NPC_ADAM",
+        "NPC_SPECS1",
+        "NPC_SPECS3"
+      ]
+    },
+    {
+      "slug": "ken",
+      "sprite": 7,
+      "runtime_model": 8,
+      "gfx_sha256": "eb5f9dd785a71292fba93a9c06310d3dd4be49941376396d230a27d61d0895f1",
+      "first_npc": "NPC_KEN",
+      "aliases": [
+        "NPC_KEN"
+      ]
+    },
+    {
+      "slug": "courtney",
+      "sprite": 13,
+      "runtime_model": 14,
+      "gfx_sha256": "ad3ce2cb9ed8c370e988967bbd8e060df01326cb9ad4b849e94118f49ec876fb",
+      "first_npc": "NPC_COURTNEY",
+      "aliases": [
+        "NPC_COURTNEY"
+      ]
+    },
+    {
+      "slug": "steve",
+      "sprite": 14,
+      "runtime_model": 15,
+      "gfx_sha256": "1d4bdf01a5f7b9af569de02514d7741be589f9e4482ee15607538f2f429905bb",
+      "first_npc": "NPC_STEVE",
+      "aliases": [
+        "NPC_STEVE"
+      ]
+    },
+    {
+      "slug": "jack",
+      "sprite": 15,
+      "runtime_model": 16,
+      "gfx_sha256": "3a975759ab3342b8c3c06ec7d25bc5ca7bae56f690e49354de09d9e4c338d8be",
+      "first_npc": "NPC_JACK",
+      "aliases": [
+        "NPC_JACK"
+      ]
+    },
+    {
+      "slug": "rod",
+      "sprite": 16,
+      "runtime_model": 17,
+      "gfx_sha256": "2873c9106051817d1f194f0215cb1133a7560c8d17d942659517d1af7fe098d7",
+      "first_npc": "NPC_ROD",
+      "aliases": [
+        "NPC_ROD"
+      ]
+    },
+    {
+      "slug": "woman",
+      "sprite": 35,
+      "runtime_model": 36,
+      "gfx_sha256": "0b6bbb0204dc600984c8e05078436f6ed76b926e7e2fb721cda56ab9c4f1e2e5",
+      "first_npc": "NPC_WOMAN1",
+      "aliases": [
+        "NPC_WOMAN1",
+        "NPC_WOMAN2"
+      ]
+    },
+    {
+      "slug": "chap",
+      "sprite": 25,
+      "runtime_model": 26,
+      "gfx_sha256": "bf930d7a993fa63810dec409a7257d3658b81adf8d68d495bd0078e12a343482",
+      "first_npc": "NPC_CHAP1",
+      "aliases": [
+        "NPC_CHAP1",
+        "NPC_CHAP2",
+        "NPC_CHAP3",
+        "NPC_CHAP4",
+        "NPC_CHAP5"
+      ]
+    },
+    {
+      "slug": "gal",
+      "sprite": 34,
+      "runtime_model": 35,
+      "gfx_sha256": "95e1147935037850bf8ac1bd2140a015d07b629fe04525676b421765ff86c82f",
+      "first_npc": "NPC_GAL1",
+      "aliases": [
+        "NPC_GAL1",
+        "NPC_CLERK12",
+        "NPC_CLERK13",
+        "NPC_HOST",
+        "NPC_GAL2",
+        "NPC_GAL3",
+        "NPC_GAL4"
+      ]
+    },
+    {
+      "slug": "pappy",
+      "sprite": 27,
+      "runtime_model": 28,
+      "gfx_sha256": "28218147f942d649db8200864445ba4f4dd77b31bebd7bda9d6c04c55318ca38",
+      "first_npc": "NPC_PAPPY1",
+      "aliases": [
+        "NPC_PAPPY1",
+        "NPC_PAPPY2",
+        "NPC_PAPPY3"
+      ]
+    },
+    {
+      "slug": "butch",
+      "sprite": 20,
+      "runtime_model": 21,
+      "gfx_sha256": "68207c9ad9073db8e2c63cb97a792a21da729aea4df43c84bb3c4fc157ee99a7",
+      "first_npc": "NPC_BUTCH",
+      "aliases": [
+        "NPC_BUTCH"
+      ]
+    },
+    {
+      "slug": "granny",
+      "sprite": 36,
+      "runtime_model": 37,
+      "gfx_sha256": "af8399aa73bb00a69861a54d2fde3a8bc52389163c5a8c8f38ce27994cbc3519",
+      "first_npc": "NPC_GRANNY1",
+      "aliases": [
+        "NPC_GRANNY1",
+        "NPC_GRANNY2"
+      ]
+    },
+    {
+      "slug": "torch",
+      "sprite": 38,
+      "runtime_model": 39,
+      "gfx_sha256": "a160e56e07f29b3a5da95673259cbf35653bd4b3c77741c6cff4804aaf80dbd6",
+      "first_npc": "NPC_TORCH",
+      "aliases": [
+        "NPC_TORCH"
+      ]
+    },
+    {
+      "slug": "legendary_card",
+      "sprite": 39,
+      "runtime_model": 40,
+      "gfx_sha256": "de7f37129cc04c80835a0c48966e3ede2636ce325927b7e3fae2d23d0193cc27",
+      "first_npc": "NPC_LEGENDARY_CARD_TOP_LEFT",
+      "aliases": [
+        "NPC_LEGENDARY_CARD_TOP_LEFT",
+        "NPC_LEGENDARY_CARD_TOP_RIGHT",
+        "NPC_LEGENDARY_CARD_LEFT_SPARK",
+        "NPC_LEGENDARY_CARD_BOTTOM_LEFT",
+        "NPC_LEGENDARY_CARD_BOTTOM_RIGHT",
+        "NPC_LEGENDARY_CARD_RIGHT_SPARK"
+      ]
+    },
+    {
+      "slug": "mark",
+      "sprite": 0,
+      "runtime_model": 1,
+      "gfx_sha256": "1efd448049335431c59f284962fc78329baeb1406731ab817be8057e837ff3b2",
+      "first_npc": "NPC_6E",
+      "aliases": [
+        "NPC_6E",
+        "NPC_6F",
+        "NPC_PLAYER_CREDITS"
+      ]
+    }
+  ],
+  "appearances": [
+    {
+      "slug": "dr_mason",
+      "model": "dr_mason",
+      "anim": 38,
+      "representative": {
+        "id": 1,
+        "constant": "NPC_DRMASON",
+        "name": "Dr. Mason",
+        "header": {
+          "id": 1,
+          "sprite": 2,
+          "anim": 0,
+          "anim_cgb": 38,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            38
+          ],
+          [
+            "East",
+            39
+          ],
+          [
+            "South",
+            40
+          ],
+          [
+            "West",
+            41
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_DRMASON",
+        "NPC_05",
+        "NPC_06"
+      ]
+    },
+    {
+      "slug": "ronald",
+      "model": "ronald",
+      "anim": 14,
+      "representative": {
+        "id": 2,
+        "constant": "NPC_RONALD1",
+        "name": "Ronald",
+        "header": {
+          "id": 2,
+          "sprite": 1,
+          "anim": 4,
+          "anim_cgb": 14,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            14
+          ],
+          [
+            "East",
+            15
+          ],
+          [
+            "South",
+            16
+          ],
+          [
+            "West",
+            17
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_RONALD1",
+        "NPC_RONALD2",
+        "NPC_RONALD3"
+      ]
+    },
+    {
+      "slug": "ishihara",
+      "model": "ishihara",
+      "anim": 34,
+      "representative": {
+        "id": 3,
+        "constant": "NPC_ISHIHARA",
+        "name": "Ishihara",
+        "header": {
+          "id": 3,
+          "sprite": 3,
+          "anim": 4,
+          "anim_cgb": 34,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            34
+          ],
+          [
+            "East",
+            35
+          ],
+          [
+            "South",
+            36
+          ],
+          [
+            "West",
+            37
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_ISHIHARA"
+      ]
+    },
+    {
+      "slug": "imakuni",
+      "model": "imakuni",
+      "anim": 14,
+      "representative": {
+        "id": 4,
+        "constant": "NPC_IMAKUNI",
+        "name": "Imakuni?",
+        "header": {
+          "id": 4,
+          "sprite": 4,
+          "anim": 0,
+          "anim_cgb": 14,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            14
+          ],
+          [
+            "East",
+            15
+          ],
+          [
+            "South",
+            16
+          ],
+          [
+            "West",
+            17
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_IMAKUNI"
+      ]
+    },
+    {
+      "slug": "tech",
+      "model": "tech",
+      "anim": 14,
+      "representative": {
+        "id": 7,
+        "constant": "NPC_SAM",
+        "name": "Sam",
+        "header": {
+          "id": 7,
+          "sprite": 24,
+          "anim": 0,
+          "anim_cgb": 14,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            14
+          ],
+          [
+            "East",
+            15
+          ],
+          [
+            "South",
+            16
+          ],
+          [
+            "West",
+            17
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_SAM",
+        "NPC_TECH1",
+        "NPC_TECH2",
+        "NPC_TECH3",
+        "NPC_TECH4",
+        "NPC_TECH5",
+        "NPC_TECH6",
+        "NPC_JOSEPH",
+        "NPC_DAVID",
+        "NPC_ERIK",
+        "NPC_SPECS2",
+        "NPC_AARON",
+        "NPC_TECH7",
+        "NPC_TECH8"
+      ]
+    },
+    {
+      "slug": "clerk",
+      "model": "clerk",
+      "anim": 48,
+      "representative": {
+        "id": 14,
+        "constant": "NPC_CLERK1",
+        "name": "Clerk",
+        "header": {
+          "id": 14,
+          "sprite": 33,
+          "anim": 10,
+          "anim_cgb": 48,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            48
+          ],
+          [
+            "East",
+            49
+          ],
+          [
+            "South",
+            50
+          ],
+          [
+            "West",
+            51
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_CLERK1",
+        "NPC_CLERK2",
+        "NPC_CLERK3",
+        "NPC_CLERK4",
+        "NPC_CLERK5",
+        "NPC_CLERK6",
+        "NPC_CLERK7",
+        "NPC_CLERK8",
+        "NPC_CLERK9",
+        "NPC_CLERK10",
+        "NPC_GIFT_CENTER_CLERK"
+      ]
+    },
+    {
+      "slug": "mania",
+      "model": "mania",
+      "anim": 38,
+      "representative": {
+        "id": 23,
+        "constant": "NPC_CHRIS",
+        "name": "Chris",
+        "header": {
+          "id": 23,
+          "sprite": 21,
+          "anim": 0,
+          "anim_cgb": 38,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            38
+          ],
+          [
+            "East",
+            39
+          ],
+          [
+            "South",
+            40
+          ],
+          [
+            "West",
+            41
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_CHRIS",
+        "NPC_MICHAEL",
+        "NPC_MANIA",
+        "NPC_CHAMP"
+      ]
+    },
+    {
+      "slug": "lass3",
+      "model": "lass3",
+      "anim": 26,
+      "representative": {
+        "id": 25,
+        "constant": "NPC_JESSICA",
+        "name": "Jessica",
+        "header": {
+          "id": 25,
+          "sprite": 31,
+          "anim": 4,
+          "anim_cgb": 26,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            26
+          ],
+          [
+            "East",
+            27
+          ],
+          [
+            "South",
+            28
+          ],
+          [
+            "West",
+            29
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_JESSICA",
+        "NPC_LASS5"
+      ]
+    },
+    {
+      "slug": "mitch",
+      "model": "mitch",
+      "anim": 14,
+      "representative": {
+        "id": 26,
+        "constant": "NPC_MITCH",
+        "name": "Mitch",
+        "header": {
+          "id": 26,
+          "sprite": 10,
+          "anim": 0,
+          "anim_cgb": 14,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            14
+          ],
+          [
+            "East",
+            15
+          ],
+          [
+            "South",
+            16
+          ],
+          [
+            "West",
+            17
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_MITCH"
+      ]
+    },
+    {
+      "slug": "mania_palette2",
+      "model": "mania",
+      "anim": 22,
+      "representative": {
+        "id": 27,
+        "constant": "NPC_MATTHEW",
+        "name": "Matthew",
+        "header": {
+          "id": 27,
+          "sprite": 21,
+          "anim": 0,
+          "anim_cgb": 22,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            22
+          ],
+          [
+            "East",
+            23
+          ],
+          [
+            "South",
+            24
+          ],
+          [
+            "West",
+            25
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_MATTHEW"
+      ]
+    },
+    {
+      "slug": "boy",
+      "model": "boy",
+      "anim": 38,
+      "representative": {
+        "id": 28,
+        "constant": "NPC_RYAN",
+        "name": "Ryan",
+        "header": {
+          "id": 28,
+          "sprite": 17,
+          "anim": 0,
+          "anim_cgb": 38,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            38
+          ],
+          [
+            "East",
+            39
+          ],
+          [
+            "South",
+            40
+          ],
+          [
+            "West",
+            41
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_RYAN"
+      ]
+    },
+    {
+      "slug": "man",
+      "model": "man",
+      "anim": 22,
+      "representative": {
+        "id": 29,
+        "constant": "NPC_ANDREW",
+        "name": "Andrew",
+        "header": {
+          "id": 29,
+          "sprite": 26,
+          "anim": 0,
+          "anim_cgb": 22,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            22
+          ],
+          [
+            "East",
+            23
+          ],
+          [
+            "South",
+            24
+          ],
+          [
+            "West",
+            25
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_ANDREW",
+        "NPC_MAN1",
+        "NPC_MAN2",
+        "NPC_MAN3",
+        "NPC_GUIDE"
+      ]
+    },
+    {
+      "slug": "gene",
+      "model": "gene",
+      "anim": 30,
+      "representative": {
+        "id": 30,
+        "constant": "NPC_GENE",
+        "name": "Gene",
+        "header": {
+          "id": 30,
+          "sprite": 11,
+          "anim": 4,
+          "anim_cgb": 30,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            30
+          ],
+          [
+            "East",
+            31
+          ],
+          [
+            "South",
+            32
+          ],
+          [
+            "West",
+            33
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_GENE"
+      ]
+    },
+    {
+      "slug": "swimmer",
+      "model": "swimmer",
+      "anim": 14,
+      "representative": {
+        "id": 31,
+        "constant": "NPC_SARA",
+        "name": "Sara",
+        "header": {
+          "id": 31,
+          "sprite": 32,
+          "anim": 0,
+          "anim_cgb": 14,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            14
+          ],
+          [
+            "East",
+            15
+          ],
+          [
+            "South",
+            16
+          ],
+          [
+            "West",
+            17
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_SARA"
+      ]
+    },
+    {
+      "slug": "swimmer_palette2",
+      "model": "swimmer",
+      "anim": 22,
+      "representative": {
+        "id": 32,
+        "constant": "NPC_AMANDA",
+        "name": "Amanda",
+        "header": {
+          "id": 32,
+          "sprite": 32,
+          "anim": 0,
+          "anim_cgb": 22,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            22
+          ],
+          [
+            "East",
+            23
+          ],
+          [
+            "South",
+            24
+          ],
+          [
+            "West",
+            25
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_AMANDA"
+      ]
+    },
+    {
+      "slug": "joshua",
+      "model": "joshua",
+      "anim": 38,
+      "representative": {
+        "id": 33,
+        "constant": "NPC_JOSHUA",
+        "name": "Joshua",
+        "header": {
+          "id": 33,
+          "sprite": 22,
+          "anim": 0,
+          "anim_cgb": 38,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            38
+          ],
+          [
+            "East",
+            39
+          ],
+          [
+            "South",
+            40
+          ],
+          [
+            "West",
+            41
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_JOSHUA"
+      ]
+    },
+    {
+      "slug": "amy",
+      "model": "amy",
+      "anim": 46,
+      "representative": {
+        "id": 34,
+        "constant": "NPC_AMY",
+        "name": "Amy",
+        "header": {
+          "id": 34,
+          "sprite": 8,
+          "anim": 8,
+          "anim_cgb": 46,
+          "flags": 16
+        },
+        "facings": [
+          [
+            "Lying",
+            46
+          ],
+          [
+            "Standing",
+            47
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_AMY"
+      ]
+    },
+    {
+      "slug": "girl",
+      "model": "girl",
+      "anim": 14,
+      "representative": {
+        "id": 35,
+        "constant": "NPC_JENNIFER",
+        "name": "Jennifer",
+        "header": {
+          "id": 35,
+          "sprite": 28,
+          "anim": 4,
+          "anim_cgb": 14,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            14
+          ],
+          [
+            "East",
+            15
+          ],
+          [
+            "South",
+            16
+          ],
+          [
+            "West",
+            17
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_JENNIFER",
+        "NPC_BRITTANY",
+        "NPC_STEPHANIE"
+      ]
+    },
+    {
+      "slug": "hood",
+      "model": "hood",
+      "anim": 30,
+      "representative": {
+        "id": 36,
+        "constant": "NPC_NICHOLAS",
+        "name": "Nicholas",
+        "header": {
+          "id": 36,
+          "sprite": 23,
+          "anim": 4,
+          "anim_cgb": 30,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            30
+          ],
+          [
+            "East",
+            31
+          ],
+          [
+            "South",
+            32
+          ],
+          [
+            "West",
+            33
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_NICHOLAS",
+        "NPC_BRANDON",
+        "NPC_HOOD1",
+        "NPC_HOOD2"
+      ]
+    },
+    {
+      "slug": "isaac",
+      "model": "isaac",
+      "anim": 22,
+      "representative": {
+        "id": 38,
+        "constant": "NPC_ISAAC",
+        "name": "Isaac",
+        "header": {
+          "id": 38,
+          "sprite": 9,
+          "anim": 0,
+          "anim_cgb": 22,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            22
+          ],
+          [
+            "East",
+            23
+          ],
+          [
+            "South",
+            24
+          ],
+          [
+            "West",
+            25
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_ISAAC"
+      ]
+    },
+    {
+      "slug": "lass2",
+      "model": "lass2",
+      "anim": 30,
+      "representative": {
+        "id": 40,
+        "constant": "NPC_KRISTIN",
+        "name": "Kristin",
+        "header": {
+          "id": 40,
+          "sprite": 30,
+          "anim": 0,
+          "anim_cgb": 30,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            30
+          ],
+          [
+            "East",
+            31
+          ],
+          [
+            "South",
+            32
+          ],
+          [
+            "West",
+            33
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_KRISTIN",
+        "NPC_LASS1",
+        "NPC_LASS2"
+      ]
+    },
+    {
+      "slug": "lass1",
+      "model": "lass1",
+      "anim": 34,
+      "representative": {
+        "id": 41,
+        "constant": "NPC_HEATHER",
+        "name": "Heather",
+        "header": {
+          "id": 41,
+          "sprite": 29,
+          "anim": 4,
+          "anim_cgb": 34,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            34
+          ],
+          [
+            "East",
+            35
+          ],
+          [
+            "South",
+            36
+          ],
+          [
+            "West",
+            37
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_HEATHER",
+        "NPC_LASS3",
+        "NPC_LASS4"
+      ]
+    },
+    {
+      "slug": "nikki",
+      "model": "nikki",
+      "anim": 26,
+      "representative": {
+        "id": 42,
+        "constant": "NPC_NIKKI",
+        "name": "Nikki",
+        "header": {
+          "id": 42,
+          "sprite": 5,
+          "anim": 0,
+          "anim_cgb": 26,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            26
+          ],
+          [
+            "East",
+            27
+          ],
+          [
+            "South",
+            28
+          ],
+          [
+            "West",
+            29
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_NIKKI"
+      ]
+    },
+    {
+      "slug": "boy_palette2",
+      "model": "boy",
+      "anim": 22,
+      "representative": {
+        "id": 43,
+        "constant": "NPC_ROBERT",
+        "name": "Robert",
+        "header": {
+          "id": 43,
+          "sprite": 17,
+          "anim": 4,
+          "anim_cgb": 22,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            22
+          ],
+          [
+            "East",
+            23
+          ],
+          [
+            "South",
+            24
+          ],
+          [
+            "West",
+            25
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_ROBERT",
+        "NPC_JONATHAN",
+        "NPC_LAD2"
+      ]
+    },
+    {
+      "slug": "lad",
+      "model": "lad",
+      "anim": 26,
+      "representative": {
+        "id": 44,
+        "constant": "NPC_DANIEL",
+        "name": "Daniel",
+        "header": {
+          "id": 44,
+          "sprite": 18,
+          "anim": 4,
+          "anim_cgb": 26,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            26
+          ],
+          [
+            "East",
+            27
+          ],
+          [
+            "South",
+            28
+          ],
+          [
+            "West",
+            29
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_DANIEL",
+        "NPC_JOHN",
+        "NPC_LAD1",
+        "NPC_LAD3"
+      ]
+    },
+    {
+      "slug": "murray",
+      "model": "murray",
+      "anim": 18,
+      "representative": {
+        "id": 46,
+        "constant": "NPC_MURRAY1",
+        "name": "Murray",
+        "header": {
+          "id": 46,
+          "sprite": 12,
+          "anim": 0,
+          "anim_cgb": 18,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            18
+          ],
+          [
+            "East",
+            19
+          ],
+          [
+            "South",
+            20
+          ],
+          [
+            "West",
+            21
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_MURRAY1",
+        "NPC_MURRAY2"
+      ]
+    },
+    {
+      "slug": "rick",
+      "model": "rick",
+      "anim": 14,
+      "representative": {
+        "id": 50,
+        "constant": "NPC_RICK",
+        "name": "Rick",
+        "header": {
+          "id": 50,
+          "sprite": 6,
+          "anim": 0,
+          "anim_cgb": 14,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            14
+          ],
+          [
+            "East",
+            15
+          ],
+          [
+            "South",
+            16
+          ],
+          [
+            "West",
+            17
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_RICK"
+      ]
+    },
+    {
+      "slug": "specs",
+      "model": "specs",
+      "anim": 34,
+      "representative": {
+        "id": 52,
+        "constant": "NPC_ADAM",
+        "name": "Adam",
+        "header": {
+          "id": 52,
+          "sprite": 19,
+          "anim": 0,
+          "anim_cgb": 34,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            34
+          ],
+          [
+            "East",
+            35
+          ],
+          [
+            "South",
+            36
+          ],
+          [
+            "West",
+            37
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_ADAM",
+        "NPC_SPECS1",
+        "NPC_SPECS3"
+      ]
+    },
+    {
+      "slug": "ken",
+      "model": "ken",
+      "anim": 30,
+      "representative": {
+        "id": 54,
+        "constant": "NPC_KEN",
+        "name": "Ken",
+        "header": {
+          "id": 54,
+          "sprite": 7,
+          "anim": 4,
+          "anim_cgb": 30,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            30
+          ],
+          [
+            "East",
+            31
+          ],
+          [
+            "South",
+            32
+          ],
+          [
+            "West",
+            33
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_KEN"
+      ]
+    },
+    {
+      "slug": "courtney",
+      "model": "courtney",
+      "anim": 18,
+      "representative": {
+        "id": 55,
+        "constant": "NPC_COURTNEY",
+        "name": "Courtney",
+        "header": {
+          "id": 55,
+          "sprite": 13,
+          "anim": 0,
+          "anim_cgb": 18,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            18
+          ],
+          [
+            "East",
+            19
+          ],
+          [
+            "South",
+            20
+          ],
+          [
+            "West",
+            21
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_COURTNEY"
+      ]
+    },
+    {
+      "slug": "steve",
+      "model": "steve",
+      "anim": 42,
+      "representative": {
+        "id": 56,
+        "constant": "NPC_STEVE",
+        "name": "Steve",
+        "header": {
+          "id": 56,
+          "sprite": 14,
+          "anim": 0,
+          "anim_cgb": 42,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            42
+          ],
+          [
+            "East",
+            43
+          ],
+          [
+            "South",
+            44
+          ],
+          [
+            "West",
+            45
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_STEVE"
+      ]
+    },
+    {
+      "slug": "jack",
+      "model": "jack",
+      "anim": 38,
+      "representative": {
+        "id": 57,
+        "constant": "NPC_JACK",
+        "name": "Jack",
+        "header": {
+          "id": 57,
+          "sprite": 15,
+          "anim": 0,
+          "anim_cgb": 38,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            38
+          ],
+          [
+            "East",
+            39
+          ],
+          [
+            "South",
+            40
+          ],
+          [
+            "West",
+            41
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_JACK"
+      ]
+    },
+    {
+      "slug": "rod",
+      "model": "rod",
+      "anim": 14,
+      "representative": {
+        "id": 58,
+        "constant": "NPC_ROD",
+        "name": "Rod",
+        "header": {
+          "id": 58,
+          "sprite": 16,
+          "anim": 0,
+          "anim_cgb": 14,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            14
+          ],
+          [
+            "East",
+            15
+          ],
+          [
+            "South",
+            16
+          ],
+          [
+            "West",
+            17
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_ROD"
+      ]
+    },
+    {
+      "slug": "woman",
+      "model": "woman",
+      "anim": 30,
+      "representative": {
+        "id": 62,
+        "constant": "NPC_WOMAN1",
+        "name": "Woman",
+        "header": {
+          "id": 62,
+          "sprite": 35,
+          "anim": 4,
+          "anim_cgb": 30,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            30
+          ],
+          [
+            "East",
+            31
+          ],
+          [
+            "South",
+            32
+          ],
+          [
+            "West",
+            33
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_WOMAN1",
+        "NPC_WOMAN2"
+      ]
+    },
+    {
+      "slug": "chap",
+      "model": "chap",
+      "anim": 26,
+      "representative": {
+        "id": 63,
+        "constant": "NPC_CHAP1",
+        "name": "Chap",
+        "header": {
+          "id": 63,
+          "sprite": 25,
+          "anim": 0,
+          "anim_cgb": 26,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            26
+          ],
+          [
+            "East",
+            27
+          ],
+          [
+            "South",
+            28
+          ],
+          [
+            "West",
+            29
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_CHAP1",
+        "NPC_CHAP2",
+        "NPC_CHAP3",
+        "NPC_CHAP4",
+        "NPC_CHAP5"
+      ]
+    },
+    {
+      "slug": "gal",
+      "model": "gal",
+      "anim": 22,
+      "representative": {
+        "id": 64,
+        "constant": "NPC_GAL1",
+        "name": "Gal",
+        "header": {
+          "id": 64,
+          "sprite": 34,
+          "anim": 0,
+          "anim_cgb": 22,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            22
+          ],
+          [
+            "East",
+            23
+          ],
+          [
+            "South",
+            24
+          ],
+          [
+            "West",
+            25
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_GAL1",
+        "NPC_CLERK12",
+        "NPC_CLERK13",
+        "NPC_HOST",
+        "NPC_GAL2",
+        "NPC_GAL3",
+        "NPC_GAL4"
+      ]
+    },
+    {
+      "slug": "pappy",
+      "model": "pappy",
+      "anim": 34,
+      "representative": {
+        "id": 68,
+        "constant": "NPC_PAPPY1",
+        "name": "Pappy",
+        "header": {
+          "id": 68,
+          "sprite": 27,
+          "anim": 0,
+          "anim_cgb": 34,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            34
+          ],
+          [
+            "East",
+            35
+          ],
+          [
+            "South",
+            36
+          ],
+          [
+            "West",
+            37
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_PAPPY1",
+        "NPC_PAPPY2",
+        "NPC_PAPPY3"
+      ]
+    },
+    {
+      "slug": "butch",
+      "model": "butch",
+      "anim": 22,
+      "representative": {
+        "id": 76,
+        "constant": "NPC_BUTCH",
+        "name": "Butch",
+        "header": {
+          "id": 76,
+          "sprite": 20,
+          "anim": 0,
+          "anim_cgb": 22,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            22
+          ],
+          [
+            "East",
+            23
+          ],
+          [
+            "South",
+            24
+          ],
+          [
+            "West",
+            25
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_BUTCH"
+      ]
+    },
+    {
+      "slug": "granny",
+      "model": "granny",
+      "anim": 22,
+      "representative": {
+        "id": 77,
+        "constant": "NPC_GRANNY1",
+        "name": "Granny",
+        "header": {
+          "id": 77,
+          "sprite": 36,
+          "anim": 0,
+          "anim_cgb": 22,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            22
+          ],
+          [
+            "East",
+            23
+          ],
+          [
+            "South",
+            24
+          ],
+          [
+            "West",
+            25
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_GRANNY1",
+        "NPC_GRANNY2"
+      ]
+    },
+    {
+      "slug": "torch",
+      "model": "torch",
+      "anim": 58,
+      "representative": {
+        "id": 103,
+        "constant": "NPC_TORCH",
+        "name": "Torch",
+        "header": {
+          "id": 103,
+          "sprite": 38,
+          "anim": 58,
+          "anim_cgb": 58,
+          "flags": 16
+        },
+        "facings": [
+          [
+            "Fixed",
+            58
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_TORCH"
+      ]
+    },
+    {
+      "slug": "legendary_card",
+      "model": "legendary_card",
+      "anim": 65,
+      "representative": {
+        "id": 104,
+        "constant": "NPC_LEGENDARY_CARD_TOP_LEFT",
+        "name": "Legendary Card Top Left",
+        "header": {
+          "id": 104,
+          "sprite": 39,
+          "anim": 59,
+          "anim_cgb": 65,
+          "flags": 80
+        },
+        "facings": [
+          [
+            "Fixed",
+            65
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_LEGENDARY_CARD_TOP_LEFT",
+        "NPC_LEGENDARY_CARD_TOP_RIGHT",
+        "NPC_LEGENDARY_CARD_LEFT_SPARK",
+        "NPC_LEGENDARY_CARD_BOTTOM_LEFT",
+        "NPC_LEGENDARY_CARD_BOTTOM_RIGHT",
+        "NPC_LEGENDARY_CARD_RIGHT_SPARK"
+      ]
+    },
+    {
+      "slug": "mark",
+      "model": "mark",
+      "anim": 30,
+      "representative": {
+        "id": 110,
+        "constant": "NPC_6E",
+        "name": "Player (unused)",
+        "header": {
+          "id": 0,
+          "sprite": 0,
+          "anim": 0,
+          "anim_cgb": 30,
+          "flags": 0
+        },
+        "facings": [
+          [
+            "North",
+            30
+          ],
+          [
+            "East",
+            31
+          ],
+          [
+            "South",
+            32
+          ],
+          [
+            "West",
+            33
+          ]
+        ]
+      },
+      "aliases": [
+        "NPC_6E",
+        "NPC_6F",
+        "NPC_PLAYER_CREDITS"
+      ]
+    }
+  ],
+  "aliases": {
+    "NPC_DRMASON": {
+      "npc_id": 1,
+      "model": "dr_mason",
+      "appearance": "dr_mason",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_RONALD1": {
+      "npc_id": 2,
+      "model": "ronald",
+      "appearance": "ronald",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_ISHIHARA": {
+      "npc_id": 3,
+      "model": "ishihara",
+      "appearance": "ishihara",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_IMAKUNI": {
+      "npc_id": 4,
+      "model": "imakuni",
+      "appearance": "imakuni",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_05": {
+      "npc_id": 5,
+      "model": "dr_mason",
+      "appearance": "dr_mason",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_06": {
+      "npc_id": 6,
+      "model": "dr_mason",
+      "appearance": "dr_mason",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_SAM": {
+      "npc_id": 7,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_TECH1": {
+      "npc_id": 8,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_TECH2": {
+      "npc_id": 9,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_TECH3": {
+      "npc_id": 10,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_TECH4": {
+      "npc_id": 11,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_TECH5": {
+      "npc_id": 12,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_TECH6": {
+      "npc_id": 13,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CLERK1": {
+      "npc_id": 14,
+      "model": "clerk",
+      "appearance": "clerk",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CLERK2": {
+      "npc_id": 15,
+      "model": "clerk",
+      "appearance": "clerk",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CLERK3": {
+      "npc_id": 16,
+      "model": "clerk",
+      "appearance": "clerk",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CLERK4": {
+      "npc_id": 17,
+      "model": "clerk",
+      "appearance": "clerk",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CLERK5": {
+      "npc_id": 18,
+      "model": "clerk",
+      "appearance": "clerk",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CLERK6": {
+      "npc_id": 19,
+      "model": "clerk",
+      "appearance": "clerk",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CLERK7": {
+      "npc_id": 20,
+      "model": "clerk",
+      "appearance": "clerk",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CLERK8": {
+      "npc_id": 21,
+      "model": "clerk",
+      "appearance": "clerk",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CLERK9": {
+      "npc_id": 22,
+      "model": "clerk",
+      "appearance": "clerk",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CHRIS": {
+      "npc_id": 23,
+      "model": "mania",
+      "appearance": "mania",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_MICHAEL": {
+      "npc_id": 24,
+      "model": "mania",
+      "appearance": "mania",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_JESSICA": {
+      "npc_id": 25,
+      "model": "lass3",
+      "appearance": "lass3",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_MITCH": {
+      "npc_id": 26,
+      "model": "mitch",
+      "appearance": "mitch",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_MATTHEW": {
+      "npc_id": 27,
+      "model": "mania",
+      "appearance": "mania_palette2",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_RYAN": {
+      "npc_id": 28,
+      "model": "boy",
+      "appearance": "boy",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_ANDREW": {
+      "npc_id": 29,
+      "model": "man",
+      "appearance": "man",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_GENE": {
+      "npc_id": 30,
+      "model": "gene",
+      "appearance": "gene",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_SARA": {
+      "npc_id": 31,
+      "model": "swimmer",
+      "appearance": "swimmer",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_AMANDA": {
+      "npc_id": 32,
+      "model": "swimmer",
+      "appearance": "swimmer_palette2",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_JOSHUA": {
+      "npc_id": 33,
+      "model": "joshua",
+      "appearance": "joshua",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_AMY": {
+      "npc_id": 34,
+      "model": "amy",
+      "appearance": "amy",
+      "pose": "lying",
+      "component": null
+    },
+    "NPC_JENNIFER": {
+      "npc_id": 35,
+      "model": "girl",
+      "appearance": "girl",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_NICHOLAS": {
+      "npc_id": 36,
+      "model": "hood",
+      "appearance": "hood",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_BRANDON": {
+      "npc_id": 37,
+      "model": "hood",
+      "appearance": "hood",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_ISAAC": {
+      "npc_id": 38,
+      "model": "isaac",
+      "appearance": "isaac",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_BRITTANY": {
+      "npc_id": 39,
+      "model": "girl",
+      "appearance": "girl",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_KRISTIN": {
+      "npc_id": 40,
+      "model": "lass2",
+      "appearance": "lass2",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_HEATHER": {
+      "npc_id": 41,
+      "model": "lass1",
+      "appearance": "lass1",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_NIKKI": {
+      "npc_id": 42,
+      "model": "nikki",
+      "appearance": "nikki",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_ROBERT": {
+      "npc_id": 43,
+      "model": "boy",
+      "appearance": "boy_palette2",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_DANIEL": {
+      "npc_id": 44,
+      "model": "lad",
+      "appearance": "lad",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_STEPHANIE": {
+      "npc_id": 45,
+      "model": "girl",
+      "appearance": "girl",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_MURRAY1": {
+      "npc_id": 46,
+      "model": "murray",
+      "appearance": "murray",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_JOSEPH": {
+      "npc_id": 47,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_DAVID": {
+      "npc_id": 48,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_ERIK": {
+      "npc_id": 49,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_RICK": {
+      "npc_id": 50,
+      "model": "rick",
+      "appearance": "rick",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_JOHN": {
+      "npc_id": 51,
+      "model": "lad",
+      "appearance": "lad",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_ADAM": {
+      "npc_id": 52,
+      "model": "specs",
+      "appearance": "specs",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_JONATHAN": {
+      "npc_id": 53,
+      "model": "boy",
+      "appearance": "boy_palette2",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_KEN": {
+      "npc_id": 54,
+      "model": "ken",
+      "appearance": "ken",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_COURTNEY": {
+      "npc_id": 55,
+      "model": "courtney",
+      "appearance": "courtney",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_STEVE": {
+      "npc_id": 56,
+      "model": "steve",
+      "appearance": "steve",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_JACK": {
+      "npc_id": 57,
+      "model": "jack",
+      "appearance": "jack",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_ROD": {
+      "npc_id": 58,
+      "model": "rod",
+      "appearance": "rod",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CLERK10": {
+      "npc_id": 59,
+      "model": "clerk",
+      "appearance": "clerk",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_GIFT_CENTER_CLERK": {
+      "npc_id": 60,
+      "model": "clerk",
+      "appearance": "clerk",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_MAN1": {
+      "npc_id": 61,
+      "model": "man",
+      "appearance": "man",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_WOMAN1": {
+      "npc_id": 62,
+      "model": "woman",
+      "appearance": "woman",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CHAP1": {
+      "npc_id": 63,
+      "model": "chap",
+      "appearance": "chap",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_GAL1": {
+      "npc_id": 64,
+      "model": "gal",
+      "appearance": "gal",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_LASS1": {
+      "npc_id": 65,
+      "model": "lass2",
+      "appearance": "lass2",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CHAP2": {
+      "npc_id": 66,
+      "model": "chap",
+      "appearance": "chap",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_LASS2": {
+      "npc_id": 67,
+      "model": "lass2",
+      "appearance": "lass2",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_PAPPY1": {
+      "npc_id": 68,
+      "model": "pappy",
+      "appearance": "pappy",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_LAD1": {
+      "npc_id": 69,
+      "model": "lad",
+      "appearance": "lad",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_LAD2": {
+      "npc_id": 70,
+      "model": "boy",
+      "appearance": "boy_palette2",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CHAP3": {
+      "npc_id": 71,
+      "model": "chap",
+      "appearance": "chap",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CLERK12": {
+      "npc_id": 72,
+      "model": "gal",
+      "appearance": "gal",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CLERK13": {
+      "npc_id": 73,
+      "model": "gal",
+      "appearance": "gal",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_HOST": {
+      "npc_id": 74,
+      "model": "gal",
+      "appearance": "gal",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_SPECS1": {
+      "npc_id": 75,
+      "model": "specs",
+      "appearance": "specs",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_BUTCH": {
+      "npc_id": 76,
+      "model": "butch",
+      "appearance": "butch",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_GRANNY1": {
+      "npc_id": 77,
+      "model": "granny",
+      "appearance": "granny",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_LASS3": {
+      "npc_id": 78,
+      "model": "lass1",
+      "appearance": "lass1",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_MAN2": {
+      "npc_id": 79,
+      "model": "man",
+      "appearance": "man",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_PAPPY2": {
+      "npc_id": 80,
+      "model": "pappy",
+      "appearance": "pappy",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_LASS4": {
+      "npc_id": 81,
+      "model": "lass1",
+      "appearance": "lass1",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_HOOD1": {
+      "npc_id": 82,
+      "model": "hood",
+      "appearance": "hood",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_GRANNY2": {
+      "npc_id": 83,
+      "model": "granny",
+      "appearance": "granny",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_GAL2": {
+      "npc_id": 84,
+      "model": "gal",
+      "appearance": "gal",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_LAD3": {
+      "npc_id": 85,
+      "model": "lad",
+      "appearance": "lad",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_GAL3": {
+      "npc_id": 86,
+      "model": "gal",
+      "appearance": "gal",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CHAP4": {
+      "npc_id": 87,
+      "model": "chap",
+      "appearance": "chap",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_MAN3": {
+      "npc_id": 88,
+      "model": "man",
+      "appearance": "man",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_SPECS2": {
+      "npc_id": 89,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_SPECS3": {
+      "npc_id": 90,
+      "model": "specs",
+      "appearance": "specs",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_WOMAN2": {
+      "npc_id": 91,
+      "model": "woman",
+      "appearance": "woman",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_MANIA": {
+      "npc_id": 92,
+      "model": "mania",
+      "appearance": "mania",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_PAPPY3": {
+      "npc_id": 93,
+      "model": "pappy",
+      "appearance": "pappy",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_GAL4": {
+      "npc_id": 94,
+      "model": "gal",
+      "appearance": "gal",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CHAMP": {
+      "npc_id": 95,
+      "model": "mania",
+      "appearance": "mania",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_HOOD2": {
+      "npc_id": 96,
+      "model": "hood",
+      "appearance": "hood",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_LASS5": {
+      "npc_id": 97,
+      "model": "lass3",
+      "appearance": "lass3",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_CHAP5": {
+      "npc_id": 98,
+      "model": "chap",
+      "appearance": "chap",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_AARON": {
+      "npc_id": 99,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_GUIDE": {
+      "npc_id": 100,
+      "model": "man",
+      "appearance": "man",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_TECH7": {
+      "npc_id": 101,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_TECH8": {
+      "npc_id": 102,
+      "model": "tech",
+      "appearance": "tech",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_TORCH": {
+      "npc_id": 103,
+      "model": "torch",
+      "appearance": "torch",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_LEGENDARY_CARD_TOP_LEFT": {
+      "npc_id": 104,
+      "model": "legendary_card",
+      "appearance": "legendary_card",
+      "pose": "standing",
+      "component": "top_left"
+    },
+    "NPC_LEGENDARY_CARD_TOP_RIGHT": {
+      "npc_id": 105,
+      "model": "legendary_card",
+      "appearance": "legendary_card",
+      "pose": "standing",
+      "component": "top_right"
+    },
+    "NPC_LEGENDARY_CARD_LEFT_SPARK": {
+      "npc_id": 106,
+      "model": "legendary_card",
+      "appearance": "legendary_card",
+      "pose": "standing",
+      "component": "left_spark"
+    },
+    "NPC_LEGENDARY_CARD_BOTTOM_LEFT": {
+      "npc_id": 107,
+      "model": "legendary_card",
+      "appearance": "legendary_card",
+      "pose": "standing",
+      "component": "bottom_left"
+    },
+    "NPC_LEGENDARY_CARD_BOTTOM_RIGHT": {
+      "npc_id": 108,
+      "model": "legendary_card",
+      "appearance": "legendary_card",
+      "pose": "standing",
+      "component": "bottom_right"
+    },
+    "NPC_LEGENDARY_CARD_RIGHT_SPARK": {
+      "npc_id": 109,
+      "model": "legendary_card",
+      "appearance": "legendary_card",
+      "pose": "standing",
+      "component": "right_spark"
+    },
+    "NPC_6E": {
+      "npc_id": 110,
+      "model": "mark",
+      "appearance": "mark",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_6F": {
+      "npc_id": 111,
+      "model": "mark",
+      "appearance": "mark",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_MURRAY2": {
+      "npc_id": 112,
+      "model": "murray",
+      "appearance": "murray",
+      "pose": "west_fixed",
+      "component": null
+    },
+    "NPC_RONALD2": {
+      "npc_id": 113,
+      "model": "ronald",
+      "appearance": "ronald",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_RONALD3": {
+      "npc_id": 114,
+      "model": "ronald",
+      "appearance": "ronald",
+      "pose": "standing",
+      "component": null
+    },
+    "NPC_PLAYER_CREDITS": {
+      "npc_id": 115,
+      "model": "mark",
+      "appearance": "mark",
+      "pose": "standing",
+      "component": null
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_mature"
+  ],
+  "actors": [
+    {
+      "name": "ishihara",
+      "model": 4,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "ishihara",
+  "aliases": [
+    "NPC_ISHIHARA"
+  ],
+  "runtime_model": 4,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "ishihara": {
+      "accent": [
+        0.4823529411764706,
+        0.25882352941176473,
+        0.8392156862745098
+      ]
+    }
+  },
+  "design": "receding collector hair and purple waistcoat",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 22
+  },
+  "provenance": {
+    "sprite": 3,
+    "gfx_sha256": "e36d1e02539b79d2c68622c819b2e0cf05754a8186a1900e3b671f6d24303eb6",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "ishihara \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_mature",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "ishihara",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1025,
+  "triangles": 544,
+  "batches": 6
+}

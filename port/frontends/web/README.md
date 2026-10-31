@@ -1,130 +1,136 @@
-# Web frontend (WebAssembly)
+# Full web game
 
-A browser UI for the C duel engine (`port/src`), modeled on the original duel screens, with a
-deck builder and a small relay server for 2-player online duels. No emscripten, no framework,
-no CDN: everything in `dist/` works offline from any static server.
+The default page runs the portable C adventure and duel engines, with all 34 maps
+rendered by WebGL from the same L643 meshes, textures and character models used
+by the N64 build. No Game Boy CPU or ROM runs in the browser.
 
-## Build and run
+```sh
+./port/frontends/web/build.sh
+python3 -m http.server 8080 --directory port/frontends/web/dist
+# Open http://localhost:8080/
+```
 
-    ./build.sh                      # -> dist/ (tcg.wasm, js, css, gfx)
-    cd server && npm install        # once (installs `ws`)
-    node server/server.js           # http://localhost:8080/ (static dist/ + relay on /ws)
+Build requirements: Emscripten (`emcc`), Binaryen `wasm-opt` (the Emscripten
+installation's copy is discovered automatically), Python3. Checked-in audio
+and model assets make normal builds independent of Blender and the Game Boy
+ROM. `EMCC`, `WASM_OPT` and `PYTHON` override tool paths.
 
-Any static server works for local duels (`python3 -m http.server -d dist`); online duels need
-`server/server.js`. Add `?fast=1` to the URL to turn off pacing delays.
+For the existing online relay and standalone duel modes:
 
-## Save files, Continue Duel, practice duel, skip delays
+```sh
+npm ci --prefix port/frontends/web/server
+node port/frontends/web/server/server.js
+# Full game: http://localhost:8080/
+# Duel modes: http://localhost:8080/duel.html
+```
 
-* Hot-seat and vs-AI duels are saved like the original saves them to SRAM (`TcgHost.save`, at
-  every duel-menu print and at the start of each human turn): `src/js/save_store.js` is the
-  browser version of `port/frontends/common/save_store.h` (`saveStoreOpen/Read/Write/Remove`,
-  named blobs in localStorage). The latest image is kept as `duel`, with the names, kinds and
-  mode in `duel-meta`; it is deleted when the duel returns. Quitting keeps it: the title screen
-  then offers **Continue Duel** (`tcg_continue_duel`, described with `tcg_saved_duel_info`).
-  Online (link) duels are never saved or continued.
-* The title screen exports the save file (`duel.sav`, the raw `TCG_SAVE_SIZE` image, the same
-  bytes as the desktop store's file) and imports one: File System Access API
-  (`showSaveFilePicker` / `showOpenFilePicker`) where the browser has it, else a download link /
-  `<input type=file>`. An imported save without side data gets its names from the save
-  (P1/P2 in hot-seat, the NPC's name for an AI deck).
-* Duel vs. Computer → **Practice duel with Sam** (Sam's practice deck, 2 prizes,
-  MUSIC_DUEL_THEME_1; the engine plays the tutorial script and gives you the practice deck).
-* Title screen option **skip delays while B is held** (the original's debug option
-  sSkipDelayAllowed, `TcgDuelSetup.skip_delay_allowed`, remembered in localStorage): while it
-  is on and B (X / Esc) is held, the UI skips its pacing waits and animations.
+The build includes every duel AI/effect module; a failed source build stops
+rather than shipping a reduced engine.
 
-Requirements: clang 18 with the wasm32 target and wasm-ld, Binaryen's `wasm-opt` (on PATH or
-`WASM_OPT=...`, default `/home/user/tools/npm/node_modules/.bin/wasm-opt`), python3, Node ≥ 18.
+## Live preview
 
-### Optional engine sources
+[Open the current game](http://ms.tdf.sh:8091/) while connected to the tailnet.
+The preview serves the current `dist/` directory without caching; reload after
+an update. Keyboard and touch work over this HTTP link. Browsers may require a
+secure origin for gamepads; the game falls back to keyboard/touch when access
+is unavailable.
 
-`port/src/*.c` and `port/src/gen/*.c` are required. `port/src/effects/*.c` and `port/src/ai/*.c`
-are optional because they are ported concurrently: `build.sh` skips any of them that does not
-compile, and if linking fails it retries without the AI files, then without the effect files,
-then without both. Whatever is left out falls back to the engine's weak stubs
-(`gen/effect_stubs.c`, `ai_stubs.c`), which call `tcg_fatal`; the UI then stops the duel with a
-message naming the unported routine. `dist/build-info.json` records what was linked (shown on the
-title screen); failed link attempts are in `build/link.log`. `CORE_ONLY=1 ./build.sh` forces the
-stub-only build.
+## Play
 
-## Files
+The original opening/title sequence precedes two local diaries. Each diary has
+its own name, story, collection, decks, recipes, mail, records, settings, and
+salted Card Pop identity. Player naming shows the detailed Mark model. The
+story begins with the original island route to Mason Laboratory, scripted
+movement, Mason/Sam dialogue and practice duel.
 
-    build.sh               the build (compile, link, asyncify, assets, copy static files)
-    wasm/web_host.c        host glue: TcgHost -> JS imports, setup buffer, extra read-only exports
-    wasm/libc.c, include/  the few libc functions the freestanding build needs
-    tools/gen_assets.py    card art sheet, symbols, box messages, constants (stdlib only)
-    tools/png.py           minimal PNG reader/writer
-    src/index.html, css/   page shell and styles
-    src/js/engine.js       Engine.load() / duel.run(): wasm + Asyncify glue (browser and Node)
-    src/js/duel_ui.js      the duel screen: events -> board/text box, requests -> menus
-    src/js/net.js          online protocol client (relay connection, answer exchange, replay)
-    src/js/save_store.js   save_store.h for the browser (localStorage) + save file export/import
-    src/js/deckbuilder.js  deck builder
-    src/js/data.js         deck catalog, custom deck storage, deck rules, deck codes
-    src/js/gfx.js          DOM helpers (card art, symbols, card page)
-    src/js/main.js         menus and screen flow
-    server/server.js       static file server + WebSocket relay
-    test/node_duel_test.mjs  random hot-seat (or --vs-ai) duels in Node
-    test/ui_test.mjs         Playwright: hot-seat, online (with reload/rejoin), vs AI, save/continue
-                             with export/import, practice duel, request widgets, deck builder
-    test/ui_fuzz.mjs         Playwright: random clicks through hot-seat duels
-    test/relay_test.mjs      relay protocol (rooms, sequencing, rejoin) without a browser
+| Input | Action |
+|---|---|
+| Arrow keys / gamepad stick or D-pad | Walk, select island destination, menus |
+| Z / Enter / gamepad A | Talk, inspect, enter, choose, advance text |
+| X / Escape / gamepad B | Back, complete text |
+| C / gamepad Start | Adventure menu; card details during a duel |
+| Hold Shift / gamepad B while walking | Run |
 
-Tests (after `./build.sh`; the browser tests start their own server):
+On-screen controls support mouse/touch. The Battle Center uses both diaries'
+selected physical decks. Two standard gamepads route each duelist to its own
+controller; the keyboard can also be passed between players. Card Pop and Gift
+Center exchange cards/recipes between the diaries. Printer features create
+actual downloadable text reports.
 
-    node test/node_duel_test.mjs --seeds 1-60     # random hot-seat duels (add --vs-ai for the AI),
-                                                  # then save/continue, broken save, practice duel
-    node test/relay_test.mjs
-    node test/ui_test.mjs                         # screenshots in test/screenshots/
-    node test/ui_fuzz.mjs --duels 3
+The browser shares `overworld.c`, `gameplay.c`, and the N64 adventure's
+`menus.c`, `profiles.c`, `extra_ui.c`, and `presentation.c`. Collection limits,
+recipes, all boosters, mail rewards, Card Pop, transfers, Challenge Machine,
+story branches and after-duel scripts therefore use the same C implementations.
+Asyncify suspends C callbacks while browser menus or the existing duel UI await
+input. WebGL draws the shared assets at device resolution, using native UVs,
+vertex colors, joint pivots, source cameras, event patches and character poses.
 
-## JavaScript API (src/js/engine.js)
+## Saving
 
-    import { Engine, TcgFatal, DuelAborted, REQ, EV, TCG_PLAYER } from './js/engine.js';
-    const duel = await Engine.load();          // or Engine.load(bytes | url | WebAssembly.Module)
-    const result = await duel.run({
-        duelists: [{ kind: 'human', cards: [/* 60 card ids */], name: 'MARK' },
-                   { kind: 'ai', deckId: C.LIGHTNING_AND_FIRE_DECK_ID, name: 'Aaron' }],
-        prizes: 6, seed: 12345,                 // or rng: [wRNG1, wRNG2, wRNGCounter]
-    }, {
-        onEvent(ev) {},                         // {type, arg[4], text, str}; may return a Promise
-        async onRequest(req) { return 0; },     // {type, duelist, shown, menu, numItems, cursor,
-                                                //  text, text2, textStr, text2Str, items, arg, seq}
-        onSave(bytes) {},                       // TcgHost.save: the TCG_SAVE_SIZE save image
-    });
-    await duel.continueDuel({ duelists: [{name}, {name}] }, bytes, handlers); // Continue Duel
-    duel.savedDuelInfo(bytes);  // {duelType, duelistType[2], opponentDeckId, turns, whoseTurn, prizesLeft[2]} or null
-    // result: {result: 0 if the PLAYER_TURN side won, finished, turns, requests}
-    // rejects with TcgFatal (engine abort, e.g. an unported stub) or DuelAborted (duel.abort())
+Use Menu → Diary to save. Single-player duels also checkpoint the story and
+save their turns, as in the N64 adaptation. Reloading and choosing Continue
+resumes a pending saved duel. Battle Center duels are not resumable.
 
-Static data: `duel.card(id)` (parsed card record), `duel.cardData(id)` (raw 65 bytes),
-`duel.text(id)`, `duel.deckList(i)`. Live state: `duel.duelvars(TCG_PLAYER)`, `duel.wram()`,
-`duel.hram()`, `duel.w('wDuelTurns')`, `duel.cardId(duelist, deckIndex)`, `duel.formatText(id)`,
-`duel.stateHash()` (`tcg_state_hash`). Setup options: `prizes`, `seed`/`rng`, `music`,
-`animationsDisabled`, `receivedLegendaryCards`, `skipDelayAllowed`. Constants: `C` (constants.h), `W` (WRAM addresses), `T` (text ids).
+The browser stores one versioned cartridge record in localStorage. Both
+canonical diaries and pending duel data are named blobs inside it. A Card Pop
+or Gift Center exchange replaces the whole record in one atomic write; a failed
+write leaves both old diaries and rolls back the in-memory operation. The C
+profile decoder checks version/length and the canonical story/gameplay CRCs.
 
-Each `run()` instantiates a fresh wasm instance (an aborted duel leaves nothing behind).
-`request()` blocks the C engine; a Promise returned by `onRequest`/`onEvent` suspends the wasm
-stack with Asyncify (`asyncify_start_unwind`, await, `asyncify_start_rewind`, call `web_run`
-again) and resumes it with the answer.
+Export cartridge backs up both diaries and saved duels. Import validates both
+canonical diaries before replacing the cartridge. These adventure saves use a
+separate namespace from the existing standalone duel frontend's saves. Browser
+storage remains local to the site/profile; export before clearing site data.
 
-## Online protocol
+## Audio and assets
 
-Both clients run the same engine with the same setup (decks, names, RNG seed chosen by the
-host, prizes); the host is the TCG_PLAYER side, the guest TCG_OPPONENT, both TCG_HUMAN. Only
-request answers are exchanged, as JSON over `ws://host/ws`:
+`world/` in the bundle contains native models and shared textures. Build-time
+character synchronization picks up completed new character exports automatically.
+The source Blender authoring files are linked from [world3d](../../world3d/README.md).
+`intro/` contains the original CGB opening art and all 26 motion tables.
 
-* lobby: `create` / `join {room}` / `rejoin {room, token}`; the host sends `setup` when the guest
-  has joined (the guest's deck comes with `join`).
-* duel: for every request except `TCG_REQ_ACK` and view-only card lists (`TCG_REQ_CARD_LIST`
-  with `arg[0] = 1`), the duelist it belongs to answers in its UI and sends `{t:'answer', seq, rt, v, h}`: `seq` = number of non-ACK requests before it,
-  `rt` = request type, `v` = answer, `h` = `tcg_state_hash()` (FNV-1a of the state the
-  original saves: duel variables, decks, duel states, turn, RNG, AI variables). The peer waits for the answer with its own `seq`; a different `rt` or `h`
-  is a desync, reported to both players. ACKs and view-only lists never change the duel: they
-  are answered locally and never sent (a remote duelist's ACK advances by itself after a
-  moment, its view-only lists are answered with TCG_CANCEL). `TCG_REQ_CONFIRM` is sent.
-* the server checks `seq` continuity and keeps the setup and the answer log of each room.
-  After a disconnect a client rejoins with its token and gets the log back: a client that kept
-  its engine resends any answers the server missed, one that reloaded the page replays the
-  whole duel from the log without UI and continues. The peer sees "lost the connection" /
-  "is back" / "left the duel" messages.
+`assets/audio/` contains browser Vorbis versions of all 31 music and96 sound-effect
+IDs rendered offline from the original driver, using the same PCM as the N64
+assets. `tools/pack_adventure.py` copies them into the bundle with loop metadata.
+Regenerating missing Vorbis files uses the cached source PCM and `ffmpeg`;
+normal builds use the checked-in Vorbis assets. Audio starts after a user gesture
+because browsers restrict autoplay.
+
+## Verification
+
+```sh
+node port/frontends/web/test/node_duel_test.mjs --seeds 1-60
+node port/frontends/web/test/adventure_engine_test.mjs
+node port/frontends/web/test/world3d_test.mjs
+node port/frontends/web/test/relay_test.mjs
+node port/frontends/web/test/world3d_browser.mjs
+node port/frontends/web/test/adventure_browser.mjs
+```
+
+Browser tests use Playwright and Chrome. Install the test dependency without
+changing the production bundle:
+
+```sh
+npm install --prefix port/frontends/web/build/world-test playwright
+```
+
+- Actual WASM tests run the original intro and source choreography, both starter
+  choices, canonical diaries, import/export, pair transaction rollback, selected
+  deck Battle Center setup, mail, glossary, print output and island navigation.
+  Their story fixture supplies tutorial duel outcomes; separate duel tests run
+  the actual tutorial through all eight player turns and test save/continue.
+- WebGL checks render all 34 maps, all completed character families, conditional
+  doors/Challenge Machine, eight independent deck panels and the naming portrait.
+- Browser checks exercise opening → naming → source Mason introduction → actual
+  Sam duel UI, the pre-duel cartridge checkpoint and the complete card album.
+- Screenshots and JSON validation records are in `build/world-test/` and
+  `build/adventure-browser/`.
+
+A full human browser playthrough remains a further check. Native scene fidelity,
+sampled audio overlap and platform save/print adaptations have the same limits
+as the documented N64 port. Physical Game Boy link/IR/printer transport is
+replaced by the local two-diary and download features.
+
+The preview serves `dist/` directly without caching. Run `build.sh` after source
+changes, then refresh the same URL. The persistent server is the user LaunchAgent
+`com.fairfieldt.poketcg.web-preview`, bound to `100.101.45.117:8091`.

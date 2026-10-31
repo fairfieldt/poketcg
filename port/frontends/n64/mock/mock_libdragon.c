@@ -43,6 +43,9 @@
 #include <string.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#ifdef __APPLE__
+#include <mach-o/dyld.h>
+#endif
 
 #include "libdragon.h"
 #undef fopen
@@ -697,7 +700,13 @@ static void next_command(void)
 			fflush(stdout);
 			fflush(stderr);
 			char *const argv[] = { "tcgn64_host", NULL };
+#ifdef __APPLE__
+			char executable[4096];
+			uint32_t executable_size=sizeof(executable);
+			if(_NSGetExecutablePath(executable,&executable_size)==0)execv(executable,argv);
+#else
 			execv("/proc/self/exe", argv);
+#endif
 			die(2, "reboot: execv failed");
 		}
 		die(2, "unknown script command: %s", a);

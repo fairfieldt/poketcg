@@ -1,0 +1,89 @@
+{
+  "format": "L643",
+  "textures": [
+    "fc_e7ad63_smile"
+  ],
+  "actors": [
+    {
+      "name": "swimmer",
+      "model": 33,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "swimmer",
+  "aliases": [
+    "NPC_SARA",
+    "NPC_AMANDA"
+  ],
+  "runtime_model": 33,
+  "poses": {
+    "standing": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "appearances": {
+    "swimmer": {
+      "accent": [
+        0.19215686274509805,
+        0.4823529411764706,
+        0.807843137254902
+      ]
+    },
+    "swimmer_palette2": {
+      "accent": [
+        0.9058823529411765,
+        0.7764705882352941,
+        0.1607843137254902
+      ]
+    }
+  },
+  "design": "short bob, sleeveless pool outfit; blue/blonde palette variants",
+  "sharing": {
+    "library": "../../parts.blend",
+    "linked_parts": 24
+  },
+  "provenance": {
+    "sprite": 32,
+    "gfx_sha256": "af8c6dd561040929e1eabb403c840414e779881a5f0b8053c05b12da406f323b",
+    "fast64": "2.6.0"
+  },
+  "skin_palette": {
+    "rgb8": [
+      231,
+      173,
+      99
+    ],
+    "solid_material": "swimmer \u00b7 skin",
+    "faces": [
+      {
+        "texture": "fc_e7ad63_smile",
+        "background_rgb8": [
+          231,
+          173,
+          99
+        ],
+        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
+        "colorspace": "Non-Color",
+        "directional_shade": true
+      }
+    ]
+  },
+  "appearance": "swimmer_palette2",
+  "pose": "standing",
+  "component": null,
+  "vertices": 1052,
+  "triangles": 556,
+  "batches": 6
+}

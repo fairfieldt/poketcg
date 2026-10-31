@@ -1,0 +1,11 @@
+{
+  "model": "torch",
+  "triangles": 68,
+  "vertices": 135,
+  "batches": 1,
+  "linked_parts": 0,
+  "appearances": [
+    "torch"
+  ],
+  "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+}

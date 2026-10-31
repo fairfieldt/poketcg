@@ -1,15 +1,25 @@
 # Nintendo 64 frontend
 
-A libdragon frontend for the portable duel engine (`port/src`, interface in
-`port/src/tcg.h`). It builds `tcgn64.z64`.
+The [adventure frontend](adventure/README.md) combines all 34 maps, the portable
+story/gameplay engines, and the existing duel screen into
+`adventure/poketcg-adventure.z64`. It uses libdragon preview.
+
+The standalone duel frontend remains available as `make duel` (`tcgn64.z64`).
+Its detailed controls and EEPROM save behavior are documented below; the full
+adventure uses two diaries and journaled cartridge SRAM instead.
+
+The standalone [Lightning Club 3D prototype](lightning/README.md) builds its own
+`lightning.z64` with libdragon preview. It includes editable Blender models, a
+textured room renderer, walking animation, collision, and emulator captures.
 
 ## Building
 
 You need the libdragon toolchain with libdragon and its tools (n64.mk,
 mksprite, mkdfs, n64tool) installed in `$N64_INST`. The Makefile defaults to
-`/home/user/tools/n64/opt/libdragon`.
+`/opt/libdragon`.
 
-    make             # tcgn64.z64
+    make             # adventure/poketcg-adventure.z64
+    make duel        # tcgn64.z64 (standalone duel frontend)
     make hosttest    # the UI on the host, against mock/libdragon.h (scripts in tests/)
     make endiancheck # the engine natively and as big-endian MIPS under qemu-mips
     make clean
@@ -151,9 +161,9 @@ image, and of the final engine memory.
 
 ## Limitations
 
-- Not run on a console or in an emulator yet. Only the build and the host
-  mock exercise it.
-- No sound.
+- Physical-console behavior remains unverified. The combined adventure
+  frontend exercises this duel screen in ares with 4 MiB RAM.
+- The standalone frontend has no sound; the adventure adds music and effects.
 - The 8x8 font is ASCII only.
 - The board is always seen from player 1's side.
 - No network play.
