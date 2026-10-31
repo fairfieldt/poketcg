@@ -1,0 +1,39 @@
+frame rate: 30/15/60/20Hz, startup, stall/recovery, repeated VI and 64-bit timing PASS
+PRACTICE TRACE wrong=0 requests=200 memory=d4027b58c8a5c77
+PRACTICE TRACE wrong=1 requests=63 memory=14b6a98d0ce934ec
+PRACTICE PASS: all eight turns; persistent checklist and fresh Mason ACKs; Finally/recap ordering; exact original memory/RNG/request traces; Psychic advances and wrong Water rewinds
+Gameplay OK:29 boosters x256 seeds,50 recipes,3 starters,inventory/album,decks,Card Pop,15 mail,challenge256 seeds,canonical save corruption/truncation; state6074 save6082 bytes
+Starter text PASS: all three complete deck names, confirmation/reward and reselection
+Aaron text PASS: all three deck names and cancel replace stale text; source menu prompts
+Story: intro/practice/starter/save-resume; 714 NPC-state encounters; 0 failures
+Native helpers OK: allRAM aliases/postinc,Tech5preload,Amyreload,Cuphistory,medalmailorder,65K exactRNG draws
+Campaign pass0 medals5 duels32
+Campaign pass1 medals8 duels65
+Dome state2 Ronald2 door1 duels70
+Postgame Cupstate2 round3 card206 duels73
+Campaign PASS: new game -> starter -> eight medals -> four Grand Masters + Ronald -> four legendary cards + credits; 73 duels, 1337 cards
+Navigation OK: original cursor graph, all144 waypoint routes, unnamed Ishihara access, locked/open Dome portal, source map music
+PROFILES PASS: 2 canonical diaries+duel/settings,salted names,RNG+playtime,CardPop/Gift both persistence,directions0/1/2/3,partialDMA+all33commitheaderprefixes atomic,selecteddecks1/2,controller2+pendingduelguards
+Extra UI PASS: mail10 real slot+bothpages+20cards+once/save,RNG,18glossarytopics,35credits/restoredworld,ControllerPakTXTreport
+CONVERSATION CAMERA PASS: 11 direction/source/edge compositions; speaker faces,20deg/FOV50,dialogue clearance,stable bubbles,exit and invalid-target fallback; canonical state unchanged
+INTERIOR TRACKING PASS: all33 interiors, 2972 walkable compositions; entry view, continuous tile motion, readable far-room scale, TV-safe sides/feet, authored wall heights, dialogue priority/exit, fixed island overview and unchanged state
+PRESENTATION PASS: all144 routes; tutorial island 60 frames; Mason run51/walk57 frames; fractional NPC timing; ordinary speeds; canonical source waits/positions
+SRAM PASS: save/reboot, full diary+duel, interrupted writes, remove, corrupt-header rollback
+RUNTIME PROP SHELLS PASS: {"passed": true, "models": [{"model": 5, "vertices": 32, "edges": 90, "triangles": 60, "shells": 1, "duplicate_triangles": 0}, {"model": 6, "vertices": 50, "edges": 144, "triangles": 96, "shells": 1, "duplicate_triangles": 0}]}
+PROP CLEARANCE PASS: radius=0.65; maps=33, variants=37, permission_states=292, solids=574, anchors=3528, edges=5817, npc_starts=141, offstage_starts=2; failures=0
+WORLD3D PASS: 34 maps; 102 meshes; 58293 triangles; 102965 vertices; 504 shared textures
+Per-scene maximum: 54 batches, 53 textures; no duplicate surfaces, RGBA16 TMEM and map/NPC/warp links verified
+Character sync: 49 exports, 39 families, 115 NPC aliases; player model7
+Character sync: dr_mason: incomplete export skipped (unpack_from requires a buffer of at least 8 bytes for unpacking 8 bytes at offset 0 (actual buffer size is 4))
+CHARACTERS PASS: source geometry/UV/colors/pivots preserved; reserved player/fallback IDs; all aliases; idempotent auto-discovery; incomplete-export retention
+CHARACTER LOD PASS: 49 exports, 27984->19858 triangles; 1113 textured face triangles exact; rigid pivots/open seams preserved
+ACTOR VISIBILITY PASS: six planes; 36 orientations; 4023324 independent visible projections preserved; real dialogue entry/settled pairs; no state changes
+ACTOR BOUNDS PASS: 55 models/89155 vertices; unrestricted limb swing+6deg lean <= 1.8455/2.2; legacy tilt <= 3.0061/3.6; shadows enclosed
+SKIN PASS: 37 human families; 3339 native face vertices lit; opaque palette backgrounds, original facial detail; maximum adjacent-skin difference 2/255
+AUDIO PASS: 31 songs, 96 SFX; all headers/decoder skips/loops/timings; unchanged source PCM; stereo finite/loop/title decoder regression; 29.99 MiB WAV64
+INTRO ASSETS PASS: 12 original images, transparency/dimensions/hashes; 26 original animation tables
+TITLE64 ASSETS PASS: generated title,280x140/420x210 native derivatives, premultiplied resize/edge bleed, original footer reference unchanged
+pack flow: PASS exact ten-card order, fanfare gate, fresh presses, skippable opening/list/inspect/exit and all29 source set mappings
+BOOSTER ART PASS: four original 64x96 CGB scenes and 32-tile OBJ logos
+MEDAL FLOW PASS:2048 event/collection/layout cases, source225VI timing, fresh A/B and fanfare-before-resume gates
+MEDAL ART PASS: eight exact original24x24 designs, source palettes, event bits and non-linear tilemap mapping

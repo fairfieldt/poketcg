@@ -1,0 +1,57 @@
+[
+  {
+    "pair": "walk-0",
+    "changed_post_vi_pixels": 271,
+    "max_rgb_difference": 24,
+    "bounds": [
+      153,
+      101,
+      633,
+      170
+    ]
+  },
+  {
+    "pair": "walk-3",
+    "changed_post_vi_pixels": 241,
+    "max_rgb_difference": 16,
+    "bounds": [
+      143,
+      102,
+      632,
+      177
+    ]
+  },
+  {
+    "pair": "walk-7",
+    "changed_post_vi_pixels": 202,
+    "max_rgb_difference": 16,
+    "bounds": [
+      141,
+      108,
+      633,
+      184
+    ]
+  },
+  {
+    "pair": "lab",
+    "changed_post_vi_pixels": 376,
+    "max_rgb_difference": 16,
+    "bounds": [
+      237,
+      95,
+      548,
+      172
+    ]
+  },
+  {
+    "pair": "sam",
+    "changed_post_vi_pixels": 403,
+    "max_rgb_difference": 16,
+    "bounds": [
+      35,
+      104,
+      472,
+      180
+    ]
+  }
+]

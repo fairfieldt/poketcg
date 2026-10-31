@@ -42,6 +42,11 @@ static void scene_load_idle(void){if(load_idle)load_idle();}
 
 #if SCENE_T3D
 #include "scene_packed.inc"
+/* One frame's contact vertices remain immutable until its completion fence.
+   Use the room's native projector, rather than mixing GL and Tiny3D depth. */
+enum {CONTACT_CAPACITY=32,CONTACT_VERTICES=14,CONTACT_PAIRS=7};
+static T3DVertPacked *contact_vertices;
+static unsigned contact_used;
 #endif
 
 void scene_camera(float fov,float aspect,float near,float far,const float eye[3],const float target[3],int x,int y,int width,int height)
@@ -52,6 +57,7 @@ void scene_camera(float fov,float aspect,float near,float far,const float eye[3]
     /* Call once per frame after acquiring a safe display surface. Every
        existing presentation ends with detach_wait, so prior DMA is complete. */
     packed_matrix_count=0;
+    contact_used=0;
     packed_camera_active=true;
     t3d_viewport_set_area(&packed_viewport,x,y,width,height);
     t3d_viewport_set_perspective(&packed_viewport,fov*.01745329252f,aspect,near,far);
@@ -77,8 +83,8 @@ void scene_begin_opaque(void)
 {
     /* Normal opaque surfaces need the RDP's opaque Z mode. The special
        interpenetrating mode changes coverage at near intersections and can
-       mix rear surfaces into a character. GL_LESS also lets libdragon choose
-       transparent Z mode while the contact-shadow blend pass is enabled. */
+       mix rear surfaces into a character. Restore GL_LESS after the contact
+       decal pass so its coplanar Z mode cannot leak into opaque actors. */
     glEnable(GL_DEPTH_TEST);glDepthFunc(GL_LESS);glDepthMask(GL_TRUE);
     glDisable(GL_BLEND);glBlendFunc(GL_ONE,GL_ZERO);
     glDisable(GL_ALPHA_TEST);glDisable(GL_FOG);
@@ -235,22 +241,51 @@ void scene_draw_contact_shadows(const float (*positions)[2],unsigned count)
         {-.8660254f,-.5f},{-.5f,-.8660254f},{0,-1},
         {.5f,-.8660254f},{.8660254f,-.5f},{1,0}
     };
-    /* A transparent rim keeps this small at native resolution. The fan sits
-       on the floor, independent of actor bob, and furniture still occludes it.
-       libdragon has no polygon offset or attribute stack. Restore explicitly. */
-    glDisable(GL_TEXTURE_2D);glDepthFunc(GL_LESS);
+    /* The authored walkable floor, including carpet textures, is exactly Y=0.
+       Draw coplanar decals with the same projector as that floor. A lifted
+       transparent triangle uses a different depth test and used to break up
+       as the camera moved. Decal Z keeps furniture in front and never writes
+       the depth buffer; actor bob therefore cannot move the contact patch. */
+#if SCENE_T3D
+    assertf(packed_camera_active,"Contact shadows require the native room camera");
+    assertf(contact_used+count<=CONTACT_CAPACITY,"Contact shadow frame capacity");
+    if(!contact_vertices){contact_vertices=malloc_uncached(CONTACT_CAPACITY*CONTACT_PAIRS*sizeof(*contact_vertices));assert(contact_vertices);}
+    T3DVertPacked *first=contact_vertices+contact_used*CONTACT_PAIRS;
+    for(unsigned i=0;i<count;i++)for(unsigned j=0;j<CONTACT_VERTICES;j++) {
+        Vertex vertex={.position={positions[i][0],0,positions[i][1]},.color={16,22,32,j?0:64}};
+        if(j){vertex.position[0]+=ring[j-1][0]*.56f;vertex.position[2]+=ring[j-1][1]*.40f;}
+        packed_vertex(&first[i*CONTACT_PAIRS+j/2],j&1,&vertex,1,1);
+    }
+    contact_used+=count;
+    T3DMat4 identity;t3d_mat4_identity(&identity);
+    rdpq_mode_push();t3d_frame_start();rdpq_mode_antialias(AA_NONE);
+    packed_matrix(&identity);
+    t3d_state_set_drawflags(T3D_FLAG_DEPTH|T3D_FLAG_SHADED|T3D_FLAG_NO_LIGHT);
+    rdpq_mode_combiner(RDPQ_COMBINER_SHADE);rdpq_mode_blender(RDPQ_BLENDER_MULTIPLY);
+    rdpq_mode_alphacompare(0);
+    rdpq_change_other_modes_raw(SOM_ZMODE_MASK|SOM_Z_COMPARE|SOM_Z_WRITE,SOM_ZMODE_DECAL|SOM_Z_COMPARE);
+    for(unsigned i=0;i<count;i++) {
+        t3d_vert_load(first+i*CONTACT_PAIRS,0,CONTACT_VERTICES);
+        for(unsigned j=1;j<13;j++)t3d_tri_draw(0,j,j+1);
+        t3d_tri_sync();
+    }
+    t3d_matrix_pop(1);rdpq_mode_pop();
+#else
+    /* GL_EQUAL selects the RDP's decal mode in libdragon's GL backend. */
+    glDisable(GL_TEXTURE_2D);glDepthFunc(GL_EQUAL);
     glDepthMask(GL_FALSE);
     glEnable(GL_BLEND);glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     for(unsigned i=0;i<count;i++) {
         float x=positions[i][0],z=positions[i][1];
         glBegin(GL_TRIANGLE_FAN);
-        glColor4ub(16,22,32,64);glVertex3f(x,.045f,z);
+        glColor4ub(16,22,32,64);glVertex3f(x,0,z);
         glColor4ub(16,22,32,0);
         for(unsigned j=0;j<13;j++)
-            glVertex3f(x+ring[j][0]*.56f,.045f,z+ring[j][1]*.40f);
+            glVertex3f(x+ring[j][0]*.56f,0,z+ring[j][1]*.40f);
         glEnd();
     }
     scene_begin_opaque();
+#endif
 }
 
 void scene_close(Scene *scene)

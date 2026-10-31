@@ -1,0 +1,255 @@
+{
+  "passed": true,
+  "method": "Each backend compared to its own depth-disabled reference in a private actual-renderer full-engine ROM. Completed native depth buffers/read-only OwState assertions plus original Ares post-VI encoder proofs.",
+  "cases": [
+    {
+      "native_dimensions": [
+        320,
+        240
+      ],
+      "ram_mib": 4,
+      "samples": 112,
+      "missing_before": 313,
+      "missing_after": 0,
+      "sampled_depth_pixels_per_path": 8601600,
+      "table_occlusion": true,
+      "later_actor_depth_unchanged": true,
+      "canonical_state_unchanged": true,
+      "rom": {
+        "file": "port/frontends/n64/adventure/build/ground-shadow-review/shadow-review.z64",
+        "sha256": "c428cc058a84926564061208a20b2610e5e3e7011037594857fb4aaa07051f57",
+        "diagnostic": 9
+      },
+      "by_case": {
+        "fire-carpet": {
+          "samples": 8,
+          "missing_before": 85,
+          "missing_after": 0
+        },
+        "intro-arrival": {
+          "samples": 24,
+          "missing_before": 8,
+          "missing_after": 0
+        },
+        "intro-entry": {
+          "samples": 24,
+          "missing_before": 2,
+          "missing_after": 0
+        },
+        "intro-mid": {
+          "samples": 24,
+          "missing_before": 22,
+          "missing_after": 0
+        },
+        "lab-walk": {
+          "samples": 8,
+          "missing_before": 4,
+          "missing_after": 0
+        },
+        "lightning-runner": {
+          "samples": 8,
+          "missing_before": 150,
+          "missing_after": 0
+        },
+        "lobby": {
+          "samples": 8,
+          "missing_before": 3,
+          "missing_after": 0
+        },
+        "water-deck": {
+          "samples": 8,
+          "missing_before": 39,
+          "missing_after": 0
+        }
+      },
+      "actual_post_vi_images": 10,
+      "exact_post_vi_rgb_pixels": 1536000,
+      "proof": "port/reviews/ground-shadow-fix/320/capture-provenance.json",
+      "coverage": "port/reviews/ground-shadow-fix/320/coverage.log",
+      "pair_checks": [
+        {
+          "pair": "walk-0",
+          "changed_post_vi_pixels": 271,
+          "max_rgb_difference": 24,
+          "bounds": [
+            153,
+            101,
+            633,
+            170
+          ]
+        },
+        {
+          "pair": "walk-3",
+          "changed_post_vi_pixels": 241,
+          "max_rgb_difference": 16,
+          "bounds": [
+            143,
+            102,
+            632,
+            177
+          ]
+        },
+        {
+          "pair": "walk-7",
+          "changed_post_vi_pixels": 202,
+          "max_rgb_difference": 16,
+          "bounds": [
+            141,
+            108,
+            633,
+            184
+          ]
+        },
+        {
+          "pair": "lab",
+          "changed_post_vi_pixels": 376,
+          "max_rgb_difference": 16,
+          "bounds": [
+            237,
+            95,
+            548,
+            172
+          ]
+        },
+        {
+          "pair": "sam",
+          "changed_post_vi_pixels": 403,
+          "max_rgb_difference": 16,
+          "bounds": [
+            35,
+            104,
+            472,
+            180
+          ]
+        }
+      ]
+    },
+    {
+      "native_dimensions": [
+        480,
+        360
+      ],
+      "ram_mib": 8,
+      "samples": 112,
+      "missing_before": 896,
+      "missing_after": 0,
+      "sampled_depth_pixels_per_path": 19353600,
+      "table_occlusion": true,
+      "later_actor_depth_unchanged": true,
+      "canonical_state_unchanged": true,
+      "rom": {
+        "file": "port/frontends/n64/adventure/build/ground-shadow-review/shadow-review.z64",
+        "sha256": "c428cc058a84926564061208a20b2610e5e3e7011037594857fb4aaa07051f57",
+        "diagnostic": 9
+      },
+      "by_case": {
+        "fire-carpet": {
+          "samples": 8,
+          "missing_before": 248,
+          "missing_after": 0
+        },
+        "intro-arrival": {
+          "samples": 24,
+          "missing_before": 36,
+          "missing_after": 0
+        },
+        "intro-entry": {
+          "samples": 24,
+          "missing_before": 2,
+          "missing_after": 0
+        },
+        "intro-mid": {
+          "samples": 24,
+          "missing_before": 60,
+          "missing_after": 0
+        },
+        "lab-walk": {
+          "samples": 8,
+          "missing_before": 23,
+          "missing_after": 0
+        },
+        "lightning-runner": {
+          "samples": 8,
+          "missing_before": 390,
+          "missing_after": 0
+        },
+        "lobby": {
+          "samples": 8,
+          "missing_before": 44,
+          "missing_after": 0
+        },
+        "water-deck": {
+          "samples": 8,
+          "missing_before": 93,
+          "missing_after": 0
+        }
+      },
+      "actual_post_vi_images": 10,
+      "exact_post_vi_rgb_pixels": 3072000,
+      "proof": "port/reviews/ground-shadow-fix/480/capture-provenance.json",
+      "coverage": "port/reviews/ground-shadow-fix/480/coverage.log",
+      "pair_checks": [
+        {
+          "pair": "walk-0",
+          "changed_post_vi_pixels": 705,
+          "max_rgb_difference": 12,
+          "bounds": [
+            153,
+            201,
+            633,
+            340
+          ]
+        },
+        {
+          "pair": "walk-3",
+          "changed_post_vi_pixels": 666,
+          "max_rgb_difference": 14,
+          "bounds": [
+            143,
+            206,
+            632,
+            354
+          ]
+        },
+        {
+          "pair": "walk-7",
+          "changed_post_vi_pixels": 631,
+          "max_rgb_difference": 12,
+          "bounds": [
+            135,
+            210,
+            633,
+            368
+          ]
+        },
+        {
+          "pair": "lab",
+          "changed_post_vi_pixels": 1076,
+          "max_rgb_difference": 16,
+          "bounds": [
+            237,
+            191,
+            543,
+            343
+          ]
+        },
+        {
+          "pair": "sam",
+          "changed_post_vi_pixels": 1582,
+          "max_rgb_difference": 20,
+          "bounds": [
+            37,
+            206,
+            633,
+            480
+          ]
+        }
+      ]
+    }
+  ],
+  "legacy_gl_compile": "PASS with -Wall -Wextra -Werror",
+  "tiny3d_compile": "PASS with -Wall -Wextra -Werror",
+  "stale_frame_negative_gate": "PASS; previous actor-hidden VI frame rejected at8,384 changed pixels / max216 RGB; bad images retained only in ignored private build directory.",
+  "compiled_contact_scene_sha256": "85a7371cdeb49cd755945b4f47476ed49af989f657879ccdcf0491754489c132",
+  "fixture_sha256": "91537ccdc63108733ce6d89a6f8a23422bf4b7881d35dc4614f7339e2351e635"
+}

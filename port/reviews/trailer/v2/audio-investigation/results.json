@@ -26,9 +26,10 @@
     }
   ],
   "buffer_frames": 1272,
-  "sample_rate": 31995,
   "buffers": 8,
-  "ring_capacity_us": 318049.69526488514,
   "qualifier": "Ares CP0/AI emulation, not a physical-console measurement. Baseline and fixed probes use immutable v1 scene assets and production path with diagnostic-only counters.",
-  "pcm_finding": "v1 capture matches original music09 before12.5s, loses continuous phase during12.75\u201321s, then resumes clean with4.74s source lag. The new low-priority2-thread capture stays near1.00\u00d7 host/N64 time; baseline still exposes a separate native preload gap."
+  "pcm_finding": "v1 capture matches original music 09 before 12.5 seconds, loses continuous phase during roughly 12.75\u201321 seconds, then resumes clean with 4.74 seconds of source lag. The new low-priority two-thread capture stays near 1.00\u00d7 host/native time; its baseline still exposes a separate native preload gap.",
+  "requested_sample_rate": 32000,
+  "sdk_reported_sample_rate_calculated": 31995,
+  "ring_capacity_approx_us": 318000
 }
