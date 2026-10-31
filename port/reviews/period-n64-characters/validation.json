@@ -1,0 +1,16 @@
+{
+  "status": "pass",
+  "selected_screenshots": 21,
+  "original_titles": 10,
+  "project_images": 7,
+  "sha256_and_dimensions_verified": 28,
+  "html_local_links": "pass",
+  "image_decode": "pass",
+  "source_html_cache_files_in_packet": 0,
+  "production_files_modified": false,
+  "git_clean_filter_byte_identity": {
+    "status": "pass",
+    "selected_screenshots": 21,
+    "note": "Working-tree raw versus Git clean-filter object identity checked; parent will also verify staged index bytes."
+  }
+}
