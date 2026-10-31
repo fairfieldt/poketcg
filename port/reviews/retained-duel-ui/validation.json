@@ -32,5 +32,17 @@
   "new_n64_snapshot_bytes": 8432,
   "additional_static_flags_and_generations_bytes": 11,
   "loop_local_token_bytes": 24,
-  "new_heap_or_image_allocation": false
+  "new_heap_or_image_allocation": false,
+  "heading_followup": {
+    "list_y": 16,
+    "first_row_y": 29,
+    "first_row_highlight_y": 28,
+    "menu_and_message_heading_y": 18,
+    "separator_y": 27,
+    "map_plaque_y": 12,
+    "map_text_y": 18,
+    "map_blit_bottom_y": 32,
+    "host_retained_pixel_checks": "pass both resolutions",
+    "native_artifacts": "captured before heading-only adjustment"
+  }
 }

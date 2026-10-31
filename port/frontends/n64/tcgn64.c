@@ -2009,7 +2009,7 @@ static void draw_list(int x,int y,int w,int rows,const char *title,int n,int cur
                       LabelFn label,void *ctx)
 {
 	panel(x,y,w,rows*LIST_LH+24);
-	if(title)body(x+7,y+4,C_HI,title,w-14);
+	if(title)body(x+7,y==BOARD_Y?16:y+4,C_HI,title,w-14);
 	if(cur<*top)*top=cur;
 	if(cur>=*top+rows)*top=cur-rows+1;
 	if(*top<0)*top=0;
@@ -3897,11 +3897,11 @@ void n64_map_label(surface_t *frame,const char *name)
 	int width=(int)strlen(clean)*CW+16;if(width>304)width=304;
 	if(width<96)width=96;
 	surface_t *previous=g_fb;g_fb=&cached;
-	paper_panel(8,6,width,20);print_n(16,12,C_INK,clean,(width-16)/CW);g_fb=previous;
+	paper_panel(8,12,width,20);print_n(16,18,C_INK,clean,(width-16)/CW);g_fb=previous;
 	data_cache_hit_writeback_invalidate(cached.buffer,(unsigned long)cached.stride*cached.height);
 	rdpq_attach(frame,NULL);rdpq_mode_push();rdpq_set_mode_copy(false);
-	int px=8*cached.width/SCREEN_W,py=6*cached.height/SCREEN_H;
-	int pw=(8+width)*cached.width/SCREEN_W-px,ph=26*cached.height/SCREEN_H-py;
+	int px=8*cached.width/SCREEN_W,py=12*cached.height/SCREEN_H;
+	int pw=(8+width)*cached.width/SCREEN_W-px,ph=32*cached.height/SCREEN_H-py;
 	rdpq_tex_blit(&cached,px,py,&(rdpq_blitparms_t){.s0=px,.t0=py,.width=pw,.height=ph});
 	rdpq_mode_pop();rdpq_detach_wait();
 }
@@ -4071,7 +4071,7 @@ void n64_message(const char *title,const char *text)
 		if(visible>characters)visible=characters;
 		if(begin_reused_frame(&reuse,((uint64_t)(uint32_t)page<<32)|(uint32_t)visible)) {
 			paper_panel(8,6,304,228);fill(LEFT,27,RIGHT-LEFT,1,C_PAPERSHADE);
-			print_n(LEFT,12,C_INK,title?title:"",COLS);
+			print_n(LEFT,18,C_INK,title?title:"",COLS);
 			int remaining=visible;
 			for(int i=0;i<17 && page+i<n;i++){int length=(int)strlen(lines[page+i]);print_n(LEFT,32+i*LH,C_INK,lines[page+i],remaining<length?remaining:length);remaining-=length;if(remaining<0)remaining=0;}
 			print(LEFT,218,C_INK,page+17<n?"A: next   B: back":"A/B: close");
@@ -4094,7 +4094,7 @@ int n64_menu(const char *title,const char *const *items,int count,int initial,bo
 	for (;;) {
 		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
 			paper_panel(8,6,304,228);fill(LEFT,27,RIGHT-LEFT,1,C_PAPERSHADE);
-			print_n(LEFT,12,C_INK,title?title:"",COLS);
+			print_n(LEFT,18,C_INK,title?title:"",COLS);
 			int top=cur<14?0:cur-13;
 			for(int i=top;i<count && i<top+15;i++) {
 				char clean[256];sanitize(items[i],clean,sizeof(clean));
