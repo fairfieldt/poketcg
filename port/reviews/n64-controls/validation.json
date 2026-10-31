@@ -1,0 +1,37 @@
+{
+  "passed": true,
+  "overridden_text_ids": [
+    "0x01bf",
+    "0x01d6",
+    "0x04ee"
+  ],
+  "platforms": [
+    "N64",
+    "web"
+  ],
+  "canonical_text_table_unchanged": true,
+  "formatted_speech_and_checklist_passed": true,
+  "focused_engine_selector_cases": 5,
+  "focused_resolutions": [
+    [
+      320,
+      240
+    ],
+    [
+      480,
+      360
+    ]
+  ],
+  "both_controller_ports": true,
+  "engine_wram_hram_rng_answer_equivalence": true,
+  "physical_z_edge_passed": true,
+  "canonical_eight_turn_practice_passed": true,
+  "actual_wasm_copy_passed": true,
+  "browser_reading_widths": [
+    320,
+    960
+  ],
+  "production_strong_native_override_verified": true,
+  "production_linked_control_strings_verified": true,
+  "independent_source_review": "conversation_camera_core: lookup bounds, fallback, composition paths and platform copy; no blocker"
+}
