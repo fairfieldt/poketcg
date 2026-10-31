@@ -1,0 +1,403 @@
+{
+  "passed": true,
+  "families": 39,
+  "exports": 49,
+  "maximum_triangles": 906,
+  "maximum_batches": 6,
+  "duplicate_triangles": 0,
+  "degenerate_triangles": 0,
+  "models": [
+    {
+      "file": "assets/models/dr_mason/scene.l64",
+      "triangles": 718,
+      "vertices": 1291,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "a0491ae341277fc70c03f143243735b7c400d7e5811dbec45484149447058278"
+    },
+    {
+      "file": "assets/models/ronald/scene.l64",
+      "triangles": 728,
+      "vertices": 1340,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "2bea16d66a69a1e32e17a8c8f97aa90775a783a0fa2d6faa3a3ce987ad4d814c"
+    },
+    {
+      "file": "assets/models/ishihara/scene.l64",
+      "triangles": 804,
+      "vertices": 1351,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "958ff7146b79acb283f7cfe2afc228361bb4107f1a4dd2ea1ab8d5218b61fd92"
+    },
+    {
+      "file": "assets/models/imakuni/scene.l64",
+      "triangles": 518,
+      "vertices": 926,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "3c81f11fe2cfba8d4a981fd8e9b97a7d77a82ba3fd93e9e82eb9f4fdaf18b8ef"
+    },
+    {
+      "file": "assets/models/tech/scene.l64",
+      "triangles": 663,
+      "vertices": 1156,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "0b2aad06d065165714cdf5c41d3f63ed116f22988dda96c3d2f6aac6c02918c6"
+    },
+    {
+      "file": "assets/models/clerk/scene.l64",
+      "triangles": 686,
+      "vertices": 1236,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "918e8789680da6f26e54903f4f7fa9e886d8002f5a81bdefa991387f1f9fe108"
+    },
+    {
+      "file": "assets/models/mania/scene.l64",
+      "triangles": 578,
+      "vertices": 1027,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "51bbf950a735371e77c93a36868f8de0b99b0957bf7a69d0b6bee9fd05e38319"
+    },
+    {
+      "file": "assets/models/mania/variants/mania_palette2/scene.l64",
+      "triangles": 578,
+      "vertices": 1029,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "b1915879c593ca36fd96f94816f40cb3490504cd7aed62f01f07b361224d19b4"
+    },
+    {
+      "file": "assets/models/lass3/scene.l64",
+      "triangles": 730,
+      "vertices": 1323,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "c0883a13125b6cdd70918d1099e448d2f2346ec0d340116f93787c506e728ab9"
+    },
+    {
+      "file": "assets/models/mitch/scene.l64",
+      "triangles": 610,
+      "vertices": 1102,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "6a0f21ca68361f923b2548168507e4bd2f4bc557d5f559c3407be050485d7694"
+    },
+    {
+      "file": "assets/models/boy/scene.l64",
+      "triangles": 578,
+      "vertices": 1027,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "7a2843065461e03dbc93ddeae954d3beec95c0cc0326d7d5c136651712ddb264"
+    },
+    {
+      "file": "assets/models/boy/variants/boy_palette2/scene.l64",
+      "triangles": 578,
+      "vertices": 1029,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "54beae6965761f07819d9b9b57c46e68f100852f9d849ca553b5dd3c3b4caaef"
+    },
+    {
+      "file": "assets/models/man/scene.l64",
+      "triangles": 582,
+      "vertices": 1049,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "68faabd012611b2687c6884127879189cf37612048e692ea63f5866728053baf"
+    },
+    {
+      "file": "assets/models/gene/scene.l64",
+      "triangles": 761,
+      "vertices": 1276,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "8dd4d493451554db27abed0b3d3bfbb30d659d2de2f805382fca89f6a857c3d9"
+    },
+    {
+      "file": "assets/models/swimmer/scene.l64",
+      "triangles": 584,
+      "vertices": 1082,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "82a5bece5c7d48577d8705957240cf9d927c6912473f5132b7b472bf2312a11c"
+    },
+    {
+      "file": "assets/models/swimmer/variants/swimmer_palette2/scene.l64",
+      "triangles": 584,
+      "vertices": 1084,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "d242115ec2cc4f5093a0102ccb7aaec908f8ad4ab3072e46b27def94d52c6a59"
+    },
+    {
+      "file": "assets/models/joshua/scene.l64",
+      "triangles": 688,
+      "vertices": 1147,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "184ec981f500de127b138388afd0e36cec9a674f3aeaabb8e881475c5036cada"
+    },
+    {
+      "file": "assets/models/amy/scene.l64",
+      "triangles": 584,
+      "vertices": 1084,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "e9659554e6850365fc5d9563402ae81b762ae71bd43785b42ba485a3f5e57fb1"
+    },
+    {
+      "file": "assets/models/amy/poses/lying/scene.l64",
+      "triangles": 584,
+      "vertices": 1114,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "2df09a94d0ddfe5713a057653d2aca997a495cd7f1a9e6ec677c1795d0e095a2"
+    },
+    {
+      "file": "assets/models/girl/scene.l64",
+      "triangles": 760,
+      "vertices": 1274,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "f4483d94576f1f55411b2395c0b8f1a1234219fc0a73f2f16e2b09b63cc2167d"
+    },
+    {
+      "file": "assets/models/hood/scene.l64",
+      "triangles": 524,
+      "vertices": 977,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "45899cf79b8f4a7bea8997021bed5daaad64d1d698ff474b8f33bfa313f74ca7"
+    },
+    {
+      "file": "assets/models/isaac/scene.l64",
+      "triangles": 669,
+      "vertices": 1183,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "09234ebf49813e0ee83bacc1d3b5cf0b3e9752d183231646409ae705715fb8cb"
+    },
+    {
+      "file": "assets/models/lass2/scene.l64",
+      "triangles": 636,
+      "vertices": 1156,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "f12bff7e6e73e381653e759f4bd239f55cae8ceb25b578cfb332ec6f20f8bca7"
+    },
+    {
+      "file": "assets/models/lass1/scene.l64",
+      "triangles": 624,
+      "vertices": 1154,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "2d6eb6a085c8b911e0ca393e354e22314a56666fc0907c0065b5fad3d569ca3d"
+    },
+    {
+      "file": "assets/models/nikki/scene.l64",
+      "triangles": 584,
+      "vertices": 1066,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "8c35800cd5caa8a28579ead4925a0b712e9cce3d3f407d27cd8d04ecc4e60bc6"
+    },
+    {
+      "file": "assets/models/lad/scene.l64",
+      "triangles": 662,
+      "vertices": 1108,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "0356b8b47369e6562759440c444a2f7991632342d90d14b8b6fd6399e4c809ba"
+    },
+    {
+      "file": "assets/models/murray/scene.l64",
+      "triangles": 802,
+      "vertices": 1350,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "ea16a483024b8ea393010ce286e1e652badda72a44be477d4784404d2e3b742d"
+    },
+    {
+      "file": "assets/models/rick/scene.l64",
+      "triangles": 669,
+      "vertices": 1176,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "77dbb89da7f5a38c429e16a4611b7021b2d71fea675f86bf79151544c0ea99e4"
+    },
+    {
+      "file": "assets/models/specs/scene.l64",
+      "triangles": 589,
+      "vertices": 1044,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "6a5677025e7439d210a2accafb5ea034c24ffc3b2284f1decdee7621dcff1a14"
+    },
+    {
+      "file": "assets/models/ken/scene.l64",
+      "triangles": 797,
+      "vertices": 1341,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "a16df7b8666ee43c0048761d0ab02ff4230e9df65152ed900cfed46dcba16c6a"
+    },
+    {
+      "file": "assets/models/courtney/scene.l64",
+      "triangles": 672,
+      "vertices": 1259,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "210f09dac9ff9ae566897348f12d8ad1c69f255ff6f007394b485161adfef380"
+    },
+    {
+      "file": "assets/models/steve/scene.l64",
+      "triangles": 832,
+      "vertices": 1344,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "bcf0a1feb9c1dfba9b2f7a801f2eca29d84c36595e5ded75b9be2d628559ed44"
+    },
+    {
+      "file": "assets/models/jack/scene.l64",
+      "triangles": 663,
+      "vertices": 1162,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "7a56ed97a9e349b5dc7507fc4a54b305d2ca84b728ae9f10e4f9a4fd4af46e7f"
+    },
+    {
+      "file": "assets/models/rod/scene.l64",
+      "triangles": 807,
+      "vertices": 1359,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "23a87761b58a3b50211bd2651ed076292dcea48542d6b5a989141fcd76f952bd"
+    },
+    {
+      "file": "assets/models/woman/scene.l64",
+      "triangles": 584,
+      "vertices": 1085,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "80a850e0c23118cad434a129bff391e44f8198995af4b2482b65adb2c464b4dd"
+    },
+    {
+      "file": "assets/models/chap/scene.l64",
+      "triangles": 804,
+      "vertices": 1351,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "80192f8a2023972f56cf08c9189f851860f17fed2f12227bdd4b2623683fba35"
+    },
+    {
+      "file": "assets/models/gal/scene.l64",
+      "triangles": 556,
+      "vertices": 1016,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "f776ff111514f72675a89ec9d2cc92ef88055f39fda6a58ba7f2812954bf0e6b"
+    },
+    {
+      "file": "assets/models/pappy/scene.l64",
+      "triangles": 794,
+      "vertices": 1334,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "242967d568f70ef8253157fec3478dd240335cc91c31f6f279dfa3490fb97b18"
+    },
+    {
+      "file": "assets/models/butch/scene.l64",
+      "triangles": 590,
+      "vertices": 1058,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "7e0352b6723a68ca6ff8c468dcabd47a91d5b7fc7ccbab9975c9d3eee9aeba24"
+    },
+    {
+      "file": "assets/models/granny/scene.l64",
+      "triangles": 818,
+      "vertices": 1425,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "37a5a0861934e26c448834366b91aba3ae2bf58de758c588df40896fa74534d8"
+    },
+    {
+      "file": "assets/models/torch/scene.l64",
+      "triangles": 68,
+      "vertices": 135,
+      "batches": 1,
+      "duplicate_triangles": 0,
+      "sha256": "4ffb9dd06c4f2b0b09ae7ead39829d95f146dff6cfe39f27ec292dbb5a5df373"
+    },
+    {
+      "file": "assets/models/legendary_card/scene.l64",
+      "triangles": 128,
+      "vertices": 213,
+      "batches": 1,
+      "duplicate_triangles": 0,
+      "sha256": "29cb1a5cdc13638f43e1c822b4941465091aef5f062a510b4174c372a10ffb8b"
+    },
+    {
+      "file": "assets/models/legendary_card/components/bottom_left/scene.l64",
+      "triangles": 24,
+      "vertices": 40,
+      "batches": 1,
+      "duplicate_triangles": 0,
+      "sha256": "2fb4c74490440e469888de786bfba83823e20035c012ae0c1481b0986f241ae6"
+    },
+    {
+      "file": "assets/models/legendary_card/components/bottom_right/scene.l64",
+      "triangles": 24,
+      "vertices": 40,
+      "batches": 1,
+      "duplicate_triangles": 0,
+      "sha256": "ff42bdcc6aef2561475019b2a2991da686885c3ec2419144c8619a4c078d5e3f"
+    },
+    {
+      "file": "assets/models/legendary_card/components/left_spark/scene.l64",
+      "triangles": 16,
+      "vertices": 40,
+      "batches": 1,
+      "duplicate_triangles": 0,
+      "sha256": "53ac9a33e796d9ee2137e5cd8b7726a2ce8b2ab92a9085eefc22a05cf1ee4bc9"
+    },
+    {
+      "file": "assets/models/legendary_card/components/right_spark/scene.l64",
+      "triangles": 16,
+      "vertices": 40,
+      "batches": 1,
+      "duplicate_triangles": 0,
+      "sha256": "11789df796eaef8eb06faa938df83569838c49318493d38f714349cb4fa0a5e3"
+    },
+    {
+      "file": "assets/models/legendary_card/components/top_left/scene.l64",
+      "triangles": 24,
+      "vertices": 40,
+      "batches": 1,
+      "duplicate_triangles": 0,
+      "sha256": "b25a36139ae22593c9f7cc1c07211e59ffe21a1581a4079e9a2323ac341249b0"
+    },
+    {
+      "file": "assets/models/legendary_card/components/top_right/scene.l64",
+      "triangles": 24,
+      "vertices": 40,
+      "batches": 1,
+      "duplicate_triangles": 0,
+      "sha256": "30b2bfa872b2c544126b954ee696c59a370a01914b93a313740c9316b490214d"
+    },
+    {
+      "file": "assets/models/mark/scene.l64",
+      "triangles": 906,
+      "vertices": 1481,
+      "batches": 6,
+      "duplicate_triangles": 0,
+      "sha256": "6babdd9ae10a9a6efd7ece76e755b618f7cc89d5228bc81c51bfc83c91eb6f9c"
+    }
+  ]
+}

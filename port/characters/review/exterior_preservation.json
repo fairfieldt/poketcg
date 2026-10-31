@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "base_commit": "7c7455c148286e3196e2331204cc28e2648cda49",
+  "native_exports_with_exact_unchanged_limb_geometry_uv_colors_pivots": 49,
+  "human_families_with_exact_unchanged_pigment_and_facial_feature_hashes": 37
+}

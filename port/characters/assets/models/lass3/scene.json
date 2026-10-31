@@ -43,6 +43,10 @@
     }
   },
   "design": "two high black bunches with green ties",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 28
@@ -76,7 +80,7 @@
   "appearance": "lass3",
   "pose": "standing",
   "component": null,
-  "vertices": 1289,
-  "triangles": 702,
+  "vertices": 1323,
+  "triangles": 730,
   "batches": 6
 }

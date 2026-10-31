@@ -42,6 +42,10 @@
     }
   },
   "design": "upright martial-artist spikes, open blue gi and black belt",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 22
@@ -75,7 +79,7 @@
   "appearance": "mitch",
   "pose": "standing",
   "component": null,
-  "vertices": 1042,
-  "triangles": 557,
+  "vertices": 1102,
+  "triangles": 610,
   "batches": 6
 }

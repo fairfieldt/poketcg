@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "source_base_commit": "7c7455c148286e3196e2331204cc28e2648cda49",
+  "production_rom": {
+    "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-adventure.z64",
+    "bytes": 36323328,
+    "sha256": "6def5e2be7c65c074ac696158f12f758255f0664a22a187e683127be85ab06b5"
+  },
+  "world_sha256": "9b411f629669af94f43ea500da5ba7bf75f860c850b2ca18977ee193228c1731",
+  "actors_sha256": "b6c68e405628f4c59cecf744ec4003e27dbd43e7db08d9aa80fa947eb362a49f",
+  "native": {
+    "file": "native-validation.json",
+    "maps": 34,
+    "captures": 42,
+    "ram_mib": 4,
+    "worst_heap": {
+      "map": 32,
+      "total": 2778224,
+      "used": 1772128,
+      "free": 1006096
+    },
+    "rom_sha256": "7c389e7e0752afed7c0474eaddbdf044744322bc0a620c86946b31ae5dca61f5"
+  },
+  "visual": {
+    "file": "visual-validation.json",
+    "models": 55,
+    "poses": 220,
+    "captures": 93,
+    "rom_sha256": "314e0ddef09f3da8913f79ddf95468b00ec2155e8731c09b193f07acfca26d4e"
+  },
+  "post_vi": {
+    "file": "post-vi/capture-provenance.json",
+    "captures": 11,
+    "exact_rgb_pixels": 1689600,
+    "rom_sha256": "65ae1603a9db9880fd71d7dd5f29478bcbde93fbcfc0ab154182413bf77ae7c8"
+  },
+  "characters": {
+    "families": 39,
+    "exports": 49,
+    "maximum_triangles": 906,
+    "maximum_batches": 6
+  },
+  "web": {
+    "passed": true,
+    "file": "web-check.txt"
+  }
+}

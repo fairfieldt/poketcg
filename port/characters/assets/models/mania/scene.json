@@ -53,6 +53,10 @@
     }
   },
   "design": "large swept angular forelock, short-sleeved shirt",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 21
@@ -86,7 +90,7 @@
   "appearance": "mania",
   "pose": "standing",
   "component": null,
-  "vertices": 942,
-  "triangles": 500,
+  "vertices": 1027,
+  "triangles": 578,
   "batches": 6
 }

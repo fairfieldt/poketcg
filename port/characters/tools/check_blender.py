@@ -17,6 +17,7 @@ for instance in instances:
         if data.library and Path(data.library.filepath).name=='parts.blend':
             parts.append(obj);unique.add(data.name)
     if instance.name in ('torch','legendary_card'):continue
+    assert sum(bool(o.get('exterior_shell')) for o in instance.instance_collection.objects)==2,instance.name
     mats={slot.material for obj in instance.instance_collection.objects for slot in obj.material_slots if slot.material}
     skin=next(m for m in mats if m.get('role')=='skin' or m.name.casefold().startswith('skin'))
     pigment=tuple(round(c*255) for c in skin.diffuse_color[:3])
@@ -30,10 +31,12 @@ for instance in instances:
         assert image.colorspace_settings.name=='Non-Color',(instance.name,image.name)
         assert tuple(round(c*255) for c in image.pixels[:3])==pigment,(instance.name,image.name,'palette mismatch')
     skin_models[instance.name]=pigment
-assert len(parts)==802,len(parts)
+assert len(parts)==679,len(parts)
+authored_parts=sum(json.loads((ROOT/'assets/models'/family['slug']/'complete.json').read_text())['linked_parts'] for family in json.loads((ROOT/'catalog.json').read_text())['families'])
+assert authored_parts==801,authored_parts
 assert len(unique)<=33,len(unique)
 report=dict(canonical_models=39,npc_ids=115,appearances=42,shared_library_meshes=33,
-            used_shared_meshes=len(unique),linked_part_instances=len(parts),textures=11,
+            used_shared_meshes=len(unique),linked_part_instances=len(parts),authored_linked_part_instances=authored_parts,textures=11,
             shared_mesh_names=sorted(unique),all_libraries_present=True,
             consistent_skin_models=len(skin_models),skin_rgb8_by_model=skin_models)
 (ROOT/'review/sharing.json').write_text(json.dumps(report,indent=2)+'\n')

@@ -1,0 +1,601 @@
+{
+  "passed": true,
+  "asset_revision": "Actual-VI-proven true head/hair/cap exterior union",
+  "recorded_at": "2026-10-31T00:51:08.548127-07:00",
+  "native_rom_sha256": "7c389e7e0752afed7c0474eaddbdf044744322bc0a620c86946b31ae5dca61f5",
+  "source_directory": "/Users/fairfieldt/dev/poketcg/port/world3d/generated",
+  "bundle_directory": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/surface-native/filesystem/world",
+  "file_count": 98,
+  "map_meshes": 97,
+  "actors_included": true,
+  "files": [
+    {
+      "file": "maps/actor_amy.l64",
+      "bytes": 29732,
+      "source_sha256": "97174b402d91010fde09cef3374ac2b119be6b141a71c881fc0a216a1c716a13",
+      "bundled_sha256": "97174b402d91010fde09cef3374ac2b119be6b141a71c881fc0a216a1c716a13"
+    },
+    {
+      "file": "maps/actor_amy__lying.l64",
+      "bytes": 30452,
+      "source_sha256": "a30f5cee01d11f39122f4625d2f2df4fb4a98786ec5c55a124fa1994422e9795",
+      "bundled_sha256": "a30f5cee01d11f39122f4625d2f2df4fb4a98786ec5c55a124fa1994422e9795"
+    },
+    {
+      "file": "maps/actor_boy.l64",
+      "bytes": 28328,
+      "source_sha256": "266abb08901e0eca82ec8929a21b3b529cd03789e7cd9a5920b1678a8b8a0e45",
+      "bundled_sha256": "266abb08901e0eca82ec8929a21b3b529cd03789e7cd9a5920b1678a8b8a0e45"
+    },
+    {
+      "file": "maps/actor_boy_palette2.l64",
+      "bytes": 28376,
+      "source_sha256": "d5cd6bb77753980ea1028d6cd87a5b16163758bda384386d95ffe8424d7f4749",
+      "bundled_sha256": "d5cd6bb77753980ea1028d6cd87a5b16163758bda384386d95ffe8424d7f4749"
+    },
+    {
+      "file": "maps/actor_butch.l64",
+      "bytes": 29144,
+      "source_sha256": "e65718e1ec1cf6061e670132394b176d5f68af56e8193439bf9c9e3df308fd7d",
+      "bundled_sha256": "e65718e1ec1cf6061e670132394b176d5f68af56e8193439bf9c9e3df308fd7d"
+    },
+    {
+      "file": "maps/actor_chap.l64",
+      "bytes": 37460,
+      "source_sha256": "5c6f747968bf60d33dc93088aae3ad6f03a44e87d1ae71edfc279ee720ef5fc9",
+      "bundled_sha256": "5c6f747968bf60d33dc93088aae3ad6f03a44e87d1ae71edfc279ee720ef5fc9"
+    },
+    {
+      "file": "maps/actor_clerk.l64",
+      "bytes": 33992,
+      "source_sha256": "92d1d20458a399fcb29a94fbea441fc4f8db47c670cd1686c18639a39d17e8a2",
+      "bundled_sha256": "92d1d20458a399fcb29a94fbea441fc4f8db47c670cd1686c18639a39d17e8a2"
+    },
+    {
+      "file": "maps/actor_courtney.l64",
+      "bytes": 34460,
+      "source_sha256": "2679885f7fb438f053284e587b337248db60432e8954132e7c395b7e7cd2a97d",
+      "bundled_sha256": "2679885f7fb438f053284e587b337248db60432e8954132e7c395b7e7cd2a97d"
+    },
+    {
+      "file": "maps/actor_dr_mason.l64",
+      "bytes": 35504,
+      "source_sha256": "7861e1808aa9aa401aaa52d35d1b9fa3e207b0f4d9f82bfaded8e9d7d2e69da6",
+      "bundled_sha256": "7861e1808aa9aa401aaa52d35d1b9fa3e207b0f4d9f82bfaded8e9d7d2e69da6"
+    },
+    {
+      "file": "maps/actor_gal.l64",
+      "bytes": 27932,
+      "source_sha256": "636ff085ceed301b6237ac02e661326e18dbad66157824a24e16bd7f99e9650c",
+      "bundled_sha256": "636ff085ceed301b6237ac02e661326e18dbad66157824a24e16bd7f99e9650c"
+    },
+    {
+      "file": "maps/actor_gene.l64",
+      "bytes": 35400,
+      "source_sha256": "db92776ba9de69f7a8a42f01325dc0976139f5659dfd18896468bcdc309f6488",
+      "bundled_sha256": "db92776ba9de69f7a8a42f01325dc0976139f5659dfd18896468bcdc309f6488"
+    },
+    {
+      "file": "maps/actor_girl.l64",
+      "bytes": 35344,
+      "source_sha256": "843d32957418c0e621f13f664ae1c591f504853e6a91fac2f441da2406261a31",
+      "bundled_sha256": "843d32957418c0e621f13f664ae1c591f504853e6a91fac2f441da2406261a31"
+    },
+    {
+      "file": "maps/actor_granny.l64",
+      "bytes": 39320,
+      "source_sha256": "58c991b139bcc7e87cb9f69f83ab151d20c35d483f49d7382fd0b8c8ab2bd051",
+      "bundled_sha256": "58c991b139bcc7e87cb9f69f83ab151d20c35d483f49d7382fd0b8c8ab2bd051"
+    },
+    {
+      "file": "maps/actor_hood.l64",
+      "bytes": 26800,
+      "source_sha256": "204c960f34a4fb50f2994506d4a2006814470c53ebea66ba08bdbef4c6224789",
+      "bundled_sha256": "204c960f34a4fb50f2994506d4a2006814470c53ebea66ba08bdbef4c6224789"
+    },
+    {
+      "file": "maps/actor_imakuni.l64",
+      "bytes": 25544,
+      "source_sha256": "00442fcadf10e9ca69fd402af4156a9e6e1dd0d5e791b41a0941146a194aaf57",
+      "bundled_sha256": "00442fcadf10e9ca69fd402af4156a9e6e1dd0d5e791b41a0941146a194aaf57"
+    },
+    {
+      "file": "maps/actor_isaac.l64",
+      "bytes": 32616,
+      "source_sha256": "0d96b259cb389f785462877f7daae2a0b8808d07c65752f5772214a7e76359ee",
+      "bundled_sha256": "0d96b259cb389f785462877f7daae2a0b8808d07c65752f5772214a7e76359ee"
+    },
+    {
+      "file": "maps/actor_ishihara.l64",
+      "bytes": 37460,
+      "source_sha256": "f471ea5302b60d25cd8c6e671b979444da0d7e8179c33b5346cdcbf47a1efec5",
+      "bundled_sha256": "f471ea5302b60d25cd8c6e671b979444da0d7e8179c33b5346cdcbf47a1efec5"
+    },
+    {
+      "file": "maps/actor_jack.l64",
+      "bytes": 32076,
+      "source_sha256": "4fd20421b0dc5e79396a230612c751b067f562ea1c92e756dadaf720950f27df",
+      "bundled_sha256": "4fd20421b0dc5e79396a230612c751b067f562ea1c92e756dadaf720950f27df"
+    },
+    {
+      "file": "maps/actor_joshua.l64",
+      "bytes": 31868,
+      "source_sha256": "79cfac6b6ba7f218fbcfdefe30e4220e7ec026633632ac68f64debc473bebf78",
+      "bundled_sha256": "79cfac6b6ba7f218fbcfdefe30e4220e7ec026633632ac68f64debc473bebf78"
+    },
+    {
+      "file": "maps/actor_ken.l64",
+      "bytes": 37176,
+      "source_sha256": "fb7f30c2bcff4ac3498022590b10dbceba09e0888fbd5b58c18c6911b3ce93ba",
+      "bundled_sha256": "fb7f30c2bcff4ac3498022590b10dbceba09e0888fbd5b58c18c6911b3ce93ba"
+    },
+    {
+      "file": "maps/actor_lad.l64",
+      "bytes": 30776,
+      "source_sha256": "5c2b17f60b2b72430c90fecbda91936109cac7063ac383c7859e06348f8d76cc",
+      "bundled_sha256": "5c2b17f60b2b72430c90fecbda91936109cac7063ac383c7859e06348f8d76cc"
+    },
+    {
+      "file": "maps/actor_lass1.l64",
+      "bytes": 31652,
+      "source_sha256": "57c2f4c1397796fbe4cec322924960f88e4bc850bbadb61b689c7a8bcfc46fe3",
+      "bundled_sha256": "57c2f4c1397796fbe4cec322924960f88e4bc850bbadb61b689c7a8bcfc46fe3"
+    },
+    {
+      "file": "maps/actor_lass2.l64",
+      "bytes": 31772,
+      "source_sha256": "402ea1401bad0c83255ea9574baa590d578210ddb3edcf6f8547ab19fb6e4109",
+      "bundled_sha256": "402ea1401bad0c83255ea9574baa590d578210ddb3edcf6f8547ab19fb6e4109"
+    },
+    {
+      "file": "maps/actor_lass3.l64",
+      "bytes": 36344,
+      "source_sha256": "e38d2f5922dad2971667377c885a52a199becb05fb0fa016f57186db1d6e5ade",
+      "bundled_sha256": "e38d2f5922dad2971667377c885a52a199becb05fb0fa016f57186db1d6e5ade"
+    },
+    {
+      "file": "maps/actor_legendary_card.l64",
+      "bytes": 5916,
+      "source_sha256": "30e1b9904bf4bcb93fe31e9cfc78f652c365e834d645968af6ee0f43216c2792",
+      "bundled_sha256": "30e1b9904bf4bcb93fe31e9cfc78f652c365e834d645968af6ee0f43216c2792"
+    },
+    {
+      "file": "maps/actor_legendary_card__bottom_left.l64",
+      "bytes": 1140,
+      "source_sha256": "9d2c81a1645ef86a78e28331998ae7c2dc206e8ce583a15483d327d1a459fe2a",
+      "bundled_sha256": "9d2c81a1645ef86a78e28331998ae7c2dc206e8ce583a15483d327d1a459fe2a"
+    },
+    {
+      "file": "maps/actor_legendary_card__bottom_right.l64",
+      "bytes": 1140,
+      "source_sha256": "ae18e65804e7c8a2ddaeaac7a01c66598cc2a1ca869b976709ef2f15b5ed38ad",
+      "bundled_sha256": "ae18e65804e7c8a2ddaeaac7a01c66598cc2a1ca869b976709ef2f15b5ed38ad"
+    },
+    {
+      "file": "maps/actor_legendary_card__left_spark.l64",
+      "bytes": 1092,
+      "source_sha256": "fc51233fe1233bc4dd238af2b48353e788b05f2f02fca5a0525190ebeaf2fcce",
+      "bundled_sha256": "fc51233fe1233bc4dd238af2b48353e788b05f2f02fca5a0525190ebeaf2fcce"
+    },
+    {
+      "file": "maps/actor_legendary_card__right_spark.l64",
+      "bytes": 1092,
+      "source_sha256": "ba724d46951250134a91b2e02cb2a56313468938858bf54908e77a5d2e468560",
+      "bundled_sha256": "ba724d46951250134a91b2e02cb2a56313468938858bf54908e77a5d2e468560"
+    },
+    {
+      "file": "maps/actor_legendary_card__top_left.l64",
+      "bytes": 1140,
+      "source_sha256": "022d8a2fbebed4c8b2a399109a8a5b7148166ba149701b2cc622c6ffc70c55d3",
+      "bundled_sha256": "022d8a2fbebed4c8b2a399109a8a5b7148166ba149701b2cc622c6ffc70c55d3"
+    },
+    {
+      "file": "maps/actor_legendary_card__top_right.l64",
+      "bytes": 1140,
+      "source_sha256": "e2fac1b28ce5cb6e14ba64225581d3b8fa477143a959315df0f8bfb71205205f",
+      "bundled_sha256": "e2fac1b28ce5cb6e14ba64225581d3b8fa477143a959315df0f8bfb71205205f"
+    },
+    {
+      "file": "maps/actor_man.l64",
+      "bytes": 28880,
+      "source_sha256": "3e8f389069bbaeb9f6b69620d7087feae7be275e0d495ed51d1e18894f98ed96",
+      "bundled_sha256": "3e8f389069bbaeb9f6b69620d7087feae7be275e0d495ed51d1e18894f98ed96"
+    },
+    {
+      "file": "maps/actor_mania.l64",
+      "bytes": 28328,
+      "source_sha256": "5d6b9cab070da0f3661ecc6132e22bbf790d4b9e8f285551f7c8765f792ed36c",
+      "bundled_sha256": "5d6b9cab070da0f3661ecc6132e22bbf790d4b9e8f285551f7c8765f792ed36c"
+    },
+    {
+      "file": "maps/actor_mania_palette2.l64",
+      "bytes": 28376,
+      "source_sha256": "a533075b2212d2a0304d77da4b0ad8217cbf167492e074410d93df9b8f3dae20",
+      "bundled_sha256": "a533075b2212d2a0304d77da4b0ad8217cbf167492e074410d93df9b8f3dae20"
+    },
+    {
+      "file": "maps/actor_mark.l64",
+      "bytes": 41192,
+      "source_sha256": "6f9fc73f80c7a6c139de7becc6bbd0df31d35d277a2e3976116e7b37696b8496",
+      "bundled_sha256": "6f9fc73f80c7a6c139de7becc6bbd0df31d35d277a2e3976116e7b37696b8496"
+    },
+    {
+      "file": "maps/actor_mitch.l64",
+      "bytes": 30320,
+      "source_sha256": "1799e2507993342fe7ec8e4a2a4b7296eee759a5d61e823884332b64ed2f23e0",
+      "bundled_sha256": "1799e2507993342fe7ec8e4a2a4b7296eee759a5d61e823884332b64ed2f23e0"
+    },
+    {
+      "file": "maps/actor_murray.l64",
+      "bytes": 37424,
+      "source_sha256": "1a4f32934e60f7ad5d794a461f6b02c7e62802bf18c8b1eb76fbf42cca61716d",
+      "bundled_sha256": "1a4f32934e60f7ad5d794a461f6b02c7e62802bf18c8b1eb76fbf42cca61716d"
+    },
+    {
+      "file": "maps/actor_nikki.l64",
+      "bytes": 29300,
+      "source_sha256": "85a5832ca2ccb80ff169395e75f8854fa24d3abadf7b63e47675e344a84adadb",
+      "bundled_sha256": "85a5832ca2ccb80ff169395e75f8854fa24d3abadf7b63e47675e344a84adadb"
+    },
+    {
+      "file": "maps/actor_pappy.l64",
+      "bytes": 36992,
+      "source_sha256": "32a4bc336d4248c7c8f7099034c4562b06a0a383138a1dd19b70a04bfdcd83ae",
+      "bundled_sha256": "32a4bc336d4248c7c8f7099034c4562b06a0a383138a1dd19b70a04bfdcd83ae"
+    },
+    {
+      "file": "maps/actor_rick.l64",
+      "bytes": 32448,
+      "source_sha256": "e0921574c7bcf01043c5ee683b54bafdc1f24ca77c807578e9c35f6c3560f022",
+      "bundled_sha256": "e0921574c7bcf01043c5ee683b54bafdc1f24ca77c807578e9c35f6c3560f022"
+    },
+    {
+      "file": "maps/actor_rod.l64",
+      "bytes": 37668,
+      "source_sha256": "894b25c2da15fd0213b91a323904a2b110d98cd1244db67f918683234134fe84",
+      "bundled_sha256": "894b25c2da15fd0213b91a323904a2b110d98cd1244db67f918683234134fe84"
+    },
+    {
+      "file": "maps/actor_ronald.l64",
+      "bytes": 36740,
+      "source_sha256": "25f17922002e30c4183bbbc3ed20227e86d4614b19ca88507df18c998f49a1e3",
+      "bundled_sha256": "25f17922002e30c4183bbbc3ed20227e86d4614b19ca88507df18c998f49a1e3"
+    },
+    {
+      "file": "maps/actor_specs.l64",
+      "bytes": 28800,
+      "source_sha256": "efc74eff427545a1ddd9054f1285988a8398203f95c5c2e374d9b9c1248252cc",
+      "bundled_sha256": "efc74eff427545a1ddd9054f1285988a8398203f95c5c2e374d9b9c1248252cc"
+    },
+    {
+      "file": "maps/actor_steve.l64",
+      "bytes": 37460,
+      "source_sha256": "a45d5339977ccad2f2b2a7825d0cdadd73bedc64d75eee828d140621dfa005e7",
+      "bundled_sha256": "a45d5339977ccad2f2b2a7825d0cdadd73bedc64d75eee828d140621dfa005e7"
+    },
+    {
+      "file": "maps/actor_swimmer.l64",
+      "bytes": 29684,
+      "source_sha256": "49e5af9a10cc11ff35780c4bb4b4400220d43dcf811f6e2d6a144103533eee51",
+      "bundled_sha256": "49e5af9a10cc11ff35780c4bb4b4400220d43dcf811f6e2d6a144103533eee51"
+    },
+    {
+      "file": "maps/actor_swimmer_palette2.l64",
+      "bytes": 29732,
+      "source_sha256": "8da63584ca3727adeda09d554bfb977a68b90948c4e23634233dee3ea14c6491",
+      "bundled_sha256": "8da63584ca3727adeda09d554bfb977a68b90948c4e23634233dee3ea14c6491"
+    },
+    {
+      "file": "maps/actor_tech.l64",
+      "bytes": 31932,
+      "source_sha256": "36389559e90922a8cf22fdb50164f8f9f9638adf68789449c9a6f1ec129e8084",
+      "bundled_sha256": "36389559e90922a8cf22fdb50164f8f9f9638adf68789449c9a6f1ec129e8084"
+    },
+    {
+      "file": "maps/actor_torch.l64",
+      "bytes": 3684,
+      "source_sha256": "b1da574812607b1ac826bba3ba2883c963673a87c2fa49d02019a2c2780f301a",
+      "bundled_sha256": "b1da574812607b1ac826bba3ba2883c963673a87c2fa49d02019a2c2780f301a"
+    },
+    {
+      "file": "maps/actor_woman.l64",
+      "bytes": 29756,
+      "source_sha256": "b30e052e607deb6ddbcbb23a08825a859fb0bcc7768ddb326f0a095524ab1cc0",
+      "bundled_sha256": "b30e052e607deb6ddbcbb23a08825a859fb0bcc7768ddb326f0a095524ab1cc0"
+    },
+    {
+      "file": "maps/challenge_hall.l64",
+      "bytes": 45408,
+      "source_sha256": "592966701662ad51bce3bdfe05fd5380e3901178cc0079dcba2bdd762423e324",
+      "bundled_sha256": "592966701662ad51bce3bdfe05fd5380e3901178cc0079dcba2bdd762423e324"
+    },
+    {
+      "file": "maps/club_foyer.l64",
+      "bytes": 14112,
+      "source_sha256": "c3924f8201c77e76757c1397636a94900ca0bcfc568408ea3b584c1ab214b47c",
+      "bundled_sha256": "c3924f8201c77e76757c1397636a94900ca0bcfc568408ea3b584c1ab214b47c"
+    },
+    {
+      "file": "maps/club_lobby.l64",
+      "bytes": 41808,
+      "source_sha256": "ed4c64e29c79bfc44efc42ace35dfbce137de9e646fc6f22e3d179f648b4b5a7",
+      "bundled_sha256": "ed4c64e29c79bfc44efc42ace35dfbce137de9e646fc6f22e3d179f648b4b5a7"
+    },
+    {
+      "file": "maps/deck_machine_2_off.l64",
+      "bytes": 176,
+      "source_sha256": "5fda4bbdec49ea12ce6f13a476448529199a64dbdd7316055d369ab0671d1ea2",
+      "bundled_sha256": "5fda4bbdec49ea12ce6f13a476448529199a64dbdd7316055d369ab0671d1ea2"
+    },
+    {
+      "file": "maps/deck_machine_2_on.l64",
+      "bytes": 176,
+      "source_sha256": "089734ee000f0aca19e7e0a54d31ac00f4e9e421f7ead04f91f6f7fc2362100a",
+      "bundled_sha256": "089734ee000f0aca19e7e0a54d31ac00f4e9e421f7ead04f91f6f7fc2362100a"
+    },
+    {
+      "file": "maps/deck_machine_3_off.l64",
+      "bytes": 176,
+      "source_sha256": "5e452c373ccc46c248d23182d1fd74e033ec198a52d7e96bc64a4511a00ebee9",
+      "bundled_sha256": "5e452c373ccc46c248d23182d1fd74e033ec198a52d7e96bc64a4511a00ebee9"
+    },
+    {
+      "file": "maps/deck_machine_3_on.l64",
+      "bytes": 176,
+      "source_sha256": "2a50350443f2572095ea5a1fb75af493967a4c5a2ba15f1d35a0e4adcaadffaf",
+      "bundled_sha256": "2a50350443f2572095ea5a1fb75af493967a4c5a2ba15f1d35a0e4adcaadffaf"
+    },
+    {
+      "file": "maps/deck_machine_4_off.l64",
+      "bytes": 176,
+      "source_sha256": "2ef53211a07116f342f288e5655e0adcebd34d63f5cd4e6b6fa000175be00886",
+      "bundled_sha256": "2ef53211a07116f342f288e5655e0adcebd34d63f5cd4e6b6fa000175be00886"
+    },
+    {
+      "file": "maps/deck_machine_4_on.l64",
+      "bytes": 176,
+      "source_sha256": "8267f8fd7987b3e08b1233322e60f7423f9a6207cbd2515a703a7cb7286735de",
+      "bundled_sha256": "8267f8fd7987b3e08b1233322e60f7423f9a6207cbd2515a703a7cb7286735de"
+    },
+    {
+      "file": "maps/deck_machine_5_off.l64",
+      "bytes": 176,
+      "source_sha256": "6d0839e461ec27bcaad845cb55622ae5d3c77c751b746b24c7ab9022692f2ed9",
+      "bundled_sha256": "6d0839e461ec27bcaad845cb55622ae5d3c77c751b746b24c7ab9022692f2ed9"
+    },
+    {
+      "file": "maps/deck_machine_5_on.l64",
+      "bytes": 176,
+      "source_sha256": "1cd497ed53d8a1d3cb6e7e508adf07e99a9e434014edbee9e908d8ce9b50b69b",
+      "bundled_sha256": "1cd497ed53d8a1d3cb6e7e508adf07e99a9e434014edbee9e908d8ce9b50b69b"
+    },
+    {
+      "file": "maps/deck_machine_6_off.l64",
+      "bytes": 176,
+      "source_sha256": "b238e772e38ef681dafa534d7073a231ccf604a5b4b105ce2919ed3f92871471",
+      "bundled_sha256": "b238e772e38ef681dafa534d7073a231ccf604a5b4b105ce2919ed3f92871471"
+    },
+    {
+      "file": "maps/deck_machine_6_on.l64",
+      "bytes": 176,
+      "source_sha256": "f66e39735cb4bebf51acbdfe9a9a610cd8c62886e60937bfdee8306f03c60486",
+      "bundled_sha256": "f66e39735cb4bebf51acbdfe9a9a610cd8c62886e60937bfdee8306f03c60486"
+    },
+    {
+      "file": "maps/deck_machine_7_off.l64",
+      "bytes": 176,
+      "source_sha256": "cc7312fc43c5f476478bc8fa5cb6b3c839703938f80060f1b53895f160b7ad25",
+      "bundled_sha256": "cc7312fc43c5f476478bc8fa5cb6b3c839703938f80060f1b53895f160b7ad25"
+    },
+    {
+      "file": "maps/deck_machine_7_on.l64",
+      "bytes": 176,
+      "source_sha256": "d2e39911451044756c2988837ef2c40a9616a38d0cc4eaa44249fe4390c28887",
+      "bundled_sha256": "d2e39911451044756c2988837ef2c40a9616a38d0cc4eaa44249fe4390c28887"
+    },
+    {
+      "file": "maps/deck_machine_8_off.l64",
+      "bytes": 176,
+      "source_sha256": "752bcccfb22abc3acd7d112987986245eefcb92186b9357c6a64b20130eb4116",
+      "bundled_sha256": "752bcccfb22abc3acd7d112987986245eefcb92186b9357c6a64b20130eb4116"
+    },
+    {
+      "file": "maps/deck_machine_8_on.l64",
+      "bytes": 176,
+      "source_sha256": "fa0b69924d095760f31f641445472c0a520882a69fdb3a2d923770caf6d30f7a",
+      "bundled_sha256": "fa0b69924d095760f31f641445472c0a520882a69fdb3a2d923770caf6d30f7a"
+    },
+    {
+      "file": "maps/deck_machine_9_off.l64",
+      "bytes": 176,
+      "source_sha256": "4b50187a8fb20a227896fa32f702847c341a99b48200bba4f551de4136dc668c",
+      "bundled_sha256": "4b50187a8fb20a227896fa32f702847c341a99b48200bba4f551de4136dc668c"
+    },
+    {
+      "file": "maps/deck_machine_9_on.l64",
+      "bytes": 176,
+      "source_sha256": "7f32e81861c394fa438d7720d522fa61064d70f7195e89efc367b1771a16605d",
+      "bundled_sha256": "7f32e81861c394fa438d7720d522fa61064d70f7195e89efc367b1771a16605d"
+    },
+    {
+      "file": "maps/deck_machine_room.l64",
+      "bytes": 24264,
+      "source_sha256": "39afb245f2263ddcb972221b60af35ec6c31545ed763bddc86f73af4e39e7968",
+      "bundled_sha256": "39afb245f2263ddcb972221b60af35ec6c31545ed763bddc86f73af4e39e7968"
+    },
+    {
+      "file": "maps/deck_machine_room_all_deck_machines.l64",
+      "bytes": 24204,
+      "source_sha256": "0ce32375283c42925ed19b46d1680097a89eb2d647c06891f1ac0ee36b81accf",
+      "bundled_sha256": "0ce32375283c42925ed19b46d1680097a89eb2d647c06891f1ac0ee36b81accf"
+    },
+    {
+      "file": "maps/deck_machine_room_dynamic.l64",
+      "bytes": 23280,
+      "source_sha256": "9e287cd205db692cb5fea5c7ab6c486130ef36421d8ec84307d44e3fec4bbc72",
+      "bundled_sha256": "9e287cd205db692cb5fea5c7ab6c486130ef36421d8ec84307d44e3fec4bbc72"
+    },
+    {
+      "file": "maps/emblem_challenge_hall_entrance.l64",
+      "bytes": 176,
+      "source_sha256": "285da0fc2c94578c3de18036572c10e685d7cd376fe17fe2b71daf229d302abc",
+      "bundled_sha256": "285da0fc2c94578c3de18036572c10e685d7cd376fe17fe2b71daf229d302abc"
+    },
+    {
+      "file": "maps/emblem_fighting_club_entrance.l64",
+      "bytes": 176,
+      "source_sha256": "de5076730b1ff16e88b550925764e459057a01b38579d6858fb246d1d6748758",
+      "bundled_sha256": "de5076730b1ff16e88b550925764e459057a01b38579d6858fb246d1d6748758"
+    },
+    {
+      "file": "maps/emblem_fire_club_entrance.l64",
+      "bytes": 176,
+      "source_sha256": "1511f2f862b331a191224a3473e2633e61da264236312ce4890ca78b96bec6c9",
+      "bundled_sha256": "1511f2f862b331a191224a3473e2633e61da264236312ce4890ca78b96bec6c9"
+    },
+    {
+      "file": "maps/emblem_grass_club_entrance.l64",
+      "bytes": 176,
+      "source_sha256": "d1d53a3cc7b1ef59ebd7d74798e76e4d832d07de8a04c7be051f114b5f476ee5",
+      "bundled_sha256": "d1d53a3cc7b1ef59ebd7d74798e76e4d832d07de8a04c7be051f114b5f476ee5"
+    },
+    {
+      "file": "maps/emblem_lightning_club_entrance.l64",
+      "bytes": 176,
+      "source_sha256": "63e22d8393572c3a4c5a4b9f88964e3370c214aa9be8ef503ebc217870d734d5",
+      "bundled_sha256": "63e22d8393572c3a4c5a4b9f88964e3370c214aa9be8ef503ebc217870d734d5"
+    },
+    {
+      "file": "maps/emblem_psychic_club_entrance.l64",
+      "bytes": 176,
+      "source_sha256": "e6ae69c58ccad6dd0ae0f67b5685d283036199988cbbd0f4ccca39034949aa97",
+      "bundled_sha256": "e6ae69c58ccad6dd0ae0f67b5685d283036199988cbbd0f4ccca39034949aa97"
+    },
+    {
+      "file": "maps/emblem_rock_club_entrance.l64",
+      "bytes": 176,
+      "source_sha256": "822565b128b0f3eea92ab255070dbf8178be5585299d53e560331424977b0386",
+      "bundled_sha256": "822565b128b0f3eea92ab255070dbf8178be5585299d53e560331424977b0386"
+    },
+    {
+      "file": "maps/emblem_science_club_entrance.l64",
+      "bytes": 176,
+      "source_sha256": "13ddedccb6e094fb375a14ca3f25c4c1afff420326677ddb31b77714417c18d1",
+      "bundled_sha256": "13ddedccb6e094fb375a14ca3f25c4c1afff420326677ddb31b77714417c18d1"
+    },
+    {
+      "file": "maps/emblem_water_club_entrance.l64",
+      "bytes": 176,
+      "source_sha256": "bf292246551268ec10c8166fc37fe6b2227ffbd7c73012723aee20f0f91b0826",
+      "bundled_sha256": "bf292246551268ec10c8166fc37fe6b2227ffbd7c73012723aee20f0f91b0826"
+    },
+    {
+      "file": "maps/fighting_club.l64",
+      "bytes": 64092,
+      "source_sha256": "4037912f3bb1759001075bfb74b3a9e51006cd669a5898e036a36729ab93c86d",
+      "bundled_sha256": "4037912f3bb1759001075bfb74b3a9e51006cd669a5898e036a36729ab93c86d"
+    },
+    {
+      "file": "maps/fire_club.l64",
+      "bytes": 38976,
+      "source_sha256": "89d17aa1a108248ef43b6b3cb5c2c38fb09b8324048a2fd0c88557d9753a5f49",
+      "bundled_sha256": "89d17aa1a108248ef43b6b3cb5c2c38fb09b8324048a2fd0c88557d9753a5f49"
+    },
+    {
+      "file": "maps/grass_club.l64",
+      "bytes": 227688,
+      "source_sha256": "4f6d58556cbbed0d1303c0549cb36ad574a96f02ab5595f0f19bbfd96857562a",
+      "bundled_sha256": "4f6d58556cbbed0d1303c0549cb36ad574a96f02ab5595f0f19bbfd96857562a"
+    },
+    {
+      "file": "maps/hall_of_honor.l64",
+      "bytes": 25644,
+      "source_sha256": "c17dda0b7e825e7c32e5fea6f0e25a337a6b8c20539c7e8b7f010b5098811937",
+      "bundled_sha256": "c17dda0b7e825e7c32e5fea6f0e25a337a6b8c20539c7e8b7f010b5098811937"
+    },
+    {
+      "file": "maps/ishiharas_house.l64",
+      "bytes": 30888,
+      "source_sha256": "62e6d221ab25d4a196feba6e0600f9d09046eeb37f8ae2d56439349d36064fbf",
+      "bundled_sha256": "62e6d221ab25d4a196feba6e0600f9d09046eeb37f8ae2d56439349d36064fbf"
+    },
+    {
+      "file": "maps/lightning_club.l64",
+      "bytes": 34584,
+      "source_sha256": "ffa92b48174838af6b6841696dc59c92b6f3b32c3b14c505571ff2f332cd72e4",
+      "bundled_sha256": "ffa92b48174838af6b6841696dc59c92b6f3b32c3b14c505571ff2f332cd72e4"
+    },
+    {
+      "file": "maps/mason_laboratory.l64",
+      "bytes": 43128,
+      "source_sha256": "cc4f20b3a82f7958fe8d9ad8218e1e4429e1a6430bbaf3b37d46441bfd915fbb",
+      "bundled_sha256": "cc4f20b3a82f7958fe8d9ad8218e1e4429e1a6430bbaf3b37d46441bfd915fbb"
+    },
+    {
+      "file": "maps/mason_laboratory_challenge_machine.l64",
+      "bytes": 44100,
+      "source_sha256": "950e41d29cbf7bf573e2baeb5254c44239ebc20a6ed37945ece58b2cbe3e8204",
+      "bundled_sha256": "950e41d29cbf7bf573e2baeb5254c44239ebc20a6ed37945ece58b2cbe3e8204"
+    },
+    {
+      "file": "maps/overworld.l64",
+      "bytes": 294172,
+      "source_sha256": "8f7c5d577b1c28685ac6ce14fd1ef17575c51f2cfe0d712d98b1d978a9cea730",
+      "bundled_sha256": "8f7c5d577b1c28685ac6ce14fd1ef17575c51f2cfe0d712d98b1d978a9cea730"
+    },
+    {
+      "file": "maps/pokemon_dome.l64",
+      "bytes": 75396,
+      "source_sha256": "3cc4ef2afc9da2f963a49b1d278373e6dd31003dab4c56922635eb125c993d34",
+      "bundled_sha256": "3cc4ef2afc9da2f963a49b1d278373e6dd31003dab4c56922635eb125c993d34"
+    },
+    {
+      "file": "maps/pokemon_dome_entrance.l64",
+      "bytes": 22248,
+      "source_sha256": "7981d28df0b48d972c4c18f39113f0e3470e8e2d609366c4b2b30cf8692ff02a",
+      "bundled_sha256": "7981d28df0b48d972c4c18f39113f0e3470e8e2d609366c4b2b30cf8692ff02a"
+    },
+    {
+      "file": "maps/pokemon_dome_entrance_door_open.l64",
+      "bytes": 21048,
+      "source_sha256": "9e3e9cc3f1b2d4c2d0b46892388c9665e3dfd92349582bffff755765791c6f2a",
+      "bundled_sha256": "9e3e9cc3f1b2d4c2d0b46892388c9665e3dfd92349582bffff755765791c6f2a"
+    },
+    {
+      "file": "maps/pokemon_dome_hall_of_honor_door_open.l64",
+      "bytes": 75336,
+      "source_sha256": "3362ca1028c0acb3ae141443549cd0afe0c5958d3203727ceb65bd9f3bae3f1b",
+      "bundled_sha256": "3362ca1028c0acb3ae141443549cd0afe0c5958d3203727ceb65bd9f3bae3f1b"
+    },
+    {
+      "file": "maps/psychic_club.l64",
+      "bytes": 43644,
+      "source_sha256": "68b89e72c07bb5ce9ccb15e1e7b7247d8fccbe9768d06aa75f2cb96ea960f84a",
+      "bundled_sha256": "68b89e72c07bb5ce9ccb15e1e7b7247d8fccbe9768d06aa75f2cb96ea960f84a"
+    },
+    {
+      "file": "maps/rock_club.l64",
+      "bytes": 75780,
+      "source_sha256": "879f660ef382613ecd91bf6b12b2695be5b0fa6c7488cea0bc58e14cf0c2c453",
+      "bundled_sha256": "879f660ef382613ecd91bf6b12b2695be5b0fa6c7488cea0bc58e14cf0c2c453"
+    },
+    {
+      "file": "maps/science_club.l64",
+      "bytes": 30864,
+      "source_sha256": "39f35345bda30220c82e1247171324ea1fe67bccba0ad2347ce9dafad53f54be",
+      "bundled_sha256": "39f35345bda30220c82e1247171324ea1fe67bccba0ad2347ce9dafad53f54be"
+    },
+    {
+      "file": "maps/water_club.l64",
+      "bytes": 98712,
+      "source_sha256": "84160bac1b6e7349c5a7bec9bb709eabb2caf5364cb6bfb995fd309800945759",
+      "bundled_sha256": "84160bac1b6e7349c5a7bec9bb709eabb2caf5364cb6bfb995fd309800945759"
+    },
+    {
+      "file": "actors.l64",
+      "bytes": 69132,
+      "source_sha256": "b6c68e405628f4c59cecf744ec4003e27dbd43e7db08d9aa80fa947eb362a49f",
+      "bundled_sha256": "b6c68e405628f4c59cecf744ec4003e27dbd43e7db08d9aa80fa947eb362a49f"
+    }
+  ]
+}

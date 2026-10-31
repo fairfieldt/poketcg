@@ -44,6 +44,10 @@
     }
   },
   "design": "angular spectacles, tidy side part and purple shirt",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 21
@@ -77,7 +81,7 @@
   "appearance": "specs",
   "pose": "standing",
   "component": null,
-  "vertices": 940,
-  "triangles": 500,
+  "vertices": 1044,
+  "triangles": 589,
   "batches": 6
 }

@@ -44,6 +44,10 @@
     }
   },
   "design": "rounded purple bob with a long side fringe",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 26
@@ -77,7 +81,7 @@
   "appearance": "lass1",
   "pose": "standing",
   "component": null,
-  "vertices": 1122,
-  "triangles": 596,
+  "vertices": 1154,
+  "triangles": 624,
   "batches": 6
 }

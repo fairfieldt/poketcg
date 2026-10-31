@@ -54,6 +54,10 @@
     }
   },
   "design": "long blue hair, sleeveless light dress; standing and lying poses",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 24
@@ -87,7 +91,7 @@
   "appearance": "amy",
   "pose": "standing",
   "component": null,
-  "vertices": 1052,
-  "triangles": 556,
+  "vertices": 1084,
+  "triangles": 584,
   "batches": 6
 }

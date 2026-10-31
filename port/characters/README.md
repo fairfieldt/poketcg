@@ -3,7 +3,7 @@
 All 115 NPC entries from the sprite atlas are covered by **39 authored models**:
 37 humans and two prop families. They provide 42 appearances without creating
 duplicate models for NPC aliases or palette changes. Dr. Mason and Ronald retain
-the approved geometry and colors from the Lightning character demo.
+the approved designs and colors from the Lightning character demo.
 
 Open [assets/cast.blend](assets/cast.blend) to inspect the unique cast together.
 The [model index](MODELS.md) links every individual Blender source and its aliases.
@@ -19,11 +19,21 @@ materials. The native assets and ROM do not require Blender or Fast64.
 - **Whole models:** exact sprite duplicates are aliases in [bindings.json](bindings.json).
   For example, Sam, the technicians, Joseph, David, Erik and Aaron share the same
   sprite, so they share one technician model. Ronald's three IDs share one model.
-- **Geometry:** 33 linked mesh pieces serve 802 part instances in the new
+- **Geometry:** 33 linked mesh pieces serve 801 authored part instances in the new
   characters. Heads, face surfaces, hands, ears, limb sections, shoes, torso
   shapes, coat/skirt shapes and suitable hair/cap pieces share mesh datablocks.
   Distinct body proportions, hair silhouettes, accessories and clothing panels
   remain explicit in [tools/designs.py](tools/designs.py).
+  Near-coplanar face and clothing panels are baked with their owning head or
+  torso into one exterior surface. The linked authoring pieces remain hidden
+  in each editable model; only their material-preserving exterior is exported.
+  Uncapped hair, ears and animated limbs retain normal solid intersections.
+  Capped heads own the hair, crown, brim and attached badge in one closed
+  exterior. Hidden scalp and head faces are removed. `tools/check_caps.py`
+  verifies final native headwear faces have an inside and outside using winding
+  numbers, with no exported hidden scalp vertices.
+  [Cap validation](review/cap_validation.json) records this camera-independent
+  exterior proof for all five capped families.
 - **Materials:** facial styles reuse textures; the cast needs 11 textures, all
   32×32 RGBA16. Opaque facial backgrounds use the same RGBA16-safe pigment as
   each character's solid head, ears, neck and limbs. Eye whites, pupils, glasses
@@ -116,6 +126,12 @@ This changes materials/transforms without copying mesh data. The helper also
 updates pivots for export. After manual edits, regenerate native variant/pose
 exports before rebuilding the gallery.
 
+Native export validation also rejects duplicate and degenerate triangles across
+all 49 exports. The exterior bake preserves facial-feature pixels, pigments,
+all four limb meshes, UVs and joint pivots; it removes a duplicated torso in the
+bodysuit recipe. [Exterior validation](review/exterior_validation.json) records
+per-export counts and hashes.
+
 When changing a skin material, run `skin.prepare_skin` before export to regenerate
 its matching opaque facial background. It preserves facial-feature pixels and
 uses a palette-specific texture name, so another character's skin tone is not
@@ -123,9 +139,12 @@ overwritten. Normal model builds do this automatically. The shared exporter only
 lights textures explicitly marked `native_lit_texture`; room textures keep their
 existing shading. [Before/after review](review/skin_consistency.png) compares four
 characters, and `tools/check_skin.py` checks all native face vertices against the
-solid-skin pigment and directional-light rule. The saved
-[skin validation record](review/skin_validation.json) includes geometry/UV/rig
-hashes and the refreshed 49-export native-gallery evidence.
+solid-skin pigment and directional-light rule. The earlier skin-only pass is recorded in
+[skin validation](review/skin_validation.json), including its geometry/UV/rig
+hashes and historical 49-export native-gallery evidence.
+[Exterior preservation](review/exterior_preservation.json) verifies that the
+current bake retains all limb geometry, UVs, colors and pivots, plus every human
+family’s pigment and facial-feature pixels.
 
 ## N64 viewer and verification
 
@@ -142,11 +161,11 @@ The existing Lightning scenes are not populated with the entire cast.
 
 Validation covers every NPC binding, triangle indices, finite geometry, UVs,
 degenerate triangles, texture-memory limits, five-part rigs, palette geometry
-identity and front/back renders. Humans use 492–702 triangles; the torch has 68
+identity and front/back renders. Humans use 518–906 triangles; the torch has 68
 and the card assembly 128. Each texture occupies 2 KiB of the RDP's 4 KiB TMEM.
 
-All **49 native exports** were rendered in ares with **4 MiB RAM**, four headings
-and a rigid walking pose each, with GL error assertions enabled. Nine completed
+The original **49 native exports** were rendered in ares with **4 MiB RAM**, four headings
+and a rigid walking pose each, with GL error assertions enabled. Historical
 RDP framebuffer captures are in [review/n64](review/n64); the tested ROM hash and
 complete verified-entry list are in [review/n64_validation.json](review/n64_validation.json).
 These tests do not establish performance on physical hardware.

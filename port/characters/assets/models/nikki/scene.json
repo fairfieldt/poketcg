@@ -42,6 +42,10 @@
     }
   },
   "design": "long dark swept hair, green sleeveless dress and waist band",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 24
@@ -75,7 +79,7 @@
   "appearance": "nikki",
   "pose": "standing",
   "component": null,
-  "vertices": 1034,
-  "triangles": 556,
+  "vertices": 1066,
+  "triangles": 584,
   "batches": 6
 }

@@ -128,7 +128,7 @@ surface_t *game_render_frame(void)
  presentation_sync(&presentation,&game.ow,player_running);
  presentation_step(&presentation,&game.ow,map);
  const PresentationCamera *camera=presentation_camera(&presentation);
- surface_t *frame=display_get();rdpq_attach(frame,&depth);gl_context_begin();
+ surface_t *frame=display_get();rdpq_attach(frame,&depth);gl_context_begin();scene_begin_opaque();
  glViewport(0,0,320,240);
  if(game.ow.map)glClearColor(26/255.0f,18/255.0f,14/255.0f,1);
  else glClearColor(.02,.025,.055,1);
@@ -284,7 +284,7 @@ static int host_duel(void *ctx,OwState *state,const OwDuel *duel)
  n64_duel_rng(game.cards.rng);game_rng_to_story();
  duel_save_pending=true;
  loaded_map=-1; /* Restore projection/state after the CPU-drawn duel screen. */
- glEnable(GL_DEPTH_TEST);glDepthFunc(GL_LESS_INTERPENETRATING_N64);glEnable(GL_MULTISAMPLE_ARB);
+ scene_begin_opaque();glEnable(GL_MULTISAMPLE_ARB);
  adventure_duel_transition(false);
  return result==0?1:0;
 #endif
@@ -390,10 +390,35 @@ int main(void)
     remains coherent because displayed buffers are never edited by the CPU. */
  display_init(RESOLUTION_320x240,DEPTH_16_BPP,3,GAMMA_NONE,ADVENTURE_VI_FILTER);
  display_set_fps_limit(30);dfs_init(DFS_DEFAULT_LOCATION);joypad_init();rdpq_init();gl_init();
- depth=surface_alloc(FMT_RGBA16,320,240);glEnable(GL_DEPTH_TEST);glDepthFunc(GL_LESS_INTERPENETRATING_N64);
+ depth=surface_alloc(FMT_RGBA16,320,240);scene_begin_opaque();
  glEnable(GL_MULTISAMPLE_ARB);glDisable(GL_CULL_FACE);glDisable(GL_LIGHTING);
  adventure_audio_init();n64_ui_init();actors=scene_open(W3_ACTOR_SCENE,W3_TEXTURE_ROOT);
-#if ADVENTURE_DIAGNOSTIC == 4
+#if ADVENTURE_DIAGNOSTIC == 5 || ADVENTURE_DIAGNOSTIC == 6 || ADVENTURE_DIAGNOSTIC == 7
+ extern void adventure_visual_sweep(surface_t *,Scene *,void (*)(surface_t *,const char *));
+ adventure_visual_sweep(&depth,actors,capture);
+ for(unsigned map=0;map<34;map++) {
+  if(ADVENTURE_DIAGNOSTIC==6&&map!=0&&map!=1&&map!=12&&map!=15&&map!=32)continue;
+  if(ADVENTURE_DIAGNOSTIC==7&&map!=15&&map!=32)continue;
+  memset(&game,0,sizeof(game));game.ow.map=map;game.ow.x=w3_maps[map].width/2;game.ow.y=w3_maps[map].height-4;
+  for(const OwNpcDef *npc=ow_map_npcs[map];npc&&npc->id;npc++)if(npc->id!=255&&npc->x<w3_maps[map].width&&npc->y<w3_maps[map].height&&game.ow.npc_count<OW_NPC_LIMIT) {
+   unsigned index=game.ow.npc_count++;
+   game.ow.npcs[index]=(OwNpc){npc->id,npc->x,npc->y,npc->dir,1,ow_npc_headers[npc->id].sprite};
+   game.ow.npc_flags[index]=ow_npc_headers[npc->id].flags;
+   game.ow.npc_animation[index]=npc->id==NPC_AMY?SPRITE_ANIM_CGB_AMY_LAYING:ow_npc_headers[npc->id].animation;
+  }
+  presentation_init(&presentation,NULL,false);debugf("VISUAL MAP %u BEGIN\n",map);
+  const unsigned held=ADVENTURE_DIAGNOSTIC==5?2:24;
+  for(unsigned f=0;f<held;f++) {
+   capture_next=false;surface_t *frame=game_render_frame();
+   char label[40];snprintf(label,sizeof(label),"Map %u: surface review",map);n64_map_label(frame,label);
+   if(f==(ADVENTURE_DIAGNOSTIC==5?1:4))capture(frame,NULL);
+   display_show(frame);adventure_audio_poll();
+  }
+ }
+ capture_next=false;surface_t *name_frame=adventure_name_player_preview();capture(name_frame,"naming");
+ debugf("ADVENTURE VISUAL SWEEP PASS\n");
+ for(;;)game_draw();
+#elif ADVENTURE_DIAGNOSTIC == 4
  /* Hold the production island for reviewing the actual VI/display output.
     The ordinary framebuffer capture is retained as a separate reference. */
  memset(&game,0,sizeof(game));game.ow.overworld_selection=OWMAP_MASON_LABORATORY;

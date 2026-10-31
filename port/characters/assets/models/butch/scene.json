@@ -42,6 +42,10 @@
     }
   },
   "design": "wide head and thick short dark hair, yellow shirt",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 21
@@ -75,7 +79,7 @@
   "appearance": "butch",
   "pose": "standing",
   "component": null,
-  "vertices": 950,
-  "triangles": 500,
+  "vertices": 1058,
+  "triangles": 590,
   "batches": 6
 }

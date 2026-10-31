@@ -43,6 +43,10 @@
     }
   },
   "design": "broad red bob with side part and red dress",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 24
@@ -76,7 +80,7 @@
   "appearance": "woman",
   "pose": "standing",
   "component": null,
-  "vertices": 1051,
-  "triangles": 556,
+  "vertices": 1085,
+  "triangles": 584,
   "batches": 6
 }

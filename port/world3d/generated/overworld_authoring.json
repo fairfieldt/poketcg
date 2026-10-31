@@ -1,8 +1,8 @@
 {
   "record": {
     "file": "maps/overworld.l64",
-    "vertices": 10854,
-    "triangles": 5410,
+    "vertices": 10835,
+    "triangles": 5511,
     "batches": 18,
     "textures": [
       "t1061656e9659e580",

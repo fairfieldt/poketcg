@@ -45,6 +45,10 @@
     }
   },
   "design": "two-point black fringe, red hooded top and dark trousers",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 21
@@ -78,7 +82,7 @@
   "appearance": "hood",
   "pose": "standing",
   "component": null,
-  "vertices": 946,
-  "triangles": 502,
+  "vertices": 977,
+  "triangles": 524,
   "batches": 6
 }

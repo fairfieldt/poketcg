@@ -25,6 +25,7 @@ from png import write_png
 import export_scene
 import render_maps
 from skin import prepare_skin
+from exterior import exterior_sources
 
 slug=sys.argv[sys.argv.index('--')+1]
 catalog=json.loads((ROOT/'catalog.json').read_text())
@@ -171,6 +172,7 @@ def face(style):
 
 
 def hair(kind,mat):
+    wearing_cap=kind=='cap' or spec.get('cap',False)
     if kind=='hood':
         part('hood',ink)
         for s in (-1,1):part('hood_ear',ink,(s*.37,-.02,2.17))
@@ -182,14 +184,19 @@ def hair(kind,mat):
     if kind=='flat':part('flat_hair',mat)
     elif kind not in ('bald','receding'):part('hair_cap',mat)
     if kind in ('bob','long','twintails','bun'):
-        part('hair_back' if kind=='long' else 'bob_back',mat)
-        for s in (-1,1):part('hair_side',mat,(s*.34,-.01,1.73),s=(.9,1,1 if kind!='long' else 1.35))
+        part('hair_back' if kind=='long' else 'bob_back',mat,s=(.95 if wearing_cap else 1,1,1))
+        for s in (-1,1):
+            # A capped long-haired character keeps the long side locks below
+            # the hat; the old upper corners pierced its sloping crown.
+            side_height=1.65 if wearing_cap else 1.73
+            side_length=1 if wearing_cap or kind!='long' else 1.35
+            part('hair_side',mat,(s*.34,-.01,side_height),s=(.9,1,side_length))
     if kind=='twintails':
         for s in (-1,1):
             part('bun',mat,(s*.40,-.07,2.08),s=(1.05,.9,1.2))
             block('hair tie',(s*.38,.07,2.05),(.12,.065,.06),accent)
     if kind=='bun':part('bun',mat,(0,-.19,2.22))
-    if kind in ('sidepart','swept','quiff','short','receding','bob','long'):
+    if kind in ('sidepart','swept','quiff','short','receding','bob','long') and not wearing_cap:
         height=.20 if kind=='quiff' else .10
         mesh('swept fringe',spike([(-.31,.14,2.02),(.27,.14,2.02),(.24,-.05,2.12+height),(-.20,-.09,2.12)],
                                  (-.28,.30,1.88)),mat)
@@ -204,10 +211,10 @@ def hair(kind,mat):
         for s in (-1,1):
             mesh('curtain fringe',spike([(s*.02,.13,2.1),(s*.32,.12,2.07),
                  (s*.30,.30,2.02),(s*.05,.31,2.03)],(s*.20,.30,1.74)),mat)
-    if kind=='cap' or spec.get('cap'):
+    if wearing_cap:
         part('cap',white if spec.get('hair_color')=='white' else accent)
         part('brim',white if spec.get('hair_color')=='white' else accent,(0,.34,1.98))
-        block('cap badge',(0,.304,2.075),(.10,.025,.08),white)
+        block('cap badge',(0,.305,2.075),(.10,.08,.08),white)
     if spec.get('headband'):
         block('headband',(0,.25,2.0),(.61,.07,.065),accent)
     if spec.get('curls'):
@@ -221,8 +228,6 @@ def outfit(costume):
     elif costume in ('bodysuit','vest','jacket','trainer'):top=ink if costume!='vest' else white
     part('torso_female' if female else 'torso',top)
     part('neck',skin,(0,0,1.47))
-    if costume=='bodysuit':
-        part('torso',ink)
     if costume in ('skirt','uniform','dress','cardigan','sleeveless'):
         long=costume in ('dress','cardigan','sleeveless')
         part('long_skirt' if long else 'skirt',ink if costume in ('skirt','uniform') else accent)
@@ -329,6 +334,12 @@ else:
     if spec['body']=='prop':props()
     else:humanoid()
 
+# Keep the editable linked pieces, but export their actual exterior surface.
+authored_sources=list(sources)
+for source in sources:source['character_name']=slug
+if slug not in ('torch','legendary_card'):
+    sources=exterior_sources(sources,wearing_cap=spec.get('hair')=='cap' or spec.get('cap',False))
+
 # The facial paint and solid head/ears/limbs share the same character pigment.
 # Opaque feature pixels remain unchanged; no alpha-test support is required.
 skin_palette=None
@@ -343,8 +354,9 @@ scene['character_poses']=json.dumps(poses)
 base_manifest=dict(format='L643',textures=textures,actors=[dict(name=slug,model=model,x=0,z=0,heading=0)],colliders=[],
     model=slug,aliases=family['aliases'],runtime_model=model,poses=poses,
     appearances={a['slug']:dict(accent=accent_for(a)) for a in appearances},
-    design=spec.get('detail','Approved existing concept model; geometry preserved'),
-    sharing=dict(library='../../parts.blend',linked_parts=sum(bool(o.data.library) for o in sources)),
+    design=spec.get('detail','Approved Lightning concept with owned face and clothing surfaces'),
+    surface_ownership=dict(face_and_clothing=True,headwear=bool(spec.get('hair')=='cap' or spec.get('cap',False))),
+    sharing=dict(library='../../parts.blend',linked_parts=sum(bool(o.data.library) for o in authored_sources)),
     provenance=dict(sprite=family['sprite'],gfx_sha256=family['gfx_sha256'],fast64='2.6.0'))
 if skin_palette:base_manifest['skin_palette']=skin_palette
 

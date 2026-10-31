@@ -42,6 +42,10 @@
     }
   },
   "design": "high pale square flat-top, white suit jacket and dark shirt",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 20
@@ -75,7 +79,7 @@
   "appearance": "jack",
   "pose": "standing",
   "component": null,
-  "vertices": 1001,
-  "triangles": 531,
+  "vertices": 1162,
+  "triangles": 663,
   "batches": 6
 }

@@ -45,6 +45,10 @@
     }
   },
   "design": "four reusable rounded card quadrants and two faceted pink star sparks",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 0

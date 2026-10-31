@@ -42,6 +42,10 @@
     }
   },
   "design": "long side-swept dark science-club hair and round spectacles",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 20
@@ -75,7 +79,7 @@
   "appearance": "rick",
   "pose": "standing",
   "component": null,
-  "vertices": 1015,
-  "triangles": 537,
+  "vertices": 1176,
+  "triangles": 669,
   "batches": 6
 }

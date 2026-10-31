@@ -1,0 +1,261 @@
+{
+  "status": "intermediate-containment-only",
+  "captured_utc": "2026-10-31T07:37:32.123770+00:00",
+  "rom": {
+    "file": "port/frontends/n64/adventure/poketcg-surface-vi.z64",
+    "sha256": "213ffef29e52e72a921d1c4597f8cac38c7245a2107b212271778f449948d8b6",
+    "diagnostic": 6,
+    "stage_render_frames": 24
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 8,
+      "private_settings": true,
+      "disable_video_interface_processing": false
+    },
+    "stage_identity_proof": "../../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "raw_format": {
+    "width": 640,
+    "height": 240,
+    "pitch": 2560,
+    "pixel_order": "BGRA little endian",
+    "display_aspect": "4:3: duplicate rows only for derived review displays; originals retained unchanged"
+  },
+  "finished": {
+    "callbacks": 591,
+    "captures": 11,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "inter-actor-007.png",
+      "stage": "INTER ACTOR 7",
+      "png_sha256": "313e4add72f59e7a0ff296b9d155e8cc9c84d57e703c00bac123bb3a0d5fa714",
+      "callback_sha256": "06ab39fc72d1b26ced1fa3b247d715ca42002ac27c227ab381c1d1a5b0fa02cc",
+      "rgb_sha256": "9660875dc884052899915318d5ca279c29f370617e377c219be7ffc4ea199cae",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 31,
+      "breakpoint_hits": 31,
+      "valid_frames": 16,
+      "label_sha256": "7f1aeb2731d3a4c62f106c5ad5c6008b7e31eb2aa4810446eefb055225985fe0"
+    },
+    {
+      "file": "actor-007.png",
+      "stage": "ACTOR 7",
+      "png_sha256": "493f3dd660b2c337b340de01dbd098b2a417ae1b1fa2d902e36eb90650657256",
+      "callback_sha256": "347c571ea0068cb64bdf8cfbd8a047c2ea195492c9c3b8aa9c1cfc157d9e52ab",
+      "rgb_sha256": "28fdb35d94f6b5449d03a31fa2795c8f591be2ca267e785a7ebf36b3bab65e20",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 71,
+      "breakpoint_hits": 191,
+      "valid_frames": 56,
+      "label_sha256": "bac10a9a31550956e3562e4afcce969036851889b210b82a89b5d8eaa560f05f"
+    },
+    {
+      "file": "inter-actor-009.png",
+      "stage": "INTER ACTOR 9",
+      "png_sha256": "9fae702853f40d93bab32ec7089dd1367625aff2835459a0d8c0f06195e8606d",
+      "callback_sha256": "9e12caa3c9ad31b1324a210032545160ec5caaf1bdd14d78b7f11e215bfb99e2",
+      "rgb_sha256": "e752c9329f81bccb278398ee217354625652c6b4ce0738cab4c81c0725e511d8",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 112,
+      "breakpoint_hits": 360,
+      "valid_frames": 97,
+      "label_sha256": "e006b4c35d24e92226fba776c67bd2bbd7f33790cb45bd09d1715df7ddb11955"
+    },
+    {
+      "file": "actor-009.png",
+      "stage": "ACTOR 9",
+      "png_sha256": "7aff623795c1279bfcea347b10cf992d0338039296a27b0ba93d10b91381e3f5",
+      "callback_sha256": "c351bc4cc17be28f9c5a9f749fbe90e04dd4eb9e3ca2db86bf184f76965eccc6",
+      "rgb_sha256": "02e6b5abe22b51379111a9c87db71a5f6c82b3fa8dc64300d650f91e86568a61",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 152,
+      "breakpoint_hits": 512,
+      "valid_frames": 137,
+      "label_sha256": "b38eef57478f844b8ce1b57e842f00f5d80485a6072d617f6ae4feb930d92818"
+    },
+    {
+      "file": "inter-actor-031.png",
+      "stage": "INTER ACTOR 31",
+      "png_sha256": "4693eb96eda7d048e40fc034b2714667ae671ada57d7041a7cf0931a7fb2ad51",
+      "callback_sha256": "b6cc3f3d9452bd3cd38b3ca15e6bde62300e57063d18ebacad379d12bb1a66cd",
+      "rgb_sha256": "70c7195f1f068d3aba505fd60cf4365127e5a9acef0374491e30149a55cc4b33",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 190,
+      "breakpoint_hits": 666,
+      "valid_frames": 175,
+      "label_sha256": "24b7ebdec757bb8306d31fb240a7f7c3e9545c81c95d3097567a6431f398db07"
+    },
+    {
+      "file": "actor-031.png",
+      "stage": "ACTOR 31",
+      "png_sha256": "b8832fe8a91fb03ecd875d108f7ee9b5224d85097e88fa03920c078c0846e42a",
+      "callback_sha256": "1610eee418b4533e42229fa0fa72bb5973c1a2a4e0a30b7350cec9e0f202a031",
+      "rgb_sha256": "034cadedf911c7225e355e09127f5dc722e67399a8762538dd7c92e7b8c14c8b",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 229,
+      "breakpoint_hits": 813,
+      "valid_frames": 214,
+      "label_sha256": "07c8216454c4ff0ef89b07a61053128c58a7f69d2965c9fbedcde75847d4a310"
+    },
+    {
+      "file": "map-00.png",
+      "stage": "MAP 0",
+      "png_sha256": "674ea0c6cd919dc75dea61b057c3ba461165cf9e888ff2cc6bbab399fe065712",
+      "callback_sha256": "3cafaeee533ef71d695e6146ae6dd1d054bb8e6aec32d56f489088cf667a398f",
+      "rgb_sha256": "ef48f451a88ff40e1e0a77ab13cc1f45a33c7281394eb989ae120883bffcd03d",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 297,
+      "breakpoint_hits": 989,
+      "valid_frames": 282,
+      "label_sha256": "6d0d96232ebe9f117f1f13f02df3248a4fcae0d906e12ad0cbb543f13ad06f04"
+    },
+    {
+      "file": "map-01.png",
+      "stage": "MAP 1",
+      "png_sha256": "7c9cfb5299b89439d12a589e5c0c99de5392a4d06607ec264f4edcc3ab9ff527",
+      "callback_sha256": "876310a93208c0981eb59c28eb9c273323fd3d2492720f078dd0632584a44c33",
+      "rgb_sha256": "ce2009529768b0b74636ef949a85233a06c0ac4094965015d154ae8147366f38",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 370,
+      "breakpoint_hits": 1246,
+      "valid_frames": 355,
+      "label_sha256": "f1508a26ce598b21ff171c242becfef1cfc742d9a71b2a250c0b2e642d74096b"
+    },
+    {
+      "file": "map-12.png",
+      "stage": "MAP 12",
+      "png_sha256": "a8410c93b1d862a5ff61f379500b4f86eaff58eac4605ed88b7907731e5c01e1",
+      "callback_sha256": "a2a05dcce392c32f0a6a186d9287948cb50ff0961dab8cd248f1fcb89826499d",
+      "rgb_sha256": "eb6d19f7568a009963bd81c8e28a0deba0b78d25a92ad8f37e96c360d8ba44f8",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 447,
+      "breakpoint_hits": 1499,
+      "valid_frames": 432,
+      "label_sha256": "74ef6d65d0a991bd1a5a4b819863e562f1549bdf98a9e45f1f9272e7f83ca110"
+    },
+    {
+      "file": "map-15.png",
+      "stage": "MAP 15",
+      "png_sha256": "238cf6b8a469e61e6d52802d7a45f7d83f926528248a3e204b8733dd97d36a02",
+      "callback_sha256": "8b0315c0ee3353c7bc35c0e20563ca4d12061b13b649100b6506a67a17d224b3",
+      "rgb_sha256": "c28bfb2c9b664fa36ae2849d911ce9dcf6789d8a7827c6f463ae041fe67a6566",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 515,
+      "breakpoint_hits": 1719,
+      "valid_frames": 500,
+      "label_sha256": "f10bed11e7abf7d2c58e986590ecc0b070de1272abe04844625fe24e714a2efc"
+    },
+    {
+      "file": "map-32.png",
+      "stage": "MAP 32",
+      "png_sha256": "712733159326a5ed0edd0f5f1bcfb9c816622096ae7f177d9b89b39f39a9fba6",
+      "callback_sha256": "e1b357c2600c1f7077e95e984f1c776e3baa24f8b6e7992d4f24d56475ae88a2",
+      "rgb_sha256": "ca0a7fa72ab7bf981a95d19bfc65417b3d49d6ad3c4e01fe3f97c1b257e61869",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 588,
+      "breakpoint_hits": 1924,
+      "valid_frames": 573,
+      "label_sha256": "c4b0e97e11de301fabda38ad136f086e45bf3c63017c78d39d57f32eba351238"
+    }
+  ],
+  "inspection": {
+    "cap_before": "../before-capfix/",
+    "cap_comparison": "cap-comparison.png",
+    "cap_result": "Large jagged crown bands eliminated in four actor views and MAP15/MAP32. Two small dark crown clusters remain in MAP15 at the far follow camera; containment clearance alone can still allow opaque RDP coverage contributions. Root review pending.",
+    "other_samples": "Continuous cursor sphere and owned roof caps; no comparable overlapping bands in sampled room walls/floors.",
+    "depth_comparison": "depth-comparison.json",
+    "framing": "framing-validation.json"
+  }
+}

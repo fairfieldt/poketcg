@@ -42,6 +42,10 @@
     }
   },
   "design": "receding collector hair and purple waistcoat",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 22
@@ -75,7 +79,7 @@
   "appearance": "ishihara",
   "pose": "standing",
   "component": null,
-  "vertices": 1025,
-  "triangles": 544,
+  "vertices": 1351,
+  "triangles": 804,
   "batches": 6
 }

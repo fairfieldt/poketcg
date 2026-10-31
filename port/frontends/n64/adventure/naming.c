@@ -130,12 +130,11 @@ static void draw_keyboard(NameAssets *assets,const NameState *state,unsigned fra
 
 static surface_t *draw_frame(NameAssets *assets,const NameState *state,unsigned frame)
 {
- surface_t *display=display_get();rdpq_attach(display,&assets->depth);gl_context_begin();
+ surface_t *display=display_get();rdpq_attach(display,&assets->depth);gl_context_begin();scene_begin_opaque();
  glClearColor(.69f,.82f,.86f,1);glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
  glViewport(14,44,104,154);
  glMatrixMode(GL_PROJECTION);glPushMatrix();glLoadIdentity();gluPerspective(34,104.0/154.0,.1,20);
  glMatrixMode(GL_MODELVIEW);glPushMatrix();glLoadIdentity();gluLookAt(0,1.28,4.7,0,1.08,0,0,1,0);
- glEnable(GL_DEPTH_TEST);glDepthFunc(GL_LESS_INTERPENETRATING_N64);glDisable(GL_LIGHTING);glDisable(GL_CULL_FACE);
  glDisable(GL_TEXTURE_2D);glColor4f(.24f,.36f,.46f,1);
  glBegin(GL_TRIANGLE_FAN);glVertex3f(0,-.025f,0);
  for(unsigned i=0;i<=24;i++){float angle=i*6.28318530718f/24;glVertex3f(cosf(angle)*.78f,-.025f,sinf(angle)*.6f);}

@@ -55,6 +55,10 @@
     }
   },
   "design": "large round glasses, domed dark hair, pink shirt and dark vest",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 22
@@ -88,7 +92,7 @@
   "appearance": "murray",
   "pose": "standing",
   "component": null,
-  "vertices": 1017,
-  "triangles": 538,
+  "vertices": 1350,
+  "triangles": 802,
   "batches": 6
 }

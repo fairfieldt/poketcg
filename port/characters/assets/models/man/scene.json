@@ -46,6 +46,10 @@
     }
   },
   "design": "round cheeks, short receding hair and yellow polo",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 22
@@ -79,7 +83,7 @@
   "appearance": "man",
   "pose": "standing",
   "component": null,
-  "vertices": 941,
-  "triangles": 492,
+  "vertices": 1049,
+  "triangles": 582,
   "batches": 6
 }

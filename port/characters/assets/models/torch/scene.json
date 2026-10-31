@@ -40,6 +40,10 @@
     }
   },
   "design": "faceted blue outer flame with pale inner flame and dark brazier",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 0

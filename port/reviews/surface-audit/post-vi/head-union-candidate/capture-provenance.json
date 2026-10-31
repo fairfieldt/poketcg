@@ -1,0 +1,116 @@
+{
+  "status": "mark-exterior-union-candidate",
+  "captured_utc": "2026-10-31T07:44:43.797032+00:00",
+  "rom": {
+    "file": "port/frontends/n64/adventure/poketcg-cap-candidate.z64",
+    "sha256": "d735f3bb9e4b208d929cdf88ae33ce373a4fa2ab8da5283464081097430da1d4",
+    "diagnostic": 7,
+    "stage_render_frames": 24
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 8,
+      "private_settings": true,
+      "disable_video_interface_processing": false
+    },
+    "stage_identity_proof": "../../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "raw_format": {
+    "width": 640,
+    "height": 240,
+    "pitch": 2560,
+    "pixel_order": "BGRA little endian",
+    "display_aspect": "4:3: duplicate rows only for derived review displays; originals retained unchanged"
+  },
+  "finished": {
+    "callbacks": 167,
+    "captures": 3,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "actor-007.png",
+      "stage": "ACTOR 7",
+      "png_sha256": "f40cbb1c1736fa65342a8cbd770507c31f1e0967923add585d79d7c089ccb322",
+      "callback_sha256": "fa77cedd61c8c9077d10e9f3f84fb92c1a523c7279785f8b4c4ec29ad6982ffc",
+      "rgb_sha256": "8be1238794a929b66e20706bf86912de58770327646f37cde30791ed8f8cedd4",
+      "exact_callback_rgb_pixels": 153600,
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "callback": 31,
+      "label_sha256": "bac10a9a31550956e3562e4afcce969036851889b210b82a89b5d8eaa560f05f"
+    },
+    {
+      "file": "map-15.png",
+      "stage": "MAP 15",
+      "png_sha256": "06f4931d3a14717a956065ef56d2af74bf0fb1f5e973988ec84872aa2e33290a",
+      "callback_sha256": "1287ae461530a0ad9530e54b38fce060e599ad21f95093fd5dc7ba5a925ac488",
+      "rgb_sha256": "527ae1ffc089cbd6eacc863ab492b869a00b46546470270d09ea3b5145a882e6",
+      "exact_callback_rgb_pixels": 153600,
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "callback": 87,
+      "label_sha256": "f10bed11e7abf7d2c58e986590ecc0b070de1272abe04844625fe24e714a2efc"
+    },
+    {
+      "file": "map-32.png",
+      "stage": "MAP 32",
+      "png_sha256": "7c54a19f77d11bda05020b786a004742eb3d47f7707247645b1bfd14b0b2f0ab",
+      "callback_sha256": "03d0762252c38d308cfffb9436da984454957465b0afc5bf27443041647370bd",
+      "rgb_sha256": "479e6422e243aa288574bb62970cbc0ee4ba4548552d90d49239fe45ea349ebe",
+      "exact_callback_rgb_pixels": 153600,
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "callback": 164,
+      "label_sha256": "c4b0e97e11de301fabda38ad136f086e45bf3c63017c78d39d57f32eba351238"
+    }
+  ],
+  "inspection": {
+    "scope": "Mark candidate only; full five-model final batch not yet tested",
+    "cap_result": "Crown is continuous red with no black clusters in all four actor views and far MAP15/MAP32 follow cameras.",
+    "comparison": "cap-comparison.png"
+  }
+}

@@ -1,0 +1,10 @@
+{"callback": 11, "event": "stage", "stage": "ACTOR 7"}
+{"breakpoint_hits": 31, "callbacks": 31, "event": "requestScreenshot", "height": 240, "index": 0, "label_sha256": "bac10a9a31550956e3562e4afcce969036851889b210b82a89b5d8eaa560f05f", "pitch": 2560, "raw_sha256": "fa77cedd61c8c9077d10e9f3f84fb92c1a523c7279785f8b4c4ec29ad6982ffc", "stage": "ACTOR 7", "valid_frames": 16, "width": 640}
+{"event": "encoded", "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/renderer-vi-mark-union/encoded/shot-00-actor-7.png", "index": 0, "sha256": "f40cbb1c1736fa65342a8cbd770507c31f1e0967923add585d79d7c089ccb322", "stage": "ACTOR 7"}
+{"callback": 61, "event": "stage", "stage": "MAP 15"}
+{"breakpoint_hits": 203, "callbacks": 87, "event": "requestScreenshot", "height": 240, "index": 1, "label_sha256": "f10bed11e7abf7d2c58e986590ecc0b070de1272abe04844625fe24e714a2efc", "pitch": 2560, "raw_sha256": "1287ae461530a0ad9530e54b38fce060e599ad21f95093fd5dc7ba5a925ac488", "stage": "MAP 15", "valid_frames": 72, "width": 640}
+{"event": "encoded", "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/renderer-vi-mark-union/encoded/shot-01-map-15.png", "index": 1, "sha256": "06f4931d3a14717a956065ef56d2af74bf0fb1f5e973988ec84872aa2e33290a", "stage": "MAP 15"}
+{"callback": 122, "event": "stage", "stage": "MAP 32"}
+{"breakpoint_hits": 416, "callbacks": 164, "event": "requestScreenshot", "height": 240, "index": 2, "label_sha256": "c4b0e97e11de301fabda38ad136f086e45bf3c63017c78d39d57f32eba351238", "pitch": 2560, "raw_sha256": "03d0762252c38d308cfffb9436da984454957465b0afc5bf27443041647370bd", "stage": "MAP 32", "valid_frames": 149, "width": 640}
+{"event": "encoded", "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/renderer-vi-mark-union/encoded/shot-02-map-32.png", "index": 2, "sha256": "7c54a19f77d11bda05020b786a004742eb3d47f7707247645b1bfd14b0b2f0ab", "stage": "MAP 32"}
+{"callbacks": 167, "captures": 3, "event": "finished", "missing": []}

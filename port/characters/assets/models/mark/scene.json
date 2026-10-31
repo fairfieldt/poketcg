@@ -44,6 +44,10 @@
     }
   },
   "design": "red sideways trainer cap, red vest, blue trousers and backpack",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": true
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 25
@@ -77,7 +81,7 @@
   "appearance": "mark",
   "pose": "standing",
   "component": null,
-  "vertices": 1212,
-  "triangles": 642,
+  "vertices": 1481,
+  "triangles": 906,
   "batches": 6
 }

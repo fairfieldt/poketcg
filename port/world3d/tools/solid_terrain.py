@@ -34,6 +34,7 @@ def swimming_pool(scene, texture, rgb, white):
                        (right+1, -.24, z+1), (left, -.24, z+1)],
                       tex=tex, uv=[(left/4, z/4), ((right+1)/4, z/4),
                                    ((right+1)/4, (z+1)/4), (left/4, (z+1)/4)])
+    coping=[]
     for x, z in sorted(POOL_CELLS):
         edges = [((x, z-1), (x, z), (x+1, z), (0, -.15)),
                  ((x+1, z), (x+1, z), (x+1, z+1), (.15, 0)),
@@ -47,8 +48,27 @@ def swimming_pool(scene, texture, rgb, white):
             dx, dz = outward
             scene.polygon([(ax, -.44, az), (bx, -.44, bz),
                            (bx, .06, bz), (ax, .06, az)], rgb('688e9c'))
-            scene.polygon([(ax, .07, az), (bx, .07, bz),
-                           (bx+dx, .07, bz+dz), (ax+dx, .07, az+dz)], white)
+            coping.append((min(ax,bx,ax+dx,bx+dx),min(az,bz,az+dz,bz+dz),
+                           max(ax,bx,ax+dx,bx+dx),max(az,bz,az+dz,bz+dz)))
+    # At each inward stair corner, the old horizontal edge strips overlapped
+    # another strip at exactly y=.07. Partition their union into disjoint
+    # runs so each coping pixel has one owning surface.
+    levels=sorted({round(value,6) for a,b,c,d in coping for value in (b,d)})
+    strips=[]
+    for north,south in zip(levels,levels[1:]):
+        intervals=sorted((a,c) for a,b,c,d in coping if b<(north+south)/2<d)
+        merged=[]
+        for left,right in intervals:
+            if merged and left<=merged[-1][1]+1e-6:
+                merged[-1]=(merged[-1][0],max(right,merged[-1][1]))
+            else:merged.append((left,right))
+        for left,right in merged:
+            if strips and strips[-1][0]==left and strips[-1][2]==right and abs(strips[-1][3]-north)<1e-6:
+                strips[-1]=(left,strips[-1][1],right,south)
+            else:strips.append((left,north,right,south))
+    for left,north,right,south in strips:
+        scene.polygon([(left,.07,north),(right,.07,north),
+                       (right,.07,south),(left,.07,south)],white)
     for x, z, heading in ((16.35, 5.8, 1), (4.8, 12.7, -1)):
         scene.ball(x, z, -.17, .45, .075, .18, rgb('94d5df'), segments=6, rings=3)
         scene.polygon([(x-heading*.33, -.10, z),

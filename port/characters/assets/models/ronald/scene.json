@@ -43,7 +43,11 @@
       ]
     }
   },
-  "design": "Approved existing concept model; geometry preserved",
+  "design": "Approved Lightning concept with owned face and clothing surfaces",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 0
@@ -77,7 +81,7 @@
   "appearance": "ronald",
   "pose": "standing",
   "component": null,
-  "vertices": 1237,
-  "triangles": 640,
+  "vertices": 1340,
+  "triangles": 728,
   "batches": 6
 }

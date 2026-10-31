@@ -21,6 +21,9 @@ FRONT_OBJECTS := $(addprefix $(BUILD_DIR)/,main.o menus.o profiles.o extra_ui.o 
 ifneq ($(DIAGNOSTIC),0)
 FRONT_OBJECTS += $(BUILD_DIR)/mips_story.o $(BUILD_DIR)/cinematic.o
 endif
+ifneq ($(filter 5 6 7,$(DIAGNOSTIC)),)
+FRONT_OBJECTS += $(BUILD_DIR)/visual_sweep.o
+endif
 VIDEO_CONFIG := $(BUILD_DIR)/config-$(DIAGNOSTIC)-$(VI_FILTER)
 INCLUDES := -I$(PORT)/src -I$(PORT)/overworld -I$(PORT)/gameplay -I$(PORT)/world3d -I$(BUILD_DIR)
 CFLAGS += $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -DADVENTURE_VI_FILTER=$(VI_FILTER)
@@ -61,6 +64,9 @@ $(BUILD_DIR)/mips_story.o: tests/mips_story.c
 $(BUILD_DIR)/cinematic.o: tests/cinematic.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+$(BUILD_DIR)/visual_sweep.o: tests/visual_sweep.c
+	@mkdir -p $(dir $@)
+	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -DADVENTURE_DIAGNOSTIC=$(DIAGNOSTIC) -MMD -c $< -o $@
 $(BUILD_DIR)/cardart_table.h: $(REPO)/src/gfx.asm ../tools/cardart.awk
 	@mkdir -p $(dir $@)
 	awk -f ../tools/cardart.awk $< > $@
@@ -91,9 +97,11 @@ diagnostic:
 	$(MAKE) BUILD_DIR=build/diagnostic ROM=poketcg-diagnostic DIAGNOSTIC=1
 video-diagnostic:
 	$(MAKE) BUILD_DIR=build/video ROM=poketcg-video DIAGNOSTIC=2
+visual-diagnostic:
+	$(MAKE) BUILD_DIR=build/visual ROM=poketcg-visual DIAGNOSTIC=5
 review-diagnostic:
 	$(MAKE) BUILD_DIR=build/review ROM=poketcg-review DIAGNOSTIC=3
-.PHONY: test validate
+.PHONY: test validate visual-diagnostic
 test:
 	$(MAKE) -C $(PORT) practicecheck
 	$(MAKE) -C $(PORT)/gameplay test

@@ -1,0 +1,319 @@
+{
+  "status": "verified-exterior-union",
+  "captured_utc": "2026-10-31T07:52:14.839497+00:00",
+  "rom": {
+    "file": "port/frontends/n64/adventure/poketcg-surface-vi.z64",
+    "sha256": "65ae1603a9db9880fd71d7dd5f29478bcbde93fbcfc0ab154182413bf77ae7c8",
+    "diagnostic": 6,
+    "stage_render_frames": 24
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 8,
+      "private_settings": true,
+      "disable_video_interface_processing": false
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "raw_format": {
+    "width": 640,
+    "height": 240,
+    "pitch": 2560,
+    "pixel_order": "BGRA little endian",
+    "display_aspect": "4:3: duplicate rows only for derived review displays; originals retained unchanged"
+  },
+  "finished": {
+    "callbacks": 597,
+    "captures": 11,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "inter-actor-007.png",
+      "stage": "INTER ACTOR 7",
+      "png_sha256": "6567148a7957832f48965183ed147e45906101b744ada2c42a9183d2a458633f",
+      "callback_sha256": "1865f70649f8a7adc436fb96a3a9228e759026d0572407e3b5f70ed9e9580f3c",
+      "rgb_sha256": "df529aa8444f13c1f0fd651d901b179c4799f4ada5c5410342fdd04035eb254c",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 31,
+      "breakpoint_hits": 31,
+      "valid_frames": 16,
+      "label_sha256": "7f1aeb2731d3a4c62f106c5ad5c6008b7e31eb2aa4810446eefb055225985fe0"
+    },
+    {
+      "file": "actor-007.png",
+      "stage": "ACTOR 7",
+      "png_sha256": "f40cbb1c1736fa65342a8cbd770507c31f1e0967923add585d79d7c089ccb322",
+      "callback_sha256": "fa77cedd61c8c9077d10e9f3f84fb92c1a523c7279785f8b4c4ec29ad6982ffc",
+      "rgb_sha256": "8be1238794a929b66e20706bf86912de58770327646f37cde30791ed8f8cedd4",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 71,
+      "breakpoint_hits": 191,
+      "valid_frames": 56,
+      "label_sha256": "bac10a9a31550956e3562e4afcce969036851889b210b82a89b5d8eaa560f05f"
+    },
+    {
+      "file": "inter-actor-009.png",
+      "stage": "INTER ACTOR 9",
+      "png_sha256": "9fae702853f40d93bab32ec7089dd1367625aff2835459a0d8c0f06195e8606d",
+      "callback_sha256": "9e12caa3c9ad31b1324a210032545160ec5caaf1bdd14d78b7f11e215bfb99e2",
+      "rgb_sha256": "e752c9329f81bccb278398ee217354625652c6b4ce0738cab4c81c0725e511d8",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 114,
+      "breakpoint_hits": 362,
+      "valid_frames": 99,
+      "label_sha256": "e006b4c35d24e92226fba776c67bd2bbd7f33790cb45bd09d1715df7ddb11955"
+    },
+    {
+      "file": "actor-009.png",
+      "stage": "ACTOR 9",
+      "png_sha256": "7aff623795c1279bfcea347b10cf992d0338039296a27b0ba93d10b91381e3f5",
+      "callback_sha256": "c351bc4cc17be28f9c5a9f749fbe90e04dd4eb9e3ca2db86bf184f76965eccc6",
+      "rgb_sha256": "02e6b5abe22b51379111a9c87db71a5f6c82b3fa8dc64300d650f91e86568a61",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 154,
+      "breakpoint_hits": 514,
+      "valid_frames": 139,
+      "label_sha256": "b38eef57478f844b8ce1b57e842f00f5d80485a6072d617f6ae4feb930d92818"
+    },
+    {
+      "file": "inter-actor-031.png",
+      "stage": "INTER ACTOR 31",
+      "png_sha256": "4693eb96eda7d048e40fc034b2714667ae671ada57d7041a7cf0931a7fb2ad51",
+      "callback_sha256": "b6cc3f3d9452bd3cd38b3ca15e6bde62300e57063d18ebacad379d12bb1a66cd",
+      "rgb_sha256": "70c7195f1f068d3aba505fd60cf4365127e5a9acef0374491e30149a55cc4b33",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 192,
+      "breakpoint_hits": 668,
+      "valid_frames": 177,
+      "label_sha256": "24b7ebdec757bb8306d31fb240a7f7c3e9545c81c95d3097567a6431f398db07"
+    },
+    {
+      "file": "actor-031.png",
+      "stage": "ACTOR 31",
+      "png_sha256": "b8832fe8a91fb03ecd875d108f7ee9b5224d85097e88fa03920c078c0846e42a",
+      "callback_sha256": "1610eee418b4533e42229fa0fa72bb5973c1a2a4e0a30b7350cec9e0f202a031",
+      "rgb_sha256": "034cadedf911c7225e355e09127f5dc722e67399a8762538dd7c92e7b8c14c8b",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 229,
+      "breakpoint_hits": 813,
+      "valid_frames": 214,
+      "label_sha256": "07c8216454c4ff0ef89b07a61053128c58a7f69d2965c9fbedcde75847d4a310"
+    },
+    {
+      "file": "map-00.png",
+      "stage": "MAP 0",
+      "png_sha256": "5f9c5aca3b736a5df7e55765a2f7a945ceec8770bba777365d6703a247d5d2de",
+      "callback_sha256": "15ccba1085ba6575f3d0dde06e322ee78b830888dcb314a1230c0fc80cc9c93f",
+      "rgb_sha256": "5d8c140721608380b23d0cd72ef775ede88987c91a9c8c0f31e58f5bd92b1ad2",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 299,
+      "breakpoint_hits": 991,
+      "valid_frames": 284,
+      "label_sha256": "6d0d96232ebe9f117f1f13f02df3248a4fcae0d906e12ad0cbb543f13ad06f04"
+    },
+    {
+      "file": "map-01.png",
+      "stage": "MAP 1",
+      "png_sha256": "629bec7b2db5ee53d49833ae677f30b13fafbdd7e9c93b126023c3dcc7978742",
+      "callback_sha256": "273fedcecd1ab510dd2fa76166f18fe53dc880388ae719456fd3527027e01c36",
+      "rgb_sha256": "8a8d74ffd5fd35df3df8ce5ca50aba99d783d4d11e74fa18f2784326c447f28f",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 372,
+      "breakpoint_hits": 1248,
+      "valid_frames": 357,
+      "label_sha256": "f1508a26ce598b21ff171c242becfef1cfc742d9a71b2a250c0b2e642d74096b"
+    },
+    {
+      "file": "map-12.png",
+      "stage": "MAP 12",
+      "png_sha256": "fc4a8b4169c7efd6b5c418c379a4e1fc3b0749ba7ee167f08a8931d0a401a660",
+      "callback_sha256": "cb351b3b1d6f20560b6263032ecb8374fc20e0900197d3cb1604c20627cd9a33",
+      "rgb_sha256": "b80a3be56224d40aef84e8508bebb93db4a0b9c71c5c45ee3fc750384dbe480d",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 453,
+      "breakpoint_hits": 1501,
+      "valid_frames": 438,
+      "label_sha256": "74ef6d65d0a991bd1a5a4b819863e562f1549bdf98a9e45f1f9272e7f83ca110"
+    },
+    {
+      "file": "map-15.png",
+      "stage": "MAP 15",
+      "png_sha256": "4d2609f6a70150d45d24155000e07fc5eadf0e710ee440a40c2eb7ed075a9594",
+      "callback_sha256": "710e7556e700cc4867628614c6ee4d15d9dd9dcbdc20d71e2f2567398be04eb8",
+      "rgb_sha256": "2c082bbe4e1cd7f834e018b24ce74015a47b377c9443742fa30ac30cb099e3cd",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 521,
+      "breakpoint_hits": 1721,
+      "valid_frames": 506,
+      "label_sha256": "f10bed11e7abf7d2c58e986590ecc0b070de1272abe04844625fe24e714a2efc"
+    },
+    {
+      "file": "map-32.png",
+      "stage": "MAP 32",
+      "png_sha256": "9d054379d529f014ca0fd19bfe06bbff96e87edb67aa5b1460abd973d1b1fc07",
+      "callback_sha256": "98323812244a128cadb51dca4cc2afb905a8997b6744373f3f0fe3f8bcbc5c99",
+      "rgb_sha256": "22318dfad9b604fc0bbd2f07affd65deeb245a7de72476d2707adefdee878758",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 594,
+      "breakpoint_hits": 1926,
+      "valid_frames": 579,
+      "label_sha256": "c4b0e97e11de301fabda38ad136f086e45bf3c63017c78d39d57f32eba351238"
+    }
+  ],
+  "inspection": {
+    "cap_before": "before-capfix/",
+    "cap_comparison": "cap-comparison.png",
+    "cap_result": "Mark crown is continuous red in all four actor views and far MAP15/MAP32; prior black crown bands and residual contained-scalp clusters are absent. Hair/brim remains below the crown.",
+    "other_samples": "Continuous cursor sphere and owned roof caps; no comparable overlapping bands in sampled room walls/floors.",
+    "depth_comparison": "depth-comparison.json",
+    "framing": "framing-validation.json"
+  },
+  "source_validation": {
+    "world_file": "port/world3d/generated/world.json",
+    "world_sha256": "9b411f629669af94f43ea500da5ba7bf75f860c850b2ca18977ee193228c1731",
+    "headwear_proof": "../../../characters/review/cap_validation.json",
+    "headwear_proof_sha256": "e20e566d6af20990ee36882a71e9f1820196afbbc9962dc287b5fcc47608e284"
+  },
+  "capped_character_sources": [
+    {
+      "slug": "mark",
+      "model": 7,
+      "triangles": 906,
+      "batches": 6,
+      "source_native": "port/characters/assets/models/mark/scene.l64",
+      "source_native_sha256": "6babdd9ae10a9a6efd7ece76e755b618f7cc89d5228bc81c51bfc83c91eb6f9c",
+      "generated_native": "port/world3d/generated/maps/actor_mark.l64",
+      "generated_native_sha256": "6f9fc73f80c7a6c139de7becc6bbd0df31d35d277a2e3976116e7b37696b8496"
+    },
+    {
+      "slug": "steve",
+      "model": 21,
+      "triangles": 832,
+      "batches": 6,
+      "source_native": "port/characters/assets/models/steve/scene.l64",
+      "source_native_sha256": "bcf0a1feb9c1dfba9b2f7a801f2eca29d84c36595e5ded75b9be2d628559ed44",
+      "generated_native": "port/world3d/generated/maps/actor_steve.l64",
+      "generated_native_sha256": "a45d5339977ccad2f2b2a7825d0cdadd73bedc64d75eee828d140621dfa005e7"
+    },
+    {
+      "slug": "lad",
+      "model": 25,
+      "triangles": 662,
+      "batches": 6,
+      "source_native": "port/characters/assets/models/lad/scene.l64",
+      "source_native_sha256": "0356b8b47369e6562759440c444a2f7991632342d90d14b8b6fd6399e4c809ba",
+      "generated_native": "port/world3d/generated/maps/actor_lad.l64",
+      "generated_native_sha256": "5c2b17f60b2b72430c90fecbda91936109cac7063ac383c7859e06348f8d76cc"
+    },
+    {
+      "slug": "joshua",
+      "model": 29,
+      "triangles": 688,
+      "batches": 6,
+      "source_native": "port/characters/assets/models/joshua/scene.l64",
+      "source_native_sha256": "184ec981f500de127b138388afd0e36cec9a674f3aeaabb8e881475c5036cada",
+      "generated_native": "port/world3d/generated/maps/actor_joshua.l64",
+      "generated_native_sha256": "79cfac6b6ba7f218fbcfdefe30e4220e7ec026633632ac68f64debc473bebf78"
+    },
+    {
+      "slug": "girl",
+      "model": 35,
+      "triangles": 760,
+      "batches": 6,
+      "source_native": "port/characters/assets/models/girl/scene.l64",
+      "source_native_sha256": "f4483d94576f1f55411b2395c0b8f1a1234219fc0a73f2f16e2b09b63cc2167d",
+      "generated_native": "port/world3d/generated/maps/actor_girl.l64",
+      "generated_native_sha256": "843d32957418c0e621f13f664ae1c591f504853e6a91fac2f441da2406261a31"
+    }
+  ]
+}

@@ -11,14 +11,14 @@
       "NPC_06"
     ],
     "model": "dr_mason",
-    "triangles": 577,
-    "vertices": 1122,
+    "triangles": 718,
+    "vertices": 1291,
     "batches": 6,
     "linked_parts": 0,
     "appearances": [
       "dr_mason"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "ronald",
@@ -32,14 +32,14 @@
       "NPC_RONALD3"
     ],
     "model": "ronald",
-    "triangles": 640,
-    "vertices": 1237,
+    "triangles": 728,
+    "vertices": 1340,
     "batches": 6,
     "linked_parts": 0,
     "appearances": [
       "ronald"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "ishihara",
@@ -51,14 +51,14 @@
       "NPC_ISHIHARA"
     ],
     "model": "ishihara",
-    "triangles": 544,
-    "vertices": 1025,
+    "triangles": 804,
+    "vertices": 1351,
     "batches": 6,
     "linked_parts": 22,
     "appearances": [
       "ishihara"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "imakuni",
@@ -70,14 +70,14 @@
       "NPC_IMAKUNI"
     ],
     "model": "imakuni",
-    "triangles": 534,
-    "vertices": 896,
+    "triangles": 518,
+    "vertices": 926,
     "batches": 6,
-    "linked_parts": 22,
+    "linked_parts": 21,
     "appearances": [
       "imakuni"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "tech",
@@ -102,14 +102,14 @@
       "NPC_TECH8"
     ],
     "model": "tech",
-    "triangles": 531,
-    "vertices": 995,
+    "triangles": 663,
+    "vertices": 1156,
     "batches": 6,
     "linked_parts": 20,
     "appearances": [
       "tech"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "clerk",
@@ -131,14 +131,14 @@
       "NPC_GIFT_CENTER_CLERK"
     ],
     "model": "clerk",
-    "triangles": 600,
-    "vertices": 1133,
+    "triangles": 686,
+    "vertices": 1236,
     "batches": 6,
     "linked_parts": 26,
     "appearances": [
       "clerk"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "mania",
@@ -154,15 +154,15 @@
       "NPC_CHAMP"
     ],
     "model": "mania",
-    "triangles": 500,
-    "vertices": 942,
+    "triangles": 578,
+    "vertices": 1027,
     "batches": 6,
     "linked_parts": 21,
     "appearances": [
       "mania",
       "mania_palette2"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "lass3",
@@ -175,14 +175,14 @@
       "NPC_LASS5"
     ],
     "model": "lass3",
-    "triangles": 702,
-    "vertices": 1289,
+    "triangles": 730,
+    "vertices": 1323,
     "batches": 6,
     "linked_parts": 28,
     "appearances": [
       "lass3"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "mitch",
@@ -194,14 +194,14 @@
       "NPC_MITCH"
     ],
     "model": "mitch",
-    "triangles": 557,
-    "vertices": 1042,
+    "triangles": 610,
+    "vertices": 1102,
     "batches": 6,
     "linked_parts": 22,
     "appearances": [
       "mitch"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "boy",
@@ -216,15 +216,15 @@
       "NPC_LAD2"
     ],
     "model": "boy",
-    "triangles": 500,
-    "vertices": 942,
+    "triangles": 578,
+    "vertices": 1027,
     "batches": 6,
     "linked_parts": 21,
     "appearances": [
       "boy",
       "boy_palette2"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "man",
@@ -240,14 +240,14 @@
       "NPC_GUIDE"
     ],
     "model": "man",
-    "triangles": 492,
-    "vertices": 941,
+    "triangles": 582,
+    "vertices": 1049,
     "batches": 6,
     "linked_parts": 22,
     "appearances": [
       "man"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "gene",
@@ -259,14 +259,14 @@
       "NPC_GENE"
     ],
     "model": "gene",
-    "triangles": 504,
-    "vertices": 957,
+    "triangles": 761,
+    "vertices": 1276,
     "batches": 6,
     "linked_parts": 20,
     "appearances": [
       "gene"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "swimmer",
@@ -279,15 +279,15 @@
       "NPC_AMANDA"
     ],
     "model": "swimmer",
-    "triangles": 556,
-    "vertices": 1050,
+    "triangles": 584,
+    "vertices": 1082,
     "batches": 6,
     "linked_parts": 24,
     "appearances": [
       "swimmer",
       "swimmer_palette2"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "joshua",
@@ -299,14 +299,14 @@
       "NPC_JOSHUA"
     ],
     "model": "joshua",
-    "triangles": 539,
-    "vertices": 1025,
+    "triangles": 688,
+    "vertices": 1147,
     "batches": 6,
     "linked_parts": 23,
     "appearances": [
       "joshua"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "amy",
@@ -318,14 +318,14 @@
       "NPC_AMY"
     ],
     "model": "amy",
-    "triangles": 556,
-    "vertices": 1052,
+    "triangles": 584,
+    "vertices": 1084,
     "batches": 6,
     "linked_parts": 24,
     "appearances": [
       "amy"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "girl",
@@ -339,14 +339,14 @@
       "NPC_STEPHANIE"
     ],
     "model": "girl",
-    "triangles": 664,
-    "vertices": 1236,
+    "triangles": 760,
+    "vertices": 1274,
     "batches": 6,
     "linked_parts": 28,
     "appearances": [
       "girl"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "hood",
@@ -361,14 +361,14 @@
       "NPC_HOOD2"
     ],
     "model": "hood",
-    "triangles": 502,
-    "vertices": 946,
+    "triangles": 524,
+    "vertices": 977,
     "batches": 6,
     "linked_parts": 21,
     "appearances": [
       "hood"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "isaac",
@@ -380,14 +380,14 @@
       "NPC_ISAAC"
     ],
     "model": "isaac",
-    "triangles": 537,
-    "vertices": 1022,
+    "triangles": 669,
+    "vertices": 1183,
     "batches": 6,
     "linked_parts": 20,
     "appearances": [
       "isaac"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "lass2",
@@ -401,14 +401,14 @@
       "NPC_LASS2"
     ],
     "model": "lass2",
-    "triangles": 608,
-    "vertices": 1126,
+    "triangles": 636,
+    "vertices": 1156,
     "batches": 6,
     "linked_parts": 26,
     "appearances": [
       "lass2"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "lass1",
@@ -422,14 +422,14 @@
       "NPC_LASS4"
     ],
     "model": "lass1",
-    "triangles": 596,
-    "vertices": 1122,
+    "triangles": 624,
+    "vertices": 1154,
     "batches": 6,
     "linked_parts": 26,
     "appearances": [
       "lass1"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "nikki",
@@ -441,14 +441,14 @@
       "NPC_NIKKI"
     ],
     "model": "nikki",
-    "triangles": 556,
-    "vertices": 1034,
+    "triangles": 584,
+    "vertices": 1066,
     "batches": 6,
     "linked_parts": 24,
     "appearances": [
       "nikki"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "lad",
@@ -463,14 +463,14 @@
       "NPC_LAD3"
     ],
     "model": "lad",
-    "triangles": 578,
-    "vertices": 1072,
+    "triangles": 662,
+    "vertices": 1108,
     "batches": 6,
     "linked_parts": 25,
     "appearances": [
       "lad"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "murray",
@@ -483,14 +483,14 @@
       "NPC_MURRAY2"
     ],
     "model": "murray",
-    "triangles": 538,
-    "vertices": 1017,
+    "triangles": 802,
+    "vertices": 1350,
     "batches": 6,
     "linked_parts": 22,
     "appearances": [
       "murray"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "rick",
@@ -502,14 +502,14 @@
       "NPC_RICK"
     ],
     "model": "rick",
-    "triangles": 537,
-    "vertices": 1015,
+    "triangles": 669,
+    "vertices": 1176,
     "batches": 6,
     "linked_parts": 20,
     "appearances": [
       "rick"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "specs",
@@ -523,14 +523,14 @@
       "NPC_SPECS3"
     ],
     "model": "specs",
-    "triangles": 500,
-    "vertices": 940,
+    "triangles": 589,
+    "vertices": 1044,
     "batches": 6,
     "linked_parts": 21,
     "appearances": [
       "specs"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "ken",
@@ -542,14 +542,14 @@
       "NPC_KEN"
     ],
     "model": "ken",
-    "triangles": 540,
-    "vertices": 1022,
+    "triangles": 797,
+    "vertices": 1341,
     "batches": 6,
     "linked_parts": 20,
     "appearances": [
       "ken"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "courtney",
@@ -561,14 +561,14 @@
       "NPC_COURTNEY"
     ],
     "model": "courtney",
-    "triangles": 644,
-    "vertices": 1225,
+    "triangles": 672,
+    "vertices": 1259,
     "batches": 6,
     "linked_parts": 26,
     "appearances": [
       "courtney"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "steve",
@@ -580,14 +580,14 @@
       "NPC_STEVE"
     ],
     "model": "steve",
-    "triangles": 566,
-    "vertices": 1073,
+    "triangles": 832,
+    "vertices": 1344,
     "batches": 6,
     "linked_parts": 22,
     "appearances": [
       "steve"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "jack",
@@ -599,14 +599,14 @@
       "NPC_JACK"
     ],
     "model": "jack",
-    "triangles": 531,
-    "vertices": 1001,
+    "triangles": 663,
+    "vertices": 1162,
     "batches": 6,
     "linked_parts": 20,
     "appearances": [
       "jack"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "rod",
@@ -618,14 +618,14 @@
       "NPC_ROD"
     ],
     "model": "rod",
-    "triangles": 550,
-    "vertices": 1032,
+    "triangles": 807,
+    "vertices": 1359,
     "batches": 6,
     "linked_parts": 22,
     "appearances": [
       "rod"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "woman",
@@ -638,14 +638,14 @@
       "NPC_WOMAN2"
     ],
     "model": "woman",
-    "triangles": 556,
-    "vertices": 1051,
+    "triangles": 584,
+    "vertices": 1085,
     "batches": 6,
     "linked_parts": 24,
     "appearances": [
       "woman"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "chap",
@@ -661,14 +661,14 @@
       "NPC_CHAP5"
     ],
     "model": "chap",
-    "triangles": 544,
-    "vertices": 1025,
+    "triangles": 804,
+    "vertices": 1351,
     "batches": 6,
     "linked_parts": 22,
     "appearances": [
       "chap"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "gal",
@@ -686,14 +686,14 @@
       "NPC_GAL4"
     ],
     "model": "gal",
-    "triangles": 528,
-    "vertices": 982,
+    "triangles": 556,
+    "vertices": 1016,
     "batches": 6,
     "linked_parts": 23,
     "appearances": [
       "gal"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "pappy",
@@ -707,14 +707,14 @@
       "NPC_PAPPY3"
     ],
     "model": "pappy",
-    "triangles": 530,
-    "vertices": 1006,
+    "triangles": 794,
+    "vertices": 1334,
     "batches": 6,
     "linked_parts": 23,
     "appearances": [
       "pappy"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "butch",
@@ -726,14 +726,14 @@
       "NPC_BUTCH"
     ],
     "model": "butch",
-    "triangles": 500,
-    "vertices": 950,
+    "triangles": 590,
+    "vertices": 1058,
     "batches": 6,
     "linked_parts": 21,
     "appearances": [
       "butch"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "granny",
@@ -746,14 +746,14 @@
       "NPC_GRANNY2"
     ],
     "model": "granny",
-    "triangles": 638,
-    "vertices": 1216,
+    "triangles": 818,
+    "vertices": 1425,
     "batches": 6,
     "linked_parts": 26,
     "appearances": [
       "granny"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "torch",
@@ -772,7 +772,7 @@
     "appearances": [
       "torch"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "legendary_card",
@@ -796,7 +796,7 @@
     "appearances": [
       "legendary_card"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   },
   {
     "slug": "mark",
@@ -810,13 +810,13 @@
       "NPC_PLAYER_CREDITS"
     ],
     "model": "mark",
-    "triangles": 642,
-    "vertices": 1212,
+    "triangles": 906,
+    "vertices": 1481,
     "batches": 6,
     "linked_parts": 25,
     "appearances": [
       "mark"
     ],
-    "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
   }
 ]

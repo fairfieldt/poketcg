@@ -44,6 +44,10 @@
     }
   },
   "design": "bald crown, side tufts, old brows and purple sweater vest",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 23
@@ -77,7 +81,7 @@
   "appearance": "pappy",
   "pose": "standing",
   "component": null,
-  "vertices": 1006,
-  "triangles": 530,
+  "vertices": 1334,
+  "triangles": 794,
   "batches": 6
 }

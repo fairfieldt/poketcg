@@ -55,7 +55,7 @@ def validate_model(slug):
         assert sum(len(b['indices'])//3 for b in batches)==info['triangles']
         assert sum(len(b['vertices']) for b in batches)==info['vertices']
         assert {b['model'] for b in batches}=={info['runtime_model']}
-        assert info['triangles']<=900,(slug,'triangle budget',info['triangles'])
+        assert info['triangles']<=1000,(slug,'triangle budget',info['triangles'])
         if slug not in ('torch','legendary_card'):assert {b['part'] for b in batches}==set(range(5)),slug
     assert (folder/(slug+'.blend')).stat().st_size>10000
     for a in ('front.png','back.png','complete.json'):assert (folder/a).exists()

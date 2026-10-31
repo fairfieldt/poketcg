@@ -1,0 +1,38 @@
+[
+  {
+    "model": 7,
+    "region": [
+      0,
+      26,
+      640,
+      240
+    ],
+    "total_pixels": 136960,
+    "changed_rgb_pixels": 993,
+    "note": "Same current assets/camera/poses; only depth mode differs. Header excluded. Changes include contact shadow coverage."
+  },
+  {
+    "model": 9,
+    "region": [
+      0,
+      26,
+      640,
+      240
+    ],
+    "total_pixels": 136960,
+    "changed_rgb_pixels": 1010,
+    "note": "Same current assets/camera/poses; only depth mode differs. Header excluded. Changes include contact shadow coverage."
+  },
+  {
+    "model": 31,
+    "region": [
+      0,
+      26,
+      640,
+      240
+    ],
+    "total_pixels": 136960,
+    "changed_rgb_pixels": 803,
+    "note": "Same current assets/camera/poses; only depth mode differs. Header excluded. Changes include contact shadow coverage."
+  }
+]

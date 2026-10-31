@@ -45,6 +45,10 @@
     }
   },
   "design": "green cap with short brim, green shirt and shorts",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": true
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 25
@@ -78,7 +82,7 @@
   "appearance": "lad",
   "pose": "standing",
   "component": null,
-  "vertices": 1072,
-  "triangles": 578,
+  "vertices": 1108,
+  "triangles": 662,
   "batches": 6
 }

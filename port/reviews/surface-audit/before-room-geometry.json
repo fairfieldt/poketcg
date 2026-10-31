@@ -1,0 +1,1068 @@
+{
+  "passed": false,
+  "cases": 37,
+  "triangles": 9480,
+  "overlap_pairs": 165,
+  "checks": [
+    {
+      "name": "mason_laboratory",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 336,
+      "failures": []
+    },
+    {
+      "name": "deck_machine_room",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 280,
+      "failures": []
+    },
+    {
+      "name": "ishiharas_house",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 192,
+      "failures": []
+    },
+    {
+      "name": "fighting_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 132,
+      "failures": [
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.27619
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        }
+      ]
+    },
+    {
+      "name": "fighting_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "fighting_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 160,
+      "failures": []
+    },
+    {
+      "name": "rock_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 132,
+      "failures": [
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.27619
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        }
+      ]
+    },
+    {
+      "name": "rock_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "rock_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 336,
+      "failures": []
+    },
+    {
+      "name": "water_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 132,
+      "failures": [
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.27619
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        }
+      ]
+    },
+    {
+      "name": "water_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "water_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 1304,
+      "failures": []
+    },
+    {
+      "name": "lightning_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 132,
+      "failures": [
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.27619
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        }
+      ]
+    },
+    {
+      "name": "lightning_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "grass_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 132,
+      "failures": [
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.27619
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        }
+      ]
+    },
+    {
+      "name": "grass_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "grass_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 384,
+      "failures": []
+    },
+    {
+      "name": "psychic_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 132,
+      "failures": [
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.27619
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        }
+      ]
+    },
+    {
+      "name": "psychic_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "psychic_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 336,
+      "failures": []
+    },
+    {
+      "name": "science_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 132,
+      "failures": [
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.27619
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        }
+      ]
+    },
+    {
+      "name": "science_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "science_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 384,
+      "failures": []
+    },
+    {
+      "name": "fire_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 132,
+      "failures": [
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.27619
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        }
+      ]
+    },
+    {
+      "name": "fire_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "fire_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 384,
+      "failures": []
+    },
+    {
+      "name": "challenge_hall_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 132,
+      "failures": [
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.27619
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        }
+      ]
+    },
+    {
+      "name": "challenge_hall_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "challenge_hall",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 448,
+      "failures": []
+    },
+    {
+      "name": "pokemon_dome_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 228,
+      "failures": [
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.27619
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        }
+      ]
+    },
+    {
+      "name": "pokemon_dome",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 452,
+      "failures": [
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 1.05
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.362069
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.354598
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.333333
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.27619
+        },
+        {
+          "axis": 1,
+          "plane": 0,
+          "area": 0.006905
+        }
+      ]
+    },
+    {
+      "name": "hall_of_honor",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 240,
+      "failures": []
+    },
+    {
+      "name": "table",
+      "check": "prop-exterior-ownership",
+      "triangles": 60,
+      "failures": []
+    },
+    {
+      "name": "steps",
+      "check": "prop-exterior-ownership",
+      "triangles": 24,
+      "failures": [
+        {
+          "axis": 2,
+          "plane": 4.0,
+          "area": 0.0864
+        },
+        {
+          "axis": 2,
+          "plane": 4.0,
+          "area": 0.3456
+        },
+        {
+          "axis": 2,
+          "plane": 4.0,
+          "area": 0.288
+        },
+        {
+          "axis": 0,
+          "plane": 10,
+          "area": 0.0576
+        },
+        {
+          "axis": 0,
+          "plane": 10,
+          "area": 0.2304
+        },
+        {
+          "axis": 0,
+          "plane": 10,
+          "area": 0.192
+        },
+        {
+          "axis": 2,
+          "plane": 8.0,
+          "area": 0.0864
+        },
+        {
+          "axis": 2,
+          "plane": 8.0,
+          "area": 0.3456
+        },
+        {
+          "axis": 2,
+          "plane": 8.0,
+          "area": 0.288
+        },
+        {
+          "axis": 0,
+          "plane": 4,
+          "area": 0.0576
+        },
+        {
+          "axis": 0,
+          "plane": 4,
+          "area": 0.2304
+        },
+        {
+          "axis": 0,
+          "plane": 4,
+          "area": 0.192
+        }
+      ]
+    },
+    {
+      "name": "machine",
+      "check": "prop-exterior-ownership",
+      "triangles": 24,
+      "failures": []
+    },
+    {
+      "name": "altar",
+      "check": "prop-exterior-ownership",
+      "triangles": 24,
+      "failures": []
+    },
+    {
+      "name": "water_club",
+      "check": "coping-ownership",
+      "triangles": 104,
+      "failures": [
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.019162
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 3.7e-05
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.019162
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 3.7e-05
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.019162
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 3.7e-05
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.019162
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 3.7e-05
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.019162
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 3.7e-05
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.019162
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 3.7e-05
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.019162
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 3.7e-05
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 3.7e-05
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.019162
+        },
+        {
+          "axis": 1,
+          "plane": 0.07,
+          "area": 0.00165
+        }
+      ]
+    }
+  ]
+}

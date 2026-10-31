@@ -46,6 +46,10 @@
     }
   },
   "design": "high combed dark hair and green waistcoat",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 22
@@ -79,7 +83,7 @@
   "appearance": "chap",
   "pose": "standing",
   "component": null,
-  "vertices": 1025,
-  "triangles": 544,
+  "vertices": 1351,
+  "triangles": 804,
   "batches": 6
 }

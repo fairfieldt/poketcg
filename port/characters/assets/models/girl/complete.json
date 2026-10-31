@@ -1,11 +1,11 @@
 {
   "model": "girl",
-  "triangles": 664,
-  "vertices": 1236,
+  "triangles": 760,
+  "vertices": 1274,
   "batches": 6,
   "linked_parts": 28,
   "appearances": [
     "girl"
   ],
-  "fingerprint": "d70903c6b22d3e8087a516dfe54f4ef01e6236738d7cf985b752a4ccecd39dcd"
+  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
 }

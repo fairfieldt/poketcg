@@ -42,9 +42,13 @@
     }
   },
   "design": "black bear-eared hood and full dark suit",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
-    "linked_parts": 22
+    "linked_parts": 21
   },
   "provenance": {
     "sprite": 4,
@@ -75,7 +79,7 @@
   "appearance": "imakuni",
   "pose": "standing",
   "component": null,
-  "vertices": 896,
-  "triangles": 534,
+  "vertices": 926,
+  "triangles": 518,
   "batches": 6
 }

@@ -42,6 +42,10 @@
     }
   },
   "design": "center-parted black curtains, blue open vest and light shirt",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 22
@@ -75,7 +79,7 @@
   "appearance": "rod",
   "pose": "standing",
   "component": null,
-  "vertices": 1032,
-  "triangles": 550,
+  "vertices": 1359,
+  "triangles": 807,
   "batches": 6
 }

@@ -42,6 +42,10 @@
     }
   },
   "design": "red swept mining-club hair, red jacket, dark undershirt",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 20
@@ -75,7 +79,7 @@
   "appearance": "gene",
   "pose": "standing",
   "component": null,
-  "vertices": 957,
-  "triangles": 504,
+  "vertices": 1276,
+  "triangles": 761,
   "batches": 6
 }

@@ -1,6 +1,8 @@
 #ifndef ADVENTURE_SCENE_H
 #define ADVENTURE_SCENE_H
 typedef struct Scene Scene;
+/* Establish the shared opaque world/portrait pass before clearing or drawing. */
+void scene_begin_opaque(void);
 Scene *scene_open(const char *path,const char *texture_root);
 void scene_close(Scene *scene);
 void scene_draw_room(const Scene *scene);

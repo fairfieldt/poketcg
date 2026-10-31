@@ -42,6 +42,10 @@
     }
   },
   "design": "indigo cap with long brim and white front badge, collared jacket",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": true
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 22
@@ -75,7 +79,7 @@
   "appearance": "steve",
   "pose": "standing",
   "component": null,
-  "vertices": 1073,
-  "triangles": 566,
+  "vertices": 1344,
+  "triangles": 832,
   "batches": 6
 }

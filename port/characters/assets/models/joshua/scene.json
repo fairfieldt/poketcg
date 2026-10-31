@@ -42,6 +42,10 @@
     }
   },
   "design": "white swimming cap, sleeveless top and shorts",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": true
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 23
@@ -75,7 +79,7 @@
   "appearance": "joshua",
   "pose": "standing",
   "component": null,
-  "vertices": 1025,
-  "triangles": 539,
+  "vertices": 1147,
+  "triangles": 688,
   "batches": 6
 }

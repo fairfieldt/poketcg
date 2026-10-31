@@ -65,8 +65,13 @@ The renderer uses 320 × 240 RGBA16 with resample-only VI output. The additional
 VI antialiasing/divot/dedither chain softened small landmark features and text;
 resampling retains more detail while still scaling the native image. Landmark
 footprints and their major roof/rune details are sized for this output.
+Solid room and character meshes use ordinary opaque depth testing (`GL_LESS`);
+the special interpenetrating mode is used only by the visual A/B diagnostic.
+Contact shadows use a separate blended pass with depth writes disabled.
 
 [Overworld before/after from ares](../../../reviews/overworld-readability/comparison.png)
+
+[Full character and surface review](../../../reviews/surface-audit/index.html)
 
 Ares screenshots from Tools → Capture Screenshot include VI processing, before
 window shaders/scaling. At SD quality, its progressive 640 × 240 captures should
@@ -144,7 +149,21 @@ make -C port/frontends/n64/adventure test
 make -C port/gameplay differential
 make -C port/frontends/n64/adventure validate
 make -C port/frontends/n64/adventure video-diagnostic
+make -C port/frontends/n64/adventure visual-diagnostic
+python3 port/frontends/n64/adventure/tools/validate_visual.py \
+  port/frontends/n64/adventure/poketcg-visual.z64
 ```
+
+`DIAGNOSTIC=5` draws every imported character and all six fallbacks in four
+views (front, back, side and maximum walking swing), followed by every map
+and the naming portrait. It also compares interpenetrating and normal opaque
+depth testing on identical Mark, Mason and Tech assets. These are review-only
+labels and cameras; production framing and gameplay remain unchanged. The
+validator records all native framebuffer hashes separately from post-VI exports.
+`DIAGNOSTIC=6` is the shorter held post-VI sequence: the same three character
+A/B pairs plus the island, laboratory, Water, Lightning and Dome scenes.
+`DIAGNOSTIC=7` holds Mark and the Lightning/Dome follow cameras for a short
+headwear regression check through actual VI output.
 
 The host checks cover gameplay, native helpers, script branches, navigation,
 UI feature behavior, two-diary exchanges, and interrupted SRAM writes. Original
@@ -170,7 +189,7 @@ duel/story code for a representative memory budget. It checks:
 
 The saved [native validation record](../../../world3d/generated/native/validation.json)
 records ROM identity, every framebuffer hash, and measured heap use. The tested
-diagnostic retained **1,078,824 bytes** of free heap in its busiest room.
+diagnostic retained **1,006,096 bytes** of free heap in its busiest room.
 
 Physical-console performance and a complete human playthrough remain unverified.
 Rooms retain simplified geometry. Sampled music and SFX

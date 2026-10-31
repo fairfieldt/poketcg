@@ -48,6 +48,10 @@
     }
   },
   "design": "short tousled dark hair, yellow top and dark skirt",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 23
@@ -81,7 +85,7 @@
   "appearance": "gal",
   "pose": "standing",
   "component": null,
-  "vertices": 982,
-  "triangles": 528,
+  "vertices": 1016,
+  "triangles": 556,
   "batches": 6
 }

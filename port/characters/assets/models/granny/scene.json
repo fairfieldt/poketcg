@@ -43,6 +43,10 @@
     }
   },
   "design": "silver braided bun, small spectacles, yellow cardigan and long skirt",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 26
@@ -76,7 +80,7 @@
   "appearance": "granny",
   "pose": "standing",
   "component": null,
-  "vertices": 1216,
-  "triangles": 638,
+  "vertices": 1425,
+  "triangles": 818,
   "batches": 6
 }

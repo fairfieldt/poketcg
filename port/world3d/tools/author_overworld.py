@@ -44,6 +44,7 @@ active_collection=root_collection
 materials={}
 texture_rows={}
 all_land=[]
+ground_routes=[]
 building_footprints=[]
 landmarks=[]
 ground_casters=[]
@@ -301,6 +302,7 @@ def prepare_ground_samples():
             if edges:
                 bmesh.ops.subdivide_edges(bm,edges=edges,cuts=1,use_grid_fill=True)
                 budget-=len(edges)
+            bmesh.ops.triangulate(bm,faces=list(bm.faces),quad_method='BEAUTY',ngon_method='BEAUTY')
             bm.to_mesh(data);bm.free();data.update()
         if obj.get('grass_shelf'):
             if SAND.name not in data.materials:data.materials.append(SAND)
@@ -310,6 +312,7 @@ def prepare_ground_samples():
                 coords=[data.vertices[i].co for i in poly.vertices]
                 x=sum(v.x for v in coords)/len(coords);z=-sum(v.y for v in coords)/len(coords)
                 beach=(.8<x<6.6 and 15.65<z<17.3) or (13.4<x<15.8 and 13.85<z<14.7)
+                if data.materials[poly.material_index]!=GRASS:continue
                 if not beach or shoreline_distance(x,z)>.38:continue
                 if max(shoreline_distance(v.x,-v.y) for v in coords)>.75:continue
                 poly.material_index=sand_index
@@ -548,6 +551,7 @@ def island(name,control):
     verts=[(v.x,height(v.x,-v.y),-v.y) for v in vv]
     ground=mesh(name+' grass shelf',verts,ff,GRASS,up=True)
     ground['ground_receiver']=True;ground['grass_shelf']=True
+    ground['land_outline_index']=len(all_land)-1
     # All cliff and foam rings share the same displaced point at each coast
     # vertex; independently offset edge normals would leave blue cracks.
     coast_rings=[[],[],[],[]];normals=[]
@@ -604,24 +608,59 @@ island('Water Club islet',[(13.4,13.1),(13.75,12.45),(14.7,12.35),(15.4,12.9),(1
 
 
 def path(name,points,width=.24,mat=PATH):
-    # Modest smoothing preserves the source waypoint anchors and gives paths
-    # an organic edge. Each sampled strip conforms to the same grass height.
-    verts=[];faces=[]
-    for seg,(a,b) in enumerate(zip(points,points[1:])):
-        length=math.hypot(b[0]-a[0],b[1]-a[1]);steps=max(1,math.ceil(length/.4))
-        for j in range(steps):
-            t,u=j/steps,(j+1)/steps
-            x,z=a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t
-            nx,nz=a[0]+(b[0]-a[0])*u,a[1]+(b[1]-a[1])*u
-            dx,dz=nx-x,nz-z;n=math.hypot(dx,dz)
-            ww=width*(1+.12*math.sin((seg*steps+j)*1.7))
-            ox,oz=-dz/n*ww/2,dx/n*ww/2
-            coords=[(x-ox,z-oz),(nx-ox,nz-oz),(nx+ox,nz+oz),(x+ox,z+oz)]
-            base=len(verts);verts.extend((p,height(p,q)+.026,q) for p,q in coords)
-            faces.append(tuple(range(base,base+4)))
-    ground=mesh(name,verts,faces,mat,up=True)
-    ground['ground_receiver']=True
-    return ground
+    # Route contours become constraints in the grass shelf triangulation.
+    # Shared strip edges avoid both floating decals and overlapping corner quads.
+    samples=[]
+    for a,b in zip(points,points[1:]):
+        steps=max(1,math.ceil(math.hypot(b[0]-a[0],b[1]-a[1])/.8))
+        samples.extend((a[0]+(b[0]-a[0])*j/steps,a[1]+(b[1]-a[1])*j/steps) for j in range(steps))
+    samples.append(points[-1])
+    left=[];right=[]
+    for i,(x,z) in enumerate(samples):
+        a=samples[max(0,i-1)];b=samples[min(len(samples)-1,i+1)]
+        dx,dz=b[0]-a[0],b[1]-a[1];length=math.hypot(dx,dz)
+        half=width*.5*(1+.08*math.sin(i*1.7))
+        ox,oz=-dz/length*half,dx/length*half
+        left.append((x-ox,z-oz));right.append((x+ox,z+oz))
+    ground_routes.append((name,left+right[::-1],mat))
+
+
+def conform_routes():
+    # Constrained triangulation splits crossing strip borders and joins every
+    # route/grass edge. The original island outline remains the clipping face.
+    # Heights are evaluated once per shared vertex, preventing terrain cracks.
+    for obj in list(scene.objects):
+        if not obj.get('grass_shelf'):continue
+        old=obj.data
+        outline=all_land[obj['land_outline_index']]
+        points=[Vector((x,-z)) for x,z in outline]
+        points.extend(Vector((v.co.x,v.co.y)) for v in old.vertices)
+        edges=[(i,(i+1)%len(outline)) for i in range(len(outline))]
+        for name,poly,mat in ground_routes:
+            start=len(points);points.extend(Vector((x,-z)) for x,z in poly)
+            edges.extend((start+i,start+(i+1)%len(poly)) for i in range(len(poly)))
+        vv,ee,ff,*_=delaunay_2d_cdt(points,edges,[list(range(len(outline)))],1,.00001)
+        # CDT also returns closed route cycles outside a shelf. They are
+        # constraints, not extra islands: clip by the original coastline.
+        ff=[face for face in ff if inside(sum(vv[i].x for i in face)/len(face),
+                -sum(vv[i].y for i in face)/len(face),outline) and
+            abs(sum(vv[a].x*vv[b].y-vv[a].y*vv[b].x for a,b in zip(face,face[1:]+face[:1])))>2e-10]
+        verts=[(v.x,height(v.x,-v.y),-v.y) for v in vv]
+        mats=[]
+        for face in ff:
+            x=sum(verts[i][0] for i in face)/len(face)
+            z=sum(verts[i][2] for i in face)/len(face)
+            surface=GRASS
+            for name,poly,mat in ground_routes:
+                if inside(x,z,poly):surface=mat
+            mats.append(surface)
+        replacement=mesh(obj.name+' joined routes',verts,ff,GRASS,up=True,face_materials=mats)
+        replacement['ground_receiver']=True;replacement['grass_shelf']=True
+        replacement['terrain_surface_owner']=True
+        replacement['terrain_outline']=json.dumps(outline)
+        replacement['land_outline_index']=obj['land_outline_index']
+        bpy.data.objects.remove(obj,do_unlink=True)
+        if old.users==0:bpy.data.meshes.remove(old)
 
 
 group('Sandy routes and beaches')
@@ -633,6 +672,7 @@ paths=[[(2.5,14),(4.5,14.8),(6.5,16),(7.5,14),(8.5,14),(8.5,10),(8.5,9),(6.5,6),
 for i,points in enumerate(paths):path('Path '+str(i),points)
 # The broad south-west beach is a sloping crescent, not a white island cap.
 path('South-west sand',[(1.35,15.6),(2.1,16.2),(3.2,16.45),(4.5,16.7),(5.9,16.6)],.52,SAND)
+conform_routes()
 
 
 def beam(name,a,b,width,mat=WOOD):
@@ -655,8 +695,8 @@ def bridge(name,a,b,width=.43):
         q=(x+side.x*width/2,.27,z+side.y*width/2)
         beam(name+' plank',p,q,.10)
     for sign in (-1,1):
-        aa=(a[0]+side.x*width*.62,.68,a[1]+side.y*width*.62)
-        bb=(b[0]+side.x*width*.62,.68,b[1]+side.y*width*.62)
+        aa=(a[0]+sign*side.x*width*.62,.68,a[1]+sign*side.y*width*.62)
+        bb=(b[0]+sign*side.x*width*.62,.68,b[1]+sign*side.y*width*.62)
         beam(name+' railing',aa,bb,.055)
         for j in range(5):
             t=j/4;x,z=aa[0]+(bb[0]-aa[0])*t,aa[2]+(bb[2]-aa[2])*t
@@ -999,7 +1039,7 @@ def clip(vertices,axis,bound,keep_more):
 
 
 def native_export():
-    native=Scene('overworld');count=0
+    native=Scene('overworld');count=0;surfaces=set()
     for obj in sorted(scene.objects,key=lambda o:o.name):
         if obj.type!='MESH' or not obj.get('native_export',False):continue
         data=obj.data;data.calc_loop_triangles()
@@ -1026,6 +1066,9 @@ def native_export():
                     tri_vertices=[polygon[0],polygon[i],polygon[i+1]]
                     a,b,c=[Vector(p[:3]) for p in tri_vertices]
                     if (b-a).cross(c-a).length_squared<1e-13:continue
+                    surface=tuple(sorted(tuple(round(v,5) for v in p[:3]) for p in tri_vertices))
+                    assert surface not in surfaces,('Duplicate native island surface',obj.name)
+                    surfaces.add(surface)
                     for p in tri_vertices:
                         vertex=tuple(round(x,7) for x in p[:5])+tuple(max(0,min(255,round(c))) for c in p[5:])
                         if vertex not in cache:cache[vertex]=len(vs);vs.append(vertex)
@@ -1043,6 +1086,12 @@ def native_export():
         concept='port/maps/prototypes/overworld_n64_concept_v1.png',sea_height=SEA,ground_height=.35)
     doc['texture_count']=len({t for r in doc['meshes'].values() for t in r['textures']})
     assert doc['overworld_nodes']==before_nodes
+    from check_overworld_terrain import validate as validate_terrain
+    terrain_check=validate_terrain()
+    terrain_report=ROOT/'build/terrain-check.json';terrain_report.parent.mkdir(parents=True,exist_ok=True)
+    terrain_report.write_text(json.dumps(terrain_check,indent=2)+'\n')
+    assert terrain_check['passed'],terrain_check['failures'][:8]
+    scene['terrain_surface_validation']=json.dumps(terrain_check['totals'])
     # Reject layered/crossing roof surfaces before publishing runtime assets.
     from check_overworld_roofs import validate as validate_roofs
     roof_check=validate_roofs(doc,.12)

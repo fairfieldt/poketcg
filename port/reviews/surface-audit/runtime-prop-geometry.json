@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "models": [
+    {
+      "model": 5,
+      "vertices": 32,
+      "edges": 90,
+      "triangles": 60,
+      "shells": 1,
+      "duplicate_triangles": 0
+    },
+    {
+      "model": 6,
+      "vertices": 50,
+      "edges": 144,
+      "triangles": 96,
+      "shells": 1,
+      "duplicate_triangles": 0
+    }
+  ]
+}

@@ -55,6 +55,10 @@
     }
   },
   "design": "square black hair, round spectacles, blue tie",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 20
@@ -88,7 +92,7 @@
   "appearance": "tech",
   "pose": "standing",
   "component": null,
-  "vertices": 995,
-  "triangles": 531,
+  "vertices": 1156,
+  "triangles": 663,
   "batches": 6
 }

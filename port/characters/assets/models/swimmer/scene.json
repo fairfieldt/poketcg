@@ -50,6 +50,10 @@
     }
   },
   "design": "short bob, sleeveless pool outfit; blue/blonde palette variants",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 24
@@ -83,7 +87,7 @@
   "appearance": "swimmer",
   "pose": "standing",
   "component": null,
-  "vertices": 1050,
-  "triangles": 556,
+  "vertices": 1082,
+  "triangles": 584,
   "batches": 6
 }

@@ -35,6 +35,20 @@ struct Scene {
 #define sprites (scene->sprites)
 #define textures (scene->textures)
 
+void scene_begin_opaque(void)
+{
+    /* Normal opaque surfaces need the RDP's opaque Z mode. The special
+       interpenetrating mode changes coverage at near intersections and can
+       mix rear surfaces into a character. GL_LESS also lets libdragon choose
+       transparent Z mode while the contact-shadow blend pass is enabled. */
+    glEnable(GL_DEPTH_TEST);glDepthFunc(GL_LESS);glDepthMask(GL_TRUE);
+    glDisable(GL_BLEND);glBlendFunc(GL_ONE,GL_ZERO);
+    glDisable(GL_ALPHA_TEST);glDisable(GL_FOG);
+    glDisable(GL_LIGHTING);glDisable(GL_CULL_FACE);
+    glTexEnvi(GL_TEXTURE_ENV,GL_TEXTURE_ENV_MODE,GL_MODULATE);
+    glColor4ub(255,255,255,255);
+}
+
 Scene *scene_open(const char *path, const char *texture_root)
 {
     Scene *scene=calloc(1,sizeof(*scene));
@@ -161,7 +175,7 @@ void scene_draw_contact_shadows(const float (*positions)[2],unsigned count)
     /* A transparent rim keeps this small at native resolution. The fan sits
        on the floor, independent of actor bob, and furniture still occludes it.
        libdragon has no polygon offset or attribute stack. Restore explicitly. */
-    glDisable(GL_TEXTURE_2D);
+    glDisable(GL_TEXTURE_2D);glDepthFunc(GL_LESS);
     glDepthMask(GL_FALSE);
     glEnable(GL_BLEND);glBlendFunc(GL_SRC_ALPHA,GL_ONE_MINUS_SRC_ALPHA);
     for(unsigned i=0;i<count;i++) {
@@ -173,7 +187,7 @@ void scene_draw_contact_shadows(const float (*positions)[2],unsigned count)
             glVertex3f(x+ring[j][0]*.56f,.045f,z+ring[j][1]*.40f);
         glEnd();
     }
-    glDepthMask(GL_TRUE);glDisable(GL_BLEND);glColor4ub(255,255,255,255);
+    scene_begin_opaque();
 }
 
 void scene_close(Scene *scene)

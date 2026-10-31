@@ -1,0 +1,4 @@
+RUNTIME PROP SHELLS PASS: {"passed": true, "models": [{"model": 5, "vertices": 32, "edges": 90, "triangles": 60, "shells": 1, "duplicate_triangles": 0}, {"model": 6, "vertices": 50, "edges": 144, "triangles": 96, "shells": 1, "duplicate_triangles": 0}]}
+PROP CLEARANCE PASS: radius=0.65; maps=33, variants=37, permission_states=292, solids=573, anchors=3528, edges=5817, npc_starts=141, offstage_starts=2; failures=0
+WORLD3D PASS: 34 maps; 98 meshes; 57915 triangles; 101936 vertices; 508 shared textures
+Per-scene maximum: 54 batches, 53 textures; no duplicate surfaces, RGBA16 TMEM and map/NPC/warp links verified

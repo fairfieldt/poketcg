@@ -54,11 +54,16 @@ python3 port/world3d/tools/build_world.py
 python3 port/world3d/tools/build_world.py --overworld-only
 python3 port/world3d/tools/check_world.py
 python3 port/world3d/tools/check_solid_terrain.py
+python3 port/world3d/tools/check_room_surfaces.py
+python3 port/world3d/tools/check_cursor_shell.py
+python3 port/characters/tools/check_exterior.py
 python3 port/world3d/tools/check_characters.py
 /Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 \
   --python port/world3d/tools/author_overworld.py
 /Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 \
   --python port/world3d/tools/check_overworld_roofs.py
+/Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 \
+  --python port/world3d/tools/check_overworld_terrain.py
 /Applications/Blender.app/Contents/MacOS/Blender --background \
   --python port/world3d/tools/blender_world.py -- --render
 ```
@@ -77,7 +82,11 @@ under another roof. Round roofs have real recessed centers. Roof identifiers
 are painted into their owning cap faces. The authoring export checks all twelve
 roof sites for manifold shells, duplicate faces and competing surfaces from
 the native camera before publishing meshes. `check_overworld_roofs.py` repeats
-the check against the saved Blender artifact.
+the check against the saved Blender artifact. Island paths are material regions
+in the same constrained triangulation as the grass, with shared heights and
+edges. The terrain check verifies coastline area, edge ownership and lack of
+duplicate or degenerate faces. Native export and `check_world.py` also reject
+exact duplicate triangles across material batches.
 
 - `generated/world3d_maps.h`: native-map-indexed scene paths and cameras.
 - `generated/world.json`: all maps, source NPC/warp/permission data, mesh
@@ -113,6 +122,17 @@ L643 uses big-endian 24-byte vertices (XYZ float, UV float, RGBA8), 16-bit
 indices, and material/rigid-part batches. Runtime coordinates are X east,
 Y up, Z south; one map tile is one world unit. The Blender importer converts
 these to its right-handed Z-up coordinates.
+
+Opaque meshes use normal `GL_LESS` depth testing in the N64 frontend. The
+interpenetrating RDP depth mode is reserved for diagnostic comparisons. Each
+opaque pass restores depth writes and disables blending; actor contact shadows
+use a separate blended pass without depth writes. The cursor and fallback card
+also use single closed shells with material regions, checked for manifold
+edges, winding and spherical/planar bounds. Faces and clothing own their
+head/torso surfaces in the individual character exports, rather than competing
+with a complete backing head or shirt. Room props likewise use owning caps,
+joined door thresholds and disjoint pool coping. Broad floor materials keep
+room-specific motifs while reducing high-frequency aliasing at native distance.
 
 ## Map events
 

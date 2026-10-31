@@ -6,6 +6,17 @@ TILES={
     'deck_machine_room':(167,194,201),
     'club_lobby':(171,180,153),
     'club_foyer':(196,185,161),
+    'lightning_club':(43,59,161),
+    'water_club':(203,173,116),
+    'psychic_club':(183,168,200),
+    'fire_club':(213,178,136),
+    'rock_club':(151,179,202),
+    'science_club':(183,164,205),
+    'fighting_club':(100,161,106),
+    'pokemon_dome':(181,57,48),
+    'challenge_hall':(211,176,126),
+    'hall_of_honor':(213,190,143),
+    'ishiharas_house':(201,175,119),
 }
 FLOOR_TINT={
     'lightning_club':(.97,.97,.97),
@@ -35,17 +46,81 @@ WALL_PAINT={
 
 def style_name(slug):
     if slug=='deck_machine_room_dynamic':return 'deck_machine_room'
+    if slug=='pokemon_dome_entrance':return 'pokemon_dome'
     if slug.startswith('emblem_'):return 'club_foyer'
     return slug
 
 def material_pixel(slug,x,y,source,is_plain):
     slug=style_name(slug)
+    if slug in ('rock_club','psychic_club','fire_club') and 100<=x<124 and y>=(24 if slug=='rock_club' else 32):
+        # Retain the source runner footprint and its four-pixel edge binding.
+        # Its old white one-pixel diagonal weave aliased along the entire
+        # room; use a broad, quiet chevron inside the existing border.
+        phase=(y+abs(x-112))%32
+        band=1-smooth(1.0,3.0,abs(phase-16))
+        base=(161,35,34);thread=(199,104,66)
+        return tuple(round(a+(b-a)*band*.62) for a,b in zip(base,thread))+(255,)
+    if slug=='lightning_club' and 100<=x<124 and y>=112:
+        # The electric-blue runner keeps its cyan/cream outer border and
+        # silhouette, with a four-tile interior chevron rather than white
+        # single-texel zigzags. Imported prototype UVs use these same pixels.
+        phase=(y+abs(x-112))%32
+        band=1-smooth(1.0,3.0,abs(phase-16))
+        base=(35,49,128);thread=(102,158,206)
+        return tuple(round(a+(b-a)*band*.62) for a,b in zip(base,thread))+(255,)
+    if slug=='rock_club' and (72<=x<96 or 128<=x<152) and y>=24:
+        # These are the two continuous sand-colored strips beside the runner,
+        # including the floor restored below statue art. Replace white/gold
+        # pixel stippling with low-contrast broad mineral variation.
+        value=1+.025*math.sin(x*math.pi/16)+.025*math.cos(y*math.pi/24)
+        return tuple(round(c*value) for c in (205,183,139))+(255,)
     if slug in TILES and is_plain:
         base=TILES[slug]
-        # Two source tiles per flagstone, soft grout and restrained grain.
+        # Two source tiles per flagstone. The original one-tile bright/dark
+        # source patterns collapse into moire at the native far wall; broad,
+        # low-contrast surfaces remain legible after the RDP and VI filters.
         grain=((x*17+y*29)%7-3)*.45
         value=1+(.025 if (x//16+y//16)%2 else -.025)
-        if x%16==0 or y%16==0:value*=.80
+        def blend(pigment,weight):
+            return tuple(round(a*(1-weight)+b*weight+grain) for a,b in zip(base,pigment))+(255,)
+        if slug in ('fire_club','challenge_hall'):
+            # Keep the source diamond livery, enlarged to a four-tile period.
+            # Soft, two-texel bands survive minification better than its
+            # repeating one-texel cream/orange diagonals.
+            u=abs(x%32-16);v=abs(y%32-16);diamond=u+v
+            ring=1-smooth(.8,2.4,abs(diamond-13))
+            if slug=='fire_club':
+                return blend((177,119,78),ring*.72)
+            center=1-smooth(2.4,4.2,diamond)
+            cream=(237,218,175)
+            pigment=tuple(a*(1-center)+b*center for a,b in zip(cream,(177,137,89)))
+            return blend(pigment,max(ring*.85,center*.55))
+        elif slug=='pokemon_dome':
+            # Broad gold octagons retain the original carpet's identity.
+            # Their period is four source tiles, with a restrained dark
+            # medallion instead of a high-contrast single-pixel rosette.
+            u=abs(x%32-16);v=abs(y%32-16)
+            octagon=max(u,v,(u+v)*math.sqrt(.5))
+            ring=1-smooth(.8,2.3,abs(octagon-11))
+            center=1-smooth(2.2,4.2,octagon)
+            pigment=tuple(a*(1-center)+b*center for a,b in zip((204,128,79),(119,38,38)))
+            return blend(pigment,max(ring*.82,center*.7))
+        elif slug=='fighting_club':
+            # Large staggered tatami mats, with broad binding and a faint
+            # weave, retain the gym's distinctive green floor.
+            u=(x+(16 if int(y//16)%2 else 0))%32;v=y%16
+            binding=1-smooth(.7,1.8,min(u,32-u,v,16-v))
+            grain=math.sin((x if int(y//16)%2 else y)*math.pi/4)*.8
+            return blend((58,111,70),binding*.68)
+        elif slug in ('water_club','ishiharas_house'):
+            # Broad parquet blocks retain the warm timber identity without
+            # a high-contrast one-pixel weave on every source tile.
+            along=x if (x//32+y//32)%2 else y
+            across=y if (x//32+y//32)%2 else x
+            value=1+(.035 if (x//32+y//32)%2 else -.035)
+            if across%16==0 or along%32==0:value*=.88
+            grain=math.sin(along*math.pi/8)*1.4
+        elif x%16==0 or y%16==0:value*=.88
         elif x%16==1 or y%16==1:value*=1.035
         return tuple(round(c*value+grain) for c in base)+(255,)
     r,g,b,a=source
@@ -59,7 +134,10 @@ def material_pixel(slug,x,y,source,is_plain):
     if slug=='grass_club':
         if g>r*1.2 and g>b*1.2:
             return tuple(round(c*(.70+.30*g/255)) for c in (123,176,77))+(a,)
-        if min(r,g,b)>210:return (199,204,151,a)
+        # Keep tiny flowers and flecks, but bring their value close enough to
+        # the grass that they do not sparkle into white/yellow checkerboards.
+        if min(r,g,b)>210:return (159,184,111,a)
+        if r>210 and g>190 and b<170:return (169,187,112,a)
     # Leave source motifs intact while calming saturated painted surfaces.
     luminance=.25*r+.60*g+.15*b
     return tuple(round(c*.88+luminance*.12) for c in (r,g,b))+(a,)

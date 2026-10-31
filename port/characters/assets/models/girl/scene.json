@@ -44,6 +44,10 @@
     }
   },
   "design": "long black hair beneath blue cap, blue top and short skirt",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": true
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 28
@@ -77,7 +81,7 @@
   "appearance": "girl",
   "pose": "standing",
   "component": null,
-  "vertices": 1236,
-  "triangles": 664,
+  "vertices": 1274,
+  "triangles": 760,
   "batches": 6
 }

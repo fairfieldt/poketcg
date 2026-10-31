@@ -27,7 +27,7 @@ for name,record in world['meshes'].items():
         filename=blob[offset:offset+32].split(b'\0')[0].decode();offset+=32
         w,h,_,_=read_png(out/'textures'/filename.replace('.sprite','.png'))
         assert w*h*2<=4096 and w&(w-1)==0 and h&(h-1)==0,(name,filename,w,h)
-    nv_total=nt_total=0
+    nv_total=nt_total=0;surfaces=set()
     for i in range(nm):
         assert offset%4==0
         model,part,tex,zero,nv,ni,*pivot=struct.unpack_from('>HHhHII3f',blob,offset);offset+=28
@@ -43,6 +43,9 @@ for name,record in world['meshes'].items():
             ab=[b[k]-a[k] for k in range(3)];ac=[c[k]-a[k] for k in range(3)]
             cross=[ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0]]
             assert sum(x*x for x in cross)>1e-13,(name,'degenerate',i,j)
+            surface=(model,part,tuple(pivot),tuple(sorted(tuple(round(v,5) for v in p) for p in (a,b,c))))
+            assert surface not in surfaces,(name,'duplicate surface',i,j)
+            surfaces.add(surface)
         nv_total+=nv;nt_total+=ni//3
     assert offset==len(blob),(name,offset,len(blob))
     assert nv_total==record['vertices'] and nt_total==record['triangles']
@@ -56,7 +59,8 @@ lightning=world['maps'][15]
 assert lightning['camera']==dict(eye=[14,9,34],target=[14,0,21.5],fov=58)
 assert {(n['name'],n['x'],n['y'],n['dir']) for n in lightning['npcs']}=={
 ('NPC_JENNIFER',14,18,2),('NPC_NICHOLAS',6,10,2),('NPC_BRANDON',22,12,0),('NPC_ISAAC',12,4,0)}
+subprocess.run([sys.executable,str(ROOT/'tools/check_cursor_shell.py')],check=True)
 subprocess.run([sys.executable,str(ROOT/'tools/check_prop_clearance.py'),
                 '--report',str(out/'prop-clearance.json')],check=True)
 print(f'WORLD3D PASS: 34 maps; {len(world["meshes"])} meshes; {triangles} triangles; {vertices} vertices; {world["texture_count"]} shared textures')
-print(f'Per-scene maximum: {max_batches} batches, {max_textures} textures; RGBA16 TMEM and map/NPC/warp links verified')
+print(f'Per-scene maximum: {max_batches} batches, {max_textures} textures; no duplicate surfaces, RGBA16 TMEM and map/NPC/warp links verified')

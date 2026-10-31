@@ -52,6 +52,10 @@
     }
   },
   "design": "blue round bob, white collar, counter uniform",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 26
@@ -85,7 +89,7 @@
   "appearance": "clerk",
   "pose": "standing",
   "component": null,
-  "vertices": 1133,
-  "triangles": 600,
+  "vertices": 1236,
+  "triangles": 686,
   "batches": 6
 }

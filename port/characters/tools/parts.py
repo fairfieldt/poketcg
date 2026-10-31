@@ -54,7 +54,9 @@ def definitions():
     p['hair_side']=box((.15,.35,.42),.8)
     p['bob_back']=rings([(1.51,.30,.12,0,-.21),(1.78,.42,.18,0,-.16),(2.07,.34,.18,0,-.10)])
     p['bun']=rings([(-.12,.11,.11,0,0),(.02,.18,.16,0,0),(.14,.11,.11,0,0)],8)
-    p['cap']=rings([(1.95,.41,.33,0,-.02),(2.12,.35,.29,0,-.02),(2.21,.15,.15,0,-.02)])
+    # This envelope contains the generic scalp above its brim. The old cap
+    # intersected the scalp at the crown, exposing black wedges in native VI.
+    p['cap']=rings([(1.92,.43,.38,0,-.04),(2.15,.39,.34,0,-.04),(2.25,.17,.17,0,-.04)])
     p['brim']=box((.57,.37,.045),.85)
     p['hood']=rings([(1.48,.35,.23,0,-.06),(1.8,.44,.32,0,-.06),(2.10,.39,.30,0,-.07),(2.20,.25,.21,0,-.07)])
     p['hood_ear']=box((.20,.20,.20),.9)

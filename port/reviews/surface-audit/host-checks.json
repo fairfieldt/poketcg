@@ -1,0 +1,85 @@
+{
+  "passed": true,
+  "recorded_at": "2026-10-31T00:12:48.262872-07:00",
+  "source_commit": "7c7455c148286e3196e2331204cc28e2648cda49",
+  "source_state": "Host logic checks cover unchanged C state. Earlier character/skin geometry-specific checks retain their recorded asset revision; character agent owns final true-head-union proof. Final frozen runtime assets verified by captures/result.json and bundled-mesh-integrity.json.",
+  "checks": [
+    {
+      "name": "profiles",
+      "command": "sh tools/test_profiles.sh",
+      "passed": true,
+      "result": "Two canonical diaries, settings/duel ownership, CardPop/Gift persistence, partial DMA and interrupted header atomicity."
+    },
+    {
+      "name": "extra_ui",
+      "command": "sh tools/test_extra_ui.sh",
+      "passed": true,
+      "result": "Mail slots/pages/cards/save-once, glossary, credits/world restoration and Controller Pak report."
+    },
+    {
+      "name": "presentation",
+      "command": "build/surface-native/host/test_presentation",
+      "passed": true,
+      "routes": 144,
+      "tutorial_island_frames": 60,
+      "mason_run_frames": 51,
+      "mason_walk_frames": 57,
+      "result": "Fractional NPC timing, ordinary speeds and canonical waits/positions retained."
+    },
+    {
+      "name": "sram",
+      "command": "build/surface-native/host/test_sram",
+      "passed": true,
+      "result": "Save/reboot, complete diary+duel, interrupted writes, remove and corrupt-header rollback."
+    },
+    {
+      "name": "characters",
+      "command": "python3 port/world3d/tools/check_characters.py",
+      "passed": true,
+      "exports": 49,
+      "families": 39,
+      "npc_aliases": 115,
+      "result": "Source geometry/UV/colors/pivots preserved; aliases/idempotence; incomplete-export retention fixture.",
+      "asset_revision": "Before true exterior head/hair/cap union; final character agent owns closed-head/export proof and actual-VI accepted candidate."
+    },
+    {
+      "name": "skin",
+      "command": "python3 port/characters/tools/check_skin.py",
+      "passed": true,
+      "human_families": 37,
+      "maximum_adjacent_skin_difference": "2/255",
+      "native_face_vertices_lit": 3324,
+      "asset_revision": "Before final true-head-union geometry; vertex count refers to that recorded revision. Palette choices unchanged; character agent owns final geometry/color proof."
+    },
+    {
+      "name": "room_surfaces",
+      "command": "python3 port/world3d/tools/check_room_surfaces.py",
+      "passed": true,
+      "cases": 37,
+      "planar_triangles": 9404,
+      "competing_overlaps": 0
+    },
+    {
+      "name": "world",
+      "command": "python3 port/world3d/tools/check_world.py",
+      "passed": true,
+      "maps": 34,
+      "meshes": 98,
+      "triangles": 57915,
+      "vertices": 101936,
+      "shared_textures": 508,
+      "prop_permission_states": 292,
+      "passable_anchors": 3528,
+      "cardinal_links": 5817,
+      "npc_starts": 141,
+      "offstage_starts": 2,
+      "prop_clearance_radius": 0.65,
+      "asset_revision": "Final true-head-union assets; no duplicate surfaces and all292 clearance states passed."
+    }
+  ],
+  "final_native_result": "captures/result.json",
+  "final_native_rom_sha256": "7c389e7e0752afed7c0474eaddbdf044744322bc0a620c86946b31ae5dca61f5",
+  "final_native_mesh_byte_identity_count": 98,
+  "final_native_result_pending": false,
+  "final_native_mesh_integrity": "bundled-mesh-integrity.json"
+}

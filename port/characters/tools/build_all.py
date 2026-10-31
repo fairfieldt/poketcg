@@ -21,7 +21,7 @@ catalog=json.loads((ROOT/'catalog.json').read_text())
 families=[f for f in catalog['families'] if not args.only or f['slug']==args.only]
 assert families
 logs=ROOT/'build/logs';logs.mkdir(parents=True,exist_ok=True)
-recipe_files=[ROOT/'tools'/f for f in ('build_model.py','parts.py','designs.py','skin.py')]
+recipe_files=[ROOT/'tools'/f for f in ('build_model.py','parts.py','designs.py','skin.py','exterior.py')]
 recipe_files.append(ROOT.parents[1]/'port/frontends/n64/lightning-characters/tools/export_scene.py')
 fingerprint=hashlib.sha256(b''.join(p.read_bytes() for p in recipe_files)).hexdigest()
 for i,family in enumerate(families):

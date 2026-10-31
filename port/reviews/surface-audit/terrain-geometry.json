@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "totals": {
+    "shelves": 3,
+    "triangles": 1058,
+    "boundary_edges": 162,
+    "area": 196.51203
+  },
+  "failures": []
+}

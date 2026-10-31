@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "camera": {
+    "eye": [
+      10,
+      22,
+      24.6
+    ],
+    "target": [
+      10,
+      0.25,
+      8.8
+    ],
+    "fov": 38
+  },
+  "minimum_view_depth": 0.12,
+  "totals": {
+    "sites": 12,
+    "shells": 13,
+    "faces": 228,
+    "edges": 486,
+    "facing_triangles": 282,
+    "overlap_pairs": 0,
+    "depth_samples": 0
+  },
+  "failures": []
+}

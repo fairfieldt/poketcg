@@ -44,6 +44,10 @@
     }
   },
   "design": "long side-swept black hair and wide red headband",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 26
@@ -77,7 +81,7 @@
   "appearance": "lass2",
   "pose": "standing",
   "component": null,
-  "vertices": 1126,
-  "triangles": 608,
+  "vertices": 1156,
+  "triangles": 636,
   "batches": 6
 }

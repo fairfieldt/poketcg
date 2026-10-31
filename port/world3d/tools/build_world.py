@@ -83,18 +83,31 @@ class Scene:
                 if v not in cache:
                     cache[v]=len(vs);vs.append(v)
                 inds.append(cache[v])
-    def box(self,x,z,w,d,h,color=WHITE,tex=None,y=0,front=None,omit=()):
+    def box(self,x,z,w,d,h,color=WHITE,tex=None,y=0,front=None,omit=(),top=None,top_hole=None):
         # Coordinates are X east / Y up / Z south. Front is +Z.
         points=[(x,y,z),(x+w,y,z),(x+w,y,z+d),(x,y,z+d),
                 (x,y+h,z),(x+w,y+h,z),(x+w,y+h,z+d),(x,y+h,z+d)]
         for fi,face in enumerate([(0,3,2,1),(0,1,5,4),(1,2,6,5),(2,3,7,6),(3,0,4,7),(4,5,6,7)]):
             if fi in omit:continue
             # Front textures replace, rather than overlay, the side plane.
-            t=front if fi==3 and front else tex
+            t=front if fi==3 and front else top if fi==5 and top else tex
             shade=(.6,.78,.86,1,.72,1)[fi]
             pigment=WHITE if t else color
             c=tuple(int(v*shade) for v in pigment[:3])+(255,)
             uv=[(1,1),(0,1),(0,0),(1,0)] if fi==3 else [(0,1),(1,1),(1,0),(0,0)] if fi!=5 else None
+            if fi==5 and top_hole:
+                # A raised body owns the opening instead of covering a full
+                # backing cap with a second, coplanar underside.
+                a,b,right,south=top_hole
+                assert x<=a<=right<=x+w and z<=b<=south<=z+d
+                for left,north,r,s in ((x,z,x+w,b),(x,south,x+w,z+d),
+                                        (x,b,a,south),(right,b,x+w,south)):
+                    if r>left and s>north:
+                        self.polygon([(left,y+h,north),(r,y+h,north),
+                                      (r,y+h,s),(left,y+h,s)],c,t,
+                                     [((left-x)/w,(north-z)/d),((r-x)/w,(north-z)/d),
+                                      ((r-x)/w,(s-z)/d),((left-x)/w,(s-z)/d)])
+                continue
             self.polygon([points[i] for i in face],c,t,uv)
     def cylinder(self,x,z,y,r,h,color=WHITE,segments=8,top_r=None):
         if top_r is None:top_r=r
@@ -207,22 +220,26 @@ def prop(destination,img,p):
     x=p.x+p.w/2; z=p.y+p.h/2
     kind=p.kind;h=p.height
     if kind in ('machine','cabinet','counter','pillar','altar'):
-        scene.box(p.x,z-p.depth/2,p.w,p.depth,h,BROWN,front=None if switch else face,omit=(3,) if switch else ())
+        omit=(0,)+(3,) if switch else (0,)
+        if kind=='machine':omit+=(5,)
+        hole=(p.x+.6,z-p.depth/2+.6,p.x+p.w-.6,z+p.depth/2-.6) if kind=='altar' else None
+        scene.box(p.x,z-p.depth/2,p.w,p.depth,h,BROWN,front=None if switch else face,omit=omit,top_hole=hole)
         if kind=='machine':
-            scene.box(p.x-.05,z-p.depth/2-.05,p.w+.1,p.depth+.1,.12,WHITE,y=h)
+            scene.box(p.x-.05,z-p.depth/2-.05,p.w+.1,p.depth+.1,.12,WHITE,y=h,omit=(0,))
         if kind=='altar':
-            scene.box(p.x+.6,z-p.depth/2+.6,p.w-1.2,p.depth-1.2,.5,WHITE,y=h)
+            scene.box(p.x+.6,z-p.depth/2+.6,p.w-1.2,p.depth-1.2,.5,WHITE,y=h,omit=(0,))
     elif kind in ('table','bed','steps'):
         if kind=='bed':scene.box(p.x,p.y,p.w,p.h,h,DARKGREEN,tex=face)
         else:
             depth=min(p.depth,p.h)
-            y=h-.12
-            scene.box(p.x,z-depth/2,p.w,depth,.15,BROWN,y=y,omit=(5,))
-            scene.polygon([(p.x,h+.04,z-depth/2),(p.x+p.w,h+.04,z-depth/2),(p.x+p.w,h+.04,z+depth/2),(p.x,h+.04,z+depth/2)],tex=face)
             if kind=='table':
+                scene.box(p.x,z-depth/2,p.w,depth,.15,BROWN,y=h-.15,top=face)
                 for a,b in ((p.x+.2,z-depth/2+.2),(p.x+p.w-.4,z-depth/2+.2),(p.x+.2,z+depth/2-.4),(p.x+p.w-.4,z+depth/2-.4)):
-                    scene.box(a,b,.22,.22,h-.12,BROWN)
-            else:scene.box(p.x,z-depth/2,p.w,depth,h,BROWN)
+                    scene.box(a,b,.22,.22,h-.15,BROWN,omit=(0,5))
+            else:
+                # Steps are a single body. The old full box plus shallow
+                # tabletop had coincident side strips and competing caps.
+                scene.box(p.x,z-depth/2,p.w,depth,h,BROWN,top=face,omit=(0,))
     elif kind in ('palm','topiary','shrub','flowers'):
         scene.cylinder(x,z,0,.52,.5,BROWN,top_r=.65)
         if kind=='palm':
@@ -330,7 +347,13 @@ def walls(scene,img,warps,height=5):
                 intervals.append((x-1.05,x+1.05))
             if ((side=='west' and x<=1) or (side=='east' and x>=w-3)):
                 intervals.append((z-1.05,z+1.05))
-        return sorted(intervals)
+        # Two adjacent source anchors often describe one two-tile doorway.
+        # Merge them before creating either wall gaps or threshold surfaces.
+        merged=[]
+        for left,right in sorted(intervals):
+            if merged and left<=merged[-1][1]:merged[-1]=(merged[-1][0],max(right,merged[-1][1]))
+            else:merged.append((left,right))
+        return merged
     def runs(side,stop):
         start=.9;end=stop-.9
         for left,right in doors(side):
@@ -362,23 +385,23 @@ def walls(scene,img,warps,height=5):
         for x,end in runs(side,w):
             span=end-x
             if side=='north':
-                scene.box(x,-.1,span,1,height,brown,omit=(3,))
+                scene.box(x,-.1,span,1,height,brown,omit=(0,3))
                 solid_wall(x,-.1,span,1.03,height)
                 bands(side,x,end)
             else:
-                scene.box(x,h-2.0,span,.8,.9,brown)
-                scene.box(x-.03,h-2.03,span+.06,.86,.12,GOLD,y=.9)
+                scene.box(x,h-2.0,span,.8,.9,brown,omit=(0,5))
+                scene.box(x-.03,h-2.03,span+.06,.86,.12,GOLD,y=.9,omit=(0,))
                 solid_wall(x-.03,h-2.03,span+.06,.86,1.02)
     for side,x in [('west',-.1),('east',w-1)]:
         for z,end in runs(side,h):
             span=end-z
-            scene.box(x,z,1,span,height,brown,omit=(2,) if side=='west' else (4,))
+            scene.box(x,z,1,span,height,brown,omit=(0,2) if side=='west' else (0,4))
             solid_wall(x,z,1.03 if side=='west' else 1,span,height)
             bands(side,z,end)
     # North doors lead through row0 after source event patches open them.
     # Continue the threshold beneath the opening instead of leaving a void.
     for left,right in doors('north'):
-        scene.polygon([(left,0,-.9),(right,0,-.9),(right,0,2),(left,0,2)],
+        scene.polygon([(left,0,-.9),(right,0,-.9),(right,0,1),(left,0,1)],
                       tex=texture(img.crop(max(0,left)*8,16,(right-left)*8,16)))
 
 
@@ -609,7 +632,18 @@ def read_l643(path):
 def copy_lightning():
     assets=REPO/'port/frontends/n64/lightning/assets'
     tex,meshes=read_l643(assets/'scene.l64')
-    remap={i:texture(Image(assets/'textures'/n.replace('.sprite','.png')).rows) for i,n in enumerate(tex)}
+    remap={}
+    for i,name in enumerate(tex):
+        rows=Image(assets/'textures'/name.replace('.sprite','.png')).rows
+        if name.startswith('floor_'):
+            # The prototype's one-tile blue/black grid aliases at native
+            # distance. Give it the same broad material as other rooms;
+            # preserve the white/cyan/red central runner and its border.
+            _,a,b=name.removesuffix('.sprite').split('_')
+            rows=[[material_pixel('lightning_club',int(a)*8+x,int(b)*8+y,p,
+                    p[:3] in ((24,0,165),(0,0,33)))
+                   for x,p in enumerate(row)] for y,row in enumerate(rows)]
+        remap[i]=texture(rows)
     room,actors=Scene('lightning_club'),Scene('actors')
     for model,part,t,pivot,vs,inds in meshes:
         scene=actors if model else room
@@ -620,14 +654,48 @@ def copy_lightning():
         room.props.append(asdict(Prop('pillar',x,z,right-x,bottom-z,2.5,bottom-z)))
     # Non-human legendary-card/spark actors are actual small meshes.
     card=Scene('cards')
-    card.box(-.32,-.08,.64,.16,.9,GOLD,y=.12)
-    card.box(-.25,-.09,.5,.18,.7,BLUE,y=.22)
+    # Gold border and blue center partition one card exterior. The old pair
+    # of complete boxes left near-coplanar front/back layers only .01 apart.
+    xs=(-.32,-.25,.25,.32);ys=(.12,.22,.92,1.02)
+    for side in (-1,1):
+        for row in range(3):
+            for col in range(3):
+                points=[(xs[col],ys[row],side*.08),(xs[col+1],ys[row],side*.08),
+                        (xs[col+1],ys[row+1],side*.08),(xs[col],ys[row+1],side*.08)]
+                if side<0:points.reverse()
+                card.polygon(points,BLUE if row==col==1 else GOLD)
+    for row in range(3):
+        for x in (xs[0],xs[-1]):
+            points=[(x,ys[row],-.08),(x,ys[row],.08),(x,ys[row+1],.08),(x,ys[row+1],-.08)]
+            if x>0:points.reverse()
+            card.polygon(points,GOLD)
+    for col in range(3):
+        for y in (ys[0],ys[-1]):
+            points=[(xs[col],y,-.08),(xs[col+1],y,-.08),(xs[col+1],y,.08),(xs[col],y,.08)]
+            if y>ys[0]:points.reverse()
+            card.polygon(points,GOLD)
     for (m,p,t,pivot),data in card.batches.items():actors.batches[(5,p,t,pivot)]=data
     # Overworld cursor ball; root places/bobs it above the selected location.
     ball=Scene('cursor')
-    ball.ball(0,0,.8,.7,.7,.7,WHITE)
-    ball.cylinder(0,0,.8,.705,.08,BLACK,segments=12)
-    ball.ball(0,0,1.05,.68,.45,.68,RED)
+    # A single spherical exterior owns the red/black/white regions. A smaller
+    # red ellipsoid over a complete white ball used to cross the white shell.
+    segments=12;radius=.7;center=.8
+    latitudes=(-math.pi/2,-math.pi/4,-math.pi/30,math.pi/30,math.pi/4,math.pi/2)
+    rings=[[(radius*math.cos(a)*math.cos(i*math.tau/segments),
+             center+radius*math.sin(a),radius*math.cos(a)*math.sin(i*math.tau/segments))
+            for i in range(segments)] for a in latitudes]
+    for band,(lower,upper) in enumerate(zip(rings,rings[1:])):
+        pigment=WHITE if band<2 else BLACK if band==2 else RED
+        for i in range(segments):
+            j=(i+1)%segments
+            points=[lower[i],upper[i],upper[j],lower[j]]
+            if band==0:points=[lower[i],upper[i],upper[j]]
+            elif band==len(rings)-2:points=[lower[i],upper[i],lower[j]]
+            a,b,c=points[:3];u=[b[k]-a[k] for k in range(3)];v=[c[k]-a[k] for k in range(3)]
+            normal=(u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0])
+            length=math.sqrt(sum(value*value for value in normal))
+            light=.76+.24*max(0,sum(n*s for n,s in zip(normal,(-.4,.7,.55)))/length)
+            ball.polygon(points,tuple(round(value*light) for value in pigment[:3])+(255,))
     for (m,p,t,pivot),data in ball.batches.items():actors.batches[(6,p,t,pivot)]=data
     align_lightning_room(room)
     return room,actors

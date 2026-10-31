@@ -42,6 +42,10 @@
     }
   },
   "design": "blond side part, glasses, open pale science coat",
+  "surface_ownership": {
+    "face_and_clothing": true,
+    "headwear": false
+  },
   "sharing": {
     "library": "../../parts.blend",
     "linked_parts": 20
@@ -75,7 +79,7 @@
   "appearance": "isaac",
   "pose": "standing",
   "component": null,
-  "vertices": 1022,
-  "triangles": 537,
+  "vertices": 1183,
+  "triangles": 669,
   "batches": 6
 }
