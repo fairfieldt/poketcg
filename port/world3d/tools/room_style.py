@@ -33,7 +33,13 @@ WALL_PAINT={
     'hall_of_honor':(160,133,91),
 }
 
+def style_name(slug):
+    if slug=='deck_machine_room_dynamic':return 'deck_machine_room'
+    if slug.startswith('emblem_'):return 'club_foyer'
+    return slug
+
 def material_pixel(slug,x,y,source,is_plain):
+    slug=style_name(slug)
     if slug in TILES and is_plain:
         base=TILES[slug]
         # Two source tiles per flagstone, soft grout and restrained grain.
@@ -59,7 +65,7 @@ def material_pixel(slug,x,y,source,is_plain):
     return tuple(round(c*.88+luminance*.12) for c in (r,g,b))+(a,)
 
 def wall_paint(slug):
-    return WALL_PAINT.get(slug,(169,151,132))+(255,)
+    return WALL_PAINT.get(style_name(slug),(169,151,132))+(255,)
 
 def smooth(a,b,x):
     t=max(0,min(1,(x-a)/(b-a)))
@@ -67,7 +73,7 @@ def smooth(a,b,x):
 
 def bake_lighting(scene,width,height):
     """Only environment vertex pigments change; actor rigs are never graded."""
-    tint=FLOOR_TINT.get(scene.name,(.85,.85,.85))
+    tint=FLOOR_TINT.get(style_name(scene.name),(.85,.85,.85))
     props=scene.props
     def light(v):
         x,y,z=v[:3]

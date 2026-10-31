@@ -13834,14 +13834,20 @@
       "file": "maps/deck_machine_room_dynamic.l64",
       "vertices": 955,
       "triangles": 600,
-      "batches": 7,
+      "batches": 13,
       "textures": [
+        "t20f65f3bc1f6d618",
+        "t26139306ace1ecc3",
+        "t3899730957951d7f",
         "t59febba1e0f0fca2",
-        "t63d192a7eb65fbff",
         "t7288662624eb09f3",
+        "t912b56f9a4e0a5b0",
         "ta92b33abc97f2a40",
         "tbcebe0b1d5bbb2ff",
-        "tf037f3b6060fdf6f"
+        "tbd59d56322473e75",
+        "tf037f3b6060fdf6f",
+        "tf11d1eae2f649141",
+        "tf5fd70541ba0bb65"
       ],
       "props": [
         {
@@ -15491,7 +15497,7 @@
     "actors": "actors.l64",
     "textures": "content-addressed PNG files, global deduplication"
   },
-  "texture_count": 425,
+  "texture_count": 424,
   "individual_characters": [
     {
       "file": "maps/actor_mark.l64",
