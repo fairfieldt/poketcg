@@ -21,6 +21,7 @@
 *.jpg binary
 *.jpeg binary
 *.webp binary
+*.gif binary
 *.bin binary diff=hex
 *.lz.match binary diff=hex
 *.dimensions binary diff=hex
