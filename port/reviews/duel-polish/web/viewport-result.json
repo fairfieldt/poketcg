@@ -1,0 +1,90 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "mode": "standalone",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "unit": 2,
+      "width": 480,
+      "scroll": 480,
+      "textboxBottom": 604.46875,
+      "lastActionBottom": 592.46875,
+      "viewportHeight": 720,
+      "actions": 6
+    },
+    {
+      "mode": "standalone",
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "unit": 1.75,
+      "width": 420,
+      "scroll": 420,
+      "textboxBottom": 526.09375,
+      "lastActionBottom": 516.09375,
+      "viewportHeight": 600,
+      "actions": 6
+    },
+    {
+      "mode": "standalone",
+      "viewport": {
+        "width": 320,
+        "height": 480
+      },
+      "unit": 1.25,
+      "width": 300,
+      "scroll": 300,
+      "textboxBottom": 388.3125,
+      "lastActionBottom": 381.3125,
+      "viewportHeight": 480,
+      "actions": 6
+    },
+    {
+      "mode": "adventure",
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "unit": 2.210526315789474,
+      "width": 530.515625,
+      "scroll": 531,
+      "textboxBottom": 661.6875,
+      "lastActionBottom": 648.859375,
+      "viewportHeight": 720,
+      "actions": 6
+    },
+    {
+      "mode": "adventure",
+      "viewport": {
+        "width": 800,
+        "height": 600
+      },
+      "unit": 1.8157894736842106,
+      "width": 435.78125,
+      "scroll": 436,
+      "textboxBottom": 518.34375,
+      "lastActionBottom": 508.09375,
+      "viewportHeight": 600,
+      "actions": 6
+    },
+    {
+      "mode": "adventure",
+      "viewport": {
+        "width": 320,
+        "height": 480
+      },
+      "unit": 1.2833333333333334,
+      "width": 308,
+      "scroll": 308,
+      "textboxBottom": 397.15625,
+      "lastActionBottom": 390.03125,
+      "viewportHeight": 480,
+      "actions": 6
+    }
+  ],
+  "errors": []
+}

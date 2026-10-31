@@ -1,0 +1,33 @@
+{
+  "passed": true,
+  "source_commit": "00a52fcb",
+  "native_ram_mib": 4,
+  "native_map_count": 34,
+  "native_frames": 42,
+  "native_rom_sha256": "d365a184a2b812e1b61c9e1e7827f1a8e1bb1e38207b00474d34307f7bf24fb9",
+  "native_worst_heap": {
+    "map": 32,
+    "total": 2753824,
+    "used": 1758968,
+    "free": 994856
+  },
+  "native_duel_passed": true,
+  "sram": true,
+  "story": true,
+  "cinematic": true,
+  "host_ui_scripts": 10,
+  "card_records": 228,
+  "card_descriptions": 316,
+  "maximum_rules_pages": 3,
+  "post_vi_pngs": 13,
+  "exact_callback_rgb_pixels": 1996800,
+  "web_presentation_passed": true,
+  "web_viewport_passed": true,
+  "full_browser_suite": "PASS: hotseat, AI, online replay, save/continue, tutorial, widgets, deckbuilder; no console errors",
+  "pointer_selection": "PASS: clicked-card lock and explicit hand reselection; actual compiled C",
+  "production_rom": {
+    "file": "port/frontends/n64/adventure/poketcg-adventure.z64",
+    "bytes": 36339712,
+    "sha256": "f70da434df631a2d3e87393ff75bc9c6685442a7f83ebaf9c2f765192b7afec6"
+  }
+}

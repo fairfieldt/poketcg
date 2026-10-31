@@ -1,0 +1,60 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "size": {
+        "name": "native-width",
+        "width": 320,
+        "height": 480,
+        "u": 1.3333333333333333
+      },
+      "board": {
+        "width": 318,
+        "scroll": 318,
+        "height": 327
+      },
+      "list": {
+        "width": 307,
+        "scroll": 307
+      },
+      "font": {
+        "size": 11,
+        "family": "\"Trebuchet MS\", Verdana, sans-serif"
+      },
+      "detail": {
+        "width": 296,
+        "scroll": 296,
+        "height": 305,
+        "scrollHeight": 314
+      }
+    },
+    {
+      "size": {
+        "name": "large",
+        "width": 960,
+        "height": 1200,
+        "u": 4
+      },
+      "board": {
+        "width": 952,
+        "scroll": 952,
+        "height": 981
+      },
+      "list": {
+        "width": 920,
+        "scroll": 920
+      },
+      "font": {
+        "size": 33,
+        "family": "\"Trebuchet MS\", Verdana, sans-serif"
+      },
+      "detail": {
+        "width": 930,
+        "scroll": 930,
+        "height": 866,
+        "scrollHeight": 866
+      }
+    }
+  ],
+  "errors": []
+}
