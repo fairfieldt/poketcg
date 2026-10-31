@@ -1,0 +1,119 @@
+{
+  "passed": true,
+  "review_scope": "Independent sampled-frame/stream review; no new runtime edits, native runs or capture processes.",
+  "files": {
+    "poketcg64-trailer.mp4": {
+      "sha256": "1556cc22f0d5cd795cfe26cc486ad1da6cc2af173b0d86b076150485f9dad91e",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1440,
+            "height": 1080,
+            "avg_frame_rate": "60/1",
+            "duration": "86.766667",
+            "nb_frames": "5206"
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "avg_frame_rate": "0/0",
+            "duration": "86.766000",
+            "nb_frames": "4069"
+          }
+        ],
+        "format": {
+          "duration": "86.766667"
+        }
+      },
+      "audio": {
+        "decoded_pcm": "SHA256=3096eff6eff2e5dbbcb6929be94c93f97a5c6af57a44961217baa0c861ab78f4",
+        "aac_packets": "SHA256=b5c3a730c2f663992a4661965730269b65206c0f6ed60768beb77c5d1a750efc"
+      }
+    },
+    "poketcg64-trailer-no-crt.mp4": {
+      "sha256": "a6543cf6e494372fe89e6e06892918983cbd957931bf3d0d4addb896d2f7ba51",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1440,
+            "height": 1080,
+            "avg_frame_rate": "60/1",
+            "duration": "86.766667",
+            "nb_frames": "5206"
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "avg_frame_rate": "0/0",
+            "duration": "86.766000",
+            "nb_frames": "4069"
+          }
+        ],
+        "format": {
+          "duration": "86.766667"
+        }
+      },
+      "audio": {
+        "decoded_pcm": "SHA256=3096eff6eff2e5dbbcb6929be94c93f97a5c6af57a44961217baa0c861ab78f4",
+        "aac_packets": "SHA256=b5c3a730c2f663992a4661965730269b65206c0f6ed60768beb77c5d1a750efc"
+      }
+    }
+  },
+  "visual_checks": {
+    "first_table_full_cast_seconds": 33.7,
+    "deep_fire_walk_seconds": [
+      57,
+      59.4
+    ],
+    "ordered_rooms": [
+      "Lightning",
+      "Fire",
+      "Water"
+    ],
+    "water_seconds": 62,
+    "amy_final_dissolve_frames_seconds": [
+      65.15,
+      65.2,
+      65.25
+    ],
+    "amy_hit_knockout_seconds": [
+      66.5,
+      67.5
+    ],
+    "actual_win_seconds": 68.5,
+    "medal_seconds": 71.5,
+    "hall_seconds": 75.8,
+    "title_seconds": 82,
+    "landed_coin_window_absent_during_hit_and_knockout": true,
+    "coin_afterglow_absent_at_final_inpoint": true,
+    "fps_overlays_absent": true,
+    "card_portraits_and_damage_unobstructed": true,
+    "actual_shader_pair": "CRT output visibly has scanlines/curvature; None output is clean. Raw capture provenance checked by capture owner."
+  },
+  "amy_source_interval_vi": [
+    1156,
+    1331
+  ],
+  "matched_video": {
+    "width": 1440,
+    "height": 1080,
+    "fps": 60,
+    "frames": 5206,
+    "duration_seconds": 86.76666666666667
+  },
+  "matched_aac_and_decoded_pcm": true,
+  "method": "ffprobe stream metadata, independent encoded-AAC/decoded-PCM SHA256, actual MP4 frame extraction; first/last six source frames for corrected KO interval also inspected.",
+  "limits": "Sampled visual anchors and analytical audio equality; no claim of an ear audition or pixel-perfect CRT/None phase."
+}

@@ -1,0 +1,74 @@
+{
+  "passed": true,
+  "files": [
+    {
+      "file": "poketcg64-trailer.mp4",
+      "bytes": 33751816,
+      "sha256": "1556cc22f0d5cd795cfe26cc486ad1da6cc2af173b0d86b076150485f9dad91e",
+      "video": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1440,
+        "height": 1080,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "60/1",
+        "duration": "86.766667",
+        "nb_frames": "5206"
+      },
+      "audio": {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0",
+        "duration": "86.766000",
+        "nb_frames": "4069"
+      },
+      "faststart": true,
+      "aac_packet_payload_sha256": "b5c3a730c2f663992a4661965730269b65206c0f6ed60768beb77c5d1a750efc",
+      "decoded_pcm16_sha256": "3096eff6eff2e5dbbcb6929be94c93f97a5c6af57a44961217baa0c861ab78f4"
+    },
+    {
+      "file": "poketcg64-trailer-no-crt.mp4",
+      "bytes": 48051487,
+      "sha256": "a6543cf6e494372fe89e6e06892918983cbd957931bf3d0d4addb896d2f7ba51",
+      "video": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1440,
+        "height": 1080,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "60/1",
+        "duration": "86.766667",
+        "nb_frames": "5206"
+      },
+      "audio": {
+        "codec_name": "aac",
+        "codec_type": "audio",
+        "sample_rate": "48000",
+        "channels": 2,
+        "r_frame_rate": "0/0",
+        "duration": "86.766000",
+        "nb_frames": "4069"
+      },
+      "faststart": true,
+      "aac_packet_payload_sha256": "b5c3a730c2f663992a4661965730269b65206c0f6ed60768beb77c5d1a750efc",
+      "decoded_pcm16_sha256": "3096eff6eff2e5dbbcb6929be94c93f97a5c6af57a44961217baa0c861ab78f4"
+    }
+  ],
+  "reviewed_actual_movie_anchors_seconds": {
+    "first_table": 33.7,
+    "deep_fire_near_ken": 59.4,
+    "incoming_knockout_dissolve_both_variants": 65.15,
+    "clean_goldeen_knockout": 66.5
+  },
+  "visual_findings": [
+    "Intro stops after Mark reaches the first table.",
+    "Fire shows the complete deeper walk to Ken.",
+    "Both final incoming knockout dissolves and the KO board are clear of the coin window.",
+    "CRT/None use the same framing, duration and audio; no FPS overlay was found."
+  ],
+  "audio_audition": false,
+  "audio_validation": "Independent compressed-payload and decoded-PCM equality; parent source-phase continuity/decode/loudness checks.",
+  "comparison_page_validation": "JavaScript syntax checked; computer-use browser host unavailable for live browser UI QA."
+}

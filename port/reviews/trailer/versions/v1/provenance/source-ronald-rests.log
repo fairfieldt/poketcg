@@ -1,0 +1,57 @@
+[aist#0:0/pcm_s16le @ 0x763303c180] Guessed Channel Layout: stereo
+Input #0, wav, from 'port/frontends/n64/adventure/build/trailer-audio/music_04.wav':
+  Duration: 00:02:42.18, bitrate: 768 kb/s
+  Stream #0:0: Audio: pcm_s16le ([1][0][0][0] / 0x0001), 24000 Hz, stereo, s16, 768 kb/s
+Stream mapping:
+  Stream #0:0 -> #0:0 (pcm_s16le (native) -> pcm_s16le (native))
+Press [q] to stop, [?] for help
+Output #0, null, to 'pipe:':
+  Metadata:
+    encoder         : Lavf61.7.100
+  Stream #0:0: Audio: pcm_s16le, 24000 Hz, stereo, s16, 768 kb/s
+      Metadata:
+        encoder         : Lavc61.19.101 pcm_s16le
+[silencedetect @ 0x7633070420] silence_start: 0.438083
+[silencedetect @ 0x7633070420] silence_end: 0.564917 | silence_duration: 0.126833
+[silencedetect @ 0x7633070420] silence_start: 0.98475
+[silencedetect @ 0x7633070420] silence_end: 1.112792 | silence_duration: 0.128042
+[silencedetect @ 0x7633070420] silence_start: 1.531667
+[silencedetect @ 0x7633070420] silence_end: 1.660625 | silence_duration: 0.128958
+[silencedetect @ 0x7633070420] silence_start: 2.079417
+[silencedetect @ 0x7633070420] silence_end: 2.2085 | silence_duration: 0.129083
+[silencedetect @ 0x7633070420] silence_start: 3.35975
+[silencedetect @ 0x7633070420] silence_end: 3.486792 | silence_duration: 0.127042
+[silencedetect @ 0x7633070420] silence_start: 3.906625
+[silencedetect @ 0x7633070420] silence_end: 4.034667 | silence_duration: 0.128042
+[silencedetect @ 0x7633070420] silence_start: 4.453583
+[silencedetect @ 0x7633070420] silence_end: 4.5825 | silence_duration: 0.128917
+[silencedetect @ 0x7633070420] silence_start: 5.001333
+[silencedetect @ 0x7633070420] silence_end: 5.130375 | silence_duration: 0.129042
+[silencedetect @ 0x7633070420] silence_start: 6.265458
+[silencedetect @ 0x7633070420] silence_end: 6.408667 | silence_duration: 0.143208
+[silencedetect @ 0x7633070420] silence_start: 6.813333
+[silencedetect @ 0x7633070420] silence_end: 6.956542 | silence_duration: 0.143208
+[silencedetect @ 0x7633070420] silence_start: 7.361167
+[silencedetect @ 0x7633070420] silence_end: 7.504375 | silence_duration: 0.143208
+[silencedetect @ 0x7633070420] silence_start: 7.909042
+[silencedetect @ 0x7633070420] silence_end: 8.05225 | silence_duration: 0.143208
+[silencedetect @ 0x7633070420] silence_start: 9.187333
+[silencedetect @ 0x7633070420] silence_end: 9.330542 | silence_duration: 0.143208
+[silencedetect @ 0x7633070420] silence_start: 9.735208
+[silencedetect @ 0x7633070420] silence_end: 9.878417 | silence_duration: 0.143208
+[silencedetect @ 0x7633070420] silence_start: 10.283042
+[silencedetect @ 0x7633070420] silence_end: 10.42625 | silence_duration: 0.143208
+[silencedetect @ 0x7633070420] silence_start: 10.830917
+[silencedetect @ 0x7633070420] silence_end: 10.974125 | silence_duration: 0.143208
+[silencedetect @ 0x7633070420] silence_start: 12.521125
+[silencedetect @ 0x7633070420] silence_end: 12.617625 | silence_duration: 0.0965
+[silencedetect @ 0x7633070420] silence_start: 13.219125
+[silencedetect @ 0x7633070420] silence_end: 13.348125 | silence_duration: 0.129
+[silencedetect @ 0x7633070420] silence_start: 15.443
+[silencedetect @ 0x7633070420] silence_end: 15.5395 | silence_duration: 0.0965
+[silencedetect @ 0x7633070420] silence_start: 16.141
+[silencedetect @ 0x7633070420] silence_end: 16.27 | silence_duration: 0.129
+[silencedetect @ 0x7633070420] silence_start: 18.364875
+[silencedetect @ 0x7633070420] silence_end: 18.461375 | silence_duration: 0.0965
+[out#0/null @ 0x7632c64180] video:0KiB audio:1753KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+size=N/A time=00:00:18.70 bitrate=N/A speed=6.86e+03x

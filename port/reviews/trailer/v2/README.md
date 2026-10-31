@@ -1,0 +1,19 @@
+# Gameplay trailers
+
+[Compare both versions](../compare.html) · [With CRT](poketcg64-trailer.mp4) · [Without CRT](poketcg64-trailer-no-crt.mp4)
+
+The two 1:26.77 edits show the same gameplay with matching cuts and audio. Both are 1440×1080, 4:3, at 60 recorded frames per second, from the 480×360 Expansion Pak game. CRT uses the actual Guest Advanced shader with `interm = 0.0`; the other version is a separate Ares run with the shader disabled. No shader was imitated or removed in post-production.
+
+The opening stops after Mark's first walk to Sam's table. Ronald's knockout leads into Lightning, a complete walk deeper into Fire Club, and Water last. A short Agility → last Goldeen knockout → real Amy victory insert leads to the Water Medal, remodeled Hall of Honor and actual animated title screen. FPS counters and capture chrome are absent.
+
+Both versions use the same private ROM per segment and the same controller sequence. Source markers align the edit to native VI time; actual recorded frames are selected or held, with approximately one frame of presentation-phase uncertainty. There is no motion interpolation or painted gameplay overlay. [timeline.json](timeline.json) records the cuts and short dissolves; [capture-sources.json](capture-sources.json) selects the verified takes.
+
+All music and effects come from the original game's sound driver. One clean original music 09 bed covers the shortened opening, replacing v1's disrupted captured bed. Its decoded waveform follows the known source phase with minimum correlation 0.99889 and zero sample drift across the measured opening. The application also now polls audio between world-loading batches; native queue gates show zero underruns at both 4 and 8 MiB. See the [audio investigation](audio-investigation/README.md).
+
+The real captured duel effects remain in the mix. One continuous Club 1 theme crosses Lightning → Fire → Water. The complete 5.396-second medal fanfare finishes before Hall music enters, and the title uses its original resolved closing phrase. Fixed gains and short fades preserve the original dynamics. One AAC track is encoded once and stream-copied into both MP4s; [pair-validation.json](pair-validation.json) verifies compressed and decoded audio equality, frame counts, duration and faststart.
+
+This is a montage using private fixtures, not one continuous campaign run. Ronald and Amy continue untouched, legally generated duel checkpoints. Amy's player win returns naturally from the real engine and runs her actual medal reward script; no HP, cards, RNG or win result is patched. Club entries and Hall access use progression/room warps. Canonical names are Mark, Ronald and Amy. [Capture provenance](provenance/capture.json) records ROM hashes, exact native event traces, settings and raw-master hashes. Current world/audio/shadow/Hall and coin lifecycle fixes are included; the coin panel is absent during the winning hit.
+
+The capture used separate Ares instances, private save paths and uniquely verified audio streams on the Steam Machine. User diaries and the live game session were not used. All capture processes and temporary audio sinks are closed. The model cannot receive audio: original-score, waveform continuity, loudness and clipping checks were performed without claiming an ear audition.
+
+Recreate the edit with `python3 tools/trailer_edit_v2.py prepare`, `video-crt`, `video-none`, `audio`, then `mux`, from `port/frontends/n64/adventure/`. Check the resulting pair with `python3 tools/check_trailer_pair.py`. `tools/build_trailer.py`, `trailer_capture_v2.py` and `trailer_v2_clock.py` retain the private staging, actual window recording and native-clock recipes. The eight raw masters remain in private capture directories recorded by the provenance file. The earlier movie and its documentation remain archived under `../versions/v1/`.

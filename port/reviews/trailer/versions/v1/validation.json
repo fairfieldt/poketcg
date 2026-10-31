@@ -1,0 +1,42 @@
+{
+  "passed": true,
+  "sha256": "aeb648b7047bb78f5934d2e09ba80cabcb3102526a6d85ce5015ed41f08eeb0f",
+  "bytes": 38728710,
+  "duration_seconds": 117.3,
+  "video_frames": 7038,
+  "audio_video_duration_match": true,
+  "faststart_moov_before_mdat": true,
+  "mp4_boxes": [
+    {
+      "type": "ftyp",
+      "offset": 0,
+      "size": 32
+    },
+    {
+      "type": "moov",
+      "offset": 32,
+      "size": 188169
+    },
+    {
+      "type": "free",
+      "offset": 188201,
+      "size": 8
+    },
+    {
+      "type": "mdat",
+      "offset": 188209,
+      "size": 38540501
+    }
+  ],
+  "loudness_lufs": -19.5,
+  "true_peak_dbfs": -5.7,
+  "loudness_range_lu": 3.4,
+  "decode_errors": 0,
+  "nonfinite_audio_samples": 0,
+  "preroll_removed": true,
+  "preset_unchanged_during_capture": true,
+  "all_capture_rom_hashes_match_gated_routes": true,
+  "remaining_private_audio_sinks": [],
+  "visual_review": "Parent reviewed actual draft at 12 anchor frames; capture agent inspected final 20-frame contact sheet. All requested scenes present, 4:3, no counters/capture chrome.",
+  "audition_limit": "Model has no audio-input capability. Original score/timing, waveform/silence/true-peak/loudness checks were used; no claim of ear audition."
+}

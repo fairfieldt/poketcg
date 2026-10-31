@@ -1,0 +1,27 @@
+LEGAL_ENGINE_CHECKPOINT seed=281 player_deck=37 opponent_deck=18 music=3 turns=28 prizes=3,6 bytes=1660 requests=12
+REQUEST step=1 type=2 menu=0 owner=194 shown=194 cursor=0 count=6 answer=1 hash=2111988257
+REQUEST step=2 type=6 menu=1 owner=194 shown=194 cursor=0 count=2 answer=0 hash=2111988257
+TEXT Raichu Lv40's
+Agility!
+REQUEST step=3 type=1 menu=0 owner=194 shown=194 cursor=0 count=0 answer=0 hash=4060446204
+TEXT If Heads, do not receive damage
+or effect of opponent's next Attack!
+REQUEST step=4 type=1 menu=0 owner=194 shown=194 cursor=0 count=0 answer=0 hash=4060446204
+REQUEST step=5 type=1 menu=0 owner=194 shown=194 cursor=0 count=0 answer=0 hash=1591620001
+LAST_POKEMON_KO damage=40 hp=40 card=83 in_play=1
+TEXT Goldeen was
+Knocked Out!
+REQUEST step=6 type=1 menu=0 owner=194 shown=194 cursor=0 count=0 answer=0 hash=3713042505
+TEXT MARK will draw 1 Prize(s).
+REQUEST step=7 type=1 menu=0 owner=194 shown=194 cursor=0 count=0 answer=0 hash=2578804529
+REQUEST step=8 type=9 menu=0 owner=194 shown=194 cursor=3 count=6 answer=3 hash=2578804529
+REQUEST step=9 type=1 menu=0 owner=194 shown=194 cursor=0 count=0 answer=0 hash=870182652
+TEXT There are no Pokémon
+in AMY's Play Area!
+REQUEST step=10 type=1 menu=0 owner=194 shown=195 cursor=0 count=0 answer=0 hash=2360467641
+TEXT Decision...
+REQUEST step=11 type=1 menu=0 owner=194 shown=194 cursor=0 count=0 answer=0 hash=1243608829
+TEXT You won the Duel with AMY!
+REAL_DUEL_WIN finished=1 turn=194 text=120
+REQUEST step=12 type=1 menu=0 owner=194 shown=195 cursor=0 count=0 answer=0 hash=1256218600
+CONTINUATION result=0 last_pokemon_ko=1 win=1 requests=12/12 exact_final_state_rng=1

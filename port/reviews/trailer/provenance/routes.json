@@ -1,68 +1,32 @@
 {
-  "production_base_commit": "2dda70b300505e8851bc6ba13fad7698bf93c7b3",
+  "version": 2,
+  "production_release_with_coin_fix": "6961e817",
   "canonical_player_name": "Mark",
-  "ronald_display_name": "Ronald",
-  "ronald_checkpoint": {
-    "path": "port/frontends/n64/adventure/build/trailer-ronald/ronald.duel",
-    "bytes": 1660,
-    "sha256": "990334314b7bbec9a49b393fb6bd8bd2638e1326f01b383cf5ea42a2f9aba5b4",
-    "source_proof": "port/frontends/n64/adventure/tests/trailer_ronald.md"
+  "checkpoint_sha256": {
+    "ronald": "990334314b7bbec9a49b393fb6bd8bd2638e1326f01b383cf5ea42a2f9aba5b4",
+    "amy": "8ae3915c0523ebf59238aa1302caf75a7b3c88ae9325eb3a24e19e6b537044ba"
   },
-  "presentation": {
-    "resolution": [
-      480,
-      360
-    ],
-    "ram_mib": 8,
-    "diagnostic": 0,
-    "show_fps": false,
-    "silent_black_preroll_vi": 480,
-    "story_page_ack_vi": 180,
-    "input": "Private joypad read wrappers generate real fresh controller edges; native UI supplies engine answers. No text/card results are painted or directly answered by the capture driver.",
-    "timing": "TRAILER READY/BEGIN/FIRST_FRAME/INTRO_RUN/SHOT/TEXT/CHOICE/REQUEST/END markers include VI and N64 microseconds."
+  "fixtures": {
+    "intro": "Real new-game script; automatic fresh ACKs; stops at first table before Text1511 is drawn.",
+    "ronald": "Untouched legal mid-duel checkpoint; actual Slap/KO/Prize/Zapdos continuation.",
+    "clubs": "Post-tutorial room warps, then collision-checked legal walking; Lightning, Fire, Water.",
+    "amy": "Untouched legal final-Pokemon checkpoint; actual12 controller requests and natural player win, followed directly by source Water Medal reward.",
+    "hall": "Progression warp for montage; source NPC flags/positions retained with current authored card/room models.",
+    "title": "Actual animated title screen with the current logo; original closing music phrase edited independently."
   },
-  "scope": "Private ROM/ELF/DFS/settings/saves only. No installed settings, live profile/save, controller config or active game thread changed.",
-  "shader_capture": "Actual CRT Guest Advanced shader output and private audio capture are performed separately by the capture agent; these local gates establish source flow, not final shader output.",
-  "segments": [
-    {
-      "segment": "intro",
-      "rom": "port/frontends/n64/adventure/build/trailer-intro/trailer-intro.z64",
-      "rom_sha256": "e8c57348f5c3c847c1fbc82c938bf3dcb2500be690e86c6d9d39e6e782611622",
-      "native_flow_gate": "port/reviews/trailer-harness/intro-flow.json",
-      "native_runtime_log": "port/reviews/trailer-harness/intro-runtime.log",
-      "pinned_build_manifest": "port/reviews/trailer-harness/intro-build.json",
-      "source_flow": "Actual ow_new_game, original island run, lab/Mason/Sam movement/dialogue and actual native rules/Yes choices; trapped immediately before source Sam practice duel at player10,14.",
-      "private_fixture": "Name entry/diary selector skipped; canonical player name set to Mark; source story begins from ordinary deterministic new-game seed."
+  "capture_profiles": {
+    "crt": {
+      "intro": "v2-crt-intro",
+      "ronald": "v2-crt-ronald",
+      "clubs": "v2-crt-clubs",
+      "amy": "v2-crt-amy-coin-fix"
     },
-    {
-      "segment": "ronald",
-      "rom": "port/frontends/n64/adventure/build/trailer-ronald/trailer-ronald.z64",
-      "rom_sha256": "e159777c7716891358f0b3556b5ac3bae789bbf6824de0adc751f9c3db44ada8",
-      "native_flow_gate": "port/reviews/trailer-harness/ronald-flow.json",
-      "native_runtime_log": "port/reviews/trailer-harness/ronald-runtime.log",
-      "pinned_build_manifest": "port/reviews/trailer-harness/ronald-build.json",
-      "source_flow": "Untouched engine-generated save continued through actual native UI: Staryu Slap, real Dratini KO, real Prize card, Ronald promotes Zapdos, Ronald turn. All nine real request types/answers verified.",
-      "private_fixture": "Loads legal mid-duel checkpoint rather than replaying the preceding turns; display names use Mark and Ronald. No combat HP/cards/attachments/flags/RNG/save bytes patched."
-    },
-    {
-      "segment": "clubs",
-      "rom": "port/frontends/n64/adventure/build/trailer-clubs/trailer-clubs.z64",
-      "rom_sha256": "f0c59d2a63f4c24660358400197399b3c0d5b84b9b82e810dac31efebf816c14",
-      "native_flow_gate": "port/reviews/trailer-harness/clubs-flow.json",
-      "native_runtime_log": "port/reviews/trailer-harness/clubs-runtime.log",
-      "pinned_build_manifest": "port/reviews/trailer-harness/clubs-build.json",
-      "source_flow": "Actual source map preload/NPCs/audio, real collision-checked ow_move and production interpolation/camera in Lightning, Water and Fire.",
-      "private_fixture": "Post-tutorial fixtures and explicit room warps; Joshua already defeated. Lightning11steps to12,8; Water13steps to20,8 around pool (22,8 chair blocked); Fire10steps to14,8."
-    },
-    {
-      "segment": "ending",
-      "rom": "port/frontends/n64/adventure/build/trailer-ending/trailer-ending.z64",
-      "rom_sha256": "e0eb74a6dd23d78d4c9d99c498aad0e5d06486657593a5bc51f700bfdd8a7e9c",
-      "native_flow_gate": "port/reviews/trailer-harness/ending-flow.json",
-      "native_runtime_log": "port/reviews/trailer-harness/ending-runtime.log",
-      "pinned_build_manifest": "port/reviews/trailer-harness/ending-build.json",
-      "source_flow": "Actual ow_finish_duel Amy win handler, source-owned Water Medal/count, original medal presenter/fanfare/resume, original Hall preload with glowing Legendary Cards, actual new title/music/orbs.",
-      "private_fixture": "Amy win is declared in private state without a fabricated winning duel; source reward stopped before two booster packs. Hall of Honor is a progression warp, not a claim this one win completed the campaign."
+    "none": {
+      "intro": "v2-none-intro",
+      "ronald": "v2-none-ronald",
+      "clubs": "v2-none-clubs",
+      "amy": "v2-none-amy-coin-fix"
     }
-  ]
+  },
+  "detail": "capture.json and individual build manifests contain exact ROM/source/object hashes and full native VI event traces."
 }

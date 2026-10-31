@@ -1,23 +1,9 @@
-# Capture route provenance
+# Paired trailer capture provenance
 
-[routes.json](routes.json) records all four private ROM hashes, native flow
-gate paths and the legal Ronald checkpoint SHA256. The canonical player name
-is **Mark**; Ronald's displayed name is **Ronald**.
+The current edit ends the opening at Mark's first table arrival, then shows Ronald, Lightning → Fire → Water, a genuine final-Pokémon Amy knockout/win, the source Water Medal reward, remodeled Hall and actual title.
 
-Intro runs the real new-game source through Sam's first practice-duel request.
-Ronald continues an untouched, engine-generated mid-duel save and uses real
-controller input/native UI for the attack, knockout, Prize and replacement.
-Club footage uses private post-tutorial room warps followed by legal player
-walking. Ending declares a private Amy win, runs her actual reward script and
-Water Medal ceremony, then uses a Hall of Honor progression warp before the
-actual title. It is a montage, not one continuous campaign run.
+[capture.json](capture.json) records the two actual shader variants, equal ROM hashes and native VI/event traces per segment, exact settings, raw-master hashes and runtime/preset identity. [routes.json](routes.json) summarizes the private fixtures and untouched checkpoint hashes. Individual build manifests retain pinned objects and source/header snapshots.
 
-The controller driver supplies fresh automatic ACKs, normally three seconds
-per story page. Its eight-second silent black preroll is trimmed from the
-edit; the first source world movement has an `INTRO_RUN` marker. Developer
-markers/counters are not drawn over gameplay. All profiles and saves are
-private to the capture ROMs.
+Amy's win is real engine continuation followed by her actual reward script; it is not a declared victory. Club/Hall access uses private room/progression warps. Names and automatic controller ACKs are private capture choices. The full source captures remain preserved even where the edit omits coin/Prize/Decision screens.
 
-The separate capture agent records actual CRT Guest Advanced shader output
-and private game audio. Local native flow proofs do not substitute for that
-final output capture.
+The CRT preset is Guest Advanced with interm0. None is a separately rendered shader-disabled Ares take. One encoded original-game AAC mix is copied into both movies; root pair-validation.json records identical compressed/decoded audio and frame counts. The earlier v1 declared-win fixture and its documentation are archived under ../versions/v1/.

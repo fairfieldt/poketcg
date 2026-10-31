@@ -4,89 +4,117 @@
     1440,
     1080
   ],
+  "duration": 86.76666666666667,
   "shots": [
     {
-      "name": "opening-and-sam",
+      "name": "opening-first-table",
       "source": "intro",
-      "start": 9.65,
-      "end": 78.3
+      "native_start": 9.666666666666666,
+      "native_end": 44.083333333333336,
+      "duration": 34.416666666666664,
+      "output_start": 0.0
     },
     {
       "name": "ronald-knockout",
       "source": "ronald",
-      "start": 8.05,
-      "end": 26.75
+      "native_start": 8.283333333333333,
+      "native_end": 26.2,
+      "duration": 17.916666666666668,
+      "output_start": 33.96666666666667
     },
     {
       "name": "lightning-walk",
       "source": "clubs",
-      "start": 11.5,
-      "end": 16.3
+      "native_start": 9.8,
+      "native_end": 13.733333333333333,
+      "duration": 3.933333333333333,
+      "output_start": 51.583333333333336
+    },
+    {
+      "name": "fire-deep-walk",
+      "source": "clubs",
+      "native_start": 16.266666666666666,
+      "native_end": 20.683333333333334,
+      "duration": 4.416666666666667,
+      "output_start": 55.43333333333333
     },
     {
       "name": "water-walk",
       "source": "clubs",
-      "start": 22.3,
-      "end": 28.5
+      "native_start": 23.233333333333334,
+      "native_end": 27.866666666666667,
+      "duration": 4.633333333333334,
+      "output_start": 59.766666666666666
     },
     {
-      "name": "fire-walk",
-      "source": "clubs",
-      "start": 31.6,
-      "end": 33.95
+      "name": "amy-agility",
+      "source": "amy",
+      "native_start": 13.65,
+      "native_end": 14.833333333333334,
+      "duration": 1.1833333333333333,
+      "output_start": 64.05
+    },
+    {
+      "name": "amy-final-pokemon-knockout",
+      "source": "amy",
+      "native_start": 19.266666666666666,
+      "native_end": 22.183333333333334,
+      "duration": 2.9166666666666665,
+      "output_start": 65.13333333333334
+    },
+    {
+      "name": "amy-real-win",
+      "source": "amy",
+      "native_start": 30.366666666666667,
+      "native_end": 31.8,
+      "duration": 1.4333333333333333,
+      "output_start": 67.93333333333334
     },
     {
       "name": "water-medal",
-      "source": "ending",
-      "start": 15.916666667,
-      "end": 21.383333333
+      "source": "amy",
+      "native_start": 37.9,
+      "native_end": 43.333333333333336,
+      "duration": 5.433333333333334,
+      "output_start": 69.01666666666667
     },
     {
       "name": "hall-of-honor",
-      "source": "ending",
-      "start": 25.1,
-      "end": 29.066666667
+      "source": "amy",
+      "native_start": 46.85,
+      "native_end": 50.65,
+      "duration": 3.8,
+      "output_start": 74.2
     },
     {
       "name": "title64",
-      "source": "ending",
-      "start": 29.066666667,
-      "end": 38.483333334
+      "source": "amy",
+      "native_start": 50.75,
+      "native_end": 60.166666666666664,
+      "duration": 9.416666666666666,
+      "output_start": 77.35
     }
   ],
   "dissolves": [
     0.45,
+    0.3,
+    0.08,
+    0.08,
     0.35,
     0.1,
-    0.1,
+    0.12,
     0.35,
     0.25,
     0.65
   ],
+  "clock": "Native VI/60, source marker aligned; recorded frames held/dropped, no motion interpolation.",
+  "presentation_latency_seconds": 0.04,
+  "phase_uncertainty": "Approximately one 60 Hz frame; semantic rather than pixel-phase synchronization.",
   "audio": {
-    "opening_gain_db": -0.2,
-    "ronald_gain_db": 2.5,
-    "club_source": "music_12.wav",
-    "club_gain_db": -3.7,
-    "medal_source": "music_29.wav",
-    "medal_gain_db": -5.2,
-    "hall_source": "music_17.wav",
-    "hall_gain_db": 2.6,
-    "title_source": "music_01.wav",
-    "title_start": 24.636719,
-    "title_gain_db": -5.5
-  },
-  "duration": 117.3,
-  "shot_output_starts": [
-    0.0,
-    68.2,
-    86.55000000000001,
-    91.25000000000001,
-    97.35000000000001,
-    99.35000000000001,
-    104.56666666666666,
-    107.88333333333333
-  ],
-  "audio_processing": "Linear gains, original stem substitutions and short crossfades only; no dynamics processing.",
-  "video_processing": "Trim/dissolve/end fade only; no speed change, generated frames, shader imitation or retouching."
+    "opening": "One continuous original music09 stem; disrupted captured opening bed is entirely replaced.",
+    "clubs": "One continuous original Club1 stem across Lightning, Fire, Water.",
+    "medal": "Complete original5.396-second fanfare, unfaded; Hall music enters afterward.",
+    "title": "Original closing phrase24.636719\u201334.05 seconds.",
+    "comparison": "Common AAC encoded once, then copied without re-encoding into both MP4 files."
+  }
 }

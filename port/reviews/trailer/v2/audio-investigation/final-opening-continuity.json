@@ -1,0 +1,402 @@
+{
+  "method": "Known source09 phase1.5 seconds + output time,250ms windows; only\u00b116 samples allowed, so a skipped/replayed phrase cannot pass. AAC decoded mono24kHz compared with original PCM.",
+  "minimum_correlation": 0.9988916676484675,
+  "median_correlation": 0.9999788197664127,
+  "largest_phase_offset_samples": 0,
+  "sample_rate": 24000,
+  "rows": [
+    {
+      "output_seconds": 0.5,
+      "source_seconds": 2.0,
+      "correlation": 0.9999687224753041,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 1.0,
+      "source_seconds": 2.5,
+      "correlation": 0.999854328090872,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 1.5,
+      "source_seconds": 3.0,
+      "correlation": 0.9992517094791751,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 2.0,
+      "source_seconds": 3.5,
+      "correlation": 0.9994825059210113,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 2.5,
+      "source_seconds": 4.0,
+      "correlation": 0.9999738835114358,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 3.0,
+      "source_seconds": 4.5,
+      "correlation": 0.9997388860455885,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 3.5,
+      "source_seconds": 5.0,
+      "correlation": 0.9998764903990627,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 4.0,
+      "source_seconds": 5.5,
+      "correlation": 0.9996721678300463,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 4.5,
+      "source_seconds": 6.0,
+      "correlation": 0.9997437549076008,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 5.0,
+      "source_seconds": 6.5,
+      "correlation": 0.9988916676484675,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 5.5,
+      "source_seconds": 7.0,
+      "correlation": 0.9999640230290573,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 6.0,
+      "source_seconds": 7.5,
+      "correlation": 0.9999703826574912,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 6.5,
+      "source_seconds": 8.0,
+      "correlation": 0.9998402054757485,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 7.0,
+      "source_seconds": 8.5,
+      "correlation": 0.9994906739855014,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 7.5,
+      "source_seconds": 9.0,
+      "correlation": 0.9997990278712883,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 8.0,
+      "source_seconds": 9.5,
+      "correlation": 0.9999538587987378,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 8.5,
+      "source_seconds": 10.0,
+      "correlation": 0.9999473550305052,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 9.0,
+      "source_seconds": 10.5,
+      "correlation": 0.9999617428177339,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 9.5,
+      "source_seconds": 11.0,
+      "correlation": 0.9997477746365666,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 10.0,
+      "source_seconds": 11.5,
+      "correlation": 0.9999853711495258,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 10.5,
+      "source_seconds": 12.0,
+      "correlation": 0.9999897400803828,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 11.0,
+      "source_seconds": 12.5,
+      "correlation": 0.9999834943387974,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 11.5,
+      "source_seconds": 13.0,
+      "correlation": 0.999984215948071,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 12.0,
+      "source_seconds": 13.5,
+      "correlation": 0.9999883279805154,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 12.5,
+      "source_seconds": 14.0,
+      "correlation": 0.9999884079205507,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 13.0,
+      "source_seconds": 14.5,
+      "correlation": 0.9999814137868774,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 13.5,
+      "source_seconds": 15.0,
+      "correlation": 0.9999830483342471,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 14.0,
+      "source_seconds": 15.5,
+      "correlation": 0.9999451035276223,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 14.5,
+      "source_seconds": 16.0,
+      "correlation": 0.9998862785126473,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 15.0,
+      "source_seconds": 16.5,
+      "correlation": 0.9999565109828481,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 15.5,
+      "source_seconds": 17.0,
+      "correlation": 0.9999871719258459,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 16.0,
+      "source_seconds": 17.5,
+      "correlation": 0.9999892322086292,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 16.5,
+      "source_seconds": 18.0,
+      "correlation": 0.9999788197664127,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 17.0,
+      "source_seconds": 18.5,
+      "correlation": 0.9999833048135328,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 17.5,
+      "source_seconds": 19.0,
+      "correlation": 0.9999854591459979,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 18.0,
+      "source_seconds": 19.5,
+      "correlation": 0.999987880897079,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 18.5,
+      "source_seconds": 20.0,
+      "correlation": 0.9999888826976736,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 19.0,
+      "source_seconds": 20.5,
+      "correlation": 0.9999879461539992,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 19.5,
+      "source_seconds": 21.0,
+      "correlation": 0.9999689603438082,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 20.0,
+      "source_seconds": 21.5,
+      "correlation": 0.9997912598753839,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 20.5,
+      "source_seconds": 22.0,
+      "correlation": 0.9999878135232219,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 21.0,
+      "source_seconds": 22.5,
+      "correlation": 0.9999868424228933,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 21.5,
+      "source_seconds": 23.0,
+      "correlation": 0.9999714075956403,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 22.0,
+      "source_seconds": 23.5,
+      "correlation": 0.9999656108999018,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 22.5,
+      "source_seconds": 24.0,
+      "correlation": 0.9999860735476318,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 23.0,
+      "source_seconds": 24.5,
+      "correlation": 0.9999854527595171,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 23.5,
+      "source_seconds": 25.0,
+      "correlation": 0.9999803850712172,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 24.0,
+      "source_seconds": 25.5,
+      "correlation": 0.9999703423247936,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 24.5,
+      "source_seconds": 26.0,
+      "correlation": 0.9999879287591685,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 25.0,
+      "source_seconds": 26.5,
+      "correlation": 0.9999819549741572,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 25.5,
+      "source_seconds": 27.0,
+      "correlation": 0.9999866553365254,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 26.0,
+      "source_seconds": 27.5,
+      "correlation": 0.9999859593419025,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 26.5,
+      "source_seconds": 28.0,
+      "correlation": 0.9999893857424564,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 27.0,
+      "source_seconds": 28.5,
+      "correlation": 0.9999783927608518,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 27.5,
+      "source_seconds": 29.0,
+      "correlation": 0.9999030616397345,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 28.0,
+      "source_seconds": 29.5,
+      "correlation": 0.9999825093033663,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 28.5,
+      "source_seconds": 30.0,
+      "correlation": 0.999979222022818,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 29.0,
+      "source_seconds": 30.5,
+      "correlation": 0.9999789726781733,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 29.5,
+      "source_seconds": 31.0,
+      "correlation": 0.9999655546926168,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 30.0,
+      "source_seconds": 31.5,
+      "correlation": 0.9999867674399276,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 30.5,
+      "source_seconds": 32.0,
+      "correlation": 0.9999663268069254,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 31.0,
+      "source_seconds": 32.5,
+      "correlation": 0.9999902929952167,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 31.5,
+      "source_seconds": 33.0,
+      "correlation": 0.9999168485029936,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 32.0,
+      "source_seconds": 33.5,
+      "correlation": 0.999988378689477,
+      "sample_offset": 0
+    },
+    {
+      "output_seconds": 32.5,
+      "source_seconds": 34.0,
+      "correlation": 0.9999833686233456,
+      "sample_offset": 0
+    }
+  ],
+  "verified_final_mp4_sha256": "1556cc22f0d5cd795cfe26cc486ad1da6cc2af173b0d86b076150485f9dad91e",
+  "final_opening_pcm_sha256": "f3e8bcfb80904aa3835728a1a32bdd6c47ecce1d39fc9f0af0cda058662e20ab",
+  "identical_to_verified_opening_pcm": true
+}

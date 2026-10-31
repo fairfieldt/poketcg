@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trailer comparison</title>
+<style>
+:root { color-scheme: dark; font: 16px system-ui, sans-serif; }
+body { margin: 0; background: #111319; color: #f1f2f5; }
+main { max-width: 1800px; margin: auto; padding: 20px; }
+.controls { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+button { font: inherit; padding: 8px 14px; color: inherit; background: #292e3b; border: 1px solid #626c82; border-radius: 5px; cursor: pointer; }
+button:focus-visible, input:focus-visible { outline: 3px solid #a5c5ff; outline-offset: 3px; }
+input { min-width: 60px; flex: 1; accent-color: #b6d0ff; }
+output { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+figure { margin: 0; }
+figcaption { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+video { display: block; width: 100%; aspect-ratio: 4/3; background: #000; }
+video:fullscreen { object-fit: contain; }
+p { font-size: 14px; color: #bcc6d9; }
+a { color: #b6d0ff; }
+@media (max-width: 760px) { main { padding: 12px; } .pair { grid-template-columns: 1fr; } .controls { gap: 8px; flex-wrap: wrap; } }
+</style>
+<main>
+  <div class="controls">
+    <button id="toggle" type="button" disabled>Play</button>
+    <input id="seek" type="range" aria-label="Seek both videos" min="0" max="0" step="0.016667" value="0">
+    <output id="clock">0:00 / 0:00</output>
+    <button id="sound" type="button">Mute</button>
+  </div>
+  <div class="pair">
+    <figure>
+      <figcaption>CRT Guest Advanced <button type="button" data-fullscreen="crt">Fullscreen</button></figcaption>
+      <video id="crt" src="poketcg64-trailer.mp4" poster="poster.png" preload="metadata" playsinline></video>
+    </figure>
+    <figure>
+      <figcaption>No shader <button type="button" data-fullscreen="clean">Fullscreen</button></figcaption>
+      <video id="clean" src="poketcg64-trailer-no-crt.mp4" poster="poster-no-crt.png" preload="metadata" playsinline muted></video>
+    </figure>
+  </div>
+  <p><a href="poketcg64-trailer.mp4">Open CRT video</a> · <a href="poketcg64-trailer-no-crt.mp4">Open video without shader</a></p>
+  <p id="error" role="alert" hidden></p>
+</main>
+<script type="module">
+const crt = document.querySelector('#crt'), clean = document.querySelector('#clean');
+const toggle = document.querySelector('#toggle'), seek = document.querySelector('#seek');
+const clock = document.querySelector('#clock'), sound = document.querySelector('#sound');
+const error = document.querySelector('#error');
+let playing = false;
+const stamp = value => `${Math.floor(value / 60)}:${String(Math.floor(value % 60)).padStart(2, '0')}`;
+function pause() { playing = false; crt.pause(); clean.pause(); toggle.textContent = 'Play'; }
+async function play() {
+  if (!Number.isFinite(crt.duration) || !Number.isFinite(clean.duration)) return;
+  if (crt.ended) crt.currentTime = 0;
+  clean.currentTime = crt.currentTime;
+  playing = true; toggle.textContent = 'Pause'; error.hidden = true;
+  try { await Promise.all([crt.play(), clean.play()]); }
+  catch (cause) { if (!playing) return; pause(); error.textContent = 'Unable to play both videos. Open either video below.'; error.hidden = false; }
+}
+toggle.addEventListener('click', () => playing ? pause() : play());
+seek.addEventListener('input', () => { crt.currentTime = clean.currentTime = Number(seek.value); });
+sound.addEventListener('click', () => { crt.muted = !crt.muted; sound.textContent = crt.muted ? 'Unmute' : 'Mute'; });
+crt.addEventListener('ended', pause);
+for (const video of [crt, clean]) {
+  video.addEventListener('click', () => playing ? pause() : play());
+  video.addEventListener('loadedmetadata', () => { toggle.disabled = ![crt, clean].every(v => Number.isFinite(v.duration)); });
+  video.addEventListener('error', () => { pause(); error.textContent = 'Unable to load a video. Open either video below.'; error.hidden = false; });
+}
+for (const button of document.querySelectorAll('[data-fullscreen]')) {
+  button.addEventListener('click', () => document.getElementById(button.dataset.fullscreen).requestFullscreen?.());
+}
+document.addEventListener('keydown', event => {
+  if (document.fullscreenElement && event.code === 'Space') { event.preventDefault(); playing ? pause() : play(); }
+});
+function tick() {
+  const duration = Number.isFinite(crt.duration) ? crt.duration : 0;
+  seek.max = String(duration); seek.value = String(crt.currentTime);
+  clock.value = `${stamp(crt.currentTime)} / ${stamp(duration)}`;
+  if (playing && clean.readyState >= 2 && Math.abs(clean.currentTime - crt.currentTime) > .08) clean.currentTime = crt.currentTime;
+  requestAnimationFrame(tick);
+}
+tick();
+</script>
+</html>

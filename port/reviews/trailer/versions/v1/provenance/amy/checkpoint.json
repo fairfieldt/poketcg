@@ -1,0 +1,25 @@
+{
+  "checkpoint_sha256": "8ae3915c0523ebf59238aa1302caf75a7b3c88ae9325eb3a24e19e6b537044ba",
+  "bytes": 1660,
+  "generator": "port/frontends/n64/adventure/tests/trailer_amy_stage.c",
+  "loader": "port/frontends/n64/adventure/tests/trailer_amy.c",
+  "engine_state_edited": false,
+  "source_decks": {
+    "player": 37,
+    "opponent": 18
+  },
+  "seed": [
+    25,
+    1,
+    90
+  ],
+  "turn": 28,
+  "attack": "Raichu Lv40 / Agility",
+  "defender": "Goldeen",
+  "damage": 40,
+  "hp_before": 40,
+  "opponent_pokemon_remaining_before_hit": 1,
+  "duel_return": 0,
+  "all_request_state_rng_hashes_and_final_hash_exact": true,
+  "actual_native_capture": "Pending; the files here are host-engine staging and exact continuation proof."
+}

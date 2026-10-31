@@ -1,42 +1,44 @@
 {
   "passed": true,
-  "sha256": "aeb648b7047bb78f5934d2e09ba80cabcb3102526a6d85ce5015ed41f08eeb0f",
-  "bytes": 38728710,
-  "duration_seconds": 117.3,
-  "video_frames": 7038,
-  "audio_video_duration_match": true,
-  "faststart_moov_before_mdat": true,
-  "mp4_boxes": [
+  "expected_duration": 86.76666666666667,
+  "expected_frames": 5206,
+  "identical_compressed_audio": true,
+  "identical_decoded_audio": true,
+  "files": [
     {
-      "type": "ftyp",
-      "offset": 0,
-      "size": 32
+      "file": "poketcg64-trailer.mp4",
+      "sha256": "1556cc22f0d5cd795cfe26cc486ad1da6cc2af173b0d86b076150485f9dad91e",
+      "bytes": 33751816,
+      "video_frames": 5206,
+      "video_duration": 86.766667,
+      "audio_duration": 86.766,
+      "av_duration_difference_seconds": 0.0006669999999928677,
+      "faststart": true,
+      "compressed_audio_adts_sha256": "b30cf6695b852070b818637d8a4b229be26fc33cf601f2c712f7d8f27044f576",
+      "decoded_stereo_pcm16_sha256": "3096eff6eff2e5dbbcb6929be94c93f97a5c6af57a44961217baa0c861ab78f4"
     },
     {
-      "type": "moov",
-      "offset": 32,
-      "size": 188169
-    },
-    {
-      "type": "free",
-      "offset": 188201,
-      "size": 8
-    },
-    {
-      "type": "mdat",
-      "offset": 188209,
-      "size": 38540501
+      "file": "poketcg64-trailer-no-crt.mp4",
+      "sha256": "a6543cf6e494372fe89e6e06892918983cbd957931bf3d0d4addb896d2f7ba51",
+      "bytes": 48051487,
+      "video_frames": 5206,
+      "video_duration": 86.766667,
+      "audio_duration": 86.766,
+      "av_duration_difference_seconds": 0.0006669999999928677,
+      "faststart": true,
+      "compressed_audio_adts_sha256": "b30cf6695b852070b818637d8a4b229be26fc33cf601f2c712f7d8f27044f576",
+      "decoded_stereo_pcm16_sha256": "3096eff6eff2e5dbbcb6929be94c93f97a5c6af57a44961217baa0c861ab78f4"
     }
   ],
-  "loudness_lufs": -19.5,
-  "true_peak_dbfs": -5.7,
-  "loudness_range_lu": 3.4,
+  "full_decode_pass": true,
   "decode_errors": 0,
   "nonfinite_audio_samples": 0,
-  "preroll_removed": true,
-  "preset_unchanged_during_capture": true,
-  "all_capture_rom_hashes_match_gated_routes": true,
-  "remaining_private_audio_sinks": [],
-  "visual_review": "Parent reviewed actual draft at 12 anchor frames; capture agent inspected final 20-frame contact sheet. All requested scenes present, 4:3, no counters/capture chrome.",
-  "audition_limit": "Model has no audio-input capability. Original score/timing, waveform/silence/true-peak/loudness checks were used; no claim of ear audition."
+  "loudness_lufs": -19.6,
+  "true_peak_dbfs": -5.4,
+  "loudness_range_lu": 1.9,
+  "opening_waveform_minimum_correlation": 0.9988916676484675,
+  "opening_waveform_zero_offset_drift": true,
+  "visual_review": "Root and independent child reviewed actual final movies, including the first dissolve frames, full Fire walk, real KO/win, medal, Hall and title.",
+  "independent_review": "v2/independent-qc.json",
+  "audition_scope": "Analytical/source-score checks; model cannot receive audio."
 }

@@ -1,10 +1,14 @@
 /* Private capture ROM only. Production initialization, rendering and hosts are
  * included verbatim; this entry replaces the interactive title/diary loop. */
 #define main trailer_production_main
-#include "../main.c"
+#ifndef TRAILER_MAIN_SOURCE
+#define TRAILER_MAIN_SOURCE "../main.c"
+#endif
+#include TRAILER_MAIN_SOURCE
 #undef main
 #include <setjmp.h>
 #include "trailer_ronald.h"
+#include "trailer_amy.h"
 #include "../duel_input.h"
 #include "engine.h"
 #ifndef TRAILER_SEGMENT
@@ -18,7 +22,7 @@
 #endif
 
 enum {DRIVER_NONE,DRIVER_TEXT,DRIVER_CHOICE,DRIVER_MEDAL,DRIVER_DUEL,DRIVER_TITLE};
-static const char *const segment_names[]={"intro","ronald","clubs","ending"};
+static const char *const segment_names[]={"intro","ronald","clubs","ending","amy"};
 static volatile unsigned trailer_vi,driver_start,driver_phase,driver_nav_steps,driver_nav_bit;
 static volatile uint16_t virtual_held,virtual_pressed;
 static bool begun,first_frame,ended,inside_title;
@@ -95,6 +99,10 @@ static void hold_ui(unsigned vi)
 static void text_host(void *ctx,OwState *state,uint16_t text,uint8_t npc)
 {
  debugf("TRAILER TEXT id=%u npc=%u map=%u x=%u y=%u vi=%u us=%llu\n",text,npc,state->map,state->x,state->y,trailer_vi,now_us());
+ if(TRAILER_SEGMENT==0&&text==1511){
+  assertf(state->x==10&&state->y==14,"First table arrival missed source player position");
+  marker("SHOT","mark-at-first-table");hold_world(60);longjmp(segment_stop,4);
+ }
  phase(DRIVER_TEXT);host_text(ctx,state,text,npc);phase(DRIVER_NONE);
 }
 static void changed_host(void *ctx,OwState *state)
@@ -129,7 +137,7 @@ static bool feature_host(void *ctx,OwState *state,unsigned feature,unsigned argu
  return result;
 }
 static void booster_stop(void *ctx,unsigned booster)
-{(void)ctx;assertf(TRAILER_SEGMENT==3&&booster==BOOSTER_LABORATORY_WATER,"Unexpected reward pack");marker("SHOT","amy-reward-before-packs");longjmp(segment_stop,2);}
+{(void)ctx;assertf((TRAILER_SEGMENT==3||TRAILER_SEGMENT==4)&&booster==BOOSTER_LABORATORY_WATER,"Unexpected reward pack");marker("SHOT","amy-reward-before-packs");longjmp(segment_stop,2);}
 static void reset_game(bool tutorial)
 {
  memset(&game,0,sizeof(game));strcpy(game.name,"Mark");game.text_speed=2;game_profile=1;
@@ -164,19 +172,22 @@ static void walk_to(unsigned target_x,unsigned target_y)
  debugf("TRAILER WALK map=%u steps=%u requested=%u,%u reached=%u,%u vi=%u us=%llu\n",game.ow.map,steps,target_x,target_y,x[found],y[found],trailer_vi,now_us());
  while(steps){assertf(ow_move(&game.ow,&trailer_host,route[--steps]),"Legal trailer walk became blocked");for(unsigned f=0;f<8;f++)game_draw();}
  while(presentation_moving(&presentation))game_draw();
+ debugf("TRAILER WALK_COMPLETE map=%u x=%u y=%u vi=%u us=%llu\n",game.ow.map,game.ow.x,game.ow.y,trailer_vi,now_us());
  hold_world(90);
 }
 static void intro_segment(void)
 {
  reset_game(true);trailer_host.duel=first_duel;
- if(!setjmp(segment_stop))ow_new_game(&game.ow,&trailer_host,0x293157);
+ int stopped=setjmp(segment_stop);
+ if(!stopped)ow_new_game(&game.ow,&trailer_host,0x293157);
  assertf(!game.ow.error[0],"Source opening failed: %s",game.ow.error);
+ if(stopped==4)return;
  game_conversation(NPC_SAM);hold_world(120);game_conversation(0);
 }
 static void clubs_segment(void)
 {
- static const unsigned maps[]={LIGHTNING_CLUB,WATER_CLUB,FIRE_CLUB};
- static const unsigned leaders[]={NPC_ISAAC,NPC_AMY,NPC_KEN};reset_game(false);
+ static const unsigned maps[]={LIGHTNING_CLUB,FIRE_CLUB,WATER_CLUB};
+ static const unsigned leaders[]={NPC_ISAAC,NPC_KEN,NPC_AMY};reset_game(false);
  for(unsigned i=0;i<3;i++){
   const W3Map *map=&w3_maps[maps[i]];load_map(maps[i],map->width/2,map->height-4);
   const OwNpc *leader=NULL;for(unsigned n=0;n<game.ow.npc_count;n++)if(game.ow.npcs[n].id==leaders[i])leader=&game.ow.npcs[n];
@@ -188,25 +199,28 @@ static void duel_event(void *ctx,const TcgEvent *event)
 {
  if(event->type==TCG_EV_TEXT)debugf("TRAILER DUEL_TEXT id=%u vi=%u us=%llu\n",event->text,trailer_vi,now_us());
  if(event->type==TCG_EV_DAMAGE&&event->arg[0]==TCG_OPPONENT&&event->arg[1]==0&&hWhoseTurn==TCG_PLAYER){
-  unsigned damage=event->arg[2]|event->arg[3]<<8,hp=GetNonTurnDuelistVariable(DUELVARS_ARENA_CARD_HP);if(hp&&damage>=hp){ronald_ko=true;marker("SHOT","ronald-knockout");}
+  unsigned damage=event->arg[2]|event->arg[3]<<8,hp=GetNonTurnDuelistVariable(DUELVARS_ARENA_CARD_HP);if(hp&&damage>=hp){ronald_ko=true;marker("SHOT",TRAILER_SEGMENT==4?"amy-knockout":"ronald-knockout");}
  }
  duel_host.event(ctx,event);
 }
 static int duel_request(void *ctx,const TcgRequest *request)
 {
  static const unsigned types[]={TCG_REQ_DUEL_MENU,TCG_REQ_MENU,TCG_REQ_ACK,TCG_REQ_ACK,TCG_REQ_ACK,TCG_REQ_PRIZE,TCG_REQ_ACK,TCG_REQ_ACK,TCG_REQ_ACK};
- assertf(duel_request_count<9&&request->type==types[duel_request_count],"Ronald continuation changed request%u type%u",duel_request_count,request->type);duel_request_count++;
+ static const unsigned amy_types[]={TCG_REQ_DUEL_MENU,TCG_REQ_MENU,TCG_REQ_ACK,TCG_REQ_ACK,TCG_REQ_ACK,TCG_REQ_ACK,TCG_REQ_ACK,TCG_REQ_PRIZE,TCG_REQ_ACK,TCG_REQ_ACK,TCG_REQ_ACK,TCG_REQ_ACK};
+ bool amy=TRAILER_SEGMENT==4;
+ assertf(duel_request_count<(amy?12:9)&&request->type==(amy?amy_types:types)[duel_request_count],"Trailer continuation changed request%u type%u",duel_request_count,request->type);duel_request_count++;
  debugf("TRAILER REQUEST index=%u type=%u menu=%u owner=%u shown=%u vi=%u us=%llu\n",duel_request_count,request->type,request->menu,request->duelist,request->shown,trailer_vi,now_us());
  phase(DRIVER_DUEL);int answer=duel_host.request(ctx,request);phase(DRIVER_NONE);
- assertf(answer==(duel_request_count==1?1:0),"Controller chose wrong Ronald answer%u:%d",duel_request_count,answer);
- if(request->type==TCG_REQ_PRIZE){assertf(ronald_ko,"Prize preceded real KO");ronald_prize=true;marker("SHOT","ronald-prize");}
- if(duel_request_count==9){assertf(ronald_ko&&ronald_prize,"Legal Ronald sequence incomplete");marker("SHOT","ronald-turn");hold_ui(120);longjmp(segment_stop,3);}
+ unsigned expected=duel_request_count==1?1:amy&&duel_request_count==8?3:0;
+ assertf(answer==(int)expected,"Controller chose wrong trailer answer%u:%d",duel_request_count,answer);
+ if(request->type==TCG_REQ_PRIZE){assertf(ronald_ko,"Prize preceded real KO");ronald_prize=true;marker("SHOT",amy?"amy-prize":"ronald-prize");}
+ if(!amy&&duel_request_count==9){assertf(ronald_ko&&ronald_prize,"Legal Ronald sequence incomplete");marker("SHOT","ronald-turn");hold_ui(120);longjmp(segment_stop,3);}
  return answer;
 }
 extern void __real_tcg_set_host(const TcgHost *host);
 void __wrap_tcg_set_host(const TcgHost *host)
 {
- if(TRAILER_SEGMENT!=1||!host||!host->request){__real_tcg_set_host(host);return;}
+ if((TRAILER_SEGMENT!=1&&TRAILER_SEGMENT!=4)||!host||!host->request){__real_tcg_set_host(host);return;}
  duel_host=*host;duel_proxy=*host;duel_proxy.event=duel_event;duel_proxy.request=duel_request;__real_tcg_set_host(&duel_proxy);
 }
 static void ronald_segment(void)
@@ -227,13 +241,28 @@ static void ending_segment(void)
  load_map(HALL_OF_HONOR,12,22);walk_to(12,16);
  marker("SHOT","title64");inside_title=true;phase(DRIVER_TITLE);__real_adventure_intro_play(false);
 }
+static void amy_segment(void)
+{
+ reset_game(false);trailer_host.booster=booster_stop;load_map(WATER_CLUB,20,6);
+ TcgDuelSetup setup;static uint8_t checkpoint[TCG_SAVE_SIZE];
+ assertf(trailer_amy_load(&setup,checkpoint),"Legal Amy checkpoint unavailable");
+ setup.duelist[0].name="Mark";setup.duelist[1].name="Amy";
+ marker("SHOT","amy-board");int result=n64_duel_play(&setup,checkpoint);
+ assertf(result==0&&duel_request_count==12&&ronald_ko&&ronald_prize,"Amy did not finish with the legal player win");
+ marker("SHOT","amy-won");loaded_map=-1;scene_begin_opaque();glEnable(GL_MULTISAMPLE_ARB);
+ game.ow.duel_npc=NPC_AMY;game.ow.duel_pending=1;
+ if(!setjmp(segment_stop))ow_finish_duel(&game.ow,&trailer_host,1);
+ assertf(ow_event(&game.ow,EVENT_BEAT_AMY)&&ow_event(&game.ow,EVENT_MEDAL_COUNT)==1,"Actual Amy win did not award Water Medal");
+ load_map(HALL_OF_HONOR,12,22);walk_to(12,16);
+ marker("SHOT","title64");inside_title=true;phase(DRIVER_TITLE);__real_adventure_intro_play(false);
+}
 void __wrap_adventure_intro_play(bool opening)
 {
  if(begun){__real_adventure_intro_play(opening);return;}
  register_VI_handler(input_tick);marker("READY",segment_names[TRAILER_SEGMENT]);black_frames(TRAILER_PREROLL_VI);
  begun=true;marker("BEGIN",segment_names[TRAILER_SEGMENT]);
- if(TRAILER_SEGMENT==0)intro_segment();else if(TRAILER_SEGMENT==1)ronald_segment();else if(TRAILER_SEGMENT==2)clubs_segment();else ending_segment();
+ if(TRAILER_SEGMENT==0)intro_segment();else if(TRAILER_SEGMENT==1)ronald_segment();else if(TRAILER_SEGMENT==2)clubs_segment();else if(TRAILER_SEGMENT==4)amy_segment();else ending_segment();
  ended=true;marker("END",segment_names[TRAILER_SEGMENT]);phase(DRIVER_NONE);
  for(;;){if(TRAILER_SEGMENT==1)hold_ui(120);else hold_world(120);}
 }
-int main(void){assert(TRAILER_SEGMENT<4);return trailer_production_main();}
+int main(void){assert(TRAILER_SEGMENT<5);return trailer_production_main();}
