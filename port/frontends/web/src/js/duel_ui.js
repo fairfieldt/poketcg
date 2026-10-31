@@ -6,7 +6,7 @@
 //
 // Board state is read straight from engine memory (duel.duelvars) whenever something changes.
 import { C, T, W, EV, SCREEN, REQ, MENU, TCG_PLAYER, TCG_OPPONENT, TCG_CANCEL } from './engine.js';
-import { el, clear, art, sym, esym, typeIcon, richText, plainText, cardTitle, costIcons, cardPage, COLOR_NAMES, STATUS_NAMES } from './gfx.js';
+import { el, clear, art, sym, esym, typeIcon, richText, plainText, reflowRules, cardTitle, costIcons, cardPage, COLOR_NAMES, STATUS_NAMES } from './gfx.js';
 import { duelBanner } from './duel_banners.js';
 
 export const K = { UP: 'up', DOWN: 'down', LEFT: 'left', RIGHT: 'right', A: 'a', B: 'b', START: 'start' };
@@ -221,8 +221,11 @@ export class DuelUI {
 		pr.append(sym(SYM_PRIZE), document.createTextNode(String(st.prizes)));
 		icons.append(pk, pr);
 		icons.appendChild(el('span', 'count', `Hand ${st.hand}`));
-		icons.appendChild(el('span', 'count', `Deck ${st.deck}`));
-		icons.appendChild(el('span', 'count', `Discard ${st.discard}`));
+		for (const [label, value] of [['Deck', st.deck], ['Discard', st.discard]]) {
+			const pile = el('span', 'count pile-count');
+			pile.append(el('span', 'pile-back'), document.createTextNode(`${label} ${value}`));
+			icons.appendChild(pile);
+		}
 		row.appendChild(icons);
 		return row;
 	}
@@ -264,9 +267,17 @@ export class DuelUI {
 
 	hpBar(slot) {
 		const bar = el('span', 'hpbar');
-		const max = Math.min(slot.card.hp || 0, 120), cur = Math.min(slot.hp, max);
-		const total = Math.ceil(max / 10), ok = Math.ceil(cur / 10);
-		for (let i = 0; i < total; i++) bar.appendChild(sym(i < total - ok ? SYM_HP_NOK : SYM_HP_OK));
+		const max = slot.card.hp || 1, cur = Math.max(0, Math.min(slot.hp, max));
+		bar.classList.toggle('low', cur <= max / 4);
+		bar.classList.toggle('worn', cur > max / 4 && cur <= max / 2);
+		bar.setAttribute('role', 'meter');
+		bar.setAttribute('aria-label', 'HP');
+		bar.setAttribute('aria-valuemin', '0');
+		bar.setAttribute('aria-valuemax', String(max));
+		bar.setAttribute('aria-valuenow', String(cur));
+		const fill = el('span', 'hp-fill');
+		fill.style.width = `${cur * 100 / max}%`;
+		bar.appendChild(fill);
 		return bar;
 	}
 
@@ -280,7 +291,16 @@ export class DuelUI {
 		hud.appendChild(nameLine);
 		const eLine = el('div', 'hud-energy');
 		eLine.appendChild(sym(0x12));
-		slot.energies.forEach((n, c) => { for (let i = 0; i < n; i++) eLine.appendChild(esym(c)); });
+		const totalEnergy = slot.energies.reduce((a, b) => a + b, 0);
+		slot.energies.forEach((n, c) => {
+			if (!n) return;
+			if (totalEnergy <= 12) for (let i = 0; i < n; i++) eLine.appendChild(esym(c));
+			else {
+				const group = el('span', 'energy-group');
+				group.append(esym(c), document.createTextNode(`×${n}`));
+				eLine.appendChild(group);
+			}
+		});
 		hud.appendChild(eLine);
 		const hpLine = el('div', 'hud-hp');
 		hpLine.appendChild(sym(0x10));
@@ -371,12 +391,18 @@ export class DuelUI {
 		return new Promise((resolve) => {
 			const page = cardPage(card, extra);
 			page.classList.add('modal-page');
+			page.tabIndex = 0;
 			const close = el('button', 'btn close-btn', 'Close');
 			page.appendChild(close);
 			clear(this.$modal).appendChild(page);
 			this.$modal.className = 'modal';
 			const ctl = this.pushControl({
-				key: (k) => { if (k === K.A || k === K.B || k === K.START) done(); return true; },
+				key: (k) => {
+					if (k === K.A || k === K.B || k === K.START) done();
+					else if (k === K.UP || k === K.DOWN) page.scrollBy({ top: (k === K.UP ? -1 : 1) * 48 });
+					else if (k === K.LEFT || k === K.RIGHT) page.scrollBy({ top: (k === K.LEFT ? -1 : 1) * page.clientHeight * 0.8 });
+					return true;
+				},
 			});
 			const done = () => {
 				this.popControl(ctl);
@@ -405,6 +431,43 @@ export class DuelUI {
 		details.addEventListener('click', (e) => { e.stopPropagation(); this.showCardPage(card); });
 		box.appendChild(details);
 		return box;
+	}
+
+
+	cardPreview(card) {
+		const p = el('div', 'clp');
+		const name = el('div', 'clp-name');
+		name.append(typeIcon(card), document.createTextNode(cardTitle(card)));
+		p.appendChild(name);
+		p.appendChild(art(card.id, 1));
+		p.appendChild(el('div', 'clp-sub', card.isPokemon
+			? `HP ${card.hp} · ${COLOR_NAMES[card.type & 7]} · ${['Basic', 'Stage 1', 'Stage 2', 'Stage 2'][card.stage]}`
+			: card.isTrainer ? 'Trainer' : `${COLOR_NAMES[card.type & 7]} Energy`));
+		const effects = el('div', 'clp-effects');
+		if (card.isPokemon) {
+			for (const attack of card.attacks) {
+				const section = el('div', 'clp-attack');
+				const line = el('div', 'clp-attack-line');
+				line.append(attack.isPower ? el('span', 'clp-power', 'Power') : costIcons(attack.cost), el('strong', '', attack.name));
+				if (attack.damage) line.appendChild(el('span', 'clp-damage', String(attack.damage) + ['', '+', '−', '×', ''][attack.category & 7]));
+				section.appendChild(line);
+				if (attack.description) {
+					const description = el('div', 'clp-effect');
+					description.appendChild(richText(reflowRules(attack.description)));
+					section.appendChild(description);
+				}
+				effects.appendChild(section);
+			}
+		} else if (card.description) {
+			const description = el('div', 'clp-effect');
+			description.appendChild(richText(reflowRules(card.description)));
+			effects.appendChild(description);
+		}
+		p.appendChild(effects);
+		const details = el('button', 'btn small', 'Details');
+		details.addEventListener('click', e => { e.stopPropagation(); this.showCardPage(card); });
+		p.appendChild(details);
+		return p;
 	}
 
 	/* generic list of cards (deck indexes of duelist d) */
@@ -438,14 +501,7 @@ export class DuelUI {
 				rows.forEach((r, k) => r.row.classList.toggle('cur', k === ctl.cursor));
 				const c = rows[ctl.cursor].card;
 				clear(preview);
-				const p = el('div', 'clp');
-				p.appendChild(art(c.id, 1.5));
-				p.appendChild(el('div', 'clp-name', cardTitle(c)));
-				if (c.isPokemon) p.appendChild(el('div', 'clp-sub', `HP ${c.hp}  ${['Basic', 'Stage 1', 'Stage 2', 'Stage 2'][c.stage]}`));
-				const det = el('button', 'btn small', 'Details');
-				det.addEventListener('click', (e) => { e.stopPropagation(); this.showCardPage(c); });
-				p.appendChild(det);
-				preview.appendChild(p);
+				preview.appendChild(this.cardPreview(c));
 				rows[ctl.cursor].row.scrollIntoView({ block: 'nearest' });
 				if (onMove) onMove(ctl.cursor);
 			},
@@ -957,6 +1013,7 @@ export class DuelUI {
 			list.rows.forEach((r) => r.row.classList.remove('picked'));
 			const cur = list.rows[list.cursor];
 			if (cur) cur.row.classList.add('picked');
+			list.wrap.classList.add('has-picked');
 		}
 		this.setText(cardTitle(this.duel.card(this.duel.cardId(req.shown, req.arg[0]))));
 		return this.ask((done) => {
@@ -1053,7 +1110,7 @@ export class DuelUI {
 			if (atk.damage) head.appendChild(el('span', 'ai-dmg', String(atk.damage) + ['', '+', '-', '×', ''][atk.category & 7]));
 			info.appendChild(head);
 			const d = el('div', 'ai-desc');
-			d.appendChild(richText(atk.description || 'No additional effect.'));
+			d.appendChild(richText(reflowRules(atk.description) || 'No additional effect.'));
 			info.appendChild(d);
 			info.appendChild(el('div', 'ai-card', cardTitle(card)));
 		};
@@ -1150,7 +1207,7 @@ export class DuelUI {
 		this.setText(req.textStr || this.text);
 		return this.ask((done) => {
 			const box = el('div', 'prizes-box');
-			box.appendChild(el('div', 'cl-header', plainText(req.textStr || 'Choose a Prize')));
+			box.appendChild(el('div', 'cl-header event-heading', plainText(req.textStr || 'Choose a Prize')));
 			const grid = el('div', 'prize-grid');
 			const els = [];
 			for (let i = 0; i < 6; i++) {

@@ -532,7 +532,7 @@ async function deckBuilder(browser) {
 }
 
 const server = await startServer();
-const browser = await chromium.launch({ headless: !args.includes('--headed') });
+const browser = await chromium.launch({ headless: !args.includes('--headed'), channel: opt('--browser', undefined) });
 try {
 	await hotseat(browser);
 	await online(browser);

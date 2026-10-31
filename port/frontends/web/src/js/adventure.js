@@ -26,7 +26,9 @@ const translate = (text) =>
 		.replaceAll('Controller 1', 'Download')
 		.replaceAll('Controller 2', 'Download');
 function scale() {
-	const u = Math.max(1, Math.min((innerWidth - 12) / 240, (innerHeight - 40) / 262));
+	/* Match the duel table's crowded layout, with room for its action bar and
+	 * status line. Small screens retain readable text and scrolling. */
+	const u = Math.max(1, Math.min((innerWidth - 12) / 240, (innerHeight - 48) / 304));
 	document.documentElement.style.setProperty('--u', String(u));
 }
 function button(text, fn, cls = '') {

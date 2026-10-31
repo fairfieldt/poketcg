@@ -1,0 +1,4 @@
+# Reflow every printed rules page in the real card database, checking complete
+# punctuation/conditions and pixel widths at full inspection and preview sizes.
+# Also draw every page through the bounded host graphics surface.
+#env TCGN64_LAYOUT_TEST=1

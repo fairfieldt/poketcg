@@ -37,6 +37,7 @@
 #include "../common/save_store.h"
 #include "save_store_n64.h"
 #include "banner_font.h"
+#include "body_font.h"
 #ifdef TCGN64_ADVENTURE
 #include "adventure/audio.h"
 #endif
@@ -61,6 +62,8 @@
 #define TLH 9                       /* text box line height */
 #define TBOX_LINE(i) (TBOX_Y + 3 + (i) * TLH)
 #define SLOT_INFO_Y 90              /* between the two halves of the board */
+#define BODY_LH 13                  /* measured proportional duel text */
+#define LIST_LH 14
 
 enum {
 	C_BG, C_MID, C_PANEL, C_PANEL2, C_BORDER, C_TEXT, C_DIM, C_HI, C_SEL, C_RED, C_GREEN,
@@ -134,6 +137,7 @@ static int g_denied;                    /* frames left of the "invalid choice" f
 static bool g_save_ok;                  /* a 16 Kbit EEPROM is there (save_store_open) */
 static uint8_t g_turn_holder;
 static int g_turn;
+static int g_result = -1;            /* -1 playing, otherwise winner side / 2 draw */
 
 /* ------------------------------------------------------------------ small utilities */
 
@@ -249,7 +253,7 @@ static void description(uint16_t id, char *out, int n)
 {
 	text_of(id, out, n);
 	for (char *p = out; *p; p++)
-		if (*p == '\n')
+		if (*p == '\n' && (p == out || p[-1] != '\n') && p[1] != '\n')
 			*p = ' ';
 }
 
@@ -419,7 +423,6 @@ static void panel(int x, int y, int w, int h)
 	fill(x + w - 2, y + 1, 1, h - 2, C_PANELSHADE);
 }
 
-#ifdef TCGN64_ADVENTURE
 static void paper_panel(int x, int y, int w, int h)
 {
 	fill(x, y, w, h, C_PAPER);
@@ -429,7 +432,6 @@ static void paper_panel(int x, int y, int w, int h)
 	fill(x + 2, y + h - 3, w - 4, 1, C_PAPERSHADE);
 	fill(x + w - 3, y + 2, 1, h - 4, C_PAPERSHADE);
 }
-#endif
 
 /* draw at most `max` characters of one line (clipped to the screen) */
 static void print_n(int x, int y, int c, const char *s, int max)
@@ -468,6 +470,109 @@ static void printf_at(int x, int y, int c, const char *fmt, ...)
 	vsnprintf(buf, sizeof(buf), fmt, ap);
 	va_end(ap);
 	print(x, y, c, buf);
+}
+
+/* Proportional text is confined to duel headings, choices and inspection.
+ * The bench and the engine log retain their compact, fixed-cell face. */
+static int body_advance(unsigned ch)
+{
+	if(ch<32||ch>126)ch='?';
+	return body_font_advance[ch-BODY_FONT_FIRST];
+}
+
+static int body_width(const char *text)
+{
+	int width=0;
+	for(;*text&&*text!='\n';text++)width+=body_advance((unsigned char)*text);
+	return width;
+}
+
+static void body_mask(int x,int y,int color,const char *text,int limit)
+{
+	uint16_t foreground=(uint16_t)g_col[color];
+	for(;*text&&*text!='\n';text++) {
+		unsigned ch=(unsigned char)*text;if(ch<32||ch>126)ch='?';
+		int advance=body_advance(ch);
+		if(x+advance>limit)break;
+		const uint8_t *mask=body_font_coverage[ch-BODY_FONT_FIRST];
+		for(int row=0;row<BODY_FONT_HEIGHT;row++)for(int col=0;col<BODY_FONT_WIDTH;col++) {
+			int p=row*BODY_FONT_WIDTH+col;
+			unsigned coverage=(mask[p/2]>>(p&1?0:4))&15;
+			int px=x+col,py=y+row;
+			if(!coverage||px<0||px>=limit||px>=g_fb->width||py<0||py>=g_fb->height)continue;
+			uint16_t *pixel=(uint16_t *)((uint8_t *)g_fb->buffer+py*g_fb->stride)+px;
+			uint16_t background=*pixel;
+			unsigned r=(((foreground>>11)&31)*coverage+((background>>11)&31)*(15-coverage)+7)/15;
+			unsigned g=(((foreground>>6)&31)*coverage+((background>>6)&31)*(15-coverage)+7)/15;
+			unsigned b=(((foreground>>1)&31)*coverage+((background>>1)&31)*(15-coverage)+7)/15;
+			*pixel=(uint16_t)((r<<11)|(g<<6)|(b<<1)|1);
+		}
+		x+=advance;
+	}
+}
+
+static void body(int x,int y,int color,const char *text,int width)
+{
+	int limit=x+width;if(limit>SCREEN_W)limit=SCREEN_W;
+	/* Paper already supplies contrast; dark panels receive a one-pixel shade. */
+	if(color!=C_INK&&color!=C_BLACK)body_mask(x+1,y+1,C_PANELSHADE,text,limit);
+	body_mask(x,y,color,text,limit);
+}
+
+static void bodyf(int x,int y,int color,int width,const char *fmt,...)
+{
+	char text[128];va_list ap;va_start(ap,fmt);
+	vsnprintf(text,sizeof(text),fmt,ap);va_end(ap);
+	body(x,y,color,text,width);
+}
+
+#define RULE_COLS 96
+/* Pixel-width wrapping also bounds the destination in bytes. A single long
+ * word is split, never discarded; spaces/newlines retain ordinary wrapping. */
+static int body_wrap(const char *text,int width,char lines[][RULE_COLS],int capacity)
+{
+	int count=0;
+	while(*text&&count<capacity) {
+		int length=0,pixels=0,brk=-1;
+		while(text[length]&&text[length]!='\n'&&length<RULE_COLS-1) {
+			int next=body_advance((unsigned char)text[length]);
+			if(pixels+next>width&&length)break;
+			if(text[length]==' ')brk=length;
+			pixels+=next;length++;
+		}
+		int take=length,skip=0;
+		if(text[length]&&text[length]!='\n'&&brk>0){take=brk;skip=1;}
+		memcpy(lines[count],text,(size_t)take);lines[count++][take]=0;
+		text+=take+skip;
+		if(*text=='\n'&&!skip)text++;
+	}
+	return count;
+}
+
+static void focus_row(int x,int y,int width,int height)
+{
+	fill(x,y,width,height,C_HI);
+	fill(x+1,y+1,width-2,height-2,C_PAPER);
+	/* A solid arrow reads without relying on the gold hue. */
+	for(int i=0;i<4;i++)fill(x+3+i,y+height/2-3+i,1,7-2*i,C_INK);
+}
+
+static void chosen_corners(int x,int y,int width,int height)
+{
+	/* Kept after a card has been chosen, independent of the action cursor. */
+	for(int i=0;i<2;i++) {
+		int px=i?x+width-1:x,py=i?y+height-1:y;
+		fill(i?px-7:px,py,8,2,C_HI);
+		fill(px,i?py-7:py,2,8,C_HI);
+	}
+}
+
+static void preview_ellipsis(char *text,int width)
+{
+	size_t length=strlen(text);
+	while(length&&body_width(text)+body_width("...")>width)text[--length]=0;
+	while(length&&text[length-1]==' ')text[--length]=0;
+	if(length+3<RULE_COLS)strcat(text,"...");
 }
 
 /* colored 8x8 energy symbol with its letter */
@@ -643,7 +748,7 @@ static void draw_side(uint8_t duelist, bool top, int hl_loc)
 	/* top half y 8..89 (bar, bench, active), bottom half y 99..189 (active, bench, bar) */
 	int bar_y = top ? BOARD_Y : BOARD_Y + 173;
 	int bench_y = top ? BOARD_Y + 10 : BOARD_Y + 141;
-	int act_y = top ? BOARD_Y + 44 : BOARD_Y + 93;
+	int act_y = top ? BOARD_Y + 42 : BOARD_Y + 93;
 	int act_art_y = top ? BOARD_Y + 40 : BOARD_Y + 91;
 
 	/* info bar */
@@ -653,10 +758,10 @@ static void draw_side(uint8_t duelist, bool top, int hl_loc)
 	int deck = DECK_SIZE - v[DUELVARS_NUMBER_OF_CARDS_NOT_IN_DECK];
 	if (deck < 0)
 		deck = 0;
-	printf_at(LEFT + 8 * CW, bar_y, C_TEXT, "Hand %-2d Deck %-2d Disc %-2d",
+	printf_at(LEFT + 8 * CW, bar_y, C_DIM, "Hand%d Deck%d Disc%d",
 	          v[DUELVARS_NUMBER_OF_CARDS_IN_HAND], deck, v[DUELVARS_NUMBER_OF_CARDS_IN_DISCARD_PILE]);
 	int pz = prizes_left(duelist);
-	print(LEFT + 31 * CW, bar_y, C_TEXT, "P");
+	print(LEFT + 31 * CW, bar_y, C_DIM, "P");
 	for (int i = 0; i < 6; i++)
 		fill(LEFT + 32 * CW + i * 6, bar_y + 1, 5, 7, i < pz ? C_CARDBACK : C_MID);
 
@@ -665,7 +770,9 @@ static void draw_side(uint8_t duelist, bool top, int hl_loc)
 		int x = LEFT + (b - 1) * 58;
 		Slot s;
 		if (!get_slot(duelist, b, &s)) {
-			rect(x, bench_y, 56, 30, C_MID);
+			/* Quiet corner marks keep empty slots below occupied cards. */
+			fill(x,bench_y,7,1,C_MID);fill(x,bench_y,1,5,C_MID);
+			fill(x+49,bench_y+29,7,1,C_MID);fill(x+55,bench_y+25,1,5,C_MID);
 			continue;
 		}
 		fill(x, bench_y, 56, 30, C_T0 + s.color);
@@ -697,35 +804,39 @@ static void draw_side(uint8_t duelist, bool top, int hl_loc)
 		return;
 	}
 	const struct CardData *c = card_data(s.id);
-	if (hl_loc == 0) {
-		fill(LEFT - 4, act_y - 3, 222, 44, C_SEL);
-		rect(LEFT - 4, act_y - 3, 222, 44, C_HI);
+	/* Felt -> blue player mat -> paper Active card. The art keeps its full
+	 * 64x48 allocation; the quieter name strip gives text a stable backing. */
+	fill(LEFT-4,act_y+1,RIGHT-LEFT+8,47,C_PANELSHADE);
+	fill(LEFT-4,act_y-1,RIGHT-LEFT+8,47,C_PANEL2);
+	fill(LEFT-2,act_y,RIGHT-LEFT-68,45,C_PAPER);
+	fill(LEFT-2,act_y,RIGHT-LEFT-68,13,C_PAPERSHADE);
+	if(hl_loc==0) {
+		rect(LEFT-4,act_y-1,RIGHT-LEFT+8,47,C_HI);
+		chosen_corners(LEFT-5,act_y-2,RIGHT-LEFT+10,49);
 	}
 	card_name(s.id, name, sizeof(name));
-	if (is_pokemon(c) && c->Level)
-		snprintf(buf, sizeof(buf), "%s Lv%d", name, c->Level);
-	else
-		copy_str(buf, sizeof(buf), name);
 	energy_icon(LEFT, act_y, s.color);
-	print_n(LEFT + 12, act_y, C_TEXT, buf, 25);
-	hp_bar(LEFT, act_y + LH + 2, 96, s.hp, s.maxhp);
-	printf_at(LEFT + 104, act_y + LH, C_TEXT, "HP %d/%d", s.hp, s.maxhp);
-	int n = energy_icons(LEFT, act_y + 2 * LH, s.energy, 12);
+	body(LEFT+12,act_y,C_INK,name,156);
+	if(is_pokemon(c)&&c->Level)printf_at(LEFT+174,act_y+2,C_INK,"Lv%d",c->Level);
+	hp_bar(LEFT,act_y+19,96,s.hp,s.maxhp);
+	bodyf(LEFT+104,act_y+13,s.hp*4<=s.maxhp?C_RED:C_INK,112,"HP %d/%d",s.hp,s.maxhp);
+	int n = energy_icons(LEFT, act_y + 27, s.energy, 12);
 	if (!n)
-		print(LEFT, act_y + 2 * LH, C_DIM, "no energy");
+		print(LEFT, act_y + 27, C_INK, "no energy");
+	if(s.total>12)printf_at(LEFT+12*9,act_y+27,C_INK,"+%d",s.total-12);
 	status_text(duelist, buf, sizeof(buf));
 	int sx = LEFT;
 	if (buf[0]) {
-		fill(sx - 1, act_y + 3 * LH - 1, (int)strlen(buf) * CW + 2, 10, C_RED);
-		print(sx, act_y + 3 * LH, C_TEXT, buf);
+		fill(sx - 1, act_y + 36, (int)strlen(buf) * CW + 2, 9, C_RED);
+		print(sx, act_y + 36, C_TEXT, buf);
 		sx += ((int)strlen(buf) + 1) * CW;
 	}
 	if (s.pluspower) {
-		print(sx, act_y + 3 * LH, C_HI, "PlusPower");
-		sx += 10 * CW;
+		print(sx, act_y + 36, C_INK, "+Power");
+		sx += 7 * CW;
 	}
 	if (s.defender)
-		print(sx, act_y + 3 * LH, C_HI, "Defender");
+		print(sx, act_y + 36, C_INK, "Defender");
 	card_art(RIGHT - 64, act_art_y, s.id);
 	if (g_dmg.timer && side_of(g_dmg.side) == side && g_dmg.loc == 0) {
 		fill(RIGHT - 52, act_art_y + 16, 40, 16, C_RED);
@@ -946,6 +1057,8 @@ static bool review_snapshot(void)
 #endif
 
 /* render n frames of the board (pacing for events); A/B skips */
+static void draw_match_plaque(bool result);
+
 static void show_frames(int n)
 {
 #ifdef TCGN64_ADVENTURE
@@ -955,6 +1068,8 @@ static void show_frames(int n)
 		begin_frame();
 		draw_board(0, -1);
 		draw_textbox();
+		if(g_result>=0)draw_match_plaque(true);
+		else if(!g_turn_holder&&g_screen==TCG_SCREEN_EMPTY)draw_match_plaque(false);
 		if (g_coin.n && g_screen == TCG_SCREEN_COIN_TOSS) {
 			int r = g_coin.res[g_coin.n - 1];
 			fill(LEFT + 80, BOARD_Y + 60, 130, 40, C_PANEL2);
@@ -1003,123 +1118,127 @@ static void log_clear(void)
 
 /* ------------------------------------------------------------------ card page */
 
-static void draw_card_page(uint8_t id, uint8_t owner, int deck, const char *title)
+/* Inspection preserves both printed attack-description pages. Long rules
+ * have ordinary pages rather than disappearing below the board viewport. */
+#define RULE_LINES 96
+#define RULES_PER_PAGE 7
+static struct RuleLine { char text[RULE_COLS]; const struct AtkData *attack; int color; } g_rules[RULE_LINES];
+static int g_rule_count;
+
+static void rule_text(const char *text,int color)
 {
-	const struct CardData *c = card_data(id);
-	char buf[96], name[32];
-	char lines[12][COLS + 1];
-	panel(LEFT - 6, BOARD_Y, RIGHT - LEFT + 12, BOARD_H);
-	int x = LEFT, y = BOARD_Y + 4;
-	if (title) {
-		print(x, y, C_HI, title);
-		y += LH;
-	}
-	card_name(id, name, sizeof(name));
-	card_art(RIGHT - 66, y + 1, id);
-	if (is_pokemon(c)) {
-		int hp = c->HP;
-		/* in play: show the current HP */
-		if (deck >= 0 && deck < DECK_SIZE) {
-			for (int loc = 0; loc < num_in_play(owner); loc++) {
-				Slot s;
-				if (get_slot(owner, loc, &s) && s.deck == deck)
-					hp = s.hp;
-			}
-		}
-		snprintf(buf, sizeof(buf), "%s Lv%d", name, c->Level);
-		print(x, y, C_TEXT, buf);
-		y += LH;
-		energy_icon(x, y, c->Type & 7);
-		printf_at(x + 12, y, C_TEXT, "%s  HP %d/%d", kTypeName[c->Type & 7], hp, c->HP);
-		y += LH;
-		static const char *const stages[] = { "Basic", "Stage 1", "Stage 2", "Stage 2" };
-		if (c->Stage != BASIC) {
-			char pre[32];
-			text_of(rd16(c->PreEvoName), pre, sizeof(pre));
-			snprintf(buf, sizeof(buf), "%s (from %s)", stages[c->Stage & 3], pre);
-		} else {
-			snprintf(buf, sizeof(buf), "%s Pokemon", stages[0]);
-		}
-		print_n(x, y, C_DIM, buf, 28);
-		y += LH;
-		/* weakness / resistance / retreat */
-		int wx = x;
-		print(wx, y, C_DIM, "Weak");
-		wx += 5 * CW;
-		for (int k = 0; k < 6; k++)
-			if (c->Weakness & (0x80 >> k)) {
-				energy_icon(wx, y, k);
-				wx += 9;
-			}
-		wx += 6;
-		print(wx, y, C_DIM, "Res");
-		wx += 4 * CW;
-		for (int k = 0; k < 6; k++)
-			if (c->Resistance & (0x80 >> k)) {
-				energy_icon(wx, y, k);
-				wx += 9;
-			}
-		wx += 6;
-		printf_at(wx, y, C_DIM, "Retreat %d", c->RetreatCost);
-		y += LH + 4;
-		if (y < BOARD_Y + 58)
-			y = BOARD_Y + 58; /* below the picture */
-		const struct AtkData *atks[2] = { &c->Atk1, &c->Atk2 };
-		for (int a = 0; a < 2; a++) {
-			const struct AtkData *atk = atks[a];
-			if (!rd16(atk->Name))
-				continue;
-			text_of(rd16(atk->Name), name, sizeof(name));
-			if (atk->Category == POKEMON_POWER) {
-				printf_at(x, y, C_HI, "PKMN Power: %s", name);
-			} else {
-				int w = cost_icons(x, y, atk);
-				print(x + w + 4, y, C_HI, name);
-				if (atk->Damage) {
-					static const char suffix[] = { 0, '+', '-', 'x' };
-					char d[8];
-					snprintf(d, sizeof(d), "%d%c", atk->Damage, suffix[atk->Category & 3]);
-					print(RIGHT - (int)strlen(d) * CW, y, C_TEXT, d);
-				}
-			}
-			y += LH;
-			char desc[400];
-			attack_description(atk, desc, sizeof(desc));
-			int n = wrap(desc, COLS - 1, lines, 12);
-			for (int i = 0; i < n && y < BOARD_Y + BOARD_H - 9; i++, y += 9)
-				print(x + CW, y, C_TEXT, lines[i]);
-			y += 3;
-		}
-	} else {
-		print(x, y, C_TEXT, name);
-		y += LH;
-		if (is_energy(c)) {
-			energy_icon(x, y, card_color(c));
-			print(x + 12, y, C_DIM, c->Type == TYPE_ENERGY_DOUBLE_COLORLESS ? "Special Energy" : "Basic Energy");
-		} else {
-			print(x, y, C_DIM, "Trainer");
-		}
-		y += 3 * LH;
-		char desc[400];
-		description(rd16(c->NonPokemonDescription), desc, sizeof(desc));
-		char dl[14][COLS + 1];
-		int n = wrap(desc, COLS, dl, 14);
-		for (int i = 0; i < n; i++, y += 9)
-			print(x, y, C_TEXT, dl[i]);
+	char lines[48][RULE_COLS];
+	int count=body_wrap(text,RIGHT-LEFT-8,lines,48);
+	for(int i=0;i<count&&g_rule_count<RULE_LINES;i++) {
+		struct RuleLine *line=&g_rules[g_rule_count++];
+		copy_str(line->text,sizeof(line->text),lines[i]);line->attack=NULL;line->color=color;
 	}
 }
 
-/* view a card until A/B/START (frontend only, the engine is not involved) */
-static void view_card(uint8_t id, uint8_t owner, int deck, int ports)
+static int card_rules(const struct CardData *card)
 {
-	for (;;) {
+	g_rule_count=0;
+	if(is_pokemon(card)) {
+		const struct AtkData *attacks[2]={&card->Atk1,&card->Atk2};
+		for(int i=0;i<2;i++) {
+			const struct AtkData *attack=attacks[i];
+			if(!rd16(attack->Name))continue;
+			struct RuleLine *line=&g_rules[g_rule_count++];
+			text_of(rd16(attack->Name),line->text,sizeof(line->text));
+			line->attack=attack;line->color=C_INK;
+			char desc[1400];attack_description(attack,desc,sizeof(desc));
+			rule_text(desc,C_INK);
+			if(i==0&&rd16(card->Atk2.Name)&&g_rule_count<RULE_LINES)rule_text(" ",C_INK);
+		}
+	} else {
+		rule_text("Card effect",C_INK);
+		char desc[1400];description(rd16(card->NonPokemonDescription),desc,sizeof(desc));
+		rule_text(desc,C_INK);
+	}
+	return (g_rule_count+RULES_PER_PAGE-1)/RULES_PER_PAGE;
+}
+
+static int draw_card_page_at(uint8_t id,uint8_t owner,int deck,const char *title,int page)
+{
+	const struct CardData *c=card_data(id);
+	char name[64],buf[128];
+	int pages=card_rules(c);if(pages<1)pages=1;
+	if(page>=pages)page=pages-1;
+	if(page<0)page=0;
+	paper_panel(LEFT-6,BOARD_Y,RIGHT-LEFT+12,BOARD_H);
+	int x=LEFT+2,y=BOARD_Y+5;
+	card_name(id,name,sizeof(name));
+	body(x,y,C_INK,name,RIGHT-LEFT-76);
+	card_art(RIGHT-66,y+1,id);
+	if(is_pokemon(c)) {
+		int hp=c->HP;
+		if(deck>=0&&deck<DECK_SIZE)for(int loc=0;loc<num_in_play(owner);loc++) {
+			Slot slot;if(get_slot(owner,loc,&slot)&&slot.deck==deck)hp=slot.hp;
+		}
+		y+=BODY_LH;
+		energy_icon(x,y+2,card_color(c));
+		bodyf(x+13,y,C_INK,190,"%s  HP %d/%d  Lv%d",kTypeName[card_color(c)],hp,c->HP,c->Level);
+		y+=BODY_LH;
+		static const char *const stages[]={"Basic","Stage 1","Stage 2","Stage 2"};
+		if(c->Stage!=BASIC) {
+			char pre[40];text_of(rd16(c->PreEvoName),pre,sizeof(pre));
+			snprintf(buf,sizeof(buf),"%s from %s",stages[c->Stage&3],pre);
+		} else copy_str(buf,sizeof(buf),"Basic Pokemon");
+		body(x,y,C_INK,buf,206);
+		y+=BODY_LH+2;
+		int wx=x;body(wx,y,C_INK,"Weak",32);wx+=34;
+		bool any=false;
+		for(int k=0;k<6;k++)if(c->Weakness&(0x80>>k)){energy_icon(wx,y+2,k);wx+=9;any=true;}
+		if(!any){body(wx,y,C_INK,"--",12);wx+=14;}
+		else {body(wx,y,C_INK,"x2",15);wx+=17;}
+		wx+=7;body(wx,y,C_INK,"Resist",38);wx+=39;any=false;
+		for(int k=0;k<6;k++)if(c->Resistance&(0x80>>k)){energy_icon(wx,y+2,k);wx+=9;any=true;}
+		if(!any){body(wx,y,C_INK,"--",12);wx+=14;}
+		else {body(wx,y,C_INK,"-30",20);wx+=22;}
+		wx+=7;
+		if(c->RetreatCost==UNABLE_RETREAT)body(wx,y,C_INK,"Retreat: unable",112);
+		else bodyf(wx,y,C_INK,112,"Retreat %d",c->RetreatCost);
+	} else {
+		body(x,y+BODY_LH,C_INK,is_energy(c)?(c->Type==TYPE_ENERGY_DOUBLE_COLORLESS?"Special Energy":"Basic Energy"):"Trainer",200);
+		if(is_energy(c))energy_icon(x,y+2*BODY_LH+2,card_color(c));
+	}
+	fill(x,BOARD_Y+61,RIGHT-LEFT-4,1,C_PAPERSHADE);
+	for(int row=0;row<RULES_PER_PAGE&&page*RULES_PER_PAGE+row<g_rule_count;row++) {
+		struct RuleLine *line=&g_rules[page*RULES_PER_PAGE+row];
+		int ly=BOARD_Y+66+row*BODY_LH;
+		if(line->attack) {
+			fill(x-1,ly-1,RIGHT-LEFT-2,BODY_LH,C_PAPERSHADE);
+			int cost=line->attack->Category==POKEMON_POWER?0:cost_icons(x+1,ly+2,line->attack);
+			if(line->attack->Category==POKEMON_POWER)body(x+2,ly,C_INK,"Power:",40);
+			int namex=x+cost+(line->attack->Category==POKEMON_POWER?42:3);
+			body(namex,ly,C_INK,line->text,RIGHT-namex-30);
+			if(line->attack->Damage) {
+				static const char suffix[]={0,'+','-','x'};
+				snprintf(buf,sizeof(buf),"%d%c",line->attack->Damage,suffix[line->attack->Category&3]);
+				body(RIGHT-2-body_width(buf),ly,C_INK,buf,32);
+			}
+		} else body(x+2,ly,line->color,line->text,RIGHT-x-4);
+	}
+	if(title)body(x,BOARD_Y+BOARD_H-14,C_INK,title,190);
+	if(pages>1)bodyf(RIGHT-96,BOARD_Y+BOARD_H-14,C_INK,94,"L/R  %d / %d",page+1,pages);
+	return pages;
+}
+
+static void draw_card_page(uint8_t id,uint8_t owner,int deck,const char *title)
+{ (void)draw_card_page_at(id,owner,deck,title,0); }
+
+/* view a card until A/B/START; page input never changes the caller's cursor. */
+static void view_card(uint8_t id,uint8_t owner,int deck,int ports)
+{
+	int page=0;
+	for(;;) {
 		begin_frame();
-		draw_card_page(id, owner, deck, NULL);
-		draw_textbox_hint("B: back");
-		end_frame_poll();
-		Keys k = keys(ports);
-		if (k.a || k.b || k.start)
-			return;
+		int pages=draw_card_page_at(id,owner,deck,NULL,page);
+		draw_textbox_hint(pages>1?"L/R: page  B: back":"B: back");
+		end_frame_poll();Keys k=keys(ports);
+		if(k.a||k.b||k.start)return;
+		if((k.r||k.right||k.down)&&page+1<pages)page++;
+		if((k.l||k.left||k.up)&&page>0)page--;
 	}
 }
 
@@ -1135,40 +1254,26 @@ static void view_slot(uint8_t duelist, int loc, int ports)
 /* a scrolling list panel; label(i) fills a line, returns the color */
 typedef int (*LabelFn)(void *ctx, int i, char *out, int n, int *icon);
 
-static void draw_list(int x, int y, int w, int rows, const char *title, int n, int cur, int *top,
-                      LabelFn label, void *ctx)
+static void draw_list(int x,int y,int w,int rows,const char *title,int n,int cur,int *top,
+                      LabelFn label,void *ctx)
 {
-	panel(x, y, w, rows * LH + LH + 8);
-	if (title)
-		print_n(x + 6, y + 4, C_HI, title, (w - 12) / CW);
-	if (cur < *top)
-		*top = cur;
-	if (cur >= *top + rows)
-		*top = cur - rows + 1;
-	if (*top < 0)
-		*top = 0;
-	int ly = y + 4 + LH;
-	if (n == 0)
-		print(x + 14, ly, C_DIM, "(none)");
-	for (int i = *top; i < n && i < *top + rows; i++, ly += LH) {
-		char buf[64];
-		int icon = -1;
-		int c = label(ctx, i, buf, sizeof(buf), &icon);
-		if (i == cur) {
-			fill(x + 2, ly - 1, w - 4, LH, C_SEL);
-			print(x + 4, ly, C_HI, ">");
-		}
-		int tx = x + 14;
-		if (icon >= 0) {
-			energy_icon(tx, ly, icon);
-			tx += 11;
-		}
-		print_n(tx, ly, c, buf, (x + w - 4 - tx) / CW);
+	panel(x,y,w,rows*LIST_LH+24);
+	if(title)body(x+7,y+4,C_HI,title,w-14);
+	if(cur<*top)*top=cur;
+	if(cur>=*top+rows)*top=cur-rows+1;
+	if(*top<0)*top=0;
+	int ly=y+21;
+	if(!n)body(x+15,ly,C_DIM,"(none)",w-22);
+	for(int i=*top;i<n&&i<*top+rows;i++,ly+=LIST_LH) {
+		char text[64];int icon=-1;
+		int color=label(ctx,i,text,sizeof(text),&icon);
+		if(i==cur)focus_row(x+3,ly-1,w-6,LIST_LH);
+		int tx=x+15;
+		if(icon>=0){energy_icon(tx,ly+2,icon);tx+=11;}
+		body(tx,ly,i==cur?C_INK:color,text,x+w-8-tx);
 	}
-	if (*top > 0)
-		print(x + w - 12, y + 4 + LH, C_DIM, "^");
-	if (*top + rows < n)
-		print(x + w - 12, y + 4 + rows * LH, C_DIM, "v");
+	if(*top>0)print(x+w-12,y+4,C_HI,"^");
+	if(*top+rows<n)print(x+w-12,y+rows*LIST_LH+13,C_HI,"v");
 }
 
 /* up/down/L/R navigation; returns true if the cursor moved */
@@ -1204,7 +1309,7 @@ static int label_card(void *vctx, int i, char *out, int n, int *icon)
 	card_name(id, name, sizeof(name));
 	*icon = card_color(c);
 	if (is_pokemon(c))
-		snprintf(out, (size_t)n, "%-14.14s Lv%d", name, c->Level);
+		copy_str(out, (size_t)n, name);
 	else if (is_energy(c))
 		copy_str(out, (size_t)n, name);
 	else {
@@ -1215,64 +1320,77 @@ static int label_card(void *vctx, int i, char *out, int n, int *icon)
 }
 
 /* short summary of a card in a side panel (list details) */
-static void draw_card_summary(int x, int y, int w, uint8_t id)
+static void draw_card_summary(int x,int y,int w,uint8_t id)
 {
-	const struct CardData *c = card_data(id);
-	char name[32], buf[64];
-	card_art(x + (w - 64) / 2, y + 2, id);
-	y += 54;
-	card_name(id, name, sizeof(name));
-	print_n(x + 2, y, C_TEXT, name, w / CW);
-	y += LH;
-	if (is_pokemon(c)) {
-		snprintf(buf, sizeof(buf), "HP%d %s", c->HP, c->Stage ? (c->Stage == 1 ? "Stage1" : "Stage2") : "Basic");
-		print_n(x + 2, y, C_DIM, buf, w / CW);
-		y += LH + 2;
-		const struct AtkData *atks[2] = { &c->Atk1, &c->Atk2 };
-		for (int a = 0; a < 2; a++) {
-			if (!rd16(atks[a]->Name))
-				continue;
-			text_of(rd16(atks[a]->Name), name, sizeof(name));
-			if (atks[a]->Category == POKEMON_POWER) {
-				print_n(x + 2, y, C_HI, "Power:", 6);
-				y += 9;
-			} else {
-				cost_icons(x + 2, y, atks[a]);
-				if (atks[a]->Damage)
-					printf_at(x + w - 4 * CW, y, C_TEXT, "%3d", atks[a]->Damage);
-				y += 9;
+	const struct CardData *c=card_data(id);
+	char name[64],buf[128],lines[16][RULE_COLS];
+	card_name(id,name,sizeof(name));
+	int count=body_wrap(name,w-8,lines,3);
+	for(int i=0;i<count&&i<2;i++)body(x+4,y+i*BODY_LH,C_INK,lines[i],w-8);
+	/* Name, stats and illustration occupy stable slots for all card classes. */
+	if(is_pokemon(c)) {
+		bodyf(x+4,y+27,C_INK,w-8,"HP %d  Lv%d  %s",c->HP,c->Level,c->Stage?"Evolved":"Basic");
+	} else body(x+4,y+27,C_INK,is_energy(c)?"Energy":"Trainer",w-8);
+	card_art(x+(w-64)/2,y+43,id);
+	int ly=y+97;
+	if(is_pokemon(c)) {
+		const struct AtkData *attacks[2]={&c->Atk1,&c->Atk2};
+		/* A rule-bearing attack/power earns the space below its name. Plain
+		 * damage attacks can both fit. Full inspection always retains both. */
+		int featured=rd16(c->Atk1.Name)?0:1;
+		if(featured==0&&!rd16(c->Atk1.Description)&&rd16(c->Atk2.Description))featured=1;
+		char desc[1400];attack_description(attacks[featured],desc,sizeof(desc));
+		if(desc[0]) {
+			const struct AtkData *attack=attacks[featured];
+			if(attack->Category==POKEMON_POWER)body(x+4,ly,C_INK,"Pokemon Power",w-8);
+			else {
+				cost_icons(x+4,ly+2,attack);
+				if(attack->Damage)bodyf(x+w-30,ly,C_INK,26,"%d",attack->Damage);
 			}
-			print_n(x + 2, y, C_HI, name, w / CW);
-			y += LH + 1;
+			text_of(rd16(attack->Name),name,sizeof(name));
+			body(x+4,ly+BODY_LH,C_INK,name,w-8);
+			count=body_wrap(desc,w-8,lines,16);
+			if(count>3)preview_ellipsis(lines[2],w-8);
+			for(int i=0;i<count&&i<3;i++)body(x+4,ly+2*BODY_LH+i*BODY_LH,C_INK,lines[i],w-8);
+			return;
+		}
+		for(int i=0;i<2;i++) {
+			const struct AtkData *attack=attacks[i];
+			if(!rd16(attack->Name))continue;
+			if(attack->Category==POKEMON_POWER)body(x+4,ly,C_INK,"Pokemon Power",w-8);
+			else {
+				cost_icons(x+4,ly+2,attack);
+				if(attack->Damage)bodyf(x+w-30,ly,C_INK,26,"%d",attack->Damage);
+			}
+			text_of(rd16(attack->Name),name,sizeof(name));
+			body(x+4,ly+BODY_LH,C_INK,name,w-8);
+			ly+=2*BODY_LH+3;
 		}
 	} else {
-		print_n(x + 2, y, C_DIM, is_energy(c) ? "Energy" : "Trainer", w / CW);
-		y += LH + 2;
-		char desc[300];
-		char dl[12][COLS + 1];
-		description(rd16(c->NonPokemonDescription), desc, sizeof(desc));
-		int n = wrap(desc, w / CW - 1, dl, 12);
-		for (int i = 0; i < n; i++, y += 9)
-			print_n(x + 2, y, C_TEXT, dl[i], w / CW);
+		description(rd16(c->NonPokemonDescription),buf,sizeof(buf));
+		count=body_wrap(buf,w-8,lines,16);
+		int visible=(BOARD_Y+BOARD_H-5-ly-BODY_FONT_HEIGHT)/BODY_LH+1;
+		if(count>visible&&visible>0)preview_ellipsis(lines[visible-1],w-8);
+		for(int i=0;i<count&&ly+BODY_FONT_HEIGHT<BOARD_Y+BOARD_H-4;i++,ly+=BODY_LH)
+			body(x+4,ly,C_INK,lines[i],w-8);
 	}
 }
 
-/* full panel card list with details of the cursor card */
-static void draw_card_list_screen(const char *title, const char *info, const uint8_t *items, int n,
-                                  uint8_t owner, int cur, int *top)
+/* A fixed preview location makes unlike card types easy to compare. Nine
+ * larger rows replace thirteen compressed rows; L/R still page the cursor. */
+static void draw_card_list_screen(const char *title,const char *info,const uint8_t *items,int n,
+                                  uint8_t owner,int cur,int *top)
 {
-	CardListCtx ctx = { items, owner, 1 };
-	fill(LEFT - 6, BOARD_Y, RIGHT - LEFT + 12, BOARD_H, C_BG);
-	draw_list(LEFT - 6, BOARD_Y, 196, 13, title, n, cur, top, label_card, &ctx);
-	panel(LEFT + 192, BOARD_Y, RIGHT - LEFT - 186, BOARD_H);
-	if (n > 0 && cur < n && items[cur] < DECK_SIZE)
-		draw_card_summary(LEFT + 194, BOARD_Y + 2, RIGHT - LEFT - 190, tcg_card_id(owner, items[cur]));
-	if (info && info[0]) {
-		char il[3][COLS + 1];
-		int k = wrap(info, 23, il, 2);
-		for (int i = 0; i < k; i++)
-			print(LEFT, BOARD_Y + 13 * LH + 22 + i * 9, C_DIM, il[i]);
-	}
+	CardListCtx ctx={items,owner,1};
+	fill(LEFT-6,BOARD_Y,RIGHT-LEFT+12,BOARD_H,C_BG);
+	draw_list(LEFT-6,BOARD_Y,164,9,title?title:"Cards",n,cur,top,label_card,&ctx);
+	paper_panel(LEFT+161,BOARD_Y,RIGHT-LEFT-155,BOARD_H);
+	if(n>0&&cur<n&&items[cur]<DECK_SIZE)
+		draw_card_summary(LEFT+163,BOARD_Y+5,RIGHT-LEFT-159,tcg_card_id(owner,items[cur]));
+	if(info&&info[0]) {
+		char lines[8][RULE_COLS];int count=body_wrap(info,150,lines,8);
+		for(int i=0;i<count&&i<2;i++)body(LEFT-1,BOARD_Y+153+i*BODY_LH,C_DIM,lines[i],150);
+	} else bodyf(LEFT-1,BOARD_Y+154,C_DIM,150,"%d / %d",n?cur+1:0,n);
 }
 
 /* ------------------------------------------------------------------ requests */
@@ -1327,8 +1445,43 @@ static void draw_duel_banner(const char *text)
 	fill(x+w-2,y+1,1,h-2,C_PAPERSHADE);
 	rect(x+5,y+5,w-10,h-10,C_PAPERSHADE);
 	int tx=x+(w-text_width)/2;
-	banner_text(tx+1,y+6,C_PAPERSHADE,text);
-	banner_text(tx,y+5,C_INK,text);
+	if(text_width>w-20) {
+		int width=body_width(text);tx=x+(w-width)/2;if(tx<x+8)tx=x+8;
+		body(tx,y+10,C_INK,text,w-16);
+	} else {
+		banner_text(tx+1,y+6,C_PAPERSHADE,text);
+		banner_text(tx,y+5,C_INK,text);
+	}
+}
+
+static void card_back(int x,int y,int width,int height)
+{
+	fill(x+2,y+2,width,height,C_PANELSHADE);
+	fill(x,y,width,height,C_PAPER);rect(x,y,width,height,C_EDGE);
+	fill(x+2,y+2,width-4,height-4,C_CARDBACK);
+	rect(x+4,y+4,width-8,height-8,C_HI);
+	int cx=x+width/2,cy=y+height/2;
+	for(int i=-5;i<=5;i++)fill(cx-(5-abs(i)),cy+i,2*(5-abs(i))+1,1,C_PAPER);
+	fill(cx-1,cy-2,3,5,C_EDGE);
+}
+
+/* Start and result share the paper turn-plaque language. They occupy waits
+ * already requested by the engine; there is no additional timer or input gate. */
+static void draw_match_plaque(bool result)
+{
+	char text[64];
+	if(result) {
+		if(g_result==2)copy_str(text,sizeof(text),"Draw");
+		else snprintf(text,sizeof(text),"%s wins!",g_name[g_result]);
+	} else snprintf(text,sizeof(text),"%s vs %s",g_name[0],g_name[1]);
+	int x=24,y=76,width=272,height=58;
+	fill(x+3,y+3,width,height,C_PANELSHADE);paper_panel(x,y,width,height);
+	card_back(x+10,y+11,24,34);
+	int tw=banner_text_width(text);
+	if(tw<=width-56) {
+		int tx=x+42+(width-52-tw)/2;
+		banner_text(tx+1,y+18,C_PAPERSHADE,text);banner_text(tx,y+17,C_INK,text);
+	} else body(x+43,y+22,C_INK,text,width-52);
 }
 
 static const char *who(uint8_t duelist) { return g_name[side_of(duelist)]; }
@@ -1355,13 +1508,13 @@ static int ui_ack(const TcgRequest *r, int ports)
 			list_n = 0;
 		memcpy(list, t, (size_t)list_n);
 	}
-	int top = 0;
+	int top = 0, card_page = 0;
 	debugf("ASK ack/%s %s\n", g_overlay.on ? "card" : long_msg ? "long" : list_n ? "list" :
 	       g_screen == TCG_SCREEN_COIN_TOSS ? "coin" : g_screen == TCG_SCREEN_BOX_MESSAGE ? "box" : "text", who(r->duelist));
 	for (;;) {
 		begin_frame();
 		if (g_overlay.on) {
-			draw_card_page(g_overlay.id, g_overlay.owner, g_overlay.deck, NULL);
+			draw_card_page_at(g_overlay.id, g_overlay.owner, g_overlay.deck, NULL, card_page);
 		} else if (long_msg) {
 			panel(LEFT - 6, BOARD_Y, RIGHT - LEFT + 12, BOARD_H);
 			for (int i = 0; i < nl; i++)
@@ -1380,7 +1533,9 @@ static int ui_ack(const TcgRequest *r, int ports)
 			draw_card_list_screen(NULL, NULL, list, list_n, r->shown, cur, &top);
 		} else {
 			draw_board(0, -1);
-			if (g_screen == TCG_SCREEN_COIN_TOSS) {
+			if(g_result>=0)draw_match_plaque(true);
+			else if(!g_turn_holder&&g_screen==TCG_SCREEN_EMPTY)draw_match_plaque(false);
+			else if (g_screen == TCG_SCREEN_COIN_TOSS) {
 				int x=RIGHT-150,y=TBOX_Y-36;
 				panel(x,y,150,34);
 				if (g_coin.n == 0) {
@@ -1410,6 +1565,11 @@ static int ui_ack(const TcgRequest *r, int ports)
 		if(review_snapshot())return 0;
 #endif
 		Keys k = keys(ports);
+		if(g_overlay.on) {
+			int pages=(g_rule_count+RULES_PER_PAGE-1)/RULES_PER_PAGE;
+			if((k.r||k.right||k.down)&&card_page+1<pages)card_page++;
+			if((k.l||k.left||k.up)&&card_page>0)card_page--;
+		}
 		if (k.a || k.b)
 			break;
 		if (k.start && !g_overlay.on && !long_msg)
@@ -1421,24 +1581,26 @@ static int ui_ack(const TcgRequest *r, int ports)
 
 static void check_screen(int ports);
 
+static void draw_duel_choices(uint8_t duelist,int cur)
+{
+	static const char *const items[6]={"Hand","Attack","Check","PKMN Pwr","Retreat","Done"};
+	draw_board(0, -1);
+	panel(LEFT - 6, TBOX_Y, RIGHT - LEFT + 12, TBOX_LINES * TLH + 5);
+	print(LEFT,TBOX_LINE(0),C_DIM,who(duelist));
+	print(RIGHT-21*CW,TBOX_LINE(0),C_HI,"START: card  Z: check");
+	for (int i = 0; i < 6; i++) {
+		int x=LEFT+8+(i/2)*96,y=TBOX_Y+14+(i&1)*14;
+		if(i==cur)focus_row(x-10,y-1,91,14);
+		body(x+2,y,i==cur?C_INK:C_TEXT,items[i],78);
+	}
+}
+
 static int ui_duel_menu(const TcgRequest *r, int ports)
 {
-	static const char *const items[6] = { "Hand", "Attack", "Check", "PKMN Pwr", "Retreat", "Done" };
 	int cur = r->cursor < 6 ? r->cursor : 0;
 	for (;;) {
 		begin_frame();
-		draw_board(0, -1);
-		panel(LEFT - 6, TBOX_Y, RIGHT - LEFT + 12, TBOX_LINES * TLH + 5);
-		printf_at(LEFT, TBOX_LINE(0), C_DIM, "%s: what will you do?", who(r->duelist));
-		for (int i = 0; i < 6; i++) {
-			int x = LEFT + 8 + (i / 2) * 12 * CW, y = TBOX_LINE(1) + (i & 1) * TLH;
-			if (i == cur) {
-				fill(x - 10, y - 1, 11 * CW, TLH, C_SEL);
-				print(x - 9, y, C_HI, ">");
-			}
-			print(x, y, i == cur ? C_HI : C_TEXT, items[i]);
-		}
-		print(RIGHT - 21 * CW, TBOX_LINE(3), C_HI, "START: card  Z: check");
+		draw_duel_choices(r->duelist,cur);
 		end_frame_poll();
 #if ADVENTURE_DIAGNOSTIC == 3
 		if(review_snapshot())return cur;
@@ -1541,34 +1703,21 @@ static void two_labels(const char *text, char *a, char *b, int n, const char *da
 	}
 }
 
-static void draw_choice_popup(int x, int y, const char *title, const char *const *labels, int n, int cur)
+static void draw_choice_popup(int x,int y,const char *title,const char *const *labels,int n,int cur)
 {
-	int w = 0;
-	for (int i = 0; i < n; i++)
-		if ((int)strlen(labels[i]) > w)
-			w = (int)strlen(labels[i]);
-	if (title && (int)strlen(title) > w)
-		w = (int)strlen(title);
-	if (w > 26)
-		w = 26;
-	int pw = w * CW + 28, ph = (n + (title ? 1 : 0)) * LH + 8;
-	if (x + pw > RIGHT + 6)
-		x = RIGHT + 6 - pw;
-	/* Keep short action popups below both active names, HP and card art. */
-	if (y + ph != TBOX_Y - 2)
-		y = TBOX_Y - 2 - ph;
-	panel(x, y, pw, ph);
-	int ly = y + 4;
-	if (title) {
-		print_n(x + 6, ly, C_DIM, title, w + 2);
-		ly += LH;
-	}
-	for (int i = 0; i < n; i++, ly += LH) {
-		if (i == cur) {
-			fill(x + 2, ly - 1, pw - 4, LH, C_SEL);
-			print(x + 6, ly, C_HI, ">");
-		}
-		print_n(x + 18, ly, i == cur ? C_HI : C_TEXT, labels[i], w);
+	int width=0;
+	for(int i=0;i<n;i++)if(body_width(labels[i])>width)width=body_width(labels[i]);
+	if(title&&body_width(title)>width)width=body_width(title);
+	if(width>256)width=256;
+	int pw=width+30,ph=(n+(title?1:0))*LIST_LH+10;
+	if(x+pw>RIGHT+6)x=RIGHT+6-pw;
+	if(y+ph!=TBOX_Y-2)y=TBOX_Y-2-ph;
+	fill(x+2,y+2,pw,ph,C_PANELSHADE);panel(x,y,pw,ph);
+	int ly=y+5;
+	if(title){body(x+8,ly,C_DIM,title,width+12);ly+=LIST_LH;}
+	for(int i=0;i<n;i++,ly+=LIST_LH) {
+		if(i==cur)focus_row(x+3,ly-1,pw-6,LIST_LH);
+		body(x+17,ly,i==cur?C_INK:C_TEXT,labels[i],pw-22);
 	}
 }
 
@@ -1583,10 +1732,12 @@ static int ui_item_menu(const TcgRequest *r, int ports)
 	for (;;) {
 		begin_frame();
 		draw_card_page(id, r->shown, deck, NULL);
+		chosen_corners(RIGHT-69,BOARD_Y+3,70,54);
 		draw_choice_popup(RIGHT - 100, BOARD_Y + 130, NULL, labels, 2, cur);
-		draw_textbox_hint("A: choose  B: back");
+		draw_textbox_hint("A: choose  B: back  START: card");
 		end_frame_poll();
 		Keys k = keys(ports);
+		if(k.start)view_card(id,r->shown,deck,ports);
 		if (k.up || k.down || k.left || k.right)
 			cur ^= 1;
 		if (k.a)
@@ -1678,24 +1829,25 @@ static int ui_attacks(const TcgRequest *r, int ports)
 		uint8_t deck = pairs[0] < DECK_SIZE ? pairs[0] : 0;
 		uint8_t id = tcg_card_id(r->shown, deck);
 		card_name(id, name, sizeof(name));
-		printf_at(LEFT, py + 4, C_DIM, "%s's attacks", name);
+		bodyf(LEFT,py+3,C_DIM,204,"%s's attacks",name);
 		if (have_slot) /* the attacker's energy */
 			energy_icons(RIGHT - 8 * 9, py + 4, slot.energy, 8);
 		const struct CardData *c = card_data(id);
-		int y = py + 4 + LH;
-		for (int i = 0; i < n; i++, y += LH + 2) {
+		int y = py + 19;
+		for (int i = 0; i < n; i++, y += LIST_LH + 1) {
 			const struct AtkData *atk = pairs[i * 2 + 1] ? &c->Atk2 : &c->Atk1;
 			if (i == cur)
-				fill(LEFT - 4, y - 2, RIGHT - LEFT + 8, LH + 1, C_SEL);
-			int w = cost_icons(LEFT + 4, y, atk);
+				focus_row(LEFT-4,y-1,RIGHT-LEFT+8,LIST_LH);
+			int w = cost_icons(LEFT + 8, y + 2, atk);
 			text_of(rd16(atk->Name), name, sizeof(name));
 			bool ok = !have_slot || r->shown != g_turn_holder || can_pay(atk, &slot);
-			print(LEFT + 8 + (w > 36 ? w : 36), y, i == cur ? C_HI : ok ? C_TEXT : C_DIM, name);
+			int tx=LEFT+12+(w>36?w:36);
+			body(tx,y,i==cur?C_INK:ok?C_TEXT:C_DIM,name,RIGHT-tx-30);
 			if (atk->Damage) {
 				static const char suffix[] = { 0, '+', '-', 'x' };
 				char d[8];
 				snprintf(d, sizeof(d), "%d%c", atk->Damage, suffix[atk->Category & 3]);
-				print(RIGHT - 4 * CW, y, C_TEXT, d);
+				body(RIGHT-4-body_width(d),y,i==cur?C_INK:C_TEXT,d,32);
 			}
 		}
 		/* description of the attack under the cursor */
@@ -1727,51 +1879,34 @@ static int label_text(void *ctx, int i, char *out, int n, int *icon)
 }
 
 /* a popup list of labels; returns the index or TCG_CANCEL */
-static int choose(const char *title, const char *const *labels, const int *icons, int n, int cur, bool can_cancel, int ports)
+static int choose(const char *title,const char *const *labels,const int *icons,int n,int cur,bool can_cancel,int ports)
 {
-	if (cur < 0 || cur >= n)
-		cur = 0;
-	for (;;) {
-		begin_frame();
-		draw_board(0, -1);
-		int w = 0;
-		for (int i = 0; i < n; i++)
-			if ((int)strlen(labels[i]) > w)
-				w = (int)strlen(labels[i]);
-		if (title && (int)strlen(title) > w)
-			w = (int)strlen(title);
-		if (w > 30)
-			w = 30;
-		int rows = n > 12 ? 12 : n;
-		int top = cur >= rows ? cur - rows + 1 : 0;
-		int pw = w * CW + 40, x = (SCREEN_W - pw) / 2, y = BOARD_Y + 20;
-		if (icons) {
-			panel(x, y, pw, rows * LH + LH + 8);
-			print_n(x + 6, y + 4, C_HI, title ? title : "", w + 2);
-			for (int i = top; i < top + rows; i++) {
-				int ly = y + 4 + LH + (i - top) * LH;
-				if (i == cur)
-					fill(x + 2, ly - 1, pw - 4, LH, C_SEL);
-				if (i == cur)
-					print(x + 4, ly, C_HI, ">");
-				if (icons[i] >= 0)
-					energy_icon(x + 14, ly, icons[i]);
-				print_n(x + 26, ly, i == cur ? C_HI : C_TEXT, labels[i], w);
+	if(cur<0||cur>=n)cur=0;
+	for(;;) {
+		begin_frame();draw_board(0,-1);
+		int width=0;
+		for(int i=0;i<n;i++)if(body_width(labels[i])>width)width=body_width(labels[i]);
+		if(title&&body_width(title)>width)width=body_width(title);
+		if(width>256)width=256;
+		int rows=n>10?10:n,top=cur>=rows?cur-rows+1:0;
+		int pw=width+40;if(pw>300)pw=300;
+		int x=(SCREEN_W-pw)/2,y=BOARD_Y+10;
+		if(icons) {
+			panel(x,y,pw,rows*LIST_LH+24);
+			body(x+7,y+4,C_HI,title?title:"",pw-14);
+			for(int i=top;i<n&&i<top+rows;i++) {
+				int ly=y+21+(i-top)*LIST_LH;
+				if(i==cur)focus_row(x+3,ly-1,pw-6,LIST_LH);
+				if(icons[i]>=0)energy_icon(x+15,ly+2,icons[i]);
+				body(x+27,ly,i==cur?C_INK:C_TEXT,labels[i],pw-32);
 			}
-		} else {
-			draw_list(x, y, pw, rows, title, n, cur, &top, label_text, (void *)labels);
-		}
-		draw_textbox_hint(can_cancel ? "A: choose  B: back" : "A: choose");
-		end_frame_poll();
-		Keys k = keys(ports);
-		if (k.up)
-			cur = cur > 0 ? cur - 1 : n - 1;
-		if (k.down)
-			cur = cur < n - 1 ? cur + 1 : 0;
-		if (k.a)
-			return cur;
-		if (k.b && can_cancel)
-			return TCG_CANCEL;
+		} else draw_list(x,y,pw,rows,title,n,cur,&top,label_text,(void *)labels);
+		draw_textbox_hint(can_cancel?"A: choose  B: back":"A: choose");
+		end_frame_poll();Keys k=keys(ports);
+		if(k.up)cur=cur>0?cur-1:n-1;
+		if(k.down)cur=cur<n-1?cur+1:0;
+		if(k.a)return cur;
+		if(k.b&&can_cancel)return TCG_CANCEL;
 	}
 }
 
@@ -1960,27 +2095,33 @@ static int ui_energy_discard(const TcgRequest *r, int ports)
 	}
 }
 
+static void draw_prize_choices(uint8_t mask,int cur)
+{
+	draw_board(0, -1);
+	int x0=LEFT+70,y0=BOARD_Y+48;
+	paper_panel(x0-14,y0-27,184,151);
+	banner_text(x0+3,y0-23,C_INK,"Take a Prize");
+	for (int i = 0; i < 6; i++) {
+		int x = x0 + (i % 3) * 54, y = y0 + (i / 3) * 52;
+		if (mask & (1 << i))
+		card_back(x+6,y,32,44);
+		else
+		rect(x+6,y,32,44,C_PAPERSHADE);
+		if(i==cur) {
+		rect(x+3,y-3,38,50,C_INK);
+		chosen_corners(x+2,y-4,40,52);
+		}
+	}
+	draw_textbox_hint("A: take");
+}
+
 static int ui_prize(const TcgRequest *r, int ports)
 {
 	uint8_t mask = r->arg[0];
 	int cur = r->cursor < 6 ? r->cursor : 0;
 	for (;;) {
 		begin_frame();
-		draw_board(0, -1);
-		int x0 = LEFT + 70, y0 = BOARD_Y + 36;
-		panel(x0 - 10, y0 - 18, 180, 128);
-		print(x0, y0 - 12, C_HI, "Choose a Prize card");
-		for (int i = 0; i < 6; i++) {
-			int x = x0 + (i % 3) * 54, y = y0 + (i / 3) * 52;
-			if (mask & (1 << i))
-				fill(x, y, 44, 44, C_CARDBACK);
-			else
-				rect(x, y, 44, 44, C_MID);
-			rect(x - 2, y - 2, 48, 48, i == cur ? C_HI : C_PANEL);
-			if (i == cur)
-				rect(x - 3, y - 3, 50, 50, C_HI);
-		}
-		draw_textbox_hint("A: take");
+		draw_prize_choices(mask,cur);
 		end_frame_poll();
 		Keys k = keys(ports);
 		if (k.left)
@@ -2283,6 +2424,7 @@ static void on_event(void *ctx, const TcgEvent *ev)
 		show_frames((ev->arg[0] > 60 ? 60 : ev->arg[0]) / 2);
 		break;
 	case TCG_EV_TURN:
+		g_result=-1;
 		g_turn_holder = ev->arg[0];
 		g_turn = ev->arg[1];
 		g_thinking = 0;
@@ -2291,6 +2433,9 @@ static void on_event(void *ctx, const TcgEvent *ev)
 		show_frames(1);
 		break;
 	case TCG_EV_DUEL_END:
+		g_result=ev->arg[0]==TURN_PLAYER_TIED?2:
+		         side_of(ev->arg[0]==TURN_PLAYER_WON?ev->arg[1]:
+		                 ev->arg[1]==TCG_PLAYER?TCG_OPPONENT:TCG_PLAYER);
 		debugf("DUEL_END finished=%d holder=%s\n", ev->arg[0], who(ev->arg[1]));
 		break;
 	case TCG_EV_THINKING:
@@ -2481,6 +2626,64 @@ static int on_request_selftest(void *ctx, const TcgRequest *menu)
 	return on_request(ctx, menu);
 }
 #define on_request on_request_selftest
+#endif
+
+#if defined(TCGN64_HOST_TEST) || ADVENTURE_DIAGNOSTIC == 9
+/* Verify reflow against every card's actual source text, independent of the
+ * renderer: punctuation and conditions must survive, and no line may exceed
+ * its measured pixel allocation. Runs in the diagnostic/host builds only. */
+static bool verify_rule_wrap(const char *source,int width)
+{
+	char lines[RULE_LINES][RULE_COLS];
+	int count=body_wrap(source,width,lines,RULE_LINES);
+	const char *original=source;
+	for(int i=0;i<count;i++) {
+		if(body_width(lines[i])>width)return false;
+		for(const char *text=lines[i];*text;text++) {
+			if(*text==' '||*text=='\n')continue;
+			while(*original==' '||*original=='\n')original++;
+			if(*text!=*original)return false;
+			original++;
+		}
+	}
+	while(*original==' '||*original=='\n')original++;
+	return !*original;
+}
+
+static bool verify_card_layout(void)
+{
+	int descriptions=0,max_pages=0,longest_trainer=0,trainer_pages=0,trainer_lines=0,max_card=0;
+	for(int id=1;id<=NUM_CARDS;id++) {
+		const struct CardData *card=card_data((uint8_t)id);
+		int pages=card_rules(card);
+		if(pages>max_pages){max_pages=pages;max_card=id;}
+		if(!is_pokemon(card)&&!is_energy(card)&&g_rule_count>trainer_lines) {
+			trainer_pages=pages;longest_trainer=id;trainer_lines=g_rule_count;
+		}
+		for(int attack=0;attack<(is_pokemon(card)?2:1);attack++) {
+			char source[1400];
+			if(is_pokemon(card)) {
+				const struct AtkData *atk=attack?&card->Atk2:&card->Atk1;
+				if(strlen(tcg_text(rd16(atk->Description)))+
+				   strlen(tcg_text(rd16(atk->Description+2)))+2>=sizeof(source))return false;
+				attack_description(atk,source,sizeof(source));
+			} else {
+				if(strlen(tcg_text(rd16(card->NonPokemonDescription)))+1>=sizeof(source))return false;
+				description(rd16(card->NonPokemonDescription),source,sizeof(source));
+			}
+			if(!verify_rule_wrap(source,RIGHT-LEFT-8)||!verify_rule_wrap(source,121))return false;
+			if(source[0])descriptions++;
+		}
+		/* Render all card pages as well: the host graphics mock rejects any
+		 * writes beyond the 320x240 surface. */
+		for(int page=0;page<pages;page++) {
+			begin_frame();draw_card_page_at((uint8_t)id,TCG_PLAYER,-1,NULL,page);end_frame();
+		}
+	}
+	debugf("UI LAYOUT PASS cards=%d descriptions=%d max_pages=%d max_card=%d trainer=%d trainer_pages=%d trainer_lines=%d\n",
+	       NUM_CARDS,descriptions,max_pages,max_card,longest_trainer,trainer_pages,trainer_lines);
+	return true;
+}
 #endif
 
 /* the engine stops on an unrecoverable error: show it and halt */
@@ -2696,10 +2899,9 @@ static void result_screen(int result)
 		begin_frame();
 		draw_board(0, -1);
 		draw_textbox();
-		fill(SCREEN_W / 2 - 100, BOARD_Y + 70, 200, 40, C_PANEL2);
-		rect(SCREEN_W / 2 - 100, BOARD_Y + 70, 200, 40, C_HI);
-		print(SCREEN_W / 2 - (int)strlen(msg) * CW / 2, BOARD_Y + 78, C_HI, msg);
-		print(SCREEN_W / 2 - 64, BOARD_Y + 94, C_DIM, "A: back to title");
+		if(g_result!=2)g_result=side_of(winner);
+		draw_match_plaque(true);
+		body(106,137,C_TEXT,"A: back to title",130);
 		end_frame_poll();
 		if (f > 30 && (keys(3).a || keys(3).start))
 			return;
@@ -2718,6 +2920,7 @@ static void reset_duel_ui(void)
 	g_turn = 0;
 	g_thinking = 0;
 	g_screen = TCG_SCREEN_NONE;
+	g_result=-1;
 }
 
 /* who answers each side's requests, and the names, in mode m */
@@ -2839,6 +3042,109 @@ void n64_ui_video_probe(unsigned phase,unsigned frames)
 }
 #endif
 
+#if ADVENTURE_DIAGNOSTIC == 9
+/* Deliberately constructed UI stress states; this ROM never submits them to
+ * the duel engine. All card names, pictures and rules are the real database. */
+static void polish_fixture(bool energy_stress)
+{
+ static const uint8_t pokemon[6]={VENUSAUR_LV64,CHANSEY,ALAKAZAM,BLASTOISE,RAICHU_LV40,SCYTHER};
+ static const uint8_t hand[14]={GRASS_ENERGY,DOUBLE_COLORLESS_ENERGY,COMPUTER_SEARCH,VENUSAUR_LV64,
+  ALAKAZAM,CHANSEY,PLUSPOWER,DEFENDER,POKEMON_BREEDER,DEVOLUTION_SPRAY,ENERGY_REMOVAL,
+  SUPER_ENERGY_RETRIEVAL,MYSTERIOUS_FOSSIL,IMPOSTER_PROFESSOR_OAK};
+ memset(gWRAM,0,WRAM_SIZE);memset(gHRAM,0,HRAM_SIZE);
+ for(unsigned side=0;side<2;side++) {
+  uint8_t duelist=side?TCG_OPPONENT:TCG_PLAYER;
+  uint8_t *vars=tcg_duelvars(duelist),*deck=side?wOpponentDeck:wPlayerDeck;
+  for(unsigned i=0;i<DECK_SIZE;i++){deck[i]=(uint8_t)(GRASS_ENERGY+i%6);vars[DUELVARS_CARD_LOCATIONS+i]=CARD_LOCATION_DECK;}
+  vars[DUELVARS_NUMBER_OF_POKEMON_IN_PLAY_AREA]=6;
+  for(unsigned loc=0;loc<6;loc++) {
+   deck[loc]=pokemon[loc];vars[DUELVARS_ARENA_CARD+loc]=(uint8_t)loc;
+   vars[DUELVARS_ARENA_CARD_HP+loc]=loc?card_data(deck[loc])->HP:10;
+   vars[DUELVARS_CARD_LOCATIONS+loc]=(uint8_t)(CARD_LOCATION_ARENA+loc);
+  }
+  if(side)deck[0]=SEAKING;
+  vars[DUELVARS_ARENA_CARD_STATUS]=side?(PARALYZED|POISONED):(CONFUSED|DOUBLE_POISONED);
+  vars[DUELVARS_ARENA_CARD_ATTACHED_PLUSPOWER]=1;vars[DUELVARS_ARENA_CARD_ATTACHED_DEFENDER]=1;
+  if(energy_stress) {
+   /* Six Pokemon, 53 attached basic Energy, one untaken Prize: all 60
+      physical cards accounted for. The overflowing icon row must count. */
+   vars[DUELVARS_PRIZES]=1;vars[DUELVARS_PRIZE_CARDS]=59;
+   vars[DUELVARS_CARD_LOCATIONS+59]=CARD_LOCATION_PRIZE;
+   for(unsigned i=6;i<59;i++)vars[DUELVARS_CARD_LOCATIONS+i]=CARD_LOCATION_ARENA;
+   vars[DUELVARS_NUMBER_OF_CARDS_NOT_IN_DECK]=60;
+  } else {
+   vars[DUELVARS_NUMBER_OF_CARDS_IN_HAND]=14;
+   for(unsigned i=0;i<14;i++){deck[6+i]=hand[i];vars[DUELVARS_HAND+i]=(uint8_t)(6+i);vars[DUELVARS_CARD_LOCATIONS+6+i]=CARD_LOCATION_HAND;}
+   for(unsigned i=20;i<44;i++)vars[DUELVARS_CARD_LOCATIONS+i]=(uint8_t)(CARD_LOCATION_ARENA+(i<34?0:1+(i-34)/2));
+   vars[DUELVARS_PRIZES]=0x2b;
+   for(unsigned i=0;i<6;i++){vars[DUELVARS_PRIZE_CARDS+i]=(uint8_t)(44+i);vars[DUELVARS_CARD_LOCATIONS+44+i]=CARD_LOCATION_PRIZE;}
+   vars[DUELVARS_NUMBER_OF_CARDS_NOT_IN_DECK]=50;
+  }
+ }
+}
+
+static void polish_capture(const char *name)
+{
+ surface_t *frame=g_last_ui_frame;const uint16_t *pixels=UncachedAddr(frame->buffer);
+ debugf("FRAMEBUFFER duel-ui-%s 320 240\n",name);
+ for(unsigned y=0;y<240;y++)for(unsigned x=0;x<320;x+=32) {
+  char text[129];for(unsigned i=0;i<32;i++)snprintf(text+i*4,5,"%04x",pixels[y*(frame->stride/2)+x+i]);
+  debugf("PIXELS %u %u %s\n",x,y,text);
+ }
+ debugf("FRAMEBUFFER END\n");
+}
+
+void n64_ui_polish_preview(void)
+{
+ static const char *const stages[]={"board","energy-overflow","actions","hand-pokemon","hand-trainer",
+  "chosen-card","pokemon-rules-1","pokemon-rules-2","pokemon-rules-3","trainer-rules",
+  "prize","result","start"};
+ static uint8_t memory[WRAM_SIZE+HRAM_SIZE];
+ memcpy(memory,gWRAM,WRAM_SIZE);memcpy(memory+WRAM_SIZE,gHRAM,HRAM_SIZE);
+ assertf(verify_card_layout(),"Card rule reflow failed");
+ copy_str(g_name[0],sizeof(g_name[0]),"MARK");copy_str(g_name[1],sizeof(g_name[1]),"SAM");
+ g_mode=MODE_VS_AI;g_turn_holder=TCG_PLAYER;g_turn=5;g_asking=0;
+ g_denied=0;g_thinking=0;g_dmg.timer=0;g_result=-1;
+ log_clear();log_message("Mark's Turn.");
+ for(unsigned stage=0;stage<sizeof(stages)/sizeof(stages[0]);stage++) {
+  polish_fixture(stage==1);g_result=-1;
+  debugf("DUEL UI %s BEGIN\n",stages[stage]);
+  int top=0;
+  for(unsigned frame=0;frame<24;frame++) {
+   begin_frame();
+   if(stage==0||stage==1) {draw_board(0,-1);draw_textbox_hint("A: choose  START: card");}
+   else if(stage==2)draw_duel_choices(TCG_PLAYER,0);
+   else if(stage==3||stage==4) {
+    const uint8_t *vars=tcg_duelvars(TCG_PLAYER);
+    draw_card_list_screen("Mark's Hand",NULL,vars+DUELVARS_HAND,14,TCG_PLAYER,stage==3?3:6,&top);
+    draw_textbox_hint("A: select  B: back  START: info");
+   } else if(stage==5) {
+    draw_card_page(COMPUTER_SEARCH,TCG_PLAYER,8,NULL);
+    chosen_corners(RIGHT-69,BOARD_Y+3,70,54);
+    static const char *const labels[]={"Play","Check"};
+    draw_choice_popup(RIGHT-100,BOARD_Y+130,NULL,labels,2,0);
+    draw_textbox_hint("A: choose  B: back  START: card");
+   } else if(stage>=6&&stage<=8) {
+    draw_card_page_at(VENUSAUR_LV64,TCG_PLAYER,-1,NULL,(int)stage-6);
+    draw_textbox_hint("L/R: page  B: back");
+   } else if(stage==9) {
+    draw_card_page(PLUSPOWER,TCG_PLAYER,-1,NULL);draw_textbox_hint("B: back");
+   } else if(stage==10)draw_prize_choices(0x2b,1);
+   else {
+    draw_board(0,-1);g_result=0;draw_match_plaque(stage==11);
+    draw_textbox_hint("A: continue");
+   }
+   end_frame();if(frame==4)polish_capture(stages[stage]);
+  }
+  heap_stats_t stats;sys_get_heap_stats(&stats);
+  debugf("DUEL UI HEAP stage=%s total=%d used=%d free=%d\n",stages[stage],stats.total,stats.used,stats.total-stats.used);
+ }
+ memcpy(gWRAM,memory,WRAM_SIZE);memcpy(gHRAM,memory+WRAM_SIZE,HRAM_SIZE);
+ g_result=-1;g_turn_holder=0;g_asking=0;log_clear();
+ debugf("DUEL UI PREVIEW PASS\n");
+}
+#endif
+
 void n64_message(const char *title,const char *text)
 {
 	static char clean[8192], lines[256][COLS+1];
@@ -2892,13 +3198,7 @@ int n64_menu(const char *title,const char *const *items,int count,int initial,bo
 
 void n64_card_detail(unsigned id)
 {
-	for(;;) {
-		begin_frame();
-		draw_card_page((uint8_t)id,TCG_PLAYER,-1,NULL);
-		print(LEFT,218,C_DIM,"A/B: close");
-		end_frame_poll();
-		if(keys(1).a || keys(1).b) return;
-	}
+	view_card((uint8_t)id,TCG_PLAYER,-1,1);
 }
 
 int n64_duel_play(const TcgDuelSetup *setup,const uint8_t *saved)
@@ -2931,6 +3231,9 @@ int main(void)
 		g_col[i] = graphics_make_color(kRGB[i][0], kRGB[i][1], kRGB[i][2], 255);
 	joypad_init();
 	dfs_init(DFS_DEFAULT_LOCATION);
+#ifdef TCGN64_HOST_TEST
+	if(getenv("TCGN64_LAYOUT_TEST"))return verify_card_layout()?0:1;
+#endif
 	load_buildinfo();
 	init_decks();
 	g_save_ok = save_store_open(NULL);

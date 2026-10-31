@@ -90,6 +90,12 @@ export function plainText(str) {
 	return String(str || '').replace(/[\x00-\x09\x0b-\x1f]/g, '').replace(/<Lv>/g, 'Lv').replace(/<No>/g, 'No.').replace(/<(\w+)>/g, '$1');
 }
 
+/* Card rules were authored as narrow Game Boy lines. Reflow only these
+ * descriptions, retaining paragraphs, tokens, punctuation and every word. */
+export function reflowRules(str) {
+	return String(str || '').replace(/-\n(?=[^\n])/g, '-').replace(/(?<!\n)\n(?!\n)/g, ' ');
+}
+
 /* "Name Lv12" for Pokemon, "Name" otherwise */
 export function cardTitle(card) {
 	return card.isPokemon && card.level ? `${card.name} Lv${card.level}` : card.name;
@@ -146,6 +152,7 @@ export function cardPage(card, extra = {}) {
 	left.appendChild(meta);
 	body.appendChild(left);
 	const right = el('div', 'cp-right');
+	right.appendChild(el('div', 'cp-section-title', card.isPokemon ? 'Attacks & Powers' : 'Rules'));
 	if (card.isPokemon) {
 		for (const atk of card.attacks) {
 			const a = el('div', 'cp-attack');
@@ -157,7 +164,7 @@ export function cardPage(card, extra = {}) {
 			a.appendChild(line);
 			if (atk.description) {
 				const d = el('div', 'cp-atk-desc');
-				d.appendChild(richText(atk.description));
+				d.appendChild(richText(reflowRules(atk.description)));
 				a.appendChild(d);
 			}
 			right.appendChild(a);
@@ -182,12 +189,13 @@ export function cardPage(card, extra = {}) {
 		right.appendChild(wr);
 		if (card.description) {
 			const d = el('div', 'cp-desc');
-			d.appendChild(richText(card.description));
+			d.appendChild(el('div', 'cp-section-title', 'Pokédex'));
+			d.appendChild(richText(reflowRules(card.description)));
 			right.appendChild(d);
 		}
 	} else if (card.description) {
 		const d = el('div', 'cp-desc');
-		d.appendChild(richText(card.description));
+		d.appendChild(richText(reflowRules(card.description)));
 		right.appendChild(d);
 	}
 	body.appendChild(right);

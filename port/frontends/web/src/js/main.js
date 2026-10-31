@@ -87,8 +87,10 @@ function toast(msg, ms = 3200) {
 
 function setScale() {
 	const w = Math.min(window.innerWidth, 1100) - 12;
-	const h = window.innerHeight - 8;
-	let u = Math.min(w / 240, h / 262);
+	/* Leave room for the bar and status line; crowded Active cards can grow
+	 * when Energy groups and several conditions share the table. */
+	const h = window.innerHeight - 48;
+	let u = Math.min(w / 240, h / 304);
 	u = u >= 2 ? Math.floor(u * 2) / 2 : Math.max(1.25, Math.floor(u * 4) / 4);
 	document.documentElement.style.setProperty('--u', String(u));
 }
