@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "segment": "clubs",
+  "wall_seconds": 31.26,
+  "rom_sha256": "f0c59d2a63f4c24660358400197399b3c0d5b84b9b82e810dac31efebf816c14",
+  "markers": [
+    "TRAILER READY clubs vi=0 us=506109",
+    "TRAILER BEGIN clubs vi=481 us=8516796",
+    "TRAILER FIRST_FRAME clubs vi=504 us=8906772",
+    "TRAILER SHOT LIGHTNING_CLUB vi=505 us=8924634",
+    "TRAILER WALK map=15 steps=11 requested=12,8 reached=12,8 vi=602 us=10547849",
+    "TRAILER SHOT WATER_CLUB vi=916 us=15787444",
+    "TRAILER WALK map=12 steps=13 requested=22,8 reached=20,8 vi=1015 us=17438425",
+    "TRAILER SHOT FIRE_CLUB vi=1358 us=23155283",
+    "TRAILER WALK map=27 steps=10 requested=14,8 reached=14,8 vi=1455 us=24778986",
+    "TRAILER END clubs vi=1703 us=28908333"
+  ]
+}

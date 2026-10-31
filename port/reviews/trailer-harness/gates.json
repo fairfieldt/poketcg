@@ -1,0 +1,30 @@
+[
+  {
+    "segment": "intro",
+    "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/trailer-intro/trailer-intro.z64",
+    "rom_sha256": "e8c57348f5c3c847c1fbc82c938bf3dcb2500be690e86c6d9d39e6e782611622",
+    "passed": true,
+    "wall_seconds": 78.3
+  },
+  {
+    "segment": "ronald",
+    "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/trailer-ronald/trailer-ronald.z64",
+    "rom_sha256": "e159777c7716891358f0b3556b5ac3bae789bbf6824de0adc751f9c3db44ada8",
+    "passed": true,
+    "wall_seconds": 28.8
+  },
+  {
+    "segment": "clubs",
+    "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/trailer-clubs/trailer-clubs.z64",
+    "rom_sha256": "f0c59d2a63f4c24660358400197399b3c0d5b84b9b82e810dac31efebf816c14",
+    "passed": true,
+    "wall_seconds": 31.26
+  },
+  {
+    "segment": "ending",
+    "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/trailer-ending/trailer-ending.z64",
+    "rom_sha256": "e0eb74a6dd23d78d4c9d99c498aad0e5d06486657593a5bc51f700bfdd8a7e9c",
+    "passed": true,
+    "wall_seconds": 38.27
+  }
+]

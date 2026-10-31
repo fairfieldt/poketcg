@@ -1,0 +1,26 @@
+{
+  "passed": true,
+  "segment": "intro",
+  "wall_seconds": 78.3,
+  "rom_sha256": "e8c57348f5c3c847c1fbc82c938bf3dcb2500be690e86c6d9d39e6e782611622",
+  "markers": [
+    "TRAILER READY intro vi=0 us=507198",
+    "TRAILER BEGIN intro vi=481 us=8518013",
+    "TRAILER FIRST_FRAME intro vi=509 us=8996462",
+    "TRAILER INTRO_RUN overworld-source-movement vi=570 us=10017621",
+    "TRAILER TEXT id=1507 npc=1 map=1 x=14 y=8 vi=935 us=16097306",
+    "TRAILER TEXT id=1508 npc=7 map=1 x=14 y=8 vi=1671 us=28377201",
+    "TRAILER TEXT id=1509 npc=1 map=1 x=14 y=8 vi=1852 us=31396224",
+    "TRAILER TEXT id=1510 npc=1 map=1 x=14 y=8 vi=2295 us=38786502",
+    "TRAILER TEXT id=1511 npc=1 map=1 x=10 y=14 vi=2590 us=43709499",
+    "TRAILER TEXT id=1512 npc=7 map=1 x=10 y=14 vi=2771 us=46730308",
+    "TRAILER CHOICE kind=4 text=0 count=8 initial=0 vi=2951 us=49732790",
+    "TRAILER CHOICE_DONE kind=4 answer=7 vi=3191 us=53735333",
+    "TRAILER TEXT id=1513 npc=7 map=1 x=10 y=14 vi=3191 us=53735521",
+    "TRAILER CHOICE kind=0 text=0 count=2 initial=1 vi=3372 us=56755334",
+    "TRAILER CHOICE_DONE kind=0 answer=1 vi=3613 us=60776225",
+    "TRAILER TEXT id=1514 npc=1 map=1 x=10 y=14 vi=3613 us=60776404",
+    "TRAILER SHOT sam-ready vi=4333 us=72791210",
+    "TRAILER END intro vi=4453 us=74789496"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "segment": "ronald",
+  "wall_seconds": 28.8,
+  "rom_sha256": "e159777c7716891358f0b3556b5ac3bae789bbf6824de0adc751f9c3db44ada8",
+  "markers": [
+    "TRAILER READY ronald vi=0 us=508271",
+    "TRAILER BEGIN ronald vi=481 us=8518135",
+    "TRAILER SHOT ronald-board vi=481 us=8519961",
+    "TRAILER REQUEST index=1 type=2 menu=0 owner=194 shown=194 vi=481 us=8522777",
+    "TRAILER FIRST_FRAME ronald vi=491 us=8687533",
+    "TRAILER REQUEST index=2 type=6 menu=1 owner=194 shown=194 vi=597 us=10459307",
+    "TRAILER DUEL_TEXT id=53 vi=688 us=11977663",
+    "TRAILER REQUEST index=3 type=1 menu=0 owner=194 shown=194 vi=697 us=12125436",
+    "TRAILER SHOT ronald-knockout vi=789 us=13656378",
+    "TRAILER DUEL_TEXT id=129 vi=832 us=14389289",
+    "TRAILER REQUEST index=4 type=1 menu=0 owner=194 shown=194 vi=884 us=15256758",
+    "TRAILER DUEL_TEXT id=66 vi=976 us=16781677",
+    "TRAILER REQUEST index=5 type=1 menu=0 owner=194 shown=194 vi=985 us=16926256",
+    "TRAILER REQUEST index=6 type=9 menu=0 owner=194 shown=194 vi=1077 us=18466423",
+    "TRAILER SHOT ronald-prize vi=1169 us=20001233",
+    "TRAILER REQUEST index=7 type=1 menu=0 owner=194 shown=194 vi=1169 us=20001374",
+    "TRAILER DUEL_TEXT id=68 vi=1260 us=21519541",
+    "TRAILER REQUEST index=8 type=1 menu=0 owner=194 shown=195 vi=1267 us=21634717",
+    "TRAILER DUEL_TEXT id=94 vi=1359 us=23171475",
+    "TRAILER REQUEST index=9 type=1 menu=0 owner=194 shown=195 vi=1367 us=23311905",
+    "TRAILER SHOT ronald-turn vi=1458 us=24822858",
+    "TRAILER END ronald vi=1578 us=26822859"
+  ]
+}

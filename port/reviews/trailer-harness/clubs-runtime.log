@@ -1,0 +1,47 @@
+Loaded trailer-clubs
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-10-31 15:20:35.024 ares[36971:19615364] Resizing output buffers to 1536, 1152
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 69132 bytes
+TRAILER READY clubs vi=0 us=506109
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 10712.000 us (mode: sync, success: yes).
+TRAILER BEGIN clubs vi=481 us=8516796
+Scene rom:/world/maps/lightning_club.l64: 35 batches, 34 textures, 34584 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_isaac.l64: 6 batches, 1 textures, 32616 bytes
+Scene rom:/world/maps/actor_hood.l64: 6 batches, 1 textures, 26800 bytes
+Scene rom:/world/maps/actor_girl.l64: 6 batches, 1 textures, 35344 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_isaac.l64: 6 batches, 1 textures, 23904 bytes
+Scene rom:/world/lod/actor_hood.l64: 6 batches, 1 textures, 21484 bytes
+Scene rom:/world/lod/actor_girl.l64: 6 batches, 1 textures, 24052 bytes
+TRAILER FIRST_FRAME clubs vi=504 us=8906772
+TRAILER SHOT LIGHTNING_CLUB vi=505 us=8924634
+TRAILER WALK map=15 steps=11 requested=12,8 reached=12,8 vi=602 us=10547849
+Scene rom:/world/maps/water_club.l64: 20 batches, 19 textures, 98712 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_joshua.l64: 6 batches, 1 textures, 31868 bytes
+Scene rom:/world/maps/actor_swimmer.l64: 6 batches, 1 textures, 29684 bytes
+Scene rom:/world/maps/actor_swimmer_palette2.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/maps/actor_amy__lying.l64: 6 batches, 1 textures, 30452 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_joshua.l64: 6 batches, 1 textures, 21620 bytes
+Scene rom:/world/lod/actor_swimmer.l64: 6 batches, 1 textures, 24476 bytes
+Scene rom:/world/lod/actor_swimmer_palette2.l64: 6 batches, 1 textures, 24404 bytes
+Scene rom:/world/lod/actor_amy__lying.l64: 6 batches, 1 textures, 25316 bytes
+TRAILER SHOT WATER_CLUB vi=916 us=15787444
+TRAILER WALK map=12 steps=13 requested=22,8 reached=20,8 vi=1015 us=17438425
+Scene rom:/world/maps/fire_club.l64: 35 batches, 34 textures, 38976 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ken.l64: 6 batches, 1 textures, 37176 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_specs.l64: 6 batches, 1 textures, 28800 bytes
+Scene rom:/world/maps/actor_boy_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ken.l64: 6 batches, 1 textures, 35808 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_specs.l64: 6 batches, 1 textures, 22176 bytes
+Scene rom:/world/lod/actor_boy_palette2.l64: 6 batches, 1 textures, 22280 bytes
+TRAILER SHOT FIRE_CLUB vi=1358 us=23155283
+TRAILER WALK map=27 steps=10 requested=14,8 reached=14,8 vi=1455 us=24778986
+TRAILER END clubs vi=1703 us=28908333

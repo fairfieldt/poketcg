@@ -1,0 +1,43 @@
+Loaded trailer-ending
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-10-31 15:21:28.487 ares[37341:19618580] Resizing output buffers to 1536, 1152
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 69132 bytes
+TRAILER READY ending vi=0 us=510454
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 10878.708 us (mode: sync, success: yes).
+TRAILER BEGIN ending vi=480 us=8518440
+Scene rom:/world/maps/water_club.l64: 20 batches, 19 textures, 98712 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_joshua.l64: 6 batches, 1 textures, 31868 bytes
+Scene rom:/world/maps/actor_swimmer.l64: 6 batches, 1 textures, 29684 bytes
+Scene rom:/world/maps/actor_swimmer_palette2.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/maps/actor_amy__lying.l64: 6 batches, 1 textures, 30452 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_joshua.l64: 6 batches, 1 textures, 21620 bytes
+Scene rom:/world/lod/actor_swimmer.l64: 6 batches, 1 textures, 24476 bytes
+Scene rom:/world/lod/actor_swimmer_palette2.l64: 6 batches, 1 textures, 24404 bytes
+Scene rom:/world/lod/actor_amy__lying.l64: 6 batches, 1 textures, 25316 bytes
+TRAILER FIRST_FRAME ending vi=510 us=9031396
+TRAILER SHOT WATER_CLUB vi=511 us=9048942
+TRAILER SHOT amy-after-declared-private-win vi=601 us=10539459
+TRAILER TEXT id=1107 npc=34 map=12 x=20 y=6 vi=601 us=10543846
+Scene rom:/world/maps/actor_amy.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/lod/actor_amy.l64: 6 batches, 1 textures, 24488 bytes
+TRAILER TEXT id=1108 npc=34 map=12 x=20 y=6 vi=782 us=13559834
+TRAILER SHOT water-medal vi=962 us=16565077
+TRAILER SHOT water-medal-complete vi=1288 us=22000627
+TRAILER TEXT id=1109 npc=34 map=12 x=20 y=6 vi=1288 us=22000798
+TRAILER SHOT amy-reward-before-packs vi=1468 us=25004482
+Scene rom:/world/maps/hall_of_honor.l64: 27 batches, 26 textures, 25644 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_legendary_card__bottom_left.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__bottom_right.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__left_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/actor_legendary_card__right_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/actor_legendary_card__top_left.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__top_right.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+TRAILER SHOT HALL_OF_HONOR vi=1497 us=25499420
+TRAILER WALK map=33 steps=3 requested=12,16 reached=12,16 vi=1589 us=27032460
+TRAILER SHOT title64 vi=1726 us=29318691
+TRAILER END ending vi=2147 us=36330671

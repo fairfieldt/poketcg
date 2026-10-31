@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "segment": "ending",
+  "wall_seconds": 38.27,
+  "rom_sha256": "e0eb74a6dd23d78d4c9d99c498aad0e5d06486657593a5bc51f700bfdd8a7e9c",
+  "markers": [
+    "TRAILER READY ending vi=0 us=510454",
+    "TRAILER BEGIN ending vi=480 us=8518440",
+    "TRAILER FIRST_FRAME ending vi=510 us=9031396",
+    "TRAILER SHOT WATER_CLUB vi=511 us=9048942",
+    "TRAILER SHOT amy-after-declared-private-win vi=601 us=10539459",
+    "TRAILER TEXT id=1107 npc=34 map=12 x=20 y=6 vi=601 us=10543846",
+    "TRAILER TEXT id=1108 npc=34 map=12 x=20 y=6 vi=782 us=13559834",
+    "TRAILER SHOT water-medal vi=962 us=16565077",
+    "TRAILER SHOT water-medal-complete vi=1288 us=22000627",
+    "TRAILER TEXT id=1109 npc=34 map=12 x=20 y=6 vi=1288 us=22000798",
+    "TRAILER SHOT amy-reward-before-packs vi=1468 us=25004482",
+    "TRAILER SHOT HALL_OF_HONOR vi=1497 us=25499420",
+    "TRAILER WALK map=33 steps=3 requested=12,16 reached=12,16 vi=1589 us=27032460",
+    "TRAILER SHOT title64 vi=1726 us=29318691",
+    "TRAILER END ending vi=2147 us=36330671"
+  ]
+}

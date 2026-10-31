@@ -1,0 +1,16 @@
+{
+  "segment": "intro",
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/trailer-intro/trailer-intro.z64",
+  "rom_sha256": "e8c57348f5c3c847c1fbc82c938bf3dcb2500be690e86c6d9d39e6e782611622",
+  "production_base_commit": "2dda70b300505e8851bc6ba13fad7698bf93c7b3",
+  "runtime": "Production main.c initialization/private hosts; DIAGNOSTIC0;480x360;SHOW_FPS0; original engine and artwork",
+  "silent_preroll_vi": 480,
+  "story_ack_vi": 180,
+  "ronald_untouched_checkpoint_sha256": "990334314b7bbec9a49b393fb6bd8bd2638e1326f01b383cf5ea42a2f9aba5b4",
+  "private_source": {
+    "port/frontends/n64/adventure/tests/trailer_main.c": "1c612eddd5ac78c05a39b6483dca59febbc5e3cf9020b253d90002fa712cc67d",
+    "port/frontends/n64/adventure/tests/trailer_ronald.c": "577ba302247b40025f078a64b8afb2e679fd5907588fcaf21d4b52f2d8ae2a33",
+    "port/frontends/n64/adventure/main.c": "dd33fc698c7757dbfe6aeb87e8df2801d6f4fe85a86983b234a6672fa05d3d7d",
+    "port/frontends/n64/adventure/video.c": "95212bfdb7ef688fc88082338687b491ddd4c688df1ba19c089875ca236d4b59"
+  }
+}
