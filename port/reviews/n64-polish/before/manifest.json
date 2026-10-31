@@ -289,5 +289,26 @@
     }
   ],
   "baseline_commit": "04c5b482",
-  "review_rom_sha256": "bbb72f4ee53af9eaf28ef1a78e41d359c40fbfd60655c9057076a3baafa534ba"
+  "review_rom_sha256": "bbb72f4ee53af9eaf28ef1a78e41d359c40fbfd60655c9057076a3baafa534ba",
+  "final_vi_capture": {
+    "available": false,
+    "limitation": "Fresh final-VI screenshots could not be exported: CUA returned cgWindowNotFound for both /Applications/ares.app and the isolated Poketcg Video Test.app wrapper. The root agent independently confirmed this. No final-VI image is represented as captured.",
+    "native_captures": "All 25 PNGs contain real native RDP pixels before VI filtering; the final VI antialiasing and dedithering soften their appearance.",
+    "followup": "DIAGNOSTIC=3 includes held title, Lightning Club, duel and card phases for a later ares Tools > Capture Screenshot export when the UI window is accessible."
+  },
+  "review_diagnostic_results": {
+    "real_duel_request_screens": [
+      "duel-card-list",
+      "duel-card-detail",
+      "duel-coin",
+      "duel-action-menu"
+    ],
+    "markers_observed": [
+      "ADVENTURE INTRO PASS",
+      "ADVENTURE MIPS STORY PASS",
+      "ADVENTURE NATIVE DUEL PASS result=1",
+      "ADVENTURE SRAM PASS"
+    ],
+    "note": "Capture run stopped during subsequent source cinematic replay; held final-VI phases were not verified during this run. The committed baseline validation independently passed the complete 42-frame cinematic/map tour."
+  }
 }
