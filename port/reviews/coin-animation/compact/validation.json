@@ -1,0 +1,49 @@
+{
+  "passed": true,
+  "native_window": {
+    "ordinary": [
+      104,
+      128
+    ],
+    "left_top": [
+      108,
+      42
+    ],
+    "history_max_width": 148,
+    "previous": [
+      196,
+      156
+    ],
+    "single_coin_area_reduction_percent": 56.5
+  },
+  "intentional_frames": 20,
+  "intended_seconds_at30fps": 0.6666666666666666,
+  "measured_emulator_toss_us": {
+    "320": 683250,
+    "480": 769035
+  },
+  "previous_emulator_toss_us": {
+    "320": 1992204,
+    "480": 5104005
+  },
+  "timed_full_canvas_equivalence": [
+    {
+      "width": 320,
+      "frames": 20,
+      "redraws": 4
+    },
+    {
+      "width": 480,
+      "frames": 20,
+      "redraws": 4
+    }
+  ],
+  "native_captures": 28,
+  "source": "Native completed RDP framebuffer beforeVI;8fullheldposes+20actualcoinROIposes",
+  "additional_runtime_pixel_allocation_bytes": 0,
+  "input_rng_result_fences_preserved": true,
+  "browser_clock": "667ms wallclock timeline, avoids cumulative scheduling drift",
+  "browser_tests_passed": true,
+  "host_coin_tests_both_resolutions_passed": true,
+  "fps_badge_and_latest_top_opponent_row_included": true
+}

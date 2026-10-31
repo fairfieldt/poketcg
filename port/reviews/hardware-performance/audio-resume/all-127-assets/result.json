@@ -1,0 +1,674 @@
+{
+  "passed": true,
+  "expected_old_crash": false,
+  "expected_truncated_stream": false,
+  "truncated_stream_rejected": false,
+  "old_crash_reproduced": false,
+  "ram_mib": 4,
+  "diagnostic": 17,
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-audio-resume-after.z64",
+  "rom_sha256": "187fbe60065db0a9d4df84da22124db333aab12706da973bc6b6742d6714517b",
+  "wall_seconds": 113.36,
+  "markers": [
+    "AUDIO EXACT SEEK REGRESSION PASS",
+    "AUDIO LOOP REGRESSION PASS",
+    "AUDIO OWNERSHIP REGRESSION PASS",
+    "AUDIO SOURCE REWARD PASS",
+    "AUDIO HEAP STABILITY PASS",
+    "AUDIO MEMORY REGRESSION PASS",
+    "AUDIO ALL ASSETS REGRESSION PASS",
+    "AUDIO RESUME REGRESSION PASS"
+  ],
+  "exact_sample": 652536,
+  "requested_music09_offline_seconds_after_resume": 90,
+  "memory_maps": [
+    {
+      "map": 0,
+      "free_bytes": 1203640
+    },
+    {
+      "map": 1,
+      "free_bytes": 1263816
+    },
+    {
+      "map": 2,
+      "free_bytes": 1353272
+    },
+    {
+      "map": 3,
+      "free_bytes": 1211080
+    },
+    {
+      "map": 4,
+      "free_bytes": 1374432
+    },
+    {
+      "map": 5,
+      "free_bytes": 1017152
+    },
+    {
+      "map": 6,
+      "free_bytes": 1226288
+    },
+    {
+      "map": 7,
+      "free_bytes": 1374448
+    },
+    {
+      "map": 8,
+      "free_bytes": 1011648
+    },
+    {
+      "map": 9,
+      "free_bytes": 1123712
+    },
+    {
+      "map": 10,
+      "free_bytes": 1374440
+    },
+    {
+      "map": 11,
+      "free_bytes": 1011696
+    },
+    {
+      "map": 12,
+      "free_bytes": 1114064
+    },
+    {
+      "map": 13,
+      "free_bytes": 1374432
+    },
+    {
+      "map": 14,
+      "free_bytes": 1080368
+    },
+    {
+      "map": 15,
+      "free_bytes": 1173960
+    },
+    {
+      "map": 16,
+      "free_bytes": 1314328
+    },
+    {
+      "map": 17,
+      "free_bytes": 1056752
+    },
+    {
+      "map": 18,
+      "free_bytes": 983216
+    },
+    {
+      "map": 19,
+      "free_bytes": 1312080
+    },
+    {
+      "map": 20,
+      "free_bytes": 981664
+    },
+    {
+      "map": 21,
+      "free_bytes": 1150688
+    },
+    {
+      "map": 22,
+      "free_bytes": 1374432
+    },
+    {
+      "map": 23,
+      "free_bytes": 1023536
+    },
+    {
+      "map": 24,
+      "free_bytes": 1222792
+    },
+    {
+      "map": 25,
+      "free_bytes": 1374464
+    },
+    {
+      "map": 26,
+      "free_bytes": 1064624
+    },
+    {
+      "map": 27,
+      "free_bytes": 1084792
+    },
+    {
+      "map": 28,
+      "free_bytes": 1374440
+    },
+    {
+      "map": 29,
+      "free_bytes": 849680
+    },
+    {
+      "map": 30,
+      "free_bytes": 1164480
+    },
+    {
+      "map": 31,
+      "free_bytes": 1414472
+    },
+    {
+      "map": 32,
+      "free_bytes": 874280
+    },
+    {
+      "map": 33,
+      "free_bytes": 1389560
+    }
+  ],
+  "decoded_assets": [
+    {
+      "kind": 0,
+      "id": 0
+    },
+    {
+      "kind": 0,
+      "id": 1
+    },
+    {
+      "kind": 0,
+      "id": 2
+    },
+    {
+      "kind": 0,
+      "id": 3
+    },
+    {
+      "kind": 0,
+      "id": 4
+    },
+    {
+      "kind": 0,
+      "id": 5
+    },
+    {
+      "kind": 0,
+      "id": 6
+    },
+    {
+      "kind": 0,
+      "id": 7
+    },
+    {
+      "kind": 0,
+      "id": 8
+    },
+    {
+      "kind": 0,
+      "id": 9
+    },
+    {
+      "kind": 0,
+      "id": 10
+    },
+    {
+      "kind": 0,
+      "id": 11
+    },
+    {
+      "kind": 0,
+      "id": 12
+    },
+    {
+      "kind": 0,
+      "id": 13
+    },
+    {
+      "kind": 0,
+      "id": 14
+    },
+    {
+      "kind": 0,
+      "id": 15
+    },
+    {
+      "kind": 0,
+      "id": 16
+    },
+    {
+      "kind": 0,
+      "id": 17
+    },
+    {
+      "kind": 0,
+      "id": 18
+    },
+    {
+      "kind": 0,
+      "id": 19
+    },
+    {
+      "kind": 0,
+      "id": 20
+    },
+    {
+      "kind": 0,
+      "id": 21
+    },
+    {
+      "kind": 0,
+      "id": 22
+    },
+    {
+      "kind": 0,
+      "id": 23
+    },
+    {
+      "kind": 0,
+      "id": 24
+    },
+    {
+      "kind": 0,
+      "id": 25
+    },
+    {
+      "kind": 0,
+      "id": 26
+    },
+    {
+      "kind": 0,
+      "id": 27
+    },
+    {
+      "kind": 0,
+      "id": 28
+    },
+    {
+      "kind": 0,
+      "id": 29
+    },
+    {
+      "kind": 0,
+      "id": 30
+    },
+    {
+      "kind": 1,
+      "id": 0
+    },
+    {
+      "kind": 1,
+      "id": 1
+    },
+    {
+      "kind": 1,
+      "id": 2
+    },
+    {
+      "kind": 1,
+      "id": 3
+    },
+    {
+      "kind": 1,
+      "id": 4
+    },
+    {
+      "kind": 1,
+      "id": 5
+    },
+    {
+      "kind": 1,
+      "id": 6
+    },
+    {
+      "kind": 1,
+      "id": 7
+    },
+    {
+      "kind": 1,
+      "id": 8
+    },
+    {
+      "kind": 1,
+      "id": 9
+    },
+    {
+      "kind": 1,
+      "id": 10
+    },
+    {
+      "kind": 1,
+      "id": 11
+    },
+    {
+      "kind": 1,
+      "id": 12
+    },
+    {
+      "kind": 1,
+      "id": 13
+    },
+    {
+      "kind": 1,
+      "id": 14
+    },
+    {
+      "kind": 1,
+      "id": 15
+    },
+    {
+      "kind": 1,
+      "id": 16
+    },
+    {
+      "kind": 1,
+      "id": 17
+    },
+    {
+      "kind": 1,
+      "id": 18
+    },
+    {
+      "kind": 1,
+      "id": 19
+    },
+    {
+      "kind": 1,
+      "id": 20
+    },
+    {
+      "kind": 1,
+      "id": 21
+    },
+    {
+      "kind": 1,
+      "id": 22
+    },
+    {
+      "kind": 1,
+      "id": 23
+    },
+    {
+      "kind": 1,
+      "id": 24
+    },
+    {
+      "kind": 1,
+      "id": 25
+    },
+    {
+      "kind": 1,
+      "id": 26
+    },
+    {
+      "kind": 1,
+      "id": 27
+    },
+    {
+      "kind": 1,
+      "id": 28
+    },
+    {
+      "kind": 1,
+      "id": 29
+    },
+    {
+      "kind": 1,
+      "id": 30
+    },
+    {
+      "kind": 1,
+      "id": 31
+    },
+    {
+      "kind": 1,
+      "id": 32
+    },
+    {
+      "kind": 1,
+      "id": 33
+    },
+    {
+      "kind": 1,
+      "id": 34
+    },
+    {
+      "kind": 1,
+      "id": 35
+    },
+    {
+      "kind": 1,
+      "id": 36
+    },
+    {
+      "kind": 1,
+      "id": 37
+    },
+    {
+      "kind": 1,
+      "id": 38
+    },
+    {
+      "kind": 1,
+      "id": 39
+    },
+    {
+      "kind": 1,
+      "id": 40
+    },
+    {
+      "kind": 1,
+      "id": 41
+    },
+    {
+      "kind": 1,
+      "id": 42
+    },
+    {
+      "kind": 1,
+      "id": 43
+    },
+    {
+      "kind": 1,
+      "id": 44
+    },
+    {
+      "kind": 1,
+      "id": 45
+    },
+    {
+      "kind": 1,
+      "id": 46
+    },
+    {
+      "kind": 1,
+      "id": 47
+    },
+    {
+      "kind": 1,
+      "id": 48
+    },
+    {
+      "kind": 1,
+      "id": 49
+    },
+    {
+      "kind": 1,
+      "id": 50
+    },
+    {
+      "kind": 1,
+      "id": 51
+    },
+    {
+      "kind": 1,
+      "id": 52
+    },
+    {
+      "kind": 1,
+      "id": 53
+    },
+    {
+      "kind": 1,
+      "id": 54
+    },
+    {
+      "kind": 1,
+      "id": 55
+    },
+    {
+      "kind": 1,
+      "id": 56
+    },
+    {
+      "kind": 1,
+      "id": 57
+    },
+    {
+      "kind": 1,
+      "id": 58
+    },
+    {
+      "kind": 1,
+      "id": 59
+    },
+    {
+      "kind": 1,
+      "id": 60
+    },
+    {
+      "kind": 1,
+      "id": 61
+    },
+    {
+      "kind": 1,
+      "id": 62
+    },
+    {
+      "kind": 1,
+      "id": 63
+    },
+    {
+      "kind": 1,
+      "id": 64
+    },
+    {
+      "kind": 1,
+      "id": 65
+    },
+    {
+      "kind": 1,
+      "id": 66
+    },
+    {
+      "kind": 1,
+      "id": 67
+    },
+    {
+      "kind": 1,
+      "id": 68
+    },
+    {
+      "kind": 1,
+      "id": 69
+    },
+    {
+      "kind": 1,
+      "id": 70
+    },
+    {
+      "kind": 1,
+      "id": 71
+    },
+    {
+      "kind": 1,
+      "id": 72
+    },
+    {
+      "kind": 1,
+      "id": 73
+    },
+    {
+      "kind": 1,
+      "id": 74
+    },
+    {
+      "kind": 1,
+      "id": 75
+    },
+    {
+      "kind": 1,
+      "id": 76
+    },
+    {
+      "kind": 1,
+      "id": 77
+    },
+    {
+      "kind": 1,
+      "id": 78
+    },
+    {
+      "kind": 1,
+      "id": 79
+    },
+    {
+      "kind": 1,
+      "id": 80
+    },
+    {
+      "kind": 1,
+      "id": 81
+    },
+    {
+      "kind": 1,
+      "id": 82
+    },
+    {
+      "kind": 1,
+      "id": 83
+    },
+    {
+      "kind": 1,
+      "id": 84
+    },
+    {
+      "kind": 1,
+      "id": 85
+    },
+    {
+      "kind": 1,
+      "id": 86
+    },
+    {
+      "kind": 1,
+      "id": 87
+    },
+    {
+      "kind": 1,
+      "id": 88
+    },
+    {
+      "kind": 1,
+      "id": 89
+    },
+    {
+      "kind": 1,
+      "id": 90
+    },
+    {
+      "kind": 1,
+      "id": 91
+    },
+    {
+      "kind": 1,
+      "id": 92
+    },
+    {
+      "kind": 1,
+      "id": 93
+    },
+    {
+      "kind": 1,
+      "id": 94
+    },
+    {
+      "kind": 1,
+      "id": 95
+    }
+  ],
+  "source_fixture": "ow_new_game -> actual Sam practice outcome -> ow_finish_duel -> original starter reward",
+  "private_save_path": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/audio-resume-after/native-4mib-all-assets/saves"
+}

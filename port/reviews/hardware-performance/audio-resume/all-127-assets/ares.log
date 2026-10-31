@@ -1,0 +1,530 @@
+Loaded poketcg-audio-resume-after
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=320 height=240 ram=4194304 highres=0
+2026-10-31 12:03:41.846 ares[89092:18761334] Resizing output buffers to 1536, 1152
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 69132 bytes
+AUDIO ASSET DECODE PASS kind=0 id=0
+AUDIO ASSET DECODE PASS kind=0 id=1
+AUDIO ASSET DECODE PASS kind=0 id=2
+AUDIO ASSET DECODE PASS kind=0 id=3
+AUDIO ASSET DECODE PASS kind=0 id=4
+AUDIO ASSET DECODE PASS kind=0 id=5
+AUDIO ASSET DECODE PASS kind=0 id=6
+AUDIO ASSET DECODE PASS kind=0 id=7
+AUDIO ASSET DECODE PASS kind=0 id=8
+AUDIO ASSET DECODE PASS kind=0 id=9
+AUDIO ASSET DECODE PASS kind=0 id=10
+AUDIO ASSET DECODE PASS kind=0 id=11
+AUDIO ASSET DECODE PASS kind=0 id=12
+AUDIO ASSET DECODE PASS kind=0 id=13
+AUDIO ASSET DECODE PASS kind=0 id=14
+AUDIO ASSET DECODE PASS kind=0 id=15
+AUDIO ASSET DECODE PASS kind=0 id=16
+AUDIO ASSET DECODE PASS kind=0 id=17
+AUDIO ASSET DECODE PASS kind=0 id=18
+AUDIO ASSET DECODE PASS kind=0 id=19
+AUDIO ASSET DECODE PASS kind=0 id=20
+AUDIO ASSET DECODE PASS kind=0 id=21
+AUDIO ASSET DECODE PASS kind=0 id=22
+AUDIO ASSET DECODE PASS kind=0 id=23
+AUDIO ASSET DECODE PASS kind=0 id=24
+AUDIO ASSET DECODE PASS kind=0 id=25
+AUDIO ASSET DECODE PASS kind=0 id=26
+AUDIO ASSET DECODE PASS kind=0 id=27
+AUDIO ASSET DECODE PASS kind=0 id=28
+AUDIO ASSET DECODE PASS kind=0 id=29
+AUDIO ASSET DECODE PASS kind=0 id=30
+AUDIO ASSET DECODE PASS kind=1 id=0
+AUDIO ASSET DECODE PASS kind=1 id=1
+AUDIO ASSET DECODE PASS kind=1 id=2
+AUDIO ASSET DECODE PASS kind=1 id=3
+AUDIO ASSET DECODE PASS kind=1 id=4
+AUDIO ASSET DECODE PASS kind=1 id=5
+AUDIO ASSET DECODE PASS kind=1 id=6
+AUDIO ASSET DECODE PASS kind=1 id=7
+AUDIO ASSET DECODE PASS kind=1 id=8
+AUDIO ASSET DECODE PASS kind=1 id=9
+AUDIO ASSET DECODE PASS kind=1 id=10
+AUDIO ASSET DECODE PASS kind=1 id=11
+AUDIO ASSET DECODE PASS kind=1 id=12
+AUDIO ASSET DECODE PASS kind=1 id=13
+AUDIO ASSET DECODE PASS kind=1 id=14
+AUDIO ASSET DECODE PASS kind=1 id=15
+AUDIO ASSET DECODE PASS kind=1 id=16
+AUDIO ASSET DECODE PASS kind=1 id=17
+AUDIO ASSET DECODE PASS kind=1 id=18
+AUDIO ASSET DECODE PASS kind=1 id=19
+AUDIO ASSET DECODE PASS kind=1 id=20
+AUDIO ASSET DECODE PASS kind=1 id=21
+AUDIO ASSET DECODE PASS kind=1 id=22
+AUDIO ASSET DECODE PASS kind=1 id=23
+AUDIO ASSET DECODE PASS kind=1 id=24
+AUDIO ASSET DECODE PASS kind=1 id=25
+AUDIO ASSET DECODE PASS kind=1 id=26
+AUDIO ASSET DECODE PASS kind=1 id=27
+AUDIO ASSET DECODE PASS kind=1 id=28
+AUDIO ASSET DECODE PASS kind=1 id=29
+AUDIO ASSET DECODE PASS kind=1 id=30
+AUDIO ASSET DECODE PASS kind=1 id=31
+AUDIO ASSET DECODE PASS kind=1 id=32
+AUDIO ASSET DECODE PASS kind=1 id=33
+AUDIO ASSET DECODE PASS kind=1 id=34
+AUDIO ASSET DECODE PASS kind=1 id=35
+AUDIO ASSET DECODE PASS kind=1 id=36
+AUDIO ASSET DECODE PASS kind=1 id=37
+AUDIO ASSET DECODE PASS kind=1 id=38
+AUDIO ASSET DECODE PASS kind=1 id=39
+AUDIO ASSET DECODE PASS kind=1 id=40
+AUDIO ASSET DECODE PASS kind=1 id=41
+AUDIO ASSET DECODE PASS kind=1 id=42
+AUDIO ASSET DECODE PASS kind=1 id=43
+AUDIO ASSET DECODE PASS kind=1 id=44
+AUDIO ASSET DECODE PASS kind=1 id=45
+AUDIO ASSET DECODE PASS kind=1 id=46
+AUDIO ASSET DECODE PASS kind=1 id=47
+AUDIO ASSET DECODE PASS kind=1 id=48
+AUDIO ASSET DECODE PASS kind=1 id=49
+AUDIO ASSET DECODE PASS kind=1 id=50
+AUDIO ASSET DECODE PASS kind=1 id=51
+AUDIO ASSET DECODE PASS kind=1 id=52
+AUDIO ASSET DECODE PASS kind=1 id=53
+AUDIO ASSET DECODE PASS kind=1 id=54
+AUDIO ASSET DECODE PASS kind=1 id=55
+AUDIO ASSET DECODE PASS kind=1 id=56
+AUDIO ASSET DECODE PASS kind=1 id=57
+AUDIO ASSET DECODE PASS kind=1 id=58
+AUDIO ASSET DECODE PASS kind=1 id=59
+AUDIO ASSET DECODE PASS kind=1 id=60
+AUDIO ASSET DECODE PASS kind=1 id=61
+AUDIO ASSET DECODE PASS kind=1 id=62
+AUDIO ASSET DECODE PASS kind=1 id=63
+AUDIO ASSET DECODE PASS kind=1 id=64
+AUDIO ASSET DECODE PASS kind=1 id=65
+AUDIO ASSET DECODE PASS kind=1 id=66
+AUDIO ASSET DECODE PASS kind=1 id=67
+AUDIO ASSET DECODE PASS kind=1 id=68
+AUDIO ASSET DECODE PASS kind=1 id=69
+AUDIO ASSET DECODE PASS kind=1 id=70
+AUDIO ASSET DECODE PASS kind=1 id=71
+AUDIO ASSET DECODE PASS kind=1 id=72
+AUDIO ASSET DECODE PASS kind=1 id=73
+AUDIO ASSET DECODE PASS kind=1 id=74
+AUDIO ASSET DECODE PASS kind=1 id=75
+AUDIO ASSET DECODE PASS kind=1 id=76
+AUDIO ASSET DECODE PASS kind=1 id=77
+AUDIO ASSET DECODE PASS kind=1 id=78
+AUDIO ASSET DECODE PASS kind=1 id=79
+AUDIO ASSET DECODE PASS kind=1 id=80
+AUDIO ASSET DECODE PASS kind=1 id=81
+AUDIO ASSET DECODE PASS kind=1 id=82
+AUDIO ASSET DECODE PASS kind=1 id=83
+AUDIO ASSET DECODE PASS kind=1 id=84
+AUDIO ASSET DECODE PASS kind=1 id=85
+AUDIO ASSET DECODE PASS kind=1 id=86
+AUDIO ASSET DECODE PASS kind=1 id=87
+AUDIO ASSET DECODE PASS kind=1 id=88
+AUDIO ASSET DECODE PASS kind=1 id=89
+AUDIO ASSET DECODE PASS kind=1 id=90
+AUDIO ASSET DECODE PASS kind=1 id=91
+AUDIO ASSET DECODE PASS kind=1 id=92
+AUDIO ASSET DECODE PASS kind=1 id=93
+AUDIO ASSET DECODE PASS kind=1 id=94
+AUDIO ASSET DECODE PASS kind=1 id=95
+AUDIO ALL ASSETS REGRESSION PASS: 31 songs, 96 SFX, real RSP decoder, finite tails and loop starts
+AUDIO RESUME REPRO pause=652536
+AUDIO EXACT SEEK REGRESSION PASS: resumed sample652536 without reopening
+AUDIO LOOP REGRESSION PASS: music09 90 seconds past resume
+AUDIO HEAP STABILITY PASS: warm_used=1141152 across24 fanfares
+AUDIO OWNERSHIP REGRESSION PASS: 24 fanfares, nested pause, SFX, replacement, silence, finite end
+AUDIO RESUME REPRO pause=652536
+Scene rom:/world/maps/overworld.l64: 18 batches, 17 textures, 292664 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 10916.000 us (mode: sync, success: yes).
+GAME FPS 30 frames=16 ticks=4290853185
+GAME FPS 30 frames=31 ticks=4314319308
+AUDIO SOURCE REWARD PASS: practice duel, music09 pause/fanfare/wait/resume, 90 cards, save
+GAME FPS 2 frames=41 ticks=4566460517
+AUDIO MEMORY map=0 free=1203640
+Scene rom:/world/maps/mason_laboratory.l64: 24 batches, 23 textures, 43128 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_dr_mason.l64: 6 batches, 1 textures, 35504 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_dr_mason.l64: 6 batches, 1 textures, 26084 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+AUDIO MEMORY map=1 free=1263816
+Scene rom:/world/maps/deck_machine_room_dynamic.l64: 13 batches, 12 textures, 23280 bytes
+Scene rom:/world/maps/deck_machine_2_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_3_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_4_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_5_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_6_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_7_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_8_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/deck_machine_9_off.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+GAME FPS 3 frames=43 ticks=4595074640
+AUDIO MEMORY map=2 free=1353272
+Scene rom:/world/maps/ishiharas_house.l64: 21 batches, 20 textures, 30888 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_ishihara.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_nikki.l64: 6 batches, 1 textures, 29300 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_ishihara.l64: 6 batches, 1 textures, 24860 bytes
+Scene rom:/world/lod/actor_nikki.l64: 6 batches, 1 textures, 23984 bytes
+AUDIO MEMORY map=3 free=1211080
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_fighting_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+GAME FPS 3 frames=45 ticks=4624473528
+AUDIO MEMORY map=4 free=1374432
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_specs.l64: 6 batches, 1 textures, 28800 bytes
+Scene rom:/world/maps/actor_butch.l64: 6 batches, 1 textures, 29144 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_granny.l64: 6 batches, 1 textures, 39320 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_specs.l64: 6 batches, 1 textures, 22176 bytes
+Scene rom:/world/lod/actor_butch.l64: 6 batches, 1 textures, 22208 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_granny.l64: 6 batches, 1 textures, 27368 bytes
+GAME FPS 2 frames=46 ticks=4652237061
+AUDIO MEMORY map=5 free=1017152
+Scene rom:/world/maps/fighting_club.l64: 12 batches, 11 textures, 64092 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_mitch.l64: 6 batches, 1 textures, 30320 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_lass3.l64: 6 batches, 1 textures, 36344 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_mitch.l64: 6 batches, 1 textures, 28952 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_lass3.l64: 6 batches, 1 textures, 29732 bytes
+AUDIO MEMORY map=6 free=1226288
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_rock_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+GAME FPS 3 frames=48 ticks=4683006569
+AUDIO MEMORY map=7 free=1374448
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_lass1.l64: 6 batches, 1 textures, 31652 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_woman.l64: 6 batches, 1 textures, 29756 bytes
+Scene rom:/world/maps/actor_mania_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_lass1.l64: 6 batches, 1 textures, 26000 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_woman.l64: 6 batches, 1 textures, 24056 bytes
+Scene rom:/world/lod/actor_mania_palette2.l64: 6 batches, 1 textures, 22280 bytes
+GAME FPS 2 frames=49 ticks=4711443349
+AUDIO MEMORY map=8 free=1011648
+Scene rom:/world/maps/rock_club.l64: 37 batches, 36 textures, 75780 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_gene.l64: 6 batches, 1 textures, 35400 bytes
+Scene rom:/world/maps/actor_boy.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_gene.l64: 6 batches, 1 textures, 23412 bytes
+Scene rom:/world/lod/actor_boy.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+AUDIO MEMORY map=9 free=1123712
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_water_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+GAME FPS 3 frames=51 ticks=4743574776
+AUDIO MEMORY map=10 free=1374440
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/maps/actor_pappy.l64: 6 batches, 1 textures, 36992 bytes
+Scene rom:/world/maps/actor_lass2.l64: 6 batches, 1 textures, 31772 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+Scene rom:/world/lod/actor_pappy.l64: 6 batches, 1 textures, 25364 bytes
+Scene rom:/world/lod/actor_lass2.l64: 6 batches, 1 textures, 26576 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+GAME FPS 2 frames=52 ticks=4771474948
+AUDIO MEMORY map=11 free=1011696
+Scene rom:/world/maps/water_club.l64: 20 batches, 19 textures, 98712 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_joshua.l64: 6 batches, 1 textures, 31868 bytes
+Scene rom:/world/maps/actor_swimmer.l64: 6 batches, 1 textures, 29684 bytes
+Scene rom:/world/maps/actor_swimmer_palette2.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/maps/actor_amy__lying.l64: 6 batches, 1 textures, 30452 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_joshua.l64: 6 batches, 1 textures, 21620 bytes
+Scene rom:/world/lod/actor_swimmer.l64: 6 batches, 1 textures, 24476 bytes
+Scene rom:/world/lod/actor_swimmer_palette2.l64: 6 batches, 1 textures, 24404 bytes
+Scene rom:/world/lod/actor_amy__lying.l64: 6 batches, 1 textures, 25316 bytes
+GAME FPS 2 frames=53 ticks=4796652457
+AUDIO MEMORY map=12 free=1114064
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_lightning_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+AUDIO MEMORY map=13 free=1374432
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_hood.l64: 6 batches, 1 textures, 26800 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_lass1.l64: 6 batches, 1 textures, 31652 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_hood.l64: 6 batches, 1 textures, 21484 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_lass1.l64: 6 batches, 1 textures, 26000 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+GAME FPS 3 frames=55 ticks=4832031869
+AUDIO MEMORY map=14 free=1080368
+Scene rom:/world/maps/lightning_club.l64: 35 batches, 34 textures, 34584 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_isaac.l64: 6 batches, 1 textures, 32616 bytes
+Scene rom:/world/maps/actor_hood.l64: 6 batches, 1 textures, 26800 bytes
+Scene rom:/world/maps/actor_girl.l64: 6 batches, 1 textures, 35344 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_isaac.l64: 6 batches, 1 textures, 23904 bytes
+Scene rom:/world/lod/actor_hood.l64: 6 batches, 1 textures, 21484 bytes
+Scene rom:/world/lod/actor_girl.l64: 6 batches, 1 textures, 24052 bytes
+AUDIO MEMORY map=15 free=1173960
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_grass_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+GAME FPS 3 frames=57 ticks=4864792787
+AUDIO MEMORY map=16 free=1314328
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_girl.l64: 6 batches, 1 textures, 35344 bytes
+Scene rom:/world/maps/actor_lass2.l64: 6 batches, 1 textures, 31772 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/maps/actor_granny.l64: 6 batches, 1 textures, 39320 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_girl.l64: 6 batches, 1 textures, 24052 bytes
+Scene rom:/world/lod/actor_lass2.l64: 6 batches, 1 textures, 26576 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+Scene rom:/world/lod/actor_granny.l64: 6 batches, 1 textures, 27368 bytes
+GAME FPS 2 frames=58 ticks=4891175301
+AUDIO MEMORY map=17 free=1056752
+Scene rom:/world/maps/grass_club.l64: 36 batches, 35 textures, 227688 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_nikki.l64: 6 batches, 1 textures, 29300 bytes
+Scene rom:/world/maps/actor_lass1.l64: 6 batches, 1 textures, 31652 bytes
+Scene rom:/world/maps/actor_lass2.l64: 6 batches, 1 textures, 31772 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_nikki.l64: 6 batches, 1 textures, 23984 bytes
+Scene rom:/world/lod/actor_lass1.l64: 6 batches, 1 textures, 26000 bytes
+Scene rom:/world/lod/actor_lass2.l64: 6 batches, 1 textures, 26576 bytes
+GAME FPS 2 frames=59 ticks=4921054812
+AUDIO MEMORY map=18 free=983216
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_psychic_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+AUDIO MEMORY map=19 free=1312080
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_pappy.l64: 6 batches, 1 textures, 36992 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/maps/actor_boy_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_pappy.l64: 6 batches, 1 textures, 25364 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+Scene rom:/world/lod/actor_boy_palette2.l64: 6 batches, 1 textures, 22280 bytes
+GAME FPS 2 frames=61 ticks=4964947936
+AUDIO MEMORY map=20 free=981664
+Scene rom:/world/maps/psychic_club.l64: 33 batches, 32 textures, 43644 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_murray.l64: 6 batches, 1 textures, 37424 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_girl.l64: 6 batches, 1 textures, 35344 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_murray.l64: 6 batches, 1 textures, 25076 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_girl.l64: 6 batches, 1 textures, 24052 bytes
+AUDIO MEMORY map=21 free=1150688
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_science_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+GAME FPS 3 frames=63 ticks=4996030770
+AUDIO MEMORY map=22 free=1374432
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_imakuni.l64: 6 batches, 1 textures, 25544 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_specs.l64: 6 batches, 1 textures, 28800 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_imakuni.l64: 6 batches, 1 textures, 20792 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_specs.l64: 6 batches, 1 textures, 22176 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+GAME FPS 2 frames=64 ticks=5023291716
+AUDIO MEMORY map=23 free=1023536
+Scene rom:/world/maps/science_club.l64: 39 batches, 38 textures, 30864 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_rick.l64: 6 batches, 1 textures, 32448 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_rick.l64: 6 batches, 1 textures, 23856 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+AUDIO MEMORY map=24 free=1222792
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_fire_club_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+GAME FPS 3 frames=66 ticks=5050174814
+AUDIO MEMORY map=25 free=1374464
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_lass3.l64: 6 batches, 1 textures, 36344 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_boy_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_lass3.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_boy_palette2.l64: 6 batches, 1 textures, 22280 bytes
+GAME FPS 2 frames=67 ticks=5075805333
+AUDIO MEMORY map=26 free=1064624
+Scene rom:/world/maps/fire_club.l64: 35 batches, 34 textures, 38976 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ken.l64: 6 batches, 1 textures, 37176 bytes
+Scene rom:/world/maps/actor_lad.l64: 6 batches, 1 textures, 30776 bytes
+Scene rom:/world/maps/actor_specs.l64: 6 batches, 1 textures, 28800 bytes
+Scene rom:/world/maps/actor_boy_palette2.l64: 6 batches, 1 textures, 28376 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ken.l64: 6 batches, 1 textures, 35808 bytes
+Scene rom:/world/lod/actor_lad.l64: 6 batches, 1 textures, 22112 bytes
+Scene rom:/world/lod/actor_specs.l64: 6 batches, 1 textures, 22176 bytes
+Scene rom:/world/lod/actor_boy_palette2.l64: 6 batches, 1 textures, 22280 bytes
+AUDIO MEMORY map=27 free=1084792
+Scene rom:/world/maps/club_foyer.l64: 18 batches, 17 textures, 14112 bytes
+Scene rom:/world/maps/emblem_challenge_hall_entrance.l64: 1 batches, 1 textures, 176 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+GAME FPS 3 frames=69 ticks=5109624599
+AUDIO MEMORY map=28 free=1374440
+Scene rom:/world/maps/club_lobby.l64: 23 batches, 22 textures, 41808 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_mania.l64: 6 batches, 1 textures, 28328 bytes
+Scene rom:/world/maps/actor_hood.l64: 6 batches, 1 textures, 26800 bytes
+Scene rom:/world/maps/actor_chap.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_pappy.l64: 6 batches, 1 textures, 36992 bytes
+Scene rom:/world/maps/actor_lass3.l64: 6 batches, 1 textures, 36344 bytes
+Scene rom:/world/maps/actor_clerk.l64: 6 batches, 1 textures, 33992 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_mania.l64: 6 batches, 1 textures, 22352 bytes
+Scene rom:/world/lod/actor_hood.l64: 6 batches, 1 textures, 21484 bytes
+Scene rom:/world/lod/actor_chap.l64: 6 batches, 1 textures, 24908 bytes
+Scene rom:/world/lod/actor_pappy.l64: 6 batches, 1 textures, 25364 bytes
+Scene rom:/world/lod/actor_lass3.l64: 6 batches, 1 textures, 29732 bytes
+Scene rom:/world/lod/actor_clerk.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+GAME FPS 1 frames=70 ticks=5145742884
+AUDIO MEMORY map=29 free=849680
+Scene rom:/world/maps/challenge_hall.l64: 49 batches, 48 textures, 45408 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_man.l64: 6 batches, 1 textures, 28880 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 27932 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_man.l64: 6 batches, 1 textures, 22892 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 22808 bytes
+AUDIO MEMORY map=30 free=1164480
+Scene rom:/world/maps/pokemon_dome_entrance.l64: 27 batches, 26 textures, 22248 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+GAME FPS 4 frames=72 ticks=5170841751
+AUDIO MEMORY map=31 free=1414472
+Scene rom:/world/maps/pokemon_dome.l64: 54 batches, 53 textures, 75396 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 42032 bytes
+Scene rom:/world/maps/actor_courtney.l64: 6 batches, 1 textures, 34460 bytes
+Scene rom:/world/maps/actor_steve.l64: 6 batches, 1 textures, 37460 bytes
+Scene rom:/world/maps/actor_jack.l64: 6 batches, 1 textures, 32076 bytes
+Scene rom:/world/maps/actor_rod.l64: 6 batches, 1 textures, 37668 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 27812 bytes
+Scene rom:/world/lod/actor_courtney.l64: 6 batches, 1 textures, 27176 bytes
+Scene rom:/world/lod/actor_steve.l64: 6 batches, 1 textures, 24332 bytes
+Scene rom:/world/lod/actor_jack.l64: 6 batches, 1 textures, 23460 bytes
+Scene rom:/world/lod/actor_rod.l64: 6 batches, 1 textures, 25596 bytes
+GAME FPS 2 frames=73 ticks=5201045249
+AUDIO MEMORY map=32 free=874280
+Scene rom:/world/maps/hall_of_honor.l64: 27 batches, 26 textures, 25644 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/world/maps/actor_legendary_card__bottom_left.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__bottom_right.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__left_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/actor_legendary_card__right_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/actor_legendary_card__top_left.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/maps/actor_legendary_card__top_right.l64: 1 batches, 0 textures, 1140 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+AUDIO MEMORY map=33 free=1389560
+AUDIO MEMORY REGRESSION PASS: 34 maps, both music slots and SFX allocated, minimum_free=849680
+AUDIO RESUME REGRESSION PASS

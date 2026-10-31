@@ -12,9 +12,12 @@ The web uses the same source faces, flight/landing/reveal and history. Keyboard,
 
 ## Captures and checks
 
-- [320×240 native animation preview](coin-toss-320.gif)
-- [320×240 native sequence](native-sequence-320.png)
-- [480×360 native sequence](native-sequence-480.png)
+The final compact window,20frame sequence and measured CPU improvement are documented in [the compact revision](compact/README.md). Its captures supersede the initial large-window images below.
+
+
+- [Current native animation detail](compact/coin-toss-320.gif)
+- [Current320×240 native sequence](compact/native-sequence-320.png)
+- [Current480×360 native sequence](compact/native-sequence-480.png)
 - [Web flight](web/flight.png), [Heads](web/heads.png), [Tails and history](web/tails-history.png)
 
 Native PNGs are actual completed N64 RDP framebuffers **before VI filtering** from the production renderer, canvas and completion fence. The deterministic capture fixture uses the real card database and delivers Heads then Tails; it does not run an alternative randomizer. Thirty coin-panel captures provide the complete 320×240 flight sequence. The GIF composites those exact panels onto the unchanged native board and uses palette quantization for preview. Full-color native PNGs and their hashes remain alongside it. The private capture harness/raw log are under `adventure/build/coin-review`.

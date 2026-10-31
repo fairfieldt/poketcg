@@ -1,0 +1,28 @@
+Loaded poketcg-audio-truncated-eof
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=320 height=240 ram=4194304 highres=0
+2026-10-31 12:00:46.606 ares[87324:18754012] Resizing output buffers to 1536, 1152
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 69132 bytes
+ASSERTION FAILED: bitpos <= (read_start + read_bytes) * 8
+file "vendor/libdragon-audio/wav64_vadpcm.c", line 220, function: huffv_decompress
+WAV64 Huffman stream truncated
+
+Backtrace:
+    inspector_page_exception+0xa24 (libdragon/src/inspector.c:353) [0x80077624] (inline)
+    inspector+0xa24 (libdragon/src/inspector.c:640) [0x80077624]
+    handler+0x24 (libdragon/src/inspector.c:738) [0x80077cc4] (inline)
+    handler+0x24 (libdragon/src/inspector.c:736) [0x80077cc4]
+    __onSyscallException+0xbc (libdragon/src/exception.c:564) [0x8007a65c]
+    <EXCEPTION HANDLER>+0x0 (inthandler.o:0) [0x80000554]
+    __inspector_assertion+0xc (libdragon/src/inspector.c:711) [0x80077d0c]
+    debug_assert_func_f+0xb4 (libdragon/src/debug.c:370) [0x8006ff94]
+    huffv_decompress+0x870 (vendor/libdragon-audio/wav64_vadpcm.c:220) [0x8005aaf0] (inline)
+    waveform_vadpcm_read+0x870 (vendor/libdragon-audio/wav64_vadpcm.c:308) [0x8005aaf0]
+    samplebuffer_get+0xa4 (libdragon/src/audio/samplebuffer.c:138) [0x8007d724]
+    mixer_exec+0x1e4 (libdragon/src/audio/mixer.c:641) [0x8007cc04] (inline)
+    mixer_poll+0x1e4 (libdragon/src/audio/mixer.c:804) [0x8007cc04]
+    regression_mix+0x68 (audio.c:130) [0x80059648] (inline)
+    regression_reward_point+0x68 (audio.c:136) [0x80059648]
+    adventure_audio_regression+0x40 (audio.c:155) [0x800598a0]
+    main+0xd4 (main.c:482) [0x80056ef4]
+    _start+0x64 (??:0) [0x80000464]

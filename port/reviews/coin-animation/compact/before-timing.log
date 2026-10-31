@@ -1,0 +1,71 @@
+Loaded coin-speed
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=320 height=240 ram=8388608 highres=0
+TEXT Flip a coin.
+2026-10-31 11:50:29.458 ares[7227:18641774] Resizing output buffers to 1536, 1152
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 11527.000 us (mode: sync, success: yes).
+COIN SPEED width=320 frame=0 setup_us=9470 board_us=47293 coin_us=8139 present_us=1657 total_us=66561
+COIN SPEED width=320 frame=1 setup_us=9454 board_us=47249 coin_us=8050 present_us=1557 total_us=66311
+COIN SPEED width=320 frame=2 setup_us=9448 board_us=47291 coin_us=7664 present_us=1453 total_us=65858
+COIN SPEED width=320 frame=3 setup_us=9450 board_us=47085 coin_us=8176 present_us=1824 total_us=66537
+COIN SPEED width=320 frame=4 setup_us=9449 board_us=47075 coin_us=8269 present_us=1770 total_us=66565
+COIN SPEED width=320 frame=5 setup_us=9447 board_us=47121 coin_us=8158 present_us=1670 total_us=66398
+COIN SPEED width=320 frame=6 setup_us=9404 board_us=47167 coin_us=7818 present_us=1557 total_us=65948
+COIN SPEED width=320 frame=7 setup_us=9420 board_us=47156 coin_us=8153 present_us=1467 total_us=66197
+COIN SPEED width=320 frame=8 setup_us=9252 board_us=47333 coin_us=8279 present_us=1813 total_us=66679
+COIN SPEED width=320 frame=9 setup_us=9253 board_us=47324 coin_us=8181 present_us=1798 total_us=66558
+COIN SPEED width=320 frame=10 setup_us=9254 board_us=47333 coin_us=7811 present_us=1690 total_us=66090
+COIN SPEED width=320 frame=11 setup_us=9254 board_us=47331 coin_us=8182 present_us=1590 total_us=66359
+COIN SPEED width=320 frame=12 setup_us=9254 board_us=47327 coin_us=8278 present_us=1479 total_us=66340
+COIN SPEED width=320 frame=13 setup_us=9253 board_us=47339 coin_us=8190 present_us=1687 total_us=66471
+COIN SPEED width=320 frame=14 setup_us=9259 board_us=47331 coin_us=7818 present_us=1760 total_us=66170
+COIN SPEED width=320 frame=15 setup_us=9257 board_us=47327 coin_us=8164 present_us=1670 total_us=66420
+COIN SPEED width=320 frame=16 setup_us=9258 board_us=47345 coin_us=8246 present_us=1611 total_us=66460
+COIN SPEED width=320 frame=17 setup_us=9263 board_us=47336 coin_us=8152 present_us=1518 total_us=66271
+COIN SPEED width=320 frame=18 setup_us=9270 board_us=47339 coin_us=7775 present_us=1617 total_us=66001
+COIN SPEED width=320 frame=19 setup_us=9269 board_us=47338 coin_us=8006 present_us=1941 total_us=66556
+COIN SPEED width=320 frame=20 setup_us=9298 board_us=47314 coin_us=8093 present_us=1810 total_us=66517
+COIN SPEED width=320 frame=21 setup_us=9308 board_us=47321 coin_us=7981 present_us=1739 total_us=66352
+COIN SPEED width=320 frame=22 setup_us=9321 board_us=47316 coin_us=7637 present_us=1503 total_us=65779
+COIN SPEED width=320 frame=23 setup_us=9439 board_us=47262 coin_us=7984 present_us=1532 total_us=66219
+COIN SPEED width=320 frame=24 setup_us=9444 board_us=47307 coin_us=8093 present_us=1838 total_us=66683
+COIN SPEED width=320 frame=25 setup_us=9438 board_us=47306 coin_us=8103 present_us=1751 total_us=66600
+COIN SPEED width=320 frame=26 setup_us=9437 board_us=47299 coin_us=8095 present_us=1655 total_us=66488
+COIN SPEED width=320 frame=27 setup_us=9440 board_us=47282 coin_us=8096 present_us=1551 total_us=66371
+COIN SPEED width=320 frame=28 setup_us=9453 board_us=47289 coin_us=8637 present_us=1430 total_us=66811
+COIN SPEED width=320 frame=29 setup_us=9440 board_us=47370 coin_us=8638 present_us=1807 total_us=67256
+COIN DURATION width=320 frames=30 elapsed_us=1992204
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+TEXT Flip a coin.
+COIN SPEED width=480 frame=0 setup_us=21380 board_us=128933 coin_us=17067 present_us=2867 total_us=170250
+COIN SPEED width=480 frame=1 setup_us=21397 board_us=128932 coin_us=16949 present_us=2736 total_us=170015
+COIN SPEED width=480 frame=2 setup_us=21243 board_us=129166 coin_us=16052 present_us=2941 total_us=169404
+COIN SPEED width=480 frame=3 setup_us=21217 board_us=129134 coin_us=16806 present_us=3018 total_us=170176
+COIN SPEED width=480 frame=4 setup_us=21214 board_us=129194 coin_us=17142 present_us=2865 total_us=170417
+COIN SPEED width=480 frame=5 setup_us=21364 board_us=128962 coin_us=16830 present_us=2836 total_us=169994
+COIN SPEED width=480 frame=6 setup_us=21385 board_us=128871 coin_us=16061 present_us=2863 total_us=169182
+COIN SPEED width=480 frame=7 setup_us=21297 board_us=129085 coin_us=16820 present_us=2969 total_us=170171
+COIN SPEED width=480 frame=8 setup_us=21233 board_us=129113 coin_us=17057 present_us=3057 total_us=170461
+COIN SPEED width=480 frame=9 setup_us=21228 board_us=129114 coin_us=16794 present_us=2869 total_us=170007
+COIN SPEED width=480 frame=10 setup_us=21244 board_us=129189 coin_us=16053 present_us=2818 total_us=169306
+COIN SPEED width=480 frame=11 setup_us=21392 board_us=128916 coin_us=16797 present_us=2986 total_us=170092
+COIN SPEED width=480 frame=12 setup_us=21280 board_us=129117 coin_us=17143 present_us=2969 total_us=170510
+COIN SPEED width=480 frame=13 setup_us=21218 board_us=129094 coin_us=16844 present_us=3062 total_us=170219
+COIN SPEED width=480 frame=14 setup_us=21217 board_us=129140 coin_us=16057 present_us=2831 total_us=169246
+COIN SPEED width=480 frame=15 setup_us=21215 board_us=129106 coin_us=16837 present_us=2793 total_us=169953
+COIN SPEED width=480 frame=16 setup_us=21348 board_us=129036 coin_us=17060 present_us=2755 total_us=170200
+COIN SPEED width=480 frame=17 setup_us=21341 board_us=129078 coin_us=16813 present_us=2959 total_us=170193
+COIN SPEED width=480 frame=18 setup_us=21244 board_us=129122 coin_us=16057 present_us=3066 total_us=169490
+COIN SPEED width=480 frame=19 setup_us=21245 board_us=129100 coin_us=16805 present_us=2839 total_us=169990
+COIN SPEED width=480 frame=20 setup_us=21228 board_us=129128 coin_us=17134 present_us=2834 total_us=170325
+COIN SPEED width=480 frame=21 setup_us=21347 board_us=128961 coin_us=16831 present_us=2743 total_us=169883
+COIN SPEED width=480 frame=22 setup_us=21385 board_us=128965 coin_us=16054 present_us=3036 total_us=169441
+COIN SPEED width=480 frame=23 setup_us=21276 board_us=129110 coin_us=16867 present_us=3054 total_us=170308
+COIN SPEED width=480 frame=24 setup_us=21229 board_us=129098 coin_us=17075 present_us=2819 total_us=170223
+COIN SPEED width=480 frame=25 setup_us=21224 board_us=129098 coin_us=17091 present_us=2888 total_us=170303
+COIN SPEED width=480 frame=26 setup_us=21241 board_us=129120 coin_us=17071 present_us=2811 total_us=170244
+COIN SPEED width=480 frame=27 setup_us=21399 board_us=128894 coin_us=17081 present_us=2993 total_us=170368
+COIN SPEED width=480 frame=28 setup_us=21229 board_us=129275 coin_us=18249 present_us=3083 total_us=171837
+COIN SPEED width=480 frame=29 setup_us=21218 board_us=129158 coin_us=18253 present_us=2801 total_us=171432
+COIN DURATION width=480 frames=30 elapsed_us=5104005
+COIN SPEED REVIEW PASS

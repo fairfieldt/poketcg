@@ -1,0 +1,233 @@
+{
+  "passed": true,
+  "case": "native",
+  "frames": [
+    {
+      "file": "ready-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "c4e216e82d3f88af4e9370d8e4371250d00b46f6f8ad1a691710c318506ff687"
+    },
+    {
+      "file": "apex-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "7cbce6bde03ae18ea825b831c4a9956f32a0370cb5717d1363f5a55138b4e63a"
+    },
+    {
+      "file": "heads-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "889663986e9a7b650e259164dd2eac97342844f6aa92cb33eb3d7623cb25d734"
+    },
+    {
+      "file": "motion-00-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "21380c20e36d0caada1171aa891c3cd5b6b5baa28e3c5867420ae2c721ac3ce5"
+    },
+    {
+      "file": "motion-01-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "1cd5825789c6913af6ba8f98316b6b2f9410f92d8dd0c276ff76244951036419"
+    },
+    {
+      "file": "motion-02-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "53296b99aaa4e11b04e4d5533ff8bc497f8912632dea2240f76d0b91c0d72380"
+    },
+    {
+      "file": "motion-03-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "54d5067a2737de5f6cc0eabefaf4bb7eb1fe5a85c1a6e969b3a31bbbdc5a2796"
+    },
+    {
+      "file": "motion-04-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "1e003865d5c3068a2495723f4a38d74e7613fc37cef702b18cf74961a07a69bc"
+    },
+    {
+      "file": "motion-05-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "70857294385a04158389b8e121ae3a6c9830424ba3512caaa2f83b18d2dab4f3"
+    },
+    {
+      "file": "motion-06-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "5f519d6c8a94f4f48bef3e2c23ce15184191b3913aab4902d2fc61e5ab94f5e4"
+    },
+    {
+      "file": "motion-07-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "653e7134df305da8195d14fba270818c1afee57571eaab751567d744518d08ab"
+    },
+    {
+      "file": "motion-08-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "3f63d0cb6be7abf7fe0d9c20ceba1f9f249c7da64686341bd552d023c61a63f2"
+    },
+    {
+      "file": "motion-09-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "6022ebd9aebec593171347754d09daa995e4d8893c162202dc1ecbbff611e043"
+    },
+    {
+      "file": "motion-10-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "031c41939aa9383fb4b61c1cb2ba73c417823c5fc023fad7d5677779dc41a606"
+    },
+    {
+      "file": "motion-11-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "ab44ef5b6532b638c574c951edfbeae01a9576c8920adcf204971d35f33c7a20"
+    },
+    {
+      "file": "motion-12-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "1e003865d5c3068a2495723f4a38d74e7613fc37cef702b18cf74961a07a69bc"
+    },
+    {
+      "file": "motion-13-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "45aba758a4599ed4e315a7d4072a9e675a499ea1a49143a72b544f90f0372856"
+    },
+    {
+      "file": "motion-14-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "a9432e1be1d4fc087bfbb7cd1cac78cf880db4a00fe86e0dd5ca720fdeec3d09"
+    },
+    {
+      "file": "motion-15-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "5ccb887511cbfb4468c8e29f93dab3cc8f2708634faca47b7eeb722bf6ce81a6"
+    },
+    {
+      "file": "motion-16-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "ba6c6bd0cfc23c25854ce004c5479ac9d61497f1f6aeab554987061024e39bf4"
+    },
+    {
+      "file": "motion-17-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "ebccad3a1c9e8232e4d3923c0bf5754028a9dc951392c52eb64aa572066c10d9"
+    },
+    {
+      "file": "motion-18-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "9760d90442cf0c5acd3b36f45ba625600f072aa4a44480b3c0c6dd10f2930e61"
+    },
+    {
+      "file": "motion-19-320.png",
+      "dimensions": [
+        148,
+        128
+      ],
+      "sha256": "9760d90442cf0c5acd3b36f45ba625600f072aa4a44480b3c0c6dd10f2930e61"
+    },
+    {
+      "file": "tails-history-320.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "c5010f5c3783f6bc5d436ceedcf305da3e59e773d0196fe95630d8bd383566cc"
+    },
+    {
+      "file": "ready-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "f7fee7649c7743f5b53b0b070a38bb58aa05230b8a2cdcbcae230b7b8ea76835"
+    },
+    {
+      "file": "apex-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "220c13eb1bfc2f361f09019bc1143bbfa9d01f203789ea95d66d3686896994f5"
+    },
+    {
+      "file": "heads-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "9c81eb403a809855cbae49dec5bd8b69bf15c5fa8bb5e50bfb010046abbbe102"
+    },
+    {
+      "file": "tails-history-480.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "39ee75b0a170a0bc80108acb555f8734bcf9a7ed008cb7310ac479afa524f71c"
+    }
+  ],
+  "wall_seconds": 29.3,
+  "method": "N64 RDP framebuffer read after detach_wait, same production duel UI/video code; privateAres/noVIbreakpoints",
+  "rom_sha256": "5c9d059ef03198a2309099cebf6df22b56cbd4657065ca13d13e711640d35d72"
+}

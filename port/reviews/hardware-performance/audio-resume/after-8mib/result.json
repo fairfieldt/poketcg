@@ -1,0 +1,161 @@
+{
+  "passed": true,
+  "expected_old_crash": false,
+  "old_crash_reproduced": false,
+  "ram_mib": 8,
+  "diagnostic": 17,
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-audio-resume-after.z64",
+  "rom_sha256": "8aea679a6abae5588c35aa21df86759af801d1551270910a781a701405da7280",
+  "wall_seconds": 34.25,
+  "markers": [
+    "AUDIO EXACT SEEK REGRESSION PASS",
+    "AUDIO LOOP REGRESSION PASS",
+    "AUDIO OWNERSHIP REGRESSION PASS",
+    "AUDIO SOURCE REWARD PASS",
+    "AUDIO HEAP STABILITY PASS",
+    "AUDIO MEMORY REGRESSION PASS",
+    "AUDIO RESUME REGRESSION PASS"
+  ],
+  "exact_sample": 652536,
+  "music09_offline_seconds_after_resume": 90,
+  "memory_maps": [
+    {
+      "map": 0,
+      "free_bytes": 4453040
+    },
+    {
+      "map": 1,
+      "free_bytes": 4513224
+    },
+    {
+      "map": 2,
+      "free_bytes": 4602656
+    },
+    {
+      "map": 3,
+      "free_bytes": 4460448
+    },
+    {
+      "map": 4,
+      "free_bytes": 4623832
+    },
+    {
+      "map": 5,
+      "free_bytes": 4266552
+    },
+    {
+      "map": 6,
+      "free_bytes": 4475680
+    },
+    {
+      "map": 7,
+      "free_bytes": 4623832
+    },
+    {
+      "map": 8,
+      "free_bytes": 4261032
+    },
+    {
+      "map": 9,
+      "free_bytes": 4373120
+    },
+    {
+      "map": 10,
+      "free_bytes": 4623848
+    },
+    {
+      "map": 11,
+      "free_bytes": 4261040
+    },
+    {
+      "map": 12,
+      "free_bytes": 4363464
+    },
+    {
+      "map": 13,
+      "free_bytes": 4623840
+    },
+    {
+      "map": 14,
+      "free_bytes": 4329784
+    },
+    {
+      "map": 15,
+      "free_bytes": 4423320
+    },
+    {
+      "map": 16,
+      "free_bytes": 4563744
+    },
+    {
+      "map": 17,
+      "free_bytes": 4306144
+    },
+    {
+      "map": 18,
+      "free_bytes": 4232600
+    },
+    {
+      "map": 19,
+      "free_bytes": 4561480
+    },
+    {
+      "map": 20,
+      "free_bytes": 4231080
+    },
+    {
+      "map": 21,
+      "free_bytes": 4400064
+    },
+    {
+      "map": 22,
+      "free_bytes": 4623824
+    },
+    {
+      "map": 23,
+      "free_bytes": 4272936
+    },
+    {
+      "map": 24,
+      "free_bytes": 4472176
+    },
+    {
+      "map": 25,
+      "free_bytes": 4623832
+    },
+    {
+      "map": 26,
+      "free_bytes": 4314024
+    },
+    {
+      "map": 27,
+      "free_bytes": 4334224
+    },
+    {
+      "map": 28,
+      "free_bytes": 4623832
+    },
+    {
+      "map": 29,
+      "free_bytes": 4099056
+    },
+    {
+      "map": 30,
+      "free_bytes": 4413896
+    },
+    {
+      "map": 31,
+      "free_bytes": 4663880
+    },
+    {
+      "map": 32,
+      "free_bytes": 4123656
+    },
+    {
+      "map": 33,
+      "free_bytes": 4638968
+    }
+  ],
+  "source_fixture": "ow_new_game -> actual Sam practice outcome -> ow_finish_duel -> original starter reward",
+  "private_save_path": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/audio-resume-after/native-8mib-memory/saves"
+}

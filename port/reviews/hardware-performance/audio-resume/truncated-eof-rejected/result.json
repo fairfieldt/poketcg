@@ -1,0 +1,18 @@
+{
+  "passed": true,
+  "expected_old_crash": false,
+  "expected_truncated_stream": true,
+  "truncated_stream_rejected": true,
+  "old_crash_reproduced": false,
+  "ram_mib": 4,
+  "diagnostic": 17,
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-audio-truncated-eof.z64",
+  "rom_sha256": "25fd3519ea1282287ae8c600248a2fe4c2774603fe8b1da3ac02a977218ac783",
+  "wall_seconds": 2.29,
+  "markers": [],
+  "exact_sample": 652536,
+  "requested_music09_offline_seconds_after_resume": 90,
+  "memory_maps": [],
+  "source_fixture": "ow_new_game -> actual Sam practice outcome -> ow_finish_duel -> original starter reward",
+  "private_save_path": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/audio-truncated-eof/native-4mib/saves"
+}

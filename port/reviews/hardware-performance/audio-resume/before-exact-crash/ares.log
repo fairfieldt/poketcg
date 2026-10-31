@@ -1,0 +1,28 @@
+Loaded poketcg-audio-resume-before
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=320 height=240 ram=4194304 highres=0
+2026-10-31 12:00:46.602 ares[87325:18754013] Resizing output buffers to 1536, 1152
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 69132 bytes
+AUDIO RESUME REPRO pause=652536
+skip point 0: 142656
+ASSERTION FAILED: found
+file "src/audio/wav64_vadpcm.c", line 238, function: waveform_vadpcm_read
+wav64: rom:/audio/music_09.wav64: invalid VADPCM seeking point: 0x9f4f8
+
+Backtrace:
+    inspector_page_exception+0xa24 (libdragon/src/inspector.c:353) [0x80072dc4] (inline)
+    inspector+0xa24 (libdragon/src/inspector.c:640) [0x80072dc4]
+    handler+0x24 (libdragon/src/inspector.c:738) [0x80073464] (inline)
+    handler+0x24 (libdragon/src/inspector.c:736) [0x80073464]
+    __onSyscallException+0xbc (libdragon/src/exception.c:564) [0x80075dfc]
+    <EXCEPTION HANDLER>+0x0 (inthandler.o:0) [0x80000554]
+    __inspector_assertion+0xc (libdragon/src/inspector.c:711) [0x800734ac]
+    debug_assert_func_f+0xb4 (libdragon/src/debug.c:370) [0x8006b734]
+    waveform_vadpcm_read+0x7c4 (libdragon/src/audio/wav64_vadpcm.c:238) [0x8007a584]
+    samplebuffer_get+0xa4 (libdragon/src/audio/samplebuffer.c:138) [0x80078ec4]
+    mixer_exec+0x1e4 (libdragon/src/audio/mixer.c:641) [0x800783a4] (inline)
+    mixer_poll+0x1e4 (libdragon/src/audio/mixer.c:804) [0x800783a4]
+    regression_mix+0xfc (audio.c:107) [0x80056ebc] (inline)
+    adventure_audio_regression+0xfc (audio.c:119) [0x80056ebc]
+    main+0xd4 (main.c:482) [0x80054814]
+    _start+0x64 (??:0) [0x80000464]

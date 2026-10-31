@@ -1,0 +1,446 @@
+{
+  "passed": true,
+  "method": "Ares CP0 CPU/RDP-completed canvas timings;30fps cap;no per-frame logging duringtimedloop;notphysicalconsoleFPS",
+  "durations": [
+    {
+      "width": 320,
+      "frames": 20,
+      "elapsed_us": 683250
+    },
+    {
+      "width": 480,
+      "frames": 20,
+      "elapsed_us": 769035
+    }
+  ],
+  "hot_medians": {
+    "320": {
+      "acquire_us": 26999,
+      "draw_us": 20,
+      "coin_us": 4533,
+      "present_us": 1810,
+      "total_us": 33547
+    },
+    "480": {
+      "acquire_us": 21075,
+      "draw_us": 20,
+      "coin_us": 9070,
+      "present_us": 3063,
+      "total_us": 33322
+    }
+  },
+  "pixel_checks": [
+    {
+      "width": 320,
+      "frames": 20,
+      "redraws": 4
+    },
+    {
+      "width": 480,
+      "frames": 20,
+      "redraws": 4
+    }
+  ],
+  "samples": [
+    {
+      "width": 320,
+      "frame": 0,
+      "acquire_us": 9,
+      "draw_us": 70999,
+      "coin_us": 4889,
+      "present_us": 1786,
+      "total_us": 77685,
+      "redraw": 1
+    },
+    {
+      "width": 320,
+      "frame": 1,
+      "acquire_us": 14,
+      "draw_us": 15,
+      "coin_us": 4436,
+      "present_us": 1573,
+      "total_us": 6040,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 2,
+      "acquire_us": 24035,
+      "draw_us": 19,
+      "coin_us": 4183,
+      "present_us": 1973,
+      "total_us": 30211,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 3,
+      "acquire_us": 27245,
+      "draw_us": 20,
+      "coin_us": 4509,
+      "present_us": 1810,
+      "total_us": 33586,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 4,
+      "acquire_us": 27080,
+      "draw_us": 20,
+      "coin_us": 4646,
+      "present_us": 1658,
+      "total_us": 33406,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 5,
+      "acquire_us": 27088,
+      "draw_us": 18,
+      "coin_us": 4544,
+      "present_us": 1895,
+      "total_us": 33547,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 6,
+      "acquire_us": 26964,
+      "draw_us": 20,
+      "coin_us": 4202,
+      "present_us": 1865,
+      "total_us": 33052,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 7,
+      "acquire_us": 27331,
+      "draw_us": 20,
+      "coin_us": 4536,
+      "present_us": 1723,
+      "total_us": 33612,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 8,
+      "acquire_us": 27130,
+      "draw_us": 19,
+      "coin_us": 4623,
+      "present_us": 1582,
+      "total_us": 33356,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 9,
+      "acquire_us": 27198,
+      "draw_us": 20,
+      "coin_us": 4514,
+      "present_us": 1944,
+      "total_us": 33678,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 10,
+      "acquire_us": 26940,
+      "draw_us": 20,
+      "coin_us": 4194,
+      "present_us": 1781,
+      "total_us": 32937,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 11,
+      "acquire_us": 27420,
+      "draw_us": 19,
+      "coin_us": 4517,
+      "present_us": 1641,
+      "total_us": 33599,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 12,
+      "acquire_us": 27240,
+      "draw_us": 20,
+      "coin_us": 4645,
+      "present_us": 1953,
+      "total_us": 33859,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 13,
+      "acquire_us": 26800,
+      "draw_us": 20,
+      "coin_us": 4533,
+      "present_us": 1866,
+      "total_us": 33221,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 14,
+      "acquire_us": 26998,
+      "draw_us": 20,
+      "coin_us": 4191,
+      "present_us": 2737,
+      "total_us": 33947,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 15,
+      "acquire_us": 26466,
+      "draw_us": 20,
+      "coin_us": 4528,
+      "present_us": 1667,
+      "total_us": 32682,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 16,
+      "acquire_us": 27203,
+      "draw_us": 20,
+      "coin_us": 4614,
+      "present_us": 1938,
+      "total_us": 33776,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 17,
+      "acquire_us": 26847,
+      "draw_us": 20,
+      "coin_us": 4617,
+      "present_us": 1780,
+      "total_us": 33266,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 18,
+      "acquire_us": 26999,
+      "draw_us": 20,
+      "coin_us": 5171,
+      "present_us": 1617,
+      "total_us": 33808,
+      "redraw": 0
+    },
+    {
+      "width": 320,
+      "frame": 19,
+      "acquire_us": 26609,
+      "draw_us": 20,
+      "coin_us": 5165,
+      "present_us": 1951,
+      "total_us": 33747,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 0,
+      "acquire_us": 14,
+      "draw_us": 155730,
+      "coin_us": 9410,
+      "present_us": 3248,
+      "total_us": 168404,
+      "redraw": 1
+    },
+    {
+      "width": 480,
+      "frame": 1,
+      "acquire_us": 14,
+      "draw_us": 15,
+      "coin_us": 9206,
+      "present_us": 2930,
+      "total_us": 12166,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 2,
+      "acquire_us": 7643,
+      "draw_us": 19,
+      "coin_us": 8291,
+      "present_us": 3009,
+      "total_us": 18964,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 3,
+      "acquire_us": 21986,
+      "draw_us": 20,
+      "coin_us": 9002,
+      "present_us": 2976,
+      "total_us": 33987,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 4,
+      "acquire_us": 21351,
+      "draw_us": 20,
+      "coin_us": 9391,
+      "present_us": 3096,
+      "total_us": 33859,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 5,
+      "acquire_us": 20855,
+      "draw_us": 20,
+      "coin_us": 9078,
+      "present_us": 2970,
+      "total_us": 32925,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 6,
+      "acquire_us": 21277,
+      "draw_us": 20,
+      "coin_us": 8287,
+      "present_us": 3071,
+      "total_us": 32657,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 7,
+      "acquire_us": 21980,
+      "draw_us": 20,
+      "coin_us": 9070,
+      "present_us": 3221,
+      "total_us": 34293,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 8,
+      "acquire_us": 21039,
+      "draw_us": 19,
+      "coin_us": 9311,
+      "present_us": 2952,
+      "total_us": 33322,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 9,
+      "acquire_us": 21075,
+      "draw_us": 20,
+      "coin_us": 9005,
+      "present_us": 3070,
+      "total_us": 33173,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 10,
+      "acquire_us": 21257,
+      "draw_us": 20,
+      "coin_us": 8285,
+      "present_us": 3199,
+      "total_us": 32763,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 11,
+      "acquire_us": 21849,
+      "draw_us": 20,
+      "coin_us": 9001,
+      "present_us": 4071,
+      "total_us": 34942,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 12,
+      "acquire_us": 20256,
+      "draw_us": 20,
+      "coin_us": 9398,
+      "present_us": 3040,
+      "total_us": 32716,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 13,
+      "acquire_us": 20897,
+      "draw_us": 20,
+      "coin_us": 9060,
+      "present_us": 2982,
+      "total_us": 32960,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 14,
+      "acquire_us": 21291,
+      "draw_us": 19,
+      "coin_us": 8289,
+      "present_us": 3075,
+      "total_us": 32676,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 15,
+      "acquire_us": 21970,
+      "draw_us": 19,
+      "coin_us": 9060,
+      "present_us": 2962,
+      "total_us": 34012,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 16,
+      "acquire_us": 21313,
+      "draw_us": 20,
+      "coin_us": 9285,
+      "present_us": 3089,
+      "total_us": 33708,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 17,
+      "acquire_us": 20960,
+      "draw_us": 19,
+      "coin_us": 9284,
+      "present_us": 3218,
+      "total_us": 33483,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 18,
+      "acquire_us": 20831,
+      "draw_us": 20,
+      "coin_us": 10527,
+      "present_us": 2939,
+      "total_us": 34319,
+      "redraw": 0
+    },
+    {
+      "width": 480,
+      "frame": 19,
+      "acquire_us": 19866,
+      "draw_us": 20,
+      "coin_us": 10521,
+      "present_us": 3063,
+      "total_us": 33471,
+      "redraw": 0
+    }
+  ]
+}

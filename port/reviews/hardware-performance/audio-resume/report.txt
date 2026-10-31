@@ -1,0 +1,25 @@
+The tutorial reward crash is fixed.
+
+The asset was valid. The original reward script calls pause_song, plays MUSIC_BOOSTER_PACK, waits for the fanfare, and resumes the prior music. The N64 shim closed and reopened the background WAV64 and then set its saved sample position. VADPCM is stateful and supports only encoded seek points. music09 has a loop seek point at sample 142656; the reported 652536 (0x9f4f8) is not a legal decoder seek. The original runtime reproduced the exact assertion in native ares.
+
+The runtime now retains the paused WAV64, decoder state, and mixer samplebuffer on stereo pair 0/1. A zero playback rate holds its exact fractional position and zero master volume mutes both stereo channels. Temporary fanfares use pair 4/5. Resume closes the temporary stream and restores background frequency/volume without reopening or seeking. SFX remains on pair 2/3. Source wait-for-song uses the active music pair. Repeated/nested pause requests preserve the existing single-level source semantics; ended finite music stays ended.
+
+The longer regression exposed a second independent failure: the SDK Huffman decoder estimates scratch space from the destination span. Short blocks at a music09 loop boundary can exceed that estimate. A project-local copy of the pinned libdragon decoder now uses separate aligned scratch with a proven worst-case bound: 846 decoded VADPCM bytes, at most two 8-bit symbols each, plus 8 bytes for unaligned/refill lookahead, rounded to 1712 bytes. It preserves RSP input/output and cache/fence ordering. EOF lookahead is zeroed, while actual consumed bits must remain inside bytes read. A deliberately truncated private asset is rejected by the new guard. The installed SDK and all shipped audio assets are unchanged.
+
+Native evidence (real libdragon mixer and emulated RSP decoder):
+- Before: exact music09 invalid seek 0x9f4f8 reproduced.
+- After, 320x240/4 MiB and 480x360/8 MiB: exact saved sample 652536 resumes using the same decoder UUID and retained fractional position.
+- Each run decodes 90 seconds after resume, repeats 24 fanfares with SFX/music replacements, checks nested/duplicate pause/resume, silence and finite endings, then runs the real ow_new_game→Sam practice outcome→ow_finish_duel→original starter reward script. It grants 90 cards, serializes/reloads the story save, resumes music09, and decodes another 90 seconds.
+- All 34 production map populations load with both music samplebuffers and SFX allocated. Minimum free heap: 866992 bytes in 4 MiB, 4099056 in 8 MiB, both at map 29. Used heap is stable across 24 repeated fanfares. These are dedicated audio-regression figures, not a replacement for the broader full-game gate.
+- The private truncated-music09 negative fixture reaches WAV64 Huffman stream truncated; corruption is not accepted as silent data.
+- An exhaustive additional 4 MiB gate decodes every shipped asset through the actual RSP: all 31 songs and 96 SFX, including finite tails and legal loop starts, PASS. It then repeats the complete reward/loop/34-map regression; minimum free heap is 849680 bytes with an extra diagnostic stereo samplebuffer retained. The full run takes 113.36 host seconds.
+- All 127 generated asset/header/seek/loop/source-PCM checks pass. No converter or generated asset changes are required.
+
+Provenance and implementation:
+port/frontends/n64/adventure/audio.c
+port/frontends/n64/adventure/tests/audio_reward.c
+port/frontends/n64/adventure/tools/check_audio_resume.py
+port/frontends/n64/adventure/vendor/libdragon-audio/README.md
+port/audio/tools/check_audio.py
+
+The source reward fixture automates dialogue acknowledgements and the practice duel outcome; it executes the original story VM, production sound-event API, real mixer/RSP decoder, inventory and save serialization. These are native emulator checks, not physical-console measurements.
