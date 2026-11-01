@@ -22,6 +22,7 @@ from render_maps import Game,Decompressor,parse_consts
 from scene_specs import PROPS,FOYER,LOBBY,Prop,P,F,footprint
 from room_style import material_pixel,wall_paint,bake_lighting
 from solid_terrain import POOL_CELLS,swimming_pool as build_swimming_pool,align_lightning_room
+from actor_grounding import strip_legacy_disks
 from honor_props import build as build_honor_prop
 OUT=ROOT/'generated'
 TEX=OUT/'textures'
@@ -649,6 +650,7 @@ def copy_lightning():
                    for x,p in enumerate(row)] for y,row in enumerate(rows)]
         remap[i]=texture(rows)
     room,actors=Scene('lightning_club'),Scene('actors')
+    meshes,_=strip_legacy_disks(meshes,{1,2,3,4})
     for model,part,t,pivot,vs,inds in meshes:
         scene=actors if model else room
         key=(model,part,remap[t] if t>=0 else None,tuple(pivot))

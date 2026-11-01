@@ -1,0 +1,82 @@
+{
+  "passed": true,
+  "ram_mib": 8,
+  "proof": [
+    "GROUNDING SOURCE ARRIVAL pass=0 frames=52 x=14 y=8",
+    "GROUNDING SOURCE PASS variant=before width=480 frames=116 same_poses=0 canonical_readonly=1",
+    "GROUNDING SOFT CONTACT phase=0 changed_pixels=266 remains=1",
+    "GROUNDING SOURCE ARRIVAL pass=1 frames=52 x=14 y=8",
+    "GROUNDING SOFT CONTACT phase=1 changed_pixels=657 remains=1",
+    "GROUNDING SOURCE PASS variant=after width=480 frames=116 same_poses=1 canonical_readonly=1",
+    "ACTOR GROUNDING NATIVE PASS width=480 frames=116 source_run=1 idle_camera=1 identical_animation=1 state_rng=1 soft_probes=2"
+  ],
+  "wall_seconds": 130.05,
+  "scope": "Actual ow_new_game script/camera/actors with old and cleaned actorassets; real audio. PNGs are completed raw RDP frames, not post-VI.",
+  "composited_pairs": [
+    {
+      "frame": "idle-08",
+      "changed_pixels": 238,
+      "bounds": [
+        156,
+        131,
+        290,
+        248
+      ]
+    },
+    {
+      "frame": "idle-24",
+      "changed_pixels": 235,
+      "bounds": [
+        180,
+        213,
+        297,
+        252
+      ]
+    },
+    {
+      "frame": "idle-40",
+      "changed_pixels": 59,
+      "bounds": [
+        109,
+        177,
+        134,
+        186
+      ]
+    },
+    {
+      "frame": "idle-56",
+      "changed_pixels": 0,
+      "bounds": null
+    },
+    {
+      "frame": "run-08",
+      "changed_pixels": 85,
+      "bounds": [
+        151,
+        101,
+        473,
+        241
+      ]
+    },
+    {
+      "frame": "run-24",
+      "changed_pixels": 96,
+      "bounds": [
+        224,
+        132,
+        480,
+        306
+      ]
+    },
+    {
+      "frame": "run-40",
+      "changed_pixels": 70,
+      "bounds": [
+        182,
+        162,
+        456,
+        215
+      ]
+    }
+  ]
+}

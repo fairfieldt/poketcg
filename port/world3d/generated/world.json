@@ -18098,7 +18098,7 @@
     "actors": {
       "file": "actors.l64",
       "vertices": 2531,
-      "triangles": 1294,
+      "triangles": 1270,
       "batches": 22,
       "textures": [],
       "props": []
@@ -20204,7 +20204,7 @@
     "actor_dr_mason": {
       "file": "maps/actor_dr_mason.l64",
       "vertices": 1291,
-      "triangles": 718,
+      "triangles": 712,
       "batches": 6,
       "textures": [
         "tf1bf6acaf061be1c"
@@ -20233,7 +20233,7 @@
     "actor_ronald": {
       "file": "maps/actor_ronald.l64",
       "vertices": 1515,
-      "triangles": 910,
+      "triangles": 904,
       "batches": 6,
       "textures": [
         "tccf0e2101d5829c2"
@@ -20262,7 +20262,7 @@
     "actor_ishihara": {
       "file": "maps/actor_ishihara.l64",
       "vertices": 1351,
-      "triangles": 804,
+      "triangles": 798,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -20287,7 +20287,7 @@
     "actor_imakuni": {
       "file": "maps/actor_imakuni.l64",
       "vertices": 926,
-      "triangles": 518,
+      "triangles": 512,
       "batches": 6,
       "textures": [
         "tf23dbd1f14923587"
@@ -20312,7 +20312,7 @@
     "actor_tech": {
       "file": "maps/actor_tech.l64",
       "vertices": 1156,
-      "triangles": 663,
+      "triangles": 657,
       "batches": 6,
       "textures": [
         "tcd457a01e99e92b3"
@@ -20363,7 +20363,7 @@
     "actor_clerk": {
       "file": "maps/actor_clerk.l64",
       "vertices": 1236,
-      "triangles": 686,
+      "triangles": 680,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -20408,7 +20408,7 @@
     "actor_mania": {
       "file": "maps/actor_mania.l64",
       "vertices": 1027,
-      "triangles": 578,
+      "triangles": 572,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -20439,7 +20439,7 @@
     "actor_lass3": {
       "file": "maps/actor_lass3.l64",
       "vertices": 1323,
-      "triangles": 730,
+      "triangles": 724,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -20466,7 +20466,7 @@
     "actor_mitch": {
       "file": "maps/actor_mitch.l64",
       "vertices": 1102,
-      "triangles": 610,
+      "triangles": 604,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -20491,7 +20491,7 @@
     "actor_boy": {
       "file": "maps/actor_boy.l64",
       "vertices": 1027,
-      "triangles": 578,
+      "triangles": 572,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -20516,7 +20516,7 @@
     "actor_man": {
       "file": "maps/actor_man.l64",
       "vertices": 1049,
-      "triangles": 582,
+      "triangles": 576,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -20549,7 +20549,7 @@
     "actor_gene": {
       "file": "maps/actor_gene.l64",
       "vertices": 1276,
-      "triangles": 761,
+      "triangles": 755,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -20574,7 +20574,7 @@
     "actor_swimmer": {
       "file": "maps/actor_swimmer.l64",
       "vertices": 1082,
-      "triangles": 584,
+      "triangles": 578,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -20599,7 +20599,7 @@
     "actor_joshua": {
       "file": "maps/actor_joshua.l64",
       "vertices": 1147,
-      "triangles": 688,
+      "triangles": 682,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -20624,7 +20624,7 @@
     "actor_amy": {
       "file": "maps/actor_amy.l64",
       "vertices": 1084,
-      "triangles": 584,
+      "triangles": 578,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -20649,7 +20649,7 @@
     "actor_girl": {
       "file": "maps/actor_girl.l64",
       "vertices": 1274,
-      "triangles": 760,
+      "triangles": 754,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -20678,7 +20678,7 @@
     "actor_hood": {
       "file": "maps/actor_hood.l64",
       "vertices": 977,
-      "triangles": 524,
+      "triangles": 518,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -20709,7 +20709,7 @@
     "actor_isaac": {
       "file": "maps/actor_isaac.l64",
       "vertices": 1183,
-      "triangles": 669,
+      "triangles": 663,
       "batches": 6,
       "textures": [
         "tcd457a01e99e92b3"
@@ -20734,7 +20734,7 @@
     "actor_lass2": {
       "file": "maps/actor_lass2.l64",
       "vertices": 1156,
-      "triangles": 636,
+      "triangles": 630,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -20763,7 +20763,7 @@
     "actor_lass1": {
       "file": "maps/actor_lass1.l64",
       "vertices": 1154,
-      "triangles": 624,
+      "triangles": 618,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -20792,7 +20792,7 @@
     "actor_nikki": {
       "file": "maps/actor_nikki.l64",
       "vertices": 1066,
-      "triangles": 584,
+      "triangles": 578,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -20817,7 +20817,7 @@
     "actor_lad": {
       "file": "maps/actor_lad.l64",
       "vertices": 1108,
-      "triangles": 662,
+      "triangles": 656,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -20848,7 +20848,7 @@
     "actor_murray": {
       "file": "maps/actor_murray.l64",
       "vertices": 1350,
-      "triangles": 802,
+      "triangles": 796,
       "batches": 6,
       "textures": [
         "tcd457a01e99e92b3"
@@ -20875,7 +20875,7 @@
     "actor_rick": {
       "file": "maps/actor_rick.l64",
       "vertices": 1176,
-      "triangles": 669,
+      "triangles": 663,
       "batches": 6,
       "textures": [
         "tcd457a01e99e92b3"
@@ -20900,7 +20900,7 @@
     "actor_specs": {
       "file": "maps/actor_specs.l64",
       "vertices": 1044,
-      "triangles": 589,
+      "triangles": 583,
       "batches": 6,
       "textures": [
         "tcd457a01e99e92b3"
@@ -20929,7 +20929,7 @@
     "actor_ken": {
       "file": "maps/actor_ken.l64",
       "vertices": 1341,
-      "triangles": 797,
+      "triangles": 791,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -20954,7 +20954,7 @@
     "actor_courtney": {
       "file": "maps/actor_courtney.l64",
       "vertices": 1259,
-      "triangles": 672,
+      "triangles": 666,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -20979,7 +20979,7 @@
     "actor_steve": {
       "file": "maps/actor_steve.l64",
       "vertices": 1344,
-      "triangles": 832,
+      "triangles": 826,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -21004,7 +21004,7 @@
     "actor_jack": {
       "file": "maps/actor_jack.l64",
       "vertices": 1162,
-      "triangles": 663,
+      "triangles": 657,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -21029,7 +21029,7 @@
     "actor_rod": {
       "file": "maps/actor_rod.l64",
       "vertices": 1359,
-      "triangles": 807,
+      "triangles": 801,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -21054,7 +21054,7 @@
     "actor_woman": {
       "file": "maps/actor_woman.l64",
       "vertices": 1085,
-      "triangles": 584,
+      "triangles": 578,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -21081,7 +21081,7 @@
     "actor_chap": {
       "file": "maps/actor_chap.l64",
       "vertices": 1351,
-      "triangles": 804,
+      "triangles": 798,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -21114,7 +21114,7 @@
     "actor_gal": {
       "file": "maps/actor_gal.l64",
       "vertices": 1016,
-      "triangles": 556,
+      "triangles": 550,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -21151,7 +21151,7 @@
     "actor_pappy": {
       "file": "maps/actor_pappy.l64",
       "vertices": 1334,
-      "triangles": 794,
+      "triangles": 788,
       "batches": 6,
       "textures": [
         "tda3c45e6517cea3d"
@@ -21180,7 +21180,7 @@
     "actor_butch": {
       "file": "maps/actor_butch.l64",
       "vertices": 1058,
-      "triangles": 590,
+      "triangles": 584,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -21205,7 +21205,7 @@
     "actor_granny": {
       "file": "maps/actor_granny.l64",
       "vertices": 1425,
-      "triangles": 818,
+      "triangles": 812,
       "batches": 6,
       "textures": [
         "t20e89bac43201d18"
@@ -21274,7 +21274,7 @@
     "actor_mark": {
       "file": "maps/actor_mark.l64",
       "vertices": 1481,
-      "triangles": 906,
+      "triangles": 900,
       "batches": 6,
       "textures": [
         "t7967c400e0bd639a"
@@ -21303,7 +21303,7 @@
     "actor_boy_palette2": {
       "file": "maps/actor_boy_palette2.l64",
       "vertices": 1029,
-      "triangles": 578,
+      "triangles": 572,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -21332,7 +21332,7 @@
     "actor_mania_palette2": {
       "file": "maps/actor_mania_palette2.l64",
       "vertices": 1029,
-      "triangles": 578,
+      "triangles": 572,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -21357,7 +21357,7 @@
     "actor_swimmer_palette2": {
       "file": "maps/actor_swimmer_palette2.l64",
       "vertices": 1084,
-      "triangles": 584,
+      "triangles": 578,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -21382,7 +21382,7 @@
     "actor_amy__lying": {
       "file": "maps/actor_amy__lying.l64",
       "vertices": 1114,
-      "triangles": 584,
+      "triangles": 578,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -21601,7 +21601,7 @@
     {
       "file": "maps/actor_mark.l64",
       "vertices": 1481,
-      "triangles": 906,
+      "triangles": 900,
       "batches": 6,
       "textures": [
         "t7967c400e0bd639a"
@@ -21630,7 +21630,7 @@
     {
       "file": "maps/actor_ronald.l64",
       "vertices": 1515,
-      "triangles": 910,
+      "triangles": 904,
       "batches": 6,
       "textures": [
         "tccf0e2101d5829c2"
@@ -21659,7 +21659,7 @@
     {
       "file": "maps/actor_dr_mason.l64",
       "vertices": 1291,
-      "triangles": 718,
+      "triangles": 712,
       "batches": 6,
       "textures": [
         "tf1bf6acaf061be1c"
@@ -21688,7 +21688,7 @@
     {
       "file": "maps/actor_ishihara.l64",
       "vertices": 1351,
-      "triangles": 804,
+      "triangles": 798,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -21713,7 +21713,7 @@
     {
       "file": "maps/actor_imakuni.l64",
       "vertices": 926,
-      "triangles": 518,
+      "triangles": 512,
       "batches": 6,
       "textures": [
         "tf23dbd1f14923587"
@@ -21738,7 +21738,7 @@
     {
       "file": "maps/actor_nikki.l64",
       "vertices": 1066,
-      "triangles": 584,
+      "triangles": 578,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -21763,7 +21763,7 @@
     {
       "file": "maps/actor_rick.l64",
       "vertices": 1176,
-      "triangles": 669,
+      "triangles": 663,
       "batches": 6,
       "textures": [
         "tcd457a01e99e92b3"
@@ -21788,7 +21788,7 @@
     {
       "file": "maps/actor_ken.l64",
       "vertices": 1341,
-      "triangles": 797,
+      "triangles": 791,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -21813,7 +21813,7 @@
     {
       "file": "maps/actor_amy.l64",
       "vertices": 1084,
-      "triangles": 584,
+      "triangles": 578,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -21838,7 +21838,7 @@
     {
       "file": "maps/actor_isaac.l64",
       "vertices": 1183,
-      "triangles": 669,
+      "triangles": 663,
       "batches": 6,
       "textures": [
         "tcd457a01e99e92b3"
@@ -21863,7 +21863,7 @@
     {
       "file": "maps/actor_mitch.l64",
       "vertices": 1102,
-      "triangles": 610,
+      "triangles": 604,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -21888,7 +21888,7 @@
     {
       "file": "maps/actor_gene.l64",
       "vertices": 1276,
-      "triangles": 761,
+      "triangles": 755,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -21913,7 +21913,7 @@
     {
       "file": "maps/actor_murray.l64",
       "vertices": 1350,
-      "triangles": 802,
+      "triangles": 796,
       "batches": 6,
       "textures": [
         "tcd457a01e99e92b3"
@@ -21940,7 +21940,7 @@
     {
       "file": "maps/actor_courtney.l64",
       "vertices": 1259,
-      "triangles": 672,
+      "triangles": 666,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -21965,7 +21965,7 @@
     {
       "file": "maps/actor_steve.l64",
       "vertices": 1344,
-      "triangles": 832,
+      "triangles": 826,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -21990,7 +21990,7 @@
     {
       "file": "maps/actor_jack.l64",
       "vertices": 1162,
-      "triangles": 663,
+      "triangles": 657,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -22015,7 +22015,7 @@
     {
       "file": "maps/actor_rod.l64",
       "vertices": 1359,
-      "triangles": 807,
+      "triangles": 801,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -22040,7 +22040,7 @@
     {
       "file": "maps/actor_boy.l64",
       "vertices": 1027,
-      "triangles": 578,
+      "triangles": 572,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -22065,7 +22065,7 @@
     {
       "file": "maps/actor_lad.l64",
       "vertices": 1108,
-      "triangles": 662,
+      "triangles": 656,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -22096,7 +22096,7 @@
     {
       "file": "maps/actor_specs.l64",
       "vertices": 1044,
-      "triangles": 589,
+      "triangles": 583,
       "batches": 6,
       "textures": [
         "tcd457a01e99e92b3"
@@ -22125,7 +22125,7 @@
     {
       "file": "maps/actor_butch.l64",
       "vertices": 1058,
-      "triangles": 590,
+      "triangles": 584,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -22150,7 +22150,7 @@
     {
       "file": "maps/actor_mania.l64",
       "vertices": 1027,
-      "triangles": 578,
+      "triangles": 572,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -22181,7 +22181,7 @@
     {
       "file": "maps/actor_joshua.l64",
       "vertices": 1147,
-      "triangles": 688,
+      "triangles": 682,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -22206,7 +22206,7 @@
     {
       "file": "maps/actor_hood.l64",
       "vertices": 977,
-      "triangles": 524,
+      "triangles": 518,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -22237,7 +22237,7 @@
     {
       "file": "maps/actor_tech.l64",
       "vertices": 1156,
-      "triangles": 663,
+      "triangles": 657,
       "batches": 6,
       "textures": [
         "tcd457a01e99e92b3"
@@ -22288,7 +22288,7 @@
     {
       "file": "maps/actor_chap.l64",
       "vertices": 1351,
-      "triangles": 804,
+      "triangles": 798,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -22321,7 +22321,7 @@
     {
       "file": "maps/actor_man.l64",
       "vertices": 1049,
-      "triangles": 582,
+      "triangles": 576,
       "batches": 6,
       "textures": [
         "t2f5cf497984d058c"
@@ -22354,7 +22354,7 @@
     {
       "file": "maps/actor_pappy.l64",
       "vertices": 1334,
-      "triangles": 794,
+      "triangles": 788,
       "batches": 6,
       "textures": [
         "tda3c45e6517cea3d"
@@ -22383,7 +22383,7 @@
     {
       "file": "maps/actor_girl.l64",
       "vertices": 1274,
-      "triangles": 760,
+      "triangles": 754,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -22412,7 +22412,7 @@
     {
       "file": "maps/actor_lass1.l64",
       "vertices": 1154,
-      "triangles": 624,
+      "triangles": 618,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -22441,7 +22441,7 @@
     {
       "file": "maps/actor_lass2.l64",
       "vertices": 1156,
-      "triangles": 636,
+      "triangles": 630,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -22470,7 +22470,7 @@
     {
       "file": "maps/actor_lass3.l64",
       "vertices": 1323,
-      "triangles": 730,
+      "triangles": 724,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -22497,7 +22497,7 @@
     {
       "file": "maps/actor_swimmer.l64",
       "vertices": 1082,
-      "triangles": 584,
+      "triangles": 578,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -22522,7 +22522,7 @@
     {
       "file": "maps/actor_clerk.l64",
       "vertices": 1236,
-      "triangles": 686,
+      "triangles": 680,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -22567,7 +22567,7 @@
     {
       "file": "maps/actor_gal.l64",
       "vertices": 1016,
-      "triangles": 556,
+      "triangles": 550,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -22604,7 +22604,7 @@
     {
       "file": "maps/actor_woman.l64",
       "vertices": 1085,
-      "triangles": 584,
+      "triangles": 578,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"
@@ -22631,7 +22631,7 @@
     {
       "file": "maps/actor_granny.l64",
       "vertices": 1425,
-      "triangles": 818,
+      "triangles": 812,
       "batches": 6,
       "textures": [
         "t20e89bac43201d18"
@@ -22700,7 +22700,7 @@
     {
       "file": "maps/actor_boy_palette2.l64",
       "vertices": 1029,
-      "triangles": 578,
+      "triangles": 572,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -22729,7 +22729,7 @@
     {
       "file": "maps/actor_mania_palette2.l64",
       "vertices": 1029,
-      "triangles": 578,
+      "triangles": 572,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -22754,7 +22754,7 @@
     {
       "file": "maps/actor_swimmer_palette2.l64",
       "vertices": 1084,
-      "triangles": 584,
+      "triangles": 578,
       "batches": 6,
       "textures": [
         "t10c908d3d5164363"
@@ -22779,7 +22779,7 @@
     {
       "file": "maps/actor_amy__lying.l64",
       "vertices": 1114,
-      "triangles": 584,
+      "triangles": 578,
       "batches": 6,
       "textures": [
         "t6d59bc388d91e451"

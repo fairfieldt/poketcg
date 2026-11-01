@@ -21,6 +21,7 @@ REPO=ROOT.parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 from build_world import Scene,Image,read_l643,texture,TEX
 from world_manifest import write_if_changed,write_world_metadata
+from actor_grounding import strip_legacy_disks,finish_runtime_grounding
 
 OUT=ROOT/'generated'
 CENTRAL_ROOT=REPO/'port/characters/assets/models'
@@ -80,6 +81,9 @@ def source_export(folder,slug,shared_textures=None,marker=None,family=None,appea
 
 def imported_record(folder,slug,model,export):
     source_id,meshes,images,digest=export
+    # Authored previews keep their old opaque disk; runtime actors use the
+    # renderer's single ground-contact pass, independent of gait/bob/lean.
+    meshes,_=strip_legacy_disks(meshes)
     remap={i:texture(img.rows) for i,img in enumerate(images)}
     scene=Scene('actor_'+slug)
     for _,part,t,pivot,vs,indices in meshes:
@@ -103,6 +107,11 @@ def imported_record(folder,slug,model,export):
 
 def apply_characters(doc,roots=None,catalog_path=CATALOG,strict=False):
     doc=copy.deepcopy(doc)
+    previous_meshes={}
+    for c in doc.get('individual_characters',[]):
+        path=OUT/c['file']
+        if path.exists():
+            names,meshes=read_l643(path);previous_meshes[c['file']]=(path.read_bytes(),names,meshes)
     if not catalog_path.is_file():
         doc.setdefault('individual_characters',[])
         return doc
@@ -180,6 +189,7 @@ def apply_characters(doc,roots=None,catalog_path=CATALOG,strict=False):
     keys={t for record in doc['meshes'].values() for t in record['textures']}
     doc['texture_count']=len(keys)
     for warning in warnings:print('Character sync:',warning,file=sys.stderr)
+    finish_runtime_grounding(OUT,doc,previous_meshes)
     return doc
 
 

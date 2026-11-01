@@ -1,0 +1,306 @@
+{
+  "status": "verified-expansion-pak-trial-captures",
+  "rom": {
+    "file": "port/frontends/n64/adventure/build/actor-grounding-review/actor-grounding.z64",
+    "sha256": "5693b3bef03f310768f3c9d093c5affda467304a3ccf08e7b00f700fc97c186a",
+    "diagnostic": 9
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 6,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": "full observed callback dimensions",
+      "stage_pattern": "^(?:VIDEO REVIEW|DUEL UI) ([A-Za-z0-9_-]+) BEGIN\\r?$",
+      "require_native_frame": true,
+      "native_lead_frames": 6
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 4,
+    "private_settings": true,
+    "ExpansionPak": false
+  },
+  "runtime_video_modes": [
+    {
+      "width": 320,
+      "height": 240,
+      "ram": 4194304,
+      "highres": 0
+    }
+  ],
+  "raw_format": {
+    "pixel_order": "BGRA little endian; padding excluded from RGB proof",
+    "dimensions": "Recorded per image from Program::video registers",
+    "display_aspect": "4:3"
+  },
+  "finished": {
+    "callbacks": 1253,
+    "captures": 6,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "before-run-40.png",
+      "stage": "before-run-40",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "29f0f2e793a515d21a22f7f2dce1685fafd1ee8985c68f40c4630fa6c3c4fc49",
+      "callback_sha256": "7a5606ca90dc9d0e4945c929654418fd58be209bbb60fc6716644bcc040bcbe4",
+      "rgb_sha256": "bdbaec674d6c0ad769a777d912076a6a1471316807fa7caf3438a90c8f271627",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 121,
+      "stage_gate": {
+        "stage_started_callback": 113,
+        "native_frame": "before-run-40",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 113,
+        "native_ready_valid_frames": 75,
+        "post_native_valid_callbacks": 9,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": null
+      }
+    },
+    {
+      "file": "before-idle-24.png",
+      "stage": "before-idle-24",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "f9703d2f3eb28e044424521aee2022c3564fcb3386fde1288a220ac7c882e714",
+      "callback_sha256": "66959a7d1e7e5f8fd7bef3deb886efe835719d1a57828384957903ce4c4c393b",
+      "rgb_sha256": "a0d2ad82468ad4eed7cbc8fbd5ed8baa85813ff567545de65b2fb3493607a1db",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 309,
+      "stage_gate": {
+        "stage_started_callback": 301,
+        "native_frame": "before-idle-24",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 301,
+        "native_ready_valid_frames": 263,
+        "post_native_valid_callbacks": 9,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "fcf762e00949d06e7cdf414036516c604c5d3a134a63aaf61e560c9445ba2370"
+      }
+    },
+    {
+      "file": "before-idle-56.png",
+      "stage": "before-idle-56",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "81baf63379de3a67287d12f770755b8fc55cd7f25f925d11c91a980c1e1ee7f4",
+      "callback_sha256": "b8eec3dc6eb718bc721c638f1ea1f01a455198643e089eb312aa9081e796bbcb",
+      "rgb_sha256": "0cb09a54885957e026bbef38bf8e7a5c05e6a492b41b27e943cfe9757ce24ccf",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 494,
+      "stage_gate": {
+        "stage_started_callback": 486,
+        "native_frame": "before-idle-56",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 486,
+        "native_ready_valid_frames": 448,
+        "post_native_valid_callbacks": 9,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "9856631d088d8010d7d7185555a89e817ef01143193872df7bfd16d898dfc56e"
+      }
+    },
+    {
+      "file": "after-run-40.png",
+      "stage": "after-run-40",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "0c04e10bdb264a55fa238982f90ad4c8cb7192f8f78bfd1fafd8c8dc2f14973b",
+      "callback_sha256": "30d1be30e8d70ebd2ff73b88d6653220ab8425eca9f838ec86bd165ae59dc55a",
+      "rgb_sha256": "3d473a8fb6f1b11b7ca927546bed7478fa0c7324d2365379cdfb09154e3a644e",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 743,
+      "stage_gate": {
+        "stage_started_callback": 736,
+        "native_frame": "after-run-40",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 736,
+        "native_ready_valid_frames": 698,
+        "post_native_valid_callbacks": 8,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "32e4e537bf6d57152d01c6a71bfd16fbc781905e7386c7dd70e51af176d25371"
+      }
+    },
+    {
+      "file": "after-idle-24.png",
+      "stage": "after-idle-24",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "ccf76f5987cbf60b3a9b5afb4109c20ae8a4117f74e7bf86b06cc4d9d0db093e",
+      "callback_sha256": "7b78f9c987f28c0cd752af5d387fdfdcf08053ff111c3830bcc165391e11bc18",
+      "rgb_sha256": "86bcd95a797b55879fe931591ef5e8c6622701036d22dfa84b94ce7da5010d80",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 933,
+      "stage_gate": {
+        "stage_started_callback": 925,
+        "native_frame": "after-idle-24",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 925,
+        "native_ready_valid_frames": 887,
+        "post_native_valid_callbacks": 9,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "e697931314efeaf919063379b5d993ed2836101285550a1064ad70838c74136c"
+      }
+    },
+    {
+      "file": "after-idle-56.png",
+      "stage": "after-idle-56",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "81baf63379de3a67287d12f770755b8fc55cd7f25f925d11c91a980c1e1ee7f4",
+      "callback_sha256": "b8eec3dc6eb718bc721c638f1ea1f01a455198643e089eb312aa9081e796bbcb",
+      "rgb_sha256": "0cb09a54885957e026bbef38bf8e7a5c05e6a492b41b27e943cfe9757ce24ccf",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 1120,
+      "stage_gate": {
+        "stage_started_callback": 1112,
+        "native_frame": "after-idle-56",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 1112,
+        "native_ready_valid_frames": 1074,
+        "post_native_valid_callbacks": 9,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "7912947ca6d172ff698823fc42cb3b8a1d7d59cff2bf6e0ac4ddbe58c6abf064"
+      }
+    }
+  ],
+  "native_frames": [
+    {
+      "file": "before-run-40.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "1793160b2be08dd88aaa63d924f377f4b107b0195a67a37bf8e05e7d8dbc4158",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "before-idle-24.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "e9deb766a1b04b4cce0990eec2bf8bba3a050fd69f3a733e78f153967204bb6d",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "before-idle-56.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "bb8f20c1ca718a09b5dd91228cefdd507d6a3d1269bd0e2b11db0d29511e6e4d",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "after-run-40.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "3d5e9aaed9763d98250b8b11d481e7cfd2eb4bea5e2094e3c9c54b5e5295a055",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "after-idle-24.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "c542581a649ff99bede9a68e6bf0f8d27f7a06616a07df626d97d1388dba1937",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "after-idle-56.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "bb8f20c1ca718a09b5dd91228cefdd507d6a3d1269bd0e2b11db0d29511e6e4d",
+      "exact_native_pixels": 76800
+    }
+  ],
+  "memory": [],
+  "source_logs": {
+    "path": "port/frontends/n64/adventure/build/expansion-pak/actor-grounding-320-v1/lldb.log",
+    "sha256": "ee936dad31ef9bb480f226763a8c396572736e43307eb36c5a68451fc07931c0"
+  }
+}

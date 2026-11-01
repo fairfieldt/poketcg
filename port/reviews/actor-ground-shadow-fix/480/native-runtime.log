@@ -1,0 +1,113 @@
+Loaded actor-grounding
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-10-31 17:06:39.234 ares[38026:20182172] Resizing output buffers to 1536, 1152
+Scene rom:/before/world/actors.l64: 22 batches, 0 textures, 69132 bytes
+Scene rom:/world/maps/mason_laboratory.l64: 24 batches, 23 textures, 43128 bytes
+Scene rom:/before/world/maps/actor_mark.l64: 6 batches, 1 textures, 41192 bytes
+Scene rom:/before/world/maps/actor_dr_mason.l64: 6 batches, 1 textures, 35504 bytes
+Scene rom:/before/world/maps/actor_tech.l64: 6 batches, 1 textures, 31932 bytes
+Scene rom:/before/world/lod/actor_mark.l64: 6 batches, 1 textures, 27080 bytes
+Scene rom:/before/world/lod/actor_dr_mason.l64: 6 batches, 1 textures, 26084 bytes
+Scene rom:/before/world/lod/actor_tech.l64: 6 batches, 1 textures, 23436 bytes
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 12112.125 us (mode: sync, success: yes).
+[WARN]: Stalled compile (compute, ff2c37bddc938d8f): thread 0 - 5012.209 us (mode: sync, success: yes).
+VIDEO REVIEW before-run-08 BEGIN
+FRAMEBUFFER before-run-08 480 360
+FRAMEBUFFER END
+GAME FPS 3 frames=9 ticks=192310882
+GAME FPS 33 frames=26 ticks=216599067
+GAME FPS 28 frames=41 ticks=241330533
+VIDEO REVIEW before-run-24 BEGIN
+FRAMEBUFFER before-run-24 480 360
+FRAMEBUFFER END
+GAME FPS 3 frames=49 ticks=389939682
+GAME FPS 32 frames=66 ticks=414459054
+GAME FPS 29 frames=81 ticks=439071825
+VIDEO REVIEW before-run-40 BEGIN
+FRAMEBUFFER before-run-40 480 360
+FRAMEBUFFER END
+GAME FPS 3 frames=89 ticks=587556945
+GAME FPS 32 frames=106 ticks=612306815
+GAME FPS 29 frames=121 ticks=636636420
+GROUNDING SOURCE ARRIVAL pass=0 frames=52 x=14 y=8
+VIDEO REVIEW before-idle-08 BEGIN
+FRAMEBUFFER before-idle-08 480 360
+FRAMEBUFFER END
+GAME FPS 4 frames=133 ticks=781526877
+GAME FPS 32 frames=150 ticks=806253812
+GAME FPS 30 frames=165 ticks=829755486
+VIDEO REVIEW before-idle-24 BEGIN
+FRAMEBUFFER before-idle-24 480 360
+FRAMEBUFFER END
+GAME FPS 3 frames=173 ticks=968459223
+GAME FPS 32 frames=190 ticks=993161553
+GAME FPS 29 frames=205 ticks=1017449102
+VIDEO REVIEW before-idle-40 BEGIN
+FRAMEBUFFER before-idle-40 480 360
+FRAMEBUFFER END
+GAME FPS 3 frames=213 ticks=1156147169
+GAME FPS 33 frames=230 ticks=1180065013
+GAME FPS 29 frames=245 ticks=1204360709
+VIDEO REVIEW before-idle-56 BEGIN
+FRAMEBUFFER before-idle-56 480 360
+FRAMEBUFFER END
+GAME FPS 3 frames=253 ticks=1343038095
+GAME FPS 33 frames=270 ticks=1366972674
+GROUNDING SOURCE PASS variant=before width=480 frames=116 same_poses=0 canonical_readonly=1
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 68988 bytes
+Scene rom:/world/maps/mason_laboratory.l64: 24 batches, 23 textures, 43128 bytes
+Scene rom:/world/maps/actor_mark.l64: 6 batches, 1 textures, 41156 bytes
+Scene rom:/world/maps/actor_dr_mason.l64: 6 batches, 1 textures, 35468 bytes
+Scene rom:/world/maps/actor_tech.l64: 6 batches, 1 textures, 31896 bytes
+Scene rom:/world/lod/actor_mark.l64: 6 batches, 1 textures, 27044 bytes
+Scene rom:/world/lod/actor_dr_mason.l64: 6 batches, 1 textures, 26048 bytes
+Scene rom:/world/lod/actor_tech.l64: 6 batches, 1 textures, 23400 bytes
+GAME FPS 15 frames=285 ticks=1414414674
+VIDEO REVIEW after-run-08 BEGIN
+FRAMEBUFFER after-run-08 480 360
+FRAMEBUFFER END
+GAME FPS 3 frames=293 ticks=1562629778
+GAME FPS 32 frames=310 ticks=1587506732
+GAME FPS 28 frames=325 ticks=1612199265
+VIDEO REVIEW after-run-24 BEGIN
+FRAMEBUFFER after-run-24 480 360
+FRAMEBUFFER END
+GAME FPS 3 frames=333 ticks=1760775400
+GAME FPS 32 frames=350 ticks=1785348431
+GAME FPS 29 frames=365 ticks=1809973028
+VIDEO REVIEW after-run-40 BEGIN
+FRAMEBUFFER after-run-40 480 360
+FRAMEBUFFER END
+GAME FPS 3 frames=373 ticks=1959605898
+GAME FPS 34 frames=390 ticks=1983215873
+GROUNDING SOFT CONTACT phase=0 changed_pixels=266 remains=1
+GAME FPS 29 frames=405 ticks=2007543303
+GROUNDING SOURCE ARRIVAL pass=1 frames=52 x=14 y=8
+VIDEO REVIEW after-idle-08 BEGIN
+FRAMEBUFFER after-idle-08 480 360
+FRAMEBUFFER END
+GAME FPS 4 frames=418 ticks=2153986704
+GAME FPS 33 frames=435 ticks=2177933426
+GAME FPS 29 frames=450 ticks=2202213742
+VIDEO REVIEW after-idle-24 BEGIN
+FRAMEBUFFER after-idle-24 480 360
+FRAMEBUFFER END
+GAME FPS 3 frames=458 ticks=2340905933
+GAME FPS 32 frames=475 ticks=2365623095
+GAME FPS 29 frames=490 ticks=2389907940
+VIDEO REVIEW after-idle-40 BEGIN
+FRAMEBUFFER after-idle-40 480 360
+FRAMEBUFFER END
+GAME FPS 3 frames=498 ticks=2529792111
+GAME FPS 33 frames=515 ticks=2554094921
+GROUNDING SOFT CONTACT phase=1 changed_pixels=657 remains=1
+GAME FPS 29 frames=530 ticks=2578348350
+VIDEO REVIEW after-idle-56 BEGIN
+FRAMEBUFFER after-idle-56 480 360
+FRAMEBUFFER END
+GAME FPS 3 frames=539 ticks=2718618873
+GAME FPS 33 frames=556 ticks=2742559757
+GROUNDING SOURCE PASS variant=after width=480 frames=116 same_poses=1 canonical_readonly=1
+ACTOR GROUNDING NATIVE PASS width=480 frames=116 source_run=1 idle_camera=1 identical_animation=1 state_rng=1 soft_probes=2
+VIDEO REVIEW PASS

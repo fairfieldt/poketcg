@@ -1,0 +1,248 @@
+{
+  "passed": true,
+  "change": "Remove exact legacy opaque actor disk triangle references from shared runtime imports/LODs; no renderer/style/animation changes.",
+  "asset_proof": "assets.json",
+  "cases": [
+    {
+      "width": 320,
+      "ram_mib": 4,
+      "actual_source_updates": 116,
+      "same_actor_camera_animation": true,
+      "canonical_render_readonly_and_final_rng_same": true,
+      "native_proof": [
+        "GROUNDING SOURCE ARRIVAL pass=0 frames=52 x=14 y=8",
+        "GROUNDING SOURCE PASS variant=before width=320 frames=116 same_poses=0 canonical_readonly=1",
+        "GROUNDING SOFT CONTACT phase=0 changed_pixels=122 remains=1",
+        "GROUNDING SOURCE ARRIVAL pass=1 frames=52 x=14 y=8",
+        "GROUNDING SOFT CONTACT phase=1 changed_pixels=296 remains=1",
+        "GROUNDING SOURCE PASS variant=after width=320 frames=116 same_poses=1 canonical_readonly=1",
+        "ACTOR GROUNDING NATIVE PASS width=320 frames=116 source_run=1 idle_camera=1 identical_animation=1 state_rng=1 soft_probes=2"
+      ],
+      "composited_native_pairs": [
+        {
+          "frame": "idle-08",
+          "changed_pixels": 93,
+          "bounds": [
+            105,
+            88,
+            193,
+            166
+          ]
+        },
+        {
+          "frame": "idle-24",
+          "changed_pixels": 109,
+          "bounds": [
+            120,
+            142,
+            198,
+            168
+          ]
+        },
+        {
+          "frame": "idle-40",
+          "changed_pixels": 24,
+          "bounds": [
+            73,
+            119,
+            89,
+            124
+          ]
+        },
+        {
+          "frame": "idle-56",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "frame": "run-08",
+          "changed_pixels": 64,
+          "bounds": [
+            100,
+            75,
+            315,
+            161
+          ]
+        },
+        {
+          "frame": "run-24",
+          "changed_pixels": 46,
+          "bounds": [
+            42,
+            77,
+            320,
+            204
+          ]
+        },
+        {
+          "frame": "run-40",
+          "changed_pixels": 31,
+          "bounds": [
+            123,
+            108,
+            161,
+            144
+          ]
+        }
+      ],
+      "post_vi_pairs": [
+        {
+          "frame": "run-40",
+          "changed_post_vi_pixels": 69,
+          "bounds": [
+            245,
+            108,
+            322,
+            144
+          ]
+        },
+        {
+          "frame": "idle-24",
+          "changed_post_vi_pixels": 243,
+          "bounds": [
+            239,
+            142,
+            396,
+            168
+          ]
+        },
+        {
+          "frame": "idle-56",
+          "changed_post_vi_pixels": 0,
+          "bounds": null
+        }
+      ],
+      "rom": {
+        "file": "port/frontends/n64/adventure/build/actor-grounding-review/actor-grounding.z64",
+        "sha256": "5693b3bef03f310768f3c9d093c5affda467304a3ccf08e7b00f700fc97c186a",
+        "diagnostic": 9
+      },
+      "actual_post_vi_images": 6,
+      "verified_post_vi_rgb_pixels": 921600,
+      "provenance": "320/capture-provenance.json"
+    },
+    {
+      "width": 480,
+      "ram_mib": 8,
+      "actual_source_updates": 116,
+      "same_actor_camera_animation": true,
+      "canonical_render_readonly_and_final_rng_same": true,
+      "native_proof": [
+        "GROUNDING SOURCE ARRIVAL pass=0 frames=52 x=14 y=8",
+        "GROUNDING SOURCE PASS variant=before width=480 frames=116 same_poses=0 canonical_readonly=1",
+        "GROUNDING SOFT CONTACT phase=0 changed_pixels=266 remains=1",
+        "GROUNDING SOURCE ARRIVAL pass=1 frames=52 x=14 y=8",
+        "GROUNDING SOFT CONTACT phase=1 changed_pixels=657 remains=1",
+        "GROUNDING SOURCE PASS variant=after width=480 frames=116 same_poses=1 canonical_readonly=1",
+        "ACTOR GROUNDING NATIVE PASS width=480 frames=116 source_run=1 idle_camera=1 identical_animation=1 state_rng=1 soft_probes=2"
+      ],
+      "composited_native_pairs": [
+        {
+          "frame": "idle-08",
+          "changed_pixels": 238,
+          "bounds": [
+            156,
+            131,
+            290,
+            248
+          ]
+        },
+        {
+          "frame": "idle-24",
+          "changed_pixels": 235,
+          "bounds": [
+            180,
+            213,
+            297,
+            252
+          ]
+        },
+        {
+          "frame": "idle-40",
+          "changed_pixels": 59,
+          "bounds": [
+            109,
+            177,
+            134,
+            186
+          ]
+        },
+        {
+          "frame": "idle-56",
+          "changed_pixels": 0,
+          "bounds": null
+        },
+        {
+          "frame": "run-08",
+          "changed_pixels": 85,
+          "bounds": [
+            151,
+            101,
+            473,
+            241
+          ]
+        },
+        {
+          "frame": "run-24",
+          "changed_pixels": 96,
+          "bounds": [
+            224,
+            132,
+            480,
+            306
+          ]
+        },
+        {
+          "frame": "run-40",
+          "changed_pixels": 70,
+          "bounds": [
+            182,
+            162,
+            456,
+            215
+          ]
+        }
+      ],
+      "post_vi_pairs": [
+        {
+          "frame": "run-40",
+          "changed_post_vi_pixels": 224,
+          "bounds": [
+            8,
+            215,
+            608,
+            480
+          ]
+        },
+        {
+          "frame": "idle-24",
+          "changed_post_vi_pixels": 570,
+          "bounds": [
+            239,
+            283,
+            396,
+            336
+          ]
+        },
+        {
+          "frame": "idle-56",
+          "changed_post_vi_pixels": 26,
+          "bounds": [
+            8,
+            479,
+            38,
+            480
+          ]
+        }
+      ],
+      "rom": {
+        "file": "port/frontends/n64/adventure/build/actor-grounding-review/actor-grounding.z64",
+        "sha256": "5693b3bef03f310768f3c9d093c5affda467304a3ccf08e7b00f700fc97c186a",
+        "diagnostic": 9
+      },
+      "actual_post_vi_images": 6,
+      "verified_post_vi_rgb_pixels": 1843200,
+      "provenance": "480/capture-provenance.json"
+    }
+  ]
+}

@@ -218,6 +218,7 @@ test:
 	./$(BUILD_DIR)/host/test_sram
 	python3 $(PORT)/world3d/tools/check_world.py
 	python3 $(PORT)/world3d/tools/check_characters.py
+	python3 $(PORT)/world3d/tools/check_actor_grounding.py
 	python3 $(PORT)/world3d/tools/check_character_lods.py
 	sh tools/test_visibility.sh
 	python3 $(PORT)/characters/tools/check_skin.py

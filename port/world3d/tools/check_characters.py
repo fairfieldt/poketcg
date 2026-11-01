@@ -13,6 +13,7 @@ ROOT=Path(__file__).resolve().parents[1];REPO=ROOT.parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 from build_world import read_l643,Image
 from sync_characters import apply_characters,source_export
+from actor_grounding import strip_legacy_disks
 OUT=ROOT/'generated'
 doc=json.loads((OUT/'world.json').read_text())
 characters={c['slug']:c for c in doc['individual_characters']}
@@ -24,10 +25,12 @@ assert doc['player_model']!=characters['ronald']['model'] and all(c['model']>=7 
 _,fallback=read_l643(OUT/'actors.l64')
 assert {m[0] for m in fallback}==set(range(1,7))
 _,approved=read_l643(REPO/'port/frontends/n64/lightning/assets/scene.l64')
+approved,_=strip_legacy_disks(approved,{1,2,3,4})
 for expected in (m for m in approved if m[0] in range(1,5)):
     assert any(m==expected for m in fallback),('Fallback mesh changed',expected[:4])
 for c in characters.values():
     source=REPO/c['source'];src_names,original=read_l643(source/'scene.l64')
+    original,_=strip_legacy_disks(original)
     dst_names,converted=read_l643(OUT/c['file'])
     assert {m[0] for m in converted}=={c['model']}
     assert {m[1] for m in converted}=={m[1] for m in original}
@@ -81,4 +84,4 @@ with tempfile.TemporaryDirectory(dir=ROOT/'build',prefix='character-test-') as t
     retained=apply_characters(both,roots=[root])
     assert {c['slug'] for c in retained['individual_characters']}=={'dr_mason','ronald'}
     assert retained['npc_models']==both['npc_models']
-print('CHARACTERS PASS: source geometry/UV/colors/pivots preserved; reserved player/fallback IDs; all aliases; idempotent auto-discovery; incomplete-export retention')
+print('CHARACTERS PASS: non-shadow source geometry/UV/colors/pivots preserved; exact legacy disks removed; reserved IDs; aliases; idempotent discovery; incomplete-export retention')
