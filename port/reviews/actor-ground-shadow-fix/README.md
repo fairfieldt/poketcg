@@ -59,6 +59,10 @@ frames retain the same feet/body and a separate soft floor contact.
 The `sequence/` folders contain completed, fenced native RDP readbacks.
 The `native/` and `post-vi/` folders contain selected paired native readbacks
 and **actual original Ares VI output**, with callback/encoder pixel provenance.
+Both final VI gates pass: six images per mode, 2,764,800 encoded RGB pixels
+verified against the original emulator callbacks. At idle 56 the native
+before/after images are identical. At 480 the corresponding VI pair differs
+only in 26 bottom-margin pixels on the last scanline, rather than actor pixels.
 The 320 VI callback is 640×240 and should be displayed at 4:3; 480 is 640×480.
 No WebGL screenshot or altered trailer footage is used as native evidence.
 
