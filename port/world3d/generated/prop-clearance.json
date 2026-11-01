@@ -5,13 +5,13 @@
     "maps": 33,
     "variants": 37,
     "permission_states": 292,
-    "solids": 574,
+    "solids": 572,
     "anchors": 3528,
     "edges": 5817,
     "npc_starts": 141,
     "offstage_starts": 2
   },
   "failures": [],
-  "world_sha256": "8f139ef5466e4085f7a62a772a9a2f8517ce6af8acb78b4c81c9b9f141211883",
+  "world_sha256": "291be7bfc7ba4ae8e1c8f0985ecdbbd5dcc7aa9213becbea27cb64519653af59",
   "permission_source_sha256": "93bc4dd6a8bfaddceead2bbfd20c5d3d00c1375895cb019ac04608913718bacf"
 }

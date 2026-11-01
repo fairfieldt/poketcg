@@ -1,0 +1,2071 @@
+{
+  "checked_at_utc": "2026-11-01T01:51:15.145677+00:00",
+  "baseline_directory": "port/frontends/n64/adventure/build/prop-remodel-before",
+  "generated_directory": "port/world3d/generated",
+  "world_sha256_before": "8f139ef5466e4085f7a62a772a9a2f8517ce6af8acb78b4c81c9b9f141211883",
+  "world_sha256_after": "291be7bfc7ba4ae8e1c8f0985ecdbbd5dcc7aa9213becbea27cb64519653af59",
+  "result": "PASS",
+  "metadata_isolation": {
+    "map_count": 34,
+    "unchanged_world_fields": [
+      "format",
+      "coordinate_system",
+      "maps",
+      "overworld_nodes",
+      "events",
+      "npc_models",
+      "switches",
+      "switch_base",
+      "shared",
+      "individual_characters",
+      "overworld_authoring",
+      "fallback_npc_models",
+      "npc_pose_models",
+      "player_model",
+      "character_catalog",
+      "map_actor_scenes"
+    ],
+    "map_checks": [
+      {
+        "id": 0,
+        "slug": "overworld",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 1,
+        "slug": "mason_laboratory",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 2,
+        "slug": "deck_machine_room",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 3,
+        "slug": "ishiharas_house",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 4,
+        "slug": "fighting_club_entrance",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 5,
+        "slug": "fighting_club_lobby",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 6,
+        "slug": "fighting_club",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 7,
+        "slug": "rock_club_entrance",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 8,
+        "slug": "rock_club_lobby",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 9,
+        "slug": "rock_club",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 10,
+        "slug": "water_club_entrance",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 11,
+        "slug": "water_club_lobby",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 12,
+        "slug": "water_club",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 13,
+        "slug": "lightning_club_entrance",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 14,
+        "slug": "lightning_club_lobby",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 15,
+        "slug": "lightning_club",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 16,
+        "slug": "grass_club_entrance",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 17,
+        "slug": "grass_club_lobby",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 18,
+        "slug": "grass_club",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 19,
+        "slug": "psychic_club_entrance",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 20,
+        "slug": "psychic_club_lobby",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 21,
+        "slug": "psychic_club",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 22,
+        "slug": "science_club_entrance",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 23,
+        "slug": "science_club_lobby",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 24,
+        "slug": "science_club",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 25,
+        "slug": "fire_club_entrance",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 26,
+        "slug": "fire_club_lobby",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 27,
+        "slug": "fire_club",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 28,
+        "slug": "challenge_hall_entrance",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 29,
+        "slug": "challenge_hall_lobby",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 30,
+        "slug": "challenge_hall",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 31,
+        "slug": "pokemon_dome_entrance",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 32,
+        "slug": "pokemon_dome",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      },
+      {
+        "id": 33,
+        "slug": "hall_of_honor",
+        "unchanged_fields": [
+          "camera",
+          "height",
+          "id",
+          "name",
+          "npcs",
+          "overlay",
+          "permissions",
+          "scene",
+          "slug",
+          "warps",
+          "width"
+        ]
+      }
+    ],
+    "notes": "Every map record, including permissions, NPC definitions/positions, warps, cameras, scene/overlay mapping and dimensions, is identical. Overworld nodes, events, independent switch scene mappings, player/NPC actor mappings and character metadata are unchanged.",
+    "all_34_map_records_identical": true
+  },
+  "mesh_isolation": {
+    "baseline_mesh_count": 151,
+    "unchanged_count": 119,
+    "changed_count": 32,
+    "added": [],
+    "removed": [],
+    "full_character_meshes_unchanged": 49,
+    "lod_character_meshes_unchanged": 49,
+    "fallback_actors_sha256": "16ac7da869e7948de5fae45dfa9ec0b1652b89721db0c584087539a15aae06f0",
+    "protected_meshes": {
+      "maps/overworld.l64": {
+        "unchanged": true,
+        "sha256": "1b23d9b2cab8dc27ef6f0975b9704b1a82140f89510163e2df52686d42571863"
+      },
+      "maps/lightning_club.l64": {
+        "unchanged": true,
+        "sha256": "fc6cace537264d48feb6697d707b102fdbdeb8e1c6c7e9a575790fa4f841f661"
+      },
+      "maps/hall_of_honor.l64": {
+        "unchanged": true,
+        "sha256": "00fbca321ed9986aeffd02161f3db11162cc0e073812c5439303a6cb566ec888"
+      }
+    },
+    "changed_meshes": [
+      {
+        "file": "maps/challenge_hall.l64",
+        "sha256_before": "592966701662ad51bce3bdfe05fd5380e3901178cc0079dcba2bdd762423e324",
+        "sha256_after": "63345d0cb29e766d24bc78e329e3b2e5185e93bbd14434e89c67511500b4edda",
+        "before": {
+          "vertices": 1524,
+          "triangles": 986,
+          "batches": 49,
+          "untextured_batches": 1,
+          "texture_materials": 48,
+          "mesh_bytes": 45408,
+          "vertex_index_bytes": 42492,
+          "texture_memory": {
+            "unique_textures": 48,
+            "rgba16_bytes": 101888,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 1656,
+          "triangles": 1052,
+          "batches": 48,
+          "untextured_batches": 1,
+          "texture_materials": 47,
+          "mesh_bytes": 48912,
+          "vertex_index_bytes": 46056,
+          "texture_memory": {
+            "unique_textures": 47,
+            "rgba16_bytes": 97792,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "t08d6665d6ebc1085"
+        ]
+      },
+      {
+        "file": "maps/club_lobby.l64",
+        "sha256_before": "ed4c64e29c79bfc44efc42ace35dfbce137de9e646fc6f22e3d179f648b4b5a7",
+        "sha256_after": "dd18dc0c559ea7afaca5304f9118039f97eb6e709c1180761abdeca43f696f10",
+        "before": {
+          "vertices": 1468,
+          "triangles": 870,
+          "batches": 23,
+          "untextured_batches": 1,
+          "texture_materials": 22,
+          "mesh_bytes": 41808,
+          "vertex_index_bytes": 40452,
+          "texture_memory": {
+            "unique_textures": 22,
+            "rgba16_bytes": 42496,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 2567,
+          "triangles": 1434,
+          "batches": 19,
+          "untextured_batches": 1,
+          "texture_materials": 18,
+          "mesh_bytes": 71328,
+          "vertex_index_bytes": 70212,
+          "texture_memory": {
+            "unique_textures": 18,
+            "rgba16_bytes": 36352,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [
+          "t1c1ff447162e5240"
+        ],
+        "texture_materials_removed": [
+          "t76a029af9c4922d2",
+          "t7e2001df465a6438",
+          "t949e11c268a268c5",
+          "taf5c4d207cbe1986",
+          "tfe84f2c84fb34b82"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_2_off.l64",
+        "sha256_before": "5fda4bbdec49ea12ce6f13a476448529199a64dbdd7316055d369ab0671d1ea2",
+        "sha256_after": "d542def1fd2e2696d787923fed7f970d96264c51e20a1cbf41d69427ccbd0864",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 2048,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 36,
+          "triangles": 18,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 1008,
+          "vertex_index_bytes": 972,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "t589fba93ed2d7cec"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_2_on.l64",
+        "sha256_before": "089734ee000f0aca19e7e0a54d31ac00f4e9e421f7ead04f91f6f7fc2362100a",
+        "sha256_after": "19d6166a94cd50444fcf42d77ebb55660c2b06677c6ebba8eeb2f022056b49cc",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 2048,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 16,
+          "triangles": 8,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 468,
+          "vertex_index_bytes": 432,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tf037f3b6060fdf6f"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_3_off.l64",
+        "sha256_before": "5e452c373ccc46c248d23182d1fd74e033ec198a52d7e96bc64a4511a00ebee9",
+        "sha256_after": "0dc1c4ed884baf74aef22d64baff0173b4296068474a323f0a03a19e6921237e",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 2048,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 36,
+          "triangles": 18,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 1008,
+          "vertex_index_bytes": 972,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "t589fba93ed2d7cec"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_3_on.l64",
+        "sha256_before": "2a50350443f2572095ea5a1fb75af493967a4c5a2ba15f1d35a0e4adcaadffaf",
+        "sha256_after": "40c9c1e90752ec2c276298f5059bde1421b260e2162360d89c3ae143d641f0fe",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 2048,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 16,
+          "triangles": 8,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 468,
+          "vertex_index_bytes": 432,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tf037f3b6060fdf6f"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_4_off.l64",
+        "sha256_before": "2ef53211a07116f342f288e5655e0adcebd34d63f5cd4e6b6fa000175be00886",
+        "sha256_after": "5681d93cebeded742099db4eeba36c44d88a784c415256dec32ffb5e40e8e938",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 2048,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 36,
+          "triangles": 18,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 1008,
+          "vertex_index_bytes": 972,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "t589fba93ed2d7cec"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_4_on.l64",
+        "sha256_before": "8267f8fd7987b3e08b1233322e60f7423f9a6207cbd2515a703a7cb7286735de",
+        "sha256_after": "3f72260c2a0094145587bba7cbbfd28ca7317754f5614333730547f9ce6319ad",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 2048,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 16,
+          "triangles": 8,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 468,
+          "vertex_index_bytes": 432,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tf037f3b6060fdf6f"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_5_off.l64",
+        "sha256_before": "6d0839e461ec27bcaad845cb55622ae5d3c77c751b746b24c7ab9022692f2ed9",
+        "sha256_after": "0e0e3d421e106937d70b55526885ed4ac7c0e51d939e56e371436a562084e211",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 2048,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 36,
+          "triangles": 18,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 1008,
+          "vertex_index_bytes": 972,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "t589fba93ed2d7cec"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_5_on.l64",
+        "sha256_before": "1cd497ed53d8a1d3cb6e7e508adf07e99a9e434014edbee9e908d8ce9b50b69b",
+        "sha256_after": "328462ac6f7f276e207860a9600a000a7885670115013283e3a38e2eb667a1cb",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 2048,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 16,
+          "triangles": 8,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 468,
+          "vertex_index_bytes": 432,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tf037f3b6060fdf6f"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_6_off.l64",
+        "sha256_before": "b238e772e38ef681dafa534d7073a231ccf604a5b4b105ce2919ed3f92871471",
+        "sha256_after": "44bf3e5e074d7f8b990e555cbda74dc737e468aa32d558864b210cd9a3ac9bd4",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 4096,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 36,
+          "triangles": 18,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 1008,
+          "vertex_index_bytes": 972,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tf63a20fbed752f3c"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_6_on.l64",
+        "sha256_before": "f66e39735cb4bebf51acbdfe9a9a610cd8c62886e60937bfdee8306f03c60486",
+        "sha256_after": "71c579d094be1ae2413cb2ad5aa0049cc1e0ec312dbbd71a50952ef1c18a26bf",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 4096,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 16,
+          "triangles": 8,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 468,
+          "vertex_index_bytes": 432,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tb6960579eb54f40e"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_7_off.l64",
+        "sha256_before": "cc7312fc43c5f476478bc8fa5cb6b3c839703938f80060f1b53895f160b7ad25",
+        "sha256_after": "94e5ffc0dd327f367731fc299e57c6d3d71b426ff4451f0c73a07fc6c61da9ee",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 4096,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 36,
+          "triangles": 18,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 1008,
+          "vertex_index_bytes": 972,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tf63a20fbed752f3c"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_7_on.l64",
+        "sha256_before": "d2e39911451044756c2988837ef2c40a9616a38d0cc4eaa44249fe4390c28887",
+        "sha256_after": "218329a24060184d2081e3a5e2474618e4e55d3399e92c24fb3d1a4316ce0b2e",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 4096,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 16,
+          "triangles": 8,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 468,
+          "vertex_index_bytes": 432,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tb6960579eb54f40e"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_8_off.l64",
+        "sha256_before": "752bcccfb22abc3acd7d112987986245eefcb92186b9357c6a64b20130eb4116",
+        "sha256_after": "d87780e81a9aa461a88224697fabad4abe905f0d96ab5e81fad14a0529d7140f",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 4096,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 36,
+          "triangles": 18,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 1008,
+          "vertex_index_bytes": 972,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tf63a20fbed752f3c"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_8_on.l64",
+        "sha256_before": "fa0b69924d095760f31f641445472c0a520882a69fdb3a2d923770caf6d30f7a",
+        "sha256_after": "8994029147d06d23ed099fe202947db64634038bbf1e61bb3da63fee2d8ff07a",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 4096,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 16,
+          "triangles": 8,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 468,
+          "vertex_index_bytes": 432,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tb6960579eb54f40e"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_9_off.l64",
+        "sha256_before": "4b50187a8fb20a227896fa32f702847c341a99b48200bba4f551de4136dc668c",
+        "sha256_after": "36abef5ddaecc54d02aa8d54afd1f32f62096997f69c3a4506e4950eaa53104c",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 4096,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 36,
+          "triangles": 18,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 1008,
+          "vertex_index_bytes": 972,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tf63a20fbed752f3c"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_9_on.l64",
+        "sha256_before": "7f32e81861c394fa438d7720d522fa61064d70f7195e89efc367b1771a16605d",
+        "sha256_after": "5a931635da88a162a1f91dd61cdd8ba64949fd9f5c71fb2ce16480552b1837df",
+        "before": {
+          "vertices": 4,
+          "triangles": 2,
+          "batches": 1,
+          "untextured_batches": 0,
+          "texture_materials": 1,
+          "mesh_bytes": 176,
+          "vertex_index_bytes": 108,
+          "texture_memory": {
+            "unique_textures": 1,
+            "rgba16_bytes": 4096,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 16,
+          "triangles": 8,
+          "batches": 1,
+          "untextured_batches": 1,
+          "texture_materials": 0,
+          "mesh_bytes": 468,
+          "vertex_index_bytes": 432,
+          "texture_memory": {
+            "unique_textures": 0,
+            "rgba16_bytes": 0,
+            "largest_tile_bytes": 0,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tb6960579eb54f40e"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_room.l64",
+        "sha256_before": "39afb245f2263ddcb972221b60af35ec6c31545ed763bddc86f73af4e39e7968",
+        "sha256_after": "626912e5aa62e5890f9f75429302eb1f2cc0868d4c057af0be7d76783a9177ef",
+        "before": {
+          "vertices": 839,
+          "triangles": 542,
+          "batches": 15,
+          "untextured_batches": 1,
+          "texture_materials": 14,
+          "mesh_bytes": 24264,
+          "vertex_index_bytes": 23388,
+          "texture_memory": {
+            "unique_textures": 14,
+            "rgba16_bytes": 30208,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 3539,
+          "triangles": 1892,
+          "batches": 11,
+          "untextured_batches": 1,
+          "texture_materials": 10,
+          "mesh_bytes": 96924,
+          "vertex_index_bytes": 96288,
+          "texture_memory": {
+            "unique_textures": 10,
+            "rgba16_bytes": 17920,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "t589fba93ed2d7cec",
+          "t59febba1e0f0fca2",
+          "tf037f3b6060fdf6f",
+          "tf63a20fbed752f3c"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_room_all_deck_machines.l64",
+        "sha256_before": "0ce32375283c42925ed19b46d1680097a89eb2d647c06891f1ac0ee36b81accf",
+        "sha256_after": "16f0d98c721208be11598fbb49c4319e51f4714ef15aff8085ba5d8b5923a5a5",
+        "before": {
+          "vertices": 839,
+          "triangles": 542,
+          "batches": 14,
+          "untextured_batches": 1,
+          "texture_materials": 13,
+          "mesh_bytes": 24204,
+          "vertex_index_bytes": 23388,
+          "texture_memory": {
+            "unique_textures": 13,
+            "rgba16_bytes": 28160,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 3379,
+          "triangles": 1812,
+          "batches": 11,
+          "untextured_batches": 1,
+          "texture_materials": 10,
+          "mesh_bytes": 92604,
+          "vertex_index_bytes": 91968,
+          "texture_memory": {
+            "unique_textures": 10,
+            "rgba16_bytes": 17920,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "t59febba1e0f0fca2",
+          "tb6960579eb54f40e",
+          "tf037f3b6060fdf6f"
+        ]
+      },
+      {
+        "file": "maps/deck_machine_room_dynamic.l64",
+        "sha256_before": "9e287cd205db692cb5fea5c7ab6c486130ef36421d8ec84307d44e3fec4bbc72",
+        "sha256_after": "2ec9ce3443dfa1899aa7b533d8234df30f9952807c84f932897245d6c9f190ce",
+        "before": {
+          "vertices": 807,
+          "triangles": 526,
+          "batches": 13,
+          "untextured_batches": 1,
+          "texture_materials": 12,
+          "mesh_bytes": 23280,
+          "vertex_index_bytes": 22524,
+          "texture_memory": {
+            "unique_textures": 12,
+            "rgba16_bytes": 24064,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 3251,
+          "triangles": 1748,
+          "batches": 11,
+          "untextured_batches": 1,
+          "texture_materials": 10,
+          "mesh_bytes": 89148,
+          "vertex_index_bytes": 88512,
+          "texture_memory": {
+            "unique_textures": 10,
+            "rgba16_bytes": 17920,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "t59febba1e0f0fca2",
+          "tf037f3b6060fdf6f"
+        ]
+      },
+      {
+        "file": "maps/ishiharas_house.l64",
+        "sha256_before": "62e6d221ab25d4a196feba6e0600f9d09046eeb37f8ae2d56439349d36064fbf",
+        "sha256_after": "75214c0da4466d30ce4d3a0d14aa6fc164a6fab55bb326847251b78a05487bd2",
+        "before": {
+          "vertices": 1078,
+          "triangles": 630,
+          "batches": 21,
+          "untextured_batches": 1,
+          "texture_materials": 20,
+          "mesh_bytes": 30888,
+          "vertex_index_bytes": 29652,
+          "texture_memory": {
+            "unique_textures": 20,
+            "rgba16_bytes": 35328,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 3718,
+          "triangles": 1950,
+          "batches": 18,
+          "untextured_batches": 1,
+          "texture_materials": 17,
+          "mesh_bytes": 101988,
+          "vertex_index_bytes": 100932,
+          "texture_memory": {
+            "unique_textures": 17,
+            "rgba16_bytes": 32256,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "t3ef1203779b9f9bb",
+          "tde5768370c742023",
+          "tfdcb7ae9ea0f0b45"
+        ]
+      },
+      {
+        "file": "maps/mason_laboratory.l64",
+        "sha256_before": "cc4f20b3a82f7958fe8d9ad8218e1e4429e1a6430bbaf3b37d46441bfd915fbb",
+        "sha256_after": "9bfe908dc28a116c17b5e4e76e8c0eacd4671cd788b6c8fe341bb7e917898306",
+        "before": {
+          "vertices": 1512,
+          "triangles": 904,
+          "batches": 24,
+          "untextured_batches": 1,
+          "texture_materials": 23,
+          "mesh_bytes": 43128,
+          "vertex_index_bytes": 41712,
+          "texture_memory": {
+            "unique_textures": 23,
+            "rgba16_bytes": 43520,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 3348,
+          "triangles": 1838,
+          "batches": 18,
+          "untextured_batches": 1,
+          "texture_materials": 17,
+          "mesh_bytes": 92436,
+          "vertex_index_bytes": 91380,
+          "texture_memory": {
+            "unique_textures": 17,
+            "rgba16_bytes": 34304,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [
+          "t1c1ff447162e5240",
+          "t9db8b3f182c3b48c",
+          "tc94d3e78e64c6acb"
+        ],
+        "texture_materials_removed": [
+          "t14ed7977fb1005ef",
+          "t9097dc2d8c224fce",
+          "t9746ef8d56a27ce5",
+          "t99f5c732746aeac0",
+          "tb5a055782d58460f",
+          "tbae050acafad2976",
+          "tcc62b40c9b630fb6",
+          "tdad4e1739a54128c",
+          "teca6fe7169a20b72"
+        ]
+      },
+      {
+        "file": "maps/mason_laboratory_challenge_machine.l64",
+        "sha256_before": "950e41d29cbf7bf573e2baeb5254c44239ebc20a6ed37945ece58b2cbe3e8204",
+        "sha256_after": "e3e7670285d39621092279840f8ae4e6a8bc58afd8deda3868d09eeee772e426",
+        "before": {
+          "vertices": 1548,
+          "triangles": 922,
+          "batches": 24,
+          "untextured_batches": 1,
+          "texture_materials": 23,
+          "mesh_bytes": 44100,
+          "vertex_index_bytes": 42684,
+          "texture_memory": {
+            "unique_textures": 23,
+            "rgba16_bytes": 45568,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 3648,
+          "triangles": 1988,
+          "batches": 17,
+          "untextured_batches": 1,
+          "texture_materials": 16,
+          "mesh_bytes": 100476,
+          "vertex_index_bytes": 99480,
+          "texture_memory": {
+            "unique_textures": 16,
+            "rgba16_bytes": 32256,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [
+          "t1c1ff447162e5240",
+          "t9db8b3f182c3b48c",
+          "tc94d3e78e64c6acb"
+        ],
+        "texture_materials_removed": [
+          "t14ed7977fb1005ef",
+          "t9097dc2d8c224fce",
+          "t9746ef8d56a27ce5",
+          "t99f5c732746aeac0",
+          "tb5a055782d58460f",
+          "tb6960579eb54f40e",
+          "tbae050acafad2976",
+          "tcc62b40c9b630fb6",
+          "tdad4e1739a54128c",
+          "teca6fe7169a20b72"
+        ]
+      },
+      {
+        "file": "maps/pokemon_dome.l64",
+        "sha256_before": "3cc4ef2afc9da2f963a49b1d278373e6dd31003dab4c56922635eb125c993d34",
+        "sha256_after": "c93cc6907f5ef1981a3136ef68bbc9e3f8c687a56437f371d578991236455ee4",
+        "before": {
+          "vertices": 2628,
+          "triangles": 1518,
+          "batches": 54,
+          "untextured_batches": 1,
+          "texture_materials": 53,
+          "mesh_bytes": 75396,
+          "vertex_index_bytes": 72180,
+          "texture_memory": {
+            "unique_textures": 53,
+            "rgba16_bytes": 107008,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 2700,
+          "triangles": 1554,
+          "batches": 54,
+          "untextured_batches": 1,
+          "texture_materials": 53,
+          "mesh_bytes": 77340,
+          "vertex_index_bytes": 74124,
+          "texture_memory": {
+            "unique_textures": 53,
+            "rgba16_bytes": 107008,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [
+          "t1c1ff447162e5240"
+        ],
+        "texture_materials_removed": [
+          "t2c018ea453417e95"
+        ]
+      },
+      {
+        "file": "maps/pokemon_dome_entrance.l64",
+        "sha256_before": "7981d28df0b48d972c4c18f39113f0e3470e8e2d609366c4b2b30cf8692ff02a",
+        "sha256_after": "622d7ceca84d03a485e39ecc424e1b775f4443f356a4f5a3040eda45ada5be31",
+        "before": {
+          "vertices": 742,
+          "triangles": 474,
+          "batches": 27,
+          "untextured_batches": 1,
+          "texture_materials": 26,
+          "mesh_bytes": 22248,
+          "vertex_index_bytes": 20652,
+          "texture_memory": {
+            "unique_textures": 26,
+            "rgba16_bytes": 43520,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 1854,
+          "triangles": 1030,
+          "batches": 24,
+          "untextured_batches": 1,
+          "texture_materials": 23,
+          "mesh_bytes": 52092,
+          "vertex_index_bytes": 50676,
+          "texture_memory": {
+            "unique_textures": 23,
+            "rgba16_bytes": 40448,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "t4f1c656df67fed71",
+          "t54c736bfb682fddd",
+          "taa3968f95bbcd5ff"
+        ]
+      },
+      {
+        "file": "maps/pokemon_dome_entrance_door_open.l64",
+        "sha256_before": "9e3e9cc3f1b2d4c2d0b46892388c9665e3dfd92349582bffff755765791c6f2a",
+        "sha256_after": "64483285af5f48098c92c3c83aaf49c46b2a4f134bb2d6c9cb3b90293ef8665f",
+        "before": {
+          "vertices": 702,
+          "triangles": 454,
+          "batches": 25,
+          "untextured_batches": 1,
+          "texture_materials": 24,
+          "mesh_bytes": 21048,
+          "vertex_index_bytes": 19572,
+          "texture_memory": {
+            "unique_textures": 24,
+            "rgba16_bytes": 42496,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 1814,
+          "triangles": 1010,
+          "batches": 22,
+          "untextured_batches": 1,
+          "texture_materials": 21,
+          "mesh_bytes": 50892,
+          "vertex_index_bytes": 49596,
+          "texture_memory": {
+            "unique_textures": 21,
+            "rgba16_bytes": 39424,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "t4f1c656df67fed71",
+          "t54c736bfb682fddd",
+          "taa3968f95bbcd5ff"
+        ]
+      },
+      {
+        "file": "maps/pokemon_dome_hall_of_honor_door_open.l64",
+        "sha256_before": "3362ca1028c0acb3ae141443549cd0afe0c5958d3203727ceb65bd9f3bae3f1b",
+        "sha256_after": "5246f75cb947c2aabc45e9a10882a86b27844d1acb19d6f644e54cbde4998561",
+        "before": {
+          "vertices": 2628,
+          "triangles": 1518,
+          "batches": 53,
+          "untextured_batches": 1,
+          "texture_materials": 52,
+          "mesh_bytes": 75336,
+          "vertex_index_bytes": 72180,
+          "texture_memory": {
+            "unique_textures": 52,
+            "rgba16_bytes": 104960,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 2700,
+          "triangles": 1554,
+          "batches": 53,
+          "untextured_batches": 1,
+          "texture_materials": 52,
+          "mesh_bytes": 77280,
+          "vertex_index_bytes": 74124,
+          "texture_memory": {
+            "unique_textures": 52,
+            "rgba16_bytes": 104960,
+            "largest_tile_bytes": 4096,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [
+          "t1c1ff447162e5240"
+        ],
+        "texture_materials_removed": [
+          "t2c018ea453417e95"
+        ]
+      },
+      {
+        "file": "maps/psychic_club.l64",
+        "sha256_before": "68b89e72c07bb5ce9ccb15e1e7b7247d8fccbe9768d06aa75f2cb96ea960f84a",
+        "sha256_after": "61320267601dad71072cd6be4ddaf63136a026e107238c067e9895c63d096891",
+        "before": {
+          "vertices": 1514,
+          "triangles": 892,
+          "batches": 33,
+          "untextured_batches": 1,
+          "texture_materials": 32,
+          "mesh_bytes": 43644,
+          "vertex_index_bytes": 41688,
+          "texture_memory": {
+            "unique_textures": 32,
+            "rgba16_bytes": 62976,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 2818,
+          "triangles": 1572,
+          "batches": 33,
+          "untextured_batches": 1,
+          "texture_materials": 32,
+          "mesh_bytes": 79020,
+          "vertex_index_bytes": 77064,
+          "texture_memory": {
+            "unique_textures": 32,
+            "rgba16_bytes": 62976,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": []
+      },
+      {
+        "file": "maps/rock_club.l64",
+        "sha256_before": "879f660ef382613ecd91bf6b12b2695be5b0fa6c7488cea0bc58e14cf0c2c453",
+        "sha256_after": "699b8df3dd205d0f88d8f60651f72999383fc974639a76e4081bdfc15c3abe0a",
+        "before": {
+          "vertices": 2694,
+          "triangles": 1488,
+          "batches": 37,
+          "untextured_batches": 1,
+          "texture_materials": 36,
+          "mesh_bytes": 75780,
+          "vertex_index_bytes": 73584,
+          "texture_memory": {
+            "unique_textures": 36,
+            "rgba16_bytes": 70144,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 5196,
+          "triangles": 2412,
+          "batches": 36,
+          "untextured_batches": 1,
+          "texture_materials": 35,
+          "mesh_bytes": 141312,
+          "vertex_index_bytes": 139176,
+          "texture_memory": {
+            "unique_textures": 35,
+            "rgba16_bytes": 69120,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "tf79e1124690a4f7d"
+        ]
+      },
+      {
+        "file": "maps/science_club.l64",
+        "sha256_before": "39f35345bda30220c82e1247171324ea1fe67bccba0ad2347ce9dafad53f54be",
+        "sha256_after": "89a3cd13329dcde4f596a2266e1da79c75c1e0cf284114f4682586e59c530fe7",
+        "before": {
+          "vertices": 1020,
+          "triangles": 678,
+          "batches": 39,
+          "untextured_batches": 1,
+          "texture_materials": 38,
+          "mesh_bytes": 30864,
+          "vertex_index_bytes": 28548,
+          "texture_memory": {
+            "unique_textures": 38,
+            "rgba16_bytes": 72192,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 2960,
+          "triangles": 1664,
+          "batches": 30,
+          "untextured_batches": 1,
+          "texture_materials": 29,
+          "mesh_bytes": 82800,
+          "vertex_index_bytes": 81024,
+          "texture_memory": {
+            "unique_textures": 29,
+            "rgba16_bytes": 54784,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": [
+          "t01954c78492c12a9",
+          "t1c6227916f22cc34",
+          "t380b35f002c7f762",
+          "t67c8d58c1cddf416",
+          "t8984b4c03a7f6086",
+          "tb43103d92d4c601a",
+          "tb435dd51f3a6b9e7",
+          "tc6f959b34d0b9b1f",
+          "tc9031e6b7573ce0e"
+        ]
+      },
+      {
+        "file": "maps/water_club.l64",
+        "sha256_before": "84160bac1b6e7349c5a7bec9bb709eabb2caf5364cb6bfb995fd309800945759",
+        "sha256_after": "5f9d7e15f68392917605193a0db3f36ab9128b156a37298c06c7ad6cd7dc9df3",
+        "before": {
+          "vertices": 3435,
+          "triangles": 2516,
+          "batches": 20,
+          "untextured_batches": 1,
+          "texture_materials": 19,
+          "mesh_bytes": 98712,
+          "vertex_index_bytes": 97536,
+          "texture_memory": {
+            "unique_textures": 19,
+            "rgba16_bytes": 36352,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "after": {
+          "vertices": 4468,
+          "triangles": 3044,
+          "batches": 20,
+          "untextured_batches": 1,
+          "texture_materials": 19,
+          "mesh_bytes": 126672,
+          "vertex_index_bytes": 125496,
+          "texture_memory": {
+            "unique_textures": 19,
+            "rgba16_bytes": 36352,
+            "largest_tile_bytes": 2048,
+            "all_tiles_fit_4096_byte_tmem": true
+          }
+        },
+        "texture_materials_added": [],
+        "texture_materials_removed": []
+      }
+    ]
+  },
+  "texture_isolation": {
+    "world_recorded_count_before": 504,
+    "world_recorded_count_after": 469,
+    "mesh_referenced_unique_count_before": 504,
+    "mesh_referenced_unique_count_after": 470,
+    "new_referenced_textures": {
+      "t1c1ff447162e5240": {
+        "width": 64,
+        "height": 32,
+        "sha256": "27acaea653264546ab08cfbd4f6b9d8a002a30ce83429d9a2ce78ff3887f9c46"
+      },
+      "t9db8b3f182c3b48c": {
+        "width": 32,
+        "height": 32,
+        "sha256": "9feefabf9bb340c0155944d81595da0764e4e3476c5ac1ef50c6ce0750092ef7"
+      },
+      "tc94d3e78e64c6acb": {
+        "width": 32,
+        "height": 32,
+        "sha256": "9ff874b83b094871ff7cb00f0b82fc5ec64bb15aad27d3f895457e73a1312970"
+      }
+    },
+    "no_longer_referenced_textures": [
+      "t01954c78492c12a9",
+      "t08d6665d6ebc1085",
+      "t14ed7977fb1005ef",
+      "t1c6227916f22cc34",
+      "t2c018ea453417e95",
+      "t380b35f002c7f762",
+      "t3ef1203779b9f9bb",
+      "t4f1c656df67fed71",
+      "t54c736bfb682fddd",
+      "t589fba93ed2d7cec",
+      "t59febba1e0f0fca2",
+      "t67c8d58c1cddf416",
+      "t76a029af9c4922d2",
+      "t7e2001df465a6438",
+      "t8984b4c03a7f6086",
+      "t9097dc2d8c224fce",
+      "t949e11c268a268c5",
+      "t9746ef8d56a27ce5",
+      "t99f5c732746aeac0",
+      "taa3968f95bbcd5ff",
+      "taf5c4d207cbe1986",
+      "tb43103d92d4c601a",
+      "tb435dd51f3a6b9e7",
+      "tb5a055782d58460f",
+      "tb6960579eb54f40e",
+      "tbae050acafad2976",
+      "tc6f959b34d0b9b1f",
+      "tc9031e6b7573ce0e",
+      "tcc62b40c9b630fb6",
+      "tdad4e1739a54128c",
+      "tde5768370c742023",
+      "teca6fe7169a20b72",
+      "tf037f3b6060fdf6f",
+      "tf63a20fbed752f3c",
+      "tf79e1124690a4f7d",
+      "tfdcb7ae9ea0f0b45",
+      "tfe84f2c84fb34b82"
+    ],
+    "physical_pool_added": [
+      "t1c1ff447162e5240.png",
+      "t9db8b3f182c3b48c.png",
+      "tc94d3e78e64c6acb.png"
+    ],
+    "physical_pool_removed": [
+      "t0102bd098b929631.png",
+      "t01954c78492c12a9.png",
+      "t08d6665d6ebc1085.png",
+      "t0e471bbb536571c6.png",
+      "t14ed7977fb1005ef.png",
+      "t1c6227916f22cc34.png",
+      "t2c018ea453417e95.png",
+      "t380b35f002c7f762.png",
+      "t3bcdeca17a85e16d.png",
+      "t3ef1203779b9f9bb.png",
+      "t4f1c656df67fed71.png",
+      "t54c736bfb682fddd.png",
+      "t589fba93ed2d7cec.png",
+      "t59febba1e0f0fca2.png",
+      "t6522bafc3f26c77a.png",
+      "t67c8d58c1cddf416.png",
+      "t76a029af9c4922d2.png",
+      "t7e2001df465a6438.png",
+      "t8984b4c03a7f6086.png",
+      "t9097dc2d8c224fce.png",
+      "t949e11c268a268c5.png",
+      "t9746ef8d56a27ce5.png",
+      "t99f5c732746aeac0.png",
+      "taa3968f95bbcd5ff.png",
+      "taf5c4d207cbe1986.png",
+      "tafd4af8dd8e57b95.png",
+      "tb43103d92d4c601a.png",
+      "tb435dd51f3a6b9e7.png",
+      "tb5a055782d58460f.png",
+      "tb6960579eb54f40e.png",
+      "tbae050acafad2976.png",
+      "tc1137760b72f27ca.png",
+      "tc6f959b34d0b9b1f.png",
+      "tc9031e6b7573ce0e.png",
+      "tcc62b40c9b630fb6.png",
+      "tdad4e1739a54128c.png",
+      "tde5768370c742023.png",
+      "te5d627d44f51cabe.png",
+      "teca6fe7169a20b72.png",
+      "tf037f3b6060fdf6f.png",
+      "tf4a65fd9cca9e342.png",
+      "tf63a20fbed752f3c.png",
+      "tf79e1124690a4f7d.png",
+      "tfdcb7ae9ea0f0b45.png",
+      "tfe84f2c84fb34b82.png",
+      "tff7ff1c76e9f99f0.png"
+    ],
+    "preexisting_physical_texture_hash_changes": [],
+    "notes": "RGBA16 texture memory is width*height*2 before optional mip overhead, not PNG file size. Material count and largest tile are recorded per changed mesh. Final cleanup removed 46 obsolete physical PNGs, all proven absent from current mesh references; retained prior PNGs are byte-identical.",
+    "removed_physical_textures_still_referenced": []
+  },
+  "scope_note": "Model/texture asset isolation only; native visual QA, collision tests and measured runtime performance are separate validation gates.",
+  "visual_footprint_exceptions": [
+    {
+      "prop": "club_lobby counter return",
+      "change": "Extend south end by 0.30 unit to join the L-counter without a gap.",
+      "gameplay_permissions_changed": false
+    },
+    {
+      "prop": "Mason four magenta round stools",
+      "change": "Move left/right centers 0.60 unit outward, from 5.65/8.35 to 5.05/8.95, so seat caps protrude past the table instead of hiding underneath. Z centers 13.65/16.35 and radius 0.35 unchanged.",
+      "source_npc_and_script_anchors_changed": false,
+      "nearest_legal_column_clearance_units": 0.7,
+      "worst_1_over_32_quantized_column_clearance_units": 0.6875,
+      "actor_radius_units": 0.65
+    }
+  ],
+  "final_generation_note": "Final regenerated assets include the stool visibility correction. Every metadata isolation and unchanged-mesh SHA check was rerun afterward, including retained texture hashes and absence of references to pruned textures."
+}

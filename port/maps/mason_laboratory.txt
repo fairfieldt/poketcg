@@ -44,29 +44,31 @@ WALL DISPLAY - north wall, centre
   events/mason_laboratory_challenge_machine.png.  Leave that 4 x 5-tile patch
   as plain wall and model the machine as a toggleable prop.
 
-STORE CABINETS - four, north wall east
+BOOKCASES - four, north wall east
   x17-19, x20-22, x23-25 and one more at x25-26, y1-4 - four identical tall
-  cabinets 3 x 4 tiles: an orange #b55a00 carcass with a dark interior, three
-  shelves holding small pale bottles and canisters, and a closed orange cupboard
+  bookcases: an orange #b55a00 carcass with a dark interior, three
+  shelves holding pale book spines, and a closed orange cupboard
   with a dark handle at the bottom.  About 2 units tall, impassable.
-  Model one, instance four (and reuse the mesh in the south-east).
+  The source interactable table identifies these as rule/card books:
+  What Is a Deck, Cards Vol. 1-3, and Win or Loss of a Match Vol. 1-3.
+  Model recessed shelves of books/binders, with lower cupboard doors; reuse
+  the same carcass for the three cases in the mid-east row.
 
 BENCH AND COUNTER - mid room
   * x20-26, y14-16: three more of the same cabinets, in a row on the east side.
-  * x18-26, y26-27: a low counter/bench run against the south-east wall.
+  * x18-26, y26-27 is floor followed by the south wall, not a counter.
 
-COLLECTION BOOTH - the centre of the room
-  x8-12, y14-19.  The room's main prop: a large machine with a bright green
-  #00b500 face set in a heavy black frame, the face carrying dark rectangular
-  bays and small white indicator lamps, standing behind a brown #b57300 counter
-  with a black-toothed front at y18-19.  About 2 units tall, impassable.  Give
-  the counter a workable top so the player can stand at it.
+DUEL TABLE - the centre of the room
+  The green field at x6-9, y14-17 is a horizontal card table with a brown
+  rim and apron, marked with two players' card zones. It shares the lobby
+  table motif. The source script names Sam's position `.sam_at_table`.
+  Build a green felt inset, wood rim/apron and legs, about 0.85 units high.
+  This was previously misidentified as a green-screen collection machine.
 
-BALLOONS - four
-  Bright magenta #ff00ff balloons with a white highlight and a short dark
-  string, 1 tile each, at x5,y14; x11,y14; x5,y17; x11,y17 - clustered round
-  the west side of the collection booth.  They are decoration only; float them
-  at about 1.8 units.
+STOOLS - four
+  The four magenta circles at x4/y14, x10/y14, x4/y17 and x10/y17 are seats
+  around the duel table, not balloons. Build low round padded stools with
+  dark supports; keep them tucked into the source-blocked table footprint.
 
 POTTED PALM - south-west corner
   x2-4, y22-26.  A fat brown #b55a31 pot with a thick trunk and a fan of
@@ -80,11 +82,11 @@ NPCS (scripted, not drawn in the PNG)
 
 COLOUR SCRIPT
   Bright cyan-tiled floor, dark olive walls with gold and a gold checker,
-  orange-brown cabinetry, one large green machine face, four magenta balloons.
+  orange-brown cabinetry, one green duel mat and four magenta stools.
 
 WHAT MAKES THIS ROOM THE MASON LABORATORY
-  The green-screened collection booth in the middle of an otherwise empty
-  cyan-tiled hall, a small green wall readout under the north checker band,
+  The green duel table in the middle of the cyan-tiled hall, a small green
+  wall readout under the north checker band,
   a computer workstation and instrument desk in the north-west corner,
-  eleven orange specimen cabinets lining the east and north walls, four
-  magenta balloons and a corner palm.
+  orange bookcases lining the east and north walls, four magenta
+  stools and a corner palm.

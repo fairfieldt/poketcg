@@ -95,7 +95,12 @@ def spawn_actor(scene,npc,position=None,heading=None):
         obj.location=(pivot[0],-pivot[2],pivot[1])
 
 hall_only='--hall-only' in sys.argv
-selected_maps=[m for m in world['maps'] if not hall_only or m['slug']=='hall_of_honor']
+map_arg=next((arg.split('=',1)[1] for arg in sys.argv if arg.startswith('--maps=')),None)
+map_names=set(map_arg.split(',')) if map_arg else None
+if map_names:
+    assert map_names<={m['slug'] for m in world['maps']},'Unknown --maps scene'
+selected_maps=[m for m in world['maps'] if (not hall_only or m['slug']=='hall_of_honor')
+               and (map_names is None or m['slug'] in map_names)]
 for m in selected_maps:
     scene=bpy.data.scenes.new(m['slug'])
     scene['map_id']=m['id']
@@ -140,6 +145,6 @@ for m in selected_maps:
         bpy.ops.render.render(write_still=True,scene=scene.name)
 
 bpy.data.scenes.remove(base)
-bpy.context.window.scene=bpy.data.scenes['hall_of_honor' if hall_only else 'mason_laboratory']
-bpy.ops.wm.save_as_mainfile(filepath=str(OUT/('hall_of_honor.blend' if hall_only else 'all_maps.blend')))
+bpy.context.window.scene=bpy.data.scenes[selected_maps[0]['slug'] if map_names else 'hall_of_honor' if hall_only else 'mason_laboratory']
+bpy.ops.wm.save_as_mainfile(filepath=str(OUT/('selected_maps.blend' if map_names else 'hall_of_honor.blend' if hall_only else 'all_maps.blend')))
 print(f'Created {len(selected_maps)} editable Blender scenes with shared mesh/texture datablocks')

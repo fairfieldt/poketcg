@@ -1,0 +1,230 @@
+{
+  "passed": true,
+  "cases": 37,
+  "triangles": 9404,
+  "overlap_pairs": 0,
+  "checks": [
+    {
+      "name": "mason_laboratory",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 336,
+      "failures": []
+    },
+    {
+      "name": "deck_machine_room",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 280,
+      "failures": []
+    },
+    {
+      "name": "ishiharas_house",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 192,
+      "failures": []
+    },
+    {
+      "name": "fighting_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 130,
+      "failures": []
+    },
+    {
+      "name": "fighting_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "fighting_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 160,
+      "failures": []
+    },
+    {
+      "name": "rock_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 130,
+      "failures": []
+    },
+    {
+      "name": "rock_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "rock_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 336,
+      "failures": []
+    },
+    {
+      "name": "water_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 130,
+      "failures": []
+    },
+    {
+      "name": "water_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "water_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 1304,
+      "failures": []
+    },
+    {
+      "name": "lightning_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 130,
+      "failures": []
+    },
+    {
+      "name": "lightning_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "grass_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 130,
+      "failures": []
+    },
+    {
+      "name": "grass_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "grass_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 384,
+      "failures": []
+    },
+    {
+      "name": "psychic_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 130,
+      "failures": []
+    },
+    {
+      "name": "psychic_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "psychic_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 336,
+      "failures": []
+    },
+    {
+      "name": "science_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 130,
+      "failures": []
+    },
+    {
+      "name": "science_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "science_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 384,
+      "failures": []
+    },
+    {
+      "name": "fire_club_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 130,
+      "failures": []
+    },
+    {
+      "name": "fire_club_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "fire_club",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 384,
+      "failures": []
+    },
+    {
+      "name": "challenge_hall_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 130,
+      "failures": []
+    },
+    {
+      "name": "challenge_hall_lobby",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 288,
+      "failures": []
+    },
+    {
+      "name": "challenge_hall",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 448,
+      "failures": []
+    },
+    {
+      "name": "pokemon_dome_entrance",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 226,
+      "failures": []
+    },
+    {
+      "name": "pokemon_dome",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 450,
+      "failures": []
+    },
+    {
+      "name": "hall_of_honor",
+      "check": "floor-and-doorway-ownership",
+      "triangles": 240,
+      "failures": []
+    },
+    {
+      "name": "table",
+      "check": "prop-exterior-ownership",
+      "triangles": 44,
+      "failures": []
+    },
+    {
+      "name": "steps",
+      "check": "prop-exterior-ownership",
+      "triangles": 10,
+      "failures": []
+    },
+    {
+      "name": "machine",
+      "check": "prop-exterior-ownership",
+      "triangles": 18,
+      "failures": []
+    },
+    {
+      "name": "altar",
+      "check": "prop-exterior-ownership",
+      "triangles": 26,
+      "failures": []
+    },
+    {
+      "name": "water_club",
+      "check": "coping-ownership",
+      "triangles": 84,
+      "failures": []
+    }
+  ]
+}

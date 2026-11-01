@@ -1,0 +1,1592 @@
+{
+  "passed": true,
+  "cases": 113,
+  "native_conversion": "L643 float32; trunc(position * 32) / 32",
+  "raw_overlap_pairs": 0,
+  "native_overlap_pairs": 0,
+  "independent_printer_states": 8,
+  "checks": [
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "machine",
+        "x": 2,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 88,
+      "native_triangles": 92,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "table",
+        "x": 4,
+        "y": 2
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 86,
+      "native_triangles": 86,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "wall_display",
+        "x": 14,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 34,
+      "native_triangles": 34,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "cabinet",
+        "x": 18,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "cabinet",
+        "x": 20,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "cabinet",
+        "x": 22,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "cabinet",
+        "x": 24,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "cabinet",
+        "x": 20,
+        "y": 14
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "cabinet",
+        "x": 22,
+        "y": 14
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "cabinet",
+        "x": 24,
+        "y": 14
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "table",
+        "x": 6,
+        "y": 14
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 80,
+      "native_triangles": 80,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "balloon",
+        "x": 4,
+        "y": 14
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 16,
+      "native_triangles": 16,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "balloon",
+        "x": 10,
+        "y": 14
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 16,
+      "native_triangles": 16,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "balloon",
+        "x": 4,
+        "y": 17
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 16,
+      "native_triangles": 16,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "balloon",
+        "x": 10,
+        "y": 17
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 16,
+      "native_triangles": 16,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room",
+      "source": {
+        "kind": "machine",
+        "x": 2,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 112,
+      "native_triangles": 116,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room",
+      "source": {
+        "kind": "machine",
+        "x": 6,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room",
+      "source": {
+        "kind": "machine",
+        "x": 10,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 8
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 8
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room",
+      "source": {
+        "kind": "machine",
+        "x": 2,
+        "y": 16
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 16
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 16
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "ishiharas_house",
+      "source": {
+        "kind": "cabinet",
+        "x": 5,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "ishiharas_house",
+      "source": {
+        "kind": "cabinet",
+        "x": 7,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "ishiharas_house",
+      "source": {
+        "kind": "cabinet",
+        "x": 9,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "ishiharas_house",
+      "source": {
+        "kind": "cabinet",
+        "x": 11,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "ishiharas_house",
+      "source": {
+        "kind": "cabinet",
+        "x": 13,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "ishiharas_house",
+      "source": {
+        "kind": "cabinet",
+        "x": 15,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "ishiharas_house",
+      "source": {
+        "kind": "cabinet",
+        "x": 2,
+        "y": 12
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "ishiharas_house",
+      "source": {
+        "kind": "cabinet",
+        "x": 4,
+        "y": 12
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "ishiharas_house",
+      "source": {
+        "kind": "cabinet",
+        "x": 6,
+        "y": 12
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "ishiharas_house",
+      "source": {
+        "kind": "cabinet",
+        "x": 12,
+        "y": 12
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "ishiharas_house",
+      "source": {
+        "kind": "cabinet",
+        "x": 14,
+        "y": 12
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "ishiharas_house",
+      "source": {
+        "kind": "cabinet",
+        "x": 16,
+        "y": 12
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 120,
+      "native_triangles": 120,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "rock_club",
+      "source": {
+        "kind": "statue",
+        "x": 10,
+        "y": 3
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 30,
+      "native_triangles": 30,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "rock_club",
+      "source": {
+        "kind": "statue",
+        "x": 10,
+        "y": 10
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 30,
+      "native_triangles": 30,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "rock_club",
+      "source": {
+        "kind": "statue",
+        "x": 10,
+        "y": 18
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 30,
+      "native_triangles": 30,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "rock_club",
+      "source": {
+        "kind": "statue",
+        "x": 16,
+        "y": 3
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 30,
+      "native_triangles": 30,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "rock_club",
+      "source": {
+        "kind": "statue",
+        "x": 16,
+        "y": 10
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 30,
+      "native_triangles": 30,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "rock_club",
+      "source": {
+        "kind": "statue",
+        "x": 16,
+        "y": 18
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 30,
+      "native_triangles": 30,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "water_club",
+      "source": {
+        "kind": "bench",
+        "x": 20,
+        "y": 4
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 138,
+      "native_triangles": 138,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "water_club",
+      "source": {
+        "kind": "bench",
+        "x": 5,
+        "y": 20
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 138,
+      "native_triangles": 138,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "water_club",
+      "source": {
+        "kind": "bench",
+        "x": 22,
+        "y": 22
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 276,
+      "native_triangles": 276,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "water_club",
+      "source": {
+        "kind": "horse",
+        "x": 20,
+        "y": 2
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 48,
+      "native_triangles": 64,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "water_club",
+      "source": {
+        "kind": "horse",
+        "x": 4,
+        "y": 18
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 48,
+      "native_triangles": 64,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "water_club",
+      "source": {
+        "kind": "horse",
+        "x": 24,
+        "y": 14
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 48,
+      "native_triangles": 64,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "psychic_club",
+      "source": {
+        "kind": "torch",
+        "x": 10,
+        "y": 4
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 32,
+      "native_triangles": 32,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "psychic_club",
+      "source": {
+        "kind": "torch",
+        "x": 16,
+        "y": 4
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 32,
+      "native_triangles": 32,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "psychic_club",
+      "source": {
+        "kind": "torch",
+        "x": 6,
+        "y": 6
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 32,
+      "native_triangles": 32,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "psychic_club",
+      "source": {
+        "kind": "torch",
+        "x": 20,
+        "y": 6
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 32,
+      "native_triangles": 32,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "psychic_club",
+      "source": {
+        "kind": "torch",
+        "x": 6,
+        "y": 14
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 32,
+      "native_triangles": 32,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "psychic_club",
+      "source": {
+        "kind": "torch",
+        "x": 20,
+        "y": 14
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 32,
+      "native_triangles": 32,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "psychic_club",
+      "source": {
+        "kind": "torch",
+        "x": 10,
+        "y": 16
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 32,
+      "native_triangles": 32,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "psychic_club",
+      "source": {
+        "kind": "torch",
+        "x": 16,
+        "y": 16
+      },
+      "owner": "decorative",
+      "check": "prop-surfaces",
+      "raw_triangles": 32,
+      "native_triangles": 32,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "science_club",
+      "source": {
+        "kind": "table",
+        "x": 2,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 86,
+      "native_triangles": 86,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "science_club",
+      "source": {
+        "kind": "machine",
+        "x": 7,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 156,
+      "native_triangles": 156,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "science_club",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 156,
+      "native_triangles": 156,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "science_club",
+      "source": {
+        "kind": "cabinet",
+        "x": 2,
+        "y": 13
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 168,
+      "native_triangles": 168,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "science_club",
+      "source": {
+        "kind": "machine",
+        "x": 12,
+        "y": 9
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 56,
+      "native_triangles": 60,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "science_club",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 20
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 112,
+      "native_triangles": 110,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "science_club",
+      "source": {
+        "kind": "machine",
+        "x": 17,
+        "y": 20
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 112,
+      "native_triangles": 110,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "science_club",
+      "source": {
+        "kind": "machine",
+        "x": 20,
+        "y": 20
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 112,
+      "native_triangles": 110,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "science_club",
+      "source": {
+        "kind": "machine",
+        "x": 23,
+        "y": 20
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 112,
+      "native_triangles": 110,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "challenge_hall",
+      "source": {
+        "kind": "machine",
+        "x": 13,
+        "y": 6
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 84,
+      "native_triangles": 84,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "pokemon_dome_entrance",
+      "source": {
+        "kind": "cabinet",
+        "x": 2,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 90,
+      "native_triangles": 90,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "pokemon_dome_entrance",
+      "source": {
+        "kind": "cabinet",
+        "x": 2,
+        "y": 8
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 90,
+      "native_triangles": 90,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "pokemon_dome_entrance",
+      "source": {
+        "kind": "cabinet",
+        "x": 4,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 90,
+      "native_triangles": 90,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "pokemon_dome_entrance",
+      "source": {
+        "kind": "cabinet",
+        "x": 4,
+        "y": 8
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 90,
+      "native_triangles": 90,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "pokemon_dome_entrance",
+      "source": {
+        "kind": "cabinet",
+        "x": 6,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 90,
+      "native_triangles": 90,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "pokemon_dome_entrance",
+      "source": {
+        "kind": "cabinet",
+        "x": 6,
+        "y": 8
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 90,
+      "native_triangles": 90,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "pokemon_dome_entrance",
+      "source": {
+        "kind": "machine",
+        "x": 29,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 62,
+      "native_triangles": 68,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "pokemon_dome",
+      "source": {
+        "kind": "table",
+        "x": 14,
+        "y": 12
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 80,
+      "native_triangles": 80,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "club_lobby",
+      "source": {
+        "kind": "counter",
+        "x": 2,
+        "y": 6
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 156,
+      "native_triangles": 156,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "club_lobby",
+      "source": {
+        "kind": "counter",
+        "x": 12,
+        "y": 2
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 60,
+      "native_triangles": 64,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "club_lobby",
+      "source": {
+        "kind": "machine",
+        "x": 2,
+        "y": 7
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 62,
+      "native_triangles": 68,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "club_lobby",
+      "source": {
+        "kind": "table",
+        "x": 8,
+        "y": 14
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 80,
+      "native_triangles": 80,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "club_lobby",
+      "source": {
+        "kind": "chair",
+        "x": 6,
+        "y": 14
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 56,
+      "native_triangles": 56,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "club_lobby",
+      "source": {
+        "kind": "chair",
+        "x": 12,
+        "y": 14
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 56,
+      "native_triangles": 56,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "club_lobby",
+      "source": {
+        "kind": "chair",
+        "x": 6,
+        "y": 17
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 56,
+      "native_triangles": 56,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "club_lobby",
+      "source": {
+        "kind": "chair",
+        "x": 12,
+        "y": 17
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 56,
+      "native_triangles": 56,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "club_lobby",
+      "source": {
+        "kind": "cabinet",
+        "x": 20,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 90,
+      "native_triangles": 90,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "club_lobby",
+      "source": {
+        "kind": "cabinet",
+        "x": 22,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 90,
+      "native_triangles": 90,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "club_lobby",
+      "source": {
+        "kind": "cabinet",
+        "x": 24,
+        "y": 1
+      },
+      "owner": "furniture",
+      "check": "prop-surfaces",
+      "raw_triangles": 90,
+      "native_triangles": 90,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "mason_laboratory",
+      "source": {
+        "kind": "machine",
+        "x": 10,
+        "y": 0
+      },
+      "owner": "lab",
+      "check": "prop-surfaces",
+      "raw_triangles": 110,
+      "native_triangles": 114,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 2,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-shell",
+      "raw_triangles": 112,
+      "native_triangles": 116,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 6,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-shell",
+      "raw_triangles": 104,
+      "native_triangles": 108,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 6,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-off",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 6,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-on",
+      "raw_triangles": 112,
+      "native_triangles": 116,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 10,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-shell",
+      "raw_triangles": 104,
+      "native_triangles": 108,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 10,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-off",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 10,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-on",
+      "raw_triangles": 112,
+      "native_triangles": 116,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-shell",
+      "raw_triangles": 104,
+      "native_triangles": 108,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-off",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-on",
+      "raw_triangles": 112,
+      "native_triangles": 116,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-shell",
+      "raw_triangles": 104,
+      "native_triangles": 108,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-off",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 1
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-on",
+      "raw_triangles": 112,
+      "native_triangles": 116,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 8
+      },
+      "owner": "lab",
+      "check": "dynamic-shell",
+      "raw_triangles": 104,
+      "native_triangles": 108,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 8
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-off",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 8
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-on",
+      "raw_triangles": 112,
+      "native_triangles": 116,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 8
+      },
+      "owner": "lab",
+      "check": "dynamic-shell",
+      "raw_triangles": 104,
+      "native_triangles": 108,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 8
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-off",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 8
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-on",
+      "raw_triangles": 112,
+      "native_triangles": 116,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 2,
+        "y": 16
+      },
+      "owner": "lab",
+      "check": "dynamic-shell",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 16
+      },
+      "owner": "lab",
+      "check": "dynamic-shell",
+      "raw_triangles": 104,
+      "native_triangles": 108,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 16
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-off",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 14,
+        "y": 16
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-on",
+      "raw_triangles": 112,
+      "native_triangles": 116,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 16
+      },
+      "owner": "lab",
+      "check": "dynamic-shell",
+      "raw_triangles": 104,
+      "native_triangles": 108,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 16
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-off",
+      "raw_triangles": 122,
+      "native_triangles": 126,
+      "raw": [],
+      "native": []
+    },
+    {
+      "room": "deck_machine_room_dynamic",
+      "source": {
+        "kind": "machine",
+        "x": 18,
+        "y": 16
+      },
+      "owner": "lab",
+      "check": "dynamic-screen-on",
+      "raw_triangles": 112,
+      "native_triangles": 116,
+      "raw": [],
+      "native": []
+    }
+  ]
+}

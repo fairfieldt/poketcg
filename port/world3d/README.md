@@ -38,6 +38,17 @@ silhouettes are removed from floor textures before real geometry replaces
 them. Textures are globally deduplicated by content hash, including shared
 laboratory/deck-machine and dome/honor materials.
 
+Room furniture uses source-shaped mesh recipes in `furniture_props.py`,
+`lab_props.py` and `decorative_props.py`. Tables have a separate 64×32 felt
+material, wood rim/apron and legs; shelves contain recessed books, and computers
+have deep CRT housings and sloped controls. The original projected room sprite
+is no longer stretched over these objects. The eight medal printers retain
+independent, owning screen faces. Water's red/cream objects are parasol tables
+beside chaise lounges; Psychic's ornaments have framed square heads. These
+forms were checked against original pixels and object/script definitions where
+the earlier prose briefs disagreed. The complete prop audit is in
+[`port/reviews/prop-remodel`](../reviews/prop-remodel/audit.md).
+
 Fallback characters share four rigidly jointed human archetypes (player, club
 member, lab coat, and female character), plus legendary-card and overworld
 cursor models. Finished individual exports replace these fallbacks per source sprite family.
@@ -55,6 +66,7 @@ python3 port/world3d/tools/build_world.py --overworld-only
 python3 port/world3d/tools/check_world.py
 python3 port/world3d/tools/check_solid_terrain.py
 python3 port/world3d/tools/check_room_surfaces.py
+python3 port/world3d/tools/check_prop_models.py
 python3 port/world3d/tools/check_cursor_shell.py
 python3 port/characters/tools/check_exterior.py
 python3 port/world3d/tools/check_characters.py

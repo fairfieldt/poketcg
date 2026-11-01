@@ -20,7 +20,9 @@ if visibility:
     assert camera_hash(world['maps'][0]['camera'])==visibility['camera_sha256'],'Island visibility bake camera changed'
     assert hashlib.sha256((out/'maps/overworld.l64').read_bytes()).hexdigest()==visibility['output_sha256'],'Island visibility bake mesh changed'
 # Dynamic fronts replace eight ordinary faces; they must not overlay them.
-assert world['meshes']['deck_machine_room_dynamic']['triangles']==world['meshes']['deck_machine_room']['triangles']-16
+off_triangles=sum(world['meshes'][Path(panel['off']).stem]['triangles']
+                  for panel in world['switches'])
+assert world['meshes']['deck_machine_room_dynamic']['triangles']+off_triangles==world['meshes']['deck_machine_room']['triangles']
 vertices=triangles=0;max_textures=max_batches=0
 for name,record in world['meshes'].items():
     blob=(out/record['file']).read_bytes()

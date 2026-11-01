@@ -217,6 +217,7 @@ test:
 	$(HOST_CC) -std=c11 -Wall -Wextra -Werror -Itests/mock tests/sram_test.c -o $(BUILD_DIR)/host/test_sram
 	./$(BUILD_DIR)/host/test_sram
 	python3 $(PORT)/world3d/tools/check_world.py
+	python3 $(PORT)/world3d/tools/check_prop_models.py
 	python3 $(PORT)/world3d/tools/check_characters.py
 	python3 $(PORT)/world3d/tools/check_actor_grounding.py
 	python3 $(PORT)/world3d/tools/check_character_lods.py

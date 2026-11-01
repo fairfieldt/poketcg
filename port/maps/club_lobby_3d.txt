@@ -53,13 +53,14 @@ OBJECTS (all of these are in the room; positions are exact)
        x10-11 y7, and two low white boxes (register/box) at x7 y6 and x11 y6.
      - at the west end of the top, x2-3 y6: four small bottles/trophies in a
        row (white caps, dark bodies).
-  2. Card Pop machine ....................... x2-3, y7-10 (2 x 4 tiles)
+  2. PC terminal ....................... x2-3, y7-10 (2 x 4 tiles)
      Attached to the west end of the counter, standing on the floor.
      Blue #2939ff cabinet with white trim: a white screen panel (y7), a blue
      face with a dark slot and a light blue button (y8), a blue/white checker
      grille (y9), a dark blue base with a wide dark opening (y10).
      It is a vending-height machine: about 2 units tall.  This is the machine
-     that dispenses a promo card once per day.
+     connected to PCMenu by src/data/map_objects.asm at NORTH, 2, 8.
+     Card Pop is a separate game feature; this object is not a dispenser.
   3. Potted flower on the counter's north arm ........ x12-13, y2-3
      A squat dark pot with a dense head of yellow #ffff21 and white blossoms
      and dark green leaves.  Sits on the counter, not on the floor.
@@ -114,6 +115,6 @@ LIGHTING / MOOD
   themed clubs.
 
 WHAT MAKES THIS ROOM WHAT IT IS
-  The counter-with-Card-Pop-machine on the west side, the duel table and four
+  The counter-with-PC terminal on the west side, the duel table and four
   red chairs in the south-west, the three bookcases in the north-east, and a
   single door in the east wall.  Everything else is the shared club livery.

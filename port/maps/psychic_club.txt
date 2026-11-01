@@ -11,7 +11,7 @@ CONNECTION
   Only warp; dead end.  Fixed camera looking north straight down the carpet.
 
 SHELL
-  Walkable floor ...... x2-25, y3-24 plus the carpet strip; the eight torches
+  Walkable floor ...... x2-25, y3-24 plus the carpet strip; the eight columns
                         are the only blockers.
   North wall band ..... y0-2.   South wall band ..... y25-26 (nothing below).
   West wall band ...... x0-1.   East wall band ...... x26-27.
@@ -38,34 +38,27 @@ RED CARPET
   trellis), bounded on x11 and x16 by a 1-tile dark-red border strip with a
   light notch every other row.  Flat decal; walkable.  It is the room's axis.
 
-TORCHES - eight, one mesh, the only 3D props
-  A standing torch on a 2 x 5-tile footprint:
-    - a slender dark navy #000052 standard, slightly waisted, with a spiral
-      scroll-volute curling out of its base to the left and a small open ring
-      at the top of the shaft;
-    - at the top, a large pointed flame/leaf about 2 tiles tall: light purple
-      #9c6bff body, amber #f7ad00 outline, white #ffff9c core, with dark
-      veins radiating through it.
-  Total height about 2.5 units.  Impassable.
-  Positions (top-left of the 2 x 5 footprint):
-      x10-11 y4-8     x16-17 y4-8      (far pair, flanking the carpet)
-      x6-7   y6-10    x20-21 y6-10     (far-mid pair)
-      x6-7   y14-18   x20-21 y14-18    (near-mid pair)
-      x10-11 y16-20   x16-17 y16-20    (near pair, flanking the carpet)
-  The eight form a mirrored octagon around the central carpet - the four
-  inner ones step in toward the north, the four outer ones step out toward
-  the south.  Give each a small purple point light.
+ORNAMENTAL COLUMNS - eight, one mesh, the only 3D props
+  The source shows a square dark-purple inset in a lavender/cream frame,
+  above a fluted navy-and-cream shaft and a low plinth. It does not depict
+  pointed flames. Preserve the broad framed square and architectural shaft;
+  their precise fictional function is unspecified by the background art.
+  Total height about 2.5 units. Impassable.
+  Positions (source crop top-left, each 2 x 5 tiles):
+      x10/y4, x16/y4, x6/y6, x20/y6,
+      x6/y14, x20/y14, x10/y16, x16/y16.
+  The eight form a mirrored octagon around the central carpet.
 
 NPCS (scripted, not drawn in the PNG)
   NPC_MURRAY1 x12,y6 and NPC_MURRAY2 x2,y2 - the two-headed opponent, one on
   the carpet at the far end, one in the north-west corner.  NPC_DANIEL x8,y8
-  and NPC_STEPHANIE x22,y12 stand between the torches.
+  and NPC_STEPHANIE x22,y12 stand between the columns.
 
 COLOUR SCRIPT
   Yellow-amber parquet, a saturated red runner, blue-and-purple arcade walls,
-  and eight purple flames as the only light sources.  Warm floor, cold walls.
+  and eight framed purple ornaments.  Warm floor, cold walls.
 
 WHAT MAKES THIS ROOM THE PSYCHIC CLUB
   A long arcade hall of blue-and-purple pointed arches around a yellow lattice
   floor, bisected end to end by a red diamond-lattice runner, with eight
-  standing torches burning purple flames arranged in a mirrored octagon.
+  square-topped columns arranged in a mirrored octagon.

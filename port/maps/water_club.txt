@@ -61,26 +61,19 @@ PLANTED BED - the north-west corner
   4-5 units tall, the tallest objects in the room.
   The bed is impassable and about 0.3 units high (a low kerbed planter).
 
-BENCHES - three, all the same mesh
-  Each is a slatted park bench drawn in three-quarter view: navy #000042
-  frame, white #ffffff vertical slats on the back and horizontal slats on the
-  seat, orange #ff8400 legs and arm ends.  About 4 tiles wide x 3 tall,
-  seat height 0.5 units.
-  Positions: x20-24, y4-6 (east side, facing the pool);
-             x5-9,  y20-22 (south-west, facing the pool);
-             x22-25, y22-26 (south-east, facing the pool).
-  All three face the water.
+CHAISE LOUNGES
+  White slatted horizontal seats with raised backs at one end, navy frames
+  and orange feet/arm ends. The south-east source crop contains two lounges,
+  one north of the other. Keep Amy's supported seat height at 0.71 units.
+  Source crops: x20-24/y4-6, x5-9/y20-22, x22-25/y22-26.
 
-CREATURE STATUES - three
-  A cream #ffffa5 and orange #ff8400 four-legged animal drawn side-on facing
-  left, with a red #ff1000 and navy #000042 striped saddle-cloth over its
-  back and a red crest on its head - it reads as a caparisoned or carousel
-  horse.  About 3 x 3 tiles, ~1.5 units tall, on no visible plinth.
-  Positions: x20-23, y2-3 (north-east, behind the bench);
-             x4-7,  y18-20 (south-west, behind the bench);
-             x24-25, y14-16 (east side, hard against the wall and partly
-             clipped by it - the original only has room for its front half).
-  Model one, instance three.
+PARASOL TABLES - three
+  The red-and-cream striped radial canopies stand above cream round tables
+  outlined in navy, with orange poles and dark legs. They are poolside
+  furniture, not carousel horses. Build a low-poly striped parasol canopy,
+  thin support and a small round tabletop with a navy/orange base.
+  Positions: x20-23/y2-3, x4-7/y18-20, x24-25/y14-16.
+  Keep each assembly within its original blocked floor footprint.
 
 PLOTTED PLANTS
   * Four potted shrubs in a tight 2 x 2 block at x14-17, y11-12, on the deck
@@ -95,10 +88,10 @@ NPCS (scripted, not drawn in the PNG)
 
 COLOUR SCRIPT
   Yellow deck, deep blue water, cyan-and-white walls, green plants, and only
-  the red-and-cream statues as a warm accent.  High key, very saturated.
+  the red-and-cream parasols as a warm accent.  High key, very saturated.
 
 WHAT MAKES THIS ROOM THE WATER CLUB
   The big chamfered indoor pool with a raised cyan-and-white coping and two
   fish in it, the triangular planted bed with palms growing over the wall, and
-  benches and creature statues arranged around the water on yellow tiling.
+  lounges and parasol tables arranged around the water on yellow tiling.
   Nothing is symmetric: the whole room is organised around one diagonal.

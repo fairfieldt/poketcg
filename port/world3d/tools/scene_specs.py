@@ -53,14 +53,15 @@ PROPS={
 'mason_laboratory':[
     P('machine',2,1,4,4,2,floor=F(2,2,4,2)),
     P('table',4,2,6,3,1,2,floor=F(6,2,8,2)),
+    P('wall_display',14,1,3,3,.91,.22,floor=(13.7,1.0,2.6,.22),solid=False),
     *[P('cabinet',x,1,2,4,2,floor=F(x,2)) for x in (18,20,22,24)],
     *[P('cabinet',x,14,2,3,1.7,floor=F(x,14)) for x in (20,22,24)],
-    P('counter',18,26,8,2,.8,floor=F(18,26,24,26)),
+    # The south-east brown band is the wall, not an additional counter.
     P('table',6,14,4,5,.85,4,floor=F(6,14,8,16)),
     P('palm',2,22,3,5,2.4,floor=F(2,22,2,24)),
     *[P('balloon',x,y,2,2,1.8,.3,floor=(cx-.35,cz-.35,.7,.7))
-      for x,y,cx,cz in [(4,14,5.65,13.65),(10,14,8.35,13.65),
-                        (4,17,5.65,16.35),(10,17,8.35,16.35)]]],
+      for x,y,cx,cz in [(4,14,5.05,13.65),(10,14,8.95,13.65),
+                        (4,17,5.05,16.35),(10,17,8.95,16.35)]]],
 'deck_machine_room':[
     *[P('machine',x,1,4,4,1.8,floor=F(x,2,x+2,2)) for x in (2,6,10,14,18)],
     *[P('machine',x,y,4,5,1.8,floor=F(x,y,x+2,y+2)) for x,y in [(14,8),(18,8),(2,16),(14,16),(18,16)]]],

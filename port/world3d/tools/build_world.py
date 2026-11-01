@@ -24,6 +24,9 @@ from room_style import material_pixel,wall_paint,bake_lighting
 from solid_terrain import POOL_CELLS,swimming_pool as build_swimming_pool,align_lightning_room
 from actor_grounding import strip_legacy_disks
 from honor_props import build as build_honor_prop
+from furniture_props import build as build_furniture_prop
+from lab_props import build as build_lab_prop,build_deck_front
+from decorative_props import build as build_decorative_prop
 OUT=ROOT/'generated'
 TEX=OUT/'textures'
 MAPS=OUT/'maps'
@@ -207,6 +210,8 @@ class Scene:
 
 def prop(destination,img,p):
     scene=Scene(destination.name)
+    scene.switchable=destination.switchable
+    source_p=p
     switch=destination.switchable and p.kind=='machine' and (
         (p.y==1 and p.x in (6,10,14,18)) or
         (p.y in (8,16) and p.x in (14,18)))
@@ -224,6 +229,9 @@ def prop(destination,img,p):
     kind=p.kind;h=p.height
     if honor:
         build_honor_prop(scene,p)
+    elif build_furniture_prop(scene,p,source_p=source_p,img=img,texture=texture):pass
+    elif build_lab_prop(scene,p,source_p=source_p,img=img,texture=texture):pass
+    elif build_decorative_prop(scene,p,source_p=source_p,img=img,texture=texture):pass
     elif kind in ('machine','cabinet','counter','pillar','altar'):
         omit=(0,)+(3,) if switch else (0,)
         if kind=='machine':omit+=(5,)
@@ -874,10 +882,10 @@ def main():
         record=dict(map=2,event=event)
         for state,image in [('off',base_img),('on',lit_img)]:
             face=Scene(f'deck_machine_{event}_{state}')
-            tex=texture(image.crop(x*8,y*8,32,h*8))
             machine=next(p for p in PROPS['deck_machine_room'] if p.x==x and p.y==y)
             left,north,width,depth=footprint(machine);front=north+depth
-            face.polygon([(left,0,front),(left+width,0,front),(left+width,1.8,front),(left,1.8,front)],tex=tex,uv=[(0,1),(1,1),(1,0),(0,0)])
+            transformed=replace(machine,x=left,y=north,w=width,h=depth,depth=depth)
+            build_deck_front(face,transformed,source_p=machine,img=image,texture=texture)
             records[face.name]=face.save(MAPS/(face.name+'.l64'))
             record[state]='rom:/world/maps/'+face.name+'.l64'
         switches.append(record)

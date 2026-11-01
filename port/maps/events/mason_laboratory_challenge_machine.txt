@@ -6,7 +6,7 @@ added; build the base room once and toggle this on it.
 
 WHAT IS IDENTICAL
   Every wall, every floor tile, the workstation, the desk, all eleven orange
-  specimen cabinets, the green collection booth, the four balloons, the palm,
+  specimen cabinets, the green duel table, the four stools, the palm,
   the floor, the lighting and the palette are unchanged, tile for tile.
 
 WHAT CHANGES - exactly one 4 x 5-tile patch
