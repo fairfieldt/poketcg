@@ -29,6 +29,12 @@ rather than shipping a reduced engine.
 
 ## Live preview
 
+[Play the public web game](https://poketcg64.exe.xyz/) without tailnet access.
+It runs on a dedicated exe.dev VM with HTTPS and the online-duel relay.
+See [deployment instructions](deploy/exe/README.md) to publish updated builds.
+Browser saves belong to each site; use Export cartridge and Import cartridge
+to move diaries between the public game and the tailnet preview.
+
 [Open the current game](http://ms.tdf.sh:8091/) while connected to the tailnet.
 The preview serves the current `dist/` directory without caching; reload after
 an update. Keyboard and touch work over this HTTP link. Browsers may require a

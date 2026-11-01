@@ -1,0 +1,19 @@
+[Unit]
+Description=Pokemon TCG web game and duel relay
+After=network.target
+
+[Service]
+Type=simple
+User=exedev
+Group=exedev
+WorkingDirectory=/home/exedev/poketcg/current/server
+Environment=NODE_ENV=production
+Environment=PATH=/opt/poketcg-node/bin:/usr/bin:/bin
+ExecStart=/opt/poketcg-node/bin/node server.js --port 8000 --dist ../public
+Restart=on-failure
+RestartSec=2
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
