@@ -9,6 +9,10 @@ void n64_ui_sanitize_text(const char *text,char *out,unsigned capacity);
 int n64_ui_wrap_text(const char *text,char lines[][37],unsigned capacity);
 int n64_ui_wrap_columns(const char *text,unsigned columns,char lines[][37],unsigned capacity);
 int n64_menu(const char *title,const char *const *items,int count,int initial,bool cancel);
+/* A list whose caller acts on each button. Returns the N64_LIST_* button and
+ * updates *cursor. help is up to two short lines separated by '\n'. */
+enum { N64_LIST_A, N64_LIST_B, N64_LIST_LEFT, N64_LIST_RIGHT, N64_LIST_START };
+int n64_list(const char *title,const char *const *items,int count,int *cursor,const char *help);
 void n64_card_detail(unsigned id);
 void n64_card_name(unsigned id,char *out,int capacity);
 void n64_duel_rng(uint8_t out[3]);

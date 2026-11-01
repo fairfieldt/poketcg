@@ -93,6 +93,53 @@ function choose(title, items, initial = 0, cancel = true) {
 		select(current);
 	});
 }
+// Buttons returned to n64_list, in its N64_LIST_* order.
+const LIST = { A: 0, B: 1, LEFT: 2, RIGHT: 3, START: 4 };
+function chooseList(title, items, initial = 0) {
+	return new Promise((resolve) => {
+		const m = modal(title, 'adventure-menu');
+		const list = el('div', 'adventure-options');
+		m.element.appendChild(list);
+		let current = Math.max(0, Math.min(items.length - 1, initial | 0));
+		let done = false;
+		const finish = (key) => {
+			if (done) return;
+			done = true;
+			app.audio?.event(1, key === LIST.B ? C.SFX_CANCEL : key === LIST.LEFT || key === LIST.RIGHT ? C.SFX_CURSOR : C.SFX_CONFIRM);
+			closeModal();
+			resolve((key << 16) | current);
+		};
+		const select = (n) => {
+			if (n !== current) app.audio?.event(1, C.SFX_CURSOR);
+			current = (n + controls.length) % controls.length;
+			controls.forEach((b, i) => b.classList.toggle('cur', i === current));
+			controls[current]?.scrollIntoView({ block: 'nearest' });
+		};
+		const controls = items.map((item, i) => button(translate(item), () => {
+			select(i);
+			finish(LIST.A);
+		}));
+		controls.forEach((b) => list.appendChild(b));
+		const actions = el('div', 'adventure-list-actions');
+		actions.append(
+			button('−', () => finish(LIST.LEFT), 'small'),
+			button('+', () => finish(LIST.RIGHT), 'small'),
+			button('Details', () => finish(LIST.START), 'small'),
+			button('Done', () => finish(LIST.B), 'small'),
+		);
+		m.element.appendChild(actions);
+		m.key = (k) => {
+			if (k === K.UP) select(current - 1);
+			if (k === K.DOWN) select(current + 1);
+			if (k === K.LEFT) finish(LIST.LEFT);
+			if (k === K.RIGHT) finish(LIST.RIGHT);
+			if (k === K.A) finish(LIST.A);
+			if (k === K.START) finish(LIST.START);
+			if (k === K.B) finish(LIST.B);
+		};
+		select(current);
+	});
+}
 async function platformMenu(title, items, initial, cancel) {
 	if (title === 'Save text to Controller Pak')
 		return choose('Download report', ['Download', 'Cancel'], 0, false).then((v) => (v === 0 ? 0 : 2));
@@ -860,6 +907,7 @@ async function boot() {
 			frame,
 			message,
 			menu: platformMenu,
+			list: chooseList,
 			card,
 			duel: playDuel,
 			peer: choosePeer,

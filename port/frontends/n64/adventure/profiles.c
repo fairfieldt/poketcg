@@ -32,6 +32,15 @@ bool game_read_profile(unsigned profile,Game *out)
  if(size!=(int)(48+ow_size+GP_SAVE_SIZE)||memcmp(data,"TCGADV02",8)||((unsigned)data[26]<<8|data[27])!=ow_size)return false;
  Game *temp=calloc(1,sizeof(*temp));if(!temp)return false;
  bool ok=ow_save_decode(&temp->ow,data+48,ow_size)&&gp_save_decode(&temp->cards,data+48+ow_size,GP_SAVE_SIZE);
+ /* Earlier deck edits replaced a preset deck's name with "Deck N". The name
+  * entry has no lower case, so that exact text is never a player's name. */
+ for(unsigned i=0;ok&&i<64;i++) {
+  GpDeck *deck=i<4?&temp->cards.built[i]:&temp->cards.saved[i-4];
+  for(unsigned n=1;deck->name_text&&n<=4;n++) {
+   char fallback[8];snprintf(fallback,sizeof(fallback),"Deck %u",n);
+   if(!strcmp(deck->name,fallback))deck->name[0]=0;
+  }
+ }
  if(ok){memcpy(temp->name,data+8,16);temp->name[15]=0;memcpy(temp->link_name,data+32,16);temp->animations_disabled=(data[24]&1)!=0;temp->skip_delay_allowed=(data[24]&2)!=0;temp->text_speed=data[25];temp->duel_mode=data[28];temp->play_seconds=(uint32_t)data[29]<<16|(uint32_t)data[30]<<8|data[31];*out=*temp;}
  free(temp);return ok;
 }

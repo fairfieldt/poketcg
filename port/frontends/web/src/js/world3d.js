@@ -408,6 +408,12 @@ export class World3D {
     _room(scene) {
         for (const mesh of scene.meshes) if (!mesh.model) this._batch(scene, mesh, translation(...mesh.pivot));
     }
+    // Source scripts park actors past the map edge, where the Game Boy never
+    // shows them (Ronald below the Dome entrance). They appear as they walk in.
+    _onMap(view, pose) {
+        const map = this.metadata.maps[view.map];
+        return !!pose && pose.x >= -1 && pose.z >= -1 && pose.x <= map.width - 1 && pose.z <= map.height - 1;
+    }
     _contactShadows(view) {
         const gl = this.gl;
         // _begin enables source-alpha blending. Test against room depth while
@@ -420,7 +426,7 @@ export class World3D {
                 const id = npc.id ?? npc.npc;
                 if ((id >= NPC_TORCH && id <= NPC_LEGENDARY_CARD_RIGHT_SPARK) || (npc.animation ?? npc.anim) === AMY_LYING) continue;
                 const pose = this._pose(`npc:${id}`, view);
-                if (!pose?.floor) draw(pose);
+                if (this._onMap(view, pose) && !pose.floor) draw(pose);
             }
         } finally { gl.depthMask(true); }
     }
@@ -463,7 +469,8 @@ export class World3D {
             for (const npc of view.npcs || []) if (visible(npc)) {
                 const id = npc.id ?? npc.npc, model = this._npcModel(npc);
                 const tilt = (npc.animation ?? npc.anim) === AMY_LYING && !this.metadata.npc_pose_models?.[id] ? 90 : 0;
-                this._actor(model, this._pose(`npc:${id}`, view), 1, 0, tilt);
+                const pose = this._pose(`npc:${id}`, view);
+                if (this._onMap(view, pose)) this._actor(model, pose, 1, 0, tilt);
             }
             this._actor(this.playerModel, this._pose('player', view));
         }

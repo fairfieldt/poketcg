@@ -245,8 +245,20 @@ static void selected_deck_battle(void)
  assert(strstr(last_message,"second controller"));
  second_controller=true;
 }
+static void preset_deck_names(void)
+{
+ restore_baseline();assert(game_read_profile(1,&game));
+ assert(game.cards.built[0].name_text && !game.cards.built[0].name[0]);
+ /* Older deck edits stored the default; player-entered names are kept. */
+ snprintf(game.cards.built[0].name,24,"Deck 1");snprintf(game.cards.built[1].name,24,"DECK 1");
+ assert(game.cards.built[1].name_text);assert(game_save());
+ reboot();Game loaded;assert(game_read_profile(1,&loaded));
+ assert(!loaded.cards.built[0].name[0] && loaded.cards.built[0].name_text==game.cards.built[0].name_text);
+ assert(!strcmp(loaded.cards.built[1].name,"DECK 1"));
+ assert(!strcmp(loaded.cards.saved[4].name,"MARK RECIPE"));
+}
 int main(void)
 {
- initial_diaries();canonical_and_rng();card_pop_persistence();interrupted_pair_commit();commit_header_prefixes();gift_directions_and_rollback();recipe_directions();reverse_profile_and_guards();selected_deck_battle();
- puts("PROFILES PASS: 2 canonical diaries+duel/settings,salted names,RNG+playtime,CardPop/Gift both persistence,directions0/1/2/3,partialDMA+all33commitheaderprefixes atomic,selecteddecks1/2,controller2+pendingduelguards");
+ initial_diaries();canonical_and_rng();card_pop_persistence();interrupted_pair_commit();commit_header_prefixes();gift_directions_and_rollback();recipe_directions();reverse_profile_and_guards();selected_deck_battle();preset_deck_names();
+ puts("PROFILES PASS: 2 canonical diaries+duel/settings,preset deck names,salted names,RNG+playtime,CardPop/Gift both persistence,directions0/1/2/3,partialDMA+all33commitheaderprefixes atomic,selecteddecks1/2,controller2+pendingduelguards");
 }

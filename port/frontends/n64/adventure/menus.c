@@ -52,49 +52,63 @@ static void view_deck(const GpDeck *deck)
  int cur=0;
  while(n){cur=menu(deck_label(deck),items,n,cur);if(cur<0)return;n64_card_detail(ids[cur]);}
 }
+static unsigned deck_owned(unsigned slot,unsigned id)
+{
+ unsigned owned=gp_collection_count(&game.cards,id);
+ for(unsigned i=0;i<60;i++)owned+=game.cards.built[slot].cards[i]==id;
+ return owned;
+}
+/* Highlight a card; Left/Right change its count, Start shows it, B finishes.
+ * The count may pass 60 while building; only a 60-card deck can be saved. */
 static bool edit_deck(unsigned slot)
 {
  GpDeck draft=game.cards.built[slot];uint8_t counts[256]={0};unsigned total=0;
  for(unsigned i=0;i<60;i++)if(draft.cards[i]){counts[draft.cards[i]]++;total++;}
- int cur=0,filter=0;
+ const char *name=draft.name[0]?draft.name:draft.name_text?tcg_text(draft.name_text):"New deck";
+ int cur=1,filter=0;
  static const char *const filters[]={"All cards","Fire","Grass","Lightning","Water","Fighting","Psychic","Colorless","Trainer","Energy"};
  for(;;) {
   uint8_t ids[229];char labels[229][40];const char *items[229];int n=1;
-  snprintf(labels[0],40,"Filter: %s",filters[filter]);items[0]=labels[0];ids[0]=0;
+  snprintf(labels[0],40,"Show: %s",filters[filter]);items[0]=labels[0];ids[0]=0;
   for(unsigned id=1;id<=GP_NUM_CARDS;id++) {
    unsigned type=gp_cards[id].type;
    if(filter>=1&&filter<=7&&type!=(unsigned)(filter-1))continue;
    if(filter==8&&type<16)continue;
    if(filter==9&&(type<8||type>=16))continue;
-   unsigned owned=gp_collection_count(&game.cards,id);
-   for(unsigned i=0;i<60;i++)owned+=game.cards.built[slot].cards[i]==id;
+   unsigned owned=deck_owned(slot,id);
    if(!owned)continue;
-   char name[40];n64_card_name(id,name,sizeof(name));
-   snprintf(labels[n],sizeof(labels[n]),"%u/%u %.23s",counts[id],owned,name);items[n]=labels[n];ids[n++]=id;
+   char card[40];n64_card_name(id,card,sizeof(card));
+   snprintf(labels[n],sizeof(labels[n]),"%u/%u %.23s",counts[id],owned,card);items[n]=labels[n];ids[n++]=id;
   }
-  char title[48];snprintf(title,sizeof(title),"Build deck: %u/60 cards",total);
-  cur=menu(title,items,n,cur);
-  if(cur<0) {
+  char title[48];snprintf(title,sizeof(title),"%.26s %u/60",name,total);
+  int key=n64_list(title,items,n,&cur,"Left/Right: change count\nSTART: card details  B: finish");
+  if(key==N64_LIST_B) {
    static const char *const choices[]={"Save deck","Keep editing","Discard changes"};
-   int action=menu("Deck",choices,3,0);
+   int action=menu(name,choices,3,0);
    if(action==2)return false;
-   if(action!=0){cur=0;continue;}
-   if(total!=60){n64_message("Deck",deck_error(GP_DECK_BAD_SIZE));cur=0;continue;}
+   if(action!=0)continue;
+   if(total!=60) {
+    char text[64];unsigned off=total>60?total-60:60-total;
+    snprintf(text,sizeof(text),"%s %u card%s to save this deck.",total>60?"Remove":"Add",off,off==1?"":"s");
+    n64_message("Deck",text);continue;
+   }
    unsigned at=0;for(unsigned id=1;id<=GP_NUM_CARDS;id++)for(unsigned k=0;k<counts[id];k++)draft.cards[at++]=id;
-   if(!draft.name[0])snprintf(draft.name,sizeof(draft.name),"Deck %u",slot+1);
+   /* Preset decks keep their original name; only an unnamed new deck gets a default. */
+   if(!draft.name[0]&&!draft.name_text)snprintf(draft.name,sizeof(draft.name),"Deck %u",slot+1);
    int error=gp_set_deck(&game.cards,slot,&draft);
-   if(error){n64_message("Deck",deck_error(error));cur=0;continue;}
+   if(error){n64_message("Deck",deck_error(error));continue;}
    return true;
   }
-  if(cur==0){int selected=menu("Card type",filters,10,filter);if(selected>=0)filter=selected;continue;}
-  unsigned id=ids[cur];static const char *const actions[]={"Add","Remove","Card details"};
-  int action=menu(labels[cur],actions,3,0);
-  if(action==0) {
-   unsigned owned=gp_collection_count(&game.cards,id);
-   for(unsigned i=0;i<60;i++)owned+=game.cards.built[slot].cards[i]==id;
-   if(total<60&&counts[id]<owned){counts[id]++;total++;}
-  } else if(action==1&&counts[id]){counts[id]--;total--;}
-  else if(action==2)n64_card_detail(id);
+  if(cur==0) {
+   if(key==N64_LIST_LEFT)filter=(filter+9)%10;
+   else if(key==N64_LIST_RIGHT)filter=(filter+1)%10;
+   else if(key==N64_LIST_A){int selected=menu("Show",filters,10,filter);if(selected>=0)filter=selected;}
+   continue;
+  }
+  unsigned id=ids[cur];
+  if(key==N64_LIST_LEFT&&counts[id]){counts[id]--;total--;}
+  else if(key==N64_LIST_RIGHT&&counts[id]<deck_owned(slot,id)){counts[id]++;total++;}
+  else if(key==N64_LIST_A||key==N64_LIST_START)n64_card_detail(id);
  }
 }
 static void recipes(unsigned built_slot,bool save)

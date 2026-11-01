@@ -204,6 +204,11 @@ export class AdventureEngine {
 		if (kind === 6) value = this.handlers.report?.(str(args[0]), str(args[1]));
 		if (kind === 7) value = this.handlers.audioWait?.();
 		if (kind === 8) value = this.choosePeer();
+		if (kind === 9) {
+			const items = [];
+			for (let i = 0; i < args[2]; i++) items.push(str(dv.getUint32(args[1] + i * 4, true)));
+			value = this.handlers.list?.(str(args[0]), items, args[3]);
+		}
 		if (value && typeof value.then === 'function') {
 			run.promise = value;
 			this.inst.resetAsyncData();

@@ -240,6 +240,11 @@ surface_t *game_render_frame(void)
    const OwNpc *npc=&game.ow.npcs[i];
    if(!npc->visible)continue;
    const PresentationPose *pose=presentation_npc(&presentation,npc->id);
+   /* Source scripts park actors past the map edge, where the Game Boy never
+      shows them (Ronald below the Dome entrance). They appear as they walk
+      in through a doorway. */
+   if(!pose||pose->x<-1||pose->z<-1||pose->x>w3_maps[game.ow.map].width-1||
+      pose->z>w3_maps[game.ow.map].height-1)continue;
    tilt[i]=game.ow.npc_animation[i]==SPRITE_ANIM_CGB_AMY_LAYING&&!w3_npc_pose_models[npc->id]?90:0;
    draw_npc[i]=adventure_frustum_actor(&frustum,pose,1,0,tilt[i]);
    if(!draw_npc[i]||(npc->id>=NPC_TORCH&&npc->id<=NPC_LEGENDARY_CARD_RIGHT_SPARK)||

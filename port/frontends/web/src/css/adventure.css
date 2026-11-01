@@ -74,6 +74,11 @@ body.adventure {
 .adventure-back {
 	margin-top: 12px;
 }
+.adventure-list-actions {
+	display: flex;
+	gap: 8px;
+	margin-top: 10px;
+}
 .adventure-card {
 	font-size: 16px;
 	--u: 2;

@@ -25,7 +25,7 @@ IMPORT("js_adv_clock") double js_adv_clock(void);
 IMPORT("js_adv_sound") void js_adv_sound(int kind, int id);
 
 /* JS event kinds: frame, message, menu, card, duel, report, wait, peer. */
-enum { AV_FRAME = 1, AV_MESSAGE, AV_MENU, AV_CARD, AV_DUEL, AV_REPORT, AV_AUDIO_WAIT, AV_SELECT_PEER };
+enum { AV_FRAME = 1, AV_MESSAGE, AV_MENU, AV_CARD, AV_DUEL, AV_REPORT, AV_AUDIO_WAIT, AV_SELECT_PEER, AV_LIST };
 bool game_choose_peer(void) { return js_adventure(AV_SELECT_PEER, 0, 0, 0, 0, 0, 0) != 0; }
 Game game;
 bool game_credits_finished;
@@ -107,6 +107,14 @@ int n64_menu(const char *title, const char *const *items, int count, int initial
   if (count <= 0)
     return -1;
   return js_adventure(AV_MENU, (int)title, (int)items, count, initial, cancel, 0);
+}
+int n64_list(const char *title, const char *const *items, int count, int *cursor, const char *help) {
+  if (count <= 0)
+    return N64_LIST_B;
+  /* The page returns the button in the high half and the cursor in the low. */
+  int result = js_adventure(AV_LIST, (int)title, (int)items, count, *cursor, (int)(help ? help : ""), 0);
+  *cursor = result & 0xffff;
+  return result >> 16;
 }
 void n64_card_detail(unsigned id) { js_adventure(AV_CARD, id, 0, 0, 0, 0, 0); }
 void n64_card_name(unsigned id, char *out, int capacity) {

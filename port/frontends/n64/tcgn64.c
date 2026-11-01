@@ -4229,6 +4229,45 @@ int n64_menu(const char *title,const char *const *items,int count,int initial,bo
 	}
 }
 
+int n64_list(const char *title,const char *const *items,int count,int *cursor,const char *help)
+{
+	if(count<=0) return N64_LIST_B;
+	int cur=*cursor>=0 && *cursor<count?*cursor:0;
+	UiCanvasReuse reuse={0};
+	for (;;) {
+		if(begin_reused_frame(&reuse,(uint32_t)cur)) {
+			paper_panel(8,6,304,228);fill(LEFT,27,RIGHT-LEFT,1,C_PAPERSHADE);
+			print_n(LEFT,18,C_INK,title?title:"",COLS);
+			/* Fourteen rows leave two lines for the button help. */
+			int top=cur<13?0:cur-12;
+			for(int i=top;i<count && i<top+14;i++) {
+				char clean[256];sanitize(items[i],clean,sizeof(clean));
+				int y=35+(i-top)*11;
+				if(i==cur) fill(LEFT-4,y-1,RIGHT-LEFT+8,11,C_STORYSEL);
+				print_n(LEFT,y,i==cur?C_TEXT:C_INK,clean,COLS);
+			}
+			char lines[2][64]={{0}};
+			const char *split=help?strchr(help,'\n'):NULL;
+			if(help)snprintf(lines[0],sizeof(lines[0]),"%.*s",split?(int)(split-help):63,help);
+			if(split)snprintf(lines[1],sizeof(lines[1]),"%s",split+1);
+			print_n(LEFT,204,C_INK,lines[0],COLS);print_n(LEFT,215,C_INK,lines[1],COLS);
+		}
+		end_reused_frame(&reuse);
+		Keys k=keys(1);
+		int old=cur;
+		if(k.up)cur=cur>0?cur-1:count-1;
+		if(k.down)cur=cur<count-1?cur+1:0;
+		if(k.l)cur=cur>=8?cur-8:0;
+		if(k.r)cur=cur+8<count?cur+8:count-1;
+		if(cur!=old)adventure_audio_event(1,SFX_CURSOR);
+		*cursor=cur;
+		if(k.left||k.right){adventure_audio_event(1,SFX_CURSOR);return k.left?N64_LIST_LEFT:N64_LIST_RIGHT;}
+		if(k.a){adventure_audio_event(1,SFX_CONFIRM);return N64_LIST_A;}
+		if(k.start){adventure_audio_event(1,SFX_CONFIRM);return N64_LIST_START;}
+		if(k.b){adventure_audio_event(1,SFX_CANCEL);return N64_LIST_B;}
+	}
+}
+
 void n64_card_detail(unsigned id)
 {
 	bool owned=!g_input_service;if(owned)input_begin();
