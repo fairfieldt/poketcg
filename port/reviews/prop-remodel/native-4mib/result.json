@@ -1,0 +1,376 @@
+{
+  "passed": true,
+  "ram_mib": 4,
+  "dimensions": [
+    320,
+    240
+  ],
+  "rom_sha256": "15fc6f8fb194448edbf193cf517f176e8237c9556dda54b98af18bb8b7f4c606",
+  "canonical_state_unchanged": true,
+  "method": "Completed native RDP framebuffer using production renderer. Identical source actor poses and settled cameras; room meshes/textures differ. Timing is emulated CP0 cadence (8 samples), not physical hardware. All conditional source NPCs visible for inspection.",
+  "frames": [
+    {
+      "file": "lab-table-before.png",
+      "sha256": "2ba874b139b7cb4a0a01efd8bff66a3bda22545bcc69ebf7796c938fabc5006d"
+    },
+    {
+      "file": "lab-table-after.png",
+      "sha256": "1d623ef1dad58bc19427e97ff3bf6c9993dd39612add9ab54991bff36af37ca4"
+    },
+    {
+      "file": "lab-workstation-before.png",
+      "sha256": "ae192249f856ecb0bffd22b7a73134094b89f3c6bec4535f92e024bd5a335084"
+    },
+    {
+      "file": "lab-workstation-after.png",
+      "sha256": "16f1d0b82e1db2e53973db8d8a77c7351e41208fc3c95c101879ae0dae32710f"
+    },
+    {
+      "file": "lab-challenge-before.png",
+      "sha256": "38d9998b4585b47362c0bb7c4bf0b603228d1ca1003d0cee088e4a71101331d4"
+    },
+    {
+      "file": "lab-challenge-after.png",
+      "sha256": "5bff1a057db0775dec7eba10c3f2c2d4b52cd1ebc471d7721c1a343e028097ae"
+    },
+    {
+      "file": "lobby-counter-before.png",
+      "sha256": "13c13c5eeedd360a86e08488181f509cc8a158c04161f75fdca22760d2d10983"
+    },
+    {
+      "file": "lobby-counter-after.png",
+      "sha256": "2138b630caef3149e607a61b1f92c9b298ce83f003058fdc7392c66baea99e67"
+    },
+    {
+      "file": "lobby-table-before.png",
+      "sha256": "d71d2556092d2a5a999e32a156b276359a1b98b6681b0be33fccbd2172876190"
+    },
+    {
+      "file": "lobby-table-after.png",
+      "sha256": "6cd1ebbe022a296570aea03cf1dc289c441da026b176a6b3d650269cecc1d750"
+    },
+    {
+      "file": "lobby-shelves-before.png",
+      "sha256": "8f3ced6c0503d39dacdbba0f5f6a28fc54866c1b3e8ef68c713729a9fd56b6a2"
+    },
+    {
+      "file": "lobby-shelves-after.png",
+      "sha256": "5e4b46c31729bdbcaf1be645734820f29c14e16fc671e4e74f9711aa5b0dedd9"
+    },
+    {
+      "file": "deck-off-before.png",
+      "sha256": "e5e01d5be7ccdf76dcf73892ce85c84fd01222e9047faeeb9c98500fc1c25a42"
+    },
+    {
+      "file": "deck-off-after.png",
+      "sha256": "a5464a3f77d2c32c01ac37f79763dd6d8aebb4649846d5a5e2c7b7abf2ea881a"
+    },
+    {
+      "file": "deck-mixed-before.png",
+      "sha256": "d2af51b1fb1a9c48ab4e4afb964c6cd5b8d570f0bf7ddb1540f7e3b423e09796"
+    },
+    {
+      "file": "deck-mixed-after.png",
+      "sha256": "79a5353b08113a0f2dda0f1a6b3d5b993adba5b3a694a3794eaf394cb7db7683"
+    },
+    {
+      "file": "deck-on-before.png",
+      "sha256": "7a4a46c464cea4c74cfa4350bea95336331c862fb13dceb95b1052926a9efbd9"
+    },
+    {
+      "file": "deck-on-after.png",
+      "sha256": "3dcb9b1c2f1929e2c62f4b945e9e197ec991dc5a5b8a2852bec7524de973f553"
+    },
+    {
+      "file": "ishihara-shelves-before.png",
+      "sha256": "eb967205566e0af9b55c814763a92a94a4dcdc30174b0ef6585a9769abc71830"
+    },
+    {
+      "file": "ishihara-shelves-after.png",
+      "sha256": "ee6eb2f9d436b96a3a10af8af47cc1e29d61b70957f0d88c07751d9c01224c10"
+    },
+    {
+      "file": "science-north-before.png",
+      "sha256": "f9bccdf77254b8d1dd2dabcb453feb854d14aaa51f19931e9aefb8c322ee6194"
+    },
+    {
+      "file": "science-north-after.png",
+      "sha256": "f969da0d61dc782d45fb03bc10dd1e8ac4f4741ff1ba97e742b6e43547eb444b"
+    },
+    {
+      "file": "science-machines-before.png",
+      "sha256": "4ad05377b66000b8d4e632fc931cdd929923bbed11752a46a56bd0345b5a9f79"
+    },
+    {
+      "file": "science-machines-after.png",
+      "sha256": "38a07395ac2cd7c072aa87e87b17361dadbbce551d19825a5348a22ebcb438bd"
+    },
+    {
+      "file": "challenge-scoreboard-before.png",
+      "sha256": "7722e183e9170d3ee6d336ce351beee991c079bdf18abab64b37f6a0fb701357"
+    },
+    {
+      "file": "challenge-scoreboard-after.png",
+      "sha256": "faf6766cda6b155dabb26ac261c48933c0745744e1eafea4e4ed41ebf9bfd982"
+    },
+    {
+      "file": "water-parasol-before.png",
+      "sha256": "200b7d79cace0f9333185995707e11ebd9fe2619ddefe4a720144526151cbe69"
+    },
+    {
+      "file": "water-parasol-after.png",
+      "sha256": "bd27d06d5999ae14cbcb9b7bab471d64e2dd8380bf0ed28927ab9853abb92530"
+    },
+    {
+      "file": "water-bench-before.png",
+      "sha256": "b24a6e70b492fa5c8e108804e4656e768831be5fe694aa676f3e90a3cf85a459"
+    },
+    {
+      "file": "water-bench-after.png",
+      "sha256": "bfb45db7dd42769ab3531ffa1c3cdb73e3aec7c544b52500c516b79041421954"
+    },
+    {
+      "file": "rock-statue-before.png",
+      "sha256": "7d4b6282dcd9d143aaa94d80f8cc5925309965a45400889fd7b5c5b445ae4ca4"
+    },
+    {
+      "file": "rock-statue-after.png",
+      "sha256": "33bf378a49c3ba35968eab9f510569ed82b4294a62fbd9b5134af8036b3a57c8"
+    },
+    {
+      "file": "psychic-pedestal-before.png",
+      "sha256": "b7478485dc29676a68b69ca12f29e847b86d9e9a35b89fb4204b7900c12ce876"
+    },
+    {
+      "file": "psychic-pedestal-after.png",
+      "sha256": "151d9a37de5c2e83905ec130f88def8f592d168b0e693d4c68f07875d4322632"
+    },
+    {
+      "file": "dome-table-before.png",
+      "sha256": "aa6ad0304f9e86c60e087e692cd07bc58f153306d42721a7e0f50bae98e4e7a6"
+    },
+    {
+      "file": "dome-table-after.png",
+      "sha256": "e950bb7baa4951f7a5f33cd337e303032e3914f95ed5f72c354577c88f128360"
+    }
+  ],
+  "cases": [
+    {
+      "name": "lab-table-before",
+      "free_heap": 1966840,
+      "mean_cadence_us": 33427,
+      "samples": 8
+    },
+    {
+      "name": "lab-table-after",
+      "free_heap": 1949664,
+      "mean_cadence_us": 33867,
+      "samples": 8
+    },
+    {
+      "name": "lab-workstation-before",
+      "free_heap": 1966832,
+      "mean_cadence_us": 33481,
+      "samples": 8
+    },
+    {
+      "name": "lab-workstation-after",
+      "free_heap": 1949656,
+      "mean_cadence_us": 33355,
+      "samples": 8
+    },
+    {
+      "name": "lab-challenge-before",
+      "free_heap": 1964648,
+      "mean_cadence_us": 33415,
+      "samples": 8
+    },
+    {
+      "name": "lab-challenge-after",
+      "free_heap": 1948944,
+      "mean_cadence_us": 33499,
+      "samples": 8
+    },
+    {
+      "name": "lobby-counter-before",
+      "free_heap": 1721256,
+      "mean_cadence_us": 33083,
+      "samples": 8
+    },
+    {
+      "name": "lobby-counter-after",
+      "free_heap": 1707784,
+      "mean_cadence_us": 33415,
+      "samples": 8
+    },
+    {
+      "name": "lobby-table-before",
+      "free_heap": 1721256,
+      "mean_cadence_us": 29968,
+      "samples": 8
+    },
+    {
+      "name": "lobby-table-after",
+      "free_heap": 1707792,
+      "mean_cadence_us": 32238,
+      "samples": 8
+    },
+    {
+      "name": "lobby-shelves-before",
+      "free_heap": 1721264,
+      "mean_cadence_us": 33287,
+      "samples": 8
+    },
+    {
+      "name": "lobby-shelves-after",
+      "free_heap": 1707768,
+      "mean_cadence_us": 33499,
+      "samples": 8
+    },
+    {
+      "name": "deck-off-before",
+      "free_heap": 2055952,
+      "mean_cadence_us": 31335,
+      "samples": 8
+    },
+    {
+      "name": "deck-off-after",
+      "free_heap": 2037488,
+      "mean_cadence_us": 33426,
+      "samples": 8
+    },
+    {
+      "name": "deck-mixed-before",
+      "free_heap": 2055968,
+      "mean_cadence_us": 33433,
+      "samples": 8
+    },
+    {
+      "name": "deck-mixed-after",
+      "free_heap": 2038328,
+      "mean_cadence_us": 33430,
+      "samples": 8
+    },
+    {
+      "name": "deck-on-before",
+      "free_heap": 2055968,
+      "mean_cadence_us": 33354,
+      "samples": 8
+    },
+    {
+      "name": "deck-on-after",
+      "free_heap": 2044224,
+      "mean_cadence_us": 33130,
+      "samples": 8
+    },
+    {
+      "name": "ishihara-shelves-before",
+      "free_heap": 1910560,
+      "mean_cadence_us": 33620,
+      "samples": 8
+    },
+    {
+      "name": "ishihara-shelves-after",
+      "free_heap": 1863880,
+      "mean_cadence_us": 32024,
+      "samples": 8
+    },
+    {
+      "name": "science-north-before",
+      "free_heap": 1925736,
+      "mean_cadence_us": 33537,
+      "samples": 8
+    },
+    {
+      "name": "science-north-after",
+      "free_heap": 1914048,
+      "mean_cadence_us": 32505,
+      "samples": 8
+    },
+    {
+      "name": "science-machines-before",
+      "free_heap": 1925752,
+      "mean_cadence_us": 33376,
+      "samples": 8
+    },
+    {
+      "name": "science-machines-after",
+      "free_heap": 1914040,
+      "mean_cadence_us": 32846,
+      "samples": 8
+    },
+    {
+      "name": "challenge-scoreboard-before",
+      "free_heap": 1865424,
+      "mean_cadence_us": 33373,
+      "samples": 8
+    },
+    {
+      "name": "challenge-scoreboard-after",
+      "free_heap": 1869064,
+      "mean_cadence_us": 33413,
+      "samples": 8
+    },
+    {
+      "name": "water-parasol-before",
+      "free_heap": 1813384,
+      "mean_cadence_us": 33414,
+      "samples": 8
+    },
+    {
+      "name": "water-parasol-after",
+      "free_heap": 1795680,
+      "mean_cadence_us": 33411,
+      "samples": 8
+    },
+    {
+      "name": "water-bench-before",
+      "free_heap": 1813312,
+      "mean_cadence_us": 31828,
+      "samples": 8
+    },
+    {
+      "name": "water-bench-after",
+      "free_heap": 1795688,
+      "mean_cadence_us": 32611,
+      "samples": 8
+    },
+    {
+      "name": "rock-statue-before",
+      "free_heap": 1824928,
+      "mean_cadence_us": 33535,
+      "samples": 8
+    },
+    {
+      "name": "rock-statue-after",
+      "free_heap": 1770392,
+      "mean_cadence_us": 33515,
+      "samples": 8
+    },
+    {
+      "name": "psychic-pedestal-before",
+      "free_heap": 1849784,
+      "mean_cadence_us": 32155,
+      "samples": 8
+    },
+    {
+      "name": "psychic-pedestal-after",
+      "free_heap": 1820328,
+      "mean_cadence_us": 33225,
+      "samples": 8
+    },
+    {
+      "name": "dome-table-before",
+      "free_heap": 1578224,
+      "mean_cadence_us": 31841,
+      "samples": 8
+    },
+    {
+      "name": "dome-table-after",
+      "free_heap": 1577064,
+      "mean_cadence_us": 32639,
+      "samples": 8
+    }
+  ],
+  "wall_seconds": 105.13
+}

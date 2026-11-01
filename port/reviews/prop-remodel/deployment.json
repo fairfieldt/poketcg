@@ -1,0 +1,38 @@
+{
+  "source_commit": "437152d37ee645f11b09e76143efc43c36542693",
+  "local_builds": [
+    {
+      "variant": "standard",
+      "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-adventure.z64",
+      "bytes": 38273024,
+      "sha256": "a6e2245cf7cef681c1ef1638f3a6931dc3a209c4a5ca7ec3e85633e00e639190",
+      "source_commit": "437152d37ee645f11b09e76143efc43c36542693",
+      "video_mode": "320x240",
+      "renderer": "Tiny3D/libdragon",
+      "diagnostic": 0,
+      "show_fps": true,
+      "steam_deployed": false
+    },
+    {
+      "variant": "expansion",
+      "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-expansion.z64",
+      "bytes": 38273024,
+      "sha256": "c689ef0a24586be9a8a57484446d371efb2c0f63f1f22a4a86ee8610e12c1f20",
+      "source_commit": "437152d37ee645f11b09e76143efc43c36542693",
+      "video_mode": "480x360 with 8 MiB; automatic 320x240 with 4 MiB",
+      "renderer": "Tiny3D/libdragon",
+      "diagnostic": 0,
+      "show_fps": true,
+      "steam_deployed": false
+    }
+  ],
+  "steam_publication": "User requested leaving both ROMs ready locally; no upload attempted.",
+  "web": {
+    "url": "https://poketcg64.exe.xyz/",
+    "release": "20261101T015639Z-437152d37ee6",
+    "updated": true,
+    "changed_asset_bodies_verified": 36
+  },
+  "live_saves_modified": false,
+  "active_steam_game_restarted": false
+}

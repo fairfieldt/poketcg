@@ -71,3 +71,41 @@ must be serial: simultaneous instrumented ares instances corrupted the debug
 capture stream in an initial discarded run. Those invalid logs remain under
 `build/prop-remodel-review/*/runtime-parallel-invalid.log` and are excluded from
 accepted results. The harness takes an exclusive capture lock.
+
+## Native acceptance and builds
+
+Both serial native runs passed 18 same-pose before/after views: 36 completed
+frames at 320×240/4 MiB and 36 at 480×360/8 MiB. Every view leaves the canonical
+source state unchanged. The smallest free heap across the changed inspection
+views is 1,577,064 bytes in standard mode and 4,811,368 bytes in Expansion Pak
+mode; the largest added residency is 54,536 bytes. The short cadence samples
+remain near the 30 FPS target in these emulated views. They are not physical
+hardware measurements or a new whole-game performance survey.
+
+[Native summary](native-validation.json) · [Standard results](native-4mib/result.json)
+· [Expansion results](native-8mib/result.json) · [Independent art review](native-review.md)
+
+The original ares VI encoder captured three selected before/after pairs per
+mode (lab table, service counter, Water furniture). All twelve PNGs match their
+callback RGB buffers exactly: 921,600 pixels in standard mode and 1,843,200 in
+Expansion mode. These are real core VI output with shader None, without a CRT
+shader or an OS-window screenshot. The original standard PNGs use non-square
+pixels (640×240); the comparison sheet displays them at 4:3. The Expansion
+encoder produces 640×480 images. Neither gallery claims motion testing.
+
+[Standard VI comparison](comparison-320-vi.png) · [Expansion VI comparison](comparison-480-vi.png)
+· [Standard capture provenance](vi-4mib/capture-provenance.json)
+· [Expansion capture provenance](vi-8mib/capture-provenance.json)
+
+The capture harness now creates its private save directory before launching
+emulation. Without that directory ares opens a read-only-save-path warning,
+blocking unattended capture. Initial blocked profiles are excluded from the
+accepted VI results; final profiles are `build/prop-remodel-vi-{4,8}-sdl`.
+
+Both production ROMs are built locally, with their existing save identity and
+normal development FPS overlay. Per the user's final instruction they were
+not uploaded to the Steam Machine. [Build hashes](deployment.json) record the
+standard and Expansion variants. The public web game at
+https://poketcg64.exe.xyz/ has the shared new assets; 36 changed asset bodies
+were verified byte-for-byte over public HTTPS. [Web verification](web-publication.json)
+records the release. The tailnet preview also has the updated assets.

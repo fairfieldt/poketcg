@@ -45,7 +45,7 @@ WALL DISPLAY - north wall, centre
   as plain wall and model the machine as a toggleable prop.
 
 BOOKCASES - four, north wall east
-  x17-19, x20-22, x23-25 and one more at x25-26, y1-4 - four identical tall
+  x18-19, x20-21, x22-23 and x24-25, y1-4 - four identical tall
   bookcases: an orange #b55a00 carcass with a dark interior, three
   shelves holding pale book spines, and a closed orange cupboard
   with a dark handle at the bottom.  About 2 units tall, impassable.
@@ -54,7 +54,7 @@ BOOKCASES - four, north wall east
   Model recessed shelves of books/binders, with lower cupboard doors; reuse
   the same carcass for the three cases in the mid-east row.
 
-BENCH AND COUNTER - mid room
+EAST BOOKCASES AND SOUTH WALL
   * x20-26, y14-16: three more of the same cabinets, in a row on the east side.
   * x18-26, y26-27 is floor followed by the south wall, not a counter.
 

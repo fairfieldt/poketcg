@@ -1,0 +1,41 @@
+{
+  "passed": true,
+  "source_commit": "437152d37ee6",
+  "views_per_resolution": 18,
+  "native_cases": [
+    {
+      "ram_mib": 4,
+      "dimensions": [
+        320,
+        240
+      ],
+      "native_frames": 36,
+      "canonical_state_unchanged": true,
+      "minimum_free_heap_after": 1577064,
+      "largest_added_heap": 54536,
+      "mean_cadence_us_after_range": [
+        32024,
+        33867
+      ],
+      "rom_sha256": "15fc6f8fb194448edbf193cf517f176e8237c9556dda54b98af18bb8b7f4c606"
+    },
+    {
+      "ram_mib": 8,
+      "dimensions": [
+        480,
+        360
+      ],
+      "native_frames": 36,
+      "canonical_state_unchanged": true,
+      "minimum_free_heap_after": 4811368,
+      "largest_added_heap": 54536,
+      "mean_cadence_us_after_range": [
+        31252,
+        33888
+      ],
+      "rom_sha256": "15fc6f8fb194448edbf193cf517f176e8237c9556dda54b98af18bb8b7f4c606"
+    }
+  ],
+  "timing_limit": "Eight CP0 samples per static inspection view; emulator evidence, not physical-console measurement. Display target 30 FPS.",
+  "state_limit": "Source OwState unchanged after each old/new view; no gameplay logic or authored character data changed."
+}

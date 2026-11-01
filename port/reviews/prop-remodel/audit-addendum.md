@@ -15,7 +15,7 @@ assessment, not a claim that the old models remain in the new build.
 | Shelves and cabinets | Open recessed shelf fronts, thick uprights/cornice, grouped books/jars and lower cupboard doors | Lab, all lobbies, Ishihara's house, Dome entrance |
 | Computer/workbench family | CRT housing, readable inset display and key deck, modeled bent instrument arm | Mason, Science and shared small terminals |
 | Deck printers | Cartridge crowns, CRTs, sloped controls and dark bodies with independent replacement screen states | Ten printers; eight separate medal states preserved |
-| Science instruments | Four colour-bar CRTs, lab work surfaces and distinct southern blue-screen test units | Science Club |
+| Science instruments | Four colour-bar CRTs, instrument workbench and distinct southern blue-screen test units | Science Club; the central low counters remain generic |
 | Challenge Hall leaderboard | Framed green leaderboard with broad score rows and modeled stepped plinth | Challenge Hall |
 | Water furniture | Red/cream parasol tables; white slatted navy/orange chaise lounges with raised east-end backs; southeast arrangement has two lounges | Three parasols and four lounges; Amy seat remains at .71 |
 | Rock statues | Broad gold creature form with feet, torso, paired arms, head, ears/horn and muzzle | Six instances of one recipe |
@@ -33,9 +33,23 @@ balloons. The central green field is a duel table. Water's supposed horses are
 parasol/table arrangements; its supposed park benches are chaise lounges.
 Psychic's supposed flames are square-topped columns. Original pixels take
 precedence over the old inferred room briefs.
+Mason's southeast "counter" was only the source south-wall band; that phantom
+prop was removed. The actual small green north-wall readout was restored.
 
 ## Remaining lower-priority work
 
+* **Science central low counters:** all three `counter` entries (source crops
+  `(7,12,5,2)`, `(12,12,5,2)` and `(16,4,2,6)`) still use the generic brown
+  box with a whole projected source front crop. They are the broad low work
+  surfaces visible in the native Science cases, distinct from the remodeled
+  CRT banks, test units and instrument bench. Replace them later with a clean
+  cyan worktop and owning green/white facade/kerb regions; avoid implying that
+  all Science furniture was rebuilt in this pass.
+* **Ishihara's small corner desk:** source `table` crop `(2,1,3,4)` still goes
+  through the generic table recipe, including the projected source crop on
+  its top. The shelves were rebuilt; this desk/lamp/chair arrangement was not.
+  A writing surface, dark inset, brass articulated lamp and tucked chair would
+  restore the original corner composition.
 * **Fire standards:** retain the correct green woven/coiled stem and broad red
   hood/flame mass when replacing the current brown poles/red cones. This is a
   visible identity mismatch, but separate from the lab/lobby work completed now.

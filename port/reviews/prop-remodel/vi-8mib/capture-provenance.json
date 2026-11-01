@@ -1,0 +1,306 @@
+{
+  "status": "verified-expansion-pak-trial-captures",
+  "rom": {
+    "file": "port/frontends/n64/adventure/build/prop-remodel-review/prop-review.z64",
+    "sha256": "26f6196fbfe61baef11ee1b81eda1d44a4ea19426bcd9c5923d06205a1b4c070",
+    "diagnostic": 9
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 6,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": "full observed callback dimensions",
+      "stage_pattern": "^(?:VIDEO REVIEW|DUEL UI) ([A-Za-z0-9_-]+) BEGIN\\r?$",
+      "require_native_frame": true,
+      "native_lead_frames": 6
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 8,
+    "private_settings": true,
+    "ExpansionPak": true
+  },
+  "runtime_video_modes": [
+    {
+      "width": 480,
+      "height": 360,
+      "ram": 8388608,
+      "highres": 1
+    }
+  ],
+  "raw_format": {
+    "pixel_order": "BGRA little endian; padding excluded from RGB proof",
+    "dimensions": "Recorded per image from Program::video registers",
+    "display_aspect": "4:3"
+  },
+  "finished": {
+    "callbacks": 1549,
+    "captures": 6,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "lab-table-before.png",
+      "stage": "lab-table-before",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "331dae7bf1830eddf6f1fb9eca774363db3dab4b87f116dedb443d9d578bc098",
+      "callback_sha256": "19003747eba584d8a44a664b70cc2a0724aef9d8df1dedc577a179d908678836",
+      "rgb_sha256": "590d1ebcf4854770dad44e62c1a433106329e9dbd392229e90cf8a18e6f7469c",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 56,
+      "stage_gate": {
+        "stage_started_callback": 47,
+        "native_frame": "lab-table-before",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 47,
+        "native_ready_valid_frames": 19,
+        "post_native_valid_callbacks": 10,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": null
+      }
+    },
+    {
+      "file": "lab-table-after.png",
+      "stage": "lab-table-after",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "56383834706cf0195b5c9d6abaed66a9abcf97773e6a81301b0469e5f832d19b",
+      "callback_sha256": "34a62c2dabca4c682c111d088c697227fc05487b235d45b8ef7a530aff7d33dc",
+      "rgb_sha256": "5954a2ed5b7be56fb716e637b52fbdae2267a7905192b3a3a4e208bd00389725",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 306,
+      "stage_gate": {
+        "stage_started_callback": 298,
+        "native_frame": "lab-table-after",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 298,
+        "native_ready_valid_frames": 270,
+        "post_native_valid_callbacks": 9,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "f011bd9820c72b3abd6223cf424de64271587eb5dffbf184d89d661a91a696c5"
+      }
+    },
+    {
+      "file": "lobby-counter-before.png",
+      "stage": "lobby-counter-before",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "91f94072d50cabd303d36d07a82929fa2927eec199a5382b3fd9ded445cf2c41",
+      "callback_sha256": "72202814e38858a0dba47938d1b5cee8376652ecf42a56834e6ffce3b355cec7",
+      "rgb_sha256": "15d4973dd036c8aa594fbecf659d551ec5ab9f80812ef0bbcdd8bf949de97eec",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 568,
+      "stage_gate": {
+        "stage_started_callback": 560,
+        "native_frame": "lobby-counter-before",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 560,
+        "native_ready_valid_frames": 532,
+        "post_native_valid_callbacks": 9,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "e8bddaa13205ded833106a193c5340ca19f2880ec81bea698af793abfe03e5ef"
+      }
+    },
+    {
+      "file": "lobby-counter-after.png",
+      "stage": "lobby-counter-after",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "c3d7f05043eca45c93e1362e675a39c372f64e4e68f1fde3a2593abc1644ce2f",
+      "callback_sha256": "a937300efb7360fc344339d6b66a9d2a200cafbed4404c4726e647b76eb1412c",
+      "rgb_sha256": "91d3d8c07b71883a7085b13e6c303f91827d53b718bb2c73680f5544f526c1db",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 834,
+      "stage_gate": {
+        "stage_started_callback": 825,
+        "native_frame": "lobby-counter-after",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 825,
+        "native_ready_valid_frames": 797,
+        "post_native_valid_callbacks": 10,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "487e9e0b9f8e050c307403f4388bdb615ee7e2b13c04b47252f4f5db51421d0c"
+      }
+    },
+    {
+      "file": "water-parasol-before.png",
+      "stage": "water-parasol-before",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "35150552946a73aae48c52c74e0e0c2ddd96d7c21d477a6a60588ec7909c13fe",
+      "callback_sha256": "c09324666d8bf13c970a795413a57d5ac62fc2c047cbd64ef0848fc495e96236",
+      "rgb_sha256": "03736956010e28fd40a4cafd576e52b24f000ca28ccdc75fd73cef4a22ef8daa",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 1090,
+      "stage_gate": {
+        "stage_started_callback": 1082,
+        "native_frame": "water-parasol-before",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 1082,
+        "native_ready_valid_frames": 1054,
+        "post_native_valid_callbacks": 9,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "0086d665bc4126f1273db22399a75a169843cf913b2923f18029235beb5d6062"
+      }
+    },
+    {
+      "file": "water-parasol-after.png",
+      "stage": "water-parasol-after",
+      "dimensions": [
+        640,
+        480
+      ],
+      "pitch": 2560,
+      "png_sha256": "d33dfee63262a7a13169d12052767fc62b454630dd477a33bb853f461017e62c",
+      "callback_sha256": "e8f769229515976f0ce962ff6b3e7bec0af0aec4773086c9c8ae29129f0505ce",
+      "rgb_sha256": "187d31d724faaa7e797f29828c92b063043318a236d37b30c7e98e15759f9179",
+      "exact_callback_rgb_pixels": 307200,
+      "callback": 1348,
+      "stage_gate": {
+        "stage_started_callback": 1340,
+        "native_frame": "water-parasol-after",
+        "native_dimensions": [
+          480,
+          360
+        ],
+        "native_ready_callback": 1340,
+        "native_ready_valid_frames": 1312,
+        "post_native_valid_callbacks": 9,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "6b80e7f79fd539e0f0f08326930a4ba2836dbc4df8028f1993dfe5c5b160b5a3"
+      }
+    }
+  ],
+  "native_frames": [
+    {
+      "file": "lab-table-before.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "b22f6366bb88e42556f25a1faee30819c0f817b3f4efc7904fef5808e808813b",
+      "exact_native_pixels": 172800
+    },
+    {
+      "file": "lab-table-after.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "6ae0cf76cc069363639d71ed7fbd7b67355f0e2244b89115d03d673d65b365a2",
+      "exact_native_pixels": 172800
+    },
+    {
+      "file": "lobby-counter-before.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "d45ed379f851a7f48b0e4d84a1c41cc29c7b9b2c18c9bb0167b59401000e2f72",
+      "exact_native_pixels": 172800
+    },
+    {
+      "file": "lobby-counter-after.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "25f78114256d29dbf57ad410d73a6dbd111ff363eca6bb0bc1e3497768441fb8",
+      "exact_native_pixels": 172800
+    },
+    {
+      "file": "water-parasol-before.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "d2db00061fd3517b3489b3eb8a5e7c4a919c1478afb5f7addb820fd0991c4a5e",
+      "exact_native_pixels": 172800
+    },
+    {
+      "file": "water-parasol-after.png",
+      "dimensions": [
+        480,
+        360
+      ],
+      "sha256": "610866155aef4c738fd31d507fb76b310caf35e91f4482d9f755a3a55ed2ce4c",
+      "exact_native_pixels": 172800
+    }
+  ],
+  "memory": [],
+  "source_logs": {
+    "path": "port/frontends/n64/adventure/build/prop-remodel-vi-8-sdl/lldb.log",
+    "sha256": "e559e893d3a3fbb47100aacb4671c9a4c1d50684614a6b60d3a7b499ca1e735e"
+  }
+}

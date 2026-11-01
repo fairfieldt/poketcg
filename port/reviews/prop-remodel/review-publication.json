@@ -1,0 +1,25 @@
+{
+  "url": "http://ms.tdf.sh:8091/reviews/prop-remodel/",
+  "verified": {
+    "comparison-320-vi.png": {
+      "sha256": "0780e1544fc8dfe66391a8462dbb02884e6b59b44f8a6b6862df61d8744c098d",
+      "cache_control": "no-store"
+    },
+    "comparison-480-vi.png": {
+      "sha256": "e971f1c26dba91b4d3efb70a1f079ffcd0c0811b1f2b55fb3dbac5e5b270bc25",
+      "cache_control": "no-store"
+    },
+    "native-validation.json": {
+      "sha256": "1694f0f782b27358af961c232b5dd2127414255f44f4f747d2b48e5a2f632157",
+      "cache_control": "no-store"
+    },
+    "README.md": {
+      "sha256": "80de403fde4de8e71710688e954205bcc962524fcfd4179f945f522fcc3a217d",
+      "cache_control": "no-store"
+    },
+    "audit-addendum.md": {
+      "sha256": "e0f0213e2daa01c9961973ecae55b7d92ab4c0eed8b9e4800530c36780306f02",
+      "cache_control": "no-store"
+    }
+  }
+}

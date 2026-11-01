@@ -93,6 +93,7 @@ def main():
     assert len(set(args.stages))==len(args.stages),'Duplicate requested stages'
     rom=args.rom.resolve();work=(args.build or ADV/'build/expansion-pak'/args.case).resolve()
     work.mkdir(parents=True,exist_ok=True)
+    (work/'saves').mkdir(exist_ok=True)
     out=(args.output_dir or REVIEW/'cases'/args.case).resolve();vi=out/'post-vi';native=out/'native'
     vi.mkdir(parents=True,exist_ok=True);native.mkdir(exist_ok=True)
     log=work/'lldb.log';config_path=work/'config.json'
