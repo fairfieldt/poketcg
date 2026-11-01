@@ -18,6 +18,9 @@ def exterior_sources(sources,wearing_cap=False,owning_hair=False):
     groups=defaultdict(list)
     passthrough=[]
     for source in sources:
+        if source.get('native_exterior_ready',False):
+            passthrough.append(source)
+            continue
         name=source.name.lower()
         key=None
         headwear=(wearing_cap and any(word in name for word in ('hair','fringe',' · cap',' · brim')) or

@@ -1,23 +1,66 @@
 {
   "passed": true,
-  "method": "Actual emitted native headwear triangles above the brim have one side outside (winding0) and one side inside (winding1) the unified closed head surface. Original hidden scalp/head vertices do not survive export. Authored cap half-spaces identify deep hidden source vertices only; nonplanar cap retessellation does not cause false positives.",
+  "method": "Legacy capped families retain the original boolean/scalp half-space and native winding proof. Ready Water/player heads separately prove one closed outward skull with disjoint material regions and no active legacy scalp; ancillary visor/goggles are individually closed and packed coplanar overlays are rejected.",
   "height_clip_epsilon": 1e-05,
+  "assets": "/Users/fairfieldt/dev/poketcg/port/characters/assets",
   "models": [
     {
       "model": "mark",
       "passed": true,
+      "method": "ready-shell native ownership",
+      "native_sha256": "9aa0bc4a7ebb8fad0fd8720709f33d278f53bc25a63c89af6763b8da6f3296bc",
+      "head_pivot": [
+        0.0,
+        1.409999966621399,
+        0.0
+      ],
+      "main_skull_triangles": 224,
       "owning_head_components": 1,
       "owning_head_topological_boundary_edges": 0,
-      "hidden_authored_hair_objects": 1,
-      "authored_hidden_head_scalp_vertices": 32,
-      "exported_hidden_head_scalp_vertices": 0,
-      "native_head_triangles": 228,
-      "native_triangles_above_brim": 82,
-      "non_exterior_native_headwear_faces": 0,
-      "maximum_outside_winding": 0.0,
-      "minimum_inside_winding": 1.0,
-      "cap_base_height": 1.8047999143600464,
-      "native_sha256": "69cf72f25751a8585db032241c85848b43424692f183259bd3c83f08ddda6520"
+      "active_legacy_scalp_layers": 0,
+      "material_regions": [
+        "accent",
+        "face",
+        "hair",
+        "skin",
+        "white"
+      ],
+      "pieces": [
+        {
+          "object": "mark \u00b7 Water owning head",
+          "triangles": 224,
+          "closed_edges": 336,
+          "outward": true,
+          "main_skull": true
+        },
+        {
+          "object": "mark \u00b7 Mark rear cap visor",
+          "triangles": 20,
+          "closed_edges": 30,
+          "outward": true,
+          "main_skull": false
+        }
+      ],
+      "raw": {
+        "triangles": 244,
+        "duplicate_triangles": 0,
+        "competing_coplanar_pairs": 0,
+        "degenerate_triangles": 0
+      },
+      "packed": {
+        "triangles": 244,
+        "duplicate_triangles": 0,
+        "competing_coplanar_pairs": 0,
+        "degenerate_triangles": 0
+      },
+      "packed_closed_components": 2,
+      "packed_closed_edges": 366,
+      "packed_exterior": {
+        "maximum_outside_winding": 4.0916510745910865e-16,
+        "minimum_inside_winding": 0.9999999999999988
+      },
+      "maximum_outside_winding": 3.6913208412471545e-16,
+      "minimum_inside_winding": 0.9999999999999988
     },
     {
       "model": "lad",
@@ -38,18 +81,73 @@
     {
       "model": "joshua",
       "passed": true,
+      "method": "ready-shell native ownership",
+      "native_sha256": "d74cee96e2d22a1ca160e8111590a011293e01124c8bf06d823e4efa0e74f9e6",
+      "head_pivot": [
+        0.0,
+        1.5299999713897705,
+        0.0
+      ],
+      "main_skull_triangles": 224,
       "owning_head_components": 1,
       "owning_head_topological_boundary_edges": 0,
-      "hidden_authored_hair_objects": 1,
-      "authored_hidden_head_scalp_vertices": 32,
-      "exported_hidden_head_scalp_vertices": 0,
-      "native_head_triangles": 228,
-      "native_triangles_above_brim": 82,
-      "non_exterior_native_headwear_faces": 0,
-      "maximum_outside_winding": 0.0,
-      "minimum_inside_winding": 1.0,
-      "cap_base_height": 1.9583998918533325,
-      "native_sha256": "184ec981f500de127b138388afd0e36cec9a674f3aeaabb8e881475c5036cada"
+      "active_legacy_scalp_layers": 0,
+      "material_regions": [
+        "face",
+        "hair",
+        "skin",
+        "white"
+      ],
+      "pieces": [
+        {
+          "object": "joshua \u00b7 Water owning head",
+          "triangles": 224,
+          "closed_edges": 336,
+          "outward": true,
+          "main_skull": true
+        },
+        {
+          "object": "joshua \u00b7 Joshua forehead goggle -1",
+          "triangles": 32,
+          "closed_edges": 48,
+          "outward": true,
+          "main_skull": false
+        },
+        {
+          "object": "joshua \u00b7 Joshua forehead goggle 1",
+          "triangles": 32,
+          "closed_edges": 48,
+          "outward": true,
+          "main_skull": false
+        },
+        {
+          "object": "joshua \u00b7 Joshua goggle bridge",
+          "triangles": 12,
+          "closed_edges": 18,
+          "outward": true,
+          "main_skull": false
+        }
+      ],
+      "raw": {
+        "triangles": 300,
+        "duplicate_triangles": 0,
+        "competing_coplanar_pairs": 0,
+        "degenerate_triangles": 0
+      },
+      "packed": {
+        "triangles": 300,
+        "duplicate_triangles": 0,
+        "competing_coplanar_pairs": 0,
+        "degenerate_triangles": 0
+      },
+      "packed_closed_components": 4,
+      "packed_closed_edges": 450,
+      "packed_exterior": {
+        "maximum_outside_winding": 7.098269171912067e-16,
+        "minimum_inside_winding": 0.9999999999999989
+      },
+      "maximum_outside_winding": 4.003302333439322e-16,
+      "minimum_inside_winding": 0.9999999999999988
     },
     {
       "model": "steve",

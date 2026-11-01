@@ -1,11 +1,11 @@
 {
   "model": "amy",
-  "triangles": 584,
-  "vertices": 1084,
-  "batches": 6,
-  "linked_parts": 24,
+  "triangles": 870,
+  "vertices": 1382,
+  "batches": 7,
+  "linked_parts": 1,
   "appearances": [
     "amy"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "a3ea229a99d7d8f36efa440d02e48e0c3b837203874698b5e9ab3aa85cf9ead1"
 }

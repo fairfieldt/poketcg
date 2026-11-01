@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_gentle"
+    "fc_e7ad63_wt_amy_8a2c"
   ],
   "actors": [
     {
@@ -53,14 +53,14 @@
       ]
     }
   },
-  "design": "long blue hair, sleeveless light dress; standing and lying poses",
+  "design": "swept blue bob/nape, expressive blue eyes, white sleeveless dress; shared standing and lying geometry",
   "surface_ownership": {
     "face_and_clothing": true,
     "headwear": false
   },
   "sharing": {
     "library": "../../parts.blend",
-    "linked_parts": 24
+    "linked_parts": 1
   },
   "provenance": {
     "sprite": 8,
@@ -76,22 +76,24 @@
     "solid_material": "amy \u00b7 skin",
     "faces": [
       {
-        "texture": "fc_e7ad63_gentle",
+        "texture": "fc_e7ad63_wt_amy_8a2c",
         "background_rgb8": [
           231,
           173,
           99
         ],
-        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
+        "feature_sha256": "236543a13bcfa8806a2dfe703ebc9a3c1c24427f72981b6adb2f2e695f5ab21c",
         "colorspace": "Non-Color",
-        "directional_shade": true
+        "directional_shade": true,
+        "shade_floor": 0.86
       }
-    ]
+    ],
+    "shade_floor": 0.86
   },
   "appearance": "amy",
   "pose": "standing",
   "component": null,
-  "vertices": 1084,
-  "triangles": 584,
-  "batches": 6
+  "vertices": 1382,
+  "triangles": 870,
+  "batches": 7
 }

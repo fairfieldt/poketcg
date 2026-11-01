@@ -23,9 +23,12 @@ assert families
 logs=ROOT/'build/logs';logs.mkdir(parents=True,exist_ok=True)
 recipe_files=[ROOT/'tools'/f for f in ('build_model.py','parts.py','designs.py','skin.py','exterior.py','lead_faces.py')]
 recipe_files.append(ROOT.parents[1]/'port/frontends/n64/lightning-characters/tools/export_scene.py')
-fingerprint=hashlib.sha256(b''.join(p.read_bytes() for p in recipe_files)).hexdigest()
 for i,family in enumerate(families):
     slug=family['slug'];done=ROOT/'assets/models'/slug/'complete.json'
+    files=recipe_files
+    if slug in ('mark','amy','joshua','swimmer'):
+        files=files+[ROOT/'tools/water_cast_common.py',ROOT/'tools'/('water_'+slug+'.py')]
+    fingerprint=hashlib.sha256(b''.join(p.read_bytes() for p in files)).hexdigest()
     if not args.force and done.exists() and json.loads(done.read_text()).get('fingerprint')==fingerprint:
         validate_model(slug);print('SKIP verified',slug,flush=True);continue
     print(f'MODEL {i+1}/{len(families)} {slug} ({len(family["aliases"])} NPC IDs)',flush=True)

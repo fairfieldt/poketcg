@@ -6,13 +6,13 @@
       "model": 7,
       "slug": "mark",
       "source": "maps/actor_mark.l64",
-      "source_sha256": "7917f61d88c2f2a9cac1fc2f34ada1b00d7909a1c856e903cd960a2847846c83",
+      "source_sha256": "534704852ce6363116781380e1b8632c906e181456182dcd05ee635ccf53a179",
       "file": "lod/actor_mark.l64",
-      "sha256": "70c8ae01d33348bd5db11a1f886d9574f0e10119699271ad7b42980ab9163242",
-      "full_triangles": 900,
-      "lod_triangles": 524,
-      "full_vertices": 1481,
-      "lod_vertices": 987
+      "sha256": "2407025f512712569bf7d6a80347818896fbe07cbe6aaf21d7fcd029f5f38054",
+      "full_triangles": 868,
+      "lod_triangles": 628,
+      "full_vertices": 1235,
+      "lod_vertices": 931
     },
     {
       "model": 8,
@@ -102,13 +102,13 @@
       "model": 15,
       "slug": "amy",
       "source": "maps/actor_amy.l64",
-      "source_sha256": "975fcc8e38ae19226cbe75e74792e8b30501d81bf7e26473950479ed19047ff4",
+      "source_sha256": "160b3c9d74429a6155bc8c7f589fb7a4ea58071432a99b163244f3e48bae6262",
       "file": "lod/actor_amy.l64",
-      "sha256": "5364ff830856fed7f80ce678abd64a73e1b481773cd93a15b80456b1f68b13e9",
-      "full_triangles": 578,
-      "lod_triangles": 464,
-      "full_vertices": 1084,
-      "lod_vertices": 894
+      "sha256": "783ab3385f52bcb7f805f57d56b32938bc8c0033809a02adf9536d11560482cb",
+      "full_triangles": 864,
+      "lod_triangles": 650,
+      "full_vertices": 1382,
+      "lod_vertices": 1060
     },
     {
       "model": 16,
@@ -270,13 +270,13 @@
       "model": 29,
       "slug": "joshua",
       "source": "maps/actor_joshua.l64",
-      "source_sha256": "03b39d4754855abcad10069b0e4b9f2f0083e2e5e5a0e47ba029728634e66350",
+      "source_sha256": "1edffea7ccbf1947a8bd95bfd657bf9ad8a3a035aadd97076bdc9a0b89793795",
       "file": "lod/actor_joshua.l64",
-      "sha256": "cae64d2130c4be9d562966cf7993fd6c404b6c2bdba8884ea3f5913d2f10c25a",
-      "full_triangles": 682,
-      "lod_triangles": 422,
-      "full_vertices": 1147,
-      "lod_vertices": 785
+      "sha256": "8bc805cfe5c41d234d650d2e18bd5a58604dc00e147a4100677fc2bcb3424404",
+      "full_triangles": 940,
+      "lod_triangles": 638,
+      "full_vertices": 1465,
+      "lod_vertices": 1056
     },
     {
       "model": 30,
@@ -390,13 +390,13 @@
       "model": 39,
       "slug": "swimmer",
       "source": "maps/actor_swimmer.l64",
-      "source_sha256": "5b15c538c1f48532cd574ddf6df694b6ba80c6fc601f2bf672918c18be2a4be9",
+      "source_sha256": "efbe6234d9e5490a8ff94ad23b3dcea2ab466ba687ad39a3f5f64fcedea3ab45",
       "file": "lod/actor_swimmer.l64",
-      "sha256": "db55fa5be79d62a3a3525cd6e5d361aeb734bd5a5bfea5dc74182d8a3f854f54",
-      "full_triangles": 578,
-      "lod_triangles": 466,
-      "full_vertices": 1082,
-      "lod_vertices": 893
+      "sha256": "79bc449b3b3e9d9107c9bbe771c02bff1702919516516927271fb6e3c35d8214",
+      "full_triangles": 904,
+      "lod_triangles": 566,
+      "full_vertices": 1433,
+      "lod_vertices": 935
     },
     {
       "model": 40,
@@ -498,25 +498,25 @@
       "model": 130,
       "slug": "swimmer_palette2",
       "source": "maps/actor_swimmer_palette2.l64",
-      "source_sha256": "b952546e47492e05d233ae92b26fb7786f545e1e6c7188f9686f23784650579d",
+      "source_sha256": "60abb4e5c099c32f9a7cec83fa5dab08b3b0fb7c638b8d3ed396363d4ca76ee3",
       "file": "lod/actor_swimmer_palette2.l64",
-      "sha256": "f72b5a1093d60f28d1e1f01198f46d8f1d4d85d1231ae6140fa67c8aa7907027",
-      "full_triangles": 578,
-      "lod_triangles": 466,
-      "full_vertices": 1084,
-      "lod_vertices": 890
+      "sha256": "ee1e8d305554cd2c206c83d2d03d71b69916eb968150302b4a05269596effbb8",
+      "full_triangles": 828,
+      "lod_triangles": 490,
+      "full_vertices": 1333,
+      "lod_vertices": 841
     },
     {
       "model": 160,
       "slug": "amy__lying",
       "source": "maps/actor_amy__lying.l64",
-      "source_sha256": "87cf506400842e52638a6b368ea4e61f4944ad5e546185f76c5ab68f14895fd2",
+      "source_sha256": "a8e8ea3ecf9f5c29916bf8897bdf7ce6193a4787b129ffd733753786d266d3dc",
       "file": "lod/actor_amy__lying.l64",
-      "sha256": "cd55ec81352132a9fe909397007791eb16efbca0036aec0ed9ecdd21990e74bd",
-      "full_triangles": 578,
-      "lod_triangles": 462,
-      "full_vertices": 1114,
-      "lod_vertices": 929
+      "sha256": "50954b62fc1482b1264872a9f3fb3842b36c6268fe8c1e28bac34aedf2dd2a72",
+      "full_triangles": 864,
+      "lod_triangles": 756,
+      "full_vertices": 1280,
+      "lod_vertices": 1147
     },
     {
       "model": 176,

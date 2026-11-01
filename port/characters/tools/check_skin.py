@@ -11,7 +11,7 @@ import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 from skin import image_rows,features_digest
-from validate import read_mesh
+from validate import read_mesh,ASSETS
 
 
 def geometry_digest(path):
@@ -23,7 +23,7 @@ def geometry_digest(path):
 
 
 def verify(slug):
-    folder=ROOT/'assets/models'/slug
+    folder=ASSETS/'models'/slug
     paths=[folder/'scene.l64']+sorted(folder.glob('variants/*/scene.l64'))+sorted(folder.glob('poses/*/scene.l64'))
     count=0;worst=0
     for path in paths:
@@ -35,7 +35,7 @@ def verify(slug):
         for face in skin['faces']:
             assert tuple(face['background_rgb8'])==pigment
             assert face['colorspace']=='Non-Color' and face['directional_shade']
-            width,height,rows=image_rows(ROOT/'assets/textures'/(face['texture']+'.png'))
+            width,height,rows=image_rows(ASSETS/'textures'/(face['texture']+'.png'))
             assert (width,height)==(32,32)
             assert all(p[3]==255 for row in rows for p in row)
             assert rows[0][0][:3]==pigment,(slug,'face edge pigment',rows[0][0],pigment)
@@ -55,7 +55,10 @@ def verify(slug):
                 ab=[b[k]-a[k] for k in range(3)];ac=[c[k]-a[k] for k in range(3)]
                 normal=(ab[1]*ac[2]-ab[2]*ac[1],ab[2]*ac[0]-ab[0]*ac[2],ab[0]*ac[1]-ab[1]*ac[0])
                 length=math.sqrt(sum(v*v for v in normal))
-                shade=.68+.32*max(0,sum(normal[k]*light[k] for k in range(3))/(length*ln))
+                ambient=next(f.get('shade_floor',.68) for f in skin['faces']
+                             if info['textures'].index(f['texture'])==batch['texture'])
+                assert 0<=ambient<=1
+                shade=ambient+(1-ambient)*max(0,sum(normal[k]*light[k] for k in range(3))/(length*ln))
                 expected=round(shade*255)
                 for vertex in vertices:
                     assert max(vertex[5:8])-min(vertex[5:8])==0

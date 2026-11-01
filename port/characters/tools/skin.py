@@ -46,6 +46,8 @@ def prepare_skin(sources,textures,texture_root):
     skin['skin_rgb8']=pigment
     with bpy.context.temp_override(material=skin):update_all_node_values(skin,bpy.context)
     report=dict(rgb8=list(pigment),solid_material=skin.name,faces=[])
+    if 'native_shade_floor' in skin:
+        report['shade_floor']=float(skin['native_shade_floor'])
     for mat in sorted(materials,key=lambda m:m.name):
         index=int(mat.get('texture_id',-1))
         if index<0:continue
@@ -81,6 +83,7 @@ def prepare_skin(sources,textures,texture_root):
         assert image.colorspace_settings.name=='Non-Color'
         textures[index]=name
         report['faces'].append(dict(texture=name,background_rgb8=list(pigment),
-            feature_sha256=original_features,colorspace='Non-Color',directional_shade=True))
+            feature_sha256=original_features,colorspace='Non-Color',directional_shade=True,
+            **({'shade_floor':float(mat['native_shade_floor'])} if 'native_shade_floor' in mat else {})))
     assert report['faces']
     return report

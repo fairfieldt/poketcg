@@ -1,11 +1,11 @@
 {
   "model": "joshua",
-  "triangles": 688,
-  "vertices": 1147,
-  "batches": 6,
-  "linked_parts": 23,
+  "triangles": 940,
+  "vertices": 1465,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "joshua"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "4938da91632ec3bbcbb7cb8accc367f89973b8ba67cb18fbf95c2bbbbc329b5b"
 }

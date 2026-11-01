@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_smile"
+    "fc_e7ad63_wt_swi_3b7b"
   ],
   "actors": [
     {
@@ -49,14 +49,14 @@
       ]
     }
   },
-  "design": "short bob, sleeveless pool outfit; blue/blonde palette variants",
+  "design": "shared pool outfit and rig; Sara swim cap/goggles and cheerful face, Amanda swept bob and asymmetric smile",
   "surface_ownership": {
     "face_and_clothing": true,
     "headwear": false
   },
   "sharing": {
     "library": "../../parts.blend",
-    "linked_parts": 24
+    "linked_parts": 0
   },
   "provenance": {
     "sprite": 32,
@@ -72,22 +72,37 @@
     "solid_material": "swimmer \u00b7 skin",
     "faces": [
       {
-        "texture": "fc_e7ad63_smile",
+        "texture": "fc_e7ad63_wt_swi_3b7b",
         "background_rgb8": [
           231,
           173,
           99
         ],
-        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
+        "feature_sha256": "cab860c7d0c77c9ee2ddb3bb9ee9a9b8238f2871f19d6c4f42bff98d754d5823",
         "colorspace": "Non-Color",
-        "directional_shade": true
+        "directional_shade": true,
+        "shade_floor": 0.86
       }
+    ],
+    "shade_floor": 0.86
+  },
+  "appearance_geometry": {
+    "scope": "head",
+    "head_pivot": [
+      0,
+      1.41,
+      0
+    ],
+    "shared_body": true,
+    "source_portraits": [
+      "src/gfx/duelists/sara.png",
+      "src/gfx/duelists/amanda.png"
     ]
   },
   "appearance": "swimmer_palette2",
   "pose": "standing",
   "component": null,
-  "vertices": 1084,
-  "triangles": 584,
-  "batches": 6
+  "vertices": 1333,
+  "triangles": 828,
+  "batches": 7
 }

@@ -16,9 +16,9 @@ One row per authored model. Repeated NPC IDs use the same file.
 | Boy | 578 | [boy.blend](assets/models/boy/boy.blend) | `RYAN`, `ROBERT`, `JONATHAN`, `LAD2` |
 | Man | 582 | [man.blend](assets/models/man/man.blend) | `ANDREW`, `MAN1`, `MAN2`, `MAN3`, `GUIDE` |
 | Gene | 761 | [gene.blend](assets/models/gene/gene.blend) | `GENE` |
-| Swimmer | 584 | [swimmer.blend](assets/models/swimmer/swimmer.blend) | `SARA`, `AMANDA` |
-| Joshua | 688 | [joshua.blend](assets/models/joshua/joshua.blend) | `JOSHUA` |
-| Amy | 584 | [amy.blend](assets/models/amy/amy.blend) | `AMY` |
+| Swimmer | 904 | [swimmer.blend](assets/models/swimmer/swimmer.blend) | `SARA`, `AMANDA` |
+| Joshua | 940 | [joshua.blend](assets/models/joshua/joshua.blend) | `JOSHUA` |
+| Amy | 870 | [amy.blend](assets/models/amy/amy.blend) | `AMY` |
 | Girl | 760 | [girl.blend](assets/models/girl/girl.blend) | `JENNIFER`, `BRITTANY`, `STEPHANIE` |
 | Hood | 524 | [hood.blend](assets/models/hood/hood.blend) | `NICHOLAS`, `BRANDON`, `HOOD1`, `HOOD2` |
 | Isaac | 669 | [isaac.blend](assets/models/isaac/isaac.blend) | `ISAAC` |
@@ -42,7 +42,7 @@ One row per authored model. Repeated NPC IDs use the same file.
 | Granny | 818 | [granny.blend](assets/models/granny/granny.blend) | `GRANNY1`, `GRANNY2` |
 | Torch | 68 | [torch.blend](assets/models/torch/torch.blend) | `TORCH` |
 | Legendary Card | 128 | [legendary_card.blend](assets/models/legendary_card/legendary_card.blend) | `LEGENDARY_CARD_TOP_LEFT`, `LEGENDARY_CARD_TOP_RIGHT`, `LEGENDARY_CARD_LEFT_SPARK`, `LEGENDARY_CARD_BOTTOM_LEFT`, `LEGENDARY_CARD_BOTTOM_RIGHT`, `LEGENDARY_CARD_RIGHT_SPARK` |
-| Mark | 906 | [mark.blend](assets/models/mark/mark.blend) | `6E`, `6F`, `PLAYER_CREDITS` |
+| Mark | 868 | [mark.blend](assets/models/mark/mark.blend) | `6E`, `6F`, `PLAYER_CREDITS` |
 
 ## Material variants
 

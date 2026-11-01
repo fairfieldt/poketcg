@@ -2,8 +2,8 @@
   "passed": true,
   "families": 39,
   "exports": 49,
-  "maximum_triangles": 910,
-  "maximum_batches": 6,
+  "maximum_triangles": 940,
+  "maximum_batches": 7,
   "duplicate_triangles": 0,
   "degenerate_triangles": 0,
   "models": [
@@ -121,43 +121,43 @@
     },
     {
       "file": "assets/models/swimmer/scene.l64",
-      "triangles": 584,
-      "vertices": 1082,
-      "batches": 6,
+      "triangles": 904,
+      "vertices": 1433,
+      "batches": 7,
       "duplicate_triangles": 0,
-      "sha256": "82a5bece5c7d48577d8705957240cf9d927c6912473f5132b7b472bf2312a11c"
+      "sha256": "518dbead1213363e682b1b4abc7c8c6dda5e71867c5a6899a10ac774924807ea"
     },
     {
       "file": "assets/models/swimmer/variants/swimmer_palette2/scene.l64",
-      "triangles": 584,
-      "vertices": 1084,
-      "batches": 6,
+      "triangles": 828,
+      "vertices": 1333,
+      "batches": 7,
       "duplicate_triangles": 0,
-      "sha256": "d242115ec2cc4f5093a0102ccb7aaec908f8ad4ab3072e46b27def94d52c6a59"
+      "sha256": "649183cf16f912cb99830440d4f99b029ece9ca5850b861250a9adf4aaaec384"
     },
     {
       "file": "assets/models/joshua/scene.l64",
-      "triangles": 688,
-      "vertices": 1147,
-      "batches": 6,
+      "triangles": 940,
+      "vertices": 1465,
+      "batches": 7,
       "duplicate_triangles": 0,
-      "sha256": "184ec981f500de127b138388afd0e36cec9a674f3aeaabb8e881475c5036cada"
+      "sha256": "d74cee96e2d22a1ca160e8111590a011293e01124c8bf06d823e4efa0e74f9e6"
     },
     {
       "file": "assets/models/amy/scene.l64",
-      "triangles": 584,
-      "vertices": 1084,
-      "batches": 6,
+      "triangles": 870,
+      "vertices": 1382,
+      "batches": 7,
       "duplicate_triangles": 0,
-      "sha256": "e9659554e6850365fc5d9563402ae81b762ae71bd43785b42ba485a3f5e57fb1"
+      "sha256": "9a59939262f90ad65b4bb97c8ca0d435b382ffe93f2bbab65328ce49667ca948"
     },
     {
       "file": "assets/models/amy/poses/lying/scene.l64",
-      "triangles": 584,
-      "vertices": 1114,
-      "batches": 6,
+      "triangles": 870,
+      "vertices": 1280,
+      "batches": 7,
       "duplicate_triangles": 0,
-      "sha256": "2df09a94d0ddfe5713a057653d2aca997a495cd7f1a9e6ec677c1795d0e095a2"
+      "sha256": "f725440cc3c40e7ae2e39b9dcb4bdd0a13d540c204950d55b171d93cc04eb86e"
     },
     {
       "file": "assets/models/girl/scene.l64",
@@ -393,11 +393,11 @@
     },
     {
       "file": "assets/models/mark/scene.l64",
-      "triangles": 906,
-      "vertices": 1481,
-      "batches": 6,
+      "triangles": 868,
+      "vertices": 1235,
+      "batches": 7,
       "duplicate_triangles": 0,
-      "sha256": "69cf72f25751a8585db032241c85848b43424692f183259bd3c83f08ddda6520"
+      "sha256": "9aa0bc4a7ebb8fad0fd8720709f33d278f53bc25a63c89af6763b8da6f3296bc"
     }
   ]
 }

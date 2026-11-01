@@ -37,7 +37,9 @@ def export_scene():
             # Opaque facial paint must receive the same directional lighting
             # as its underlying skin. Room textures retain their existing
             # unlit behavior unless their author explicitly opts in.
-            shade=1 if tex>=0 and not mat.get('native_lit_texture',False) else .68+.32*max(0,normal.dot(light))
+            ambient=float(mat.get('native_shade_floor',.68))
+            assert 0<=ambient<=1,(source.name,ambient)
+            shade=1 if tex>=0 and not mat.get('native_lit_texture',False) else ambient+(1-ambient)*max(0,normal.dot(light))
             color=tuple(round(min(1,c*shade)*255) for c in mat.diffuse_color[:3])+(255,)
             for li in tri.loops:
                 pos=obj.matrix_world @ data.vertices[data.loops[li].vertex_index].co

@@ -8,6 +8,7 @@ Ordinary builds need only the checked-in output; a stale LOD is never selected.
 import argparse
 import hashlib
 import json
+import math
 from pathlib import Path
 import struct
 import subprocess
@@ -38,8 +39,17 @@ def simplify(batch, ratio):
     model, part, texture, pivot, vertices, indices = batch
     # Keep every facial texel, UV coordinate and owning patch edge exact.
     if texture >= 0 or len(indices) < 120: return batch
+    # Authored Water cast heads have their own rigid part-0 pivot. Preserve
+    # their silhouette as well as their face paint at gameplay distance.
+    if part==0 and any(abs(value)>1e-6 for value in pivot):return batch
     positions, remap, lookup = [], [], {}
-    for vertex in vertices:
+    referenced=set(indices)
+    for index,vertex in enumerate(vertices):
+        # Legacy ground-disk removal deliberately preserves unused vertex
+        # records. They are not a silhouette component or a volume anchor.
+        if index not in referenced:
+            remap.append(None)
+            continue
         key = tuple(round(c, 6) for c in vertex[:3])
         if key not in lookup:
             lookup[key] = len(positions); positions.append(vertex[:3])
@@ -124,7 +134,7 @@ def simplify(batch, ratio):
     assert len(elements) <= len(indices)
     # Never trade a tiny detached solid for opposing coincident triangles.
     # Retain the original batch if Blender cannot simplify it safely.
-    surfaces = set(); valid = True
+    surfaces = set(); packed_surfaces=set(); valid = True
     for k in range(0,len(elements),3):
         triangle = [reduced[i][:3] for i in elements[k:k+3]]
         a,b,c = triangle
@@ -133,6 +143,17 @@ def simplify(batch, ratio):
         surface=tuple(sorted(tuple(round(v,6) for v in p) for p in triangle))
         if surface in surfaces or sum(v*v for v in cross)<=1e-13: valid=False; break
         surfaces.add(surface)
+        # RSP vertices are float32 -> truncf(position*32), relative to their
+        # rigid pivot. A float-safe collapse can still flatten native limbs.
+        packed=[tuple(math.trunc(struct.unpack('>f',struct.pack('>f',c))[0]*32)
+                      for c in p) for p in triangle]
+        pa,pb,pc=packed
+        pab=[pb[i]-pa[i] for i in range(3)];pac=[pc[i]-pa[i] for i in range(3)]
+        normal=(pab[1]*pac[2]-pab[2]*pac[1],pab[2]*pac[0]-pab[0]*pac[2],
+                pab[0]*pac[1]-pab[1]*pac[0])
+        packed_surface=tuple(sorted(packed))
+        if packed_surface in packed_surfaces or not any(normal):valid=False;break
+        packed_surfaces.add(packed_surface)
     if not valid:
         print(f'LOD retains solid batch: model{model} part{part}',flush=True)
         return batch

@@ -20495,11 +20495,11 @@
     },
     "actor_swimmer": {
       "file": "maps/actor_swimmer.l64",
-      "vertices": 1082,
-      "triangles": 578,
-      "batches": 6,
+      "vertices": 1433,
+      "triangles": 904,
+      "batches": 7,
       "textures": [
-        "t10c908d3d5164363"
+        "tfaf15290798b4d01"
       ],
       "props": [],
       "character": true,
@@ -20507,7 +20507,7 @@
       "model": 39,
       "source_model": 33,
       "source": "port/characters/assets/models/swimmer",
-      "source_sha256": "43e47ea89c733fc21485c77b29b3e7e5bbfa0cf9fc30ef13f7a315d453b29573",
+      "source_sha256": "67224bc8e7d59e963d88d0dc9d340fcc44491f535f9f890cc744935e9917406e",
       "family": "swimmer",
       "kind": "canonical",
       "selector": null,
@@ -20520,11 +20520,11 @@
     },
     "actor_joshua": {
       "file": "maps/actor_joshua.l64",
-      "vertices": 1147,
-      "triangles": 682,
-      "batches": 6,
+      "vertices": 1465,
+      "triangles": 940,
+      "batches": 7,
       "textures": [
-        "t2f5cf497984d058c"
+        "t3509128f49b88300"
       ],
       "props": [],
       "character": true,
@@ -20532,7 +20532,7 @@
       "model": 29,
       "source_model": 23,
       "source": "port/characters/assets/models/joshua",
-      "source_sha256": "f164e1ada212f5516ececb7dc6a31b794c292269c6221ff531d9e126b98ba988",
+      "source_sha256": "4ced7ea19e427ffe1ef550d6484fed9b6aa74f85b274f5416d7e0f52f65d801c",
       "family": "joshua",
       "kind": "canonical",
       "selector": null,
@@ -20545,11 +20545,11 @@
     },
     "actor_amy": {
       "file": "maps/actor_amy.l64",
-      "vertices": 1084,
-      "triangles": 578,
-      "batches": 6,
+      "vertices": 1382,
+      "triangles": 864,
+      "batches": 7,
       "textures": [
-        "t6d59bc388d91e451"
+        "tc00dbb00175246e2"
       ],
       "props": [],
       "character": true,
@@ -20557,7 +20557,7 @@
       "model": 15,
       "source_model": 9,
       "source": "port/characters/assets/models/amy",
-      "source_sha256": "1cd2494278a622d2a1c277b9ecdaddc3ee64b72778d6d51f4bcdd370be7c1848",
+      "source_sha256": "2e66af59462f0530d69aab978d48a58a88bccfda4017aae05d622b57f122b4d5",
       "family": "amy",
       "kind": "canonical",
       "selector": null,
@@ -21195,9 +21195,9 @@
     },
     "actor_mark": {
       "file": "maps/actor_mark.l64",
-      "vertices": 1481,
-      "triangles": 900,
-      "batches": 6,
+      "vertices": 1235,
+      "triangles": 868,
+      "batches": 7,
       "textures": [
         "t7967c400e0bd639a"
       ],
@@ -21207,7 +21207,7 @@
       "model": 7,
       "source_model": 1,
       "source": "port/characters/assets/models/mark",
-      "source_sha256": "4c318f7d3b5b8e76ea13485ea5e6595027b887e73e14872d0324bf28892f823f",
+      "source_sha256": "30d4bfcabaa0cbf2a83551961aaba292cb9eb2d1634b5cc64bc554f4f0c2ff97",
       "family": "mark",
       "kind": "canonical",
       "selector": null,
@@ -21278,11 +21278,11 @@
     },
     "actor_swimmer_palette2": {
       "file": "maps/actor_swimmer_palette2.l64",
-      "vertices": 1084,
-      "triangles": 578,
-      "batches": 6,
+      "vertices": 1333,
+      "triangles": 828,
+      "batches": 7,
       "textures": [
-        "t10c908d3d5164363"
+        "t76cdaa4656ce8412"
       ],
       "props": [],
       "character": true,
@@ -21290,7 +21290,7 @@
       "model": 130,
       "source_model": 33,
       "source": "port/characters/assets/models/swimmer/variants/swimmer_palette2",
-      "source_sha256": "4efd90ab0053bea06b72510017880be30c9702e386c4969fe843d8c7d6790e22",
+      "source_sha256": "91cbf470f8a4c369b3df36af301b6b5d5fdd0e22e091169f17b70303f2efb59e",
       "family": "swimmer",
       "kind": "appearance",
       "selector": null,
@@ -21303,11 +21303,11 @@
     },
     "actor_amy__lying": {
       "file": "maps/actor_amy__lying.l64",
-      "vertices": 1114,
-      "triangles": 578,
-      "batches": 6,
+      "vertices": 1280,
+      "triangles": 864,
+      "batches": 7,
       "textures": [
-        "t6d59bc388d91e451"
+        "tc00dbb00175246e2"
       ],
       "props": [],
       "character": true,
@@ -21315,7 +21315,7 @@
       "model": 160,
       "source_model": 9,
       "source": "port/characters/assets/models/amy/poses/lying",
-      "source_sha256": "2c74a0792f6b92dab8e673e2d4ff11dfd567ef9b751ef3ebe66bff0d100849de",
+      "source_sha256": "41bfcfab6c417031768b70c00fa515d96dc80472ab60a84a6ab1c403edbd950e",
       "family": "amy",
       "kind": "pose",
       "selector": "lying",
@@ -21518,13 +21518,13 @@
     "actors": "actors.l64",
     "textures": "content-addressed PNG files, global deduplication"
   },
-  "texture_count": 469,
+  "texture_count": 474,
   "individual_characters": [
     {
       "file": "maps/actor_mark.l64",
-      "vertices": 1481,
-      "triangles": 900,
-      "batches": 6,
+      "vertices": 1235,
+      "triangles": 868,
+      "batches": 7,
       "textures": [
         "t7967c400e0bd639a"
       ],
@@ -21534,7 +21534,7 @@
       "model": 7,
       "source_model": 1,
       "source": "port/characters/assets/models/mark",
-      "source_sha256": "4c318f7d3b5b8e76ea13485ea5e6595027b887e73e14872d0324bf28892f823f",
+      "source_sha256": "30d4bfcabaa0cbf2a83551961aaba292cb9eb2d1634b5cc64bc554f4f0c2ff97",
       "family": "mark",
       "kind": "canonical",
       "selector": null,
@@ -21734,11 +21734,11 @@
     },
     {
       "file": "maps/actor_amy.l64",
-      "vertices": 1084,
-      "triangles": 578,
-      "batches": 6,
+      "vertices": 1382,
+      "triangles": 864,
+      "batches": 7,
       "textures": [
-        "t6d59bc388d91e451"
+        "tc00dbb00175246e2"
       ],
       "props": [],
       "character": true,
@@ -21746,7 +21746,7 @@
       "model": 15,
       "source_model": 9,
       "source": "port/characters/assets/models/amy",
-      "source_sha256": "1cd2494278a622d2a1c277b9ecdaddc3ee64b72778d6d51f4bcdd370be7c1848",
+      "source_sha256": "2e66af59462f0530d69aab978d48a58a88bccfda4017aae05d622b57f122b4d5",
       "family": "amy",
       "kind": "canonical",
       "selector": null,
@@ -22102,11 +22102,11 @@
     },
     {
       "file": "maps/actor_joshua.l64",
-      "vertices": 1147,
-      "triangles": 682,
-      "batches": 6,
+      "vertices": 1465,
+      "triangles": 940,
+      "batches": 7,
       "textures": [
-        "t2f5cf497984d058c"
+        "t3509128f49b88300"
       ],
       "props": [],
       "character": true,
@@ -22114,7 +22114,7 @@
       "model": 29,
       "source_model": 23,
       "source": "port/characters/assets/models/joshua",
-      "source_sha256": "f164e1ada212f5516ececb7dc6a31b794c292269c6221ff531d9e126b98ba988",
+      "source_sha256": "4ced7ea19e427ffe1ef550d6484fed9b6aa74f85b274f5416d7e0f52f65d801c",
       "family": "joshua",
       "kind": "canonical",
       "selector": null,
@@ -22418,11 +22418,11 @@
     },
     {
       "file": "maps/actor_swimmer.l64",
-      "vertices": 1082,
-      "triangles": 578,
-      "batches": 6,
+      "vertices": 1433,
+      "triangles": 904,
+      "batches": 7,
       "textures": [
-        "t10c908d3d5164363"
+        "tfaf15290798b4d01"
       ],
       "props": [],
       "character": true,
@@ -22430,7 +22430,7 @@
       "model": 39,
       "source_model": 33,
       "source": "port/characters/assets/models/swimmer",
-      "source_sha256": "43e47ea89c733fc21485c77b29b3e7e5bbfa0cf9fc30ef13f7a315d453b29573",
+      "source_sha256": "67224bc8e7d59e963d88d0dc9d340fcc44491f535f9f890cc744935e9917406e",
       "family": "swimmer",
       "kind": "canonical",
       "selector": null,
@@ -22675,11 +22675,11 @@
     },
     {
       "file": "maps/actor_swimmer_palette2.l64",
-      "vertices": 1084,
-      "triangles": 578,
-      "batches": 6,
+      "vertices": 1333,
+      "triangles": 828,
+      "batches": 7,
       "textures": [
-        "t10c908d3d5164363"
+        "t76cdaa4656ce8412"
       ],
       "props": [],
       "character": true,
@@ -22687,7 +22687,7 @@
       "model": 130,
       "source_model": 33,
       "source": "port/characters/assets/models/swimmer/variants/swimmer_palette2",
-      "source_sha256": "4efd90ab0053bea06b72510017880be30c9702e386c4969fe843d8c7d6790e22",
+      "source_sha256": "91cbf470f8a4c369b3df36af301b6b5d5fdd0e22e091169f17b70303f2efb59e",
       "family": "swimmer",
       "kind": "appearance",
       "selector": null,
@@ -22700,11 +22700,11 @@
     },
     {
       "file": "maps/actor_amy__lying.l64",
-      "vertices": 1114,
-      "triangles": 578,
-      "batches": 6,
+      "vertices": 1280,
+      "triangles": 864,
+      "batches": 7,
       "textures": [
-        "t6d59bc388d91e451"
+        "tc00dbb00175246e2"
       ],
       "props": [],
       "character": true,
@@ -22712,7 +22712,7 @@
       "model": 160,
       "source_model": 9,
       "source": "port/characters/assets/models/amy/poses/lying",
-      "source_sha256": "2c74a0792f6b92dab8e673e2d4ff11dfd567ef9b751ef3ebe66bff0d100849de",
+      "source_sha256": "41bfcfab6c417031768b70c00fa515d96dc80472ab60a84a6ab1c403edbd950e",
       "family": "amy",
       "kind": "pose",
       "selector": "lying",

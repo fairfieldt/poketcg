@@ -3,12 +3,11 @@
   "npc_ids": 115,
   "appearances": 42,
   "shared_library_meshes": 33,
-  "used_shared_meshes": 28,
-  "linked_part_instances": 679,
-  "authored_linked_part_instances": 801,
-  "textures": 11,
+  "used_shared_meshes": 27,
+  "linked_part_instances": 602,
+  "authored_linked_part_instances": 706,
+  "textures": 15,
   "shared_mesh_names": [
-    "part_backpack",
     "part_bare_arm",
     "part_bare_leg",
     "part_belt",
@@ -38,6 +37,12 @@
     "part_trousers"
   ],
   "all_libraries_present": true,
+  "direct_owning_shell_models": {
+    "swimmer": 9,
+    "joshua": 9,
+    "amy": 9,
+    "mark": 9
+  },
   "consistent_skin_models": 37,
   "skin_rgb8_by_model": {
     "dr_mason": [

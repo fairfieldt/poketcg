@@ -15,6 +15,7 @@ test:
 	$(PYTHON) tools/validate.py
 	$(PYTHON) tools/check_skin.py
 	$(PYTHON) tools/check_exterior.py
+	$(PYTHON) tools/check_water_cast.py
 sheet:
 	$(PYTHON) tools/review_sheet.py
 cast:

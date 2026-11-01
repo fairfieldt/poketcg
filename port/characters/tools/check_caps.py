@@ -5,7 +5,9 @@ brim must have winding0 outside and winding1 inside the unified closed head.
 Original deep scalp/head vertices must not survive export. This uses final
 native geometry; authored nonplanar cap quads are not an exterior reference.
 """
+import argparse
 import hashlib
+import os
 import json
 import math
 from pathlib import Path
@@ -15,7 +17,9 @@ from mathutils import Vector
 
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
+import validate
 from validate import read_mesh
+ASSETS=Path(os.environ.get('POKETCG_CHARACTER_ASSETS',str(ROOT/'assets'))).resolve()
 EPS=1e-5
 
 
@@ -60,8 +64,8 @@ def connected_components(data):
     return components,sum(count!=2 for count in uses.values())
 
 
-def verify(slug):
-    folder=ROOT/'assets/models'/slug
+def verify_legacy(slug):
+    folder=ASSETS/'models'/slug
     bpy.ops.wm.open_mainfile(filepath=str(folder/(slug+'.blend')))
     bpy.context.view_layer.update()
     objects=[o for o in bpy.context.scene.objects if o.type=='MESH']
@@ -125,9 +129,105 @@ def verify(slug):
 
 
 
-slugs=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else ['mark','lad','joshua','steve','girl']
-models=[verify(slug) for slug in slugs]
-report=dict(passed=True,method='Actual emitted native headwear triangles above the brim have one side outside (winding0) and one side inside (winding1) the unified closed head surface. Original hidden scalp/head vertices do not survive export. Authored cap half-spaces identify deep hidden source vertices only; nonplanar cap retessellation does not cause false positives.',height_clip_epsilon=EPS,models=models)
-target=ROOT/('review/cap_validation.json' if len(slugs)==5 else 'build/cap-validation-'+slugs[0]+'.json')
-target.write_text(json.dumps(report,indent=2)+'\n')
-print('CAPS PASS',json.dumps(models))
+def verify_ready(slug,objects):
+    """New Water/player shells own their actual skin/face/headwear regions.
+
+    This does not weaken the original boolean/scalp proof for other families.
+    Ancillary visor/goggle objects may intersect a main shell, but each must
+    be its own closed solid, not a coplanar face overlay.
+    """
+    from collections import Counter
+    from check_water_cast import triangles,components_and_topology,surface_checks,exterior_sides,_head_batches
+    folder=ASSETS/'models'/slug
+    active=[o for o in objects if o.get('export_source')]
+    heads=[o for o in active if o.get('head_component')]
+    main=[o for o in heads if any(slot.material and slot.material.get('role')=='face' for slot in o.material_slots)]
+    assert len(main)==1,(slug,'missing unique owning skull',len(main))
+    main=main[0]
+    assert main.get('native_exterior_ready') and main.get('exterior_shell')
+    components,boundaries=connected_components(main.data)
+    assert components==1 and boundaries==0,(slug,'open/disconnected owning skull')
+    used=Counter(main.data.polygons[i].material_index for i in range(len(main.data.polygons)))
+    roles={main.material_slots[i].material.get('role') for i in used}
+    assert 'face' in roles and 'skin' in roles and len(roles)>=3,(slug,'missing skin/face/headwear regions',roles)
+    assert all(0<=i<len(main.material_slots) for i in used)
+    # A tagged shell may not coexist with exported generic scalp/head layers.
+    words=(' · head',' · face',' · nose',' · ear','hair','fringe',' · cap',' · brim','headband')
+    legacy=[o.name for o in active if any(word in o.name.lower() for word in words)
+            and not(o.get('head_component') and o.get('native_exterior_ready'))]
+    assert not legacy,(slug,'active legacy scalp/headwear',legacy)
+    expected=Counter();owner_keys=set();piece_reports=[]
+    for obj in heads:
+        assert obj.get('native_exterior_ready') and obj.get('exterior_shell'),obj.name
+        count,open_edges=connected_components(obj.data)
+        assert count==1 and open_edges==0,(obj.name,'not individually closed',count,open_edges)
+        obj.data.calc_loop_triangles();points=native_vertices(obj);records=[]
+        for tri in obj.data.loop_triangles:
+            ps=[tuple(round(c,6) for c in points[i]) for i in tri.vertices]
+            records.append(dict(points=ps,vertices=[],part=0,pivot=(0,0,0),texture=-1))
+            key=tuple(sorted(tuple(round(c,5) for c in v) for v in ps));expected[key]+=1
+            if obj==main:owner_keys.add(key)
+        solid,edges=components_and_topology(records)
+        assert len(solid)==1,(obj.name,'disconnected triangulated solid')
+        piece_reports.append(dict(object=obj.name,triangles=len(records),closed_edges=edges,
+                                  outward=True,main_skull=obj==main))
+    head_batches,pivot=_head_batches(read_mesh(folder/'scene.l64'))
+    native=triangles(head_batches,world=True)
+    emitted=Counter(tuple(sorted(tuple(round(c,5) for c in p) for p in tri['points'])) for tri in native)
+    assert expected==emitted,(slug,'emitted head differs from ready source shells',sum((expected-emitted).values()),sum((emitted-expected).values()))
+    skull=[tri for tri in native if tuple(sorted(tuple(round(c,5) for c in p) for p in tri['points'])) in owner_keys]
+    native_components,edges=components_and_topology(skull)
+    assert len(native_components)==1
+    sides=exterior_sides(skull)
+    raw=surface_checks(triangles(head_batches));packed=surface_checks(triangles(head_batches,32))
+    raw_components,_=components_and_topology(triangles(head_batches))
+    packed_head=triangles(head_batches,32);packed_components=[];packed_edges=0
+    packed_skull=[packed for raw,packed in zip(triangles(head_batches),packed_head)
+                  if tuple(sorted(tuple(round(c+p,5) for c,p in zip(v,raw['pivot'])) for v in raw['points'])) in owner_keys]
+    assert len(packed_skull)==len(skull),'packed skull/source correspondence changed'
+    packed_sides=exterior_sides(packed_skull)
+    for component in raw_components:
+        pieces,count=components_and_topology([packed_head[i] for i in component['indices']])
+        assert len(pieces)==1,'packing split a closed head component'
+        packed_components.extend(pieces);packed_edges+=count
+    return dict(model=slug,passed=True,method='ready-shell native ownership',
+        native_sha256=hashlib.sha256((folder/'scene.l64').read_bytes()).hexdigest(),
+        head_pivot=pivot,main_skull_triangles=len(skull),owning_head_components=1,
+        owning_head_topological_boundary_edges=0,active_legacy_scalp_layers=0,
+        material_regions=sorted(roles),pieces=piece_reports,raw=raw,packed=packed,
+        packed_closed_components=len(packed_components),packed_closed_edges=packed_edges,packed_exterior=packed_sides,**sides)
+
+
+def verify(slug):
+    folder=ASSETS/'models'/slug
+    bpy.ops.wm.open_mainfile(filepath=str(folder/(slug+'.blend')))
+    bpy.context.view_layer.update()
+    objects=[o for o in bpy.context.scene.objects if o.type=='MESH']
+    ready=any(o.get('export_source') and o.get('head_component') and o.get('native_exterior_ready')
+              and any(slot.material and slot.material.get('role')=='face' for slot in o.material_slots)
+              for o in objects)
+    if slug in ('mark','amy','joshua','swimmer') and ready:return verify_ready(slug,objects)
+    # The exact original cap half-space / winding / hidden scalp algorithm
+    # remains authoritative for lad, Steve, girl and any untouched legacy cap.
+    return verify_legacy(slug)
+
+
+def main():
+    global ASSETS
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--assets',type=Path,default=ASSETS)
+    parser.add_argument('--report',type=Path)
+    parser.add_argument('slugs',nargs='*')
+    args=parser.parse_args(sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else [])
+    ASSETS=args.assets.resolve();validate.ASSETS=ASSETS
+    slugs=args.slugs or ['mark','lad','joshua','steve','girl']
+    models=[verify(slug) for slug in slugs]
+    report=dict(passed=True,method='Legacy capped families retain the original boolean/scalp half-space and native winding proof. Ready Water/player heads separately prove one closed outward skull with disjoint material regions and no active legacy scalp; ancillary visor/goggles are individually closed and packed coplanar overlays are rejected.',height_clip_epsilon=EPS,assets=str(ASSETS),models=models)
+    default=(ROOT/('review/cap_validation.json' if len(slugs)==5 else 'build/cap-validation-'+slugs[0]+'.json')
+             if ASSETS==(ROOT/'assets').resolve() else ASSETS/'cap_validation.json')
+    target=args.report or default;target.parent.mkdir(parents=True,exist_ok=True)
+    target.write_text(json.dumps(report,indent=2)+'\n')
+    print('CAPS PASS',json.dumps(models))
+
+
+if __name__=='__main__':main()

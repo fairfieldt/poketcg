@@ -43,14 +43,14 @@
       ]
     }
   },
-  "design": "red sideways trainer cap, red vest, blue trousers and backpack",
+  "design": "red cap with rear visor, rounded cheeks and original Mark facial paint; red vest, blue trousers and rounded backpack",
   "surface_ownership": {
     "face_and_clothing": true,
     "headwear": true
   },
   "sharing": {
     "library": "../../parts.blend",
-    "linked_parts": 25
+    "linked_parts": 0
   },
   "provenance": {
     "sprite": 0,
@@ -74,14 +74,16 @@
         ],
         "feature_sha256": "043e3848bef0a4e1accd81f06da9e9be25e59353bd44ef2210a6655b6bcb15de",
         "colorspace": "Non-Color",
-        "directional_shade": true
+        "directional_shade": true,
+        "shade_floor": 0.86
       }
-    ]
+    ],
+    "shade_floor": 0.86
   },
   "appearance": "mark",
   "pose": "standing",
   "component": null,
-  "vertices": 1481,
-  "triangles": 906,
-  "batches": 6
+  "vertices": 1235,
+  "triangles": 868,
+  "batches": 7
 }

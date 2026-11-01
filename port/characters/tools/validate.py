@@ -2,11 +2,13 @@
 """Read and check native character exports without Blender or the N64 SDK."""
 import json
 import math
+import os
 from pathlib import Path
 import struct
 import sys
 
 ROOT=Path(__file__).resolve().parents[1]
+ASSETS=Path(os.environ.get('POKETCG_CHARACTER_ASSETS',str(ROOT/'assets')))
 sys.path.insert(0,str(ROOT.parents[1]/'port/frontends/web/tools'))
 from png import read_png
 
@@ -20,7 +22,7 @@ def read_mesh(path):
     for i in range(nt):
         name=data[offset:offset+32].split(b'\0')[0].decode();offset+=32
         textures.append(name)
-        w,h,_,_=read_png(ROOT/'assets/textures'/name.replace('.sprite','.png'))
+        w,h,_,_=read_png(ASSETS/'textures'/name.replace('.sprite','.png'))
         assert w*h*2<=4096 and w&(w-1)==0 and h&(h-1)==0,(path,name,w,h)
     batches=[]
     for i in range(count):
@@ -47,7 +49,7 @@ def read_mesh(path):
 
 
 def validate_model(slug):
-    folder=ROOT/'assets/models'/slug
+    folder=ASSETS/'models'/slug
     paths=[folder/'scene.l64']+sorted(folder.glob('variants/*/scene.l64'))+sorted(folder.glob('poses/*/scene.l64'))+sorted(folder.glob('components/*/scene.l64'))
     for path in paths:
         batches=read_mesh(path)
@@ -63,6 +65,25 @@ def validate_model(slug):
     # Palette variants must preserve geometry, UVs, topology and rig exactly.
     for path in sorted(folder.glob('variants/*/scene.l64')):
         alt=read_mesh(path)
+        info=json.loads(path.with_suffix('.json').read_text())
+        exception=info.get('appearance_geometry')
+        if exception:
+            assert slug=='swimmer' and exception['scope']=='head'
+            assert exception['shared_body'] and len(exception['source_portraits'])==2
+            head_pivot=exception['head_pivot']
+            assert len(head_pivot)==3 and .8<head_pivot[1]<2
+            def head(batch):
+                return batch['part']==0 and all(abs(a-b)<1e-5 for a,b in zip(batch['pivot'],head_pivot))
+            def stream(meshes,head_only=False):
+                return [(b['part'],tuple(b['pivot']),b['texture'],
+                         tuple(tuple(b['vertices'][i][:5]) for i in b['indices']))
+                        for b in meshes if head(b)==head_only]
+            # The source portraits justify distinct cap/goggles and bob heads.
+            # Every shared body triangle, UV and animation pivot stays exact.
+            assert stream(base)==stream(alt),(path,'shared body/rig changed')
+            assert stream(base,True)!=stream(alt,True),(path,'head variant missing')
+            assert {b['part'] for b in base if not head(b)}==set(range(5))
+            continue
         assert len(base)==len(alt)
         color_changes=0
         for a,b in zip(base,alt):
@@ -89,7 +110,7 @@ def main():
         for alias,ref in catalog['aliases'].items():
             assert ref['model'] in slugs
             assert ref['appearance'] in {a['slug'] for a in catalog['appearances']}
-        assert not list((ROOT/'assets/models').glob('*/variants/*/*.blend'))
+        assert not list((ASSETS/'models').glob('*/variants/*/*.blend'))
     print('VALID',len(slugs),'unique model(s),',count,'native exports; geometry, textures, rig and palette reuse checked')
 
 

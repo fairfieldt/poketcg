@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_stern"
+    "fc_e7ad63_wt_jos_happy"
   ],
   "actors": [
     {
@@ -41,14 +41,14 @@
       ]
     }
   },
-  "design": "white swimming cap, sleeveless top and shorts",
+  "design": "domed white swimming cap, forehead goggles, cheerful closed eyes; volumetric sleeveless top and shorts",
   "surface_ownership": {
     "face_and_clothing": true,
     "headwear": true
   },
   "sharing": {
     "library": "../../parts.blend",
-    "linked_parts": 23
+    "linked_parts": 0
   },
   "provenance": {
     "sprite": 22,
@@ -64,22 +64,24 @@
     "solid_material": "joshua \u00b7 skin",
     "faces": [
       {
-        "texture": "fc_e7ad63_stern",
+        "texture": "fc_e7ad63_wt_jos_happy",
         "background_rgb8": [
           231,
           173,
           99
         ],
-        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
+        "feature_sha256": "312c67da007c932221fdad184abe2863c711b249dd7c957e6b5470fcc5b7ed05",
         "colorspace": "Non-Color",
-        "directional_shade": true
+        "directional_shade": true,
+        "shade_floor": 0.86
       }
-    ]
+    ],
+    "shade_floor": 0.86
   },
   "appearance": "joshua",
   "pose": "standing",
   "component": null,
-  "vertices": 1147,
-  "triangles": 688,
-  "batches": 6
+  "vertices": 1465,
+  "triangles": 940,
+  "batches": 7
 }

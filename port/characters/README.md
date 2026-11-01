@@ -19,12 +19,13 @@ materials. The native assets and ROM do not require Blender or Fast64.
 - **Whole models:** exact sprite duplicates are aliases in [bindings.json](bindings.json).
   For example, Sam, the technicians, Joseph, David, Erik and Aaron share the same
   sprite, so they share one technician model. Ronald's three IDs share one model.
-- **Geometry:** 33 linked mesh pieces serve 801 authored part instances in the new
-  characters. Heads, face surfaces, hands, ears, limb sections, shoes, torso
+- **Geometry:** linked mesh pieces provide reusable character parts; current
+  counts are recorded in [sharing validation](review/sharing.json).
+  Heads, face surfaces, hands, ears, limb sections, shoes, torso
   shapes, coat/skirt shapes and suitable hair/cap pieces share mesh datablocks.
   Distinct body proportions, hair silhouettes, accessories and clothing panels
   remain explicit in [tools/designs.py](tools/designs.py).
-  Near-coplanar face and clothing panels are baked with their owning head or
+  Legacy face and clothing panels are baked with their owning head or
   torso into one exterior surface. The linked authoring pieces remain hidden
   in each editable model; only their material-preserving exterior is exported.
   Uncapped hair, ears and animated limbs retain normal solid intersections.
@@ -33,26 +34,27 @@ materials. The native assets and ROM do not require Blender or Fast64.
   verifies final native headwear faces have an inside and outside using winding
   numbers, with no exported hidden scalp vertices.
   [Cap validation](review/cap_validation.json) records this camera-independent
-  exterior proof for all five capped families.
+  exterior proof for capped families.
   Ronald's cap, spikes and fringe also share the owning head exterior. His
   upper scalp uses the hair pigment so small exposed facets cannot appear as
   skin islands. [Hair validation](review/ronald-hair/validation.json) checks the
   final native shell, hairline and unchanged animated limbs.
-- **Materials:** facial styles reuse textures; the cast needs 12 textures, all
-  32×32 RGBA16. Opaque facial backgrounds use the same RGBA16-safe pigment as
+- **Materials:** facial styles use shared or character-specific 32×32 RGBA16
+  textures. Opaque facial backgrounds use the same RGBA16-safe pigment as
   each character's solid head, ears, neck and limbs. Eye whites, pupils, glasses
   and mouths retain their painted colors. Faces and solids receive the same
   native directional lighting; palette images use Non-Color input in Blender
   so its preview agrees with the solid Fast64 material. UVs, the coordinate
   system and five rigid animation groups match the existing libdragon renderer.
 - **Story leads:** Mark, Ronald, Dr. Mason and Imakuni have distinct original
-  facial paint while retaining their geometry and rig. Mark has a separate face
+  facial paint. Mark's remodeled head preserves his approved facial artwork.
+  Mark has a separate face
   style rather than changing every smiling NPC. [Lead-face comparison and
   preservation checks](review/distinctive-leads/README.md) distinguish texture
   inspection and Blender previews from native gameplay captures.
-- **Palettes:** Matthew, Robert/Jonathan/Lad 2, and Amanda are material variants
-  of the Mania, Boy and Swimmer families respectively. No second authored mesh
-  or `.blend` file is created for them.
+- **Palettes:** Matthew and Robert/Jonathan/Lad 2 are material variants of the
+  Mania and Boy families. Sara and Amanda share the Swimmer body and rig,
+  with portrait-specific head presets in one canonical `.blend`.
 - **Poses/components:** Amy stands or lies down with the same geometry; Murray's
   fixed west-facing entry reuses his regular model. The six legendary-card NPC
   entries select pieces of one card-and-sparks assembly. The torch is a separate
@@ -135,8 +137,30 @@ This changes materials/transforms without copying mesh data. The helper also
 updates pivots for export. After manual edits, regenerate native variant/pose
 exports before rebuilding the gallery.
 
+## Water Club and Mark authoring
+
+Amy, Joshua, Sara/Amanda and Mark use the scoped `tools/water_*.py` recipes.
+Their closed heads own the skin, hair and painted face regions directly.
+The shared helper places facial features within a front-centered 120-degree
+UV span and 80% vertical extent; the skin surface still wraps to the temples.
+The five rigid animation groups and original joint pivots remain intact.
+
+Swimmer's saved model contains Sara's swim cap/goggles and Amanda's side-parted
+bob as selectable head presets, based on their original duel portraits.
+`apply_variant.apply('swimmer_palette2')` selects Amanda's saved head, face
+texture table and skin metadata while retaining the shared body. Selecting
+`'swimmer'` restores Sara. Both heads remain editable in the same file.
+
+Run `python3 tools/check_water_cast.py` from this directory to check these four
+families. It validates raw surfaces and the actual N64 packing rule:
+`truncf(float32(local_position * 32))`, with joint pivots applied afterward.
+Checks include closed outward heads, duplicate/coplanar/degenerate surfaces,
+skin pigments, texture memory, rig/pose reuse and the scoped head-variant
+exception. [Swimmer preset proof](../reviews/water-cast/swimmer-blender-presets.json)
+records a saved-model Sara → Amanda → Sara export roundtrip.
+
 Native export validation also rejects duplicate and degenerate triangles across
-all 49 exports. The exterior bake preserves facial-feature pixels, pigments,
+canonical and derived exports. The exterior bake preserves facial-feature pixels, pigments,
 all four limb meshes, UVs and joint pivots; it removes a duplicated torso in the
 bodysuit recipe. [Exterior validation](review/exterior_validation.json) records
 per-export counts and hashes.

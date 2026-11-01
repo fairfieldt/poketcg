@@ -2,11 +2,39 @@
 
 Also supports apply(pose='lying') for Amy or pose='west_fixed' for Murray.
 Material overrides and object transforms reuse the same source mesh datablocks.
+Swimmer appearances select their saved portrait-specific head components while
+keeping one shared body and its rigid pivots.
 """
 import bpy
 import json
 import math
 from mathutils import Matrix,Vector
+
+
+def select_head_preset(scene,manifest,appearance):
+    """Activate a saved head and its own face table before pose/export work."""
+    encoded=scene.get('character_appearance_head_presets')
+    if not encoded:return False
+    presets=json.loads(encoded)
+    assert appearance in presets,('Missing saved head preset',appearance)
+    preset=presets[appearance]
+    selected=set(preset['objects'])
+    names={name for entry in presets.values() for name in entry['objects']}
+    objects={name:scene.objects.get(name) for name in names}
+    assert all(obj is not None and obj.type=='MESH' and obj.get('head_component')
+               for obj in objects.values()),'Saved head preset references missing geometry'
+    assert selected and all(objects[name].get('part')==0 for name in selected)
+    for name,obj in objects.items():
+        active=name in selected
+        obj['export_source']=active
+        obj.hide_render=not active
+        obj.hide_set(not active)
+    # Both faces use texture slot zero, but refer to different packed images.
+    # Recoloring or visibility alone would export Amanda with Sara's face.
+    for key in ('textures','skin_palette','surface_ownership'):
+        manifest[key]=preset[key]
+    manifest.update(preset['statistics'])
+    return True
 
 
 def apply(appearance=None,pose='standing'):
@@ -16,6 +44,7 @@ def apply(appearance=None,pose='standing'):
     appearance=appearance or manifest['model']
     colors=manifest['appearances'][appearance]['accent']
     definition=manifest['poses'][pose]
+    head_preset=select_head_preset(scene,manifest,appearance)
     rotation=Matrix.Identity(4)
     for axis,angle in zip('XYZ',definition['rotation']):
         rotation=rotation@Matrix.Rotation(math.radians(angle),4,axis)
@@ -26,9 +55,17 @@ def apply(appearance=None,pose='standing'):
             obj['rest_matrix']=[v for row in obj.matrix_world for v in row]
             obj['rest_pivot']=list(obj['pivot'])
         values=obj['rest_matrix'];rest=Matrix([values[i:i+4] for i in range(0,16,4)])
-        obj.matrix_world=root@rest
-        old=obj['rest_pivot'];p=root@Vector((old[0],-old[1],old[2]))
-        obj['pivot']=(p.x,-p.y,p.z)
+        old=obj['rest_pivot']
+        if head_preset and not any(definition['rotation']+definition['translation']):
+            # Head selection is not a pose change. Preserve the saved double
+            # precision pivots instead of rounding them through mathutils'
+            # float32 Vector, which would change native export bytes.
+            obj.matrix_world=rest
+            obj['pivot']=list(old)
+        else:
+            obj.matrix_world=root@rest
+            p=root@Vector((old[0],-old[1],old[2]))
+            obj['pivot']=(p.x,-p.y,p.z)
     for mat in {slot.material for obj in sources for slot in obj.material_slots}:
         if mat.get('role')!='accent':continue
         mat.diffuse_color=(*colors,1);mat.f3d_mat.prim_color=(*colors,1)

@@ -8,6 +8,7 @@ import bpy
 import hashlib
 import json
 import math
+import os
 import shutil
 import sys
 from pathlib import Path
@@ -24,7 +25,7 @@ from parts import box,rings,spike
 from png import write_png
 import export_scene
 import render_maps
-from skin import prepare_skin
+from skin import prepare_skin,rgba16_pigment
 from exterior import exterior_sources
 from lead_faces import paint as paint_lead_face
 
@@ -32,9 +33,10 @@ slug=sys.argv[sys.argv.index('--')+1]
 catalog=json.loads((ROOT/'catalog.json').read_text())
 family=next(f for f in catalog['families'] if f['slug']==slug)
 appearances=[a for a in catalog['appearances'] if a['model']==slug]
-out=ROOT/'assets/models'/slug
+ASSET_ROOT=Path(os.environ.get('POKETCG_CHARACTER_ASSETS',str(ROOT/'assets'))).resolve()
+out=ASSET_ROOT/'models'/slug
 out.mkdir(parents=True,exist_ok=True)
-(ROOT/'assets/textures').mkdir(exist_ok=True)
+(ASSET_ROOT/'textures').mkdir(parents=True,exist_ok=True)
 if 'fast64' not in bpy.context.preferences.addons:
     bpy.ops.preferences.addon_enable(module='fast64')
 from fast64.fast64_internal.f3d.f3d_material import update_all_node_values
@@ -139,7 +141,7 @@ def face(style):
     lead_pixels=paint_lead_face(slug)
     if lead_pixels is not None:
         texture_name='face_'+style
-        path=ROOT/'assets/textures'/(texture_name+'.png')
+        path=ASSET_ROOT/'textures'/(texture_name+'.png')
         write_png(path,32,32,[bytes(c for p in row for c in p) for row in lead_pixels])
         image=bpy.data.images.load(str(path),check_existing=False);image.name=texture_name;image.pack()
         return material('face',(1,1,1),image)
@@ -173,7 +175,7 @@ def face(style):
         rect(6,13,10,19,dark);rect(22,13,26,19,dark)
         rect(11,25,22,28,dark);rect(13,25,20,26,cream)
     texture_name='face_'+style
-    path=ROOT/'assets/textures'/(texture_name+'.png')
+    path=ASSET_ROOT/'textures'/(texture_name+'.png')
     write_png(path,32,32,[bytes(c for p in row for c in p) for row in pixels])
     image=bpy.data.images.load(str(path),check_existing=False);image.name=texture_name;image.pack()
     return material('face',(1,1,1),image)
@@ -338,7 +340,7 @@ if slug in ('dr_mason','ronald'):
     source_manifest=json.loads((original/'scene.json').read_text())
     textures=source_manifest['textures']
     for t in textures:
-        target=ROOT/'assets/textures'/(t+'.png')
+        target=ASSET_ROOT/'textures'/(t+'.png')
         shutil.copy2(original/'textures'/(t+'.png'),target)
         if 'face' in t:
             pixels=paint_lead_face(slug)
@@ -368,6 +370,18 @@ else:
     if spec['body']=='prop':props()
     else:humanoid()
 
+water_module=None
+if slug in ('amy','swimmer','joshua','mark'):
+    import importlib
+    # Paint new appearance faces against the final RGB5-safe skin pigment.
+    skin.diffuse_color=(*(v/255 for v in rgba16_pigment(skin.diffuse_color[:3])),1)
+    module_name={'amy':'water_amy','swimmer':'water_swimmer',
+                 'joshua':'water_joshua','mark':'water_mark'}[slug]
+    water_module=importlib.import_module(module_name)
+    water_module.apply(globals())
+    from water_cast_common import prune_textures
+    prune_textures(globals())
+
 # Keep the editable linked pieces, but export their actual exterior surface.
 authored_sources=list(sources)
 for source in sources:source['character_name']=slug
@@ -379,7 +393,7 @@ if slug not in ('torch','legendary_card'):
 # Opaque feature pixels remain unchanged; no alpha-test support is required.
 skin_palette=None
 if slug not in ('torch','legendary_card'):
-    skin_palette=prepare_skin(sources,textures,ROOT/'assets/textures')
+    skin_palette=prepare_skin(sources,textures,ASSET_ROOT/'textures')
 
 scene['character_slug']=slug
 poses={'standing':dict(rotation=[0,0,0],translation=[0,0,0])}
@@ -394,15 +408,38 @@ base_manifest=dict(format='L643',textures=textures,actors=[dict(name=slug,model=
     sharing=dict(library='../../parts.blend',linked_parts=sum(bool(o.data.library) for o in authored_sources)),
     provenance=dict(sprite=family['sprite'],gfx_sha256=family['gfx_sha256'],fast64='2.6.0'))
 if skin_palette:base_manifest['skin_palette']=skin_palette
+if slug=='swimmer' and water_module:
+    base_manifest['appearance_geometry']=dict(scope='head',
+        head_pivot=[0,1.5*sz,0],shared_body=True,
+        source_portraits=['src/gfx/duelists/sara.png','src/gfx/duelists/amanda.png'])
+
+appearance_head_presets={}
 
 
 def export(folder,appearance,pose='standing',component=None):
     folder.mkdir(parents=True,exist_ok=True)
-    scene['lightning_manifest']=json.dumps(dict(base_manifest,appearance=appearance,pose=pose,component=component))
+    manifest=dict(base_manifest,appearance=appearance,pose=pose,component=component)
+    if slug=='swimmer' and water_module:
+        manifest['surface_ownership']=dict(base_manifest['surface_ownership'],
+            headwear=appearance=='swimmer')
+    scene['lightning_manifest']=json.dumps(manifest)
     bpy.context.view_layer.update()
     export_scene.OUT=folder
     result=export_scene.export_scene()
     (folder/'world_data.h').unlink()
+    if slug=='swimmer' and water_module and pose=='standing' and component is None:
+        # Retain the existing editable alternate head, rather than recreating
+        # its geometry when selecting an appearance in a saved .blend. The
+        # restored canonical export replaces the first Sara entry, so earlier
+        # hidden authoring copies can never be selected accidentally.
+        heads=[obj for obj in sources if obj.get('head_component')]
+        assert heads and all(obj.get('export_source') for obj in heads)
+        appearance_head_presets[appearance]=json.loads(json.dumps(dict(
+            objects=sorted(obj.name for obj in heads),textures=result['textures'],
+            skin_palette=result['skin_palette'],
+            surface_ownership=result['surface_ownership'],
+            statistics={key:result[key] for key in ('vertices','triangles','batches')})))
+        scene['character_appearance_head_presets']=json.dumps(appearance_head_presets)
     return result
 
 
@@ -410,8 +447,17 @@ stats=export(out,slug)
 # A color variant is a material override on this model, never a second .blend.
 for a in appearances[1:]:
     accent.diffuse_color=(*accent_for(a),1);accent.update_tag()
+    if water_module and hasattr(water_module,'apply_appearance'):
+        water_module.apply_appearance(globals(),a['slug'])
+        prune_textures(globals())
+        base_manifest['skin_palette']=prepare_skin(sources,textures,ASSET_ROOT/'textures')
     export(out/'variants'/a['slug'],a['slug'])
 accent.diffuse_color=(*accent_rgb,1);accent.update_tag()
+if water_module and hasattr(water_module,'apply_appearance') and len(appearances)>1:
+    water_module.apply_appearance(globals(),slug)
+    prune_textures(globals())
+    base_manifest['skin_palette']=prepare_skin(sources,textures,ASSET_ROOT/'textures')
+    stats=export(out,slug)
 if slug=='amy':
     root=Matrix.Translation((0,-.9,.35))@Matrix.Rotation(math.radians(-90),4,'X')
     transforms={o:o.matrix_world.copy() for o in sources};pivots={o:tuple(o['pivot']) for o in sources}

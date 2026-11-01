@@ -1,12 +1,12 @@
 {
   "model": "swimmer",
-  "triangles": 584,
-  "vertices": 1082,
-  "batches": 6,
-  "linked_parts": 24,
+  "triangles": 904,
+  "vertices": 1433,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "swimmer",
     "swimmer_palette2"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "5375c39bf07332cf2c20b53ada289a1602e975d58811b31ed95f850ef90743f8"
 }
