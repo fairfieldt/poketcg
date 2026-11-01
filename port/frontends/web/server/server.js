@@ -44,14 +44,17 @@ const MAX_LOG = 200000;
 const MIME = {
 	'.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.mjs': 'text/javascript; charset=utf-8',
 	'.css': 'text/css; charset=utf-8', '.json': 'application/json', '.wasm': 'application/wasm', '.png': 'image/png',
-	'.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.txt': 'text/plain; charset=utf-8',
+	'.svg': 'image/svg+xml', '.ico': 'image/x-icon', '.txt': 'text/plain; charset=utf-8', '.ogg': 'audio/ogg',
 };
 
 const server = http.createServer((req, res) => {
-	let url;
-	try { url = new URL(req.url, 'http://x'); } catch { res.writeHead(400).end(); return; }
+	let url, rel;
+	try {
+		url = new URL(req.url, 'http://x');
+		rel = decodeURIComponent(url.pathname);
+		if (rel.includes('\0')) throw new URIError('NUL path');
+	} catch { res.writeHead(400).end(); return; }
 	if (url.pathname === '/health') { res.writeHead(200, { 'content-type': 'text/plain' }).end('ok'); return; }
-	let rel = decodeURIComponent(url.pathname);
 	if (rel.endsWith('/')) rel += 'index.html';
 	const file = path.resolve(DIST, '.' + rel);
 	if (!file.startsWith(DIST + path.sep) && file !== DIST) { res.writeHead(403).end(); return; }
@@ -87,6 +90,8 @@ function peerOf(room, role) { return role === 'host' ? room.guest : room.host; }
 const wss = new WebSocketServer({ server, path: '/ws', maxPayload: 256 * 1024 });
 
 wss.on('connection', (ws) => {
+	// ws closes invalid/oversized frames; contain its error event to this peer.
+	ws.on('error', () => {});
 	let room = null, role = null; // what this socket is attached to
 	const attach = (r, ro) => { room = r; role = ro; r[ro].ws = ws; r.touched = Date.now(); };
 	const fail = (msg) => send(ws, { t: 'error', msg });
@@ -146,7 +151,8 @@ wss.on('connection', (ws) => {
 			break;
 		case 'answer': {
 			if (!room || !room.setup) { fail('no duel in progress'); return; }
-			const seq = m.seq | 0;
+			const seq = m.seq;
+			if (!Number.isSafeInteger(seq) || seq < 0) { fail('invalid answer sequence'); return; }
 			const entry = { t: 'answer', seq, rt: m.rt | 0, v: m.v | 0, h: m.h >>> 0, from: role };
 			if (seq < room.log.length) {
 				const e = room.log[seq];
