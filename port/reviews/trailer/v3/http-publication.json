@@ -1,0 +1,47 @@
+{
+  "poketcg64-trailer.mp4": {
+    "status": 200,
+    "content_type": "video/mp4",
+    "cache_control": "no-store",
+    "content_length": "29269578",
+    "bytes_received": 29269578,
+    "sha256": "fa60e403fdeacb88ce4f673b8b53cde910bae37d25f524a030036cd4f05503e8",
+    "matches_local": true
+  },
+  "poketcg64-trailer-no-crt.mp4": {
+    "status": 200,
+    "content_type": "video/mp4",
+    "cache_control": "no-store",
+    "content_length": "42916510",
+    "bytes_received": 42916510,
+    "sha256": "7d6ffdc6dc7daffbc3e5c19887f6a733d35373318960f74ffa91c17ae18dcc89",
+    "matches_local": true
+  },
+  "poster.png": {
+    "status": 200,
+    "content_type": "image/png",
+    "cache_control": "no-store",
+    "content_length": "1520251",
+    "bytes_received": 1520251,
+    "sha256": "f45176d6242553eabf550cc8838c4eb064acd97c74cc20d22990a00a63cabac9",
+    "matches_local": true
+  },
+  "poster-no-crt.png": {
+    "status": 200,
+    "content_type": "image/png",
+    "cache_control": "no-store",
+    "content_length": "854856",
+    "bytes_received": 854856,
+    "sha256": "6dcf6703152c6838ff084f52730a4467bcf9207b8c28486cbee38f6780c367fe",
+    "matches_local": true
+  },
+  "compare.html": {
+    "status": 200,
+    "content_type": "text/html",
+    "cache_control": "no-store",
+    "content_length": "4856",
+    "bytes_received": 4856,
+    "sha256": "a5936e7484c183751e52bb0911bf1b8eaa9c7d8d360e39ded3b8217759e029dc",
+    "matches_local": true
+  }
+}

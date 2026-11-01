@@ -1,0 +1,7 @@
+Recommended native VI cut-ins: Lightning 611, Fire 1020, Water 1420, Hall 2911. Each begins 8 VI after its WALK marker. Actual sampled frames show Mark already moving, with another visible step 8 VI later.
+
+Suggested outs: Lightning 788, Fire 1189, Water 1630, Hall 3039. Fire retains the full approach to Ken plus 20 VI (0.333 seconds) of the settled deep-room composition. Lightning and Water retain 12 VI (0.2 seconds) after arrival. Hall retains 90 VI (1.5 seconds) after arrival to read the remodeled shrine and floating card.
+
+The cut-in contact shows WALK, proposed in, and 8 VI later for each room. The ending contact shows proposed room ending views; Hall is sampled before the existing title dissolve. These are extracted from existing v2 footage, with no new capture, runtime or editor changes.
+
+If the Hall-to-title dissolve remains 0.65 seconds, it uses the last 0.65 seconds of that source hold. A 0.35-second dissolve would leave more of the settled shrine view unobscured in the shorter shot.

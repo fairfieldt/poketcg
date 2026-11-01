@@ -1,11 +1,11 @@
-Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'port/reviews/trailer/v2/poketcg64-trailer-no-crt.mp4':
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'port/reviews/trailer/v3/poketcg64-trailer-no-crt.mp4':
   Metadata:
     major_brand     : isom
     minor_version   : 512
     compatible_brands: isomiso2avc1mp41
     encoder         : Lavf62.12.102
-  Duration: 00:01:26.77, start: 0.000000, bitrate: 4430 kb/s
-  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1440x1080, 4231 kb/s, 60 fps, 60 tbr, 15360 tbn (default)
+  Duration: 00:01:04.57, start: 0.000000, bitrate: 5317 kb/s
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(progressive), 1440x1080, 5117 kb/s, 60 fps, 60 tbr, 15360 tbn (default)
       Metadata:
         handler_name    : VideoHandler
         vendor_id       : [0][0][0][0]
@@ -34,96 +34,6 @@ Output #0, null, to 'pipe:':
         handler_name    : SoundHandler
         vendor_id       : [0][0][0][0]
         encoder         : Lavc61.19.101 pcm_s16le
-frame= 1971 fps=0.0 q=-0.0 size=N/A time=00:00:32.85 bitrate=N/A speed=61.7x
-frame= 4396 fps=3716 q=-0.0 size=N/A time=00:01:13.26 bitrate=N/A speed=61.9x
-[Parsed_ebur128_0 @ 0x7994c71980] Summary:
-
-  Integrated loudness:
-    I:         -19.6 LUFS
-    Threshold: -29.6 LUFS
-
-  Loudness range:
-    LRA:         1.9 LU
-    Threshold: -39.6 LUFS
-    LRA low:   -20.7 LUFS
-    LRA high:  -18.7 LUFS
-
-  True peak:
-    Peak:       -5.4 dBFS
-[Parsed_astats_1 @ 0x7994c71a40] Channel: 1
-[Parsed_astats_1 @ 0x7994c71a40] DC offset: -0.000025
-[Parsed_astats_1 @ 0x7994c71a40] Min level: -0.535234
-[Parsed_astats_1 @ 0x7994c71a40] Max level: 0.494488
-[Parsed_astats_1 @ 0x7994c71a40] Min difference: 0.000000
-[Parsed_astats_1 @ 0x7994c71a40] Max difference: 0.247988
-[Parsed_astats_1 @ 0x7994c71a40] Mean difference: 0.007642
-[Parsed_astats_1 @ 0x7994c71a40] RMS difference: 0.015461
-[Parsed_astats_1 @ 0x7994c71a40] Peak level dB: -5.429126
-[Parsed_astats_1 @ 0x7994c71a40] RMS level dB: -22.840999
-[Parsed_astats_1 @ 0x7994c71a40] RMS peak dB: -17.052029
-[Parsed_astats_1 @ 0x7994c71a40] RMS trough dB: -107.952867
-[Parsed_astats_1 @ 0x7994c71a40] Crest factor: 7.423243
-[Parsed_astats_1 @ 0x7994c71a40] Flat factor: 0.000000
-[Parsed_astats_1 @ 0x7994c71a40] Peak count: 2
-[Parsed_astats_1 @ 0x7994c71a40] Abs Peak count: 1
-[Parsed_astats_1 @ 0x7994c71a40] Noise floor dB: -inf
-[Parsed_astats_1 @ 0x7994c71a40] Noise floor count: 118816
-[Parsed_astats_1 @ 0x7994c71a40] Entropy: 0.762847
-[Parsed_astats_1 @ 0x7994c71a40] Bit depth: 63/64/64/64
-[Parsed_astats_1 @ 0x7994c71a40] Dynamic range: 256.224640
-[Parsed_astats_1 @ 0x7994c71a40] Zero crossings: 187002
-[Parsed_astats_1 @ 0x7994c71a40] Zero crossings rate: 0.044892
-[Parsed_astats_1 @ 0x7994c71a40] Number of NaNs: 0
-[Parsed_astats_1 @ 0x7994c71a40] Number of Infs: 0
-[Parsed_astats_1 @ 0x7994c71a40] Number of denormals: 0
-[Parsed_astats_1 @ 0x7994c71a40] Channel: 2
-[Parsed_astats_1 @ 0x7994c71a40] DC offset: -0.000025
-[Parsed_astats_1 @ 0x7994c71a40] Min level: -0.535234
-[Parsed_astats_1 @ 0x7994c71a40] Max level: 0.494488
-[Parsed_astats_1 @ 0x7994c71a40] Min difference: 0.000000
-[Parsed_astats_1 @ 0x7994c71a40] Max difference: 0.247988
-[Parsed_astats_1 @ 0x7994c71a40] Mean difference: 0.007642
-[Parsed_astats_1 @ 0x7994c71a40] RMS difference: 0.015462
-[Parsed_astats_1 @ 0x7994c71a40] Peak level dB: -5.429126
-[Parsed_astats_1 @ 0x7994c71a40] RMS level dB: -22.840951
-[Parsed_astats_1 @ 0x7994c71a40] RMS peak dB: -17.052028
-[Parsed_astats_1 @ 0x7994c71a40] RMS trough dB: -107.952867
-[Parsed_astats_1 @ 0x7994c71a40] Crest factor: 7.423202
-[Parsed_astats_1 @ 0x7994c71a40] Flat factor: 0.000000
-[Parsed_astats_1 @ 0x7994c71a40] Peak count: 2
-[Parsed_astats_1 @ 0x7994c71a40] Abs Peak count: 1
-[Parsed_astats_1 @ 0x7994c71a40] Noise floor dB: -inf
-[Parsed_astats_1 @ 0x7994c71a40] Noise floor count: 118816
-[Parsed_astats_1 @ 0x7994c71a40] Entropy: 0.762848
-[Parsed_astats_1 @ 0x7994c71a40] Bit depth: 63/64/64/64
-[Parsed_astats_1 @ 0x7994c71a40] Dynamic range: 256.224640
-[Parsed_astats_1 @ 0x7994c71a40] Zero crossings: 186912
-[Parsed_astats_1 @ 0x7994c71a40] Zero crossings rate: 0.044870
-[Parsed_astats_1 @ 0x7994c71a40] Number of NaNs: 0
-[Parsed_astats_1 @ 0x7994c71a40] Number of Infs: 0
-[Parsed_astats_1 @ 0x7994c71a40] Number of denormals: 0
-[Parsed_astats_1 @ 0x7994c71a40] Overall
-[Parsed_astats_1 @ 0x7994c71a40] DC offset: -0.000025
-[Parsed_astats_1 @ 0x7994c71a40] Min level: -0.535234
-[Parsed_astats_1 @ 0x7994c71a40] Max level: 0.494488
-[Parsed_astats_1 @ 0x7994c71a40] Min difference: 0.000000
-[Parsed_astats_1 @ 0x7994c71a40] Max difference: 0.247988
-[Parsed_astats_1 @ 0x7994c71a40] Mean difference: 0.007642
-[Parsed_astats_1 @ 0x7994c71a40] RMS difference: 0.015461
-[Parsed_astats_1 @ 0x7994c71a40] Peak level dB: -5.429126
-[Parsed_astats_1 @ 0x7994c71a40] RMS level dB: -22.840975
-[Parsed_astats_1 @ 0x7994c71a40] RMS peak dB: -17.052028
-[Parsed_astats_1 @ 0x7994c71a40] RMS trough dB: -107.952867
-[Parsed_astats_1 @ 0x7994c71a40] Flat factor: 0.000000
-[Parsed_astats_1 @ 0x7994c71a40] Peak count: 2.000000
-[Parsed_astats_1 @ 0x7994c71a40] Abs Peak count: 1.000000
-[Parsed_astats_1 @ 0x7994c71a40] Noise floor dB: -inf
-[Parsed_astats_1 @ 0x7994c71a40] Noise floor count: 118816.000000
-[Parsed_astats_1 @ 0x7994c71a40] Entropy: 0.762847
-[Parsed_astats_1 @ 0x7994c71a40] Bit depth: 63/64/64/64
-[Parsed_astats_1 @ 0x7994c71a40] Number of samples: 4165632
-[Parsed_astats_1 @ 0x7994c71a40] Number of NaNs: 0.000000
-[Parsed_astats_1 @ 0x7994c71a40] Number of Infs: 0.000000
-[Parsed_astats_1 @ 0x7994c71a40] Number of denormals: 0.000000
-[out#0/null @ 0x7994c70300] video:2237KiB audio:16272KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
-frame= 5206 fps=3608 q=-0.0 Lsize=N/A time=00:01:26.76 bitrate=N/A speed=60.1x
+frame= 2226 fps=0.0 q=-0.0 size=N/A time=00:00:37.10 bitrate=N/A speed=73.5x
+[out#0/null @ 0x7a41468300] video:1665KiB audio:12108KiB subtitle:0KiB other streams:0KiB global headers:0KiB muxing overhead: unknown
+frame= 3874 fps=0.0 q=-0.0 Lsize=N/A time=00:01:04.56 bitrate=N/A speed=72.2x

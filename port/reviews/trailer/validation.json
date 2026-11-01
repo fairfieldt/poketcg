@@ -1,44 +1,43 @@
 {
   "passed": true,
-  "expected_duration": 86.76666666666667,
-  "expected_frames": 5206,
+  "expected_duration": 64.56666666666666,
+  "expected_frames": 3874,
   "identical_compressed_audio": true,
   "identical_decoded_audio": true,
   "files": [
     {
       "file": "poketcg64-trailer.mp4",
-      "sha256": "1556cc22f0d5cd795cfe26cc486ad1da6cc2af173b0d86b076150485f9dad91e",
-      "bytes": 33751816,
-      "video_frames": 5206,
-      "video_duration": 86.766667,
-      "audio_duration": 86.766,
+      "sha256": "fa60e403fdeacb88ce4f673b8b53cde910bae37d25f524a030036cd4f05503e8",
+      "bytes": 29269578,
+      "video_frames": 3874,
+      "video_duration": 64.566667,
+      "audio_duration": 64.566,
       "av_duration_difference_seconds": 0.0006669999999928677,
       "faststart": true,
-      "compressed_audio_adts_sha256": "b30cf6695b852070b818637d8a4b229be26fc33cf601f2c712f7d8f27044f576",
-      "decoded_stereo_pcm16_sha256": "3096eff6eff2e5dbbcb6929be94c93f97a5c6af57a44961217baa0c861ab78f4"
+      "compressed_audio_adts_sha256": "92a170127c763c7575b815596c45b8a60671fa4e67b614cdf50515bdb42a961e",
+      "decoded_stereo_pcm16_sha256": "c8e93f72087eff8635ad615cbe49222ae7748cd4a7c7aa78ae4eff514535afc6"
     },
     {
       "file": "poketcg64-trailer-no-crt.mp4",
-      "sha256": "a6543cf6e494372fe89e6e06892918983cbd957931bf3d0d4addb896d2f7ba51",
-      "bytes": 48051487,
-      "video_frames": 5206,
-      "video_duration": 86.766667,
-      "audio_duration": 86.766,
+      "sha256": "7d6ffdc6dc7daffbc3e5c19887f6a733d35373318960f74ffa91c17ae18dcc89",
+      "bytes": 42916510,
+      "video_frames": 3874,
+      "video_duration": 64.566667,
+      "audio_duration": 64.566,
       "av_duration_difference_seconds": 0.0006669999999928677,
       "faststart": true,
-      "compressed_audio_adts_sha256": "b30cf6695b852070b818637d8a4b229be26fc33cf601f2c712f7d8f27044f576",
-      "decoded_stereo_pcm16_sha256": "3096eff6eff2e5dbbcb6929be94c93f97a5c6af57a44961217baa0c861ab78f4"
+      "compressed_audio_adts_sha256": "92a170127c763c7575b815596c45b8a60671fa4e67b614cdf50515bdb42a961e",
+      "decoded_stereo_pcm16_sha256": "c8e93f72087eff8635ad615cbe49222ae7748cd4a7c7aa78ae4eff514535afc6"
     }
   ],
   "full_decode_pass": true,
   "decode_errors": 0,
-  "nonfinite_audio_samples": 0,
-  "loudness_lufs": -19.6,
-  "true_peak_dbfs": -5.4,
-  "loudness_range_lu": 1.9,
-  "opening_waveform_minimum_correlation": 0.9988916676484675,
-  "opening_waveform_zero_offset_drift": true,
-  "visual_review": "Root and independent child reviewed actual final movies, including the first dissolve frames, full Fire walk, real KO/win, medal, Hall and title.",
-  "independent_review": "v2/independent-qc.json",
-  "audition_scope": "Analytical/source-score checks; model cannot receive audio."
+  "loudness_lufs": -19.7,
+  "true_peak_dbfs": -6.5,
+  "loudness_range_lu": 2.4,
+  "existing_footage_only": true,
+  "visual_review": "Root and independent reviewer approved actual final MP4 anchors: motion at every club/Hall cut-in, deep Fire near Ken, readable Ronald KO with no Prize, clean 2.2-second Amy KO directly into medal, and the 0.25-second dialogue trim with table approach preserved.",
+  "audition_scope": "Analytical/source-score checks; model cannot receive audio.",
+  "capture_provenance": "../v2/provenance/capture.json",
+  "independent_review": "v3/independent-qc.json"
 }

@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "existing_footage_only": true,
+  "capture_provenance": "../v2/provenance/capture.json",
+  "runtime_changes": false,
+  "capture_changes": false,
+  "steam_settings_changes": false,
+  "visuals": "Frozen v2 recordings retained; later shadow runtime work is separate.",
+  "prior_version_archive": "../versions/v2/"
+}

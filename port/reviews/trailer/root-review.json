@@ -1,10 +1,48 @@
 {
   "passed": true,
-  "sha256": "aeb648b7047bb78f5934d2e09ba80cabcb3102526a6d85ce5015ed41f08eeb0f",
-  "format_verified": true,
-  "faststart_verified": true,
-  "matching_av_durations": true,
-  "visual_review": "Full draft reviewed at12 timeline anchors; final20-frame contact sheet checked. All requested scenes,4:3,noFPS overlays/capture chrome.",
-  "audio_review": "Exact file matches final decode/PCM/level validation; no ear audition.",
-  "production_release_source": "2dda70b3"
+  "version": 3,
+  "existing_footage_only": true,
+  "files": [
+    {
+      "file": "poketcg64-trailer.mp4",
+      "sha256": "fa60e403fdeacb88ce4f673b8b53cde910bae37d25f524a030036cd4f05503e8",
+      "video": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1440,
+        "height": 1080,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "60/1",
+        "duration": "64.566667",
+        "nb_frames": "3874"
+      },
+      "aac_packet_payload_sha256": "4e94ff5e20a28ad90c1d51bacc7a9fb90abb4f21e3471cd17c5880ed70648a93",
+      "decoded_pcm16_sha256": "c8e93f72087eff8635ad615cbe49222ae7748cd4a7c7aa78ae4eff514535afc6"
+    },
+    {
+      "file": "poketcg64-trailer-no-crt.mp4",
+      "sha256": "7d6ffdc6dc7daffbc3e5c19887f6a733d35373318960f74ffa91c17ae18dcc89",
+      "video": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1440,
+        "height": 1080,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "60/1",
+        "duration": "64.566667",
+        "nb_frames": "3874"
+      },
+      "aac_packet_payload_sha256": "4e94ff5e20a28ad90c1d51bacc7a9fb90abb4f21e3471cd17c5880ed70648a93",
+      "decoded_pcm16_sha256": "c8e93f72087eff8635ad615cbe49222ae7748cd4a7c7aa78ae4eff514535afc6"
+    }
+  ],
+  "changed_cut_review": {
+    "intro": "15-frame fully readable dialogue hold removed; walk intact.",
+    "ronald": "Attack, damage and readable KO; no Prize instruction or selector.",
+    "club_and_hall_starts": "Actual frame pairs show Mark moving in all four rooms.",
+    "amy": "2.2-second clean hit/KO directly to medal.",
+    "audio": "Identical compressed/decoded tracks; complete original fanfare/title cadence retained."
+  },
+  "shadow_fix_included_in_recorded_visuals": false,
+  "audio_audition": false
 }

@@ -1,0 +1,43 @@
+{
+  "passed": true,
+  "expected_duration": 64.56666666666666,
+  "expected_frames": 3874,
+  "identical_compressed_audio": true,
+  "identical_decoded_audio": true,
+  "files": [
+    {
+      "file": "poketcg64-trailer.mp4",
+      "sha256": "fa60e403fdeacb88ce4f673b8b53cde910bae37d25f524a030036cd4f05503e8",
+      "bytes": 29269578,
+      "video_frames": 3874,
+      "video_duration": 64.566667,
+      "audio_duration": 64.566,
+      "av_duration_difference_seconds": 0.0006669999999928677,
+      "faststart": true,
+      "compressed_audio_adts_sha256": "92a170127c763c7575b815596c45b8a60671fa4e67b614cdf50515bdb42a961e",
+      "decoded_stereo_pcm16_sha256": "c8e93f72087eff8635ad615cbe49222ae7748cd4a7c7aa78ae4eff514535afc6"
+    },
+    {
+      "file": "poketcg64-trailer-no-crt.mp4",
+      "sha256": "7d6ffdc6dc7daffbc3e5c19887f6a733d35373318960f74ffa91c17ae18dcc89",
+      "bytes": 42916510,
+      "video_frames": 3874,
+      "video_duration": 64.566667,
+      "audio_duration": 64.566,
+      "av_duration_difference_seconds": 0.0006669999999928677,
+      "faststart": true,
+      "compressed_audio_adts_sha256": "92a170127c763c7575b815596c45b8a60671fa4e67b614cdf50515bdb42a961e",
+      "decoded_stereo_pcm16_sha256": "c8e93f72087eff8635ad615cbe49222ae7748cd4a7c7aa78ae4eff514535afc6"
+    }
+  ],
+  "full_decode_pass": true,
+  "decode_errors": 0,
+  "loudness_lufs": -19.7,
+  "true_peak_dbfs": -6.5,
+  "loudness_range_lu": 2.4,
+  "existing_footage_only": true,
+  "visual_review": "Root and independent reviewer approved actual final MP4 anchors: motion at every club/Hall cut-in, deep Fire near Ken, readable Ronald KO with no Prize, clean 2.2-second Amy KO directly into medal, and the 0.25-second dialogue trim with table approach preserved.",
+  "audition_scope": "Analytical/source-score checks; model cannot receive audio.",
+  "capture_provenance": "../v2/provenance/capture.json",
+  "independent_review": "independent-qc.json"
+}

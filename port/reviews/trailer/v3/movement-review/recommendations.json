@@ -1,0 +1,46 @@
+{
+  "method": "Existing final v2 MP4 samples mapped through its native VI timeline; actual WALK/WALK_COMPLETE markers are identical in original CRT/None takes. No new capture, runtime or editor changes.",
+  "recommendations": [
+    {
+      "shot": "lightning",
+      "walk_start_vi": 603,
+      "in_vi": 611,
+      "walk_complete_vi": 776,
+      "out_vi": 788,
+      "native_in_seconds": 10.183333333333334,
+      "native_out_seconds": 13.133333333333333,
+      "duration_seconds": 2.95
+    },
+    {
+      "shot": "fire",
+      "walk_start_vi": 1012,
+      "in_vi": 1020,
+      "walk_complete_vi": 1169,
+      "out_vi": 1189,
+      "native_in_seconds": 17.0,
+      "native_out_seconds": 19.816666666666666,
+      "duration_seconds": 2.816666666666667
+    },
+    {
+      "shot": "water",
+      "walk_start_vi": 1412,
+      "in_vi": 1420,
+      "walk_complete_vi": 1618,
+      "out_vi": 1630,
+      "native_in_seconds": 23.666666666666668,
+      "native_out_seconds": 27.166666666666668,
+      "duration_seconds": 3.5
+    },
+    {
+      "shot": "hall",
+      "walk_start_vi": 2903,
+      "in_vi": 2911,
+      "walk_complete_vi": 2949,
+      "out_vi": 3039,
+      "native_in_seconds": 48.516666666666666,
+      "native_out_seconds": 50.65,
+      "duration_seconds": 2.1333333333333333
+    }
+  ],
+  "hall_note": "Keeping 3039 leaves1.5s of sourcearrival hold. A 0.35s title dissolve instead of 0.65s would retain more clear shrine reading time in this shorter shot."
+}

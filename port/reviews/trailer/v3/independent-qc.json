@@ -1,0 +1,149 @@
+{
+  "passed": true,
+  "scope": "Independent review of changed v3 cut anchors and matching streams/audio. Existing footage only; no new capture, emulator, runtime, shadow or editor changes by reviewer.",
+  "files": {
+    "poketcg64-trailer.mp4": {
+      "sha256": "fa60e403fdeacb88ce4f673b8b53cde910bae37d25f524a030036cd4f05503e8",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1440,
+            "height": 1080,
+            "avg_frame_rate": "60/1",
+            "duration": "64.566667",
+            "nb_frames": "3874"
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "avg_frame_rate": "0/0",
+            "duration": "64.566000",
+            "nb_frames": "3028"
+          }
+        ],
+        "format": {
+          "duration": "64.566667"
+        }
+      },
+      "audio": {
+        "decoded_pcm": "SHA256=c8e93f72087eff8635ad615cbe49222ae7748cd4a7c7aa78ae4eff514535afc6",
+        "aac_packets": "SHA256=4e94ff5e20a28ad90c1d51bacc7a9fb90abb4f21e3471cd17c5880ed70648a93"
+      }
+    },
+    "poketcg64-trailer-no-crt.mp4": {
+      "sha256": "7d6ffdc6dc7daffbc3e5c19887f6a733d35373318960f74ffa91c17ae18dcc89",
+      "probe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "index": 0,
+            "codec_name": "h264",
+            "codec_type": "video",
+            "width": 1440,
+            "height": 1080,
+            "avg_frame_rate": "60/1",
+            "duration": "64.566667",
+            "nb_frames": "3874"
+          },
+          {
+            "index": 1,
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "avg_frame_rate": "0/0",
+            "duration": "64.566000",
+            "nb_frames": "3028"
+          }
+        ],
+        "format": {
+          "duration": "64.566667"
+        }
+      },
+      "audio": {
+        "decoded_pcm": "SHA256=c8e93f72087eff8635ad615cbe49222ae7748cd4a7c7aa78ae4eff514535afc6",
+        "aac_packets": "SHA256=4e94ff5e20a28ad90c1d51bacc7a9fb90abb4f21e3471cd17c5880ed70648a93"
+      }
+    }
+  },
+  "checks": {
+    "intro_hard_join_seconds": 31.433333333333334,
+    "intro_removed_native_vi": [
+      2466,
+      2481
+    ],
+    "intro_dialogue_and_table_approach_preserved": true,
+    "ronald_output_seconds": [
+      33.81666666666667,
+      37.7
+    ],
+    "ronald_readable_attack_and_knockout": true,
+    "prize_instruction_or_prize_screen_visible": false,
+    "moving_cut_ins_native_vi": {
+      "lightning": 611,
+      "fire": 1020,
+      "water": 1420,
+      "hall": 2911
+    },
+    "moving_cut_in_output_seconds": {
+      "lightning": 37.5,
+      "fire": 40.36666666666667,
+      "water": 43.1,
+      "hall": 53.666666666666664
+    },
+    "room_order": [
+      "Lightning",
+      "Fire",
+      "Water"
+    ],
+    "deep_fire_ken_approach_preserved": true,
+    "amy_output_seconds": [
+      46.483333333333334,
+      48.68333333333333
+    ],
+    "amy_hit_and_knockout_lead_directly_to_medal": true,
+    "coin_window_or_afterglow_ghost_visible": false,
+    "fps_overlays_visible": false,
+    "full_medal_and_title_retained": true,
+    "hall_ending_readable": true
+  },
+  "matched_video": {
+    "width": 1440,
+    "height": 1080,
+    "fps": 60,
+    "frames": 3874,
+    "duration_seconds": 64.56666666666666
+  },
+  "matched_encoded_aac_and_decoded_pcm": true,
+  "visual_samples_seconds": [
+    31.4167,
+    31.45,
+    33.9,
+    35.2,
+    36.7,
+    37.4,
+    37.55,
+    38,
+    40.4,
+    40.8,
+    42.8,
+    43.15,
+    43.5,
+    46.55,
+    47.4,
+    48.4,
+    48.8,
+    51,
+    53.7,
+    54.1,
+    55.2,
+    59
+  ],
+  "method": "Actual final MP4 frame extraction in both variants, prior source WALK/WALK_COMPLETE and cut-in frame comparisons, ffprobe metadata, encoded AAC and decoded PCM SHA256.",
+  "limits": "Sampled visual anchors and analytical audio equality, not an ear audition or pixel-perfect CRT/None phase. Existing shadow appearance was explicitly outside this edit-only scope."
+}

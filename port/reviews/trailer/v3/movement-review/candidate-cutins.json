@@ -1,0 +1,26 @@
+[
+  {
+    "shot": "lightning",
+    "walk_start_vi": 603,
+    "recommended_cut_in_vi": 611,
+    "native_start_seconds": 10.183333333333334
+  },
+  {
+    "shot": "fire",
+    "walk_start_vi": 1012,
+    "recommended_cut_in_vi": 1020,
+    "native_start_seconds": 17.0
+  },
+  {
+    "shot": "water",
+    "walk_start_vi": 1412,
+    "recommended_cut_in_vi": 1420,
+    "native_start_seconds": 23.666666666666668
+  },
+  {
+    "shot": "hall",
+    "walk_start_vi": 2903,
+    "recommended_cut_in_vi": 2911,
+    "native_start_seconds": 48.516666666666666
+  }
+]

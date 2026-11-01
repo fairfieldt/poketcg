@@ -1,0 +1,14 @@
+{
+  "crt": {
+    "intro": "v2-crt-intro",
+    "ronald": "v2-crt-ronald",
+    "clubs": "v2-crt-clubs",
+    "amy": "v2-crt-amy-coin-fix"
+  },
+  "none": {
+    "intro": "v2-none-intro",
+    "ronald": "v2-none-ronald",
+    "clubs": "v2-none-clubs",
+    "amy": "v2-none-amy-coin-fix"
+  }
+}
