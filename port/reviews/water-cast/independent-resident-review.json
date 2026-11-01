@@ -1,0 +1,122 @@
+{
+  "passed": true,
+  "verified_utc": "2026-11-01T03:00:30.201952+00:00",
+  "scope": "Independent static resident-footprint and symbol audit; runtime recapture still pending.",
+  "production_standard": {
+    "file": "port/frontends/n64/adventure/build/poketcg-adventure.elf",
+    "sha256": "89ec3c11151df8a1d2fe615af12ca06ebfe29d9c2b66ea10004ecc640f9778d3",
+    "sections": {
+      "text": 1353984,
+      "data": 44220,
+      "bss": 173956
+    },
+    "resident_sections": 1572160,
+    "load_base": "0x80000000",
+    "load_end": "0x8017ffd0",
+    "resident_load_span": 1572816
+  },
+  "production_expansion": {
+    "file": "port/frontends/n64/adventure/build/expansion/poketcg-expansion.elf",
+    "sha256": "6ec734a409f63d146e254b56b0596deff585eb2b67a9b68af436b75a83ec10de",
+    "sections": {
+      "text": 1353984,
+      "data": 44220,
+      "bss": 173956
+    },
+    "resident_sections": 1572160,
+    "load_base": "0x80000000",
+    "load_end": "0x8017ffd0",
+    "resident_load_span": 1572816
+  },
+  "review": {
+    "file": "port/frontends/n64/adventure/build/water-cast-review/water-cast.elf",
+    "sha256": "77c7039b1f3c9b736fad415f0e99d41f8e94523778f403caa1c423ba000524f9",
+    "sections": {
+      "text": 1342960,
+      "data": 44268,
+      "bss": 201324
+    },
+    "resident_sections": 1588552,
+    "load_base": "0x80000000",
+    "load_end": "0x80183fd0",
+    "resident_load_span": 1589200
+  },
+  "resident_section_margin_bytes": 16392,
+  "resident_load_span_margin_bytes": 16384,
+  "minimum_conservative_margin_bytes": 16384,
+  "retained_static_bss_pad": {
+    "address": "0x801552d8",
+    "bytes": 27392,
+    "type": "B"
+  },
+  "production_graph": {
+    "diagnostic": 0,
+    "normal_main_retained_as": "production_entry",
+    "required_symbols": {
+      "production_entry": {
+        "address": "0x80019d60",
+        "bytes": 2160,
+        "type": "T"
+      },
+      "tcg_run_duel": {
+        "address": "0x80069f20",
+        "bytes": 1124,
+        "type": "T"
+      },
+      "ow_new_game": {
+        "address": "0x80074d00",
+        "bytes": 260,
+        "type": "T"
+      },
+      "n64_duel_play": {
+        "address": "0x800313e0",
+        "bytes": 1136,
+        "type": "T"
+      },
+      "adventure_intro_play": {
+        "address": "0x80076d20",
+        "bytes": 1184,
+        "type": "T"
+      },
+      "adventure_name_player": {
+        "address": "0x8007ac20",
+        "bytes": 1604,
+        "type": "T"
+      },
+      "ow_run": {
+        "address": "0x80071aa0",
+        "bytes": 9936,
+        "type": "T"
+      }
+    },
+    "production_text_symbol_names_missing": []
+  },
+  "pad_retention": "Volatile global BSS; private main writes first and last bytes. Verified real linked B symbol and section/load growth, not only an unused source declaration.",
+  "footprint_definition": "Section sum includes BSS; PT_LOAD span also accounts for vector/text gap and alignment. ELF debug/file size is not used as resident memory.",
+  "lab_footprint_report_matches_actual_elf": true,
+  "runtime_status": "pending corrected 4 MiB and 8 MiB serial native recapture; no measured free-heap assertion made here",
+  "limitations": [
+    "This proves at least normal-production resident coverage plus16KiB allowance, not every dynamic allocation during full gameplay.",
+    "Older selected VI ROM/image provenance remains art-only and is not evidence for the corrected resident-memory sweep."
+  ],
+  "parent_runtime_verification": {
+    "passed": true,
+    "gates": "final-capture-gates.json",
+    "modes": {
+      "4": {
+        "native_frames": 30,
+        "rom_sha256": "ae52dd821ecb84722df11c0518ca2078179c35b92fcba043f013a6d89e77fa0c",
+        "minimum_free_heap_bytes": 906064,
+        "actual_vi_frames": 6,
+        "vi_art_only_rom_sha256": "13381677f86024c8a54da6a97e67d8cdf25d78bf748923ad478bc767a1ddcc33"
+      },
+      "8": {
+        "native_frames": 30,
+        "rom_sha256": "ae52dd821ecb84722df11c0518ca2078179c35b92fcba043f013a6d89e77fa0c",
+        "minimum_free_heap_bytes": 4140368,
+        "actual_vi_frames": 6,
+        "vi_art_only_rom_sha256": "13381677f86024c8a54da6a97e67d8cdf25d78bf748923ad478bc767a1ddcc33"
+      }
+    }
+  }
+}

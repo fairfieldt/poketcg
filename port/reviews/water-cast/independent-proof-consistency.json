@@ -1,0 +1,100 @@
+{
+  "passed": true,
+  "canonical_exports": 6,
+  "runtime_full_meshes": 6,
+  "runtime_lod_meshes": 6,
+  "native_images_verified": 60,
+  "staged_inputs_sha256": "8ba7e588174e4980e05100bb76c0892119bff2108ade004db1bdf39c712fde08",
+  "checks": [
+    {
+      "scope": "canonical",
+      "file": "port/characters/assets/models/mark/scene.l64",
+      "sha256": "9aa0bc4a7ebb8fad0fd8720709f33d278f53bc25a63c89af6763b8da6f3296bc"
+    },
+    {
+      "scope": "canonical",
+      "file": "port/characters/assets/models/amy/scene.l64",
+      "sha256": "9a59939262f90ad65b4bb97c8ca0d435b382ffe93f2bbab65328ce49667ca948"
+    },
+    {
+      "scope": "canonical",
+      "file": "port/characters/assets/models/amy/poses/lying/scene.l64",
+      "sha256": "f725440cc3c40e7ae2e39b9dcb4bdd0a13d540c204950d55b171d93cc04eb86e"
+    },
+    {
+      "scope": "canonical",
+      "file": "port/characters/assets/models/joshua/scene.l64",
+      "sha256": "d74cee96e2d22a1ca160e8111590a011293e01124c8bf06d823e4efa0e74f9e6"
+    },
+    {
+      "scope": "canonical",
+      "file": "port/characters/assets/models/swimmer/scene.l64",
+      "sha256": "518dbead1213363e682b1b4abc7c8c6dda5e71867c5a6899a10ac774924807ea"
+    },
+    {
+      "scope": "canonical",
+      "file": "port/characters/assets/models/swimmer/variants/swimmer_palette2/scene.l64",
+      "sha256": "649183cf16f912cb99830440d4f99b029ece9ca5850b861250a9adf4aaaec384"
+    },
+    {
+      "scope": "runtime_full",
+      "file": "port/world3d/generated/maps/actor_mark.l64",
+      "sha256": "534704852ce6363116781380e1b8632c906e181456182dcd05ee635ccf53a179"
+    },
+    {
+      "scope": "runtime_full",
+      "file": "port/world3d/generated/maps/actor_amy.l64",
+      "sha256": "160b3c9d74429a6155bc8c7f589fb7a4ea58071432a99b163244f3e48bae6262"
+    },
+    {
+      "scope": "runtime_full",
+      "file": "port/world3d/generated/maps/actor_joshua.l64",
+      "sha256": "1edffea7ccbf1947a8bd95bfd657bf9ad8a3a035aadd97076bdc9a0b89793795"
+    },
+    {
+      "scope": "runtime_full",
+      "file": "port/world3d/generated/maps/actor_swimmer.l64",
+      "sha256": "efbe6234d9e5490a8ff94ad23b3dcea2ab466ba687ad39a3f5f64fcedea3ab45"
+    },
+    {
+      "scope": "runtime_full",
+      "file": "port/world3d/generated/maps/actor_swimmer_palette2.l64",
+      "sha256": "60abb4e5c099c32f9a7cec83fa5dab08b3b0fb7c638b8d3ed396363d4ca76ee3"
+    },
+    {
+      "scope": "runtime_full",
+      "file": "port/world3d/generated/maps/actor_amy__lying.l64",
+      "sha256": "a8e8ea3ecf9f5c29916bf8897bdf7ce6193a4787b129ffd733753786d266d3dc"
+    },
+    {
+      "scope": "runtime_lod",
+      "file": "port/world3d/generated/lod/actor_mark.l64",
+      "sha256": "2407025f512712569bf7d6a80347818896fbe07cbe6aaf21d7fcd029f5f38054"
+    },
+    {
+      "scope": "runtime_lod",
+      "file": "port/world3d/generated/lod/actor_amy.l64",
+      "sha256": "783ab3385f52bcb7f805f57d56b32938bc8c0033809a02adf9536d11560482cb"
+    },
+    {
+      "scope": "runtime_lod",
+      "file": "port/world3d/generated/lod/actor_joshua.l64",
+      "sha256": "8bc805cfe5c41d234d650d2e18bd5a58604dc00e147a4100677fc2bcb3424404"
+    },
+    {
+      "scope": "runtime_lod",
+      "file": "port/world3d/generated/lod/actor_swimmer.l64",
+      "sha256": "79bc449b3b3e9d9107c9bbe771c02bff1702919516516927271fb6e3c35d8214"
+    },
+    {
+      "scope": "runtime_lod",
+      "file": "port/world3d/generated/lod/actor_swimmer_palette2.l64",
+      "sha256": "ee1e8d305554cd2c206c83d2d03d71b69916eb968150302b4a05269596effbb8"
+    },
+    {
+      "scope": "runtime_lod",
+      "file": "port/world3d/generated/lod/actor_amy__lying.l64",
+      "sha256": "50954b62fc1482b1264872a9f3fb3842b36c6268fe8c1e28bac34aedf2dd2a72"
+    }
+  ]
+}

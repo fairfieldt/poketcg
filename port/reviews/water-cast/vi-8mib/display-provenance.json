@@ -1,0 +1,103 @@
+{
+  "method": "Display-corrected comparison of original Ares VI captures. Raw PNGs unchanged. 640x240 fields are shown at640x480 (4:3); 640x480 source frames retain their pixels. No painted, generated or sharpened replacements.",
+  "comparison": "vi-8mib/comparison-4x3.png",
+  "comparison_sha256": "79082bdccfd90429cbe7c40a6550d2696097fa75a17c0e25d71aea0329274183",
+  "images": [
+    {
+      "source": "vi-8mib/post-vi/mark-full-before.png",
+      "source_sha256": "eae5061935329f1bb4e6b85344127219a878a6d1a2deef6a1306ffebc73b7311",
+      "source_dimensions": [
+        640,
+        480
+      ],
+      "display_file": "vi-8mib/display-4x3/mark-full-before.png",
+      "display_sha256": "0ae40264b4f7e77cfbf7d8af1434cb2ecc92dfd0752505a31b92b9731881473b",
+      "display_dimensions": [
+        640,
+        480
+      ],
+      "transform": "Pixel-identical copy",
+      "selected_native_matches_30_case_native": true
+    },
+    {
+      "source": "vi-8mib/post-vi/mark-full-after.png",
+      "source_sha256": "1cc4fd903ad7bfe99bc08fe36406db9579df2fcc6a7bee41d0698ee947a45c8c",
+      "source_dimensions": [
+        640,
+        480
+      ],
+      "display_file": "vi-8mib/display-4x3/mark-full-after.png",
+      "display_sha256": "be3356b2bd5484373803bec7ad22d111752662c21d97b94a5319b6361ebc84a3",
+      "display_dimensions": [
+        640,
+        480
+      ],
+      "transform": "Pixel-identical copy",
+      "selected_native_matches_30_case_native": true
+    },
+    {
+      "source": "vi-8mib/post-vi/amanda-lod-before.png",
+      "source_sha256": "a91a6005e78010c576b2b91991df019f428230222031474f432641663964e611",
+      "source_dimensions": [
+        640,
+        480
+      ],
+      "display_file": "vi-8mib/display-4x3/amanda-lod-before.png",
+      "display_sha256": "85b6192f5db100fb867b7fbc3f3e99597d3f83f4ea612257287d9741186b60a7",
+      "display_dimensions": [
+        640,
+        480
+      ],
+      "transform": "Pixel-identical copy",
+      "selected_native_matches_30_case_native": true
+    },
+    {
+      "source": "vi-8mib/post-vi/amanda-lod-after.png",
+      "source_sha256": "6d991e28665ec1c19a78d41e5b4848e0581c92d7c4f49702b56c87e50912923e",
+      "source_dimensions": [
+        640,
+        480
+      ],
+      "display_file": "vi-8mib/display-4x3/amanda-lod-after.png",
+      "display_sha256": "aaed083b679690ec759e750bf4ee256202f67860a535a0f766796a9f878b7836",
+      "display_dimensions": [
+        640,
+        480
+      ],
+      "transform": "Pixel-identical copy",
+      "selected_native_matches_30_case_native": true
+    },
+    {
+      "source": "vi-8mib/post-vi/amy-dialogue-before.png",
+      "source_sha256": "9a9616b5e155f92b7898066254084c207a72d611880b5b806abafb21a0854bc4",
+      "source_dimensions": [
+        640,
+        480
+      ],
+      "display_file": "vi-8mib/display-4x3/amy-dialogue-before.png",
+      "display_sha256": "9d1ab1b646a608f1250567f1775398dafe996af5ac9569cd8078bf5995d6def2",
+      "display_dimensions": [
+        640,
+        480
+      ],
+      "transform": "Pixel-identical copy",
+      "selected_native_matches_30_case_native": true
+    },
+    {
+      "source": "vi-8mib/post-vi/amy-dialogue-after.png",
+      "source_sha256": "6ec47633ed4f5307c1e1eb062c7d462ba8c0df3667ee29511b31fbe56a82b4e6",
+      "source_dimensions": [
+        640,
+        480
+      ],
+      "display_file": "vi-8mib/display-4x3/amy-dialogue-after.png",
+      "display_sha256": "5a5a9d73428aaa99a1027bcb457e4997fcf3760f727ebad84ae3203c2663496a",
+      "display_dimensions": [
+        640,
+        480
+      ],
+      "transform": "Pixel-identical copy",
+      "selected_native_matches_30_case_native": true
+    }
+  ]
+}

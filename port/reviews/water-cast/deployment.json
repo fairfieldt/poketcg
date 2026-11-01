@@ -1,0 +1,188 @@
+{
+  "local_builds": [
+    {
+      "variant": "standard",
+      "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-adventure.z64",
+      "bytes": 38322176,
+      "sha256": "58a7c8721712e7007202aa01907b0523314ec8edfc177b3699674ed6b1e0ca0f",
+      "video_mode": "320x240",
+      "diagnostic": 0,
+      "show_fps": true,
+      "steam_deployed": false,
+      "canonical_character_meshes_verified_in_filesystem": [
+        "maps/actor_mark.l64",
+        "lod/actor_mark.l64",
+        "maps/actor_amy.l64",
+        "lod/actor_amy.l64",
+        "maps/actor_joshua.l64",
+        "lod/actor_joshua.l64",
+        "maps/actor_swimmer.l64",
+        "lod/actor_swimmer.l64",
+        "maps/actor_swimmer_palette2.l64",
+        "lod/actor_swimmer_palette2.l64",
+        "maps/actor_amy__lying.l64",
+        "lod/actor_amy__lying.l64"
+      ],
+      "source_commit": "6d0e9b65212a617d393c057b90bfe977af8a89f3",
+      "renderer": "Tiny3D/libdragon"
+    },
+    {
+      "variant": "expansion",
+      "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-expansion.z64",
+      "bytes": 38322176,
+      "sha256": "584f5ef34b7fd40953ddd1ead8d9a11f9fa61fd3b4379c25a689eb455fd37889",
+      "video_mode": "480x360 with 8 MiB; automatic 320x240 with 4 MiB",
+      "diagnostic": 0,
+      "show_fps": true,
+      "steam_deployed": false,
+      "canonical_character_meshes_verified_in_filesystem": [
+        "maps/actor_mark.l64",
+        "lod/actor_mark.l64",
+        "maps/actor_amy.l64",
+        "lod/actor_amy.l64",
+        "maps/actor_joshua.l64",
+        "lod/actor_joshua.l64",
+        "maps/actor_swimmer.l64",
+        "lod/actor_swimmer.l64",
+        "maps/actor_swimmer_palette2.l64",
+        "lod/actor_swimmer_palette2.l64",
+        "maps/actor_amy__lying.l64",
+        "lod/actor_amy__lying.l64"
+      ],
+      "source_commit": "6d0e9b65212a617d393c057b90bfe977af8a89f3",
+      "renderer": "Tiny3D/libdragon"
+    }
+  ],
+  "steam_publication": "User requested leaving both ROMs ready locally; no upload attempted.",
+  "live_saves_modified": false,
+  "active_steam_game_restarted": false,
+  "source_commit": "6d0e9b65212a617d393c057b90bfe977af8a89f3",
+  "web": {
+    "url": "https://poketcg64.exe.xyz/",
+    "tailnet_url": "http://ms.tdf.sh:8091/",
+    "release": "20261101T025003Z-6d0e9b65212a",
+    "updated": true,
+    "changed_asset_bodies_verified": [
+      {
+        "url": "https://poketcg64.exe.xyz/world/maps/actor_mark.l64",
+        "sha256": "534704852ce6363116781380e1b8632c906e181456182dcd05ee635ccf53a179",
+        "bytes": 35084
+      },
+      {
+        "url": "https://poketcg64.exe.xyz/world/textures/t7967c400e0bd639a.png",
+        "sha256": "c6e89890f40071f291553d715743ad0aa45ae60bcef0d3735a592009b5ed804c",
+        "bytes": 234
+      },
+      {
+        "url": "https://poketcg64.exe.xyz/world/maps/actor_amy.l64",
+        "sha256": "160b3c9d74429a6155bc8c7f589fb7a4ea58071432a99b163244f3e48bae6262",
+        "bytes": 38588
+      },
+      {
+        "url": "https://poketcg64.exe.xyz/world/textures/tc00dbb00175246e2.png",
+        "sha256": "d001898deec7b05ac36ddbbc5cebd77fa4661b08d1d628357d6f5bb004e4922e",
+        "bytes": 212
+      },
+      {
+        "url": "https://poketcg64.exe.xyz/world/maps/actor_joshua.l64",
+        "sha256": "1edffea7ccbf1947a8bd95bfd657bf9ad8a3a035aadd97076bdc9a0b89793795",
+        "bytes": 41036
+      },
+      {
+        "url": "https://poketcg64.exe.xyz/world/textures/t3509128f49b88300.png",
+        "sha256": "113f0332a75a759472d8ec8aaa333ba9520f0b41ef36567e86e2557e2c88fbb9",
+        "bytes": 173
+      },
+      {
+        "url": "https://poketcg64.exe.xyz/world/maps/actor_swimmer.l64",
+        "sha256": "efbe6234d9e5490a8ff94ad23b3dcea2ab466ba687ad39a3f5f64fcedea3ab45",
+        "bytes": 40052
+      },
+      {
+        "url": "https://poketcg64.exe.xyz/world/textures/tfaf15290798b4d01.png",
+        "sha256": "7d08b7577e2ceb5acc62f4d241fa30bf0122ae76d3386072215ac7faad9aba3f",
+        "bytes": 196
+      },
+      {
+        "url": "https://poketcg64.exe.xyz/world/maps/actor_swimmer_palette2.l64",
+        "sha256": "60abb4e5c099c32f9a7cec83fa5dab08b3b0fb7c638b8d3ed396363d4ca76ee3",
+        "bytes": 37196
+      },
+      {
+        "url": "https://poketcg64.exe.xyz/world/textures/t76cdaa4656ce8412.png",
+        "sha256": "c0aa4e4a24996677933ac1b33c213e21094e292d0ff0a2e57802cd31d246be91",
+        "bytes": 192
+      },
+      {
+        "url": "https://poketcg64.exe.xyz/world/maps/actor_amy__lying.l64",
+        "sha256": "a8e8ea3ecf9f5c29916bf8897bdf7ce6193a4787b129ffd733753786d266d3dc",
+        "bytes": 36140
+      },
+      {
+        "url": "https://poketcg64.exe.xyz/world/world.json",
+        "sha256": "e5ff20f629821400bae97fa1b4f6f2584f42226aa237e95eedae3b16d783671d",
+        "bytes": 432090
+      },
+      {
+        "url": "http://ms.tdf.sh:8091/world/maps/actor_mark.l64",
+        "sha256": "534704852ce6363116781380e1b8632c906e181456182dcd05ee635ccf53a179",
+        "bytes": 35084
+      },
+      {
+        "url": "http://ms.tdf.sh:8091/world/textures/t7967c400e0bd639a.png",
+        "sha256": "c6e89890f40071f291553d715743ad0aa45ae60bcef0d3735a592009b5ed804c",
+        "bytes": 234
+      },
+      {
+        "url": "http://ms.tdf.sh:8091/world/maps/actor_amy.l64",
+        "sha256": "160b3c9d74429a6155bc8c7f589fb7a4ea58071432a99b163244f3e48bae6262",
+        "bytes": 38588
+      },
+      {
+        "url": "http://ms.tdf.sh:8091/world/textures/tc00dbb00175246e2.png",
+        "sha256": "d001898deec7b05ac36ddbbc5cebd77fa4661b08d1d628357d6f5bb004e4922e",
+        "bytes": 212
+      },
+      {
+        "url": "http://ms.tdf.sh:8091/world/maps/actor_joshua.l64",
+        "sha256": "1edffea7ccbf1947a8bd95bfd657bf9ad8a3a035aadd97076bdc9a0b89793795",
+        "bytes": 41036
+      },
+      {
+        "url": "http://ms.tdf.sh:8091/world/textures/t3509128f49b88300.png",
+        "sha256": "113f0332a75a759472d8ec8aaa333ba9520f0b41ef36567e86e2557e2c88fbb9",
+        "bytes": 173
+      },
+      {
+        "url": "http://ms.tdf.sh:8091/world/maps/actor_swimmer.l64",
+        "sha256": "efbe6234d9e5490a8ff94ad23b3dcea2ab466ba687ad39a3f5f64fcedea3ab45",
+        "bytes": 40052
+      },
+      {
+        "url": "http://ms.tdf.sh:8091/world/textures/tfaf15290798b4d01.png",
+        "sha256": "7d08b7577e2ceb5acc62f4d241fa30bf0122ae76d3386072215ac7faad9aba3f",
+        "bytes": 196
+      },
+      {
+        "url": "http://ms.tdf.sh:8091/world/maps/actor_swimmer_palette2.l64",
+        "sha256": "60abb4e5c099c32f9a7cec83fa5dab08b3b0fb7c638b8d3ed396363d4ca76ee3",
+        "bytes": 37196
+      },
+      {
+        "url": "http://ms.tdf.sh:8091/world/textures/t76cdaa4656ce8412.png",
+        "sha256": "c0aa4e4a24996677933ac1b33c213e21094e292d0ff0a2e57802cd31d246be91",
+        "bytes": 192
+      },
+      {
+        "url": "http://ms.tdf.sh:8091/world/maps/actor_amy__lying.l64",
+        "sha256": "a8e8ea3ecf9f5c29916bf8897bdf7ce6193a4787b129ffd733753786d266d3dc",
+        "bytes": 36140
+      },
+      {
+        "url": "http://ms.tdf.sh:8091/world/world.json",
+        "sha256": "e5ff20f629821400bae97fa1b4f6f2584f42226aa237e95eedae3b16d783671d",
+        "bytes": 432090
+      }
+    ]
+  }
+}

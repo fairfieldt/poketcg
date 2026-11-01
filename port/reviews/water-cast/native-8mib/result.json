@@ -1,0 +1,424 @@
+{
+  "passed": true,
+  "ram_mib": 8,
+  "dimensions": [
+    480,
+    360
+  ],
+  "rom_file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/water-cast-review/full-review.z64",
+  "rom_sha256": "ae52dd821ecb84722df11c0518ca2078179c35b92fcba043f013a6d89e77fa0c",
+  "selected_vi": false,
+  "staged_inputs_sha256": "8ba7e588174e4980e05100bb76c0892119bff2108ade004db1bdf39c712fde08",
+  "resident_footprint": {
+    "method": "Actual normal production main entry graph (DIAGNOSTIC=0) and duel/story roots retained. Any measured resident deficit plus a 16 KiB bench allowance is reserved as retained static BSS before rendering. Both allocatable section sum and LOAD end must meet the conservative floor.",
+    "production": {
+      "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/expansion/poketcg-expansion.elf",
+      "sha256": "6ec734a409f63d146e254b56b0596deff585eb2b67a9b68af436b75a83ec10de",
+      "sections": {
+        "text": 1353984,
+        "data": 44220,
+        "bss": 173956
+      },
+      "resident_sections": 1572160,
+      "load_base": 2147483648,
+      "load_end": 2149056464,
+      "resident_load_span": 1572816
+    },
+    "unpadded_reference": {
+      "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/water-cast-review/resident-unpadded.elf",
+      "sha256": "8a9b0c423bf0d6d6a6224410df95b0c5b6f2dd070c9be5d5ccf6fbf8b96f7861",
+      "sections": {
+        "text": 1342960,
+        "data": 44268,
+        "bss": 173932
+      },
+      "resident_sections": 1561160,
+      "load_base": 2147483648,
+      "load_end": 2149045456,
+      "resident_load_span": 1561808
+    },
+    "review_before_new_padding": {
+      "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/water-cast-review/water-cast.elf",
+      "sha256": "77c7039b1f3c9b736fad415f0e99d41f8e94523778f403caa1c423ba000524f9",
+      "sections": {
+        "text": 1342960,
+        "data": 44268,
+        "bss": 201324
+      },
+      "resident_sections": 1588552,
+      "load_base": 2147483648,
+      "load_end": 2149072848,
+      "resident_load_span": 1589200
+    },
+    "review": {
+      "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/water-cast-review/water-cast.elf",
+      "sha256": "77c7039b1f3c9b736fad415f0e99d41f8e94523778f403caa1c423ba000524f9",
+      "sections": {
+        "text": 1342960,
+        "data": 44268,
+        "bss": 201324
+      },
+      "resident_sections": 1588552,
+      "load_base": 2147483648,
+      "load_end": 2149072848,
+      "resident_load_span": 1589200
+    },
+    "required_symbols": {
+      "production_entry": "80019d60 00000870 T production_entry",
+      "tcg_run_duel": "80069f20 00000464 T tcg_run_duel",
+      "ow_new_game": "80074d00 00000104 T ow_new_game",
+      "n64_duel_play": "800313e0 00000470 T n64_duel_play",
+      "adventure_intro_play": "80076d20 000004a0 T adventure_intro_play",
+      "adventure_name_player": "8007ac20 00000644 T adventure_name_player"
+    },
+    "bench_allowance_bytes": 16384,
+    "static_resident_padding_bytes": 27392,
+    "passed": true
+  },
+  "accepted_art_pixel_matches": 30,
+  "runtime_video_modes": [
+    {
+      "width": 480,
+      "height": 360,
+      "ram": 8388608,
+      "highres": 1
+    }
+  ],
+  "canonical_state_unchanged": true,
+  "method": "Actual completed production N64 RDP framebuffers. Six views per character show front/quarter/both profiles/back/walk. Full and actual gameplay LOD assets are separate cases. Source Water NPC anchors, standing/lying Amy and production conversation cameras are used. Timings are emulated CP0 cadence, not hardware measurements.",
+  "frames": [
+    {
+      "file": "mark-full-before.png",
+      "sha256": "64196306354272dba57ff077b1e32f4aa1296bcd27842fc61c816145b2ef83f9",
+      "pixel_sha256": "049a19ed344db5a88ec7bb7118b507c768cad7d17b7b96ccc0d06a19cb346eef"
+    },
+    {
+      "file": "mark-full-after.png",
+      "sha256": "b84d2e9dd210f831088829b9f41d9469ba38060fecb38622c4c26fb8265789f0",
+      "pixel_sha256": "d5c37e5495f97745cbe6c4bd582e914e9cf97dc15c15bf9522e3d4b597b19c9e"
+    },
+    {
+      "file": "mark-lod-before.png",
+      "sha256": "4769fda6a1742344f1978e200f5f94c4f2aef07fa6fee9b28c69696b03177640",
+      "pixel_sha256": "ca942ac5bcf92a6ecc2fa059fea37cb1fe47ff7feed7eabe8c9ca6d94227b911"
+    },
+    {
+      "file": "mark-lod-after.png",
+      "sha256": "7c59e699e6edcbef57a4859e460aae3e02e624a0656d93231d36ff04c216d08d",
+      "pixel_sha256": "134e15ef1c4cc215d80d33d06fda7c851763803f46e16775bde84db8b575b626"
+    },
+    {
+      "file": "amy-full-before.png",
+      "sha256": "6a858b1bedcc6661497827bfb5ba59b47d8adad0b73a10e264e5e0f4fd64a530",
+      "pixel_sha256": "cfffb4fcb572d92d2d59a38f21fc156f95fa0b362a50126f852c89bda7a5d0b8"
+    },
+    {
+      "file": "amy-full-after.png",
+      "sha256": "e87f0bf4b2bae5284010faebc34d3ac2fba542f89329f988c7e47959f4c89a52",
+      "pixel_sha256": "c877dfa5804a772a4e68118e9d7912fe189544b2c812cec7ddfc9991a351555d"
+    },
+    {
+      "file": "amy-lod-before.png",
+      "sha256": "a37776a797dc68fa08821931751a286c8ffc1ee5e3da255d05241241d553252d",
+      "pixel_sha256": "6e32a6e4dbec72ae0e4a65b4993f3c5bba8537c46fa7f0360b83bc462ef35055"
+    },
+    {
+      "file": "amy-lod-after.png",
+      "sha256": "d195ef2f44c0ec0756aa0929c4fd3bebe4cf3d4df02951c00168c051ef7a8841",
+      "pixel_sha256": "d866706629ee67143288fcb2edacff25d3c8f5b17de1286b180f07713753eee1"
+    },
+    {
+      "file": "joshua-full-before.png",
+      "sha256": "23660c980eebb5d7fb738a67f888b06bdd253543eb5abd99b2f053f9746beba6",
+      "pixel_sha256": "fd646a812b4d0e4a382e9be945b01fe2c70accf267a12713b75ff8b51996aedc"
+    },
+    {
+      "file": "joshua-full-after.png",
+      "sha256": "5afe6b0c477647bd956e20fc58abc9e487135320c9c01049eb35c2dc26c886e5",
+      "pixel_sha256": "2a1c872f43325d053c67ee59d176906d81b4352a370149efc51dfc1e60799b7e"
+    },
+    {
+      "file": "joshua-lod-before.png",
+      "sha256": "f5a5bc7ab8c4ff3a032eda7e50669acb88cd7dc3d05dc6c1eea042bf0bfc48ca",
+      "pixel_sha256": "6614c3cbe2f7059f489919565bed1e775beae8c1057074dab4e4b2a6417aebc1"
+    },
+    {
+      "file": "joshua-lod-after.png",
+      "sha256": "97fac40ec2474c407ebf4ed036fe0672a47c24ddab4f2fc6d81ee7e9ccf560b8",
+      "pixel_sha256": "b61706eae6ad2a62856af2ffa7bd630d34bbfc81cb1c40cb90561d60870ebc4e"
+    },
+    {
+      "file": "sara-full-before.png",
+      "sha256": "d3ecd42b23a88f710cb1f8edbe0cd0279df076335173a4446e12eaded6f26185",
+      "pixel_sha256": "7adf3cb6e9317c0f5ffa58e7226cce7f83baff5db13316ea8bba97595f837f55"
+    },
+    {
+      "file": "sara-full-after.png",
+      "sha256": "f115b344aa3904a356209a85250845aef9a334cd33ca12c30326f8219a39ec8b",
+      "pixel_sha256": "3019a85a1ab20dd99841189f45eaeff07a510e4691fa1ba3a33816c527b39d7c"
+    },
+    {
+      "file": "sara-lod-before.png",
+      "sha256": "c029da0c3d57fe8684c05cd12386cecd2b0b1fd164541453df6ca0ad0a02e622",
+      "pixel_sha256": "7f07b3b7ec3045c40fa04332095814afd11ce738988e45b926d6266af21f68d0"
+    },
+    {
+      "file": "sara-lod-after.png",
+      "sha256": "70c9239f6ac724323153bb412c2c6114f90ebae4dcf3ec2ee28c858ed00eb02d",
+      "pixel_sha256": "f97afab0355df4c93825efce4fa1cdd77b32c6c85ce07dce941d79f37f8c3649"
+    },
+    {
+      "file": "amanda-full-before.png",
+      "sha256": "2b6a5a65145acd495f88c701ce72921b3d7ac1086cc647f0e19fa2836d607642",
+      "pixel_sha256": "53c0eb102c2be96442faf223eac7bbd6ce7e054520fea720a89ac5dd57ee45f9"
+    },
+    {
+      "file": "amanda-full-after.png",
+      "sha256": "9ef045330bfa2e3ca0ae5a64655d640f64905f8c1129efa39e11a87a209e54b9",
+      "pixel_sha256": "a31c332399f1e7bcfd34f8b509ff8134b0afd254e5ca722c5f26de5f5d250453"
+    },
+    {
+      "file": "amanda-lod-before.png",
+      "sha256": "aa36430a1e9a6c5fb6ddc9ee0e1f48b0cc40be630e26474d47dbc542e706fbaf",
+      "pixel_sha256": "9b11cbc90aa189cb5a69d43f7b255ce66fc00764b580a7fc510652d4ea35b85f"
+    },
+    {
+      "file": "amanda-lod-after.png",
+      "sha256": "86250283ea799f3eac3e1617f6ff4520e9219e23bb3baef04f952db714da0c14",
+      "pixel_sha256": "17f644108f34c2c0736e5f51fb088b537e4143bbf052fbfb58cf673c5d24e8c0"
+    },
+    {
+      "file": "water-lying-before.png",
+      "sha256": "68e97667bf7b679f0f068b0c640ffb3ca29d7eaaef704356cdb63de618ca333d",
+      "pixel_sha256": "c314fa22310b741aaec0a04428c1cfed45a877b219b25fda8ac57f7f407cd1d1"
+    },
+    {
+      "file": "water-lying-after.png",
+      "sha256": "6dd56d68d9f7f8918f5114dc05d087835cacd31ff28684ed93963dc7a5c19a80",
+      "pixel_sha256": "4528a0073df3c55c52ce8d8685c34c611e8c6bcefbf5f507ced6898d7c8f073b"
+    },
+    {
+      "file": "amy-dialogue-before.png",
+      "sha256": "a64b3f7defb84f93b210f887a24e0e91b4725b7d5623c6d058dbb20b951c5c20",
+      "pixel_sha256": "90d663ec6f45b53ea22e534bcf170d15b96ca1e76af91daa47a5c9566f16ce27"
+    },
+    {
+      "file": "amy-dialogue-after.png",
+      "sha256": "9f7143552b02fe8b2c54672748a00da4722d8e384db0b7f445c1113591787f27",
+      "pixel_sha256": "b94c72ab929d900566ccf03c58cb366f05fe8bf59cb2394780e0aa2cd74fb4e5"
+    },
+    {
+      "file": "joshua-dialogue-before.png",
+      "sha256": "77ab7be0f73603c718633f9d41d1ca9d675df4dea2a783ca16956eef27b17e65",
+      "pixel_sha256": "a4983aa9752f87bc775207203739d8290d558d19736700c78cd856e362e91b27"
+    },
+    {
+      "file": "joshua-dialogue-after.png",
+      "sha256": "34ca92356158dafc3252185cc638e0b70a8e88ac326e9c97cbbdd319290f8a1f",
+      "pixel_sha256": "e3d7bb62b58f19e82e1a3d37715ea2727b0a6be9dc9ab8acf5db1a85b053b36b"
+    },
+    {
+      "file": "sara-dialogue-before.png",
+      "sha256": "288248937d9393fc0013317008110c7de0d42d2cdcbe3d986b13c35d8cb1e0b4",
+      "pixel_sha256": "8e104d0c9c8ac1844adf517bf02b368c12db7c4430b931b0820526cdb13090f7"
+    },
+    {
+      "file": "sara-dialogue-after.png",
+      "sha256": "88bb7e565f09ab5c637d89a30df0dcf627e87c8fb8a7fb0baa8734ad07e246c7",
+      "pixel_sha256": "656aa5482e0568d3e732eaf5b882a77b1fd23907eb8e64f70f93b1fd6f2677b4"
+    },
+    {
+      "file": "amanda-dialogue-before.png",
+      "sha256": "84055bae22e11778bdc44f7261e94badae0e5e72154d7705d65e6158b1d31326",
+      "pixel_sha256": "44cdc8a804ebaf2dbdd0627031e5029d5a4a08c500a65a41d8cf6d4af218ec3a"
+    },
+    {
+      "file": "amanda-dialogue-after.png",
+      "sha256": "7b609bc9495a2d43732ddf44d6d8f984b329710e9dc9b21a3313651cc90b41e1",
+      "pixel_sha256": "c3f8b27b97bd2d3861a44df25339132b37b3c0c3b96b79c918919da3cbad146c"
+    }
+  ],
+  "cases": [
+    {
+      "name": "mark-full-before",
+      "free_heap": 4654960,
+      "mean_cadence_us": 35140,
+      "samples": 5
+    },
+    {
+      "name": "mark-full-after",
+      "free_heap": 4660976,
+      "mean_cadence_us": 32861,
+      "samples": 5
+    },
+    {
+      "name": "mark-lod-before",
+      "free_heap": 4673488,
+      "mean_cadence_us": 29073,
+      "samples": 5
+    },
+    {
+      "name": "mark-lod-after",
+      "free_heap": 4670696,
+      "mean_cadence_us": 31443,
+      "samples": 5
+    },
+    {
+      "name": "amy-full-before",
+      "free_heap": 4671008,
+      "mean_cadence_us": 28114,
+      "samples": 5
+    },
+    {
+      "name": "amy-full-after",
+      "free_heap": 4658800,
+      "mean_cadence_us": 33325,
+      "samples": 5
+    },
+    {
+      "name": "amy-lod-before",
+      "free_heap": 4675128,
+      "mean_cadence_us": 33405,
+      "samples": 5
+    },
+    {
+      "name": "amy-lod-after",
+      "free_heap": 4668488,
+      "mean_cadence_us": 30861,
+      "samples": 5
+    },
+    {
+      "name": "joshua-full-before",
+      "free_heap": 4664160,
+      "mean_cadence_us": 31929,
+      "samples": 5
+    },
+    {
+      "name": "joshua-full-after",
+      "free_heap": 4659600,
+      "mean_cadence_us": 35413,
+      "samples": 5
+    },
+    {
+      "name": "joshua-lod-before",
+      "free_heap": 4676808,
+      "mean_cadence_us": 32557,
+      "samples": 5
+    },
+    {
+      "name": "joshua-lod-after",
+      "free_heap": 4669792,
+      "mean_cadence_us": 31277,
+      "samples": 5
+    },
+    {
+      "name": "sara-full-before",
+      "free_heap": 4671024,
+      "mean_cadence_us": 28148,
+      "samples": 5
+    },
+    {
+      "name": "sara-full-after",
+      "free_heap": 4659896,
+      "mean_cadence_us": 34500,
+      "samples": 5
+    },
+    {
+      "name": "sara-lod-before",
+      "free_heap": 4675368,
+      "mean_cadence_us": 33167,
+      "samples": 5
+    },
+    {
+      "name": "sara-lod-after",
+      "free_heap": 4673952,
+      "mean_cadence_us": 32870,
+      "samples": 5
+    },
+    {
+      "name": "amanda-full-before",
+      "free_heap": 4671080,
+      "mean_cadence_us": 33350,
+      "samples": 5
+    },
+    {
+      "name": "amanda-full-after",
+      "free_heap": 4661656,
+      "mean_cadence_us": 33227,
+      "samples": 5
+    },
+    {
+      "name": "amanda-lod-before",
+      "free_heap": 4675400,
+      "mean_cadence_us": 29543,
+      "samples": 5
+    },
+    {
+      "name": "amanda-lod-after",
+      "free_heap": 4675584,
+      "mean_cadence_us": 33368,
+      "samples": 5
+    },
+    {
+      "name": "water-lying-before",
+      "free_heap": 4191680,
+      "mean_cadence_us": 33269,
+      "samples": 8
+    },
+    {
+      "name": "water-lying-after",
+      "free_heap": 4140368,
+      "mean_cadence_us": 31610,
+      "samples": 8
+    },
+    {
+      "name": "amy-dialogue-before",
+      "free_heap": 4192176,
+      "mean_cadence_us": 40398,
+      "samples": 8
+    },
+    {
+      "name": "amy-dialogue-after",
+      "free_heap": 4143144,
+      "mean_cadence_us": 42033,
+      "samples": 8
+    },
+    {
+      "name": "joshua-dialogue-before",
+      "free_heap": 4191664,
+      "mean_cadence_us": 40533,
+      "samples": 8
+    },
+    {
+      "name": "joshua-dialogue-after",
+      "free_heap": 4140392,
+      "mean_cadence_us": 41860,
+      "samples": 8
+    },
+    {
+      "name": "sara-dialogue-before",
+      "free_heap": 4191664,
+      "mean_cadence_us": 38166,
+      "samples": 8
+    },
+    {
+      "name": "sara-dialogue-after",
+      "free_heap": 4140368,
+      "mean_cadence_us": 38913,
+      "samples": 8
+    },
+    {
+      "name": "amanda-dialogue-before",
+      "free_heap": 4191680,
+      "mean_cadence_us": 37477,
+      "samples": 8
+    },
+    {
+      "name": "amanda-dialogue-after",
+      "free_heap": 4140376,
+      "mean_cadence_us": 37846,
+      "samples": 8
+    }
+  ],
+  "wall_seconds": 110.52
+}

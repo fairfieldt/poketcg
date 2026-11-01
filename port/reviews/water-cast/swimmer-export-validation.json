@@ -1,0 +1,161 @@
+{
+  "packed_position_rule": "truncf(float32(local_vertex_coordinate*32.0f))/32; rigid pivots apply afterward",
+  "passed": true,
+  "scope": "Actual canonical exported L643s, reviewed read-only; no canonical asset writes. Exact shared-body triangle-stream geometry, UVs and rigid pivots; intentionally distinct owning heads and face paint.",
+  "models": {
+    "sara": {
+      "file": "port/characters/assets/models/swimmer/scene.l64",
+      "sha256": "518dbead1213363e682b1b4abc7c8c6dda5e71867c5a6899a10ac774924807ea",
+      "vertices": 1433,
+      "triangles": 904,
+      "batches": 7,
+      "part_pivot_groups": [
+        [
+          0,
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          0,
+          [
+            0.0,
+            1.41,
+            0.0
+          ]
+        ],
+        [
+          1,
+          [
+            -0.1428,
+            0.6768,
+            0.0
+          ]
+        ],
+        [
+          2,
+          [
+            0.1428,
+            0.6768,
+            0.0
+          ]
+        ],
+        [
+          3,
+          [
+            -0.336,
+            1.2784,
+            0.0
+          ]
+        ],
+        [
+          4,
+          [
+            0.336,
+            1.2784,
+            0.0
+          ]
+        ]
+      ],
+      "shared_body_geometry_uv_rig_sha256": "99e5ac36df7a28b7d884e104fff44ab64c85d445d320baa6a2e2eeea2bb95d2d",
+      "head_geometry_uv_rig_sha256": "3a8b1c38a7920438379cd778e573b2d21fff2d2a8ef73b4f302ca52d4a75bf67",
+      "face_texture": "fc_e7ad63_wt_swi_eb2e",
+      "face_sha256": "7d08b7577e2ceb5acc62f4d241fa30bf0122ae76d3386072215ac7faad9aba3f",
+      "face_feature_sha256": "7082ef930cf445ab17246d00fa11698b1e568494378de0af804f88825cef2266",
+      "skin_rgb8": [
+        231,
+        173,
+        99
+      ],
+      "texture_dimensions": [
+        32,
+        32
+      ],
+      "rgba16_texture_bytes": 2048,
+      "quantized_zero_area_triangles": 0,
+      "quantized_duplicate_triangles": 0
+    },
+    "amanda": {
+      "file": "port/characters/assets/models/swimmer/variants/swimmer_palette2/scene.l64",
+      "sha256": "649183cf16f912cb99830440d4f99b029ece9ca5850b861250a9adf4aaaec384",
+      "vertices": 1333,
+      "triangles": 828,
+      "batches": 7,
+      "part_pivot_groups": [
+        [
+          0,
+          [
+            0.0,
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          0,
+          [
+            0.0,
+            1.41,
+            0.0
+          ]
+        ],
+        [
+          1,
+          [
+            -0.1428,
+            0.6768,
+            0.0
+          ]
+        ],
+        [
+          2,
+          [
+            0.1428,
+            0.6768,
+            0.0
+          ]
+        ],
+        [
+          3,
+          [
+            -0.336,
+            1.2784,
+            0.0
+          ]
+        ],
+        [
+          4,
+          [
+            0.336,
+            1.2784,
+            0.0
+          ]
+        ]
+      ],
+      "shared_body_geometry_uv_rig_sha256": "99e5ac36df7a28b7d884e104fff44ab64c85d445d320baa6a2e2eeea2bb95d2d",
+      "head_geometry_uv_rig_sha256": "6697a8072d45056eebacf70f4c0ebd1f9cd8e2879635cd02398bcee3b8fbedc2",
+      "face_texture": "fc_e7ad63_wt_swi_3b7b",
+      "face_sha256": "c0aa4e4a24996677933ac1b33c213e21094e292d0ff0a2e57802cd31d246be91",
+      "face_feature_sha256": "cab860c7d0c77c9ee2ddb3bb9ee9a9b8238f2871f19d6c4f42bff98d754d5823",
+      "skin_rgb8": [
+        231,
+        173,
+        99
+      ],
+      "texture_dimensions": [
+        32,
+        32
+      ],
+      "rgba16_texture_bytes": 2048,
+      "quantized_zero_area_triangles": 0,
+      "quantized_duplicate_triangles": 0
+    }
+  },
+  "native_skin_validation": {
+    "face_vertices_checked": 252,
+    "maximum_adjacent_skin_rgb8_difference": 1,
+    "directional_shading_matches_face_geometry": true,
+    "consistent_rgb5_skin_and_opaque_face_backgrounds": true
+  }
+}

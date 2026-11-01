@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "modes": {
+    "4": {
+      "native_frames": 30,
+      "rom_sha256": "ae52dd821ecb84722df11c0518ca2078179c35b92fcba043f013a6d89e77fa0c",
+      "minimum_free_heap_bytes": 906064,
+      "actual_vi_frames": 6,
+      "vi_art_only_rom_sha256": "13381677f86024c8a54da6a97e67d8cdf25d78bf748923ad478bc767a1ddcc33"
+    },
+    "8": {
+      "native_frames": 30,
+      "rom_sha256": "ae52dd821ecb84722df11c0518ca2078179c35b92fcba043f013a6d89e77fa0c",
+      "minimum_free_heap_bytes": 4140368,
+      "actual_vi_frames": 6,
+      "vi_art_only_rom_sha256": "13381677f86024c8a54da6a97e67d8cdf25d78bf748923ad478bc767a1ddcc33"
+    }
+  },
+  "full_production_resident_budget_covered": true,
+  "actual_vi_is_earlier_art_only_rom": true
+}

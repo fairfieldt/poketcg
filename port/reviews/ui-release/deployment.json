@@ -80,34 +80,63 @@
     "../actor-ground-shadow-fix/README.md"
   ],
   "latest_local_builds": {
-    "source_commit": "437152d37ee645f11b09e76143efc43c36542693",
+    "source_commit": "6d0e9b65212a617d393c057b90bfe977af8a89f3",
     "builds": [
       {
         "variant": "standard",
         "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-adventure.z64",
-        "bytes": 38273024,
-        "sha256": "a6e2245cf7cef681c1ef1638f3a6931dc3a209c4a5ca7ec3e85633e00e639190",
-        "source_commit": "437152d37ee645f11b09e76143efc43c36542693",
+        "bytes": 38322176,
+        "sha256": "58a7c8721712e7007202aa01907b0523314ec8edfc177b3699674ed6b1e0ca0f",
         "video_mode": "320x240",
-        "renderer": "Tiny3D/libdragon",
         "diagnostic": 0,
         "show_fps": true,
-        "steam_deployed": false
+        "steam_deployed": false,
+        "canonical_character_meshes_verified_in_filesystem": [
+          "maps/actor_mark.l64",
+          "lod/actor_mark.l64",
+          "maps/actor_amy.l64",
+          "lod/actor_amy.l64",
+          "maps/actor_joshua.l64",
+          "lod/actor_joshua.l64",
+          "maps/actor_swimmer.l64",
+          "lod/actor_swimmer.l64",
+          "maps/actor_swimmer_palette2.l64",
+          "lod/actor_swimmer_palette2.l64",
+          "maps/actor_amy__lying.l64",
+          "lod/actor_amy__lying.l64"
+        ],
+        "source_commit": "6d0e9b65212a617d393c057b90bfe977af8a89f3",
+        "renderer": "Tiny3D/libdragon"
       },
       {
         "variant": "expansion",
         "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/poketcg-expansion.z64",
-        "bytes": 38273024,
-        "sha256": "c689ef0a24586be9a8a57484446d371efb2c0f63f1f22a4a86ee8610e12c1f20",
-        "source_commit": "437152d37ee645f11b09e76143efc43c36542693",
+        "bytes": 38322176,
+        "sha256": "584f5ef34b7fd40953ddd1ead8d9a11f9fa61fd3b4379c25a689eb455fd37889",
         "video_mode": "480x360 with 8 MiB; automatic 320x240 with 4 MiB",
-        "renderer": "Tiny3D/libdragon",
         "diagnostic": 0,
         "show_fps": true,
-        "steam_deployed": false
+        "steam_deployed": false,
+        "canonical_character_meshes_verified_in_filesystem": [
+          "maps/actor_mark.l64",
+          "lod/actor_mark.l64",
+          "maps/actor_amy.l64",
+          "lod/actor_amy.l64",
+          "maps/actor_joshua.l64",
+          "lod/actor_joshua.l64",
+          "maps/actor_swimmer.l64",
+          "lod/actor_swimmer.l64",
+          "maps/actor_swimmer_palette2.l64",
+          "lod/actor_swimmer_palette2.l64",
+          "maps/actor_amy__lying.l64",
+          "lod/actor_amy__lying.l64"
+        ],
+        "source_commit": "6d0e9b65212a617d393c057b90bfe977af8a89f3",
+        "renderer": "Tiny3D/libdragon"
       }
     ],
-    "steam_publication": "User requested leaving both ROMs ready locally; no upload attempted.",
-    "details": "port/reviews/prop-remodel/deployment.json"
-  }
+    "steam_deployed": false,
+    "details": "port/reviews/water-cast/deployment.json"
+  },
+  "public_web_url": "https://poketcg64.exe.xyz/"
 }

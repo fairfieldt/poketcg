@@ -1,0 +1,6 @@
+{
+  "passed": true,
+  "maps": 34,
+  "errors": [],
+  "method": "Existing headless Chromium WebGL integration test against canonical shared models; all34 rooms, original map patches, naming portrait, no GL/page errors."
+}

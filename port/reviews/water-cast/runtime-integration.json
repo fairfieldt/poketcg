@@ -1,0 +1,44 @@
+{
+  "passed": true,
+  "native_inputs_byte_exact": {
+    "maps/actor_mark.l64": "534704852ce6363116781380e1b8632c906e181456182dcd05ee635ccf53a179",
+    "lod/actor_mark.l64": "2407025f512712569bf7d6a80347818896fbe07cbe6aaf21d7fcd029f5f38054",
+    "textures/t7967c400e0bd639a.png": "c6e89890f40071f291553d715743ad0aa45ae60bcef0d3735a592009b5ed804c",
+    "maps/actor_amy.l64": "160b3c9d74429a6155bc8c7f589fb7a4ea58071432a99b163244f3e48bae6262",
+    "lod/actor_amy.l64": "783ab3385f52bcb7f805f57d56b32938bc8c0033809a02adf9536d11560482cb",
+    "textures/tc00dbb00175246e2.png": "d001898deec7b05ac36ddbbc5cebd77fa4661b08d1d628357d6f5bb004e4922e",
+    "maps/actor_joshua.l64": "1edffea7ccbf1947a8bd95bfd657bf9ad8a3a035aadd97076bdc9a0b89793795",
+    "lod/actor_joshua.l64": "8bc805cfe5c41d234d650d2e18bd5a58604dc00e147a4100677fc2bcb3424404",
+    "textures/t3509128f49b88300.png": "113f0332a75a759472d8ec8aaa333ba9520f0b41ef36567e86e2557e2c88fbb9",
+    "maps/actor_swimmer.l64": "efbe6234d9e5490a8ff94ad23b3dcea2ab466ba687ad39a3f5f64fcedea3ab45",
+    "lod/actor_swimmer.l64": "79bc449b3b3e9d9107c9bbe771c02bff1702919516516927271fb6e3c35d8214",
+    "textures/tfaf15290798b4d01.png": "7d08b7577e2ceb5acc62f4d241fa30bf0122ae76d3386072215ac7faad9aba3f",
+    "maps/actor_swimmer_palette2.l64": "60abb4e5c099c32f9a7cec83fa5dab08b3b0fb7c638b8d3ed396363d4ca76ee3",
+    "lod/actor_swimmer_palette2.l64": "ee1e8d305554cd2c206c83d2d03d71b69916eb968150302b4a05269596effbb8",
+    "textures/t76cdaa4656ce8412.png": "c0aa4e4a24996677933ac1b33c213e21094e292d0ff0a2e57802cd31d246be91",
+    "maps/actor_amy__lying.l64": "a8e8ea3ecf9f5c29916bf8897bdf7ce6193a4787b129ffd733753786d266d3dc",
+    "lod/actor_amy__lying.l64": "50954b62fc1482b1264872a9f3fb3842b36c6268fe8c1e28bac34aedf2dd2a72"
+  },
+  "changed_runtime_files": [
+    "lod/actor_amy.l64",
+    "lod/actor_amy__lying.l64",
+    "lod/actor_joshua.l64",
+    "lod/actor_mark.l64",
+    "lod/actor_swimmer.l64",
+    "lod/actor_swimmer_palette2.l64",
+    "maps/actor_amy.l64",
+    "maps/actor_amy__lying.l64",
+    "maps/actor_joshua.l64",
+    "maps/actor_mark.l64",
+    "maps/actor_swimmer.l64",
+    "maps/actor_swimmer_palette2.l64"
+  ],
+  "unchanged_runtime_mesh_texture_files": 139,
+  "rooms_permissions_npc_anchors_cameras_unchanged": true,
+  "world_changed_keys": [
+    "meshes",
+    "texture_count",
+    "individual_characters"
+  ],
+  "only_six_character_metadata_records_changed": true
+}

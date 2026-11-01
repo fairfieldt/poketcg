@@ -1,0 +1,106 @@
+{
+  "passed": true,
+  "native_frames": 60,
+  "original_vi_frames": 12,
+  "raw_vi_preserved": true,
+  "display_aspect": "4:3; derivatives explicitly recorded in each display-provenance.json",
+  "awake_amy_fixture": {
+    "source": "src/scripts/water_club.asm:Script_MeetAmy",
+    "npc_xy": [
+      20,
+      4
+    ],
+    "player_xy": [
+      20,
+      6
+    ],
+    "animation": "SPRITE_ANIM_BLUE_NPC_UP",
+    "npc_flags": 0,
+    "player_direction": "NORTH",
+    "original_lying_fixture_xy": [
+      22,
+      4
+    ]
+  },
+  "models": "Mark, Amy, Joshua, Sara and Amanda; full and actual gameplay LOD six-view galleries plus source-room conversations. Amy lying/awake tested separately.",
+  "geometry_gate": {
+    "families": 4,
+    "full_exports": 6,
+    "actual_lod_exports": 6,
+    "exact_float32_truncation": true,
+    "head_batches_full_and_lod_exact": true,
+    "raw_and_packed_surface_checks": true,
+    "packed_components_closed_outward": true
+  },
+  "private_after_inventory": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/water-cast-review/after-inventory.json",
+  "private_after_inventory_sha256": "ea4023407a2503bd020be7be532bea6238fb1fa93b913853ede6db77d6d34521",
+  "private_staged_inputs_sha256": "8ba7e588174e4980e05100bb76c0892119bff2108ade004db1bdf39c712fde08",
+  "modes": [
+    {
+      "ram_mib": 4,
+      "native_dimensions": [
+        320,
+        240
+      ],
+      "native_frames": 30,
+      "native_resident_memory_rom_sha256": "ae52dd821ecb84722df11c0518ca2078179c35b92fcba043f013a6d89e77fa0c",
+      "resident_elf_sha256": "77c7039b1f3c9b736fad415f0e99d41f8e94523778f403caa1c423ba000524f9",
+      "minimum_free_heap": 906064,
+      "accepted_art_pixel_matches": 30,
+      "source_ow_state_unchanged": true,
+      "vi_art_frames": 6,
+      "vi_dimensions": [
+        [
+          640,
+          240
+        ]
+      ],
+      "vi_art_only_rom_sha256": "13381677f86024c8a54da6a97e67d8cdf25d78bf748923ad478bc767a1ddcc33",
+      "vi_missing": [],
+      "vi_callback_rgb_pixels_matched": 921600,
+      "comparison": "vi-4mib/comparison-4x3.png"
+    },
+    {
+      "ram_mib": 8,
+      "native_dimensions": [
+        480,
+        360
+      ],
+      "native_frames": 30,
+      "native_resident_memory_rom_sha256": "ae52dd821ecb84722df11c0518ca2078179c35b92fcba043f013a6d89e77fa0c",
+      "resident_elf_sha256": "77c7039b1f3c9b736fad415f0e99d41f8e94523778f403caa1c423ba000524f9",
+      "minimum_free_heap": 4140368,
+      "accepted_art_pixel_matches": 30,
+      "source_ow_state_unchanged": true,
+      "vi_art_frames": 6,
+      "vi_dimensions": [
+        [
+          640,
+          480
+        ]
+      ],
+      "vi_art_only_rom_sha256": "13381677f86024c8a54da6a97e67d8cdf25d78bf748923ad478bc767a1ddcc33",
+      "vi_missing": [],
+      "vi_callback_rgb_pixels_matched": 1843200,
+      "comparison": "vi-8mib/comparison-4x3.png"
+    }
+  ],
+  "limits": "Free-heap minima describe only these Water Club model/room/conversation fixtures with a retained full-production resident budget plus bench allowance. They do not establish maximum duel/story/save-service heap use or physical-hardware frame rate. Awake Amy retains source-faithful foreground Joshua; production cameras and visibility were unchanged.",
+  "resident_memory_proof": {
+    "method": "Actual normal production main entry graph (DIAGNOSTIC=0) and duel/story roots retained. Any measured resident deficit plus a 16 KiB bench allowance is reserved as retained static BSS before rendering. Both allocatable section sum and LOAD end must meet the conservative floor.",
+    "production_resident_sections": 1572160,
+    "production_load_span": 1572816,
+    "review_resident_sections": 1588552,
+    "review_load_span": 1589200,
+    "retained_static_padding_bytes": 27392,
+    "bench_allowance_bytes": 16384,
+    "report": "resident-footprint.json",
+    "passed": true
+  },
+  "visual_identity": {
+    "native_frames_matching_prior_accepted_art": 60,
+    "selected_vi_native_frames_matching_current_resident_sweep": 12,
+    "method": "Every new full-resident-budget framebuffer matches the previously accepted RGBA pixel hash exactly; the twelve selected native frames also match those feeding the original VI art captures."
+  },
+  "vi_provenance_scope": "The twelve preserved original VI PNGs were recorded earlier from the smaller art-only diagnostic ROM (13381677...). They prove filtered appearance, not full-game memory headroom. The corrected full-resident-budget ROM (ae52dd82...) was recaptured for all60 native frames, with identical visual pixels. No additional VI recapture was needed or performed."
+}

@@ -1,0 +1,54 @@
+{
+  "method": "Both columns are actual 320x240 production-renderer N64 framebuffers. Earlier trial is superseded; refined full frames are SHA-identical to the final safe-LOD capture. Crop board uses nearest-neighbor enlargement only. No painted/simulated replacement frames.",
+  "head_crop_boxes": {
+    "front": [
+      32,
+      140,
+      76,
+      178
+    ],
+    "side": [
+      138,
+      32,
+      182,
+      70
+    ]
+  },
+  "models": [
+    {
+      "actor": "mark",
+      "earlier": "port/reviews/water-cast/eye-refinement-earlier/mark-full-after.png",
+      "earlier_sha256": "0fc4f4dde774799bd6b97b165231cb1abfdf7133c8a46846d7e4edcaff6d99f3",
+      "refined": "port/reviews/water-cast/native-4mib/mark-full-after.png",
+      "refined_sha256": "800d392b3f3e1c8d9dffc9d59b312f563dce3b414383353895a34e1f4fe728db"
+    },
+    {
+      "actor": "amy",
+      "earlier": "port/reviews/water-cast/eye-refinement-earlier/amy-full-after.png",
+      "earlier_sha256": "5b5e951038c3e2e4c914ae079b1869c979d56ec7cf5f6fb6bf855ade3deaf1d1",
+      "refined": "port/reviews/water-cast/native-4mib/amy-full-after.png",
+      "refined_sha256": "b8d37188a07e7ea2e14b9d1d50a19e26656245ed54761bd8ef9d3288ecaee0b9"
+    },
+    {
+      "actor": "joshua",
+      "earlier": "port/reviews/water-cast/eye-refinement-earlier/joshua-full-after.png",
+      "earlier_sha256": "711c534dadfb9a45e5c56eecdebc3cf3fe8e65daccf8068e74a1d6f25bb53689",
+      "refined": "port/reviews/water-cast/native-4mib/joshua-full-after.png",
+      "refined_sha256": "cbf59fe2cd9bebf2aeecdfec315372c0c5979ceacb43e0058f75a490a00c3e00"
+    },
+    {
+      "actor": "sara",
+      "earlier": "port/reviews/water-cast/eye-refinement-earlier/sara-full-after.png",
+      "earlier_sha256": "d0b1acec11e96d5c4bb82333f6dde585f968a649e648232cfe9bf271d716ea9a",
+      "refined": "port/reviews/water-cast/native-4mib/sara-full-after.png",
+      "refined_sha256": "80f6d4044e0e24a033225e04b9bb64f9120c8f2338aa40351a63cb51f9d4270e"
+    },
+    {
+      "actor": "amanda",
+      "earlier": "port/reviews/water-cast/eye-refinement-earlier/amanda-full-after.png",
+      "earlier_sha256": "f9701d9dca4dba607e4939e5d39a14ec985555de814477ea229303a051a5e06a",
+      "refined": "port/reviews/water-cast/native-4mib/amanda-full-after.png",
+      "refined_sha256": "0826eca4a2b4909e695088ec58815907f7470b7a1575659dacb47de14347e10d"
+    }
+  ]
+}

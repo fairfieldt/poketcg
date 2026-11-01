@@ -1,0 +1,117 @@
+{
+  "method": "Actual normal production main entry graph (DIAGNOSTIC=0) and duel/story roots retained. Any measured resident deficit plus a 16 KiB bench allowance is reserved as retained static BSS before rendering. Both allocatable section sum and LOAD end must meet the conservative floor.",
+  "production": {
+    "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/expansion/poketcg-expansion.elf",
+    "sha256": "6ec734a409f63d146e254b56b0596deff585eb2b67a9b68af436b75a83ec10de",
+    "sections": {
+      "text": 1353984,
+      "data": 44220,
+      "bss": 173956
+    },
+    "resident_sections": 1572160,
+    "load_base": 2147483648,
+    "load_end": 2149056464,
+    "resident_load_span": 1572816
+  },
+  "unpadded_reference": {
+    "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/water-cast-review/resident-unpadded.elf",
+    "sha256": "8a9b0c423bf0d6d6a6224410df95b0c5b6f2dd070c9be5d5ccf6fbf8b96f7861",
+    "sections": {
+      "text": 1342960,
+      "data": 44268,
+      "bss": 173932
+    },
+    "resident_sections": 1561160,
+    "load_base": 2147483648,
+    "load_end": 2149045456,
+    "resident_load_span": 1561808
+  },
+  "review_before_new_padding": {
+    "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/water-cast-review/water-cast.elf",
+    "sha256": "77c7039b1f3c9b736fad415f0e99d41f8e94523778f403caa1c423ba000524f9",
+    "sections": {
+      "text": 1342960,
+      "data": 44268,
+      "bss": 201324
+    },
+    "resident_sections": 1588552,
+    "load_base": 2147483648,
+    "load_end": 2149072848,
+    "resident_load_span": 1589200
+  },
+  "review": {
+    "file": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/build/water-cast-review/water-cast.elf",
+    "sha256": "77c7039b1f3c9b736fad415f0e99d41f8e94523778f403caa1c423ba000524f9",
+    "sections": {
+      "text": 1342960,
+      "data": 44268,
+      "bss": 201324
+    },
+    "resident_sections": 1588552,
+    "load_base": 2147483648,
+    "load_end": 2149072848,
+    "resident_load_span": 1589200
+  },
+  "required_symbols": {
+    "production_entry": "80019d60 00000870 T production_entry",
+    "tcg_run_duel": "80069f20 00000464 T tcg_run_duel",
+    "ow_new_game": "80074d00 00000104 T ow_new_game",
+    "n64_duel_play": "800313e0 00000470 T n64_duel_play",
+    "adventure_intro_play": "80076d20 000004a0 T adventure_intro_play",
+    "adventure_name_player": "8007ac20 00000644 T adventure_name_player"
+  },
+  "bench_allowance_bytes": 16384,
+  "static_resident_padding_bytes": 27392,
+  "passed": true,
+  "function_coverage": {
+    "missing": [],
+    "normal_main_maps_to": "production_entry",
+    "production_main_bytes": 2160,
+    "retained_production_entry_bytes": 2160,
+    "size_differences": [
+      {
+        "name": "callback.0",
+        "production_bytes": 100,
+        "review_bytes": 20
+      },
+      {
+        "name": "cb.0",
+        "production_bytes": 160,
+        "review_bytes": 268
+      },
+      {
+        "name": "cb.1",
+        "production_bytes": 120,
+        "review_bytes": 84
+      },
+      {
+        "name": "compose",
+        "production_bytes": 2400,
+        "review_bytes": 244
+      },
+      {
+        "name": "draw_vertex_from_arrays",
+        "production_bytes": 624,
+        "review_bytes": 188
+      },
+      {
+        "name": "input_sample",
+        "production_bytes": 200,
+        "review_bytes": 456
+      },
+      {
+        "name": "n64_video_init",
+        "production_bytes": 276,
+        "review_bytes": 268
+      },
+      {
+        "name": "n64_video_present",
+        "production_bytes": 2244,
+        "review_bytes": 408
+      }
+    ],
+    "method": "Presence of unique nm -S defined T/t names (local static names may repeat across objects). Normal main is retained as production_entry. Conditional/pinned-object implementation-size differences are conservatively covered by the measured static padding; identical function bytes are not claimed.",
+    "production_unique_function_names": 2514,
+    "present_unique_names_in_review": 2514
+  }
+}

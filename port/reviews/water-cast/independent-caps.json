@@ -1,0 +1,305 @@
+{
+  "passed": true,
+  "method": "Legacy capped families retain the original boolean/scalp half-space and native winding proof. Ready Water/player heads separately prove one closed outward skull with disjoint material regions and no active legacy scalp; ancillary visor/goggles are individually closed and packed coplanar overlays are rejected.",
+  "height_clip_epsilon": 1e-05,
+  "assets": "/Users/fairfieldt/dev/poketcg/port/characters/assets",
+  "models": [
+    {
+      "model": "mark",
+      "passed": true,
+      "method": "ready-shell native ownership",
+      "native_sha256": "9aa0bc4a7ebb8fad0fd8720709f33d278f53bc25a63c89af6763b8da6f3296bc",
+      "head_pivot": [
+        0.0,
+        1.409999966621399,
+        0.0
+      ],
+      "main_skull_triangles": 224,
+      "owning_head_components": 1,
+      "owning_head_topological_boundary_edges": 0,
+      "active_legacy_scalp_layers": 0,
+      "material_regions": [
+        "accent",
+        "face",
+        "hair",
+        "skin",
+        "white"
+      ],
+      "pieces": [
+        {
+          "object": "mark \u00b7 Water owning head",
+          "triangles": 224,
+          "closed_edges": 336,
+          "outward": true,
+          "main_skull": true
+        },
+        {
+          "object": "mark \u00b7 Mark rear cap visor",
+          "triangles": 20,
+          "closed_edges": 30,
+          "outward": true,
+          "main_skull": false
+        }
+      ],
+      "raw": {
+        "triangles": 244,
+        "duplicate_triangles": 0,
+        "competing_coplanar_pairs": 0,
+        "degenerate_triangles": 0
+      },
+      "packed": {
+        "triangles": 244,
+        "duplicate_triangles": 0,
+        "competing_coplanar_pairs": 0,
+        "degenerate_triangles": 0
+      },
+      "packed_closed_components": 2,
+      "packed_closed_edges": 366,
+      "packed_exterior": {
+        "maximum_outside_winding": 4.0916510745910865e-16,
+        "minimum_inside_winding": 0.9999999999999988
+      },
+      "maximum_outside_winding": 3.6913208412471545e-16,
+      "minimum_inside_winding": 0.9999999999999988
+    },
+    {
+      "model": "amy",
+      "passed": true,
+      "method": "ready-shell native ownership",
+      "native_sha256": "9a59939262f90ad65b4bb97c8ca0d435b382ffe93f2bbab65328ce49667ca948",
+      "head_pivot": [
+        0.0,
+        1.409999966621399,
+        0.0
+      ],
+      "main_skull_triangles": 224,
+      "owning_head_components": 1,
+      "owning_head_topological_boundary_edges": 0,
+      "active_legacy_scalp_layers": 0,
+      "material_regions": [
+        "accent",
+        "face",
+        "skin"
+      ],
+      "pieces": [
+        {
+          "object": "amy \u00b7 Amy swept bob head",
+          "triangles": 224,
+          "closed_edges": 336,
+          "outward": true,
+          "main_skull": true
+        }
+      ],
+      "raw": {
+        "triangles": 224,
+        "duplicate_triangles": 0,
+        "competing_coplanar_pairs": 0,
+        "degenerate_triangles": 0
+      },
+      "packed": {
+        "triangles": 224,
+        "duplicate_triangles": 0,
+        "competing_coplanar_pairs": 0,
+        "degenerate_triangles": 0
+      },
+      "packed_closed_components": 1,
+      "packed_closed_edges": 336,
+      "packed_exterior": {
+        "maximum_outside_winding": 4.872985254152003e-16,
+        "minimum_inside_winding": 0.999999999999998
+      },
+      "maximum_outside_winding": 3.845931138262742e-16,
+      "minimum_inside_winding": 0.9999999999999988
+    },
+    {
+      "model": "joshua",
+      "passed": true,
+      "method": "ready-shell native ownership",
+      "native_sha256": "d74cee96e2d22a1ca160e8111590a011293e01124c8bf06d823e4efa0e74f9e6",
+      "head_pivot": [
+        0.0,
+        1.5299999713897705,
+        0.0
+      ],
+      "main_skull_triangles": 224,
+      "owning_head_components": 1,
+      "owning_head_topological_boundary_edges": 0,
+      "active_legacy_scalp_layers": 0,
+      "material_regions": [
+        "face",
+        "hair",
+        "skin",
+        "white"
+      ],
+      "pieces": [
+        {
+          "object": "joshua \u00b7 Water owning head",
+          "triangles": 224,
+          "closed_edges": 336,
+          "outward": true,
+          "main_skull": true
+        },
+        {
+          "object": "joshua \u00b7 Joshua forehead goggle -1",
+          "triangles": 32,
+          "closed_edges": 48,
+          "outward": true,
+          "main_skull": false
+        },
+        {
+          "object": "joshua \u00b7 Joshua forehead goggle 1",
+          "triangles": 32,
+          "closed_edges": 48,
+          "outward": true,
+          "main_skull": false
+        },
+        {
+          "object": "joshua \u00b7 Joshua goggle bridge",
+          "triangles": 12,
+          "closed_edges": 18,
+          "outward": true,
+          "main_skull": false
+        }
+      ],
+      "raw": {
+        "triangles": 300,
+        "duplicate_triangles": 0,
+        "competing_coplanar_pairs": 0,
+        "degenerate_triangles": 0
+      },
+      "packed": {
+        "triangles": 300,
+        "duplicate_triangles": 0,
+        "competing_coplanar_pairs": 0,
+        "degenerate_triangles": 0
+      },
+      "packed_closed_components": 4,
+      "packed_closed_edges": 450,
+      "packed_exterior": {
+        "maximum_outside_winding": 7.098269171912067e-16,
+        "minimum_inside_winding": 0.9999999999999989
+      },
+      "maximum_outside_winding": 4.003302333439322e-16,
+      "minimum_inside_winding": 0.9999999999999988
+    },
+    {
+      "model": "swimmer",
+      "passed": true,
+      "method": "ready-shell native ownership",
+      "native_sha256": "518dbead1213363e682b1b4abc7c8c6dda5e71867c5a6899a10ac774924807ea",
+      "head_pivot": [
+        0.0,
+        1.409999966621399,
+        0.0
+      ],
+      "main_skull_triangles": 224,
+      "owning_head_components": 1,
+      "owning_head_topological_boundary_edges": 0,
+      "active_legacy_scalp_layers": 0,
+      "material_regions": [
+        "face",
+        "ink",
+        "skin",
+        "white"
+      ],
+      "pieces": [
+        {
+          "object": "swimmer \u00b7 Water owning head.002",
+          "triangles": 224,
+          "closed_edges": 336,
+          "outward": true,
+          "main_skull": true
+        },
+        {
+          "object": "swimmer \u00b7 Sara raised goggle -1.001",
+          "triangles": 32,
+          "closed_edges": 48,
+          "outward": true,
+          "main_skull": false
+        },
+        {
+          "object": "swimmer \u00b7 Sara raised goggle 1.001",
+          "triangles": 32,
+          "closed_edges": 48,
+          "outward": true,
+          "main_skull": false
+        },
+        {
+          "object": "swimmer \u00b7 Sara goggle bridge.001",
+          "triangles": 12,
+          "closed_edges": 18,
+          "outward": true,
+          "main_skull": false
+        }
+      ],
+      "raw": {
+        "triangles": 300,
+        "duplicate_triangles": 0,
+        "competing_coplanar_pairs": 0,
+        "degenerate_triangles": 0
+      },
+      "packed": {
+        "triangles": 300,
+        "duplicate_triangles": 0,
+        "competing_coplanar_pairs": 0,
+        "degenerate_triangles": 0
+      },
+      "packed_closed_components": 4,
+      "packed_closed_edges": 450,
+      "packed_exterior": {
+        "maximum_outside_winding": 3.233011746522377e-16,
+        "minimum_inside_winding": 0.9999999999999988
+      },
+      "maximum_outside_winding": 5.006888814960145e-16,
+      "minimum_inside_winding": 0.9999999999999988
+    },
+    {
+      "model": "lad",
+      "passed": true,
+      "owning_head_components": 1,
+      "owning_head_topological_boundary_edges": 0,
+      "hidden_authored_hair_objects": 1,
+      "authored_hidden_head_scalp_vertices": 32,
+      "exported_hidden_head_scalp_vertices": 0,
+      "native_head_triangles": 228,
+      "native_triangles_above_brim": 82,
+      "non_exterior_native_headwear_faces": 0,
+      "maximum_outside_winding": 0.0,
+      "minimum_inside_winding": 1.0,
+      "cap_base_height": 1.8047999143600464,
+      "native_sha256": "0356b8b47369e6562759440c444a2f7991632342d90d14b8b6fd6399e4c809ba"
+    },
+    {
+      "model": "steve",
+      "passed": true,
+      "owning_head_components": 1,
+      "owning_head_topological_boundary_edges": 0,
+      "hidden_authored_hair_objects": 1,
+      "authored_hidden_head_scalp_vertices": 32,
+      "exported_hidden_head_scalp_vertices": 0,
+      "native_head_triangles": 228,
+      "native_triangles_above_brim": 82,
+      "non_exterior_native_headwear_faces": 0,
+      "maximum_outside_winding": 0.0,
+      "minimum_inside_winding": 1.0,
+      "cap_base_height": 1.9199999570846558,
+      "native_sha256": "bcf0a1feb9c1dfba9b2f7a801f2eca29d84c36595e5ded75b9be2d628559ed44"
+    },
+    {
+      "model": "girl",
+      "passed": true,
+      "owning_head_components": 1,
+      "owning_head_topological_boundary_edges": 0,
+      "hidden_authored_hair_objects": 4,
+      "authored_hidden_head_scalp_vertices": 40,
+      "exported_hidden_head_scalp_vertices": 0,
+      "native_head_triangles": 364,
+      "native_triangles_above_brim": 82,
+      "non_exterior_native_headwear_faces": 0,
+      "maximum_outside_winding": 0.0,
+      "minimum_inside_winding": 1.0,
+      "cap_base_height": 1.8047999143600464,
+      "native_sha256": "f4483d94576f1f55411b2395c0b8f1a1234219fc0a73f2f16e2b09b63cc2167d"
+    }
+  ]
+}

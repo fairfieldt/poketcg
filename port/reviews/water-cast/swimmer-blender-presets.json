@@ -1,0 +1,140 @@
+{
+  "passed": true,
+  "canonical_assets_written": false,
+  "sequence": [
+    {
+      "appearance": "swimmer",
+      "sha256": "518dbead1213363e682b1b4abc7c8c6dda5e71867c5a6899a10ac774924807ea",
+      "active_head_objects": [
+        "swimmer \u00b7 Sara goggle bridge.001",
+        "swimmer \u00b7 Sara raised goggle -1.001",
+        "swimmer \u00b7 Sara raised goggle 1.001",
+        "swimmer \u00b7 Water owning head.002"
+      ],
+      "face_texture": "fc_e7ad63_wt_swi_eb2e",
+      "surface_ownership": {
+        "face_and_clothing": true,
+        "headwear": true
+      },
+      "body_signature": "f1ca84c4b271b692345266db9bac89f2c3f87313b0b47994c1d63dbd44fbe525"
+    },
+    {
+      "appearance": "swimmer_palette2",
+      "sha256": "649183cf16f912cb99830440d4f99b029ece9ca5850b861250a9adf4aaaec384",
+      "active_head_objects": [
+        "swimmer \u00b7 Water owning head.001"
+      ],
+      "face_texture": "fc_e7ad63_wt_swi_3b7b",
+      "surface_ownership": {
+        "face_and_clothing": true,
+        "headwear": false
+      },
+      "body_signature": "f1ca84c4b271b692345266db9bac89f2c3f87313b0b47994c1d63dbd44fbe525"
+    },
+    {
+      "appearance": "swimmer",
+      "sha256": "518dbead1213363e682b1b4abc7c8c6dda5e71867c5a6899a10ac774924807ea",
+      "active_head_objects": [
+        "swimmer \u00b7 Sara goggle bridge.001",
+        "swimmer \u00b7 Sara raised goggle -1.001",
+        "swimmer \u00b7 Sara raised goggle 1.001",
+        "swimmer \u00b7 Water owning head.002"
+      ],
+      "face_texture": "fc_e7ad63_wt_swi_eb2e",
+      "surface_ownership": {
+        "face_and_clothing": true,
+        "headwear": true
+      },
+      "body_signature": "f1ca84c4b271b692345266db9bac89f2c3f87313b0b47994c1d63dbd44fbe525"
+    }
+  ],
+  "one_shared_body_mesh_set": 5,
+  "head_presets": {
+    "swimmer": {
+      "objects": [
+        "swimmer \u00b7 Sara goggle bridge.001",
+        "swimmer \u00b7 Sara raised goggle -1.001",
+        "swimmer \u00b7 Sara raised goggle 1.001",
+        "swimmer \u00b7 Water owning head.002"
+      ],
+      "textures": [
+        "fc_e7ad63_wt_swi_eb2e"
+      ],
+      "skin_palette": {
+        "rgb8": [
+          231,
+          173,
+          99
+        ],
+        "solid_material": "swimmer \u00b7 skin",
+        "faces": [
+          {
+            "texture": "fc_e7ad63_wt_swi_eb2e",
+            "background_rgb8": [
+              231,
+              173,
+              99
+            ],
+            "feature_sha256": "7082ef930cf445ab17246d00fa11698b1e568494378de0af804f88825cef2266",
+            "colorspace": "Non-Color",
+            "directional_shade": true,
+            "shade_floor": 0.86
+          }
+        ],
+        "shade_floor": 0.86
+      },
+      "surface_ownership": {
+        "face_and_clothing": true,
+        "headwear": true
+      },
+      "statistics": {
+        "vertices": 1433,
+        "triangles": 904,
+        "batches": 7
+      }
+    },
+    "swimmer_palette2": {
+      "objects": [
+        "swimmer \u00b7 Water owning head.001"
+      ],
+      "textures": [
+        "fc_e7ad63_wt_swi_3b7b"
+      ],
+      "skin_palette": {
+        "rgb8": [
+          231,
+          173,
+          99
+        ],
+        "solid_material": "swimmer \u00b7 skin",
+        "faces": [
+          {
+            "texture": "fc_e7ad63_wt_swi_3b7b",
+            "background_rgb8": [
+              231,
+              173,
+              99
+            ],
+            "feature_sha256": "cab860c7d0c77c9ee2ddb3bb9ee9a9b8238f2871f19d6c4f42bff98d754d5823",
+            "colorspace": "Non-Color",
+            "directional_shade": true,
+            "shade_floor": 0.86
+          }
+        ],
+        "shade_floor": 0.86
+      },
+      "surface_ownership": {
+        "face_and_clothing": true,
+        "headwear": false
+      },
+      "statistics": {
+        "vertices": 1333,
+        "triangles": 828,
+        "batches": 7
+      }
+    }
+  },
+  "native_exports_match_current_reference_bytes": true,
+  "source_blend": "port/characters/assets/models/swimmer/swimmer.blend",
+  "source_blend_sha256": "01b037e198c9a2662e82215a39936852501f775bea83c1ac567419175b9d6e9c"
+}

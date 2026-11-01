@@ -1,0 +1,306 @@
+{
+  "status": "verified-expansion-pak-trial-captures",
+  "rom": {
+    "file": "port/frontends/n64/adventure/build/water-cast-review/selected-vi.z64",
+    "sha256": "13381677f86024c8a54da6a97e67d8cdf25d78bf748923ad478bc767a1ddcc33",
+    "diagnostic": 9
+  },
+  "emulator": {
+    "name": "ares",
+    "version": "v148",
+    "official_source": "https://github.com/ares-emulator/ares",
+    "source_commit": "0aafd85789215e84e1e43415c07d4c88461b7899",
+    "binary": {
+      "installed_unmodified": {
+        "sha256": "7a49f00f96a691458461d7c9cf453d95c0f5c054389bbd87c253987b8b6fa345",
+        "arm64_slice_sha256": "12273dbe9b2b7a4276d3eabee4d070bb86930be4bad2ffdac634b3ec86d5a48a",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "isolated_debug_copy": {
+        "sha256": "8fea4a66bc4842f4754ad00ec97ae010110aa2b1f36ae60a6426368447424156",
+        "arm64_slice_sha256": "09b637fd9acaae7c0b6c0c506fc5cdf250ef11bfcf6eec83b7f600713daaf444",
+        "arm64_text_sha256": "6d70ef5e04672b950ca28978fe5752b552a00dae777a2fefd19d3437f65ae579",
+        "arm64_uuid": "29E506D8-820A-3ADB-975E-5F6F87EC1F32"
+      },
+      "same_arm64_executable_code": true
+    },
+    "source_stages": [
+      "desktop-ui/program/platform.cpp Program::video",
+      "desktop-ui/program/utility.cpp Program::captureScreenshot",
+      "ares/n64/vi/vi.cpp VI::main scanout"
+    ],
+    "capture": "Original ares Program::captureScreenshot PNG encoder triggered via isolated debugger copy. Program::video pixels are after core VI and before Ruby/window shaders. No OS UI capture or postprocess filtering.",
+    "hook": {
+      "entry_file_address": "0x100145f74",
+      "request_screenshot_offset": "0xc5",
+      "data_register": "x2",
+      "pitch_register": "w3",
+      "width_register": "w4",
+      "height_register": "w5",
+      "stable_label_callbacks": 6,
+      "private_settings": true,
+      "disable_video_interface_processing": false,
+      "label_box": "full observed callback dimensions",
+      "stage_pattern": "^VIDEO REVIEW ([A-Za-z0-9_-]+) BEGIN\\r?$",
+      "require_native_frame": true,
+      "native_lead_frames": 6
+    },
+    "stage_identity_proof": "../../overworld-roofs/old-rom-capture-proof.json",
+    "old_reference_exact_static_rgb_pixels": 150000,
+    "old_reference_total_static_rgb_pixels": 150000
+  },
+  "settings": {
+    "quality": "SD",
+    "VI_enabled": true,
+    "shader": "None",
+    "supersampling": false,
+    "ram_mib": 4,
+    "private_settings": true,
+    "ExpansionPak": false
+  },
+  "runtime_video_modes": [
+    {
+      "width": 320,
+      "height": 240,
+      "ram": 4194304,
+      "highres": 0
+    }
+  ],
+  "raw_format": {
+    "pixel_order": "BGRA little endian; padding excluded from RGB proof",
+    "dimensions": "Recorded per image from Program::video registers",
+    "display_aspect": "4:3"
+  },
+  "finished": {
+    "callbacks": 865,
+    "captures": 6,
+    "event": "finished",
+    "missing": []
+  },
+  "images": [
+    {
+      "file": "mark-full-before.png",
+      "stage": "mark-full-before",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "977f3b9067ef84b9b419863cc60594e2e0e9bf8657755fbef4369dc7c9749f65",
+      "callback_sha256": "13d6de26cd5b3cb2eb89a5ad8ec54a6b769809fc48b6ebcf86d2d5564bcd4f5e",
+      "rgb_sha256": "1a3a36b0fab13eb0324595857ae2178ffb2c3061512ee490a0f59fcd91829a5c",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 31,
+      "stage_gate": {
+        "stage_started_callback": 26,
+        "native_frame": "mark-full-before",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 26,
+        "native_ready_valid_frames": 12,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": null
+      }
+    },
+    {
+      "file": "mark-full-after.png",
+      "stage": "mark-full-after",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "e2d94a5c16ad7a758d460f323967ccf7f1b86dc0a2065021d7e3e63ec83cc177",
+      "callback_sha256": "1a18fe22ddb7987a63d6f5bec7b1ff1589c3c403b044ed6019422d1880a7893f",
+      "rgb_sha256": "e06d10769955d74634855a13601e054ebafd8b0db2401a7c352070d54ef6ee54",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 161,
+      "stage_gate": {
+        "stage_started_callback": 156,
+        "native_frame": "mark-full-after",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 156,
+        "native_ready_valid_frames": 142,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "aa999f6a44bbf4d1b4193d1198bed8b264de1b7112658041217a2217dfef6735"
+      }
+    },
+    {
+      "file": "amanda-lod-before.png",
+      "stage": "amanda-lod-before",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "70a16d3f9ea8907552afe8a31fe04b7f67ba35e0b963c9b0484f0bef3d2ff4fe",
+      "callback_sha256": "84385b942a95d1a7027334fed798adb2cc867b8e84ee52e4d249c53f97f2da52",
+      "rgb_sha256": "a72bcc25fe06c5c4fbef7ad24d4c19cce522bfe45514c7caec7da1afe1babd44",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 290,
+      "stage_gate": {
+        "stage_started_callback": 285,
+        "native_frame": "amanda-lod-before",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 285,
+        "native_ready_valid_frames": 271,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "2904599485cced1e2779289ee1b1d034ebf7040754f4d781d8fe7e2bc33c6880"
+      }
+    },
+    {
+      "file": "amanda-lod-after.png",
+      "stage": "amanda-lod-after",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "1790eb28989065ef1d2567a80ecf2dba0d72262fa279c409aa36442022ad29ee",
+      "callback_sha256": "0fa5e775cfaf22f8c4f48028bcc99cb3bd8b23ab7795ab41d98389f1d7c94edc",
+      "rgb_sha256": "0adfd340c59e968392f045af1084e7a759f2aa6d65bb15e918db426e3a307526",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 417,
+      "stage_gate": {
+        "stage_started_callback": 412,
+        "native_frame": "amanda-lod-after",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 412,
+        "native_ready_valid_frames": 398,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "545026295376b69f585a5ae9cf4613e70f230f0b4e10285274522f6c09d8d711"
+      }
+    },
+    {
+      "file": "amy-dialogue-before.png",
+      "stage": "amy-dialogue-before",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "9ec3e95d0fab62339e411ad720fd2231218a3ea7f1075067afe827b0b5d10c91",
+      "callback_sha256": "f87070f79f32ee08efeb56670e0bcc030cf7205e9d5783098b4e1f81862fd376",
+      "rgb_sha256": "68578530e9fd9e5bce7380d26bb1e1571c9917d49e354795f72712f16954d99d",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 583,
+      "stage_gate": {
+        "stage_started_callback": 578,
+        "native_frame": "amy-dialogue-before",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 578,
+        "native_ready_valid_frames": 564,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "d26d020bced8c085e4e100e237cd37acceef64ab7824318c88b90fec7e26446d"
+      }
+    },
+    {
+      "file": "amy-dialogue-after.png",
+      "stage": "amy-dialogue-after",
+      "dimensions": [
+        640,
+        240
+      ],
+      "pitch": 2560,
+      "png_sha256": "727658ea46ad05b0313539c8064f7db45b53df490aa5c1c94f12936f3d83e0ce",
+      "callback_sha256": "a1607a3a22ff84526c3c5d86e2dc4864fb76a643f7cd3c44bfdccc89a0443c6e",
+      "rgb_sha256": "f18b2e0e8f9df23aa7ce17ba9343e90412846fc22e9a5f8c39ffbb653c0041ec",
+      "exact_callback_rgb_pixels": 153600,
+      "callback": 754,
+      "stage_gate": {
+        "stage_started_callback": 749,
+        "native_frame": "amy-dialogue-after",
+        "native_dimensions": [
+          320,
+          240
+        ],
+        "native_ready_callback": 749,
+        "native_ready_valid_frames": 735,
+        "post_native_valid_callbacks": 6,
+        "stable_callbacks": 6,
+        "previous_captured_sha256": "c173e95b7bdfcea1a4ceaab00d9ee30ac38609a19c0a1b1d383d6b769036b464"
+      }
+    }
+  ],
+  "native_frames": [
+    {
+      "file": "mark-full-before.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "6804db0b3f1775a3d3fa8e4b3012bd7cadebb3761e7f7870ef28d83edbf5eb60",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "mark-full-after.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "800d392b3f3e1c8d9dffc9d59b312f563dce3b414383353895a34e1f4fe728db",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "amanda-lod-before.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "a43f383554693dbe0b3ef1331f5a2fa96d48540749f3bfc77491b4f394e1ccf8",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "amanda-lod-after.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "92834e8a3694e8cdab13d5f23e91766bc3c6890a946b902e4f69558575bf3bb5",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "amy-dialogue-before.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "ecc5fc6e0e054bbbe843b94647975f34af346d3eda1dcc3dffee366e8c8ba8e9",
+      "exact_native_pixels": 76800
+    },
+    {
+      "file": "amy-dialogue-after.png",
+      "dimensions": [
+        320,
+        240
+      ],
+      "sha256": "f146d9438b9b8d29dcb0766f5ece1bb4e5b730cd3ad24ccd81ffb530e2f0cc15",
+      "exact_native_pixels": 76800
+    }
+  ],
+  "memory": [],
+  "source_logs": {
+    "path": "port/frontends/n64/adventure/build/water-cast-vi-4-final/lldb.log",
+    "sha256": "b7d48f7e1885a449169fd0d2a7c922e27d7367e0265d67aa400e407ff21af5c9"
+  }
+}

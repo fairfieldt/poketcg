@@ -1,0 +1,382 @@
+{
+  "passed": true,
+  "assets": "/Users/fairfieldt/dev/poketcg/port/characters/assets",
+  "packing": "scene_packed.inc: float32 local coordinate times32, truncf towardzero; pivot/model matrix later",
+  "method": "Actual L643 raw/packed surfaces, outward closed head components, profile/nose geometry, opaque TMEM textures, face/limb pigment, rig/pose and source-justified variant sharing.",
+  "models": [
+    {
+      "model": "mark",
+      "passed": true,
+      "exports": [
+        {
+          "file": "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/mark/scene.l64",
+          "sha256": "9aa0bc4a7ebb8fad0fd8720709f33d278f53bc25a63c89af6763b8da6f3296bc",
+          "triangles": 868,
+          "batches": 7,
+          "raw": {
+            "triangles": 868,
+            "duplicate_triangles": 0,
+            "competing_coplanar_pairs": 0,
+            "degenerate_triangles": 0
+          },
+          "packed": {
+            "triangles": 868,
+            "duplicate_triangles": 0,
+            "competing_coplanar_pairs": 0,
+            "degenerate_triangles": 0
+          },
+          "rig": {
+            "parts": 5,
+            "expected_pivots": true
+          },
+          "skin": {
+            "face_vertices": 144,
+            "hand_vertices": 79,
+            "maximum_skin_difference": 1,
+            "textures": 1,
+            "texture_sha256": {
+              "fc_e7ad63_mark": "c6e89890f40071f291553d715743ad0aa45ae60bcef0d3735a592009b5ed804c"
+            },
+            "opaque": true
+          },
+          "head": {
+            "pivot": [
+              0.0,
+              1.409999966621399,
+              0.0
+            ],
+            "components": 2,
+            "closed_edges": 366,
+            "packed_closed_edges": 366,
+            "packed_components": 2,
+            "outward": true,
+            "main_triangles": 224,
+            "packed_exterior": {
+              "maximum_outside_winding": 4.890240867658206e-16,
+              "minimum_inside_winding": 0.9999999999999988
+            },
+            "maximum_outside_winding": 6.054649667056851e-16,
+            "minimum_inside_winding": 0.9999999999999989
+          },
+          "profile": {
+            "width": 0.83124,
+            "height": 0.799,
+            "depth": 0.9536720000000001,
+            "nose_bulge": 0.13614528000000004,
+            "face_u_span": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "model": "amy",
+      "passed": true,
+      "exports": [
+        {
+          "file": "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/amy/scene.l64",
+          "sha256": "9a59939262f90ad65b4bb97c8ca0d435b382ffe93f2bbab65328ce49667ca948",
+          "triangles": 870,
+          "batches": 7,
+          "raw": {
+            "triangles": 870,
+            "duplicate_triangles": 0,
+            "competing_coplanar_pairs": 0,
+            "degenerate_triangles": 0
+          },
+          "packed": {
+            "triangles": 870,
+            "duplicate_triangles": 0,
+            "competing_coplanar_pairs": 0,
+            "degenerate_triangles": 0
+          },
+          "rig": {
+            "parts": 5,
+            "expected_pivots": true
+          },
+          "skin": {
+            "face_vertices": 108,
+            "hand_vertices": 130,
+            "maximum_skin_difference": 1,
+            "textures": 1,
+            "texture_sha256": {
+              "fc_e7ad63_wt_amy_8a2c": "d001898deec7b05ac36ddbbc5cebd77fa4661b08d1d628357d6f5bb004e4922e"
+            },
+            "opaque": true
+          },
+          "head": {
+            "pivot": [
+              0.0,
+              1.409999966621399,
+              0.0
+            ],
+            "components": 1,
+            "closed_edges": 336,
+            "packed_closed_edges": 336,
+            "packed_components": 1,
+            "outward": true,
+            "main_triangles": 224,
+            "packed_exterior": {
+              "maximum_outside_winding": 6.001502377457743e-16,
+              "minimum_inside_winding": 0.9999999999999989
+            },
+            "maximum_outside_winding": 4.041954907693219e-16,
+            "minimum_inside_winding": 0.9999999999999988
+          },
+          "profile": {
+            "width": 0.759528,
+            "height": 0.7802,
+            "depth": 0.68289,
+            "nose_bulge": 0.11054760000000002,
+            "face_u_span": 1.0
+          }
+        },
+        {
+          "file": "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/amy/poses/lying/scene.l64",
+          "sha256": "f725440cc3c40e7ae2e39b9dcb4bdd0a13d540c204950d55b171d93cc04eb86e",
+          "triangles": 870,
+          "batches": 7,
+          "raw": {
+            "triangles": 870,
+            "duplicate_triangles": 0,
+            "competing_coplanar_pairs": 0,
+            "degenerate_triangles": 0
+          },
+          "packed": {
+            "triangles": 870,
+            "duplicate_triangles": 0,
+            "competing_coplanar_pairs": 0,
+            "degenerate_triangles": 0
+          },
+          "rig": {
+            "parts": 5,
+            "expected_pivots": true
+          },
+          "skin": {
+            "face_vertices": 108,
+            "hand_vertices": 133,
+            "maximum_skin_difference": 1,
+            "textures": 1,
+            "texture_sha256": {
+              "fc_e7ad63_wt_amy_8a2c": "d001898deec7b05ac36ddbbc5cebd77fa4661b08d1d628357d6f5bb004e4922e"
+            },
+            "opaque": true
+          },
+          "head": {
+            "pivot": [
+              0.0,
+              0.34999993443489075,
+              -0.5099999904632568
+            ],
+            "components": 1,
+            "closed_edges": 336,
+            "packed_closed_edges": 336,
+            "packed_components": 1,
+            "outward": true,
+            "main_triangles": 224,
+            "packed_exterior": {
+              "maximum_outside_winding": 6.001502377457743e-16,
+              "minimum_inside_winding": 0.9999999999999989
+            },
+            "maximum_outside_winding": 5.416882191867552e-16,
+            "minimum_inside_winding": 0.9999999999999983
+          },
+          "profile": null
+        }
+      ],
+      "lying_reuses_canonical_geometry": true
+    },
+    {
+      "model": "joshua",
+      "passed": true,
+      "exports": [
+        {
+          "file": "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/joshua/scene.l64",
+          "sha256": "d74cee96e2d22a1ca160e8111590a011293e01124c8bf06d823e4efa0e74f9e6",
+          "triangles": 940,
+          "batches": 7,
+          "raw": {
+            "triangles": 940,
+            "duplicate_triangles": 0,
+            "competing_coplanar_pairs": 0,
+            "degenerate_triangles": 0
+          },
+          "packed": {
+            "triangles": 940,
+            "duplicate_triangles": 0,
+            "competing_coplanar_pairs": 0,
+            "degenerate_triangles": 0
+          },
+          "rig": {
+            "parts": 5,
+            "expected_pivots": true
+          },
+          "skin": {
+            "face_vertices": 132,
+            "hand_vertices": 131,
+            "maximum_skin_difference": 1,
+            "textures": 1,
+            "texture_sha256": {
+              "fc_e7ad63_wt_jos_happy": "113f0332a75a759472d8ec8aaa333ba9520f0b41ef36567e86e2557e2c88fbb9"
+            },
+            "opaque": true
+          },
+          "head": {
+            "pivot": [
+              0.0,
+              1.5299999713897705,
+              0.0
+            ],
+            "components": 4,
+            "closed_edges": 450,
+            "packed_closed_edges": 450,
+            "packed_components": 4,
+            "outward": true,
+            "main_triangles": 224,
+            "packed_exterior": {
+              "maximum_outside_winding": 6.024279787285932e-16,
+              "minimum_inside_winding": 0.9999999999999988
+            },
+            "maximum_outside_winding": 3.7078862302131105e-16,
+            "minimum_inside_winding": 0.9999999999999989
+          },
+          "profile": {
+            "width": 1.012704,
+            "height": 0.8568,
+            "depth": 0.852634,
+            "nose_bulge": 0.14011296,
+            "face_u_span": 1.0
+          }
+        }
+      ]
+    },
+    {
+      "model": "swimmer",
+      "passed": true,
+      "exports": [
+        {
+          "file": "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/swimmer/scene.l64",
+          "sha256": "518dbead1213363e682b1b4abc7c8c6dda5e71867c5a6899a10ac774924807ea",
+          "triangles": 904,
+          "batches": 7,
+          "raw": {
+            "triangles": 904,
+            "duplicate_triangles": 0,
+            "competing_coplanar_pairs": 0,
+            "degenerate_triangles": 0
+          },
+          "packed": {
+            "triangles": 904,
+            "duplicate_triangles": 0,
+            "competing_coplanar_pairs": 0,
+            "degenerate_triangles": 0
+          },
+          "rig": {
+            "parts": 5,
+            "expected_pivots": true
+          },
+          "skin": {
+            "face_vertices": 144,
+            "hand_vertices": 148,
+            "maximum_skin_difference": 1,
+            "textures": 1,
+            "texture_sha256": {
+              "fc_e7ad63_wt_swi_eb2e": "7d08b7577e2ceb5acc62f4d241fa30bf0122ae76d3386072215ac7faad9aba3f"
+            },
+            "opaque": true
+          },
+          "head": {
+            "pivot": [
+              0.0,
+              1.409999966621399,
+              0.0
+            ],
+            "components": 4,
+            "closed_edges": 450,
+            "packed_closed_edges": 450,
+            "packed_components": 4,
+            "outward": true,
+            "main_triangles": 224,
+            "packed_exterior": {
+              "maximum_outside_winding": 5.654319433712919e-16,
+              "minimum_inside_winding": 0.9999999999999989
+            },
+            "maximum_outside_winding": 5.391343883878371e-16,
+            "minimum_inside_winding": 0.9999999999999988
+          },
+          "profile": {
+            "width": 0.79212,
+            "height": 0.7802,
+            "depth": 0.72012,
+            "nose_bulge": 0.11645679999999997,
+            "face_u_span": 1.0
+          }
+        },
+        {
+          "file": "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/swimmer/variants/swimmer_palette2/scene.l64",
+          "sha256": "649183cf16f912cb99830440d4f99b029ece9ca5850b861250a9adf4aaaec384",
+          "triangles": 828,
+          "batches": 7,
+          "raw": {
+            "triangles": 828,
+            "duplicate_triangles": 0,
+            "competing_coplanar_pairs": 0,
+            "degenerate_triangles": 0
+          },
+          "packed": {
+            "triangles": 828,
+            "duplicate_triangles": 0,
+            "competing_coplanar_pairs": 0,
+            "degenerate_triangles": 0
+          },
+          "rig": {
+            "parts": 5,
+            "expected_pivots": true
+          },
+          "skin": {
+            "face_vertices": 108,
+            "hand_vertices": 148,
+            "maximum_skin_difference": 1,
+            "textures": 1,
+            "texture_sha256": {
+              "fc_e7ad63_wt_swi_3b7b": "c0aa4e4a24996677933ac1b33c213e21094e292d0ff0a2e57802cd31d246be91"
+            },
+            "opaque": true
+          },
+          "head": {
+            "pivot": [
+              0.0,
+              1.409999966621399,
+              0.0
+            ],
+            "components": 1,
+            "closed_edges": 336,
+            "packed_closed_edges": 336,
+            "packed_components": 1,
+            "outward": true,
+            "main_triangles": 224,
+            "packed_exterior": {
+              "maximum_outside_winding": 4.2241741863187335e-16,
+              "minimum_inside_winding": 0.9999999999999989
+            },
+            "maximum_outside_winding": 5.146314172090274e-16,
+            "minimum_inside_winding": 0.9999999999999986
+          },
+          "profile": {
+            "width": 0.79212,
+            "height": 0.7802,
+            "depth": 0.72012,
+            "nose_bulge": 0.11645679999999997,
+            "face_u_span": 1.0
+          }
+        }
+      ],
+      "shared_body_exact": true,
+      "distinct_head_geometry": true,
+      "body_color_vertices_changed": 582,
+      "source_portraits": {
+        "src/gfx/duelists/sara.png": "09ae33ac8876b25c07a93d1ab9ffe7a22ce107567f4b3e2005008eca864382c4",
+        "src/gfx/duelists/amanda.png": "057929d9a669389ed0591165e578671f13a047111d8c783c1d30d6574733d972"
+      }
+    }
+  ]
+}

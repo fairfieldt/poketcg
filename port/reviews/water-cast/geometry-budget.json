@@ -1,0 +1,53 @@
+{
+  "actors": [
+    {
+      "slug": "mark",
+      "full_triangles": 868,
+      "lod_triangles": 628,
+      "full_vertices": 1235,
+      "lod_vertices": 931
+    },
+    {
+      "slug": "amy",
+      "full_triangles": 864,
+      "lod_triangles": 650,
+      "full_vertices": 1382,
+      "lod_vertices": 1060
+    },
+    {
+      "slug": "joshua",
+      "full_triangles": 940,
+      "lod_triangles": 638,
+      "full_vertices": 1465,
+      "lod_vertices": 1056
+    },
+    {
+      "slug": "swimmer",
+      "full_triangles": 904,
+      "lod_triangles": 566,
+      "full_vertices": 1433,
+      "lod_vertices": 935
+    },
+    {
+      "slug": "swimmer_palette2",
+      "full_triangles": 828,
+      "lod_triangles": 490,
+      "full_vertices": 1333,
+      "lod_vertices": 841
+    },
+    {
+      "slug": "amy__lying",
+      "full_triangles": 864,
+      "lod_triangles": 756,
+      "full_vertices": 1280,
+      "lod_vertices": 1147
+    }
+  ],
+  "max_batches": 7,
+  "face_texture": "32x32 RGBA16 opaque; 2048 bytes per active actor",
+  "heads_preserved_at_gameplay_lod": true,
+  "minimum_4mib_free_heap_bytes": 906064,
+  "physical_console_performance_measured": false,
+  "minimum_8mib_free_heap_bytes": 4140368,
+  "memory_proof": "resident-footprint.json"
+}

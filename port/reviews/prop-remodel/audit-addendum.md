@@ -38,6 +38,9 @@ prop was removed. The actual small green north-wall readout was restored.
 
 ## Remaining lower-priority work
 
+The unsupported southeast Mason counter was removed: original source pixels
+show floor/south wall there. It is not a remaining prop replacement.
+
 * **Science central low counters:** all three `counter` entries (source crops
   `(7,12,5,2)`, `(12,12,5,2)` and `(16,4,2,6)`) still use the generic brown
   box with a whole projected source front crop. They are the broad low work

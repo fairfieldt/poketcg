@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "unchanged_canonical_mesh_images": 137,
+  "changed_canonical_mesh_images": [
+    "models/mark/scene.l64",
+    "models/mark/back.png",
+    "models/mark/front.png",
+    "models/amy/scene.l64",
+    "models/amy/back.png",
+    "models/amy/front.png",
+    "models/swimmer/scene.l64",
+    "models/swimmer/back.png",
+    "models/swimmer/front.png",
+    "models/joshua/scene.l64",
+    "models/joshua/back.png",
+    "models/joshua/front.png",
+    "models/swimmer/variants/swimmer_palette2/scene.l64",
+    "models/amy/poses/lying/scene.l64"
+  ],
+  "other_families_unchanged": true
+}
