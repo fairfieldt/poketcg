@@ -1,0 +1,30 @@
+{
+  "source_commit": "c5bc9e6f66d8",
+  "includes": [
+    "704be32f doorway and floor-art alignment",
+    "c5bc9e6f deck editor, preset deck names, off-map actors"
+  ],
+  "steam": {
+    "host": "deck@steamdeck.tdf.sh",
+    "standard_sha256": "3922280a69eed2d52761e4110681ecfe60b93d60929e4131e7c3e3256275b027",
+    "expansion_sha256": "caa73cce07fa338cc6847c61228aebe80e88c89a5ca5fe9edb96ac9b31cc62f9",
+    "verified_on_device": true,
+    "live_saves_modified": false,
+    "active_game_restarted": false
+  },
+  "web": {
+    "url": "https://poketcg64.exe.xyz/",
+    "tailnet_url": "http://ms.tdf.sh:8091/",
+    "release": "20261101T185327Z-c5bc9e6f66d8",
+    "public_files": 1802,
+    "service": "active",
+    "verified_public_and_tailnet": [
+      "tcg.wasm",
+      "js/world3d.js",
+      "js/adventure.js",
+      "js/adventure_engine.js",
+      "world/maps/club_foyer.l64",
+      "world/world.json"
+    ]
+  }
+}
