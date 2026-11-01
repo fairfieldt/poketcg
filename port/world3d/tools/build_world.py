@@ -64,6 +64,31 @@ DARKGREEN=rgb('1b5523'); GOLD=rgb('d4a836'); RED=rgb('d62824'); BLUE=rgb('374fb7
 def swimming_pool(scene):
     build_swimming_pool(scene,texture,rgb,WHITE)
 
+# A source actor at anchor (x,y) is drawn over tiles x..x+2, y..y+2, but the
+# world places actors, prop bodies and doorways at the anchor itself. Source
+# art is therefore sampled one tile east/south of its world position.
+ART=8
+# East and south walls stand as far outside the outermost walkable anchors
+# as the west/north walls; the source art draws them in the same place.
+EAST_WALL=2.9
+SOUTH_WALL=4.9
+
+def doors(warps,w,h,side):
+    intervals=[]
+    for warp in warps:
+        x,z=warp['x'],warp['y']
+        if ((side=='north' and z<=1) or (side=='south' and z>=h-4)):
+            intervals.append((x-1.05,x+1.05))
+        if ((side=='west' and x<=1) or (side=='east' and x>=w-3)):
+            intervals.append((z-1.05,z+1.05))
+    # Two adjacent source anchors often describe one two-tile doorway.
+    # Merge them before creating either wall gaps or threshold surfaces.
+    merged=[]
+    for left,right in sorted(intervals):
+        if merged and left<=merged[-1][1]:merged[-1]=(merged[-1][0],max(right,merged[-1][1]))
+        else:merged.append((left,right))
+    return merged
+
 
 class Scene:
     def __init__(self,name):
@@ -140,10 +165,15 @@ class Scene:
                 self.polygon([ps[a+i],ps[b+i],ps[b+n],ps[a+n]],c)
             a=1+(rings-2)*segments
             self.polygon([ps[a+i],ps[top],ps[a+n]],color)
-    def floor(self,img,erase,base_rect=(16,64,16,16),exclude_emblem=False):
+    def floor(self,img,erase,warps=(),base_rect=(16,64,16,16),exclude_emblem=False):
         w,h=img.width//8,img.height//8
         if self.name=='psychic_club':h=28
         self.bounds=(w,h)
+        # The source draws side-wall doorways a further tile south than
+        # their anchors, below the projected end of the upper wall segment.
+        # The band reaches half a tile past the opening, beyond the mat.
+        side_doors=[(-1,4,left,right+.5) for left,right in doors(warps,w,h,'west')]
+        side_doors+=[(w-6,w,left,right+.5) for left,right in doors(warps,w,h,'east')]
         # Most frequent original 16x16 patch is the repeating room floor.
         patches=[]
         for y in range(4,h-4,2):
@@ -160,8 +190,12 @@ class Scene:
         for ty in range(h):
             for tx in range(w):
                 plain[tx,ty]=all(img.at(tx*8+i,ty*8+j) in palette for j in range(8) for i in range(8))
-        def pixel(x,y):
-            tx,ty=x/8,y/8
+        def pixel(wx,wy):
+            # wx,wy are world positions in source pixels. Plain floor keeps
+            # one continuous pattern phase; only source art is redirected.
+            x,y=wx+ART,wy+ART
+            sy=y+(ART if any(a*8<=wx<c*8 and left*8<=wy<right*8 for a,c,left,right in side_doors) else 0)
+            tx,ty=x/8,sy/8
             if self.name=='water_club' and 2<=ty<18:
                 # Repaint the old projected pool/coping where the real pool
                 # was pulled back to leave the source's dry walking lane.
@@ -171,9 +205,12 @@ class Scene:
                     return material_pixel(self.name,x,y,img.at(bx+x%16,by+y%16),True)
             if any(p.x<=tx<p.x+p.w and p.y<=ty<p.y+p.h for p in erase) or (exclude_emblem and 8<=tx<12 and 6<=ty<10):
                 return material_pixel(self.name,x,y,img.at(bx+x%16,by+y%16),True)
-            return material_pixel(self.name,x,y,img.at(x,y),plain.get((int(tx),int(ty)),False))
-        for z in range(2,h-1,4):
-            for x in range(2,w-2,4):
+            return material_pixel(self.name,x,y,img.at(x,sy),plain.get((int(tx),int(ty)),False))
+        self.floor_pixel=pixel
+        # Floor runs from the west/north wall faces to beneath the east wall,
+        # and south to the room's edge for the south doorways.
+        for z in range(1,h-1,4):
+            for x in range(1,w-2,4):
                 cw=min(4,w-2-x);cd=min(4,h-1-z)
                 rows=[[pixel(x*8+i*cw/4,z*8+j*cd/4) for i in range(32)] for j in range(32)]
                 tex=texture(rows)
@@ -184,11 +221,6 @@ class Scene:
                     for ix in range(divisions):
                         a,b=x+cw*ix/divisions,z+cd*iz/divisions;c,d=a+cw/divisions,b+cd/divisions
                         if self.name=='water_club' and (int((a+c)/2),int((b+d)/2)) in POOL_CELLS:continue
-                        # Logical actor centres can stand on the first/last
-                        # source anchors. Continue the floor under their feet.
-                        if a==2:a=1
-                        if b==2:b=1
-                        if c==w-2:c=w-1
                         points=[(a,0,b),(c,0,b),(c,0,d),(a,0,d)]
                         self.polygon(points,tex=tex,
                             uv=[(ix/divisions,iz/divisions),((ix+1)/divisions,iz/divisions),((ix+1)/divisions,(iz+1)/divisions),(ix/divisions,(iz+1)/divisions)])
@@ -352,70 +384,97 @@ def walls(scene,img,warps,height=5):
     paint=wall_paint(scene.name)
     brown=img.at(4,4)
     if max(brown[:3])<20:brown=rgb('521800')
-    def doors(side):
-        intervals=[]
-        for warp in warps:
-            x,z=warp['x'],warp['y']
-            if ((side=='north' and z<=1) or (side=='south' and z>=h-4)):
-                intervals.append((x-1.05,x+1.05))
-            if ((side=='west' and x<=1) or (side=='east' and x>=w-3)):
-                intervals.append((z-1.05,z+1.05))
-        # Two adjacent source anchors often describe one two-tile doorway.
-        # Merge them before creating either wall gaps or threshold surfaces.
-        merged=[]
-        for left,right in sorted(intervals):
-            if merged and left<=merged[-1][1]:merged[-1]=(merged[-1][0],max(right,merged[-1][1]))
-            else:merged.append((left,right))
-        return merged
+    east=w-EAST_WALL;south=h-SOUTH_WALL
+    # Fighting's barbell racks stand on the blocked row against its south
+    # wall; the wall stays behind them.
+    south=max([south]+[z+d+.1 for _,z,_,d in map(footprint,PROPS.get(scene.name,[]))])
+    # Tall walls close above each doorway, clear of every actor's head
+    # (the tallest actor model is 2.55 units).
+    lintel=2.8 if height>3.4 else height
     def runs(side,stop):
         start=.9;end=stop-.9
-        for left,right in doors(side):
+        for left,right in doors(warps,w,h,side):
             if left>start:yield start,min(left,end)
             start=max(start,right)
             if start>=end:return
         if start<end:yield start,end
-    def bands(side,start,end):
+    def bands(side,start,end,low=0):
         # Source livery is wainscot and cornice, never a wall-sized stripe.
-        span=end-start
+        # U is absolute so the livery continues across each lintel.
         def face(lo,hi,color=WHITE,tex=None):
+            if hi<=low:return
+            lo=max(lo,low)
             if side=='north':points=[(start,lo,.93),(end,lo,.93),(end,hi,.93),(start,hi,.93)]
             else:
-                ix=.93 if side=='west' else w-1.03
+                ix=.93 if side=='west' else east-.03
                 points=[(ix,lo,start),(ix,lo,end),(ix,hi,end),(ix,hi,start)]
-            scene.polygon(points,color,tex,[(0,1),(span/2,1),(span/2,0),(0,0)])
+            scene.polygon(points,color,tex,[(start/2,1),(end/2,1),(end/2,0),(start/2,0)])
         waist=min(1.45,height-.4)
         face(0,waist,tex=wall_tex)
         face(waist,waist+.065,GOLD)
-        if height>waist+.4:face(waist+.065,height-.3,paint)
+        if height>waist+.4:
+            # Split at the lintel so every run shares whole edges with the
+            # paint above a doorway; T-junctions open pixel cracks.
+            for lo,hi in ((waist+.065,lintel),(lintel,height-.3)) if waist<lintel<height-.3 else ((waist+.065,height-.3),):
+                face(lo,hi,paint)
         face(height-.3,height,tex=cornice_tex)
+    def art(left,north,right,south_edge):
+        # The floor's own source art, for surfaces that continue it.
+        tw=min(64,2**math.ceil(math.log2(max(1,(right-left)*8))))
+        th=min(32,2**math.ceil(math.log2(max(1,(south_edge-north)*8))))
+        return texture([[scene.floor_pixel((left+(i+.5)*(right-left)/tw)*8,(north+(j+.5)*(south_edge-north)/th)*8)
+                         for i in range(tw)] for j in range(th)])
+    def flat(left,north,right,south_edge,y=0):
+        scene.polygon([(left,y,north),(right,y,north),(right,y,south_edge),(left,y,south_edge)],
+                      tex=art(left,north,right,south_edge))
     # One continuous face per uninterrupted wall. Adjacent antialiased quads
     # exposed their backing along every two-tile seam; repeat UVs preserve the
     # original livery without geometric cracks or coincident internal caps.
     def solid_wall(x,z,width,depth,high):
         scene.props.append(dict(kind='wall',x=x,y=z,w=width,h=depth,height=high,
                                 depth=depth,solid=True,solid_bounds=[x,z,x+width,z+depth]))
-    for side in ('north','south'):
-        for x,end in runs(side,w):
-            span=end-x
-            if side=='north':
-                scene.box(x,-.1,span,1,height,brown,omit=(0,3))
-                solid_wall(x,-.1,span,1.03,height)
-                bands(side,x,end)
-            else:
-                scene.box(x,h-2.0,span,.8,.9,brown,omit=(0,5))
-                scene.box(x-.03,h-2.03,span+.06,.86,.12,GOLD,y=.9,omit=(0,))
-                solid_wall(x-.03,h-2.03,span+.06,.86,1.02)
-    for side,x in [('west',-.1),('east',w-1)]:
+    for x,end in runs('north',w-2):
+        scene.box(x,-.1,end-x,1,height,brown,omit=(0,3))
+        solid_wall(x,-.1,end-x,1.03,height)
+        bands('north',x,end)
+    # The low south wall's top carries the source's south livery, which was
+    # previously painted on the floor in front of a thinner wall.
+    for x,end in runs('south',w-2):
+        scene.box(x,south,end-x,h-1.9-south,.9,brown,omit=(0,5))
+        # At most eight tiles per texture keeps one texel per source pixel.
+        pieces=math.ceil((end-x)/8)
+        for i in range(pieces):
+            a,c=x+(end-x)*i/pieces,x+(end-x)*(i+1)/pieces
+            flat(a,south,c,h-1.9,y=.9)
+        solid_wall(x,south,end-x,h-1.9-south,.9)
+    for side,x in [('west',-.1),('east',east)]:
         for z,end in runs(side,h):
             span=end-z
             scene.box(x,z,1,span,height,brown,omit=(0,2) if side=='west' else (0,4))
-            solid_wall(x,z,1.03 if side=='west' else 1,span,height)
+            solid_wall(x if side=='west' else x-.03,z,1.03,span,height)
             bands(side,z,end)
-    # North doors lead through row0 after source event patches open them.
-    # Continue the threshold beneath the opening instead of leaving a void.
-    for left,right in doors('north'):
-        scene.polygon([(left,0,-.9),(right,0,-.9),(right,0,1),(left,0,1)],
-                      tex=texture(img.crop(max(0,left)*8,16,(right-left)*8,16)))
+    # Each opening in a tall wall is a short passage: the floor continues
+    # through the wall to a dark doorway, between jambs and under a lintel.
+    # The doorway darkens upward, as a passage lit from the room.
+    shade=[rgb('5a4434'),rgb('5a4434'),rgb('22180f'),rgb('22180f')]
+    for left,right in doors(warps,w,h,'north'):
+        if lintel<height:
+            scene.box(left,-.1,right-left,1,height-lintel,brown,y=lintel,omit=(0,2,3,4))
+            bands('north',left,right,lintel)
+        flat(left,-.9,right,1)
+        for x in (left,right):
+            scene.polygon([(x,0,-.9),(x,0,-.1),(x,lintel,-.1),(x,lintel,-.9)],brown)
+        scene.polygon([(left,0,-.9),(right,0,-.9),(right,lintel,-.9),(left,lintel,-.9)],vertex_colors=shade)
+    for side,inner,outer,back,floor_edge in (('west',.9,-.1,-.9,1),('east',east,east+1,east+1.8,w-2)):
+        for left,right in doors(warps,w,h,side):
+            if lintel<height:
+                omit=(0,1,2,3) if side=='west' else (0,1,3,4)
+                scene.box(min(inner,outer),left,1,right-left,height-lintel,brown,y=lintel,omit=omit)
+                bands(side,left,right,lintel)
+            flat(min(back,floor_edge),left,max(back,floor_edge),right)
+            for z in (left,right):
+                scene.polygon([(outer,0,z),(back,0,z),(back,lintel,z),(outer,lintel,z)],brown)
+            scene.polygon([(back,0,left),(back,0,right),(back,lintel,right),(back,lintel,left)],vertex_colors=shade)
 
 
 def terrain(scene,img):
@@ -647,20 +706,40 @@ def copy_lightning():
     tex,meshes=read_l643(assets/'scene.l64')
     remap={}
     for i,name in enumerate(tex):
-        rows=Image(assets/'textures'/name.replace('.sprite','.png')).rows
-        if name.startswith('floor_'):
-            # The prototype's one-tile blue/black grid aliases at native
-            # distance. Give it the same broad material as other rooms;
-            # preserve the white/cyan/red central runner and its border.
-            _,a,b=name.removesuffix('.sprite').split('_')
-            rows=[[material_pixel('lightning_club',int(a)*8+x,int(b)*8+y,p,
-                    p[:3] in ((24,0,165),(0,0,33)))
-                   for x,p in enumerate(row)] for y,row in enumerate(rows)]
-        remap[i]=texture(rows)
+        # Floor quads are repainted below, from the source map.
+        if name.startswith('floor_'):continue
+        remap[i]=texture(Image(assets/'textures'/name.replace('.sprite','.png')).rows)
     room,actors=Scene('lightning_club'),Scene('actors')
     meshes,_=strip_legacy_disks(meshes,{1,2,3,4})
+    # The prototype painted each 4x4 floor quad with the source tiles at its
+    # own position. Repaint each quad from source art one tile east/south,
+    # as every other room does, so the runner meets the anchored doorway.
+    source=Image(REPO/'port/maps/lightning_club.png')
+    def floor_pixel(x,y):
+        # The prototype's repaint: carpet beneath the pillars, cream apron.
+        # Its one-tile blue/black grid aliases at native distance, so it
+        # takes the shared broad material; the runner keeps its border.
+        x,y=min(207,x),min(223,y);tx,ty=x//8,y//8
+        if (8<=tx<10 or 17<=tx<20) and 14<=ty<26:p=source.at(16+x%16,128+y%16)
+        elif ((4<=tx<6 or 22<=tx<24) and 3<=ty<7) or (8<=tx<20 and 2<=ty<5):p=(255,255,173,255)
+        else:p=source.at(x,y)
+        return material_pixel('lightning_club',x,y,p,p[:3] in ((24,0,165),(0,0,33)))
+    floor_tex={}
     for model,part,t,pivot,vs,inds in meshes:
         scene=actors if model else room
+        if not model and t>=0 and tex[t].startswith('floor_'):
+            for offset in range(0,len(inds),3):
+                triangle=[vs[i] for i in inds[offset:offset+3]]
+                origin=(round(min(v[0] for v in triangle)),round(min(v[2] for v in triangle)))
+                if origin not in floor_tex:
+                    ox,oz=origin
+                    floor_tex[origin]=texture([[floor_pixel((ox*8+ART)+i,(oz*8+ART)+j) for i in range(32)] for j in range(32)])
+                key=(model,part,floor_tex[origin],tuple(pivot))
+                batch,elements,cache=scene.batches.setdefault(key,([],[],{}))
+                for v in triangle:
+                    if v not in cache:cache[v]=len(batch);batch.append(v)
+                    elements.append(cache[v])
+            continue
         key=(model,part,remap[t] if t>=0 else None,tuple(pivot))
         scene.batches[key]=(list(vs),list(inds),{})
     room.bounds=(28,32)
@@ -782,7 +861,8 @@ def scene_props(slug,img):
                          and img.at(x*8+i,y*8+j)[0]>120)
                 # Grey stepping stones are flush floor details. They are
                 # intentionally traversable, unlike the flower/topiary beds.
-                if gray>=4:props.append(P('boulder',x,y,1,1,.035,1,solid=False))
+                # The body sits where the shifted floor art draws the stone.
+                if gray>=4:props.append(P('boulder',x,y,1,1,.035,1,solid=False,floor=(x-1,y-1,1,1)))
     return props
 
 
@@ -829,24 +909,24 @@ def main():
             data['scene']='rom:/world/maps/club_lobby.l64';data['overlay']=None
             if lobby_done:continue
             lobby_done=True;scene=Scene('club_lobby')
-            scene.floor(img,LOBBY);walls(scene,img,data['warps'])
+            scene.floor(img,LOBBY,data['warps']);walls(scene,img,data['warps'])
             for p in LOBBY:prop(scene,img,p)
         elif slug.endswith('_club_entrance') or slug=='challenge_hall_entrance':
             data['scene']='rom:/world/maps/club_foyer.l64'
             data['overlay']='rom:/world/maps/emblem_'+slug+'.l64'
             emblem=Scene('emblem_'+slug)
             emblem.bounds=(data['width'],data['height'])
-            emblem.polygon([(8,.06,6),(12,.06,6),(12,.06,10),(8,.06,10)],tex=texture(img.crop(64,48,32,32,32,32)))
+            emblem.polygon([(7,.06,5),(11,.06,5),(11,.06,9),(7,.06,9)],tex=texture(img.crop(64,48,32,32,32,32)))
             rec=emblem.save(MAPS/(emblem.name+'.l64'));records[emblem.name]=rec
             if foyer_done:continue
             foyer_done=True;scene=Scene('club_foyer')
-            scene.floor(img,FOYER,exclude_emblem=True);walls(scene,img,data['warps'])
+            scene.floor(img,FOYER,data['warps'],exclude_emblem=True);walls(scene,img,data['warps'])
             for p in FOYER:prop(scene,img,p)
         elif slug=='lightning_club':
             scene=lightning
         else:
             scene=Scene(slug);props=scene_props(slug,img)
-            scene.floor(img,props);walls(scene,img,data['warps'])
+            scene.floor(img,props,data['warps']);walls(scene,img,data['warps'])
             for p in props:prop(scene,img,p)
         data.setdefault('scene','rom:/world/maps/'+scene.name+'.l64')
         data.setdefault('overlay',None)
@@ -863,7 +943,7 @@ def main():
         if mid==1:props.append(P('machine',10,0,4,5,2.2,2,floor=F(10,2,12,2)))
         # These are the closed doorway's panels, not permanent counters.
         if mid==31:props=[p for p in props if p.kind!='counter']
-        scene.floor(img,props);walls(scene,img,data['warps'])
+        scene.floor(img,props,data['warps']);walls(scene,img,data['warps'])
         for p in props:prop(scene,img,p)
         records[name]=scene.save(MAPS/(name+'.l64'))
         event_records.append(dict(map=mid,event=event,scene='rom:/world/maps/'+name+'.l64'))
@@ -873,7 +953,7 @@ def main():
     deck=maps[2];base_img=Image(REPO/'port/maps/deck_machine_room.png')
     lit_img=Image(REPO/'port/maps/events/deck_machine_room_all_deck_machines.png')
     shell=Scene('deck_machine_room_dynamic');shell.switchable=True
-    shell.floor(base_img,PROPS['deck_machine_room']);walls(shell,base_img,deck['warps'])
+    shell.floor(base_img,PROPS['deck_machine_room'],deck['warps']);walls(shell,base_img,deck['warps'])
     for p in PROPS['deck_machine_room']:prop(shell,base_img,p)
     records[shell.name]=shell.save(MAPS/(shell.name+'.l64'))
     switches=[]
@@ -936,7 +1016,7 @@ def update_hall():
     data=next(m for m in doc['maps'] if m['slug']=='hall_of_honor')
     image=Image(REPO/'port/maps/hall_of_honor.png')
     scene=Scene('hall_of_honor');props=scene_props(scene.name,image)
-    scene.floor(image,props);walls(scene,image,data['warps'])
+    scene.floor(image,props,data['warps']);walls(scene,image,data['warps'])
     for p in props:prop(scene,image,p)
     doc['meshes'][scene.name]=scene.save(MAPS/'hall_of_honor.l64')
     from honor_cards import build as build_honor_cards

@@ -1,0 +1,396 @@
+{
+  "passed": true,
+  "ram_mib": 4,
+  "dimensions": [
+    320,
+    240
+  ],
+  "rom_sha256": "6bd9126f4eeb2bb6a3308464d525229f5785ff3bf20b88d282e09f85daac5f9d",
+  "canonical_state_unchanged": true,
+  "method": "Completed native RDP framebuffer using production renderer. Identical source actor poses and settled cameras; room meshes/textures differ. Timing is emulated CP0 cadence (8 samples), not physical hardware. All conditional source NPCs visible for inspection.",
+  "frames": [
+    {
+      "file": "foyer-west-north-before.png",
+      "sha256": "d38e63d36f9c4a4d4fcbd6908544da69ea5503f129e421691b41b59ba6c2dfd2"
+    },
+    {
+      "file": "foyer-west-north-after.png",
+      "sha256": "0077d1c3203aeade473011357442050d57e48a3c783f8cf44f39de6e48835d7f"
+    },
+    {
+      "file": "lobby-east-before.png",
+      "sha256": "b1afe68dc92ea719817e8512ea65c378ff018d464a87ba115a66dfcc578eefdd"
+    },
+    {
+      "file": "lobby-east-after.png",
+      "sha256": "ef58399297f5306e5c552eaf328f75450fed64e7e1a3724598793bda1ee9081f"
+    },
+    {
+      "file": "water-south-before.png",
+      "sha256": "c91979b473e9e4b28c573b22b48e5db6f550c7f2569f300d70f03411e61b2ed6"
+    },
+    {
+      "file": "water-south-after.png",
+      "sha256": "1a4189c207a6b93dd590c2e5b4929f0ff0ab71cc4ce408c45c82d93e1ae86cff"
+    },
+    {
+      "file": "lab-east-before.png",
+      "sha256": "e385100303e78629a816d88e2c1be6550cc4043d01ac1f06233fea68b87d4387"
+    },
+    {
+      "file": "lab-east-after.png",
+      "sha256": "8d9eb070b99622c0d4d403e5b8e52b4f3af73c2c79c792d61fa18d4e38a4b389"
+    },
+    {
+      "file": "lab-south-before.png",
+      "sha256": "07c1ac928ca34edeb34db8fae41c3322bb612a8d7de487cc93751c206d52e846"
+    },
+    {
+      "file": "lab-south-after.png",
+      "sha256": "a0261a2eb7bc9acb881b879791f47be01a4eab029f3bddaa26fc259f9e8bb8b3"
+    },
+    {
+      "file": "deck-west-before.png",
+      "sha256": "f80f511e2d106e993a07a9755efd9857b7bd15fb75c574e86752069283b98aba"
+    },
+    {
+      "file": "deck-west-after.png",
+      "sha256": "b14c2f084eaf3736fee315ea498c0fd0c32ab45e6c970050a548fc8ab04319f0"
+    },
+    {
+      "file": "ishihara-south-before.png",
+      "sha256": "66ca4545dd6685ad9f950417114b62ed7ddd124f3aacb241898db418fd6c1274"
+    },
+    {
+      "file": "ishihara-south-after.png",
+      "sha256": "b4a7fcf870a39190318bb2f3432ec39e2ff9f8e24d12dbd09530f7b11f0d95d5"
+    },
+    {
+      "file": "fighting-south-before.png",
+      "sha256": "790bfde88ae357a0a2335c91e8ae3dab99dfc02887a77d5a42cfd7a3a46ff391"
+    },
+    {
+      "file": "fighting-south-after.png",
+      "sha256": "c780a6cd8834eaeab55bc3634a7d01088dab71a76a61328f4886de7a01c0bf16"
+    },
+    {
+      "file": "rock-south-before.png",
+      "sha256": "7697f76679a90099d439d2dcba3c8cfbff95e61fd3a8a02373c7bf18849bea72"
+    },
+    {
+      "file": "rock-south-after.png",
+      "sha256": "1deb26ee7350a2a50b86e6d2cfb46231f5216abfdeb7402deea5bfb03d845ec7"
+    },
+    {
+      "file": "lightning-south-before.png",
+      "sha256": "566da6dc953acbcbc687bb0f7e038cfce53f40f8634119f1b0ff59849d5c603b"
+    },
+    {
+      "file": "lightning-south-after.png",
+      "sha256": "2ccea585319720138fa00a4244553464d0958f0e9783ebb7f57c0d7c0425e31f"
+    },
+    {
+      "file": "grass-south-before.png",
+      "sha256": "bcb681620a5395e9421ce29d8eb9081f728b6aea315194ba16735c1d301432c2"
+    },
+    {
+      "file": "grass-south-after.png",
+      "sha256": "1c52a80fd4bfed85a41c68705004d6176dda2c6300d135c22199e105e72400c3"
+    },
+    {
+      "file": "psychic-south-before.png",
+      "sha256": "24cf1a22f0f6add32694f7a47db995e2628efe8581458d2776ca3e885dc1ee51"
+    },
+    {
+      "file": "psychic-south-after.png",
+      "sha256": "22418d5f581cdc2adae68f50732e9d5beeaefe52ff47c5bb565e58aaef142a5c"
+    },
+    {
+      "file": "science-south-before.png",
+      "sha256": "b846b27f3ba310d3818bc8df2d11f0fd317a37477662e6dc97ed973ec2985524"
+    },
+    {
+      "file": "science-south-after.png",
+      "sha256": "25f7f4301ceb4744e045a22391597371ad3eb84ff921ac0b44f2fab107fdc7d1"
+    },
+    {
+      "file": "fire-south-before.png",
+      "sha256": "15ae476de904a924344fc53f8b39ac00837d0f3c903ec659ef43100f64f10427"
+    },
+    {
+      "file": "fire-south-after.png",
+      "sha256": "bcb12a3368414994a185d0769f6e96b8757bd21a4cb7b3e3e9b186553c837fa3"
+    },
+    {
+      "file": "challenge-south-before.png",
+      "sha256": "cb8b4a215ca99a04e7e4c92c7865cdddc5a8f1d038cb5b9e62df7b23c7857fff"
+    },
+    {
+      "file": "challenge-south-after.png",
+      "sha256": "f08ff71d92c75a942b6d4a9ced708818ee72baf6c2fb43f6ac23e42d05cb5999"
+    },
+    {
+      "file": "dome-entrance-north-before.png",
+      "sha256": "85a36ec4378f21e9512adfa24e6f3f8e8f75ebaf0a86c4ef5a6c7e353cc90d9d"
+    },
+    {
+      "file": "dome-entrance-north-after.png",
+      "sha256": "882f563aad5e717eb78adbf7a4da36af8979470e0c3b39b479eced0920802635"
+    },
+    {
+      "file": "dome-north-before.png",
+      "sha256": "5ebcfbe1ecb735d1b6187b13e54de095f89027cef58a73aa35cac6974d3abec0"
+    },
+    {
+      "file": "dome-north-after.png",
+      "sha256": "8ee959e8b9d7527cee2331c0c168b86e8d7e9e223dd2093d8a6a416ce0e9b39e"
+    },
+    {
+      "file": "dome-south-before.png",
+      "sha256": "06f08c7c9defaf96d8781ea62961248a3a07f7b72e032e3312a7e37d10c06cb0"
+    },
+    {
+      "file": "dome-south-after.png",
+      "sha256": "ee02f6808d4739809b02d25f2ee301270cfe928fd2f309919edf6f0036a3cd0c"
+    },
+    {
+      "file": "honor-south-before.png",
+      "sha256": "8e6a01fdaeb3df0bee62779a4fc4beb9cc4439f33a010167623bc5b98429f117"
+    },
+    {
+      "file": "honor-south-after.png",
+      "sha256": "7f5c9125a38ce8d8e804179ed3252d7b5b9699d937ea82403e0718bc545dd042"
+    }
+  ],
+  "cases": [
+    {
+      "name": "foyer-west-north-before",
+      "free_heap": 2073616,
+      "mean_cadence_us": 33464,
+      "samples": 8
+    },
+    {
+      "name": "foyer-west-north-after",
+      "free_heap": 2048624,
+      "mean_cadence_us": 33545,
+      "samples": 8
+    },
+    {
+      "name": "lobby-east-before",
+      "free_heap": 1700760,
+      "mean_cadence_us": 33339,
+      "samples": 8
+    },
+    {
+      "name": "lobby-east-after",
+      "free_heap": 1656296,
+      "mean_cadence_us": 32365,
+      "samples": 8
+    },
+    {
+      "name": "water-south-before",
+      "free_heap": 1741696,
+      "mean_cadence_us": 33334,
+      "samples": 8
+    },
+    {
+      "name": "water-south-after",
+      "free_heap": 1693608,
+      "mean_cadence_us": 31863,
+      "samples": 8
+    },
+    {
+      "name": "lab-east-before",
+      "free_heap": 1950200,
+      "mean_cadence_us": 33535,
+      "samples": 8
+    },
+    {
+      "name": "lab-east-after",
+      "free_heap": 1910296,
+      "mean_cadence_us": 33438,
+      "samples": 8
+    },
+    {
+      "name": "lab-south-before",
+      "free_heap": 1950184,
+      "mean_cadence_us": 33551,
+      "samples": 8
+    },
+    {
+      "name": "lab-south-after",
+      "free_heap": 1910296,
+      "mean_cadence_us": 34186,
+      "samples": 8
+    },
+    {
+      "name": "deck-west-before",
+      "free_heap": 2038056,
+      "mean_cadence_us": 32292,
+      "samples": 8
+    },
+    {
+      "name": "deck-west-after",
+      "free_heap": 2007944,
+      "mean_cadence_us": 32189,
+      "samples": 8
+    },
+    {
+      "name": "ishihara-south-before",
+      "free_heap": 1864416,
+      "mean_cadence_us": 32572,
+      "samples": 8
+    },
+    {
+      "name": "ishihara-south-after",
+      "free_heap": 1839576,
+      "mean_cadence_us": 33521,
+      "samples": 8
+    },
+    {
+      "name": "fighting-south-before",
+      "free_heap": 1926096,
+      "mean_cadence_us": 31889,
+      "samples": 8
+    },
+    {
+      "name": "fighting-south-after",
+      "free_heap": 1902248,
+      "mean_cadence_us": 33376,
+      "samples": 8
+    },
+    {
+      "name": "rock-south-before",
+      "free_heap": 1770960,
+      "mean_cadence_us": 33404,
+      "samples": 8
+    },
+    {
+      "name": "rock-south-after",
+      "free_heap": 1747040,
+      "mean_cadence_us": 33501,
+      "samples": 8
+    },
+    {
+      "name": "lightning-south-before",
+      "free_heap": 1873584,
+      "mean_cadence_us": 33634,
+      "samples": 8
+    },
+    {
+      "name": "lightning-south-after",
+      "free_heap": 1837264,
+      "mean_cadence_us": 33379,
+      "samples": 8
+    },
+    {
+      "name": "grass-south-before",
+      "free_heap": 1682952,
+      "mean_cadence_us": 33776,
+      "samples": 8
+    },
+    {
+      "name": "grass-south-after",
+      "free_heap": 1646216,
+      "mean_cadence_us": 34218,
+      "samples": 8
+    },
+    {
+      "name": "psychic-south-before",
+      "free_heap": 1820888,
+      "mean_cadence_us": 31470,
+      "samples": 8
+    },
+    {
+      "name": "psychic-south-after",
+      "free_heap": 1784120,
+      "mean_cadence_us": 32385,
+      "samples": 8
+    },
+    {
+      "name": "science-south-before",
+      "free_heap": 1914592,
+      "mean_cadence_us": 33551,
+      "samples": 8
+    },
+    {
+      "name": "science-south-after",
+      "free_heap": 1877720,
+      "mean_cadence_us": 32734,
+      "samples": 8
+    },
+    {
+      "name": "fire-south-before",
+      "free_heap": 1786784,
+      "mean_cadence_us": 33525,
+      "samples": 8
+    },
+    {
+      "name": "fire-south-after",
+      "free_heap": 1754000,
+      "mean_cadence_us": 33357,
+      "samples": 8
+    },
+    {
+      "name": "challenge-south-before",
+      "free_heap": 1869584,
+      "mean_cadence_us": 33415,
+      "samples": 8
+    },
+    {
+      "name": "challenge-south-after",
+      "free_heap": 1833048,
+      "mean_cadence_us": 33362,
+      "samples": 8
+    },
+    {
+      "name": "dome-entrance-north-before",
+      "free_heap": 2099240,
+      "mean_cadence_us": 33426,
+      "samples": 8
+    },
+    {
+      "name": "dome-entrance-north-after",
+      "free_heap": 2065680,
+      "mean_cadence_us": 33341,
+      "samples": 8
+    },
+    {
+      "name": "dome-north-before",
+      "free_heap": 1577640,
+      "mean_cadence_us": 33424,
+      "samples": 8
+    },
+    {
+      "name": "dome-north-after",
+      "free_heap": 1539248,
+      "mean_cadence_us": 31776,
+      "samples": 8
+    },
+    {
+      "name": "dome-south-before",
+      "free_heap": 1577640,
+      "mean_cadence_us": 32548,
+      "samples": 8
+    },
+    {
+      "name": "dome-south-after",
+      "free_heap": 1539248,
+      "mean_cadence_us": 32315,
+      "samples": 8
+    },
+    {
+      "name": "honor-south-before",
+      "free_heap": 2092776,
+      "mean_cadence_us": 33450,
+      "samples": 8
+    },
+    {
+      "name": "honor-south-after",
+      "free_heap": 2059920,
+      "mean_cadence_us": 33322,
+      "samples": 8
+    }
+  ],
+  "wall_seconds": 75.58
+}

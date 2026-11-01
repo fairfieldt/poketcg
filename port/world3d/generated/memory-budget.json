@@ -1,284 +1,564 @@
 {
   "measured": false,
   "ram_bytes": 4194304,
-  "elf_text_data_bss": 1271248,
+  "elf_text_data_bss": 1572160,
   "framebuffer_depth_bytes": 614400,
   "actors": {
     "name": "actors",
-    "mesh_bytes": 68664,
+    "mesh_bytes": 68988,
     "texture_bytes": 0,
-    "asset_bytes": 68664,
-    "display_list_estimate": 146112,
-    "combined_estimate": 214776
+    "asset_bytes": 68988,
+    "display_list_estimate": 146368,
+    "combined_estimate": 215356
   },
   "worst_scene": {
-    "name": "grass_club",
-    "mesh_bytes": 252228,
-    "texture_bytes": 70912,
-    "asset_bytes": 323140,
-    "display_list_estimate": 442432,
-    "combined_estimate": 765572
+    "name": "overworld",
+    "mesh_bytes": 292664,
+    "texture_bytes": 43136,
+    "asset_bytes": 335800,
+    "display_list_estimate": 467728,
+    "combined_estimate": 803528
   },
   "other_reserved_bytes": 524288,
-  "total_estimate_bytes": 3390284,
-  "margin_estimate_bytes": 804020,
+  "total_estimate_bytes": 3729732,
+  "margin_estimate_bytes": 464572,
   "note": "Display-list/mixer/RSP/stack overhead is estimated; verify native heap statistics from the 4 MiB map tour.",
   "scenes": [
     {
-      "name": "grass_club",
-      "mesh_bytes": 252228,
-      "texture_bytes": 70912,
-      "asset_bytes": 323140,
-      "display_list_estimate": 442432,
-      "combined_estimate": 765572
-    },
-    {
-      "name": "pokemon_dome",
-      "mesh_bytes": 108924,
-      "texture_bytes": 88064,
-      "asset_bytes": 196988,
-      "display_list_estimate": 241984,
-      "combined_estimate": 438972
-    },
-    {
-      "name": "pokemon_dome_hall_of_honor_door_open",
-      "mesh_bytes": 108924,
-      "texture_bytes": 88064,
-      "asset_bytes": 196988,
-      "display_list_estimate": 241984,
-      "combined_estimate": 438972
-    },
-    {
       "name": "overworld",
-      "mesh_bytes": 171504,
-      "texture_bytes": 24320,
-      "asset_bytes": 195824,
-      "display_list_estimate": 442048,
-      "combined_estimate": 637872
+      "mesh_bytes": 292664,
+      "texture_bytes": 43136,
+      "asset_bytes": 335800,
+      "display_list_estimate": 467728,
+      "combined_estimate": 803528
     },
     {
-      "name": "water_club",
-      "mesh_bytes": 104604,
-      "texture_bytes": 66432,
-      "asset_bytes": 171036,
-      "display_list_estimate": 218016,
-      "combined_estimate": 389052
-    },
-    {
-      "name": "challenge_hall",
-      "mesh_bytes": 74952,
-      "texture_bytes": 89984,
-      "asset_bytes": 164936,
-      "display_list_estimate": 189824,
-      "combined_estimate": 354760
+      "name": "grass_club",
+      "mesh_bytes": 229572,
+      "texture_bytes": 94976,
+      "asset_bytes": 324548,
+      "display_list_estimate": 425600,
+      "combined_estimate": 750148
     },
     {
       "name": "rock_club",
-      "mesh_bytes": 108168,
-      "texture_bytes": 39296,
-      "asset_bytes": 147464,
-      "display_list_estimate": 199552,
-      "combined_estimate": 347016
+      "mesh_bytes": 143076,
+      "texture_bytes": 90496,
+      "asset_bytes": 233572,
+      "display_list_estimate": 289216,
+      "combined_estimate": 522788
     },
     {
-      "name": "mason_laboratory_challenge_machine",
-      "mesh_bytes": 68016,
-      "texture_bytes": 48896,
-      "asset_bytes": 116912,
-      "display_list_estimate": 146016,
-      "combined_estimate": 262928
+      "name": "pokemon_dome",
+      "mesh_bytes": 80220,
+      "texture_bytes": 138240,
+      "asset_bytes": 218460,
+      "display_list_estimate": 240064,
+      "combined_estimate": 458524
     },
     {
-      "name": "mason_laboratory",
-      "mesh_bytes": 66720,
-      "texture_bytes": 46848,
-      "asset_bytes": 113568,
-      "display_list_estimate": 144096,
-      "combined_estimate": 257664
+      "name": "pokemon_dome_hall_of_honor_door_open",
+      "mesh_bytes": 80160,
+      "texture_bytes": 136064,
+      "asset_bytes": 216224,
+      "display_list_estimate": 238016,
+      "combined_estimate": 454240
+    },
+    {
+      "name": "water_club",
+      "mesh_bytes": 132804,
+      "texture_bytes": 64384,
+      "asset_bytes": 197188,
+      "display_list_estimate": 258560,
+      "combined_estimate": 455748
+    },
+    {
+      "name": "challenge_hall",
+      "mesh_bytes": 50796,
+      "texture_bytes": 127232,
+      "asset_bytes": 178028,
+      "display_list_estimate": 184832,
+      "combined_estimate": 362860
+    },
+    {
+      "name": "psychic_club",
+      "mesh_bytes": 80964,
+      "texture_bytes": 90496,
+      "asset_bytes": 171460,
+      "display_list_estimate": 199680,
+      "combined_estimate": 371140
     },
     {
       "name": "science_club",
-      "mesh_bytes": 58728,
-      "texture_bytes": 54656,
-      "asset_bytes": 113384,
-      "display_list_estimate": 142080,
-      "combined_estimate": 255464
+      "mesh_bytes": 85008,
+      "texture_bytes": 81920,
+      "asset_bytes": 166928,
+      "display_list_estimate": 199968,
+      "combined_estimate": 366896
     },
     {
-      "name": "lightning_club",
-      "mesh_bytes": 31800,
-      "texture_bytes": 72448,
-      "asset_bytes": 104248,
-      "display_list_estimate": 115936,
-      "combined_estimate": 220184
+      "name": "mason_laboratory_challenge_machine",
+      "mesh_bytes": 103212,
+      "texture_bytes": 58368,
+      "asset_bytes": 161580,
+      "display_list_estimate": 203296,
+      "combined_estimate": 364876
+    },
+    {
+      "name": "mason_laboratory",
+      "mesh_bytes": 95172,
+      "texture_bytes": 60544,
+      "asset_bytes": 155716,
+      "display_list_estimate": 193344,
+      "combined_estimate": 349060
+    },
+    {
+      "name": "ishiharas_house",
+      "mesh_bytes": 103332,
+      "texture_bytes": 49408,
+      "asset_bytes": 152740,
+      "display_list_estimate": 198976,
+      "combined_estimate": 351716
+    },
+    {
+      "name": "club_lobby",
+      "mesh_bytes": 74400,
+      "texture_bytes": 64896,
+      "asset_bytes": 139296,
+      "display_list_estimate": 166368,
+      "combined_estimate": 305664
+    },
+    {
+      "name": "deck_machine_room",
+      "mesh_bytes": 99972,
+      "texture_bytes": 37376,
+      "asset_bytes": 137348,
+      "display_list_estimate": 182528,
+      "combined_estimate": 319876
     },
     {
       "name": "fire_club",
-      "mesh_bytes": 72576,
-      "texture_bytes": 27264,
-      "asset_bytes": 99840,
-      "display_list_estimate": 135296,
-      "combined_estimate": 235136
+      "mesh_bytes": 41184,
+      "texture_bytes": 94848,
+      "asset_bytes": 136032,
+      "display_list_estimate": 144640,
+      "combined_estimate": 280672
+    },
+    {
+      "name": "deck_machine_room_all_deck_machines",
+      "mesh_bytes": 95652,
+      "texture_bytes": 37376,
+      "asset_bytes": 133028,
+      "display_list_estimate": 176128,
+      "combined_estimate": 309156
+    },
+    {
+      "name": "deck_machine_room_dynamic",
+      "mesh_bytes": 92196,
+      "texture_bytes": 37376,
+      "asset_bytes": 129572,
+      "display_list_estimate": 171008,
+      "combined_estimate": 300580
+    },
+    {
+      "name": "lightning_club",
+      "mesh_bytes": 35184,
+      "texture_bytes": 94208,
+      "asset_bytes": 129392,
+      "display_list_estimate": 140512,
+      "combined_estimate": 269904
+    },
+    {
+      "name": "pokemon_dome_entrance",
+      "mesh_bytes": 53856,
+      "texture_bytes": 65664,
+      "asset_bytes": 119520,
+      "display_list_estimate": 139456,
+      "combined_estimate": 258976
+    },
+    {
+      "name": "pokemon_dome_entrance_door_open",
+      "mesh_bytes": 52656,
+      "texture_bytes": 64384,
+      "asset_bytes": 117040,
+      "display_list_estimate": 133760,
+      "combined_estimate": 250800
     },
     {
       "name": "hall_of_honor",
       "mesh_bytes": 46632,
-      "texture_bytes": 51072,
-      "asset_bytes": 97704,
-      "display_list_estimate": 116288,
-      "combined_estimate": 213992
-    },
-    {
-      "name": "club_lobby",
-      "mesh_bytes": 68280,
-      "texture_bytes": 27264,
-      "asset_bytes": 95544,
-      "display_list_estimate": 128832,
-      "combined_estimate": 224376
-    },
-    {
-      "name": "psychic_club",
-      "mesh_bytes": 67368,
-      "texture_bytes": 27264,
-      "asset_bytes": 94632,
-      "display_list_estimate": 127424,
-      "combined_estimate": 222056
-    },
-    {
-      "name": "ishiharas_house",
-      "mesh_bytes": 49644,
-      "texture_bytes": 32896,
-      "asset_bytes": 82540,
-      "display_list_estimate": 109024,
-      "combined_estimate": 191564
+      "texture_bytes": 62208,
+      "asset_bytes": 108840,
+      "display_list_estimate": 123040,
+      "combined_estimate": 231880
     },
     {
       "name": "fighting_club",
-      "mesh_bytes": 62364,
-      "texture_bytes": 18560,
-      "asset_bytes": 80924,
-      "display_list_estimate": 112096,
-      "combined_estimate": 193020
-    },
-    {
-      "name": "pokemon_dome_entrance",
-      "mesh_bytes": 44844,
-      "texture_bytes": 29824,
-      "asset_bytes": 74668,
-      "display_list_estimate": 101856,
-      "combined_estimate": 176524
-    },
-    {
-      "name": "pokemon_dome_entrance_door_open",
-      "mesh_bytes": 44784,
-      "texture_bytes": 29184,
-      "asset_bytes": 73968,
-      "display_list_estimate": 99808,
-      "combined_estimate": 173776
-    },
-    {
-      "name": "deck_machine_room",
-      "mesh_bytes": 51180,
-      "texture_bytes": 18304,
-      "asset_bytes": 69484,
-      "display_list_estimate": 91680,
-      "combined_estimate": 161164
+      "mesh_bytes": 65184,
+      "texture_bytes": 34432,
+      "asset_bytes": 99616,
+      "display_list_estimate": 132288,
+      "combined_estimate": 231904
     },
     {
       "name": "actors",
-      "mesh_bytes": 68664,
+      "mesh_bytes": 68988,
       "texture_bytes": 0,
-      "asset_bytes": 68664,
-      "display_list_estimate": 146112,
-      "combined_estimate": 214776
-    },
-    {
-      "name": "deck_machine_room_all_deck_machines",
-      "mesh_bytes": 51120,
-      "texture_bytes": 16128,
-      "asset_bytes": 67248,
-      "display_list_estimate": 89632,
-      "combined_estimate": 156880
-    },
-    {
-      "name": "deck_machine_room_dynamic",
-      "mesh_bytes": 50196,
-      "texture_bytes": 11904,
-      "asset_bytes": 62100,
-      "display_list_estimate": 86304,
-      "combined_estimate": 148404
+      "asset_bytes": 68988,
+      "display_list_estimate": 146368,
+      "combined_estimate": 215356
     },
     {
       "name": "club_foyer",
-      "mesh_bytes": 23832,
-      "texture_bytes": 20736,
-      "asset_bytes": 44568,
-      "display_list_estimate": 56992,
-      "combined_estimate": 101560
+      "mesh_bytes": 16332,
+      "texture_bytes": 48384,
+      "asset_bytes": 64716,
+      "display_list_estimate": 69888,
+      "combined_estimate": 134604
     },
     {
-      "name": "deck_machine_6_off",
-      "mesh_bytes": 176,
-      "texture_bytes": 4224,
-      "asset_bytes": 4400,
-      "display_list_estimate": 2208,
-      "combined_estimate": 6608
+      "name": "actor_ronald",
+      "mesh_bytes": 41996,
+      "texture_bytes": 2176,
+      "asset_bytes": 44172,
+      "display_list_estimate": 75232,
+      "combined_estimate": 119404
     },
     {
-      "name": "deck_machine_6_on",
-      "mesh_bytes": 176,
-      "texture_bytes": 4224,
-      "asset_bytes": 4400,
-      "display_list_estimate": 2208,
-      "combined_estimate": 6608
+      "name": "actor_joshua",
+      "mesh_bytes": 41036,
+      "texture_bytes": 2176,
+      "asset_bytes": 43212,
+      "display_list_estimate": 76256,
+      "combined_estimate": 119468
     },
     {
-      "name": "deck_machine_7_off",
-      "mesh_bytes": 176,
-      "texture_bytes": 4224,
-      "asset_bytes": 4400,
-      "display_list_estimate": 2208,
-      "combined_estimate": 6608
+      "name": "actor_swimmer",
+      "mesh_bytes": 40052,
+      "texture_bytes": 2176,
+      "asset_bytes": 42228,
+      "display_list_estimate": 74656,
+      "combined_estimate": 116884
     },
     {
-      "name": "deck_machine_7_on",
-      "mesh_bytes": 176,
-      "texture_bytes": 4224,
-      "asset_bytes": 4400,
-      "display_list_estimate": 2208,
-      "combined_estimate": 6608
+      "name": "actor_granny",
+      "mesh_bytes": 39284,
+      "texture_bytes": 2176,
+      "asset_bytes": 41460,
+      "display_list_estimate": 70880,
+      "combined_estimate": 112340
     },
     {
-      "name": "deck_machine_8_off",
-      "mesh_bytes": 176,
-      "texture_bytes": 4224,
-      "asset_bytes": 4400,
-      "display_list_estimate": 2208,
-      "combined_estimate": 6608
+      "name": "actor_amy",
+      "mesh_bytes": 38588,
+      "texture_bytes": 2176,
+      "asset_bytes": 40764,
+      "display_list_estimate": 72384,
+      "combined_estimate": 113148
     },
     {
-      "name": "deck_machine_8_on",
-      "mesh_bytes": 176,
-      "texture_bytes": 4224,
-      "asset_bytes": 4400,
-      "display_list_estimate": 2208,
-      "combined_estimate": 6608
+      "name": "actor_rod",
+      "mesh_bytes": 37632,
+      "texture_bytes": 2176,
+      "asset_bytes": 39808,
+      "display_list_estimate": 68592,
+      "combined_estimate": 108400
     },
     {
-      "name": "deck_machine_9_off",
-      "mesh_bytes": 176,
-      "texture_bytes": 4224,
-      "asset_bytes": 4400,
-      "display_list_estimate": 2208,
-      "combined_estimate": 6608
+      "name": "actor_ishihara",
+      "mesh_bytes": 37424,
+      "texture_bytes": 2176,
+      "asset_bytes": 39600,
+      "display_list_estimate": 68288,
+      "combined_estimate": 107888
     },
     {
-      "name": "deck_machine_9_on",
-      "mesh_bytes": 176,
-      "texture_bytes": 4224,
-      "asset_bytes": 4400,
-      "display_list_estimate": 2208,
-      "combined_estimate": 6608
+      "name": "actor_steve",
+      "mesh_bytes": 37424,
+      "texture_bytes": 2176,
+      "asset_bytes": 39600,
+      "display_list_estimate": 68512,
+      "combined_estimate": 108112
+    },
+    {
+      "name": "actor_chap",
+      "mesh_bytes": 37424,
+      "texture_bytes": 2176,
+      "asset_bytes": 39600,
+      "display_list_estimate": 68288,
+      "combined_estimate": 107888
+    },
+    {
+      "name": "actor_murray",
+      "mesh_bytes": 37388,
+      "texture_bytes": 2176,
+      "asset_bytes": 39564,
+      "display_list_estimate": 68224,
+      "combined_estimate": 107788
+    },
+    {
+      "name": "actor_swimmer_palette2",
+      "mesh_bytes": 37196,
+      "texture_bytes": 2176,
+      "asset_bytes": 39372,
+      "display_list_estimate": 70240,
+      "combined_estimate": 109612
+    },
+    {
+      "name": "actor_ken",
+      "mesh_bytes": 37140,
+      "texture_bytes": 2176,
+      "asset_bytes": 39316,
+      "display_list_estimate": 67856,
+      "combined_estimate": 107172
+    },
+    {
+      "name": "actor_pappy",
+      "mesh_bytes": 36956,
+      "texture_bytes": 2176,
+      "asset_bytes": 39132,
+      "display_list_estimate": 67584,
+      "combined_estimate": 106716
+    },
+    {
+      "name": "actor_lass3",
+      "mesh_bytes": 36308,
+      "texture_bytes": 2176,
+      "asset_bytes": 38484,
+      "display_list_estimate": 66208,
+      "combined_estimate": 104692
+    },
+    {
+      "name": "actor_amy__lying",
+      "mesh_bytes": 36140,
+      "texture_bytes": 2176,
+      "asset_bytes": 38316,
+      "display_list_estimate": 69120,
+      "combined_estimate": 107436
+    },
+    {
+      "name": "actor_dr_mason",
+      "mesh_bytes": 35468,
+      "texture_bytes": 2176,
+      "asset_bytes": 37644,
+      "display_list_estimate": 64992,
+      "combined_estimate": 102636
+    },
+    {
+      "name": "actor_gene",
+      "mesh_bytes": 35364,
+      "texture_bytes": 2176,
+      "asset_bytes": 37540,
+      "display_list_estimate": 65200,
+      "combined_estimate": 102740
+    },
+    {
+      "name": "actor_girl",
+      "mesh_bytes": 35308,
+      "texture_bytes": 2176,
+      "asset_bytes": 37484,
+      "display_list_estimate": 65120,
+      "combined_estimate": 102604
+    },
+    {
+      "name": "actor_mark",
+      "mesh_bytes": 35084,
+      "texture_bytes": 2176,
+      "asset_bytes": 37260,
+      "display_list_estimate": 67744,
+      "combined_estimate": 105004
+    },
+    {
+      "name": "actor_courtney",
+      "mesh_bytes": 34424,
+      "texture_bytes": 2176,
+      "asset_bytes": 36600,
+      "display_list_estimate": 63232,
+      "combined_estimate": 99832
+    },
+    {
+      "name": "actor_clerk",
+      "mesh_bytes": 33956,
+      "texture_bytes": 2176,
+      "asset_bytes": 36132,
+      "display_list_estimate": 62720,
+      "combined_estimate": 98852
+    },
+    {
+      "name": "actor_isaac",
+      "mesh_bytes": 32580,
+      "texture_bytes": 2176,
+      "asset_bytes": 34756,
+      "display_list_estimate": 60752,
+      "combined_estimate": 95508
+    },
+    {
+      "name": "actor_rick",
+      "mesh_bytes": 32412,
+      "texture_bytes": 2176,
+      "asset_bytes": 34588,
+      "display_list_estimate": 60528,
+      "combined_estimate": 95116
+    },
+    {
+      "name": "actor_jack",
+      "mesh_bytes": 32040,
+      "texture_bytes": 2176,
+      "asset_bytes": 34216,
+      "display_list_estimate": 59984,
+      "combined_estimate": 94200
+    },
+    {
+      "name": "actor_tech",
+      "mesh_bytes": 31896,
+      "texture_bytes": 2176,
+      "asset_bytes": 34072,
+      "display_list_estimate": 59792,
+      "combined_estimate": 93864
+    },
+    {
+      "name": "actor_lass2",
+      "mesh_bytes": 31736,
+      "texture_bytes": 2176,
+      "asset_bytes": 33912,
+      "display_list_estimate": 59360,
+      "combined_estimate": 93272
+    },
+    {
+      "name": "actor_lass1",
+      "mesh_bytes": 31616,
+      "texture_bytes": 2176,
+      "asset_bytes": 33792,
+      "display_list_estimate": 59104,
+      "combined_estimate": 92896
+    },
+    {
+      "name": "actor_lad",
+      "mesh_bytes": 30740,
+      "texture_bytes": 2176,
+      "asset_bytes": 32916,
+      "display_list_estimate": 58240,
+      "combined_estimate": 91156
+    },
+    {
+      "name": "actor_mitch",
+      "mesh_bytes": 30284,
+      "texture_bytes": 2176,
+      "asset_bytes": 32460,
+      "display_list_estimate": 57216,
+      "combined_estimate": 89676
+    },
+    {
+      "name": "actor_woman",
+      "mesh_bytes": 29720,
+      "texture_bytes": 2176,
+      "asset_bytes": 31896,
+      "display_list_estimate": 56256,
+      "combined_estimate": 88152
+    },
+    {
+      "name": "actor_nikki",
+      "mesh_bytes": 29264,
+      "texture_bytes": 2176,
+      "asset_bytes": 31440,
+      "display_list_estimate": 55648,
+      "combined_estimate": 87088
+    },
+    {
+      "name": "actor_butch",
+      "mesh_bytes": 29108,
+      "texture_bytes": 2176,
+      "asset_bytes": 31284,
+      "display_list_estimate": 55488,
+      "combined_estimate": 86772
+    },
+    {
+      "name": "actor_man",
+      "mesh_bytes": 28844,
+      "texture_bytes": 2176,
+      "asset_bytes": 31020,
+      "display_list_estimate": 55072,
+      "combined_estimate": 86092
+    },
+    {
+      "name": "actor_specs",
+      "mesh_bytes": 28764,
+      "texture_bytes": 2176,
+      "asset_bytes": 30940,
+      "display_list_estimate": 55024,
+      "combined_estimate": 85964
+    },
+    {
+      "name": "actor_boy_palette2",
+      "mesh_bytes": 28340,
+      "texture_bytes": 2176,
+      "asset_bytes": 30516,
+      "display_list_estimate": 54368,
+      "combined_estimate": 84884
+    },
+    {
+      "name": "actor_mania_palette2",
+      "mesh_bytes": 28340,
+      "texture_bytes": 2176,
+      "asset_bytes": 30516,
+      "display_list_estimate": 54368,
+      "combined_estimate": 84884
+    },
+    {
+      "name": "actor_mania",
+      "mesh_bytes": 28292,
+      "texture_bytes": 2176,
+      "asset_bytes": 30468,
+      "display_list_estimate": 54304,
+      "combined_estimate": 84772
+    },
+    {
+      "name": "actor_boy",
+      "mesh_bytes": 28292,
+      "texture_bytes": 2176,
+      "asset_bytes": 30468,
+      "display_list_estimate": 54304,
+      "combined_estimate": 84772
+    },
+    {
+      "name": "actor_gal",
+      "mesh_bytes": 27896,
+      "texture_bytes": 2176,
+      "asset_bytes": 30072,
+      "display_list_estimate": 53600,
+      "combined_estimate": 83672
+    },
+    {
+      "name": "actor_hood",
+      "mesh_bytes": 26764,
+      "texture_bytes": 2176,
+      "asset_bytes": 28940,
+      "display_list_estimate": 51840,
+      "combined_estimate": 80780
+    },
+    {
+      "name": "actor_imakuni",
+      "mesh_bytes": 25508,
+      "texture_bytes": 2176,
+      "asset_bytes": 27684,
+      "display_list_estimate": 50112,
+      "combined_estimate": 77796
+    },
+    {
+      "name": "actor_legendary_card",
+      "mesh_bytes": 5916,
+      "texture_bytes": 0,
+      "asset_bytes": 5916,
+      "display_list_estimate": 10912,
+      "combined_estimate": 16828
+    },
+    {
+      "name": "actor_torch",
+      "mesh_bytes": 3684,
+      "texture_bytes": 0,
+      "asset_bytes": 3684,
+      "display_list_estimate": 7456,
+      "combined_estimate": 11140
     },
     {
       "name": "emblem_fighting_club_entrance",
@@ -353,68 +633,212 @@
       "combined_estimate": 4560
     },
     {
-      "name": "deck_machine_2_off",
-      "mesh_bytes": 176,
-      "texture_bytes": 2176,
-      "asset_bytes": 2352,
-      "display_list_estimate": 2208,
-      "combined_estimate": 4560
+      "name": "hall_card_top_left",
+      "mesh_bytes": 960,
+      "texture_bytes": 640,
+      "asset_bytes": 1600,
+      "display_list_estimate": 5376,
+      "combined_estimate": 6976
     },
     {
-      "name": "deck_machine_2_on",
-      "mesh_bytes": 176,
-      "texture_bytes": 2176,
-      "asset_bytes": 2352,
-      "display_list_estimate": 2208,
-      "combined_estimate": 4560
+      "name": "hall_card_top_right",
+      "mesh_bytes": 960,
+      "texture_bytes": 640,
+      "asset_bytes": 1600,
+      "display_list_estimate": 5376,
+      "combined_estimate": 6976
+    },
+    {
+      "name": "hall_card_bottom_left",
+      "mesh_bytes": 960,
+      "texture_bytes": 640,
+      "asset_bytes": 1600,
+      "display_list_estimate": 5376,
+      "combined_estimate": 6976
+    },
+    {
+      "name": "hall_card_bottom_right",
+      "mesh_bytes": 960,
+      "texture_bytes": 640,
+      "asset_bytes": 1600,
+      "display_list_estimate": 5376,
+      "combined_estimate": 6976
+    },
+    {
+      "name": "actor_legendary_card__bottom_left",
+      "mesh_bytes": 1140,
+      "texture_bytes": 0,
+      "asset_bytes": 1140,
+      "display_list_estimate": 3712,
+      "combined_estimate": 4852
+    },
+    {
+      "name": "actor_legendary_card__bottom_right",
+      "mesh_bytes": 1140,
+      "texture_bytes": 0,
+      "asset_bytes": 1140,
+      "display_list_estimate": 3712,
+      "combined_estimate": 4852
+    },
+    {
+      "name": "actor_legendary_card__top_left",
+      "mesh_bytes": 1140,
+      "texture_bytes": 0,
+      "asset_bytes": 1140,
+      "display_list_estimate": 3712,
+      "combined_estimate": 4852
+    },
+    {
+      "name": "actor_legendary_card__top_right",
+      "mesh_bytes": 1140,
+      "texture_bytes": 0,
+      "asset_bytes": 1140,
+      "display_list_estimate": 3712,
+      "combined_estimate": 4852
+    },
+    {
+      "name": "actor_legendary_card__left_spark",
+      "mesh_bytes": 1092,
+      "texture_bytes": 0,
+      "asset_bytes": 1092,
+      "display_list_estimate": 3584,
+      "combined_estimate": 4676
+    },
+    {
+      "name": "actor_legendary_card__right_spark",
+      "mesh_bytes": 1092,
+      "texture_bytes": 0,
+      "asset_bytes": 1092,
+      "display_list_estimate": 3584,
+      "combined_estimate": 4676
+    },
+    {
+      "name": "deck_machine_2_off",
+      "mesh_bytes": 1008,
+      "texture_bytes": 0,
+      "asset_bytes": 1008,
+      "display_list_estimate": 3488,
+      "combined_estimate": 4496
     },
     {
       "name": "deck_machine_3_off",
-      "mesh_bytes": 176,
-      "texture_bytes": 2176,
-      "asset_bytes": 2352,
-      "display_list_estimate": 2208,
-      "combined_estimate": 4560
-    },
-    {
-      "name": "deck_machine_3_on",
-      "mesh_bytes": 176,
-      "texture_bytes": 2176,
-      "asset_bytes": 2352,
-      "display_list_estimate": 2208,
-      "combined_estimate": 4560
+      "mesh_bytes": 1008,
+      "texture_bytes": 0,
+      "asset_bytes": 1008,
+      "display_list_estimate": 3488,
+      "combined_estimate": 4496
     },
     {
       "name": "deck_machine_4_off",
-      "mesh_bytes": 176,
-      "texture_bytes": 2176,
-      "asset_bytes": 2352,
-      "display_list_estimate": 2208,
-      "combined_estimate": 4560
-    },
-    {
-      "name": "deck_machine_4_on",
-      "mesh_bytes": 176,
-      "texture_bytes": 2176,
-      "asset_bytes": 2352,
-      "display_list_estimate": 2208,
-      "combined_estimate": 4560
+      "mesh_bytes": 1008,
+      "texture_bytes": 0,
+      "asset_bytes": 1008,
+      "display_list_estimate": 3488,
+      "combined_estimate": 4496
     },
     {
       "name": "deck_machine_5_off",
-      "mesh_bytes": 176,
-      "texture_bytes": 2176,
-      "asset_bytes": 2352,
-      "display_list_estimate": 2208,
-      "combined_estimate": 4560
+      "mesh_bytes": 1008,
+      "texture_bytes": 0,
+      "asset_bytes": 1008,
+      "display_list_estimate": 3488,
+      "combined_estimate": 4496
+    },
+    {
+      "name": "deck_machine_6_off",
+      "mesh_bytes": 1008,
+      "texture_bytes": 0,
+      "asset_bytes": 1008,
+      "display_list_estimate": 3488,
+      "combined_estimate": 4496
+    },
+    {
+      "name": "deck_machine_7_off",
+      "mesh_bytes": 1008,
+      "texture_bytes": 0,
+      "asset_bytes": 1008,
+      "display_list_estimate": 3488,
+      "combined_estimate": 4496
+    },
+    {
+      "name": "deck_machine_8_off",
+      "mesh_bytes": 1008,
+      "texture_bytes": 0,
+      "asset_bytes": 1008,
+      "display_list_estimate": 3488,
+      "combined_estimate": 4496
+    },
+    {
+      "name": "deck_machine_9_off",
+      "mesh_bytes": 1008,
+      "texture_bytes": 0,
+      "asset_bytes": 1008,
+      "display_list_estimate": 3488,
+      "combined_estimate": 4496
+    },
+    {
+      "name": "deck_machine_2_on",
+      "mesh_bytes": 468,
+      "texture_bytes": 0,
+      "asset_bytes": 468,
+      "display_list_estimate": 2688,
+      "combined_estimate": 3156
+    },
+    {
+      "name": "deck_machine_3_on",
+      "mesh_bytes": 468,
+      "texture_bytes": 0,
+      "asset_bytes": 468,
+      "display_list_estimate": 2688,
+      "combined_estimate": 3156
+    },
+    {
+      "name": "deck_machine_4_on",
+      "mesh_bytes": 468,
+      "texture_bytes": 0,
+      "asset_bytes": 468,
+      "display_list_estimate": 2688,
+      "combined_estimate": 3156
     },
     {
       "name": "deck_machine_5_on",
-      "mesh_bytes": 176,
-      "texture_bytes": 2176,
-      "asset_bytes": 2352,
-      "display_list_estimate": 2208,
-      "combined_estimate": 4560
+      "mesh_bytes": 468,
+      "texture_bytes": 0,
+      "asset_bytes": 468,
+      "display_list_estimate": 2688,
+      "combined_estimate": 3156
+    },
+    {
+      "name": "deck_machine_6_on",
+      "mesh_bytes": 468,
+      "texture_bytes": 0,
+      "asset_bytes": 468,
+      "display_list_estimate": 2688,
+      "combined_estimate": 3156
+    },
+    {
+      "name": "deck_machine_7_on",
+      "mesh_bytes": 468,
+      "texture_bytes": 0,
+      "asset_bytes": 468,
+      "display_list_estimate": 2688,
+      "combined_estimate": 3156
+    },
+    {
+      "name": "deck_machine_8_on",
+      "mesh_bytes": 468,
+      "texture_bytes": 0,
+      "asset_bytes": 468,
+      "display_list_estimate": 2688,
+      "combined_estimate": 3156
+    },
+    {
+      "name": "deck_machine_9_on",
+      "mesh_bytes": 468,
+      "texture_bytes": 0,
+      "asset_bytes": 468,
+      "display_list_estimate": 2688,
+      "combined_estimate": 3156
     }
   ]
 }

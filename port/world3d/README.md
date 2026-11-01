@@ -133,7 +133,11 @@ separately from the actual native AI duel.
 L643 uses big-endian 24-byte vertices (XYZ float, UV float, RGBA8), 16-bit
 indices, and material/rigid-part batches. Runtime coordinates are X east,
 Y up, Z south; one map tile is one world unit. The Blender importer converts
-these to its right-handed Z-up coordinates.
+these to its right-handed Z-up coordinates. Actors, prop bodies and doorways
+stand at the source anchors; the source draws an anchor's 2×2 cell one tile
+east/south of it, so room floor art is sampled from there. Doorways in tall
+walls have a lintel and a short passage
+([doorway alignment review](../reviews/doorway-alignment/README.md)).
 
 Opaque meshes use normal `GL_LESS` depth testing in the N64 frontend. The
 interpenetrating RDP depth mode is reserved for diagnostic comparisons. Each

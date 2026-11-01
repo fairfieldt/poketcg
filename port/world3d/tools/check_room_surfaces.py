@@ -85,7 +85,7 @@ def validate():
                 slug=data['slug'];image=world.Image(world.REPO/'port/maps'/(slug+'.png'))
                 name='club_lobby' if slug.endswith('_lobby') else 'club_foyer' if slug.endswith('_club_entrance') or slug=='challenge_hall_entrance' else slug
                 props=world.LOBBY if name=='club_lobby' else world.FOYER if name=='club_foyer' else world.scene_props(slug,image)
-                scene=world.Scene(name);scene.floor(image,props,exclude_emblem=name=='club_foyer')
+                scene=world.Scene(name);scene.floor(image,props,data['warps'],exclude_emblem=name=='club_foyer')
                 world.walls(scene,image,data['warps'])
                 triangles,failures=overlaps(scene,floor_only=True)
                 cases.append(dict(name=slug,check='floor-and-doorway-ownership',triangles=triangles,failures=failures))

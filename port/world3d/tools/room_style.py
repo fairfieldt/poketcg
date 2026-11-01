@@ -74,10 +74,10 @@ def material_pixel(slug,x,y,source,is_plain):
         pool=1-smooth(15,17,math.hypot(x-119.5,y-151.5))
         return tuple(round(c+(lit-c)*pool*.72) for c,lit in
                      zip(pigment,(241,248,255)))+(255,)
-    if slug=='rock_club' and (72<=x<96 or 128<=x<152) and y>=24:
+    if slug=='rock_club' and (72<=x<96 or 128<=x<152) and 24<=y<208:
         # These are the two continuous sand-colored strips beside the runner,
-        # including the floor restored below statue art. Replace white/gold
-        # pixel stippling with low-contrast broad mineral variation.
+        # including the floor restored below statue art, ending at the south
+        # wall. Replace white/gold pixel stippling with broad mineral variation.
         value=1+.025*math.sin(x*math.pi/16)+.025*math.cos(y*math.pi/24)
         return tuple(round(c*value) for c in (205,183,139))+(255,)
     if slug in TILES and is_plain:
@@ -159,10 +159,17 @@ def bake_lighting(scene,width,height):
     """Only environment vertex pigments change; actor rigs are never graded."""
     tint=FLOOR_TINT.get(style_name(scene.name),(.85,.85,.85))
     props=scene.props
+    # The imported Lightning shell keeps its own wall placement.
+    lightning=scene.name=='lightning_club'
+    east_edge=width-1.8 if lightning else width-3.8
+    south_edge=height-2 if lightning else height-4.9
+    # Actor anchors span x=2..width-4, so the room's centre line is
+    # width/2-1; the source runners and floor art are centred on it.
+    centre=width/2-1
     def light(v):
         x,y,z=v[:3]
         if y<.085:
-            distance=max(0,min(x-1.8,width-1.8-x,z-1.8,height-2-z))
+            distance=max(0,min(x-1.8,east_edge-x,z-1.8,south_edge-z))
             ambient=.60+.40*smooth(0,3,distance)
             contact=1.0
             glow=0.0
@@ -173,13 +180,15 @@ def bake_lighting(scene,width,height):
                 contact=min(contact,1-strength*math.exp(-(math.hypot(dx,dz)/.7)**2))
                 if p['kind'] in ('torch','brazier'):
                     glow=max(glow,.15*math.exp(-((x-(a+right)/2)/1.6)**2-((z-(b+south)/2)/1.6)**2))
-            aisle=1+.10*(1-smooth(1.4,4,abs(x-width/2)))
-            focal=1+.08*math.exp(-((x-width/2)/4)**2-((z-height*.25)/4)**2)
+            aisle=1+.10*(1-smooth(1.4,4,abs(x-centre)))
+            focal=1+.08*math.exp(-((x-centre)/4)**2-((z-height*.25)/4)**2)
             if scene.name=='hall_of_honor':
                 focal+=.22*math.exp(-((x-12)/5)**2-((z-12)/5)**2)
             return tuple(min(1.12,ambient*contact*aisle*focal*c+glow) for c in tint)
-        if z>height-(3.9 if scene.name=='lightning_club' else 2.2):return (.43,)*3
-        if x<1.91 or x>width-1.91 or z<1.91:
+        if lightning and z>height-3.9:return (.43,)*3
+        # The low south wall's top carries painted livery; keep it legible.
+        if not lightning and z>height-5.0:return (.8 if .85<y<.95 and .85<x<width-2.85 else .43,)*3
+        if x<1.91 or x>(width-1.91 if lightning else width-3.0) or z<1.91:
             value=.86-.43*smooth(1.3,5,y)
             return (value,)*3
         # A gentle base gradient grounds shaded primitive props and cabinets.
