@@ -1,0 +1,8 @@
+Compiling full portable-C game
+Asyncifying browser callbacks
+   228 card images (228 files), 2856 constants, 1561 addresses, 2989 texts
+Character sync: 49 exports, 39 families, 115 NPC aliases; player model7
+ACTOR GROUNDING PASS: 99 runtime files; 36 strict cases; 4 LOD binding cases; 0 legacy triangles removed
+Adventure assets: 34 maps, shared characters, original intro, 31 music +96 SFX
+TUTORIAL DIARY PASS: canonical 6571-byte Diary 2, starter deck, no replay on reload
+Built /Users/fairfieldt/dev/poketcg/port/frontends/web/dist

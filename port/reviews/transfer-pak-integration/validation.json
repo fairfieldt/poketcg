@@ -1,0 +1,115 @@
+{
+  "passed": true,
+  "merged_commit": "597bb18fe1a22e24040186073387751f65bb234e",
+  "feature_commit": "170a38b84154332065e42ac60d387409b37e44cd",
+  "release": "20261102T224142Z-597bb18fe1a2",
+  "public_url": "https://poketcg64.exe.xyz/",
+  "published_files": 1867,
+  "service_health": "ok",
+  "verified_public_and_tailnet_files": [
+    {
+      "url": "https://poketcg64.exe.xyz/index.html",
+      "sha256": "e8b53582a6c8981995e9c2d039e70471cd0afe2f7f86f3efcafe002436c26ac9",
+      "bytes": 438
+    },
+    {
+      "url": "https://poketcg64.exe.xyz/tcg.wasm",
+      "sha256": "07b2ff1eb56a0c6402e3f653458fa85cd14fbb0928bcc306a6ec83b7310420bb",
+      "bytes": 800917
+    },
+    {
+      "url": "https://poketcg64.exe.xyz/world/world.json",
+      "sha256": "9125bd886b898e3ccd519b3977819d762667aa856e79ba9e4cffc6bd0471c6fd",
+      "bytes": 449518
+    },
+    {
+      "url": "https://poketcg64.exe.xyz/world/maps/actor_mark.l64",
+      "sha256": "355926927bab2af8ea686d59f4d7190a11bfc4db97b759df0d14d46845a1a17f",
+      "bytes": 19636
+    },
+    {
+      "url": "https://poketcg64.exe.xyz/world/maps/actor_dr_mason.l64",
+      "sha256": "06ed55aeb5ce56948d6babac04ea3557ef55266a6099542cf33b7b3574be1f62",
+      "bytes": 18100
+    },
+    {
+      "url": "https://poketcg64.exe.xyz/world/maps/actor_tech.l64",
+      "sha256": "342b25ca1865cb18d6d7c72bfdc277a03c6e4f564cd11b737d7caad2d2852b7d",
+      "bytes": 18076
+    },
+    {
+      "url": "https://poketcg64.exe.xyz/world/maps/actor_ronald.l64",
+      "sha256": "6c9fa3b958e44b1a99134b01d8eb892a98a966e51e58346eb26ad361d6c37b21",
+      "bytes": 21400
+    },
+    {
+      "url": "https://poketcg64.exe.xyz/js/world3d.js",
+      "sha256": "109483bfb6ff65722b6f441633a08c1be47df4798bf93f5ffafaff4152f71449",
+      "bytes": 31984
+    },
+    {
+      "url": "http://ms.tdf.sh:8091/index.html",
+      "sha256": "e8b53582a6c8981995e9c2d039e70471cd0afe2f7f86f3efcafe002436c26ac9",
+      "bytes": 438
+    },
+    {
+      "url": "http://ms.tdf.sh:8091/tcg.wasm",
+      "sha256": "07b2ff1eb56a0c6402e3f653458fa85cd14fbb0928bcc306a6ec83b7310420bb",
+      "bytes": 800917
+    },
+    {
+      "url": "http://ms.tdf.sh:8091/world/world.json",
+      "sha256": "9125bd886b898e3ccd519b3977819d762667aa856e79ba9e4cffc6bd0471c6fd",
+      "bytes": 449518
+    },
+    {
+      "url": "http://ms.tdf.sh:8091/world/maps/actor_mark.l64",
+      "sha256": "355926927bab2af8ea686d59f4d7190a11bfc4db97b759df0d14d46845a1a17f",
+      "bytes": 19636
+    },
+    {
+      "url": "http://ms.tdf.sh:8091/world/maps/actor_dr_mason.l64",
+      "sha256": "06ed55aeb5ce56948d6babac04ea3557ef55266a6099542cf33b7b3574be1f62",
+      "bytes": 18100
+    },
+    {
+      "url": "http://ms.tdf.sh:8091/world/maps/actor_tech.l64",
+      "sha256": "342b25ca1865cb18d6d7c72bfdc277a03c6e4f564cd11b737d7caad2d2852b7d",
+      "bytes": 18076
+    },
+    {
+      "url": "http://ms.tdf.sh:8091/world/maps/actor_ronald.l64",
+      "sha256": "6c9fa3b958e44b1a99134b01d8eb892a98a966e51e58346eb26ad361d6c37b21",
+      "bytes": 21400
+    },
+    {
+      "url": "http://ms.tdf.sh:8091/js/world3d.js",
+      "sha256": "109483bfb6ff65722b6f441633a08c1be47df4798bf93f5ffafaff4152f71449",
+      "bytes": 31984
+    }
+  ],
+  "n64_artifacts": {
+    "port/frontends/n64/adventure/poketcg-adventure.z64": {
+      "bytes": 37306368,
+      "sha256": "a3572e7826f0723fec0c6cd5214c9790fdbe888172288e0e9d3f5c8cbfabb652"
+    },
+    "port/frontends/n64/adventure/poketcg-expansion.z64": {
+      "bytes": 37306368,
+      "sha256": "55c567002899ae2d6fb970fa4767924a0649a957057b047f79ea5ea5830fca1f"
+    }
+  },
+  "checks": [
+    "Full N64 adventure test target including Transfer Pak parser/transport/confirmation/persistence tests and shadow regression gates",
+    "Standard N64 build",
+    "Expansion Pak build",
+    "Full web build",
+    "Public and tailnet served-file hash checks"
+  ],
+  "preserved": {
+    "teaser_v6_sha256": "654c273c151c896d953fa40af3fd6a9b20f3e312937774e70b95b2a17fd95513",
+    "authoring_owned_shadow_filter": true
+  },
+  "hardware_acceptance": "Physical controller, Transfer Pak, and cartridge operation remain unverified.",
+  "save_integrity_limit": "Original deck region has no checksum; valid-looking corruption can remain undetected.",
+  "scope": "US English cartridge built decks become local recipes after preview and confirmation; no cartridge SRAM writes, card migration, story migration, or browser Transfer Pak controls."
+}

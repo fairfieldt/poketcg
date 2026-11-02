@@ -1,0 +1,10 @@
+Character sync: 49 exports, 39 families, 115 NPC aliases; player model7
+    [CC] menus.c
+    [CC] transfer_import.c
+    [CC] transfer_ui.c
+RSPQ SDK check PASS: source, private headers, public ABI and queue microcode match the pin
+    [LD] build/poketcg-adventure.elf
+ACTOR GROUNDING PASS: 99 runtime files; 36 strict cases; 4 LOD binding cases; 0 legacy triangles removed
+      text       data        bss      total filename
+    745784     661028     173940    1580752 build/poketcg-adventure.elf
+    [Z64] poketcg-adventure.z64
