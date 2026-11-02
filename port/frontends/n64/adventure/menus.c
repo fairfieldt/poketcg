@@ -207,10 +207,17 @@ void game_show_booster(unsigned booster)
 }
 void game_pause(void)
 {
+#ifdef N64
+ static const char *const items[]={"Decks","Card Album","Player","Diary","Config","Import deck","Return"};
+#else
  static const char *const items[]={"Decks","Card Album","Player","Diary","Config","Return"};
+#endif
  for(;;) {
-  int selected=menu("Menu",items,6,0);
-  if(selected<0||selected==5)return;
+  int selected=menu("Menu",items,sizeof(items)/sizeof(items[0]),0);
+  if(selected<0||selected==(int)(sizeof(items)/sizeof(items[0]))-1)return;
+#ifdef N64
+  if(selected==5){extern void game_transfer_import(void);game_transfer_import();}
+#endif
   if(selected==0)game_decks();
   if(selected==1)game_album();
   if(selected==2){char text[192];unsigned total;unsigned album=gp_album_count(&game.cards,&total);snprintf(text,sizeof(text),"%s\n\nCards: %u\nCard Album: %u / %u\nMaster Medals: %u\nTime: %u:%02u:%02u",game.name,gp_total_cards(&game.cards),album,total,ow_event(&game.ow,0x2e),(unsigned)(game.play_seconds/3600),(unsigned)(game.play_seconds/60%60),(unsigned)(game.play_seconds%60));n64_message("Player",text);}
