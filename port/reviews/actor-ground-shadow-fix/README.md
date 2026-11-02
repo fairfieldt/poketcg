@@ -1,5 +1,10 @@
 # Remove animated opaque shadows from actor models
 
+This is the original eight-sided-disk repair. The later reviewed cast exposed
+its shape-specific limitation. The current
+[ownership-based filter and native regression proof](../actor-ground-shadow-regression/README.md)
+supersede the recognition policy described below.
+
 The remaining pop/shrink came from a second shadow embedded in the character
 models. The shared soft floor decal was already stable, but every humanoid
 also had an opaque eight-sided disk in its body mesh. The disk inherited the

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Check exact legacy-disk removal without rewriting generated actor assets.
+"""Reject authored preview shadows and verify exact runtime removal.
 
 The optional --before directory contains the pre-migration runtime exports.
 Without it, synthetic fixtures still exercise recognition and strict negative
-cases, and the current runtime/LOD catalog is checked for old disks.
+cases, and the current runtime/LOD catalog is checked for authored shadows.
 """
 import argparse
 from collections import Counter
@@ -19,7 +19,31 @@ ROOT = Path(__file__).resolve().parents[1]
 REPO = ROOT.parents[1]
 sys.path.insert(0, str(ROOT/'tools'))
 from build_world import read_l643
-from actor_grounding import encode_l643, finish_runtime_grounding, strip_legacy_disks
+from actor_grounding import (encode_l643, finish_runtime_grounding, strip_legacy_disks,
+                            strip_authored_shadows,authored_shadow_keys,native_triangle_key)
+
+def authoring_cases():
+    # A different polygon count, radius, height and color must still disappear
+    # when owned by a shadow mesh. This prevents another shape-specific fix.
+    count=17
+    points=[(0,.027,0)]+[(.61*math.cos(i*2*math.pi/count),.027,.39*math.sin(i*2*math.pi/count)) for i in range(count)]
+    points=[tuple(round(c,5) for c in p) for p in points]
+    faces=[(0,i+1,(i+1)%count+1) for i in range(count)]
+    vertices=[(*p,0,0,31,27,19,255) for p in points]+[(0,1,0,0,0,80,70,60,255),(.1,1,0,0,0,80,70,60,255),(0,1.1,0,0,0,80,70,60,255)]
+    indices=tuple(i for face in faces for i in face)+(count+1,count+2,count+3)
+    batch=(7,0,-1,[0,0,0],vertices,indices)
+    authoring={'meshes':[dict(name='preview shadow',part=0,pivot=[0,0,0],verts=[(x,z,y) for x,y,z in points],faces=[{'idx':f} for f in faces])]}
+    clean,report=strip_authored_shadows([batch],authoring)
+    assert clean[0][:5]==batch[:5] and clean[0][5]==indices[-3:] and report['authored_triangles']==count
+    unowned=copy.deepcopy(authoring);unowned['meshes'][0]['name']='solid prop'
+    assert strip_authored_shadows([batch],unowned)[0]==[batch]
+    tagged=copy.deepcopy(unowned);tagged['meshes'][0]['role']='shadow'
+    assert strip_authored_shadows([batch],tagged)[0]==clean
+    stale=copy.deepcopy(authoring);stale['meshes'][0]['verts'][1]=(.7,0,.027)
+    try:strip_authored_shadows([batch],stale)
+    except AssertionError:pass
+    else:raise AssertionError('Stale authoring must fail instead of publishing a shadow')
+    return 4
 
 
 def sha(data):
@@ -93,19 +117,19 @@ def removed_geometry(old, new):
     assert next_tri is None, 'Retained triangles reordered or changed'
     if not removed:
         return 0
-    assert len(removed) == 6
+    assert len(removed) in (6,12)
     ids = {i for tri in removed for i in tri}
-    assert len(ids) == 8
+    assert len(ids) == (8 if len(removed)==6 else 13)
     assert not ids.intersection(new[5]), 'A removed vertex is shared with body geometry'
     verts = [old[4][i] for i in ids]
     colors = {tuple(v[5:]) for v in verts}
-    assert colors in ({(13, 6, 27, 255)}, {(11, 5, 23, 255)})
+    assert colors in ({(13, 6, 27, 255)}, {(11, 5, 23, 255)}, {(16, 8, 24, 255)})
     axis = 2 if colors == {(11, 5, 23, 255)} else 1
     assert max(v[axis] for v in verts)-min(v[axis] for v in verts) < 1e-6
     assert abs(verts[0][axis]) < 1/32
     edges = Counter(tuple(sorted((a, b))) for tri in removed for a, b in zip(tri, tri[1:]+tri[:1]))
-    assert sum(n == 1 for n in edges.values()) == 8
-    assert sum(n == 2 for n in edges.values()) == 5
+    assert sum(n == 1 for n in edges.values()) == (8 if len(removed)==6 else 12)
+    assert sum(n == 2 for n in edges.values()) == (5 if len(removed)==6 else 12)
     return 1
 
 
@@ -149,7 +173,7 @@ def main():
     out = ROOT/'generated'
     world = json.loads((out/'world.json').read_text())
     lods = json.loads((out/'character-lods.json').read_text())['models']
-    report = {'status': 'PASS', 'negative_and_positive_cases': strict_cases(), 'lod_binding_cases': lod_binding_cases()}
+    report = {'status': 'PASS', 'negative_and_positive_cases': strict_cases(), 'authored_shadow_regressions':authoring_cases(), 'lod_binding_cases': lod_binding_cases()}
     records = [('full', c['file']) for c in world['individual_characters']]
     records += [('lod', c['file']) for c in lods]
     records += [('fallback', 'actors.l64')]
@@ -157,19 +181,27 @@ def main():
     for kind, filename in records:
         names, meshes = read_l643(out/filename)
         assert not strip_legacy_disks(meshes)[1], (filename, 'runtime disk remains')
-        detail = {'file': filename, 'sha256': sha((out/filename).read_bytes()), 'removed_disks': 0}
+        character=next((c for c in world['individual_characters'] if Path(c['file']).name==Path(filename).name),None)
+        if character:
+            authoring=REPO/character['source']/'authoring.json'
+            if authoring.exists():
+                owned=authored_shadow_keys(json.loads(authoring.read_text()))
+                present={native_triangle_key(batch,k) for batch in meshes for k in range(0,len(batch[5]),3)}
+                assert not owned.keys()&present,(filename,'authored shadow survived runtime export')
+        detail = {'file': filename, 'sha256': sha((out/filename).read_bytes()), 'removed_disks': 0, 'removed_triangles': 0}
         if args.before:
             old_names, old_meshes = read_l643(args.before/filename)
             assert names == old_names and len(meshes) == len(old_meshes)
             detail['before_sha256'] = sha((args.before/filename).read_bytes())
             detail['removed_disks'] = sum(removed_geometry(a, b) for a, b in zip(old_meshes, meshes))
+            detail['removed_triangles'] = sum((len(a[5])-len(b[5]))//3 for a, b in zip(old_meshes, meshes))
             expected, removed = strip_legacy_disks(old_meshes, {1, 2, 3, 4} if kind == 'fallback' else None)
             assert meshes == expected and detail['removed_disks'] == len(removed)
         counts[kind+'_files'] += 1
         counts[kind+'_disks'] += detail['removed_disks']
         details.append(detail)
     if args.before:
-        assert counts['full_disks'] == 41 and counts['lod_disks'] == 41 and counts['fallback_disks'] == 4, counts
+        assert counts['full_disks'] > 0 and counts['lod_disks'] == counts['full_disks'], counts
         authored = json.loads((args.before/'authored-hashes.json').read_text())
         for filename, expected in authored.items():
             assert sha((REPO/filename).read_bytes()) == expected, ('Canonical source changed', filename)
@@ -178,10 +210,10 @@ def main():
     for record in lods:
         assert sha((out/record['source']).read_bytes()) == record['source_sha256']
         assert sha((out/record['file']).read_bytes()) == record['sha256']
-    report.update(counts=dict(counts), removed_triangles=sum(counts[k] for k in ('full_disks', 'lod_disks', 'fallback_disks'))*6,
+    report.update(authored_shadow_triangles_excluded=sum(c.get('grounding',{}).get('authored_triangles',0) for c in world['individual_characters'] if isinstance(c.get('grounding'),dict)), counts=dict(counts), removed_triangles=sum(d['removed_triangles'] for d in details),
                   comparison='exact vertices/UV/colors/pivots and retained triangle order',
                   pose_review='standing part-0/pivot-zero and transformed Amy lying part-0/pivot-(0,.35,.9); all pivots and non-shadow geometry unchanged',
-                  recognition='eight unique canonical ring points, exact RGBA, rigid part/material/pivot, six exclusive nondegenerate uniformly wound triangles, full boundary and polygon area',
+                  recognition='authoring-owned shadow faces independent of shape/color; exact legacy polygon signatures for cached exports',
                   files=details)
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)

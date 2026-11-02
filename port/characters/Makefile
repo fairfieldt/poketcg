@@ -15,6 +15,7 @@ test:
 	$(PYTHON) tools/validate.py
 	$(PYTHON) tools/check_cast_integration.py
 	$(PYTHON) experiments/cast-concepts/tools/verify_round_heads.py
+	$(PYTHON) ../world3d/tools/check_actor_grounding.py
 sheet:
 	$(PYTHON) tools/review_sheet.py
 cast:

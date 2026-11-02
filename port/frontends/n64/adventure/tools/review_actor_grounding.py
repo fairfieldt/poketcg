@@ -47,6 +47,9 @@ video.o: {ADV/'video.c'}
 actor-grounding.z64: N64_ROM_TITLE = "Actor ground review"
 actor-grounding.z64: N64_ROM_SAVETYPE = none
 actor-grounding.z64: actor-grounding.dfs
+.PHONY: force-filesystem
+force-filesystem:
+actor-grounding.dfs: force-filesystem
 -include $(wildcard *.d)
 ''')
  subprocess.run(['make','-C',str(OUT),'-j4','all'],check=True)

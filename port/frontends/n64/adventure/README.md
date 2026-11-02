@@ -108,6 +108,13 @@ footprints and their major roof/rune details are sized for this output.
 Solid room and character meshes use ordinary opaque depth testing (`GL_LESS`);
 the special interpenetrating mode is used only by the visual A/B diagnostic.
 Contact shadows use a separate blended pass with depth writes disabled.
+Character authoring files may contain preview shadows, but runtime exports
+exclude every face owned by a mesh named or tagged `shadow`. This ownership
+filter is independent of polygon count, size, height, and color. The grounding
+check rejects surviving preview shadows in full and distant models; N64, web,
+and character checks run it. See
+[`shadow-regression.json`](../../../characters/review/shadow-regression.json)
+for the exact removal audit. Retained character geometry is unchanged.
 
 The Expansion Pak trial renders 3D viewports, depth buffers and UI canvases at
 480 × 360. Proportional duel text has separate native-resolution glyphs; original

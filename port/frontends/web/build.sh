@@ -28,7 +28,8 @@ echo "Asyncifying browser callbacks"
 mv "$WEB/build/tcg.wasm.next" "$WEB/dist/tcg.wasm"
 if [ "${CODE_ONLY:-0}" = 1 ]; then node "$WEB/tools/build_tutorial_diary.mjs"; cp -r "$WEB/src/." "$WEB/dist/"; exit 0; fi
 "$PYTHON" "$WEB/tools/gen_assets.py" "$WEB/dist"
-"$PYTHON" "$PORT/world3d/tools/sync_characters.py"
+"$PYTHON" "$PORT/world3d/tools/sync_characters.py" --strict
+"$PYTHON" "$PORT/world3d/tools/check_actor_grounding.py"
 "$PYTHON" "$WEB/tools/pack_adventure.py"
 node "$WEB/tools/build_tutorial_diary.mjs"
 cp -r "$WEB/src/." "$WEB/dist/"

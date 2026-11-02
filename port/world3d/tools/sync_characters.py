@@ -21,7 +21,7 @@ REPO=ROOT.parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 from build_world import Scene,Image,read_l643,texture,TEX
 from world_manifest import write_if_changed,write_world_metadata
-from actor_grounding import strip_legacy_disks,finish_runtime_grounding
+from actor_grounding import strip_legacy_disks,strip_authored_shadows,finish_runtime_grounding
 
 OUT=ROOT/'generated'
 CENTRAL_ROOT=REPO/'port/characters/assets/models'
@@ -76,14 +76,18 @@ def source_export(folder,slug,shared_textures=None,marker=None,family=None,appea
     after=[(p.stat().st_mtime_ns,p.stat().st_size) for p in paths]
     assert before==after,'Character export changed while being read'
     if marker is not None:assert marker_stat==(marker.stat().st_mtime_ns,marker.stat().st_size),'Completion marker changed during read'
-    return source_id,meshes,images,digest.hexdigest()
+    authoring_path=folder/'authoring.json'
+    assert authoring_path.exists() or not meta.get('reviewed_source'), 'Reviewed characters require authoring ownership'
+    authoring_bytes=authoring_path.read_bytes() if authoring_path.exists() else None
+    if authoring_bytes:digest.update(authoring_bytes)
+    return source_id,meshes,images,digest.hexdigest(),json.loads(authoring_bytes) if authoring_bytes else None
 
 
 def imported_record(folder,slug,model,export):
-    source_id,meshes,images,digest=export
+    source_id,meshes,images,digest,authoring=export
     # Authored previews keep their old opaque disk; runtime actors use the
     # renderer's single ground-contact pass, independent of gait/bob/lean.
-    meshes,_=strip_legacy_disks(meshes)
+    meshes,grounding=strip_authored_shadows(meshes,authoring)
     remap={i:texture(img.rows) for i,img in enumerate(images)}
     scene=Scene('actor_'+slug)
     for _,part,t,pivot,vs,indices in meshes:
@@ -101,7 +105,7 @@ def imported_record(folder,slug,model,export):
     finally:temporary.unlink(missing_ok=True)
     record['file']=str(target.relative_to(OUT))
     record.update(character=True,slug=slug,model=model,source_model=source_id,
-                  source=str(folder.relative_to(REPO)),source_sha256=digest)
+                  source=str(folder.relative_to(REPO)),source_sha256=digest,grounding=grounding)
     return record
 
 

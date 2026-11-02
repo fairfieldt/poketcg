@@ -23,6 +23,6 @@ assert actual==REVISION,(actual,REVISION)
 # Core only: our L643 adapter supplies meshes/materials and rigid animation.
 # Tiny3D's optional streamed animation module requires newer SDK DMA APIs.
 objects=['t3d.o','t3dmath.o','rsp/rsp_tiny3d.o','rsp/rsp_tiny3d_clipping.o']
-run('make','-C',SOURCE,'-j4',f'N64_INST={SDK}',*[f'build/{p}' for p in objects])
+run('make','-C',SOURCE,'-j4','BUILD_DIR=build',f'N64_INST={SDK}',*[f'build/{p}' for p in objects])
 run(SDK/'bin/mips64-elf-ld','-r','-o',SOURCE/'build/libt3d-poketcg.a',*[SOURCE/'build'/p for p in objects])
 print('Tiny3D core ready:',REVISION)

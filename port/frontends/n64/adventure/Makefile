@@ -83,6 +83,7 @@ CFLAGS += -DSCENE_T3D=1 -I$(T3D_ROOT)/src
 $(T3D_CORE):
 	python3 tools/fetch_tiny3d.py
 $(BUILD_DIR)/$(ROM).elf: $(T3D_CORE)
+$(BUILD_DIR)/scene.o: $(T3D_CORE)
 endif
 CARD_PNGS := $(wildcard $(REPO)/src/gfx/cards/*.png)
 CARD_SPRITES := $(CARD_PNGS:$(REPO)/src/gfx/cards/%.png=$(N64_MKDFS_ROOT)/cards/%.sprite)
@@ -102,13 +103,15 @@ PACK_SPRITES := $(PACK_PNGS:assets/packs/%.png=$(N64_MKDFS_ROOT)/packs/%.sprite)
 MEDAL_PNGS := $(wildcard assets/medals/*.png)
 MEDAL_SPRITES := $(MEDAL_PNGS:assets/medals/%.png=$(N64_MKDFS_ROOT)/medals/%.sprite)
 
-.PHONY: all bundle clean assets diagnostic video-diagnostic review-diagnostic
+.PHONY: all bundle clean assets diagnostic video-diagnostic review-diagnostic check-runtime-actors
 all:
-	python3 $(PORT)/world3d/tools/sync_characters.py
+	python3 $(PORT)/world3d/tools/sync_characters.py --strict
 	$(MAKE) bundle
-bundle: $(ROM).z64
+bundle: check-runtime-actors $(ROM).z64
+check-runtime-actors:
+	python3 $(PORT)/world3d/tools/check_actor_grounding.py
 expansion:
-	python3 $(PORT)/world3d/tools/sync_characters.py
+	python3 $(PORT)/world3d/tools/sync_characters.py --strict
 	$(MAKE) BUILD_DIR=build/expansion ROM=poketcg-expansion HIGH_RES=1 bundle
 assets:
 	python3 $(PORT)/world3d/tools/build_world.py

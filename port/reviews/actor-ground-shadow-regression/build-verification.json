@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "builds": {
+    "standard": {
+      "path": "port/frontends/n64/adventure/poketcg-adventure.z64",
+      "sha256": "ec713aa04a50e3d01c913454b658158a08e669ccfa7926dcaa7e5a2c1cc73152",
+      "embedded_models_verified": 99
+    },
+    "expansion": {
+      "path": "port/frontends/n64/adventure/poketcg-expansion.z64",
+      "sha256": "2aa733506b98006e6ca5aa1f9207933621bcd917729832b076be450cc4b8cee7",
+      "embedded_models_verified": 99
+    },
+    "web": {
+      "path": "port/frontends/web/dist/world",
+      "models_verified": 50,
+      "detail": "Web uses full models; distant models are N64-only."
+    }
+  }
+}

@@ -1,9 +1,8 @@
-"""Remove the exact authored legacy shadow primitive from runtime actors.
+"""Remove preview shadows from runtime actors using authored mesh ownership.
 
-This is a complete primitive signature, not a dark-plane/height heuristic:
-known RGBA, rigid part/pivot, all8 canonical ring points,6 exclusively-owned
-triangles, their winding and the8 boundary edges must match. Vertex records
-and every other triangle stay unchanged. Authored Blender exports retain it.
+Named/tagged shadow faces are excluded regardless of shape, size or color.
+Exact legacy signatures also migrate preexisting runtime/LOD files. Vertex
+records, rig data and every non-shadow triangle remain unchanged.
 """
 from collections import Counter
 import math
@@ -15,6 +14,39 @@ STANDING=((.43,.32,.018),(.47,.32,.018),(.45,.32,.018),
           (.405,.2944,.01692),(.504,.3296,.01836),(.558,.352,.01692),
           (.423,.2944,.018),(.378,.272,.01692),(.4815,.3264,.01602),(.459,.32,.01584))
 EPS=1e-6
+
+def authored_shadow_keys(authoring):
+    """Use the authoring ownership tag, independent of disk shape or color."""
+    keys=Counter()
+    for mesh in authoring.get('meshes',[]):
+        if mesh.get('role')!='shadow' and 'shadow' not in mesh['name'].lower():continue
+        px,py,pz=mesh['pivot']
+        points=[(round(x-px,5),round(z-pz,5),round(y-py,5)) for x,y,z in mesh['verts']]
+        pivot=tuple(round(c,5) for c in (px,pz,py))
+        for face in mesh['faces']:
+            ids=face['idx']
+            for k in range(1,len(ids)-1):
+                keys[(mesh['part'],pivot,tuple(sorted(points[i] for i in (ids[0],ids[k],ids[k+1]))))]+=1
+    return keys
+
+def native_triangle_key(batch,offset):
+    return (batch[1],tuple(round(c,5) for c in batch[3]),
+            tuple(sorted(tuple(round(c,5) for c in batch[4][i][:3]) for i in batch[5][offset:offset+3])))
+
+def strip_authored_shadows(meshes,authoring):
+    """Strip explicitly owned shadow faces and fail if source ownership drifts."""
+    if authoring is None:return strip_legacy_disks(meshes)
+    expected=authored_shadow_keys(authoring);found=Counter();output=[]
+    for batch in meshes:
+        kept=[]
+        for k in range(0,len(batch[5]),3):
+            key=native_triangle_key(batch,k)
+            if key in expected:found[key]+=1
+            else:kept.extend(batch[5][k:k+3])
+        output.append((*batch[:5],type(batch[5])(kept)))
+    assert found==expected, 'Authored shadow geometry does not match export; rebuild the source before publishing'
+    output,legacy=strip_legacy_disks(output)
+    return output,dict(authored_triangles=sum(found.values()),legacy=legacy)
 
 def _near(a,b):return all(abs(x-y)<EPS for x,y in zip(a,b))
 
@@ -52,6 +84,32 @@ def _signature(batch,profile,lying=False):
     if any(n not in (1,2) for n in edges.values()) or abs(area-2*math.sqrt(2)*rx*rz)>EPS:return None
     return triangles
 
+def _reviewed_signature(batch,lying=False):
+    """Exact 12-sided center fan used by the reviewed cast, not shoe soles."""
+    model,part,texture,pivot,vertices,indices=batch
+    if model<=0 or part!=0 or texture!=-1:return None
+    if not _near(pivot,(0,.35,.9) if lying else (0,0,0)):return None
+    points=[(0,0)]+[(.45*math.cos(i*math.pi/6),.32*math.sin(i*math.pi/6)) for i in range(12)]
+    owned=[]
+    for x,z in points:
+        expected=(round(x,5),round(z,5),-.018) if lying else (round(x,5),.018,round(z,5))
+        matches=[i for i,v in enumerate(vertices) if tuple(v[5:])==(16,8,24,255) and _near(v[:3],expected)]
+        if len(matches)!=1:return None
+        owned.append(matches[0])
+    center,*ring=owned;owned=set(owned)
+    triangles=[k for k in range(0,len(indices),3) if set(indices[k:k+3])<=owned]
+    if len(triangles)!=12:return None
+    if any(set(indices[k:k+3])&owned and k not in triangles for k in range(0,len(indices),3)):return None
+    expected={tuple(sorted((center,ring[i],ring[(i+1)%12]))) for i in range(12)}
+    if {tuple(sorted(indices[k:k+3])) for k in triangles}!=expected:return None
+    signs=set();u,v=(0,1) if lying else (0,2)
+    for k in triangles:
+        a,b,c=[vertices[i] for i in indices[k:k+3]]
+        cross=(b[u]-a[u])*(c[v]-a[v])-(b[v]-a[v])*(c[u]-a[u])
+        if abs(cross)<EPS:return None
+        signs.add(cross>0)
+    return triangles if len(signs)==1 else None
+
 def strip_legacy_disks(meshes,models=None):
     output=[];removed=[]
     for batch in meshes:
@@ -63,11 +121,16 @@ def strip_legacy_disks(meshes,models=None):
             if match is None:
                 match=_signature(batch,(.378,.272,.01692),lying=True)
                 if match is not None:kind='amy-lying'
+            if match is None:
+                for lying in (False,True):
+                    match=_reviewed_signature(batch,lying)
+                    if match is not None:
+                        kind='reviewed-lying' if lying else 'reviewed-standing';break
         if match is None:output.append(batch);continue
         forbidden=set(match);indices=type(batch[5])(i for k in range(0,len(batch[5]),3) if k not in forbidden for i in batch[5][k:k+3])
-        assert len(indices)==len(batch[5])-18
+        assert len(indices)==len(batch[5])-3*len(match)
         output.append((*batch[:5],indices))
-        removed.append({'model':batch[0],'part':batch[1],'kind':kind,'triangles':6,'newly_unreferenced_vertices':8})
+        removed.append({'model':batch[0],'part':batch[1],'kind':kind,'triangles':len(match),'newly_unreferenced_vertices':13 if kind.startswith('reviewed') else 8})
     return output,removed
 
 def encode_l643(textures,meshes):

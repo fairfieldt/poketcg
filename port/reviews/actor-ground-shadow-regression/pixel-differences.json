@@ -1,0 +1,63 @@
+[
+  {
+    "width": 320,
+    "state": "run-40",
+    "changed_pixels": 38,
+    "bounds": [
+      121,
+      106,
+      189,
+      144
+    ]
+  },
+  {
+    "width": 320,
+    "state": "idle-24",
+    "changed_pixels": 131,
+    "bounds": [
+      119,
+      143,
+      198,
+      169
+    ]
+  },
+  {
+    "width": 320,
+    "state": "idle-56",
+    "changed_pixels": 0,
+    "bounds": null
+  },
+  {
+    "width": 480,
+    "state": "run-40",
+    "changed_pixels": 84,
+    "bounds": [
+      182,
+      162,
+      243,
+      216
+    ]
+  },
+  {
+    "width": 480,
+    "state": "idle-24",
+    "changed_pixels": 298,
+    "bounds": [
+      178,
+      214,
+      297,
+      254
+    ]
+  },
+  {
+    "width": 480,
+    "state": "idle-56",
+    "changed_pixels": 29,
+    "bounds": [
+      110,
+      181,
+      133,
+      186
+    ]
+  }
+]

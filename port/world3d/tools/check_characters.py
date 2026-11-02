@@ -13,7 +13,7 @@ ROOT=Path(__file__).resolve().parents[1];REPO=ROOT.parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 from build_world import read_l643,Image
 from sync_characters import apply_characters,source_export
-from actor_grounding import strip_legacy_disks
+from actor_grounding import strip_legacy_disks,strip_authored_shadows
 OUT=ROOT/'generated'
 doc=json.loads((OUT/'world.json').read_text())
 characters={c['slug']:c for c in doc['individual_characters']}
@@ -30,7 +30,8 @@ for expected in (m for m in approved if m[0] in range(1,5)):
     assert any(m==expected for m in fallback),('Fallback mesh changed',expected[:4])
 for c in characters.values():
     source=REPO/c['source'];src_names,original=read_l643(source/'scene.l64')
-    original,_=strip_legacy_disks(original)
+    authoring=source/'authoring.json'
+    original,_=strip_authored_shadows(original,json.loads(authoring.read_text()) if authoring.exists() else None)
     dst_names,converted=read_l643(OUT/c['file'])
     assert {m[0] for m in converted}=={c['model']}
     assert {m[1] for m in converted}=={m[1] for m in original}
