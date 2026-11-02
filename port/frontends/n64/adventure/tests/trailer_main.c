@@ -1,11 +1,13 @@
 /* Private capture ROM only. Production initialization, rendering and hosts are
  * included verbatim; this entry replaces the interactive title/diary loop. */
 #define main trailer_production_main
+#define scene_frame_end trailer_scene_frame_end
 #ifndef TRAILER_MAIN_SOURCE
 #define TRAILER_MAIN_SOURCE "../main.c"
 #endif
 #include TRAILER_MAIN_SOURCE
 #undef main
+#undef scene_frame_end
 #include <setjmp.h>
 #include "trailer_ronald.h"
 #include "trailer_amy.h"
@@ -33,6 +35,20 @@ static TcgHost duel_host,duel_proxy;
 static bool ronald_ko,ronald_prize;
 static bool saw_world,logged_run;
 static unsigned world_x,world_y,world_selection;
+static unsigned cadence_vi,cadence_frames,cadence_min=~0u,cadence_max;
+static unsigned long long cadence_previous;
+static bool hall_glow;
+static unsigned hall_glow_start;
+extern void scene_frame_end(void);
+void trailer_scene_frame_end(void)
+{
+ if(hall_glow&&game.ow.map==HALL_OF_HONOR){
+  float t=(trailer_vi-hall_glow_start)/60.0f;
+  float amount=fminf(1,t/.65f)*(.86f+.14f*sinf(t*3));
+  scene_draw_card_glow(11,3.25f,9.12f,amount,t);
+ }
+ scene_frame_end();
+}
 
 static unsigned long long now_us(void){return (unsigned long long)TICKS_TO_US(get_ticks());}
 static void marker(const char *kind,const char *name)
@@ -78,6 +94,13 @@ extern void __real_n64_video_present(surface_t *frame);
 void __wrap_n64_video_present(surface_t *frame)
 {
  __real_n64_video_present(frame);
+ unsigned long long stamp=now_us();
+ if(cadence_previous){unsigned dt=(unsigned)(stamp-cadence_previous);if(dt<cadence_min)cadence_min=dt;if(dt>cadence_max)cadence_max=dt;}
+ cadence_previous=stamp;cadence_frames++;
+ if(trailer_vi-cadence_vi>=60){
+  debugf("TRAILER CADENCE vi=%u us=%llu frames=%u min_us=%u max_us=%u\n",trailer_vi,stamp,cadence_frames,cadence_min,cadence_max);
+  cadence_vi=trailer_vi;cadence_frames=0;cadence_min=~0u;cadence_max=0;
+ }
  if(begun&&!first_frame){first_frame=true;marker("FIRST_FRAME",segment_names[TRAILER_SEGMENT]);}
  if(inside_title&&!ended&&trailer_vi-driver_start>=420){ended=true;marker("END",segment_names[TRAILER_SEGMENT]);}
 }
@@ -226,10 +249,34 @@ void __wrap_tcg_set_host(const TcgHost *host)
 static void ronald_segment(void)
 {
  reset_game(false);TcgDuelSetup setup;static uint8_t checkpoint[TCG_SAVE_SIZE];
+ load_map(PSYCHIC_CLUB_LOBBY,14,12);
+ game.ow.direction=WEST;game.ow.npc_count=1;
+ game.ow.npcs[0]=(OwNpc){NPC_RONALD2,12,12,EAST,1,ow_npc_headers[NPC_RONALD2].sprite};
+ game.ow.npc_flags[0]=ow_npc_headers[NPC_RONALD2].flags;
+ game.ow.npc_animation[0]=ow_npc_headers[NPC_RONALD2].animation;
+ presentation_init(&presentation,NULL,false);game_conversation(NPC_RONALD2);hold_world(90);
+ /* Exact consecutive lines from Ronald's original first-duel challenge.
+    The teaser omits his preceding medal-count context, not a new story event. */
+ const char *challenge="I'll see how good you really are!\nCome on, let's duel!";
+ assertf(strstr(tcg_text(Text064b),challenge),"Ronald source dialogue changed");
+ adventure_audio_event(0,MUSIC_RONALD);
+ surface_t *caption=adventure_story_message_preview("Ronald",challenge);
+ surface_t still=n64_video_surface();copy_frame(&still,caption);marker("SHOT","ronald-dialogue");
+ unsigned start=trailer_vi;
+ while(trailer_vi-start<210){surface_t *frame=display_get();copy_frame(frame,&still);n64_video_present(frame);adventure_audio_poll();}
+ surface_free(&still);game_conversation(0);
  assertf(trailer_ronald_load(&setup,checkpoint),"Legal Ronald checkpoint unavailable");setup.duelist[0].name="Mark";setup.duelist[1].name="Ronald";
  marker("SHOT","ronald-board");if(!setjmp(segment_stop))n64_duel_play(&setup,checkpoint);
 }
 extern void __real_adventure_intro_play(bool opening);
+static void legendary_reveal(void)
+{
+ load_map(HALL_OF_HONOR,12,22);marker("SHOT","hall-walk");walk_to(12,12);
+ marker("SHOT","hall-reveal");hold_world(30);
+ hall_glow=true;hall_glow_start=trailer_vi;marker("SHOT","hall-glow");
+ adventure_audio_event(1,SFX_LEGENDARY_CARDS);hold_world(240);
+ marker("SHOT","hall-glow-complete");hall_glow=false;
+}
 static void ending_segment(void)
 {
  reset_game(false);trailer_host.booster=booster_stop;load_map(WATER_CLUB,20,6);
@@ -238,7 +285,7 @@ static void ending_segment(void)
  assertf(ow_event(&game.ow,EVENT_BEAT_AMY)&&ow_event(&game.ow,EVENT_MEDAL_COUNT)==1,"Source Amy reward failed");
  /* A private progression warp for the final environment shot, not a claim
     that this one declared win completed the campaign. */
- load_map(HALL_OF_HONOR,12,22);walk_to(12,16);
+ legendary_reveal();
  marker("SHOT","title64");inside_title=true;phase(DRIVER_TITLE);__real_adventure_intro_play(false);
 }
 static void amy_segment(void)
@@ -253,7 +300,7 @@ static void amy_segment(void)
  game.ow.duel_npc=NPC_AMY;game.ow.duel_pending=1;
  if(!setjmp(segment_stop))ow_finish_duel(&game.ow,&trailer_host,1);
  assertf(ow_event(&game.ow,EVENT_BEAT_AMY)&&ow_event(&game.ow,EVENT_MEDAL_COUNT)==1,"Actual Amy win did not award Water Medal");
- load_map(HALL_OF_HONOR,12,22);walk_to(12,16);
+ legendary_reveal();
  marker("SHOT","title64");inside_title=true;phase(DRIVER_TITLE);__real_adventure_intro_play(false);
 }
 void __wrap_adventure_intro_play(bool opening)

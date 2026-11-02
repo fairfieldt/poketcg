@@ -19,6 +19,7 @@ final class RecordingDelegate: NSObject, SCRecordingOutputDelegate {
 @main struct WindowRecorder {
     static func main() async throws {
         _ = NSApplication.shared
+        NSApp.setActivationPolicy(.accessory)
         let args = CommandLine.arguments
         let windowID = CGWindowID(args[1])!
         let seconds = Double(args[2])!
@@ -28,6 +29,9 @@ final class RecordingDelegate: NSObject, SCRecordingOutputDelegate {
         guard let window = content.windows.first(where: { $0.windowID == windowID }) else {
             throw NSError(domain: "WindowRecorder", code: 1, userInfo: [NSLocalizedDescriptionKey: "Owned capture window missing"])
         }
+        let ownerPID = window.owningApplication?.processID ?? 0
+        let activated = NSRunningApplication(processIdentifier: ownerPID)?.activate(options: []) ?? false
+        try await Task.sleep(nanoseconds: 200_000_000)
         let config = SCStreamConfiguration()
         config.width = width
         config.height = height
@@ -55,7 +59,7 @@ final class RecordingDelegate: NSObject, SCRecordingOutputDelegate {
             return source
         }
         try await stream.startCapture()
-        let ready: [String: Any] = ["window_id": windowID, "shows_cursor": false, "captures_audio": false, "capture_microphone": false, "width": width, "height": height, "fps": 60, "ready_epoch": Date().timeIntervalSince1970]
+        let ready: [String: Any] = ["window_id": windowID, "shows_cursor": false, "captures_audio": false, "capture_microphone": false, "width": width, "height": height, "fps": 60, "ready_epoch": Date().timeIntervalSince1970, "owner_pid":ownerPID, "activation_succeeded":activated,"frontmost_pid":NSWorkspace.shared.frontmostApplication?.processIdentifier ?? 0]
         print(String(data: try JSONSerialization.data(withJSONObject: ready, options: .sortedKeys), encoding: .utf8)!)
         fflush(stdout)
         let deadline = Date().addingTimeInterval(seconds)

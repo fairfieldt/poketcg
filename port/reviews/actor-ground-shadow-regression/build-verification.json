@@ -3,12 +3,12 @@
   "builds": {
     "standard": {
       "path": "port/frontends/n64/adventure/poketcg-adventure.z64",
-      "sha256": "ec713aa04a50e3d01c913454b658158a08e669ccfa7926dcaa7e5a2c1cc73152",
+      "sha256": "2b03b8c86b824069ac0976a0e04f2d8b7c810a0f57b5c9faeadfea6af7fc1616",
       "embedded_models_verified": 99
     },
     "expansion": {
       "path": "port/frontends/n64/adventure/poketcg-expansion.z64",
-      "sha256": "2aa733506b98006e6ca5aa1f9207933621bcd917729832b076be450cc4b8cee7",
+      "sha256": "e9894537badba12dcd7817ed2d279938e509ea2a620f855f7cf553634a4bef4c",
       "embedded_models_verified": 99
     },
     "web": {

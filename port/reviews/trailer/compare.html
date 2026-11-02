@@ -31,14 +31,14 @@ a { color: #b6d0ff; }
   <div class="pair">
     <figure>
       <figcaption>Previous teaser <button type="button" data-fullscreen="crt">Fullscreen</button></figcaption>
-      <video id="crt" src="v4/poketcg64-trailer.mp4" poster="v4/poster.png" preload="metadata" playsinline></video>
+      <video id="crt" src="v5/poketcg64-trailer.mp4" poster="v5/poster.png" preload="metadata" playsinline muted></video>
     </figure>
     <figure>
       <figcaption>Updated teaser <button type="button" data-fullscreen="clean">Fullscreen</button></figcaption>
-      <video id="clean" src="poketcg64-trailer-no-crt.mp4" poster="poster-no-crt.png" preload="metadata" playsinline muted></video>
+      <video id="clean" src="poketcg64-trailer-no-crt.mp4" poster="poster-no-crt.png" preload="metadata" playsinline></video>
     </figure>
   </div>
-  <p><a href="poketcg64-trailer.mp4">Open updated teaser</a> · <a href="v4/poketcg64-trailer.mp4">Open previous teaser</a></p>
+  <p><a href="poketcg64-trailer.mp4">Open updated teaser</a> · <a href="v5/poketcg64-trailer.mp4">Open previous teaser</a></p>
   <p id="error" role="alert" hidden></p>
 </main>
 <script type="module">
@@ -51,16 +51,16 @@ const stamp = value => `${Math.floor(value / 60)}:${String(Math.floor(value % 60
 function pause() { playing = false; crt.pause(); clean.pause(); toggle.textContent = 'Play'; }
 async function play() {
   if (!Number.isFinite(crt.duration) || !Number.isFinite(clean.duration)) return;
-  if (crt.ended) crt.currentTime = 0;
-  clean.currentTime = crt.currentTime;
+  if (clean.ended) clean.currentTime = 0;
+  crt.currentTime = Math.min(clean.currentTime, Math.max(0, crt.duration - .02));
   playing = true; toggle.textContent = 'Pause'; error.hidden = true;
   try { await Promise.all([crt.play(), clean.play()]); }
   catch (cause) { if (!playing) return; pause(); error.textContent = 'Unable to play both videos. Open either video below.'; error.hidden = false; }
 }
 toggle.addEventListener('click', () => playing ? pause() : play());
-seek.addEventListener('input', () => { crt.currentTime = clean.currentTime = Number(seek.value); });
-sound.addEventListener('click', () => { crt.muted = !crt.muted; sound.textContent = crt.muted ? 'Unmute' : 'Mute'; });
-crt.addEventListener('ended', pause);
+seek.addEventListener('input', () => { clean.currentTime = Number(seek.value); crt.currentTime = Math.min(clean.currentTime, Math.max(0, crt.duration - .02)); });
+sound.addEventListener('click', () => { clean.muted = !clean.muted; sound.textContent = clean.muted ? 'Unmute' : 'Mute'; });
+clean.addEventListener('ended', pause);
 for (const video of [crt, clean]) {
   video.addEventListener('click', () => playing ? pause() : play());
   video.addEventListener('loadedmetadata', () => { toggle.disabled = ![crt, clean].every(v => Number.isFinite(v.duration)); });
@@ -73,10 +73,11 @@ document.addEventListener('keydown', event => {
   if (document.fullscreenElement && event.code === 'Space') { event.preventDefault(); playing ? pause() : play(); }
 });
 function tick() {
-  const duration = Number.isFinite(crt.duration) ? crt.duration : 0;
-  seek.max = String(duration); seek.value = String(crt.currentTime);
-  clock.value = `${stamp(crt.currentTime)} / ${stamp(duration)}`;
-  if (playing && clean.readyState >= 2 && Math.abs(clean.currentTime - crt.currentTime) > .08) clean.currentTime = crt.currentTime;
+  const duration = Number.isFinite(clean.duration) ? clean.duration : 0;
+  seek.max = String(duration); seek.value = String(clean.currentTime);
+  clock.value = `${stamp(clean.currentTime)} / ${stamp(duration)}`;
+  const previousTime = Math.min(clean.currentTime, Math.max(0, crt.duration - .02));
+  if (playing && crt.readyState >= 2 && Math.abs(crt.currentTime - previousTime) > .08) crt.currentTime = previousTime;
   requestAnimationFrame(tick);
 }
 tick();

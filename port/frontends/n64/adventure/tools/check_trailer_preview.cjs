@@ -25,10 +25,21 @@ const {chromium}=require(path.join(root,'port/frontends/web/build/world-test/nod
   await page.getByRole('button',{name:'Play',exact:true}).click();
   await page.waitForFunction(()=>[...document.querySelectorAll('video')].every(v=>v.currentTime>10.5));
   await page.getByRole('button',{name:'Pause',exact:true}).click();
+  if(version>=6){
+   const tail=await page.locator('#clean').evaluate(v=>v.duration-2);
+   await page.locator('#seek').evaluate((el,t)=>{el.value=t;el.dispatchEvent(new Event('input',{bubbles:true}))},tail);
+   await page.waitForFunction(t=>!document.querySelector('#clean').seeking&&Math.abs(document.querySelector('#clean').currentTime-t)<.1,tail);
+   await page.getByRole('button',{name:'Play',exact:true}).click();
+   await page.waitForFunction(t=>document.querySelector('#clean').currentTime>t+.5,tail);
+   await page.getByRole('button',{name:'Pause',exact:true}).click();
+   assert.deepEqual(await page.locator('video').evaluateAll(vs=>vs.map(v=>v.muted)),[true,false]);
+   await page.locator('#seek').evaluate(el=>{el.value=10;el.dispatchEvent(new Event('input',{bubbles:true}))});
+   await page.waitForFunction(()=>[...document.querySelectorAll('video')].every(v=>!v.seeking&&Math.abs(v.currentTime-10)<.1));
+  }
   await page.screenshot({path:path.join(out,'comparison-preview.png')});
   assert.equal(await page.locator('#error').isVisible(),false);
   assert.deepEqual(errors,[]);
-  fs.writeFileSync(path.join(out,'preview-verification.json'),JSON.stringify({passed:true,url:base+'compare.html',served_video_sha256:expected.video_sha256,sources,seek_and_play:true,byte_ranges:true,page_errors:errors},null,2)+'\n');
+  fs.writeFileSync(path.join(out,'preview-verification.json'),JSON.stringify({passed:true,url:base+'compare.html',served_video_sha256:expected.video_sha256,sources,seek_and_play:true,current_video_tail_playable:version>=6,byte_ranges:true,page_errors:errors},null,2)+'\n');
   console.log('Served video hash, side-by-side seeking/playback, and browser errors: PASS');
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exit(1)});

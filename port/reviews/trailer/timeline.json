@@ -1,95 +1,122 @@
 {
+  "version": 6,
   "fps": 60,
   "size": [
     1440,
     1080
   ],
-  "duration": 64.56666666666666,
+  "native_framebuffer": [
+    480,
+    360
+  ],
+  "expansion_ram_bytes": 8388608,
+  "duration": 72.58333333333333,
+  "frames": 4355,
   "shots": [
     {
       "name": "opening-through-dialogue",
       "source": "intro",
-      "native_start": 9.666666666666666,
-      "native_end": 41.1,
-      "duration": 31.433333333333334,
-      "output_start": 0.0
+      "native_start": 9.616666666666667,
+      "native_end": 41.0,
+      "duration": 31.383333333333333,
+      "output_start": 0.0,
+      "frames": 1883
     },
     {
       "name": "first-table-walk",
       "source": "intro",
-      "native_start": 41.35,
-      "native_end": 44.083333333333336,
+      "native_start": 41.25,
+      "native_end": 43.983333333333334,
       "duration": 2.7333333333333334,
-      "output_start": 31.433333333333334
+      "output_start": 31.383333333333333,
+      "frames": 164
+    },
+    {
+      "name": "ronald-source-dialogue",
+      "source": "ronald",
+      "native_start": 11.6,
+      "native_end": 14.6,
+      "duration": 3.0,
+      "output_start": 33.766666666666666,
+      "frames": 180
     },
     {
       "name": "ronald-attack-knockout",
       "source": "ronald",
-      "native_start": 11.616666666666667,
-      "native_end": 15.5,
+      "native_start": 18.633333333333333,
+      "native_end": 22.516666666666666,
       "duration": 3.8833333333333333,
-      "output_start": 33.81666666666667
+      "output_start": 36.65,
+      "frames": 233
     },
     {
       "name": "lightning-moving",
       "source": "clubs",
-      "native_start": 10.183333333333334,
-      "native_end": 13.133333333333333,
+      "native_start": 10.016666666666667,
+      "native_end": 12.966666666666667,
       "duration": 2.95,
-      "output_start": 37.5
+      "output_start": 40.333333333333336,
+      "frames": 177
     },
     {
       "name": "fire-moving-deep",
       "source": "clubs",
-      "native_start": 17.0,
-      "native_end": 19.816666666666666,
+      "native_start": 16.7,
+      "native_end": 19.516666666666666,
       "duration": 2.816666666666667,
-      "output_start": 40.36666666666667
+      "output_start": 43.2,
+      "frames": 169
     },
     {
       "name": "water-moving",
       "source": "clubs",
-      "native_start": 23.666666666666668,
-      "native_end": 27.166666666666668,
+      "native_start": 23.233333333333334,
+      "native_end": 26.733333333333334,
       "duration": 3.5,
-      "output_start": 43.1
+      "output_start": 45.93333333333333,
+      "frames": 210
     },
     {
       "name": "amy-final-pokemon-knockout",
       "source": "amy",
-      "native_start": 19.266666666666666,
-      "native_end": 21.466666666666665,
+      "native_start": 19.166666666666668,
+      "native_end": 21.366666666666667,
       "duration": 2.2,
-      "output_start": 46.483333333333334
+      "output_start": 49.31666666666667,
+      "frames": 132
     },
     {
       "name": "water-medal",
       "source": "amy",
-      "native_start": 37.9,
-      "native_end": 43.333333333333336,
-      "duration": 5.433333333333334,
-      "output_start": 48.483333333333334
+      "native_start": 37.833333333333336,
+      "native_end": 43.3,
+      "duration": 5.466666666666667,
+      "output_start": 51.31666666666667,
+      "frames": 328
     },
     {
-      "name": "hall-moving",
+      "name": "hall-legendary-reveal",
       "source": "amy",
-      "native_start": 48.516666666666666,
-      "native_end": 50.65,
-      "duration": 2.1333333333333333,
-      "output_start": 53.666666666666664
+      "native_start": 48.333333333333336,
+      "native_end": 55.61666666666667,
+      "duration": 7.283333333333333,
+      "output_start": 56.53333333333333,
+      "frames": 437
     },
     {
       "name": "title64",
       "source": "amy",
-      "native_start": 50.75,
-      "native_end": 60.166666666666664,
+      "native_start": 55.733333333333334,
+      "native_end": 65.15,
       "duration": 9.416666666666666,
-      "output_start": 55.15
+      "output_start": 63.166666666666664,
+      "frames": 565
     }
   ],
   "dissolves": [
     0,
     0.35,
+    0.12,
     0.2,
     0.08,
     0.08,
@@ -98,18 +125,7 @@
     0.25,
     0.65
   ],
-  "version": 5,
-  "existing_footage_only": false,
-  "intro_removed_vi": [
-    2466,
-    2481
-  ],
-  "clock": "Matched ordered native script/event markers map fresh recorded PTS to v3 semantic timeline; held/dropped frames only, no motion interpolation.",
-  "presentation_latency_seconds": 0.04,
-  "phase_uncertainty": "Approximately one 60 Hz frame; semantic rather than pixel-phase synchronization.",
-  "audio": {
-    "source": "v3 encoded AAC copied unchanged; original game soundtrack/effects",
-    "note": "Existing edit and event timing retained through semantic marker alignment."
-  },
-  "capture": "Fresh local Ares post-VI Metal output, no CRT shader. Window chrome/shadow cropped."
+  "clock": "Fresh native VI/60 markers aligned to actual capture PTS. CFR output holds/drops recorded frames; no interpolation.",
+  "legendary_glow_native_start": 51.63333333333333,
+  "game_fps_claim": "Output encoding rate is not native rendering FPS; inspect cadence evidence separately."
 }

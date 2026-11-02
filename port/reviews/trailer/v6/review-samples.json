@@ -1,0 +1,46 @@
+[
+  {
+    "shot": "opening-through-dialogue",
+    "output_seconds": 15.691666666666666
+  },
+  {
+    "shot": "first-table-walk",
+    "output_seconds": 32.75
+  },
+  {
+    "shot": "ronald-source-dialogue",
+    "output_seconds": 35.266666666666666
+  },
+  {
+    "shot": "ronald-attack-knockout",
+    "output_seconds": 38.59166666666667
+  },
+  {
+    "shot": "lightning-moving",
+    "output_seconds": 41.80833333333334
+  },
+  {
+    "shot": "fire-moving-deep",
+    "output_seconds": 44.608333333333334
+  },
+  {
+    "shot": "water-moving",
+    "output_seconds": 47.68333333333333
+  },
+  {
+    "shot": "amy-final-pokemon-knockout",
+    "output_seconds": 50.41666666666667
+  },
+  {
+    "shot": "water-medal",
+    "output_seconds": 54.050000000000004
+  },
+  {
+    "shot": "hall-legendary-reveal",
+    "output_seconds": 60.83333333333332
+  },
+  {
+    "shot": "title64",
+    "output_seconds": 67.875
+  }
+]

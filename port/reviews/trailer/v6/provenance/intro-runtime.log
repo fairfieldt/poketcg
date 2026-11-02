@@ -1,0 +1,84 @@
+Loaded trailer-intro
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-11-02 14:05:17.523 ares[56632:3497524] Resizing output buffers to 1440, 1080
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 68988 bytes
+TRAILER READY intro vi=0 us=521134
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 13755.833 us (mode: sync, success: yes).
+TRAILER CADENCE vi=61 us=1527916 frames=33 min_us=87 max_us=33421
+TRAILER CADENCE vi=121 us=2528915 frames=30 min_us=33329 max_us=33410
+TRAILER CADENCE vi=181 us=3529918 frames=30 min_us=33321 max_us=33405
+TRAILER CADENCE vi=241 us=4530942 frames=30 min_us=33343 max_us=33392
+TRAILER CADENCE vi=301 us=5531914 frames=30 min_us=33339 max_us=33391
+TRAILER CADENCE vi=362 us=6549632 frames=31 min_us=16747 max_us=33395
+TRAILER CADENCE vi=422 us=7550632 frames=30 min_us=33329 max_us=33402
+TRAILER BEGIN intro vi=480 us=8518956
+Scene rom:/world/maps/overworld.l64: 18 batches, 17 textures, 292664 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 19636 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 12976 bytes
+TRAILER CADENCE vi=509 us=9010127 frames=30 min_us=33341 max_us=491857
+TRAILER FIRST_FRAME intro vi=509 us=9010295
+TRAILER INTRO_RUN overworld-source-movement vi=568 us=10000283
+TRAILER CADENCE vi=570 us=10031630 frames=31 min_us=30947 max_us=34389
+TRAILER CADENCE vi=630 us=11021658 frames=30 min_us=31064 max_us=33693
+TRAILER CADENCE vi=691 us=12049999 frames=31 min_us=31085 max_us=33674
+TRAILER CADENCE vi=752 us=13072453 frames=31 min_us=31051 max_us=33626
+Scene rom:/world/maps/mason_laboratory.l64: 26 batches, 25 textures, 95172 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 19636 bytes
+Scene rom:/world/maps/actor_dr_mason.l64: 7 batches, 2 textures, 18100 bytes
+Scene rom:/world/maps/actor_tech.l64: 7 batches, 2 textures, 18076 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 12976 bytes
+Scene rom:/world/lod/actor_dr_mason.l64: 7 batches, 2 textures, 12700 bytes
+Scene rom:/world/lod/actor_tech.l64: 7 batches, 2 textures, 12784 bytes
+TRAILER CADENCE vi=829 us=14341418 frames=28 min_us=31370 max_us=370325
+TRAILER CADENCE vi=890 us=15366824 frames=31 min_us=31656 max_us=34134
+TRAILER TEXT id=1507 npc=1 map=1 x=14 y=8 vi=930 us=16031607
+TRAILER CADENCE vi=950 us=16362152 frames=30 min_us=23672 max_us=51362
+TRAILER CADENCE vi=1010 us=17362700 frames=30 min_us=32190 max_us=34426
+TRAILER CADENCE vi=1071 us=18381438 frames=31 min_us=22749 max_us=34477
+TRAILER CADENCE vi=1131 us=19382919 frames=30 min_us=22564 max_us=51240
+TRAILER CADENCE vi=1191 us=20383470 frames=30 min_us=32203 max_us=34430
+TRAILER CADENCE vi=1251 us=21384461 frames=30 min_us=32161 max_us=34450
+TRAILER CADENCE vi=1311 us=22385927 frames=30 min_us=24829 max_us=51321
+TRAILER CADENCE vi=1371 us=23386448 frames=30 min_us=32133 max_us=34475
+TRAILER CADENCE vi=1432 us=24402911 frames=31 min_us=21953 max_us=34453
+TRAILER CADENCE vi=1492 us=25404423 frames=30 min_us=22721 max_us=51309
+TRAILER CADENCE vi=1552 us=26404929 frames=30 min_us=31809 max_us=34447
+TRAILER CADENCE vi=1612 us=27405906 frames=30 min_us=32161 max_us=34442
+TRAILER TEXT id=1508 npc=7 map=1 x=14 y=8 vi=1666 us=28310442
+TRAILER CADENCE vi=1672 us=28407446 frames=30 min_us=23608 max_us=49047
+TRAILER CADENCE vi=1733 us=29425653 frames=31 min_us=22272 max_us=34467
+TRAILER CADENCE vi=1793 us=30426612 frames=30 min_us=32133 max_us=34486
+TRAILER TEXT id=1509 npc=1 map=1 x=14 y=8 vi=1847 us=31328723
+TRAILER CADENCE vi=1853 us=31428030 frames=30 min_us=22518 max_us=51868
+TRAILER CADENCE vi=1913 us=32428602 frames=30 min_us=32139 max_us=34480
+TRAILER CADENCE vi=1973 us=33429610 frames=30 min_us=32120 max_us=34481
+TRAILER CADENCE vi=2033 us=34429829 frames=30 min_us=32140 max_us=34468
+TRAILER CADENCE vi=2094 us=35447891 frames=31 min_us=24030 max_us=35109
+TRAILER CADENCE vi=2154 us=36448034 frames=30 min_us=31751 max_us=34263
+TRAILER CADENCE vi=2214 us=37449468 frames=30 min_us=32248 max_us=34733
+TRAILER CADENCE vi=2274 us=38450304 frames=30 min_us=32251 max_us=34302
+TRAILER TEXT id=1510 npc=1 map=1 x=14 y=8 vi=2290 us=38719407
+TRAILER CADENCE vi=2334 us=39450915 frames=30 min_us=22940 max_us=52050
+TRAILER CADENCE vi=2394 us=40451890 frames=30 min_us=32115 max_us=34501
+TRAILER CADENCE vi=2455 us=41470664 frames=31 min_us=21807 max_us=34526
+TRAILER CADENCE vi=2515 us=42471022 frames=30 min_us=31797 max_us=34559
+TRAILER CADENCE vi=2575 us=43472142 frames=30 min_us=32304 max_us=34269
+TRAILER TEXT id=1511 npc=1 map=1 x=10 y=14 vi=2585 us=43643338
+TRAILER SHOT mark-at-first-table vi=2585 us=43643491
+TRAILER CADENCE vi=2635 us=44475394 frames=30 min_us=31609 max_us=34234
+TRAILER END intro vi=2645 us=44643923
+TRAILER CADENCE vi=2695 us=45475693 frames=30 min_us=31594 max_us=34080
+TRAILER CADENCE vi=2756 us=46493326 frames=31 min_us=23855 max_us=33979
+TRAILER CADENCE vi=2816 us=47494196 frames=30 min_us=31765 max_us=33966
+TRAILER CADENCE vi=2876 us=48496122 frames=30 min_us=31755 max_us=33979
+TRAILER CADENCE vi=2936 us=49496466 frames=30 min_us=31764 max_us=33972
+TRAILER CADENCE vi=2996 us=50497291 frames=30 min_us=31753 max_us=33973
+TRAILER CADENCE vi=3056 us=51497682 frames=30 min_us=31756 max_us=33947
+TRAILER CADENCE vi=3117 us=52516984 frames=31 min_us=22670 max_us=33971
+TRAILER CADENCE vi=3177 us=53517614 frames=30 min_us=31679 max_us=33985
+TRAILER CADENCE vi=3237 us=54518036 frames=30 min_us=31759 max_us=33968
+TRAILER CADENCE vi=3297 us=55518947 frames=30 min_us=31754 max_us=33976
+TRAILER CADENCE vi=3357 us=56521007 frames=30 min_us=31767 max_us=33968
+TRAILER CADENCE vi=3417 us=57521411 frames=30 min_us=31765 max_us=33969
+TRAILER CADENCE vi=3478 us=58538813 frames=31 min_us=21187 max_us=33973

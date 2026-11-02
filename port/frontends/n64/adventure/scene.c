@@ -288,6 +288,41 @@ void scene_draw_contact_shadows(const float (*positions)[2],unsigned count)
 #endif
 }
 
+void scene_draw_card_glow(float x,float y,float z,float amount,float phase)
+{
+    if(amount<=0)return;
+#if SCENE_T3D
+    static T3DVertPacked *vertices;
+    if(!vertices){vertices=malloc_uncached(15*sizeof(*vertices));assert(vertices);}
+    assert(packed_camera_active);
+    float radius=1.35f+.08f*sinf(phase*4);
+    for(unsigned i=0;i<14;i++) {
+        float a=(i?i-1:0)*6.28318530718f/12;
+        Vertex v={.position={x+(i?cosf(a)*radius:0),y+(i?sinf(a)*radius*1.2f:0),z},
+                  .color={255,212,88,i?0:(uint8_t)(amount*170)}};
+        packed_vertex(vertices+i/2,i&1,&v,1,1);
+    }
+    for(unsigned star=0;star<4;star++)for(unsigned i=0;i<4;i++) {
+        float a=phase*.35f+star*1.57079632679f;
+        float cx=x+cosf(a)*1.05f,cy=y+sinf(a)*1.45f;
+        float size=.11f+.035f*sinf(phase*6+star);
+        Vertex v={.position={cx+(i==0?-size:i==2?size:0),cy+(i==1?size*1.8f:i==3?-size*1.8f:0),z+.22f},
+                  .color={255,242,180,(uint8_t)(amount*220)}};
+        unsigned at=14+star*4+i;packed_vertex(vertices+at/2,at&1,&v,1,1);
+    }
+    T3DMat4 identity;t3d_mat4_identity(&identity);
+    rdpq_mode_push();t3d_frame_start();rdpq_mode_antialias(AA_NONE);packed_matrix(&identity);
+    t3d_state_set_drawflags(T3D_FLAG_DEPTH|T3D_FLAG_SHADED|T3D_FLAG_NO_LIGHT);
+    rdpq_mode_combiner(RDPQ_COMBINER_SHADE);rdpq_mode_blender(RDPQ_BLENDER_MULTIPLY);rdpq_mode_alphacompare(0);
+    rdpq_change_other_modes_raw(SOM_ZMODE_MASK|SOM_Z_COMPARE|SOM_Z_WRITE,SOM_ZMODE_TRANSPARENT|SOM_Z_COMPARE);
+    t3d_vert_load(vertices,0,14);for(unsigned i=1;i<13;i++)t3d_tri_draw(0,i,i+1);t3d_tri_sync();
+    t3d_vert_load(vertices+7,0,16);for(unsigned i=0;i<16;i+=4){t3d_tri_draw(i,i+1,i+2);t3d_tri_draw(i,i+2,i+3);}t3d_tri_sync();
+    t3d_matrix_pop(1);rdpq_mode_pop();
+#else
+    (void)x;(void)y;(void)z;(void)amount;(void)phase;
+#endif
+}
+
 void scene_close(Scene *scene)
 {
  if(!scene) return;

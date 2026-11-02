@@ -1,0 +1,197 @@
+Loaded trailer-amy
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-11-02 13:59:09.540 ares[52620:3480004] Resizing output buffers to 1440, 1080
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 68988 bytes
+TRAILER READY amy vi=0 us=520489
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 13254.459 us (mode: sync, success: yes).
+TRAILER CADENCE vi=61 us=1529038 frames=33 min_us=93 max_us=33420
+TRAILER CADENCE vi=121 us=2530020 frames=30 min_us=33331 max_us=33421
+TRAILER CADENCE vi=181 us=3531037 frames=30 min_us=33321 max_us=33408
+TRAILER CADENCE vi=241 us=4532070 frames=30 min_us=33353 max_us=33398
+TRAILER CADENCE vi=301 us=5533045 frames=30 min_us=33335 max_us=33394
+TRAILER CADENCE vi=362 us=6550750 frames=31 min_us=16749 max_us=33384
+TRAILER CADENCE vi=422 us=7551761 frames=30 min_us=33332 max_us=33393
+TRAILER BEGIN amy vi=480 us=8520074
+Scene rom:/world/maps/water_club.l64: 28 batches, 27 textures, 132804 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 19636 bytes
+Scene rom:/world/maps/actor_joshua.l64: 7 batches, 2 textures, 16828 bytes
+Scene rom:/world/maps/actor_swimmer.l64: 7 batches, 2 textures, 16828 bytes
+Scene rom:/world/maps/actor_swimmer_palette2.l64: 6 batches, 1 textures, 14656 bytes
+Scene rom:/world/maps/actor_amy__lying.l64: 6 batches, 1 textures, 14632 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 12976 bytes
+Scene rom:/world/lod/actor_joshua.l64: 7 batches, 2 textures, 10168 bytes
+Scene rom:/world/lod/actor_swimmer.l64: 7 batches, 2 textures, 10168 bytes
+Scene rom:/world/lod/actor_swimmer_palette2.l64: 6 batches, 1 textures, 8596 bytes
+Scene rom:/world/lod/actor_amy__lying.l64: 6 batches, 1 textures, 11608 bytes
+TRAILER CADENCE vi=507 us=8970000 frames=30 min_us=33345 max_us=450613
+TRAILER FIRST_FRAME amy vi=507 us=8970173
+TRAILER SHOT WATER_CLUB vi=507 us=8970281
+TRAILER CADENCE vi=567 us=9972491 frames=31 min_us=20273 max_us=34469
+TRAILER SHOT amy-board vi=597 us=10476741
+TRAILER REQUEST index=1 type=2 menu=0 owner=194 shown=194 vi=597 us=10479572
+ASK duel_menu Mark n=6 cursor=0
+TRAILER CADENCE vi=628 us=10991683 frames=29 min_us=4042 max_us=137253
+TRAILER CADENCE vi=689 us=12009057 frames=31 min_us=10281 max_us=39692
+REQ duel_menu Mark n=6 -> 1
+TRAILER REQUEST index=2 type=6 menu=1 owner=194 shown=194 vi=713 us=12412960
+ASK menu/attacks Mark n=2 cursor=0
+TRAILER CADENCE vi=749 us=13010347 frames=28 min_us=4324 max_us=160012
+REQ menu/attacks Mark n=2 -> 0
+TRAILER DUEL_TEXT id=53 vi=805 us=13945416
+TEXT Raichu Lv40's/Agility!
+TRAILER CADENCE vi=812 us=14072871 frames=29 min_us=33095 max_us=128538
+TRAILER REQUEST index=3 type=1 menu=0 owner=194 shown=194 vi=813 us=14087448
+ASK ack/text Mark
+TRAILER CADENCE vi=873 us=15078968 frames=29 min_us=10432 max_us=113911
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=251 vi=905 us=15613376
+TEXT If Heads, do not receive damage/or effect of opponent's next Attack!
+TRAILER REQUEST index=4 type=1 menu=0 owner=194 shown=194 vi=914 us=15762895
+ASK ack/coin Mark
+TRAILER CADENCE vi=933 us=16079978 frames=26 min_us=3907 max_us=140935
+TRAILER CADENCE vi=993 us=17080839 frames=30 min_us=9830 max_us=57206
+REQ ack Mark n=0 -> 0
+COIN 1/1 tails
+TRAILER REQUEST index=5 type=1 menu=0 owner=194 shown=194 vi=1049 us=18012643
+ASK ack/coin Mark
+TRAILER CADENCE vi=1056 us=18140620 frames=27 min_us=12382 max_us=132323
+TRAILER CADENCE vi=1116 us=19133129 frames=31 min_us=9871 max_us=56852
+REQ ack Mark n=0 -> 0
+TRAILER SHOT amy-knockout vi=1141 us=19561866
+DAMAGE Amy slot 0: 40
+TRAILER CADENCE vi=1176 us=20146145 frames=28 min_us=19601 max_us=107621
+TRAILER DUEL_TEXT id=129 vi=1185 us=20282076
+TEXT Goldeen was/Knocked Out!
+TRAILER CADENCE vi=1236 us=21132555 frames=25 min_us=21503 max_us=120060
+TRAILER REQUEST index=6 type=1 menu=0 owner=194 shown=194 vi=1236 us=21139356
+ASK ack/text Mark
+TRAILER CADENCE vi=1296 us=22135944 frames=29 min_us=10879 max_us=108889
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=66 vi=1328 us=22672389
+TEXT Mark will draw 1 Prize(s).
+TRAILER REQUEST index=7 type=1 menu=0 owner=194 shown=194 vi=1336 us=22807796
+ASK ack/text Mark
+TRAILER CADENCE vi=1356 us=23137128 frames=28 min_us=12779 max_us=131643
+TRAILER CADENCE vi=1417 us=24154565 frames=31 min_us=16495 max_us=46347
+REQ ack Mark n=0 -> 0
+TRAILER REQUEST index=8 type=9 menu=0 owner=194 shown=194 vi=1427 us=24323783
+ASK prize Mark n=6 cursor=3
+TRAILER CADENCE vi=1477 us=25155523 frames=28 min_us=3875 max_us=153120
+REQ prize Mark n=6 -> 3
+TRAILER SHOT amy-prize vi=1519 us=25858730
+TRAILER REQUEST index=9 type=1 menu=0 owner=194 shown=194 vi=1519 us=25858871
+ASK ack/card Mark
+TRAILER CADENCE vi=1537 us=26156643 frames=29 min_us=7268 max_us=115829
+TRAILER CADENCE vi=1597 us=27157616 frames=28 min_us=7284 max_us=115799
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=128 vi=1611 us=27393727
+TEXT There are no Pokemon/in Amy's Play Area!
+TRAILER REQUEST index=10 type=1 menu=0 owner=194 shown=195 vi=1619 us=27528097
+ASK ack/text Mark
+TRAILER CADENCE vi=1657 us=28158490 frames=28 min_us=21037 max_us=130879
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=118 vi=1711 us=29062186
+TEXT Decision...
+TRAILER CADENCE vi=1717 us=29167912 frames=28 min_us=20989 max_us=108261
+TRAILER REQUEST index=11 type=1 menu=0 owner=194 shown=194 vi=1718 us=29174641
+ASK ack/box Mark
+TRAILER CADENCE vi=1778 us=30177367 frames=32 min_us=6154 max_us=56693
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=120 vi=1810 us=30714577
+TEXT You won the Duel with Amy!
+DUEL_END finished=1 holder=Mark
+TRAILER REQUEST index=12 type=1 menu=0 owner=194 shown=195 vi=1818 us=30850509
+ASK ack/text Mark
+TRAILER CADENCE vi=1838 us=31178280 frames=28 min_us=6605 max_us=130350
+TRAILER CADENCE vi=1898 us=32179527 frames=30 min_us=5976 max_us=66172
+REQ ack Mark n=0 -> 0
+TRAILER SHOT amy-won vi=1910 us=32382323
+TRAILER TEXT id=1107 npc=34 map=12 x=20 y=6 vi=1910 us=32387479
+Scene rom:/world/maps/water_club.l64: 28 batches, 27 textures, 132804 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 19636 bytes
+Scene rom:/world/maps/actor_amy.l64: 6 batches, 1 textures, 14632 bytes
+Scene rom:/world/maps/actor_joshua.l64: 7 batches, 2 textures, 16828 bytes
+Scene rom:/world/maps/actor_swimmer.l64: 7 batches, 2 textures, 16828 bytes
+Scene rom:/world/maps/actor_swimmer_palette2.l64: 6 batches, 1 textures, 14656 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 12976 bytes
+Scene rom:/world/lod/actor_amy.l64: 6 batches, 1 textures, 8692 bytes
+Scene rom:/world/lod/actor_joshua.l64: 7 batches, 2 textures, 10168 bytes
+Scene rom:/world/lod/actor_swimmer.l64: 7 batches, 2 textures, 10168 bytes
+Scene rom:/world/lod/actor_swimmer_palette2.l64: 6 batches, 1 textures, 8596 bytes
+TRAILER CADENCE vi=1959 us=33196774 frames=18 min_us=22682 max_us=473472
+TRAILER CADENCE vi=2019 us=34197117 frames=30 min_us=32629 max_us=34791
+TRAILER CADENCE vi=2080 us=35215204 frames=31 min_us=21885 max_us=34791
+TRAILER TEXT id=1108 npc=34 map=12 x=20 y=6 vi=2090 us=35383835
+TRAILER CADENCE vi=2140 us=36216175 frames=30 min_us=22722 max_us=51476
+TRAILER CADENCE vi=2200 us=37217514 frames=30 min_us=32651 max_us=34787
+TRAILER CADENCE vi=2260 us=38217735 frames=30 min_us=32626 max_us=34794
+TRAILER SHOT water-medal vi=2270 us=38385768
+TRAILER CADENCE vi=2323 us=39273947 frames=31 min_us=1466 max_us=77721
+TRAILER CADENCE vi=2383 us=40269201 frames=31 min_us=6112 max_us=72874
+TRAILER CADENCE vi=2444 us=41286769 frames=31 min_us=3803 max_us=72884
+TRAILER CADENCE vi=2504 us=42287650 frames=29 min_us=5977 max_us=75200
+TRAILER CADENCE vi=2564 us=43288611 frames=30 min_us=33130 max_us=33540
+TRAILER SHOT water-medal-complete vi=2598 us=43857238
+TRAILER TEXT id=1109 npc=34 map=12 x=20 y=6 vi=2598 us=43857403
+TRAILER CADENCE vi=2625 us=44307883 frames=30 min_us=24621 max_us=68605
+TRAILER CADENCE vi=2685 us=45307989 frames=30 min_us=32172 max_us=34783
+TRAILER CADENCE vi=2745 us=46309645 frames=30 min_us=32627 max_us=34774
+TRAILER SHOT amy-reward-before-packs vi=2778 us=46863136
+Scene rom:/world/maps/hall_of_honor.l64: 27 batches, 26 textures, 46632 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 19636 bytes
+Scene rom:/world/maps/hall_card_bottom_left.l64: 2 batches, 1 textures, 960 bytes
+Scene rom:/world/maps/hall_card_bottom_right.l64: 2 batches, 1 textures, 960 bytes
+Scene rom:/world/maps/actor_legendary_card__left_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/actor_legendary_card__right_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/hall_card_top_left.l64: 2 batches, 1 textures, 960 bytes
+Scene rom:/world/maps/hall_card_top_right.l64: 2 batches, 1 textures, 960 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 12976 bytes
+TRAILER CADENCE vi=2805 us=47319487 frames=28 min_us=11295 max_us=189116
+TRAILER SHOT HALL_OF_HONOR vi=2807 us=47355588
+TRAILER CADENCE vi=2865 us=48320120 frames=30 min_us=32674 max_us=33858
+TRAILER SHOT hall-walk vi=2897 us=48857018
+TRAILER WALK map=33 steps=5 requested=12,12 reached=12,12 vi=2899 us=48888859
+TRAILER CADENCE vi=2925 us=49321124 frames=30 min_us=20256 max_us=47411
+TRAILER WALK_COMPLETE map=33 x=12 y=12 vi=2977 us=50187994
+TRAILER CADENCE vi=2985 us=50322024 frames=30 min_us=32618 max_us=33885
+TRAILER CADENCE vi=3045 us=51323014 frames=30 min_us=32674 max_us=33865
+TRAILER SHOT hall-reveal vi=3067 us=51691510
+TRAILER SHOT hall-glow vi=3098 us=52209395
+TRAILER CADENCE vi=3106 us=52340651 frames=31 min_us=16095 max_us=34036
+TRAILER CADENCE vi=3166 us=53341680 frames=30 min_us=32440 max_us=33674
+TRAILER CADENCE vi=3226 us=54342643 frames=30 min_us=32422 max_us=33640
+TRAILER CADENCE vi=3286 us=55343633 frames=30 min_us=32429 max_us=33687
+TRAILER SHOT hall-glow-complete vi=3338 us=56214986
+TRAILER SHOT title64 vi=3338 us=56215202
+TRAILER CADENCE vi=3346 us=56334925 frames=30 min_us=4446 max_us=52024
+TRAILER CADENCE vi=3406 us=57335690 frames=30 min_us=33084 max_us=33490
+TRAILER CADENCE vi=3467 us=58353541 frames=31 min_us=16706 max_us=33477
+TRAILER CADENCE vi=3527 us=59354678 frames=30 min_us=33239 max_us=33457
+TRAILER CADENCE vi=3587 us=60355612 frames=30 min_us=33246 max_us=33459
+TRAILER CADENCE vi=3647 us=61356640 frames=30 min_us=33278 max_us=33483
+TRAILER CADENCE vi=3707 us=62357720 frames=30 min_us=33305 max_us=33464
+TRAILER END amy vi=3759 us=63225252
+TRAILER CADENCE vi=3767 us=63358673 frames=30 min_us=33281 max_us=33470
+TRAILER CADENCE vi=3828 us=64376418 frames=31 min_us=16730 max_us=33501
+TRAILER CADENCE vi=3888 us=65377521 frames=30 min_us=33294 max_us=33460
+TRAILER CADENCE vi=3948 us=66378537 frames=30 min_us=33279 max_us=33505
+TRAILER CADENCE vi=4008 us=67379569 frames=30 min_us=33281 max_us=33461
+TRAILER CADENCE vi=4068 us=68380521 frames=30 min_us=33232 max_us=33470
+TRAILER CADENCE vi=4129 us=69398212 frames=31 min_us=16726 max_us=33486
+TRAILER CADENCE vi=4189 us=70399210 frames=30 min_us=33275 max_us=33471
+TRAILER CADENCE vi=4249 us=71400230 frames=30 min_us=33260 max_us=33456
+TRAILER CADENCE vi=4309 us=72401188 frames=30 min_us=33265 max_us=33529
+TRAILER CADENCE vi=4369 us=73402210 frames=30 min_us=33294 max_us=33549
+TRAILER CADENCE vi=4429 us=74403267 frames=30 min_us=33265 max_us=33466
+TRAILER CADENCE vi=4490 us=75420935 frames=31 min_us=16858 max_us=33504
+TRAILER CADENCE vi=4550 us=76422055 frames=30 min_us=33260 max_us=33516
+TRAILER CADENCE vi=4610 us=77423065 frames=30 min_us=33243 max_us=33467
+TRAILER CADENCE vi=4670 us=78424045 frames=30 min_us=33234 max_us=33518
+TRAILER CADENCE vi=4730 us=79425054 frames=30 min_us=33271 max_us=33445
+TRAILER CADENCE vi=4790 us=80425965 frames=30 min_us=33253 max_us=33498
+TRAILER CADENCE vi=4851 us=81443654 frames=31 min_us=16589 max_us=33460
+TRAILER CADENCE vi=4911 us=82444593 frames=30 min_us=33185 max_us=33494
+TRAILER CADENCE vi=4971 us=83445584 frames=30 min_us=33250 max_us=33481
+TRAILER CADENCE vi=5031 us=84446588 frames=30 min_us=33251 max_us=33457
+TRAILER CADENCE vi=5091 us=85447585 frames=30 min_us=33237 max_us=33489

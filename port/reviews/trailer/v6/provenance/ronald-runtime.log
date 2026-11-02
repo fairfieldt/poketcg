@@ -1,0 +1,113 @@
+Loaded trailer-ronald
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-11-02 14:06:21.048 ares[57705:3500981] Resizing output buffers to 1440, 1080
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 68988 bytes
+TRAILER READY ronald vi=0 us=519880
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 12512.458 us (mode: sync, success: yes).
+TRAILER CADENCE vi=61 us=1528205 frames=33 min_us=80 max_us=33415
+TRAILER CADENCE vi=121 us=2529185 frames=30 min_us=33330 max_us=33408
+TRAILER CADENCE vi=181 us=3530202 frames=30 min_us=33328 max_us=33406
+TRAILER CADENCE vi=241 us=4531223 frames=30 min_us=33349 max_us=33389
+TRAILER CADENCE vi=301 us=5532201 frames=30 min_us=33345 max_us=33384
+TRAILER CADENCE vi=362 us=6549917 frames=31 min_us=16734 max_us=33385
+TRAILER CADENCE vi=422 us=7550923 frames=30 min_us=33345 max_us=33388
+TRAILER BEGIN ronald vi=480 us=8519223
+Scene rom:/world/maps/club_lobby.l64: 28 batches, 27 textures, 74400 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 19636 bytes
+Scene rom:/world/maps/actor_chap.l64: 7 batches, 2 textures, 18580 bytes
+Scene rom:/world/maps/actor_pappy.l64: 7 batches, 2 textures, 18964 bytes
+Scene rom:/world/maps/actor_clerk.l64: 7 batches, 2 textures, 17212 bytes
+Scene rom:/world/maps/actor_gal.l64: 6 batches, 1 textures, 14920 bytes
+Scene rom:/world/maps/actor_boy_palette2.l64: 7 batches, 2 textures, 18388 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 12976 bytes
+Scene rom:/world/lod/actor_chap.l64: 7 batches, 2 textures, 16420 bytes
+Scene rom:/world/lod/actor_pappy.l64: 7 batches, 2 textures, 13180 bytes
+Scene rom:/world/lod/actor_clerk.l64: 7 batches, 2 textures, 10888 bytes
+Scene rom:/world/lod/actor_gal.l64: 6 batches, 1 textures, 10444 bytes
+Scene rom:/world/lod/actor_boy_palette2.l64: 7 batches, 2 textures, 13012 bytes
+TRAILER CADENCE vi=508 us=8994605 frames=30 min_us=33346 max_us=476061
+TRAILER FIRST_FRAME ronald vi=508 us=8994756
+TRAILER SHOT PSYCHIC_CLUB_LOBBY vi=508 us=8997135
+TRAILER CADENCE vi=569 us=10006363 frames=31 min_us=21724 max_us=33874
+Scene rom:/world/maps/actor_ronald.l64: 6 batches, 1 textures, 21400 bytes
+Scene rom:/world/lod/actor_ronald.l64: 6 batches, 1 textures, 14956 bytes
+TRAILER CADENCE vi=630 us=11033992 frames=31 min_us=12932 max_us=75566
+TRAILER CADENCE vi=692 us=12071466 frames=31 min_us=16640 max_us=53113
+TRAILER SHOT ronald-dialogue vi=693 us=12076047
+TRAILER CADENCE vi=753 us=13074369 frames=31 min_us=6116 max_us=33554
+TRAILER CADENCE vi=813 us=14075309 frames=30 min_us=33128 max_us=33538
+TRAILER CADENCE vi=873 us=15076278 frames=30 min_us=33118 max_us=33539
+TRAILER SHOT ronald-board vi=903 us=15579880
+TRAILER REQUEST index=1 type=2 menu=0 owner=194 shown=194 vi=903 us=15582647
+ASK duel_menu Mark n=6 cursor=0
+TRAILER CADENCE vi=933 us=16079177 frames=27 min_us=12728 max_us=167643
+TRAILER CADENCE vi=993 us=17080180 frames=30 min_us=11079 max_us=55612
+REQ duel_menu Mark n=6 -> 1
+TRAILER REQUEST index=2 type=6 menu=1 owner=194 shown=194 vi=1019 us=17516857
+ASK menu/attacks Mark n=1 cursor=0
+TRAILER CADENCE vi=1054 us=18097823 frames=28 min_us=4053 max_us=160926
+REQ menu/attacks Mark n=1 -> 0
+TRAILER DUEL_TEXT id=53 vi=1110 us=19033161
+TEXT Staryu Lv15's/Slap!
+TRAILER CADENCE vi=1118 us=19169181 frames=29 min_us=33119 max_us=137073
+TRAILER REQUEST index=3 type=1 menu=0 owner=194 shown=194 vi=1119 us=19183667
+ASK ack/text Mark
+TRAILER CADENCE vi=1178 us=20166446 frames=29 min_us=4158 max_us=121704
+REQ ack Mark n=0 -> 0
+TRAILER SHOT ronald-knockout vi=1210 us=20700793
+DAMAGE Ronald slot 0: 20
+TRAILER CADENCE vi=1238 us=21177097 frames=28 min_us=16854 max_us=137435
+TRAILER DUEL_TEXT id=129 vi=1254 us=21446685
+TEXT Dratini was/Knocked Out!
+TRAILER CADENCE vi=1298 us=22179347 frames=28 min_us=17691 max_us=128007
+TRAILER REQUEST index=4 type=1 menu=0 owner=194 shown=194 vi=1306 us=22312292
+ASK ack/text Mark
+TRAILER CADENCE vi=1358 us=23169522 frames=28 min_us=8346 max_us=126431
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=66 vi=1397 us=23822559
+TEXT Mark will draw 1 Prize(s).
+TRAILER REQUEST index=5 type=1 menu=0 owner=194 shown=194 vi=1405 us=23966925
+ASK ack/text Mark
+TRAILER CADENCE vi=1419 us=24199002 frames=29 min_us=4518 max_us=137899
+TRAILER CADENCE vi=1479 us=25188111 frames=30 min_us=21328 max_us=45336
+REQ ack Mark n=0 -> 0
+TRAILER REQUEST index=6 type=9 menu=0 owner=194 shown=194 vi=1497 us=25490930
+ASK prize Mark n=6 cursor=0
+TRAILER CADENCE vi=1539 us=26189337 frames=27 min_us=12224 max_us=165058
+REQ prize Mark n=6 -> 0
+TRAILER SHOT ronald-prize vi=1589 us=27025958
+TRAILER REQUEST index=7 type=1 menu=0 owner=194 shown=194 vi=1589 us=27026115
+ASK ack/card Mark
+TRAILER CADENCE vi=1599 us=27190237 frames=30 min_us=8442 max_us=80386
+TRAILER CADENCE vi=1659 us=28191128 frames=30 min_us=8677 max_us=79357
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=68 vi=1684 us=28610657
+TEXT Ronald placed/a Zapdos Lv68.
+TRAILER REQUEST index=8 type=1 menu=0 owner=194 shown=195 vi=1691 us=28724989
+ASK ack/card Mark
+TRAILER CADENCE vi=1725 us=29294225 frames=27 min_us=4173 max_us=118746
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=94 vi=1782 us=30245648
+TEXT Ronald's Turn.
+TRAILER CADENCE vi=1790 us=30379343 frames=30 min_us=4191 max_us=136204
+TRAILER REQUEST index=9 type=1 menu=0 owner=194 shown=195 vi=1790 us=30386021
+ASK ack/box Mark
+TRAILER CADENCE vi=1850 us=31377701 frames=31 min_us=5989 max_us=58199
+REQ ack Mark n=0 -> 0
+TRAILER SHOT ronald-turn vi=1882 us=31914001
+TRAILER CADENCE vi=1910 us=32377058 frames=30 min_us=8514 max_us=58533
+TRAILER CADENCE vi=1970 us=33378040 frames=30 min_us=33115 max_us=33536
+TRAILER END ronald vi=2002 us=33914126
+TRAILER CADENCE vi=2030 us=34379187 frames=30 min_us=33085 max_us=33595
+TRAILER CADENCE vi=2091 us=35396906 frames=31 min_us=16811 max_us=33588
+TRAILER CADENCE vi=2151 us=36397655 frames=30 min_us=33063 max_us=33561
+TRAILER CADENCE vi=2211 us=37398619 frames=30 min_us=33089 max_us=33587
+TRAILER CADENCE vi=2271 us=38399727 frames=30 min_us=33073 max_us=33560
+TRAILER CADENCE vi=2331 us=39400670 frames=30 min_us=33086 max_us=33573
+TRAILER CADENCE vi=2391 us=40401758 frames=30 min_us=33065 max_us=33570
+TRAILER CADENCE vi=2452 us=41419623 frames=31 min_us=16561 max_us=33564
+TRAILER CADENCE vi=2512 us=42420326 frames=30 min_us=33093 max_us=33623
+TRAILER CADENCE vi=2572 us=43421624 frames=30 min_us=33062 max_us=33579
+TRAILER CADENCE vi=2632 us=44422392 frames=30 min_us=33089 max_us=33564
+TRAILER CADENCE vi=2692 us=45423357 frames=30 min_us=33098 max_us=33559

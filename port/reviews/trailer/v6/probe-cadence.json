@@ -1,0 +1,185 @@
+{
+  "captures": [
+    {
+      "directory": "port/frontends/n64/adventure/build/trailer-capture/v63-local-clubs",
+      "native_framebuffer": [
+        480,
+        360
+      ],
+      "ram_bytes": 8388608,
+      "high_resolution": true,
+      "walks": [
+        {
+          "map": 15,
+          "native_VI": 173,
+          "native_seconds": 2.883489,
+          "host_seconds": 2.9593348503112793,
+          "host_over_native_ratio": 1.026303499098238,
+          "stable_native_present_fps": 30.200510311949053,
+          "recorded_samples_in_walk": 149,
+          "recorded_pts_gap_p50_seconds": 0.01833299999999838,
+          "recorded_pts_gap_p95_seconds": 0.03333300000000072,
+          "recorded_pts_gap_max_seconds": 0.03666600000000031,
+          "recorded_gap_over_75ms": 0,
+          "native_windows": [
+            {
+              "vi_start": 619,
+              "vi_end": 679,
+              "native_seconds": 1.001185,
+              "presented_frames": 30,
+              "native_present_fps": 29.964492076888888,
+              "frames_per_nominal_second": 30.0,
+              "minimum_interpresent_us": 31891,
+              "maximum_interpresent_us": 33940
+            },
+            {
+              "vi_start": 679,
+              "vi_end": 740,
+              "native_seconds": 1.018513,
+              "presented_frames": 31,
+              "native_present_fps": 30.436528547009218,
+              "frames_per_nominal_second": 30.491803278688526,
+              "minimum_interpresent_us": 21889,
+              "maximum_interpresent_us": 34508
+            }
+          ]
+        }
+      ],
+      "native_present_intervals": [
+        {
+          "vi_start": 61,
+          "vi_end": 121,
+          "native_seconds": 1.000985,
+          "presented_frames": 30,
+          "native_present_fps": 29.970479078108063,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 33321,
+          "maximum_interpresent_us": 33412
+        },
+        {
+          "vi_start": 121,
+          "vi_end": 181,
+          "native_seconds": 1.001013,
+          "presented_frames": 30,
+          "native_present_fps": 29.969640753916284,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 33332,
+          "maximum_interpresent_us": 33398
+        },
+        {
+          "vi_start": 181,
+          "vi_end": 241,
+          "native_seconds": 1.001022,
+          "presented_frames": 30,
+          "native_present_fps": 29.969371302528813,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 33352,
+          "maximum_interpresent_us": 33390
+        },
+        {
+          "vi_start": 241,
+          "vi_end": 301,
+          "native_seconds": 1.000974,
+          "presented_frames": 30,
+          "native_present_fps": 29.970808432586658,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 33345,
+          "maximum_interpresent_us": 33391
+        },
+        {
+          "vi_start": 301,
+          "vi_end": 362,
+          "native_seconds": 1.017718,
+          "presented_frames": 31,
+          "native_present_fps": 30.460304327917953,
+          "frames_per_nominal_second": 30.491803278688526,
+          "minimum_interpresent_us": 16742,
+          "maximum_interpresent_us": 33397
+        },
+        {
+          "vi_start": 362,
+          "vi_end": 422,
+          "native_seconds": 1.001004,
+          "presented_frames": 30,
+          "native_present_fps": 29.96991021014901,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 33340,
+          "maximum_interpresent_us": 33394
+        },
+        {
+          "vi_start": 422,
+          "vi_end": 498,
+          "native_seconds": 1.282878,
+          "presented_frames": 30,
+          "native_present_fps": 23.38492046788549,
+          "frames_per_nominal_second": 23.68421052631579,
+          "minimum_interpresent_us": 33341,
+          "maximum_interpresent_us": 315254
+        },
+        {
+          "vi_start": 498,
+          "vi_end": 559,
+          "native_seconds": 1.004522,
+          "presented_frames": 31,
+          "native_present_fps": 30.86044904939862,
+          "frames_per_nominal_second": 30.491803278688526,
+          "minimum_interpresent_us": 19373,
+          "maximum_interpresent_us": 33837
+        },
+        {
+          "vi_start": 559,
+          "vi_end": 619,
+          "native_seconds": 1.000792,
+          "presented_frames": 28,
+          "native_present_fps": 27.977841549492805,
+          "frames_per_nominal_second": 28.0,
+          "minimum_interpresent_us": 19056,
+          "maximum_interpresent_us": 124097
+        },
+        {
+          "vi_start": 619,
+          "vi_end": 679,
+          "native_seconds": 1.001185,
+          "presented_frames": 30,
+          "native_present_fps": 29.964492076888888,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 31891,
+          "maximum_interpresent_us": 33940
+        },
+        {
+          "vi_start": 679,
+          "vi_end": 740,
+          "native_seconds": 1.018513,
+          "presented_frames": 31,
+          "native_present_fps": 30.436528547009218,
+          "frames_per_nominal_second": 30.491803278688526,
+          "minimum_interpresent_us": 21889,
+          "maximum_interpresent_us": 34508
+        },
+        {
+          "vi_start": 740,
+          "vi_end": 801,
+          "native_seconds": 1.031345,
+          "presented_frames": 31,
+          "native_present_fps": 30.057837096219018,
+          "frames_per_nominal_second": 30.491803278688526,
+          "minimum_interpresent_us": 31805,
+          "maximum_interpresent_us": 34288
+        }
+      ],
+      "recorded_cadence": {
+        "meaning": "Encoded frame PTS, not native game FPS or a count of compositor drops",
+        "encoded_frames": 753,
+        "first_pts": 0.0,
+        "last_pts": 14.088333,
+        "gap_p50_seconds": 0.018332999999999933,
+        "gap_p95_seconds": 0.026666000000000523,
+        "gap_max_seconds": 0.03666600000000031
+      },
+      "coverage": null,
+      "interpretation": "Native presented frames are measured in emulated CP0/VI time. Recorded PTS describe captured samples, not game FPS. A 60fps delivery file may hold recorded 30fps game states. Private BFS/map-loading boundary hitches are separate from steady walking.",
+      "physical_console_performance_claim": false
+    }
+  ],
+  "interpolation": false
+}

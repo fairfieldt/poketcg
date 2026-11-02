@@ -1,0 +1,94 @@
+Loaded trailer-clubs
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-11-02 14:07:09.151 ares[57950:3503366] Resizing output buffers to 1440, 1080
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 68988 bytes
+TRAILER READY clubs vi=0 us=516971
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 12668.875 us (mode: sync, success: yes).
+TRAILER CADENCE vi=61 us=1526541 frames=33 min_us=101 max_us=33410
+TRAILER CADENCE vi=121 us=2527526 frames=30 min_us=33321 max_us=33412
+TRAILER CADENCE vi=181 us=3528539 frames=30 min_us=33332 max_us=33398
+TRAILER CADENCE vi=241 us=4529561 frames=30 min_us=33352 max_us=33390
+TRAILER CADENCE vi=301 us=5530535 frames=30 min_us=33345 max_us=33391
+TRAILER CADENCE vi=362 us=6548253 frames=31 min_us=16742 max_us=33397
+TRAILER CADENCE vi=422 us=7549257 frames=30 min_us=33340 max_us=33394
+TRAILER BEGIN clubs vi=480 us=8517566
+Scene rom:/world/maps/lightning_club.l64: 45 batches, 44 textures, 35184 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 19636 bytes
+Scene rom:/world/maps/actor_isaac.l64: 7 batches, 2 textures, 16852 bytes
+Scene rom:/world/maps/actor_hood.l64: 7 batches, 2 textures, 19036 bytes
+Scene rom:/world/maps/actor_girl.l64: 6 batches, 1 textures, 15376 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 12976 bytes
+Scene rom:/world/lod/actor_isaac.l64: 7 batches, 2 textures, 11608 bytes
+Scene rom:/world/lod/actor_hood.l64: 7 batches, 2 textures, 16924 bytes
+Scene rom:/world/lod/actor_girl.l64: 6 batches, 1 textures, 9028 bytes
+TRAILER CADENCE vi=498 us=8832135 frames=30 min_us=33341 max_us=315254
+TRAILER FIRST_FRAME clubs vi=498 us=8832298
+TRAILER SHOT LIGHTNING_CLUB vi=499 us=8834836
+TRAILER CADENCE vi=559 us=9836657 frames=31 min_us=19373 max_us=33837
+TRAILER WALK map=15 steps=11 requested=12,8 reached=12,8 vi=595 us=10441352
+TRAILER CADENCE vi=619 us=10837449 frames=28 min_us=19056 max_us=124097
+TRAILER CADENCE vi=679 us=11838634 frames=30 min_us=31891 max_us=33940
+TRAILER CADENCE vi=740 us=12857147 frames=31 min_us=21889 max_us=34508
+TRAILER WALK_COMPLETE map=15 x=12 y=8 vi=768 us=13324841
+TRAILER CADENCE vi=801 us=13888492 frames=31 min_us=31805 max_us=34288
+TRAILER CADENCE vi=861 us=14874600 frames=30 min_us=19796 max_us=34217
+Scene rom:/world/maps/fire_club.l64: 42 batches, 41 textures, 41184 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 19636 bytes
+Scene rom:/world/maps/actor_ken.l64: 7 batches, 2 textures, 17524 bytes
+Scene rom:/world/maps/actor_lad.l64: 8 batches, 3 textures, 19432 bytes
+Scene rom:/world/maps/actor_specs.l64: 7 batches, 2 textures, 18412 bytes
+Scene rom:/world/maps/actor_boy_palette2.l64: 7 batches, 2 textures, 18388 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 12976 bytes
+Scene rom:/world/lod/actor_ken.l64: 7 batches, 2 textures, 12256 bytes
+Scene rom:/world/lod/actor_lad.l64: 8 batches, 3 textures, 17176 bytes
+Scene rom:/world/lod/actor_specs.l64: 7 batches, 2 textures, 16252 bytes
+Scene rom:/world/lod/actor_boy_palette2.l64: 7 batches, 2 textures, 13012 bytes
+TRAILER SHOT FIRE_CLUB vi=900 us=15528755
+TRAILER CADENCE vi=922 us=15894198 frames=21 min_us=19802 max_us=394248
+TRAILER CADENCE vi=982 us=16894250 frames=30 min_us=31915 max_us=33879
+TRAILER WALK map=27 steps=10 requested=14,8 reached=14,8 vi=996 us=17133391
+TRAILER CADENCE vi=1043 us=17911930 frames=29 min_us=21823 max_us=126018
+TRAILER CADENCE vi=1103 us=18913352 frames=30 min_us=31904 max_us=33864
+TRAILER WALK_COMPLETE map=27 x=14 y=8 vi=1153 us=19745653
+TRAILER CADENCE vi=1163 us=19911526 frames=30 min_us=31706 max_us=34131
+TRAILER CADENCE vi=1224 us=20944786 frames=31 min_us=32331 max_us=34203
+Scene rom:/world/maps/water_club.l64: 28 batches, 27 textures, 132804 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 19636 bytes
+Scene rom:/world/maps/actor_joshua.l64: 7 batches, 2 textures, 16828 bytes
+Scene rom:/world/maps/actor_swimmer.l64: 7 batches, 2 textures, 16828 bytes
+Scene rom:/world/maps/actor_swimmer_palette2.l64: 6 batches, 1 textures, 14656 bytes
+Scene rom:/world/maps/actor_amy__lying.l64: 6 batches, 1 textures, 14632 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 12976 bytes
+Scene rom:/world/lod/actor_joshua.l64: 7 batches, 2 textures, 10168 bytes
+Scene rom:/world/lod/actor_swimmer.l64: 7 batches, 2 textures, 10168 bytes
+Scene rom:/world/lod/actor_swimmer_palette2.l64: 6 batches, 1 textures, 8596 bytes
+Scene rom:/world/lod/actor_amy__lying.l64: 6 batches, 1 textures, 11608 bytes
+TRAILER CADENCE vi=1285 us=21949626 frames=18 min_us=19667 max_us=464327
+TRAILER SHOT WATER_CLUB vi=1290 us=22034553
+TRAILER CADENCE vi=1345 us=22956308 frames=31 min_us=26357 max_us=33945
+TRAILER WALK map=12 steps=13 requested=22,8 reached=20,8 vi=1388 us=23667854
+TRAILER CADENCE vi=1406 us=23973531 frames=28 min_us=25973 max_us=154080
+TRAILER CADENCE vi=1466 us=24973849 frames=30 min_us=31970 max_us=33935
+TRAILER CADENCE vi=1526 us=25970546 frames=30 min_us=31794 max_us=34043
+TRAILER CADENCE vi=1586 us=26969800 frames=30 min_us=31148 max_us=34576
+TRAILER WALK_COMPLETE map=12 x=20 y=8 vi=1594 us=27105384
+TRAILER CADENCE vi=1646 us=27971232 frames=30 min_us=32671 max_us=34557
+TRAILER END clubs vi=1684 us=28604470
+TRAILER CADENCE vi=1706 us=28972677 frames=30 min_us=32700 max_us=34554
+TRAILER CADENCE vi=1767 us=29990314 frames=31 min_us=20612 max_us=34556
+TRAILER CADENCE vi=1827 us=30990177 frames=30 min_us=32659 max_us=34560
+TRAILER CADENCE vi=1887 us=31991512 frames=30 min_us=32673 max_us=34555
+TRAILER CADENCE vi=1947 us=32992799 frames=30 min_us=32696 max_us=34575
+TRAILER CADENCE vi=2007 us=33994375 frames=30 min_us=32699 max_us=34563
+TRAILER CADENCE vi=2068 us=35011899 frames=31 min_us=21658 max_us=34567
+TRAILER CADENCE vi=2128 us=36013270 frames=30 min_us=32698 max_us=34560
+TRAILER CADENCE vi=2188 us=37013152 frames=30 min_us=32698 max_us=34558
+TRAILER CADENCE vi=2248 us=38014355 frames=30 min_us=32704 max_us=34563
+TRAILER CADENCE vi=2308 us=39015917 frames=30 min_us=32677 max_us=34563
+TRAILER CADENCE vi=2368 us=40017271 frames=30 min_us=32696 max_us=34558
+TRAILER CADENCE vi=2429 us=41034994 frames=31 min_us=20707 max_us=34552
+TRAILER CADENCE vi=2489 us=42034811 frames=30 min_us=32667 max_us=34543
+TRAILER CADENCE vi=2549 us=43036000 frames=30 min_us=32690 max_us=34568
+TRAILER CADENCE vi=2609 us=44037408 frames=30 min_us=32677 max_us=34586
+TRAILER CADENCE vi=2669 us=45038996 frames=30 min_us=32712 max_us=34560

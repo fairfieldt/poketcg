@@ -1,0 +1,738 @@
+{
+  "captures": [
+    {
+      "directory": "port/frontends/n64/adventure/build/trailer-capture/v6-local-clubs",
+      "native_framebuffer": [
+        480,
+        360
+      ],
+      "ram_bytes": 8388608,
+      "high_resolution": true,
+      "walks": [
+        {
+          "map": 15,
+          "native_VI": 173,
+          "native_seconds": 2.883489,
+          "host_seconds": 2.9557061195373535,
+          "host_over_native_ratio": 1.0250450476965072,
+          "stable_native_present_fps": 30.200510311949053,
+          "recorded_samples_in_walk": 154,
+          "recorded_pts_gap_p50_seconds": 0.016666999999999987,
+          "recorded_pts_gap_p95_seconds": 0.026666999999999774,
+          "recorded_pts_gap_max_seconds": 0.03666600000000031,
+          "recorded_gap_over_75ms": 0,
+          "native_windows": [
+            {
+              "vi_start": 619,
+              "vi_end": 679,
+              "native_seconds": 1.001185,
+              "presented_frames": 30,
+              "native_present_fps": 29.964492076888888,
+              "frames_per_nominal_second": 30.0,
+              "minimum_interpresent_us": 31891,
+              "maximum_interpresent_us": 33940
+            },
+            {
+              "vi_start": 679,
+              "vi_end": 740,
+              "native_seconds": 1.018513,
+              "presented_frames": 31,
+              "native_present_fps": 30.436528547009218,
+              "frames_per_nominal_second": 30.491803278688526,
+              "minimum_interpresent_us": 21889,
+              "maximum_interpresent_us": 34508
+            }
+          ]
+        },
+        {
+          "map": 27,
+          "native_VI": 157,
+          "native_seconds": 2.612262,
+          "host_seconds": 2.705246925354004,
+          "host_over_native_ratio": 1.0355955586974064,
+          "stable_native_present_fps": 29.957400576380387,
+          "recorded_samples_in_walk": 139,
+          "recorded_pts_gap_p50_seconds": 0.01833299999999838,
+          "recorded_pts_gap_p95_seconds": 0.026667000000003327,
+          "recorded_pts_gap_max_seconds": 0.03666599999999676,
+          "recorded_gap_over_75ms": 0,
+          "native_windows": [
+            {
+              "vi_start": 1043,
+              "vi_end": 1103,
+              "native_seconds": 1.001422,
+              "presented_frames": 30,
+              "native_present_fps": 29.957400576380387,
+              "frames_per_nominal_second": 30.0,
+              "minimum_interpresent_us": 31904,
+              "maximum_interpresent_us": 33864
+            }
+          ]
+        },
+        {
+          "map": 12,
+          "native_VI": 206,
+          "native_seconds": 3.43753,
+          "host_seconds": 3.5485548973083496,
+          "host_over_native_ratio": 1.0322978700719265,
+          "stable_native_present_fps": 30.02239670794413,
+          "recorded_samples_in_walk": 190,
+          "recorded_pts_gap_p50_seconds": 0.01833299999999838,
+          "recorded_pts_gap_p95_seconds": 0.021666000000003294,
+          "recorded_pts_gap_max_seconds": 0.036666999999997785,
+          "recorded_gap_over_75ms": 0,
+          "native_windows": [
+            {
+              "vi_start": 1406,
+              "vi_end": 1466,
+              "native_seconds": 1.000318,
+              "presented_frames": 30,
+              "native_present_fps": 29.99046303275558,
+              "frames_per_nominal_second": 30.0,
+              "minimum_interpresent_us": 31970,
+              "maximum_interpresent_us": 33935
+            },
+            {
+              "vi_start": 1466,
+              "vi_end": 1526,
+              "native_seconds": 0.996697,
+              "presented_frames": 30,
+              "native_present_fps": 30.099418378905522,
+              "frames_per_nominal_second": 30.0,
+              "minimum_interpresent_us": 31794,
+              "maximum_interpresent_us": 34043
+            },
+            {
+              "vi_start": 1526,
+              "vi_end": 1586,
+              "native_seconds": 0.999254,
+              "presented_frames": 30,
+              "native_present_fps": 30.02239670794413,
+              "frames_per_nominal_second": 30.0,
+              "minimum_interpresent_us": 31148,
+              "maximum_interpresent_us": 34576
+            }
+          ]
+        }
+      ],
+      "native_present_intervals": [
+        {
+          "vi_start": 61,
+          "vi_end": 121,
+          "native_seconds": 1.000985,
+          "presented_frames": 30,
+          "native_present_fps": 29.970479078108063,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 33321,
+          "maximum_interpresent_us": 33412
+        },
+        {
+          "vi_start": 121,
+          "vi_end": 181,
+          "native_seconds": 1.001013,
+          "presented_frames": 30,
+          "native_present_fps": 29.969640753916284,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 33332,
+          "maximum_interpresent_us": 33398
+        },
+        {
+          "vi_start": 181,
+          "vi_end": 241,
+          "native_seconds": 1.001022,
+          "presented_frames": 30,
+          "native_present_fps": 29.969371302528813,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 33352,
+          "maximum_interpresent_us": 33390
+        },
+        {
+          "vi_start": 241,
+          "vi_end": 301,
+          "native_seconds": 1.000974,
+          "presented_frames": 30,
+          "native_present_fps": 29.970808432586658,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 33345,
+          "maximum_interpresent_us": 33391
+        },
+        {
+          "vi_start": 301,
+          "vi_end": 362,
+          "native_seconds": 1.017718,
+          "presented_frames": 31,
+          "native_present_fps": 30.460304327917953,
+          "frames_per_nominal_second": 30.491803278688526,
+          "minimum_interpresent_us": 16742,
+          "maximum_interpresent_us": 33397
+        },
+        {
+          "vi_start": 362,
+          "vi_end": 422,
+          "native_seconds": 1.001004,
+          "presented_frames": 30,
+          "native_present_fps": 29.96991021014901,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 33340,
+          "maximum_interpresent_us": 33394
+        },
+        {
+          "vi_start": 422,
+          "vi_end": 498,
+          "native_seconds": 1.282878,
+          "presented_frames": 30,
+          "native_present_fps": 23.38492046788549,
+          "frames_per_nominal_second": 23.68421052631579,
+          "minimum_interpresent_us": 33341,
+          "maximum_interpresent_us": 315254
+        },
+        {
+          "vi_start": 498,
+          "vi_end": 559,
+          "native_seconds": 1.004522,
+          "presented_frames": 31,
+          "native_present_fps": 30.86044904939862,
+          "frames_per_nominal_second": 30.491803278688526,
+          "minimum_interpresent_us": 19373,
+          "maximum_interpresent_us": 33837
+        },
+        {
+          "vi_start": 559,
+          "vi_end": 619,
+          "native_seconds": 1.000792,
+          "presented_frames": 28,
+          "native_present_fps": 27.977841549492805,
+          "frames_per_nominal_second": 28.0,
+          "minimum_interpresent_us": 19056,
+          "maximum_interpresent_us": 124097
+        },
+        {
+          "vi_start": 619,
+          "vi_end": 679,
+          "native_seconds": 1.001185,
+          "presented_frames": 30,
+          "native_present_fps": 29.964492076888888,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 31891,
+          "maximum_interpresent_us": 33940
+        },
+        {
+          "vi_start": 679,
+          "vi_end": 740,
+          "native_seconds": 1.018513,
+          "presented_frames": 31,
+          "native_present_fps": 30.436528547009218,
+          "frames_per_nominal_second": 30.491803278688526,
+          "minimum_interpresent_us": 21889,
+          "maximum_interpresent_us": 34508
+        },
+        {
+          "vi_start": 740,
+          "vi_end": 801,
+          "native_seconds": 1.031345,
+          "presented_frames": 31,
+          "native_present_fps": 30.057837096219018,
+          "frames_per_nominal_second": 30.491803278688526,
+          "minimum_interpresent_us": 31805,
+          "maximum_interpresent_us": 34288
+        },
+        {
+          "vi_start": 801,
+          "vi_end": 861,
+          "native_seconds": 0.986108,
+          "presented_frames": 30,
+          "native_present_fps": 30.42263119252658,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 19796,
+          "maximum_interpresent_us": 34217
+        },
+        {
+          "vi_start": 861,
+          "vi_end": 922,
+          "native_seconds": 1.019598,
+          "presented_frames": 21,
+          "native_present_fps": 20.59635268017395,
+          "frames_per_nominal_second": 20.65573770491803,
+          "minimum_interpresent_us": 19802,
+          "maximum_interpresent_us": 394248
+        },
+        {
+          "vi_start": 922,
+          "vi_end": 982,
+          "native_seconds": 1.000052,
+          "presented_frames": 30,
+          "native_present_fps": 29.998440081115785,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 31915,
+          "maximum_interpresent_us": 33879
+        },
+        {
+          "vi_start": 982,
+          "vi_end": 1043,
+          "native_seconds": 1.01768,
+          "presented_frames": 29,
+          "native_present_fps": 28.496187406650424,
+          "frames_per_nominal_second": 28.524590163934427,
+          "minimum_interpresent_us": 21823,
+          "maximum_interpresent_us": 126018
+        },
+        {
+          "vi_start": 1043,
+          "vi_end": 1103,
+          "native_seconds": 1.001422,
+          "presented_frames": 30,
+          "native_present_fps": 29.957400576380387,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 31904,
+          "maximum_interpresent_us": 33864
+        },
+        {
+          "vi_start": 1103,
+          "vi_end": 1163,
+          "native_seconds": 0.998174,
+          "presented_frames": 30,
+          "native_present_fps": 30.054880211265772,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 31706,
+          "maximum_interpresent_us": 34131
+        },
+        {
+          "vi_start": 1163,
+          "vi_end": 1224,
+          "native_seconds": 1.03326,
+          "presented_frames": 31,
+          "native_present_fps": 30.002129183361397,
+          "frames_per_nominal_second": 30.491803278688526,
+          "minimum_interpresent_us": 32331,
+          "maximum_interpresent_us": 34203
+        },
+        {
+          "vi_start": 1224,
+          "vi_end": 1285,
+          "native_seconds": 1.00484,
+          "presented_frames": 18,
+          "native_present_fps": 17.91329962979181,
+          "frames_per_nominal_second": 17.704918032786885,
+          "minimum_interpresent_us": 19667,
+          "maximum_interpresent_us": 464327
+        },
+        {
+          "vi_start": 1285,
+          "vi_end": 1345,
+          "native_seconds": 1.006682,
+          "presented_frames": 31,
+          "native_present_fps": 30.79423293552482,
+          "frames_per_nominal_second": 31.0,
+          "minimum_interpresent_us": 26357,
+          "maximum_interpresent_us": 33945
+        },
+        {
+          "vi_start": 1345,
+          "vi_end": 1406,
+          "native_seconds": 1.017223,
+          "presented_frames": 28,
+          "native_present_fps": 27.525921061556808,
+          "frames_per_nominal_second": 27.540983606557376,
+          "minimum_interpresent_us": 25973,
+          "maximum_interpresent_us": 154080
+        },
+        {
+          "vi_start": 1406,
+          "vi_end": 1466,
+          "native_seconds": 1.000318,
+          "presented_frames": 30,
+          "native_present_fps": 29.99046303275558,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 31970,
+          "maximum_interpresent_us": 33935
+        },
+        {
+          "vi_start": 1466,
+          "vi_end": 1526,
+          "native_seconds": 0.996697,
+          "presented_frames": 30,
+          "native_present_fps": 30.099418378905522,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 31794,
+          "maximum_interpresent_us": 34043
+        },
+        {
+          "vi_start": 1526,
+          "vi_end": 1586,
+          "native_seconds": 0.999254,
+          "presented_frames": 30,
+          "native_present_fps": 30.02239670794413,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 31148,
+          "maximum_interpresent_us": 34576
+        },
+        {
+          "vi_start": 1586,
+          "vi_end": 1646,
+          "native_seconds": 1.001432,
+          "presented_frames": 30,
+          "native_present_fps": 29.957101430751162,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32671,
+          "maximum_interpresent_us": 34557
+        },
+        {
+          "vi_start": 1646,
+          "vi_end": 1706,
+          "native_seconds": 1.001445,
+          "presented_frames": 30,
+          "native_present_fps": 29.956712550364724,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32700,
+          "maximum_interpresent_us": 34554
+        },
+        {
+          "vi_start": 1706,
+          "vi_end": 1767,
+          "native_seconds": 1.017637,
+          "presented_frames": 31,
+          "native_present_fps": 30.4627288512505,
+          "frames_per_nominal_second": 30.491803278688526,
+          "minimum_interpresent_us": 20612,
+          "maximum_interpresent_us": 34556
+        },
+        {
+          "vi_start": 1767,
+          "vi_end": 1827,
+          "native_seconds": 0.999863,
+          "presented_frames": 30,
+          "native_present_fps": 30.004110563147155,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32659,
+          "maximum_interpresent_us": 34560
+        },
+        {
+          "vi_start": 1827,
+          "vi_end": 1887,
+          "native_seconds": 1.001335,
+          "presented_frames": 30,
+          "native_present_fps": 29.960003395467048,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32673,
+          "maximum_interpresent_us": 34555
+        },
+        {
+          "vi_start": 1887,
+          "vi_end": 1947,
+          "native_seconds": 1.001287,
+          "presented_frames": 30,
+          "native_present_fps": 29.96143962719979,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32696,
+          "maximum_interpresent_us": 34575
+        },
+        {
+          "vi_start": 1947,
+          "vi_end": 2007,
+          "native_seconds": 1.001576,
+          "presented_frames": 30,
+          "native_present_fps": 29.95279439603185,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32699,
+          "maximum_interpresent_us": 34563
+        },
+        {
+          "vi_start": 2007,
+          "vi_end": 2068,
+          "native_seconds": 1.017524,
+          "presented_frames": 31,
+          "native_present_fps": 30.466111855838285,
+          "frames_per_nominal_second": 30.491803278688526,
+          "minimum_interpresent_us": 21658,
+          "maximum_interpresent_us": 34567
+        },
+        {
+          "vi_start": 2068,
+          "vi_end": 2128,
+          "native_seconds": 1.001371,
+          "presented_frames": 30,
+          "native_present_fps": 29.95892631202621,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32698,
+          "maximum_interpresent_us": 34560
+        },
+        {
+          "vi_start": 2128,
+          "vi_end": 2188,
+          "native_seconds": 0.999882,
+          "presented_frames": 30,
+          "native_present_fps": 30.003540417769294,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32698,
+          "maximum_interpresent_us": 34558
+        },
+        {
+          "vi_start": 2188,
+          "vi_end": 2248,
+          "native_seconds": 1.001203,
+          "presented_frames": 30,
+          "native_present_fps": 29.96395336410298,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32704,
+          "maximum_interpresent_us": 34563
+        },
+        {
+          "vi_start": 2248,
+          "vi_end": 2308,
+          "native_seconds": 1.001562,
+          "presented_frames": 30,
+          "native_present_fps": 29.953213081167213,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32677,
+          "maximum_interpresent_us": 34563
+        },
+        {
+          "vi_start": 2308,
+          "vi_end": 2368,
+          "native_seconds": 1.001354,
+          "presented_frames": 30,
+          "native_present_fps": 29.959434925111395,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32696,
+          "maximum_interpresent_us": 34558
+        },
+        {
+          "vi_start": 2368,
+          "vi_end": 2429,
+          "native_seconds": 1.017723,
+          "presented_frames": 31,
+          "native_present_fps": 30.46015467863063,
+          "frames_per_nominal_second": 30.491803278688526,
+          "minimum_interpresent_us": 20707,
+          "maximum_interpresent_us": 34552
+        },
+        {
+          "vi_start": 2429,
+          "vi_end": 2489,
+          "native_seconds": 0.999817,
+          "presented_frames": 30,
+          "native_present_fps": 30.00549100485389,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32667,
+          "maximum_interpresent_us": 34543
+        },
+        {
+          "vi_start": 2489,
+          "vi_end": 2549,
+          "native_seconds": 1.001189,
+          "presented_frames": 30,
+          "native_present_fps": 29.964372361262456,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32690,
+          "maximum_interpresent_us": 34568
+        },
+        {
+          "vi_start": 2549,
+          "vi_end": 2609,
+          "native_seconds": 1.001408,
+          "presented_frames": 30,
+          "native_present_fps": 29.957819390298457,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32677,
+          "maximum_interpresent_us": 34586
+        },
+        {
+          "vi_start": 2609,
+          "vi_end": 2669,
+          "native_seconds": 1.001588,
+          "presented_frames": 30,
+          "native_present_fps": 29.95243553237459,
+          "frames_per_nominal_second": 30.0,
+          "minimum_interpresent_us": 32712,
+          "maximum_interpresent_us": 34560
+        }
+      ],
+      "recorded_cadence": {
+        "meaning": "Encoded frame PTS, not native game FPS or a count of compositor drops",
+        "encoded_frames": 2399,
+        "first_pts": 0.0,
+        "last_pts": 45.088333,
+        "gap_p50_seconds": 0.01833299999999838,
+        "gap_p95_seconds": 0.03333299999999895,
+        "gap_max_seconds": 0.03666700000000134
+      },
+      "coverage": {
+        "video_duration_seconds": 45.103333,
+        "required_through_seconds": 28.590407848358154,
+        "tolerance_seconds": 0.5,
+        "passed": true
+      },
+      "interpretation": "Native presented frames are measured in emulated CP0/VI time. Recorded PTS describe captured samples, not game FPS. A 60fps delivery file may hold recorded 30fps game states. Private BFS/map-loading boundary hitches are separate from steady walking.",
+      "physical_console_performance_claim": false
+    }
+  ],
+  "interpolation": false,
+  "version": 6,
+  "resolution_comparison": {
+    "same_native_mode_as_v5": true,
+    "segments": [
+      {
+        "segment": "intro",
+        "v5_native_framebuffer": [
+          480,
+          360
+        ],
+        "v6_native_framebuffer": [
+          480,
+          360
+        ],
+        "ram_bytes": 8388608,
+        "high_resolution": true,
+        "recorded_samples": 3259,
+        "recorded_max_pts_gap_seconds": 0.03666700000000134,
+        "coverage": {
+          "video_duration_seconds": 60.095,
+          "required_through_seconds": 45.20025396347046,
+          "tolerance_seconds": 0.5,
+          "passed": true
+        },
+        "video_sha256": "f511ccf68c4eadab70de761bfb141bb62ed619ae966402e86817099a2e945753"
+      },
+      {
+        "segment": "ronald",
+        "v5_native_framebuffer": [
+          480,
+          360
+        ],
+        "v6_native_framebuffer": [
+          480,
+          360
+        ],
+        "ram_bytes": 8388608,
+        "high_resolution": true,
+        "recorded_samples": 2387,
+        "recorded_max_pts_gap_seconds": 0.03666700000000134,
+        "coverage": {
+          "video_duration_seconds": 45.188333,
+          "required_through_seconds": 33.418036222457886,
+          "tolerance_seconds": 0.5,
+          "passed": true
+        },
+        "video_sha256": "57d05fad605035d12cada83e89e64b6ea89e6da55cd6e31426ccaf54d12d077a"
+      },
+      {
+        "segment": "clubs",
+        "v5_native_framebuffer": [
+          480,
+          360
+        ],
+        "v6_native_framebuffer": [
+          480,
+          360
+        ],
+        "ram_bytes": 8388608,
+        "high_resolution": true,
+        "recorded_samples": 2399,
+        "recorded_max_pts_gap_seconds": 0.03666700000000134,
+        "coverage": {
+          "video_duration_seconds": 45.103333,
+          "required_through_seconds": 28.590407848358154,
+          "tolerance_seconds": 0.5,
+          "passed": true
+        },
+        "video_sha256": "800ceb7137efdc6dc5b2fa8a6c9eb8313b57a3ac5407574b6d0594ee82ed793d"
+      },
+      {
+        "segment": "amy",
+        "v5_native_framebuffer": [
+          480,
+          360
+        ],
+        "v6_native_framebuffer": [
+          480,
+          360
+        ],
+        "ram_bytes": 8388608,
+        "high_resolution": true,
+        "recorded_samples": 4514,
+        "recorded_max_pts_gap_seconds": 0.03666700000000844,
+        "coverage": {
+          "video_duration_seconds": 85.156667,
+          "required_through_seconds": 63.12604308128357,
+          "tolerance_seconds": 0.5,
+          "passed": true
+        },
+        "video_sha256": "c690f15940e5fdb6f94e71044971f4d4269d6d26283fada671843707f9126a55"
+      }
+    ],
+    "delivery": [
+      1440,
+      1080
+    ],
+    "delivery_scale_from_native": 3,
+    "explanation": "Both versions render into a real 480x360 Expansion Pak framebuffer. 1440x1080 is the delivery scale; v6 did not switch down to 320x240."
+  },
+  "native_game_fps": {
+    "measurement": "Cumulative real n64_video_present calls per emulated CP0/VI interval, sampled once per60VI in the private wrapper. Stable windows wholly inside movement exclude map loading and private fixture BFS path search.",
+    "steady_walking_median_by_map": {
+      "15": 30.200510311949053,
+      "27": 29.957400576380387,
+      "12": 30.02239670794413
+    },
+    "target_approximately": 30,
+    "delivery_fps": 60,
+    "delivery_is_not_game_fps": true,
+    "physical_console_performance_claim": false
+  },
+  "v5_historical_comparison": {
+    "native_host_marker_measurements": [
+      {
+        "map": 15,
+        "native_seconds": 2.882588,
+        "wall_seconds": 2.970008134841919,
+        "VI_per_wall_second": 58.248998704917035,
+        "wall_over_native": 1.030326961342349
+      },
+      {
+        "map": 27,
+        "native_seconds": 2.611878,
+        "wall_seconds": 2.6894471645355225,
+        "VI_per_wall_second": 58.37630947738454,
+        "wall_over_native": 1.0296986170623292
+      },
+      {
+        "map": 12,
+        "native_seconds": 3.435145,
+        "wall_seconds": 3.560826063156128,
+        "VI_per_wall_second": 57.851744608219505,
+        "wall_over_native": 1.0365868291312677
+      }
+    ],
+    "raw_capture_sha256": "2e87c3593c36474c80015b79c19f9a788f94f30faf246b22fc30671701da1cc9",
+    "raw_cache_available_for_remeasurement": false,
+    "previous_live_ffprobe_measurements": {
+      "encoded_frames": 966,
+      "duration_seconds": 45.175,
+      "moving_window_max_gap_seconds": [
+        0.32,
+        0.305,
+        0.401667
+      ],
+      "note": "Historical direct ffprobe observations from the prior v5 session, retained in the development trace; original raw cache is now cold. These are not newly recomputed and whole-file average is not compared to moving gameplay FPS."
+    }
+  },
+  "capture_changes": {
+    "weave_deinterlacing": false,
+    "interframe_blending": false,
+    "cursor_captured": false,
+    "motion_interpolation": false,
+    "frame_handling": "Retain real recorded frames; output CFR only holds/drops frames. Native-clock edit normalizes whole sources before trims and enforces exact shot frame counts.",
+    "session_note": "Locked-display v60/61/62 probes froze at about1.9s of black while native game continued. They were rejected and never used. User unlocked the display; v63 and final captures have continuously recorded PTS.",
+    "hard_gates": [
+      "Private ROM and owned emulator executable must exist before launch.",
+      "Encoded duration must cover actual native END (or short-probe limit), within0.5s.",
+      "Final v6 validator also rejects recorded gaps of0.1s or larger."
+    ]
+  },
+  "evidence": {
+    "final_native_log": "provenance/clubs-runtime.log",
+    "encoded_pts": "provenance/clubs-cadence.json",
+    "native_dimensions": "provenance/intro-runtime.log and other segment logs",
+    "probe": "probe-cadence.json"
+  }
+}

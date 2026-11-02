@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "url": "http://ms.tdf.sh:8091/reviews/trailer/compare.html",
+  "served_video_sha256": "654c273c151c896d953fa40af3fd6a9b20f3e312937774e70b95b2a17fd95513",
+  "sources": [
+    "v5/poketcg64-trailer.mp4",
+    "poketcg64-trailer-no-crt.mp4"
+  ],
+  "seek_and_play": true,
+  "current_video_tail_playable": true,
+  "byte_ranges": true,
+  "page_errors": []
+}

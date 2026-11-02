@@ -1,0 +1,143 @@
+{
+  "cases": [
+    {
+      "name": "opening",
+      "path": "/Users/fairfieldt/dev/poketcg/port/audio/build/music_09.wav",
+      "start": 1.5,
+      "duration": 34.11666666666667,
+      "offset": 0,
+      "gain_db": -4.2,
+      "fadein": 0.005,
+      "fadeout": 0.35
+    },
+    {
+      "name": "ronald-dialogue",
+      "path": "/Users/fairfieldt/dev/poketcg/port/audio/build/music_15.wav",
+      "start": 0,
+      "duration": 3.0,
+      "offset": 33.766666666666666,
+      "gain_db": -5.5,
+      "fadein": 0.15,
+      "fadeout": 0.12
+    },
+    {
+      "name": "ronald-attack-knockout",
+      "path": "/Users/fairfieldt/dev/poketcg/port/reviews/trailer/v5/poketcg64-trailer.mp4",
+      "start": 33.81666666666667,
+      "duration": 3.8833333333333333,
+      "offset": 36.65,
+      "gain_db": 0,
+      "fadein": 0,
+      "fadeout": 0
+    },
+    {
+      "name": "amy-final-pokemon-knockout",
+      "path": "/Users/fairfieldt/dev/poketcg/port/reviews/trailer/v5/poketcg64-trailer.mp4",
+      "start": 46.483333333333334,
+      "duration": 2.2,
+      "offset": 49.31666666666667,
+      "gain_db": 0,
+      "fadein": 0,
+      "fadeout": 0
+    },
+    {
+      "name": "clubs",
+      "path": "/Users/fairfieldt/dev/poketcg/port/audio/build/music_12.wav",
+      "start": 0.016,
+      "duration": 9.099999999999994,
+      "offset": 40.333333333333336,
+      "gain_db": -3.7,
+      "fadein": 0.2,
+      "fadeout": 0.12
+    },
+    {
+      "name": "full-medal-fanfare",
+      "path": "/Users/fairfieldt/dev/poketcg/port/audio/build/music_29.wav",
+      "start": 0,
+      "duration": 5.466666666666667,
+      "offset": 51.31666666666667,
+      "gain_db": -5.2,
+      "fadein": 0,
+      "fadeout": 0
+    },
+    {
+      "name": "hall",
+      "path": "/Users/fairfieldt/dev/poketcg/port/audio/build/music_17.wav",
+      "start": 0,
+      "duration": 7.033333333333331,
+      "offset": 56.78333333333333,
+      "gain_db": 2.6,
+      "fadein": 0.1,
+      "fadeout": 0.65
+    },
+    {
+      "name": "original-legendary-cards-accent",
+      "path": "/Users/fairfieldt/dev/poketcg/port/audio/build/sfx_16.wav",
+      "start": 0,
+      "duration": 4.100666666666666,
+      "offset": 59.83333333333332,
+      "gain_db": 8,
+      "fadein": 0.005,
+      "fadeout": 0.03
+    },
+    {
+      "name": "resolved-title",
+      "path": "/Users/fairfieldt/dev/poketcg/port/audio/build/music_01.wav",
+      "start": 24.636719,
+      "duration": 9.416666666666666,
+      "offset": 63.166666666666664,
+      "gain_db": -5.5,
+      "fadein": 0.65,
+      "fadeout": 0.12
+    }
+  ],
+  "verified_original_driver_PCM": [
+    {
+      "name": "MUSIC_TITLESCREEN",
+      "path": "port/audio/build/music_01.wav",
+      "pcm_sha256": "c103d0912593d18b936ea202bc298816d410aae1a9022ee5afaedd6e8298788c",
+      "wav_sha256": "bf04f840f28a0c04ce70726e6e0d1eb2f8a954266e2fa227f22c9fe0c337885f"
+    },
+    {
+      "name": "MUSIC_OVERWORLD",
+      "path": "port/audio/build/music_09.wav",
+      "pcm_sha256": "40442a401c50e3bb428be65b69dd9d1aa3f62f2e67c9b4dafba65845121e0524",
+      "wav_sha256": "d4eee34bac9f81f2c82b254890aaa9faddbcea1a504fac834bc7cd8bac91e86e"
+    },
+    {
+      "name": "MUSIC_CLUB_1",
+      "path": "port/audio/build/music_12.wav",
+      "pcm_sha256": "35d9c68bdf5ee021d3f81636645a6ef26d6bd00f4f2ca276626ceb11851c303e",
+      "wav_sha256": "c89e9627c6593d9e67ce17f88accad0771953a754d583362ec867673394ba0c1"
+    },
+    {
+      "name": "MUSIC_RONALD",
+      "path": "port/audio/build/music_15.wav",
+      "pcm_sha256": "0cc31c2ff10bdbf714364cfdd8d24cc6014fe1bef4ea2e93f50d14a763ff22e9",
+      "wav_sha256": "71b7a55ef1179049ace3c34033850192a134e1284981938a7ae7ee504162d5bb"
+    },
+    {
+      "name": "MUSIC_HALL_OF_HONOR",
+      "path": "port/audio/build/music_17.wav",
+      "pcm_sha256": "1ac9975641b17427540eb1105f68b8b62a2110e9e8b23a81566558142601ea60",
+      "wav_sha256": "3148a6d20b2b9b7c3a839deb2b0c74bf69d429784da8958328bf92e58380308c"
+    },
+    {
+      "name": "MUSIC_MEDAL",
+      "path": "port/audio/build/music_29.wav",
+      "pcm_sha256": "5f03264a4728a91f9b6297a9bba56a8ae615d52f5d14767615f2735e236852b7",
+      "wav_sha256": "d2f4e410f7c9a639b691227f3f313f72402c010fc60abe30c8e6103c1d0363cb"
+    },
+    {
+      "name": "SFX_LEGENDARY_CARDS",
+      "path": "port/audio/build/sfx_16.wav",
+      "pcm_sha256": "5c2ca7fadf3db912cdd3f4d016dab695b90673c708df7842ecbb8ca9caf27205",
+      "wav_sha256": "41782a169e1b774e108b355728bfe5d4be921ca604a8035ce6b25be65dbf2d29"
+    }
+  ],
+  "duel_audio_source": {
+    "file": "port/reviews/trailer/v5/poketcg64-trailer.mp4",
+    "sha256": "56d7bca21a9c0bf77c1f7d00f6f85d7b8d68171cb5fb3b51fd99e83685d3497e"
+  },
+  "processing": "Original-game sources; fixed linear gains/fades. No generated music, time stretch, compressor or limiter."
+}

@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "width": 1440,
+  "height": 1080,
+  "fps": 60,
+  "native_framebuffer": [
+    480,
+    360
+  ],
+  "native_target_fps": 30,
+  "frames": 4355,
+  "duration": 72.583333,
+  "audio_duration": 72.583,
+  "sample_peak_db": -5.185993,
+  "true_peak_db": -5.2,
+  "original_audio_sources_verified": true,
+  "legendary_cue_synced": true,
+  "decode_errors": 0,
+  "faststart": true,
+  "video_sha256": "654c273c151c896d953fa40af3fd6a9b20f3e312937774e70b95b2a17fd95513",
+  "bytes": 75903827,
+  "capture": "Fresh local native post-VI window capture; no CRT, cursor, or motion interpolation."
+}

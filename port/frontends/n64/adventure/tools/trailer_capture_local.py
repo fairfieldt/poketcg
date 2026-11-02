@@ -45,16 +45,20 @@ def cursor_guard(window):
   process.stdin.close();process.wait(timeout=5);raise
  return process,status
 
-def capture(segment, version=4):
+def capture(segment, version=4, probe_seconds=None):
  out=ADV/'build/trailer-capture'/f'v{version}-local-{segment}';out.mkdir(parents=True,exist_ok=True);(out/'saves').mkdir(exist_ok=True)
  helper=ADV/'build/trailer-capture/window-info';src=helper.with_suffix('.swift')
  if not helper.exists():
   src.write_text(SWIFT);subprocess.run(['swiftc',str(src),'-o',str(helper)],check=True)
  rom=ADV/f'build/trailer-cast-{segment}/trailer-{segment}.z64';app=ADV/'build/vi-direct-capture/Poketcg VI Capture.app/Contents/MacOS/ares'
+ assert rom.is_file(),('Build this private capture ROM first',rom)
+ assert app.is_file(),('Private Ares executable missing',app)
  settings=f'''Video
   Driver: Metal
   Quality: SD
   Shader: None
+  WeaveDeinterlacing: false
+  InterframeBlending: false
   WindowWidth: 720
   WindowHeight: 540
   AspectCorrectionMode: Standard
@@ -83,7 +87,7 @@ Paths
    if line.startswith('TRAILER '):
     events.append(dict(line=line.strip(),epoch=time.time()))
     if line.startswith('TRAILER END '+segment):end.set()
- thread=threading.Thread(target=reader,daemon=True);thread.start();rec=None;cursor=None;cursor_status=None;recorder_status=None
+ thread=threading.Thread(target=reader,daemon=True);thread.start();rec=None;cursor=None;cursor_status=None;recorder_status=None;awake=None
  try:
   window=None
   for _ in range(60):
@@ -92,8 +96,9 @@ Paths
    if window:break
    time.sleep(.1)
   assert window,'Private capture window unavailable'
+  awake=subprocess.Popen(['caffeinate','-di','-w',str(appproc.pid)],stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
   cursor,cursor_status=cursor_guard(window)
-  limit={'intro':60,'ronald':45,'clubs':45,'amy':85}[segment]
+  limit=probe_seconds or {'intro':60,'ronald':45,'clubs':45,'amy':85}[segment]
   recorder_source=ADV/'tools/capture_window.swift';recorder=ADV/'build/trailer-capture/capture-window'
   if not recorder.exists() or recorder.stat().st_mtime_ns<recorder_source.stat().st_mtime_ns:
    subprocess.run(['swiftc','-parse-as-library',str(recorder_source),'-o',str(recorder)],check=True)
@@ -104,7 +109,9 @@ Paths
   record_start=recorder_status['ready_epoch']
   while not end.wait(.1):
    if appproc.poll() is not None:raise RuntimeError('Ares exited before native END')
-   if rec.poll() is not None:raise RuntimeError('Recorder exited before native END')
+   if rec.poll() is not None:
+    if probe_seconds:break
+    raise RuntimeError('Recorder exited before native END')
    if time.time()-start>180:raise TimeoutError('Missing native END')
   rec.wait(timeout=limit+15)
   assert (out/'proof.mov').stat().st_size>10000
@@ -118,11 +125,26 @@ Paths
    finally:
     if cursor:
      cursor.stdin.close();cursor.wait(timeout=5)
+    if awake and awake.poll() is None:
+     awake.terminate();awake.wait(timeout=5)
  (out/'markers.json').write_text(json.dumps(events,indent=2)+'\n')
  probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(out/'proof.mov')]))
  (out/'probe.json').write_text(json.dumps(probe,indent=2)+'\n')
- metadata=dict(recorder=recorder_status,cursor_guard=cursor_status,segment=segment,rom=str(rom.relative_to(ADV)),rom_sha256=hashlib.sha256(rom.read_bytes()).hexdigest(),capture_method='ScreenCaptureKit desktopIndependentWindow of private Ares only; showsCursor=false; post-VI Metal output; no CRT shader; no desktop or microphone/system audio',window=window,app_launch_epoch=start,recorder_launch_epoch=record_start,native_end_seen=end.is_set(),recording_limit_seconds=limit,video_sha256=hashlib.sha256((out/'proof.mov').read_bytes()).hexdigest())
+ video_stream=next(s for s in probe['streams'] if s['codec_type']=='video')
+ video_duration=float(video_stream.get('duration',probe['format']['duration']))
+ native_end=next((e['epoch'] for e in reversed(events) if e['line'].startswith('TRAILER END '+segment)),None)
+ required_duration=float(probe_seconds) if probe_seconds else (native_end-record_start if native_end is not None else None)
+ coverage=dict(video_duration_seconds=video_duration,required_through_seconds=required_duration,tolerance_seconds=.5,passed=required_duration is not None and video_duration>=required_duration-.5)
+ (out/'coverage.json').write_text(json.dumps(coverage,indent=2)+'\n')
+ assert coverage['passed'],('Capture froze or ended before required native content',coverage)
+ packet_probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-select_streams','v:0','-show_packets','-show_entries','packet=pts_time','-of','json',str(out/'proof.mov')]))
+ points=sorted(float(p['pts_time']) for p in packet_probe['packets'] if 'pts_time' in p)
+ gaps=sorted(b-a for a,b in zip(points,points[1:]))
+ percentile=lambda q:gaps[min(len(gaps)-1,round((len(gaps)-1)*q))] if gaps else 0
+ cadence=dict(meaning='Encoded frame PTS, not native game FPS or a count of compositor drops',encoded_frames=len(points),first_pts=points[0] if points else None,last_pts=points[-1] if points else None,gap_p50_seconds=percentile(.5),gap_p95_seconds=percentile(.95),gap_max_seconds=max(gaps,default=0),sample_pts=points)
+ (out/'proof.cadence.json').write_text(json.dumps(cadence,indent=2)+'\n')
+ metadata=dict(coverage=coverage,probe_seconds=probe_seconds,window_delivery_cadence=cadence,recorder=recorder_status,cursor_guard=cursor_status,segment=segment,rom=str(rom.relative_to(ADV)),rom_sha256=hashlib.sha256(rom.read_bytes()).hexdigest(),capture_method='ScreenCaptureKit desktopIndependentWindow of private Ares only; showsCursor=false; post-VI Metal output; no CRT shader; no desktop or microphone/system audio',window=window,app_launch_epoch=start,recorder_launch_epoch=record_start,native_end_seen=end.is_set(),recording_limit_seconds=limit,video_sha256=hashlib.sha256((out/'proof.mov').read_bytes()).hexdigest())
  (out/'capture.json').write_text(json.dumps(metadata,indent=2)+'\n');print(out,flush=True)
 if __name__=='__main__':
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('segment',choices=('intro','ronald','clubs','amy','all'));p.add_argument('--version',type=int,default=4);a=p.parse_args()
- for s in ('intro','ronald','clubs','amy') if a.segment=='all' else (a.segment,):capture(s,a.version)
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('segment',choices=('intro','ronald','clubs','amy','all'));p.add_argument('--version',type=int,default=4);p.add_argument('--probe-seconds',type=int);a=p.parse_args()
+ for s in ('intro','ronald','clubs','amy') if a.segment=='all' else (a.segment,):capture(s,a.version,a.probe_seconds)
