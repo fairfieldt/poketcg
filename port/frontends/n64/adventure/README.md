@@ -35,6 +35,29 @@ uses 320 × 240. The standard `poketcg-adventure.z64` keeps its 320 × 240 mode.
 Both use the same game and save format. Enable the Expansion Pak in ares to try
 the higher resolution.
 
+On N64, Menu → Import deck reads the four built decks from the saved backup on
+a US English Pokémon Trading Card Game cartridge (header AXQE) in a Transfer
+Pak on controller 1. Select a deck, inspect its cards, then choose and confirm a
+recipe slot. Building that recipe still requires cards from the local diary.
+The browser version cannot access a Transfer Pak. Japanese, European and TCG2
+cartridges are not supported. This does not import story progress or cards.
+
+The reader powers the adapter, reads the header and bank-2 backup twice, and
+validates the original general-save checksum and deck rules. The original deck
+region has no checksum, so valid-looking damage cannot always be detected.
+Only Transfer Pak registers and MBC5 RAM-enable/bank control registers are
+written; no cartridge SRAM is written. The parser and transport have synthetic
+host tests, but cartridge and controller behavior requires physical testing.
+`make -f tests/transfer_n64.mk all` builds a synthetic transport test ROM for
+ares; its success marker is `TRANSFER IMPORT TEST PASS` in the ISViewer log.
+The bank layout and checksum are documented by `src/sram.asm` and
+`src/engine/save.asm`; the cartridge header is specified by the root Makefile.
+The sequel's distinct header is specified by
+[pret/poketcg2](https://github.com/pret/poketcg2/blob/master/Makefile).
+The Transfer Pak mapping is described by
+[libdragon](https://libdragon.dev/ref/group__transferpak.html) and
+[Pan Docs](https://gbdev.io/pandocs/MBC5.html).
+
 The default 3D backend is Tiny3D with libdragon. The first build fetches a
 pinned Tiny3D core under `build/`; it does not replace the installed SDK.
 `SCENE_T3D=0` selects the cached GL fallback. Distant characters use optional

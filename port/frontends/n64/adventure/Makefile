@@ -26,7 +26,7 @@ ENGINE_SOURCES := $(wildcard $(PORT)/src/*.c $(PORT)/src/gen/*.c $(PORT)/src/eff
 ENGINE_OBJECTS := $(ENGINE_SOURCES:$(PORT)/src/%.c=$(BUILD_DIR)/engine/%.o)
 GAME_SOURCES := $(wildcard $(PORT)/gameplay/*.c $(PORT)/gameplay/gen/*.c $(PORT)/overworld/*.c $(PORT)/overworld/gen/*.c)
 GAME_OBJECTS := $(GAME_SOURCES:$(PORT)/%.c=$(BUILD_DIR)/game/%.o)
-FRONT_OBJECTS := $(addprefix $(BUILD_DIR)/,main.o menus.o profiles.o extra_ui.o intro.o naming.o presentation.o dialogue.o pack.o medal.o audio.o wav64_vadpcm_fixed.o scene.o video.o save_sram.o duel_frontend.o)
+FRONT_OBJECTS := $(addprefix $(BUILD_DIR)/,main.o menus.o profiles.o extra_ui.o intro.o naming.o presentation.o dialogue.o pack.o medal.o audio.o wav64_vadpcm_fixed.o scene.o video.o save_sram.o duel_frontend.o transfer_import.o transfer_ui.o)
 ifeq ($(RSPQ_WAKE_FIX),1)
 FRONT_OBJECTS += $(BUILD_DIR)/rspq_fixed.o
 endif
@@ -223,6 +223,10 @@ review-diagnostic:
 .PHONY: test validate visual-diagnostic expansion
 test:
 	@mkdir -p $(BUILD_DIR)/host
+	$(HOST_CC) -std=c11 -Wall -Wextra -Werror $(INCLUDES) tests/transfer_import_test.c transfer_import.c $(PORT)/gameplay/gameplay.c $(PORT)/gameplay/gen/data.c -o $(BUILD_DIR)/host/test_transfer_import
+	./$(BUILD_DIR)/host/test_transfer_import
+	$(HOST_CC) -std=c11 -Wall -Wextra -Werror -Itests/transfer_mock $(INCLUDES) tests/transfer_ui_test.c transfer_ui.c $(PORT)/gameplay/gameplay.c $(PORT)/gameplay/gen/data.c -o $(BUILD_DIR)/host/test_transfer_ui
+	./$(BUILD_DIR)/host/test_transfer_ui
 	$(HOST_CC) -std=c11 -Wall -Wextra -Werror tests/frame_rate.c -o $(BUILD_DIR)/host/test_frame_rate
 	./$(BUILD_DIR)/host/test_frame_rate
 	$(MAKE) -C $(PORT) practicecheck
