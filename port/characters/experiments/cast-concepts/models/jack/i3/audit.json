@@ -1,0 +1,32 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/jack/i3/jack/scene.l64",
+  "sha256": "cac0cbd45c1f36577f7aeee854d0d1c02c2ce4427f0aa728f8ca9d30468c4688",
+  "triangles": 528,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "jack3_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    },
+    {
+      "name": "jack3_top.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

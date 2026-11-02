@@ -1,0 +1,36 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/swimmer/i2/swimmer/scene.l64",
+  "sha256": "b401fbf8426b8e9b4afb6a734c3afdb95baa0706d934d7d3066b17e4c539e71a",
+  "triangles": 564,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "w2_swimmer_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    },
+    {
+      "name": "w2_swimmer_goggles.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "head_edge_incidence": {
+    "2": 204
+  },
+  "head_closed": true
+}

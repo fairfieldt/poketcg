@@ -1,0 +1,32 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/mark-concepts/approved/b_compact/i3/mark/scene.l64",
+  "sha256": "f0c85a3eb3ba56ff8524e055c9016be9319448dd70c3cc4376449aba422eb662",
+  "triangles": 560,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "bx3_mark_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    },
+    {
+      "name": "bx3_mark_cap.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

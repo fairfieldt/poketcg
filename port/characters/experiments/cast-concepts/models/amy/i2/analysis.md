@@ -1,0 +1,1 @@
+Actual round 2 native portrait/turn/talk/room inspected. Blue dress hem now reads; larger head and connected side hair improve likeness. Swept front still too symmetric at native scale and shoes small. Next round lowers one broad scalp boundary lock, deepens bob side/back and broadens feet/shoulders.

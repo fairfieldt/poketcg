@@ -1,0 +1,1 @@
+Actual round 2 native comparison inspected. Sara-matching short-legged swimsuit now reads, brows darker and uncovered head distinct from cap. Blonde pigment too close to skin, bob too narrow. Next round brightens blonde pigment to concept yellow, broadens side/back volume and uses exactly Sara round 3 shoulder/foot/body changes.

@@ -1,11 +1,12 @@
 {
   "model": "gene",
-  "triangles": 761,
-  "vertices": 1276,
-  "batches": 6,
-  "linked_parts": 20,
+  "triangles": 528,
+  "vertices": 451,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "gene"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "6eb938649bfd38cff675fac7ebe16f6b31122e9435d053388c033a34533ee72a",
+  "recipe": "reviewed-cast-manual"
 }

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "native_frames": 8,
+  "subject": "dr_mason",
+  "portrait_matches_existing_verified_renderer": true,
+  "source": "tools/family_preview.c",
+  "production_files_modified": false
+}

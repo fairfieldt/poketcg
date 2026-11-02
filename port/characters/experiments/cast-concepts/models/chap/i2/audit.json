@@ -1,0 +1,32 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/chap/i2/chap/scene.l64",
+  "sha256": "79d1ee217209a1b1cfb515a4c4525cc16b9daf5b63afc8e414c61386c698cd46",
+  "triangles": 560,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "gchap2_chap_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    },
+    {
+      "name": "gchap2_chap_shirt.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

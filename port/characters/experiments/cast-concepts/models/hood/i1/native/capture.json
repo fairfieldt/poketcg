@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-hood-i1.z64",
+  "rom_sha256": "3b7884758c47d906a0b650d8b41010a82675a66ac4276ced35468afef1acbb63",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1350144,
+      "free": 1386240
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346552,
+      "free": 1389832
+    }
+  ],
+  "subject": "hood",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "482b369b9af32e143f86e67aaee3a039be8d2f6b7422a943631e649b68ec050b",
+    "candidate": "80f96394a84837fc5b32eb084bc63b6324290c05db448636f3dfd4fdd979c84f"
+  }
+}

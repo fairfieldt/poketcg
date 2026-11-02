@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "glad3_lad_face",
+    "glad3_lad_cap",
+    "glad3_lad_shirt"
+  ],
+  "vertices": 530,
+  "triangles": 584,
+  "batches": 8
+}

@@ -1,0 +1,40 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/mark-concepts/approved/d_angular/i1/mark/scene.l64",
+  "sha256": "8ac7f313d298ea8826eaed963aed7678b7236c737c9f7d4c422c61dda65cbae5",
+  "triangles": 536,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "dx1_mark_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    },
+    {
+      "name": "dx1_mark_cap.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    },
+    {
+      "name": "dx1_mark_torso.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

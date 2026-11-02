@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_wt_jos_happy"
+    "w3_joshua_face",
+    "w3_joshua_goggles"
   ],
   "actors": [
     {
@@ -41,47 +42,32 @@
       ]
     }
   },
-  "design": "domed white swimming cap, forehead goggles, cheerful closed eyes; volumetric sleeveless top and shorts",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": true
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 0
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 22,
     "gfx_sha256": "520c590f2ce58df70874f5402edcae67202d5f4ae07a7ff9103d90d4b148d8a7",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "joshua \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_wt_jos_happy",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "312c67da007c932221fdad184abe2863c711b249dd7c957e6b5470fcc5b7ed05",
-        "colorspace": "Non-Color",
-        "directional_shade": true,
-        "shade_floor": 0.86
-      }
-    ],
-    "shade_floor": 0.86
-  },
   "appearance": "joshua",
   "pose": "standing",
   "component": null,
-  "vertices": 1465,
-  "triangles": 940,
-  "batches": 7
+  "vertices": 401,
+  "triangles": 564,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/joshua/i3b/joshua/scene.l64",
+    "sha256": "61ad46c92927d5dee96b11ed1045865d53c45951f390eb8b6b96c7158b353736",
+    "selection": "joshua"
+  }
 }

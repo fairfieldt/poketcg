@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "model": "ken",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "ken1_face",
+    "ken1_top"
+  ],
+  "vertices": 451,
+  "triangles": 528,
+  "batches": 7
+}

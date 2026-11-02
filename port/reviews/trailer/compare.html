@@ -2,7 +2,7 @@
 <html lang="en">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trailer comparison</title>
+<title>Teaser versions</title>
 <style>
 :root { color-scheme: dark; font: 16px system-ui, sans-serif; }
 body { margin: 0; background: #111319; color: #f1f2f5; }
@@ -30,15 +30,15 @@ a { color: #b6d0ff; }
   </div>
   <div class="pair">
     <figure>
-      <figcaption>CRT Guest Advanced <button type="button" data-fullscreen="crt">Fullscreen</button></figcaption>
-      <video id="crt" src="poketcg64-trailer.mp4" poster="poster.png" preload="metadata" playsinline></video>
+      <figcaption>Previous cast · CRT <button type="button" data-fullscreen="crt">Fullscreen</button></figcaption>
+      <video id="crt" src="v3/poketcg64-trailer.mp4" poster="v3/poster.png" preload="metadata" playsinline></video>
     </figure>
     <figure>
-      <figcaption>No shader <button type="button" data-fullscreen="clean">Fullscreen</button></figcaption>
+      <figcaption>Updated cast <button type="button" data-fullscreen="clean">Fullscreen</button></figcaption>
       <video id="clean" src="poketcg64-trailer-no-crt.mp4" poster="poster-no-crt.png" preload="metadata" playsinline muted></video>
     </figure>
   </div>
-  <p><a href="poketcg64-trailer.mp4">Open CRT video</a> · <a href="poketcg64-trailer-no-crt.mp4">Open video without shader</a></p>
+  <p><a href="poketcg64-trailer.mp4">Open updated teaser</a> · <a href="v3/poketcg64-trailer.mp4">Open previous CRT teaser</a></p>
   <p id="error" role="alert" hidden></p>
 </main>
 <script type="module">

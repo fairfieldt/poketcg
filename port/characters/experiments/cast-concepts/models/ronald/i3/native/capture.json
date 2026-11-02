@@ -1,0 +1,36 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/cast-ronald_i3.z64",
+  "rom_sha256": "75df67631134283caddf357762964a18bb02507d8175bf79a8f7b2884a0dc7c9",
+  "frames": [
+    "baseline-room",
+    "baseline-talk",
+    "baseline-portrait-mark",
+    "baseline-portrait-dr_mason",
+    "baseline-portrait-ronald",
+    "baseline-turn-mark",
+    "baseline-turn-dr_mason",
+    "baseline-turn-ronald",
+    "ronald_i3-room",
+    "ronald_i3-talk",
+    "ronald_i3-portrait-mark",
+    "ronald_i3-portrait-dr_mason",
+    "ronald_i3-portrait-ronald",
+    "ronald_i3-turn-mark",
+    "ronald_i3-turn-dr_mason",
+    "ronald_i3-turn-ronald"
+  ],
+  "heap": [
+    {
+      "option": "baseline",
+      "total": 2736576,
+      "used": 1398152,
+      "free": 1338424
+    },
+    {
+      "option": "ronald_i3",
+      "total": 2736576,
+      "used": 1360960,
+      "free": 1375616
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-amy-i2.z64",
+  "rom_sha256": "d9605a6f00a3a0c67b7732e1bf5dce5df9bb850811aceb6186bc3213acd45143",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1363808,
+      "free": 1372576
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1342248,
+      "free": 1394136
+    }
+  ],
+  "subject": "amy",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "160b3c9d74429a6155bc8c7f589fb7a4ea58071432a99b163244f3e48bae6262",
+    "candidate": "1e5f9c7a90f5a043668d990701255b5371a0cd255b44992aa25b8802936098a2"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "head_bottom": 1.54,
+  "width": 0.36,
+  "chin": 0.18,
+  "hip": 0.72,
+  "hem": 0.66,
+  "body_width": 0.31,
+  "shoulder": 0.31,
+  "shirt": [
+    0.92,
+    0.92,
+    0.89
+  ],
+  "hair": [
+    0.075,
+    0.065,
+    0.07
+  ],
+  "trousers": [
+    0.3,
+    0.34,
+    0.41
+  ],
+  "crown": 0.74,
+  "sweep": -0.055,
+  "hairline": {
+    "0": 0.52,
+    "30": 0.56,
+    "60": 0.5,
+    "90": 0.4,
+    "120": 0.22,
+    "150": 0.2,
+    "180": 0.19
+  },
+  "nose": 0.065,
+  "sidepart": true,
+  "glasses": "round",
+  "long_sleeve": true,
+  "collar": true,
+  "tie": true,
+  "coat": true
+}

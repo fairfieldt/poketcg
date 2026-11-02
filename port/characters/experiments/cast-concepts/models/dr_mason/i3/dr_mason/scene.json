@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "mas3_dr_mason_face",
+    "mas3_dr_mason_coat"
+  ],
+  "vertices": 447,
+  "triangles": 560,
+  "batches": 7
+}

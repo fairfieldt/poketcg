@@ -1,0 +1,32 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/mark-concepts/approved/a_adventure/i3/mark/scene.l64",
+  "sha256": "3c1bb8b8624c4143e2f6759e16e07b641cb9ba3b9f86a3b4897ebca465e711e2",
+  "triangles": 560,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "aa3_mark_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    },
+    {
+      "name": "aa3_mark_cap.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

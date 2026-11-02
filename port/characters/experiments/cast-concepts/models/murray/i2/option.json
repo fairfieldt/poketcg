@@ -1,0 +1,32 @@
+{
+  "id": "murray_i2",
+  "label": "murray 2",
+  "concept_reference": "../../../concepts/murray.png",
+  "iteration": 2,
+  "revision": {
+    "bob_contour": [
+      [
+        0.37,
+        1.32
+      ],
+      [
+        0.4,
+        1.47
+      ],
+      [
+        0.4,
+        1.72
+      ],
+      [
+        0.38,
+        1.96
+      ]
+    ],
+    "hairline_drop": 0.025,
+    "quarter_drop": 0.025,
+    "eye_shape": "rect",
+    "eye_width": 7,
+    "eye_height": 8,
+    "review": "Native i1: rear long hair forms wings and face too youthful; smoother long receding contour and smaller rectangular mature eyes."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "NPC_BUTCH": {
+    "npc_id": 76,
+    "model": "butch",
+    "appearance": "butch",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 21,
+    "native_asset": "assets/models/butch/scene.l64",
+    "blender_file": "assets/models/butch/butch.blend",
+    "heading": null
+  }
+}

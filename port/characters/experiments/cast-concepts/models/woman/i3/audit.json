@@ -1,0 +1,28 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/woman/i3/woman/scene.l64",
+  "sha256": "8fbcc0f1f453b85fa8eff9b11c6e081794d50cc375fb439a0fc4de1fd8f8a716",
+  "triangles": 544,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "w3_woman_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "head_edge_incidence": {
+    "2": 156
+  },
+  "head_closed": true
+}

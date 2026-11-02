@@ -1,0 +1,20 @@
+{
+  "id": "ken_i2",
+  "label": "ken 2",
+  "concept_reference": "../../../concepts/ken.png",
+  "iteration": 2,
+  "revision": {
+    "front_locks": [
+      2.03,
+      1.85,
+      1.94,
+      1.94,
+      1.85
+    ],
+    "eye_shape": "slant",
+    "eye_width": 7,
+    "eye_height": 10,
+    "mouth_width": 8,
+    "review": "Native i1: hair lacks source center part and face too round; two broad joined parted locks and angular competitive eyes."
+  }
+}

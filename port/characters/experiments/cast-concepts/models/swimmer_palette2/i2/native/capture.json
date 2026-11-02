@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-swimmer_palette2-i2.z64",
+  "rom_sha256": "65c3ac9bb270b3961cee99a3861644120fa2f8434aa9ba433c621814d39b722f",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736352,
+      "used": 1360936,
+      "free": 1375416
+    },
+    {
+      "option": "candidate",
+      "total": 2736352,
+      "used": 1342304,
+      "free": 1394048
+    }
+  ],
+  "subject": "swimmer_palette2",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "60abb4e5c099c32f9a7cec83fa5dab08b3b0fb7c638b8d3ed396363d4ca76ee3",
+    "candidate": "14358ac3e6f9103153269ff8ab4438a94f11c80598481eca7ef473cf49d4f844"
+  }
+}

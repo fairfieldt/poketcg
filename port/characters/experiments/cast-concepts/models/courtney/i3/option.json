@@ -1,0 +1,41 @@
+{
+  "id": "courtney_i3",
+  "label": "courtney 3",
+  "concept_reference": "../../../concepts/courtney.png",
+  "iteration": 3,
+  "revision": {
+    "bob_contour": [
+      [
+        0.38,
+        1.13
+      ],
+      [
+        0.42,
+        1.38
+      ],
+      [
+        0.42,
+        1.72
+      ],
+      [
+        0.39,
+        1.96
+      ]
+    ],
+    "front_locks": [
+      1.84,
+      1.96,
+      1.94,
+      1.94,
+      1.96
+    ],
+    "eye_width": 9,
+    "review": "Native i2: wings gone but back hair flat and merges with gown; broad connected lower waves, deeper central fringe and darker pink separation.",
+    "long_waves": true,
+    "hair": [
+      0.9,
+      0.38,
+      0.6
+    ]
+  }
+}

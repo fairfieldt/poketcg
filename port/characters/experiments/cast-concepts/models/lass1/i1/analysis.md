@@ -1,0 +1,1 @@
+Actual native comparison inspected. Purple bob and purple top remain distinct; face clear, but sides are skimpy and head small compared to concept. Next round deepens side/back hair ownership and enlarges head.

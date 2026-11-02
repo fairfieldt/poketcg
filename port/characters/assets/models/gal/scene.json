@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_gentle"
+    "w3_gal_face"
   ],
   "actors": [
     {
@@ -47,45 +47,32 @@
       ]
     }
   },
-  "design": "short tousled dark hair, yellow top and dark skirt",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 23
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 34,
     "gfx_sha256": "95e1147935037850bf8ac1bd2140a015d07b629fe04525676b421765ff86c82f",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "gal \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_gentle",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "gal",
   "pose": "standing",
   "component": null,
-  "vertices": 1016,
-  "triangles": 556,
-  "batches": 6
+  "vertices": 363,
+  "triangles": 528,
+  "batches": 6,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/gal/i3/gal/scene.l64",
+    "sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e",
+    "selection": "gal"
+  }
 }

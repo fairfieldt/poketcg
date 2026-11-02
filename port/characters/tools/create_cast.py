@@ -14,7 +14,7 @@ for i,family in enumerate(catalog['families']):
     with bpy.data.libraries.load(str(path),link=True) as (src,dst):dst.objects=src.objects
     collection=bpy.data.collections.new(slug+' · linked source')
     for obj in dst.objects:
-        if obj.type=='MESH' and obj.get('export_source'):collection.objects.link(obj)
+        if obj.type=='MESH' and (obj.get('export_source') or obj.get('cast_source')) and not obj.hide_render:collection.objects.link(obj)
     obj=bpy.data.objects.new(slug,None);scene.collection.objects.link(obj)
     obj.instance_type='COLLECTION';obj.instance_collection=collection
     obj.location=((i%7)*2.3,-(i//7)*3.1,0)

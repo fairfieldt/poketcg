@@ -13,9 +13,7 @@ model:
 	$(PYTHON) tools/build_all.py --blender "$(BLENDER)" --only "$(NAME)" --force
 test:
 	$(PYTHON) tools/validate.py
-	$(PYTHON) tools/check_skin.py
-	$(PYTHON) tools/check_exterior.py
-	$(PYTHON) tools/check_water_cast.py
+	$(PYTHON) tools/check_cast_integration.py
 sheet:
 	$(PYTHON) tools/review_sheet.py
 cast:
@@ -29,5 +27,4 @@ index:
 	$(PYTHON) tools/bindings.py
 	$(PYTHON) tools/model_index.py
 test-blender:
-	"$(BLENDER)" assets/cast.blend --background --python-exit-code 1 --python tools/check_blender.py
-	"$(BLENDER)" --background --python-exit-code 1 --python tools/check_caps.py
+	"$(BLENDER)" --background --python-exit-code 1 --python tools/check_cast_blends.py

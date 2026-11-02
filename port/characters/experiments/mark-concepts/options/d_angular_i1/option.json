@@ -1,0 +1,14 @@
+{
+  "id": "d_angular_i1",
+  "label": "d_angular_i1",
+  "concept": "d_angular",
+  "iteration": 1,
+  "concept_method": "direct 3D authoring; no generated raster art",
+  "changes": "Authored distinct head/body proportions, tapered jaw, integrated nose and painted fringe; close backward cap with centered rear bill.",
+  "supporting_actor_sha256": {
+    "dr_mason": "60dcddbf43854f294521be95493d2af14677686706a59c1fc5e0196c769a74ef",
+    "ronald": "f0a95033bdb48f7299f5c4d8666e0658f2a8b5913d4de302d4b907e05efeda54"
+  },
+  "mark_sha256": "7fe34afa5cc1f9bd4646dcaf773da8755102a2102de0e25bf25121d22264515a",
+  "review_status": "capture pending"
+}

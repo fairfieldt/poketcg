@@ -1,0 +1,20 @@
+{
+  "id": "mitch_i3",
+  "label": "mitch 3",
+  "concept_reference": "../../../concepts/mitch.png",
+  "iteration": 3,
+  "revision": {
+    "eye_shape": "slant",
+    "eye_width": 8,
+    "eye_height": 10,
+    "crown_rise": 0,
+    "review": "Native i2: round adult jaw still pinched and rear spikes merge; broaden/stagger rear points with modest central height and clearer short mouth.",
+    "spike_spread": true,
+    "chin_width": 0.21,
+    "mouth_rgb": [
+      82,
+      45,
+      29
+    ]
+  }
+}

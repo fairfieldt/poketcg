@@ -1,0 +1,21 @@
+{
+  "id": "rick_i2",
+  "label": "rick 2",
+  "concept_reference": "../../../concepts/rick.png",
+  "iteration": 2,
+  "revision": {
+    "front_locks": [
+      1.96,
+      1.85,
+      1.95,
+      2.01,
+      2.02
+    ],
+    "crown_rise": 0.04,
+    "eye_shape": "rect",
+    "eye_width": 7,
+    "eye_height": 9,
+    "firm_mouth": true,
+    "review": "Native i1: brown cap-like scalp and smiling expression; restore brown swept fringe and stern scientist mouth."
+  }
+}

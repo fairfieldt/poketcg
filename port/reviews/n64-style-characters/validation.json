@@ -1,0 +1,202 @@
+{
+  "rom": "poketcg-n64style.z64",
+  "rom_sha256": "bf7bea14fb3c7faac1ecfe2f63a6f765ee3d6147fc49310937bc9bb01d12c3c1",
+  "frames": [
+    "baseline-room",
+    "baseline-talk",
+    "baseline-portrait-mark",
+    "baseline-portrait-dr_mason",
+    "baseline-portrait-ronald",
+    "baseline-turn-mark",
+    "baseline-turn-dr_mason",
+    "baseline-turn-ronald",
+    "a_round-room",
+    "a_round-talk",
+    "a_round-portrait-mark",
+    "a_round-portrait-dr_mason",
+    "a_round-portrait-ronald",
+    "a_round-turn-mark",
+    "a_round-turn-dr_mason",
+    "a_round-turn-ronald",
+    "b_pokemon-room",
+    "b_pokemon-talk",
+    "b_pokemon-portrait-mark",
+    "b_pokemon-portrait-dr_mason",
+    "b_pokemon-portrait-ronald",
+    "b_pokemon-turn-mark",
+    "b_pokemon-turn-dr_mason",
+    "b_pokemon-turn-ronald",
+    "c_zelda-room",
+    "c_zelda-talk",
+    "c_zelda-portrait-mark",
+    "c_zelda-portrait-dr_mason",
+    "c_zelda-portrait-ronald",
+    "c_zelda-turn-mark",
+    "c_zelda-turn-dr_mason",
+    "c_zelda-turn-ronald",
+    "d_angular-room",
+    "d_angular-talk",
+    "d_angular-portrait-mark",
+    "d_angular-portrait-dr_mason",
+    "d_angular-portrait-ronald",
+    "d_angular-turn-mark",
+    "d_angular-turn-dr_mason",
+    "d_angular-turn-ronald"
+  ],
+  "heap": [
+    {
+      "option": "baseline",
+      "total": 2763472,
+      "used": 1342048,
+      "free": 1421424
+    },
+    {
+      "option": "a_round",
+      "total": 2763472,
+      "used": 1313424,
+      "free": 1450048
+    },
+    {
+      "option": "b_pokemon",
+      "total": 2763472,
+      "used": 1319632,
+      "free": 1443840
+    },
+    {
+      "option": "c_zelda",
+      "total": 2763472,
+      "used": 1307616,
+      "free": 1455856
+    },
+    {
+      "option": "d_angular",
+      "total": 2763472,
+      "used": 1327008,
+      "free": 1436464
+    }
+  ],
+  "exports": {
+    "a_round/mark": {
+      "triangles": 958,
+      "vertices": 719,
+      "batches": 7,
+      "textures": [
+        "a_round_mark_face",
+        "a_round_mark_torso"
+      ],
+      "sha256": "9f70bbfd21b75c8ee89873476353ef7bfc30a479a77a36ab489f5e688c0252cf"
+    },
+    "a_round/dr_mason": {
+      "triangles": 1008,
+      "vertices": 678,
+      "batches": 7,
+      "textures": [
+        "a_round_dr_mason_face",
+        "a_round_dr_mason_torso"
+      ],
+      "sha256": "6e4e5db48485fe46c4cf66bda091983adeb72a8772e22e14abef8cdf8f004d6a"
+    },
+    "a_round/ronald": {
+      "triangles": 898,
+      "vertices": 677,
+      "batches": 7,
+      "textures": [
+        "a_round_ronald_face",
+        "a_round_ronald_torso"
+      ],
+      "sha256": "26d953a9254d77df8aad6fdc6e66a9387b6f0573ad6c43aa1b687a9c92739715"
+    },
+    "b_pokemon/mark": {
+      "triangles": 998,
+      "vertices": 757,
+      "batches": 7,
+      "textures": [
+        "b_pokemon_mark_face",
+        "b_pokemon_mark_torso"
+      ],
+      "sha256": "5885602ca5ff5ead89e1c635692c4e37fed0a4a4f79abb194e365ab6d1c6d8d5"
+    },
+    "b_pokemon/dr_mason": {
+      "triangles": 1008,
+      "vertices": 697,
+      "batches": 7,
+      "textures": [
+        "b_pokemon_dr_mason_face",
+        "b_pokemon_dr_mason_torso"
+      ],
+      "sha256": "b855c811d1c569478b814e38f2644d8d6c91871c7e598c2f4ba6926bbb311d31"
+    },
+    "b_pokemon/ronald": {
+      "triangles": 954,
+      "vertices": 735,
+      "batches": 7,
+      "textures": [
+        "b_pokemon_ronald_face",
+        "b_pokemon_ronald_torso"
+      ],
+      "sha256": "3b856abf5ece8bfc578da35555b4546c2879ab2f24f898de3603c77d79f1effa"
+    },
+    "c_zelda/mark": {
+      "triangles": 922,
+      "vertices": 712,
+      "batches": 7,
+      "textures": [
+        "c_zelda_mark_face",
+        "c_zelda_mark_torso"
+      ],
+      "sha256": "02cccab0642f418cff15044df5d843caf49d177a7cac1fabbbdaf862b6782a12"
+    },
+    "c_zelda/dr_mason": {
+      "triangles": 874,
+      "vertices": 631,
+      "batches": 7,
+      "textures": [
+        "c_zelda_dr_mason_face",
+        "c_zelda_dr_mason_torso"
+      ],
+      "sha256": "d8f5a4a0e253e222d3ebcaba9e0b33774ac178bde974b314bf28721ea629bc9c"
+    },
+    "c_zelda/ronald": {
+      "triangles": 876,
+      "vertices": 682,
+      "batches": 7,
+      "textures": [
+        "c_zelda_ronald_face",
+        "c_zelda_ronald_torso"
+      ],
+      "sha256": "9fb577afac0426c16b0e9ef0e090347109c898830809d56da73478375e6ba036"
+    },
+    "d_angular/mark": {
+      "triangles": 814,
+      "vertices": 1149,
+      "batches": 7,
+      "textures": [
+        "d_angular_mark_face",
+        "d_angular_mark_torso"
+      ],
+      "sha256": "929e9caf1ed678294691841074fadb0a6a8703f97fd4908399a55ac39508718c"
+    },
+    "d_angular/dr_mason": {
+      "triangles": 860,
+      "vertices": 1193,
+      "batches": 7,
+      "textures": [
+        "d_angular_dr_mason_face",
+        "d_angular_dr_mason_torso"
+      ],
+      "sha256": "3eb79991916587a78a6d0d6df551602dad8a3621d414d05cdf221ab85513573a"
+    },
+    "d_angular/ronald": {
+      "triangles": 756,
+      "vertices": 1079,
+      "batches": 7,
+      "textures": [
+        "d_angular_ronald_face",
+        "d_angular_ronald_torso"
+      ],
+      "sha256": "7dda24d9ad690669c4f284af0979051038a0c91e4688a287a50950ceb12a72b6"
+    }
+  },
+  "capture": "Native 320x240 RDP RGBA16 framebuffer after the RDP completion fence, before VI filtering; ares, 4 MiB, Tiny3D packed renderer path",
+  "production_assets_changed": false
+}

@@ -7,8 +7,8 @@
   "files": [
     {
       "file": "poketcg64-trailer.mp4",
-      "sha256": "fa60e403fdeacb88ce4f673b8b53cde910bae37d25f524a030036cd4f05503e8",
-      "bytes": 29269578,
+      "sha256": "b98eee9cda6636cb383e469b323c5ac8dfb580d4a081779ec403ff77d3f9111a",
+      "bytes": 40253453,
       "video_frames": 3874,
       "video_duration": 64.566667,
       "audio_duration": 64.566,
@@ -19,8 +19,8 @@
     },
     {
       "file": "poketcg64-trailer-no-crt.mp4",
-      "sha256": "7d6ffdc6dc7daffbc3e5c19887f6a733d35373318960f74ffa91c17ae18dcc89",
-      "bytes": 42916510,
+      "sha256": "b98eee9cda6636cb383e469b323c5ac8dfb580d4a081779ec403ff77d3f9111a",
+      "bytes": 40253453,
       "video_frames": 3874,
       "video_duration": 64.566667,
       "audio_duration": 64.566,

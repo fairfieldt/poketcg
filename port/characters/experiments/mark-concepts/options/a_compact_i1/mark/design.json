@@ -1,0 +1,12 @@
+{
+  "concept": "a_compact",
+  "round": 1,
+  "head_r": [
+    0.4,
+    0.33,
+    0.4
+  ],
+  "jaw": 0.48,
+  "nose": 0.025,
+  "method": "direct 3D authoring; no generated raster art"
+}

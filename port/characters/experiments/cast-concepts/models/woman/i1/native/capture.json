@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-woman-i1.z64",
+  "rom_sha256": "9476656e1bebd312887ff972fd5da28e0ceae9708d888ec6b7a258851d057c79",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1351432,
+      "free": 1384952
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1342144,
+      "free": 1394240
+    }
+  ],
+  "subject": "woman",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "eded132d5d93c6eedf5146d47b59bf22846b6d27d3d6c25477222a8cf488a9eb",
+    "candidate": "6e8a8da87046a3c4415dba4191a76a33072e783865e6132838b29a0b149dd07b"
+  }
+}

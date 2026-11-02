@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-girl-i2.z64",
+  "rom_sha256": "d54259f246a980a538e34b6abfddc51d6b0b9eaca5272e50e7a012b7af59552e",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1363384,
+      "free": 1373000
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1342576,
+      "free": 1393808
+    }
+  ],
+  "subject": "girl",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "e697168da18974c686d716a6927ad49aa6ac72eb37b92eb7adf6f8c2323f9118",
+    "candidate": "015b9b3b2be1d618ddadb9a6f63c77c6ab676f7fe10545c7cd101b5365614ce2"
+  }
+}

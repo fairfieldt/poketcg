@@ -1,0 +1,21 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "w3_amy_face"
+  ],
+  "concept": "../../../concepts/amy.png",
+  "vertices": 351,
+  "triangles": 528,
+  "batches": 6,
+  "pose": "lying",
+  "derived_from": "../../scene.l64",
+  "source_sha256": "36f483b6813b0b9643f1b13acc321d927f1fb3e523439bb84c8d1257911ed0f3",
+  "transform_native": "(x,y_up,z_front) -> (x,z_front+.35,.9-y_up)"
+}

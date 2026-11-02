@@ -25,6 +25,8 @@ recipe_files=[ROOT/'tools'/f for f in ('build_model.py','parts.py','designs.py',
 recipe_files.append(ROOT.parents[1]/'port/frontends/n64/lightning-characters/tools/export_scene.py')
 for i,family in enumerate(families):
     slug=family['slug'];done=ROOT/'assets/models'/slug/'complete.json'
+    if done.exists() and (json.loads(done.read_text()).get('recipe')=='reviewed-cast-manual' or (slug in ('torch','legendary_card') and not args.force)):
+        validate_model(slug);print('SKIP reviewed manual source',slug,flush=True);continue
     files=recipe_files
     if slug in ('mark','amy','joshua','swimmer'):
         files=files+[ROOT/'tools/water_cast_common.py',ROOT/'tools'/('water_'+slug+'.py')]

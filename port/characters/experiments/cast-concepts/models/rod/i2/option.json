@@ -1,0 +1,19 @@
+{
+  "id": "rod_i2",
+  "label": "rod 2",
+  "concept_reference": "../../../concepts/rod.png",
+  "iteration": 2,
+  "revision": {
+    "front_locks": [
+      1.97,
+      1.83,
+      1.93,
+      1.99,
+      2.02
+    ],
+    "crown_rise": 0.045,
+    "eye_width": 7,
+    "eye_height": 10,
+    "review": "Native i1: source forelock absent and brown hair reads as cap; restore broad sloping forehead lock and rear sweep."
+  }
+}

@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_ronald"
+    "ron3_face"
   ],
   "actors": [
     {
@@ -43,45 +43,32 @@
       ]
     }
   },
-  "design": "Approved Lightning concept with owned face and clothing surfaces",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 0
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 1,
     "gfx_sha256": "f2b43815f3c51681deab2dcf34d025af29d3d177e53f0d2e7f023f6b5b9b16a4",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "Skin \u00b7 warm ochre",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_ronald",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "9147fe6578aa406a8bfdaf554f9c284655af08c675c17eeef0fbfee4809e40d5",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "ronald",
   "pose": "standing",
   "component": null,
-  "vertices": 1515,
-  "triangles": 910,
-  "batches": 6
+  "vertices": 616,
+  "triangles": 512,
+  "batches": 6,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/ronald/i3/ronald/scene.l64",
+    "sha256": "b7b5cc0870f062ac1636c3e2d953a6bc9cbc18960f6bcff33817a64c4eaf5033",
+    "selection": "ronald"
+  }
 }

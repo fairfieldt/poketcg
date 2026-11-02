@@ -1,0 +1,22 @@
+{
+  "rom": "port/frontends/n64/adventure/mark-concepts-baseline.z64",
+  "rom_sha256": "c9f6f369e1d3898dd6ba0a3c3c660d5e2e68a68301cb9b12c295ee2d9a02b0fa",
+  "frames": [
+    "baseline-room",
+    "baseline-talk",
+    "baseline-portrait-mark",
+    "baseline-portrait-dr_mason",
+    "baseline-portrait-ronald",
+    "baseline-turn-mark",
+    "baseline-turn-dr_mason",
+    "baseline-turn-ronald"
+  ],
+  "heap": [
+    {
+      "option": "baseline",
+      "total": 2736624,
+      "used": 1398048,
+      "free": 1338576
+    }
+  ]
+}

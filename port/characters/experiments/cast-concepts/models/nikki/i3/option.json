@@ -1,0 +1,40 @@
+{
+  "id": "nikki_i3",
+  "label": "nikki 3",
+  "concept_reference": "../../../concepts/nikki.png",
+  "iteration": 3,
+  "revision": {
+    "bob_contour": [
+      [
+        0.33,
+        1.44
+      ],
+      [
+        0.38,
+        1.57
+      ],
+      [
+        0.4,
+        1.74
+      ],
+      [
+        0.38,
+        1.96
+      ]
+    ],
+    "front_locks": [
+      1.95,
+      1.88,
+      1.95,
+      2.01,
+      2.02
+    ],
+    "eye_width": 9,
+    "review": "Native i2: wings gone, but bob bottom too square and smile faint; taper lower rounded hem and strengthen small smile.",
+    "mouth_rgb": [
+      90,
+      48,
+      30
+    ]
+  }
+}

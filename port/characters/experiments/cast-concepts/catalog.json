@@ -1,0 +1,314 @@
+[
+  {
+    "slug": "dr_mason",
+    "name": "Dr. Mason",
+    "runtime_model": 3,
+    "aliases": 3,
+    "source_model": "port/characters/assets/models/dr_mason/dr_mason.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "ronald",
+    "name": "Ronald",
+    "runtime_model": 2,
+    "aliases": 3,
+    "source_model": "port/characters/assets/models/ronald/ronald.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "ishihara",
+    "name": "Ishihara",
+    "runtime_model": 4,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/ishihara/ishihara.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "imakuni",
+    "name": "Imakuni?",
+    "runtime_model": 5,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/imakuni/imakuni.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "tech",
+    "name": "Sam",
+    "runtime_model": 25,
+    "aliases": 14,
+    "source_model": "port/characters/assets/models/tech/tech.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "clerk",
+    "name": "Clerk",
+    "runtime_model": 34,
+    "aliases": 11,
+    "source_model": "port/characters/assets/models/clerk/clerk.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "mania",
+    "name": "Chris",
+    "runtime_model": 22,
+    "aliases": 5,
+    "source_model": "port/characters/assets/models/mania/mania.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "lass3",
+    "name": "Jessica",
+    "runtime_model": 32,
+    "aliases": 2,
+    "source_model": "port/characters/assets/models/lass3/lass3.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "mitch",
+    "name": "Mitch",
+    "runtime_model": 11,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/mitch/mitch.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "boy",
+    "name": "Ryan",
+    "runtime_model": 18,
+    "aliases": 4,
+    "source_model": "port/characters/assets/models/boy/boy.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "man",
+    "name": "Andrew",
+    "runtime_model": 27,
+    "aliases": 5,
+    "source_model": "port/characters/assets/models/man/man.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "gene",
+    "name": "Gene",
+    "runtime_model": 12,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/gene/gene.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "swimmer",
+    "name": "Sara",
+    "runtime_model": 33,
+    "aliases": 2,
+    "source_model": "port/characters/assets/models/swimmer/swimmer.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "joshua",
+    "name": "Joshua",
+    "runtime_model": 23,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/joshua/joshua.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "amy",
+    "name": "Amy",
+    "runtime_model": 9,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/amy/amy.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "girl",
+    "name": "Jennifer",
+    "runtime_model": 29,
+    "aliases": 3,
+    "source_model": "port/characters/assets/models/girl/girl.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "hood",
+    "name": "Nicholas",
+    "runtime_model": 24,
+    "aliases": 4,
+    "source_model": "port/characters/assets/models/hood/hood.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "isaac",
+    "name": "Isaac",
+    "runtime_model": 10,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/isaac/isaac.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "lass2",
+    "name": "Kristin",
+    "runtime_model": 31,
+    "aliases": 3,
+    "source_model": "port/characters/assets/models/lass2/lass2.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "lass1",
+    "name": "Heather",
+    "runtime_model": 30,
+    "aliases": 3,
+    "source_model": "port/characters/assets/models/lass1/lass1.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "nikki",
+    "name": "Nikki",
+    "runtime_model": 6,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/nikki/nikki.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "lad",
+    "name": "Daniel",
+    "runtime_model": 19,
+    "aliases": 4,
+    "source_model": "port/characters/assets/models/lad/lad.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "murray",
+    "name": "Murray",
+    "runtime_model": 13,
+    "aliases": 2,
+    "source_model": "port/characters/assets/models/murray/murray.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "rick",
+    "name": "Rick",
+    "runtime_model": 7,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/rick/rick.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "specs",
+    "name": "Adam",
+    "runtime_model": 20,
+    "aliases": 3,
+    "source_model": "port/characters/assets/models/specs/specs.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "ken",
+    "name": "Ken",
+    "runtime_model": 8,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/ken/ken.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "courtney",
+    "name": "Courtney",
+    "runtime_model": 14,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/courtney/courtney.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "steve",
+    "name": "Steve",
+    "runtime_model": 15,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/steve/steve.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "jack",
+    "name": "Jack",
+    "runtime_model": 16,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/jack/jack.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "rod",
+    "name": "Rod",
+    "runtime_model": 17,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/rod/rod.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "woman",
+    "name": "Woman",
+    "runtime_model": 36,
+    "aliases": 2,
+    "source_model": "port/characters/assets/models/woman/woman.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "chap",
+    "name": "Chap",
+    "runtime_model": 26,
+    "aliases": 5,
+    "source_model": "port/characters/assets/models/chap/chap.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "gal",
+    "name": "Gal",
+    "runtime_model": 35,
+    "aliases": 7,
+    "source_model": "port/characters/assets/models/gal/gal.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "pappy",
+    "name": "Pappy",
+    "runtime_model": 28,
+    "aliases": 3,
+    "source_model": "port/characters/assets/models/pappy/pappy.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "butch",
+    "name": "Butch",
+    "runtime_model": 21,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/butch/butch.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "granny",
+    "name": "Granny",
+    "runtime_model": 37,
+    "aliases": 2,
+    "source_model": "port/characters/assets/models/granny/granny.blend",
+    "status": "three review rounds complete"
+  },
+  {
+    "slug": "torch",
+    "name": "Torch",
+    "runtime_model": 39,
+    "aliases": 1,
+    "source_model": "port/characters/assets/models/torch/torch.blend",
+    "status": "unchanged prop; outside character remodel"
+  },
+  {
+    "slug": "legendary_card",
+    "name": "Legendary Card Top Left",
+    "runtime_model": 40,
+    "aliases": 6,
+    "source_model": "port/characters/assets/models/legendary_card/legendary_card.blend",
+    "status": "unchanged prop; outside character remodel"
+  },
+  {
+    "slug": "mark",
+    "name": "Player (unused)",
+    "runtime_model": 1,
+    "aliases": 3,
+    "source_model": "port/characters/assets/models/mark/mark.blend",
+    "status": "three review rounds complete"
+  }
+]

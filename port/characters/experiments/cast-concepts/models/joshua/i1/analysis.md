@@ -1,0 +1,1 @@
+Actual native comparison inspected against Joshua concept/portrait. Cheerful closed eyes retained, but costume reads as white tunic/dress and cap is shallow without goggles. Next round shortens hem to hip, colors rigid upper legs as white shorts, and paints goggles directly on enlarged white cap forehead.

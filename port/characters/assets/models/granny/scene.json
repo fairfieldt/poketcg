@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_old_glasses"
+    "w3_granny_face",
+    "w3_granny_cardigan"
   ],
   "actors": [
     {
@@ -42,45 +43,32 @@
       ]
     }
   },
-  "design": "silver braided bun, small spectacles, yellow cardigan and long skirt",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 26
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 36,
     "gfx_sha256": "af8399aa73bb00a69861a54d2fde3a8bc52389163c5a8c8f38ce27994cbc3519",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "granny \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_old_glasses",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "3e026d51fee15a117e86521ef97d2f342ef0caa95420c5bf46dff00e43ddaffd",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "granny",
   "pose": "standing",
   "component": null,
-  "vertices": 1425,
-  "triangles": 818,
-  "batches": 6
+  "vertices": 412,
+  "triangles": 592,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/granny/i3/granny/scene.l64",
+    "sha256": "cd70a4e0d7e76c6e7c6a613a750da12ce7c47294d72f44f10d095c4c4889d82a",
+    "selection": "granny"
+  }
 }

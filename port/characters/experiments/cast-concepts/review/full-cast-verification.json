@@ -1,0 +1,1941 @@
+{
+  "passed": true,
+  "complete": true,
+  "expected_families": 34,
+  "families": [
+    {
+      "slug": "ishihara",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "3bbb40c3069bc1c827ced7da344014e629d4ad7bdc134395c962bd027645e93b",
+          "rom_sha256": "ca1472e4a67b05b2cb51ac346bc1b6155997c14d63203eb9ccfb30a7c2e1d79b",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "ishihara owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "691a6176b5c5719b76def655bd382232fdf170fb540428421131156867a21221",
+          "rom_sha256": "9378f721e4d8856deb97dba2b20925e81a066fa4275992d514d22d140d60f3ee",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "ishihara owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "577ae3f1386f5554a8c52a7cb24987061bb377362aa51d9cbc3cc0f5a04c9308",
+          "rom_sha256": "476df5d22be97ca154549bb088f93c907d4c45dc26f0bf34e8ee6e20685ceeda",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "ishihara owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "imakuni",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 552,
+          "model_sha256": "d24329962fe2bdbc2c59ab18a0fc767a19ee7d5b3a857fa7803094a72db1e5c0",
+          "rom_sha256": "231eb6d98bd586e7cb727fd60422616c6edd79ce9d334ded855059319951ef5b",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "imakuni owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 552,
+          "model_sha256": "9df12aabe10bfcdf1515e7e31c2259a9e361c3b728547080c5717f4151c1e65d",
+          "rom_sha256": "69d71d5372a9ebdd5f2efe04123656f8076680e7c46f74d200a44e752c771d6a",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "imakuni owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 552,
+          "model_sha256": "5692c1f82fc53c0f74ad7c0934d7b42a7b30c17a3adebae7b503ca2080acdd7d",
+          "rom_sha256": "b6077e32d266d30240796d0ad3e682ca6077bf73424c53da766fc796e86b3875",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "imakuni owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "mitch",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "083ec1bd5658578382378fadd55f9d947b17bb118287882448773e3aa6254834",
+          "rom_sha256": "8f7edfbd49164c9f3fc1afd935395432c8b562848d99a36df08ab577e5732bab",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "mitch owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "ca37095f8e4b8445744dbf3fb1233e7bdbeeb556def9771e3d567f823beb7191",
+          "rom_sha256": "6196503e6e743f26b5968b7b993653e18d493a89131779e1ad63c6274c927ddb",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "mitch owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "1181cf83029cc890adeec4bda7059efb2846a0b4090c66840a177375bb9018ac",
+          "rom_sha256": "c21dc45871dfa378b19e440e6772897176ffb6d71b2629d7cccd78e3de713454",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "mitch owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "gene",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "e94b77f00e124680ff4ac8295ea5a69c2d04e59e301b275a5ee573df02f91bd5",
+          "rom_sha256": "04b540aaf11bd259ed4fc8a380960d1849d4fac4795fa7f1baf3904dd1ae50e6",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "gene owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "3c477b97ed2fe2b5a0a2e15576ae6092ce936d69693e352ba0cbbab29ea5b873",
+          "rom_sha256": "1b62b16b654773bfce120a9bd1101ec2032de5848cecb539460706bf692c55e8",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "gene owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "a7c5a595c0c5f772da22bd95864aa9858e40d3f1d6293235afeee2b4a5e923b2",
+          "rom_sha256": "fda2c0d784dce55b2d966b9278c7a43088f92381a376a964faec8b723eb30a92",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "gene owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "isaac",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "d16c04747b4c6f2cb6dd1a0c03f95dca70391ca2c8fa323b7efa66455dc8d931",
+          "rom_sha256": "913a07cc1334a8b345f6600c92e65c70273fb5d590a5b581fe00d2cb3aa52506",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "isaac owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "99578593388b43095f2d6ba4d73b2a7806d5460a807095cdc78afc5d9755b0ec",
+          "rom_sha256": "ad015014c71557bf61f4a2e4b27c6144d36391713018443b3c526d3f79f33057",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "isaac owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "160cab180a4d802c57104a6c131c8b488aac97c22de93942c7e389c8668b6e6e",
+          "rom_sha256": "88817d3b66b36beb3f9c6a0bcd3c6e81d84ca6462bfe634aa4f5779240e0bad6",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "isaac owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "nikki",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 564,
+          "model_sha256": "0fbe804129d7c9899626984326e3c27eaab091036eddd34e65d00a00c1c1be64",
+          "rom_sha256": "87ddd580d919bee101c46ad71cf7b6289c2963bfc2032b9be0ae4b2f8fbfce23",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "nikki owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 540,
+          "model_sha256": "c01304e0cb752777856ebfa172c342ed678654060c88b3fcf5ea81c466a4ce36",
+          "rom_sha256": "1f9dbeade46eadd063f4a64e815150077b0a38fc8cedfed00924baa446946b7b",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "nikki owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 540,
+          "model_sha256": "4ecfb5502872ed3b17cc2bbb541528a6598a91958a9f0c65dda9704b700da3d2",
+          "rom_sha256": "d2877f7b2f827021eb1c2766dc03705e3b12553a0859e7e5c91b2edfdea38ffe",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "nikki owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "murray",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 564,
+          "model_sha256": "2370af0ec5c767380b19a6cd7100635c832b6ca554fb3b5126a9754dc70c3b50",
+          "rom_sha256": "833f923dec1360a94e78193e68fd9534137ab945873560290993c33932d93785",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "murray owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 540,
+          "model_sha256": "c4a468595fbae388122a57d3cc4af9bf4f0bea5f20635c6c0da4915b1149736f",
+          "rom_sha256": "8621a48539c74b2bed92768c3d9e05e8fe4d8658c5019af11547bc474f422131",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "murray owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 540,
+          "model_sha256": "f51488569a5d4d419b79b8b428c3b5ee255a8ac9b0a8ae57dc1aceccac2ca847",
+          "rom_sha256": "cb0a963af3bd7a144de52156f507957f9482b0a57baec352bdb6b5c483bdef3f",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "murray owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "rick",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "60f1b35658981842e42c0c6db3026c49ad7a2b7b9ba2441fc00f908cdb9064da",
+          "rom_sha256": "514824b9f49867229f13e7ecd20eaa5e0f225d5e071a92b130112e92804862e7",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "rick owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "597c208eeb2c9249adeaf023cc2d0f7d7067bc51a1e46ab1de8f1a66a49064b6",
+          "rom_sha256": "a34bf144be8f654e4bccaf74b3e46f492f026aa7c4346131ff519ed3797ef6f2",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "rick owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "2bb12bb168502c9c2f706acd48b2f69afdc64730709848a6f331ab068b5c384f",
+          "rom_sha256": "72b661db4554b0f3a6a4dcce496532b6d81a67427c480278c97814afe419c3a9",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "rick owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "ken",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "082503ea18ec0188514244eab4177e423ad3209d934c970cbd0d20d9e0971eec",
+          "rom_sha256": "d539d478e5f6f7a709d177ab72c8183d84cb0acbe767fe7995a7cbae314a66af",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "ken owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "ae1cfbb0ccf4c28dcd1e13b3f5208a648cf0633e037f2e0acbea74ab86f41298",
+          "rom_sha256": "e455ba57b5d195a555609a601edbaf1e86836fc7ac3eb892b574a58142f4e0e6",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "ken owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "b16e536e3f2f8bb5b7bb78312426e600ccfe3275b9777730a96d145660e9c7d8",
+          "rom_sha256": "0a714414c15744f6e8577c475a69ae951128cbc980672b7d7087af4ffb438ccd",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "ken owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "courtney",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 564,
+          "model_sha256": "26ba0bc626b6b271a9311f3024d7ecf896200219dbd7862d026527aaaea4719a",
+          "rom_sha256": "4ee7025f4a96a8836270221c1bf32c0be8a3b42f64e76f14c2f24b622940b51e",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "courtney owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 540,
+          "model_sha256": "d5fcd801a7b8fe4579d8b3c791f369ae8bd10b960ce149526a4b738182af6cc1",
+          "rom_sha256": "60ef5f0521f81a525782cfab5db529c0bf2136246f5170aaf46be7921154f301",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "courtney owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 540,
+          "model_sha256": "6f6fa1a170baf2d3b6391245dc5dce3c7ae5e0dbbaa060ff93a5270b26eea6b2",
+          "rom_sha256": "6d3f9ba7cb14148b3f3ad812762b7c38e83b5a70866e6abd1bf1e429c6e59334",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "courtney owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "steve",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 552,
+          "model_sha256": "ecf660261acaf057f63ff4db0938f169d7bf53bd4f8c5d301f193a8beb92dd15",
+          "rom_sha256": "6b004d051e7a72208c1d649d2ec3610031b57270a51d0b578927da93ff66c5a9",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "steve owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 576,
+          "model_sha256": "431f8ce54182415259780f25c6b3564c9c641f6b42510c9b413d4fac0cfaf626",
+          "rom_sha256": "3791f570d78582c5b9a0e14872461be4fefe7f69e9a27cdd8c3babf354d17308",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "steve owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 576,
+          "model_sha256": "465add9ae9043a91fa5824fc37acd026c17d0d2e7477ff8f3049213bedacfa67",
+          "rom_sha256": "2e89e80b2f3fc5c9569e6c91662eb7f8e4b2196839581ce3bd90b6f5c034fe84",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "steve owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "jack",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "03c487cc57e7daf09ba4f6d4fc7ac474ec0b5a6bbefff9b3af7e43499fcda6ca",
+          "rom_sha256": "cadd1eecadac213f17e288644efa37cd98d9a32554fab69f125d7edbe96d9400",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "jack owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "a62ada555cfa3e1a61e999e1d90db8317599124ce4794d7417f725bcda602d81",
+          "rom_sha256": "5721b4538d59013ef0e98e756b873294d2cd19c2780e382d23008e904b18e741",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "jack owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "cac0cbd45c1f36577f7aeee854d0d1c02c2ce4427f0aa728f8ca9d30468c4688",
+          "rom_sha256": "af71c91b85049f93b0c9c36f32118e034c725d4b9c6167d5a549c2d42ebf04cc",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "jack owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "rod",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "eca3127124213ce25161902157e6fb51282957e876a1b45e77cb7b35d26dc8fb",
+          "rom_sha256": "e334751a15b9d5c6b82e3950d455d6dd6861ce02098901e1c411a132e1e1dc8e",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "rod owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "471ce6e6f1ae5b60eb2846733ec466be606eed8fdf2918d4ac45117c95748330",
+          "rom_sha256": "dd8a837a106bd5074ece3ce46b06177c39d30ccb629136a46831469b7ca457b0",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "rod owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "01b948aa306e236d064e051f5c2503c73c72e79d4b64ea7605e3c9a945e3d266",
+          "rom_sha256": "cdd5960eacb2d90245783b3ee78c3967f172b4151286def69c82d7af0741185c",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "rod owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "tech",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 560,
+          "model_sha256": "670f0920a501fada87d231212ba0b8af51d3bd69668ac5f9402095bedc2f9ab7",
+          "rom_sha256": "b5a14087f5d3bc7e807647829928e14ff7f69abb66ea8a704ffa5e17a31b6409",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 560,
+          "model_sha256": "03ec45c8f83ff20638b59c55fae5abfed92901f2a102a6b1e02aeab223d82030",
+          "rom_sha256": "9a84b554be1466d84d5f2c6ed6ed77450a9f63b414777416a3a03902b54ba89d",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 560,
+          "model_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec",
+          "rom_sha256": "66bc74e0e83c6691d805b9dd0165c04d423d00de03ab996c36f9f5a3810298f2",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "mania",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 560,
+          "model_sha256": "370380671d50c4ada599ebce0389ec7fa35caaf5cd1c955ee3c21bddb4cbb3b9",
+          "rom_sha256": "934352f870aed36970c0e3765064827c6c8dc9a7ed1ceae6ec5d03a8e8e834d8",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 560,
+          "model_sha256": "52291ebdb4760ec52369d8a4561e097398fe902142b95713b093db0453606d86",
+          "rom_sha256": "dc9c06c0bfa2e10374e62c20b414cc7e14a9edae963ae1c797c0806ef97b6a7d",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 560,
+          "model_sha256": "f0630f41cde9f511a07696017c8f641e69059ecc298eac0a0e431d0390cc01e9",
+          "rom_sha256": "17656a3dfca9319decc080df7c1edf023612dd0fb2ef6c1ef92b9e2865d9bd2b",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "boy",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 560,
+          "model_sha256": "4c6dc55ded248114917be853a0a27134a50229eaaa9478e930540b82af827bb7",
+          "rom_sha256": "7a21dfae7e254dbbe2b05e46c6d25828f000464de80d325c13e8bad7a00bee7a",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 560,
+          "model_sha256": "e4ca04aa6a65748fb8f9aaf64d68b866c67800032cde64a0a2b2b8b8744e40f0",
+          "rom_sha256": "2180abf7d43750f4458d93aed3bcbadcc98546871ef69c946d2bba21eecc623b",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 560,
+          "model_sha256": "6362601dfaa22bd1721bae3c8c19866916ead36564cdc477b002e288a56777fe",
+          "rom_sha256": "3cbfd3f634e7c5eef1ef5da277208b4ad0fdf77dd097686e67631283dee1fc2b",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "man",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 560,
+          "model_sha256": "ef816da78bfb339099488a4ec2c4bd942c1b8b69527721fc3779a44288a3b48f",
+          "rom_sha256": "093d56616189ec9b2d89e0dabacc0cd608fe85670c16af742f752fca65294f4a",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 560,
+          "model_sha256": "8079ee63e6516c1873d5d5ca68abe10e8abb2165047ca62375f819b62cde8db5",
+          "rom_sha256": "4b0ff3769dab89c9a6cf2da7444b68ffbbcbe96a4359016962e1ed2eae613e38",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 560,
+          "model_sha256": "a09bb55fccd5bf185408b4d6cb8b62889c42703426a4ccbefafb8218510d2267",
+          "rom_sha256": "8f8d5aa9eb65cb0e40605b85a4fbcbc4900837a69e020cbfcf71e5580801d075",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "hood",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 560,
+          "model_sha256": "80f96394a84837fc5b32eb084bc63b6324290c05db448636f3dfd4fdd979c84f",
+          "rom_sha256": "3b7884758c47d906a0b650d8b41010a82675a66ac4276ced35468afef1acbb63",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 560,
+          "model_sha256": "2a52018e7c1623dba72822bd008a2bb419d8e95924124de5ba1d197fc1896726",
+          "rom_sha256": "8c96a023df019712ea1e742fb1b68c9006aca3f8ae17b9dc3d24a7098177d104",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 560,
+          "model_sha256": "ad508a585dd2b902af34ce15105de0a5ad419fc231b3435c078c2e4d8fb51e03",
+          "rom_sha256": "e78106ab960d356ec68c78a4b995573459891c4b78134b915b12a6813aab26df",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "lad",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 584,
+          "model_sha256": "7720ac5d110992b57f5fb9128cec3197c8e3e8587397e0fe5dd56feafc4eb527",
+          "rom_sha256": "9f7d357f433575783a0d72f90964f9f10fe1f29146da40bc08271db4fafb20b5",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 3
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 584,
+          "model_sha256": "caea2bd1258898b735edce40ad031ef902d6cae109f8ab9435bbb2e6ef83bb32",
+          "rom_sha256": "c1a7b7aaac5e90bb5125b58e7110489ed2724afa19cd96888514aaac88bccbf7",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 3
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 584,
+          "model_sha256": "d9292912f9ef6efcf1bc87e54f8d03b1cb3095ef43f6523c7de5eb9dee550066",
+          "rom_sha256": "fe8886947d72db533317c4ad9962c8464bd3451ca111884572f1a4bb17c02264",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 3
+            }
+          ]
+        },
+        {
+          "iteration": "i3b",
+          "triangles": 572,
+          "model_sha256": "af6e16730cec6d5d8abf85218064b746486102dca688bbfd38ab746373dc2e9d",
+          "rom_sha256": "8d1cc2a2bdd785da11958cfc526391780bdab81f95d74d925d04f51a6c290dda",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3b"
+    },
+    {
+      "slug": "specs",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 560,
+          "model_sha256": "74d899bfaa2bd6bf8e54b2c492f8e5e3f89e7e44193e8cfbe09d365868a2c920",
+          "rom_sha256": "7b437c952de0b036e85d9fecc7bef051938c084986ebd236b65cb09410999b15",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 560,
+          "model_sha256": "78709263c1b3bf0c38453fc3a0cea89e39ed250a4d33a5ce2a88f71f57a619b2",
+          "rom_sha256": "7248f45adc29d9dc98f0e5d9142fe7ef00427409c16f5606777a63a5debcb304",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 560,
+          "model_sha256": "a5327d43e29700af61f6d857cbb23a2b6a3eaf66a9aa67823fda111bd69cdc57",
+          "rom_sha256": "342bbf01c162aea8ff51c4b7e125f0ae31ad611a9e700661ea96a0576d76aa67",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "chap",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 560,
+          "model_sha256": "a96c3ae763a448106a52ce83588620e66dd29fd26239826de89ccd1086e250e2",
+          "rom_sha256": "1457b743bae5036e63a74518dad6ab3419a669ad71d94907ba3ff14eb13709ae",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 560,
+          "model_sha256": "79d1ee217209a1b1cfb515a4c4525cc16b9daf5b63afc8e414c61386c698cd46",
+          "rom_sha256": "916aebc448729cc33b9b9b7377c7b090616cc2494f14ce1d082a1b81ef3913e4",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 560,
+          "model_sha256": "2db52b8620f73ae4571da37396bd97d809199aa0b6634460f68080db74743e17",
+          "rom_sha256": "a1589bc7e6d09c724a57dd0b3f326ee508988b03bd4a3afb802aae2f2c76b2b4",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "pappy",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 560,
+          "model_sha256": "d8a641e9b4398f125846053b76fe67908dede935304916ec75461f1a08a68b20",
+          "rom_sha256": "eb4eea2c25ab1b66f5a4112356761496930c9c7658715eed1ff41f13c5c54498",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 560,
+          "model_sha256": "ad0442297f41b5134351f2d45d14605d48bb49ec21ef206b9eb0c6cffaaf6935",
+          "rom_sha256": "60758a3039dcaff93c0887b83dfc52cabf37e5fc6b80afe31b77cd742cd2ac02",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 560,
+          "model_sha256": "1858a041ca2b21d5a9178b222f13c33611de7ec9f464d8cc7e361cf48a9e7698",
+          "rom_sha256": "8b5f4bb110b3a0e5b685c68f8e8979398f17672af0b8f8fff9a81db511b50b96",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "butch",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 560,
+          "model_sha256": "0aebd28fcc37c34cd556e6dd2ee2ce5b5c2a41a0f265222b0d03e0397bebb8f1",
+          "rom_sha256": "7b154cac159aa2cf6c516c956ff7184583be51e75f5292da0211e6d1cc01c594",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 560,
+          "model_sha256": "bd371976b8a0c8a2fcdd269ee33a055aee6b5bb66eb90db02dc28c687c6a1575",
+          "rom_sha256": "69ba0d96d72df90cc38934b619696f8c989b5d57adefd61427c1989a8b728f2e",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 560,
+          "model_sha256": "40c092a77f52dafd9359822fb7253eb67ccc9d79a1c3b5877eeca529cf8350bc",
+          "rom_sha256": "2b3ddf533a9d7743cb47722b227f994977d6c76ca08271c1b7b6fd13894f5d91",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "clerk",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 564,
+          "model_sha256": "4b353367125235477d9d3e9f6b89f961ee7860bfc6dd00a99871a58ee7a99375",
+          "rom_sha256": "ea063a6e95b6d0ebe77f2d5f6d59940eb73dea449ed645a93abe33a606717396",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 564,
+          "model_sha256": "ad3d4c5eb9dbf88cdcb65d1678c59a90eaf21e76a2f033fd218a031601b1c90f",
+          "rom_sha256": "ca4e86e996ae8321c9e23642d5804dbfa8d1816cc3cc0bd0f104ebca998908ff",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 564,
+          "model_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624",
+          "rom_sha256": "24b6b126d25d4e636e212a0103d06b698ec6ab06dfb30937cabc8aae0881fc15",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "lass3",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 564,
+          "model_sha256": "d8fff287443850c838f37ccf516c4f6bdf0f39b43760789d83c6e34bd0e5f435",
+          "rom_sha256": "7ce3faecf2031e4b403ed3d3b87d5650ec8b08f4a8c86b374cead9460f29054f",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 564,
+          "model_sha256": "782a9602857c78fc673c3bd884127341c16f1ee61f60514773ad5d13146b9de3",
+          "rom_sha256": "5f6894c0de42b2e86e52ec43dd64ab246acb58b2ae650b42490f7763a03befb6",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 588,
+          "model_sha256": "cb197eeffdb7d1a62f3ddf4d746bec098596a93d401ed8457eca76969eed3a4f",
+          "rom_sha256": "4dae5b5e6be3db3ab2fe31ebaaaab680a60f7e324ff58150cd7f9e66ee65d06a",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 3
+            }
+          ]
+        },
+        {
+          "iteration": "i3b",
+          "triangles": 612,
+          "model_sha256": "e64a4d1597bc45f402acf5540bccd0841537369c16b83f5dde6962ba70da7bca",
+          "rom_sha256": "35857bac1343c0ea224f7f12d7ce97e13f14db78fd0cf4625605ac812667afa5",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": false,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3c",
+          "triangles": 612,
+          "model_sha256": "126509a8f0cfe1fb6d14d7e74c20807dd9d048e80b09ce4fdf7ddd1ec5f98614",
+          "rom_sha256": "cd79d2f469736bd7c10f05d9bf099c0567ee8a03669b305976b8b6f166aa95b5",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3c"
+    },
+    {
+      "slug": "swimmer",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 564,
+          "model_sha256": "502465f687d82b778bc3eef5334dd586ef7cb6574020a6d4c743b944e1afc08c",
+          "rom_sha256": "3c7fe849199bf68550ff8e4bc16512115b657bb625cd553e7ca5043297a33025",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 564,
+          "model_sha256": "b401fbf8426b8e9b4afb6a734c3afdb95baa0706d934d7d3066b17e4c539e71a",
+          "rom_sha256": "87c73489ec50606da2ceb75c2babdd45b1ab3b64be546bcfba223bfd9bb2d661",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 3
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 564,
+          "model_sha256": "f7e9341505cdca936bc9cc650b8bef72dd8a5186eb063174cd57db50ac31188c",
+          "rom_sha256": "d386e3f441879b25eb99d3e1fa84e51d5a009b44b61a75b07afd0ab7f0411a9f",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 3
+            }
+          ]
+        },
+        {
+          "iteration": "i3b",
+          "triangles": 564,
+          "model_sha256": "14fc11a98d30e655454ef697418e0f93f94a3a5e3cb12c5b28e4d61266dafa7a",
+          "rom_sha256": "ae369aebf2a64040af15b5277506659b821e954ac9bc733f93e661135878cd6e",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3b"
+    },
+    {
+      "slug": "joshua",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 564,
+          "model_sha256": "59c52ba312c58642c593f7376179b0090bc233ec7531f178314a0a96d19db2f5",
+          "rom_sha256": "033875f728b3b4511f5552fa663a74245a651f9f895d25a5a17f8b487a839581",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 564,
+          "model_sha256": "f6727cb96f8750964441f2ff1de372b4dd4f5f92c65a602b9230ed2c57fab52a",
+          "rom_sha256": "72699f20863689c6936b96938d7f09192c111e0d1afc95215c09181341f2f922",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 3
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 564,
+          "model_sha256": "6cae3114c4ca4f6eae914d95909f04b0b2cc537019f19d12708c5faba6bcf53e",
+          "rom_sha256": "f963862736424c9990f4e891ac511201eb3b8d7fae9a4732f0fd74d3de5c71ac",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 3
+            }
+          ]
+        },
+        {
+          "iteration": "i3b",
+          "triangles": 564,
+          "model_sha256": "61ad46c92927d5dee96b11ed1045865d53c45951f390eb8b6b96c7158b353736",
+          "rom_sha256": "3b5c96af56c4a4dfbcad5f0e154de8a83474cbe78729cc21d68055fa9e60ee44",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3b"
+    },
+    {
+      "slug": "amy",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "18ee4caa5e3d454958b05bd10312425df7b3d8ae727052ba11d22c207f3aead3",
+          "rom_sha256": "4194127d854295b4b0b13034684ec10461aad10fbab168c57637da0152b2bd9d",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "1e5f9c7a90f5a043668d990701255b5371a0cd255b44992aa25b8802936098a2",
+          "rom_sha256": "d9605a6f00a3a0c67b7732e1bf5dce5df9bb850811aceb6186bc3213acd45143",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "36f483b6813b0b9643f1b13acc321d927f1fb3e523439bb84c8d1257911ed0f3",
+          "rom_sha256": "6d18caa03ecd3f54ccdb4989927d1fa53cd166505c309a049a92c876c0a44d9e",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "girl",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "0a2ccacbf51a3211a1a3f2a5dc881d1d916f4f8a35e855edf92a64c7869ad9c1",
+          "rom_sha256": "fc846db47b90469ca9430b2f84e3ca057da8192eed589709cd7fb207a815109a",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "015b9b3b2be1d618ddadb9a6f63c77c6ab676f7fe10545c7cd101b5365614ce2",
+          "rom_sha256": "d54259f246a980a538e34b6abfddc51d6b0b9eaca5272e50e7a012b7af59552e",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "a096ed97d1eecea2d86db99fea21c65f3b79a304833c85ffe6bfee0f8c0595a3",
+          "rom_sha256": "0a495f7e60cdc54dbf983a39f95b2d234a72b4462cade146f9218cb778f0932c",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "lass2",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "3a88cbea11dba0f02f7909135c82d37c5255ca6b52ced2dcd9feea028e0dfb88",
+          "rom_sha256": "fe86d27180d0bf3460a5799e2198eb54101ae7c7738671e6840c15081a3c0c45",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 2
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "d19a3b473ad637c4b9eaed2547a8b0e09eefce18ea89c4c5a8225b4de0160032",
+          "rom_sha256": "a2e57c2cf780b97ea79f993d299475f80c8be5cd9153386e833c016df3054035",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 2
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "8aeeb26fa6d383ab7363048bf95497de540dd084715771c683a600b46245f966",
+          "rom_sha256": "b55b009e1c09f55e7e289363bc39bdbe937a4ccf07ddcd351289f00ea7b734bb",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 2
+            }
+          ]
+        },
+        {
+          "iteration": "i3b",
+          "triangles": 528,
+          "model_sha256": "218d7aa8cff4fb971f95749eb4eada4d1f5414f3f2ff0ea5ab01fb8ed4c2b57c",
+          "rom_sha256": "f2fba68cbf62d90e5948d2f5dfd448c6852bb0accf40a35c994eace70880a857",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3b"
+    },
+    {
+      "slug": "lass1",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "5cb1af2180d165c6a363e5945f892ebb5e01114b9aa6acff0038200b977530d3",
+          "rom_sha256": "2bf5b1dcdc1cb0eab2538969bf1bc4e52a6eb9564b9e3381d1536fbbda9f6b47",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "3277efe266475cd90e39d84391d7da2c06f0ca45a3dc043cf24ecd7655a37f04",
+          "rom_sha256": "9ac179f739533eefd8bb56f94489b0009630530e7741d88f37b561548113d482",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "7c092d0f7d5aae31f74d7433d041eb6a58ace8e1a8e8227c9c8f2c6ac151cad3",
+          "rom_sha256": "610437561b2064ddf0b2d94b4e22d82f33b3d6c8863ae3cd12d18c62f90b1c59",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "woman",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "6e8a8da87046a3c4415dba4191a76a33072e783865e6132838b29a0b149dd07b",
+          "rom_sha256": "9476656e1bebd312887ff972fd5da28e0ceae9708d888ec6b7a258851d057c79",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 544,
+          "model_sha256": "ec91ec9ba1e5cec323d355f796c764c819514631d050c15129e054e7a6c5f5c1",
+          "rom_sha256": "f0cef9f83b4815989257afae026e1110f1b9e80858a31946b7a76df387f0103c",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 544,
+          "model_sha256": "8fbcc0f1f453b85fa8eff9b11c6e081794d50cc375fb439a0fc4de1fd8f8a716",
+          "rom_sha256": "554f8dd4473bfbc7a6e6d89e8d6c609439e605ba1fe05e15a3675f54f2240eb6",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "gal",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "bd92cc8a7a61431575ff6d91b2ced920eeb109f0f77c0ab10015fc3428b8e658",
+          "rom_sha256": "3922eb30f1f8b6eeb54f780dc786aeca74cc9719c9f24cce0c8b098800bc74ff",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "18955d2c70cdb9d17a7373a120cdfe81ff970d0190484d9e6ba6eb5bd861cc7c",
+          "rom_sha256": "4a86d34fb1b3ba4b1da56c38ac2ea18d4b0f1376c0859ee8a680d764d8f12fbe",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e",
+          "rom_sha256": "110073c013bb2df8944aa70a39b584e9a5954f3f3a510bfd0896a4872c886219",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "granny",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "5291eca2132f96e0023bf6846c4aac6a45c9dba03aacc742b2fb6f45f8b28c41",
+          "rom_sha256": "c665cac00cff0cc0f833724f2aaaa6436c0bc7e8966dfe723f1f3a5ec8c2e904",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 552,
+          "model_sha256": "62de10be6afc4810ebf16fdb65c38017c286bdcad76b8ab2cbf4a7169d5ca7ef",
+          "rom_sha256": "a1d1dd60159bc14fcb053f8a85d5cb29f62ef9dd5b1bbad95518a1144e01079c",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 592,
+          "model_sha256": "cd70a4e0d7e76c6e7c6a613a750da12ce7c47294d72f44f10d095c4c4889d82a",
+          "rom_sha256": "0d45371412729ee9b4d888d4050949d186a6163b86c243c743dccfaa89725268",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    }
+  ],
+  "missing": [],
+  "source_runtime_files_unchanged": 721
+}

@@ -1,0 +1,9 @@
+{
+  "id": "ensemble",
+  "label": "Revised",
+  "source_models": {
+    "mark": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/mark-concepts/approved/a_adventure/i3d/mark",
+    "dr_mason": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/dr_mason/i3/dr_mason",
+    "ronald": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/ronald/i3/ronald"
+  }
+}

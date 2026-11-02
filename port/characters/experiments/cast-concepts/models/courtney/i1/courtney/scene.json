@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "model": "courtney",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "courtne1_face",
+    "courtne1_top"
+  ],
+  "vertices": 472,
+  "triangles": 564,
+  "batches": 7
+}

@@ -1,0 +1,1 @@
+Actual round 3 native comparison inspected. Connected side lobes and green tie pigment restore silhouette cues, but upper contour still reads as horns. This round is retained unchanged. Extra correction i3b rounds each contour with more broad rings and moves green tie pigment toward the rear root; all are connected owning-head surfaces.

@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "ghood2_hood_face",
+    "ghood2_hood_shirt"
+  ],
+  "vertices": 466,
+  "triangles": 560,
+  "batches": 7
+}

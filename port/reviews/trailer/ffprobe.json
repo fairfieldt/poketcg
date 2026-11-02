@@ -17,6 +17,10 @@
       "has_b_frames": 2,
       "pix_fmt": "yuv420p",
       "level": 42,
+      "color_range": "tv",
+      "color_space": "bt709",
+      "color_transfer": "bt709",
+      "color_primaries": "bt709",
       "chroma_location": "left",
       "field_order": "progressive",
       "refs": 1,
@@ -30,10 +34,10 @@
       "start_time": "0.000000",
       "duration_ts": 991744,
       "duration": "64.566667",
-      "bit_rate": "3426974",
+      "bit_rate": "4787888",
       "bits_per_raw_sample": "8",
       "nb_frames": "3874",
-      "extradata_size": 47,
+      "extradata_size": 50,
       "disposition": {
         "default": 1,
         "dub": 0,
@@ -59,7 +63,7 @@
         "language": "und",
         "handler_name": "VideoHandler",
         "vendor_id": "[0][0][0][0]",
-        "encoder": "Lavc62.28.102 libx264"
+        "encoder": "Lavc61.19.101 libx264"
       }
     },
     {
@@ -84,7 +88,7 @@
       "start_time": "0.000000",
       "duration_ts": 3099168,
       "duration": "64.566000",
-      "bit_rate": "186700",
+      "bit_rate": "186702",
       "nb_frames": "3028",
       "extradata_size": 5,
       "disposition": {
@@ -116,7 +120,7 @@
     }
   ],
   "format": {
-    "filename": "port/reviews/trailer/v3/poketcg64-trailer.mp4",
+    "filename": "/Users/fairfieldt/dev/poketcg/port/reviews/trailer/v4/poketcg64-trailer.mp4",
     "nb_streams": 2,
     "nb_programs": 0,
     "nb_stream_groups": 0,
@@ -124,14 +128,14 @@
     "format_long_name": "QuickTime / MOV",
     "start_time": "0.000000",
     "duration": "64.566667",
-    "size": "29269578",
-    "bit_rate": "3626586",
+    "size": "40253453",
+    "bit_rate": "4987521",
     "probe_score": 100,
     "tags": {
       "major_brand": "isom",
       "minor_version": "512",
       "compatible_brands": "isomiso2avc1mp41",
-      "encoder": "Lavf62.12.102"
+      "encoder": "Lavf61.7.100"
     }
   }
 }

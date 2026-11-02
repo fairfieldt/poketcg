@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-ken-i2.z64",
+  "rom_sha256": "e455ba57b5d195a555609a601edbaf1e86836fc7ac3eb892b574a58142f4e0e6",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1362328,
+      "free": 1374056
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346280,
+      "free": 1390104
+    }
+  ],
+  "subject": "ken",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "f2b3192798e3d8ba0338d728172c78f1df1266b81167e0d344744c6f53ce13db",
+    "candidate": "ae1cfbb0ccf4c28dcd1e13b3f5208a648cf0633e037f2e0acbea74ab86f41298"
+  }
+}

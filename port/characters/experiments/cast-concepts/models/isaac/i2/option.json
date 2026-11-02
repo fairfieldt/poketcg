@@ -1,0 +1,19 @@
+{
+  "id": "isaac_i2",
+  "label": "isaac 2",
+  "concept_reference": "../../../concepts/isaac.png",
+  "iteration": 2,
+  "revision": {
+    "front_locks": [
+      1.93,
+      1.86,
+      1.97,
+      2.0,
+      2.02
+    ],
+    "crown_rise": 0.04,
+    "eye_width": 7,
+    "eye_height": 10,
+    "review": "Native i1: coat/glasses readable but smooth blond cap silhouette; add rooted diagonal fringe and crown wave."
+  }
+}

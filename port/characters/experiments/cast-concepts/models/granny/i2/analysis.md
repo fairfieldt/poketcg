@@ -1,0 +1,1 @@
+Actual round 2 native comparison inspected. Reduced eyes and glasses convey age better; cardigan seam visible. Bun still looks like pointed beehive and waist distinction absent. Next round narrows bun root and rounds attached bun volume, adds slim dark waist separation, broadens feet/shoulders.

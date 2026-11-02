@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "model": "murray",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "murray2_face",
+    "murray2_top"
+  ],
+  "vertices": 460,
+  "triangles": 540,
+  "batches": 7
+}

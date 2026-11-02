@@ -1,0 +1,36 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/cast-ensemble.z64",
+  "rom_sha256": "d8bf6991728ac597ea72aea28df2c5ec35fde67d2a53f9a5f1102f8ac7612989",
+  "frames": [
+    "baseline-room",
+    "baseline-talk",
+    "baseline-portrait-mark",
+    "baseline-portrait-dr_mason",
+    "baseline-portrait-ronald",
+    "baseline-turn-mark",
+    "baseline-turn-dr_mason",
+    "baseline-turn-ronald",
+    "ensemble-room",
+    "ensemble-talk",
+    "ensemble-portrait-mark",
+    "ensemble-portrait-dr_mason",
+    "ensemble-portrait-ronald",
+    "ensemble-turn-mark",
+    "ensemble-turn-dr_mason",
+    "ensemble-turn-ronald"
+  ],
+  "heap": [
+    {
+      "option": "baseline",
+      "total": 2736576,
+      "used": 1398176,
+      "free": 1338400
+    },
+    {
+      "option": "ensemble",
+      "total": 2736576,
+      "used": 1347240,
+      "free": 1389336
+    }
+  ]
+}

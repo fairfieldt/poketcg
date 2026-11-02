@@ -1,0 +1,1 @@
+Actual native comparison inspected. Blue top, cap and dark skirt read, but black hair is too short from front and cap resembles a flat blue disc. Next round extends long hair to shoulders, widens connected side coverage, and adds a modest integrated front cap projection.

@@ -1,0 +1,8 @@
+{
+  "passed": true,
+  "errors": [],
+  "sourceIntro": true,
+  "naming": true,
+  "nativeWebGL": true,
+  "actualPracticeDuel": true
+}

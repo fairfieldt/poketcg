@@ -1,0 +1,9 @@
+{
+  "source_sha256": "36f483b6813b0b9643f1b13acc321d927f1fb3e523439bb84c8d1257911ed0f3",
+  "derived_sha256": "7936767efe10b6a4f0156ea4fc06d2d096e7cc3060ba36e8deccd1a27ed14e90",
+  "native_vertices_checked": 351,
+  "native_pivots_checked": 6,
+  "uv_colors_preserved": true,
+  "part_indices_preserved": true,
+  "transform": "(x,y_up,z_front) -> (x,z_front+.35,.9-y_up)"
+}

@@ -1,0 +1,36 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/joshua/i3b/joshua/scene.l64",
+  "sha256": "61ad46c92927d5dee96b11ed1045865d53c45951f390eb8b6b96c7158b353736",
+  "triangles": 564,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "w3_joshua_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    },
+    {
+      "name": "w3_joshua_goggles.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "head_edge_incidence": {
+    "2": 204
+  },
+  "head_closed": true
+}

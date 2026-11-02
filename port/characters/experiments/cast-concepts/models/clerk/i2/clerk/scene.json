@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "w2_clerk_face",
+    "w2_clerk_uniform"
+  ],
+  "concept": "../../../concepts/clerk.png",
+  "vertices": 413,
+  "triangles": 564,
+  "batches": 7
+}

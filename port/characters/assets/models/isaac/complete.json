@@ -1,11 +1,12 @@
 {
   "model": "isaac",
-  "triangles": 669,
-  "vertices": 1183,
-  "batches": 6,
-  "linked_parts": 20,
+  "triangles": 528,
+  "vertices": 452,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "isaac"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "e7b5e1a973ad76ceda2bd959a0cfcb8ca0f99cce1b4bbda339f918fceb3050f3",
+  "recipe": "reviewed-cast-manual"
 }

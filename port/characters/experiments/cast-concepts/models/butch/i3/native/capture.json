@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-butch-i3.z64",
+  "rom_sha256": "2b3ddf533a9d7743cb47722b227f994977d6c76ca08271c1b7b6fd13894f5d91",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1353344,
+      "free": 1383040
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346400,
+      "free": 1389984
+    }
+  ],
+  "subject": "butch",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "53e315b4fbf77d6c02d73c3b6900262fe8da07984326a51da90e5ba70f1ddc0e",
+    "candidate": "40c092a77f52dafd9359822fb7253eb67ccc9d79a1c3b5877eeca529cf8350bc"
+  }
+}

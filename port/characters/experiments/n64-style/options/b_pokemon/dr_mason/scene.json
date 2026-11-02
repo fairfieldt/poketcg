@@ -1,0 +1,62 @@
+{
+  "format": "L643",
+  "textures": [
+    "b_pokemon_dr_mason_face",
+    "b_pokemon_dr_mason_torso"
+  ],
+  "actors": [
+    {
+      "name": "dr_mason",
+      "model": 1,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "dr_mason",
+  "style": "b_pokemon",
+  "appearance": "dr_mason",
+  "pose": "standing",
+  "vertices": 697,
+  "triangles": 1008,
+  "batches": 7,
+  "lighting": {
+    "ambient": 0.56,
+    "diffuse": 0.44,
+    "direction": [
+      -0.3522082237986393,
+      0.5534700659692904,
+      0.7547319081399414
+    ]
+  },
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "pivots": {
+    "3": [
+      -0.385,
+      0,
+      1.33
+    ],
+    "4": [
+      0.385,
+      0,
+      1.33
+    ],
+    "1": [
+      -0.16,
+      0,
+      0.74
+    ],
+    "2": [
+      0.16,
+      0,
+      0.74
+    ]
+  }
+}

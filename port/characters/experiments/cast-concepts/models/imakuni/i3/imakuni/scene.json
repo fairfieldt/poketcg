@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "model": "imakuni",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "imakuni3_face",
+    "imakuni3_top"
+  ],
+  "vertices": 450,
+  "triangles": 552,
+  "batches": 7
+}

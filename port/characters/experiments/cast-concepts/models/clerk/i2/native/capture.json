@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-clerk-i2.z64",
+  "rom_sha256": "ca4e86e996ae8321c9e23642d5804dbfa8d1816cc3cc0bd0f104ebca998908ff",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1360720,
+      "free": 1375664
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1347400,
+      "free": 1388984
+    }
+  ],
+  "subject": "clerk",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "7b06e0adb0a5d881ef9b34227efffb31c46452db98ba860a546f0582fa7af11d",
+    "candidate": "ad3d4c5eb9dbf88cdcb65d1678c59a90eaf21e76a2f033fd218a031601b1c90f"
+  }
+}

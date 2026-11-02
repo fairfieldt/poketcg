@@ -1,0 +1,12 @@
+{
+  "id": "imakuni_i3",
+  "label": "imakuni 3",
+  "concept_reference": "../../../concepts/imakuni.png",
+  "iteration": 3,
+  "revision": {
+    "hood_round": true,
+    "face_height": 0.45,
+    "review": "Native i2 + independent review: mouth visible but hood still cat-like; lower and broaden two nub tops, retain hood continuity.",
+    "hood_nubs": true
+  }
+}

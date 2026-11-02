@@ -1,48 +1,11 @@
 {
   "passed": true,
-  "version": 3,
-  "existing_footage_only": true,
-  "files": [
-    {
-      "file": "poketcg64-trailer.mp4",
-      "sha256": "fa60e403fdeacb88ce4f673b8b53cde910bae37d25f524a030036cd4f05503e8",
-      "video": {
-        "codec_name": "h264",
-        "codec_type": "video",
-        "width": 1440,
-        "height": 1080,
-        "pix_fmt": "yuv420p",
-        "r_frame_rate": "60/1",
-        "duration": "64.566667",
-        "nb_frames": "3874"
-      },
-      "aac_packet_payload_sha256": "4e94ff5e20a28ad90c1d51bacc7a9fb90abb4f21e3471cd17c5880ed70648a93",
-      "decoded_pcm16_sha256": "c8e93f72087eff8635ad615cbe49222ae7748cd4a7c7aa78ae4eff514535afc6"
-    },
-    {
-      "file": "poketcg64-trailer-no-crt.mp4",
-      "sha256": "7d6ffdc6dc7daffbc3e5c19887f6a733d35373318960f74ffa91c17ae18dcc89",
-      "video": {
-        "codec_name": "h264",
-        "codec_type": "video",
-        "width": 1440,
-        "height": 1080,
-        "pix_fmt": "yuv420p",
-        "r_frame_rate": "60/1",
-        "duration": "64.566667",
-        "nb_frames": "3874"
-      },
-      "aac_packet_payload_sha256": "4e94ff5e20a28ad90c1d51bacc7a9fb90abb4f21e3471cd17c5880ed70648a93",
-      "decoded_pcm16_sha256": "c8e93f72087eff8635ad615cbe49222ae7748cd4a7c7aa78ae4eff514535afc6"
-    }
+  "version": 4,
+  "reviewers": [
+    "root",
+    "integrate_cast_builds_sol"
   ],
-  "changed_cut_review": {
-    "intro": "15-frame fully readable dialogue hold removed; walk intact.",
-    "ronald": "Attack, damage and readable KO; no Prize instruction or selector.",
-    "club_and_hall_starts": "Actual frame pairs show Mark moving in all four rooms.",
-    "amy": "2.2-second clean hit/KO directly to medal.",
-    "audio": "Identical compressed/decoded tracks; complete original fanfare/title cadence retained."
-  },
-  "shadow_fix_included_in_recorded_visuals": false,
-  "audio_audition": false
+  "review": "Viewed twelve shot samples of fresh captures: revised models visible in opening and clubs, actual duel knockouts, medal, Hall and title intact; no desktop or window chrome.",
+  "timing": "Existing 64.566667-second edit and encoded audio retained; 3874 video frames verified.",
+  "capture": "Local native post-VI without CRT, selected by user."
 }

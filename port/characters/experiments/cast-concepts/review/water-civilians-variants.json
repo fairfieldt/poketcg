@@ -1,0 +1,91 @@
+{
+  "passed": true,
+  "amy": {
+    "native_world_vertices_checked": 351,
+    "batches_and_pivots_checked": 6,
+    "uvs_colors_indices_parts_texture_bytes_preserved": true,
+    "canonical_source": "models/amy/i3/amy",
+    "derived_pose": "models/amy/i3/amy/poses/lying",
+    "native_capture": "models/amy__lying/i3/native"
+  },
+  "swimmer": {
+    "canonical": "models/swimmer/i3b/swimmer.blend",
+    "head_variant": "Amanda",
+    "shared_body": [
+      {
+        "sara": "i1",
+        "amanda": "i1",
+        "identical_meshes": 5,
+        "body_rig_materials_identical": true
+      },
+      {
+        "sara": "i2",
+        "amanda": "i2",
+        "identical_meshes": 5,
+        "body_rig_materials_identical": true
+      },
+      {
+        "sara": "i3",
+        "amanda": "i3",
+        "identical_meshes": 5,
+        "body_rig_materials_identical": true
+      },
+      {
+        "sara": "i3b",
+        "amanda": "i3",
+        "identical_meshes": 5,
+        "body_rig_materials_identical": true
+      },
+      {
+        "sara": "i3b",
+        "amanda": "i3b",
+        "identical_geometry_rig": true,
+        "only_material_change": "garment blue -> original yellow",
+        "material_changes": [
+          {
+            "mesh": "continuous garment joined shoulders",
+            "material": "garment",
+            "sara": [
+              0.12941176470588237,
+              0.6470588235294118,
+              0.8705882352941177
+            ],
+            "amanda": [
+              0.9058823529411765,
+              0.7764705882352941,
+              0.1607843137254902
+            ]
+          },
+          {
+            "mesh": "joined leg shoe",
+            "material": "garment",
+            "sara": [
+              0.12941176470588237,
+              0.6470588235294118,
+              0.8705882352941177
+            ],
+            "amanda": [
+              0.9058823529411765,
+              0.7764705882352941,
+              0.1607843137254902
+            ]
+          },
+          {
+            "mesh": "joined leg shoe",
+            "material": "garment",
+            "sara": [
+              0.12941176470588237,
+              0.6470588235294118,
+              0.8705882352941177
+            ],
+            "amanda": [
+              0.9058823529411765,
+              0.7764705882352941,
+              0.1607843137254902
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

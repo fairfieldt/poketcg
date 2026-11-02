@@ -1,11 +1,12 @@
 {
   "model": "chap",
-  "triangles": 804,
-  "vertices": 1351,
-  "batches": 6,
-  "linked_parts": 22,
+  "triangles": 560,
+  "vertices": 459,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "chap"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "90fa9d39001976bcded3239e5331f26b76a241fcd51b7968bfe227e035895163",
+  "recipe": "reviewed-cast-manual"
 }

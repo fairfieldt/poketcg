@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "gboy2_boy_face",
+    "gboy2_boy_shirt"
+  ],
+  "vertices": 460,
+  "triangles": 560,
+  "batches": 7
+}

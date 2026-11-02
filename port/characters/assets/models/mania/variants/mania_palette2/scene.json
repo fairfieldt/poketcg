@@ -1,11 +1,12 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_smile"
+    "mp3_face",
+    "mp3_shirt"
   ],
   "actors": [
     {
-      "name": "mania",
+      "name": "mania_palette2",
       "model": 22,
       "x": 0,
       "z": 0,
@@ -52,45 +53,32 @@
       ]
     }
   },
-  "design": "large swept angular forelock, short-sleeved shirt",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 21
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 21,
     "gfx_sha256": "e4fcafc558d76f75835c384bb974d7de6eba36c202d40dfebd13f65dee470336",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "mania \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_smile",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "mania_palette2",
   "pose": "standing",
   "component": null,
-  "vertices": 1029,
-  "triangles": 578,
-  "batches": 6
+  "vertices": 459,
+  "triangles": 560,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/mania_palette2/i3/mania_palette2/scene.l64",
+    "sha256": "b29e366efd08bb77b88d98436864d4e12e42ab7e6ccfab0d7eab45e37952ad9b",
+    "selection": "mania_palette2"
+  }
 }

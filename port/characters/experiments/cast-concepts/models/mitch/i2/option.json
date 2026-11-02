@@ -1,0 +1,13 @@
+{
+  "id": "mitch_i2",
+  "label": "mitch 2",
+  "concept_reference": "../../../concepts/mitch.png",
+  "iteration": 2,
+  "revision": {
+    "eye_shape": "slant",
+    "eye_width": 8,
+    "eye_height": 10,
+    "crown_rise": 0.035,
+    "review": "Native i1: overly round eyes and small uniform hair crown; angular athletic eyes and staggered crown height."
+  }
+}

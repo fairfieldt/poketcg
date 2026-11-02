@@ -1,0 +1,1 @@
+Final actual native comparison inspected. Thin red headband, broad side-swept black hair, pink shirt and dark skirt distinct. Long hair remains full at back and sides and stops at shoulders; feet grounded and shoulder junctions clean.

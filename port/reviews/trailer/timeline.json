@@ -98,20 +98,18 @@
     0.25,
     0.65
   ],
-  "version": 3,
-  "existing_footage_only": true,
+  "version": 4,
+  "existing_footage_only": false,
   "intro_removed_vi": [
     2466,
     2481
   ],
-  "clock": "Native VI/60, source marker aligned; recorded frames held/dropped, no motion interpolation.",
+  "clock": "Matched ordered native script/event markers map fresh recorded PTS to v3 semantic timeline; held/dropped frames only, no motion interpolation.",
   "presentation_latency_seconds": 0.04,
   "phase_uncertainty": "Approximately one 60 Hz frame; semantic rather than pixel-phase synchronization.",
   "audio": {
-    "opening": "One continuous original music 09 stem spans the 15-frame dialogue trim without a musical splice.",
-    "clubs": "One continuous original Club 1 stem across Lightning, Fire, Water.",
-    "medal": "Complete original 5.396-second fanfare, unfaded; Hall music enters afterward.",
-    "title": "Original closing phrase 24.636719\u201334.05 seconds.",
-    "comparison": "Common AAC encoded once, then copied without re-encoding into both MP4 files."
-  }
+    "source": "v3 encoded AAC copied unchanged; original game soundtrack/effects",
+    "note": "Existing edit and event timing retained through semantic marker alignment."
+  },
+  "capture": "Fresh local Ares post-VI Metal output, no CRT shader. Window chrome/shadow cropped."
 }

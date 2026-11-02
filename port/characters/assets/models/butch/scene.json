@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_mature"
+    "gbutch3_butch_face",
+    "gbutch3_butch_shirt"
   ],
   "actors": [
     {
@@ -41,45 +42,32 @@
       ]
     }
   },
-  "design": "wide head and thick short dark hair, yellow shirt",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 21
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 20,
     "gfx_sha256": "68207c9ad9073db8e2c63cb97a792a21da729aea4df43c84bb3c4fc157ee99a7",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "butch \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_mature",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "butch",
   "pose": "standing",
   "component": null,
-  "vertices": 1058,
-  "triangles": 590,
-  "batches": 6
+  "vertices": 460,
+  "triangles": 560,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/butch/i3/butch/scene.l64",
+    "sha256": "40c092a77f52dafd9359822fb7253eb67ccc9d79a1c3b5877eeca529cf8350bc",
+    "selection": "butch"
+  }
 }

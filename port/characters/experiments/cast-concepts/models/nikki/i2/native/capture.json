@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-nikki-i2.z64",
+  "rom_sha256": "1f9dbeade46eadd063f4a64e815150077b0a38fc8cedfed00924baa446946b7b",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1351296,
+      "free": 1385088
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346152,
+      "free": 1390232
+    }
+  ],
+  "subject": "nikki",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "6e30fa8791ce787cb7b3205fa085878704fb41ae06002180de9ce64ab3225641",
+    "candidate": "c01304e0cb752777856ebfa172c342ed678654060c88b3fcf5ea81c466a4ce36"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "id": "imakuni_i2",
+  "label": "imakuni 2",
+  "concept_reference": "../../../concepts/imakuni.png",
+  "iteration": 2,
+  "revision": {
+    "hood_round": true,
+    "face_height": 0.45,
+    "review": "Native i1: hood points look cat-like and lower mask covers open mouth; blunt ear tops and remap face opening."
+  }
+}

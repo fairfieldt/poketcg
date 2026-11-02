@@ -1,11 +1,12 @@
 {
   "model": "lass3",
-  "triangles": 730,
-  "vertices": 1323,
+  "triangles": 612,
+  "vertices": 415,
   "batches": 6,
-  "linked_parts": 28,
+  "linked_parts": 0,
   "appearances": [
     "lass3"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "d6ea8b7850891f759075b1114a06084362ae721cd9362aab311a57c30e9e698d",
+  "recipe": "reviewed-cast-manual"
 }

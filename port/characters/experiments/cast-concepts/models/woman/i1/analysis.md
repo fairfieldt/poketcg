@@ -1,0 +1,1 @@
+Actual native comparison inspected. Long red dress and adult proportions read, but waist belt absent and bob too close-cropped. Next round adds narrow flush waist pigment band and richer hair side coverage.

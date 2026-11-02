@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-lass3-i2.z64",
+  "rom_sha256": "5f6894c0de42b2e86e52ec43dd64ab246acb58b2ae650b42490f7763a03befb6",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1361608,
+      "free": 1374776
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1342792,
+      "free": 1393592
+    }
+  ],
+  "subject": "lass3",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "98ed4ff7a1556686651965ec91a313e544944e117186842933ade7db665dc6e0",
+    "candidate": "782a9602857c78fc673c3bd884127341c16f1ee61f60514773ad5d13146b9de3"
+  }
+}

@@ -1,0 +1,1 @@
+Final actual native comparison inspected. Blue cap has a joined front projection; black hair reaches shoulders, blue top and short dark skirt remain clear. Shoulder and shoe widths now stable while walking, cap/head remains a single closed exterior.

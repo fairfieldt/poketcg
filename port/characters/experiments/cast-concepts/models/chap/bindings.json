@@ -1,0 +1,57 @@
+{
+  "NPC_CHAP1": {
+    "npc_id": 63,
+    "model": "chap",
+    "appearance": "chap",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 26,
+    "native_asset": "assets/models/chap/scene.l64",
+    "blender_file": "assets/models/chap/chap.blend",
+    "heading": null
+  },
+  "NPC_CHAP2": {
+    "npc_id": 66,
+    "model": "chap",
+    "appearance": "chap",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 26,
+    "native_asset": "assets/models/chap/scene.l64",
+    "blender_file": "assets/models/chap/chap.blend",
+    "heading": null
+  },
+  "NPC_CHAP3": {
+    "npc_id": 71,
+    "model": "chap",
+    "appearance": "chap",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 26,
+    "native_asset": "assets/models/chap/scene.l64",
+    "blender_file": "assets/models/chap/chap.blend",
+    "heading": null
+  },
+  "NPC_CHAP4": {
+    "npc_id": 87,
+    "model": "chap",
+    "appearance": "chap",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 26,
+    "native_asset": "assets/models/chap/scene.l64",
+    "blender_file": "assets/models/chap/chap.blend",
+    "heading": null
+  },
+  "NPC_CHAP5": {
+    "npc_id": 98,
+    "model": "chap",
+    "appearance": "chap",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 26,
+    "native_asset": "assets/models/chap/scene.l64",
+    "blender_file": "assets/models/chap/chap.blend",
+    "heading": null
+  }
+}

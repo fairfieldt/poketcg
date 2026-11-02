@@ -1,11 +1,12 @@
 {
   "model": "butch",
-  "triangles": 590,
-  "vertices": 1058,
-  "batches": 6,
-  "linked_parts": 21,
+  "triangles": 560,
+  "vertices": 460,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "butch"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "12987f5357d17bceb93fb4563f2b73218efe4447fb3e98f2008d9429c98cc417",
+  "recipe": "reviewed-cast-manual"
 }

@@ -1,0 +1,1 @@
+Final actual native portrait/turn/talk/room inspected. Swept connected blue bob with deeper back, sleeveless white dress/blue hem and blue shoes preserve Amy identity. Broad side lock and grounded feet read at gameplay scale, clean shoulders and bare arms. This final standing mesh is the only source for the separately derived lying pose.

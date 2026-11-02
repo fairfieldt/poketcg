@@ -1,0 +1,1 @@
+Actual eight-frame native comparison inspected. White shorts split and cap goggles read. Closed smiling eyes clear, but mouth faint and side scalp too dark; feet small. Next round darkens/widens smile, extends cap side coverage, widens feet and shoulders.

@@ -1,0 +1,50 @@
+{
+  "head_bottom": 1.46,
+  "width": 0.37,
+  "chin": 0.195,
+  "hip": 0.84,
+  "hem": 0.8,
+  "body_width": 0.29,
+  "shoulder": 0.3,
+  "shirt": [
+    0.88,
+    0.1,
+    0.21
+  ],
+  "hair": [
+    0.17,
+    0.11,
+    0.085
+  ],
+  "trousers": [
+    0.17,
+    0.19,
+    0.25
+  ],
+  "crown": 0.72,
+  "sweep": -0.035,
+  "hairline": {
+    "0": 0.42,
+    "30": 0.55,
+    "60": 0.46,
+    "90": 0.38,
+    "120": 0.29,
+    "150": 0.28,
+    "180": 0.27
+  },
+  "nose": 0.065,
+  "collar": true,
+  "hood": true,
+  "two_points": false,
+  "brow_end": 3,
+  "mouth": "smirk",
+  "rear_cheek": 0.17,
+  "ear_plane": 0.327,
+  "upper_band": 0.63,
+  "eye_h": 9,
+  "eye_shape": "rect",
+  "iris_w": 3,
+  "hood_neck": true,
+  "pupil_h": 6,
+  "highlight": true
+}

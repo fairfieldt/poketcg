@@ -1,0 +1,36 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/clerk/i3/clerk/scene.l64",
+  "sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624",
+  "triangles": 564,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "w3_clerk_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    },
+    {
+      "name": "w3_clerk_uniform.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "head_edge_incidence": {
+    "2": 204
+  },
+  "head_closed": true
+}

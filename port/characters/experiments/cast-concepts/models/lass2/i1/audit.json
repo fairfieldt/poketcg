@@ -1,0 +1,28 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/lass2/i1/lass2/scene.l64",
+  "sha256": "3a88cbea11dba0f02f7909135c82d37c5255ca6b52ced2dcd9feea028e0dfb88",
+  "triangles": 528,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "w1_lass2_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "head_edge_incidence": {
+    "2": 156
+  },
+  "head_closed": true
+}

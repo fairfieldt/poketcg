@@ -1,0 +1,15 @@
+{
+  "method": "built-in image_gen",
+  "references": [
+    "src/gfx/duelists/player.png",
+    "port/reviews/n64-style-characters/sheets/view-portrait-mark.png"
+  ],
+  "concepts": [
+    "a-adventure",
+    "b-compact",
+    "c-lean",
+    "d-angular"
+  ],
+  "approved_by_user": "a-adventure",
+  "note": "Illustrative references; actual exported polygon and texture budgets require independent validation."
+}

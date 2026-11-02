@@ -1,0 +1,1 @@
+Actual round 2 native comparison inspected. Shoulder-length black hair and integrated blue cap projection visible from profile, source blue top/skirt retained. Side hair flares slightly and shoulder/shoes narrow. Next round keeps long hair width stable, broadens shoulders and shoes.

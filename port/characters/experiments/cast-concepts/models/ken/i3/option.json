@@ -1,0 +1,27 @@
+{
+  "id": "ken_i3",
+  "label": "ken 3",
+  "concept_reference": "../../../concepts/ken.png",
+  "iteration": 3,
+  "revision": {
+    "front_locks": [
+      2.03,
+      1.85,
+      1.94,
+      1.94,
+      1.85
+    ],
+    "eye_shape": "slant",
+    "eye_width": 7,
+    "eye_height": 10,
+    "mouth_width": 8,
+    "review": "Native i2: source center part now reads; lower jaw still too pinched and mouth faint; broaden mature jaw and strengthen firm mouth.",
+    "chin_width": 0.21,
+    "jaw_width": 0.29,
+    "mouth_rgb": [
+      82,
+      45,
+      29
+    ]
+  }
+}

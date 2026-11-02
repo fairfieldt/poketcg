@@ -1,0 +1,1 @@
+Actual native portrait/turn/talk/room inspected against generated clerk concept and old-family baseline. Face is cleaner, but blue bob reads short pixie, costume lacks darker uniform side panels and collar, shoulders/shoes too small. Next round enlarges owning head and paints flush uniform panels/collar; deeper bob sides need further work.

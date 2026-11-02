@@ -527,6 +527,10 @@ int main(void)
  extern void adventure_camera_preview(surface_t *,void (*)(surface_t *,const char *));
  adventure_camera_preview(&depth,capture);
  for(;;)adventure_audio_poll();
+#elif ADVENTURE_DIAGNOSTIC == 18
+ extern void adventure_model_options_preview(surface_t *,void (*)(surface_t *,const char *));
+ adventure_model_options_preview(&depth,capture);
+ for(;;)adventure_audio_poll();
 #elif ADVENTURE_DIAGNOSTIC == 11
  extern void adventure_leads_preview(surface_t *,void (*)(surface_t *,const char *));
  adventure_leads_preview(&depth,capture);

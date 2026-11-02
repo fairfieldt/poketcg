@@ -1,11 +1,12 @@
 {
   "model": "nikki",
-  "triangles": 584,
-  "vertices": 1066,
-  "batches": 6,
-  "linked_parts": 24,
+  "triangles": 540,
+  "vertices": 448,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "nikki"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "f681c6b5c7c41340524e66f7aaaa4dd0208cf6ed9700bb27887c91c2e862b55a",
+  "recipe": "reviewed-cast-manual"
 }

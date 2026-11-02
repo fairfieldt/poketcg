@@ -1,0 +1,14 @@
+{
+  "id": "b_portrait_i1",
+  "label": "b_portrait_i1",
+  "concept": "b_portrait",
+  "iteration": 1,
+  "concept_method": "direct 3D authoring; no generated raster art",
+  "changes": "Authored distinct head/body proportions, tapered jaw, integrated nose and painted fringe; close backward cap with centered rear bill.",
+  "supporting_actor_sha256": {
+    "dr_mason": "60dcddbf43854f294521be95493d2af14677686706a59c1fc5e0196c769a74ef",
+    "ronald": "f0a95033bdb48f7299f5c4d8666e0658f2a8b5913d4de302d4b907e05efeda54"
+  },
+  "mark_sha256": "1ce2b8a9d4f63af95e2b8853db0aaf335e61b7ae5afeb369b743c74e453f5d8b",
+  "review_status": "capture pending"
+}

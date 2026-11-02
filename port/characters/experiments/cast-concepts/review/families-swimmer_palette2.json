@@ -1,0 +1,79 @@
+{
+  "passed": true,
+  "complete": true,
+  "expected_families": 1,
+  "families": [
+    {
+      "slug": "swimmer_palette2",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "a1ca139ca1ad31c5c742b90c996aa86331049218be393baa76c49598ea7f3e84",
+          "rom_sha256": "ef92525ab2a23c5018664e9ba2107fa437764456f7d34718032a47b9a758a992",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "14358ac3e6f9103153269ff8ab4438a94f11c80598481eca7ef473cf49d4f844",
+          "rom_sha256": "65c3ac9bb270b3961cee99a3861644120fa2f8434aa9ba433c621814d39b722f",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "f273189fc353b68eb179b589ef3436ced7b58655fddcced46de6cc13d70ad9da",
+          "rom_sha256": "e78d2387008bf6e07ef14a8dcf934c91bb1566df863af980cd9d77fe1dfcce83",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3b",
+          "triangles": 528,
+          "model_sha256": "36da5c6037274a76c5f7896d7aaaa38b9473b370979c7fcf4f6325098a2fb8e4",
+          "rom_sha256": "96aeac2f1c5a61ed73b1182bec181740693cdfbad44a660eaeb9318fafb99cb1",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3b"
+    }
+  ],
+  "missing": [],
+  "source_runtime_files_unchanged": 721
+}

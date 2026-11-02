@@ -1,7 +1,9 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_smile"
+    "glad3b_lad_face",
+    "glad3b_lad_cap",
+    "glad3b_lad_shirt"
   ],
   "actors": [
     {
@@ -44,45 +46,32 @@
       ]
     }
   },
-  "design": "green cap with short brim, green shirt and shorts",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": true
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 25
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 18,
     "gfx_sha256": "708caebe4708e43593f6c464fde8363dd78347cab27793e1e9aef6eda94192ad",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "lad \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_smile",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "lad",
   "pose": "standing",
   "component": null,
-  "vertices": 1108,
-  "triangles": 662,
-  "batches": 6
+  "vertices": 514,
+  "triangles": 572,
+  "batches": 8,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/lad/i3b/lad/scene.l64",
+    "sha256": "af6e16730cec6d5d8abf85218064b746486102dca688bbfd38ab746373dc2e9d",
+    "selection": "lad"
+  }
 }

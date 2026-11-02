@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_gentle"
+    "courtne3_face",
+    "courtne3_top"
   ],
   "actors": [
     {
@@ -41,45 +42,32 @@
       ]
     }
   },
-  "design": "pink long hair with lifted side curls, high-neck Grand Master dress",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 26
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 13,
     "gfx_sha256": "ad3ce2cb9ed8c370e988967bbd8e060df01326cb9ad4b849e94118f49ec876fb",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "courtney \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_gentle",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "courtney",
   "pose": "standing",
   "component": null,
-  "vertices": 1259,
-  "triangles": 672,
-  "batches": 6
+  "vertices": 453,
+  "triangles": 540,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/courtney/i3/courtney/scene.l64",
+    "sha256": "6f6fa1a170baf2d3b6391245dc5dce3c7ae5e0dbbaa060ff93a5270b26eea6b2",
+    "selection": "courtney"
+  }
 }

@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "model": "mitch",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "mitch2_face",
+    "mitch2_top"
+  ],
+  "vertices": 451,
+  "triangles": 528,
+  "batches": 7
+}

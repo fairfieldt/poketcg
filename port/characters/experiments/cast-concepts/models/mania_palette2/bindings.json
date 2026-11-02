@@ -1,0 +1,13 @@
+{
+  "NPC_MATTHEW": {
+    "npc_id": 27,
+    "model": "mania",
+    "appearance": "mania_palette2",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 22,
+    "native_asset": "assets/models/mania/variants/mania_palette2/scene.l64",
+    "blender_file": "assets/models/mania/mania.blend",
+    "heading": null
+  }
+}

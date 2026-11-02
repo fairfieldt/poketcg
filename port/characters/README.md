@@ -1,204 +1,71 @@
 # Pokémon TCG character models
 
-All 115 NPC entries from the sprite atlas are covered by **39 authored models**:
-37 humans and two prop families. They provide 42 appearances without creating
-duplicate models for NPC aliases or palette changes. Dr. Mason and Ronald retain
-the approved designs and colors from the Lightning character demo.
+All 115 NPC entries use 39 canonical models: 37 humans and two prop families.
+The production human cast uses the [reviewed concepts and native comparisons](experiments/cast-concepts/index.html), including Mark A3d. The torch and legendary card retain their original assets.
 
-Open [assets/cast.blend](assets/cast.blend) to inspect the unique cast together.
-The [model index](MODELS.md) links every individual Blender source and its aliases.
-Keep the `assets` directory structure intact: the cast links the individual
-models, and those models link reusable meshes from `assets/parts.blend`.
-Blender 5.2.1 and Fast64 2.6.0 were used. Enable Fast64 to edit/preview its
-materials. The native assets and ROM do not require Blender or Fast64.
+Open [assets/cast.blend](assets/cast.blend) to inspect the linked canonical cast.
+Individual editable sources are in `assets/models/<family>/<family>.blend`.
+Keep the directory structure intact when moving the cast file.
 
-![Front/back review sheet](review/character_models.png)
+![Current Blender front/back previews](review/character_models.png)
 
-## What is shared
+[bindings.json](bindings.json) preserves every original NPC alias, palette,
+pose, component and heading. Identical NPCs share one canonical asset. Mania
+and Boy retain alternate palettes. Sara and Amanda share their body and rig,
+with distinct editable heads and blue/yellow swimsuits. Amy's lying pose derives
+from her standing mesh. Murray's west-facing entry retains heading 270.
 
-- **Whole models:** exact sprite duplicates are aliases in [bindings.json](bindings.json).
-  For example, Sam, the technicians, Joseph, David, Erik and Aaron share the same
-  sprite, so they share one technician model. Ronald's three IDs share one model.
-- **Geometry:** linked mesh pieces provide reusable character parts; current
-  counts are recorded in [sharing validation](review/sharing.json).
-  Heads, face surfaces, hands, ears, limb sections, shoes, torso
-  shapes, coat/skirt shapes and suitable hair/cap pieces share mesh datablocks.
-  Distinct body proportions, hair silhouettes, accessories and clothing panels
-  remain explicit in [tools/designs.py](tools/designs.py).
-  Legacy face and clothing panels are baked with their owning head or
-  torso into one exterior surface. The linked authoring pieces remain hidden
-  in each editable model; only their material-preserving exterior is exported.
-  Uncapped hair, ears and animated limbs retain normal solid intersections.
-  Capped heads own the hair, crown, brim and attached badge in one closed
-  exterior. Hidden scalp and head faces are removed. `tools/check_caps.py`
-  verifies final native headwear faces have an inside and outside using winding
-  numbers, with no exported hidden scalp vertices.
-  [Cap validation](review/cap_validation.json) records this camera-independent
-  exterior proof for capped families.
-  Ronald's cap, spikes and fringe also share the owning head exterior. His
-  upper scalp uses the hair pigment so small exposed facets cannot appear as
-  skin islands. [Hair validation](review/ronald-hair/validation.json) checks the
-  final native shell, hairline and unchanged animated limbs.
-- **Materials:** facial styles use shared or character-specific 32×32 RGBA16
-  textures. Opaque facial backgrounds use the same RGBA16-safe pigment as
-  each character's solid head, ears, neck and limbs. Eye whites, pupils, glasses
-  and mouths retain their painted colors. Faces and solids receive the same
-  native directional lighting; palette images use Non-Color input in Blender
-  so its preview agrees with the solid Fast64 material. UVs, the coordinate
-  system and five rigid animation groups match the existing libdragon renderer.
-- **Story leads:** Mark, Ronald, Dr. Mason and Imakuni have distinct original
-  facial paint. Mark's remodeled head preserves his approved facial artwork.
-  Mark has a separate face
-  style rather than changing every smiling NPC. [Lead-face comparison and
-  preservation checks](review/distinctive-leads/README.md) distinguish texture
-  inspection and Blender previews from native gameplay captures.
-- **Palettes:** Matthew and Robert/Jonathan/Lad 2 are material variants of the
-  Mania and Boy families. Sara and Amanda share the Swimmer body and rig,
-  with portrait-specific head presets in one canonical `.blend`.
-- **Poses/components:** Amy stands or lies down with the same geometry; Murray's
-  fixed west-facing entry reuses his regular model. The six legendary-card NPC
-  entries select pieces of one card-and-sparks assembly. The torch is a separate
-  faceted 3D prop.
+Each human model has five rigid animation parts and stays below 900 triangles.
+The native L643 exports use the original canonical runtime IDs; the world import
+assigns its separate runtime IDs and generates independent lazy-loaded scenes.
+The web and N64 builds consume those same world exports. Native packing bakes
+mesh pieces into each appearance; aliases still reuse their complete asset.
 
-The native L643 format stores final positions and baked vertex colors. Standalone
-exports therefore bake shared parts into each asset for the existing renderer;
-they do not provide cross-model geometry-buffer sharing at runtime. Whole-NPC
-aliases still resolve to the same asset, and textures remain shared. Palette,
-pose and component binaries are derived exports, not additional authored models.
+## Edit and verify
 
-The duplicate audit uses ROM sprite-graphics hashes, animation palettes and
-directionless flags, rather than character names. See [catalog.json](catalog.json)
-and the [original sprite references](references/unique_sprites.png).
+The reviewed Blender files use ordinary materials and packed textures. Mesh
+objects retain `rigid_part` and `animation_pivot` properties. Coordinates are
+X east, Y south, Z up; native coordinates are X east, Y up, Z south.
 
-## Files and runtime bindings
-
-Each `assets/models/<name>/` contains:
-
-- `<name>.blend`: one editable canonical model, with linked reusable parts.
-- `scene.l64` and `scene.json`: native indexed meshes, material/texture names,
-  part pivots, provenance and appearance/pose metadata.
-- `front.png` and `back.png`: actual Blender renders used for review.
-- `variants/`, `poses/` or `components/` where that model needs derived exports.
-
-Textures are stored once in `assets/textures/`. To load a standalone asset with
-the Lightning demo renderer, copy its `scene.l64` into DragonFS and convert its
-listed textures to RGBA16 sprites under `textures/`. Call `scene_draw_actor`
-using its `runtime_model` ID. [bindings.json](bindings.json) resolves every NPC
-constant to the correct asset, runtime ID, appearance, pose and optional heading.
-Amy's binding selects the baked lying pose; Murray's fixed entry adds heading 270.
-
-Parts 0–4 are body/head, left leg, right leg, left arm and right arm. Blender is
-X east, Y north, Z up, facing -Y; native coordinates are X east, Y up, Z south,
-facing +Z. Parts preserve the existing rigid walk-animation contract.
-
-## Edit or regenerate
-
-```sh
-make model NAME=nikki   # rebuild only this unique family and validate it
-make models            # process families sequentially in original atlas order
-make test             # includes actual native skin-palette/shade checks
-make test-blender     # checks linked face-image pixels and skin materials
-make sheet
-make cast
-```
-
-`make models` skips already verified, unchanged recipes. To force all models:
-
-```sh
-python3 tools/build_all.py --force
-```
-
-To rebuild the shared pieces use `make parts`; to redo the ROM duplicate audit
-use `make catalog`. Regeneration replaces generated model files, so preserve
-manual edits separately before rerunning their recipes.
-
-To export a saved manual edit, open its `.blend` in Blender and run in the Python
-console (replace `REPO` with this checkout):
+Select an appearance or pose in Blender's Python console:
 
 ```python
 import sys
-from pathlib import Path
-sys.path.insert(0, 'REPO/port/frontends/n64/lightning-characters/tools')
-import export_scene
-export_scene.OUT = Path('OUTPUT_DIRECTORY')
-export_scene.export_scene()
-```
-
-For a material or pose override in an opened canonical model:
-
-```python
 sys.path.insert(0, 'REPO/port/characters/tools')
 import apply_variant
-apply_variant.apply('swimmer_palette2')  # on the Swimmer model
-# On Amy: apply_variant.apply(pose='lying')
+apply_variant.apply('swimmer_palette2')  # Amanda head and yellow swimsuit
+apply_variant.apply('swimmer')           # Sara head and blue swimsuit
+# In Amy's source:
+apply_variant.apply(pose='lying')
+apply_variant.apply(pose='standing')
 ```
 
-This changes materials/transforms without copying mesh data. The helper also
-updates pivots for export. After manual edits, regenerate native variant/pose
-exports before rebuilding the gallery.
+`authoring.json` beside each native export retains its editable mesh/UV/material
+recipe. The reviewed study source scripts and iteration evidence remain in
+`experiments/`. `tools/promote_cast.py` reproduces promotion from the selected
+review manifests; it replaces canonical sources, so run it only when deliberately
+restoring those reviewed selections. Then run `tools/prepare_cast_blends.py` in
+Blender to attach production identity and appearance controls.
 
-## Water Club and Mark authoring
-
-Amy, Joshua, Sara/Amanda and Mark use the scoped `tools/water_*.py` recipes.
-Their closed heads own the skin, hair and painted face regions directly.
-The shared helper places facial features within a front-centered 120-degree
-UV span and 80% vertical extent; the skin surface still wraps to the temples.
-The five rigid animation groups and original joint pivots remain intact.
-
-Swimmer's saved model contains Sara's swim cap/goggles and Amanda's side-parted
-bob as selectable head presets, based on their original duel portraits.
-`apply_variant.apply('swimmer_palette2')` selects Amanda's saved head, face
-texture table and skin metadata while retaining the shared body. Selecting
-`'swimmer'` restores Sara. Both heads remain editable in the same file.
-
-Run `python3 tools/check_water_cast.py` from this directory to check these four
-families. It validates raw surfaces and the actual N64 packing rule:
-`truncf(float32(local_position * 32))`, with joint pivots applied afterward.
-Checks include closed outward heads, duplicate/coplanar/degenerate surfaces,
-skin pigments, texture memory, rig/pose reuse and the scoped head-variant
-exception. [Swimmer preset proof](../reviews/water-cast/swimmer-blender-presets.json)
-records a saved-model Sara → Amanda → Sara export roundtrip.
-
-Native export validation also rejects duplicate and degenerate triangles across
-canonical and derived exports. The exterior bake preserves facial-feature pixels, pigments,
-all four limb meshes, UVs and joint pivots; it removes a duplicated torso in the
-bodysuit recipe. [Exterior validation](review/exterior_validation.json) records
-per-export counts and hashes.
-
-When changing a skin material, run `skin.prepare_skin` before export to regenerate
-its matching opaque facial background. It preserves facial-feature pixels and
-uses a palette-specific texture name, so another character's skin tone is not
-overwritten. Normal model builds do this automatically. The shared exporter only
-lights textures explicitly marked `native_lit_texture`; room textures keep their
-existing shading. [Before/after review](review/skin_consistency.png) compares four
-characters, and `tools/check_skin.py` checks all native face vertices against the
-solid-skin pigment and directional-light rule. The earlier skin-only pass is recorded in
-[skin validation](review/skin_validation.json), including its geometry/UV/rig
-hashes and historical 49-export native-gallery evidence.
-[Exterior preservation](review/exterior_preservation.json) verifies that the
-current bake retains all limb geometry, UVs, colors and pivots, plus every human
-family’s pigment and facial-feature pixels.
-
-## N64 viewer and verification
+The older procedural `build_model.py` recipes are historical. `make models`
+validates reviewed manual sources without replacing them. Preserve manual edits
+before deliberately promoting reviewed exports again.
 
 ```sh
-make gallery
-open -a ares gallery/cast.z64
-make capture
+make test
+make test-blender
+make cast
+"/Applications/Blender.app/Contents/MacOS/Blender" --background --python tools/render_cast_sources.py
+make sheet
+python3 ../world3d/tools/sync_characters.py
+python3 ../world3d/tools/build_character_lods.py
 ```
 
-D-pad or C-left/right selects a model; stick X rotates it; hold B for the walk
-pose; START resets rotation. The viewer includes each appearance and derived pose
-or component once. It uses the existing Lightning libdragon loader and renderer.
-The existing Lightning scenes are not populated with the entire cast.
-
-Validation covers every NPC binding, triangle indices, finite geometry, UVs,
-degenerate triangles, texture-memory limits, five-part rigs, palette geometry
-identity and front/back renders. Humans use 518–910 triangles; the torch has 68
-and the card assembly 128. Each texture occupies 2 KiB of the RDP's 4 KiB TMEM.
-
-The original **49 native exports** were rendered in ares with **4 MiB RAM**, four headings
-and a rigid walking pose each, with GL error assertions enabled. Historical
-RDP framebuffer captures are in [review/n64](review/n64); the tested ROM hash and
-complete verified-entry list are in [review/n64_validation.json](review/n64_validation.json).
-These tests do not establish performance on physical hardware.
+[Integration proof](review/cast-integration.json) checks every promoted native
+export against the selected study bytes with only its model ID remapped, all
+115 original bindings, unchanged prop files and all 49 runtime exports.
+[Editable-source checks](review/cast-blender-verification.json) cover the 37
+canonical models, five-part rigs, shared bodies, head selection, palettes and
+Amy's pose. Historical study captures use the actual N64 renderer in ares; they
+do not establish physical-console performance. Native and browser build results
+are recorded in [the integration build report](review/cast-builds.json).

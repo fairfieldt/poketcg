@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-rod-i2.z64",
+  "rom_sha256": "dd8a837a106bd5074ece3ce46b06177c39d30ccb629136a46831469b7ca457b0",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1364256,
+      "free": 1372128
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346328,
+      "free": 1390056
+    }
+  ],
+  "subject": "rod",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "ad396076509cf7bc46c1dbc0658cc05fa7d120ec9f3e99420ab4b5facc0a2a37",
+    "candidate": "471ce6e6f1ae5b60eb2846733ec466be606eed8fdf2918d4ac45117c95748330"
+  }
+}

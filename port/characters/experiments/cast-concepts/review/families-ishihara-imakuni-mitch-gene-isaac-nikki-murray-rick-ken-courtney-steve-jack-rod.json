@@ -1,0 +1,711 @@
+{
+  "passed": true,
+  "complete": true,
+  "expected_families": 13,
+  "families": [
+    {
+      "slug": "ishihara",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "3bbb40c3069bc1c827ced7da344014e629d4ad7bdc134395c962bd027645e93b",
+          "rom_sha256": "ca1472e4a67b05b2cb51ac346bc1b6155997c14d63203eb9ccfb30a7c2e1d79b",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "ishihara owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "691a6176b5c5719b76def655bd382232fdf170fb540428421131156867a21221",
+          "rom_sha256": "9378f721e4d8856deb97dba2b20925e81a066fa4275992d514d22d140d60f3ee",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "ishihara owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "577ae3f1386f5554a8c52a7cb24987061bb377362aa51d9cbc3cc0f5a04c9308",
+          "rom_sha256": "476df5d22be97ca154549bb088f93c907d4c45dc26f0bf34e8ee6e20685ceeda",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "ishihara owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "imakuni",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 552,
+          "model_sha256": "d24329962fe2bdbc2c59ab18a0fc767a19ee7d5b3a857fa7803094a72db1e5c0",
+          "rom_sha256": "231eb6d98bd586e7cb727fd60422616c6edd79ce9d334ded855059319951ef5b",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "imakuni owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 552,
+          "model_sha256": "9df12aabe10bfcdf1515e7e31c2259a9e361c3b728547080c5717f4151c1e65d",
+          "rom_sha256": "69d71d5372a9ebdd5f2efe04123656f8076680e7c46f74d200a44e752c771d6a",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "imakuni owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 552,
+          "model_sha256": "5692c1f82fc53c0f74ad7c0934d7b42a7b30c17a3adebae7b503ca2080acdd7d",
+          "rom_sha256": "b6077e32d266d30240796d0ad3e682ca6077bf73424c53da766fc796e86b3875",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "imakuni owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "mitch",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "083ec1bd5658578382378fadd55f9d947b17bb118287882448773e3aa6254834",
+          "rom_sha256": "8f7edfbd49164c9f3fc1afd935395432c8b562848d99a36df08ab577e5732bab",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "mitch owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "ca37095f8e4b8445744dbf3fb1233e7bdbeeb556def9771e3d567f823beb7191",
+          "rom_sha256": "6196503e6e743f26b5968b7b993653e18d493a89131779e1ad63c6274c927ddb",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "mitch owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "1181cf83029cc890adeec4bda7059efb2846a0b4090c66840a177375bb9018ac",
+          "rom_sha256": "c21dc45871dfa378b19e440e6772897176ffb6d71b2629d7cccd78e3de713454",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "mitch owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "gene",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "e94b77f00e124680ff4ac8295ea5a69c2d04e59e301b275a5ee573df02f91bd5",
+          "rom_sha256": "04b540aaf11bd259ed4fc8a380960d1849d4fac4795fa7f1baf3904dd1ae50e6",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "gene owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "3c477b97ed2fe2b5a0a2e15576ae6092ce936d69693e352ba0cbbab29ea5b873",
+          "rom_sha256": "1b62b16b654773bfce120a9bd1101ec2032de5848cecb539460706bf692c55e8",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "gene owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "a7c5a595c0c5f772da22bd95864aa9858e40d3f1d6293235afeee2b4a5e923b2",
+          "rom_sha256": "fda2c0d784dce55b2d966b9278c7a43088f92381a376a964faec8b723eb30a92",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "gene owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "isaac",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "d16c04747b4c6f2cb6dd1a0c03f95dca70391ca2c8fa323b7efa66455dc8d931",
+          "rom_sha256": "913a07cc1334a8b345f6600c92e65c70273fb5d590a5b581fe00d2cb3aa52506",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "isaac owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "99578593388b43095f2d6ba4d73b2a7806d5460a807095cdc78afc5d9755b0ec",
+          "rom_sha256": "ad015014c71557bf61f4a2e4b27c6144d36391713018443b3c526d3f79f33057",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "isaac owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "160cab180a4d802c57104a6c131c8b488aac97c22de93942c7e389c8668b6e6e",
+          "rom_sha256": "88817d3b66b36beb3f9c6a0bcd3c6e81d84ca6462bfe634aa4f5779240e0bad6",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "isaac owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "nikki",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 564,
+          "model_sha256": "0fbe804129d7c9899626984326e3c27eaab091036eddd34e65d00a00c1c1be64",
+          "rom_sha256": "87ddd580d919bee101c46ad71cf7b6289c2963bfc2032b9be0ae4b2f8fbfce23",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "nikki owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 540,
+          "model_sha256": "c01304e0cb752777856ebfa172c342ed678654060c88b3fcf5ea81c466a4ce36",
+          "rom_sha256": "1f9dbeade46eadd063f4a64e815150077b0a38fc8cedfed00924baa446946b7b",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "nikki owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 540,
+          "model_sha256": "4ecfb5502872ed3b17cc2bbb541528a6598a91958a9f0c65dda9704b700da3d2",
+          "rom_sha256": "d2877f7b2f827021eb1c2766dc03705e3b12553a0859e7e5c91b2edfdea38ffe",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "nikki owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "murray",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 564,
+          "model_sha256": "2370af0ec5c767380b19a6cd7100635c832b6ca554fb3b5126a9754dc70c3b50",
+          "rom_sha256": "833f923dec1360a94e78193e68fd9534137ab945873560290993c33932d93785",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "murray owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 540,
+          "model_sha256": "c4a468595fbae388122a57d3cc4af9bf4f0bea5f20635c6c0da4915b1149736f",
+          "rom_sha256": "8621a48539c74b2bed92768c3d9e05e8fe4d8658c5019af11547bc474f422131",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "murray owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 540,
+          "model_sha256": "f51488569a5d4d419b79b8b428c3b5ee255a8ac9b0a8ae57dc1aceccac2ca847",
+          "rom_sha256": "cb0a963af3bd7a144de52156f507957f9482b0a57baec352bdb6b5c483bdef3f",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "murray owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "rick",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "60f1b35658981842e42c0c6db3026c49ad7a2b7b9ba2441fc00f908cdb9064da",
+          "rom_sha256": "514824b9f49867229f13e7ecd20eaa5e0f225d5e071a92b130112e92804862e7",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "rick owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "597c208eeb2c9249adeaf023cc2d0f7d7067bc51a1e46ab1de8f1a66a49064b6",
+          "rom_sha256": "a34bf144be8f654e4bccaf74b3e46f492f026aa7c4346131ff519ed3797ef6f2",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "rick owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "2bb12bb168502c9c2f706acd48b2f69afdc64730709848a6f331ab068b5c384f",
+          "rom_sha256": "72b661db4554b0f3a6a4dcce496532b6d81a67427c480278c97814afe419c3a9",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "rick owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "ken",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "082503ea18ec0188514244eab4177e423ad3209d934c970cbd0d20d9e0971eec",
+          "rom_sha256": "d539d478e5f6f7a709d177ab72c8183d84cb0acbe767fe7995a7cbae314a66af",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "ken owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "ae1cfbb0ccf4c28dcd1e13b3f5208a648cf0633e037f2e0acbea74ab86f41298",
+          "rom_sha256": "e455ba57b5d195a555609a601edbaf1e86836fc7ac3eb892b574a58142f4e0e6",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "ken owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "b16e536e3f2f8bb5b7bb78312426e600ccfe3275b9777730a96d145660e9c7d8",
+          "rom_sha256": "0a714414c15744f6e8577c475a69ae951128cbc980672b7d7087af4ffb438ccd",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "ken owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "courtney",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 564,
+          "model_sha256": "26ba0bc626b6b271a9311f3024d7ecf896200219dbd7862d026527aaaea4719a",
+          "rom_sha256": "4ee7025f4a96a8836270221c1bf32c0be8a3b42f64e76f14c2f24b622940b51e",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "courtney owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 540,
+          "model_sha256": "d5fcd801a7b8fe4579d8b3c791f369ae8bd10b960ce149526a4b738182af6cc1",
+          "rom_sha256": "60ef5f0521f81a525782cfab5db529c0bf2136246f5170aaf46be7921154f301",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "courtney owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 540,
+          "model_sha256": "6f6fa1a170baf2d3b6391245dc5dce3c7ae5e0dbbaa060ff93a5270b26eea6b2",
+          "rom_sha256": "6d3f9ba7cb14148b3f3ad812762b7c38e83b5a70866e6abd1bf1e429c6e59334",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "courtney owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "steve",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 552,
+          "model_sha256": "ecf660261acaf057f63ff4db0938f169d7bf53bd4f8c5d301f193a8beb92dd15",
+          "rom_sha256": "6b004d051e7a72208c1d649d2ec3610031b57270a51d0b578927da93ff66c5a9",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "steve owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 576,
+          "model_sha256": "431f8ce54182415259780f25c6b3564c9c641f6b42510c9b413d4fac0cfaf626",
+          "rom_sha256": "3791f570d78582c5b9a0e14872461be4fefe7f69e9a27cdd8c3babf354d17308",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "steve owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 576,
+          "model_sha256": "465add9ae9043a91fa5824fc37acd026c17d0d2e7477ff8f3049213bedacfa67",
+          "rom_sha256": "2e89e80b2f3fc5c9569e6c91662eb7f8e4b2196839581ce3bd90b6f5c034fe84",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "steve owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "jack",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "03c487cc57e7daf09ba4f6d4fc7ac474ec0b5a6bbefff9b3af7e43499fcda6ca",
+          "rom_sha256": "cadd1eecadac213f17e288644efa37cd98d9a32554fab69f125d7edbe96d9400",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "jack owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "a62ada555cfa3e1a61e999e1d90db8317599124ce4794d7417f725bcda602d81",
+          "rom_sha256": "5721b4538d59013ef0e98e756b873294d2cd19c2780e382d23008e904b18e741",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "jack owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "cac0cbd45c1f36577f7aeee854d0d1c02c2ce4427f0aa728f8ca9d30468c4688",
+          "rom_sha256": "af71c91b85049f93b0c9c36f32118e034c725d4b9c6167d5a549c2d42ebf04cc",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "jack owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    },
+    {
+      "slug": "rod",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 528,
+          "model_sha256": "eca3127124213ce25161902157e6fb51282957e876a1b45e77cb7b35d26dc8fb",
+          "rom_sha256": "e334751a15b9d5c6b82e3950d455d6dd6861ce02098901e1c411a132e1e1dc8e",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "rod owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 528,
+          "model_sha256": "471ce6e6f1ae5b60eb2846733ec466be606eed8fdf2918d4ac45117c95748330",
+          "rom_sha256": "dd8a837a106bd5074ece3ce46b06177c39d30ccb629136a46831469b7ca457b0",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "rod owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 528,
+          "model_sha256": "01b948aa306e236d064e051f5c2503c73c72e79d4b64ea7605e3c9a945e3d266",
+          "rom_sha256": "cdd5960eacb2d90245783b3ee78c3967f172b4151286def69c82d7af0741185c",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "rod owning head scalp",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 1
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    }
+  ],
+  "missing": [],
+  "source_runtime_files_unchanged": 721
+}

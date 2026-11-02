@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_gentle"
+    "w3_clerk_face",
+    "w3_clerk_uniform"
   ],
   "actors": [
     {
@@ -51,45 +52,32 @@
       ]
     }
   },
-  "design": "blue round bob, white collar, counter uniform",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 26
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 33,
     "gfx_sha256": "c5cfbdbd3188223525857754204504dcef9fe1445f7b07ed902523c79d38134e",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "clerk \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_gentle",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "clerk",
   "pose": "standing",
   "component": null,
-  "vertices": 1236,
-  "triangles": 686,
-  "batches": 6
+  "vertices": 413,
+  "triangles": 564,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/clerk/i3/clerk/scene.l64",
+    "sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624",
+    "selection": "clerk"
+  }
 }

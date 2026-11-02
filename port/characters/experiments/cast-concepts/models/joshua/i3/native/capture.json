@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-joshua-i3.z64",
+  "rom_sha256": "f963862736424c9990f4e891ac511201eb3b8d7fae9a4732f0fd74d3de5c71ac",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1363016,
+      "free": 1373368
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1347336,
+      "free": 1389048
+    }
+  ],
+  "subject": "joshua",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "1edffea7ccbf1947a8bd95bfd657bf9ad8a3a035aadd97076bdc9a0b89793795",
+    "candidate": "6cae3114c4ca4f6eae914d95909f04b0b2cc537019f19d12708c5faba6bcf53e"
+  }
+}

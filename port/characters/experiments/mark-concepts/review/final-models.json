@@ -1,0 +1,22 @@
+[
+  {
+    "concept": "a_adventure",
+    "final": "i3d",
+    "blend": "approved/a_adventure/i3d/mark.blend"
+  },
+  {
+    "concept": "b_compact",
+    "final": "i3c",
+    "blend": "approved/b_compact/i3c/mark.blend"
+  },
+  {
+    "concept": "c_lean",
+    "final": "i3c",
+    "blend": "approved/c_lean/i3c/mark.blend"
+  },
+  {
+    "concept": "d_angular",
+    "final": "i3c",
+    "blend": "approved/d_angular/i3c/mark.blend"
+  }
+]

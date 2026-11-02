@@ -1,0 +1,1 @@
+Actual eight-frame native comparison inspected. Raised connected scalp lobes now visible but triangular at silhouette: reads as two horns instead of rounded bunches. Next round adds broad upper shaping rings and green ties on owning surface; retain connected scalp rather than detached spheres.

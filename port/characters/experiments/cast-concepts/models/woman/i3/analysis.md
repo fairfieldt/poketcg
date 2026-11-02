@@ -1,0 +1,1 @@
+Final actual native comparison inspected. Adult red bob side-part, sleeveless long red dress with narrow dark waist band and broader grounded feet read clearly. Back bob and shoulder silhouette fully volumetric, no loose collar or panels.

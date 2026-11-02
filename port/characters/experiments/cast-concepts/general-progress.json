@@ -1,0 +1,272 @@
+{
+  "tech": {
+    "concept": "actual built-in imagegen; viewed",
+    "final": "3",
+    "rounds": {
+      "1": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "2": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "3": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      }
+    }
+  },
+  "mania": {
+    "concept": "actual built-in imagegen; viewed",
+    "final": "3",
+    "rounds": {
+      "1": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "2": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "3": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      }
+    }
+  },
+  "boy": {
+    "concept": "actual built-in imagegen; viewed",
+    "final": "3",
+    "rounds": {
+      "1": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "2": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "3": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      }
+    }
+  },
+  "man": {
+    "concept": "actual built-in imagegen; viewed",
+    "final": "3",
+    "rounds": {
+      "1": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "2": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "3": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      }
+    }
+  },
+  "hood": {
+    "concept": "actual built-in imagegen; viewed",
+    "final": "3",
+    "rounds": {
+      "1": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "2": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "3": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      }
+    }
+  },
+  "lad": {
+    "concept": "actual built-in imagegen; viewed",
+    "final": "3b",
+    "rounds": {
+      "1": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "2": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "3": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "3b": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      }
+    }
+  },
+  "specs": {
+    "concept": "actual built-in imagegen; viewed",
+    "final": "3",
+    "rounds": {
+      "1": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "2": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "3": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      }
+    }
+  },
+  "chap": {
+    "concept": "actual built-in imagegen; viewed",
+    "final": "3",
+    "rounds": {
+      "1": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "2": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "3": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      }
+    }
+  },
+  "pappy": {
+    "concept": "actual built-in imagegen; viewed",
+    "final": "3",
+    "rounds": {
+      "1": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "2": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "3": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      }
+    }
+  },
+  "butch": {
+    "concept": "actual built-in imagegen; viewed",
+    "final": "3",
+    "rounds": {
+      "1": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "2": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      },
+      "3": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      }
+    }
+  },
+  "mania_palette2": {
+    "concept": "color-only derivative",
+    "final": "3",
+    "rounds": {
+      "3": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      }
+    }
+  },
+  "boy_palette2": {
+    "concept": "color-only derivative",
+    "final": "3",
+    "rounds": {
+      "3": {
+        "export_audit": true,
+        "native_frames": 8,
+        "reviewed": true,
+        "blend": true
+      }
+    }
+  }
+}

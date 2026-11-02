@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "model": "mark",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "m32_mark_face",
+    "m32_mark_torso"
+  ],
+  "vertices": 581,
+  "triangles": 382,
+  "batches": 7
+}

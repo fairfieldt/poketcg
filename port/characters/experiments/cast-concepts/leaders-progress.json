@@ -1,0 +1,83 @@
+{
+  "group": "leaders",
+  "families": {
+    "ishihara": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    },
+    "imakuni": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    },
+    "mitch": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    },
+    "gene": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    },
+    "isaac": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    },
+    "nikki": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    },
+    "murray": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    },
+    "rick": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    },
+    "ken": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    },
+    "courtney": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    },
+    "steve": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    },
+    "jack": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    },
+    "rod": {
+      "concept": "actual built-in imagegen, inspected",
+      "rounds_captured": 3,
+      "native_frames": 24,
+      "status": "complete; final independently reviewed"
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "format": "L643",
+  "textures": [
+    "d_angular_mark_face",
+    "d_angular_mark_torso"
+  ],
+  "actors": [
+    {
+      "name": "mark",
+      "model": 1,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "mark",
+  "style": "d_angular",
+  "appearance": "mark",
+  "pose": "standing",
+  "vertices": 1149,
+  "triangles": 814,
+  "batches": 7,
+  "lighting": {
+    "ambient": 0.6,
+    "diffuse": 0.4,
+    "direction": [
+      -0.3522082237986393,
+      0.5534700659692904,
+      0.7547319081399414
+    ]
+  },
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "pivots": {
+    "3": [
+      -0.45,
+      0,
+      1.28
+    ],
+    "4": [
+      0.45,
+      0,
+      1.28
+    ],
+    "1": [
+      -0.17,
+      0,
+      0.7
+    ],
+    "2": [
+      0.17,
+      0,
+      0.7
+    ]
+  }
+}

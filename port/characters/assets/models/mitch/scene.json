@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_stern"
+    "mitch3_face",
+    "mitch3_top"
   ],
   "actors": [
     {
@@ -41,45 +42,32 @@
       ]
     }
   },
-  "design": "upright martial-artist spikes, open blue gi and black belt",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 22
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 10,
     "gfx_sha256": "d6fffdec1e31b5b09d6f2c42e83f7253e57720ee89422b72c367d10bf9dbfac5",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "mitch \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_stern",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "mitch",
   "pose": "standing",
   "component": null,
-  "vertices": 1102,
-  "triangles": 610,
-  "batches": 6
+  "vertices": 451,
+  "triangles": 528,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/mitch/i3/mitch/scene.l64",
+    "sha256": "1181cf83029cc890adeec4bda7059efb2846a0b4090c66840a177375bb9018ac",
+    "selection": "mitch"
+  }
 }

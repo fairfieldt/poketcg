@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_smile"
+    "w3_lass1_face"
   ],
   "actors": [
     {
@@ -43,45 +43,32 @@
       ]
     }
   },
-  "design": "rounded purple bob with a long side fringe",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 26
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 29,
     "gfx_sha256": "3d3d08437c73381f03dc1764ffed4a35e7668ad1221b8211ec7dd47e36acb2de",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "lass1 \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_smile",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "lass1",
   "pose": "standing",
   "component": null,
-  "vertices": 1154,
-  "triangles": 624,
-  "batches": 6
+  "vertices": 363,
+  "triangles": 528,
+  "batches": 6,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/lass1/i3/lass1/scene.l64",
+    "sha256": "7c092d0f7d5aae31f74d7433d041eb6a58ace8e1a8e8227c9c8f2c6ac151cad3",
+    "selection": "lass1"
+  }
 }

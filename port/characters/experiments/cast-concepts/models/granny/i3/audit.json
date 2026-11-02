@@ -1,0 +1,36 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/granny/i3/granny/scene.l64",
+  "sha256": "cd70a4e0d7e76c6e7c6a613a750da12ce7c47294d72f44f10d095c4c4889d82a",
+  "triangles": 592,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "w3_granny_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    },
+    {
+      "name": "w3_granny_cardigan.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "head_edge_incidence": {
+    "2": 204
+  },
+  "head_closed": true
+}

@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-pappy-i1.z64",
+  "rom_sha256": "eb4eea2c25ab1b66f5a4112356761496930c9c7658715eed1ff41f13c5c54498",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1363832,
+      "free": 1372552
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346664,
+      "free": 1389720
+    }
+  ],
+  "subject": "pappy",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "350a18cba76ada84f2f6b435c29cd40d73eaf6c8069181b228fd9200cbcc85e7",
+    "candidate": "d8a641e9b4398f125846053b76fe67908dede935304916ec75461f1a08a68b20"
+  }
+}

@@ -11,14 +11,15 @@
       "NPC_06"
     ],
     "model": "dr_mason",
-    "triangles": 718,
-    "vertices": 1291,
-    "batches": 6,
+    "triangles": 560,
+    "vertices": 447,
+    "batches": 7,
     "linked_parts": 0,
     "appearances": [
       "dr_mason"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "d766662d2686f7ac16dcb543fd9a23b50dfab8b7ad583b00fdebaaf4d469c721",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "ronald",
@@ -32,14 +33,15 @@
       "NPC_RONALD3"
     ],
     "model": "ronald",
-    "triangles": 910,
-    "vertices": 1515,
+    "triangles": 512,
+    "vertices": 616,
     "batches": 6,
     "linked_parts": 0,
     "appearances": [
       "ronald"
     ],
-    "fingerprint": "39f7c50120a6c3a3b0621fe37ba166b7301b382cb2080a2a248c4573179bcf49"
+    "fingerprint": "ab4f0516aa5395b71fa4211336d865d947ab2a0dc1f75d860a2bc7aaea8ef492",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "ishihara",
@@ -51,14 +53,15 @@
       "NPC_ISHIHARA"
     ],
     "model": "ishihara",
-    "triangles": 804,
-    "vertices": 1351,
-    "batches": 6,
-    "linked_parts": 22,
+    "triangles": 528,
+    "vertices": 451,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "ishihara"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "eb44204c8d729d5aec0f8365f99093e9b778f7215e80e862c4243d749d814c78",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "imakuni",
@@ -70,14 +73,15 @@
       "NPC_IMAKUNI"
     ],
     "model": "imakuni",
-    "triangles": 518,
-    "vertices": 926,
-    "batches": 6,
-    "linked_parts": 21,
+    "triangles": 552,
+    "vertices": 450,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "imakuni"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "0c0877d8177dc1618fa75385340c1bb6b9867ae69f80ba30b3b5aee0a1ee7663",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "tech",
@@ -102,14 +106,15 @@
       "NPC_TECH8"
     ],
     "model": "tech",
-    "triangles": 663,
-    "vertices": 1156,
-    "batches": 6,
-    "linked_parts": 20,
+    "triangles": 560,
+    "vertices": 446,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "tech"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "c0a346a8f042d38b8af6b172bed74b7e7c13c2294d44ac10e88e65151f4dd1ba",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "clerk",
@@ -131,14 +136,15 @@
       "NPC_GIFT_CENTER_CLERK"
     ],
     "model": "clerk",
-    "triangles": 686,
-    "vertices": 1236,
-    "batches": 6,
-    "linked_parts": 26,
+    "triangles": 564,
+    "vertices": 413,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "clerk"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "454f1c6bea9f53278a88c6bbba88aae621856b0662f9b3f459c34aaecfd1f5aa",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "mania",
@@ -154,15 +160,16 @@
       "NPC_CHAMP"
     ],
     "model": "mania",
-    "triangles": 578,
-    "vertices": 1027,
-    "batches": 6,
-    "linked_parts": 21,
+    "triangles": 560,
+    "vertices": 459,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "mania",
       "mania_palette2"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "43061478681cd8ed5217bde7e2b53442eaf8d56c1f26e3271c2e7e5e5fac1a94",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "lass3",
@@ -175,14 +182,15 @@
       "NPC_LASS5"
     ],
     "model": "lass3",
-    "triangles": 730,
-    "vertices": 1323,
+    "triangles": 612,
+    "vertices": 415,
     "batches": 6,
-    "linked_parts": 28,
+    "linked_parts": 0,
     "appearances": [
       "lass3"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "d6ea8b7850891f759075b1114a06084362ae721cd9362aab311a57c30e9e698d",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "mitch",
@@ -194,14 +202,15 @@
       "NPC_MITCH"
     ],
     "model": "mitch",
-    "triangles": 610,
-    "vertices": 1102,
-    "batches": 6,
-    "linked_parts": 22,
+    "triangles": 528,
+    "vertices": 451,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "mitch"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "d7ba6b779efcbfaabec79a9092e14ad0dc9a63b0bff3e1e8f808961d05fa10e0",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "boy",
@@ -216,15 +225,16 @@
       "NPC_LAD2"
     ],
     "model": "boy",
-    "triangles": 578,
-    "vertices": 1027,
-    "batches": 6,
-    "linked_parts": 21,
+    "triangles": 560,
+    "vertices": 459,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "boy",
       "boy_palette2"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "7106f96fcfb0acdcc4b1ba4da36f66d87fd3ddf10487674eca944919e1577952",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "man",
@@ -240,14 +250,15 @@
       "NPC_GUIDE"
     ],
     "model": "man",
-    "triangles": 582,
-    "vertices": 1049,
-    "batches": 6,
-    "linked_parts": 22,
+    "triangles": 560,
+    "vertices": 470,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "man"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "8975a420166417976a22cdbc1c196a731fade437f03cddcbf73808a3a452f2a2",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "gene",
@@ -259,14 +270,15 @@
       "NPC_GENE"
     ],
     "model": "gene",
-    "triangles": 761,
-    "vertices": 1276,
-    "batches": 6,
-    "linked_parts": 20,
+    "triangles": 528,
+    "vertices": 451,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "gene"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "6eb938649bfd38cff675fac7ebe16f6b31122e9435d053388c033a34533ee72a",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "swimmer",
@@ -279,15 +291,16 @@
       "NPC_AMANDA"
     ],
     "model": "swimmer",
-    "triangles": 584,
-    "vertices": 1082,
-    "batches": 6,
-    "linked_parts": 24,
+    "triangles": 564,
+    "vertices": 401,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "swimmer",
       "swimmer_palette2"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "76b90280948ba81b88e9059c513bd6d4e0595be1a03b1b66e8abbd2ffe7c6672",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "joshua",
@@ -299,14 +312,15 @@
       "NPC_JOSHUA"
     ],
     "model": "joshua",
-    "triangles": 688,
-    "vertices": 1147,
-    "batches": 6,
-    "linked_parts": 23,
+    "triangles": 564,
+    "vertices": 401,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "joshua"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "bb6849df6db8ae4b1a1bb89144d4a2b59792a6f1358d338e8448a7353ae39d86",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "amy",
@@ -318,14 +332,15 @@
       "NPC_AMY"
     ],
     "model": "amy",
-    "triangles": 584,
-    "vertices": 1084,
+    "triangles": 528,
+    "vertices": 351,
     "batches": 6,
-    "linked_parts": 24,
+    "linked_parts": 0,
     "appearances": [
       "amy"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "89f648d8f1246151c07b2de0f67969ea6f2fb7e7df12f068e9f90fefb131161b",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "girl",
@@ -339,14 +354,15 @@
       "NPC_STEPHANIE"
     ],
     "model": "girl",
-    "triangles": 760,
-    "vertices": 1274,
+    "triangles": 528,
+    "vertices": 375,
     "batches": 6,
-    "linked_parts": 28,
+    "linked_parts": 0,
     "appearances": [
       "girl"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "65052633b75f70906f4509e4fccf35b19f0c1de5cd4595ef2703e37a72dea5e6",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "hood",
@@ -361,14 +377,15 @@
       "NPC_HOOD2"
     ],
     "model": "hood",
-    "triangles": 524,
-    "vertices": 977,
-    "batches": 6,
-    "linked_parts": 21,
+    "triangles": 560,
+    "vertices": 469,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "hood"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "f686bcfcde927669112d53b694d40f2d973de1f1b66cb2f8f970d52e10a5b518",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "isaac",
@@ -380,14 +397,15 @@
       "NPC_ISAAC"
     ],
     "model": "isaac",
-    "triangles": 669,
-    "vertices": 1183,
-    "batches": 6,
-    "linked_parts": 20,
+    "triangles": 528,
+    "vertices": 452,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "isaac"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "e7b5e1a973ad76ceda2bd959a0cfcb8ca0f99cce1b4bbda339f918fceb3050f3",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "lass2",
@@ -401,14 +419,15 @@
       "NPC_LASS2"
     ],
     "model": "lass2",
-    "triangles": 636,
-    "vertices": 1156,
+    "triangles": 528,
+    "vertices": 384,
     "batches": 6,
-    "linked_parts": 26,
+    "linked_parts": 0,
     "appearances": [
       "lass2"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "28df0501556dc9ea35990d49d8c81479f3d7035bf74c83cbda76cd899054a675",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "lass1",
@@ -422,14 +441,15 @@
       "NPC_LASS4"
     ],
     "model": "lass1",
-    "triangles": 624,
-    "vertices": 1154,
+    "triangles": 528,
+    "vertices": 363,
     "batches": 6,
-    "linked_parts": 26,
+    "linked_parts": 0,
     "appearances": [
       "lass1"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "3fdbd727aa2b5a70872b31950bd5f1e0d8ce8e1d7f6f7991d8b84da03bd1f446",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "nikki",
@@ -441,14 +461,15 @@
       "NPC_NIKKI"
     ],
     "model": "nikki",
-    "triangles": 584,
-    "vertices": 1066,
-    "batches": 6,
-    "linked_parts": 24,
+    "triangles": 540,
+    "vertices": 448,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "nikki"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "f681c6b5c7c41340524e66f7aaaa4dd0208cf6ed9700bb27887c91c2e862b55a",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "lad",
@@ -463,14 +484,15 @@
       "NPC_LAD3"
     ],
     "model": "lad",
-    "triangles": 662,
-    "vertices": 1108,
-    "batches": 6,
-    "linked_parts": 25,
+    "triangles": 572,
+    "vertices": 514,
+    "batches": 8,
+    "linked_parts": 0,
     "appearances": [
       "lad"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "8d60f8061eba52b9a1f6ce7560e8833d3fc653d597c8bbe95c8247910d3a20c6",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "murray",
@@ -483,14 +505,15 @@
       "NPC_MURRAY2"
     ],
     "model": "murray",
-    "triangles": 802,
-    "vertices": 1350,
-    "batches": 6,
-    "linked_parts": 22,
+    "triangles": 540,
+    "vertices": 460,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "murray"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "215ca945b76b7ded428f84ccccffd0b0ecf63fa5222f0ba8a97b530b18866d4c",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "rick",
@@ -502,14 +525,15 @@
       "NPC_RICK"
     ],
     "model": "rick",
-    "triangles": 669,
-    "vertices": 1176,
-    "batches": 6,
-    "linked_parts": 20,
+    "triangles": 528,
+    "vertices": 452,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "rick"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "89587ba5063b92aab47c259e44e4b5b2dbda85e95e5240b2c426233b9014c52e",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "specs",
@@ -523,14 +547,15 @@
       "NPC_SPECS3"
     ],
     "model": "specs",
-    "triangles": 589,
-    "vertices": 1044,
-    "batches": 6,
-    "linked_parts": 21,
+    "triangles": 560,
+    "vertices": 460,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "specs"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "84691ca2bceb6d1092d2af18e4a21562bc72d42c2b7bfcf62c4c52c60238538c",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "ken",
@@ -542,14 +567,15 @@
       "NPC_KEN"
     ],
     "model": "ken",
-    "triangles": 797,
-    "vertices": 1341,
-    "batches": 6,
-    "linked_parts": 20,
+    "triangles": 528,
+    "vertices": 450,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "ken"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "4432905e31c344a9c2f4cb3a1fd589c4261c4b6e19acde782e4a21833f94e86f",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "courtney",
@@ -561,14 +587,15 @@
       "NPC_COURTNEY"
     ],
     "model": "courtney",
-    "triangles": 672,
-    "vertices": 1259,
-    "batches": 6,
-    "linked_parts": 26,
+    "triangles": 540,
+    "vertices": 453,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "courtney"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "5836fe2aad4746efa9c1f5bb8ebec4d6fd8780a1f6599e728890b70c66c96171",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "steve",
@@ -580,14 +607,15 @@
       "NPC_STEVE"
     ],
     "model": "steve",
-    "triangles": 832,
-    "vertices": 1344,
-    "batches": 6,
-    "linked_parts": 22,
+    "triangles": 576,
+    "vertices": 515,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "steve"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "d4e7f39f886f129ec83ea823f565d201f32a86856e5d509409561a10fc112edb",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "jack",
@@ -599,14 +627,15 @@
       "NPC_JACK"
     ],
     "model": "jack",
-    "triangles": 663,
-    "vertices": 1162,
-    "batches": 6,
-    "linked_parts": 20,
+    "triangles": 528,
+    "vertices": 452,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "jack"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "30ba0de6706e9875b570f5acb739ee7e8732d58c7a229bdcf6ba920ca4dce44f",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "rod",
@@ -618,14 +647,15 @@
       "NPC_ROD"
     ],
     "model": "rod",
-    "triangles": 807,
-    "vertices": 1359,
-    "batches": 6,
-    "linked_parts": 22,
+    "triangles": 528,
+    "vertices": 451,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "rod"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "86341a409d709d9587477cc04b19497addc182ce27d17739cb54f3ec75e6548c",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "woman",
@@ -638,14 +668,15 @@
       "NPC_WOMAN2"
     ],
     "model": "woman",
-    "triangles": 584,
-    "vertices": 1085,
+    "triangles": 544,
+    "vertices": 367,
     "batches": 6,
-    "linked_parts": 24,
+    "linked_parts": 0,
     "appearances": [
       "woman"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "bd1989e1acb2d408585bac552f0d9df48775a54d5b53383b3ec0a6c3584bd55e",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "chap",
@@ -661,14 +692,15 @@
       "NPC_CHAP5"
     ],
     "model": "chap",
-    "triangles": 804,
-    "vertices": 1351,
-    "batches": 6,
-    "linked_parts": 22,
+    "triangles": 560,
+    "vertices": 459,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "chap"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "90fa9d39001976bcded3239e5331f26b76a241fcd51b7968bfe227e035895163",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "gal",
@@ -686,14 +718,15 @@
       "NPC_GAL4"
     ],
     "model": "gal",
-    "triangles": 556,
-    "vertices": 1016,
+    "triangles": 528,
+    "vertices": 363,
     "batches": 6,
-    "linked_parts": 23,
+    "linked_parts": 0,
     "appearances": [
       "gal"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "e40011896cd4a955402cb3788d914920e28705cbc5ed0666b5f0589649818aa7",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "pappy",
@@ -707,14 +740,15 @@
       "NPC_PAPPY3"
     ],
     "model": "pappy",
-    "triangles": 794,
-    "vertices": 1334,
-    "batches": 6,
-    "linked_parts": 23,
+    "triangles": 560,
+    "vertices": 471,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "pappy"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "07bf2a2e7053726ba0887ab31d153e4dfbf01437109a16df37d8c0e15f4adcd9",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "butch",
@@ -726,14 +760,15 @@
       "NPC_BUTCH"
     ],
     "model": "butch",
-    "triangles": 590,
-    "vertices": 1058,
-    "batches": 6,
-    "linked_parts": 21,
+    "triangles": 560,
+    "vertices": 460,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "butch"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "12987f5357d17bceb93fb4563f2b73218efe4447fb3e98f2008d9429c98cc417",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "granny",
@@ -746,14 +781,15 @@
       "NPC_GRANNY2"
     ],
     "model": "granny",
-    "triangles": 818,
-    "vertices": 1425,
-    "batches": 6,
-    "linked_parts": 26,
+    "triangles": 592,
+    "vertices": 412,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "granny"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "2e4b15f9ee6471b4deedfdbb8e1ed407a99b7347bfaf9a7f409c60044955adeb",
+    "recipe": "reviewed-cast-manual"
   },
   {
     "slug": "torch",
@@ -810,13 +846,14 @@
       "NPC_PLAYER_CREDITS"
     ],
     "model": "mark",
-    "triangles": 906,
-    "vertices": 1481,
-    "batches": 6,
-    "linked_parts": 25,
+    "triangles": 596,
+    "vertices": 521,
+    "batches": 7,
+    "linked_parts": 0,
     "appearances": [
       "mark"
     ],
-    "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+    "fingerprint": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3",
+    "recipe": "reviewed-cast-manual"
   }
 ]

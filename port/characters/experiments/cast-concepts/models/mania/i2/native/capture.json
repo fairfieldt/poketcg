@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-mania-i2.z64",
+  "rom_sha256": "dc9c06c0bfa2e10374e62c20b414cc7e14a9edae963ae1c797c0806ef97b6a7d",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1352760,
+      "free": 1383624
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346392,
+      "free": 1389992
+    }
+  ],
+  "subject": "mania",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "272b164313cf37230abf868bfa75e57a1e60c8fcf7cc90ae700ea543f9fc5b56",
+    "candidate": "52291ebdb4760ec52369d8a4561e097398fe902142b95713b093db0453606d86"
+  }
+}

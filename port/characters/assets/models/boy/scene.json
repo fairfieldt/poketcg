@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_smile"
+    "gboy3_boy_face",
+    "gboy3_boy_shirt"
   ],
   "actors": [
     {
@@ -51,45 +52,32 @@
       ]
     }
   },
-  "design": "side-parted short hair, light shirt; yellow material variant",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 21
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 17,
     "gfx_sha256": "ea0f6bbdf34e510fa4727c9a56871aafc125f99f6cb3fcb5ee87adf1af0df407",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "boy \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_smile",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "boy",
   "pose": "standing",
   "component": null,
-  "vertices": 1027,
-  "triangles": 578,
-  "batches": 6
+  "vertices": 459,
+  "triangles": 560,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/boy/i3/boy/scene.l64",
+    "sha256": "6362601dfaa22bd1721bae3c8c19866916ead36564cdc477b002e288a56777fe",
+    "selection": "boy"
+  }
 }

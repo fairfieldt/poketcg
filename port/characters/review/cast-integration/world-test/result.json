@@ -1,0 +1,244 @@
+{
+  "passed": true,
+  "maps": [
+    {
+      "id": 0,
+      "colors": 12885,
+      "error": 0,
+      "scenes": 1,
+      "actors": 1
+    },
+    {
+      "id": 1,
+      "colors": 9480,
+      "error": 0,
+      "scenes": 1,
+      "actors": 3
+    },
+    {
+      "id": 2,
+      "colors": 6279,
+      "error": 0,
+      "scenes": 9,
+      "actors": 2
+    },
+    {
+      "id": 3,
+      "colors": 11407,
+      "error": 0,
+      "scenes": 1,
+      "actors": 4
+    },
+    {
+      "id": 4,
+      "colors": 12717,
+      "error": 0,
+      "scenes": 2,
+      "actors": 3
+    },
+    {
+      "id": 5,
+      "colors": 8515,
+      "error": 0,
+      "scenes": 1,
+      "actors": 7
+    },
+    {
+      "id": 6,
+      "colors": 17961,
+      "error": 0,
+      "scenes": 1,
+      "actors": 4
+    },
+    {
+      "id": 7,
+      "colors": 12828,
+      "error": 0,
+      "scenes": 2,
+      "actors": 3
+    },
+    {
+      "id": 8,
+      "colors": 8623,
+      "error": 0,
+      "scenes": 1,
+      "actors": 7
+    },
+    {
+      "id": 9,
+      "colors": 19477,
+      "error": 0,
+      "scenes": 1,
+      "actors": 4
+    },
+    {
+      "id": 10,
+      "colors": 13147,
+      "error": 0,
+      "scenes": 2,
+      "actors": 3
+    },
+    {
+      "id": 11,
+      "colors": 8289,
+      "error": 0,
+      "scenes": 1,
+      "actors": 7
+    },
+    {
+      "id": 12,
+      "colors": 13520,
+      "error": 0,
+      "scenes": 1,
+      "actors": 5
+    },
+    {
+      "id": 13,
+      "colors": 12909,
+      "error": 0,
+      "scenes": 2,
+      "actors": 3
+    },
+    {
+      "id": 14,
+      "colors": 8531,
+      "error": 0,
+      "scenes": 1,
+      "actors": 6
+    },
+    {
+      "id": 15,
+      "colors": 15274,
+      "error": 0,
+      "scenes": 1,
+      "actors": 4
+    },
+    {
+      "id": 16,
+      "colors": 13365,
+      "error": 0,
+      "scenes": 2,
+      "actors": 4
+    },
+    {
+      "id": 17,
+      "colors": 8485,
+      "error": 0,
+      "scenes": 1,
+      "actors": 6
+    },
+    {
+      "id": 18,
+      "colors": 20041,
+      "error": 0,
+      "scenes": 1,
+      "actors": 4
+    },
+    {
+      "id": 19,
+      "colors": 13091,
+      "error": 0,
+      "scenes": 2,
+      "actors": 4
+    },
+    {
+      "id": 20,
+      "colors": 8395,
+      "error": 0,
+      "scenes": 1,
+      "actors": 7
+    },
+    {
+      "id": 21,
+      "colors": 18861,
+      "error": 0,
+      "scenes": 1,
+      "actors": 4
+    },
+    {
+      "id": 22,
+      "colors": 12884,
+      "error": 0,
+      "scenes": 2,
+      "actors": 3
+    },
+    {
+      "id": 23,
+      "colors": 8385,
+      "error": 0,
+      "scenes": 1,
+      "actors": 7
+    },
+    {
+      "id": 24,
+      "colors": 13227,
+      "error": 0,
+      "scenes": 1,
+      "actors": 3
+    },
+    {
+      "id": 25,
+      "colors": 13150,
+      "error": 0,
+      "scenes": 2,
+      "actors": 3
+    },
+    {
+      "id": 26,
+      "colors": 8334,
+      "error": 0,
+      "scenes": 1,
+      "actors": 6
+    },
+    {
+      "id": 27,
+      "colors": 22501,
+      "error": 0,
+      "scenes": 1,
+      "actors": 5
+    },
+    {
+      "id": 28,
+      "colors": 12176,
+      "error": 0,
+      "scenes": 2,
+      "actors": 2
+    },
+    {
+      "id": 29,
+      "colors": 8963,
+      "error": 0,
+      "scenes": 1,
+      "actors": 9
+    },
+    {
+      "id": 30,
+      "colors": 15573,
+      "error": 0,
+      "scenes": 1,
+      "actors": 3
+    },
+    {
+      "id": 31,
+      "colors": 12504,
+      "error": 0,
+      "scenes": 1,
+      "actors": 1
+    },
+    {
+      "id": 32,
+      "colors": 18725,
+      "error": 0,
+      "scenes": 1,
+      "actors": 6
+    },
+    {
+      "id": 33,
+      "colors": 11717,
+      "error": 0,
+      "scenes": 1,
+      "actors": 7
+    }
+  ],
+  "errors": []
+}

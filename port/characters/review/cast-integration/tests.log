@@ -1,0 +1,4 @@
+python3 tools/validate.py
+VALID 39 unique model(s), 49 native exports; geometry, textures, rig and palette reuse checked
+python3 tools/check_cast_integration.py
+CAST INTEGRATION PASS: 41 promoted exports, 115 original aliases, props unchanged, 49 runtime exports

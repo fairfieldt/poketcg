@@ -1,11 +1,12 @@
 {
   "model": "steve",
-  "triangles": 832,
-  "vertices": 1344,
-  "batches": 6,
-  "linked_parts": 22,
+  "triangles": 576,
+  "vertices": 515,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "steve"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "d4e7f39f886f129ec83ea823f565d201f32a86856e5d509409561a10fc112edb",
+  "recipe": "reviewed-cast-manual"
 }

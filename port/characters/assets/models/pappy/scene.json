@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_old"
+    "gpappy3_pappy_face",
+    "gpappy3_pappy_shirt"
   ],
   "actors": [
     {
@@ -43,45 +44,32 @@
       ]
     }
   },
-  "design": "bald crown, side tufts, old brows and purple sweater vest",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 23
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 27,
     "gfx_sha256": "28218147f942d649db8200864445ba4f4dd77b31bebd7bda9d6c04c55318ca38",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "pappy \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_old",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "e0fb9d9c2fe7db9d7cba3c0619ddea8af1c98050bb839ac2def9070cee263bd2",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "pappy",
   "pose": "standing",
   "component": null,
-  "vertices": 1334,
-  "triangles": 794,
-  "batches": 6
+  "vertices": 471,
+  "triangles": 560,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/pappy/i3/pappy/scene.l64",
+    "sha256": "1858a041ca2b21d5a9178b222f13c33611de7ec9f464d8cc7e361cf48a9e7698",
+    "selection": "pappy"
+  }
 }

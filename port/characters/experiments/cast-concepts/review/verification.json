@@ -1,0 +1,116 @@
+{
+  "passed": true,
+  "primary_rounds": 6,
+  "retained_captured_versions": 6,
+  "native_frames": 96,
+  "models": [
+    {
+      "concept": "dr_mason",
+      "iteration": "i1",
+      "triangles": 560,
+      "model_sha256": "ce56641ed647b538a9ca908e4cb40a9a795f1e7bdf5b9ac47234e3c4f19d0f89",
+      "rom_sha256": "b712fa79c7553f6c24a89e24db65bdab6368bd1257eb6751632ced7cecf7fa6f",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head swept scalp ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "dr_mason",
+      "iteration": "i2",
+      "triangles": 560,
+      "model_sha256": "ade0e372ff797cef9339f50708fa6fe29891c110e3a815e8c3f192e2971732e1",
+      "rom_sha256": "ae9ad8d67cbb04c2ff87f2be20cb18b941aed629556a511241f3f64faa72a696",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head swept scalp ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "dr_mason",
+      "iteration": "i3",
+      "triangles": 560,
+      "model_sha256": "784e46b8f1074131bb713526708cc136140ef4a92449fe5437c9d91d144d1582",
+      "rom_sha256": "44a98d653031afe983989aa179a0c8efa90eb70da483db9eeac0d61581c75928",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head swept scalp ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "ronald",
+      "iteration": "i1",
+      "triangles": 512,
+      "model_sha256": "e309c73a3c50ced2cb15b90d324ce785a829149454c097eca04bb471a60e79e9",
+      "rom_sha256": "d29aa419fa4762dc629857173f9bea965a3d792042d05d53279ac186ceb29a38",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "ronald owning head hair ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "ronald",
+      "iteration": "i2",
+      "triangles": 512,
+      "model_sha256": "009299549f1f4b7d0ca59f7c8a2def4ac58a051730e85c975726118d0cfd5d0f",
+      "rom_sha256": "c0eaf4cc074d8af24b0bcbecc26ad3db6e0e62c5704293a5fa8af1b713f7ccc3",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "ronald owning head hair ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "ronald",
+      "iteration": "i3",
+      "triangles": 512,
+      "model_sha256": "b7b5cc0870f062ac1636c3e2d953a6bc9cbc18960f6bcff33817a64c4eaf5033",
+      "rom_sha256": "75df67631134283caddf357762964a18bb02507d8175bf79a8f7b2884a0dc7c9",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "ronald owning head hair ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-gene-i1.z64",
+  "rom_sha256": "04b540aaf11bd259ed4fc8a380960d1849d4fac4795fa7f1baf3904dd1ae50e6",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1361080,
+      "free": 1375304
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346264,
+      "free": 1390120
+    }
+  ],
+  "subject": "gene",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "0260c5f6c5f0bbd4cefc8fbd622d3498682ad1e8f7fc32292e8cbfa0cf93af96",
+    "candidate": "e94b77f00e124680ff4ac8295ea5a69c2d04e59e301b275a5ee573df02f91bd5"
+  }
+}

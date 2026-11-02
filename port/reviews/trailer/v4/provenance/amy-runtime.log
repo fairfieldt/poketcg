@@ -1,0 +1,109 @@
+Loaded trailer-amy
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-11-01 20:59:55.376 ares[51126:322608] Resizing output buffers to 1440, 1080
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 68988 bytes
+TRAILER READY amy vi=0 us=520298
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 15159.875 us (mode: sync, success: yes).
+TRAILER BEGIN amy vi=480 us=8519398
+Scene rom:/world/maps/water_club.l64: 28 batches, 27 textures, 132804 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 16348 bytes
+Scene rom:/world/maps/actor_joshua.l64: 7 batches, 2 textures, 13276 bytes
+Scene rom:/world/maps/actor_swimmer.l64: 7 batches, 2 textures, 13276 bytes
+Scene rom:/world/maps/actor_swimmer_palette2.l64: 6 batches, 1 textures, 11944 bytes
+Scene rom:/world/maps/actor_amy__lying.l64: 6 batches, 1 textures, 11800 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 10924 bytes
+Scene rom:/world/lod/actor_joshua.l64: 7 batches, 2 textures, 7660 bytes
+Scene rom:/world/lod/actor_swimmer.l64: 7 batches, 2 textures, 7684 bytes
+Scene rom:/world/lod/actor_swimmer_palette2.l64: 6 batches, 1 textures, 6424 bytes
+Scene rom:/world/lod/actor_amy__lying.l64: 6 batches, 1 textures, 8776 bytes
+TRAILER FIRST_FRAME amy vi=505 us=8946524
+TRAILER SHOT WATER_CLUB vi=505 us=8948914
+TRAILER SHOT amy-board vi=595 us=10442646
+TRAILER REQUEST index=1 type=2 menu=0 owner=194 shown=194 vi=595 us=10445382
+ASK duel_menu Mark n=6 cursor=0
+REQ duel_menu Mark n=6 -> 1
+TRAILER REQUEST index=2 type=6 menu=1 owner=194 shown=194 vi=711 us=12378901
+ASK menu/attacks Mark n=2 cursor=0
+REQ menu/attacks Mark n=2 -> 0
+TRAILER DUEL_TEXT id=53 vi=803 us=13913564
+TEXT Raichu Lv40's/Agility!
+TRAILER REQUEST index=3 type=1 menu=0 owner=194 shown=194 vi=811 us=14049498
+ASK ack/text Mark
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=251 vi=903 us=15581721
+TEXT If Heads, do not receive damage/or effect of opponent's next Attack!
+TRAILER REQUEST index=4 type=1 menu=0 owner=194 shown=194 vi=912 us=15727620
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+COIN 1/1 tails
+TRAILER REQUEST index=5 type=1 menu=0 owner=194 shown=194 vi=1047 us=17978582
+ASK ack/coin Mark
+REQ ack Mark n=0 -> 0
+TRAILER SHOT amy-knockout vi=1139 us=19528821
+DAMAGE Amy slot 0: 40
+TRAILER DUEL_TEXT id=129 vi=1183 us=20247869
+TEXT Goldeen was/Knocked Out!
+TRAILER REQUEST index=6 type=1 menu=0 owner=194 shown=194 vi=1234 us=21107040
+ASK ack/text Mark
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=66 vi=1326 us=22638406
+TEXT Mark will draw 1 Prize(s).
+TRAILER REQUEST index=7 type=1 menu=0 owner=194 shown=194 vi=1334 us=22775385
+ASK ack/text Mark
+REQ ack Mark n=0 -> 0
+TRAILER REQUEST index=8 type=9 menu=0 owner=194 shown=194 vi=1425 us=24290174
+ASK prize Mark n=6 cursor=3
+REQ prize Mark n=6 -> 3
+TRAILER SHOT amy-prize vi=1517 us=25824637
+TRAILER REQUEST index=9 type=1 menu=0 owner=194 shown=194 vi=1517 us=25824778
+ASK ack/card Mark
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=128 vi=1609 us=27360461
+TEXT There are no Pokemon/in Amy's Play Area!
+TRAILER REQUEST index=10 type=1 menu=0 owner=194 shown=195 vi=1617 us=27493911
+ASK ack/text Mark
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=118 vi=1709 us=29028239
+TEXT Decision...
+TRAILER REQUEST index=11 type=1 menu=0 owner=194 shown=194 vi=1716 us=29140078
+ASK ack/box Mark
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=120 vi=1808 us=30678339
+TEXT You won the Duel with Amy!
+DUEL_END finished=1 holder=Mark
+TRAILER REQUEST index=12 type=1 menu=0 owner=194 shown=195 vi=1816 us=30816386
+ASK ack/text Mark
+REQ ack Mark n=0 -> 0
+TRAILER SHOT amy-won vi=1908 us=32346407
+TRAILER TEXT id=1107 npc=34 map=12 x=20 y=6 vi=1908 us=32351577
+Scene rom:/world/maps/water_club.l64: 28 batches, 27 textures, 132804 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 16348 bytes
+Scene rom:/world/maps/actor_amy.l64: 6 batches, 1 textures, 11800 bytes
+Scene rom:/world/maps/actor_joshua.l64: 7 batches, 2 textures, 13276 bytes
+Scene rom:/world/maps/actor_swimmer.l64: 7 batches, 2 textures, 13276 bytes
+Scene rom:/world/maps/actor_swimmer_palette2.l64: 6 batches, 1 textures, 11944 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 10924 bytes
+Scene rom:/world/lod/actor_amy.l64: 6 batches, 1 textures, 6496 bytes
+Scene rom:/world/lod/actor_joshua.l64: 7 batches, 2 textures, 7660 bytes
+Scene rom:/world/lod/actor_swimmer.l64: 7 batches, 2 textures, 7684 bytes
+Scene rom:/world/lod/actor_swimmer_palette2.l64: 6 batches, 1 textures, 6424 bytes
+TRAILER TEXT id=1108 npc=34 map=12 x=20 y=6 vi=2088 us=35350890
+TRAILER SHOT water-medal vi=2268 us=38353185
+TRAILER SHOT water-medal-complete vi=2596 us=43823137
+TRAILER TEXT id=1109 npc=34 map=12 x=20 y=6 vi=2596 us=43823308
+TRAILER SHOT amy-reward-before-packs vi=2776 us=46828177
+Scene rom:/world/maps/hall_of_honor.l64: 27 batches, 26 textures, 46632 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 16348 bytes
+Scene rom:/world/maps/hall_card_bottom_left.l64: 2 batches, 1 textures, 960 bytes
+Scene rom:/world/maps/hall_card_bottom_right.l64: 2 batches, 1 textures, 960 bytes
+Scene rom:/world/maps/actor_legendary_card__left_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/actor_legendary_card__right_spark.l64: 1 batches, 0 textures, 1092 bytes
+Scene rom:/world/maps/hall_card_top_left.l64: 2 batches, 1 textures, 960 bytes
+Scene rom:/world/maps/hall_card_top_right.l64: 2 batches, 1 textures, 960 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 10924 bytes
+TRAILER SHOT HALL_OF_HONOR vi=2805 us=47322275
+TRAILER WALK map=33 steps=3 requested=12,16 reached=12,16 vi=2897 us=48855431
+TRAILER WALK_COMPLETE map=33 x=12 y=16 vi=2943 us=49624375
+TRAILER SHOT title64 vi=3033 us=51124174
+TRAILER END amy vi=3453 us=58119742

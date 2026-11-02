@@ -1,0 +1,1 @@
+Actual round 2 native comparison inspected. Yellow top and short dark hairstyle remain clear. Central point makes hair too similar to young boy styles. Next round changes the forehead boundary to a side sweep and broadens adult shoulder/foot silhouette.

@@ -1,11 +1,12 @@
 {
   "model": "rod",
-  "triangles": 807,
-  "vertices": 1359,
-  "batches": 6,
-  "linked_parts": 22,
+  "triangles": 528,
+  "vertices": 451,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "rod"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "86341a409d709d9587477cc04b19497addc182ce27d17739cb54f3ec75e6548c",
+  "recipe": "reviewed-cast-manual"
 }

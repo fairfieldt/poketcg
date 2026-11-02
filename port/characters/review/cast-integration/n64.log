@@ -1,0 +1,8 @@
+Character sync: 49 exports, 39 families, 115 NPC aliases; player model7
+    [CC] main.c
+RSPQ SDK check PASS: source, private headers, public ABI and queue microcode match the pin
+    [DFS] build/poketcg-adventure.dfs
+    [LD] build/poketcg-adventure.elf
+      text       data        bss      total filename
+    740248     660044     173956    1574248 build/poketcg-adventure.elf
+    [Z64] poketcg-adventure.z64

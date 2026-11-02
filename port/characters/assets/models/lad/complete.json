@@ -1,11 +1,12 @@
 {
   "model": "lad",
-  "triangles": 662,
-  "vertices": 1108,
-  "batches": 6,
-  "linked_parts": 25,
+  "triangles": 572,
+  "vertices": 514,
+  "batches": 8,
+  "linked_parts": 0,
   "appearances": [
     "lad"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "8d60f8061eba52b9a1f6ce7560e8833d3fc653d597c8bbe95c8247910d3a20c6",
+  "recipe": "reviewed-cast-manual"
 }

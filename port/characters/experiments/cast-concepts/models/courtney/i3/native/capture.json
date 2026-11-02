@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-courtney-i3.z64",
+  "rom_sha256": "6d3f9ba7cb14148b3f3ad812762b7c38e83b5a70866e6abd1bf1e429c6e59334",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736368,
+      "used": 1358560,
+      "free": 1377808
+    },
+    {
+      "option": "candidate",
+      "total": 2736368,
+      "used": 1346192,
+      "free": 1390176
+    }
+  ],
+  "subject": "courtney",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "e4af9890a01e519d4720cccd3e269ff5af8ef61a2f01d246e5cf043c064150e8",
+    "candidate": "6f6fa1a170baf2d3b6391245dc5dce3c7ae5e0dbbaa060ff93a5270b26eea6b2"
+  }
+}

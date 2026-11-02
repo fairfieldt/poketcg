@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "model": "nikki",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "nikki2_face",
+    "nikki2_top"
+  ],
+  "vertices": 449,
+  "triangles": 540,
+  "batches": 7
+}

@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "w2_granny_face",
+    "w2_granny_cardigan"
+  ],
+  "concept": "../../../concepts/granny.png",
+  "vertices": 380,
+  "triangles": 552,
+  "batches": 7
+}

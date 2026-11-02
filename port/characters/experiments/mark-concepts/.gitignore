@@ -1,0 +1,10 @@
+work/
+__pycache__/
+**/native/ares.log
+**/native/saves/
+**/native/settings.bml
+review/round*/ares.log
+review/round*/saves/
+review/round*/settings.bml
+unreviewed-bcd-initial/
+*.blend1

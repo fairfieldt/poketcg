@@ -1,0 +1,19 @@
+{
+  "id": "steve_i2",
+  "label": "steve 2",
+  "concept_reference": "../../../concepts/steve.png",
+  "iteration": 2,
+  "revision": {
+    "cap_crown": true,
+    "front_locks": [
+      1.88,
+      1.98,
+      1.93,
+      1.93,
+      1.98
+    ],
+    "eye_width": 7,
+    "eye_height": 10,
+    "review": "Native i1: cap is a tiny blue pancake over brown crown; insert fixed rim ring so blue crown owns full cap height."
+  }
+}

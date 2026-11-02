@@ -37,9 +37,42 @@ def select_head_preset(scene,manifest,appearance):
     return True
 
 
-def apply(appearance=None,pose='standing'):
-    from fast64.fast64_internal.f3d.f3d_material import update_all_node_values
+def apply_cast(appearance=None,pose='standing'):
+    """Reviewed editable meshes use ordinary Blender materials and one shared body."""
     scene=bpy.context.scene
+    manifest=json.loads(scene['cast_manifest']);slug=manifest['model']
+    appearance=appearance or slug
+    assert appearance in manifest['appearances'],appearance
+    assert pose in manifest['poses'],pose
+    palette=json.loads(scene.get('cast_variant_palette','{}')) if appearance!=slug else {}
+    definition=manifest['poses'][pose]
+    if slug=='amy' and pose=='lying':definition={'rotation':[90,0,0],'translation':[0,.9,.35]}
+    # Reviewed authoring uses X east, Y south, Z up.
+    rotation=Matrix.Identity(4)
+    for axis,angle in zip('XYZ',definition['rotation']):
+        rotation=rotation@Matrix.Rotation(math.radians(angle),4,axis)
+    root=Matrix.Translation(definition['translation'])@rotation
+    for obj in scene.objects:
+        if not obj.get('cast_source'):continue
+        selected=obj.get('cast_head_appearance',appearance)==appearance
+        obj.hide_render=not selected;obj.hide_viewport=not selected
+        values=obj['rest_matrix'];obj.matrix_world=root@Matrix([values[i:i+4] for i in range(0,16,4)])
+        if obj.get('cast_head'):continue
+        for slot in obj.material_slots:
+            mat=slot.material;role=mat.get('cast_role')
+            if not role:continue
+            rgb=palette.get(role,list(mat['cast_rest_color']))
+            mat.diffuse_color=(*rgb,1)
+            for node in mat.node_tree.nodes:
+                if node.type=='EMISSION' and not node.inputs[0].is_linked:node.inputs[0].default_value=(*rgb,1)
+    scene['cast_appearance']=appearance;scene['cast_pose']=pose
+    bpy.context.view_layer.update()
+
+
+def apply(appearance=None,pose='standing'):
+    scene=bpy.context.scene
+    if 'cast_manifest' in scene:return apply_cast(appearance,pose)
+    from fast64.fast64_internal.f3d.f3d_material import update_all_node_values
     manifest=json.loads(scene['lightning_manifest'])
     appearance=appearance or manifest['model']
     colors=manifest['appearances'][appearance]['accent']

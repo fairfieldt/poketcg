@@ -1,0 +1,145 @@
+{
+  "passed": false,
+  "models": [
+    {
+      "path": "port/characters/experiments/mark-concepts/options/a_compact_i2/mark/scene.l64",
+      "sha256": "eadea06910597e07016fdb19d36a5890731a4e0121f6c8992def92f101090ac7",
+      "triangles": 414,
+      "parts": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "textures": [
+        {
+          "name": "m02_mark_face.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        },
+        {
+          "name": "m02_mark_torso.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        }
+      ],
+      "errors": [
+        "packed degenerate batch 5 triangle 24"
+      ],
+      "passed": false
+    },
+    {
+      "path": "port/characters/experiments/mark-concepts/options/b_portrait_i2/mark/scene.l64",
+      "sha256": "3ae983e4d8529166cbbb6357c3634d3c1f6ae45b96dcf9ef7493cde5b0f76e20",
+      "triangles": 442,
+      "parts": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "textures": [
+        {
+          "name": "m12_mark_face.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        },
+        {
+          "name": "m12_mark_torso.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        }
+      ],
+      "errors": [
+        "packed degenerate batch 5 triangle 24"
+      ],
+      "passed": false
+    },
+    {
+      "path": "port/characters/experiments/mark-concepts/options/c_slender_i2/mark/scene.l64",
+      "sha256": "76f7044eb10eb5ab4a8eabfc3001e7ca49230caee612bd1e092732ab38ed5201",
+      "triangles": 426,
+      "parts": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "textures": [
+        {
+          "name": "m22_mark_face.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        },
+        {
+          "name": "m22_mark_torso.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        }
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 98",
+        "packed degenerate batch 0 triangle 106",
+        "packed degenerate batch 0 triangle 114",
+        "packed degenerate batch 0 triangle 118",
+        "packed degenerate batch 5 triangle 24"
+      ],
+      "passed": false
+    },
+    {
+      "path": "port/characters/experiments/mark-concepts/options/d_angular_i2/mark/scene.l64",
+      "sha256": "be31c5d854ed145cd4b2d82bb3891a82cbcb3ced6606b1090e1f64fa65c25be3",
+      "triangles": 382,
+      "parts": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "textures": [
+        {
+          "name": "m32_mark_face.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        },
+        {
+          "name": "m32_mark_torso.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        }
+      ],
+      "errors": [
+        "packed degenerate batch 5 triangle 24"
+      ],
+      "passed": false
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-granny-i1.z64",
+  "rom_sha256": "c665cac00cff0cc0f833724f2aaaa6436c0bc7e8966dfe723f1f3a5ec8c2e904",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1362944,
+      "free": 1373440
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1342328,
+      "free": 1394056
+    }
+  ],
+  "subject": "granny",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "f29a82567a0cd02d1670fbad05c9fe28dcc3236995f03a21702aa51207f12b61",
+    "candidate": "5291eca2132f96e0023bf6846c4aac6a45c9dba03aacc742b2fb6f45f8b28c41"
+  }
+}

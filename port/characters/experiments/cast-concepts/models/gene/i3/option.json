@@ -1,0 +1,22 @@
+{
+  "id": "gene_i3",
+  "label": "gene 3",
+  "concept_reference": "../../../concepts/gene.png",
+  "iteration": 3,
+  "revision": {
+    "front_locks": [
+      1.94,
+      1.82,
+      1.94,
+      2.01,
+      2.02
+    ],
+    "crown_rise": 0.055,
+    "eye_shape": "rect",
+    "eye_width": 7,
+    "eye_height": 8,
+    "mouth_width": 8,
+    "review": "Native i2 + independent review: pink scalp still cap-like; a deeper broad diagonal owning-shell forelock with forward depth, not a ribbon.",
+    "front_lock_depth": 0.05
+  }
+}

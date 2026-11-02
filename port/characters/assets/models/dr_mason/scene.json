@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_mason"
+    "mas3_dr_mason_face",
+    "mas3_dr_mason_coat"
   ],
   "actors": [
     {
@@ -43,45 +44,32 @@
       ]
     }
   },
-  "design": "Approved Lightning concept with owned face and clothing surfaces",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 0
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 2,
     "gfx_sha256": "417cba50838890c7f7e5b676f5a7d0b2d8c1da4a3f1245263fc076c4d4dd97f7",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "Skin \u00b7 warm ochre",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_mason",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "4df58919024d96a4342e775e2f07f4f2896c25719e9152bdc55599355663b57b",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "dr_mason",
   "pose": "standing",
   "component": null,
-  "vertices": 1291,
-  "triangles": 718,
-  "batches": 6
+  "vertices": 447,
+  "triangles": 560,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/dr_mason/i3/dr_mason/scene.l64",
+    "sha256": "784e46b8f1074131bb713526708cc136140ef4a92449fe5437c9d91d144d1582",
+    "selection": "dr_mason"
+  }
 }

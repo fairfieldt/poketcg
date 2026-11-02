@@ -1,0 +1,14 @@
+{
+  "reviewer": "root",
+  "scope": "37 human families, 3 appearance variants, Amy lying pose",
+  "visuals": "Actual native before/candidate portrait, four-direction turnaround, talk, room views; final 37-family portrait sheet",
+  "observations": [
+    "Owning head shells have visible profile depth. Hair and cap regions remain joined in native views.",
+    "Shoulder and sleeve silhouettes overlap in standing and walking views. Simple shirts retain family palettes.",
+    "Adult jaw, glasses, cap, hood, hairline and garment variations distinguish families.",
+    "Tiny uniform details, eyeglass corners and rear hair points simplify at native resolution.",
+    "Amanda corrected from concept blue to original yellow swimsuit; shared body geometry retained."
+  ],
+  "final_selected_versions": "final-families.json and final-appearances.json",
+  "production_replaced": false
+}

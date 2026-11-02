@@ -1,11 +1,12 @@
 {
   "model": "granny",
-  "triangles": 818,
-  "vertices": 1425,
-  "batches": 6,
-  "linked_parts": 26,
+  "triangles": 592,
+  "vertices": 412,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "granny"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "2e4b15f9ee6471b4deedfdbb8e1ed407a99b7347bfaf9a7f409c60044955adeb",
+  "recipe": "reviewed-cast-manual"
 }

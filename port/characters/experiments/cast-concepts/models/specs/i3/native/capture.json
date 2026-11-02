@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-specs-i3.z64",
+  "rom_sha256": "342bbf01c162aea8ff51c4b7e125f0ae31ad611a9e700661ea96a0576d76aa67",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1353128,
+      "free": 1383256
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346392,
+      "free": 1389992
+    }
+  ],
+  "subject": "specs",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "6488ab88702c22295c9d5f895ea6cfb5e20400b42e52eb2b522024a6d365cffa",
+    "candidate": "a5327d43e29700af61f6d857cbb23a2b6a3eaf66a9aa67823fda111bd69cdc57"
+  }
+}

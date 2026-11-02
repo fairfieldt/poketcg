@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_smile"
+    "w3_girl_face"
   ],
   "actors": [
     {
@@ -43,45 +43,32 @@
       ]
     }
   },
-  "design": "long black hair beneath blue cap, blue top and short skirt",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": true
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 28
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 28,
     "gfx_sha256": "40fb8db64d3adc094bc5058258d65d8d98664d5d2815d362dda25a5c36cba81e",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "girl \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_smile",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "8df1df9739145db6215ae93a08ecf906815eb919cdae01a4746d8861c62782d1",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "girl",
   "pose": "standing",
   "component": null,
-  "vertices": 1274,
-  "triangles": 760,
-  "batches": 6
+  "vertices": 375,
+  "triangles": 528,
+  "batches": 6,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/girl/i3/girl/scene.l64",
+    "sha256": "a096ed97d1eecea2d86db99fea21c65f3b79a304833c85ffe6bfee0f8c0595a3",
+    "selection": "girl"
+  }
 }

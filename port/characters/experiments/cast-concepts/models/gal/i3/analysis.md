@@ -1,0 +1,1 @@
+Final actual native comparison inspected. Yellow top, dark skirt and short side-swept dark hair preserve source adult woman identity; broader shoulders and feet help distinguish from young girls. Head remains rounded and deep in profile.

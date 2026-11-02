@@ -1,14 +1,10 @@
 {
-  "crt": {
-    "intro": "v2-crt-intro",
-    "ronald": "v2-crt-ronald",
-    "clubs": "v2-crt-clubs",
-    "amy": "v2-crt-amy-coin-fix"
+  "version": 4,
+  "local": {
+    "intro": "v4-local-intro",
+    "ronald": "v4-local-ronald",
+    "clubs": "v4-local-clubs",
+    "amy": "v4-local-amy"
   },
-  "none": {
-    "intro": "v2-none-intro",
-    "ronald": "v2-none-ronald",
-    "clubs": "v2-none-clubs",
-    "amy": "v2-none-amy-coin-fix"
-  }
+  "previous_crt": "v3/poketcg64-trailer.mp4"
 }

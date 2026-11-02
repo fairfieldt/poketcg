@@ -1,11 +1,12 @@
 {
   "model": "dr_mason",
-  "triangles": 718,
-  "vertices": 1291,
-  "batches": 6,
+  "triangles": 560,
+  "vertices": 447,
+  "batches": 7,
   "linked_parts": 0,
   "appearances": [
     "dr_mason"
   ],
-  "fingerprint": "e23badcfce8de0a7571c83859cdfea3721aa729e33d77d68b2023089fb69abcf"
+  "fingerprint": "d766662d2686f7ac16dcb543fd9a23b50dfab8b7ad583b00fdebaaf4d469c721",
+  "recipe": "reviewed-cast-manual"
 }

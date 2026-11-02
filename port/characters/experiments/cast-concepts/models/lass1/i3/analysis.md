@@ -1,0 +1,1 @@
+Final actual native comparison inspected. Purple bob has an asymmetric source fringe rather than central V, broad jaw-side hair and deep rounded back. Purple shirt/dark skirt retained, shoulders and shoes strengthened.

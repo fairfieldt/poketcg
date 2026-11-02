@@ -1,0 +1,97 @@
+{
+  "status": "complete",
+  "families": 11,
+  "additional_head_variant": "swimmer_palette2",
+  "finals": {
+    "clerk": "i3",
+    "lass3": "i3c",
+    "swimmer": "i3b",
+    "joshua": "i3b",
+    "amy": "i3",
+    "girl": "i3",
+    "lass2": "i3b",
+    "lass1": "i3",
+    "woman": "i3",
+    "gal": "i3",
+    "granny": "i3",
+    "swimmer_palette2": "i3b"
+  },
+  "captured_rounds": {
+    "clerk": [
+      "i1",
+      "i2",
+      "i3"
+    ],
+    "lass3": [
+      "i1",
+      "i2",
+      "i3",
+      "i3b",
+      "i3c"
+    ],
+    "swimmer": [
+      "i1",
+      "i2",
+      "i3",
+      "i3b"
+    ],
+    "joshua": [
+      "i1",
+      "i2",
+      "i3",
+      "i3b"
+    ],
+    "amy": [
+      "i1",
+      "i2",
+      "i3"
+    ],
+    "girl": [
+      "i1",
+      "i2",
+      "i3"
+    ],
+    "lass2": [
+      "i1",
+      "i2",
+      "i3",
+      "i3b"
+    ],
+    "lass1": [
+      "i1",
+      "i2",
+      "i3"
+    ],
+    "woman": [
+      "i1",
+      "i2",
+      "i3"
+    ],
+    "gal": [
+      "i1",
+      "i2",
+      "i3"
+    ],
+    "granny": [
+      "i1",
+      "i2",
+      "i3"
+    ],
+    "swimmer_palette2": [
+      "i1",
+      "i2",
+      "i3",
+      "i3b"
+    ]
+  },
+  "retained_actual_rounds": 42,
+  "derived_pose": "models/amy/i3/amy/poses/lying",
+  "derived_pose_capture": "models/amy__lying/i3/native",
+  "concept_method": "builtin image_gen__imagegen; one initial actual image per family, additional Amanda concept and yellow palette edit",
+  "proofs": [
+    "review/water-civilians-hair-connectivity.json",
+    "review/water-civilians-variants.json",
+    "review/water-civilians-blender-presets.json"
+  ],
+  "production_assets_modified": false
+}

@@ -1,11 +1,11 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_wt_amy_8a2c"
+    "w3_amy_face"
   ],
   "actors": [
     {
-      "name": "amy",
+      "name": "amy__lying",
       "model": 9,
       "x": 0,
       "z": 0,
@@ -53,47 +53,32 @@
       ]
     }
   },
-  "design": "swept blue bob/nape, expressive blue eyes, white sleeveless dress; shared standing and lying geometry",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 1
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 8,
     "gfx_sha256": "7c1d837f1e5cf614ce5ea3ddc8f045aa9e86763e275784e2ddf3bc8630aba942",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "amy \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_wt_amy_8a2c",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "236543a13bcfa8806a2dfe703ebc9a3c1c24427f72981b6adb2f2e695f5ab21c",
-        "colorspace": "Non-Color",
-        "directional_shade": true,
-        "shade_floor": 0.86
-      }
-    ],
-    "shade_floor": 0.86
-  },
   "appearance": "amy",
   "pose": "lying",
   "component": null,
-  "vertices": 1280,
-  "triangles": 870,
-  "batches": 7
+  "vertices": 351,
+  "triangles": 528,
+  "batches": 6,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/amy__lying/i3/amy__lying/scene.l64",
+    "sha256": "7936767efe10b6a4f0156ea4fc06d2d096e7cc3060ba36e8deccd1a27ed14e90",
+    "selection": "amy__lying"
+  }
 }

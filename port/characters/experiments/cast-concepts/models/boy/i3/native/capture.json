@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-boy-i3.z64",
+  "rom_sha256": "3cbfd3f634e7c5eef1ef5da277208b4ad0fdf77dd097686e67631283dee1fc2b",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1352760,
+      "free": 1383624
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346376,
+      "free": 1390008
+    }
+  ],
+  "subject": "boy",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "dbe0f97d69140e73d60802e4dd3404bca4499bf5bb367c24a108d73e9e631adf",
+    "candidate": "6362601dfaa22bd1721bae3c8c19866916ead36564cdc477b002e288a56777fe"
+  }
+}

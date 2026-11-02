@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "complete": true,
+  "expected_families": 1,
+  "families": [
+    {
+      "slug": "clerk",
+      "rounds": [
+        {
+          "iteration": "i1",
+          "triangles": 564,
+          "model_sha256": "4b353367125235477d9d3e9f6b89f961ee7860bfc6dd00a99871a58ee7a99375",
+          "rom_sha256": "ea063a6e95b6d0ebe77f2d5f6d59940eb73dea449ed645a93abe33a606717396",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 0
+            }
+          ]
+        },
+        {
+          "iteration": "i2",
+          "triangles": 564,
+          "model_sha256": "ad3d4c5eb9dbf88cdcb65d1678c59a90eaf21e76a2f033fd218a031601b1c90f",
+          "rom_sha256": "ca4e86e996ae8321c9e23642d5804dbfa8d1816cc3cc0bd0f104ebca998908ff",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 0
+            }
+          ]
+        },
+        {
+          "iteration": "i3",
+          "triangles": 564,
+          "model_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624",
+          "rom_sha256": "24b6b126d25d4e636e212a0103d06b698ec6ab06dfb30937cabc8aae0881fc15",
+          "capture_inputs_match": true,
+          "native_frames": 8,
+          "topology": [
+            {
+              "name": "owning head scalp ears nose",
+              "closed": true,
+              "oriented": true,
+              "hair_components": 0
+            }
+          ]
+        }
+      ],
+      "final": "i3"
+    }
+  ],
+  "missing": [],
+  "source_runtime_files_unchanged": 721
+}

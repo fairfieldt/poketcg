@@ -1,12 +1,13 @@
 {
   "model": "swimmer",
-  "triangles": 904,
-  "vertices": 1433,
+  "triangles": 564,
+  "vertices": 401,
   "batches": 7,
   "linked_parts": 0,
   "appearances": [
     "swimmer",
     "swimmer_palette2"
   ],
-  "fingerprint": "5375c39bf07332cf2c20b53ada289a1602e975d58811b31ed95f850ef90743f8"
+  "fingerprint": "76b90280948ba81b88e9059c513bd6d4e0595be1a03b1b66e8abbd2ffe7c6672",
+  "recipe": "reviewed-cast-manual"
 }

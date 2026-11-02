@@ -1,0 +1,27 @@
+Loaded trailer-intro
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-11-01 20:57:17.896 ares[50683:316606] Resizing output buffers to 1440, 1080
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 68988 bytes
+TRAILER READY intro vi=0 us=519566
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 13539.916 us (mode: sync, success: yes).
+TRAILER BEGIN intro vi=480 us=8518785
+Scene rom:/world/maps/overworld.l64: 18 batches, 17 textures, 292664 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 16348 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 10924 bytes
+TRAILER FIRST_FRAME intro vi=508 us=8994398
+TRAILER INTRO_RUN overworld-source-movement vi=567 us=9985354
+Scene rom:/world/maps/mason_laboratory.l64: 26 batches, 25 textures, 95172 bytes
+Scene rom:/world/maps/actor_mark.l64: 7 batches, 2 textures, 16348 bytes
+Scene rom:/world/maps/actor_dr_mason.l64: 7 batches, 2 textures, 14356 bytes
+Scene rom:/world/maps/actor_tech.l64: 7 batches, 2 textures, 14332 bytes
+Scene rom:/world/lod/actor_mark.l64: 7 batches, 2 textures, 10924 bytes
+Scene rom:/world/lod/actor_dr_mason.l64: 7 batches, 2 textures, 12172 bytes
+Scene rom:/world/lod/actor_tech.l64: 7 batches, 2 textures, 9580 bytes
+TRAILER TEXT id=1507 npc=1 map=1 x=14 y=8 vi=928 us=15996827
+TRAILER TEXT id=1508 npc=7 map=1 x=14 y=8 vi=1664 us=28275888
+TRAILER TEXT id=1509 npc=1 map=1 x=14 y=8 vi=1845 us=31294543
+TRAILER TEXT id=1510 npc=1 map=1 x=14 y=8 vi=2288 us=38685302
+TRAILER TEXT id=1511 npc=1 map=1 x=10 y=14 vi=2583 us=43608793
+TRAILER SHOT mark-at-first-table vi=2583 us=43608951
+TRAILER END intro vi=2643 us=44609374

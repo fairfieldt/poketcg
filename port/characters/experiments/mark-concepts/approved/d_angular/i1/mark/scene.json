@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "dx1_mark_face",
+    "dx1_mark_cap",
+    "dx1_mark_torso"
+  ],
+  "vertices": 631,
+  "triangles": 536,
+  "batches": 8
+}

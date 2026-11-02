@@ -1,0 +1,12 @@
+{
+  "concept": "b_portrait",
+  "round": 2,
+  "head_r": [
+    0.365,
+    0.2806,
+    0.415
+  ],
+  "jaw": 0.3,
+  "nose": 0.035,
+  "method": "direct 3D authoring; no generated raster art"
+}

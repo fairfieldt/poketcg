@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-steve-i1.z64",
+  "rom_sha256": "6b004d051e7a72208c1d649d2ec3610031b57270a51d0b578927da93ff66c5a9",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1363416,
+      "free": 1372968
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346976,
+      "free": 1389408
+    }
+  ],
+  "subject": "steve",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "d50ef0edf897ba42886f3a07c8f4aea41e7a53b28f6dc18fce233d78a473cd63",
+    "candidate": "ecf660261acaf057f63ff4db0938f169d7bf53bd4f8c5d301f193a8beb92dd15"
+  }
+}

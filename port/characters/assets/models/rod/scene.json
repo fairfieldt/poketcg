@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_stern"
+    "rod3_face",
+    "rod3_top"
   ],
   "actors": [
     {
@@ -41,45 +42,32 @@
       ]
     }
   },
-  "design": "center-parted black curtains, blue open vest and light shirt",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 22
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 16,
     "gfx_sha256": "2873c9106051817d1f194f0215cb1133a7560c8d17d942659517d1af7fe098d7",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "rod \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_stern",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "rod",
   "pose": "standing",
   "component": null,
-  "vertices": 1359,
-  "triangles": 807,
-  "batches": 6
+  "vertices": 451,
+  "triangles": 528,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/rod/i3/rod/scene.l64",
+    "sha256": "01b948aa306e236d064e051f5c2503c73c72e79d4b64ea7605e3c9a945e3d266",
+    "selection": "rod"
+  }
 }

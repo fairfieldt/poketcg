@@ -1,0 +1,14 @@
+{
+  "id": "a_compact_i1",
+  "label": "a_compact_i1",
+  "concept": "a_compact",
+  "iteration": 1,
+  "concept_method": "direct 3D authoring; no generated raster art",
+  "changes": "Authored distinct head/body proportions, tapered jaw, integrated nose and painted fringe; close backward cap with centered rear bill.",
+  "supporting_actor_sha256": {
+    "dr_mason": "60dcddbf43854f294521be95493d2af14677686706a59c1fc5e0196c769a74ef",
+    "ronald": "f0a95033bdb48f7299f5c4d8666e0658f2a8b5913d4de302d4b907e05efeda54"
+  },
+  "mark_sha256": "36e1e9955c631af4e488df7002f0697c3f7f7de77fb6b9ed21d2840d1a8ad7f7",
+  "review_status": "capture pending"
+}

@@ -1,11 +1,12 @@
 {
   "model": "imakuni",
-  "triangles": 518,
-  "vertices": 926,
-  "batches": 6,
-  "linked_parts": 21,
+  "triangles": 552,
+  "vertices": 450,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "imakuni"
   ],
-  "fingerprint": "e23badcfce8de0a7571c83859cdfea3721aa729e33d77d68b2023089fb69abcf"
+  "fingerprint": "0c0877d8177dc1618fa75385340c1bb6b9867ae69f80ba30b3b5aee0a1ee7663",
+  "recipe": "reviewed-cast-manual"
 }

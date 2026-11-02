@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "gtech1_tech_face",
+    "gtech1_tech_shirt"
+  ],
+  "vertices": 446,
+  "triangles": 560,
+  "batches": 7
+}

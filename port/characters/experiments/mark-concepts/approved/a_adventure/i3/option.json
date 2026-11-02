@@ -1,0 +1,12 @@
+{
+  "id": "a_adventure_i3",
+  "label": "A 3",
+  "concept_reference": "../../../concepts/a-simple-shirt.png",
+  "method": "approved raster reference; image-led 3D modeling",
+  "iteration": 3,
+  "user_corrections": [
+    "solid red shirt and sleeves",
+    "hairline is part of contiguous scalp",
+    "deeper curved head profile"
+  ]
+}

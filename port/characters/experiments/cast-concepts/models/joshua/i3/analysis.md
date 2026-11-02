@@ -1,0 +1,1 @@
+Final actual portrait/turn/talk/room comparison inspected. White sleeveless top and distinct shorts, cap/goggles, cheerful closed eyes and stronger curved smile preserved. Wider shoes and upper torso read at gameplay scale. 564 triangles; independent raw/packed audit clean.

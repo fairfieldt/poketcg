@@ -1,11 +1,12 @@
 {
   "model": "pappy",
-  "triangles": 794,
-  "vertices": 1334,
-  "batches": 6,
-  "linked_parts": 23,
+  "triangles": 560,
+  "vertices": 471,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "pappy"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "07bf2a2e7053726ba0887ab31d153e4dfbf01437109a16df37d8c0e15f4adcd9",
+  "recipe": "reviewed-cast-manual"
 }

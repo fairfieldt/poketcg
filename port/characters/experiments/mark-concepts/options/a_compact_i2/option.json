@@ -1,0 +1,14 @@
+{
+  "id": "a_compact_i2",
+  "label": "a_compact_i2",
+  "concept": "a_compact",
+  "iteration": 2,
+  "concept_method": "direct 3D authoring; no generated raster art",
+  "changes": "Round 1 native review/audit: unified cap/head shell removes crossing seam; coarser head/limb topology, thicker rear bill and simple shoes avoid packed collapse; lower eye row, shorter fringe, clearer mouth and brighter face balance pointed jaw.",
+  "supporting_actor_sha256": {
+    "dr_mason": "60dcddbf43854f294521be95493d2af14677686706a59c1fc5e0196c769a74ef",
+    "ronald": "f0a95033bdb48f7299f5c4d8666e0658f2a8b5913d4de302d4b907e05efeda54"
+  },
+  "mark_sha256": "eadea06910597e07016fdb19d36a5890731a4e0121f6c8992def92f101090ac7",
+  "review_status": "capture pending"
+}

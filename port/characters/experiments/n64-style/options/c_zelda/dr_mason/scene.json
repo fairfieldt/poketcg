@@ -1,0 +1,62 @@
+{
+  "format": "L643",
+  "textures": [
+    "c_zelda_dr_mason_face",
+    "c_zelda_dr_mason_torso"
+  ],
+  "actors": [
+    {
+      "name": "dr_mason",
+      "model": 1,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "dr_mason",
+  "style": "c_zelda",
+  "appearance": "dr_mason",
+  "pose": "standing",
+  "vertices": 631,
+  "triangles": 874,
+  "batches": 7,
+  "lighting": {
+    "ambient": 0.48,
+    "diffuse": 0.52,
+    "direction": [
+      -0.3522082237986393,
+      0.5534700659692904,
+      0.7547319081399414
+    ]
+  },
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "pivots": {
+    "3": [
+      -0.36,
+      0,
+      1.4
+    ],
+    "4": [
+      0.36,
+      0,
+      1.4
+    ],
+    "1": [
+      -0.145,
+      0,
+      0.82
+    ],
+    "2": [
+      0.145,
+      0,
+      0.82
+    ]
+  }
+}

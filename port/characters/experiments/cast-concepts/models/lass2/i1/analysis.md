@@ -1,0 +1,1 @@
+Actual native comparison inspected. Pink top/skirt read, but wide red headband looks like small cap on crown and hair too short at sides. Next round extends long side/back hair and compresses red band strip while maintaining one closed shell.

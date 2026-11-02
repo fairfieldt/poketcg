@@ -1,0 +1,21 @@
+{
+  "id": "isaac_i3",
+  "label": "isaac 3",
+  "concept_reference": "../../../concepts/isaac.png",
+  "iteration": 3,
+  "revision": {
+    "front_locks": [
+      1.93,
+      1.83,
+      1.97,
+      2.0,
+      2.02
+    ],
+    "crown_rise": 0.04,
+    "eye_width": 7,
+    "eye_height": 10,
+    "review": "Native i2: frames cross pupil positions and blond fringe too smooth; align frame centers to eyes and deepen connected forelock.",
+    "glasses_aligned": true,
+    "front_lock_depth": 0.04
+  }
+}

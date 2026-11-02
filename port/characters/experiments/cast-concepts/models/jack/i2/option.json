@@ -1,0 +1,16 @@
+{
+  "id": "jack_i2",
+  "label": "jack 2",
+  "concept_reference": "../../../concepts/jack.png",
+  "iteration": 2,
+  "revision": {
+    "chin_width": 0.23,
+    "jaw_width": 0.3,
+    "cheek_width": 0.36,
+    "crown_rise": 0.05,
+    "eye_shape": "rect",
+    "eye_width": 7,
+    "eye_height": 9,
+    "review": "Native i1: moustache/monocle distinct but face too youthful; adult jaw, rectangular eyes and thicker swept white crown."
+  }
+}

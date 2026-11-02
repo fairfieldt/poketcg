@@ -1,0 +1,25 @@
+{
+  "id": "rod_i3",
+  "label": "rod 3",
+  "concept_reference": "../../../concepts/rod.png",
+  "iteration": 3,
+  "revision": {
+    "front_locks": [
+      1.95,
+      1.83,
+      1.96,
+      1.99,
+      2.02
+    ],
+    "crown_rise": 0.045,
+    "eye_width": 7,
+    "eye_height": 10,
+    "review": "Native i2: vest clear but large source sweep weak; deepen broad diagonal owning forelock and strengthen composed smile.",
+    "front_lock_depth": 0.05,
+    "mouth_rgb": [
+      90,
+      48,
+      30
+    ]
+  }
+}

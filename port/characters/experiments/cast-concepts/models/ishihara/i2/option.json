@@ -1,0 +1,18 @@
+{
+  "id": "ishihara_i2",
+  "label": "ishihara 2",
+  "concept_reference": "../../../concepts/ishihara.png",
+  "iteration": 2,
+  "revision": {
+    "hairline_drop": 0.055,
+    "quarter_drop": 0.045,
+    "chin_width": 0.23,
+    "jaw_width": 0.3,
+    "cheek_width": 0.35,
+    "eye_shape": "rect",
+    "eye_width": 7,
+    "eye_height": 8,
+    "mouth_width": 8,
+    "review": "Native i1 and independent review: restore swept front-quarter hair, adult jaw and rectangular eyes; strengthen mouth."
+  }
+}

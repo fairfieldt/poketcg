@@ -1,0 +1,46 @@
+{
+  "NPC_NICHOLAS": {
+    "npc_id": 36,
+    "model": "hood",
+    "appearance": "hood",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 24,
+    "native_asset": "assets/models/hood/scene.l64",
+    "blender_file": "assets/models/hood/hood.blend",
+    "heading": null
+  },
+  "NPC_BRANDON": {
+    "npc_id": 37,
+    "model": "hood",
+    "appearance": "hood",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 24,
+    "native_asset": "assets/models/hood/scene.l64",
+    "blender_file": "assets/models/hood/hood.blend",
+    "heading": null
+  },
+  "NPC_HOOD1": {
+    "npc_id": 82,
+    "model": "hood",
+    "appearance": "hood",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 24,
+    "native_asset": "assets/models/hood/scene.l64",
+    "blender_file": "assets/models/hood/hood.blend",
+    "heading": null
+  },
+  "NPC_HOOD2": {
+    "npc_id": 96,
+    "model": "hood",
+    "appearance": "hood",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 24,
+    "native_asset": "assets/models/hood/scene.l64",
+    "blender_file": "assets/models/hood/hood.blend",
+    "heading": null
+  }
+}

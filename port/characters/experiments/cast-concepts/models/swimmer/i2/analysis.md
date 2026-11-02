@@ -1,0 +1,1 @@
+Actual eight-frame native comparison inspected. Shorts thigh split and painted goggles now restore pool identity. White cap larger, but too much black hair at sides; shoes still small. Next round extends white cap side coverage and enlarges grounded shoes/shoulder widths.

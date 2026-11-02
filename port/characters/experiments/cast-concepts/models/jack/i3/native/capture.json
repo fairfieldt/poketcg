@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-jack-i3.z64",
+  "rom_sha256": "af71c91b85049f93b0c9c36f32118e034c725d4b9c6167d5a549c2d42ebf04cc",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1353520,
+      "free": 1382864
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346328,
+      "free": 1390056
+    }
+  ],
+  "subject": "jack",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "a1b0970d77e1d1f533b7415d21d891eeae67c64f5fb64391b2a2a5d599a2f247",
+    "candidate": "cac0cbd45c1f36577f7aeee854d0d1c02c2ce4427f0aa728f8ca9d30468c4688"
+  }
+}

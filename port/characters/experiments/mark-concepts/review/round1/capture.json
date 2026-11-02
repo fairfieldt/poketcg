@@ -1,0 +1,78 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/mark-concepts-round1.z64",
+  "rom_sha256": "d013e374d6214bcf3bb986453881b72209c539701c63c6b7fddb17fec6711d74",
+  "frames": [
+    "baseline-room",
+    "baseline-talk",
+    "baseline-portrait-mark",
+    "baseline-portrait-dr_mason",
+    "baseline-portrait-ronald",
+    "baseline-turn-mark",
+    "baseline-turn-dr_mason",
+    "baseline-turn-ronald",
+    "a_compact_i1-room",
+    "a_compact_i1-talk",
+    "a_compact_i1-portrait-mark",
+    "a_compact_i1-portrait-dr_mason",
+    "a_compact_i1-portrait-ronald",
+    "a_compact_i1-turn-mark",
+    "a_compact_i1-turn-dr_mason",
+    "a_compact_i1-turn-ronald",
+    "b_portrait_i1-room",
+    "b_portrait_i1-talk",
+    "b_portrait_i1-portrait-mark",
+    "b_portrait_i1-portrait-dr_mason",
+    "b_portrait_i1-portrait-ronald",
+    "b_portrait_i1-turn-mark",
+    "b_portrait_i1-turn-dr_mason",
+    "b_portrait_i1-turn-ronald",
+    "c_slender_i1-room",
+    "c_slender_i1-talk",
+    "c_slender_i1-portrait-mark",
+    "c_slender_i1-portrait-dr_mason",
+    "c_slender_i1-portrait-ronald",
+    "c_slender_i1-turn-mark",
+    "c_slender_i1-turn-dr_mason",
+    "c_slender_i1-turn-ronald",
+    "d_angular_i1-room",
+    "d_angular_i1-talk",
+    "d_angular_i1-portrait-mark",
+    "d_angular_i1-portrait-dr_mason",
+    "d_angular_i1-portrait-ronald",
+    "d_angular_i1-turn-mark",
+    "d_angular_i1-turn-dr_mason",
+    "d_angular_i1-turn-ronald"
+  ],
+  "heap": [
+    {
+      "option": "baseline",
+      "total": 2736480,
+      "used": 1398480,
+      "free": 1338000
+    },
+    {
+      "option": "a_compact_i1",
+      "total": 2736480,
+      "used": 1386920,
+      "free": 1349560
+    },
+    {
+      "option": "b_portrait_i1",
+      "total": 2736480,
+      "used": 1387496,
+      "free": 1348984
+    },
+    {
+      "option": "c_slender_i1",
+      "total": 2736480,
+      "used": 1386928,
+      "free": 1349552
+    },
+    {
+      "option": "d_angular_i1",
+      "total": 2736480,
+      "used": 1394520,
+      "free": 1341960
+    }
+  ]
+}

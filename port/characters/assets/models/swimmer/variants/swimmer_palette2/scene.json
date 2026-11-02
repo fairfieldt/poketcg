@@ -1,11 +1,11 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_wt_swi_3b7b"
+    "w3_swimmer_palette2_face"
   ],
   "actors": [
     {
-      "name": "swimmer",
+      "name": "swimmer_palette2",
       "model": 33,
       "x": 0,
       "z": 0,
@@ -49,60 +49,32 @@
       ]
     }
   },
-  "design": "shared pool outfit and rig; Sara swim cap/goggles and cheerful face, Amanda swept bob and asymmetric smile",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 0
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 32,
     "gfx_sha256": "af8c6dd561040929e1eabb403c840414e779881a5f0b8053c05b12da406f323b",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "swimmer \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_wt_swi_3b7b",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "cab860c7d0c77c9ee2ddb3bb9ee9a9b8238f2871f19d6c4f42bff98d754d5823",
-        "colorspace": "Non-Color",
-        "directional_shade": true,
-        "shade_floor": 0.86
-      }
-    ],
-    "shade_floor": 0.86
-  },
-  "appearance_geometry": {
-    "scope": "head",
-    "head_pivot": [
-      0,
-      1.41,
-      0
-    ],
-    "shared_body": true,
-    "source_portraits": [
-      "src/gfx/duelists/sara.png",
-      "src/gfx/duelists/amanda.png"
-    ]
-  },
   "appearance": "swimmer_palette2",
   "pose": "standing",
   "component": null,
-  "vertices": 1333,
-  "triangles": 828,
-  "batches": 7
+  "vertices": 357,
+  "triangles": 528,
+  "batches": 6,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/swimmer_palette2/i3b/swimmer_palette2/scene.l64",
+    "sha256": "36da5c6037274a76c5f7896d7aaaa38b9473b370979c7fcf4f6325098a2fb8e4",
+    "selection": "swimmer_palette2"
+  }
 }

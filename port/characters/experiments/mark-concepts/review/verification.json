@@ -1,0 +1,386 @@
+{
+  "passed": true,
+  "primary_rounds": 12,
+  "retained_captured_versions": 21,
+  "native_frames": 336,
+  "models": [
+    {
+      "concept": "a_adventure",
+      "iteration": "i1",
+      "triangles": 584,
+      "model_sha256": "21915534c7c9b706a0b987baf81e8827ae44630ae8df9a0f94febd9f4a13ba17",
+      "rom_sha256": "ca139addcc2d07296814fe9b2a91bffafff95011bd88cd7b1214e8d82f245c99",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "a_adventure",
+      "iteration": "i2",
+      "triangles": 584,
+      "model_sha256": "71d36ebeec459ca293fe4d01dab6890de044da284acd293edd2e7ed1c7197466",
+      "rom_sha256": "2cbfffa8b596f3b764c2a2d63fece2e30e96287f4532f5842b1b6798b857b922",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "a_adventure",
+      "iteration": "i3",
+      "triangles": 560,
+      "model_sha256": "3c1bb8b8624c4143e2f6759e16e07b641cb9ba3b9f86a3b4897ebca465e711e2",
+      "rom_sha256": "155a65cbf20bf5ee32caf8558e6432c7037c64bd5d9cc10059eddcb28b619697",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "a_adventure",
+      "iteration": "i3b",
+      "triangles": 560,
+      "model_sha256": "97b95063d85a48a25434962d566e409a8d39a1243f24ac963d63c4285eb4362b",
+      "rom_sha256": "2076f9a95101390d0f3db1e43dfbb6e8a4b9602806a22f5f44da2fcc240d5773",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "a_adventure",
+      "iteration": "i3c",
+      "triangles": 568,
+      "model_sha256": "7a94ad2d81d6add8ccd23d0bf1f51c69b9487865c17934540c76dd6da9da53c1",
+      "rom_sha256": "04ea5a3ac289071cb1f49f88d8d602afcde7ef739c8f3db1e3a884e333d589fe",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": false,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "a_adventure",
+      "iteration": "i3d",
+      "triangles": 596,
+      "model_sha256": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3",
+      "rom_sha256": "98354c04055a3177183b169a97ba6b441d6bf39f7d4106b7ad0c8bd8478d435e",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "b_compact",
+      "iteration": "i1",
+      "triangles": 584,
+      "model_sha256": "602e345c89ed5f76b623cb5d2afb0a6c98cb77828a3bbb56222fc3abc4702a17",
+      "rom_sha256": "202f701f58ad750f2eacb82c95c3fc9889c55a4d07f579ed50ab5b28388f46b4",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "b_compact",
+      "iteration": "i2",
+      "triangles": 560,
+      "model_sha256": "b3fca015bcd60c3b091112807ac769ef64f54cf3d2929b0efb81895be691c4b5",
+      "rom_sha256": "54bb89a50498acc0fdab49d8fc1542425f653c251663883e15d7142bb0d8bcea",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "b_compact",
+      "iteration": "i3",
+      "triangles": 560,
+      "model_sha256": "f0c85a3eb3ba56ff8524e055c9016be9319448dd70c3cc4376449aba422eb662",
+      "rom_sha256": "19fc3c759fe9cb7639e3c5d0dae058f33f7676ab9442cd0a4cc4f336833db2e4",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "b_compact",
+      "iteration": "i3b",
+      "triangles": 580,
+      "model_sha256": "47e8a43c7e8298de9223dbe11b4687d496d13716c4d43bb3392cca0e6d73f0b4",
+      "rom_sha256": "31c3c882b952ecb7b610555c9dd54dbca81daf9607ed6e522cd057e9ce9a1d6b",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": false,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "b_compact",
+      "iteration": "i3c",
+      "triangles": 596,
+      "model_sha256": "006ec4dde67d9a09cb86812d6c60666644ee1972c445b3fe693bf611e699ec1c",
+      "rom_sha256": "9d7eb8a9ba7a216ea2a6631e65231a2620970409df616f35e3c40e5faf3d311e",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "c_lean",
+      "iteration": "i1",
+      "triangles": 584,
+      "model_sha256": "aa2834a59c6cf2083a2faa6edbfc147d407c7f0d421135f3f500ced1e8770e03",
+      "rom_sha256": "b561967596a0812590def774214aef7b47223b4831250505c7fb9815dd387e14",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "c_lean",
+      "iteration": "i2",
+      "triangles": 560,
+      "model_sha256": "3566bc0df4c1c9a97885a9b3947e8522d9c2bb5c144449e5168c0a8051d04e9a",
+      "rom_sha256": "4eddbbc14478c46e85033ecb113a14655424e3ae9f9085e893db437a54d3395c",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "c_lean",
+      "iteration": "i3",
+      "triangles": 560,
+      "model_sha256": "9919bf4663458be302615bec75fa4f9a812cf619f44c961078a5f00ac40dc839",
+      "rom_sha256": "d0d92fee0b741ebf78934c1f2ca835f09d7976431d78e0a0dcbd8339ced1fe40",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "c_lean",
+      "iteration": "i3b",
+      "triangles": 584,
+      "model_sha256": "402e3042190abce4d02027ccaad5bdcc50f16eb12c71cf88a6fbeb0f62ddc022",
+      "rom_sha256": "c33951a9c0af7f2fc62154151511d513875590ce17b73b219f8bfe88a6e67cff",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": false,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "c_lean",
+      "iteration": "i3c",
+      "triangles": 608,
+      "model_sha256": "baffd9f2b61cd68a7f857fd4916db310bef69ae0bb0cccf18fe34895699a461d",
+      "rom_sha256": "0a19bbd1d1e01726c9cd1fb1793d46c2ea61d497baea8983c94caf60e6f7296d",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "d_angular",
+      "iteration": "i1",
+      "triangles": 536,
+      "model_sha256": "8ac7f313d298ea8826eaed963aed7678b7236c737c9f7d4c422c61dda65cbae5",
+      "rom_sha256": "5e0e03bb27747cbbf23ca600ed8fcd088282ea83527ba9c3139ddfde57078488",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "d_angular",
+      "iteration": "i2",
+      "triangles": 504,
+      "model_sha256": "18bc9bfefc2f5fe38c0f40adc143b20f5c2ee3a5e091eb1743094e1d7fa9fb25",
+      "rom_sha256": "4e114518d2da202cabb5aa4a7d39ec46d5af894cbc678c12b84064a2ae2d41f0",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "d_angular",
+      "iteration": "i3",
+      "triangles": 520,
+      "model_sha256": "a3e17dbe092a427020e7519283c45f4a428e70645e717ad5d70aeb295010deb7",
+      "rom_sha256": "14c6ca5feb95fd1234138106a10544c3e7329a55b567729609498740fe0b0474",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "d_angular",
+      "iteration": "i3b",
+      "triangles": 536,
+      "model_sha256": "511305a0c16521ee6411fafe99bbbd68cdbde775e028a63c4726ef0580a5599d",
+      "rom_sha256": "3ee4e5eb2d9f43a0bdc63ca98835a273904b639534bed6d43324b460cec2e400",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": false,
+          "hair_components": 1
+        }
+      ]
+    },
+    {
+      "concept": "d_angular",
+      "iteration": "i3c",
+      "triangles": 548,
+      "model_sha256": "200a672c3b522a1ed59802e28ecb1328ef3e66dbb6f13e6dfab47c432f848384",
+      "rom_sha256": "3c3ff5550f38267c0fcf26060f3afd692d26734f9ced0a5dd5560b4fbbbdf679",
+      "native_frames": 16,
+      "staging_matches": true,
+      "controls_unchanged": true,
+      "export_passed": true,
+      "head": [
+        {
+          "name": "head cap ears nose",
+          "closed": true,
+          "hair_components": 1
+        }
+      ]
+    }
+  ]
+}

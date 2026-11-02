@@ -41,3 +41,7 @@ port/harness/refrun
 port/harness/difftest
 port/harness/unitdiff
 *.z64
+# Character study capture workspaces and Blender automatic backups.
+port/characters/experiments/cast-concepts/work/
+port/characters/experiments/mark-concepts/work/
+*.blend1

@@ -1,0 +1,1 @@
+Actual round 2 native comparison inspected. Purple hair side/back mass stronger; friendly face readable. Forehead hairline still central V rather than side fringe. Next round adds asymmetric joined scalp boundary and broadens lower bob/upper torso/feet.

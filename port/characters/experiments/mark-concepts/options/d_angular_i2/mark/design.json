@@ -1,0 +1,12 @@
+{
+  "concept": "d_angular",
+  "round": 2,
+  "head_r": [
+    0.37,
+    0.2944,
+    0.385
+  ],
+  "jaw": 0.34,
+  "nose": 0.03,
+  "method": "direct 3D authoring; no generated raster art"
+}

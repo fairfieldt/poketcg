@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_stern"
+    "gene3_face",
+    "gene3_top"
   ],
   "actors": [
     {
@@ -41,45 +42,32 @@
       ]
     }
   },
-  "design": "red swept mining-club hair, red jacket, dark undershirt",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 20
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 11,
     "gfx_sha256": "d50f2eb1c1db7240ebf2248ec589abed057747723666191f846c7b2c3ee53d2a",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "gene \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_stern",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "gene",
   "pose": "standing",
   "component": null,
-  "vertices": 1276,
-  "triangles": 761,
-  "batches": 6
+  "vertices": 451,
+  "triangles": 528,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/gene/i3/gene/scene.l64",
+    "sha256": "a7c5a595c0c5f772da22bd95864aa9858e40d3f1d6293235afeee2b4a5e923b2",
+    "selection": "gene"
+  }
 }

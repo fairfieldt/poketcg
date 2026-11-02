@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_gentle"
+    "w3_woman_face"
   ],
   "actors": [
     {
@@ -42,45 +42,32 @@
       ]
     }
   },
-  "design": "broad red bob with side part and red dress",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 24
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 35,
     "gfx_sha256": "0b6bbb0204dc600984c8e05078436f6ed76b926e7e2fb721cda56ab9c4f1e2e5",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "woman \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_gentle",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "woman",
   "pose": "standing",
   "component": null,
-  "vertices": 1085,
-  "triangles": 584,
-  "batches": 6
+  "vertices": 367,
+  "triangles": 544,
+  "batches": 6,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/woman/i3/woman/scene.l64",
+    "sha256": "8fbcc0f1f453b85fa8eff9b11c6e081794d50cc375fb439a0fc4de1fd8f8a716",
+    "selection": "woman"
+  }
 }

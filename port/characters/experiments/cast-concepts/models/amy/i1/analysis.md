@@ -1,0 +1,1 @@
+Actual portrait/turn/talk/room comparison inspected. Swept blue head and sleeveless white dress retained, but hair reads too short at sides and white dress lacks blue hem. Next round broadens side hair coverage and enlarges head, adds blue hem; keeps single continuous garment and bare arms.

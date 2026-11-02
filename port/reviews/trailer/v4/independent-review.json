@@ -1,0 +1,13 @@
+{
+  "passed": true,
+  "independent_review": true,
+  "width": 1440,
+  "height": 1080,
+  "fps": 60,
+  "frames": 3874,
+  "duration": 64.566667,
+  "original_v3_aac_adts_sha256": "92a170127c763c7575b815596c45b8a60671fa4e67b614cdf50515bdb42a961e",
+  "audio_bytes_match_v3": true,
+  "decode_errors": 0,
+  "contact_sheet_review": "New Mark, Mason, Sam and club cast visible; duel, medal, Hall and title shots present; no app chrome or desktop."
+}

@@ -1,0 +1,156 @@
+{
+  "NPC_SAM": {
+    "npc_id": 7,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_TECH1": {
+    "npc_id": 8,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_TECH2": {
+    "npc_id": 9,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_TECH3": {
+    "npc_id": 10,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_TECH4": {
+    "npc_id": 11,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_TECH5": {
+    "npc_id": 12,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_TECH6": {
+    "npc_id": 13,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_JOSEPH": {
+    "npc_id": 47,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_DAVID": {
+    "npc_id": 48,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_ERIK": {
+    "npc_id": 49,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_SPECS2": {
+    "npc_id": 89,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_AARON": {
+    "npc_id": 99,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_TECH7": {
+    "npc_id": 101,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  },
+  "NPC_TECH8": {
+    "npc_id": 102,
+    "model": "tech",
+    "appearance": "tech",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 25,
+    "native_asset": "assets/models/tech/scene.l64",
+    "blender_file": "assets/models/tech/tech.blend",
+    "heading": null
+  }
+}

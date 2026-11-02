@@ -1,0 +1,1 @@
+Actual round 2 native comparison inspected. Red headband now a thin connected stripe, longer black hair reaches shoulders. Symmetric fringe still reads generic; next round changes source side-swept hairline and widens grounded shoes/upper body.

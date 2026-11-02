@@ -1,0 +1,24 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/ronald/i2/ronald/scene.l64",
+  "sha256": "009299549f1f4b7d0ca59f7c8a2def4ac58a051730e85c975726118d0cfd5d0f",
+  "triangles": 512,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "ron2_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

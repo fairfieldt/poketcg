@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-lad-i3b.z64",
+  "rom_sha256": "8d1cc2a2bdd785da11958cfc526391780bdab81f95d74d925d04f51a6c290dda",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1355456,
+      "free": 1380928
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1351632,
+      "free": 1384752
+    }
+  ],
+  "subject": "lad",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "bc2e4647c105b21585cd8975ca279d92ad7f5e61fe766e93384395ce8d26a631",
+    "candidate": "af6e16730cec6d5d8abf85218064b746486102dca688bbfd38ab746373dc2e9d"
+  }
+}

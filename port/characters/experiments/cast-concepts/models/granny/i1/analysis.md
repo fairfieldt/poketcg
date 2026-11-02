@@ -1,0 +1,1 @@
+Actual native comparison inspected. Glasses and yellow long outfit read, but silver crown is conical instead of bun, eyes too young and cardigan front blank. Next round rounds attached upper bun with extra broad ring, reduces eye height, and paints flush cardigan seam.

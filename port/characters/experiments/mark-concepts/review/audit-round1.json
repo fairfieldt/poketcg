@@ -1,0 +1,213 @@
+{
+  "passed": false,
+  "models": [
+    {
+      "path": "port/characters/experiments/mark-concepts/options/a_compact_i1/mark/scene.l64",
+      "sha256": "36e1e9955c631af4e488df7002f0697c3f7f7de77fb6b9ed21d2840d1a8ad7f7",
+      "triangles": 752,
+      "parts": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "textures": [
+        {
+          "name": "m01_mark_face.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        },
+        {
+          "name": "m01_mark_torso.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        }
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 2",
+        "packed degenerate batch 0 triangle 8",
+        "packed degenerate batch 0 triangle 17",
+        "packed degenerate batch 0 triangle 29",
+        "packed degenerate batch 5 triangle 54"
+      ],
+      "passed": false
+    },
+    {
+      "path": "port/characters/experiments/mark-concepts/options/b_portrait_i1/mark/scene.l64",
+      "sha256": "1ce2b8a9d4f63af95e2b8853db0aaf335e61b7ae5afeb369b743c74e453f5d8b",
+      "triangles": 780,
+      "parts": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "textures": [
+        {
+          "name": "m11_mark_face.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        },
+        {
+          "name": "m11_mark_torso.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        }
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 2",
+        "packed degenerate batch 0 triangle 5",
+        "packed degenerate batch 0 triangle 8",
+        "packed degenerate batch 0 triangle 11",
+        "packed degenerate batch 0 triangle 17",
+        "packed degenerate batch 0 triangle 23",
+        "packed degenerate batch 0 triangle 29",
+        "packed degenerate batch 0 triangle 35",
+        "packed degenerate batch 3 triangle 70",
+        "packed degenerate batch 3 triangle 78",
+        "packed degenerate batch 3 triangle 88",
+        "packed degenerate batch 3 triangle 91",
+        "packed degenerate batch 4 triangle 70",
+        "packed degenerate batch 4 triangle 78",
+        "packed degenerate batch 4 triangle 88",
+        "packed degenerate batch 4 triangle 91",
+        "packed degenerate batch 5 triangle 54"
+      ],
+      "passed": false
+    },
+    {
+      "path": "port/characters/experiments/mark-concepts/options/c_slender_i1/mark/scene.l64",
+      "sha256": "3145f49fcc14424481ca4209fd666552b9c7c7790952d2767245bee69942be4b",
+      "triangles": 740,
+      "parts": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "textures": [
+        {
+          "name": "m21_mark_face.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        },
+        {
+          "name": "m21_mark_torso.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        }
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 154",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 3 triangle 70",
+        "packed degenerate batch 3 triangle 78",
+        "packed degenerate batch 3 triangle 88",
+        "packed degenerate batch 3 triangle 91",
+        "packed degenerate batch 4 triangle 70",
+        "packed degenerate batch 4 triangle 78",
+        "packed degenerate batch 4 triangle 88",
+        "packed degenerate batch 4 triangle 91",
+        "packed degenerate batch 5 triangle 13",
+        "packed degenerate batch 5 triangle 14",
+        "packed degenerate batch 5 triangle 16",
+        "packed degenerate batch 5 triangle 17",
+        "packed degenerate batch 5 triangle 18",
+        "packed degenerate batch 5 triangle 19",
+        "packed degenerate batch 5 triangle 20",
+        "packed degenerate batch 5 triangle 21",
+        "packed degenerate batch 5 triangle 22",
+        "packed degenerate batch 5 triangle 23",
+        "packed degenerate batch 5 triangle 54",
+        "packed degenerate batch 6 triangle 12",
+        "packed degenerate batch 6 triangle 13",
+        "packed degenerate batch 6 triangle 14",
+        "packed degenerate batch 6 triangle 15",
+        "packed degenerate batch 6 triangle 16",
+        "packed degenerate batch 6 triangle 17",
+        "packed degenerate batch 6 triangle 19",
+        "packed degenerate batch 6 triangle 20",
+        "packed degenerate batch 6 triangle 22",
+        "packed degenerate batch 6 triangle 23"
+      ],
+      "passed": false
+    },
+    {
+      "path": "port/characters/experiments/mark-concepts/options/d_angular_i1/mark/scene.l64",
+      "sha256": "7fe34afa5cc1f9bd4646dcaf773da8755102a2102de0e25bf25121d22264515a",
+      "triangles": 716,
+      "parts": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "textures": [
+        {
+          "name": "m31_mark_face.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        },
+        {
+          "name": "m31_mark_torso.sprite",
+          "size": [
+            32,
+            32
+          ],
+          "rgba16_bytes": 2048
+        }
+      ],
+      "errors": [
+        "packed degenerate batch 5 triangle 12",
+        "packed degenerate batch 5 triangle 13",
+        "packed degenerate batch 5 triangle 14",
+        "packed degenerate batch 5 triangle 15",
+        "packed degenerate batch 5 triangle 16",
+        "packed degenerate batch 5 triangle 17",
+        "packed degenerate batch 5 triangle 19",
+        "packed degenerate batch 5 triangle 20",
+        "packed degenerate batch 5 triangle 22",
+        "packed degenerate batch 5 triangle 23",
+        "packed degenerate batch 5 triangle 36",
+        "packed degenerate batch 6 triangle 13",
+        "packed degenerate batch 6 triangle 14",
+        "packed degenerate batch 6 triangle 16",
+        "packed degenerate batch 6 triangle 17",
+        "packed degenerate batch 6 triangle 18",
+        "packed degenerate batch 6 triangle 19",
+        "packed degenerate batch 6 triangle 20",
+        "packed degenerate batch 6 triangle 21",
+        "packed degenerate batch 6 triangle 22",
+        "packed degenerate batch 6 triangle 23"
+      ],
+      "passed": false
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Actual native comparison inspected against extra Amanda concept. Uncovered blonde scalp clearly differs from Sara swim cap, same swimsuit body retained; side-swept bob too short and brow too pale. Next round extends connected blonde side hair, lowers one broad swept forelock boundary, and darkens painted brows. Body changes follow exactly Sara round 2 shorts construction.

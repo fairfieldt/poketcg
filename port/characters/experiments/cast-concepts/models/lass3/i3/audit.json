@@ -1,0 +1,28 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/lass3/i3/lass3/scene.l64",
+  "sha256": "cb197eeffdb7d1a62f3ddf4d746bec098596a93d401ed8457eca76969eed3a4f",
+  "triangles": 588,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "w3_lass3_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "head_edge_incidence": {
+    "2": 228
+  },
+  "head_closed": true
+}

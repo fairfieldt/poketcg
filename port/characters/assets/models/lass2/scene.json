@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_gentle"
+    "w3_lass2_face"
   ],
   "actors": [
     {
@@ -43,45 +43,32 @@
       ]
     }
   },
-  "design": "long side-swept black hair and wide red headband",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 26
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 30,
     "gfx_sha256": "78d3e82fcfa6cdb6184f3c116653610a74f622bf4ade8ce43db0f65a96000a61",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "lass2 \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_gentle",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "lass2",
   "pose": "standing",
   "component": null,
-  "vertices": 1156,
-  "triangles": 636,
-  "batches": 6
+  "vertices": 384,
+  "triangles": 528,
+  "batches": 6,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/lass2/i3b/lass2/scene.l64",
+    "sha256": "218d7aa8cff4fb971f95749eb4eada4d1f5414f3f2ff0ea5ab01fb8ed4c2b57c",
+    "selection": "lass2"
+  }
 }

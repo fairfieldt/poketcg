@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_round_glasses"
+    "murray3_face",
+    "murray3_top"
   ],
   "actors": [
     {
@@ -54,45 +55,32 @@
       ]
     }
   },
-  "design": "large round glasses, domed dark hair, pink shirt and dark vest",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 22
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 12,
     "gfx_sha256": "8206420a26bcb472d7add969c932ec4ca7b3de45a81a3efbd9d7f89b35bbb191",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "murray \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_round_glasses",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "e49e8b581871bf6decf832b3fb10add1bc1f47be0e3d3c73298822c0380ee94c",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "murray",
   "pose": "standing",
   "component": null,
-  "vertices": 1350,
-  "triangles": 802,
-  "batches": 6
+  "vertices": 460,
+  "triangles": 540,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/murray/i3/murray/scene.l64",
+    "sha256": "f51488569a5d4d419b79b8b428c3b5ee255a8ac9b0a8ae57dc1aceccac2ca847",
+    "selection": "murray"
+  }
 }

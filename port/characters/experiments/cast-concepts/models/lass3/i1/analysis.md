@@ -1,0 +1,1 @@
+Actual native comparison inspected. Friendly face and green shirt read, but the two high source hair bunches are absent at game scale. Next round raises and widens connected scalp side lobes, keeps green costume; no disconnected hair ornaments.

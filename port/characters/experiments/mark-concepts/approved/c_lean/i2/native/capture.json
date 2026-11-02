@@ -1,0 +1,36 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/mark-c_lean_i2.z64",
+  "rom_sha256": "4eddbbc14478c46e85033ecb113a14655424e3ae9f9085e893db437a54d3395c",
+  "frames": [
+    "baseline-room",
+    "baseline-talk",
+    "baseline-portrait-mark",
+    "baseline-portrait-dr_mason",
+    "baseline-portrait-ronald",
+    "baseline-turn-mark",
+    "baseline-turn-dr_mason",
+    "baseline-turn-ronald",
+    "c_lean_i2-room",
+    "c_lean_i2-talk",
+    "c_lean_i2-portrait-mark",
+    "c_lean_i2-portrait-dr_mason",
+    "c_lean_i2-portrait-ronald",
+    "c_lean_i2-turn-mark",
+    "c_lean_i2-turn-dr_mason",
+    "c_lean_i2-turn-ronald"
+  ],
+  "heap": [
+    {
+      "option": "baseline",
+      "total": 2736576,
+      "used": 1398152,
+      "free": 1338424
+    },
+    {
+      "option": "c_lean_i2",
+      "total": 2736576,
+      "used": 1383272,
+      "free": 1353304
+    }
+  ]
+}

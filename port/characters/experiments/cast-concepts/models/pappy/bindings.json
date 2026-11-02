@@ -1,0 +1,35 @@
+{
+  "NPC_PAPPY1": {
+    "npc_id": 68,
+    "model": "pappy",
+    "appearance": "pappy",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 28,
+    "native_asset": "assets/models/pappy/scene.l64",
+    "blender_file": "assets/models/pappy/pappy.blend",
+    "heading": null
+  },
+  "NPC_PAPPY2": {
+    "npc_id": 80,
+    "model": "pappy",
+    "appearance": "pappy",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 28,
+    "native_asset": "assets/models/pappy/scene.l64",
+    "blender_file": "assets/models/pappy/pappy.blend",
+    "heading": null
+  },
+  "NPC_PAPPY3": {
+    "npc_id": 93,
+    "model": "pappy",
+    "appearance": "pappy",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 28,
+    "native_asset": "assets/models/pappy/scene.l64",
+    "blender_file": "assets/models/pappy/pappy.blend",
+    "heading": null
+  }
+}

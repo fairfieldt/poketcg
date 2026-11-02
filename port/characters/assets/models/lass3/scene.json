@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_gentle"
+    "w3_lass3_face"
   ],
   "actors": [
     {
@@ -42,45 +42,32 @@
       ]
     }
   },
-  "design": "two high black bunches with green ties",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 28
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 31,
     "gfx_sha256": "8680c63e8d8dd990cc87dc379e21130b50e5e5718748accf9a1694482f5e5b95",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "lass3 \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_gentle",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "lass3",
   "pose": "standing",
   "component": null,
-  "vertices": 1323,
-  "triangles": 730,
-  "batches": 6
+  "vertices": 415,
+  "triangles": 612,
+  "batches": 6,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/lass3/i3c/lass3/scene.l64",
+    "sha256": "126509a8f0cfe1fb6d14d7e74c20807dd9d048e80b09ce4fdf7ddd1ec5f98614",
+    "selection": "lass3"
+  }
 }

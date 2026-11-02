@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-chap-i2.z64",
+  "rom_sha256": "916aebc448729cc33b9b9b7377c7b090616cc2494f14ce1d082a1b81ef3913e4",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1364296,
+      "free": 1372088
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346392,
+      "free": 1389992
+    }
+  ],
+  "subject": "chap",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "921a051e7da319dc46c0d17a85ae9e8cbc8f257685b3cd5d3a51ea87343af14d",
+    "candidate": "79d1ee217209a1b1cfb515a4c4525cc16b9daf5b63afc8e414c61386c698cd46"
+  }
+}

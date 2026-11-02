@@ -1,0 +1,1 @@
+Actual native comparison inspected against Sara concept/portrait. White cap too shallow and black bowl-like scalp dominates. Goggles missing. Blue body hem reads as a dress rather than short-legged pool outfit. Next round lowers white cap boundary and paints goggles into cap surface, shortens torso hem to hip, and colors separate rigid upper-leg segments blue.

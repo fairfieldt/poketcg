@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "w3_woman_face"
+  ],
+  "concept": "../../../concepts/woman.png",
+  "vertices": 367,
+  "triangles": 544,
+  "batches": 6
+}

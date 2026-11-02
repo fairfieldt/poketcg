@@ -1,0 +1,23 @@
+{
+  "swimmer": {
+    "head_presets": [
+      "sara",
+      "amanda"
+    ],
+    "shared_body_objects": 5,
+    "unique_body_mesh_datablocks": 5,
+    "amanda_hidden_by_default": true,
+    "default": "sara"
+  },
+  "amy": {
+    "source_mesh_objects": 6,
+    "shared_pose_control": true,
+    "default": "standing",
+    "lying_rotation_x": 1.5707963267948966,
+    "lying_location": [
+      0.0,
+      0.9,
+      0.35
+    ]
+  }
+}

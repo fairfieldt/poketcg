@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "w1_swimmer_face"
+  ],
+  "concept": "../../../concepts/swimmer.png",
+  "vertices": 383,
+  "triangles": 564,
+  "batches": 6
+}

@@ -1,0 +1,21 @@
+{
+  "id": "gene_i2",
+  "label": "gene 2",
+  "concept_reference": "../../../concepts/gene.png",
+  "iteration": 2,
+  "revision": {
+    "front_locks": [
+      1.96,
+      1.84,
+      1.94,
+      2.01,
+      2.02
+    ],
+    "crown_rise": 0.055,
+    "eye_shape": "rect",
+    "eye_width": 7,
+    "eye_height": 8,
+    "mouth_width": 8,
+    "review": "Native i1: pink hair reads as cap and eyes too round; broad diagonal forelock, asymmetric scalp and firmer adult face."
+  }
+}

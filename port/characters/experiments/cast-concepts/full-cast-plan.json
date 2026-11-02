@@ -1,0 +1,17 @@
+{
+  "scope": "All 37 human character families, including existing shared appearances and derived poses; two prop families unchanged",
+  "user_approved_entire_cast": true,
+  "model_requested": "gpt-6.1-sol",
+  "completed_before_full_cast": ["mark", "dr_mason", "ronald"],
+  "groups": {
+    "mark_pipeline_sol": ["ishihara", "imakuni", "mitch", "gene", "isaac", "nikki", "murray", "rick", "ken", "courtney", "steve", "jack", "rod"],
+    "mark_bcd_sol": ["tech", "mania", "boy", "man", "hood", "lad", "specs", "chap", "pappy", "butch"],
+    "cast_water_civilians_sol": ["clerk", "lass3", "swimmer", "joshua", "amy", "girl", "lass2", "lass1", "woman", "gal", "granny"]
+  },
+  "requirements": ["one actual built-in imagegen concept per family", "three sequential authored model/native capture/review rounds", "closed owning head and connected scalp", "rounded profile and joined shoulders", "source-specific identity and colors", "at most 900 triangles", "opaque 32x32 textures", "five rigid parts", "zero float32 or packed degenerate/duplicate triangles", "retained editable Blender files and source snapshots", "no production asset replacement yet"],
+  "capture": "tools/capture_family.py SLUG ROUND produces native/comparison.png plus before/candidate portrait, turn, talk, room. Real renderer, true family baseline, subject mapped to diagnostic Mark slot. Eight native frames per round.",
+  "capture_validation": "review/family-harness-validation.json: exact portrait match to existing verified Mason capture",
+  "parent_owns": ["common capture tools", "verification", "catalog", "review index", "source/runtime preservation checks"],
+  "preservation": "review/source-baseline.json hashes 721 source/runtime files",
+  "remaining_derived": ["mania_palette2", "boy_palette2", "swimmer_palette2 (Amanda distinct head, shared body)", "Amy lying pose", "existing Murray heading metadata"]
+}

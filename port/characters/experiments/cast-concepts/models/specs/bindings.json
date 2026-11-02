@@ -1,0 +1,35 @@
+{
+  "NPC_ADAM": {
+    "npc_id": 52,
+    "model": "specs",
+    "appearance": "specs",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 20,
+    "native_asset": "assets/models/specs/scene.l64",
+    "blender_file": "assets/models/specs/specs.blend",
+    "heading": null
+  },
+  "NPC_SPECS1": {
+    "npc_id": 75,
+    "model": "specs",
+    "appearance": "specs",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 20,
+    "native_asset": "assets/models/specs/scene.l64",
+    "blender_file": "assets/models/specs/specs.blend",
+    "heading": null
+  },
+  "NPC_SPECS3": {
+    "npc_id": 90,
+    "model": "specs",
+    "appearance": "specs",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 20,
+    "native_asset": "assets/models/specs/scene.l64",
+    "blender_file": "assets/models/specs/specs.blend",
+    "heading": null
+  }
+}

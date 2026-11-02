@@ -1,0 +1,8 @@
+{
+  "id": "a_adventure_i3d",
+  "label": "A 3d",
+  "concept_reference": "../../../concepts/a-simple-shirt.png",
+  "method": "approved raster reference; image-led 3D modeling",
+  "iteration": "3d",
+  "revision": "Closed-head topology repair after three primary rounds"
+}

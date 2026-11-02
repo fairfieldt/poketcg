@@ -1,0 +1,8 @@
+/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/tools/editable_blend.py:12: DeprecationWarning: 'Material.use_nodes' is expected to be removed in Blender 6.0
+  mat=bpy.data.materials.new(m['name']);mat.diffuse_color=(*m['rgb'],1);mat.use_nodes=True
+fast64 addon: Verbose is enabled
+fast64 addon: Read in JSON settings from file
+Info: Saved as "imakuni.blend"
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+
+Blender quit

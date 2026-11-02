@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "w2_joshua_face",
+    "w2_joshua_goggles"
+  ],
+  "concept": "../../../concepts/joshua.png",
+  "vertices": 405,
+  "triangles": 564,
+  "batches": 7
+}

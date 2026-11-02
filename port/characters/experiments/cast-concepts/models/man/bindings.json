@@ -1,0 +1,57 @@
+{
+  "NPC_ANDREW": {
+    "npc_id": 29,
+    "model": "man",
+    "appearance": "man",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 27,
+    "native_asset": "assets/models/man/scene.l64",
+    "blender_file": "assets/models/man/man.blend",
+    "heading": null
+  },
+  "NPC_MAN1": {
+    "npc_id": 61,
+    "model": "man",
+    "appearance": "man",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 27,
+    "native_asset": "assets/models/man/scene.l64",
+    "blender_file": "assets/models/man/man.blend",
+    "heading": null
+  },
+  "NPC_MAN2": {
+    "npc_id": 79,
+    "model": "man",
+    "appearance": "man",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 27,
+    "native_asset": "assets/models/man/scene.l64",
+    "blender_file": "assets/models/man/man.blend",
+    "heading": null
+  },
+  "NPC_MAN3": {
+    "npc_id": 88,
+    "model": "man",
+    "appearance": "man",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 27,
+    "native_asset": "assets/models/man/scene.l64",
+    "blender_file": "assets/models/man/man.blend",
+    "heading": null
+  },
+  "NPC_GUIDE": {
+    "npc_id": 100,
+    "model": "man",
+    "appearance": "man",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 27,
+    "native_asset": "assets/models/man/scene.l64",
+    "blender_file": "assets/models/man/man.blend",
+    "heading": null
+  }
+}

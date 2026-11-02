@@ -1,11 +1,12 @@
 {
   "model": "murray",
-  "triangles": 802,
-  "vertices": 1350,
-  "batches": 6,
-  "linked_parts": 22,
+  "triangles": 540,
+  "vertices": 460,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "murray"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "215ca945b76b7ded428f84ccccffd0b0ecf63fa5222f0ba8a97b530b18866d4c",
+  "recipe": "reviewed-cast-manual"
 }

@@ -1,0 +1,103 @@
+{
+  "passed": true,
+  "variants": [
+    {
+      "slug": "mania_palette2",
+      "path": "port/characters/experiments/cast-concepts/models/mania_palette2/i3",
+      "parent": "mania",
+      "identical_authoring_vertices_face_indices_parts_pivots": true,
+      "meshes_compared": 7,
+      "native_frames": 8,
+      "staged_bytes_match": true,
+      "topology": [
+        {
+          "name": "head scalp ears nose",
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "audit": {
+        "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/mania_palette2/i3/mania_palette2/scene.l64",
+        "sha256": "b29e366efd08bb77b88d98436864d4e12e42ab7e6ccfab0d7eab45e37952ad9b",
+        "triangles": 560,
+        "parts": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "textures": [
+          {
+            "name": "mp3_face.sprite",
+            "size": [
+              32,
+              32
+            ],
+            "rgba16_bytes": 2048
+          },
+          {
+            "name": "mp3_shirt.sprite",
+            "size": [
+              32,
+              32
+            ],
+            "rgba16_bytes": 2048
+          }
+        ],
+        "errors": [],
+        "passed": true
+      }
+    },
+    {
+      "slug": "boy_palette2",
+      "path": "port/characters/experiments/cast-concepts/models/boy_palette2/i3",
+      "parent": "boy",
+      "identical_authoring_vertices_face_indices_parts_pivots": true,
+      "meshes_compared": 7,
+      "native_frames": 8,
+      "staged_bytes_match": true,
+      "topology": [
+        {
+          "name": "head scalp ears nose",
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "audit": {
+        "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/boy_palette2/i3/boy_palette2/scene.l64",
+        "sha256": "410e76cecc51262e3b8d9ed596c8bdcf3facac7e13d714e5a39257e29e1748c4",
+        "triangles": 560,
+        "parts": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "textures": [
+          {
+            "name": "bp3_face.sprite",
+            "size": [
+              32,
+              32
+            ],
+            "rgba16_bytes": 2048
+          },
+          {
+            "name": "bp3_shirt.sprite",
+            "size": [
+              32,
+              32
+            ],
+            "rgba16_bytes": 2048
+          }
+        ],
+        "errors": [],
+        "passed": true
+      }
+    }
+  ]
+}

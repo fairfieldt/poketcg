@@ -1,12 +1,13 @@
 {
   "model": "mania",
-  "triangles": 578,
-  "vertices": 1027,
-  "batches": 6,
-  "linked_parts": 21,
+  "triangles": 560,
+  "vertices": 459,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "mania",
     "mania_palette2"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "43061478681cd8ed5217bde7e2b53442eaf8d56c1f26e3271c2e7e5e5fac1a94",
+  "recipe": "reviewed-cast-manual"
 }

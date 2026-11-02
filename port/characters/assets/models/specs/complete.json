@@ -1,11 +1,12 @@
 {
   "model": "specs",
-  "triangles": 589,
-  "vertices": 1044,
-  "batches": 6,
-  "linked_parts": 21,
+  "triangles": 560,
+  "vertices": 460,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "specs"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "84691ca2bceb6d1092d2af18e4a21562bc72d42c2b7bfcf62c4c52c60238538c",
+  "recipe": "reviewed-cast-manual"
 }

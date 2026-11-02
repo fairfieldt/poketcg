@@ -1,0 +1,61 @@
+In function '[01m[KWail_FillBenchEffect_FillBench[m[K',
+    inlined from '[01m[KWail_FillBenchEffect[m[K' at [01m[K../../../src/effects/part3.c:884:2[m[K:
+[01m[K../../../src/effects/part3.c:847:9:[m[K [01;35m[Kwarning: [m[Kdangling pointer to '[01m[Kn[m[K' may be used [[01;35m[K-Wdangling-pointer=[m[K]
+  847 |         [01;35m[KShuffleCards(hl, n)[m[K;
+      |         [01;35m[K^~~~~~~~~~~~~~~~~~~[m[K
+[01m[K../../../src/effects/part3.c:[m[K In function '[01m[KWail_FillBenchEffect[m[K':
+[01m[K../../../src/effects/part3.c:843:12:[m[K [01;36m[Knote: [m[K'[01m[Kn[m[K' declared here
+  843 |         u8 [01;36m[Kn[m[K;
+      |            [01;36m[K^[m[K
+RSPQ SDK check PASS: source, private headers, public ABI and queue microcode match the pin
+    [CC] main.c
+    [CC] menus.c
+    [CC] profiles.c
+    [CC] extra_ui.c
+    [CC] intro.c
+[01m[Kmain.c:361:13:[m[K [01;35m[Kwarning: [m[K'[01m[Kduel_setup[m[K' defined but not used [[01;35m[K-Wunused-function[m[K]
+  361 | static void [01;35m[Kduel_setup[m[K(TcgDuelSetup *setup,const OwDuel *duel)
+      |             [01;35m[K^~~~~~~~~~[m[K
+[01m[Kmain.c:46:13:[m[K [01;35m[Kwarning: [m[K'[01m[Kopening_shown[m[K' defined but not used [[01;35m[K-Wunused-variable[m[K]
+   46 | static bool [01;35m[Kopening_shown[m[K;
+      |             [01;35m[K^~~~~~~~~~~~~[m[K
+[01m[Kmain.c:43:13:[m[K [01;35m[Kwarning: [m[K'[01m[Kcontinue_duel[m[K' defined but not used [[01;35m[K-Wunused-variable[m[K]
+   43 | static bool [01;35m[Kcontinue_duel[m[K;
+      |             [01;35m[K^~~~~~~~~~~~~[m[K
+[01m[Kmain.c:42:16:[m[K [01;35m[Kwarning: [m[K'[01m[Ksaved_duel[m[K' defined but not used [[01;35m[K-Wunused-variable[m[K]
+   42 | static uint8_t [01;35m[Ksaved_duel[m[K[TCG_SAVE_SIZE];
+      |                [01;35m[K^~~~~~~~~~[m[K
+MODEL OPTIONS: baseline
+    [CC] naming.c
+    [CC] presentation.c
+    [CC] dialogue.c
+    [CC] audio.c
+    [CC] scene.c
+    [CC] video.c
+    [CC] save_sram.c
+    [DFS] /Users/fairfieldt/dev/poketcg/port/characters/experiments/mark-concepts/work/baseline-build/mark-concepts-baseline.dfs
+[01m[K../tcgn64.c:3954:12:[m[K [01;35m[Kwarning: [m[K'[01m[Ksaved_duel_mode[m[K' defined but not used [[01;35m[K-Wunused-function[m[K]
+ 3954 | static int [01;35m[Ksaved_duel_mode[m[K(const TcgSavedDuel *info)
+      |            [01;35m[K^~~~~~~~~~~~~~~[m[K
+[01m[K../tcgn64.c:3900:13:[m[K [01;35m[Kwarning: [m[K'[01m[Kresult_screen[m[K' defined but not used [[01;35m[K-Wunused-function[m[K]
+ 3900 | static void [01;35m[Kresult_screen[m[K(int result)
+      |             [01;35m[K^~~~~~~~~~~~~[m[K
+[01m[K../tcgn64.c:3799:13:[m[K [01;35m[Kwarning: [m[K'[01m[Ktitle_screen[m[K' defined but not used [[01;35m[K-Wunused-function[m[K]
+ 3799 | static bool [01;35m[Ktitle_screen[m[K(Setup *s, const TcgSavedDuel *saved, int saved_mode)
+      |             [01;35m[K^~~~~~~~~~~~[m[K
+[01m[K../tcgn64.c:3789:13:[m[K [01;35m[Kwarning: [m[K'[01m[Kstore_settings[m[K' defined but not used [[01;35m[K-Wunused-function[m[K]
+ 3789 | static void [01;35m[Kstore_settings[m[K(const Setup *s)
+      |             [01;35m[K^~~~~~~~~~~~~~[m[K
+[01m[K../tcgn64.c:3774:13:[m[K [01;35m[Kwarning: [m[K'[01m[Kload_settings[m[K' defined but not used [[01;35m[K-Wunused-function[m[K]
+ 3774 | static void [01;35m[Kload_settings[m[K(Setup *s)
+      |             [01;35m[K^~~~~~~~~~~~~[m[K
+[01m[K../tcgn64.c:3730:13:[m[K [01;35m[Kwarning: [m[K'[01m[Kinit_decks[m[K' defined but not used [[01;35m[K-Wunused-function[m[K]
+ 3730 | static void [01;35m[Kinit_decks[m[K(void)
+      |             [01;35m[K^~~~~~~~~~[m[K
+[01m[K../tcgn64.c:3284:13:[m[K [01;35m[Kwarning: [m[K'[01m[Ksave_discard[m[K' defined but not used [[01;35m[K-Wunused-function[m[K]
+ 3284 | static void [01;35m[Ksave_discard[m[K(void)
+      |             [01;35m[K^~~~~~~~~~~~[m[K
+    [LD] /Users/fairfieldt/dev/poketcg/port/characters/experiments/mark-concepts/work/baseline-build/mark-concepts-baseline.elf
+      text       data        bss      total filename
+    661080     624980     105428    1391488 /Users/fairfieldt/dev/poketcg/port/characters/experiments/mark-concepts/work/baseline-build/mark-concepts-baseline.elf
+    [Z64] mark-concepts-baseline.z64

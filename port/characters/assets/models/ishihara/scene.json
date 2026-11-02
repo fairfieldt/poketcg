@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_mature"
+    "ishihar3_face",
+    "ishihar3_top"
   ],
   "actors": [
     {
@@ -41,45 +42,32 @@
       ]
     }
   },
-  "design": "receding collector hair and purple waistcoat",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 22
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 3,
     "gfx_sha256": "e36d1e02539b79d2c68622c819b2e0cf05754a8186a1900e3b671f6d24303eb6",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "ishihara \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_mature",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "ishihara",
   "pose": "standing",
   "component": null,
-  "vertices": 1351,
-  "triangles": 804,
-  "batches": 6
+  "vertices": 451,
+  "triangles": 528,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/ishihara/i3/ishihara/scene.l64",
+    "sha256": "577ae3f1386f5554a8c52a7cb24987061bb377362aa51d9cbc3cc0f5a04c9308",
+    "selection": "ishihara"
+  }
 }

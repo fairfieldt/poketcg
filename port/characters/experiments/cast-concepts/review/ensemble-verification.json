@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "rom_sha256": "d8bf6991728ac597ea72aea28df2c5ec35fde67d2a53f9a5f1102f8ac7612989",
+  "native_frames": 16,
+  "model_sha256": {
+    "mark": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3",
+    "dr_mason": "784e46b8f1074131bb713526708cc136140ef4a92449fe5437c9d91d144d1582",
+    "ronald": "b7b5cc0870f062ac1636c3e2d953a6bc9cbc18960f6bcff33817a64c4eaf5033"
+  },
+  "capture_inputs_match": true
+}

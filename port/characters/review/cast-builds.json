@@ -1,0 +1,65 @@
+{
+  "passed": true,
+  "outputs": [
+    {
+      "path": "port/frontends/n64/adventure/poketcg-adventure.z64",
+      "bytes": 37126144,
+      "sha256": "5c51272fc30a17a78dffd827e61ae4c38c732a94027b35d83acfd78c1ab8c8e3"
+    },
+    {
+      "path": "port/frontends/n64/adventure/poketcg-expansion.z64",
+      "bytes": 37126144,
+      "sha256": "e5543313dd8c29292a71555c2be46dd6a2f314ffc04d02322dc9c002472e125c"
+    },
+    {
+      "path": "port/frontends/web/dist/tcg.wasm",
+      "bytes": 800917,
+      "sha256": "07b2ff1eb56a0c6402e3f653458fa85cd14fbb0928bcc306a6ec83b7310420bb"
+    },
+    {
+      "path": "port/frontends/web/dist/world/world.json",
+      "bytes": 442206,
+      "sha256": "8844d331d4dda3105091c3b1802b49ea15737866b3a61cd3995a98cae1f86e92"
+    },
+    {
+      "path": "port/reviews/trailer/v4/poketcg64-trailer.mp4",
+      "bytes": 40253453,
+      "sha256": "b98eee9cda6636cb383e469b323c5ac8dfb580d4a081779ec403ff77d3f9111a"
+    }
+  ],
+  "commands": [
+    "make -C port/frontends/n64/adventure -j6",
+    "make -C port/frontends/n64/adventure -j6 expansion",
+    "bash port/frontends/web/build.sh",
+    "python3 port/world3d/tools/build_character_lods.py",
+    "make -C port/characters test",
+    "make -C port/characters test-blender",
+    "python3 port/world3d/tools/check_characters.py",
+    "python3 port/world3d/tools/check_character_lods.py",
+    "python3 port/world3d/tools/check_actor_grounding.py",
+    "python3 port/world3d/tools/check_prop_models.py",
+    "python3 port/world3d/tools/check_world.py",
+    "node port/frontends/web/test/world3d_browser.mjs",
+    "node port/frontends/web/test/adventure_browser.mjs"
+  ],
+  "browser": {
+    "maps": 34,
+    "webgl_errors": 0,
+    "source_intro": true,
+    "naming": true,
+    "practice_duel": true
+  },
+  "limits": [
+    "Builds and emulator/browser checks do not establish physical console performance.",
+    "The original study immutability reports describe the preintegration baseline; production integration intentionally changes human assets."
+  ],
+  "trailer": {
+    "version": 4,
+    "fresh_native_captures": true,
+    "crt": false,
+    "frames": 3874,
+    "seconds": 64.56666666666666,
+    "audio_matches_v3": true,
+    "independent_review": "port/reviews/trailer/v4/independent-review.json"
+  }
+}

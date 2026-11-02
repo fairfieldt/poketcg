@@ -1,0 +1,36 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/mark-a_adventure_i3c.z64",
+  "rom_sha256": "04ea5a3ac289071cb1f49f88d8d602afcde7ef739c8f3db1e3a884e333d589fe",
+  "frames": [
+    "baseline-room",
+    "baseline-talk",
+    "baseline-portrait-mark",
+    "baseline-portrait-dr_mason",
+    "baseline-portrait-ronald",
+    "baseline-turn-mark",
+    "baseline-turn-dr_mason",
+    "baseline-turn-ronald",
+    "a_adventure_i3c-room",
+    "a_adventure_i3c-talk",
+    "a_adventure_i3c-portrait-mark",
+    "a_adventure_i3c-portrait-dr_mason",
+    "a_adventure_i3c-portrait-ronald",
+    "a_adventure_i3c-turn-mark",
+    "a_adventure_i3c-turn-dr_mason",
+    "a_adventure_i3c-turn-ronald"
+  ],
+  "heap": [
+    {
+      "option": "baseline",
+      "total": 2736576,
+      "used": 1398152,
+      "free": 1338424
+    },
+    {
+      "option": "a_adventure_i3c",
+      "total": 2736576,
+      "used": 1383528,
+      "free": 1353048
+    }
+  ]
+}

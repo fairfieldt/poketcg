@@ -66,6 +66,23 @@ def validate_model(slug):
     for path in sorted(folder.glob('variants/*/scene.l64')):
         alt=read_mesh(path)
         info=json.loads(path.with_suffix('.json').read_text())
+        if slug=='swimmer' and info.get('reviewed_source'):
+            # The reviewed source owns a single head batch at pivot zero.
+            # Compare authoring meshes to isolate the shared body precisely.
+            canonical=json.loads((folder/'authoring.json').read_text())
+            alternate=json.loads((path.parent/'authoring.json').read_text())
+            def body(doc):return [m for m in doc['meshes'] if 'head' not in m['name']]
+            one,two=body(canonical),body(alternate)
+            assert len(one)==len(two)
+            changed=0
+            for a,b in zip(one,two):
+                for ma,mb in zip(a['materials'],b['materials']):
+                    if ma!=mb:
+                        assert ma['name']==mb['name']=='garment'
+                        changed+=1;ma['rgb']=mb['rgb']
+                assert a==b,('Amanda shared body changed',path)
+            assert changed>0,('Amanda yellow palette missing',path)
+            continue
         exception=info.get('appearance_geometry')
         if exception:
             assert slug=='swimmer' and exception['scope']=='head'

@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "model": "steve",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "steve1_face",
+    "steve1_top"
+  ],
+  "vertices": 496,
+  "triangles": 552,
+  "batches": 7
+}

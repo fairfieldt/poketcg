@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-murray-i1.z64",
+  "rom_sha256": "833f923dec1360a94e78193e68fd9534137ab945873560290993c33932d93785",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1364192,
+      "free": 1372192
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346680,
+      "free": 1389704
+    }
+  ],
+  "subject": "murray",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "3a34b0923b852d4de0f446c31f4f82f48fcfa16fb2601f14f0c7ff1fef7896d1",
+    "candidate": "2370af0ec5c767380b19a6cd7100635c832b6ca554fb3b5126a9754dc70c3b50"
+  }
+}

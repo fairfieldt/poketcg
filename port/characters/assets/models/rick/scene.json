@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_glasses"
+    "rick3_face",
+    "rick3_top"
   ],
   "actors": [
     {
@@ -41,45 +42,32 @@
       ]
     }
   },
-  "design": "long side-swept dark science-club hair and round spectacles",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 20
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 6,
     "gfx_sha256": "9f0d81b4a86256025a5c0c8c2534df6ddd5aa925561cde27f36ffafbd2fb5f07",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "rick \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_glasses",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "e49e8b581871bf6decf832b3fb10add1bc1f47be0e3d3c73298822c0380ee94c",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "rick",
   "pose": "standing",
   "component": null,
-  "vertices": 1176,
-  "triangles": 669,
-  "batches": 6
+  "vertices": 452,
+  "triangles": 528,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/rick/i3/rick/scene.l64",
+    "sha256": "2bb12bb168502c9c2f706acd48b2f69afdc64730709848a6f331ab068b5c384f",
+    "selection": "rick"
+  }
 }

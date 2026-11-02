@@ -1,0 +1,1 @@
+Final actual portrait/turn/talk/room comparison inspected. Blue short-legged swimsuit, white cap with flush goggles, skin arms/legs and grounded white shoes read consistently. Body is continuous with separately rigid shorts legs; dark nape remains modest. 564 triangles, opaque 32px face/cap textures, clean packed audit.

@@ -1,11 +1,12 @@
 {
   "model": "tech",
-  "triangles": 663,
-  "vertices": 1156,
-  "batches": 6,
-  "linked_parts": 20,
+  "triangles": 560,
+  "vertices": 446,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "tech"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "c0a346a8f042d38b8af6b172bed74b7e7c13c2294d44ac10e88e65151f4dd1ba",
+  "recipe": "reviewed-cast-manual"
 }

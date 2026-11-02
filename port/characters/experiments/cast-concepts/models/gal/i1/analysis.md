@@ -1,0 +1,1 @@
+Actual native comparison inspected. Short dark hair, yellow shirt and skirt retained with smooth shoulder junctions; head and shoes are a little small. Next round enlarges head; final round will strengthen shoulders/feet based on next capture.

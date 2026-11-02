@@ -1,0 +1,12 @@
+{
+  "concept": "c_slender",
+  "round": 2,
+  "head_r": [
+    0.305,
+    0.25300000000000006,
+    0.355
+  ],
+  "jaw": 0.27,
+  "nose": 0.045,
+  "method": "direct 3D authoring; no generated raster art"
+}

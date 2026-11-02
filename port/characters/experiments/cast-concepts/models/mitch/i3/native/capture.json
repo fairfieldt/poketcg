@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-mitch-i3.z64",
+  "rom_sha256": "c21dc45871dfa378b19e440e6772897176ffb6d71b2629d7cccd78e3de713454",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1353984,
+      "free": 1382400
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346328,
+      "free": 1390056
+    }
+  ],
+  "subject": "mitch",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "fc0fa349034f5b5bac129133fcc715a1093d37b34eeb99257635fc5b349901ab",
+    "candidate": "1181cf83029cc890adeec4bda7059efb2846a0b4090c66840a177375bb9018ac"
+  }
+}

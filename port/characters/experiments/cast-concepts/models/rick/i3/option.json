@@ -1,0 +1,28 @@
+{
+  "id": "rick_i3",
+  "label": "rick 3",
+  "concept_reference": "../../../concepts/rick.png",
+  "iteration": 3,
+  "revision": {
+    "front_locks": [
+      1.95,
+      1.83,
+      1.95,
+      2.01,
+      2.02
+    ],
+    "crown_rise": 0.04,
+    "eye_shape": "rect",
+    "eye_width": 7,
+    "eye_height": 9,
+    "firm_mouth": true,
+    "review": "Native i2: glasses poorly align with eyes and brown fringe weak; realign frames, deepen owning fringe and retain stern expression.",
+    "glasses_aligned": true,
+    "front_lock_depth": 0.04,
+    "mouth_rgb": [
+      82,
+      45,
+      29
+    ]
+  }
+}

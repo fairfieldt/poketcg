@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "w3_lass3_face"
+  ],
+  "concept": "../../../concepts/lass3.png",
+  "vertices": 417,
+  "triangles": 588,
+  "batches": 6
+}

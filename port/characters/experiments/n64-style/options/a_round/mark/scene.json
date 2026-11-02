@@ -1,0 +1,62 @@
+{
+  "format": "L643",
+  "textures": [
+    "a_round_mark_face",
+    "a_round_mark_torso"
+  ],
+  "actors": [
+    {
+      "name": "mark",
+      "model": 1,
+      "x": 0,
+      "z": 0,
+      "heading": 0
+    }
+  ],
+  "colliders": [],
+  "model": "mark",
+  "style": "a_round",
+  "appearance": "mark",
+  "pose": "standing",
+  "vertices": 719,
+  "triangles": 958,
+  "batches": 7,
+  "lighting": {
+    "ambient": 0.62,
+    "diffuse": 0.38,
+    "direction": [
+      -0.3522082237986393,
+      0.5534700659692904,
+      0.7547319081399414
+    ]
+  },
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "pivots": {
+    "3": [
+      -0.41,
+      0,
+      1.24
+    ],
+    "4": [
+      0.41,
+      0,
+      1.24
+    ],
+    "1": [
+      -0.165,
+      0,
+      0.68
+    ],
+    "2": [
+      0.165,
+      0,
+      0.68
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/cast-dr_mason_i2.z64",
+  "rom_sha256": "ae9ad8d67cbb04c2ff87f2be20cb18b941aed629556a511241f3f64faa72a696",
+  "frames": [
+    "baseline-room",
+    "baseline-talk",
+    "baseline-portrait-mark",
+    "baseline-portrait-dr_mason",
+    "baseline-portrait-ronald",
+    "baseline-turn-mark",
+    "baseline-turn-dr_mason",
+    "baseline-turn-ronald",
+    "dr_mason_i2-room",
+    "dr_mason_i2-talk",
+    "dr_mason_i2-portrait-mark",
+    "dr_mason_i2-portrait-dr_mason",
+    "dr_mason_i2-portrait-ronald",
+    "dr_mason_i2-turn-mark",
+    "dr_mason_i2-turn-dr_mason",
+    "dr_mason_i2-turn-ronald"
+  ],
+  "heap": [
+    {
+      "option": "baseline",
+      "total": 2736576,
+      "used": 1398176,
+      "free": 1338400
+    },
+    {
+      "option": "dr_mason_i2",
+      "total": 2736576,
+      "used": 1370120,
+      "free": 1366456
+    }
+  ]
+}

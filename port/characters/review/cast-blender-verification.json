@@ -1,0 +1,304 @@
+{
+  "passed": true,
+  "models": [
+    {
+      "model": "dr_mason",
+      "parts": 5,
+      "appearances": [
+        "dr_mason"
+      ],
+      "passed": true
+    },
+    {
+      "model": "ronald",
+      "parts": 5,
+      "appearances": [
+        "ronald"
+      ],
+      "passed": true
+    },
+    {
+      "model": "ishihara",
+      "parts": 5,
+      "appearances": [
+        "ishihara"
+      ],
+      "passed": true
+    },
+    {
+      "model": "imakuni",
+      "parts": 5,
+      "appearances": [
+        "imakuni"
+      ],
+      "passed": true
+    },
+    {
+      "model": "tech",
+      "parts": 5,
+      "appearances": [
+        "tech"
+      ],
+      "passed": true
+    },
+    {
+      "model": "clerk",
+      "parts": 5,
+      "appearances": [
+        "clerk"
+      ],
+      "passed": true
+    },
+    {
+      "model": "mania",
+      "parts": 5,
+      "appearances": [
+        "mania",
+        "mania_palette2"
+      ],
+      "passed": true
+    },
+    {
+      "model": "lass3",
+      "parts": 5,
+      "appearances": [
+        "lass3"
+      ],
+      "passed": true
+    },
+    {
+      "model": "mitch",
+      "parts": 5,
+      "appearances": [
+        "mitch"
+      ],
+      "passed": true
+    },
+    {
+      "model": "boy",
+      "parts": 5,
+      "appearances": [
+        "boy",
+        "boy_palette2"
+      ],
+      "passed": true
+    },
+    {
+      "model": "man",
+      "parts": 5,
+      "appearances": [
+        "man"
+      ],
+      "passed": true
+    },
+    {
+      "model": "gene",
+      "parts": 5,
+      "appearances": [
+        "gene"
+      ],
+      "passed": true
+    },
+    {
+      "model": "swimmer",
+      "parts": 5,
+      "appearances": [
+        "swimmer",
+        "swimmer_palette2"
+      ],
+      "passed": true
+    },
+    {
+      "model": "joshua",
+      "parts": 5,
+      "appearances": [
+        "joshua"
+      ],
+      "passed": true
+    },
+    {
+      "model": "amy",
+      "parts": 5,
+      "appearances": [
+        "amy"
+      ],
+      "passed": true
+    },
+    {
+      "model": "girl",
+      "parts": 5,
+      "appearances": [
+        "girl"
+      ],
+      "passed": true
+    },
+    {
+      "model": "hood",
+      "parts": 5,
+      "appearances": [
+        "hood"
+      ],
+      "passed": true
+    },
+    {
+      "model": "isaac",
+      "parts": 5,
+      "appearances": [
+        "isaac"
+      ],
+      "passed": true
+    },
+    {
+      "model": "lass2",
+      "parts": 5,
+      "appearances": [
+        "lass2"
+      ],
+      "passed": true
+    },
+    {
+      "model": "lass1",
+      "parts": 5,
+      "appearances": [
+        "lass1"
+      ],
+      "passed": true
+    },
+    {
+      "model": "nikki",
+      "parts": 5,
+      "appearances": [
+        "nikki"
+      ],
+      "passed": true
+    },
+    {
+      "model": "lad",
+      "parts": 5,
+      "appearances": [
+        "lad"
+      ],
+      "passed": true
+    },
+    {
+      "model": "murray",
+      "parts": 5,
+      "appearances": [
+        "murray"
+      ],
+      "passed": true
+    },
+    {
+      "model": "rick",
+      "parts": 5,
+      "appearances": [
+        "rick"
+      ],
+      "passed": true
+    },
+    {
+      "model": "specs",
+      "parts": 5,
+      "appearances": [
+        "specs"
+      ],
+      "passed": true
+    },
+    {
+      "model": "ken",
+      "parts": 5,
+      "appearances": [
+        "ken"
+      ],
+      "passed": true
+    },
+    {
+      "model": "courtney",
+      "parts": 5,
+      "appearances": [
+        "courtney"
+      ],
+      "passed": true
+    },
+    {
+      "model": "steve",
+      "parts": 5,
+      "appearances": [
+        "steve"
+      ],
+      "passed": true
+    },
+    {
+      "model": "jack",
+      "parts": 5,
+      "appearances": [
+        "jack"
+      ],
+      "passed": true
+    },
+    {
+      "model": "rod",
+      "parts": 5,
+      "appearances": [
+        "rod"
+      ],
+      "passed": true
+    },
+    {
+      "model": "woman",
+      "parts": 5,
+      "appearances": [
+        "woman"
+      ],
+      "passed": true
+    },
+    {
+      "model": "chap",
+      "parts": 5,
+      "appearances": [
+        "chap"
+      ],
+      "passed": true
+    },
+    {
+      "model": "gal",
+      "parts": 5,
+      "appearances": [
+        "gal"
+      ],
+      "passed": true
+    },
+    {
+      "model": "pappy",
+      "parts": 5,
+      "appearances": [
+        "pappy"
+      ],
+      "passed": true
+    },
+    {
+      "model": "butch",
+      "parts": 5,
+      "appearances": [
+        "butch"
+      ],
+      "passed": true
+    },
+    {
+      "model": "granny",
+      "parts": 5,
+      "appearances": [
+        "granny"
+      ],
+      "passed": true
+    },
+    {
+      "model": "mark",
+      "parts": 5,
+      "appearances": [
+        "mark"
+      ],
+      "passed": true
+    }
+  ]
+}

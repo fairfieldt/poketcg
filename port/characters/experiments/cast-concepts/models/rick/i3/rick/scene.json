@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "model": "rick",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "rick3_face",
+    "rick3_top"
+  ],
+  "vertices": 452,
+  "triangles": 528,
+  "batches": 7
+}

@@ -1,0 +1,24 @@
+{
+  "canonical": "swimmer",
+  "head_variant": "swimmer_palette2",
+  "rounds": [
+    {
+      "round": 1,
+      "body_and_rig_identical": true,
+      "meshes": 5,
+      "sha256": "3c5b6ed0767e5c6be34a1661ad0358aab5564648ca109b10383dd4db78394b55"
+    },
+    {
+      "round": 2,
+      "body_and_rig_identical": true,
+      "meshes": 5,
+      "sha256": "8c8cc0862a691bf17920aec17e544eaf6347553b1e5c9e03ddf6df9ad2f84fa9"
+    },
+    {
+      "round": 3,
+      "body_and_rig_identical": true,
+      "meshes": 5,
+      "sha256": "40d750e1b56d66b780c47ed309d0173f5c8022955e47e2ae6c99250c8b37ff9e"
+    }
+  ]
+}

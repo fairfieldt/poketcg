@@ -1,11 +1,12 @@
 {
   "model": "courtney",
-  "triangles": 672,
-  "vertices": 1259,
-  "batches": 6,
-  "linked_parts": 26,
+  "triangles": 540,
+  "vertices": 453,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "courtney"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "5836fe2aad4746efa9c1f5bb8ebec4d6fd8780a1f6599e728890b70c66c96171",
+  "recipe": "reviewed-cast-manual"
 }

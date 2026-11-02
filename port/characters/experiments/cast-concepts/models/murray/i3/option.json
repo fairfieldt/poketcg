@@ -1,0 +1,40 @@
+{
+  "id": "murray_i3",
+  "label": "murray 3",
+  "concept_reference": "../../../concepts/murray.png",
+  "iteration": 3,
+  "revision": {
+    "bob_contour": [
+      [
+        0.37,
+        1.32
+      ],
+      [
+        0.4,
+        1.47
+      ],
+      [
+        0.4,
+        1.72
+      ],
+      [
+        0.38,
+        1.96
+      ]
+    ],
+    "hairline_drop": 0.025,
+    "quarter_drop": 0.025,
+    "eye_shape": "rect",
+    "eye_width": 7,
+    "eye_height": 8,
+    "review": "Native i2: long receding profile restored but lenses misaligned and chin youthful; align lenses and broaden adult lower jaw.",
+    "glasses_aligned": true,
+    "chin_width": 0.23,
+    "jaw_width": 0.3,
+    "mouth_rgb": [
+      90,
+      48,
+      30
+    ]
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/mark-d_angular_i1.z64",
+  "rom_sha256": "5e0e03bb27747cbbf23ca600ed8fcd088282ea83527ba9c3139ddfde57078488",
+  "frames": [
+    "baseline-room",
+    "baseline-talk",
+    "baseline-portrait-mark",
+    "baseline-portrait-dr_mason",
+    "baseline-portrait-ronald",
+    "baseline-turn-mark",
+    "baseline-turn-dr_mason",
+    "baseline-turn-ronald",
+    "d_angular_i1-room",
+    "d_angular_i1-talk",
+    "d_angular_i1-portrait-mark",
+    "d_angular_i1-portrait-dr_mason",
+    "d_angular_i1-portrait-ronald",
+    "d_angular_i1-turn-mark",
+    "d_angular_i1-turn-dr_mason",
+    "d_angular_i1-turn-ronald"
+  ],
+  "heap": [
+    {
+      "option": "baseline",
+      "total": 2736576,
+      "used": 1398176,
+      "free": 1338400
+    },
+    {
+      "option": "d_angular_i1",
+      "total": 2736576,
+      "used": 1389896,
+      "free": 1346680
+    }
+  ]
+}

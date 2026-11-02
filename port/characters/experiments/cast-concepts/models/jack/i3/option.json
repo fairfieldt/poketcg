@@ -1,0 +1,23 @@
+{
+  "id": "jack_i3",
+  "label": "jack 3",
+  "concept_reference": "../../../concepts/jack.png",
+  "iteration": 3,
+  "revision": {
+    "chin_width": 0.23,
+    "jaw_width": 0.3,
+    "cheek_width": 0.36,
+    "crown_rise": 0.07,
+    "eye_shape": "rect",
+    "eye_width": 7,
+    "eye_height": 9,
+    "review": "Native i2: adult jaw/monocle/moustache read, white crown still too smooth; deeper swept owning forelock and broad quiff variation.",
+    "front_locks": [
+      1.95,
+      1.88,
+      1.97,
+      2.0,
+      2.02
+    ]
+  }
+}

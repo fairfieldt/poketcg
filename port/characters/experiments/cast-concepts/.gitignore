@@ -1,0 +1,6 @@
+work/
+__pycache__/
+**/native/ares.log
+**/native/saves/
+**/native/settings.bml
+*.blend1

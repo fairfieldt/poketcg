@@ -1,0 +1,57 @@
+{
+  "NPC_CHRIS": {
+    "npc_id": 23,
+    "model": "mania",
+    "appearance": "mania",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 22,
+    "native_asset": "assets/models/mania/scene.l64",
+    "blender_file": "assets/models/mania/mania.blend",
+    "heading": null
+  },
+  "NPC_MICHAEL": {
+    "npc_id": 24,
+    "model": "mania",
+    "appearance": "mania",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 22,
+    "native_asset": "assets/models/mania/scene.l64",
+    "blender_file": "assets/models/mania/mania.blend",
+    "heading": null
+  },
+  "NPC_MATTHEW": {
+    "npc_id": 27,
+    "model": "mania",
+    "appearance": "mania_palette2",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 22,
+    "native_asset": "assets/models/mania/variants/mania_palette2/scene.l64",
+    "blender_file": "assets/models/mania/mania.blend",
+    "heading": null
+  },
+  "NPC_MANIA": {
+    "npc_id": 92,
+    "model": "mania",
+    "appearance": "mania",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 22,
+    "native_asset": "assets/models/mania/scene.l64",
+    "blender_file": "assets/models/mania/mania.blend",
+    "heading": null
+  },
+  "NPC_CHAMP": {
+    "npc_id": 95,
+    "model": "mania",
+    "appearance": "mania",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 22,
+    "native_asset": "assets/models/mania/scene.l64",
+    "blender_file": "assets/models/mania/mania.blend",
+    "heading": null
+  }
+}

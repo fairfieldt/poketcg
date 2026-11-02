@@ -1,12 +1,13 @@
 {
   "model": "boy",
-  "triangles": 578,
-  "vertices": 1027,
-  "batches": 6,
-  "linked_parts": 21,
+  "triangles": 560,
+  "vertices": 459,
+  "batches": 7,
+  "linked_parts": 0,
   "appearances": [
     "boy",
     "boy_palette2"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "7106f96fcfb0acdcc4b1ba4da36f66d87fd3ddf10487674eca944919e1577952",
+  "recipe": "reviewed-cast-manual"
 }

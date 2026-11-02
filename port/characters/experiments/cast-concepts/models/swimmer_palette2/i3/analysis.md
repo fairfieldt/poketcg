@@ -1,0 +1,1 @@
+Final actual native comparison inspected against additional Amanda imagegen concept. Uncovered bright blonde swept bob, dark brows and friendly painted face distinct from Sara cap/goggles. Blue short-legged swimsuit, shoulder/feet widths and all body/rig authoring meshes exactly match Sara round 3; independent all-round equality proof saved with Sara canonical model.

@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "gmania2_mania_face",
+    "gmania2_mania_shirt"
+  ],
+  "vertices": 459,
+  "triangles": 560,
+  "batches": 7
+}

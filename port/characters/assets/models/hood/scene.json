@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_stern"
+    "ghood3_hood_face",
+    "ghood3_hood_shirt"
   ],
   "actors": [
     {
@@ -44,45 +45,32 @@
       ]
     }
   },
-  "design": "two-point black fringe, red hooded top and dark trousers",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 21
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 23,
     "gfx_sha256": "f09274f6dbd433e5986e3b837a0a3d0d444103dd2a347c6bd145e2dde5cb4c15",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "hood \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_stern",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "hood",
   "pose": "standing",
   "component": null,
-  "vertices": 977,
-  "triangles": 524,
-  "batches": 6
+  "vertices": 469,
+  "triangles": 560,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/hood/i3/hood/scene.l64",
+    "sha256": "ad508a585dd2b902af34ce15105de0a5ad419fc231b3435c078c2e4d8fb51e03",
+    "selection": "hood"
+  }
 }

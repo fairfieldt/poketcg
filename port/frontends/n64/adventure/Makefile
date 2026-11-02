@@ -53,6 +53,19 @@ ifeq ($(DIAGNOSTIC),24)
 FRONT_OBJECTS += $(BUILD_DIR)/pack_native.o
 N64_LDFLAGS += --wrap=joypad_get_inputs --wrap=joypad_is_connected --wrap=n64_card_detail
 endif
+ifeq ($(DIAGNOSTIC),18)
+FRONT_OBJECTS += $(BUILD_DIR)/model_options_preview.o
+MODEL_OPTIONS ?= $(PORT)/characters/experiments/n64-style/options
+.PHONY: model-options-force
+model-options-force:
+# The packer only rewrites the header when the option list changes.
+$(BUILD_DIR)/model_options.h: model-options-force
+	@mkdir -p $(dir $@)
+	python3 tools/pack_model_options.py --options "$(MODEL_OPTIONS)" --output $(N64_MKDFS_ROOT)/options --header $@ --mksprite $(N64_MKSPRITE)
+# Re-pack the filesystem whenever an option export or texture changes.
+$(BUILD_DIR)/$(ROM).dfs: $(BUILD_DIR)/model_options.h tools/pack_model_options.py $(wildcard $(MODEL_OPTIONS)/*/option.json $(MODEL_OPTIONS)/*/*/scene.l64 $(MODEL_OPTIONS)/*/*/textures/*.png)
+$(BUILD_DIR)/model_options_preview.o: $(BUILD_DIR)/model_options.h
+endif
 ifeq ($(DIAGNOSTIC),8)
 FRONT_OBJECTS += $(BUILD_DIR)/face_preview.o
 .PHONY: face-preview-assets
@@ -128,6 +141,9 @@ $(BUILD_DIR)/face_preview.o: tests/face_preview.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 $(BUILD_DIR)/leads_preview.o: tests/leads_preview.c
+	@mkdir -p $(dir $@)
+	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
+$(BUILD_DIR)/model_options_preview.o: tests/model_options_preview.c
 	@mkdir -p $(dir $@)
 	$(N64_CC) $(N64_CFLAGS) $(INCLUDES) -MMD -c $< -o $@
 $(BUILD_DIR)/camera_preview.o: tests/camera_preview.c
@@ -222,7 +238,7 @@ test:
 	python3 $(PORT)/world3d/tools/check_actor_grounding.py
 	python3 $(PORT)/world3d/tools/check_character_lods.py
 	sh tools/test_visibility.sh
-	python3 $(PORT)/characters/tools/check_skin.py
+	$(MAKE) -C $(PORT)/characters test
 	python3 $(PORT)/audio/tools/check_audio.py
 	python3 tools/build_intro.py --check
 	python3 tools/build_title64.py --check

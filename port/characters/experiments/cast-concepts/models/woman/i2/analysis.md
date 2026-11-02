@@ -1,0 +1,1 @@
+Actual round 2 native comparison inspected. Narrow dark waist band restores dress identity; bob side coverage clearer. Forehead fringe still too symmetric and feet small. Next round changes side-swept scalp edge and broadens shoulder/feet while preserving long red dress.

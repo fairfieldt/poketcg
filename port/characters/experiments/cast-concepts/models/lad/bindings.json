@@ -1,0 +1,46 @@
+{
+  "NPC_DANIEL": {
+    "npc_id": 44,
+    "model": "lad",
+    "appearance": "lad",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 19,
+    "native_asset": "assets/models/lad/scene.l64",
+    "blender_file": "assets/models/lad/lad.blend",
+    "heading": null
+  },
+  "NPC_JOHN": {
+    "npc_id": 51,
+    "model": "lad",
+    "appearance": "lad",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 19,
+    "native_asset": "assets/models/lad/scene.l64",
+    "blender_file": "assets/models/lad/lad.blend",
+    "heading": null
+  },
+  "NPC_LAD1": {
+    "npc_id": 69,
+    "model": "lad",
+    "appearance": "lad",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 19,
+    "native_asset": "assets/models/lad/scene.l64",
+    "blender_file": "assets/models/lad/lad.blend",
+    "heading": null
+  },
+  "NPC_LAD3": {
+    "npc_id": 85,
+    "model": "lad",
+    "appearance": "lad",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 19,
+    "native_asset": "assets/models/lad/scene.l64",
+    "blender_file": "assets/models/lad/lad.blend",
+    "heading": null
+  }
+}

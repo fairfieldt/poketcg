@@ -1,11 +1,12 @@
 {
   "model": "girl",
-  "triangles": 760,
-  "vertices": 1274,
+  "triangles": 528,
+  "vertices": 375,
   "batches": 6,
-  "linked_parts": 28,
+  "linked_parts": 0,
   "appearances": [
     "girl"
   ],
-  "fingerprint": "49119c8771eb8510a2036baba1771e05a3c74faf4ccb352a9984b16dd7551af1"
+  "fingerprint": "65052633b75f70906f4509e4fccf35b19f0c1de5cd4595ef2703e37a72dea5e6",
+  "recipe": "reviewed-cast-manual"
 }

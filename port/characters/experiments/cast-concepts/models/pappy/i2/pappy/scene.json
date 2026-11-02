@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "gpappy2_pappy_face",
+    "gpappy2_pappy_shirt"
+  ],
+  "vertices": 471,
+  "triangles": 560,
+  "batches": 7
+}

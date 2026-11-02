@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_gentle"
+    "nikki3_face",
+    "nikki3_top"
   ],
   "actors": [
     {
@@ -41,45 +42,32 @@
       ]
     }
   },
-  "design": "long dark swept hair, green sleeveless dress and waist band",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 24
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 5,
     "gfx_sha256": "efb07eabfb701df8566995d65a74a5fd9e527de584e5700ed137ffccce09c6de",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "nikki \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_gentle",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "5f7a4840caf20c38214e53069a177e8a4af30a53d84fedeb8fda2f742d915d9b",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "nikki",
   "pose": "standing",
   "component": null,
-  "vertices": 1066,
-  "triangles": 584,
-  "batches": 6
+  "vertices": 448,
+  "triangles": 540,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/nikki/i3/nikki/scene.l64",
+    "sha256": "4ecfb5502872ed3b17cc2bbb541528a6598a91958a9f0c65dda9704b700da3d2",
+    "selection": "nikki"
+  }
 }

@@ -1,0 +1,23 @@
+{
+  "id": "ishihara_i3",
+  "label": "ishihara 3",
+  "concept_reference": "../../../concepts/ishihara.png",
+  "iteration": 3,
+  "revision": {
+    "hairline_drop": 0.055,
+    "quarter_drop": 0.045,
+    "chin_width": 0.23,
+    "jaw_width": 0.3,
+    "cheek_width": 0.35,
+    "eye_shape": "rect",
+    "eye_width": 7,
+    "eye_height": 8,
+    "mouth_width": 8,
+    "review": "Native i2 + independent review: adult hair/jaw/eyes restored; darken short mouth to remove blank lower face.",
+    "mouth_rgb": [
+      82,
+      45,
+      29
+    ]
+  }
+}

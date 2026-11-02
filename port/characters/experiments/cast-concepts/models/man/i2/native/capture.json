@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-man-i2.z64",
+  "rom_sha256": "4b0ff3769dab89c9a6cf2da7444b68ffbbcbe96a4359016962e1ed2eae613e38",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1353184,
+      "free": 1383200
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346712,
+      "free": 1389672
+    }
+  ],
+  "subject": "man",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "374c3f60d2f112ae1ada80a89ffab38623b90c61eaea4e97e648b0e047df2a37",
+    "candidate": "8079ee63e6516c1873d5d5ca68abe10e8abb2165047ca62375f819b62cde8db5"
+  }
+}

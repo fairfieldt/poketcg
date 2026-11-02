@@ -1,11 +1,12 @@
 {
   "model": "mark",
-  "triangles": 868,
-  "vertices": 1235,
+  "triangles": 596,
+  "vertices": 521,
   "batches": 7,
   "linked_parts": 0,
   "appearances": [
     "mark"
   ],
-  "fingerprint": "bc2550f46442188f0fa5497b5cdcf076fee6fabaacfbb037ee87cf4d703353d5"
+  "fingerprint": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3",
+  "recipe": "reviewed-cast-manual"
 }

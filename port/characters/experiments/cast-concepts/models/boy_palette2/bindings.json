@@ -1,0 +1,35 @@
+{
+  "NPC_ROBERT": {
+    "npc_id": 43,
+    "model": "boy",
+    "appearance": "boy_palette2",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 18,
+    "native_asset": "assets/models/boy/variants/boy_palette2/scene.l64",
+    "blender_file": "assets/models/boy/boy.blend",
+    "heading": null
+  },
+  "NPC_JONATHAN": {
+    "npc_id": 53,
+    "model": "boy",
+    "appearance": "boy_palette2",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 18,
+    "native_asset": "assets/models/boy/variants/boy_palette2/scene.l64",
+    "blender_file": "assets/models/boy/boy.blend",
+    "heading": null
+  },
+  "NPC_LAD2": {
+    "npc_id": 70,
+    "model": "boy",
+    "appearance": "boy_palette2",
+    "pose": "standing",
+    "component": null,
+    "runtime_model": 18,
+    "native_asset": "assets/models/boy/variants/boy_palette2/scene.l64",
+    "blender_file": "assets/models/boy/boy.blend",
+    "heading": null
+  }
+}

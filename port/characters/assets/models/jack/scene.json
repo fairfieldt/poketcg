@@ -1,7 +1,8 @@
 {
   "format": "L643",
   "textures": [
-    "fc_e7ad63_stern"
+    "jack3_face",
+    "jack3_top"
   ],
   "actors": [
     {
@@ -41,45 +42,32 @@
       ]
     }
   },
-  "design": "high pale square flat-top, white suit jacket and dark shirt",
-  "surface_ownership": {
-    "face_and_clothing": true,
-    "headwear": false
-  },
+  "design": "Reviewed cast model",
   "sharing": {
-    "library": "../../parts.blend",
-    "linked_parts": 20
+    "linked_parts": 0,
+    "authoring": "Editable rigid meshes; aliases share canonical source"
   },
   "provenance": {
     "sprite": 15,
     "gfx_sha256": "3a975759ab3342b8c3c06ec7d25bc5ca7bae56f690e49354de09d9e4c338d8be",
     "fast64": "2.6.0"
   },
-  "skin_palette": {
-    "rgb8": [
-      231,
-      173,
-      99
-    ],
-    "solid_material": "jack \u00b7 skin",
-    "faces": [
-      {
-        "texture": "fc_e7ad63_stern",
-        "background_rgb8": [
-          231,
-          173,
-          99
-        ],
-        "feature_sha256": "6aa16f4a9db483cd0a695b1895c319d9e6922fd33f366191e4d5eefe0059e47e",
-        "colorspace": "Non-Color",
-        "directional_shade": true
-      }
-    ]
-  },
   "appearance": "jack",
   "pose": "standing",
   "component": null,
-  "vertices": 1162,
-  "triangles": 663,
-  "batches": 6
+  "vertices": 452,
+  "triangles": 528,
+  "batches": 7,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewed_source": {
+    "asset": "experiments/cast-concepts/models/jack/i3/jack/scene.l64",
+    "sha256": "cac0cbd45c1f36577f7aeee854d0d1c02c2ce4427f0aa728f8ca9d30468c4688",
+    "selection": "jack"
+  }
 }

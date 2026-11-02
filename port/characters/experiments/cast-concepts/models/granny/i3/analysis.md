@@ -1,0 +1,1 @@
+Final actual native comparison inspected. Silver bun now has a narrower attached root and rounded upper lobe instead of beehive, smaller eyes behind spectacles convey age. Yellow cardigan seam and slim waist separation, long skirt and grounded shoes read at native scale.
