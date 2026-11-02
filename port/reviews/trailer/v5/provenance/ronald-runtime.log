@@ -1,0 +1,52 @@
+Loaded trailer-ronald
+Vulkan Enabled: using paraLLEl-RDP
+VIDEO MODE width=480 height=360 ram=8388608 highres=1
+2026-11-02 09:45:43.443 ares[5643:2868388] Resizing output buffers to 1440, 1080
+Scene rom:/world/actors.l64: 22 batches, 0 textures, 68988 bytes
+TRAILER READY ronald vi=0 us=523057
+[WARN]: Stalled compile (compute, 07455c1fc10ed781): thread 0 - 11630.250 us (mode: sync, success: yes).
+TRAILER BEGIN ronald vi=480 us=8518939
+TRAILER SHOT ronald-board vi=480 us=8520732
+TRAILER REQUEST index=1 type=2 menu=0 owner=194 shown=194 vi=480 us=8523648
+ASK duel_menu Mark n=6 cursor=0
+TRAILER FIRST_FRAME ronald vi=490 us=8687438
+REQ duel_menu Mark n=6 -> 1
+TRAILER REQUEST index=2 type=6 menu=1 owner=194 shown=194 vi=596 us=10459859
+ASK menu/attacks Mark n=1 cursor=0
+REQ menu/attacks Mark n=1 -> 0
+TRAILER DUEL_TEXT id=53 vi=687 us=11977841
+TEXT Staryu Lv15's/Slap!
+TRAILER REQUEST index=3 type=1 menu=0 owner=194 shown=194 vi=696 us=12125709
+ASK ack/text Mark
+REQ ack Mark n=0 -> 0
+TRAILER SHOT ronald-knockout vi=788 us=13656982
+DAMAGE Ronald slot 0: 20
+TRAILER DUEL_TEXT id=129 vi=831 us=14388986
+TEXT Dratini was/Knocked Out!
+TRAILER REQUEST index=4 type=1 menu=0 owner=194 shown=194 vi=883 us=15254722
+ASK ack/text Mark
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=66 vi=975 us=16782223
+TEXT Mark will draw 1 Prize(s).
+TRAILER REQUEST index=5 type=1 menu=0 owner=194 shown=194 vi=983 us=16923908
+ASK ack/text Mark
+REQ ack Mark n=0 -> 0
+TRAILER REQUEST index=6 type=9 menu=0 owner=194 shown=194 vi=1074 us=18433388
+ASK prize Mark n=6 cursor=0
+REQ prize Mark n=6 -> 0
+TRAILER SHOT ronald-prize vi=1166 us=19968431
+TRAILER REQUEST index=7 type=1 menu=0 owner=194 shown=194 vi=1166 us=19968575
+ASK ack/card Mark
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=68 vi=1259 us=21519870
+TEXT Ronald placed/a Zapdos Lv68.
+TRAILER REQUEST index=8 type=1 menu=0 owner=194 shown=195 vi=1266 us=21634631
+ASK ack/card Mark
+REQ ack Mark n=0 -> 0
+TRAILER DUEL_TEXT id=94 vi=1358 us=23171624
+TEXT Ronald's Turn.
+TRAILER REQUEST index=9 type=1 menu=0 owner=194 shown=195 vi=1366 us=23312309
+ASK ack/box Mark
+REQ ack Mark n=0 -> 0
+TRAILER SHOT ronald-turn vi=1457 us=24823471
+TRAILER END ronald vi=1577 us=26821410

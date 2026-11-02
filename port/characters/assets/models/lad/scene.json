@@ -59,8 +59,8 @@
   "appearance": "lad",
   "pose": "standing",
   "component": null,
-  "vertices": 514,
-  "triangles": 572,
+  "vertices": 644,
+  "triangles": 620,
   "batches": 8,
   "parts": [
     0,
@@ -70,8 +70,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/lad/i3b/lad/scene.l64",
-    "sha256": "af6e16730cec6d5d8abf85218064b746486102dca688bbfd38ab746373dc2e9d",
+    "asset": "experiments/cast-concepts/models/lad/i3e/lad/scene.l64",
+    "sha256": "2ad09b55ae4d0a27b05d7923110ea8c58194d547c5ebfe7919c18f1bddb041d4",
     "selection": "lad"
   }
 }

@@ -1,0 +1,856 @@
+{
+  "captures": {
+    "intro": {
+      "cursor_guard": {
+        "hidden": true,
+        "original": [
+          -691,
+          1504
+        ],
+        "parked": [
+          2,
+          2
+        ],
+        "parked_outside_window": true,
+        "warped": true
+      },
+      "segment": "intro",
+      "rom": "build/trailer-cast-intro/trailer-intro.z64",
+      "rom_sha256": "29a6035b49b2dc2715c76049bfda6ff22a01a713bf29a5451278fd2fa1ceb3c6",
+      "capture_method": "macOS screencapture of private Ares window only; post-VI Metal output; no CRT shader; no desktop or microphone/system audio",
+      "window": {
+        "kCGWindowAlpha": 1,
+        "kCGWindowBounds": {
+          "Height": 568,
+          "Width": 720,
+          "X": 920,
+          "Y": 434
+        },
+        "kCGWindowIsOnscreen": true,
+        "kCGWindowLayer": 0,
+        "kCGWindowMemoryUsage": 2432,
+        "kCGWindowName": "trailer-intro",
+        "kCGWindowNumber": 715,
+        "kCGWindowOwnerName": "Poketcg Video Test",
+        "kCGWindowOwnerPID": 4470,
+        "kCGWindowSharingState": 1,
+        "kCGWindowStoreType": 1
+      },
+      "app_launch_epoch": 1793641478.558466,
+      "recorder_launch_epoch": 1793641480.203637,
+      "native_end_seen": true,
+      "recording_limit_seconds": 60,
+      "video_sha256": "0014c6382b4d408c8ff89b4cfbca8a7d35275f02e409b0ab021057b7abc0cdc6",
+      "initial_black_end_seconds": 8.81,
+      "raw_zero_epoch": 1793641480.388118,
+      "crop": "crop=1440:1080:0:56,scale=1440:1080:flags=lanczos",
+      "reference_profile": "v2-crt-intro",
+      "matched_event_anchors": [
+        [
+          0.0,
+          0.3135960102081299
+        ],
+        [
+          8.0,
+          8.313236951828003
+        ],
+        [
+          8.516666666666667,
+          8.809999942779541
+        ],
+        [
+          9.516666666666667,
+          9.844418048858643
+        ],
+        [
+          15.6,
+          16.137950897216797
+        ],
+        [
+          27.866666666666667,
+          28.725600957870483
+        ],
+        [
+          30.883333333333333,
+          31.880160093307495
+        ],
+        [
+          38.266666666666666,
+          39.604636907577515
+        ],
+        [
+          43.18333333333333,
+          44.680699825286865
+        ],
+        [
+          44.18333333333333,
+          45.70747995376587
+        ]
+      ],
+      "matched_events": 10,
+      "old_events": 11,
+      "new_events": 11,
+      "native_markers": [
+        {
+          "line": "TRAILER READY intro vi=0 us=519555",
+          "epoch": 1793641480.701714
+        },
+        {
+          "line": "TRAILER BEGIN intro vi=480 us=8518785",
+          "epoch": 1793641488.701355
+        },
+        {
+          "line": "TRAILER FIRST_FRAME intro vi=508 us=8999573",
+          "epoch": 1793641489.198118
+        },
+        {
+          "line": "TRAILER INTRO_RUN overworld-source-movement vi=568 us=9989618",
+          "epoch": 1793641490.232536
+        },
+        {
+          "line": "TRAILER TEXT id=1507 npc=1 map=1 x=14 y=8 vi=928 us=15998235",
+          "epoch": 1793641496.526069
+        },
+        {
+          "line": "TRAILER TEXT id=1508 npc=7 map=1 x=14 y=8 vi=1664 us=28276981",
+          "epoch": 1793641509.113719
+        },
+        {
+          "line": "TRAILER TEXT id=1509 npc=1 map=1 x=14 y=8 vi=1845 us=31295571",
+          "epoch": 1793641512.2682781
+        },
+        {
+          "line": "TRAILER TEXT id=1510 npc=1 map=1 x=14 y=8 vi=2288 us=38686299",
+          "epoch": 1793641519.992755
+        },
+        {
+          "line": "TRAILER TEXT id=1511 npc=1 map=1 x=10 y=14 vi=2583 us=43609885",
+          "epoch": 1793641525.0688179
+        },
+        {
+          "line": "TRAILER SHOT mark-at-first-table vi=2583 us=43610043",
+          "epoch": 1793641525.0689049
+        },
+        {
+          "line": "TRAILER END intro vi=2643 us=44610475",
+          "epoch": 1793641526.095598
+        }
+      ]
+    },
+    "ronald": {
+      "cursor_guard": {
+        "hidden": true,
+        "original": [
+          519.09375,
+          862.22265625
+        ],
+        "parked": [
+          2,
+          2
+        ],
+        "parked_outside_window": true,
+        "warped": true
+      },
+      "segment": "ronald",
+      "rom": "build/trailer-cast-ronald/trailer-ronald.z64",
+      "rom_sha256": "c22587a5e58cbdc8ada5013383a0b0361cd6a372175a299b1fc6b23bc03d4402",
+      "capture_method": "macOS screencapture of private Ares window only; post-VI Metal output; no CRT shader; no desktop or microphone/system audio",
+      "window": {
+        "kCGWindowAlpha": 1,
+        "kCGWindowBounds": {
+          "Height": 568,
+          "Width": 720,
+          "X": 920,
+          "Y": 434
+        },
+        "kCGWindowIsOnscreen": true,
+        "kCGWindowLayer": 0,
+        "kCGWindowMemoryUsage": 2432,
+        "kCGWindowName": "trailer-ronald",
+        "kCGWindowNumber": 765,
+        "kCGWindowOwnerName": "Poketcg Video Test",
+        "kCGWindowOwnerPID": 5643,
+        "kCGWindowSharingState": 1,
+        "kCGWindowStoreType": 1
+      },
+      "app_launch_epoch": 1793641541.428799,
+      "recorder_launch_epoch": 1793641543.111646,
+      "native_end_seen": true,
+      "recording_limit_seconds": 45,
+      "video_sha256": "60a2a410301888e68b403634a5e20e042d118b11c51b1d6486e2dbfddd6a045c",
+      "initial_black_end_seconds": 8.47,
+      "raw_zero_epoch": 1793641543.2384448,
+      "crop": "crop=1440:1080:0:56,scale=1440:1080:flags=lanczos",
+      "reference_profile": "v2-crt-ronald",
+      "matched_event_anchors": [
+        [
+          0.0,
+          0.2883334159851074
+        ],
+        [
+          8.016666666666667,
+          8.290008306503296
+        ],
+        [
+          8.183333333333334,
+          8.47000002861023
+        ],
+        [
+          9.95,
+          10.233691215515137
+        ],
+        [
+          11.466666666666667,
+          11.75803828239441
+        ],
+        [
+          11.616666666666667,
+          11.912259340286255
+        ],
+        [
+          13.15,
+          13.43263030052185
+        ],
+        [
+          14.733333333333333,
+          15.03138017654419
+        ],
+        [
+          16.266666666666666,
+          16.559714317321777
+        ],
+        [
+          16.416666666666668,
+          16.711751222610474
+        ],
+        [
+          17.95,
+          18.210058212280273
+        ],
+        [
+          19.483333333333334,
+          19.754969120025635
+        ],
+        [
+          21.0,
+          21.29474425315857
+        ],
+        [
+          21.116666666666667,
+          21.410482168197632
+        ],
+        [
+          22.65,
+          22.956835985183716
+        ],
+        [
+          22.783333333333335,
+          23.094797372817993
+        ],
+        [
+          24.3,
+          24.60514497756958
+        ],
+        [
+          26.3,
+          26.59689426422119
+        ]
+      ],
+      "matched_events": 18,
+      "old_events": 21,
+      "new_events": 22,
+      "native_markers": [
+        {
+          "line": "TRAILER READY ronald vi=0 us=523057",
+          "epoch": 1793641543.5267782
+        },
+        {
+          "line": "TRAILER BEGIN ronald vi=480 us=8518939",
+          "epoch": 1793641551.528453
+        },
+        {
+          "line": "TRAILER SHOT ronald-board vi=480 us=8520732",
+          "epoch": 1793641551.529301
+        },
+        {
+          "line": "TRAILER REQUEST index=1 type=2 menu=0 owner=194 shown=194 vi=480 us=8523648",
+          "epoch": 1793641551.545391
+        },
+        {
+          "line": "TRAILER FIRST_FRAME ronald vi=490 us=8687438",
+          "epoch": 1793641551.7084448
+        },
+        {
+          "line": "TRAILER REQUEST index=2 type=6 menu=1 owner=194 shown=194 vi=596 us=10459859",
+          "epoch": 1793641553.472136
+        },
+        {
+          "line": "TRAILER DUEL_TEXT id=53 vi=687 us=11977841",
+          "epoch": 1793641554.996483
+        },
+        {
+          "line": "TRAILER REQUEST index=3 type=1 menu=0 owner=194 shown=194 vi=696 us=12125709",
+          "epoch": 1793641555.1507041
+        },
+        {
+          "line": "TRAILER SHOT ronald-knockout vi=788 us=13656982",
+          "epoch": 1793641556.671075
+        },
+        {
+          "line": "TRAILER DUEL_TEXT id=129 vi=831 us=14388986",
+          "epoch": 1793641557.414291
+        },
+        {
+          "line": "TRAILER REQUEST index=4 type=1 menu=0 owner=194 shown=194 vi=883 us=15254722",
+          "epoch": 1793641558.269825
+        },
+        {
+          "line": "TRAILER DUEL_TEXT id=66 vi=975 us=16782223",
+          "epoch": 1793641559.7981591
+        },
+        {
+          "line": "TRAILER REQUEST index=5 type=1 menu=0 owner=194 shown=194 vi=983 us=16923908",
+          "epoch": 1793641559.950196
+        },
+        {
+          "line": "TRAILER REQUEST index=6 type=9 menu=0 owner=194 shown=194 vi=1074 us=18433388",
+          "epoch": 1793641561.448503
+        },
+        {
+          "line": "TRAILER SHOT ronald-prize vi=1166 us=19968431",
+          "epoch": 1793641562.993414
+        },
+        {
+          "line": "TRAILER REQUEST index=7 type=1 menu=0 owner=194 shown=194 vi=1166 us=19968575",
+          "epoch": 1793641562.993529
+        },
+        {
+          "line": "TRAILER DUEL_TEXT id=68 vi=1259 us=21519870",
+          "epoch": 1793641564.533189
+        },
+        {
+          "line": "TRAILER REQUEST index=8 type=1 menu=0 owner=194 shown=195 vi=1266 us=21634631",
+          "epoch": 1793641564.648927
+        },
+        {
+          "line": "TRAILER DUEL_TEXT id=94 vi=1358 us=23171624",
+          "epoch": 1793641566.1952808
+        },
+        {
+          "line": "TRAILER REQUEST index=9 type=1 menu=0 owner=194 shown=195 vi=1366 us=23312309",
+          "epoch": 1793641566.3332422
+        },
+        {
+          "line": "TRAILER SHOT ronald-turn vi=1457 us=24823471",
+          "epoch": 1793641567.8435898
+        },
+        {
+          "line": "TRAILER END ronald vi=1577 us=26821410",
+          "epoch": 1793641569.835339
+        }
+      ]
+    },
+    "clubs": {
+      "recorder": {
+        "capture_microphone": false,
+        "captures_audio": false,
+        "fps": 60,
+        "height": 1136,
+        "ready_epoch": 1793642038.655174,
+        "shows_cursor": false,
+        "width": 1440,
+        "window_id": 822
+      },
+      "cursor_guard": {
+        "hidden": true,
+        "original": [
+          415.8828125,
+          1358.2890625
+        ],
+        "parked": [
+          2,
+          2
+        ],
+        "parked_outside_window": true,
+        "warped": true
+      },
+      "segment": "clubs",
+      "rom": "build/trailer-cast-clubs/trailer-clubs.z64",
+      "rom_sha256": "7b5f51cadd892eb4421583816b9b6ca74a9b534ecafd282ec4b228111f131b12",
+      "capture_method": "ScreenCaptureKit desktopIndependentWindow of private Ares only; showsCursor=false; post-VI Metal output; no CRT shader; no desktop or microphone/system audio",
+      "window": {
+        "kCGWindowAlpha": 1,
+        "kCGWindowBounds": {
+          "Height": 568,
+          "Width": 720,
+          "X": 920,
+          "Y": 434
+        },
+        "kCGWindowIsOnscreen": true,
+        "kCGWindowLayer": 0,
+        "kCGWindowMemoryUsage": 2432,
+        "kCGWindowName": "trailer-clubs",
+        "kCGWindowNumber": 822,
+        "kCGWindowOwnerName": "Poketcg Video Test",
+        "kCGWindowOwnerPID": 8775,
+        "kCGWindowSharingState": 1,
+        "kCGWindowStoreType": 1
+      },
+      "app_launch_epoch": 1793642036.405302,
+      "recorder_launch_epoch": 1793642038.655174,
+      "native_end_seen": true,
+      "recording_limit_seconds": 45,
+      "video_sha256": "2e87c3593c36474c80015b79c19f9a788f94f30faf246b22fc30671701da1cc9",
+      "initial_black_end_seconds": 8.271667,
+      "raw_zero_epoch": 1793642038.54619,
+      "crop": "crop=1440:1080:0:56,scale=1440:1080:flags=lanczos",
+      "reference_profile": "v2-crt-clubs",
+      "matched_event_anchors": [
+        [
+          0.0,
+          -0.06901907920837402
+        ],
+        [
+          8.0,
+          7.9345831871032715
+        ],
+        [
+          8.433333333333334,
+          8.271667003631592
+        ],
+        [
+          10.05,
+          9.894401788711548
+        ],
+        [
+          12.933333333333334,
+          12.864409923553467
+        ],
+        [
+          15.266666666666667,
+          15.096801996231079
+        ],
+        [
+          16.866666666666667,
+          16.728622913360596
+        ],
+        [
+          19.483333333333334,
+          19.418070077896118
+        ],
+        [
+          21.883333333333333,
+          21.73146390914917
+        ],
+        [
+          23.533333333333335,
+          23.429584980010986
+        ],
+        [
+          26.966666666666665,
+          26.990411043167114
+        ],
+        [
+          28.466666666666665,
+          28.52831482887268
+        ]
+      ],
+      "matched_events": 12,
+      "old_events": 13,
+      "new_events": 13,
+      "native_markers": [
+        {
+          "line": "TRAILER READY clubs vi=0 us=518721",
+          "epoch": 1793642038.477171
+        },
+        {
+          "line": "TRAILER BEGIN clubs vi=480 us=8517578",
+          "epoch": 1793642046.4807732
+        },
+        {
+          "line": "TRAILER FIRST_FRAME clubs vi=499 us=8838486",
+          "epoch": 1793642046.817857
+        },
+        {
+          "line": "TRAILER SHOT LIGHTNING_CLUB vi=499 us=8841027",
+          "epoch": 1793642046.818645
+        },
+        {
+          "line": "TRAILER WALK map=15 steps=11 requested=12,8 reached=12,8 vi=595 us=10442409",
+          "epoch": 1793642048.4405918
+        },
+        {
+          "line": "TRAILER WALK_COMPLETE map=15 x=12 y=8 vi=768 us=13324997",
+          "epoch": 1793642051.4106
+        },
+        {
+          "line": "TRAILER SHOT FIRE_CLUB vi=900 us=15529003",
+          "epoch": 1793642053.642992
+        },
+        {
+          "line": "TRAILER WALK map=27 steps=10 requested=14,8 reached=14,8 vi=996 us=17133997",
+          "epoch": 1793642055.274813
+        },
+        {
+          "line": "TRAILER WALK_COMPLETE map=27 x=14 y=8 vi=1153 us=19745875",
+          "epoch": 1793642057.96426
+        },
+        {
+          "line": "TRAILER SHOT WATER_CLUB vi=1289 us=22028745",
+          "epoch": 1793642060.277654
+        },
+        {
+          "line": "TRAILER WALK map=12 steps=13 requested=22,8 reached=20,8 vi=1388 us=23670277",
+          "epoch": 1793642061.975775
+        },
+        {
+          "line": "TRAILER WALK_COMPLETE map=12 x=20 y=8 vi=1594 us=27105422",
+          "epoch": 1793642065.536601
+        },
+        {
+          "line": "TRAILER END clubs vi=1684 us=28604501",
+          "epoch": 1793642067.0745049
+        }
+      ]
+    },
+    "amy": {
+      "cursor_guard": {
+        "hidden": true,
+        "original": [
+          1042,
+          1117
+        ],
+        "parked": [
+          2,
+          2
+        ],
+        "parked_outside_window": true,
+        "warped": true
+      },
+      "segment": "amy",
+      "rom": "build/trailer-cast-amy/trailer-amy.z64",
+      "rom_sha256": "cc47b5863f2e93f806a34233598562233f8b045868150e8153c5c133ddbb1a33",
+      "capture_method": "macOS screencapture of private Ares window only; post-VI Metal output; no CRT shader; no desktop or microphone/system audio",
+      "window": {
+        "kCGWindowAlpha": 1,
+        "kCGWindowBounds": {
+          "Height": 568,
+          "Width": 720,
+          "X": 920,
+          "Y": 434
+        },
+        "kCGWindowIsOnscreen": true,
+        "kCGWindowLayer": 0,
+        "kCGWindowMemoryUsage": 2432,
+        "kCGWindowName": "trailer-amy",
+        "kCGWindowNumber": 777,
+        "kCGWindowOwnerName": "Poketcg Video Test",
+        "kCGWindowOwnerPID": 6539,
+        "kCGWindowSharingState": 1,
+        "kCGWindowStoreType": 1
+      },
+      "app_launch_epoch": 1793641635.540786,
+      "recorder_launch_epoch": 1793641637.1141171,
+      "native_end_seen": true,
+      "recording_limit_seconds": 85,
+      "video_sha256": "119a5558d3b6da7492b005e7c3d457963c4ae88fd73af55f0f987f6e3002e8e9",
+      "initial_black_end_seconds": 8.823333,
+      "raw_zero_epoch": 1793641637.264766,
+      "crop": "crop=1440:1080:0:56,scale=1440:1080:flags=lanczos",
+      "reference_profile": "v2-crt-amy-coin-fix",
+      "matched_event_anchors": [
+        [
+          0.0,
+          0.35211896896362305
+        ],
+        [
+          8.0,
+          8.35508918762207
+        ],
+        [
+          8.55,
+          8.823333024978638
+        ],
+        [
+          10.05,
+          10.349399089813232
+        ],
+        [
+          11.983333333333333,
+          12.280953168869019
+        ],
+        [
+          13.516666666666667,
+          13.814458131790161
+        ],
+        [
+          13.65,
+          13.952026128768921
+        ],
+        [
+          15.183333333333334,
+          15.480459928512573
+        ],
+        [
+          15.333333333333334,
+          15.636989831924438
+        ],
+        [
+          17.583333333333332,
+          17.87988305091858
+        ],
+        [
+          19.116666666666667,
+          19.39621090888977
+        ],
+        [
+          19.833333333333332,
+          20.14941906929016
+        ],
+        [
+          20.7,
+          21.011006832122803
+        ],
+        [
+          22.233333333333334,
+          22.542129039764404
+        ],
+        [
+          22.366666666666667,
+          22.679446935653687
+        ],
+        [
+          23.883333333333333,
+          24.193140029907227
+        ],
+        [
+          25.416666666666668,
+          25.73607897758484
+        ],
+        [
+          26.95,
+          27.256761074066162
+        ],
+        [
+          27.083333333333332,
+          27.39424204826355
+        ],
+        [
+          28.6,
+          28.93908190727234
+        ],
+        [
+          28.716666666666665,
+          29.038825035095215
+        ],
+        [
+          30.233333333333334,
+          30.574275016784668
+        ],
+        [
+          30.366666666666667,
+          30.712488889694214
+        ],
+        [
+          31.9,
+          32.25650095939636
+        ],
+        [
+          34.9,
+          35.32309818267822
+        ],
+        [
+          37.9,
+          38.38823103904724
+        ],
+        [
+          43.333333333333336,
+          43.82640194892883
+        ],
+        [
+          46.333333333333336,
+          46.8908269405365
+        ],
+        [
+          46.85,
+          47.388880014419556
+        ],
+        [
+          48.38333333333333,
+          48.937456130981445
+        ],
+        [
+          49.15,
+          49.72393488883972
+        ],
+        [
+          50.65,
+          51.23802590370178
+        ],
+        [
+          57.65,
+          58.22968792915344
+        ]
+      ],
+      "matched_events": 33,
+      "old_events": 38,
+      "new_events": 38,
+      "native_markers": [
+        {
+          "line": "TRAILER READY amy vi=0 us=520529",
+          "epoch": 1793641637.616885
+        },
+        {
+          "line": "TRAILER BEGIN amy vi=480 us=8519394",
+          "epoch": 1793641645.6198552
+        },
+        {
+          "line": "TRAILER FIRST_FRAME amy vi=507 us=8975909",
+          "epoch": 1793641646.088099
+        },
+        {
+          "line": "TRAILER SHOT WATER_CLUB vi=507 us=8976064",
+          "epoch": 1793641646.088168
+        },
+        {
+          "line": "TRAILER SHOT amy-board vi=597 us=10476225",
+          "epoch": 1793641647.614165
+        },
+        {
+          "line": "TRAILER REQUEST index=1 type=2 menu=0 owner=194 shown=194 vi=597 us=10478978",
+          "epoch": 1793641647.6203141
+        },
+        {
+          "line": "TRAILER REQUEST index=2 type=6 menu=1 owner=194 shown=194 vi=713 us=12412234",
+          "epoch": 1793641649.5457191
+        },
+        {
+          "line": "TRAILER DUEL_TEXT id=53 vi=805 us=13944789",
+          "epoch": 1793641651.079224
+        },
+        {
+          "line": "TRAILER REQUEST index=3 type=1 menu=0 owner=194 shown=194 vi=813 us=14086451",
+          "epoch": 1793641651.216792
+        },
+        {
+          "line": "TRAILER DUEL_TEXT id=251 vi=905 us=15612790",
+          "epoch": 1793641652.745226
+        },
+        {
+          "line": "TRAILER REQUEST index=4 type=1 menu=0 owner=194 shown=194 vi=914 us=15763158",
+          "epoch": 1793641652.9017558
+        },
+        {
+          "line": "TRAILER REQUEST index=5 type=1 menu=0 owner=194 shown=194 vi=1049 us=18012039",
+          "epoch": 1793641655.144649
+        },
+        {
+          "line": "TRAILER SHOT amy-knockout vi=1140 us=19535902",
+          "epoch": 1793641656.660977
+        },
+        {
+          "line": "TRAILER DUEL_TEXT id=129 vi=1185 us=20281111",
+          "epoch": 1793641657.414185
+        },
+        {
+          "line": "TRAILER REQUEST index=6 type=1 menu=0 owner=194 shown=194 vi=1236 us=21138680",
+          "epoch": 1793641658.2757728
+        },
+        {
+          "line": "TRAILER DUEL_TEXT id=66 vi=1328 us=22671678",
+          "epoch": 1793641659.806895
+        },
+        {
+          "line": "TRAILER REQUEST index=7 type=1 menu=0 owner=194 shown=194 vi=1336 us=22806566",
+          "epoch": 1793641659.944213
+        },
+        {
+          "line": "TRAILER REQUEST index=8 type=9 menu=0 owner=194 shown=194 vi=1427 us=24323596",
+          "epoch": 1793641661.457906
+        },
+        {
+          "line": "TRAILER SHOT amy-prize vi=1519 us=25857966",
+          "epoch": 1793641663.000845
+        },
+        {
+          "line": "TRAILER REQUEST index=9 type=1 menu=0 owner=194 shown=194 vi=1519 us=25858102",
+          "epoch": 1793641663.000952
+        },
+        {
+          "line": "TRAILER DUEL_TEXT id=128 vi=1611 us=27393674",
+          "epoch": 1793641664.521527
+        },
+        {
+          "line": "TRAILER REQUEST index=10 type=1 menu=0 owner=194 shown=195 vi=1619 us=27527063",
+          "epoch": 1793641664.659008
+        },
+        {
+          "line": "TRAILER DUEL_TEXT id=118 vi=1711 us=29061506",
+          "epoch": 1793641666.203848
+        },
+        {
+          "line": "TRAILER REQUEST index=11 type=1 menu=0 owner=194 shown=194 vi=1718 us=29174021",
+          "epoch": 1793641666.303591
+        },
+        {
+          "line": "TRAILER DUEL_TEXT id=120 vi=1810 us=30713962",
+          "epoch": 1793641667.839041
+        },
+        {
+          "line": "TRAILER REQUEST index=12 type=1 menu=0 owner=194 shown=195 vi=1818 us=30849342",
+          "epoch": 1793641667.9772549
+        },
+        {
+          "line": "TRAILER SHOT amy-won vi=1910 us=32382002",
+          "epoch": 1793641669.521267
+        },
+        {
+          "line": "TRAILER TEXT id=1107 npc=34 map=12 x=20 y=6 vi=1910 us=32387118",
+          "epoch": 1793641669.523594
+        },
+        {
+          "line": "TRAILER TEXT id=1108 npc=34 map=12 x=20 y=6 vi=2090 us=35384524",
+          "epoch": 1793641672.5878642
+        },
+        {
+          "line": "TRAILER SHOT water-medal vi=2270 us=38384552",
+          "epoch": 1793641675.652997
+        },
+        {
+          "line": "TRAILER SHOT water-medal-complete vi=2596 us=43822988",
+          "epoch": 1793641681.091168
+        },
+        {
+          "line": "TRAILER TEXT id=1109 npc=34 map=12 x=20 y=6 vi=2596 us=43823162",
+          "epoch": 1793641681.0915132
+        },
+        {
+          "line": "TRAILER SHOT amy-reward-before-packs vi=2776 us=46827844",
+          "epoch": 1793641684.155593
+        },
+        {
+          "line": "TRAILER SHOT HALL_OF_HONOR vi=2805 us=47321832",
+          "epoch": 1793641684.653646
+        },
+        {
+          "line": "TRAILER WALK map=33 steps=3 requested=12,16 reached=12,16 vi=2897 us=48854919",
+          "epoch": 1793641686.202222
+        },
+        {
+          "line": "TRAILER WALK_COMPLETE map=33 x=12 y=16 vi=2943 us=49624975",
+          "epoch": 1793641686.9887009
+        },
+        {
+          "line": "TRAILER SHOT title64 vi=3033 us=51124756",
+          "epoch": 1793641688.502792
+        },
+        {
+          "line": "TRAILER END amy vi=3453 us=58119546",
+          "epoch": 1793641695.494454
+        }
+      ]
+    }
+  },
+  "model_integration_sha256": "0a0dccc1d6ce3310aff0f9b5c58b01f6626f3e9faf46b6faf45617aa40e169f3",
+  "limitations": "Local capture replaces CRT output at user request; initial presentation-phase alignment is approximate to one captured frame."
+}

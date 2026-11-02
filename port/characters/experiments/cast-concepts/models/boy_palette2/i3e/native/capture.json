@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-boy_palette2-i3e.z64",
+  "rom_sha256": "d015a55a4ed40ce68728b38ac7668a0f994fe908ccc2c11238f798425d2d2d2e",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736368,
+      "used": 1347424,
+      "free": 1388944
+    },
+    {
+      "option": "candidate",
+      "total": 2736368,
+      "used": 1348320,
+      "free": 1388048
+    }
+  ],
+  "subject": "boy_palette2",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "72d0a5eb0dd34274e1c5f61b8fe1d8f02e048dcca244e977812f2aef9850900d",
+    "candidate": "27dd7df6bd54e33a1f34c64ae205d6834c714b82915292b5b5d76492e9d728a4"
+  }
+}

@@ -62,8 +62,8 @@
   "appearance": "swimmer_palette2",
   "pose": "standing",
   "component": null,
-  "vertices": 357,
-  "triangles": 528,
+  "vertices": 458,
+  "triangles": 576,
   "batches": 6,
   "parts": [
     0,
@@ -73,8 +73,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/swimmer_palette2/i3b/swimmer_palette2/scene.l64",
-    "sha256": "36da5c6037274a76c5f7896d7aaaa38b9473b370979c7fcf4f6325098a2fb8e4",
+    "asset": "experiments/cast-concepts/models/swimmer_palette2/i3e/swimmer_palette2/scene.l64",
+    "sha256": "37b01de8ede9f2e3b355fbf35d31266ff4748953c0f0f7e354769a343cbb3260",
     "selection": "swimmer_palette2"
   }
 }

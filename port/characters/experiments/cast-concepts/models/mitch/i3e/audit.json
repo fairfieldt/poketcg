@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "source": "models/mitch/i3/mitch",
+  "source_sha256": "1181cf83029cc890adeec4bda7059efb2846a0b4090c66840a177375bb9018ac",
+  "settings": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "target_half_width": 0.43129870129870146,
+      "target_half_depth": 0.3567532467532469,
+      "head_bounds": [
+        1.46,
+        2.39
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 156,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/mitch/i3e/mitch/scene.l64",
+    "sha256": "c385045661b2ff1901375b1407809d28a0b20e75cbde155760fef7d82e78c2f8",
+    "triangles": 604,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "mitch3_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      },
+      {
+        "name": "mitch3_top.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "before_max_eye_white_angle": 57.33902584270493,
+    "after_max_eye_white_angle": 42.7150585391279,
+    "additional_horizontal_span": 0.76,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of painted eye whites; no pixel beyond43deg in sampled owning faces; lying pose inherits standing mapping",
+    "face_vertices": 25,
+    "original_native_sha256": "1756f4ee9f0b2b1eb0693ffa94cdb46d9c857c4ca10a46504e69990838236def",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

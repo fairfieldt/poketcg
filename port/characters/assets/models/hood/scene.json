@@ -58,8 +58,8 @@
   "appearance": "hood",
   "pose": "standing",
   "component": null,
-  "vertices": 469,
-  "triangles": 560,
+  "vertices": 629,
+  "triangles": 624,
   "batches": 7,
   "parts": [
     0,
@@ -69,8 +69,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/hood/i3/hood/scene.l64",
-    "sha256": "ad508a585dd2b902af34ce15105de0a5ad419fc231b3435c078c2e4d8fb51e03",
+    "asset": "experiments/cast-concepts/models/hood/i3e/hood/scene.l64",
+    "sha256": "56449a2f51cf0856defc092b7e20b7d59171c6e2a07bdc53f25ca93be75c41e0",
     "selection": "hood"
   }
 }

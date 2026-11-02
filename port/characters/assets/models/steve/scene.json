@@ -55,8 +55,8 @@
   "appearance": "steve",
   "pose": "standing",
   "component": null,
-  "vertices": 515,
-  "triangles": 576,
+  "vertices": 663,
+  "triangles": 632,
   "batches": 7,
   "parts": [
     0,
@@ -66,8 +66,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/steve/i3/steve/scene.l64",
-    "sha256": "465add9ae9043a91fa5824fc37acd026c17d0d2e7477ff8f3049213bedacfa67",
+    "asset": "experiments/cast-concepts/models/steve/i3e/steve/scene.l64",
+    "sha256": "30403b7f1bb699d13b7c2292df83181bf6a37c2cc144910ea252b5654f7ac216",
     "selection": "steve"
   }
 }

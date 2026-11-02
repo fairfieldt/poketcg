@@ -65,8 +65,8 @@
   "appearance": "boy_palette2",
   "pose": "standing",
   "component": null,
-  "vertices": 459,
-  "triangles": 560,
+  "vertices": 603,
+  "triangles": 620,
   "batches": 7,
   "parts": [
     0,
@@ -76,8 +76,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/boy_palette2/i3/boy_palette2/scene.l64",
-    "sha256": "410e76cecc51262e3b8d9ed596c8bdcf3facac7e13d714e5a39257e29e1748c4",
+    "asset": "experiments/cast-concepts/models/boy_palette2/i3e/boy_palette2/scene.l64",
+    "sha256": "27dd7df6bd54e33a1f34c64ae205d6834c714b82915292b5b5d76492e9d728a4",
     "selection": "boy_palette2"
   }
 }

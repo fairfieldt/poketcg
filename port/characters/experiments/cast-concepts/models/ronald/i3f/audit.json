@@ -1,0 +1,80 @@
+{
+  "passed": true,
+  "source": "models/ronald/i3/ronald",
+  "source_sha256": "b7b5cc0870f062ac1636c3e2d953a6bc9cbc18960f6bcff33817a64c4eaf5033",
+  "settings": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "preserve_lower": false,
+      "packing_phase": [
+        0,
+        0,
+        0
+      ],
+      "target_half_width": 0.4207792207792207,
+      "target_half_depth": 0.348051948051948,
+      "head_bounds": [
+        1.46,
+        2.38
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 156,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/ronald/i3f/ronald/scene.l64",
+    "sha256": "c247d6cdb7171a71d97f8d005e08e4a8ef0fb551a9374be284863d115f898218",
+    "triangles": 588,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "ron3_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "sampled_feature": "painted eye whites",
+    "before_max_eye_white_angle": 63.31591414077103,
+    "after_max_eye_white_angle": 42.40241396022429,
+    "additional_horizontal_span": 0.7,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of actual painted eye feature; no sampled feature beyond43deg; Joshua uses closed eyelids; lying inherits standing mapping",
+    "face_vertices": 25,
+    "original_native_sha256": "30f44ce4a2cde2ddc83edc0d1accd43975cd2c251e9683ac85ce73f52ca51943",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

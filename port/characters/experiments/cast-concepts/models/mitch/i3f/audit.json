@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "source": "models/mitch/i3/mitch",
+  "source_sha256": "1181cf83029cc890adeec4bda7059efb2846a0b4090c66840a177375bb9018ac",
+  "settings": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "preserve_lower": false,
+      "packing_phase": [
+        0,
+        0,
+        0
+      ],
+      "target_half_width": 0.43129870129870146,
+      "target_half_depth": 0.3567532467532469,
+      "head_bounds": [
+        1.46,
+        2.39
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 156,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/mitch/i3f/mitch/scene.l64",
+    "sha256": "a543084dfefe0f56c0045c310f4426f09fceab95c99a8d4af9dada147bb65d2f",
+    "triangles": 604,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "mitch3_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      },
+      {
+        "name": "mitch3_top.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "sampled_feature": "painted eye whites",
+    "before_max_eye_white_angle": 57.33902584270493,
+    "after_max_eye_white_angle": 42.7150585391279,
+    "additional_horizontal_span": 0.76,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of actual painted eye feature; no sampled feature beyond43deg; Joshua uses closed eyelids; lying inherits standing mapping",
+    "face_vertices": 25,
+    "original_native_sha256": "ae41c3a45d5d81a3e6a5202070ca4f5e46346f42fc3b3223f22a3080252e005f",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "w3_joshua_face",
+    "w3_joshua_goggles"
+  ],
+  "vertices": 535,
+  "triangles": 620,
+  "batches": 7
+}

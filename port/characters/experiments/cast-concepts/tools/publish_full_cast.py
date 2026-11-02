@@ -10,16 +10,17 @@ font=ImageFont.truetype('/System/Library/Fonts/Helvetica.ttc',18)
 models=[]
 for row in rows:
     slug=row['slug'];name='Mark' if slug=='mark' else row['name']
-    if slug=='mark':
+    finals=sorted(f for f in (ROOT/'models'/slug).glob('i3*') if (f/'native/capture.json').is_file())
+    if slug=='mark' and not finals:
         folder=ROOT.parent/'mark-concepts/approved/a_adventure/i3d';prefix='../mark-concepts/approved/a_adventure/i3d';portrait=folder/'native/a_adventure_i3d-portrait-mark.png';turn=folder/'native/a_adventure_i3d-turn-mark.png';concept='../mark-concepts/concepts/a-simple-shirt.png';history='../mark-concepts/index.html'
     else:
-        finals=sorted(f for f in (ROOT/'models'/slug).glob('i3*') if (f/'native/capture.json').is_file())
         if not finals:
             if a.complete:raise ValueError(f'Missing final {slug}')
             continue
         folder=finals[-1];prefix=str(folder.relative_to(ROOT));history=f'models/{slug}'
-        lead=slug in ('dr_mason','ronald');portrait=folder/'native'/(f'{slug}_{folder.name}-portrait-{slug}.png' if lead else 'candidate-portrait.png');turn=folder/'native'/(f'{slug}_{folder.name}-turn-{slug}.png' if lead else 'candidate-turn.png');concept=f'concepts/{"dr-mason" if slug=="dr_mason" else slug}.png'
-    audit=json.loads((folder/'audit.json').read_text());assert audit['passed']
+        lead=slug in ('dr_mason','ronald') and not (folder/'native/candidate-portrait.png').exists();portrait=folder/'native'/(f'{slug}_{folder.name}-portrait-{slug}.png' if lead else 'candidate-portrait.png');turn=folder/'native'/(f'{slug}_{folder.name}-turn-{slug}.png' if lead else 'candidate-turn.png');concept='../mark-concepts/concepts/a-simple-shirt.png' if slug=='mark' else f'concepts/{"dr-mason" if slug=="dr_mason" else slug}.png'
+        if slug in ('dr_mason','tech') and folder.name>='i3e':concept='concepts/round-heads/mason-sam.png'
+    audit=json.loads((folder/'audit.json').read_text());assert audit['passed'];audit=audit.get('native',audit)
     models.append(dict(slug=slug,name=name,folder=folder,prefix=prefix,portrait=portrait,turn=turn,concept=concept,history=history,triangles=audit['triangles'],runtime_model=row['runtime_model'],aliases=row['aliases']))
 if a.complete:assert len(models)==37
 sheet=Image.new('RGB',(7*208,math.ceil(len(models)/7)*340),(24,25,30));draw=ImageDraw.Draw(sheet)
@@ -31,12 +32,11 @@ page=['<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport
 for m in models:
     slug=m['slug'];label=html.escape(m['name']);prefix=m['prefix'];key=html.escape((slug+' '+m['name']).lower())
     page.extend([f'<section data-search="{key}"><h2>{label}</h2>',f'<a href="{m["concept"]}"><img loading="lazy" src="{m["concept"]}" alt="{label} generated concept"></a>',f'<img class="native" loading="lazy" src="{prefix}/native/{m["turn"].name}" alt="{label} native turnaround">',f'<p><a href="{prefix}/{slug}.blend">Blender model</a> · <a href="{prefix}/{slug}/scene.l64">Native model</a></p>'])
-    if slug=='mark':page.append('<a href="../mark-concepts/index.html">Review Mark rounds</a>')
-    else:
-        for folder in sorted((ROOT/'models'/slug).glob('i*')):
-            if not (folder/'native/capture.json').is_file():continue
-            link=str(folder.relative_to(ROOT))+'/native/comparison.png'
-            page.append(f'<details><summary>Round {html.escape(folder.name[1:])}</summary><a href="{link}"><img loading="lazy" class="native" src="{link}" alt="{label} round {folder.name[1:]}"></a></details>')
+    if slug=='mark':page.append('<a href="../mark-concepts/index.html">Review original Mark rounds</a>')
+    for folder in sorted((ROOT/'models'/slug).glob('i*')):
+        if not (folder/'native/capture.json').is_file():continue
+        link=str(folder.relative_to(ROOT))+'/native/comparison.png'
+        page.append(f'<details><summary>Round {html.escape(folder.name[1:])}</summary><a href="{link}"><img loading="lazy" class="native" src="{link}" alt="{label} round {folder.name[1:]}"></a></details>')
     page.append('</section>')
 page.append('</div><h2>Appearances and poses</h2><div class="grid">')
 variants=[]

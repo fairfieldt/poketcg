@@ -1,12 +1,12 @@
 {
   "model": "ishihara",
-  "triangles": 528,
-  "vertices": 451,
+  "triangles": 588,
+  "vertices": 570,
   "batches": 7,
   "linked_parts": 0,
   "appearances": [
     "ishihara"
   ],
-  "fingerprint": "eb44204c8d729d5aec0f8365f99093e9b778f7215e80e862c4243d749d814c78",
+  "fingerprint": "b50b39627f5972da4fc1c3621acdafa3e9fe34945e24fa68d19c37e8dcc2163e",
   "recipe": "reviewed-cast-manual"
 }

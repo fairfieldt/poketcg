@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-rick-i3e.z64",
+  "rom_sha256": "110e727f49de57b58f0fc8ca97ba53d84458bf6cc49e7274a6cbd4d8d1dc2691",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1347392,
+      "free": 1388992
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1347584,
+      "free": 1388800
+    }
+  ],
+  "subject": "rick",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "a5cf685bcebec11267dea8d1f66318c6e3275546f179bb03c6084140569ccbb4",
+    "candidate": "df0479138eef2ad9057bf9f38ad860408dfce2d2d85a5a8142de80714c239174"
+  }
+}

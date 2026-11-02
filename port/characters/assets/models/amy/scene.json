@@ -66,8 +66,8 @@
   "appearance": "amy",
   "pose": "standing",
   "component": null,
-  "vertices": 351,
-  "triangles": 528,
+  "vertices": 456,
+  "triangles": 580,
   "batches": 6,
   "parts": [
     0,
@@ -77,8 +77,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/amy/i3/amy/scene.l64",
-    "sha256": "36f483b6813b0b9643f1b13acc321d927f1fb3e523439bb84c8d1257911ed0f3",
+    "asset": "experiments/cast-concepts/models/amy/i3e/amy/scene.l64",
+    "sha256": "dfb530ccbeca33590ede8d575ac23a0976699642526d9928afe4936ddd8ee3e7",
     "selection": "amy"
   }
 }

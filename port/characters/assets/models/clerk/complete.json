@@ -1,12 +1,12 @@
 {
   "model": "clerk",
-  "triangles": 564,
-  "vertices": 413,
+  "triangles": 620,
+  "vertices": 551,
   "batches": 7,
   "linked_parts": 0,
   "appearances": [
     "clerk"
   ],
-  "fingerprint": "454f1c6bea9f53278a88c6bbba88aae621856b0662f9b3f459c34aaecfd1f5aa",
+  "fingerprint": "ba899074768376906a92c7da4f04eb688d205e008592c36345f6b8624c609801",
   "recipe": "reviewed-cast-manual"
 }

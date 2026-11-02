@@ -56,8 +56,8 @@
   "appearance": "ronald",
   "pose": "standing",
   "component": null,
-  "vertices": 616,
-  "triangles": 512,
+  "vertices": 739,
+  "triangles": 588,
   "batches": 6,
   "parts": [
     0,
@@ -67,8 +67,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/ronald/i3/ronald/scene.l64",
-    "sha256": "b7b5cc0870f062ac1636c3e2d953a6bc9cbc18960f6bcff33817a64c4eaf5033",
+    "asset": "experiments/cast-concepts/models/ronald/i3f/ronald/scene.l64",
+    "sha256": "c247d6cdb7171a71d97f8d005e08e4a8ef0fb551a9374be284863d115f898218",
     "selection": "ronald"
   }
 }

@@ -55,8 +55,8 @@
   "appearance": "isaac",
   "pose": "standing",
   "component": null,
-  "vertices": 452,
-  "triangles": 528,
+  "vertices": 554,
+  "triangles": 560,
   "batches": 7,
   "parts": [
     0,
@@ -66,8 +66,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/isaac/i3/isaac/scene.l64",
-    "sha256": "160cab180a4d802c57104a6c131c8b488aac97c22de93942c7e389c8668b6e6e",
+    "asset": "experiments/cast-concepts/models/isaac/i3e/isaac/scene.l64",
+    "sha256": "6d5aa2abec5bad34c1c33da08af29f7de51ac7c661f2593a1f3a6e9e888d8426",
     "selection": "isaac"
   }
 }

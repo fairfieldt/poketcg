@@ -1,12 +1,12 @@
 {
   "model": "hood",
-  "triangles": 560,
-  "vertices": 469,
+  "triangles": 624,
+  "vertices": 629,
   "batches": 7,
   "linked_parts": 0,
   "appearances": [
     "hood"
   ],
-  "fingerprint": "f686bcfcde927669112d53b694d40f2d973de1f1b66cb2f8f970d52e10a5b518",
+  "fingerprint": "4bf329047f874532c4f80710167be600bde59e03a56bfcdf7245c5f2db3bd4ae",
   "recipe": "reviewed-cast-manual"
 }

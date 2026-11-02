@@ -1,12 +1,12 @@
 {
   "model": "man",
-  "triangles": 560,
-  "vertices": 470,
+  "triangles": 620,
+  "vertices": 628,
   "batches": 7,
   "linked_parts": 0,
   "appearances": [
     "man"
   ],
-  "fingerprint": "8975a420166417976a22cdbc1c196a731fade437f03cddcbf73808a3a452f2a2",
+  "fingerprint": "874be173448ff6a872611976d4f42857eda2bcd55b80a03423831aec79d1ad89",
   "recipe": "reviewed-cast-manual"
 }

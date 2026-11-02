@@ -20618,12 +20618,12 @@
     },
     "actor_dr_mason": {
       "file": "maps/actor_dr_mason.l64",
-      "vertices": 447,
-      "triangles": 560,
+      "vertices": 591,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t11fad93c9fbb43e4",
-        "tf5ad10f6716a8d10"
+        "t5b32b5444063a077"
       ],
       "props": [],
       "character": true,
@@ -20631,7 +20631,7 @@
       "model": 9,
       "source_model": 3,
       "source": "port/characters/assets/models/dr_mason",
-      "source_sha256": "353fbb86c35a465bfdb99685d3b607675424f300d75ffa40c9d31d998adbaad2",
+      "source_sha256": "ab884f819283ad64e09842c095dfedaa9697e65d52c443ece29d7ae1395332f2",
       "family": "dr_mason",
       "kind": "canonical",
       "selector": null,
@@ -20648,8 +20648,8 @@
     },
     "actor_ronald": {
       "file": "maps/actor_ronald.l64",
-      "vertices": 616,
-      "triangles": 512,
+      "vertices": 739,
+      "triangles": 588,
       "batches": 6,
       "textures": [
         "tfe5f5fb02751a9a7"
@@ -20660,7 +20660,7 @@
       "model": 8,
       "source_model": 2,
       "source": "port/characters/assets/models/ronald",
-      "source_sha256": "a730a2303f5c931576da3385052926ceef4867ab9e110b98a921fee3e8a21510",
+      "source_sha256": "e5ebde676cda9327660e712f2149d1c3c7f49038cd61f1eaf71eff6e396a69b7",
       "family": "ronald",
       "kind": "canonical",
       "selector": null,
@@ -20677,8 +20677,8 @@
     },
     "actor_ishihara": {
       "file": "maps/actor_ishihara.l64",
-      "vertices": 451,
-      "triangles": 528,
+      "vertices": 570,
+      "triangles": 588,
       "batches": 7,
       "textures": [
         "t8c5bcd76b36319b0",
@@ -20690,7 +20690,7 @@
       "model": 10,
       "source_model": 4,
       "source": "port/characters/assets/models/ishihara",
-      "source_sha256": "7a325ad4bc2f374033f01e98311e56c2ec0ebf6a57a7b86fbf6cd2b78ffaa34e",
+      "source_sha256": "9ac4127f2f3e13d68fe638f09cde39079f19ee9048d0caa63f221a9715a7b173",
       "family": "ishihara",
       "kind": "canonical",
       "selector": null,
@@ -20703,8 +20703,8 @@
     },
     "actor_imakuni": {
       "file": "maps/actor_imakuni.l64",
-      "vertices": 450,
-      "triangles": 552,
+      "vertices": 584,
+      "triangles": 624,
       "batches": 7,
       "textures": [
         "t621a72812998a565",
@@ -20716,7 +20716,7 @@
       "model": 11,
       "source_model": 5,
       "source": "port/characters/assets/models/imakuni",
-      "source_sha256": "8732436ead6ce52505bddecf91bb13aff895394aa72d2ea4b9ee26871874a1f9",
+      "source_sha256": "1dcd906e120593386cbeacfbac7f61b5ee84f438a3cd526984a8c78db7b778e9",
       "family": "imakuni",
       "kind": "canonical",
       "selector": null,
@@ -20729,11 +20729,11 @@
     },
     "actor_tech": {
       "file": "maps/actor_tech.l64",
-      "vertices": 446,
-      "triangles": 560,
+      "vertices": 590,
+      "triangles": 620,
       "batches": 7,
       "textures": [
-        "t35e93adf27099913",
+        "t4faae31fe881e2c9",
         "tff184c333112bfd4"
       ],
       "props": [],
@@ -20742,7 +20742,7 @@
       "model": 31,
       "source_model": 25,
       "source": "port/characters/assets/models/tech",
-      "source_sha256": "734f28eb906b27a37d93b1b90153199e2f6239279e567fcbde0798bfbeb2801e",
+      "source_sha256": "a3a8a00aeb034ed103b0b484533fa92682158c341f591ff4df2ac8badc1bca96",
       "family": "tech",
       "kind": "canonical",
       "selector": null,
@@ -20781,8 +20781,8 @@
     },
     "actor_clerk": {
       "file": "maps/actor_clerk.l64",
-      "vertices": 413,
-      "triangles": 564,
+      "vertices": 551,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "tba756be65fca4f46",
@@ -20794,7 +20794,7 @@
       "model": 40,
       "source_model": 34,
       "source": "port/characters/assets/models/clerk",
-      "source_sha256": "ee9fd8df7d5db6c51fb56d31eefa9d94207bec39cdc96ea996272b3aa4445478",
+      "source_sha256": "939dcb99bd609000d29515d60083b7d8f783ad964ec4e306ed991430b0a5a55a",
       "family": "clerk",
       "kind": "canonical",
       "selector": null,
@@ -20827,8 +20827,8 @@
     },
     "actor_mania": {
       "file": "maps/actor_mania.l64",
-      "vertices": 459,
-      "triangles": 560,
+      "vertices": 609,
+      "triangles": 628,
       "batches": 7,
       "textures": [
         "t4e38709ad147967b",
@@ -20840,7 +20840,7 @@
       "model": 28,
       "source_model": 22,
       "source": "port/characters/assets/models/mania",
-      "source_sha256": "c0b397f998190d6342ba3abc92e547f46266231ea00efdc24f0df4131be6b2ca",
+      "source_sha256": "a03d32c085465706542946d5dfa0450ce2f1bd561c657eab1902db197c45b0ca",
       "family": "mania",
       "kind": "canonical",
       "selector": null,
@@ -20859,8 +20859,8 @@
     },
     "actor_lass3": {
       "file": "maps/actor_lass3.l64",
-      "vertices": 415,
-      "triangles": 612,
+      "vertices": 575,
+      "triangles": 684,
       "batches": 6,
       "textures": [
         "t896ea04e9f6d779c"
@@ -20871,7 +20871,7 @@
       "model": 38,
       "source_model": 32,
       "source": "port/characters/assets/models/lass3",
-      "source_sha256": "eccff2ffc13f8eed8fb01a45fba4bf513938ad253d1bcfeba640621a97660878",
+      "source_sha256": "2ac39432bbb96de735a5ffa31961e4abad2e3f8651cab952774448ce70c76f93",
       "family": "lass3",
       "kind": "canonical",
       "selector": null,
@@ -20886,8 +20886,8 @@
     },
     "actor_mitch": {
       "file": "maps/actor_mitch.l64",
-      "vertices": 451,
-      "triangles": 528,
+      "vertices": 576,
+      "triangles": 604,
       "batches": 7,
       "textures": [
         "t0994ebf03c53bdfa",
@@ -20899,7 +20899,7 @@
       "model": 17,
       "source_model": 11,
       "source": "port/characters/assets/models/mitch",
-      "source_sha256": "bba2d7252a5bd65e4242ae5354df3fb367c979876af4bb087b02c9afc99f57c1",
+      "source_sha256": "9eaed7cba0654999b5785cf6072939b97dc3b5be5a4958a8fe5dcf878d965f83",
       "family": "mitch",
       "kind": "canonical",
       "selector": null,
@@ -20912,8 +20912,8 @@
     },
     "actor_boy": {
       "file": "maps/actor_boy.l64",
-      "vertices": 459,
-      "triangles": 560,
+      "vertices": 603,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t4e38709ad147967b",
@@ -20925,7 +20925,7 @@
       "model": 24,
       "source_model": 18,
       "source": "port/characters/assets/models/boy",
-      "source_sha256": "15d995d5f05efee3be635e187694c02146a039d91f333c00392f41c658ef6e96",
+      "source_sha256": "08771b06187d636baa8ae23aea87f62deceb1ed24d85e9c47f9a45cd50f2baf1",
       "family": "boy",
       "kind": "canonical",
       "selector": null,
@@ -20938,8 +20938,8 @@
     },
     "actor_man": {
       "file": "maps/actor_man.l64",
-      "vertices": 470,
-      "triangles": 560,
+      "vertices": 628,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t26519fcf57106996",
@@ -20951,7 +20951,7 @@
       "model": 33,
       "source_model": 27,
       "source": "port/characters/assets/models/man",
-      "source_sha256": "b66fca7815faa297653fe551744161bc800b2f687148b0b76ebfaaf9958d950f",
+      "source_sha256": "aaaf71c12cdbda3305d780c81ad35597e3a2e7f6a2ec133f89fdfe57e269c6e3",
       "family": "man",
       "kind": "canonical",
       "selector": null,
@@ -20972,8 +20972,8 @@
     },
     "actor_gene": {
       "file": "maps/actor_gene.l64",
-      "vertices": 451,
-      "triangles": 528,
+      "vertices": 553,
+      "triangles": 560,
       "batches": 7,
       "textures": [
         "t3b7e2d0dcb7826cf",
@@ -20985,7 +20985,7 @@
       "model": 18,
       "source_model": 12,
       "source": "port/characters/assets/models/gene",
-      "source_sha256": "14af792aba8b5b8a38729225716563cc90d48490ceba3c14618acfdb5972da3a",
+      "source_sha256": "0476a18987e4affba8addee743ec45867842bbf814754f25843cc55b507a8fad",
       "family": "gene",
       "kind": "canonical",
       "selector": null,
@@ -20998,8 +20998,8 @@
     },
     "actor_swimmer": {
       "file": "maps/actor_swimmer.l64",
-      "vertices": 401,
-      "triangles": 564,
+      "vertices": 535,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t6d57557c03e0e7ab",
@@ -21011,7 +21011,7 @@
       "model": 39,
       "source_model": 33,
       "source": "port/characters/assets/models/swimmer",
-      "source_sha256": "4fc2fbdb350c5efcba8fe95ad39e999122b802506f8c14395a17ba30c6087202",
+      "source_sha256": "f96cdd1ceccb0acbc147e3e661306f939b58c64adbfd97f0bd7c7eee300f0c4d",
       "family": "swimmer",
       "kind": "canonical",
       "selector": null,
@@ -21024,8 +21024,8 @@
     },
     "actor_joshua": {
       "file": "maps/actor_joshua.l64",
-      "vertices": 401,
-      "triangles": 564,
+      "vertices": 535,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t525db1093c0d85f3",
@@ -21037,7 +21037,7 @@
       "model": 29,
       "source_model": 23,
       "source": "port/characters/assets/models/joshua",
-      "source_sha256": "2baa10bc85c5ad0225b7321a4bb16782a53e1b8399c1ec91a2cc9f38ecf81848",
+      "source_sha256": "8ee31ee3e4ebeae7d7323fc5c28e5fbcdd1d02ea47c1bd0869c53b4077cb5fc8",
       "family": "joshua",
       "kind": "canonical",
       "selector": null,
@@ -21050,8 +21050,8 @@
     },
     "actor_amy": {
       "file": "maps/actor_amy.l64",
-      "vertices": 351,
-      "triangles": 528,
+      "vertices": 456,
+      "triangles": 580,
       "batches": 6,
       "textures": [
         "t7c4ff7356bd65e3d"
@@ -21062,7 +21062,7 @@
       "model": 15,
       "source_model": 9,
       "source": "port/characters/assets/models/amy",
-      "source_sha256": "b4d8ff7b0dd9780839f2983bb1a747469d3d786a9ae5cb838f4886436a54824c",
+      "source_sha256": "995306d6cac03838768bd7b898c8df0dc468ac472d042295e686fc7a8ff421ef",
       "family": "amy",
       "kind": "canonical",
       "selector": null,
@@ -21075,8 +21075,8 @@
     },
     "actor_girl": {
       "file": "maps/actor_girl.l64",
-      "vertices": 375,
-      "triangles": 528,
+      "vertices": 488,
+      "triangles": 576,
       "batches": 6,
       "textures": [
         "t6fae899cc5bcd958"
@@ -21087,7 +21087,7 @@
       "model": 35,
       "source_model": 29,
       "source": "port/characters/assets/models/girl",
-      "source_sha256": "479546c131035c5e2d29c672a291e868bda454f51df086ab3f62212bc8280091",
+      "source_sha256": "41f6f194277b6d8035fe990e2b9dd8b1c71310a655e83344215fb28b14f7ceaa",
       "family": "girl",
       "kind": "canonical",
       "selector": null,
@@ -21104,8 +21104,8 @@
     },
     "actor_hood": {
       "file": "maps/actor_hood.l64",
-      "vertices": 469,
-      "triangles": 560,
+      "vertices": 629,
+      "triangles": 624,
       "batches": 7,
       "textures": [
         "tb76b6399fc8ae878",
@@ -21117,7 +21117,7 @@
       "model": 30,
       "source_model": 24,
       "source": "port/characters/assets/models/hood",
-      "source_sha256": "ea9e59b8f501654d588808bd8dc1dcf37c9d3f6bc588110241207c98047beb70",
+      "source_sha256": "37b5b751de0aa9178f2480e763dcb3b2a730898855cae30412035f70c23c853e",
       "family": "hood",
       "kind": "canonical",
       "selector": null,
@@ -21136,8 +21136,8 @@
     },
     "actor_isaac": {
       "file": "maps/actor_isaac.l64",
-      "vertices": 452,
-      "triangles": 528,
+      "vertices": 554,
+      "triangles": 560,
       "batches": 7,
       "textures": [
         "t7a56c6e3c3cfdbc3",
@@ -21149,7 +21149,7 @@
       "model": 16,
       "source_model": 10,
       "source": "port/characters/assets/models/isaac",
-      "source_sha256": "cbb9e8b8663b4b1ff3e6c1b1242772f06fc4ad141c993e961bf7e0463019b20f",
+      "source_sha256": "0f842d371a95ee0de4f7279d55e2e5d961309414b030c74a692a732892dfd6e3",
       "family": "isaac",
       "kind": "canonical",
       "selector": null,
@@ -21162,8 +21162,8 @@
     },
     "actor_lass2": {
       "file": "maps/actor_lass2.l64",
-      "vertices": 384,
-      "triangles": 528,
+      "vertices": 510,
+      "triangles": 580,
       "batches": 6,
       "textures": [
         "t6fae899cc5bcd958"
@@ -21174,7 +21174,7 @@
       "model": 37,
       "source_model": 31,
       "source": "port/characters/assets/models/lass2",
-      "source_sha256": "db989938f20c43bbd3566bc42e81a4dcc996afaf16acf1eaec5c699bdc6f4519",
+      "source_sha256": "8c472d88ac109bf2965213cff80d7d4efdafc24d25d51db1b5f19c669fd95a23",
       "family": "lass2",
       "kind": "canonical",
       "selector": null,
@@ -21191,8 +21191,8 @@
     },
     "actor_lass1": {
       "file": "maps/actor_lass1.l64",
-      "vertices": 363,
-      "triangles": 528,
+      "vertices": 468,
+      "triangles": 580,
       "batches": 6,
       "textures": [
         "t5b8192fd0df5c1a3"
@@ -21203,7 +21203,7 @@
       "model": 36,
       "source_model": 30,
       "source": "port/characters/assets/models/lass1",
-      "source_sha256": "fba8f8f2577714be0f0e59ab13bcf946946e44d73b335f4b2f69ea71752740c4",
+      "source_sha256": "2f5c1754a5275d7307215b483e687313491d804d38dd19ed82f73ab8060435f4",
       "family": "lass1",
       "kind": "canonical",
       "selector": null,
@@ -21220,8 +21220,8 @@
     },
     "actor_nikki": {
       "file": "maps/actor_nikki.l64",
-      "vertices": 448,
-      "triangles": 540,
+      "vertices": 565,
+      "triangles": 592,
       "batches": 7,
       "textures": [
         "t41c908177e753838",
@@ -21233,7 +21233,7 @@
       "model": 12,
       "source_model": 6,
       "source": "port/characters/assets/models/nikki",
-      "source_sha256": "89615620ff0eefa5767b37b3afdb4fef6d98ab21c2c7b87775d86744e383f3a7",
+      "source_sha256": "7a9ac3d82666f179c74c39ef206b444ee966de9da4e8bbec59edc5f5376ccd08",
       "family": "nikki",
       "kind": "canonical",
       "selector": null,
@@ -21246,8 +21246,8 @@
     },
     "actor_lad": {
       "file": "maps/actor_lad.l64",
-      "vertices": 514,
-      "triangles": 572,
+      "vertices": 644,
+      "triangles": 620,
       "batches": 8,
       "textures": [
         "t3caae9eb45df92c0",
@@ -21260,7 +21260,7 @@
       "model": 25,
       "source_model": 19,
       "source": "port/characters/assets/models/lad",
-      "source_sha256": "65d92fbc613fc24ad1f8e3e2489e0b821c8a1635056c1e68203a7ad3b9f636e2",
+      "source_sha256": "f3538a72626dc9250fe11df8df28e24430be12133011011a865ab32df80837a3",
       "family": "lad",
       "kind": "canonical",
       "selector": null,
@@ -21279,8 +21279,8 @@
     },
     "actor_murray": {
       "file": "maps/actor_murray.l64",
-      "vertices": 460,
-      "triangles": 540,
+      "vertices": 579,
+      "triangles": 592,
       "batches": 7,
       "textures": [
         "t1116a345b010c18b",
@@ -21292,7 +21292,7 @@
       "model": 19,
       "source_model": 13,
       "source": "port/characters/assets/models/murray",
-      "source_sha256": "ace882abcae66e2c03ee25e9d7abb16bfea6461990623c59db93dfb68397687f",
+      "source_sha256": "ff66b29f9706e2c898b67240c8de1c6717bad5eda837a087fb22f2356da30e84",
       "family": "murray",
       "kind": "canonical",
       "selector": null,
@@ -21307,8 +21307,8 @@
     },
     "actor_rick": {
       "file": "maps/actor_rick.l64",
-      "vertices": 452,
-      "triangles": 528,
+      "vertices": 554,
+      "triangles": 560,
       "batches": 7,
       "textures": [
         "t3dcecd543ec3e077",
@@ -21320,7 +21320,7 @@
       "model": 13,
       "source_model": 7,
       "source": "port/characters/assets/models/rick",
-      "source_sha256": "3f525441f1652e2e402ff4ba5f7839fb767c7d48f4ffb3d1f8c70a8047a43a98",
+      "source_sha256": "c7df275d8488835f100241dcc24a11445c7fb103dc3b563d75d81f6380c0914c",
       "family": "rick",
       "kind": "canonical",
       "selector": null,
@@ -21333,8 +21333,8 @@
     },
     "actor_specs": {
       "file": "maps/actor_specs.l64",
-      "vertices": 460,
-      "triangles": 560,
+      "vertices": 604,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t4e6b4ad0bea40ce7",
@@ -21346,7 +21346,7 @@
       "model": 26,
       "source_model": 20,
       "source": "port/characters/assets/models/specs",
-      "source_sha256": "d4ee787251f147a4a9dbe3caff6ae016961a309f817da067bdc9bbc6bb8e97e8",
+      "source_sha256": "a174d0b82fc1f571e3128053da3fa9689a5b478c536b8051237196d8bb135c33",
       "family": "specs",
       "kind": "canonical",
       "selector": null,
@@ -21363,8 +21363,8 @@
     },
     "actor_ken": {
       "file": "maps/actor_ken.l64",
-      "vertices": 450,
-      "triangles": 528,
+      "vertices": 573,
+      "triangles": 596,
       "batches": 7,
       "textures": [
         "t21b7fe2174fa4f3d",
@@ -21376,7 +21376,7 @@
       "model": 14,
       "source_model": 8,
       "source": "port/characters/assets/models/ken",
-      "source_sha256": "b5e10f9227f5ce0b9158a8a6d30c11a52056371034760553a82146f47f25df3f",
+      "source_sha256": "07a1a3ea89b380eb962f4379c1ef58115e1cb98985f2e31b665b525735553392",
       "family": "ken",
       "kind": "canonical",
       "selector": null,
@@ -21389,8 +21389,8 @@
     },
     "actor_courtney": {
       "file": "maps/actor_courtney.l64",
-      "vertices": 453,
-      "triangles": 540,
+      "vertices": 574,
+      "triangles": 588,
       "batches": 7,
       "textures": [
         "t90f426f13a4a43a2",
@@ -21402,7 +21402,7 @@
       "model": 20,
       "source_model": 14,
       "source": "port/characters/assets/models/courtney",
-      "source_sha256": "9a2f8b92083e8935ea391778d5103a40ec129932f4f50c88e95939daadb1f2fe",
+      "source_sha256": "aee766fa310288fa8065385faaee761f16312dccf3669a906a435feb9ac5754d",
       "family": "courtney",
       "kind": "canonical",
       "selector": null,
@@ -21415,8 +21415,8 @@
     },
     "actor_steve": {
       "file": "maps/actor_steve.l64",
-      "vertices": 515,
-      "triangles": 576,
+      "vertices": 663,
+      "triangles": 632,
       "batches": 7,
       "textures": [
         "t1379e57d042e365f",
@@ -21428,7 +21428,7 @@
       "model": 21,
       "source_model": 15,
       "source": "port/characters/assets/models/steve",
-      "source_sha256": "050da1ab3559eade8a92e636ae6bc63b38adf32475825b66410d39b1fca9b4f8",
+      "source_sha256": "7b103ab230c7c2e7f00f44d97b4c8dd04692f88ac616c8c98d6c612eb7a93945",
       "family": "steve",
       "kind": "canonical",
       "selector": null,
@@ -21441,8 +21441,8 @@
     },
     "actor_jack": {
       "file": "maps/actor_jack.l64",
-      "vertices": 452,
-      "triangles": 528,
+      "vertices": 554,
+      "triangles": 560,
       "batches": 7,
       "textures": [
         "t526c3b9307951c01",
@@ -21454,7 +21454,7 @@
       "model": 22,
       "source_model": 16,
       "source": "port/characters/assets/models/jack",
-      "source_sha256": "a93835e81d0fecc8205a92f88e0b860ee3e00cd589ae3aafd116fe9c570556ae",
+      "source_sha256": "24bb15083fad37f7cbf1c30f484f20840a84228daff15946d34af3b1ca4e74be",
       "family": "jack",
       "kind": "canonical",
       "selector": null,
@@ -21467,8 +21467,8 @@
     },
     "actor_rod": {
       "file": "maps/actor_rod.l64",
-      "vertices": 451,
-      "triangles": 528,
+      "vertices": 554,
+      "triangles": 560,
       "batches": 7,
       "textures": [
         "t42d19aa68dddf897",
@@ -21480,7 +21480,7 @@
       "model": 23,
       "source_model": 17,
       "source": "port/characters/assets/models/rod",
-      "source_sha256": "b7c2e67082339cec22fd488102f7c7f759a782f6a659d46d38d0e2f5aa1ec8ff",
+      "source_sha256": "24d6ca4e7993e27d19a67539fba43e957bc175337dad57d8bac35b537545332a",
       "family": "rod",
       "kind": "canonical",
       "selector": null,
@@ -21493,8 +21493,8 @@
     },
     "actor_woman": {
       "file": "maps/actor_woman.l64",
-      "vertices": 367,
-      "triangles": 544,
+      "vertices": 472,
+      "triangles": 596,
       "batches": 6,
       "textures": [
         "t21db3e8a45349198"
@@ -21505,7 +21505,7 @@
       "model": 42,
       "source_model": 36,
       "source": "port/characters/assets/models/woman",
-      "source_sha256": "ff774332434208579daf297a94cbda2f4136a5ee4e4c0a10c960c195a6ca7f50",
+      "source_sha256": "b9bdcee74be7d67808f6ac2358cb585eab1207be1ba5f81a9f80892bf4e79d50",
       "family": "woman",
       "kind": "canonical",
       "selector": null,
@@ -21520,8 +21520,8 @@
     },
     "actor_chap": {
       "file": "maps/actor_chap.l64",
-      "vertices": 459,
-      "triangles": 560,
+      "vertices": 609,
+      "triangles": 628,
       "batches": 7,
       "textures": [
         "t67dfc6fd68eb2491",
@@ -21533,7 +21533,7 @@
       "model": 32,
       "source_model": 26,
       "source": "port/characters/assets/models/chap",
-      "source_sha256": "3679828d164198ad933750452dbfaacc9f1c0750af5e730346b625772c9c35e5",
+      "source_sha256": "dc6c472309829c264b40802162c839e88dd7a3e1ec161f52827a6731d8d5394a",
       "family": "chap",
       "kind": "canonical",
       "selector": null,
@@ -21554,8 +21554,8 @@
     },
     "actor_gal": {
       "file": "maps/actor_gal.l64",
-      "vertices": 363,
-      "triangles": 528,
+      "vertices": 468,
+      "triangles": 580,
       "batches": 6,
       "textures": [
         "ta419269a5e872b07"
@@ -21566,7 +21566,7 @@
       "model": 41,
       "source_model": 35,
       "source": "port/characters/assets/models/gal",
-      "source_sha256": "9d341086cb3604c969137ee5823ed96bf6247bc7b1e91c77aeb955a90b725f81",
+      "source_sha256": "24190f38149733805ba382f517e267d7e1025b1747da7cb9167a99f6d0f1a3f2",
       "family": "gal",
       "kind": "canonical",
       "selector": null,
@@ -21591,8 +21591,8 @@
     },
     "actor_pappy": {
       "file": "maps/actor_pappy.l64",
-      "vertices": 471,
-      "triangles": 560,
+      "vertices": 627,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t075e57e6c9af7cc7",
@@ -21604,7 +21604,7 @@
       "model": 34,
       "source_model": 28,
       "source": "port/characters/assets/models/pappy",
-      "source_sha256": "8f9eb8eaaf51a0e7bcd9536f6e904da8c319c1f1039ac097a80f18194817a42b",
+      "source_sha256": "4c49badcfe87df25cf9ddf783abbbb149b5539ca73a3342d66eb4f92831cafd2",
       "family": "pappy",
       "kind": "canonical",
       "selector": null,
@@ -21621,8 +21621,8 @@
     },
     "actor_butch": {
       "file": "maps/actor_butch.l64",
-      "vertices": 460,
-      "triangles": 560,
+      "vertices": 613,
+      "triangles": 632,
       "batches": 7,
       "textures": [
         "t26519fcf57106996",
@@ -21634,7 +21634,7 @@
       "model": 27,
       "source_model": 21,
       "source": "port/characters/assets/models/butch",
-      "source_sha256": "45735ca94cdeba11cba4ef7481ab5b938b6bacba205a4603d4666f8759c9053f",
+      "source_sha256": "c4d7e846d64ca351d02cbbfe2f89f91d3bd9f9753d31b60658c3b1b6f7256af2",
       "family": "butch",
       "kind": "canonical",
       "selector": null,
@@ -21647,8 +21647,8 @@
     },
     "actor_granny": {
       "file": "maps/actor_granny.l64",
-      "vertices": 412,
-      "triangles": 592,
+      "vertices": 537,
+      "triangles": 640,
       "batches": 7,
       "textures": [
         "ta692a7374e9f5761",
@@ -21660,7 +21660,7 @@
       "model": 43,
       "source_model": 37,
       "source": "port/characters/assets/models/granny",
-      "source_sha256": "9b37545eb76ac9ba467746f2d0870801e9b0cdf1434343796a5980463b23c737",
+      "source_sha256": "14ebe7fccbdcf114be70dcf49ce0b934c617348d3465a0d615da4d70bbf53e58",
       "family": "granny",
       "kind": "canonical",
       "selector": null,
@@ -21717,7 +21717,7 @@
     },
     "actor_mark": {
       "file": "maps/actor_mark.l64",
-      "vertices": 521,
+      "vertices": 661,
       "triangles": 596,
       "batches": 7,
       "textures": [
@@ -21730,7 +21730,7 @@
       "model": 7,
       "source_model": 1,
       "source": "port/characters/assets/models/mark",
-      "source_sha256": "d129f887dbf186951bc84143d5572869ddb69522f7786104217f0c1514b4fcc2",
+      "source_sha256": "6a321092a8167f0f2f6a9241f3c82e5647740c551f04c46ca9bdaf6a164d0837",
       "family": "mark",
       "kind": "canonical",
       "selector": null,
@@ -21747,8 +21747,8 @@
     },
     "actor_boy_palette2": {
       "file": "maps/actor_boy_palette2.l64",
-      "vertices": 459,
-      "triangles": 560,
+      "vertices": 603,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t93f3ac965afc7943",
@@ -21760,7 +21760,7 @@
       "model": 128,
       "source_model": 18,
       "source": "port/characters/assets/models/boy/variants/boy_palette2",
-      "source_sha256": "f9f884333a0d165650db6bf13a229a81b3774b7d239fc2e0b4ca3aa882a58fcf",
+      "source_sha256": "b12cddddd79ea19ac8394de78439adcf70bdc4bca7dea34f8300fd18d3d30bb8",
       "family": "boy",
       "kind": "appearance",
       "selector": null,
@@ -21777,8 +21777,8 @@
     },
     "actor_mania_palette2": {
       "file": "maps/actor_mania_palette2.l64",
-      "vertices": 459,
-      "triangles": 560,
+      "vertices": 609,
+      "triangles": 628,
       "batches": 7,
       "textures": [
         "t93f3ac965afc7943",
@@ -21790,7 +21790,7 @@
       "model": 129,
       "source_model": 22,
       "source": "port/characters/assets/models/mania/variants/mania_palette2",
-      "source_sha256": "f07b76da4dc420be04acc28f2ee8730b5852c27ce4b91e22f038c92ff553e678",
+      "source_sha256": "a68d42617de6be649931eee30c1c94661a2660249e5e2a63ce445e90bd824b1b",
       "family": "mania",
       "kind": "appearance",
       "selector": null,
@@ -21803,8 +21803,8 @@
     },
     "actor_swimmer_palette2": {
       "file": "maps/actor_swimmer_palette2.l64",
-      "vertices": 357,
-      "triangles": 528,
+      "vertices": 458,
+      "triangles": 576,
       "batches": 6,
       "textures": [
         "t07b6609431ce771c"
@@ -21815,7 +21815,7 @@
       "model": 130,
       "source_model": 33,
       "source": "port/characters/assets/models/swimmer/variants/swimmer_palette2",
-      "source_sha256": "fefbeffd4bdadc1e289b7bf5adfb03f0c770fe70df1e6cd6a8074b772e626945",
+      "source_sha256": "394b466595e25847bf0c250dfdcf2663302f81b9a1a15170a36c0c281dfb1a7e",
       "family": "swimmer",
       "kind": "appearance",
       "selector": null,
@@ -21828,8 +21828,8 @@
     },
     "actor_amy__lying": {
       "file": "maps/actor_amy__lying.l64",
-      "vertices": 351,
-      "triangles": 528,
+      "vertices": 456,
+      "triangles": 580,
       "batches": 6,
       "textures": [
         "t7c4ff7356bd65e3d"
@@ -21840,7 +21840,7 @@
       "model": 160,
       "source_model": 9,
       "source": "port/characters/assets/models/amy/poses/lying",
-      "source_sha256": "5d61270016168f3b908e508fc0db31b4d3aa9d931243ac45635e8adc686c20fa",
+      "source_sha256": "948616f37ba9d785a1d49ae713f0f752c688aa8720ed6cb3ee02e4e4346d6acd",
       "family": "amy",
       "kind": "pose",
       "selector": "lying",
@@ -22047,7 +22047,7 @@
   "individual_characters": [
     {
       "file": "maps/actor_mark.l64",
-      "vertices": 521,
+      "vertices": 661,
       "triangles": 596,
       "batches": 7,
       "textures": [
@@ -22060,7 +22060,7 @@
       "model": 7,
       "source_model": 1,
       "source": "port/characters/assets/models/mark",
-      "source_sha256": "d129f887dbf186951bc84143d5572869ddb69522f7786104217f0c1514b4fcc2",
+      "source_sha256": "6a321092a8167f0f2f6a9241f3c82e5647740c551f04c46ca9bdaf6a164d0837",
       "family": "mark",
       "kind": "canonical",
       "selector": null,
@@ -22077,8 +22077,8 @@
     },
     {
       "file": "maps/actor_ronald.l64",
-      "vertices": 616,
-      "triangles": 512,
+      "vertices": 739,
+      "triangles": 588,
       "batches": 6,
       "textures": [
         "tfe5f5fb02751a9a7"
@@ -22089,7 +22089,7 @@
       "model": 8,
       "source_model": 2,
       "source": "port/characters/assets/models/ronald",
-      "source_sha256": "a730a2303f5c931576da3385052926ceef4867ab9e110b98a921fee3e8a21510",
+      "source_sha256": "e5ebde676cda9327660e712f2149d1c3c7f49038cd61f1eaf71eff6e396a69b7",
       "family": "ronald",
       "kind": "canonical",
       "selector": null,
@@ -22106,12 +22106,12 @@
     },
     {
       "file": "maps/actor_dr_mason.l64",
-      "vertices": 447,
-      "triangles": 560,
+      "vertices": 591,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t11fad93c9fbb43e4",
-        "tf5ad10f6716a8d10"
+        "t5b32b5444063a077"
       ],
       "props": [],
       "character": true,
@@ -22119,7 +22119,7 @@
       "model": 9,
       "source_model": 3,
       "source": "port/characters/assets/models/dr_mason",
-      "source_sha256": "353fbb86c35a465bfdb99685d3b607675424f300d75ffa40c9d31d998adbaad2",
+      "source_sha256": "ab884f819283ad64e09842c095dfedaa9697e65d52c443ece29d7ae1395332f2",
       "family": "dr_mason",
       "kind": "canonical",
       "selector": null,
@@ -22136,8 +22136,8 @@
     },
     {
       "file": "maps/actor_ishihara.l64",
-      "vertices": 451,
-      "triangles": 528,
+      "vertices": 570,
+      "triangles": 588,
       "batches": 7,
       "textures": [
         "t8c5bcd76b36319b0",
@@ -22149,7 +22149,7 @@
       "model": 10,
       "source_model": 4,
       "source": "port/characters/assets/models/ishihara",
-      "source_sha256": "7a325ad4bc2f374033f01e98311e56c2ec0ebf6a57a7b86fbf6cd2b78ffaa34e",
+      "source_sha256": "9ac4127f2f3e13d68fe638f09cde39079f19ee9048d0caa63f221a9715a7b173",
       "family": "ishihara",
       "kind": "canonical",
       "selector": null,
@@ -22162,8 +22162,8 @@
     },
     {
       "file": "maps/actor_imakuni.l64",
-      "vertices": 450,
-      "triangles": 552,
+      "vertices": 584,
+      "triangles": 624,
       "batches": 7,
       "textures": [
         "t621a72812998a565",
@@ -22175,7 +22175,7 @@
       "model": 11,
       "source_model": 5,
       "source": "port/characters/assets/models/imakuni",
-      "source_sha256": "8732436ead6ce52505bddecf91bb13aff895394aa72d2ea4b9ee26871874a1f9",
+      "source_sha256": "1dcd906e120593386cbeacfbac7f61b5ee84f438a3cd526984a8c78db7b778e9",
       "family": "imakuni",
       "kind": "canonical",
       "selector": null,
@@ -22188,8 +22188,8 @@
     },
     {
       "file": "maps/actor_nikki.l64",
-      "vertices": 448,
-      "triangles": 540,
+      "vertices": 565,
+      "triangles": 592,
       "batches": 7,
       "textures": [
         "t41c908177e753838",
@@ -22201,7 +22201,7 @@
       "model": 12,
       "source_model": 6,
       "source": "port/characters/assets/models/nikki",
-      "source_sha256": "89615620ff0eefa5767b37b3afdb4fef6d98ab21c2c7b87775d86744e383f3a7",
+      "source_sha256": "7a9ac3d82666f179c74c39ef206b444ee966de9da4e8bbec59edc5f5376ccd08",
       "family": "nikki",
       "kind": "canonical",
       "selector": null,
@@ -22214,8 +22214,8 @@
     },
     {
       "file": "maps/actor_rick.l64",
-      "vertices": 452,
-      "triangles": 528,
+      "vertices": 554,
+      "triangles": 560,
       "batches": 7,
       "textures": [
         "t3dcecd543ec3e077",
@@ -22227,7 +22227,7 @@
       "model": 13,
       "source_model": 7,
       "source": "port/characters/assets/models/rick",
-      "source_sha256": "3f525441f1652e2e402ff4ba5f7839fb767c7d48f4ffb3d1f8c70a8047a43a98",
+      "source_sha256": "c7df275d8488835f100241dcc24a11445c7fb103dc3b563d75d81f6380c0914c",
       "family": "rick",
       "kind": "canonical",
       "selector": null,
@@ -22240,8 +22240,8 @@
     },
     {
       "file": "maps/actor_ken.l64",
-      "vertices": 450,
-      "triangles": 528,
+      "vertices": 573,
+      "triangles": 596,
       "batches": 7,
       "textures": [
         "t21b7fe2174fa4f3d",
@@ -22253,7 +22253,7 @@
       "model": 14,
       "source_model": 8,
       "source": "port/characters/assets/models/ken",
-      "source_sha256": "b5e10f9227f5ce0b9158a8a6d30c11a52056371034760553a82146f47f25df3f",
+      "source_sha256": "07a1a3ea89b380eb962f4379c1ef58115e1cb98985f2e31b665b525735553392",
       "family": "ken",
       "kind": "canonical",
       "selector": null,
@@ -22266,8 +22266,8 @@
     },
     {
       "file": "maps/actor_amy.l64",
-      "vertices": 351,
-      "triangles": 528,
+      "vertices": 456,
+      "triangles": 580,
       "batches": 6,
       "textures": [
         "t7c4ff7356bd65e3d"
@@ -22278,7 +22278,7 @@
       "model": 15,
       "source_model": 9,
       "source": "port/characters/assets/models/amy",
-      "source_sha256": "b4d8ff7b0dd9780839f2983bb1a747469d3d786a9ae5cb838f4886436a54824c",
+      "source_sha256": "995306d6cac03838768bd7b898c8df0dc468ac472d042295e686fc7a8ff421ef",
       "family": "amy",
       "kind": "canonical",
       "selector": null,
@@ -22291,8 +22291,8 @@
     },
     {
       "file": "maps/actor_isaac.l64",
-      "vertices": 452,
-      "triangles": 528,
+      "vertices": 554,
+      "triangles": 560,
       "batches": 7,
       "textures": [
         "t7a56c6e3c3cfdbc3",
@@ -22304,7 +22304,7 @@
       "model": 16,
       "source_model": 10,
       "source": "port/characters/assets/models/isaac",
-      "source_sha256": "cbb9e8b8663b4b1ff3e6c1b1242772f06fc4ad141c993e961bf7e0463019b20f",
+      "source_sha256": "0f842d371a95ee0de4f7279d55e2e5d961309414b030c74a692a732892dfd6e3",
       "family": "isaac",
       "kind": "canonical",
       "selector": null,
@@ -22317,8 +22317,8 @@
     },
     {
       "file": "maps/actor_mitch.l64",
-      "vertices": 451,
-      "triangles": 528,
+      "vertices": 576,
+      "triangles": 604,
       "batches": 7,
       "textures": [
         "t0994ebf03c53bdfa",
@@ -22330,7 +22330,7 @@
       "model": 17,
       "source_model": 11,
       "source": "port/characters/assets/models/mitch",
-      "source_sha256": "bba2d7252a5bd65e4242ae5354df3fb367c979876af4bb087b02c9afc99f57c1",
+      "source_sha256": "9eaed7cba0654999b5785cf6072939b97dc3b5be5a4958a8fe5dcf878d965f83",
       "family": "mitch",
       "kind": "canonical",
       "selector": null,
@@ -22343,8 +22343,8 @@
     },
     {
       "file": "maps/actor_gene.l64",
-      "vertices": 451,
-      "triangles": 528,
+      "vertices": 553,
+      "triangles": 560,
       "batches": 7,
       "textures": [
         "t3b7e2d0dcb7826cf",
@@ -22356,7 +22356,7 @@
       "model": 18,
       "source_model": 12,
       "source": "port/characters/assets/models/gene",
-      "source_sha256": "14af792aba8b5b8a38729225716563cc90d48490ceba3c14618acfdb5972da3a",
+      "source_sha256": "0476a18987e4affba8addee743ec45867842bbf814754f25843cc55b507a8fad",
       "family": "gene",
       "kind": "canonical",
       "selector": null,
@@ -22369,8 +22369,8 @@
     },
     {
       "file": "maps/actor_murray.l64",
-      "vertices": 460,
-      "triangles": 540,
+      "vertices": 579,
+      "triangles": 592,
       "batches": 7,
       "textures": [
         "t1116a345b010c18b",
@@ -22382,7 +22382,7 @@
       "model": 19,
       "source_model": 13,
       "source": "port/characters/assets/models/murray",
-      "source_sha256": "ace882abcae66e2c03ee25e9d7abb16bfea6461990623c59db93dfb68397687f",
+      "source_sha256": "ff66b29f9706e2c898b67240c8de1c6717bad5eda837a087fb22f2356da30e84",
       "family": "murray",
       "kind": "canonical",
       "selector": null,
@@ -22397,8 +22397,8 @@
     },
     {
       "file": "maps/actor_courtney.l64",
-      "vertices": 453,
-      "triangles": 540,
+      "vertices": 574,
+      "triangles": 588,
       "batches": 7,
       "textures": [
         "t90f426f13a4a43a2",
@@ -22410,7 +22410,7 @@
       "model": 20,
       "source_model": 14,
       "source": "port/characters/assets/models/courtney",
-      "source_sha256": "9a2f8b92083e8935ea391778d5103a40ec129932f4f50c88e95939daadb1f2fe",
+      "source_sha256": "aee766fa310288fa8065385faaee761f16312dccf3669a906a435feb9ac5754d",
       "family": "courtney",
       "kind": "canonical",
       "selector": null,
@@ -22423,8 +22423,8 @@
     },
     {
       "file": "maps/actor_steve.l64",
-      "vertices": 515,
-      "triangles": 576,
+      "vertices": 663,
+      "triangles": 632,
       "batches": 7,
       "textures": [
         "t1379e57d042e365f",
@@ -22436,7 +22436,7 @@
       "model": 21,
       "source_model": 15,
       "source": "port/characters/assets/models/steve",
-      "source_sha256": "050da1ab3559eade8a92e636ae6bc63b38adf32475825b66410d39b1fca9b4f8",
+      "source_sha256": "7b103ab230c7c2e7f00f44d97b4c8dd04692f88ac616c8c98d6c612eb7a93945",
       "family": "steve",
       "kind": "canonical",
       "selector": null,
@@ -22449,8 +22449,8 @@
     },
     {
       "file": "maps/actor_jack.l64",
-      "vertices": 452,
-      "triangles": 528,
+      "vertices": 554,
+      "triangles": 560,
       "batches": 7,
       "textures": [
         "t526c3b9307951c01",
@@ -22462,7 +22462,7 @@
       "model": 22,
       "source_model": 16,
       "source": "port/characters/assets/models/jack",
-      "source_sha256": "a93835e81d0fecc8205a92f88e0b860ee3e00cd589ae3aafd116fe9c570556ae",
+      "source_sha256": "24bb15083fad37f7cbf1c30f484f20840a84228daff15946d34af3b1ca4e74be",
       "family": "jack",
       "kind": "canonical",
       "selector": null,
@@ -22475,8 +22475,8 @@
     },
     {
       "file": "maps/actor_rod.l64",
-      "vertices": 451,
-      "triangles": 528,
+      "vertices": 554,
+      "triangles": 560,
       "batches": 7,
       "textures": [
         "t42d19aa68dddf897",
@@ -22488,7 +22488,7 @@
       "model": 23,
       "source_model": 17,
       "source": "port/characters/assets/models/rod",
-      "source_sha256": "b7c2e67082339cec22fd488102f7c7f759a782f6a659d46d38d0e2f5aa1ec8ff",
+      "source_sha256": "24d6ca4e7993e27d19a67539fba43e957bc175337dad57d8bac35b537545332a",
       "family": "rod",
       "kind": "canonical",
       "selector": null,
@@ -22501,8 +22501,8 @@
     },
     {
       "file": "maps/actor_boy.l64",
-      "vertices": 459,
-      "triangles": 560,
+      "vertices": 603,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t4e38709ad147967b",
@@ -22514,7 +22514,7 @@
       "model": 24,
       "source_model": 18,
       "source": "port/characters/assets/models/boy",
-      "source_sha256": "15d995d5f05efee3be635e187694c02146a039d91f333c00392f41c658ef6e96",
+      "source_sha256": "08771b06187d636baa8ae23aea87f62deceb1ed24d85e9c47f9a45cd50f2baf1",
       "family": "boy",
       "kind": "canonical",
       "selector": null,
@@ -22527,8 +22527,8 @@
     },
     {
       "file": "maps/actor_lad.l64",
-      "vertices": 514,
-      "triangles": 572,
+      "vertices": 644,
+      "triangles": 620,
       "batches": 8,
       "textures": [
         "t3caae9eb45df92c0",
@@ -22541,7 +22541,7 @@
       "model": 25,
       "source_model": 19,
       "source": "port/characters/assets/models/lad",
-      "source_sha256": "65d92fbc613fc24ad1f8e3e2489e0b821c8a1635056c1e68203a7ad3b9f636e2",
+      "source_sha256": "f3538a72626dc9250fe11df8df28e24430be12133011011a865ab32df80837a3",
       "family": "lad",
       "kind": "canonical",
       "selector": null,
@@ -22560,8 +22560,8 @@
     },
     {
       "file": "maps/actor_specs.l64",
-      "vertices": 460,
-      "triangles": 560,
+      "vertices": 604,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t4e6b4ad0bea40ce7",
@@ -22573,7 +22573,7 @@
       "model": 26,
       "source_model": 20,
       "source": "port/characters/assets/models/specs",
-      "source_sha256": "d4ee787251f147a4a9dbe3caff6ae016961a309f817da067bdc9bbc6bb8e97e8",
+      "source_sha256": "a174d0b82fc1f571e3128053da3fa9689a5b478c536b8051237196d8bb135c33",
       "family": "specs",
       "kind": "canonical",
       "selector": null,
@@ -22590,8 +22590,8 @@
     },
     {
       "file": "maps/actor_butch.l64",
-      "vertices": 460,
-      "triangles": 560,
+      "vertices": 613,
+      "triangles": 632,
       "batches": 7,
       "textures": [
         "t26519fcf57106996",
@@ -22603,7 +22603,7 @@
       "model": 27,
       "source_model": 21,
       "source": "port/characters/assets/models/butch",
-      "source_sha256": "45735ca94cdeba11cba4ef7481ab5b938b6bacba205a4603d4666f8759c9053f",
+      "source_sha256": "c4d7e846d64ca351d02cbbfe2f89f91d3bd9f9753d31b60658c3b1b6f7256af2",
       "family": "butch",
       "kind": "canonical",
       "selector": null,
@@ -22616,8 +22616,8 @@
     },
     {
       "file": "maps/actor_mania.l64",
-      "vertices": 459,
-      "triangles": 560,
+      "vertices": 609,
+      "triangles": 628,
       "batches": 7,
       "textures": [
         "t4e38709ad147967b",
@@ -22629,7 +22629,7 @@
       "model": 28,
       "source_model": 22,
       "source": "port/characters/assets/models/mania",
-      "source_sha256": "c0b397f998190d6342ba3abc92e547f46266231ea00efdc24f0df4131be6b2ca",
+      "source_sha256": "a03d32c085465706542946d5dfa0450ce2f1bd561c657eab1902db197c45b0ca",
       "family": "mania",
       "kind": "canonical",
       "selector": null,
@@ -22648,8 +22648,8 @@
     },
     {
       "file": "maps/actor_joshua.l64",
-      "vertices": 401,
-      "triangles": 564,
+      "vertices": 535,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t525db1093c0d85f3",
@@ -22661,7 +22661,7 @@
       "model": 29,
       "source_model": 23,
       "source": "port/characters/assets/models/joshua",
-      "source_sha256": "2baa10bc85c5ad0225b7321a4bb16782a53e1b8399c1ec91a2cc9f38ecf81848",
+      "source_sha256": "8ee31ee3e4ebeae7d7323fc5c28e5fbcdd1d02ea47c1bd0869c53b4077cb5fc8",
       "family": "joshua",
       "kind": "canonical",
       "selector": null,
@@ -22674,8 +22674,8 @@
     },
     {
       "file": "maps/actor_hood.l64",
-      "vertices": 469,
-      "triangles": 560,
+      "vertices": 629,
+      "triangles": 624,
       "batches": 7,
       "textures": [
         "tb76b6399fc8ae878",
@@ -22687,7 +22687,7 @@
       "model": 30,
       "source_model": 24,
       "source": "port/characters/assets/models/hood",
-      "source_sha256": "ea9e59b8f501654d588808bd8dc1dcf37c9d3f6bc588110241207c98047beb70",
+      "source_sha256": "37b5b751de0aa9178f2480e763dcb3b2a730898855cae30412035f70c23c853e",
       "family": "hood",
       "kind": "canonical",
       "selector": null,
@@ -22706,11 +22706,11 @@
     },
     {
       "file": "maps/actor_tech.l64",
-      "vertices": 446,
-      "triangles": 560,
+      "vertices": 590,
+      "triangles": 620,
       "batches": 7,
       "textures": [
-        "t35e93adf27099913",
+        "t4faae31fe881e2c9",
         "tff184c333112bfd4"
       ],
       "props": [],
@@ -22719,7 +22719,7 @@
       "model": 31,
       "source_model": 25,
       "source": "port/characters/assets/models/tech",
-      "source_sha256": "734f28eb906b27a37d93b1b90153199e2f6239279e567fcbde0798bfbeb2801e",
+      "source_sha256": "a3a8a00aeb034ed103b0b484533fa92682158c341f591ff4df2ac8badc1bca96",
       "family": "tech",
       "kind": "canonical",
       "selector": null,
@@ -22758,8 +22758,8 @@
     },
     {
       "file": "maps/actor_chap.l64",
-      "vertices": 459,
-      "triangles": 560,
+      "vertices": 609,
+      "triangles": 628,
       "batches": 7,
       "textures": [
         "t67dfc6fd68eb2491",
@@ -22771,7 +22771,7 @@
       "model": 32,
       "source_model": 26,
       "source": "port/characters/assets/models/chap",
-      "source_sha256": "3679828d164198ad933750452dbfaacc9f1c0750af5e730346b625772c9c35e5",
+      "source_sha256": "dc6c472309829c264b40802162c839e88dd7a3e1ec161f52827a6731d8d5394a",
       "family": "chap",
       "kind": "canonical",
       "selector": null,
@@ -22792,8 +22792,8 @@
     },
     {
       "file": "maps/actor_man.l64",
-      "vertices": 470,
-      "triangles": 560,
+      "vertices": 628,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t26519fcf57106996",
@@ -22805,7 +22805,7 @@
       "model": 33,
       "source_model": 27,
       "source": "port/characters/assets/models/man",
-      "source_sha256": "b66fca7815faa297653fe551744161bc800b2f687148b0b76ebfaaf9958d950f",
+      "source_sha256": "aaaf71c12cdbda3305d780c81ad35597e3a2e7f6a2ec133f89fdfe57e269c6e3",
       "family": "man",
       "kind": "canonical",
       "selector": null,
@@ -22826,8 +22826,8 @@
     },
     {
       "file": "maps/actor_pappy.l64",
-      "vertices": 471,
-      "triangles": 560,
+      "vertices": 627,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t075e57e6c9af7cc7",
@@ -22839,7 +22839,7 @@
       "model": 34,
       "source_model": 28,
       "source": "port/characters/assets/models/pappy",
-      "source_sha256": "8f9eb8eaaf51a0e7bcd9536f6e904da8c319c1f1039ac097a80f18194817a42b",
+      "source_sha256": "4c49badcfe87df25cf9ddf783abbbb149b5539ca73a3342d66eb4f92831cafd2",
       "family": "pappy",
       "kind": "canonical",
       "selector": null,
@@ -22856,8 +22856,8 @@
     },
     {
       "file": "maps/actor_girl.l64",
-      "vertices": 375,
-      "triangles": 528,
+      "vertices": 488,
+      "triangles": 576,
       "batches": 6,
       "textures": [
         "t6fae899cc5bcd958"
@@ -22868,7 +22868,7 @@
       "model": 35,
       "source_model": 29,
       "source": "port/characters/assets/models/girl",
-      "source_sha256": "479546c131035c5e2d29c672a291e868bda454f51df086ab3f62212bc8280091",
+      "source_sha256": "41f6f194277b6d8035fe990e2b9dd8b1c71310a655e83344215fb28b14f7ceaa",
       "family": "girl",
       "kind": "canonical",
       "selector": null,
@@ -22885,8 +22885,8 @@
     },
     {
       "file": "maps/actor_lass1.l64",
-      "vertices": 363,
-      "triangles": 528,
+      "vertices": 468,
+      "triangles": 580,
       "batches": 6,
       "textures": [
         "t5b8192fd0df5c1a3"
@@ -22897,7 +22897,7 @@
       "model": 36,
       "source_model": 30,
       "source": "port/characters/assets/models/lass1",
-      "source_sha256": "fba8f8f2577714be0f0e59ab13bcf946946e44d73b335f4b2f69ea71752740c4",
+      "source_sha256": "2f5c1754a5275d7307215b483e687313491d804d38dd19ed82f73ab8060435f4",
       "family": "lass1",
       "kind": "canonical",
       "selector": null,
@@ -22914,8 +22914,8 @@
     },
     {
       "file": "maps/actor_lass2.l64",
-      "vertices": 384,
-      "triangles": 528,
+      "vertices": 510,
+      "triangles": 580,
       "batches": 6,
       "textures": [
         "t6fae899cc5bcd958"
@@ -22926,7 +22926,7 @@
       "model": 37,
       "source_model": 31,
       "source": "port/characters/assets/models/lass2",
-      "source_sha256": "db989938f20c43bbd3566bc42e81a4dcc996afaf16acf1eaec5c699bdc6f4519",
+      "source_sha256": "8c472d88ac109bf2965213cff80d7d4efdafc24d25d51db1b5f19c669fd95a23",
       "family": "lass2",
       "kind": "canonical",
       "selector": null,
@@ -22943,8 +22943,8 @@
     },
     {
       "file": "maps/actor_lass3.l64",
-      "vertices": 415,
-      "triangles": 612,
+      "vertices": 575,
+      "triangles": 684,
       "batches": 6,
       "textures": [
         "t896ea04e9f6d779c"
@@ -22955,7 +22955,7 @@
       "model": 38,
       "source_model": 32,
       "source": "port/characters/assets/models/lass3",
-      "source_sha256": "eccff2ffc13f8eed8fb01a45fba4bf513938ad253d1bcfeba640621a97660878",
+      "source_sha256": "2ac39432bbb96de735a5ffa31961e4abad2e3f8651cab952774448ce70c76f93",
       "family": "lass3",
       "kind": "canonical",
       "selector": null,
@@ -22970,8 +22970,8 @@
     },
     {
       "file": "maps/actor_swimmer.l64",
-      "vertices": 401,
-      "triangles": 564,
+      "vertices": 535,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t6d57557c03e0e7ab",
@@ -22983,7 +22983,7 @@
       "model": 39,
       "source_model": 33,
       "source": "port/characters/assets/models/swimmer",
-      "source_sha256": "4fc2fbdb350c5efcba8fe95ad39e999122b802506f8c14395a17ba30c6087202",
+      "source_sha256": "f96cdd1ceccb0acbc147e3e661306f939b58c64adbfd97f0bd7c7eee300f0c4d",
       "family": "swimmer",
       "kind": "canonical",
       "selector": null,
@@ -22996,8 +22996,8 @@
     },
     {
       "file": "maps/actor_clerk.l64",
-      "vertices": 413,
-      "triangles": 564,
+      "vertices": 551,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "tba756be65fca4f46",
@@ -23009,7 +23009,7 @@
       "model": 40,
       "source_model": 34,
       "source": "port/characters/assets/models/clerk",
-      "source_sha256": "ee9fd8df7d5db6c51fb56d31eefa9d94207bec39cdc96ea996272b3aa4445478",
+      "source_sha256": "939dcb99bd609000d29515d60083b7d8f783ad964ec4e306ed991430b0a5a55a",
       "family": "clerk",
       "kind": "canonical",
       "selector": null,
@@ -23042,8 +23042,8 @@
     },
     {
       "file": "maps/actor_gal.l64",
-      "vertices": 363,
-      "triangles": 528,
+      "vertices": 468,
+      "triangles": 580,
       "batches": 6,
       "textures": [
         "ta419269a5e872b07"
@@ -23054,7 +23054,7 @@
       "model": 41,
       "source_model": 35,
       "source": "port/characters/assets/models/gal",
-      "source_sha256": "9d341086cb3604c969137ee5823ed96bf6247bc7b1e91c77aeb955a90b725f81",
+      "source_sha256": "24190f38149733805ba382f517e267d7e1025b1747da7cb9167a99f6d0f1a3f2",
       "family": "gal",
       "kind": "canonical",
       "selector": null,
@@ -23079,8 +23079,8 @@
     },
     {
       "file": "maps/actor_woman.l64",
-      "vertices": 367,
-      "triangles": 544,
+      "vertices": 472,
+      "triangles": 596,
       "batches": 6,
       "textures": [
         "t21db3e8a45349198"
@@ -23091,7 +23091,7 @@
       "model": 42,
       "source_model": 36,
       "source": "port/characters/assets/models/woman",
-      "source_sha256": "ff774332434208579daf297a94cbda2f4136a5ee4e4c0a10c960c195a6ca7f50",
+      "source_sha256": "b9bdcee74be7d67808f6ac2358cb585eab1207be1ba5f81a9f80892bf4e79d50",
       "family": "woman",
       "kind": "canonical",
       "selector": null,
@@ -23106,8 +23106,8 @@
     },
     {
       "file": "maps/actor_granny.l64",
-      "vertices": 412,
-      "triangles": 592,
+      "vertices": 537,
+      "triangles": 640,
       "batches": 7,
       "textures": [
         "ta692a7374e9f5761",
@@ -23119,7 +23119,7 @@
       "model": 43,
       "source_model": 37,
       "source": "port/characters/assets/models/granny",
-      "source_sha256": "9b37545eb76ac9ba467746f2d0870801e9b0cdf1434343796a5980463b23c737",
+      "source_sha256": "14ebe7fccbdcf114be70dcf49ce0b934c617348d3465a0d615da4d70bbf53e58",
       "family": "granny",
       "kind": "canonical",
       "selector": null,
@@ -23176,8 +23176,8 @@
     },
     {
       "file": "maps/actor_boy_palette2.l64",
-      "vertices": 459,
-      "triangles": 560,
+      "vertices": 603,
+      "triangles": 620,
       "batches": 7,
       "textures": [
         "t93f3ac965afc7943",
@@ -23189,7 +23189,7 @@
       "model": 128,
       "source_model": 18,
       "source": "port/characters/assets/models/boy/variants/boy_palette2",
-      "source_sha256": "f9f884333a0d165650db6bf13a229a81b3774b7d239fc2e0b4ca3aa882a58fcf",
+      "source_sha256": "b12cddddd79ea19ac8394de78439adcf70bdc4bca7dea34f8300fd18d3d30bb8",
       "family": "boy",
       "kind": "appearance",
       "selector": null,
@@ -23206,8 +23206,8 @@
     },
     {
       "file": "maps/actor_mania_palette2.l64",
-      "vertices": 459,
-      "triangles": 560,
+      "vertices": 609,
+      "triangles": 628,
       "batches": 7,
       "textures": [
         "t93f3ac965afc7943",
@@ -23219,7 +23219,7 @@
       "model": 129,
       "source_model": 22,
       "source": "port/characters/assets/models/mania/variants/mania_palette2",
-      "source_sha256": "f07b76da4dc420be04acc28f2ee8730b5852c27ce4b91e22f038c92ff553e678",
+      "source_sha256": "a68d42617de6be649931eee30c1c94661a2660249e5e2a63ce445e90bd824b1b",
       "family": "mania",
       "kind": "appearance",
       "selector": null,
@@ -23232,8 +23232,8 @@
     },
     {
       "file": "maps/actor_swimmer_palette2.l64",
-      "vertices": 357,
-      "triangles": 528,
+      "vertices": 458,
+      "triangles": 576,
       "batches": 6,
       "textures": [
         "t07b6609431ce771c"
@@ -23244,7 +23244,7 @@
       "model": 130,
       "source_model": 33,
       "source": "port/characters/assets/models/swimmer/variants/swimmer_palette2",
-      "source_sha256": "fefbeffd4bdadc1e289b7bf5adfb03f0c770fe70df1e6cd6a8074b772e626945",
+      "source_sha256": "394b466595e25847bf0c250dfdcf2663302f81b9a1a15170a36c0c281dfb1a7e",
       "family": "swimmer",
       "kind": "appearance",
       "selector": null,
@@ -23257,8 +23257,8 @@
     },
     {
       "file": "maps/actor_amy__lying.l64",
-      "vertices": 351,
-      "triangles": 528,
+      "vertices": 456,
+      "triangles": 580,
       "batches": 6,
       "textures": [
         "t7c4ff7356bd65e3d"
@@ -23269,7 +23269,7 @@
       "model": 160,
       "source_model": 9,
       "source": "port/characters/assets/models/amy/poses/lying",
-      "source_sha256": "5d61270016168f3b908e508fc0db31b4d3aa9d931243ac45635e8adc686c20fa",
+      "source_sha256": "948616f37ba9d785a1d49ae713f0f752c688aa8720ed6cb3ee02e4e4346d6acd",
       "family": "amy",
       "kind": "pose",
       "selector": "lying",

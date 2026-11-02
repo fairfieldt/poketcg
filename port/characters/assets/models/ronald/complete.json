@@ -1,12 +1,12 @@
 {
   "model": "ronald",
-  "triangles": 512,
-  "vertices": 616,
+  "triangles": 588,
+  "vertices": 739,
   "batches": 6,
   "linked_parts": 0,
   "appearances": [
     "ronald"
   ],
-  "fingerprint": "ab4f0516aa5395b71fa4211336d865d947ab2a0dc1f75d860a2bc7aaea8ef492",
+  "fingerprint": "2a43bcb777ae99b9da641b8f195f44b4a5079c8383d729ba5e10957904c0168d",
   "recipe": "reviewed-cast-manual"
 }

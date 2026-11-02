@@ -1,0 +1,11 @@
+{
+  "before_max_eye_white_angle": 47.34529655439637,
+  "after_max_eye_white_angle": 42.928180497907185,
+  "additional_horizontal_span": 0.92,
+  "target_degrees": 43,
+  "sampling": "21-step barycentric samples of painted eye whites; no pixel beyond43deg in sampled owning faces; lying pose inherits standing mapping",
+  "face_vertices": 35,
+  "original_native_sha256": "979ee4b978688faa1e99d228b31e82edaace71b31f42b63763817a5f9c537687",
+  "texture_png_bytes_unchanged": true,
+  "positions_indices_pivots_colors_unchanged": true
+}

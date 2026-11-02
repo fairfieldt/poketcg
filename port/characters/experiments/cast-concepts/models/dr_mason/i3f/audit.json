@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "source": "models/dr_mason/i3/dr_mason",
+  "source_sha256": "784e46b8f1074131bb713526708cc136140ef4a92449fe5437c9d91d144d1582",
+  "settings": [
+    {
+      "cuts": [
+        0.66,
+        0.86
+      ],
+      "target_half_width": 0.41546153846153855,
+      "target_half_depth": 0.335,
+      "head_bounds": [
+        1.5599999999999998,
+        2.33
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 204,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 232",
+        "packed degenerate batch 0 triangle 237"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.84
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 232",
+        "packed degenerate batch 0 triangle 237"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.85
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 232",
+        "packed degenerate batch 0 triangle 236",
+        "packed degenerate batch 0 triangle 237"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.86
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/dr_mason/i3f/dr_mason/scene.l64",
+    "sha256": "0f2be9a2ddccb096086655b62b10c0bc55db1c98652ee778b726df1508b10c1c",
+    "triangles": 620,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "round_dr_mason_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      },
+      {
+        "name": "mas3_dr_mason_coat.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "correct_scientist_faces.py: compact adult eyes and rectangular glasses",
+  "front_face": {
+    "before_max_eye_white_angle": 51.40678508062181,
+    "after_max_eye_white_angle": 42.22291040533487,
+    "additional_horizontal_span": 0.8428,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of painted eye whites; no pixel beyond43deg in sampled owning faces; lying pose inherits standing mapping",
+    "face_vertices": 30,
+    "original_native_sha256": "aaa4777a4d8b0ecbf99eb72558adfacd10f3fc863174c2465b336625d7505b6d",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

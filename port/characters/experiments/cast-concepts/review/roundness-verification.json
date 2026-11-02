@@ -1,0 +1,759 @@
+{
+  "passed": true,
+  "models": [
+    {
+      "slug": "dr_mason",
+      "revision": "i3f",
+      "native_sha256": "0f2be9a2ddccb096086655b62b10c0bc55db1c98652ee778b726df1508b10c1c",
+      "triangles": 620,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.22291040533487,
+      "native_capture_matches": true,
+      "review": "models/dr_mason/i3f/analysis.md"
+    },
+    {
+      "slug": "ronald",
+      "revision": "i3f",
+      "native_sha256": "c247d6cdb7171a71d97f8d005e08e4a8ef0fb551a9374be284863d115f898218",
+      "triangles": 588,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.40241396022429,
+      "native_capture_matches": true,
+      "review": "models/ronald/i3f/analysis.md"
+    },
+    {
+      "slug": "ishihara",
+      "revision": "i3e",
+      "native_sha256": "40b34731a1bd9757fd75dcd6e9dc0a75234f27a76d4c4ce179340458659c128f",
+      "triangles": 588,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.559463382807415,
+      "native_capture_matches": true,
+      "review": "models/ishihara/i3e/analysis.md"
+    },
+    {
+      "slug": "imakuni",
+      "revision": "i3e",
+      "native_sha256": "56c09149169dd6fbd26609b3e3dd2f6c1d2e2d06ec61f8f82886887b2a9c406e",
+      "triangles": 624,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.56473430708328,
+      "native_capture_matches": true,
+      "review": "models/imakuni/i3e/analysis.md"
+    },
+    {
+      "slug": "tech",
+      "revision": "i3f",
+      "native_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8",
+      "triangles": 620,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.62536420092207,
+      "native_capture_matches": true,
+      "review": "models/tech/i3f/analysis.md"
+    },
+    {
+      "slug": "clerk",
+      "revision": "i3e",
+      "native_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1",
+      "triangles": 620,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 41.795839702773435,
+      "native_capture_matches": true,
+      "review": "models/clerk/i3e/analysis.md"
+    },
+    {
+      "slug": "mania",
+      "revision": "i3f",
+      "native_sha256": "b0df8979bce7a18995b4bc66fab19fc4e7204901580c80e45c08268f9b43457d",
+      "triangles": 628,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 41.94292387921431,
+      "native_capture_matches": true,
+      "review": "models/mania/i3f/analysis.md"
+    },
+    {
+      "slug": "lass3",
+      "revision": "i3f",
+      "native_sha256": "db79256ba54b43a54ee911f1586da69986f57ac90fe11874b2e938c5ac6e84ba",
+      "triangles": 684,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 41.97331000162872,
+      "native_capture_matches": true,
+      "review": "models/lass3/i3f/analysis.md"
+    },
+    {
+      "slug": "mitch",
+      "revision": "i3f",
+      "native_sha256": "a543084dfefe0f56c0045c310f4426f09fceab95c99a8d4af9dada147bb65d2f",
+      "triangles": 604,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.7150585391279,
+      "native_capture_matches": true,
+      "review": "models/mitch/i3f/analysis.md"
+    },
+    {
+      "slug": "boy",
+      "revision": "i3e",
+      "native_sha256": "80331a3e1f713af4a49cb57f98a1a8119d87791e73e9b7db515f9ec041789cca",
+      "triangles": 620,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.251695078073354,
+      "native_capture_matches": true,
+      "review": "models/boy/i3e/analysis.md"
+    },
+    {
+      "slug": "man",
+      "revision": "i3e",
+      "native_sha256": "063692f881228bf83c7a1a9fc74223ead9536b497728d34521fb6e77b1684be1",
+      "triangles": 620,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.601788025722726,
+      "native_capture_matches": true,
+      "review": "models/man/i3e/analysis.md"
+    },
+    {
+      "slug": "gene",
+      "revision": "i3e",
+      "native_sha256": "e7f715a3a54b06741e59ccde608f8ce799e8fbad51b4008b536c650875e8d1b1",
+      "triangles": 560,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.970276708561414,
+      "native_capture_matches": true,
+      "review": "models/gene/i3e/analysis.md"
+    },
+    {
+      "slug": "swimmer",
+      "revision": "i3e",
+      "native_sha256": "0167c80b075dde96d08240618099501096412905b9bf4ea6187509faa622c4bd",
+      "triangles": 620,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.15074506961779,
+      "native_capture_matches": true,
+      "review": "models/swimmer/i3e/analysis.md"
+    },
+    {
+      "slug": "joshua",
+      "revision": "i3e",
+      "native_sha256": "04311476808d2dbdd1e3a4dd014c7c78cc0f2e8cc8f25cddbca0b3608cac758a",
+      "triangles": 620,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "closed black eyelids (no eye whites in Joshua source)",
+      "sampled_max_eye_angle": 40.64937777047556,
+      "native_capture_matches": true,
+      "review": "models/joshua/i3e/analysis.md"
+    },
+    {
+      "slug": "amy",
+      "revision": "i3e",
+      "native_sha256": "dfb530ccbeca33590ede8d575ac23a0976699642526d9928afe4936ddd8ee3e7",
+      "triangles": 580,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.086128331894194,
+      "native_capture_matches": true,
+      "review": "models/amy/i3e/analysis.md"
+    },
+    {
+      "slug": "girl",
+      "revision": "i3e",
+      "native_sha256": "7a5a15b787f2950b0e3cdd9978841ea80bb2ab75fc905bb64ddea8025e377071",
+      "triangles": 576,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.164140341179994,
+      "native_capture_matches": true,
+      "review": "models/girl/i3e/analysis.md"
+    },
+    {
+      "slug": "hood",
+      "revision": "i3e",
+      "native_sha256": "56449a2f51cf0856defc092b7e20b7d59171c6e2a07bdc53f25ca93be75c41e0",
+      "triangles": 624,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.45242481334516,
+      "native_capture_matches": true,
+      "review": "models/hood/i3e/analysis.md"
+    },
+    {
+      "slug": "isaac",
+      "revision": "i3e",
+      "native_sha256": "6d5aa2abec5bad34c1c33da08af29f7de51ac7c661f2593a1f3a6e9e888d8426",
+      "triangles": 560,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.25342902713562,
+      "native_capture_matches": true,
+      "review": "models/isaac/i3e/analysis.md"
+    },
+    {
+      "slug": "lass2",
+      "revision": "i3e",
+      "native_sha256": "00557ea4ebcdb9c39715b10f6631798b4e189f1d057d43a218c297cd3f89ddd6",
+      "triangles": 580,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.47987045643598,
+      "native_capture_matches": true,
+      "review": "models/lass2/i3e/analysis.md"
+    },
+    {
+      "slug": "lass1",
+      "revision": "i3e",
+      "native_sha256": "f40c4e672318f7b088aae2d6e4ca63178bff73a8ec9edec73546541f0e9bd969",
+      "triangles": 580,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.58043957454445,
+      "native_capture_matches": true,
+      "review": "models/lass1/i3e/analysis.md"
+    },
+    {
+      "slug": "nikki",
+      "revision": "i3e",
+      "native_sha256": "8488f51ab8b717a4916060c6b95d6e92032371bbd9f0e1a27048c77bc76960c2",
+      "triangles": 592,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.76482648367512,
+      "native_capture_matches": true,
+      "review": "models/nikki/i3e/analysis.md"
+    },
+    {
+      "slug": "lad",
+      "revision": "i3e",
+      "native_sha256": "2ad09b55ae4d0a27b05d7923110ea8c58194d547c5ebfe7919c18f1bddb041d4",
+      "triangles": 620,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        },
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 0
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.601788025722726,
+      "native_capture_matches": true,
+      "review": "models/lad/i3e/analysis.md"
+    },
+    {
+      "slug": "murray",
+      "revision": "i3e",
+      "native_sha256": "da2aa9e7ede0ce5926c9c23f9c20a851864381f7bb0ab7630126f82842d431dc",
+      "triangles": 592,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.928180497907185,
+      "native_capture_matches": true,
+      "review": "models/murray/i3e/analysis.md"
+    },
+    {
+      "slug": "rick",
+      "revision": "i3e",
+      "native_sha256": "df0479138eef2ad9057bf9f38ad860408dfce2d2d85a5a8142de80714c239174",
+      "triangles": 560,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.970276708561414,
+      "native_capture_matches": true,
+      "review": "models/rick/i3e/analysis.md"
+    },
+    {
+      "slug": "specs",
+      "revision": "i3e",
+      "native_sha256": "79dda64c28eb60356e6c3efa8366a3eb69d6ca87eea8711ca91de70f5b124611",
+      "triangles": 620,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.507028647691925,
+      "native_capture_matches": true,
+      "review": "models/specs/i3e/analysis.md"
+    },
+    {
+      "slug": "ken",
+      "revision": "i3e",
+      "native_sha256": "2419287881da4c9abe7b80a2ecea64d53de28838f2a2ebb4801b5897687d494f",
+      "triangles": 596,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.98903255174318,
+      "native_capture_matches": true,
+      "review": "models/ken/i3e/analysis.md"
+    },
+    {
+      "slug": "courtney",
+      "revision": "i3e",
+      "native_sha256": "4a85bfb171638e2d19ce08f3afe9ea91475912d7b285277b2db8a73dca65d325",
+      "triangles": 588,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.06171182998196,
+      "native_capture_matches": true,
+      "review": "models/courtney/i3e/analysis.md"
+    },
+    {
+      "slug": "steve",
+      "revision": "i3e",
+      "native_sha256": "30403b7f1bb699d13b7c2292df83181bf6a37c2cc144910ea252b5654f7ac216",
+      "triangles": 632,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        },
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 0
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.25342902713562,
+      "native_capture_matches": true,
+      "review": "models/steve/i3e/analysis.md"
+    },
+    {
+      "slug": "jack",
+      "revision": "i3e",
+      "native_sha256": "81e0d40efd7912839d0f53c16a749757c72a356fdeff6d0553814223debdcbfb",
+      "triangles": 560,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.019956409662626,
+      "native_capture_matches": true,
+      "review": "models/jack/i3e/analysis.md"
+    },
+    {
+      "slug": "rod",
+      "revision": "i3e",
+      "native_sha256": "e18ed558b46db20fdd353eccc26fda00532255828de9df21903e71d49b9adf56",
+      "triangles": 560,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.25342902713562,
+      "native_capture_matches": true,
+      "review": "models/rod/i3e/analysis.md"
+    },
+    {
+      "slug": "woman",
+      "revision": "i3e",
+      "native_sha256": "04118c90e8443dfce16d9e177a12115eb58d8a5d63973c6fd98dffc2d8ac2bc5",
+      "triangles": 596,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.418540228163614,
+      "native_capture_matches": true,
+      "review": "models/woman/i3e/analysis.md"
+    },
+    {
+      "slug": "chap",
+      "revision": "i3f",
+      "native_sha256": "37daa5509d330b95f10d122dd364abcee3b85f3fc9bd7df52c3796302c446a66",
+      "triangles": 628,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.19720339733809,
+      "native_capture_matches": true,
+      "review": "models/chap/i3f/analysis.md"
+    },
+    {
+      "slug": "gal",
+      "revision": "i3e",
+      "native_sha256": "fdcad971f7ffe4b516aafd4adb6ca5457d4e5c7d4408b526a6ebb61c82f5e8d7",
+      "triangles": 580,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 41.51413020870387,
+      "native_capture_matches": true,
+      "review": "models/gal/i3e/analysis.md"
+    },
+    {
+      "slug": "pappy",
+      "revision": "i3e",
+      "native_sha256": "0321a6d385058c2c2a3a9c87401b6e37c20d321c5bf789f5b6a80077751d2ed2",
+      "triangles": 620,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 41.514857594583745,
+      "native_capture_matches": true,
+      "review": "models/pappy/i3e/analysis.md"
+    },
+    {
+      "slug": "butch",
+      "revision": "i3e",
+      "native_sha256": "a9031ecbd1862066aa8b21bb243b23e909c3dfc675b087e8ff776d1798580c57",
+      "triangles": 632,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 40.812404139646375,
+      "native_capture_matches": true,
+      "review": "models/butch/i3e/analysis.md"
+    },
+    {
+      "slug": "granny",
+      "revision": "i3e",
+      "native_sha256": "b4ef52cda37b6bf803d94e23ec54afa10ff16a2e2baf359ec6f39d4807787682",
+      "triangles": 640,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.93475267830753,
+      "native_capture_matches": true,
+      "review": "models/granny/i3e/analysis.md"
+    },
+    {
+      "slug": "mark",
+      "revision": "i3f",
+      "native_sha256": "ebf3348ff24ad68c601016e86d5643d3fd5f4ac4d5e05dad69dc65c3650b56b3",
+      "triangles": 596,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        },
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 0
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 41.46697852575077,
+      "native_capture_matches": true,
+      "review": "models/mark/i3f/analysis.md"
+    },
+    {
+      "slug": "mania_palette2",
+      "revision": "i3f",
+      "native_sha256": "02066f9f411d0f78826cdf49d4a75f112087a6fc5da31df26f9cf31512f2d80d",
+      "triangles": 628,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 41.94292387921431,
+      "native_capture_matches": true,
+      "review": "models/mania_palette2/i3f/analysis.md"
+    },
+    {
+      "slug": "boy_palette2",
+      "revision": "i3e",
+      "native_sha256": "27dd7df6bd54e33a1f34c64ae205d6834c714b82915292b5b5d76492e9d728a4",
+      "triangles": 620,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.251695078073354,
+      "native_capture_matches": true,
+      "review": "models/boy_palette2/i3e/analysis.md"
+    },
+    {
+      "slug": "swimmer_palette2",
+      "revision": "i3e",
+      "native_sha256": "37b01de8ede9f2e3b355fbf35d31266ff4748953c0f0f7e354769a343cbb3260",
+      "triangles": 576,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.74254382668311,
+      "native_capture_matches": true,
+      "review": "models/swimmer_palette2/i3e/analysis.md"
+    },
+    {
+      "slug": "amy__lying",
+      "revision": "i3e",
+      "native_sha256": "0ac440b4630b9eee24c6c962211e997c071b6e2ed2fde6c918535b4192444249",
+      "triangles": 580,
+      "body_native_triangles_unchanged": true,
+      "closed_oriented_heads": [
+        {
+          "closed": true,
+          "oriented": true,
+          "hair_components": 1
+        }
+      ],
+      "sampled_feature": "painted eye whites",
+      "sampled_max_eye_angle": 42.086128331894194,
+      "native_capture_matches": true,
+      "review": "models/amy__lying/i3e/analysis.md"
+    }
+  ],
+  "limitations": "Eye-angle bounds use 21-step barycentric samples of the texture and mesh. Native captures, not generated concepts, are the visual acceptance evidence. No physical-console performance claim."
+}

@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-ishihara-i3e.z64",
+  "rom_sha256": "545395cd68fc470c917eab3c1c1b84dd89399e5c34326f849df3a7c54e88ee04",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736368,
+      "used": 1347384,
+      "free": 1388984
+    },
+    {
+      "option": "candidate",
+      "total": 2736368,
+      "used": 1347968,
+      "free": 1388400
+    }
+  ],
+  "subject": "ishihara",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "e129aff18e482649967eac66047673f0e1cad2e51d95dff111e8f1e234ff89be",
+    "candidate": "40b34731a1bd9757fd75dcd6e9dc0a75234f27a76d4c4ce179340458659c128f"
+  }
+}

@@ -68,8 +68,8 @@
   "appearance": "murray",
   "pose": "standing",
   "component": null,
-  "vertices": 460,
-  "triangles": 540,
+  "vertices": 579,
+  "triangles": 592,
   "batches": 7,
   "parts": [
     0,
@@ -79,8 +79,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/murray/i3/murray/scene.l64",
-    "sha256": "f51488569a5d4d419b79b8b428c3b5ee255a8ac9b0a8ae57dc1aceccac2ca847",
+    "asset": "experiments/cast-concepts/models/murray/i3e/murray/scene.l64",
+    "sha256": "da2aa9e7ede0ce5926c9c23f9c20a851864381f7bb0ab7630126f82842d431dc",
     "selection": "murray"
   }
 }

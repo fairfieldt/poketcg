@@ -1,0 +1,16 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "ron3_face"
+  ],
+  "vertices": 739,
+  "triangles": 588,
+  "batches": 6
+}

@@ -1,12 +1,12 @@
 {
   "model": "joshua",
-  "triangles": 564,
-  "vertices": 401,
+  "triangles": 620,
+  "vertices": 535,
   "batches": 7,
   "linked_parts": 0,
   "appearances": [
     "joshua"
   ],
-  "fingerprint": "bb6849df6db8ae4b1a1bb89144d4a2b59792a6f1358d338e8448a7353ae39d86",
+  "fingerprint": "bd23214de7ec509eb4a315343d59b0a4a0b75787b228f7c1cc194d1d748479ac",
   "recipe": "reviewed-cast-manual"
 }

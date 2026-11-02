@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "ishihar3_face",
+    "ishihar3_top"
+  ],
+  "vertices": 570,
+  "triangles": 588,
+  "batches": 7
+}

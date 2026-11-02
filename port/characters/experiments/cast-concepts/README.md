@@ -15,7 +15,7 @@ Every family after Mark has one generated concept and three sequential model,
 native-capture, and review rounds. Extra repair rounds remain alongside the
 originals. [Mark's earlier study](../mark-concepts/index.html) retains four
 concepts, three primary rounds per concept, and the subsequent shirt, hair,
-profile, and topology corrections. The chosen Mark model is A3d.
+profile, and topology corrections. The current Mark correction is i3f, derived from A3d.
 
 Each retained model includes an editable Blender file, mesh and UV authoring
 JSON, native L643 export, opaque 32×32 textures, a source snapshot, geometry
@@ -24,6 +24,21 @@ five rigid animation parts and stay within the 900-triangle study budget.
 The generated concept sheets contain detail that simplifies at native texture
 and display resolution; small badges, trim, eyeglass corners, and rear hair
 points can merge at room distance.
+
+## Rounded head correction
+
+The latest pass adds curved skull volume across all 37 families and their four
+appearances/poses. Mark has another 10% of side/rear depth, with the cap bill
+following the same transform. Mason and the lab scientist have smaller eyes
+and compact rectangular glasses, based on the [new concept](concepts/round-heads/mason-sam.png).
+Face UV placement confines the painted eyes to the front; Joshua retains his
+closed eyelids. The 43-degree bound is a sampled measurement, accompanied by
+actual native turnarounds. Full head geometry also survives the gameplay LOD.
+
+[Correction verification](review/roundness-verification.json) checks frozen
+source hashes, unchanged native body triangles, closed head geometry, packed
+N64 geometry, and capture/export byte agreement. Retained failed silhouettes
+are superseded by the later corrections selected in the final manifests.
 
 ## Native comparisons
 
@@ -68,9 +83,7 @@ The selected models now populate production assets. See the
 study verifiers intentionally retain their historical baseline assertions.
 
 ```sh
-python3 port/characters/experiments/cast-concepts/tools/verify_families.py --complete
-python3 port/characters/experiments/cast-concepts/tools/verify_study.py
-python3 port/characters/experiments/mark-concepts/tools/verify_study.py
+python3 port/characters/experiments/cast-concepts/tools/verify_round_heads.py
 python3 port/characters/experiments/cast-concepts/tools/publish_full_cast.py --complete
 python3 port/characters/experiments/cast-concepts/tools/verify_bindings.py
 /Applications/Blender.app/Contents/MacOS/Blender --background --python-exit-code 1 --python port/characters/experiments/cast-concepts/tools/build_cast_blend.py

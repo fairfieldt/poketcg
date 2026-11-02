@@ -57,7 +57,7 @@
   "appearance": "mark",
   "pose": "standing",
   "component": null,
-  "vertices": 521,
+  "vertices": 661,
   "triangles": 596,
   "batches": 7,
   "parts": [
@@ -68,8 +68,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/../mark-concepts/approved/a_adventure/i3d/mark/scene.l64",
-    "sha256": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3",
+    "asset": "experiments/cast-concepts/models/mark/i3f/mark/scene.l64",
+    "sha256": "ebf3348ff24ad68c601016e86d5643d3fd5f4ac4d5e05dad69dc65c3650b56b3",
     "selection": "mark"
   }
 }

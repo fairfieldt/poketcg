@@ -1,0 +1,115 @@
+[
+  {
+    "slug": "ronald",
+    "passed": true,
+    "seconds": 19.6,
+    "log": "models/ronald/i3e/capture-build.log"
+  },
+  {
+    "slug": "ishihara",
+    "passed": true,
+    "seconds": 20.3,
+    "log": "models/ishihara/i3e/capture-build.log"
+  },
+  {
+    "slug": "imakuni",
+    "passed": true,
+    "seconds": 19.1,
+    "log": "models/imakuni/i3e/capture-build.log"
+  },
+  {
+    "slug": "clerk",
+    "passed": true,
+    "seconds": 19.4,
+    "log": "models/clerk/i3e/capture-build.log"
+  },
+  {
+    "slug": "mania",
+    "passed": true,
+    "seconds": 19.3,
+    "log": "models/mania/i3e/capture-build.log"
+  },
+  {
+    "slug": "lass3",
+    "passed": true,
+    "seconds": 19.1,
+    "log": "models/lass3/i3e/capture-build.log"
+  },
+  {
+    "slug": "mitch",
+    "passed": true,
+    "seconds": 21.2,
+    "log": "models/mitch/i3e/capture-build.log"
+  },
+  {
+    "slug": "boy",
+    "passed": true,
+    "seconds": 21.5,
+    "log": "models/boy/i3e/capture-build.log"
+  },
+  {
+    "slug": "man",
+    "passed": true,
+    "seconds": 21.3,
+    "log": "models/man/i3e/capture-build.log"
+  },
+  {
+    "slug": "gene",
+    "passed": true,
+    "seconds": 20.8,
+    "log": "models/gene/i3e/capture-build.log"
+  },
+  {
+    "slug": "joshua",
+    "passed": false,
+    "error": "UV sampler did not pass"
+  },
+  {
+    "slug": "swimmer",
+    "passed": true,
+    "seconds": 19.6,
+    "log": "models/swimmer/i3e/capture-build.log"
+  },
+  {
+    "slug": "amy",
+    "passed": true,
+    "seconds": 19.6,
+    "log": "models/amy/i3e/capture-build.log"
+  },
+  {
+    "slug": "girl",
+    "passed": true,
+    "seconds": 19.7,
+    "log": "models/girl/i3e/capture-build.log"
+  },
+  {
+    "slug": "hood",
+    "passed": true,
+    "seconds": 19.9,
+    "log": "models/hood/i3e/capture-build.log"
+  },
+  {
+    "slug": "isaac",
+    "passed": true,
+    "seconds": 19.9,
+    "log": "models/isaac/i3e/capture-build.log"
+  },
+  {
+    "slug": "lass2",
+    "passed": true,
+    "seconds": 19.5,
+    "log": "models/lass2/i3e/capture-build.log"
+  },
+  {
+    "slug": "nikki",
+    "passed": true,
+    "seconds": 19.7,
+    "log": "models/nikki/i3e/capture-build.log"
+  },
+  {
+    "slug": "lass1",
+    "passed": true,
+    "seconds": 20.0,
+    "log": "models/lass1/i3e/capture-build.log"
+  }
+]

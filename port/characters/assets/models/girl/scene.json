@@ -56,8 +56,8 @@
   "appearance": "girl",
   "pose": "standing",
   "component": null,
-  "vertices": 375,
-  "triangles": 528,
+  "vertices": 488,
+  "triangles": 576,
   "batches": 6,
   "parts": [
     0,
@@ -67,8 +67,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/girl/i3/girl/scene.l64",
-    "sha256": "a096ed97d1eecea2d86db99fea21c65f3b79a304833c85ffe6bfee0f8c0595a3",
+    "asset": "experiments/cast-concepts/models/girl/i3e/girl/scene.l64",
+    "sha256": "7a5a15b787f2950b0e3cdd9978841ea80bb2ab75fc905bb64ddea8025e377071",
     "selection": "girl"
   }
 }

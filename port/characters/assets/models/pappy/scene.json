@@ -57,8 +57,8 @@
   "appearance": "pappy",
   "pose": "standing",
   "component": null,
-  "vertices": 471,
-  "triangles": 560,
+  "vertices": 627,
+  "triangles": 620,
   "batches": 7,
   "parts": [
     0,
@@ -68,8 +68,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/pappy/i3/pappy/scene.l64",
-    "sha256": "1858a041ca2b21d5a9178b222f13c33611de7ec9f464d8cc7e361cf48a9e7698",
+    "asset": "experiments/cast-concepts/models/pappy/i3e/pappy/scene.l64",
+    "sha256": "0321a6d385058c2c2a3a9c87401b6e37c20d321c5bf789f5b6a80077751d2ed2",
     "selection": "pappy"
   }
 }

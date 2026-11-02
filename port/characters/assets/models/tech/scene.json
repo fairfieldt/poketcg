@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "gtech3_tech_face",
+    "round_tech_face",
     "gtech3_tech_shirt"
   ],
   "actors": [
@@ -68,8 +68,8 @@
   "appearance": "tech",
   "pose": "standing",
   "component": null,
-  "vertices": 446,
-  "triangles": 560,
+  "vertices": 590,
+  "triangles": 620,
   "batches": 7,
   "parts": [
     0,
@@ -79,8 +79,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/tech/i3/tech/scene.l64",
-    "sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec",
+    "asset": "experiments/cast-concepts/models/tech/i3f/tech/scene.l64",
+    "sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8",
     "selection": "tech"
   }
 }

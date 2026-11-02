@@ -1,0 +1,1 @@
+The skull has a fuller side and rear contour. Compact rectangular glasses and smaller eye whites restore the quieter adult expression of the earlier Mason. The glasses do not wrap onto the side cheek. Accepted after actual native portrait, turn, conversation and room review.

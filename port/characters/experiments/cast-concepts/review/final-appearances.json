@@ -2,25 +2,25 @@
   {
     "slug": "mania_palette2",
     "name": "Mania \u2014 alternate colors",
-    "prefix": "models/mania_palette2/i3",
+    "prefix": "models/mania_palette2/i3f",
     "concept": "concepts/mania.png"
   },
   {
     "slug": "boy_palette2",
     "name": "Boy \u2014 alternate colors",
-    "prefix": "models/boy_palette2/i3",
+    "prefix": "models/boy_palette2/i3e",
     "concept": "concepts/boy.png"
   },
   {
     "slug": "swimmer_palette2",
     "name": "Amanda",
-    "prefix": "models/swimmer_palette2/i3b",
+    "prefix": "models/swimmer_palette2/i3e",
     "concept": "concepts/swimmer_palette2.png"
   },
   {
     "slug": "amy__lying",
     "name": "Amy \u2014 lying pose",
-    "prefix": "models/amy__lying/i3",
+    "prefix": "models/amy__lying/i3e",
     "concept": "concepts/amy.png"
   }
 ]

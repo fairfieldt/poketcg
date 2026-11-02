@@ -1,0 +1,221 @@
+{
+  "passed": true,
+  "source": "models/woman/i3/woman",
+  "source_sha256": "8fbcc0f1f453b85fa8eff9b11c6e081794d50cc375fb439a0fc4de1fd8f8a716",
+  "settings": [
+    {
+      "cuts": [
+        0.67,
+        0.83
+      ],
+      "target_half_width": 0.4378859999999998,
+      "target_half_depth": 0.36220199999999986,
+      "head_bounds": [
+        1.5096,
+        2.3421239999999997
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 144,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 204"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.84
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 204"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.85
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 204"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.86
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 204"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.87
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 204"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.88
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 204"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.82
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 204"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.8
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 165",
+        "packed degenerate batch 0 triangle 170",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 176",
+        "packed degenerate batch 0 triangle 177",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 188",
+        "packed degenerate batch 0 triangle 189",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 200",
+        "packed degenerate batch 0 triangle 201",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 212",
+        "packed degenerate batch 0 triangle 213",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 226",
+        "packed degenerate batch 0 triangle 230",
+        "packed degenerate batch 0 triangle 231"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.78
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 165",
+        "packed degenerate batch 0 triangle 170",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 176",
+        "packed degenerate batch 0 triangle 177",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 188",
+        "packed degenerate batch 0 triangle 189",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 200",
+        "packed degenerate batch 0 triangle 201",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 212",
+        "packed degenerate batch 0 triangle 213",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 226",
+        "packed degenerate batch 0 triangle 230",
+        "packed degenerate batch 0 triangle 231"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.76
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 226"
+      ]
+    },
+    {
+      "cuts": [
+        0.67,
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/woman/i3e/woman/scene.l64",
+    "sha256": "04118c90e8443dfce16d9e177a12115eb58d8a5d63973c6fd98dffc2d8ac2bc5",
+    "triangles": 596,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "w3_woman_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "before_max_eye_white_angle": 57.09528497962761,
+    "after_max_eye_white_angle": 42.418540228163614,
+    "additional_horizontal_span": 0.74,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of painted eye whites; no pixel beyond43deg in sampled owning faces; lying pose inherits standing mapping",
+    "face_vertices": 23,
+    "original_native_sha256": "52037c3b2e4179639ee7acadc8e3658913b02d0586cf887da20bbf825b5768bc",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

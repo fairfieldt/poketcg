@@ -55,8 +55,8 @@
   "appearance": "courtney",
   "pose": "standing",
   "component": null,
-  "vertices": 453,
-  "triangles": 540,
+  "vertices": 574,
+  "triangles": 588,
   "batches": 7,
   "parts": [
     0,
@@ -66,8 +66,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/courtney/i3/courtney/scene.l64",
-    "sha256": "6f6fa1a170baf2d3b6391245dc5dce3c7ae5e0dbbaa060ff93a5270b26eea6b2",
+    "asset": "experiments/cast-concepts/models/courtney/i3e/courtney/scene.l64",
+    "sha256": "4a85bfb171638e2d19ce08f3afe9ea91475912d7b285277b2db8a73dca65d325",
     "selection": "courtney"
   }
 }

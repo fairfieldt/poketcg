@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-dr_mason-i3f.z64",
+  "rom_sha256": "6811062ee7c870ae904195e96ee55a0b0ae57b0613ffa69f184a8d15ec72a578",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736368,
+      "used": 1347256,
+      "free": 1389112
+    },
+    {
+      "option": "candidate",
+      "total": 2736368,
+      "used": 1348080,
+      "free": 1388288
+    }
+  ],
+  "subject": "dr_mason",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "919e083266d7affc65fc36297348867fddb3b8f7e68b926c8fff42c7a399229f",
+    "candidate": "0f2be9a2ddccb096086655b62b10c0bc55db1c98652ee778b726df1508b10c1c"
+  }
+}

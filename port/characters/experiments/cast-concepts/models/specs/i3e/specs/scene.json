@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "gspecs3_specs_face",
+    "gspecs3_specs_shirt"
+  ],
+  "vertices": 604,
+  "triangles": 620,
+  "batches": 7
+}

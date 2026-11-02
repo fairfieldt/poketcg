@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-ronald-i3f.z64",
+  "rom_sha256": "84cf2afe0ec73a6b3bc0330ba20a2ddaedf6c5b98f5499ff9e66cb9e76f7e0e6",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1345744,
+      "free": 1390640
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1346480,
+      "free": 1389904
+    }
+  ],
+  "subject": "ronald",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "1c072ea388fd1d0e5e2b6e4d4a97e087d8fba110a4f6eaed8fd7e3e968f317bc",
+    "candidate": "c247d6cdb7171a71d97f8d005e08e4a8ef0fb551a9374be284863d115f898218"
+  }
+}

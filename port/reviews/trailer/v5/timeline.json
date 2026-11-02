@@ -1,0 +1,115 @@
+{
+  "fps": 60,
+  "size": [
+    1440,
+    1080
+  ],
+  "duration": 64.56666666666666,
+  "shots": [
+    {
+      "name": "opening-through-dialogue",
+      "source": "intro",
+      "native_start": 9.666666666666666,
+      "native_end": 41.1,
+      "duration": 31.433333333333334,
+      "output_start": 0.0
+    },
+    {
+      "name": "first-table-walk",
+      "source": "intro",
+      "native_start": 41.35,
+      "native_end": 44.083333333333336,
+      "duration": 2.7333333333333334,
+      "output_start": 31.433333333333334
+    },
+    {
+      "name": "ronald-attack-knockout",
+      "source": "ronald",
+      "native_start": 11.616666666666667,
+      "native_end": 15.5,
+      "duration": 3.8833333333333333,
+      "output_start": 33.81666666666667
+    },
+    {
+      "name": "lightning-moving",
+      "source": "clubs",
+      "native_start": 10.183333333333334,
+      "native_end": 13.133333333333333,
+      "duration": 2.95,
+      "output_start": 37.5
+    },
+    {
+      "name": "fire-moving-deep",
+      "source": "clubs",
+      "native_start": 17.0,
+      "native_end": 19.816666666666666,
+      "duration": 2.816666666666667,
+      "output_start": 40.36666666666667
+    },
+    {
+      "name": "water-moving",
+      "source": "clubs",
+      "native_start": 23.666666666666668,
+      "native_end": 27.166666666666668,
+      "duration": 3.5,
+      "output_start": 43.1
+    },
+    {
+      "name": "amy-final-pokemon-knockout",
+      "source": "amy",
+      "native_start": 19.266666666666666,
+      "native_end": 21.466666666666665,
+      "duration": 2.2,
+      "output_start": 46.483333333333334
+    },
+    {
+      "name": "water-medal",
+      "source": "amy",
+      "native_start": 37.9,
+      "native_end": 43.333333333333336,
+      "duration": 5.433333333333334,
+      "output_start": 48.483333333333334
+    },
+    {
+      "name": "hall-moving",
+      "source": "amy",
+      "native_start": 48.516666666666666,
+      "native_end": 50.65,
+      "duration": 2.1333333333333333,
+      "output_start": 53.666666666666664
+    },
+    {
+      "name": "title64",
+      "source": "amy",
+      "native_start": 50.75,
+      "native_end": 60.166666666666664,
+      "duration": 9.416666666666666,
+      "output_start": 55.15
+    }
+  ],
+  "dissolves": [
+    0,
+    0.35,
+    0.2,
+    0.08,
+    0.08,
+    0.12,
+    0.2,
+    0.25,
+    0.65
+  ],
+  "version": 5,
+  "existing_footage_only": false,
+  "intro_removed_vi": [
+    2466,
+    2481
+  ],
+  "clock": "Matched ordered native script/event markers map fresh recorded PTS to v3 semantic timeline; held/dropped frames only, no motion interpolation.",
+  "presentation_latency_seconds": 0.04,
+  "phase_uncertainty": "Approximately one 60 Hz frame; semantic rather than pixel-phase synchronization.",
+  "audio": {
+    "source": "v3 encoded AAC copied unchanged; original game soundtrack/effects",
+    "note": "Existing edit and event timing retained through semantic marker alignment."
+  },
+  "capture": "Fresh local Ares post-VI Metal output, no CRT shader. Window chrome/shadow cropped."
+}

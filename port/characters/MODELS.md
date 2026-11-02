@@ -4,42 +4,42 @@ One row per authored model. Repeated NPC IDs use the same file.
 
 | Model | Triangles | Blender source | NPC IDs |
 |---|---:|---|---|
-| Dr Mason | 560 | [dr_mason.blend](assets/models/dr_mason/dr_mason.blend) | `DRMASON`, `05`, `06` |
-| Ronald | 512 | [ronald.blend](assets/models/ronald/ronald.blend) | `RONALD1`, `RONALD2`, `RONALD3` |
-| Ishihara | 528 | [ishihara.blend](assets/models/ishihara/ishihara.blend) | `ISHIHARA` |
-| Imakuni | 552 | [imakuni.blend](assets/models/imakuni/imakuni.blend) | `IMAKUNI` |
-| Tech | 560 | [tech.blend](assets/models/tech/tech.blend) | `SAM`, `TECH1`, `TECH2`, `TECH3`, `TECH4`, `TECH5`, `TECH6`, `JOSEPH`, `DAVID`, `ERIK`, `SPECS2`, `AARON`, `TECH7`, `TECH8` |
-| Clerk | 564 | [clerk.blend](assets/models/clerk/clerk.blend) | `CLERK1`, `CLERK2`, `CLERK3`, `CLERK4`, `CLERK5`, `CLERK6`, `CLERK7`, `CLERK8`, `CLERK9`, `CLERK10`, `GIFT_CENTER_CLERK` |
-| Mania | 560 | [mania.blend](assets/models/mania/mania.blend) | `CHRIS`, `MICHAEL`, `MATTHEW`, `MANIA`, `CHAMP` |
-| Lass3 | 612 | [lass3.blend](assets/models/lass3/lass3.blend) | `JESSICA`, `LASS5` |
-| Mitch | 528 | [mitch.blend](assets/models/mitch/mitch.blend) | `MITCH` |
-| Boy | 560 | [boy.blend](assets/models/boy/boy.blend) | `RYAN`, `ROBERT`, `JONATHAN`, `LAD2` |
-| Man | 560 | [man.blend](assets/models/man/man.blend) | `ANDREW`, `MAN1`, `MAN2`, `MAN3`, `GUIDE` |
-| Gene | 528 | [gene.blend](assets/models/gene/gene.blend) | `GENE` |
-| Swimmer | 564 | [swimmer.blend](assets/models/swimmer/swimmer.blend) | `SARA`, `AMANDA` |
-| Joshua | 564 | [joshua.blend](assets/models/joshua/joshua.blend) | `JOSHUA` |
-| Amy | 528 | [amy.blend](assets/models/amy/amy.blend) | `AMY` |
-| Girl | 528 | [girl.blend](assets/models/girl/girl.blend) | `JENNIFER`, `BRITTANY`, `STEPHANIE` |
-| Hood | 560 | [hood.blend](assets/models/hood/hood.blend) | `NICHOLAS`, `BRANDON`, `HOOD1`, `HOOD2` |
-| Isaac | 528 | [isaac.blend](assets/models/isaac/isaac.blend) | `ISAAC` |
-| Lass2 | 528 | [lass2.blend](assets/models/lass2/lass2.blend) | `KRISTIN`, `LASS1`, `LASS2` |
-| Lass1 | 528 | [lass1.blend](assets/models/lass1/lass1.blend) | `HEATHER`, `LASS3`, `LASS4` |
-| Nikki | 540 | [nikki.blend](assets/models/nikki/nikki.blend) | `NIKKI` |
-| Lad | 572 | [lad.blend](assets/models/lad/lad.blend) | `DANIEL`, `JOHN`, `LAD1`, `LAD3` |
-| Murray | 540 | [murray.blend](assets/models/murray/murray.blend) | `MURRAY1`, `MURRAY2` |
-| Rick | 528 | [rick.blend](assets/models/rick/rick.blend) | `RICK` |
-| Specs | 560 | [specs.blend](assets/models/specs/specs.blend) | `ADAM`, `SPECS1`, `SPECS3` |
-| Ken | 528 | [ken.blend](assets/models/ken/ken.blend) | `KEN` |
-| Courtney | 540 | [courtney.blend](assets/models/courtney/courtney.blend) | `COURTNEY` |
-| Steve | 576 | [steve.blend](assets/models/steve/steve.blend) | `STEVE` |
-| Jack | 528 | [jack.blend](assets/models/jack/jack.blend) | `JACK` |
-| Rod | 528 | [rod.blend](assets/models/rod/rod.blend) | `ROD` |
-| Woman | 544 | [woman.blend](assets/models/woman/woman.blend) | `WOMAN1`, `WOMAN2` |
-| Chap | 560 | [chap.blend](assets/models/chap/chap.blend) | `CHAP1`, `CHAP2`, `CHAP3`, `CHAP4`, `CHAP5` |
-| Gal | 528 | [gal.blend](assets/models/gal/gal.blend) | `GAL1`, `CLERK12`, `CLERK13`, `HOST`, `GAL2`, `GAL3`, `GAL4` |
-| Pappy | 560 | [pappy.blend](assets/models/pappy/pappy.blend) | `PAPPY1`, `PAPPY2`, `PAPPY3` |
-| Butch | 560 | [butch.blend](assets/models/butch/butch.blend) | `BUTCH` |
-| Granny | 592 | [granny.blend](assets/models/granny/granny.blend) | `GRANNY1`, `GRANNY2` |
+| Dr Mason | 620 | [dr_mason.blend](assets/models/dr_mason/dr_mason.blend) | `DRMASON`, `05`, `06` |
+| Ronald | 588 | [ronald.blend](assets/models/ronald/ronald.blend) | `RONALD1`, `RONALD2`, `RONALD3` |
+| Ishihara | 588 | [ishihara.blend](assets/models/ishihara/ishihara.blend) | `ISHIHARA` |
+| Imakuni | 624 | [imakuni.blend](assets/models/imakuni/imakuni.blend) | `IMAKUNI` |
+| Tech | 620 | [tech.blend](assets/models/tech/tech.blend) | `SAM`, `TECH1`, `TECH2`, `TECH3`, `TECH4`, `TECH5`, `TECH6`, `JOSEPH`, `DAVID`, `ERIK`, `SPECS2`, `AARON`, `TECH7`, `TECH8` |
+| Clerk | 620 | [clerk.blend](assets/models/clerk/clerk.blend) | `CLERK1`, `CLERK2`, `CLERK3`, `CLERK4`, `CLERK5`, `CLERK6`, `CLERK7`, `CLERK8`, `CLERK9`, `CLERK10`, `GIFT_CENTER_CLERK` |
+| Mania | 628 | [mania.blend](assets/models/mania/mania.blend) | `CHRIS`, `MICHAEL`, `MATTHEW`, `MANIA`, `CHAMP` |
+| Lass3 | 684 | [lass3.blend](assets/models/lass3/lass3.blend) | `JESSICA`, `LASS5` |
+| Mitch | 604 | [mitch.blend](assets/models/mitch/mitch.blend) | `MITCH` |
+| Boy | 620 | [boy.blend](assets/models/boy/boy.blend) | `RYAN`, `ROBERT`, `JONATHAN`, `LAD2` |
+| Man | 620 | [man.blend](assets/models/man/man.blend) | `ANDREW`, `MAN1`, `MAN2`, `MAN3`, `GUIDE` |
+| Gene | 560 | [gene.blend](assets/models/gene/gene.blend) | `GENE` |
+| Swimmer | 620 | [swimmer.blend](assets/models/swimmer/swimmer.blend) | `SARA`, `AMANDA` |
+| Joshua | 620 | [joshua.blend](assets/models/joshua/joshua.blend) | `JOSHUA` |
+| Amy | 580 | [amy.blend](assets/models/amy/amy.blend) | `AMY` |
+| Girl | 576 | [girl.blend](assets/models/girl/girl.blend) | `JENNIFER`, `BRITTANY`, `STEPHANIE` |
+| Hood | 624 | [hood.blend](assets/models/hood/hood.blend) | `NICHOLAS`, `BRANDON`, `HOOD1`, `HOOD2` |
+| Isaac | 560 | [isaac.blend](assets/models/isaac/isaac.blend) | `ISAAC` |
+| Lass2 | 580 | [lass2.blend](assets/models/lass2/lass2.blend) | `KRISTIN`, `LASS1`, `LASS2` |
+| Lass1 | 580 | [lass1.blend](assets/models/lass1/lass1.blend) | `HEATHER`, `LASS3`, `LASS4` |
+| Nikki | 592 | [nikki.blend](assets/models/nikki/nikki.blend) | `NIKKI` |
+| Lad | 620 | [lad.blend](assets/models/lad/lad.blend) | `DANIEL`, `JOHN`, `LAD1`, `LAD3` |
+| Murray | 592 | [murray.blend](assets/models/murray/murray.blend) | `MURRAY1`, `MURRAY2` |
+| Rick | 560 | [rick.blend](assets/models/rick/rick.blend) | `RICK` |
+| Specs | 620 | [specs.blend](assets/models/specs/specs.blend) | `ADAM`, `SPECS1`, `SPECS3` |
+| Ken | 596 | [ken.blend](assets/models/ken/ken.blend) | `KEN` |
+| Courtney | 588 | [courtney.blend](assets/models/courtney/courtney.blend) | `COURTNEY` |
+| Steve | 632 | [steve.blend](assets/models/steve/steve.blend) | `STEVE` |
+| Jack | 560 | [jack.blend](assets/models/jack/jack.blend) | `JACK` |
+| Rod | 560 | [rod.blend](assets/models/rod/rod.blend) | `ROD` |
+| Woman | 596 | [woman.blend](assets/models/woman/woman.blend) | `WOMAN1`, `WOMAN2` |
+| Chap | 628 | [chap.blend](assets/models/chap/chap.blend) | `CHAP1`, `CHAP2`, `CHAP3`, `CHAP4`, `CHAP5` |
+| Gal | 580 | [gal.blend](assets/models/gal/gal.blend) | `GAL1`, `CLERK12`, `CLERK13`, `HOST`, `GAL2`, `GAL3`, `GAL4` |
+| Pappy | 620 | [pappy.blend](assets/models/pappy/pappy.blend) | `PAPPY1`, `PAPPY2`, `PAPPY3` |
+| Butch | 632 | [butch.blend](assets/models/butch/butch.blend) | `BUTCH` |
+| Granny | 640 | [granny.blend](assets/models/granny/granny.blend) | `GRANNY1`, `GRANNY2` |
 | Torch | 68 | [torch.blend](assets/models/torch/torch.blend) | `TORCH` |
 | Legendary Card | 128 | [legendary_card.blend](assets/models/legendary_card/legendary_card.blend) | `LEGENDARY_CARD_TOP_LEFT`, `LEGENDARY_CARD_TOP_RIGHT`, `LEGENDARY_CARD_LEFT_SPARK`, `LEGENDARY_CARD_BOTTOM_LEFT`, `LEGENDARY_CARD_BOTTOM_RIGHT`, `LEGENDARY_CARD_RIGHT_SPARK` |
 | Mark | 596 | [mark.blend](assets/models/mark/mark.blend) | `6E`, `6F`, `PLAYER_CREDITS` |

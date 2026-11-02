@@ -55,8 +55,8 @@
   "appearance": "ishihara",
   "pose": "standing",
   "component": null,
-  "vertices": 451,
-  "triangles": 528,
+  "vertices": 570,
+  "triangles": 588,
   "batches": 7,
   "parts": [
     0,
@@ -66,8 +66,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/ishihara/i3/ishihara/scene.l64",
-    "sha256": "577ae3f1386f5554a8c52a7cb24987061bb377362aa51d9cbc3cc0f5a04c9308",
+    "asset": "experiments/cast-concepts/models/ishihara/i3e/ishihara/scene.l64",
+    "sha256": "40b34731a1bd9757fd75dcd6e9dc0a75234f27a76d4c4ce179340458659c128f",
     "selection": "ishihara"
   }
 }

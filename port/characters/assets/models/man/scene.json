@@ -59,8 +59,8 @@
   "appearance": "man",
   "pose": "standing",
   "component": null,
-  "vertices": 470,
-  "triangles": 560,
+  "vertices": 628,
+  "triangles": 620,
   "batches": 7,
   "parts": [
     0,
@@ -70,8 +70,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/man/i3/man/scene.l64",
-    "sha256": "a09bb55fccd5bf185408b4d6cb8b62889c42703426a4ccbefafb8218510d2267",
+    "asset": "experiments/cast-concepts/models/man/i3e/man/scene.l64",
+    "sha256": "063692f881228bf83c7a1a9fc74223ead9536b497728d34521fb6e77b1684be1",
     "selection": "man"
   }
 }

@@ -66,8 +66,8 @@
   "appearance": "amy",
   "pose": "lying",
   "component": null,
-  "vertices": 351,
-  "triangles": 528,
+  "vertices": 456,
+  "triangles": 580,
   "batches": 6,
   "parts": [
     0,
@@ -77,8 +77,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/amy__lying/i3/amy__lying/scene.l64",
-    "sha256": "7936767efe10b6a4f0156ea4fc06d2d096e7cc3060ba36e8deccd1a27ed14e90",
+    "asset": "experiments/cast-concepts/models/amy__lying/i3e/amy__lying/scene.l64",
+    "sha256": "0ac440b4630b9eee24c6c962211e997c071b6e2ed2fde6c918535b4192444249",
     "selection": "amy__lying"
   }
 }

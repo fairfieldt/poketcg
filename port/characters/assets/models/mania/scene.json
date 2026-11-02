@@ -66,8 +66,8 @@
   "appearance": "mania",
   "pose": "standing",
   "component": null,
-  "vertices": 459,
-  "triangles": 560,
+  "vertices": 609,
+  "triangles": 628,
   "batches": 7,
   "parts": [
     0,
@@ -77,8 +77,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/mania/i3/mania/scene.l64",
-    "sha256": "f0630f41cde9f511a07696017c8f641e69059ecc298eac0a0e431d0390cc01e9",
+    "asset": "experiments/cast-concepts/models/mania/i3f/mania/scene.l64",
+    "sha256": "b0df8979bce7a18995b4bc66fab19fc4e7204901580c80e45c08268f9b43457d",
     "selection": "mania"
   }
 }

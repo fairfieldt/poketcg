@@ -1,0 +1,30 @@
+{
+  "concept": "concepts/round-heads/mason-sam.png",
+  "reference": "Earlier Mason face, before aa9017e1 integration",
+  "eye": [
+    6,
+    7
+  ],
+  "pupil": [
+    3,
+    5
+  ],
+  "glasses": [
+    9,
+    9
+  ],
+  "glasses_shape": "rectangular",
+  "prior_eye": [
+    8,
+    11
+  ],
+  "prior_glasses": [
+    11,
+    14
+  ],
+  "texture": [
+    32,
+    32
+  ],
+  "skin_color_preserved": true
+}

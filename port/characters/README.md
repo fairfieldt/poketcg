@@ -1,7 +1,11 @@
 # Pokémon TCG character models
 
 All 115 NPC entries use 39 canonical models: 37 humans and two prop families.
-The production human cast uses the [reviewed concepts and native comparisons](experiments/cast-concepts/index.html), including Mark A3d. The torch and legendary card retain their original assets.
+The production human cast uses the [reviewed concepts and native comparisons](experiments/cast-concepts/index.html), including the rounded-head correction to Mark A3d. The torch and legendary card retain their original assets.
+
+The current cast has rounded connected skulls and front-facing eye paint. Mason
+and Sam use compact adult eyes. [Native correction checks](experiments/cast-concepts/review/roundness-verification.json) cover every human appearance and pose.
+Gameplay-distance LODs preserve each complete head and simplify the body.
 
 Open [assets/cast.blend](assets/cast.blend) to inspect the linked canonical cast.
 Individual editable sources are in `assets/models/<family>/<family>.blend`.

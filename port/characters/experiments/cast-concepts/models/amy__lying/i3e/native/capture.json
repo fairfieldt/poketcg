@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-amy__lying-i3e.z64",
+  "rom_sha256": "1964d5fafef051921abbe87d26d83904ce02c56bb73d5ef0c10831559d59a3fd",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736368,
+      "used": 1343288,
+      "free": 1393080
+    },
+    {
+      "option": "candidate",
+      "total": 2736368,
+      "used": 1343584,
+      "free": 1392784
+    }
+  ],
+  "subject": "amy__lying",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "493047656f788aae1b390795c03c3e971ca24ed5582bf84981fe35dd70d1734b",
+    "candidate": "0ac440b4630b9eee24c6c962211e997c071b6e2ed2fde6c918535b4192444249"
+  }
+}

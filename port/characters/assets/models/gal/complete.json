@@ -1,12 +1,12 @@
 {
   "model": "gal",
-  "triangles": 528,
-  "vertices": 363,
+  "triangles": 580,
+  "vertices": 468,
   "batches": 6,
   "linked_parts": 0,
   "appearances": [
     "gal"
   ],
-  "fingerprint": "e40011896cd4a955402cb3788d914920e28705cbc5ed0666b5f0589649818aa7",
+  "fingerprint": "73c91d2b8cdf5e94c4bc926bad16072356e6b722f22153710ed37971ba684d9a",
   "recipe": "reviewed-cast-manual"
 }

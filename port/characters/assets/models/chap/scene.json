@@ -59,8 +59,8 @@
   "appearance": "chap",
   "pose": "standing",
   "component": null,
-  "vertices": 459,
-  "triangles": 560,
+  "vertices": 609,
+  "triangles": 628,
   "batches": 7,
   "parts": [
     0,
@@ -70,8 +70,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/chap/i3/chap/scene.l64",
-    "sha256": "2db52b8620f73ae4571da37396bd97d809199aa0b6634460f68080db74743e17",
+    "asset": "experiments/cast-concepts/models/chap/i3f/chap/scene.l64",
+    "sha256": "37daa5509d330b95f10d122dd364abcee3b85f3fc9bd7df52c3796302c446a66",
     "selection": "chap"
   }
 }

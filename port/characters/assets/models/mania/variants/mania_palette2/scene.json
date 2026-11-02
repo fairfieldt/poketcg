@@ -66,8 +66,8 @@
   "appearance": "mania_palette2",
   "pose": "standing",
   "component": null,
-  "vertices": 459,
-  "triangles": 560,
+  "vertices": 609,
+  "triangles": 628,
   "batches": 7,
   "parts": [
     0,
@@ -77,8 +77,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/mania_palette2/i3/mania_palette2/scene.l64",
-    "sha256": "b29e366efd08bb77b88d98436864d4e12e42ab7e6ccfab0d7eab45e37952ad9b",
+    "asset": "experiments/cast-concepts/models/mania_palette2/i3f/mania_palette2/scene.l64",
+    "sha256": "02066f9f411d0f78826cdf49d4a75f112087a6fc5da31df26f9cf31512f2d80d",
     "selection": "mania_palette2"
   }
 }

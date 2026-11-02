@@ -55,8 +55,8 @@
   "appearance": "butch",
   "pose": "standing",
   "component": null,
-  "vertices": 460,
-  "triangles": 560,
+  "vertices": 613,
+  "triangles": 632,
   "batches": 7,
   "parts": [
     0,
@@ -66,8 +66,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/butch/i3/butch/scene.l64",
-    "sha256": "40c092a77f52dafd9359822fb7253eb67ccc9d79a1c3b5877eeca529cf8350bc",
+    "asset": "experiments/cast-concepts/models/butch/i3e/butch/scene.l64",
+    "sha256": "a9031ecbd1862066aa8b21bb243b23e909c3dfc675b087e8ff776d1798580c57",
     "selection": "butch"
   }
 }

@@ -1,0 +1,175 @@
+{
+  "passed": true,
+  "source": "models/lass3/i3c/lass3",
+  "source_sha256": "126509a8f0cfe1fb6d14d7e74c20807dd9d048e80b09ce4fdf7ddd1ec5f98614",
+  "settings": [
+    {
+      "cuts": [
+        0.66,
+        0.88
+      ],
+      "target_half_width": 0.4110970909090911,
+      "target_half_depth": 0.34004327272727286,
+      "head_bounds": [
+        1.3468,
+        2.157064
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 228,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 230",
+        "packed degenerate batch 0 triangle 231",
+        "packed degenerate batch 0 triangle 235",
+        "packed degenerate batch 0 triangle 246",
+        "packed degenerate batch 0 triangle 250",
+        "packed degenerate batch 0 triangle 251",
+        "packed degenerate batch 0 triangle 254",
+        "packed degenerate batch 0 triangle 255",
+        "packed degenerate batch 0 triangle 259",
+        "packed degenerate batch 0 triangle 270",
+        "packed degenerate batch 0 triangle 274",
+        "packed degenerate batch 0 triangle 275",
+        "packed duplicate batch 0 triangle 347",
+        "packed duplicate batch 0 triangle 361"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.84
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 268",
+        "packed degenerate batch 0 triangle 269",
+        "packed degenerate batch 0 triangle 272",
+        "packed degenerate batch 0 triangle 280",
+        "packed degenerate batch 0 triangle 284",
+        "packed degenerate batch 0 triangle 285",
+        "packed degenerate batch 0 triangle 288",
+        "packed degenerate batch 0 triangle 289",
+        "packed degenerate batch 0 triangle 292",
+        "packed degenerate batch 0 triangle 300",
+        "packed degenerate batch 0 triangle 304",
+        "packed degenerate batch 0 triangle 305",
+        "packed duplicate batch 0 triangle 355",
+        "packed duplicate batch 0 triangle 369"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.85
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 270",
+        "packed degenerate batch 0 triangle 271",
+        "packed degenerate batch 0 triangle 275",
+        "packed degenerate batch 0 triangle 301",
+        "packed degenerate batch 0 triangle 306",
+        "packed degenerate batch 0 triangle 307",
+        "packed degenerate batch 0 triangle 352",
+        "packed degenerate batch 0 triangle 354",
+        "packed degenerate batch 0 triangle 355",
+        "packed duplicate batch 0 triangle 355",
+        "packed degenerate batch 0 triangle 357",
+        "packed degenerate batch 0 triangle 366",
+        "packed degenerate batch 0 triangle 368",
+        "packed degenerate batch 0 triangle 369",
+        "packed duplicate batch 0 triangle 369",
+        "packed degenerate batch 0 triangle 371"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.86
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 233",
+        "packed degenerate batch 0 triangle 237",
+        "packed degenerate batch 0 triangle 260",
+        "packed degenerate batch 0 triangle 265",
+        "packed degenerate batch 0 triangle 270",
+        "packed degenerate batch 0 triangle 278",
+        "packed degenerate batch 0 triangle 286",
+        "packed degenerate batch 0 triangle 294",
+        "packed degenerate batch 0 triangle 303",
+        "packed degenerate batch 0 triangle 311",
+        "packed degenerate batch 0 triangle 319",
+        "packed degenerate batch 0 triangle 327",
+        "packed duplicate batch 0 triangle 339",
+        "packed duplicate batch 0 triangle 353"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.87
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 255",
+        "packed degenerate batch 0 triangle 259",
+        "packed degenerate batch 0 triangle 282",
+        "packed degenerate batch 0 triangle 288"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.88
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/lass3/i3e/lass3/scene.l64",
+    "sha256": "7b371dcd24efe818632d28e9addda02399ed87f4c65d2b10fdf984b397829197",
+    "triangles": 684,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "w3_lass3_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "before_max_eye_white_angle": 51.828325993236206,
+    "after_max_eye_white_angle": 41.97331000162872,
+    "additional_horizontal_span": 0.84,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of painted eye whites; no pixel beyond43deg in sampled owning faces; lying pose inherits standing mapping",
+    "face_vertices": 25,
+    "original_native_sha256": "a88a4ecbcd93dfe6754406e3a0b876736a613d3dc8f7dd08c7ca9cd8cbca9833",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

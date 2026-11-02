@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "independent_review": true,
+  "video_sha256": "56d7bca21a9c0bf77c1f7d00f6f85d7b8d68171cb5fb3b51fd99e83685d3497e",
+  "width": 1440,
+  "height": 1080,
+  "fps": 60,
+  "frames": 3874,
+  "duration": 64.566667,
+  "original_v3_aac_adts_sha256": "92a170127c763c7575b815596c45b8a60671fa4e67b614cdf50515bdb42a961e",
+  "audio_bytes_match_v3": true,
+  "decode_errors": 0,
+  "shots_reviewed": 10,
+  "visual_findings": [
+    "Final laboratory footage visibly has rounded Mason and Sam heads with compact rectangular glasses/eyes, matching the corrected native models.",
+    "Mark and the club cast retain their corrected head silhouettes; no detached scalp or stretched hair outlier observed in the reviewed shots.",
+    "All ten planned shots are present: laboratory dialogue/table walk, Ronald knockout, three clubs, Amy knockout, medal, Hall and title.",
+    "No cursor, desktop or application chrome observed in the final contact-sheet shots; all three new club raw frames were separately checked cursor-free."
+  ],
+  "clubs_recording": {
+    "method": "ScreenCaptureKit desktopIndependentWindow",
+    "shows_cursor": false,
+    "raw_video_sha256": "2e87c3593c36474c80015b79c19f9a788f94f30faf246b22fc30671701da1cc9",
+    "raw_frames_reviewed_seconds": [
+      12,
+      19,
+      26
+    ],
+    "titlebar_crop_pixels": 56
+  },
+  "model_provenance": "independent-model-provenance.json",
+  "limitations": [
+    "Native motion/field combing remains visible during some camera movement in the captured Ares output.",
+    "Audio identity and decoding were checked analytically; no ear audition is claimed."
+  ]
+}

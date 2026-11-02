@@ -1,0 +1,75 @@
+{
+  "passed": true,
+  "source": "../mark-concepts/approved/a_adventure/i3d/mark",
+  "source_sha256": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3",
+  "settings": [
+    {
+      "rear_side_depth_scale": 1.1,
+      "nose_extension": false,
+      "front_face_uv_span": 0.76,
+      "cap_bill_same_transform": true
+    },
+    {
+      "rear_side_depth_scale": 1.1,
+      "nose_extension": false,
+      "front_face_uv_span": 0.76,
+      "cap_bill_same_transform": true
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    },
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 0
+    }
+  ],
+  "original_head_triangles": 228,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/mark/i3e/mark/scene.l64",
+    "sha256": "9986ea14a614652592b3de993dfc0765398c20b95dd2d60de70fadd63d4106e9",
+    "triangles": 596,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "aa6_mark_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      },
+      {
+        "name": "aa6_mark_cap.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py"
+}

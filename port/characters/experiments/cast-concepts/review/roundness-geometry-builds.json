@@ -1,0 +1,1803 @@
+{
+  "passed": true,
+  "selected_exports": 41,
+  "human_families": 37,
+  "models": [
+    {
+      "slug": "dr_mason",
+      "revision": "i3f",
+      "folder": "models/dr_mason/i3f",
+      "source": {
+        "prefix": "models/dr_mason/i3",
+        "source_asset": "models/dr_mason/i3/dr_mason/scene.l64",
+        "source_authoring": "models/dr_mason/i3/dr_mason/authoring.json",
+        "asset_sha256": "784e46b8f1074131bb713526708cc136140ef4a92449fe5437c9d91d144d1582",
+        "authoring_sha256": "b39d64d0aeff8cfbace4efbc9514641bf3ef76cff2ce98678e1c8d8b96f5cc98"
+      },
+      "triangles": 620,
+      "native_sha256": "0f2be9a2ddccb096086655b62b10c0bc55db1c98652ee778b726df1508b10c1c",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.86
+          ],
+          "target_half_width": 0.41546153846153855,
+          "target_half_depth": 0.335,
+          "head_bounds": [
+            1.5599999999999998,
+            2.33
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "dr_mason",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.86",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "ronald",
+      "revision": "i3f",
+      "folder": "models/ronald/i3f",
+      "source": {
+        "prefix": "models/ronald/i3",
+        "source_asset": "models/ronald/i3/ronald/scene.l64",
+        "source_authoring": "models/ronald/i3/ronald/authoring.json",
+        "asset_sha256": "b7b5cc0870f062ac1636c3e2d953a6bc9cbc18960f6bcff33817a64c4eaf5033",
+        "authoring_sha256": "600c4c9ae40065205e5db936cb6414ba96f59b186b83ae0bd7d593410ee2e6bc"
+      },
+      "triangles": 588,
+      "native_sha256": "c247d6cdb7171a71d97f8d005e08e4a8ef0fb551a9374be284863d115f898218",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.83
+          ],
+          "preserve_lower": false,
+          "packing_phase": [
+            0,
+            0,
+            0
+          ],
+          "target_half_width": 0.4207792207792207,
+          "target_half_depth": 0.348051948051948,
+          "head_bounds": [
+            1.46,
+            2.38
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "ronald",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "ishihara",
+      "revision": "i3e",
+      "folder": "models/ishihara/i3e",
+      "source": {
+        "prefix": "models/ishihara/i3",
+        "source_asset": "models/ishihara/i3/ishihara/scene.l64",
+        "source_authoring": "models/ishihara/i3/ishihara/authoring.json",
+        "asset_sha256": "577ae3f1386f5554a8c52a7cb24987061bb377362aa51d9cbc3cc0f5a04c9308",
+        "authoring_sha256": "45ad932db1bed737a8eaf14b1d50f02463745390fe1fa941c370f9e6a888d9ca"
+      },
+      "triangles": 588,
+      "native_sha256": "40b34731a1bd9757fd75dcd6e9dc0a75234f27a76d4c4ce179340458659c128f",
+      "settings": [
+        {
+          "cuts": [
+            0.7,
+            0.88
+          ],
+          "target_half_width": 0.40762987012987006,
+          "target_half_depth": 0.35243417900696866,
+          "head_bounds": [
+            1.46,
+            2.235
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "ishihara",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.7",
+        "0.88",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "imakuni",
+      "revision": "i3e",
+      "folder": "models/imakuni/i3e",
+      "source": {
+        "prefix": "models/imakuni/i3",
+        "source_asset": "models/imakuni/i3/imakuni/scene.l64",
+        "source_authoring": "models/imakuni/i3/imakuni/authoring.json",
+        "asset_sha256": "5692c1f82fc53c0f74ad7c0934d7b42a7b30c17a3adebae7b503ca2080acdd7d",
+        "authoring_sha256": "29c6ccf3aac59cc0a06fc3a2b22aae4cfc5ec6f81ac806a72a1ccf390782dea9"
+      },
+      "triangles": 624,
+      "native_sha256": "56c09149169dd6fbd26609b3e3dd2f6c1d2e2d06ec61f8f82886887b2a9c406e",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.83
+          ],
+          "target_half_width": 0.42827125000000005,
+          "target_half_depth": 0.3313872222222223,
+          "head_bounds": [
+            1.59,
+            2.34
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "imakuni",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "tech",
+      "revision": "i3f",
+      "folder": "models/tech/i3f",
+      "source": {
+        "prefix": "models/tech/i3",
+        "source_asset": "models/tech/i3/tech/scene.l64",
+        "source_authoring": "models/tech/i3/tech/authoring.json",
+        "asset_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec",
+        "authoring_sha256": "4c3773076b8d3446a3fd771bd9edd3336f24d1c10ea66d623d82dc81ee76b55f"
+      },
+      "triangles": 620,
+      "native_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8",
+      "settings": [
+        {
+          "cuts": [
+            0.69,
+            0.85
+          ],
+          "target_half_width": 0.41507812499999996,
+          "target_half_depth": 0.335,
+          "head_bounds": [
+            1.54,
+            2.31
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "tech",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.69",
+        "0.85",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "clerk",
+      "revision": "i3e",
+      "folder": "models/clerk/i3e",
+      "source": {
+        "prefix": "models/clerk/i3",
+        "source_asset": "models/clerk/i3/clerk/scene.l64",
+        "source_authoring": "models/clerk/i3/clerk/authoring.json",
+        "asset_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624",
+        "authoring_sha256": "c4631e90b38a64faee3b07127f9f145035d6b6d0899875c63562948644b6b5b4"
+      },
+      "triangles": 620,
+      "native_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1",
+      "settings": [
+        {
+          "cuts": [
+            0.68,
+            0.83
+          ],
+          "target_half_width": 0.4292999999999999,
+          "target_half_depth": 0.35509999999999997,
+          "head_bounds": [
+            1.48,
+            2.2962
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "clerk",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.68",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "mania",
+      "revision": "i3f",
+      "folder": "models/mania/i3f",
+      "source": {
+        "prefix": "models/mania/i3",
+        "source_asset": "models/mania/i3/mania/scene.l64",
+        "source_authoring": "models/mania/i3/mania/authoring.json",
+        "asset_sha256": "f0630f41cde9f511a07696017c8f641e69059ecc298eac0a0e431d0390cc01e9",
+        "authoring_sha256": "ca6bea64d5f2dbc97955c7051faf926b220e3ca109cf04ac47ed8c2daae588de"
+      },
+      "triangles": 628,
+      "native_sha256": "b0df8979bce7a18995b4bc66fab19fc4e7204901580c80e45c08268f9b43457d",
+      "settings": [
+        {
+          "cuts": [
+            0.67,
+            0.83
+          ],
+          "preserve_lower": false,
+          "packing_phase": [
+            0.012,
+            -0.008,
+            0.014
+          ],
+          "target_half_width": 0.4155194805194807,
+          "target_half_depth": 0.34370129870129884,
+          "head_bounds": [
+            1.49,
+            2.2800000000000002
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "mania",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.67",
+        "0.83",
+        "--phase",
+        "0.012",
+        "-0.008",
+        "0.014"
+      ]
+    },
+    {
+      "slug": "lass3",
+      "revision": "i3f",
+      "folder": "models/lass3/i3f",
+      "source": {
+        "prefix": "models/lass3/i3c",
+        "source_asset": "models/lass3/i3c/lass3/scene.l64",
+        "source_authoring": "models/lass3/i3c/lass3/authoring.json",
+        "asset_sha256": "126509a8f0cfe1fb6d14d7e74c20807dd9d048e80b09ce4fdf7ddd1ec5f98614",
+        "authoring_sha256": "a93bb98e96cb47ef8ec8cb266c1b114d553c64bed9007d37f24b8854304ce051"
+      },
+      "triangles": 684,
+      "native_sha256": "db79256ba54b43a54ee911f1586da69986f57ac90fe11874b2e938c5ac6e84ba",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.88
+          ],
+          "preserve_lower": false,
+          "packing_phase": [
+            0,
+            0,
+            0
+          ],
+          "target_half_width": 0.4110970909090911,
+          "target_half_depth": 0.34004327272727286,
+          "head_bounds": [
+            1.3468,
+            2.157064
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "lass3",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.88",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "mitch",
+      "revision": "i3f",
+      "folder": "models/mitch/i3f",
+      "source": {
+        "prefix": "models/mitch/i3",
+        "source_asset": "models/mitch/i3/mitch/scene.l64",
+        "source_authoring": "models/mitch/i3/mitch/authoring.json",
+        "asset_sha256": "1181cf83029cc890adeec4bda7059efb2846a0b4090c66840a177375bb9018ac",
+        "authoring_sha256": "93186fb3b689e0a027f010a5e94fbff270f36cf766e670e3c78bccda41971959"
+      },
+      "triangles": 604,
+      "native_sha256": "a543084dfefe0f56c0045c310f4426f09fceab95c99a8d4af9dada147bb65d2f",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.83
+          ],
+          "preserve_lower": false,
+          "packing_phase": [
+            0,
+            0,
+            0
+          ],
+          "target_half_width": 0.43129870129870146,
+          "target_half_depth": 0.3567532467532469,
+          "head_bounds": [
+            1.46,
+            2.39
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "mitch",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "boy",
+      "revision": "i3e",
+      "folder": "models/boy/i3e",
+      "source": {
+        "prefix": "models/boy/i3",
+        "source_asset": "models/boy/i3/boy/scene.l64",
+        "source_authoring": "models/boy/i3/boy/authoring.json",
+        "asset_sha256": "6362601dfaa22bd1721bae3c8c19866916ead36564cdc477b002e288a56777fe",
+        "authoring_sha256": "ad07a56011d074eceaaf5f95276da87290488f3d87a9c4244c3a5c70be99f342"
+      },
+      "triangles": 620,
+      "native_sha256": "80331a3e1f713af4a49cb57f98a1a8119d87791e73e9b7db515f9ec041789cca",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.83
+          ],
+          "target_half_width": 0.4207792207792209,
+          "target_half_depth": 0.3480519480519482,
+          "head_bounds": [
+            1.35,
+            2.1500000000000004
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "boy",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "man",
+      "revision": "i3e",
+      "folder": "models/man/i3e",
+      "source": {
+        "prefix": "models/man/i3",
+        "source_asset": "models/man/i3/man/scene.l64",
+        "source_authoring": "models/man/i3/man/authoring.json",
+        "asset_sha256": "a09bb55fccd5bf185408b4d6cb8b62889c42703426a4ccbefafb8218510d2267",
+        "authoring_sha256": "0b2dc7e28ed6aab2c849814b1424f0490531605731434cefc81280e38a8ab02a"
+      },
+      "triangles": 620,
+      "native_sha256": "063692f881228bf83c7a1a9fc74223ead9536b497728d34521fb6e77b1684be1",
+      "settings": [
+        {
+          "cuts": [
+            0.68,
+            0.84
+          ],
+          "target_half_width": 0.4153423076923076,
+          "target_half_depth": 0.335,
+          "head_bounds": [
+            1.48,
+            2.25
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "man",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.68",
+        "0.84",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "gene",
+      "revision": "i3e",
+      "folder": "models/gene/i3e",
+      "source": {
+        "prefix": "models/gene/i3",
+        "source_asset": "models/gene/i3/gene/scene.l64",
+        "source_authoring": "models/gene/i3/gene/authoring.json",
+        "asset_sha256": "a7c5a595c0c5f772da22bd95864aa9858e40d3f1d6293235afeee2b4a5e923b2",
+        "authoring_sha256": "b365c005aca7bf70a7c9205dadec66a2a24b411afa37252cf2935df0cf57c2b1"
+      },
+      "triangles": 560,
+      "native_sha256": "e7f715a3a54b06741e59ccde608f8ce799e8fbad51b4008b536c650875e8d1b1",
+      "settings": [
+        {
+          "cuts": [
+            0.83
+          ],
+          "preserve_lower": true,
+          "packing_phase": [
+            0,
+            0,
+            0
+          ],
+          "target_half_width": 0.43772699849170443,
+          "target_half_depth": 0.34584063103538576,
+          "head_bounds": [
+            1.46,
+            2.235
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "gene",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0",
+        "--preserve-lower"
+      ]
+    },
+    {
+      "slug": "swimmer",
+      "revision": "i3e",
+      "folder": "models/swimmer/i3e",
+      "source": {
+        "prefix": "models/swimmer/i3b",
+        "source_asset": "models/swimmer/i3b/swimmer/scene.l64",
+        "source_authoring": "models/swimmer/i3b/swimmer/authoring.json",
+        "asset_sha256": "14fc11a98d30e655454ef697418e0f93f94a3a5e3cb12c5b28e4d61266dafa7a",
+        "authoring_sha256": "6fcb4607f9afa3fee8f925b2d2744b0b512d6090e03ab7c02d9db10566ba6ab0"
+      },
+      "triangles": 620,
+      "native_sha256": "0167c80b075dde96d08240618099501096412905b9bf4ea6187509faa622c4bd",
+      "settings": [
+        {
+          "cuts": [
+            0.69,
+            0.83
+          ],
+          "target_half_width": 0.3949559999999999,
+          "target_half_depth": 0.3266919999999999,
+          "head_bounds": [
+            1.3616000000000001,
+            2.112504
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "swimmer",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.69",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "joshua",
+      "revision": "i3e",
+      "folder": "models/joshua/i3e",
+      "source": {
+        "prefix": "models/joshua/i3b",
+        "source_asset": "models/joshua/i3b/joshua/scene.l64",
+        "source_authoring": "models/joshua/i3b/joshua/authoring.json",
+        "asset_sha256": "61ad46c92927d5dee96b11ed1045865d53c45951f390eb8b6b96c7158b353736",
+        "authoring_sha256": "61988f0eb1f5def9c0627ed0e1f2fd54cc9d673e5d966f9cffd89274ef585d8a"
+      },
+      "triangles": 620,
+      "native_sha256": "04311476808d2dbdd1e3a4dd014c7c78cc0f2e8cc8f25cddbca0b3608cac758a",
+      "settings": [
+        {
+          "cuts": [
+            0.68,
+            0.83
+          ],
+          "target_half_width": 0.44618750000000007,
+          "target_half_depth": 0.35509999999999997,
+          "head_bounds": [
+            1.48,
+            2.2962
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "joshua",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.68",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "amy",
+      "revision": "i3e",
+      "folder": "models/amy/i3e",
+      "source": {
+        "prefix": "models/amy/i3",
+        "source_asset": "models/amy/i3/amy/scene.l64",
+        "source_authoring": "models/amy/i3/amy/authoring.json",
+        "asset_sha256": "36f483b6813b0b9643f1b13acc321d927f1fb3e523439bb84c8d1257911ed0f3",
+        "authoring_sha256": "7a2cd4316b9f0654a8b7df9ffb820ed086a10b2a4a368e2e32dc6c59002a0067"
+      },
+      "triangles": 580,
+      "native_sha256": "dfb530ccbeca33590ede8d575ac23a0976699642526d9928afe4936ddd8ee3e7",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.83
+          ],
+          "target_half_width": 0.4121279999999999,
+          "target_half_depth": 0.3454838095238096,
+          "head_bounds": [
+            1.4207999999999998,
+            2.2043519999999996
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "amy",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "girl",
+      "revision": "i3e",
+      "folder": "models/girl/i3e",
+      "source": {
+        "prefix": "models/girl/i3",
+        "source_asset": "models/girl/i3/girl/scene.l64",
+        "source_authoring": "models/girl/i3/girl/authoring.json",
+        "asset_sha256": "a096ed97d1eecea2d86db99fea21c65f3b79a304833c85ffe6bfee0f8c0595a3",
+        "authoring_sha256": "b05a4ad9e53ca36e1ed5bd830d0959f51897f520b08b9e696de9e600752bd576"
+      },
+      "triangles": 576,
+      "native_sha256": "7a5a15b787f2950b0e3cdd9978841ea80bb2ab75fc905bb64ddea8025e377071",
+      "settings": [
+        {
+          "cuts": [
+            0.69,
+            0.83
+          ],
+          "target_half_width": 0.38637,
+          "target_half_depth": 0.3410253846153847,
+          "head_bounds": [
+            1.332,
+            2.06658
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "girl",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.69",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "hood",
+      "revision": "i3e",
+      "folder": "models/hood/i3e",
+      "source": {
+        "prefix": "models/hood/i3",
+        "source_asset": "models/hood/i3/hood/scene.l64",
+        "source_authoring": "models/hood/i3/hood/authoring.json",
+        "asset_sha256": "ad508a585dd2b902af34ce15105de0a5ad419fc231b3435c078c2e4d8fb51e03",
+        "authoring_sha256": "4df3caebbda53784e28b0dd7cbbd8aa2818c9adc7b3c090f50aafd87c8eb7433"
+      },
+      "triangles": 624,
+      "native_sha256": "56449a2f51cf0856defc092b7e20b7d59171c6e2a07bdc53f25ca93be75c41e0",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.83
+          ],
+          "target_half_width": 0.4207792207792207,
+          "target_half_depth": 0.348051948051948,
+          "head_bounds": [
+            1.46,
+            2.26
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "hood",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "isaac",
+      "revision": "i3e",
+      "folder": "models/isaac/i3e",
+      "source": {
+        "prefix": "models/isaac/i3",
+        "source_asset": "models/isaac/i3/isaac/scene.l64",
+        "source_authoring": "models/isaac/i3/isaac/authoring.json",
+        "asset_sha256": "160cab180a4d802c57104a6c131c8b488aac97c22de93942c7e389c8668b6e6e",
+        "authoring_sha256": "480f749ae1628151e3328cca3d92cf221bfb49f485d6e7c11ea37a41533decf9"
+      },
+      "triangles": 560,
+      "native_sha256": "6d5aa2abec5bad34c1c33da08af29f7de51ac7c661f2593a1f3a6e9e888d8426",
+      "settings": [
+        {
+          "cuts": [
+            0.83
+          ],
+          "preserve_lower": true,
+          "packing_phase": [
+            0,
+            0,
+            0
+          ],
+          "target_half_width": 0.43772699849170443,
+          "target_half_depth": 0.34477931447072074,
+          "head_bounds": [
+            1.46,
+            2.235
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "isaac",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0",
+        "--preserve-lower"
+      ]
+    },
+    {
+      "slug": "lass2",
+      "revision": "i3e",
+      "folder": "models/lass2/i3e",
+      "source": {
+        "prefix": "models/lass2/i3b",
+        "source_asset": "models/lass2/i3b/lass2/scene.l64",
+        "source_authoring": "models/lass2/i3b/lass2/authoring.json",
+        "asset_sha256": "218d7aa8cff4fb971f95749eb4eada4d1f5414f3f2ff0ea5ab01fb8ed4c2b57c",
+        "authoring_sha256": "7d32cb630c03d0cede0ed3a0a8cb1b435f83d8b75a99e4371558a73fe1b18739"
+      },
+      "triangles": 580,
+      "native_sha256": "00557ea4ebcdb9c39715b10f6631798b4e189f1d057d43a218c297cd3f89ddd6",
+      "settings": [
+        {
+          "cuts": [
+            0.62,
+            0.87
+          ],
+          "target_half_width": 0.39066299999999987,
+          "target_half_depth": 0.34606000000000003,
+          "head_bounds": [
+            1.3468,
+            2.089542
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "lass2",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.62",
+        "0.87",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "lass1",
+      "revision": "i3e",
+      "folder": "models/lass1/i3e",
+      "source": {
+        "prefix": "models/lass1/i3",
+        "source_asset": "models/lass1/i3/lass1/scene.l64",
+        "source_authoring": "models/lass1/i3/lass1/authoring.json",
+        "asset_sha256": "7c092d0f7d5aae31f74d7433d041eb6a58ace8e1a8e8227c9c8f2c6ac151cad3",
+        "authoring_sha256": "12305c6075b7cd4fde76ce05df4a0973278d50a2ac13da61a1eb7211a3b38954"
+      },
+      "triangles": 580,
+      "native_sha256": "f40c4e672318f7b088aae2d6e4ca63178bff73a8ec9edec73546541f0e9bd969",
+      "settings": [
+        {
+          "cuts": [
+            0.62,
+            0.83
+          ],
+          "target_half_width": 0.39066299999999987,
+          "target_half_depth": 0.34606000000000003,
+          "head_bounds": [
+            1.3468,
+            2.089542
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "lass1",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.62",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "nikki",
+      "revision": "i3e",
+      "folder": "models/nikki/i3e",
+      "source": {
+        "prefix": "models/nikki/i3",
+        "source_asset": "models/nikki/i3/nikki/scene.l64",
+        "source_authoring": "models/nikki/i3/nikki/authoring.json",
+        "asset_sha256": "4ecfb5502872ed3b17cc2bbb541528a6598a91958a9f0c65dda9704b700da3d2",
+        "authoring_sha256": "1b4dd32df56dc216d0e1cb4951d105c5c51fe5e953eea0d4fd4a4c05e1bd19d9"
+      },
+      "triangles": 592,
+      "native_sha256": "8488f51ab8b717a4916060c6b95d6e92032371bbd9f0e1a27048c77bc76960c2",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.83
+          ],
+          "target_half_width": 0.4292500000000001,
+          "target_half_depth": 0.36135013888888895,
+          "head_bounds": [
+            1.46,
+            2.235
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "nikki",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "lad",
+      "revision": "i3e",
+      "folder": "models/lad/i3e",
+      "source": {
+        "prefix": "models/lad/i3b",
+        "source_asset": "models/lad/i3b/lad/scene.l64",
+        "source_authoring": "models/lad/i3b/lad/authoring.json",
+        "asset_sha256": "af6e16730cec6d5d8abf85218064b746486102dca688bbfd38ab746373dc2e9d",
+        "authoring_sha256": "e9137c40bcaedb612cf1ddfd5aff8a907019b44042c76e720ec93a867c274b8f"
+      },
+      "triangles": 620,
+      "native_sha256": "2ad09b55ae4d0a27b05d7923110ea8c58194d547c5ebfe7919c18f1bddb041d4",
+      "settings": [
+        {
+          "cuts": [
+            0.69,
+            0.83
+          ],
+          "target_half_width": 0.43241399999999997,
+          "target_half_depth": 0.3437012987012988,
+          "head_bounds": [
+            1.33,
+            2.12
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "lad",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.69",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "murray",
+      "revision": "i3e",
+      "folder": "models/murray/i3e",
+      "source": {
+        "prefix": "models/murray/i3",
+        "source_asset": "models/murray/i3/murray/scene.l64",
+        "source_authoring": "models/murray/i3/murray/authoring.json",
+        "asset_sha256": "f51488569a5d4d419b79b8b428c3b5ee255a8ac9b0a8ae57dc1aceccac2ca847",
+        "authoring_sha256": "f53cbaffd6cef96f893147f59a8bb0c98ff72d4d2af8cbb3b1b63545bd73d74a"
+      },
+      "triangles": 592,
+      "native_sha256": "da2aa9e7ede0ce5926c9c23f9c20a851864381f7bb0ab7630126f82842d431dc",
+      "settings": [
+        {
+          "cuts": [
+            0.69,
+            0.83
+          ],
+          "target_half_width": 0.42831250000000004,
+          "target_half_depth": 0.36742062500000006,
+          "head_bounds": [
+            1.46,
+            2.235
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "murray",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.69",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "rick",
+      "revision": "i3e",
+      "folder": "models/rick/i3e",
+      "source": {
+        "prefix": "models/rick/i3",
+        "source_asset": "models/rick/i3/rick/scene.l64",
+        "source_authoring": "models/rick/i3/rick/authoring.json",
+        "asset_sha256": "2bb12bb168502c9c2f706acd48b2f69afdc64730709848a6f331ab068b5c384f",
+        "authoring_sha256": "e7baa22a47f899f22ab0f25d8f5c082a60a868992cee23687727661e68596764"
+      },
+      "triangles": 560,
+      "native_sha256": "df0479138eef2ad9057bf9f38ad860408dfce2d2d85a5a8142de80714c239174",
+      "settings": [
+        {
+          "cuts": [
+            0.83
+          ],
+          "preserve_lower": true,
+          "packing_phase": [
+            0,
+            0,
+            0
+          ],
+          "target_half_width": 0.43772699849170443,
+          "target_half_depth": 0.34670335960960963,
+          "head_bounds": [
+            1.46,
+            2.235
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "rick",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0",
+        "--preserve-lower"
+      ]
+    },
+    {
+      "slug": "specs",
+      "revision": "i3e",
+      "folder": "models/specs/i3e",
+      "source": {
+        "prefix": "models/specs/i3",
+        "source_asset": "models/specs/i3/specs/scene.l64",
+        "source_authoring": "models/specs/i3/specs/authoring.json",
+        "asset_sha256": "a5327d43e29700af61f6d857cbb23a2b6a3eaf66a9aa67823fda111bd69cdc57",
+        "authoring_sha256": "30d99a3b2b7f9597438de15bd51fb2ea37f6109582f0e47f7d25b3890b2c47cc"
+      },
+      "triangles": 620,
+      "native_sha256": "79dda64c28eb60356e6c3efa8366a3eb69d6ca87eea8711ca91de70f5b124611",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.83
+          ],
+          "packing_phase": [
+            0.007,
+            0.011,
+            0.009
+          ],
+          "target_half_width": 0.405,
+          "target_half_depth": 0.335,
+          "head_bounds": [
+            1.52,
+            2.29
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "specs",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.83",
+        "--phase",
+        "0.007",
+        "0.011",
+        "0.009"
+      ]
+    },
+    {
+      "slug": "ken",
+      "revision": "i3e",
+      "folder": "models/ken/i3e",
+      "source": {
+        "prefix": "models/ken/i3",
+        "source_asset": "models/ken/i3/ken/scene.l64",
+        "source_authoring": "models/ken/i3/ken/authoring.json",
+        "asset_sha256": "b16e536e3f2f8bb5b7bb78312426e600ccfe3275b9777730a96d145660e9c7d8",
+        "authoring_sha256": "a3b3b701bc112d4fff0fe24eb21a54d182522c315fe0b44444c03ff12550a4c1"
+      },
+      "triangles": 596,
+      "native_sha256": "2419287881da4c9abe7b80a2ecea64d53de28838f2a2ebb4801b5897687d494f",
+      "settings": [
+        {
+          "cuts": [
+            0.69,
+            0.83
+          ],
+          "packing_phase": [
+            0.007,
+            0.011,
+            0.009
+          ],
+          "target_half_width": 0.43772699849170443,
+          "target_half_depth": 0.3513204941860465,
+          "head_bounds": [
+            1.46,
+            2.235
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "ken",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.69",
+        "0.83",
+        "--phase",
+        "0.007",
+        "0.011",
+        "0.009"
+      ]
+    },
+    {
+      "slug": "courtney",
+      "revision": "i3e",
+      "folder": "models/courtney/i3e",
+      "source": {
+        "prefix": "models/courtney/i3",
+        "source_asset": "models/courtney/i3/courtney/scene.l64",
+        "source_authoring": "models/courtney/i3/courtney/authoring.json",
+        "asset_sha256": "6f6fa1a170baf2d3b6391245dc5dce3c7ae5e0dbbaa060ff93a5270b26eea6b2",
+        "authoring_sha256": "20d602e06bf6617f5fa20c62ad6cbfedc0c43b7a8c86c89357163d208008d8f8"
+      },
+      "triangles": 588,
+      "native_sha256": "4a85bfb171638e2d19ce08f3afe9ea91475912d7b285277b2db8a73dca65d325",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.83
+          ],
+          "target_half_width": 0.44446875,
+          "target_half_depth": 0.3460942564655173,
+          "head_bounds": [
+            1.46,
+            2.235
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "courtney",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "steve",
+      "revision": "i3e",
+      "folder": "models/steve/i3e",
+      "source": {
+        "prefix": "models/steve/i3",
+        "source_asset": "models/steve/i3/steve/scene.l64",
+        "source_authoring": "models/steve/i3/steve/authoring.json",
+        "asset_sha256": "465add9ae9043a91fa5824fc37acd026c17d0d2e7477ff8f3049213bedacfa67",
+        "authoring_sha256": "8543c4f040dda8632c1418ef3f4eafa15ee06fff90bcdb3f9dfde118be150f86"
+      },
+      "triangles": 632,
+      "native_sha256": "30403b7f1bb699d13b7c2292df83181bf6a37c2cc144910ea252b5654f7ac216",
+      "settings": [
+        {
+          "cuts": [
+            0.67,
+            0.83
+          ],
+          "target_half_width": 0.43450000000000005,
+          "target_half_depth": 0.348051948051948,
+          "head_bounds": [
+            1.46,
+            2.275
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "steve",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.67",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "jack",
+      "revision": "i3e",
+      "folder": "models/jack/i3e",
+      "source": {
+        "prefix": "models/jack/i3",
+        "source_asset": "models/jack/i3/jack/scene.l64",
+        "source_authoring": "models/jack/i3/jack/authoring.json",
+        "asset_sha256": "cac0cbd45c1f36577f7aeee854d0d1c02c2ce4427f0aa728f8ca9d30468c4688",
+        "authoring_sha256": "31bf6376387efaeb42cb42f872dab56b0a62ceb54ed62f566efd64296e50a926"
+      },
+      "triangles": 560,
+      "native_sha256": "81e0d40efd7912839d0f53c16a749757c72a356fdeff6d0553814223debdcbfb",
+      "settings": [
+        {
+          "cuts": [
+            0.83
+          ],
+          "preserve_lower": true,
+          "packing_phase": [
+            0,
+            0,
+            0
+          ],
+          "target_half_width": 0.4102597402597402,
+          "target_half_depth": 0.3462307480748075,
+          "head_bounds": [
+            1.46,
+            2.2399999999999998
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "jack",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0",
+        "--preserve-lower"
+      ]
+    },
+    {
+      "slug": "rod",
+      "revision": "i3e",
+      "folder": "models/rod/i3e",
+      "source": {
+        "prefix": "models/rod/i3",
+        "source_asset": "models/rod/i3/rod/scene.l64",
+        "source_authoring": "models/rod/i3/rod/authoring.json",
+        "asset_sha256": "01b948aa306e236d064e051f5c2503c73c72e79d4b64ea7605e3c9a945e3d266",
+        "authoring_sha256": "fa7ab8e96256d6fca8e2049b38042be821a0fa1de17a163e4cfed6604510bc5d"
+      },
+      "triangles": 560,
+      "native_sha256": "e18ed558b46db20fdd353eccc26fda00532255828de9df21903e71d49b9adf56",
+      "settings": [
+        {
+          "cuts": [
+            0.83
+          ],
+          "preserve_lower": true,
+          "packing_phase": [
+            0,
+            0,
+            0
+          ],
+          "target_half_width": 0.43772699849170443,
+          "target_half_depth": 0.34671770619118847,
+          "head_bounds": [
+            1.46,
+            2.235
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "rod",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0",
+        "--preserve-lower"
+      ]
+    },
+    {
+      "slug": "woman",
+      "revision": "i3e",
+      "folder": "models/woman/i3e",
+      "source": {
+        "prefix": "models/woman/i3",
+        "source_asset": "models/woman/i3/woman/scene.l64",
+        "source_authoring": "models/woman/i3/woman/authoring.json",
+        "asset_sha256": "8fbcc0f1f453b85fa8eff9b11c6e081794d50cc375fb439a0fc4de1fd8f8a716",
+        "authoring_sha256": "765d37d9db4734f63bae268b58d2ceb04f10349bfaa0804d3e6f8bcacc7e7294"
+      },
+      "triangles": 596,
+      "native_sha256": "04118c90e8443dfce16d9e177a12115eb58d8a5d63973c6fd98dffc2d8ac2bc5",
+      "settings": [
+        {
+          "cuts": [
+            0.67,
+            0.83
+          ],
+          "target_half_width": 0.4378859999999998,
+          "target_half_depth": 0.36220199999999986,
+          "head_bounds": [
+            1.5096,
+            2.3421239999999997
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "woman",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.67",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "chap",
+      "revision": "i3f",
+      "folder": "models/chap/i3f",
+      "source": {
+        "prefix": "models/chap/i3",
+        "source_asset": "models/chap/i3/chap/scene.l64",
+        "source_authoring": "models/chap/i3/chap/authoring.json",
+        "asset_sha256": "2db52b8620f73ae4571da37396bd97d809199aa0b6634460f68080db74743e17",
+        "authoring_sha256": "85d96ef1586a57885d7389bfbf0fdc83216afd893d7895168b9a1b994d2d1d3d"
+      },
+      "triangles": 628,
+      "native_sha256": "37daa5509d330b95f10d122dd364abcee3b85f3fc9bd7df52c3796302c446a66",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.83
+          ],
+          "preserve_lower": false,
+          "packing_phase": [
+            -0.007,
+            -0.011,
+            -0.009
+          ],
+          "target_half_width": 0.43129870129870135,
+          "target_half_depth": 0.3567532467532468,
+          "head_bounds": [
+            1.49,
+            2.31
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "chap",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.83",
+        "--phase",
+        "-0.007",
+        "-0.011",
+        "-0.009"
+      ]
+    },
+    {
+      "slug": "gal",
+      "revision": "i3e",
+      "folder": "models/gal/i3e",
+      "source": {
+        "prefix": "models/gal/i3",
+        "source_asset": "models/gal/i3/gal/scene.l64",
+        "source_authoring": "models/gal/i3/gal/authoring.json",
+        "asset_sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e",
+        "authoring_sha256": "e439339d580ac11d0be45cf2a1cfcb40ab9189acd31c59a76b8383597887d17f"
+      },
+      "triangles": 580,
+      "native_sha256": "fdcad971f7ffe4b516aafd4adb6ca5457d4e5c7d4408b526a6ebb61c82f5e8d7",
+      "settings": [
+        {
+          "cuts": [
+            0.67,
+            0.83
+          ],
+          "packing_phase": [
+            0.007,
+            0.011,
+            0.009
+          ],
+          "target_half_width": 0.4292999999999999,
+          "target_half_depth": 0.35509999999999997,
+          "head_bounds": [
+            1.48,
+            2.2962
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "gal",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.67",
+        "0.83",
+        "--phase",
+        "0.007",
+        "0.011",
+        "0.009"
+      ]
+    },
+    {
+      "slug": "pappy",
+      "revision": "i3e",
+      "folder": "models/pappy/i3e",
+      "source": {
+        "prefix": "models/pappy/i3",
+        "source_asset": "models/pappy/i3/pappy/scene.l64",
+        "source_authoring": "models/pappy/i3/pappy/authoring.json",
+        "asset_sha256": "1858a041ca2b21d5a9178b222f13c33611de7ec9f464d8cc7e361cf48a9e7698",
+        "authoring_sha256": "81596bd13616f823b678cf17d5bf38104e72f83b7bce5efaaab96b1c59a78520"
+      },
+      "triangles": 620,
+      "native_sha256": "0321a6d385058c2c2a3a9c87401b6e37c20d321c5bf789f5b6a80077751d2ed2",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.83
+          ],
+          "packing_phase": [
+            0.007,
+            0.011,
+            0.009
+          ],
+          "target_half_width": 0.4210895833333333,
+          "target_half_depth": 0.3344791666666666,
+          "head_bounds": [
+            1.43,
+            2.18
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "pappy",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.83",
+        "--phase",
+        "0.007",
+        "0.011",
+        "0.009"
+      ]
+    },
+    {
+      "slug": "butch",
+      "revision": "i3e",
+      "folder": "models/butch/i3e",
+      "source": {
+        "prefix": "models/butch/i3",
+        "source_asset": "models/butch/i3/butch/scene.l64",
+        "source_authoring": "models/butch/i3/butch/authoring.json",
+        "asset_sha256": "40c092a77f52dafd9359822fb7253eb67ccc9d79a1c3b5877eeca529cf8350bc",
+        "authoring_sha256": "ab44587da570f20114e9f393cf0a9623df5731391096b372a71e4312f85ad8bb"
+      },
+      "triangles": 632,
+      "native_sha256": "a9031ecbd1862066aa8b21bb243b23e909c3dfc675b087e8ff776d1798580c57",
+      "settings": [
+        {
+          "cuts": [
+            0.69,
+            0.76
+          ],
+          "packing_phase": [
+            0.012,
+            -0.008,
+            0.014
+          ],
+          "target_half_width": 0.43186250000000004,
+          "target_half_depth": 0.3350000000000001,
+          "head_bounds": [
+            1.43,
+            2.2
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "butch",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.69",
+        "0.76",
+        "--phase",
+        "0.012",
+        "-0.008",
+        "0.014"
+      ]
+    },
+    {
+      "slug": "granny",
+      "revision": "i3e",
+      "folder": "models/granny/i3e",
+      "source": {
+        "prefix": "models/granny/i3",
+        "source_asset": "models/granny/i3/granny/scene.l64",
+        "source_authoring": "models/granny/i3/granny/authoring.json",
+        "asset_sha256": "cd70a4e0d7e76c6e7c6a613a750da12ce7c47294d72f44f10d095c4c4889d82a",
+        "authoring_sha256": "95800cf394a7f51ab119355649dbab1ea4290bca307ec9a585c5e260194d44c0"
+      },
+      "triangles": 640,
+      "native_sha256": "b4ef52cda37b6bf803d94e23ec54afa10ff16a2e2baf359ec6f39d4807787682",
+      "settings": [
+        {
+          "cuts": [
+            0.7,
+            0.85
+          ],
+          "target_half_width": 0.43736,
+          "target_half_depth": 0.3247324675324675,
+          "head_bounds": [
+            1.3024,
+            2.123264
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "granny",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.7",
+        "0.85",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "mark",
+      "revision": "i3f",
+      "folder": "models/mark/i3f",
+      "source": {
+        "prefix": "../mark-concepts/approved/a_adventure/i3d",
+        "source_asset": "../mark-concepts/approved/a_adventure/i3d/mark/scene.l64",
+        "source_authoring": "../mark-concepts/approved/a_adventure/i3d/mark/authoring.json",
+        "asset_sha256": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3",
+        "authoring_sha256": "eed84f3dd345f94e7f248a02263d676119a9adee0a101d0c72355db1746eeeed"
+      },
+      "triangles": 596,
+      "native_sha256": "ebf3348ff24ad68c601016e86d5643d3fd5f4ac4d5e05dad69dc65c3650b56b3",
+      "settings": [
+        {
+          "rear_side_depth_scale": 1.1,
+          "nose_extension": false,
+          "front_face_uv_span": 0.76,
+          "cap_bill_same_transform": true
+        },
+        {
+          "rear_side_depth_scale": 1.1,
+          "nose_extension": false,
+          "front_face_uv_span": 0.76,
+          "cap_bill_same_transform": true
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "mark",
+        "--revision",
+        "REBUILD_REVISION",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "mania_palette2",
+      "revision": "i3f",
+      "folder": "models/mania_palette2/i3f",
+      "source": {
+        "prefix": "models/mania_palette2/i3",
+        "source_asset": "models/mania_palette2/i3/mania_palette2/scene.l64",
+        "source_authoring": "models/mania_palette2/i3/mania_palette2/authoring.json",
+        "asset_sha256": "b29e366efd08bb77b88d98436864d4e12e42ab7e6ccfab0d7eab45e37952ad9b",
+        "authoring_sha256": "8550f66a8646615db0d18187ec1ce8c70d40a31cf3d5b9f3e9436c2f37241794"
+      },
+      "triangles": 628,
+      "native_sha256": "02066f9f411d0f78826cdf49d4a75f112087a6fc5da31df26f9cf31512f2d80d",
+      "settings": [
+        {
+          "cuts": [
+            0.67,
+            0.83
+          ],
+          "preserve_lower": false,
+          "packing_phase": [
+            0.012,
+            -0.008,
+            0.014
+          ],
+          "target_half_width": 0.4155194805194807,
+          "target_half_depth": 0.34370129870129884,
+          "head_bounds": [
+            1.49,
+            2.2800000000000002
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "mania_palette2",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.67",
+        "0.83",
+        "--phase",
+        "0.012",
+        "-0.008",
+        "0.014"
+      ]
+    },
+    {
+      "slug": "boy_palette2",
+      "revision": "i3e",
+      "folder": "models/boy_palette2/i3e",
+      "source": {
+        "prefix": "models/boy_palette2/i3",
+        "source_asset": "models/boy_palette2/i3/boy_palette2/scene.l64",
+        "source_authoring": "models/boy_palette2/i3/boy_palette2/authoring.json",
+        "asset_sha256": "410e76cecc51262e3b8d9ed596c8bdcf3facac7e13d714e5a39257e29e1748c4",
+        "authoring_sha256": "9247d53cec6487e1d53e4f13bbde692239f0ff712fb8db52924dcda57f54e7f2"
+      },
+      "triangles": 620,
+      "native_sha256": "27dd7df6bd54e33a1f34c64ae205d6834c714b82915292b5b5d76492e9d728a4",
+      "settings": [
+        {
+          "cuts": [
+            0.66,
+            0.83
+          ],
+          "target_half_width": 0.4207792207792209,
+          "target_half_depth": 0.3480519480519482,
+          "head_bounds": [
+            1.35,
+            2.1500000000000004
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "boy_palette2",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.66",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "swimmer_palette2",
+      "revision": "i3e",
+      "folder": "models/swimmer_palette2/i3e",
+      "source": {
+        "prefix": "models/swimmer_palette2/i3b",
+        "source_asset": "models/swimmer_palette2/i3b/swimmer_palette2/scene.l64",
+        "source_authoring": "models/swimmer_palette2/i3b/swimmer_palette2/authoring.json",
+        "asset_sha256": "36da5c6037274a76c5f7896d7aaaa38b9473b370979c7fcf4f6325098a2fb8e4",
+        "authoring_sha256": "bdee8f79707a2f87126ddaf742f6d5abaa4ed395dc265df5d89f12ce30fb0a14"
+      },
+      "triangles": 576,
+      "native_sha256": "37b01de8ede9f2e3b355fbf35d31266ff4748953c0f0f7e354769a343cbb3260",
+      "settings": [
+        {
+          "cuts": [
+            0.69,
+            0.83
+          ],
+          "target_half_width": 0.3949559999999999,
+          "target_half_depth": 0.34044919413919417,
+          "head_bounds": [
+            1.3616000000000001,
+            2.112504
+          ]
+        }
+      ],
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "swimmer_palette2",
+        "--revision",
+        "REBUILD_REVISION",
+        "--cuts",
+        "0.69",
+        "0.83",
+        "--phase",
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    {
+      "slug": "amy__lying",
+      "revision": "i3e",
+      "folder": "models/amy__lying/i3e",
+      "source": {
+        "prefix": "models/amy__lying/i3",
+        "source_asset": "models/amy__lying/i3/amy__lying/scene.l64",
+        "source_authoring": "models/amy__lying/i3/amy__lying/authoring.json",
+        "asset_sha256": "7936767efe10b6a4f0156ea4fc06d2d096e7cc3060ba36e8deccd1a27ed14e90",
+        "authoring_sha256": "dde00e42fb89338fdaa20064213dfb16b7b46b55afd58a9cac0df085f1568dbc"
+      },
+      "triangles": 580,
+      "native_sha256": "0ac440b4630b9eee24c6c962211e997c071b6e2ed2fde6c918535b4192444249",
+      "settings": null,
+      "reproduce_geometry": [
+        "python3",
+        "tools/round_cast_heads.py",
+        "amy__lying",
+        "--revision",
+        "REBUILD_REVISION"
+      ]
+    }
+  ],
+  "source_snapshot": "review/roundness-sources.json",
+  "initial_geometry_audits": "review/roundness-geometry-initial-i3e.json",
+  "superseded_local_extrema_candidates": [
+    "ronald/i3e",
+    "mania/i3e",
+    "lass3/i3e",
+    "mitch/i3e",
+    "chap/i3e",
+    "mania_palette2/i3e"
+  ],
+  "note": "Final selected geometry and native review. Eye UV and scientist paint follow-ups are recorded separately. Earlier captures remain retained; corrected selections include the local-extrema cross-section fix."
+}

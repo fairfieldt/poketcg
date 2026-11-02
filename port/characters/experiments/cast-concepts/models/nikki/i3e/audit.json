@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "source": "models/nikki/i3/nikki",
+  "source_sha256": "4ecfb5502872ed3b17cc2bbb541528a6598a91958a9f0c65dda9704b700da3d2",
+  "settings": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "target_half_width": 0.4292500000000001,
+      "target_half_depth": 0.36135013888888895,
+      "head_bounds": [
+        1.46,
+        2.235
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 168,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/nikki/i3e/nikki/scene.l64",
+    "sha256": "8488f51ab8b717a4916060c6b95d6e92032371bbd9f0e1a27048c77bc76960c2",
+    "triangles": 592,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "nikki3_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      },
+      {
+        "name": "nikki3_top.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "before_max_eye_white_angle": 56.70408596050888,
+    "after_max_eye_white_angle": 42.76482648367512,
+    "additional_horizontal_span": 0.76,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of painted eye whites; no pixel beyond43deg in sampled owning faces; lying pose inherits standing mapping",
+    "face_vertices": 36,
+    "original_native_sha256": "7d0eb2bd1d2d94cbcc0f3e714b4b96573ee92b3387664b81c6cecea9d9aac09d",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

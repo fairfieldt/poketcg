@@ -1,0 +1,1 @@
+Superseded by i3f. The initial horizontal-section calculation omitted vertices exactly on a sampled ring, which could stretch isolated crown and hair points. The corrected i3f calculation includes those vertices and has a new native capture and written visual review. This retained i3e export is not selected for production.

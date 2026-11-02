@@ -1,12 +1,12 @@
 {
   "model": "jack",
-  "triangles": 528,
-  "vertices": 452,
+  "triangles": 560,
+  "vertices": 554,
   "batches": 7,
   "linked_parts": 0,
   "appearances": [
     "jack"
   ],
-  "fingerprint": "30ba0de6706e9875b570f5acb739ee7e8732d58c7a229bdcf6ba920ca4dce44f",
+  "fingerprint": "7cc2938a3a7949c19c81772b429b728c8a9429c5c95971eea1432648a13d231d",
   "recipe": "reviewed-cast-manual"
 }

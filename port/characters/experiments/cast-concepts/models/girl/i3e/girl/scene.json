@@ -1,0 +1,16 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "w3_girl_face"
+  ],
+  "vertices": 488,
+  "triangles": 576,
+  "batches": 6
+}

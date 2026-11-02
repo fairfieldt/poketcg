@@ -56,8 +56,8 @@
   "appearance": "lass1",
   "pose": "standing",
   "component": null,
-  "vertices": 363,
-  "triangles": 528,
+  "vertices": 468,
+  "triangles": 580,
   "batches": 6,
   "parts": [
     0,
@@ -67,8 +67,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/lass1/i3/lass1/scene.l64",
-    "sha256": "7c092d0f7d5aae31f74d7433d041eb6a58ace8e1a8e8227c9c8f2c6ac151cad3",
+    "asset": "experiments/cast-concepts/models/lass1/i3e/lass1/scene.l64",
+    "sha256": "f40c4e672318f7b088aae2d6e4ca63178bff73a8ec9edec73546541f0e9bd969",
     "selection": "lass1"
   }
 }

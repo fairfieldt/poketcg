@@ -3,13 +3,13 @@
   "outputs": [
     {
       "path": "port/frontends/n64/adventure/poketcg-adventure.z64",
-      "bytes": 37126144,
-      "sha256": "5c51272fc30a17a78dffd827e61ae4c38c732a94027b35d83acfd78c1ab8c8e3"
+      "bytes": 37371904,
+      "sha256": "9cf884aa92a82832bbd648e6d2142b8435edee5b03969011767ab54b310333e1"
     },
     {
       "path": "port/frontends/n64/adventure/poketcg-expansion.z64",
-      "bytes": 37126144,
-      "sha256": "e5543313dd8c29292a71555c2be46dd6a2f314ffc04d02322dc9c002472e125c"
+      "bytes": 37371904,
+      "sha256": "ce98e006c020fe19851c27929c276b365d09e8242833b6dcc275ac64488aba75"
     },
     {
       "path": "port/frontends/web/dist/tcg.wasm",
@@ -19,12 +19,12 @@
     {
       "path": "port/frontends/web/dist/world/world.json",
       "bytes": 442206,
-      "sha256": "8844d331d4dda3105091c3b1802b49ea15737866b3a61cd3995a98cae1f86e92"
+      "sha256": "c2a40c1a235b669e2ec6fc02d9b438211fa251d68bf3aa1f0e0896a3b57f7ba9"
     },
     {
-      "path": "port/reviews/trailer/v4/poketcg64-trailer.mp4",
-      "bytes": 40253453,
-      "sha256": "b98eee9cda6636cb383e469b323c5ac8dfb580d4a081779ec403ff77d3f9111a"
+      "path": "port/reviews/trailer/v5/poketcg64-trailer.mp4",
+      "bytes": 33766456,
+      "sha256": "56d7bca21a9c0bf77c1f7d00f6f85d7b8d68171cb5fb3b51fd99e83685d3497e"
     }
   ],
   "commands": [
@@ -40,7 +40,8 @@
     "python3 port/world3d/tools/check_prop_models.py",
     "python3 port/world3d/tools/check_world.py",
     "node port/frontends/web/test/world3d_browser.mjs",
-    "node port/frontends/web/test/adventure_browser.mjs"
+    "node port/frontends/web/test/adventure_browser.mjs",
+    "python3 port/characters/experiments/cast-concepts/tools/verify_round_heads.py"
   ],
   "browser": {
     "maps": 34,
@@ -54,12 +55,48 @@
     "The original study immutability reports describe the preintegration baseline; production integration intentionally changes human assets."
   ],
   "trailer": {
-    "version": 4,
+    "version": 5,
     "fresh_native_captures": true,
     "crt": false,
     "frames": 3874,
     "seconds": 64.56666666666666,
     "audio_matches_v3": true,
-    "independent_review": "port/reviews/trailer/v4/independent-review.json"
+    "independent_review": "port/reviews/trailer/v5/independent-review.json",
+    "preview_verification": "port/reviews/trailer/v5/preview-verification.json",
+    "embedded_model_provenance": "port/reviews/trailer/v5/independent-model-provenance.json"
+  },
+  "updated": "2026-11-02",
+  "round_heads": {
+    "authored_human_families": 37,
+    "exports": 41,
+    "native_round_triangles": [
+      560,
+      684
+    ],
+    "sampled_max_eye_feature_degrees": 43,
+    "source_snapshot": "port/characters/experiments/cast-concepts/review/roundness-sources.json",
+    "native_review": "port/characters/experiments/cast-concepts/review/roundness-verification.json",
+    "browser_maps": 34,
+    "browser_errors": 0,
+    "actual_practice_duel": true
+  },
+  "runtime_lods": {
+    "exports": 49,
+    "full_triangles": 25056,
+    "lod_triangles": 18840,
+    "complete_head_triangles_byte_exact": 9520,
+    "body_only_simplification": true
+  },
+  "capture_staging": {
+    "standard_full_and_lod_actor_files": 98,
+    "expansion_full_and_lod_actor_files": 98,
+    "all_bytes_equal_generated": true
+  },
+  "embedded_rom_verification": {
+    "passed": true,
+    "standard_actors": 98,
+    "expansion_actors": 98,
+    "referenced_sprites_per_rom": 63,
+    "proof": "port/characters/review/cast-embedded-roms.json"
   }
 }

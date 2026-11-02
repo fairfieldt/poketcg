@@ -65,8 +65,8 @@
   "appearance": "clerk",
   "pose": "standing",
   "component": null,
-  "vertices": 413,
-  "triangles": 564,
+  "vertices": 551,
+  "triangles": 620,
   "batches": 7,
   "parts": [
     0,
@@ -76,8 +76,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/clerk/i3/clerk/scene.l64",
-    "sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624",
+    "asset": "experiments/cast-concepts/models/clerk/i3e/clerk/scene.l64",
+    "sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1",
     "selection": "clerk"
   }
 }

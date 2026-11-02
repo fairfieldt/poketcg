@@ -63,8 +63,8 @@
   "appearance": "swimmer",
   "pose": "standing",
   "component": null,
-  "vertices": 401,
-  "triangles": 564,
+  "vertices": 535,
+  "triangles": 620,
   "batches": 7,
   "parts": [
     0,
@@ -74,8 +74,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/swimmer/i3b/swimmer/scene.l64",
-    "sha256": "14fc11a98d30e655454ef697418e0f93f94a3a5e3cb12c5b28e4d61266dafa7a",
+    "asset": "experiments/cast-concepts/models/swimmer/i3e/swimmer/scene.l64",
+    "sha256": "0167c80b075dde96d08240618099501096412905b9bf4ea6187509faa622c4bd",
     "selection": "swimmer"
   }
 }

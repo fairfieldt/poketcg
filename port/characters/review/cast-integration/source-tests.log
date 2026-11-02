@@ -1,0 +1,48 @@
+python3 tools/validate.py
+VALID 39 unique model(s), 49 native exports; geometry, textures, rig and palette reuse checked
+python3 tools/check_cast_integration.py
+CAST INTEGRATION PASS: 41 promoted exports, 115 original aliases, props unchanged, 49 runtime exports
+"/Applications/Blender.app/Contents/MacOS/Blender" --background --python-exit-code 1 --python tools/check_cast_blends.py
+00:00.473  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/dr_mason/dr_mason.blend"
+00:00.480  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/ronald/ronald.blend"
+00:00.486  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/ishihara/ishihara.blend"
+00:00.492  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/imakuni/imakuni.blend"
+00:00.497  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/tech/tech.blend"
+00:00.503  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/clerk/clerk.blend"
+00:00.509  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/mania/mania.blend"
+00:00.515  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/lass3/lass3.blend"
+00:00.520  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/mitch/mitch.blend"
+00:00.525  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/boy/boy.blend"
+00:00.531  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/man/man.blend"
+00:00.536  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/gene/gene.blend"
+00:00.542  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/swimmer/swimmer.blend"
+00:00.547  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/joshua/joshua.blend"
+00:00.552  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/amy/amy.blend"
+00:00.558  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/girl/girl.blend"
+00:00.564  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/hood/hood.blend"
+00:00.569  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/isaac/isaac.blend"
+00:00.574  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/lass2/lass2.blend"
+00:00.579  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/lass1/lass1.blend"
+00:00.585  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/nikki/nikki.blend"
+00:00.590  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/lad/lad.blend"
+00:00.596  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/murray/murray.blend"
+00:00.601  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/rick/rick.blend"
+00:00.606  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/specs/specs.blend"
+00:00.612  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/ken/ken.blend"
+00:00.618  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/courtney/courtney.blend"
+00:00.623  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/steve/steve.blend"
+00:00.628  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/jack/jack.blend"
+00:00.633  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/rod/rod.blend"
+00:00.639  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/woman/woman.blend"
+00:00.643  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/chap/chap.blend"
+00:00.649  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/gal/gal.blend"
+00:00.654  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/pappy/pappy.blend"
+00:00.659  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/butch/butch.blend"
+00:00.664  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/granny/granny.blend"
+00:00.669  blend            | Read blend: "/Users/fairfieldt/dev/poketcg/port/characters/assets/models/mark/mark.blend"
+fast64 addon: Verbose is enabled
+fast64 addon: Read in JSON settings from file
+CAST BLENDER PASS 37 canonical sources; palettes, shared body, final heads, Amy pose
+Blender 5.2.1 LTS (hash 9e2066aef7ef built 2026-08-25 01:35:57)
+
+Blender quit

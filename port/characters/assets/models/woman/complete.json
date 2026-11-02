@@ -1,12 +1,12 @@
 {
   "model": "woman",
-  "triangles": 544,
-  "vertices": 367,
+  "triangles": 596,
+  "vertices": 472,
   "batches": 6,
   "linked_parts": 0,
   "appearances": [
     "woman"
   ],
-  "fingerprint": "bd1989e1acb2d408585bac552f0d9df48775a54d5b53383b3ec0a6c3584bd55e",
+  "fingerprint": "cdeea44368d90275b11a2ce08b51fdde2c372b1fcc4419919f3af25cf60367f7",
   "recipe": "reviewed-cast-manual"
 }

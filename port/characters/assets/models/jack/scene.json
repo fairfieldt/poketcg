@@ -55,8 +55,8 @@
   "appearance": "jack",
   "pose": "standing",
   "component": null,
-  "vertices": 452,
-  "triangles": 528,
+  "vertices": 554,
+  "triangles": 560,
   "batches": 7,
   "parts": [
     0,
@@ -66,8 +66,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/jack/i3/jack/scene.l64",
-    "sha256": "cac0cbd45c1f36577f7aeee854d0d1c02c2ce4427f0aa728f8ca9d30468c4688",
+    "asset": "experiments/cast-concepts/models/jack/i3e/jack/scene.l64",
+    "sha256": "81e0d40efd7912839d0f53c16a749757c72a356fdeff6d0553814223debdcbfb",
     "selection": "jack"
   }
 }

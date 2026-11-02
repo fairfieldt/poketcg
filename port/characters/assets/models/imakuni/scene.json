@@ -55,8 +55,8 @@
   "appearance": "imakuni",
   "pose": "standing",
   "component": null,
-  "vertices": 450,
-  "triangles": 552,
+  "vertices": 584,
+  "triangles": 624,
   "batches": 7,
   "parts": [
     0,
@@ -66,8 +66,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/imakuni/i3/imakuni/scene.l64",
-    "sha256": "5692c1f82fc53c0f74ad7c0934d7b42a7b30c17a3adebae7b503ca2080acdd7d",
+    "asset": "experiments/cast-concepts/models/imakuni/i3e/imakuni/scene.l64",
+    "sha256": "56c09149169dd6fbd26609b3e3dd2f6c1d2e2d06ec61f8f82886887b2a9c406e",
     "selection": "imakuni"
   }
 }

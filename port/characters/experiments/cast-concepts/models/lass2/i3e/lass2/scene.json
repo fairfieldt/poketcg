@@ -1,0 +1,16 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "w3_lass2_face"
+  ],
+  "vertices": 510,
+  "triangles": 580,
+  "batches": 6
+}

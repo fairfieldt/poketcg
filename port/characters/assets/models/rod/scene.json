@@ -55,8 +55,8 @@
   "appearance": "rod",
   "pose": "standing",
   "component": null,
-  "vertices": 451,
-  "triangles": 528,
+  "vertices": 554,
+  "triangles": 560,
   "batches": 7,
   "parts": [
     0,
@@ -66,8 +66,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/rod/i3/rod/scene.l64",
-    "sha256": "01b948aa306e236d064e051f5c2503c73c72e79d4b64ea7605e3c9a945e3d266",
+    "asset": "experiments/cast-concepts/models/rod/i3e/rod/scene.l64",
+    "sha256": "e18ed558b46db20fdd353eccc26fda00532255828de9df21903e71d49b9adf56",
     "selection": "rod"
   }
 }

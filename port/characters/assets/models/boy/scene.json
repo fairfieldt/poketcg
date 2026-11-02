@@ -65,8 +65,8 @@
   "appearance": "boy",
   "pose": "standing",
   "component": null,
-  "vertices": 459,
-  "triangles": 560,
+  "vertices": 603,
+  "triangles": 620,
   "batches": 7,
   "parts": [
     0,
@@ -76,8 +76,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/boy/i3/boy/scene.l64",
-    "sha256": "6362601dfaa22bd1721bae3c8c19866916ead36564cdc477b002e288a56777fe",
+    "asset": "experiments/cast-concepts/models/boy/i3e/boy/scene.l64",
+    "sha256": "80331a3e1f713af4a49cb57f98a1a8119d87791e73e9b7db515f9ec041789cca",
     "selection": "boy"
   }
 }

@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+import struct
 import subprocess
 import time
 
@@ -36,6 +37,17 @@ def build(segment,preroll,ack):
     for src in (source/'filesystem').iterdir():
         dst=fs/src.name
         if not dst.exists():dst.symlink_to(src,target_is_directory=src.is_dir())
+    character_files={}
+    for directory in ('maps','lod'):
+        for original in sorted((ROOT/'port/world3d/generated'/directory).glob('actor_*.l64')):
+            staged=fs/'world'/directory/original.name
+            assert staged.is_file() and sha(staged)==sha(original), ('stale capture model',staged)
+            character_files[str(staged.relative_to(fs))]=sha(staged)
+            data=original.read_bytes();count=struct.unpack_from('>H',data,6)[0]
+            for i in range(count):
+                name=data[8+32*i:40+32*i].split(b'\0')[0].decode()
+                texture=fs/'world/textures'/name
+                character_files[str(texture.relative_to(fs))]=sha(texture)
     (fs/'trailer').mkdir(exist_ok=True)
     checkpoint=ADV/'build/trailer-ronald/ronald.duel';assert checkpoint.stat().st_size==1660 and sha(checkpoint)==RONALD_SHA
     # The staging directory is also named trailer-ronald, but the verified
@@ -66,7 +78,9 @@ trailer-amy.o: {ADV/'tests/trailer_amy.c'}
 {rom}.z64: N64_ROM_TITLE = "TCG64 trailer {segment}"
 {rom}.z64: N64_ROM_SAVETYPE = sram256k
 {rom}.z64: {rom}.dfs
-{rom}.dfs: $(wildcard filesystem/trailer/*)
+.PHONY: force-capture-filesystem
+force-capture-filesystem:
+{rom}.dfs: force-capture-filesystem $(wildcard filesystem/trailer/*)
 -include $(wildcard *.d)
 '''
     path=work/'Makefile';old=path.read_text() if path.exists() else ''
@@ -76,12 +90,19 @@ trailer-amy.o: {ADV/'tests/trailer_amy.c'}
             obj=work/filename
             if obj.exists():obj.unlink()
     subprocess.run(['make','-C',str(work),'-j4','all'],check=True)
+    # Verify the packed ROM, not just the staging symlink: a cached DFS can
+    # otherwise silently retain the previous cast while rebuilding the ROM.
+    for relative,expected in character_files.items():
+        extracted=subprocess.check_output(['/opt/libdragon/bin/dumpdfs','-e',str(work/(rom+'.z64')),relative])
+        assert hashlib.sha256(extracted).hexdigest()==expected, ('stale ROM asset',relative)
     manifest={'segment':segment,'rom':str(work/(rom+'.z64')),'rom_sha256':sha(work/(rom+'.z64')),
       'production_base_commit':subprocess.check_output(['git','rev-parse',BASE],cwd=ROOT,text=True).strip(),
       'runtime':'Production main.c initialization/private hosts; DIAGNOSTIC0;480x360;SHOW_FPS0; original engine and artwork',
       'silent_preroll_vi':preroll,'story_ack_vi':ack,'ronald_untouched_checkpoint_sha256':RONALD_SHA,'amy_untouched_checkpoint_sha256':AMY_SHA,
       'private_source':{str(p.relative_to(ROOT)):sha(p) for p in (ADV/'tests/trailer_main.c',ADV/'tests/trailer_ronald.c',ADV/'tests/trailer_amy.c',main_snapshot,ADV/'video.c')},
       'generated_headers':{str(p.relative_to(work)):sha(p) for p in (work/'generated').glob('*') if p.is_file()},
+      'character_files':character_files,
+      'embedded_character_files_verified':True,
       'pinned_objects':{str(p.relative_to(work)):sha(p) for p in objects}}
     (work/'build.json').write_text(json.dumps(manifest,indent=2)+'\n');print(json.dumps({k:v for k,v in manifest.items() if k!='pinned_objects'},indent=2))
 

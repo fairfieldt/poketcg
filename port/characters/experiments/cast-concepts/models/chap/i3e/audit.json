@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "source": "models/chap/i3/chap",
+  "source_sha256": "2db52b8620f73ae4571da37396bd97d809199aa0b6634460f68080db74743e17",
+  "settings": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "packing_phase": [
+        -0.007,
+        -0.011,
+        -0.009
+      ],
+      "target_half_width": 0.43129870129870135,
+      "target_half_depth": 0.3567532467532468,
+      "head_bounds": [
+        1.49,
+        2.31
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 204,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/chap/i3e/chap/scene.l64",
+    "sha256": "c059aa01a1291d0e787d1a29f404b430a9d8ebba7358adf06fac092fa47271e2",
+    "triangles": 628,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "gchap3_chap_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      },
+      {
+        "name": "gchap3_chap_shirt.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "before_max_eye_white_angle": 59.31510825561669,
+    "after_max_eye_white_angle": 42.19720339733809,
+    "additional_horizontal_span": 0.7,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of painted eye whites; no pixel beyond43deg in sampled owning faces; lying pose inherits standing mapping",
+    "face_vertices": 31,
+    "original_native_sha256": "a69750725201d055fe4048a402599eb4340d587da4529191fcfc5c82177d5f14",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

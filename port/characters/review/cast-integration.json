@@ -4,439 +4,439 @@
       "model": "dr_mason",
       "appearance": "dr_mason",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/dr_mason/i3/dr_mason/scene.l64",
-      "source_sha256": "784e46b8f1074131bb713526708cc136140ef4a92449fe5437c9d91d144d1582",
+      "source": "experiments/cast-concepts/models/dr_mason/i3f/dr_mason/scene.l64",
+      "source_sha256": "0f2be9a2ddccb096086655b62b10c0bc55db1c98652ee778b726df1508b10c1c",
       "target": "assets/models/dr_mason/scene.l64",
-      "sha256": "d766662d2686f7ac16dcb543fd9a23b50dfab8b7ad583b00fdebaaf4d469c721",
+      "sha256": "a85b4f25a358a40b05dbcee67c878ddf81d83165119ac838d20dbbb18fd6cc53",
       "runtime_model": 3,
-      "triangles": 560
+      "triangles": 620
     },
     {
       "model": "ronald",
       "appearance": "ronald",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/ronald/i3/ronald/scene.l64",
-      "source_sha256": "b7b5cc0870f062ac1636c3e2d953a6bc9cbc18960f6bcff33817a64c4eaf5033",
+      "source": "experiments/cast-concepts/models/ronald/i3f/ronald/scene.l64",
+      "source_sha256": "c247d6cdb7171a71d97f8d005e08e4a8ef0fb551a9374be284863d115f898218",
       "target": "assets/models/ronald/scene.l64",
-      "sha256": "ab4f0516aa5395b71fa4211336d865d947ab2a0dc1f75d860a2bc7aaea8ef492",
+      "sha256": "2a43bcb777ae99b9da641b8f195f44b4a5079c8383d729ba5e10957904c0168d",
       "runtime_model": 2,
-      "triangles": 512
+      "triangles": 588
     },
     {
       "model": "ishihara",
       "appearance": "ishihara",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/ishihara/i3/ishihara/scene.l64",
-      "source_sha256": "577ae3f1386f5554a8c52a7cb24987061bb377362aa51d9cbc3cc0f5a04c9308",
+      "source": "experiments/cast-concepts/models/ishihara/i3e/ishihara/scene.l64",
+      "source_sha256": "40b34731a1bd9757fd75dcd6e9dc0a75234f27a76d4c4ce179340458659c128f",
       "target": "assets/models/ishihara/scene.l64",
-      "sha256": "eb44204c8d729d5aec0f8365f99093e9b778f7215e80e862c4243d749d814c78",
+      "sha256": "b50b39627f5972da4fc1c3621acdafa3e9fe34945e24fa68d19c37e8dcc2163e",
       "runtime_model": 4,
-      "triangles": 528
+      "triangles": 588
     },
     {
       "model": "imakuni",
       "appearance": "imakuni",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/imakuni/i3/imakuni/scene.l64",
-      "source_sha256": "5692c1f82fc53c0f74ad7c0934d7b42a7b30c17a3adebae7b503ca2080acdd7d",
+      "source": "experiments/cast-concepts/models/imakuni/i3e/imakuni/scene.l64",
+      "source_sha256": "56c09149169dd6fbd26609b3e3dd2f6c1d2e2d06ec61f8f82886887b2a9c406e",
       "target": "assets/models/imakuni/scene.l64",
-      "sha256": "0c0877d8177dc1618fa75385340c1bb6b9867ae69f80ba30b3b5aee0a1ee7663",
+      "sha256": "c6998879af3ba6f4b788f5d89242806b50d9c492d3cc65157de91be43deac66b",
       "runtime_model": 5,
-      "triangles": 552
+      "triangles": 624
     },
     {
       "model": "tech",
       "appearance": "tech",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/tech/i3/tech/scene.l64",
-      "source_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec",
+      "source": "experiments/cast-concepts/models/tech/i3f/tech/scene.l64",
+      "source_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8",
       "target": "assets/models/tech/scene.l64",
-      "sha256": "c0a346a8f042d38b8af6b172bed74b7e7c13c2294d44ac10e88e65151f4dd1ba",
+      "sha256": "9548880e9055becba80580e1ba3bcb780eec0a6f2f57ee1bfc62b0d0bca7fbfe",
       "runtime_model": 25,
-      "triangles": 560
+      "triangles": 620
     },
     {
       "model": "clerk",
       "appearance": "clerk",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/clerk/i3/clerk/scene.l64",
-      "source_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624",
+      "source": "experiments/cast-concepts/models/clerk/i3e/clerk/scene.l64",
+      "source_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1",
       "target": "assets/models/clerk/scene.l64",
-      "sha256": "454f1c6bea9f53278a88c6bbba88aae621856b0662f9b3f459c34aaecfd1f5aa",
+      "sha256": "ba899074768376906a92c7da4f04eb688d205e008592c36345f6b8624c609801",
       "runtime_model": 34,
-      "triangles": 564
+      "triangles": 620
     },
     {
       "model": "mania",
       "appearance": "mania",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/mania/i3/mania/scene.l64",
-      "source_sha256": "f0630f41cde9f511a07696017c8f641e69059ecc298eac0a0e431d0390cc01e9",
+      "source": "experiments/cast-concepts/models/mania/i3f/mania/scene.l64",
+      "source_sha256": "b0df8979bce7a18995b4bc66fab19fc4e7204901580c80e45c08268f9b43457d",
       "target": "assets/models/mania/scene.l64",
-      "sha256": "43061478681cd8ed5217bde7e2b53442eaf8d56c1f26e3271c2e7e5e5fac1a94",
+      "sha256": "3e471608a00a6f3b50f20ebee6988cd0e296a9c8772fa796abed6d0a1e096b88",
       "runtime_model": 22,
-      "triangles": 560
+      "triangles": 628
     },
     {
       "model": "lass3",
       "appearance": "lass3",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/lass3/i3c/lass3/scene.l64",
-      "source_sha256": "126509a8f0cfe1fb6d14d7e74c20807dd9d048e80b09ce4fdf7ddd1ec5f98614",
+      "source": "experiments/cast-concepts/models/lass3/i3f/lass3/scene.l64",
+      "source_sha256": "db79256ba54b43a54ee911f1586da69986f57ac90fe11874b2e938c5ac6e84ba",
       "target": "assets/models/lass3/scene.l64",
-      "sha256": "d6ea8b7850891f759075b1114a06084362ae721cd9362aab311a57c30e9e698d",
+      "sha256": "4c2d99efc5f5eba26c1d2624f55d6d0b9ed9c96634fe8f507c3adc8b01dbee42",
       "runtime_model": 32,
-      "triangles": 612
+      "triangles": 684
     },
     {
       "model": "mitch",
       "appearance": "mitch",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/mitch/i3/mitch/scene.l64",
-      "source_sha256": "1181cf83029cc890adeec4bda7059efb2846a0b4090c66840a177375bb9018ac",
+      "source": "experiments/cast-concepts/models/mitch/i3f/mitch/scene.l64",
+      "source_sha256": "a543084dfefe0f56c0045c310f4426f09fceab95c99a8d4af9dada147bb65d2f",
       "target": "assets/models/mitch/scene.l64",
-      "sha256": "d7ba6b779efcbfaabec79a9092e14ad0dc9a63b0bff3e1e8f808961d05fa10e0",
+      "sha256": "98e042eeb2a88611e3003753bdca66adaa574bad1b550a50c6518f0de6d79b05",
       "runtime_model": 11,
-      "triangles": 528
+      "triangles": 604
     },
     {
       "model": "mania",
       "appearance": "mania_palette2",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/mania_palette2/i3/mania_palette2/scene.l64",
-      "source_sha256": "b29e366efd08bb77b88d98436864d4e12e42ab7e6ccfab0d7eab45e37952ad9b",
+      "source": "experiments/cast-concepts/models/mania_palette2/i3f/mania_palette2/scene.l64",
+      "source_sha256": "02066f9f411d0f78826cdf49d4a75f112087a6fc5da31df26f9cf31512f2d80d",
       "target": "assets/models/mania/variants/mania_palette2/scene.l64",
-      "sha256": "2638f6e2c22d114c3936c12b263d6c3ef074a903e18f2ba29104aabb06a55ed5",
+      "sha256": "76291883609485d12cd4ddb255f489d70a5a390cf7e45e54b7cd0cc221b635c0",
       "runtime_model": 22,
-      "triangles": 560
+      "triangles": 628
     },
     {
       "model": "boy",
       "appearance": "boy",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/boy/i3/boy/scene.l64",
-      "source_sha256": "6362601dfaa22bd1721bae3c8c19866916ead36564cdc477b002e288a56777fe",
+      "source": "experiments/cast-concepts/models/boy/i3e/boy/scene.l64",
+      "source_sha256": "80331a3e1f713af4a49cb57f98a1a8119d87791e73e9b7db515f9ec041789cca",
       "target": "assets/models/boy/scene.l64",
-      "sha256": "7106f96fcfb0acdcc4b1ba4da36f66d87fd3ddf10487674eca944919e1577952",
+      "sha256": "a571ceb3458d278d275245d3ac7b5a14ea79966fc75b081d84c2768568656c5f",
       "runtime_model": 18,
-      "triangles": 560
+      "triangles": 620
     },
     {
       "model": "man",
       "appearance": "man",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/man/i3/man/scene.l64",
-      "source_sha256": "a09bb55fccd5bf185408b4d6cb8b62889c42703426a4ccbefafb8218510d2267",
+      "source": "experiments/cast-concepts/models/man/i3e/man/scene.l64",
+      "source_sha256": "063692f881228bf83c7a1a9fc74223ead9536b497728d34521fb6e77b1684be1",
       "target": "assets/models/man/scene.l64",
-      "sha256": "8975a420166417976a22cdbc1c196a731fade437f03cddcbf73808a3a452f2a2",
+      "sha256": "874be173448ff6a872611976d4f42857eda2bcd55b80a03423831aec79d1ad89",
       "runtime_model": 27,
-      "triangles": 560
+      "triangles": 620
     },
     {
       "model": "gene",
       "appearance": "gene",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/gene/i3/gene/scene.l64",
-      "source_sha256": "a7c5a595c0c5f772da22bd95864aa9858e40d3f1d6293235afeee2b4a5e923b2",
+      "source": "experiments/cast-concepts/models/gene/i3e/gene/scene.l64",
+      "source_sha256": "e7f715a3a54b06741e59ccde608f8ce799e8fbad51b4008b536c650875e8d1b1",
       "target": "assets/models/gene/scene.l64",
-      "sha256": "6eb938649bfd38cff675fac7ebe16f6b31122e9435d053388c033a34533ee72a",
+      "sha256": "621ad3121ec7178e4c1b14f165d4c1ee7e806dbaa8e905189ffdcbd518874ce5",
       "runtime_model": 12,
-      "triangles": 528
+      "triangles": 560
     },
     {
       "model": "swimmer",
       "appearance": "swimmer",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/swimmer/i3b/swimmer/scene.l64",
-      "source_sha256": "14fc11a98d30e655454ef697418e0f93f94a3a5e3cb12c5b28e4d61266dafa7a",
+      "source": "experiments/cast-concepts/models/swimmer/i3e/swimmer/scene.l64",
+      "source_sha256": "0167c80b075dde96d08240618099501096412905b9bf4ea6187509faa622c4bd",
       "target": "assets/models/swimmer/scene.l64",
-      "sha256": "76b90280948ba81b88e9059c513bd6d4e0595be1a03b1b66e8abbd2ffe7c6672",
+      "sha256": "24910962950f2c8f3cc674809bdec647c9b78ff07d0f2790e918a5999082c44a",
       "runtime_model": 33,
-      "triangles": 564
+      "triangles": 620
     },
     {
       "model": "swimmer",
       "appearance": "swimmer_palette2",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/swimmer_palette2/i3b/swimmer_palette2/scene.l64",
-      "source_sha256": "36da5c6037274a76c5f7896d7aaaa38b9473b370979c7fcf4f6325098a2fb8e4",
+      "source": "experiments/cast-concepts/models/swimmer_palette2/i3e/swimmer_palette2/scene.l64",
+      "source_sha256": "37b01de8ede9f2e3b355fbf35d31266ff4748953c0f0f7e354769a343cbb3260",
       "target": "assets/models/swimmer/variants/swimmer_palette2/scene.l64",
-      "sha256": "295642cc7c8ae2ca6f2c1b097c7347d3950658cc4438c665339aa05de6beee66",
+      "sha256": "74cd084142dee0ea0a17e27e61fbc46eddfb751c45ccfb947b2fa8799d6077b1",
       "runtime_model": 33,
-      "triangles": 528
+      "triangles": 576
     },
     {
       "model": "joshua",
       "appearance": "joshua",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/joshua/i3b/joshua/scene.l64",
-      "source_sha256": "61ad46c92927d5dee96b11ed1045865d53c45951f390eb8b6b96c7158b353736",
+      "source": "experiments/cast-concepts/models/joshua/i3e/joshua/scene.l64",
+      "source_sha256": "04311476808d2dbdd1e3a4dd014c7c78cc0f2e8cc8f25cddbca0b3608cac758a",
       "target": "assets/models/joshua/scene.l64",
-      "sha256": "bb6849df6db8ae4b1a1bb89144d4a2b59792a6f1358d338e8448a7353ae39d86",
+      "sha256": "bd23214de7ec509eb4a315343d59b0a4a0b75787b228f7c1cc194d1d748479ac",
       "runtime_model": 23,
-      "triangles": 564
+      "triangles": 620
     },
     {
       "model": "amy",
       "appearance": "amy",
       "pose": "lying",
-      "source": "experiments/cast-concepts/models/amy__lying/i3/amy__lying/scene.l64",
-      "source_sha256": "7936767efe10b6a4f0156ea4fc06d2d096e7cc3060ba36e8deccd1a27ed14e90",
+      "source": "experiments/cast-concepts/models/amy__lying/i3e/amy__lying/scene.l64",
+      "source_sha256": "0ac440b4630b9eee24c6c962211e997c071b6e2ed2fde6c918535b4192444249",
       "target": "assets/models/amy/poses/lying/scene.l64",
-      "sha256": "d781929df6ea0ca897b52fd9740f77a5a8cc19ff37346199555689ea62470b8a",
+      "sha256": "427b3d20b10f71664835700becd227bdf78e20fe0e77350c6bcf059ebd96a0e3",
       "runtime_model": 9,
-      "triangles": 528
+      "triangles": 580
     },
     {
       "model": "girl",
       "appearance": "girl",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/girl/i3/girl/scene.l64",
-      "source_sha256": "a096ed97d1eecea2d86db99fea21c65f3b79a304833c85ffe6bfee0f8c0595a3",
+      "source": "experiments/cast-concepts/models/girl/i3e/girl/scene.l64",
+      "source_sha256": "7a5a15b787f2950b0e3cdd9978841ea80bb2ab75fc905bb64ddea8025e377071",
       "target": "assets/models/girl/scene.l64",
-      "sha256": "65052633b75f70906f4509e4fccf35b19f0c1de5cd4595ef2703e37a72dea5e6",
+      "sha256": "54e45abed64c16591e9a65f6be2483451d3216ed94fb6270f9602db7c2f5e694",
       "runtime_model": 29,
-      "triangles": 528
+      "triangles": 576
     },
     {
       "model": "hood",
       "appearance": "hood",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/hood/i3/hood/scene.l64",
-      "source_sha256": "ad508a585dd2b902af34ce15105de0a5ad419fc231b3435c078c2e4d8fb51e03",
+      "source": "experiments/cast-concepts/models/hood/i3e/hood/scene.l64",
+      "source_sha256": "56449a2f51cf0856defc092b7e20b7d59171c6e2a07bdc53f25ca93be75c41e0",
       "target": "assets/models/hood/scene.l64",
-      "sha256": "f686bcfcde927669112d53b694d40f2d973de1f1b66cb2f8f970d52e10a5b518",
+      "sha256": "4bf329047f874532c4f80710167be600bde59e03a56bfcdf7245c5f2db3bd4ae",
       "runtime_model": 24,
-      "triangles": 560
+      "triangles": 624
     },
     {
       "model": "isaac",
       "appearance": "isaac",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/isaac/i3/isaac/scene.l64",
-      "source_sha256": "160cab180a4d802c57104a6c131c8b488aac97c22de93942c7e389c8668b6e6e",
+      "source": "experiments/cast-concepts/models/isaac/i3e/isaac/scene.l64",
+      "source_sha256": "6d5aa2abec5bad34c1c33da08af29f7de51ac7c661f2593a1f3a6e9e888d8426",
       "target": "assets/models/isaac/scene.l64",
-      "sha256": "e7b5e1a973ad76ceda2bd959a0cfcb8ca0f99cce1b4bbda339f918fceb3050f3",
+      "sha256": "754d983c2d76c68fc9a5b93e358e9257d3cff3d02b4ecc0bb9437698bf88ea1f",
       "runtime_model": 10,
-      "triangles": 528
+      "triangles": 560
     },
     {
       "model": "lass2",
       "appearance": "lass2",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/lass2/i3b/lass2/scene.l64",
-      "source_sha256": "218d7aa8cff4fb971f95749eb4eada4d1f5414f3f2ff0ea5ab01fb8ed4c2b57c",
+      "source": "experiments/cast-concepts/models/lass2/i3e/lass2/scene.l64",
+      "source_sha256": "00557ea4ebcdb9c39715b10f6631798b4e189f1d057d43a218c297cd3f89ddd6",
       "target": "assets/models/lass2/scene.l64",
-      "sha256": "28df0501556dc9ea35990d49d8c81479f3d7035bf74c83cbda76cd899054a675",
+      "sha256": "f3dfb41d43da75c9ed5271972e24449da3b4153a3e924c2992a12b6b59b93fe4",
       "runtime_model": 31,
-      "triangles": 528
+      "triangles": 580
     },
     {
       "model": "lass1",
       "appearance": "lass1",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/lass1/i3/lass1/scene.l64",
-      "source_sha256": "7c092d0f7d5aae31f74d7433d041eb6a58ace8e1a8e8227c9c8f2c6ac151cad3",
+      "source": "experiments/cast-concepts/models/lass1/i3e/lass1/scene.l64",
+      "source_sha256": "f40c4e672318f7b088aae2d6e4ca63178bff73a8ec9edec73546541f0e9bd969",
       "target": "assets/models/lass1/scene.l64",
-      "sha256": "3fdbd727aa2b5a70872b31950bd5f1e0d8ce8e1d7f6f7991d8b84da03bd1f446",
+      "sha256": "4a3718e628bb78ce6fcdb63839190427cf9632831b9ddfa55155fcb88e02698e",
       "runtime_model": 30,
-      "triangles": 528
+      "triangles": 580
     },
     {
       "model": "nikki",
       "appearance": "nikki",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/nikki/i3/nikki/scene.l64",
-      "source_sha256": "4ecfb5502872ed3b17cc2bbb541528a6598a91958a9f0c65dda9704b700da3d2",
+      "source": "experiments/cast-concepts/models/nikki/i3e/nikki/scene.l64",
+      "source_sha256": "8488f51ab8b717a4916060c6b95d6e92032371bbd9f0e1a27048c77bc76960c2",
       "target": "assets/models/nikki/scene.l64",
-      "sha256": "f681c6b5c7c41340524e66f7aaaa4dd0208cf6ed9700bb27887c91c2e862b55a",
+      "sha256": "5a1141a8558b3fd774e129ddc1cb133cc240f0ca687a129723dbe39ba370a79c",
       "runtime_model": 6,
-      "triangles": 540
+      "triangles": 592
     },
     {
       "model": "boy",
       "appearance": "boy_palette2",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/boy_palette2/i3/boy_palette2/scene.l64",
-      "source_sha256": "410e76cecc51262e3b8d9ed596c8bdcf3facac7e13d714e5a39257e29e1748c4",
+      "source": "experiments/cast-concepts/models/boy_palette2/i3e/boy_palette2/scene.l64",
+      "source_sha256": "27dd7df6bd54e33a1f34c64ae205d6834c714b82915292b5b5d76492e9d728a4",
       "target": "assets/models/boy/variants/boy_palette2/scene.l64",
-      "sha256": "d1b8da88572f7f52f3b274178682d2112e74a3c6be53e3e6d2480bc7c83d2db4",
+      "sha256": "146e3a858d4ca2a4916344033dadc4957779a7492428278dcb7b44fabaef320a",
       "runtime_model": 18,
-      "triangles": 560
+      "triangles": 620
     },
     {
       "model": "lad",
       "appearance": "lad",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/lad/i3b/lad/scene.l64",
-      "source_sha256": "af6e16730cec6d5d8abf85218064b746486102dca688bbfd38ab746373dc2e9d",
+      "source": "experiments/cast-concepts/models/lad/i3e/lad/scene.l64",
+      "source_sha256": "2ad09b55ae4d0a27b05d7923110ea8c58194d547c5ebfe7919c18f1bddb041d4",
       "target": "assets/models/lad/scene.l64",
-      "sha256": "8d60f8061eba52b9a1f6ce7560e8833d3fc653d597c8bbe95c8247910d3a20c6",
+      "sha256": "7567e04c301c604e2fd51087aad6b23ce00bb12b22bc6272c457875a40e80340",
       "runtime_model": 19,
-      "triangles": 572
+      "triangles": 620
     },
     {
       "model": "murray",
       "appearance": "murray",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/murray/i3/murray/scene.l64",
-      "source_sha256": "f51488569a5d4d419b79b8b428c3b5ee255a8ac9b0a8ae57dc1aceccac2ca847",
+      "source": "experiments/cast-concepts/models/murray/i3e/murray/scene.l64",
+      "source_sha256": "da2aa9e7ede0ce5926c9c23f9c20a851864381f7bb0ab7630126f82842d431dc",
       "target": "assets/models/murray/scene.l64",
-      "sha256": "215ca945b76b7ded428f84ccccffd0b0ecf63fa5222f0ba8a97b530b18866d4c",
+      "sha256": "ae9ce0a6c6f951d3780fa80bc1a2c373e491fe654d5ef8e4f6c8cdc56fff8971",
       "runtime_model": 13,
-      "triangles": 540
+      "triangles": 592
     },
     {
       "model": "rick",
       "appearance": "rick",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/rick/i3/rick/scene.l64",
-      "source_sha256": "2bb12bb168502c9c2f706acd48b2f69afdc64730709848a6f331ab068b5c384f",
+      "source": "experiments/cast-concepts/models/rick/i3e/rick/scene.l64",
+      "source_sha256": "df0479138eef2ad9057bf9f38ad860408dfce2d2d85a5a8142de80714c239174",
       "target": "assets/models/rick/scene.l64",
-      "sha256": "89587ba5063b92aab47c259e44e4b5b2dbda85e95e5240b2c426233b9014c52e",
+      "sha256": "947d41deb48f6d669b698634a0bea495abdf9b736ce108b8db3d171462e4422f",
       "runtime_model": 7,
-      "triangles": 528
+      "triangles": 560
     },
     {
       "model": "specs",
       "appearance": "specs",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/specs/i3/specs/scene.l64",
-      "source_sha256": "a5327d43e29700af61f6d857cbb23a2b6a3eaf66a9aa67823fda111bd69cdc57",
+      "source": "experiments/cast-concepts/models/specs/i3e/specs/scene.l64",
+      "source_sha256": "79dda64c28eb60356e6c3efa8366a3eb69d6ca87eea8711ca91de70f5b124611",
       "target": "assets/models/specs/scene.l64",
-      "sha256": "84691ca2bceb6d1092d2af18e4a21562bc72d42c2b7bfcf62c4c52c60238538c",
+      "sha256": "2ab3b145c508d505571c31babc9e68b86a9cf6b3d655df37b82e79436403106a",
       "runtime_model": 20,
-      "triangles": 560
+      "triangles": 620
     },
     {
       "model": "ken",
       "appearance": "ken",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/ken/i3/ken/scene.l64",
-      "source_sha256": "b16e536e3f2f8bb5b7bb78312426e600ccfe3275b9777730a96d145660e9c7d8",
+      "source": "experiments/cast-concepts/models/ken/i3e/ken/scene.l64",
+      "source_sha256": "2419287881da4c9abe7b80a2ecea64d53de28838f2a2ebb4801b5897687d494f",
       "target": "assets/models/ken/scene.l64",
-      "sha256": "4432905e31c344a9c2f4cb3a1fd589c4261c4b6e19acde782e4a21833f94e86f",
+      "sha256": "74e65496cc98ba03634ea20a2f649f91a510f4a3f663657db9732493191f9653",
       "runtime_model": 8,
-      "triangles": 528
+      "triangles": 596
     },
     {
       "model": "courtney",
       "appearance": "courtney",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/courtney/i3/courtney/scene.l64",
-      "source_sha256": "6f6fa1a170baf2d3b6391245dc5dce3c7ae5e0dbbaa060ff93a5270b26eea6b2",
+      "source": "experiments/cast-concepts/models/courtney/i3e/courtney/scene.l64",
+      "source_sha256": "4a85bfb171638e2d19ce08f3afe9ea91475912d7b285277b2db8a73dca65d325",
       "target": "assets/models/courtney/scene.l64",
-      "sha256": "5836fe2aad4746efa9c1f5bb8ebec4d6fd8780a1f6599e728890b70c66c96171",
+      "sha256": "57c48b9e72ccc3c54d4aa20fc7c0b6fc22ba8e9e13ac656679e961a3b47f4b84",
       "runtime_model": 14,
-      "triangles": 540
+      "triangles": 588
     },
     {
       "model": "steve",
       "appearance": "steve",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/steve/i3/steve/scene.l64",
-      "source_sha256": "465add9ae9043a91fa5824fc37acd026c17d0d2e7477ff8f3049213bedacfa67",
+      "source": "experiments/cast-concepts/models/steve/i3e/steve/scene.l64",
+      "source_sha256": "30403b7f1bb699d13b7c2292df83181bf6a37c2cc144910ea252b5654f7ac216",
       "target": "assets/models/steve/scene.l64",
-      "sha256": "d4e7f39f886f129ec83ea823f565d201f32a86856e5d509409561a10fc112edb",
+      "sha256": "ba94be1fd87e2d6aca264b5cc550f490e2b4a5c292f8b874c8b71d7cb3793c3a",
       "runtime_model": 15,
-      "triangles": 576
+      "triangles": 632
     },
     {
       "model": "jack",
       "appearance": "jack",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/jack/i3/jack/scene.l64",
-      "source_sha256": "cac0cbd45c1f36577f7aeee854d0d1c02c2ce4427f0aa728f8ca9d30468c4688",
+      "source": "experiments/cast-concepts/models/jack/i3e/jack/scene.l64",
+      "source_sha256": "81e0d40efd7912839d0f53c16a749757c72a356fdeff6d0553814223debdcbfb",
       "target": "assets/models/jack/scene.l64",
-      "sha256": "30ba0de6706e9875b570f5acb739ee7e8732d58c7a229bdcf6ba920ca4dce44f",
+      "sha256": "7cc2938a3a7949c19c81772b429b728c8a9429c5c95971eea1432648a13d231d",
       "runtime_model": 16,
-      "triangles": 528
+      "triangles": 560
     },
     {
       "model": "rod",
       "appearance": "rod",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/rod/i3/rod/scene.l64",
-      "source_sha256": "01b948aa306e236d064e051f5c2503c73c72e79d4b64ea7605e3c9a945e3d266",
+      "source": "experiments/cast-concepts/models/rod/i3e/rod/scene.l64",
+      "source_sha256": "e18ed558b46db20fdd353eccc26fda00532255828de9df21903e71d49b9adf56",
       "target": "assets/models/rod/scene.l64",
-      "sha256": "86341a409d709d9587477cc04b19497addc182ce27d17739cb54f3ec75e6548c",
+      "sha256": "837034eab57ac93cf1e980f06d7190ab2aa955bebaf9a3a37811e85973fa6e7b",
       "runtime_model": 17,
-      "triangles": 528
+      "triangles": 560
     },
     {
       "model": "woman",
       "appearance": "woman",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/woman/i3/woman/scene.l64",
-      "source_sha256": "8fbcc0f1f453b85fa8eff9b11c6e081794d50cc375fb439a0fc4de1fd8f8a716",
+      "source": "experiments/cast-concepts/models/woman/i3e/woman/scene.l64",
+      "source_sha256": "04118c90e8443dfce16d9e177a12115eb58d8a5d63973c6fd98dffc2d8ac2bc5",
       "target": "assets/models/woman/scene.l64",
-      "sha256": "bd1989e1acb2d408585bac552f0d9df48775a54d5b53383b3ec0a6c3584bd55e",
+      "sha256": "cdeea44368d90275b11a2ce08b51fdde2c372b1fcc4419919f3af25cf60367f7",
       "runtime_model": 36,
-      "triangles": 544
+      "triangles": 596
     },
     {
       "model": "chap",
       "appearance": "chap",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/chap/i3/chap/scene.l64",
-      "source_sha256": "2db52b8620f73ae4571da37396bd97d809199aa0b6634460f68080db74743e17",
+      "source": "experiments/cast-concepts/models/chap/i3f/chap/scene.l64",
+      "source_sha256": "37daa5509d330b95f10d122dd364abcee3b85f3fc9bd7df52c3796302c446a66",
       "target": "assets/models/chap/scene.l64",
-      "sha256": "90fa9d39001976bcded3239e5331f26b76a241fcd51b7968bfe227e035895163",
+      "sha256": "b66934cba27b234eec6fe574f23f53617a60d1fd15ba85b00e54aa230ee1acba",
       "runtime_model": 26,
-      "triangles": 560
+      "triangles": 628
     },
     {
       "model": "gal",
       "appearance": "gal",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/gal/i3/gal/scene.l64",
-      "source_sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e",
+      "source": "experiments/cast-concepts/models/gal/i3e/gal/scene.l64",
+      "source_sha256": "fdcad971f7ffe4b516aafd4adb6ca5457d4e5c7d4408b526a6ebb61c82f5e8d7",
       "target": "assets/models/gal/scene.l64",
-      "sha256": "e40011896cd4a955402cb3788d914920e28705cbc5ed0666b5f0589649818aa7",
+      "sha256": "73c91d2b8cdf5e94c4bc926bad16072356e6b722f22153710ed37971ba684d9a",
       "runtime_model": 35,
-      "triangles": 528
+      "triangles": 580
     },
     {
       "model": "pappy",
       "appearance": "pappy",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/pappy/i3/pappy/scene.l64",
-      "source_sha256": "1858a041ca2b21d5a9178b222f13c33611de7ec9f464d8cc7e361cf48a9e7698",
+      "source": "experiments/cast-concepts/models/pappy/i3e/pappy/scene.l64",
+      "source_sha256": "0321a6d385058c2c2a3a9c87401b6e37c20d321c5bf789f5b6a80077751d2ed2",
       "target": "assets/models/pappy/scene.l64",
-      "sha256": "07bf2a2e7053726ba0887ab31d153e4dfbf01437109a16df37d8c0e15f4adcd9",
+      "sha256": "a054a84e67a805d6d3cf039f3366cdbd7003bc73a69f7c70c5685e0db737e178",
       "runtime_model": 28,
-      "triangles": 560
+      "triangles": 620
     },
     {
       "model": "butch",
       "appearance": "butch",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/butch/i3/butch/scene.l64",
-      "source_sha256": "40c092a77f52dafd9359822fb7253eb67ccc9d79a1c3b5877eeca529cf8350bc",
+      "source": "experiments/cast-concepts/models/butch/i3e/butch/scene.l64",
+      "source_sha256": "a9031ecbd1862066aa8b21bb243b23e909c3dfc675b087e8ff776d1798580c57",
       "target": "assets/models/butch/scene.l64",
-      "sha256": "12987f5357d17bceb93fb4563f2b73218efe4447fb3e98f2008d9429c98cc417",
+      "sha256": "8abde66c632766f328edd43bd1481a427253acd795860081e6f0201869ac6abf",
       "runtime_model": 21,
-      "triangles": 560
+      "triangles": 632
     },
     {
       "model": "granny",
       "appearance": "granny",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/granny/i3/granny/scene.l64",
-      "source_sha256": "cd70a4e0d7e76c6e7c6a613a750da12ce7c47294d72f44f10d095c4c4889d82a",
+      "source": "experiments/cast-concepts/models/granny/i3e/granny/scene.l64",
+      "source_sha256": "b4ef52cda37b6bf803d94e23ec54afa10ff16a2e2baf359ec6f39d4807787682",
       "target": "assets/models/granny/scene.l64",
-      "sha256": "2e4b15f9ee6471b4deedfdbb8e1ed407a99b7347bfaf9a7f409c60044955adeb",
+      "sha256": "6951e340fa4dcd55d856c5876b45654c2694c05efd6bbeb2b1ddddb319a0af1a",
       "runtime_model": 37,
-      "triangles": 592
+      "triangles": 640
     },
     {
       "model": "mark",
       "appearance": "mark",
       "pose": "standing",
-      "source": "experiments/cast-concepts/../mark-concepts/approved/a_adventure/i3d/mark/scene.l64",
-      "source_sha256": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3",
+      "source": "experiments/cast-concepts/models/mark/i3f/mark/scene.l64",
+      "source_sha256": "ebf3348ff24ad68c601016e86d5643d3fd5f4ac4d5e05dad69dc65c3650b56b3",
       "target": "assets/models/mark/scene.l64",
-      "sha256": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3",
+      "sha256": "ebf3348ff24ad68c601016e86d5643d3fd5f4ac4d5e05dad69dc65c3650b56b3",
       "runtime_model": 1,
       "triangles": 596
     },
@@ -444,12 +444,12 @@
       "model": "amy",
       "appearance": "amy",
       "pose": "standing",
-      "source": "experiments/cast-concepts/models/amy/i3/amy/scene.l64",
-      "source_sha256": "36f483b6813b0b9643f1b13acc321d927f1fb3e523439bb84c8d1257911ed0f3",
+      "source": "experiments/cast-concepts/models/amy/i3e/amy/scene.l64",
+      "source_sha256": "dfb530ccbeca33590ede8d575ac23a0976699642526d9928afe4936ddd8ee3e7",
       "target": "assets/models/amy/scene.l64",
-      "sha256": "89f648d8f1246151c07b2de0f67969ea6f2fb7e7df12f068e9f90fefb131161b",
+      "sha256": "85e922c96e101296f17193e332d5bc385f3417d7b28aeec1bbe14c06b3b95087",
       "runtime_model": 9,
-      "triangles": 528
+      "triangles": 580
     }
   ],
   "bindings_unchanged": true,

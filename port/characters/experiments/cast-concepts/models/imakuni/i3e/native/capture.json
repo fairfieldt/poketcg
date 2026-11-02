@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-imakuni-i3e.z64",
+  "rom_sha256": "4610a3ff33f3697ecc999eca9717c81cf69cdca82f2d02ba401d72aec2cbcd06",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1347192,
+      "free": 1389192
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1348200,
+      "free": 1388184
+    }
+  ],
+  "subject": "imakuni",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "0346efb1b54ff62fbca473cabe33abc3b80ede8fb1cda92dc6bf2fbb2bd17fca",
+    "candidate": "56c09149169dd6fbd26609b3e3dd2f6c1d2e2d06ec61f8f82886887b2a9c406e"
+  }
+}

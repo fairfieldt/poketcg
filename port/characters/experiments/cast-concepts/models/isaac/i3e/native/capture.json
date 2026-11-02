@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-isaac-i3e.z64",
+  "rom_sha256": "36e52d650de8d113478965ba6bece07c15231422ab1ec014e1ba52aa9e84158a",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1347392,
+      "free": 1388992
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1347576,
+      "free": 1388808
+    }
+  ],
+  "subject": "isaac",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "d00d360defa235d67a721b1ce724eedd39d23d20d2b0f241c691cd832afebe3b",
+    "candidate": "6d5aa2abec5bad34c1c33da08af29f7de51ac7c661f2593a1f3a6e9e888d8426"
+  }
+}

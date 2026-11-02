@@ -1,0 +1,207 @@
+[
+  {
+    "slug": "dr_mason",
+    "revision": "i3f",
+    "folder": "models/dr_mason/i3f"
+  },
+  {
+    "slug": "ronald",
+    "revision": "i3f",
+    "folder": "models/ronald/i3f"
+  },
+  {
+    "slug": "ishihara",
+    "revision": "i3e",
+    "folder": "models/ishihara/i3e"
+  },
+  {
+    "slug": "imakuni",
+    "revision": "i3e",
+    "folder": "models/imakuni/i3e"
+  },
+  {
+    "slug": "tech",
+    "revision": "i3f",
+    "folder": "models/tech/i3f"
+  },
+  {
+    "slug": "clerk",
+    "revision": "i3e",
+    "folder": "models/clerk/i3e"
+  },
+  {
+    "slug": "mania",
+    "revision": "i3f",
+    "folder": "models/mania/i3f"
+  },
+  {
+    "slug": "lass3",
+    "revision": "i3f",
+    "folder": "models/lass3/i3f"
+  },
+  {
+    "slug": "mitch",
+    "revision": "i3f",
+    "folder": "models/mitch/i3f"
+  },
+  {
+    "slug": "boy",
+    "revision": "i3e",
+    "folder": "models/boy/i3e"
+  },
+  {
+    "slug": "man",
+    "revision": "i3e",
+    "folder": "models/man/i3e"
+  },
+  {
+    "slug": "gene",
+    "revision": "i3e",
+    "folder": "models/gene/i3e"
+  },
+  {
+    "slug": "swimmer",
+    "revision": "i3e",
+    "folder": "models/swimmer/i3e"
+  },
+  {
+    "slug": "joshua",
+    "revision": "i3e",
+    "folder": "models/joshua/i3e"
+  },
+  {
+    "slug": "amy",
+    "revision": "i3e",
+    "folder": "models/amy/i3e"
+  },
+  {
+    "slug": "girl",
+    "revision": "i3e",
+    "folder": "models/girl/i3e"
+  },
+  {
+    "slug": "hood",
+    "revision": "i3e",
+    "folder": "models/hood/i3e"
+  },
+  {
+    "slug": "isaac",
+    "revision": "i3e",
+    "folder": "models/isaac/i3e"
+  },
+  {
+    "slug": "lass2",
+    "revision": "i3e",
+    "folder": "models/lass2/i3e"
+  },
+  {
+    "slug": "lass1",
+    "revision": "i3e",
+    "folder": "models/lass1/i3e"
+  },
+  {
+    "slug": "nikki",
+    "revision": "i3e",
+    "folder": "models/nikki/i3e"
+  },
+  {
+    "slug": "lad",
+    "revision": "i3e",
+    "folder": "models/lad/i3e"
+  },
+  {
+    "slug": "murray",
+    "revision": "i3e",
+    "folder": "models/murray/i3e"
+  },
+  {
+    "slug": "rick",
+    "revision": "i3e",
+    "folder": "models/rick/i3e"
+  },
+  {
+    "slug": "specs",
+    "revision": "i3e",
+    "folder": "models/specs/i3e"
+  },
+  {
+    "slug": "ken",
+    "revision": "i3e",
+    "folder": "models/ken/i3e"
+  },
+  {
+    "slug": "courtney",
+    "revision": "i3e",
+    "folder": "models/courtney/i3e"
+  },
+  {
+    "slug": "steve",
+    "revision": "i3e",
+    "folder": "models/steve/i3e"
+  },
+  {
+    "slug": "jack",
+    "revision": "i3e",
+    "folder": "models/jack/i3e"
+  },
+  {
+    "slug": "rod",
+    "revision": "i3e",
+    "folder": "models/rod/i3e"
+  },
+  {
+    "slug": "woman",
+    "revision": "i3e",
+    "folder": "models/woman/i3e"
+  },
+  {
+    "slug": "chap",
+    "revision": "i3f",
+    "folder": "models/chap/i3f"
+  },
+  {
+    "slug": "gal",
+    "revision": "i3e",
+    "folder": "models/gal/i3e"
+  },
+  {
+    "slug": "pappy",
+    "revision": "i3e",
+    "folder": "models/pappy/i3e"
+  },
+  {
+    "slug": "butch",
+    "revision": "i3e",
+    "folder": "models/butch/i3e"
+  },
+  {
+    "slug": "granny",
+    "revision": "i3e",
+    "folder": "models/granny/i3e"
+  },
+  {
+    "slug": "mark",
+    "revision": "i3f",
+    "folder": "models/mark/i3f"
+  },
+  {
+    "slug": "mania_palette2",
+    "revision": "i3f",
+    "folder": "models/mania_palette2/i3f"
+  },
+  {
+    "slug": "boy_palette2",
+    "revision": "i3e",
+    "folder": "models/boy_palette2/i3e"
+  },
+  {
+    "slug": "swimmer_palette2",
+    "revision": "i3e",
+    "folder": "models/swimmer_palette2/i3e"
+  },
+  {
+    "slug": "amy__lying",
+    "revision": "i3e",
+    "folder": "models/amy__lying/i3e"
+  }
+]

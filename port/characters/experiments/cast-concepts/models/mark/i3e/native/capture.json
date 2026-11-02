@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-mark-i3e.z64",
+  "rom_sha256": "94ab3acf4f955f75a6b84546b24626614ca5587b1d8e99794f0b7b93ac056b83",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1348408,
+      "free": 1387976
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1348512,
+      "free": 1387872
+    }
+  ],
+  "subject": "mark",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "ed8906dd2e06edf740ed500bdc0492e156b3b50cb534f1fba5296125cdbb0da9",
+    "candidate": "9986ea14a614652592b3de993dfc0765398c20b95dd2d60de70fadd63d4106e9"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "w3_clerk_face",
+    "w3_clerk_uniform"
+  ],
+  "vertices": 551,
+  "triangles": 620,
+  "batches": 7
+}

@@ -1,0 +1,86 @@
+{
+  "passed": true,
+  "source": "../mark-concepts/approved/a_adventure/i3d/mark",
+  "source_sha256": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3",
+  "settings": [
+    {
+      "rear_side_depth_scale": 1.1,
+      "nose_extension": false,
+      "front_face_uv_span": 0.76,
+      "cap_bill_same_transform": true
+    },
+    {
+      "rear_side_depth_scale": 1.1,
+      "nose_extension": false,
+      "front_face_uv_span": 0.76,
+      "cap_bill_same_transform": true
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    },
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 0
+    }
+  ],
+  "original_head_triangles": 228,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/mark/i3f/mark/scene.l64",
+    "sha256": "ebf3348ff24ad68c601016e86d5643d3fd5f4ac4d5e05dad69dc65c3650b56b3",
+    "triangles": 596,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "aa6_mark_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      },
+      {
+        "name": "aa6_mark_cap.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "before_max_eye_white_angle": 47.64779730569354,
+    "after_max_eye_white_angle": 41.46697852575077,
+    "additional_horizontal_span": 0.8832,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of painted eye whites; no pixel beyond43deg in sampled owning faces; lying pose inherits standing mapping",
+    "face_vertices": 25,
+    "original_native_sha256": "11648de6f920d77d9b71e9de20adc55288426fbd04d86861af03c119fdc5f41b",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

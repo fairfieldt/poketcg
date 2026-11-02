@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Check the fresh local teaser and retain its playable current copy."""
 from pathlib import Path
-import hashlib,json,shutil,subprocess
+import argparse,hashlib,json,shutil,subprocess
 from check_trailer_pair import boxes
-ADV=Path(__file__).resolve().parents[1];ROOT=ADV.parents[3];BASE=ROOT/'port/reviews/trailer';OUT=BASE/'v4'
+ADV=Path(__file__).resolve().parents[1];ROOT=ADV.parents[3];BASE=ROOT/'port/reviews/trailer';VERSION=4;OUT=BASE/f'v{VERSION}'
 def main():
  video=OUT/'poketcg64-trailer.mp4';reference=BASE/'v3/poketcg64-trailer-no-crt.mp4'
  probe=json.loads(subprocess.check_output(['ffprobe','-v','error','-show_streams','-show_format','-of','json',str(video)]));(OUT/'ffprobe.json').write_text(json.dumps(probe,indent=2)+'\n')
@@ -24,6 +24,7 @@ def main():
  for name in ('timeline.json','validation.json'):shutil.copyfile(OUT/name,BASE/name)
  provenance=OUT/'provenance';provenance.mkdir(exist_ok=True)
  for s in ('intro','ronald','clubs','amy'):
-  for src,dst in [(ADV/f'build/trailer-cast-{s}/build.json',provenance/f'{s}-build.json'),(ADV/f'build/trailer-capture/v4-local-{s}/runtime.log',provenance/f'{s}-runtime.log')]:shutil.copyfile(src,dst)
+  for src,dst in [(ADV/f'build/trailer-cast-{s}/build.json',provenance/f'{s}-build.json'),(ADV/f'build/trailer-capture/v{VERSION}-local-{s}/runtime.log',provenance/f'{s}-runtime.log')]:shutil.copyfile(src,dst)
  print(json.dumps(result,indent=2))
-if __name__=='__main__':main()
+if __name__=='__main__':
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--version',type=int,default=4);a=p.parse_args();VERSION=a.version;OUT=BASE/f'v{VERSION}';main()

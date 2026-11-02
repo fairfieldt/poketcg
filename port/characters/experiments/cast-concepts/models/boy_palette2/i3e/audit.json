@@ -1,0 +1,81 @@
+{
+  "passed": true,
+  "source": "models/boy_palette2/i3/boy_palette2",
+  "source_sha256": "410e76cecc51262e3b8d9ed596c8bdcf3facac7e13d714e5a39257e29e1748c4",
+  "settings": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "target_half_width": 0.4207792207792209,
+      "target_half_depth": 0.3480519480519482,
+      "head_bounds": [
+        1.35,
+        2.1500000000000004
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 204,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/boy_palette2/i3e/boy_palette2/scene.l64",
+    "sha256": "27dd7df6bd54e33a1f34c64ae205d6834c714b82915292b5b5d76492e9d728a4",
+    "triangles": 620,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "bp3_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      },
+      {
+        "name": "bp3_shirt.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "before_max_eye_white_angle": 54.69599310820985,
+    "after_max_eye_white_angle": 42.251695078073354,
+    "additional_horizontal_span": 0.78,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of painted eye whites; no pixel beyond43deg in sampled owning faces; lying pose inherits standing mapping",
+    "face_vertices": 28,
+    "original_native_sha256": "df75830052432b7185eeb7bcead1b1f509babec631fd704660971ac8a523df83",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

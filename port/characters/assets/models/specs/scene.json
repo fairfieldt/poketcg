@@ -57,8 +57,8 @@
   "appearance": "specs",
   "pose": "standing",
   "component": null,
-  "vertices": 460,
-  "triangles": 560,
+  "vertices": 604,
+  "triangles": 620,
   "batches": 7,
   "parts": [
     0,
@@ -68,8 +68,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/specs/i3/specs/scene.l64",
-    "sha256": "a5327d43e29700af61f6d857cbb23a2b6a3eaf66a9aa67823fda111bd69cdc57",
+    "asset": "experiments/cast-concepts/models/specs/i3e/specs/scene.l64",
+    "sha256": "79dda64c28eb60356e6c3efa8366a3eb69d6ca87eea8711ca91de70f5b124611",
     "selection": "specs"
   }
 }

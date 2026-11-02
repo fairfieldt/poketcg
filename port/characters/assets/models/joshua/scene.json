@@ -55,8 +55,8 @@
   "appearance": "joshua",
   "pose": "standing",
   "component": null,
-  "vertices": 401,
-  "triangles": 564,
+  "vertices": 535,
+  "triangles": 620,
   "batches": 7,
   "parts": [
     0,
@@ -66,8 +66,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/joshua/i3b/joshua/scene.l64",
-    "sha256": "61ad46c92927d5dee96b11ed1045865d53c45951f390eb8b6b96c7158b353736",
+    "asset": "experiments/cast-concepts/models/joshua/i3e/joshua/scene.l64",
+    "sha256": "04311476808d2dbdd1e3a4dd014c7c78cc0f2e8cc8f25cddbca0b3608cac758a",
     "selection": "joshua"
   }
 }

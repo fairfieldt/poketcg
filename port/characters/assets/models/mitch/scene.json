@@ -55,8 +55,8 @@
   "appearance": "mitch",
   "pose": "standing",
   "component": null,
-  "vertices": 451,
-  "triangles": 528,
+  "vertices": 576,
+  "triangles": 604,
   "batches": 7,
   "parts": [
     0,
@@ -66,8 +66,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/mitch/i3/mitch/scene.l64",
-    "sha256": "1181cf83029cc890adeec4bda7059efb2846a0b4090c66840a177375bb9018ac",
+    "asset": "experiments/cast-concepts/models/mitch/i3f/mitch/scene.l64",
+    "sha256": "a543084dfefe0f56c0045c310f4426f09fceab95c99a8d4af9dada147bb65d2f",
     "selection": "mitch"
   }
 }

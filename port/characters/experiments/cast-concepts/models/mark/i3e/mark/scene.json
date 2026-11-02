@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "aa6_mark_face",
+    "aa6_mark_cap"
+  ],
+  "vertices": 661,
+  "triangles": 596,
+  "batches": 7
+}

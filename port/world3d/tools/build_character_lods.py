@@ -33,6 +33,46 @@ def write_mesh(path, textures, meshes):
         data.extend(bytes((-len(data)) % 4))
     write_if_changed(path, data)
 
+def triangle_key(points):
+    return tuple(sorted(tuple(round(c, 5) for c in point) for point in points))
+
+def head_triangles(character):
+    """Identify authored skull, hair and attached cap geometry in native axes."""
+    source = ROOT.parents[1]/character['source']/'authoring.json'
+    if not source.exists(): return set()
+    keys = set()
+    for mesh in json.loads(source.read_text())['meshes']:
+        if 'head' not in mesh['name'].lower() and 'bill' not in mesh['name'].lower(): continue
+        px,py,pz = mesh['pivot']
+        points = [(x-px,z-pz,y-py) for x,y,z in mesh['verts']]
+        # Export stores IEEE float32 before the native mesh is read again.
+        points = [struct.unpack('>3f',struct.pack('>3f',*(round(c,5) for c in p))) for p in points]
+        for face in mesh['faces']:
+            ids = face['idx']
+            for k in range(1,len(ids)-1):
+                keys.add((mesh['part'],triangle_key([points[i] for i in (ids[0],ids[k],ids[k+1])])))
+    return keys
+
+def simplify_with_head(batch, ratio, heads):
+    """Keep complete head triangles; simplify only the remaining body geometry."""
+    model,part,texture,pivot,vertices,indices = batch
+    if texture >= 0 or not heads: return simplify(batch,ratio)
+    keep,body = [],[]
+    for k in range(0,len(indices),3):
+        tri = indices[k:k+3]
+        target = keep if (part,triangle_key([vertices[i][:3] for i in tri])) in heads else body
+        target.extend(tri)
+    if not keep: return simplify(batch,ratio)
+    if not body: return batch
+    result = simplify((model,part,texture,pivot,vertices,body),ratio)
+    reduced,elements = list(result[4]),list(result[5])
+    lookup = {v:i for i,v in enumerate(reduced)}
+    for i in keep:
+        vertex = vertices[i]
+        if vertex not in lookup: lookup[vertex]=len(reduced); reduced.append(vertex)
+        elements.append(lookup[vertex])
+    return (model,part,texture,pivot,reduced,elements)
+
 def simplify(batch, ratio):
     import bpy
     import bmesh
@@ -202,7 +242,8 @@ def main():
     for character in world['individual_characters']:
         if args.only and character['slug'] not in args.only.split(','): continue
         source = OUT/character['file']; textures, batches = read_l643(source)
-        reduced = [simplify(batch, args.ratio) for batch in batches]
+        heads = head_triangles(character)
+        reduced = [simplify_with_head(batch, args.ratio, heads) for batch in batches]
         path = OUT/'lod'/source.name; path.parent.mkdir(exist_ok=True)
         write_mesh(path, textures, reduced)
         before = sum(len(b[5])//3 for b in batches); after = sum(len(b[5])//3 for b in reduced)

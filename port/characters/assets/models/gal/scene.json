@@ -60,8 +60,8 @@
   "appearance": "gal",
   "pose": "standing",
   "component": null,
-  "vertices": 363,
-  "triangles": 528,
+  "vertices": 468,
+  "triangles": 580,
   "batches": 6,
   "parts": [
     0,
@@ -71,8 +71,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/gal/i3/gal/scene.l64",
-    "sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e",
+    "asset": "experiments/cast-concepts/models/gal/i3e/gal/scene.l64",
+    "sha256": "fdcad971f7ffe4b516aafd4adb6ca5457d4e5c7d4408b526a6ebb61c82f5e8d7",
     "selection": "gal"
   }
 }

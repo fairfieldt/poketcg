@@ -1,0 +1,1 @@
+The side and rear skull are deeper, with the cap bill attached. Eye whites stay on the frontal face in the turn view; sampled paint reaches 41.5 degrees from the front. The body and shirt retain their prior silhouette. Accepted after actual native portrait, turn, conversation and room review.

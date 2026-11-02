@@ -1,0 +1,2311 @@
+{
+  "passed": true,
+  "source": "models/gene/i3/gene",
+  "source_sha256": "a7c5a595c0c5f772da22bd95864aa9858e40d3f1d6293235afeee2b4a5e923b2",
+  "settings": [
+    {
+      "cuts": [
+        0.83
+      ],
+      "preserve_lower": true,
+      "packing_phase": [
+        0,
+        0,
+        0
+      ],
+      "target_half_width": 0.43772699849170443,
+      "target_half_depth": 0.34584063103538576,
+      "head_bounds": [
+        1.46,
+        2.235
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 156,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 165",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 168",
+        "packed duplicate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 170",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 226",
+        "packed degenerate batch 0 triangle 228"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.84
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 165",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 168",
+        "packed duplicate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 170",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 226",
+        "packed degenerate batch 0 triangle 228"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.85
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 165",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 168",
+        "packed duplicate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 170",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 226",
+        "packed degenerate batch 0 triangle 228"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.86
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 156",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 165",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 168",
+        "packed duplicate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 170",
+        "packed degenerate batch 0 triangle 173",
+        "packed degenerate batch 0 triangle 180",
+        "packed degenerate batch 0 triangle 181",
+        "packed degenerate batch 0 triangle 188",
+        "packed degenerate batch 0 triangle 189",
+        "packed degenerate batch 0 triangle 196",
+        "packed degenerate batch 0 triangle 197",
+        "packed degenerate batch 0 triangle 204",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 208",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 226",
+        "packed degenerate batch 0 triangle 228"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.87
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 156",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 165",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 168",
+        "packed duplicate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 170",
+        "packed degenerate batch 0 triangle 173",
+        "packed degenerate batch 0 triangle 180",
+        "packed degenerate batch 0 triangle 181",
+        "packed degenerate batch 0 triangle 188",
+        "packed degenerate batch 0 triangle 189",
+        "packed degenerate batch 0 triangle 196",
+        "packed degenerate batch 0 triangle 197",
+        "packed degenerate batch 0 triangle 204",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 208",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 226",
+        "packed degenerate batch 0 triangle 228"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.88
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 152",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 156",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 165",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 168",
+        "packed duplicate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 170",
+        "packed degenerate batch 0 triangle 172",
+        "packed degenerate batch 0 triangle 173",
+        "packed degenerate batch 0 triangle 180",
+        "packed degenerate batch 0 triangle 181",
+        "packed degenerate batch 0 triangle 188",
+        "packed degenerate batch 0 triangle 189",
+        "packed degenerate batch 0 triangle 196",
+        "packed degenerate batch 0 triangle 197",
+        "packed degenerate batch 0 triangle 204",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 208",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 226",
+        "packed degenerate batch 0 triangle 228"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.82
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 165",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 168",
+        "packed duplicate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 170",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 226",
+        "packed degenerate batch 0 triangle 228"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.8
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 165",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 168",
+        "packed duplicate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 170",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 226",
+        "packed degenerate batch 0 triangle 228"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.78
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 165",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 168",
+        "packed duplicate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 170",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 226",
+        "packed degenerate batch 0 triangle 228"
+      ]
+    },
+    {
+      "cuts": [
+        0.66,
+        0.76
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 165",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 168",
+        "packed duplicate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 170",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 226",
+        "packed degenerate batch 0 triangle 228"
+      ]
+    },
+    {
+      "cuts": [
+        0.67,
+        0.83
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.67,
+        0.84
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.67,
+        0.85
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.67,
+        0.86
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 178",
+        "packed degenerate batch 0 triangle 179",
+        "packed degenerate batch 0 triangle 186",
+        "packed degenerate batch 0 triangle 187",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 202",
+        "packed degenerate batch 0 triangle 203",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 223"
+      ]
+    },
+    {
+      "cuts": [
+        0.67,
+        0.87
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 178",
+        "packed degenerate batch 0 triangle 179",
+        "packed degenerate batch 0 triangle 186",
+        "packed degenerate batch 0 triangle 187",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 202",
+        "packed degenerate batch 0 triangle 203",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 223"
+      ]
+    },
+    {
+      "cuts": [
+        0.67,
+        0.88
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 152",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 178",
+        "packed degenerate batch 0 triangle 179",
+        "packed degenerate batch 0 triangle 186",
+        "packed degenerate batch 0 triangle 187",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 202",
+        "packed degenerate batch 0 triangle 203",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 223"
+      ]
+    },
+    {
+      "cuts": [
+        0.67,
+        0.82
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.67,
+        0.8
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.67,
+        0.78
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.67,
+        0.76
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.68,
+        0.83
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.68,
+        0.84
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.68,
+        0.85
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.68,
+        0.86
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 178",
+        "packed degenerate batch 0 triangle 179",
+        "packed degenerate batch 0 triangle 186",
+        "packed degenerate batch 0 triangle 187",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 202",
+        "packed degenerate batch 0 triangle 203",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 223"
+      ]
+    },
+    {
+      "cuts": [
+        0.68,
+        0.87
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 178",
+        "packed degenerate batch 0 triangle 179",
+        "packed degenerate batch 0 triangle 186",
+        "packed degenerate batch 0 triangle 187",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 202",
+        "packed degenerate batch 0 triangle 203",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 223"
+      ]
+    },
+    {
+      "cuts": [
+        0.68,
+        0.88
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 152",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 178",
+        "packed degenerate batch 0 triangle 179",
+        "packed degenerate batch 0 triangle 186",
+        "packed degenerate batch 0 triangle 187",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 202",
+        "packed degenerate batch 0 triangle 203",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 222",
+        "packed degenerate batch 0 triangle 223"
+      ]
+    },
+    {
+      "cuts": [
+        0.68,
+        0.82
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.68,
+        0.8
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.68,
+        0.78
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.68,
+        0.76
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 215",
+        "packed degenerate batch 0 triangle 217",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 220"
+      ]
+    },
+    {
+      "cuts": [
+        0.69,
+        0.83
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 218"
+      ]
+    },
+    {
+      "cuts": [
+        0.69,
+        0.84
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 218"
+      ]
+    },
+    {
+      "cuts": [
+        0.69,
+        0.85
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 218"
+      ]
+    },
+    {
+      "cuts": [
+        0.69,
+        0.86
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 178",
+        "packed degenerate batch 0 triangle 179",
+        "packed degenerate batch 0 triangle 186",
+        "packed degenerate batch 0 triangle 187",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 202",
+        "packed degenerate batch 0 triangle 203",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 208",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 221"
+      ]
+    },
+    {
+      "cuts": [
+        0.69,
+        0.87
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 178",
+        "packed degenerate batch 0 triangle 179",
+        "packed degenerate batch 0 triangle 186",
+        "packed degenerate batch 0 triangle 187",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 202",
+        "packed degenerate batch 0 triangle 203",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 208",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 221"
+      ]
+    },
+    {
+      "cuts": [
+        0.69,
+        0.88
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 152",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 178",
+        "packed degenerate batch 0 triangle 179",
+        "packed degenerate batch 0 triangle 186",
+        "packed degenerate batch 0 triangle 187",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 202",
+        "packed degenerate batch 0 triangle 203",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 208",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 218",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 221"
+      ]
+    },
+    {
+      "cuts": [
+        0.69,
+        0.82
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 218"
+      ]
+    },
+    {
+      "cuts": [
+        0.69,
+        0.8
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 218"
+      ]
+    },
+    {
+      "cuts": [
+        0.69,
+        0.78
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 218"
+      ]
+    },
+    {
+      "cuts": [
+        0.69,
+        0.76
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 168",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 218"
+      ]
+    },
+    {
+      "cuts": [
+        0.7,
+        0.83
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 32",
+        "packed degenerate batch 1 triangle 33",
+        "packed degenerate batch 1 triangle 39"
+      ]
+    },
+    {
+      "cuts": [
+        0.7,
+        0.84
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 32",
+        "packed degenerate batch 1 triangle 33",
+        "packed degenerate batch 1 triangle 39"
+      ]
+    },
+    {
+      "cuts": [
+        0.7,
+        0.85
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 32",
+        "packed degenerate batch 1 triangle 33",
+        "packed degenerate batch 1 triangle 39"
+      ]
+    },
+    {
+      "cuts": [
+        0.7,
+        0.86
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 178",
+        "packed degenerate batch 0 triangle 179",
+        "packed degenerate batch 0 triangle 186",
+        "packed degenerate batch 0 triangle 187",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 202",
+        "packed degenerate batch 0 triangle 203",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 208",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 221",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 32",
+        "packed degenerate batch 1 triangle 33",
+        "packed degenerate batch 1 triangle 39"
+      ]
+    },
+    {
+      "cuts": [
+        0.7,
+        0.87
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 178",
+        "packed degenerate batch 0 triangle 179",
+        "packed degenerate batch 0 triangle 186",
+        "packed degenerate batch 0 triangle 187",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 202",
+        "packed degenerate batch 0 triangle 203",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 208",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 221",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 32",
+        "packed degenerate batch 1 triangle 33",
+        "packed degenerate batch 1 triangle 39"
+      ]
+    },
+    {
+      "cuts": [
+        0.7,
+        0.88
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 140",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 147",
+        "packed degenerate batch 0 triangle 152",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 162",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 178",
+        "packed degenerate batch 0 triangle 179",
+        "packed degenerate batch 0 triangle 186",
+        "packed degenerate batch 0 triangle 187",
+        "packed degenerate batch 0 triangle 194",
+        "packed degenerate batch 0 triangle 195",
+        "packed degenerate batch 0 triangle 202",
+        "packed degenerate batch 0 triangle 203",
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 208",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 221",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 32",
+        "packed degenerate batch 1 triangle 33",
+        "packed degenerate batch 1 triangle 39"
+      ]
+    },
+    {
+      "cuts": [
+        0.7,
+        0.82
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 32",
+        "packed degenerate batch 1 triangle 33",
+        "packed degenerate batch 1 triangle 39"
+      ]
+    },
+    {
+      "cuts": [
+        0.7,
+        0.8
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 32",
+        "packed degenerate batch 1 triangle 33",
+        "packed degenerate batch 1 triangle 39"
+      ]
+    },
+    {
+      "cuts": [
+        0.7,
+        0.78
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 32",
+        "packed degenerate batch 1 triangle 33",
+        "packed degenerate batch 1 triangle 39"
+      ]
+    },
+    {
+      "cuts": [
+        0.7,
+        0.76
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 205",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 32",
+        "packed degenerate batch 1 triangle 33",
+        "packed degenerate batch 1 triangle 39"
+      ]
+    },
+    {
+      "cuts": [
+        0.64,
+        0.83
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.64,
+        0.84
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.64,
+        0.85
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.64,
+        0.86
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 142",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 148",
+        "packed degenerate batch 0 triangle 149",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 175",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 190",
+        "packed degenerate batch 0 triangle 191",
+        "packed degenerate batch 0 triangle 198",
+        "packed degenerate batch 0 triangle 199",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.64,
+        0.87
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 142",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 148",
+        "packed degenerate batch 0 triangle 149",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 175",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 190",
+        "packed degenerate batch 0 triangle 191",
+        "packed degenerate batch 0 triangle 198",
+        "packed degenerate batch 0 triangle 199",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.64,
+        0.88
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 142",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 148",
+        "packed degenerate batch 0 triangle 149",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 154",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 174",
+        "packed degenerate batch 0 triangle 175",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 190",
+        "packed degenerate batch 0 triangle 191",
+        "packed degenerate batch 0 triangle 198",
+        "packed degenerate batch 0 triangle 199",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.64,
+        0.82
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.64,
+        0.8
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.64,
+        0.78
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.64,
+        0.76
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.65,
+        0.83
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.65,
+        0.84
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.65,
+        0.85
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.65,
+        0.86
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 142",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 148",
+        "packed degenerate batch 0 triangle 149",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 175",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 190",
+        "packed degenerate batch 0 triangle 191",
+        "packed degenerate batch 0 triangle 198",
+        "packed degenerate batch 0 triangle 199",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.65,
+        0.87
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 142",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 148",
+        "packed degenerate batch 0 triangle 149",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 175",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 190",
+        "packed degenerate batch 0 triangle 191",
+        "packed degenerate batch 0 triangle 198",
+        "packed degenerate batch 0 triangle 199",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.65,
+        0.88
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 142",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 148",
+        "packed degenerate batch 0 triangle 149",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 154",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 174",
+        "packed degenerate batch 0 triangle 175",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 190",
+        "packed degenerate batch 0 triangle 191",
+        "packed degenerate batch 0 triangle 198",
+        "packed degenerate batch 0 triangle 199",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.65,
+        0.82
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.65,
+        0.8
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.65,
+        0.78
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.65,
+        0.76
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 219",
+        "packed degenerate batch 0 triangle 220",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.62,
+        0.83
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 172",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 0 triangle 235",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 36"
+      ]
+    },
+    {
+      "cuts": [
+        0.62,
+        0.84
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 172",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 0 triangle 235",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 36"
+      ]
+    },
+    {
+      "cuts": [
+        0.62,
+        0.85
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 172",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 0 triangle 235",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 36"
+      ]
+    },
+    {
+      "cuts": [
+        0.62,
+        0.86
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 142",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 148",
+        "packed degenerate batch 0 triangle 149",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 172",
+        "packed degenerate batch 0 triangle 175",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 190",
+        "packed degenerate batch 0 triangle 191",
+        "packed degenerate batch 0 triangle 198",
+        "packed degenerate batch 0 triangle 199",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 0 triangle 235",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 36"
+      ]
+    },
+    {
+      "cuts": [
+        0.62,
+        0.87
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 142",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 148",
+        "packed degenerate batch 0 triangle 149",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 172",
+        "packed degenerate batch 0 triangle 175",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 190",
+        "packed degenerate batch 0 triangle 191",
+        "packed degenerate batch 0 triangle 198",
+        "packed degenerate batch 0 triangle 199",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 0 triangle 235",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 36"
+      ]
+    },
+    {
+      "cuts": [
+        0.62,
+        0.88
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 142",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 148",
+        "packed degenerate batch 0 triangle 149",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 154",
+        "packed degenerate batch 0 triangle 155",
+        "packed degenerate batch 0 triangle 158",
+        "packed degenerate batch 0 triangle 159",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 164",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 172",
+        "packed degenerate batch 0 triangle 174",
+        "packed degenerate batch 0 triangle 175",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 190",
+        "packed degenerate batch 0 triangle 191",
+        "packed degenerate batch 0 triangle 198",
+        "packed degenerate batch 0 triangle 199",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 0 triangle 235",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 36"
+      ]
+    },
+    {
+      "cuts": [
+        0.62,
+        0.82
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 172",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 0 triangle 235",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 36"
+      ]
+    },
+    {
+      "cuts": [
+        0.62,
+        0.8
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 172",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 0 triangle 235",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 36"
+      ]
+    },
+    {
+      "cuts": [
+        0.62,
+        0.78
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 172",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 0 triangle 235",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 36"
+      ]
+    },
+    {
+      "cuts": [
+        0.62,
+        0.76
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 133",
+        "packed degenerate batch 0 triangle 135",
+        "packed degenerate batch 0 triangle 139",
+        "packed degenerate batch 0 triangle 144",
+        "packed degenerate batch 0 triangle 150",
+        "packed degenerate batch 0 triangle 151",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 167",
+        "packed degenerate batch 0 triangle 169",
+        "packed degenerate batch 0 triangle 171",
+        "packed degenerate batch 0 triangle 172",
+        "packed degenerate batch 0 triangle 216",
+        "packed degenerate batch 0 triangle 234",
+        "packed degenerate batch 0 triangle 235",
+        "packed degenerate batch 1 triangle 27",
+        "packed degenerate batch 1 triangle 36"
+      ]
+    },
+    {
+      "cuts": [
+        0.6,
+        0.83
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 122",
+        "packed degenerate batch 0 triangle 123",
+        "packed degenerate batch 1 triangle 20",
+        "packed degenerate batch 1 triangle 21",
+        "packed degenerate batch 1 triangle 24",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.6,
+        0.84
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 122",
+        "packed degenerate batch 0 triangle 123",
+        "packed degenerate batch 1 triangle 20",
+        "packed degenerate batch 1 triangle 21",
+        "packed degenerate batch 1 triangle 24",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.6,
+        0.85
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 122",
+        "packed degenerate batch 0 triangle 123",
+        "packed degenerate batch 0 triangle 163",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 1 triangle 20",
+        "packed degenerate batch 1 triangle 21",
+        "packed degenerate batch 1 triangle 24",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.6,
+        0.86
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 122",
+        "packed degenerate batch 0 triangle 123",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 152",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 163",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 175",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 190",
+        "packed degenerate batch 0 triangle 191",
+        "packed degenerate batch 0 triangle 198",
+        "packed degenerate batch 0 triangle 199",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 1 triangle 20",
+        "packed degenerate batch 1 triangle 21",
+        "packed degenerate batch 1 triangle 24",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.6,
+        0.87
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 122",
+        "packed degenerate batch 0 triangle 123",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 152",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 163",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 175",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 190",
+        "packed degenerate batch 0 triangle 191",
+        "packed degenerate batch 0 triangle 198",
+        "packed degenerate batch 0 triangle 199",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 1 triangle 20",
+        "packed degenerate batch 1 triangle 21",
+        "packed degenerate batch 1 triangle 24",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.6,
+        0.88
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 122",
+        "packed degenerate batch 0 triangle 123",
+        "packed degenerate batch 0 triangle 146",
+        "packed degenerate batch 0 triangle 152",
+        "packed degenerate batch 0 triangle 153",
+        "packed degenerate batch 0 triangle 156",
+        "packed degenerate batch 0 triangle 157",
+        "packed degenerate batch 0 triangle 160",
+        "packed degenerate batch 0 triangle 161",
+        "packed degenerate batch 0 triangle 163",
+        "packed degenerate batch 0 triangle 166",
+        "packed degenerate batch 0 triangle 174",
+        "packed degenerate batch 0 triangle 175",
+        "packed degenerate batch 0 triangle 182",
+        "packed degenerate batch 0 triangle 183",
+        "packed degenerate batch 0 triangle 190",
+        "packed degenerate batch 0 triangle 191",
+        "packed degenerate batch 0 triangle 198",
+        "packed degenerate batch 0 triangle 199",
+        "packed degenerate batch 0 triangle 206",
+        "packed degenerate batch 0 triangle 207",
+        "packed degenerate batch 0 triangle 210",
+        "packed degenerate batch 0 triangle 224",
+        "packed degenerate batch 0 triangle 225",
+        "packed degenerate batch 1 triangle 20",
+        "packed degenerate batch 1 triangle 21",
+        "packed degenerate batch 1 triangle 24",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.6,
+        0.82
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 122",
+        "packed degenerate batch 0 triangle 123",
+        "packed degenerate batch 1 triangle 20",
+        "packed degenerate batch 1 triangle 21",
+        "packed degenerate batch 1 triangle 24",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.6,
+        0.8
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 122",
+        "packed degenerate batch 0 triangle 123",
+        "packed degenerate batch 1 triangle 20",
+        "packed degenerate batch 1 triangle 21",
+        "packed degenerate batch 1 triangle 24",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.6,
+        0.78
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 122",
+        "packed degenerate batch 0 triangle 123",
+        "packed degenerate batch 1 triangle 20",
+        "packed degenerate batch 1 triangle 21",
+        "packed degenerate batch 1 triangle 24",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.6,
+        0.76
+      ],
+      "errors": [
+        "packed degenerate batch 0 triangle 122",
+        "packed degenerate batch 0 triangle 123",
+        "packed degenerate batch 1 triangle 20",
+        "packed degenerate batch 1 triangle 21",
+        "packed degenerate batch 1 triangle 24",
+        "packed degenerate batch 1 triangle 27"
+      ]
+    },
+    {
+      "cuts": [
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/gene/i3e/gene/scene.l64",
+    "sha256": "e7f715a3a54b06741e59ccde608f8ce799e8fbad51b4008b536c650875e8d1b1",
+    "triangles": 560,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "gene3_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      },
+      {
+        "name": "gene3_top.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "before_max_eye_white_angle": 48.25523562585108,
+    "after_max_eye_white_angle": 42.970276708561414,
+    "additional_horizontal_span": 0.9,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of painted eye whites; no pixel beyond43deg in sampled owning faces; lying pose inherits standing mapping",
+    "face_vertices": 27,
+    "original_native_sha256": "15929f89f8405e71d73a5725eb4a74c37014f5bb2902bed10e44904ae655eeef",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

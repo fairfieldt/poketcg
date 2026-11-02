@@ -17,10 +17,10 @@
       "native_asset": "assets/models/dr_mason/scene.l64",
       "blender_file": "assets/models/dr_mason/dr_mason.blend",
       "heading": null,
-      "candidate_asset": "models/dr_mason/i3/dr_mason/scene.l64",
-      "candidate_blender": "models/dr_mason/i3/dr_mason.blend",
+      "candidate_asset": "models/dr_mason/i3f/dr_mason/scene.l64",
+      "candidate_blender": "models/dr_mason/i3f/dr_mason.blend",
       "candidate_selection": "dr_mason",
-      "candidate_sha256": "784e46b8f1074131bb713526708cc136140ef4a92449fe5437c9d91d144d1582"
+      "candidate_sha256": "0f2be9a2ddccb096086655b62b10c0bc55db1c98652ee778b726df1508b10c1c"
     },
     "NPC_RONALD1": {
       "npc_id": 2,
@@ -32,10 +32,10 @@
       "native_asset": "assets/models/ronald/scene.l64",
       "blender_file": "assets/models/ronald/ronald.blend",
       "heading": null,
-      "candidate_asset": "models/ronald/i3/ronald/scene.l64",
-      "candidate_blender": "models/ronald/i3/ronald.blend",
+      "candidate_asset": "models/ronald/i3f/ronald/scene.l64",
+      "candidate_blender": "models/ronald/i3f/ronald.blend",
       "candidate_selection": "ronald",
-      "candidate_sha256": "b7b5cc0870f062ac1636c3e2d953a6bc9cbc18960f6bcff33817a64c4eaf5033"
+      "candidate_sha256": "c247d6cdb7171a71d97f8d005e08e4a8ef0fb551a9374be284863d115f898218"
     },
     "NPC_ISHIHARA": {
       "npc_id": 3,
@@ -47,10 +47,10 @@
       "native_asset": "assets/models/ishihara/scene.l64",
       "blender_file": "assets/models/ishihara/ishihara.blend",
       "heading": null,
-      "candidate_asset": "models/ishihara/i3/ishihara/scene.l64",
-      "candidate_blender": "models/ishihara/i3/ishihara.blend",
+      "candidate_asset": "models/ishihara/i3e/ishihara/scene.l64",
+      "candidate_blender": "models/ishihara/i3e/ishihara.blend",
       "candidate_selection": "ishihara",
-      "candidate_sha256": "577ae3f1386f5554a8c52a7cb24987061bb377362aa51d9cbc3cc0f5a04c9308"
+      "candidate_sha256": "40b34731a1bd9757fd75dcd6e9dc0a75234f27a76d4c4ce179340458659c128f"
     },
     "NPC_IMAKUNI": {
       "npc_id": 4,
@@ -62,10 +62,10 @@
       "native_asset": "assets/models/imakuni/scene.l64",
       "blender_file": "assets/models/imakuni/imakuni.blend",
       "heading": null,
-      "candidate_asset": "models/imakuni/i3/imakuni/scene.l64",
-      "candidate_blender": "models/imakuni/i3/imakuni.blend",
+      "candidate_asset": "models/imakuni/i3e/imakuni/scene.l64",
+      "candidate_blender": "models/imakuni/i3e/imakuni.blend",
       "candidate_selection": "imakuni",
-      "candidate_sha256": "5692c1f82fc53c0f74ad7c0934d7b42a7b30c17a3adebae7b503ca2080acdd7d"
+      "candidate_sha256": "56c09149169dd6fbd26609b3e3dd2f6c1d2e2d06ec61f8f82886887b2a9c406e"
     },
     "NPC_05": {
       "npc_id": 5,
@@ -77,10 +77,10 @@
       "native_asset": "assets/models/dr_mason/scene.l64",
       "blender_file": "assets/models/dr_mason/dr_mason.blend",
       "heading": null,
-      "candidate_asset": "models/dr_mason/i3/dr_mason/scene.l64",
-      "candidate_blender": "models/dr_mason/i3/dr_mason.blend",
+      "candidate_asset": "models/dr_mason/i3f/dr_mason/scene.l64",
+      "candidate_blender": "models/dr_mason/i3f/dr_mason.blend",
       "candidate_selection": "dr_mason",
-      "candidate_sha256": "784e46b8f1074131bb713526708cc136140ef4a92449fe5437c9d91d144d1582"
+      "candidate_sha256": "0f2be9a2ddccb096086655b62b10c0bc55db1c98652ee778b726df1508b10c1c"
     },
     "NPC_06": {
       "npc_id": 6,
@@ -92,10 +92,10 @@
       "native_asset": "assets/models/dr_mason/scene.l64",
       "blender_file": "assets/models/dr_mason/dr_mason.blend",
       "heading": null,
-      "candidate_asset": "models/dr_mason/i3/dr_mason/scene.l64",
-      "candidate_blender": "models/dr_mason/i3/dr_mason.blend",
+      "candidate_asset": "models/dr_mason/i3f/dr_mason/scene.l64",
+      "candidate_blender": "models/dr_mason/i3f/dr_mason.blend",
       "candidate_selection": "dr_mason",
-      "candidate_sha256": "784e46b8f1074131bb713526708cc136140ef4a92449fe5437c9d91d144d1582"
+      "candidate_sha256": "0f2be9a2ddccb096086655b62b10c0bc55db1c98652ee778b726df1508b10c1c"
     },
     "NPC_SAM": {
       "npc_id": 7,
@@ -107,10 +107,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_TECH1": {
       "npc_id": 8,
@@ -122,10 +122,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_TECH2": {
       "npc_id": 9,
@@ -137,10 +137,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_TECH3": {
       "npc_id": 10,
@@ -152,10 +152,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_TECH4": {
       "npc_id": 11,
@@ -167,10 +167,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_TECH5": {
       "npc_id": 12,
@@ -182,10 +182,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_TECH6": {
       "npc_id": 13,
@@ -197,10 +197,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_CLERK1": {
       "npc_id": 14,
@@ -212,10 +212,10 @@
       "native_asset": "assets/models/clerk/scene.l64",
       "blender_file": "assets/models/clerk/clerk.blend",
       "heading": null,
-      "candidate_asset": "models/clerk/i3/clerk/scene.l64",
-      "candidate_blender": "models/clerk/i3/clerk.blend",
+      "candidate_asset": "models/clerk/i3e/clerk/scene.l64",
+      "candidate_blender": "models/clerk/i3e/clerk.blend",
       "candidate_selection": "clerk",
-      "candidate_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624"
+      "candidate_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1"
     },
     "NPC_CLERK2": {
       "npc_id": 15,
@@ -227,10 +227,10 @@
       "native_asset": "assets/models/clerk/scene.l64",
       "blender_file": "assets/models/clerk/clerk.blend",
       "heading": null,
-      "candidate_asset": "models/clerk/i3/clerk/scene.l64",
-      "candidate_blender": "models/clerk/i3/clerk.blend",
+      "candidate_asset": "models/clerk/i3e/clerk/scene.l64",
+      "candidate_blender": "models/clerk/i3e/clerk.blend",
       "candidate_selection": "clerk",
-      "candidate_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624"
+      "candidate_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1"
     },
     "NPC_CLERK3": {
       "npc_id": 16,
@@ -242,10 +242,10 @@
       "native_asset": "assets/models/clerk/scene.l64",
       "blender_file": "assets/models/clerk/clerk.blend",
       "heading": null,
-      "candidate_asset": "models/clerk/i3/clerk/scene.l64",
-      "candidate_blender": "models/clerk/i3/clerk.blend",
+      "candidate_asset": "models/clerk/i3e/clerk/scene.l64",
+      "candidate_blender": "models/clerk/i3e/clerk.blend",
       "candidate_selection": "clerk",
-      "candidate_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624"
+      "candidate_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1"
     },
     "NPC_CLERK4": {
       "npc_id": 17,
@@ -257,10 +257,10 @@
       "native_asset": "assets/models/clerk/scene.l64",
       "blender_file": "assets/models/clerk/clerk.blend",
       "heading": null,
-      "candidate_asset": "models/clerk/i3/clerk/scene.l64",
-      "candidate_blender": "models/clerk/i3/clerk.blend",
+      "candidate_asset": "models/clerk/i3e/clerk/scene.l64",
+      "candidate_blender": "models/clerk/i3e/clerk.blend",
       "candidate_selection": "clerk",
-      "candidate_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624"
+      "candidate_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1"
     },
     "NPC_CLERK5": {
       "npc_id": 18,
@@ -272,10 +272,10 @@
       "native_asset": "assets/models/clerk/scene.l64",
       "blender_file": "assets/models/clerk/clerk.blend",
       "heading": null,
-      "candidate_asset": "models/clerk/i3/clerk/scene.l64",
-      "candidate_blender": "models/clerk/i3/clerk.blend",
+      "candidate_asset": "models/clerk/i3e/clerk/scene.l64",
+      "candidate_blender": "models/clerk/i3e/clerk.blend",
       "candidate_selection": "clerk",
-      "candidate_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624"
+      "candidate_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1"
     },
     "NPC_CLERK6": {
       "npc_id": 19,
@@ -287,10 +287,10 @@
       "native_asset": "assets/models/clerk/scene.l64",
       "blender_file": "assets/models/clerk/clerk.blend",
       "heading": null,
-      "candidate_asset": "models/clerk/i3/clerk/scene.l64",
-      "candidate_blender": "models/clerk/i3/clerk.blend",
+      "candidate_asset": "models/clerk/i3e/clerk/scene.l64",
+      "candidate_blender": "models/clerk/i3e/clerk.blend",
       "candidate_selection": "clerk",
-      "candidate_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624"
+      "candidate_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1"
     },
     "NPC_CLERK7": {
       "npc_id": 20,
@@ -302,10 +302,10 @@
       "native_asset": "assets/models/clerk/scene.l64",
       "blender_file": "assets/models/clerk/clerk.blend",
       "heading": null,
-      "candidate_asset": "models/clerk/i3/clerk/scene.l64",
-      "candidate_blender": "models/clerk/i3/clerk.blend",
+      "candidate_asset": "models/clerk/i3e/clerk/scene.l64",
+      "candidate_blender": "models/clerk/i3e/clerk.blend",
       "candidate_selection": "clerk",
-      "candidate_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624"
+      "candidate_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1"
     },
     "NPC_CLERK8": {
       "npc_id": 21,
@@ -317,10 +317,10 @@
       "native_asset": "assets/models/clerk/scene.l64",
       "blender_file": "assets/models/clerk/clerk.blend",
       "heading": null,
-      "candidate_asset": "models/clerk/i3/clerk/scene.l64",
-      "candidate_blender": "models/clerk/i3/clerk.blend",
+      "candidate_asset": "models/clerk/i3e/clerk/scene.l64",
+      "candidate_blender": "models/clerk/i3e/clerk.blend",
       "candidate_selection": "clerk",
-      "candidate_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624"
+      "candidate_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1"
     },
     "NPC_CLERK9": {
       "npc_id": 22,
@@ -332,10 +332,10 @@
       "native_asset": "assets/models/clerk/scene.l64",
       "blender_file": "assets/models/clerk/clerk.blend",
       "heading": null,
-      "candidate_asset": "models/clerk/i3/clerk/scene.l64",
-      "candidate_blender": "models/clerk/i3/clerk.blend",
+      "candidate_asset": "models/clerk/i3e/clerk/scene.l64",
+      "candidate_blender": "models/clerk/i3e/clerk.blend",
       "candidate_selection": "clerk",
-      "candidate_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624"
+      "candidate_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1"
     },
     "NPC_CHRIS": {
       "npc_id": 23,
@@ -347,10 +347,10 @@
       "native_asset": "assets/models/mania/scene.l64",
       "blender_file": "assets/models/mania/mania.blend",
       "heading": null,
-      "candidate_asset": "models/mania/i3/mania/scene.l64",
-      "candidate_blender": "models/mania/i3/mania.blend",
+      "candidate_asset": "models/mania/i3f/mania/scene.l64",
+      "candidate_blender": "models/mania/i3f/mania.blend",
       "candidate_selection": "mania",
-      "candidate_sha256": "f0630f41cde9f511a07696017c8f641e69059ecc298eac0a0e431d0390cc01e9"
+      "candidate_sha256": "b0df8979bce7a18995b4bc66fab19fc4e7204901580c80e45c08268f9b43457d"
     },
     "NPC_MICHAEL": {
       "npc_id": 24,
@@ -362,10 +362,10 @@
       "native_asset": "assets/models/mania/scene.l64",
       "blender_file": "assets/models/mania/mania.blend",
       "heading": null,
-      "candidate_asset": "models/mania/i3/mania/scene.l64",
-      "candidate_blender": "models/mania/i3/mania.blend",
+      "candidate_asset": "models/mania/i3f/mania/scene.l64",
+      "candidate_blender": "models/mania/i3f/mania.blend",
       "candidate_selection": "mania",
-      "candidate_sha256": "f0630f41cde9f511a07696017c8f641e69059ecc298eac0a0e431d0390cc01e9"
+      "candidate_sha256": "b0df8979bce7a18995b4bc66fab19fc4e7204901580c80e45c08268f9b43457d"
     },
     "NPC_JESSICA": {
       "npc_id": 25,
@@ -377,10 +377,10 @@
       "native_asset": "assets/models/lass3/scene.l64",
       "blender_file": "assets/models/lass3/lass3.blend",
       "heading": null,
-      "candidate_asset": "models/lass3/i3c/lass3/scene.l64",
-      "candidate_blender": "models/lass3/i3c/lass3.blend",
+      "candidate_asset": "models/lass3/i3f/lass3/scene.l64",
+      "candidate_blender": "models/lass3/i3f/lass3.blend",
       "candidate_selection": "lass3",
-      "candidate_sha256": "126509a8f0cfe1fb6d14d7e74c20807dd9d048e80b09ce4fdf7ddd1ec5f98614"
+      "candidate_sha256": "db79256ba54b43a54ee911f1586da69986f57ac90fe11874b2e938c5ac6e84ba"
     },
     "NPC_MITCH": {
       "npc_id": 26,
@@ -392,10 +392,10 @@
       "native_asset": "assets/models/mitch/scene.l64",
       "blender_file": "assets/models/mitch/mitch.blend",
       "heading": null,
-      "candidate_asset": "models/mitch/i3/mitch/scene.l64",
-      "candidate_blender": "models/mitch/i3/mitch.blend",
+      "candidate_asset": "models/mitch/i3f/mitch/scene.l64",
+      "candidate_blender": "models/mitch/i3f/mitch.blend",
       "candidate_selection": "mitch",
-      "candidate_sha256": "1181cf83029cc890adeec4bda7059efb2846a0b4090c66840a177375bb9018ac"
+      "candidate_sha256": "a543084dfefe0f56c0045c310f4426f09fceab95c99a8d4af9dada147bb65d2f"
     },
     "NPC_MATTHEW": {
       "npc_id": 27,
@@ -407,10 +407,10 @@
       "native_asset": "assets/models/mania/variants/mania_palette2/scene.l64",
       "blender_file": "assets/models/mania/mania.blend",
       "heading": null,
-      "candidate_asset": "models/mania_palette2/i3/mania_palette2/scene.l64",
-      "candidate_blender": "models/mania_palette2/i3/mania_palette2.blend",
+      "candidate_asset": "models/mania_palette2/i3f/mania_palette2/scene.l64",
+      "candidate_blender": "models/mania_palette2/i3f/mania_palette2.blend",
       "candidate_selection": "mania_palette2",
-      "candidate_sha256": "b29e366efd08bb77b88d98436864d4e12e42ab7e6ccfab0d7eab45e37952ad9b"
+      "candidate_sha256": "02066f9f411d0f78826cdf49d4a75f112087a6fc5da31df26f9cf31512f2d80d"
     },
     "NPC_RYAN": {
       "npc_id": 28,
@@ -422,10 +422,10 @@
       "native_asset": "assets/models/boy/scene.l64",
       "blender_file": "assets/models/boy/boy.blend",
       "heading": null,
-      "candidate_asset": "models/boy/i3/boy/scene.l64",
-      "candidate_blender": "models/boy/i3/boy.blend",
+      "candidate_asset": "models/boy/i3e/boy/scene.l64",
+      "candidate_blender": "models/boy/i3e/boy.blend",
       "candidate_selection": "boy",
-      "candidate_sha256": "6362601dfaa22bd1721bae3c8c19866916ead36564cdc477b002e288a56777fe"
+      "candidate_sha256": "80331a3e1f713af4a49cb57f98a1a8119d87791e73e9b7db515f9ec041789cca"
     },
     "NPC_ANDREW": {
       "npc_id": 29,
@@ -437,10 +437,10 @@
       "native_asset": "assets/models/man/scene.l64",
       "blender_file": "assets/models/man/man.blend",
       "heading": null,
-      "candidate_asset": "models/man/i3/man/scene.l64",
-      "candidate_blender": "models/man/i3/man.blend",
+      "candidate_asset": "models/man/i3e/man/scene.l64",
+      "candidate_blender": "models/man/i3e/man.blend",
       "candidate_selection": "man",
-      "candidate_sha256": "a09bb55fccd5bf185408b4d6cb8b62889c42703426a4ccbefafb8218510d2267"
+      "candidate_sha256": "063692f881228bf83c7a1a9fc74223ead9536b497728d34521fb6e77b1684be1"
     },
     "NPC_GENE": {
       "npc_id": 30,
@@ -452,10 +452,10 @@
       "native_asset": "assets/models/gene/scene.l64",
       "blender_file": "assets/models/gene/gene.blend",
       "heading": null,
-      "candidate_asset": "models/gene/i3/gene/scene.l64",
-      "candidate_blender": "models/gene/i3/gene.blend",
+      "candidate_asset": "models/gene/i3e/gene/scene.l64",
+      "candidate_blender": "models/gene/i3e/gene.blend",
       "candidate_selection": "gene",
-      "candidate_sha256": "a7c5a595c0c5f772da22bd95864aa9858e40d3f1d6293235afeee2b4a5e923b2"
+      "candidate_sha256": "e7f715a3a54b06741e59ccde608f8ce799e8fbad51b4008b536c650875e8d1b1"
     },
     "NPC_SARA": {
       "npc_id": 31,
@@ -467,10 +467,10 @@
       "native_asset": "assets/models/swimmer/scene.l64",
       "blender_file": "assets/models/swimmer/swimmer.blend",
       "heading": null,
-      "candidate_asset": "models/swimmer/i3b/swimmer/scene.l64",
-      "candidate_blender": "models/swimmer/i3b/swimmer.blend",
+      "candidate_asset": "models/swimmer/i3e/swimmer/scene.l64",
+      "candidate_blender": "models/swimmer/i3e/swimmer.blend",
       "candidate_selection": "swimmer",
-      "candidate_sha256": "14fc11a98d30e655454ef697418e0f93f94a3a5e3cb12c5b28e4d61266dafa7a"
+      "candidate_sha256": "0167c80b075dde96d08240618099501096412905b9bf4ea6187509faa622c4bd"
     },
     "NPC_AMANDA": {
       "npc_id": 32,
@@ -482,10 +482,10 @@
       "native_asset": "assets/models/swimmer/variants/swimmer_palette2/scene.l64",
       "blender_file": "assets/models/swimmer/swimmer.blend",
       "heading": null,
-      "candidate_asset": "models/swimmer_palette2/i3b/swimmer_palette2/scene.l64",
-      "candidate_blender": "models/swimmer_palette2/i3b/swimmer_palette2.blend",
+      "candidate_asset": "models/swimmer_palette2/i3e/swimmer_palette2/scene.l64",
+      "candidate_blender": "models/swimmer_palette2/i3e/swimmer_palette2.blend",
       "candidate_selection": "swimmer_palette2",
-      "candidate_sha256": "36da5c6037274a76c5f7896d7aaaa38b9473b370979c7fcf4f6325098a2fb8e4"
+      "candidate_sha256": "37b01de8ede9f2e3b355fbf35d31266ff4748953c0f0f7e354769a343cbb3260"
     },
     "NPC_JOSHUA": {
       "npc_id": 33,
@@ -497,10 +497,10 @@
       "native_asset": "assets/models/joshua/scene.l64",
       "blender_file": "assets/models/joshua/joshua.blend",
       "heading": null,
-      "candidate_asset": "models/joshua/i3b/joshua/scene.l64",
-      "candidate_blender": "models/joshua/i3b/joshua.blend",
+      "candidate_asset": "models/joshua/i3e/joshua/scene.l64",
+      "candidate_blender": "models/joshua/i3e/joshua.blend",
       "candidate_selection": "joshua",
-      "candidate_sha256": "61ad46c92927d5dee96b11ed1045865d53c45951f390eb8b6b96c7158b353736"
+      "candidate_sha256": "04311476808d2dbdd1e3a4dd014c7c78cc0f2e8cc8f25cddbca0b3608cac758a"
     },
     "NPC_AMY": {
       "npc_id": 34,
@@ -512,10 +512,10 @@
       "native_asset": "assets/models/amy/poses/lying/scene.l64",
       "blender_file": "assets/models/amy/amy.blend",
       "heading": null,
-      "candidate_asset": "models/amy__lying/i3/amy__lying/scene.l64",
-      "candidate_blender": "models/amy__lying/i3/amy__lying.blend",
+      "candidate_asset": "models/amy__lying/i3e/amy__lying/scene.l64",
+      "candidate_blender": "models/amy__lying/i3e/amy__lying.blend",
       "candidate_selection": "amy__lying",
-      "candidate_sha256": "7936767efe10b6a4f0156ea4fc06d2d096e7cc3060ba36e8deccd1a27ed14e90"
+      "candidate_sha256": "0ac440b4630b9eee24c6c962211e997c071b6e2ed2fde6c918535b4192444249"
     },
     "NPC_JENNIFER": {
       "npc_id": 35,
@@ -527,10 +527,10 @@
       "native_asset": "assets/models/girl/scene.l64",
       "blender_file": "assets/models/girl/girl.blend",
       "heading": null,
-      "candidate_asset": "models/girl/i3/girl/scene.l64",
-      "candidate_blender": "models/girl/i3/girl.blend",
+      "candidate_asset": "models/girl/i3e/girl/scene.l64",
+      "candidate_blender": "models/girl/i3e/girl.blend",
       "candidate_selection": "girl",
-      "candidate_sha256": "a096ed97d1eecea2d86db99fea21c65f3b79a304833c85ffe6bfee0f8c0595a3"
+      "candidate_sha256": "7a5a15b787f2950b0e3cdd9978841ea80bb2ab75fc905bb64ddea8025e377071"
     },
     "NPC_NICHOLAS": {
       "npc_id": 36,
@@ -542,10 +542,10 @@
       "native_asset": "assets/models/hood/scene.l64",
       "blender_file": "assets/models/hood/hood.blend",
       "heading": null,
-      "candidate_asset": "models/hood/i3/hood/scene.l64",
-      "candidate_blender": "models/hood/i3/hood.blend",
+      "candidate_asset": "models/hood/i3e/hood/scene.l64",
+      "candidate_blender": "models/hood/i3e/hood.blend",
       "candidate_selection": "hood",
-      "candidate_sha256": "ad508a585dd2b902af34ce15105de0a5ad419fc231b3435c078c2e4d8fb51e03"
+      "candidate_sha256": "56449a2f51cf0856defc092b7e20b7d59171c6e2a07bdc53f25ca93be75c41e0"
     },
     "NPC_BRANDON": {
       "npc_id": 37,
@@ -557,10 +557,10 @@
       "native_asset": "assets/models/hood/scene.l64",
       "blender_file": "assets/models/hood/hood.blend",
       "heading": null,
-      "candidate_asset": "models/hood/i3/hood/scene.l64",
-      "candidate_blender": "models/hood/i3/hood.blend",
+      "candidate_asset": "models/hood/i3e/hood/scene.l64",
+      "candidate_blender": "models/hood/i3e/hood.blend",
       "candidate_selection": "hood",
-      "candidate_sha256": "ad508a585dd2b902af34ce15105de0a5ad419fc231b3435c078c2e4d8fb51e03"
+      "candidate_sha256": "56449a2f51cf0856defc092b7e20b7d59171c6e2a07bdc53f25ca93be75c41e0"
     },
     "NPC_ISAAC": {
       "npc_id": 38,
@@ -572,10 +572,10 @@
       "native_asset": "assets/models/isaac/scene.l64",
       "blender_file": "assets/models/isaac/isaac.blend",
       "heading": null,
-      "candidate_asset": "models/isaac/i3/isaac/scene.l64",
-      "candidate_blender": "models/isaac/i3/isaac.blend",
+      "candidate_asset": "models/isaac/i3e/isaac/scene.l64",
+      "candidate_blender": "models/isaac/i3e/isaac.blend",
       "candidate_selection": "isaac",
-      "candidate_sha256": "160cab180a4d802c57104a6c131c8b488aac97c22de93942c7e389c8668b6e6e"
+      "candidate_sha256": "6d5aa2abec5bad34c1c33da08af29f7de51ac7c661f2593a1f3a6e9e888d8426"
     },
     "NPC_BRITTANY": {
       "npc_id": 39,
@@ -587,10 +587,10 @@
       "native_asset": "assets/models/girl/scene.l64",
       "blender_file": "assets/models/girl/girl.blend",
       "heading": null,
-      "candidate_asset": "models/girl/i3/girl/scene.l64",
-      "candidate_blender": "models/girl/i3/girl.blend",
+      "candidate_asset": "models/girl/i3e/girl/scene.l64",
+      "candidate_blender": "models/girl/i3e/girl.blend",
       "candidate_selection": "girl",
-      "candidate_sha256": "a096ed97d1eecea2d86db99fea21c65f3b79a304833c85ffe6bfee0f8c0595a3"
+      "candidate_sha256": "7a5a15b787f2950b0e3cdd9978841ea80bb2ab75fc905bb64ddea8025e377071"
     },
     "NPC_KRISTIN": {
       "npc_id": 40,
@@ -602,10 +602,10 @@
       "native_asset": "assets/models/lass2/scene.l64",
       "blender_file": "assets/models/lass2/lass2.blend",
       "heading": null,
-      "candidate_asset": "models/lass2/i3b/lass2/scene.l64",
-      "candidate_blender": "models/lass2/i3b/lass2.blend",
+      "candidate_asset": "models/lass2/i3e/lass2/scene.l64",
+      "candidate_blender": "models/lass2/i3e/lass2.blend",
       "candidate_selection": "lass2",
-      "candidate_sha256": "218d7aa8cff4fb971f95749eb4eada4d1f5414f3f2ff0ea5ab01fb8ed4c2b57c"
+      "candidate_sha256": "00557ea4ebcdb9c39715b10f6631798b4e189f1d057d43a218c297cd3f89ddd6"
     },
     "NPC_HEATHER": {
       "npc_id": 41,
@@ -617,10 +617,10 @@
       "native_asset": "assets/models/lass1/scene.l64",
       "blender_file": "assets/models/lass1/lass1.blend",
       "heading": null,
-      "candidate_asset": "models/lass1/i3/lass1/scene.l64",
-      "candidate_blender": "models/lass1/i3/lass1.blend",
+      "candidate_asset": "models/lass1/i3e/lass1/scene.l64",
+      "candidate_blender": "models/lass1/i3e/lass1.blend",
       "candidate_selection": "lass1",
-      "candidate_sha256": "7c092d0f7d5aae31f74d7433d041eb6a58ace8e1a8e8227c9c8f2c6ac151cad3"
+      "candidate_sha256": "f40c4e672318f7b088aae2d6e4ca63178bff73a8ec9edec73546541f0e9bd969"
     },
     "NPC_NIKKI": {
       "npc_id": 42,
@@ -632,10 +632,10 @@
       "native_asset": "assets/models/nikki/scene.l64",
       "blender_file": "assets/models/nikki/nikki.blend",
       "heading": null,
-      "candidate_asset": "models/nikki/i3/nikki/scene.l64",
-      "candidate_blender": "models/nikki/i3/nikki.blend",
+      "candidate_asset": "models/nikki/i3e/nikki/scene.l64",
+      "candidate_blender": "models/nikki/i3e/nikki.blend",
       "candidate_selection": "nikki",
-      "candidate_sha256": "4ecfb5502872ed3b17cc2bbb541528a6598a91958a9f0c65dda9704b700da3d2"
+      "candidate_sha256": "8488f51ab8b717a4916060c6b95d6e92032371bbd9f0e1a27048c77bc76960c2"
     },
     "NPC_ROBERT": {
       "npc_id": 43,
@@ -647,10 +647,10 @@
       "native_asset": "assets/models/boy/variants/boy_palette2/scene.l64",
       "blender_file": "assets/models/boy/boy.blend",
       "heading": null,
-      "candidate_asset": "models/boy_palette2/i3/boy_palette2/scene.l64",
-      "candidate_blender": "models/boy_palette2/i3/boy_palette2.blend",
+      "candidate_asset": "models/boy_palette2/i3e/boy_palette2/scene.l64",
+      "candidate_blender": "models/boy_palette2/i3e/boy_palette2.blend",
       "candidate_selection": "boy_palette2",
-      "candidate_sha256": "410e76cecc51262e3b8d9ed596c8bdcf3facac7e13d714e5a39257e29e1748c4"
+      "candidate_sha256": "27dd7df6bd54e33a1f34c64ae205d6834c714b82915292b5b5d76492e9d728a4"
     },
     "NPC_DANIEL": {
       "npc_id": 44,
@@ -662,10 +662,10 @@
       "native_asset": "assets/models/lad/scene.l64",
       "blender_file": "assets/models/lad/lad.blend",
       "heading": null,
-      "candidate_asset": "models/lad/i3b/lad/scene.l64",
-      "candidate_blender": "models/lad/i3b/lad.blend",
+      "candidate_asset": "models/lad/i3e/lad/scene.l64",
+      "candidate_blender": "models/lad/i3e/lad.blend",
       "candidate_selection": "lad",
-      "candidate_sha256": "af6e16730cec6d5d8abf85218064b746486102dca688bbfd38ab746373dc2e9d"
+      "candidate_sha256": "2ad09b55ae4d0a27b05d7923110ea8c58194d547c5ebfe7919c18f1bddb041d4"
     },
     "NPC_STEPHANIE": {
       "npc_id": 45,
@@ -677,10 +677,10 @@
       "native_asset": "assets/models/girl/scene.l64",
       "blender_file": "assets/models/girl/girl.blend",
       "heading": null,
-      "candidate_asset": "models/girl/i3/girl/scene.l64",
-      "candidate_blender": "models/girl/i3/girl.blend",
+      "candidate_asset": "models/girl/i3e/girl/scene.l64",
+      "candidate_blender": "models/girl/i3e/girl.blend",
       "candidate_selection": "girl",
-      "candidate_sha256": "a096ed97d1eecea2d86db99fea21c65f3b79a304833c85ffe6bfee0f8c0595a3"
+      "candidate_sha256": "7a5a15b787f2950b0e3cdd9978841ea80bb2ab75fc905bb64ddea8025e377071"
     },
     "NPC_MURRAY1": {
       "npc_id": 46,
@@ -692,10 +692,10 @@
       "native_asset": "assets/models/murray/scene.l64",
       "blender_file": "assets/models/murray/murray.blend",
       "heading": null,
-      "candidate_asset": "models/murray/i3/murray/scene.l64",
-      "candidate_blender": "models/murray/i3/murray.blend",
+      "candidate_asset": "models/murray/i3e/murray/scene.l64",
+      "candidate_blender": "models/murray/i3e/murray.blend",
       "candidate_selection": "murray",
-      "candidate_sha256": "f51488569a5d4d419b79b8b428c3b5ee255a8ac9b0a8ae57dc1aceccac2ca847"
+      "candidate_sha256": "da2aa9e7ede0ce5926c9c23f9c20a851864381f7bb0ab7630126f82842d431dc"
     },
     "NPC_JOSEPH": {
       "npc_id": 47,
@@ -707,10 +707,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_DAVID": {
       "npc_id": 48,
@@ -722,10 +722,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_ERIK": {
       "npc_id": 49,
@@ -737,10 +737,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_RICK": {
       "npc_id": 50,
@@ -752,10 +752,10 @@
       "native_asset": "assets/models/rick/scene.l64",
       "blender_file": "assets/models/rick/rick.blend",
       "heading": null,
-      "candidate_asset": "models/rick/i3/rick/scene.l64",
-      "candidate_blender": "models/rick/i3/rick.blend",
+      "candidate_asset": "models/rick/i3e/rick/scene.l64",
+      "candidate_blender": "models/rick/i3e/rick.blend",
       "candidate_selection": "rick",
-      "candidate_sha256": "2bb12bb168502c9c2f706acd48b2f69afdc64730709848a6f331ab068b5c384f"
+      "candidate_sha256": "df0479138eef2ad9057bf9f38ad860408dfce2d2d85a5a8142de80714c239174"
     },
     "NPC_JOHN": {
       "npc_id": 51,
@@ -767,10 +767,10 @@
       "native_asset": "assets/models/lad/scene.l64",
       "blender_file": "assets/models/lad/lad.blend",
       "heading": null,
-      "candidate_asset": "models/lad/i3b/lad/scene.l64",
-      "candidate_blender": "models/lad/i3b/lad.blend",
+      "candidate_asset": "models/lad/i3e/lad/scene.l64",
+      "candidate_blender": "models/lad/i3e/lad.blend",
       "candidate_selection": "lad",
-      "candidate_sha256": "af6e16730cec6d5d8abf85218064b746486102dca688bbfd38ab746373dc2e9d"
+      "candidate_sha256": "2ad09b55ae4d0a27b05d7923110ea8c58194d547c5ebfe7919c18f1bddb041d4"
     },
     "NPC_ADAM": {
       "npc_id": 52,
@@ -782,10 +782,10 @@
       "native_asset": "assets/models/specs/scene.l64",
       "blender_file": "assets/models/specs/specs.blend",
       "heading": null,
-      "candidate_asset": "models/specs/i3/specs/scene.l64",
-      "candidate_blender": "models/specs/i3/specs.blend",
+      "candidate_asset": "models/specs/i3e/specs/scene.l64",
+      "candidate_blender": "models/specs/i3e/specs.blend",
       "candidate_selection": "specs",
-      "candidate_sha256": "a5327d43e29700af61f6d857cbb23a2b6a3eaf66a9aa67823fda111bd69cdc57"
+      "candidate_sha256": "79dda64c28eb60356e6c3efa8366a3eb69d6ca87eea8711ca91de70f5b124611"
     },
     "NPC_JONATHAN": {
       "npc_id": 53,
@@ -797,10 +797,10 @@
       "native_asset": "assets/models/boy/variants/boy_palette2/scene.l64",
       "blender_file": "assets/models/boy/boy.blend",
       "heading": null,
-      "candidate_asset": "models/boy_palette2/i3/boy_palette2/scene.l64",
-      "candidate_blender": "models/boy_palette2/i3/boy_palette2.blend",
+      "candidate_asset": "models/boy_palette2/i3e/boy_palette2/scene.l64",
+      "candidate_blender": "models/boy_palette2/i3e/boy_palette2.blend",
       "candidate_selection": "boy_palette2",
-      "candidate_sha256": "410e76cecc51262e3b8d9ed596c8bdcf3facac7e13d714e5a39257e29e1748c4"
+      "candidate_sha256": "27dd7df6bd54e33a1f34c64ae205d6834c714b82915292b5b5d76492e9d728a4"
     },
     "NPC_KEN": {
       "npc_id": 54,
@@ -812,10 +812,10 @@
       "native_asset": "assets/models/ken/scene.l64",
       "blender_file": "assets/models/ken/ken.blend",
       "heading": null,
-      "candidate_asset": "models/ken/i3/ken/scene.l64",
-      "candidate_blender": "models/ken/i3/ken.blend",
+      "candidate_asset": "models/ken/i3e/ken/scene.l64",
+      "candidate_blender": "models/ken/i3e/ken.blend",
       "candidate_selection": "ken",
-      "candidate_sha256": "b16e536e3f2f8bb5b7bb78312426e600ccfe3275b9777730a96d145660e9c7d8"
+      "candidate_sha256": "2419287881da4c9abe7b80a2ecea64d53de28838f2a2ebb4801b5897687d494f"
     },
     "NPC_COURTNEY": {
       "npc_id": 55,
@@ -827,10 +827,10 @@
       "native_asset": "assets/models/courtney/scene.l64",
       "blender_file": "assets/models/courtney/courtney.blend",
       "heading": null,
-      "candidate_asset": "models/courtney/i3/courtney/scene.l64",
-      "candidate_blender": "models/courtney/i3/courtney.blend",
+      "candidate_asset": "models/courtney/i3e/courtney/scene.l64",
+      "candidate_blender": "models/courtney/i3e/courtney.blend",
       "candidate_selection": "courtney",
-      "candidate_sha256": "6f6fa1a170baf2d3b6391245dc5dce3c7ae5e0dbbaa060ff93a5270b26eea6b2"
+      "candidate_sha256": "4a85bfb171638e2d19ce08f3afe9ea91475912d7b285277b2db8a73dca65d325"
     },
     "NPC_STEVE": {
       "npc_id": 56,
@@ -842,10 +842,10 @@
       "native_asset": "assets/models/steve/scene.l64",
       "blender_file": "assets/models/steve/steve.blend",
       "heading": null,
-      "candidate_asset": "models/steve/i3/steve/scene.l64",
-      "candidate_blender": "models/steve/i3/steve.blend",
+      "candidate_asset": "models/steve/i3e/steve/scene.l64",
+      "candidate_blender": "models/steve/i3e/steve.blend",
       "candidate_selection": "steve",
-      "candidate_sha256": "465add9ae9043a91fa5824fc37acd026c17d0d2e7477ff8f3049213bedacfa67"
+      "candidate_sha256": "30403b7f1bb699d13b7c2292df83181bf6a37c2cc144910ea252b5654f7ac216"
     },
     "NPC_JACK": {
       "npc_id": 57,
@@ -857,10 +857,10 @@
       "native_asset": "assets/models/jack/scene.l64",
       "blender_file": "assets/models/jack/jack.blend",
       "heading": null,
-      "candidate_asset": "models/jack/i3/jack/scene.l64",
-      "candidate_blender": "models/jack/i3/jack.blend",
+      "candidate_asset": "models/jack/i3e/jack/scene.l64",
+      "candidate_blender": "models/jack/i3e/jack.blend",
       "candidate_selection": "jack",
-      "candidate_sha256": "cac0cbd45c1f36577f7aeee854d0d1c02c2ce4427f0aa728f8ca9d30468c4688"
+      "candidate_sha256": "81e0d40efd7912839d0f53c16a749757c72a356fdeff6d0553814223debdcbfb"
     },
     "NPC_ROD": {
       "npc_id": 58,
@@ -872,10 +872,10 @@
       "native_asset": "assets/models/rod/scene.l64",
       "blender_file": "assets/models/rod/rod.blend",
       "heading": null,
-      "candidate_asset": "models/rod/i3/rod/scene.l64",
-      "candidate_blender": "models/rod/i3/rod.blend",
+      "candidate_asset": "models/rod/i3e/rod/scene.l64",
+      "candidate_blender": "models/rod/i3e/rod.blend",
       "candidate_selection": "rod",
-      "candidate_sha256": "01b948aa306e236d064e051f5c2503c73c72e79d4b64ea7605e3c9a945e3d266"
+      "candidate_sha256": "e18ed558b46db20fdd353eccc26fda00532255828de9df21903e71d49b9adf56"
     },
     "NPC_CLERK10": {
       "npc_id": 59,
@@ -887,10 +887,10 @@
       "native_asset": "assets/models/clerk/scene.l64",
       "blender_file": "assets/models/clerk/clerk.blend",
       "heading": null,
-      "candidate_asset": "models/clerk/i3/clerk/scene.l64",
-      "candidate_blender": "models/clerk/i3/clerk.blend",
+      "candidate_asset": "models/clerk/i3e/clerk/scene.l64",
+      "candidate_blender": "models/clerk/i3e/clerk.blend",
       "candidate_selection": "clerk",
-      "candidate_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624"
+      "candidate_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1"
     },
     "NPC_GIFT_CENTER_CLERK": {
       "npc_id": 60,
@@ -902,10 +902,10 @@
       "native_asset": "assets/models/clerk/scene.l64",
       "blender_file": "assets/models/clerk/clerk.blend",
       "heading": null,
-      "candidate_asset": "models/clerk/i3/clerk/scene.l64",
-      "candidate_blender": "models/clerk/i3/clerk.blend",
+      "candidate_asset": "models/clerk/i3e/clerk/scene.l64",
+      "candidate_blender": "models/clerk/i3e/clerk.blend",
       "candidate_selection": "clerk",
-      "candidate_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624"
+      "candidate_sha256": "99d39fceaa1d2e57626b387b65b68ff8a34ddbc3b8fedf7ba14bc434b23c4af1"
     },
     "NPC_MAN1": {
       "npc_id": 61,
@@ -917,10 +917,10 @@
       "native_asset": "assets/models/man/scene.l64",
       "blender_file": "assets/models/man/man.blend",
       "heading": null,
-      "candidate_asset": "models/man/i3/man/scene.l64",
-      "candidate_blender": "models/man/i3/man.blend",
+      "candidate_asset": "models/man/i3e/man/scene.l64",
+      "candidate_blender": "models/man/i3e/man.blend",
       "candidate_selection": "man",
-      "candidate_sha256": "a09bb55fccd5bf185408b4d6cb8b62889c42703426a4ccbefafb8218510d2267"
+      "candidate_sha256": "063692f881228bf83c7a1a9fc74223ead9536b497728d34521fb6e77b1684be1"
     },
     "NPC_WOMAN1": {
       "npc_id": 62,
@@ -932,10 +932,10 @@
       "native_asset": "assets/models/woman/scene.l64",
       "blender_file": "assets/models/woman/woman.blend",
       "heading": null,
-      "candidate_asset": "models/woman/i3/woman/scene.l64",
-      "candidate_blender": "models/woman/i3/woman.blend",
+      "candidate_asset": "models/woman/i3e/woman/scene.l64",
+      "candidate_blender": "models/woman/i3e/woman.blend",
       "candidate_selection": "woman",
-      "candidate_sha256": "8fbcc0f1f453b85fa8eff9b11c6e081794d50cc375fb439a0fc4de1fd8f8a716"
+      "candidate_sha256": "04118c90e8443dfce16d9e177a12115eb58d8a5d63973c6fd98dffc2d8ac2bc5"
     },
     "NPC_CHAP1": {
       "npc_id": 63,
@@ -947,10 +947,10 @@
       "native_asset": "assets/models/chap/scene.l64",
       "blender_file": "assets/models/chap/chap.blend",
       "heading": null,
-      "candidate_asset": "models/chap/i3/chap/scene.l64",
-      "candidate_blender": "models/chap/i3/chap.blend",
+      "candidate_asset": "models/chap/i3f/chap/scene.l64",
+      "candidate_blender": "models/chap/i3f/chap.blend",
       "candidate_selection": "chap",
-      "candidate_sha256": "2db52b8620f73ae4571da37396bd97d809199aa0b6634460f68080db74743e17"
+      "candidate_sha256": "37daa5509d330b95f10d122dd364abcee3b85f3fc9bd7df52c3796302c446a66"
     },
     "NPC_GAL1": {
       "npc_id": 64,
@@ -962,10 +962,10 @@
       "native_asset": "assets/models/gal/scene.l64",
       "blender_file": "assets/models/gal/gal.blend",
       "heading": null,
-      "candidate_asset": "models/gal/i3/gal/scene.l64",
-      "candidate_blender": "models/gal/i3/gal.blend",
+      "candidate_asset": "models/gal/i3e/gal/scene.l64",
+      "candidate_blender": "models/gal/i3e/gal.blend",
       "candidate_selection": "gal",
-      "candidate_sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e"
+      "candidate_sha256": "fdcad971f7ffe4b516aafd4adb6ca5457d4e5c7d4408b526a6ebb61c82f5e8d7"
     },
     "NPC_LASS1": {
       "npc_id": 65,
@@ -977,10 +977,10 @@
       "native_asset": "assets/models/lass2/scene.l64",
       "blender_file": "assets/models/lass2/lass2.blend",
       "heading": null,
-      "candidate_asset": "models/lass2/i3b/lass2/scene.l64",
-      "candidate_blender": "models/lass2/i3b/lass2.blend",
+      "candidate_asset": "models/lass2/i3e/lass2/scene.l64",
+      "candidate_blender": "models/lass2/i3e/lass2.blend",
       "candidate_selection": "lass2",
-      "candidate_sha256": "218d7aa8cff4fb971f95749eb4eada4d1f5414f3f2ff0ea5ab01fb8ed4c2b57c"
+      "candidate_sha256": "00557ea4ebcdb9c39715b10f6631798b4e189f1d057d43a218c297cd3f89ddd6"
     },
     "NPC_CHAP2": {
       "npc_id": 66,
@@ -992,10 +992,10 @@
       "native_asset": "assets/models/chap/scene.l64",
       "blender_file": "assets/models/chap/chap.blend",
       "heading": null,
-      "candidate_asset": "models/chap/i3/chap/scene.l64",
-      "candidate_blender": "models/chap/i3/chap.blend",
+      "candidate_asset": "models/chap/i3f/chap/scene.l64",
+      "candidate_blender": "models/chap/i3f/chap.blend",
       "candidate_selection": "chap",
-      "candidate_sha256": "2db52b8620f73ae4571da37396bd97d809199aa0b6634460f68080db74743e17"
+      "candidate_sha256": "37daa5509d330b95f10d122dd364abcee3b85f3fc9bd7df52c3796302c446a66"
     },
     "NPC_LASS2": {
       "npc_id": 67,
@@ -1007,10 +1007,10 @@
       "native_asset": "assets/models/lass2/scene.l64",
       "blender_file": "assets/models/lass2/lass2.blend",
       "heading": null,
-      "candidate_asset": "models/lass2/i3b/lass2/scene.l64",
-      "candidate_blender": "models/lass2/i3b/lass2.blend",
+      "candidate_asset": "models/lass2/i3e/lass2/scene.l64",
+      "candidate_blender": "models/lass2/i3e/lass2.blend",
       "candidate_selection": "lass2",
-      "candidate_sha256": "218d7aa8cff4fb971f95749eb4eada4d1f5414f3f2ff0ea5ab01fb8ed4c2b57c"
+      "candidate_sha256": "00557ea4ebcdb9c39715b10f6631798b4e189f1d057d43a218c297cd3f89ddd6"
     },
     "NPC_PAPPY1": {
       "npc_id": 68,
@@ -1022,10 +1022,10 @@
       "native_asset": "assets/models/pappy/scene.l64",
       "blender_file": "assets/models/pappy/pappy.blend",
       "heading": null,
-      "candidate_asset": "models/pappy/i3/pappy/scene.l64",
-      "candidate_blender": "models/pappy/i3/pappy.blend",
+      "candidate_asset": "models/pappy/i3e/pappy/scene.l64",
+      "candidate_blender": "models/pappy/i3e/pappy.blend",
       "candidate_selection": "pappy",
-      "candidate_sha256": "1858a041ca2b21d5a9178b222f13c33611de7ec9f464d8cc7e361cf48a9e7698"
+      "candidate_sha256": "0321a6d385058c2c2a3a9c87401b6e37c20d321c5bf789f5b6a80077751d2ed2"
     },
     "NPC_LAD1": {
       "npc_id": 69,
@@ -1037,10 +1037,10 @@
       "native_asset": "assets/models/lad/scene.l64",
       "blender_file": "assets/models/lad/lad.blend",
       "heading": null,
-      "candidate_asset": "models/lad/i3b/lad/scene.l64",
-      "candidate_blender": "models/lad/i3b/lad.blend",
+      "candidate_asset": "models/lad/i3e/lad/scene.l64",
+      "candidate_blender": "models/lad/i3e/lad.blend",
       "candidate_selection": "lad",
-      "candidate_sha256": "af6e16730cec6d5d8abf85218064b746486102dca688bbfd38ab746373dc2e9d"
+      "candidate_sha256": "2ad09b55ae4d0a27b05d7923110ea8c58194d547c5ebfe7919c18f1bddb041d4"
     },
     "NPC_LAD2": {
       "npc_id": 70,
@@ -1052,10 +1052,10 @@
       "native_asset": "assets/models/boy/variants/boy_palette2/scene.l64",
       "blender_file": "assets/models/boy/boy.blend",
       "heading": null,
-      "candidate_asset": "models/boy_palette2/i3/boy_palette2/scene.l64",
-      "candidate_blender": "models/boy_palette2/i3/boy_palette2.blend",
+      "candidate_asset": "models/boy_palette2/i3e/boy_palette2/scene.l64",
+      "candidate_blender": "models/boy_palette2/i3e/boy_palette2.blend",
       "candidate_selection": "boy_palette2",
-      "candidate_sha256": "410e76cecc51262e3b8d9ed596c8bdcf3facac7e13d714e5a39257e29e1748c4"
+      "candidate_sha256": "27dd7df6bd54e33a1f34c64ae205d6834c714b82915292b5b5d76492e9d728a4"
     },
     "NPC_CHAP3": {
       "npc_id": 71,
@@ -1067,10 +1067,10 @@
       "native_asset": "assets/models/chap/scene.l64",
       "blender_file": "assets/models/chap/chap.blend",
       "heading": null,
-      "candidate_asset": "models/chap/i3/chap/scene.l64",
-      "candidate_blender": "models/chap/i3/chap.blend",
+      "candidate_asset": "models/chap/i3f/chap/scene.l64",
+      "candidate_blender": "models/chap/i3f/chap.blend",
       "candidate_selection": "chap",
-      "candidate_sha256": "2db52b8620f73ae4571da37396bd97d809199aa0b6634460f68080db74743e17"
+      "candidate_sha256": "37daa5509d330b95f10d122dd364abcee3b85f3fc9bd7df52c3796302c446a66"
     },
     "NPC_CLERK12": {
       "npc_id": 72,
@@ -1082,10 +1082,10 @@
       "native_asset": "assets/models/gal/scene.l64",
       "blender_file": "assets/models/gal/gal.blend",
       "heading": null,
-      "candidate_asset": "models/gal/i3/gal/scene.l64",
-      "candidate_blender": "models/gal/i3/gal.blend",
+      "candidate_asset": "models/gal/i3e/gal/scene.l64",
+      "candidate_blender": "models/gal/i3e/gal.blend",
       "candidate_selection": "gal",
-      "candidate_sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e"
+      "candidate_sha256": "fdcad971f7ffe4b516aafd4adb6ca5457d4e5c7d4408b526a6ebb61c82f5e8d7"
     },
     "NPC_CLERK13": {
       "npc_id": 73,
@@ -1097,10 +1097,10 @@
       "native_asset": "assets/models/gal/scene.l64",
       "blender_file": "assets/models/gal/gal.blend",
       "heading": null,
-      "candidate_asset": "models/gal/i3/gal/scene.l64",
-      "candidate_blender": "models/gal/i3/gal.blend",
+      "candidate_asset": "models/gal/i3e/gal/scene.l64",
+      "candidate_blender": "models/gal/i3e/gal.blend",
       "candidate_selection": "gal",
-      "candidate_sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e"
+      "candidate_sha256": "fdcad971f7ffe4b516aafd4adb6ca5457d4e5c7d4408b526a6ebb61c82f5e8d7"
     },
     "NPC_HOST": {
       "npc_id": 74,
@@ -1112,10 +1112,10 @@
       "native_asset": "assets/models/gal/scene.l64",
       "blender_file": "assets/models/gal/gal.blend",
       "heading": null,
-      "candidate_asset": "models/gal/i3/gal/scene.l64",
-      "candidate_blender": "models/gal/i3/gal.blend",
+      "candidate_asset": "models/gal/i3e/gal/scene.l64",
+      "candidate_blender": "models/gal/i3e/gal.blend",
       "candidate_selection": "gal",
-      "candidate_sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e"
+      "candidate_sha256": "fdcad971f7ffe4b516aafd4adb6ca5457d4e5c7d4408b526a6ebb61c82f5e8d7"
     },
     "NPC_SPECS1": {
       "npc_id": 75,
@@ -1127,10 +1127,10 @@
       "native_asset": "assets/models/specs/scene.l64",
       "blender_file": "assets/models/specs/specs.blend",
       "heading": null,
-      "candidate_asset": "models/specs/i3/specs/scene.l64",
-      "candidate_blender": "models/specs/i3/specs.blend",
+      "candidate_asset": "models/specs/i3e/specs/scene.l64",
+      "candidate_blender": "models/specs/i3e/specs.blend",
       "candidate_selection": "specs",
-      "candidate_sha256": "a5327d43e29700af61f6d857cbb23a2b6a3eaf66a9aa67823fda111bd69cdc57"
+      "candidate_sha256": "79dda64c28eb60356e6c3efa8366a3eb69d6ca87eea8711ca91de70f5b124611"
     },
     "NPC_BUTCH": {
       "npc_id": 76,
@@ -1142,10 +1142,10 @@
       "native_asset": "assets/models/butch/scene.l64",
       "blender_file": "assets/models/butch/butch.blend",
       "heading": null,
-      "candidate_asset": "models/butch/i3/butch/scene.l64",
-      "candidate_blender": "models/butch/i3/butch.blend",
+      "candidate_asset": "models/butch/i3e/butch/scene.l64",
+      "candidate_blender": "models/butch/i3e/butch.blend",
       "candidate_selection": "butch",
-      "candidate_sha256": "40c092a77f52dafd9359822fb7253eb67ccc9d79a1c3b5877eeca529cf8350bc"
+      "candidate_sha256": "a9031ecbd1862066aa8b21bb243b23e909c3dfc675b087e8ff776d1798580c57"
     },
     "NPC_GRANNY1": {
       "npc_id": 77,
@@ -1157,10 +1157,10 @@
       "native_asset": "assets/models/granny/scene.l64",
       "blender_file": "assets/models/granny/granny.blend",
       "heading": null,
-      "candidate_asset": "models/granny/i3/granny/scene.l64",
-      "candidate_blender": "models/granny/i3/granny.blend",
+      "candidate_asset": "models/granny/i3e/granny/scene.l64",
+      "candidate_blender": "models/granny/i3e/granny.blend",
       "candidate_selection": "granny",
-      "candidate_sha256": "cd70a4e0d7e76c6e7c6a613a750da12ce7c47294d72f44f10d095c4c4889d82a"
+      "candidate_sha256": "b4ef52cda37b6bf803d94e23ec54afa10ff16a2e2baf359ec6f39d4807787682"
     },
     "NPC_LASS3": {
       "npc_id": 78,
@@ -1172,10 +1172,10 @@
       "native_asset": "assets/models/lass1/scene.l64",
       "blender_file": "assets/models/lass1/lass1.blend",
       "heading": null,
-      "candidate_asset": "models/lass1/i3/lass1/scene.l64",
-      "candidate_blender": "models/lass1/i3/lass1.blend",
+      "candidate_asset": "models/lass1/i3e/lass1/scene.l64",
+      "candidate_blender": "models/lass1/i3e/lass1.blend",
       "candidate_selection": "lass1",
-      "candidate_sha256": "7c092d0f7d5aae31f74d7433d041eb6a58ace8e1a8e8227c9c8f2c6ac151cad3"
+      "candidate_sha256": "f40c4e672318f7b088aae2d6e4ca63178bff73a8ec9edec73546541f0e9bd969"
     },
     "NPC_MAN2": {
       "npc_id": 79,
@@ -1187,10 +1187,10 @@
       "native_asset": "assets/models/man/scene.l64",
       "blender_file": "assets/models/man/man.blend",
       "heading": null,
-      "candidate_asset": "models/man/i3/man/scene.l64",
-      "candidate_blender": "models/man/i3/man.blend",
+      "candidate_asset": "models/man/i3e/man/scene.l64",
+      "candidate_blender": "models/man/i3e/man.blend",
       "candidate_selection": "man",
-      "candidate_sha256": "a09bb55fccd5bf185408b4d6cb8b62889c42703426a4ccbefafb8218510d2267"
+      "candidate_sha256": "063692f881228bf83c7a1a9fc74223ead9536b497728d34521fb6e77b1684be1"
     },
     "NPC_PAPPY2": {
       "npc_id": 80,
@@ -1202,10 +1202,10 @@
       "native_asset": "assets/models/pappy/scene.l64",
       "blender_file": "assets/models/pappy/pappy.blend",
       "heading": null,
-      "candidate_asset": "models/pappy/i3/pappy/scene.l64",
-      "candidate_blender": "models/pappy/i3/pappy.blend",
+      "candidate_asset": "models/pappy/i3e/pappy/scene.l64",
+      "candidate_blender": "models/pappy/i3e/pappy.blend",
       "candidate_selection": "pappy",
-      "candidate_sha256": "1858a041ca2b21d5a9178b222f13c33611de7ec9f464d8cc7e361cf48a9e7698"
+      "candidate_sha256": "0321a6d385058c2c2a3a9c87401b6e37c20d321c5bf789f5b6a80077751d2ed2"
     },
     "NPC_LASS4": {
       "npc_id": 81,
@@ -1217,10 +1217,10 @@
       "native_asset": "assets/models/lass1/scene.l64",
       "blender_file": "assets/models/lass1/lass1.blend",
       "heading": null,
-      "candidate_asset": "models/lass1/i3/lass1/scene.l64",
-      "candidate_blender": "models/lass1/i3/lass1.blend",
+      "candidate_asset": "models/lass1/i3e/lass1/scene.l64",
+      "candidate_blender": "models/lass1/i3e/lass1.blend",
       "candidate_selection": "lass1",
-      "candidate_sha256": "7c092d0f7d5aae31f74d7433d041eb6a58ace8e1a8e8227c9c8f2c6ac151cad3"
+      "candidate_sha256": "f40c4e672318f7b088aae2d6e4ca63178bff73a8ec9edec73546541f0e9bd969"
     },
     "NPC_HOOD1": {
       "npc_id": 82,
@@ -1232,10 +1232,10 @@
       "native_asset": "assets/models/hood/scene.l64",
       "blender_file": "assets/models/hood/hood.blend",
       "heading": null,
-      "candidate_asset": "models/hood/i3/hood/scene.l64",
-      "candidate_blender": "models/hood/i3/hood.blend",
+      "candidate_asset": "models/hood/i3e/hood/scene.l64",
+      "candidate_blender": "models/hood/i3e/hood.blend",
       "candidate_selection": "hood",
-      "candidate_sha256": "ad508a585dd2b902af34ce15105de0a5ad419fc231b3435c078c2e4d8fb51e03"
+      "candidate_sha256": "56449a2f51cf0856defc092b7e20b7d59171c6e2a07bdc53f25ca93be75c41e0"
     },
     "NPC_GRANNY2": {
       "npc_id": 83,
@@ -1247,10 +1247,10 @@
       "native_asset": "assets/models/granny/scene.l64",
       "blender_file": "assets/models/granny/granny.blend",
       "heading": null,
-      "candidate_asset": "models/granny/i3/granny/scene.l64",
-      "candidate_blender": "models/granny/i3/granny.blend",
+      "candidate_asset": "models/granny/i3e/granny/scene.l64",
+      "candidate_blender": "models/granny/i3e/granny.blend",
       "candidate_selection": "granny",
-      "candidate_sha256": "cd70a4e0d7e76c6e7c6a613a750da12ce7c47294d72f44f10d095c4c4889d82a"
+      "candidate_sha256": "b4ef52cda37b6bf803d94e23ec54afa10ff16a2e2baf359ec6f39d4807787682"
     },
     "NPC_GAL2": {
       "npc_id": 84,
@@ -1262,10 +1262,10 @@
       "native_asset": "assets/models/gal/scene.l64",
       "blender_file": "assets/models/gal/gal.blend",
       "heading": null,
-      "candidate_asset": "models/gal/i3/gal/scene.l64",
-      "candidate_blender": "models/gal/i3/gal.blend",
+      "candidate_asset": "models/gal/i3e/gal/scene.l64",
+      "candidate_blender": "models/gal/i3e/gal.blend",
       "candidate_selection": "gal",
-      "candidate_sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e"
+      "candidate_sha256": "fdcad971f7ffe4b516aafd4adb6ca5457d4e5c7d4408b526a6ebb61c82f5e8d7"
     },
     "NPC_LAD3": {
       "npc_id": 85,
@@ -1277,10 +1277,10 @@
       "native_asset": "assets/models/lad/scene.l64",
       "blender_file": "assets/models/lad/lad.blend",
       "heading": null,
-      "candidate_asset": "models/lad/i3b/lad/scene.l64",
-      "candidate_blender": "models/lad/i3b/lad.blend",
+      "candidate_asset": "models/lad/i3e/lad/scene.l64",
+      "candidate_blender": "models/lad/i3e/lad.blend",
       "candidate_selection": "lad",
-      "candidate_sha256": "af6e16730cec6d5d8abf85218064b746486102dca688bbfd38ab746373dc2e9d"
+      "candidate_sha256": "2ad09b55ae4d0a27b05d7923110ea8c58194d547c5ebfe7919c18f1bddb041d4"
     },
     "NPC_GAL3": {
       "npc_id": 86,
@@ -1292,10 +1292,10 @@
       "native_asset": "assets/models/gal/scene.l64",
       "blender_file": "assets/models/gal/gal.blend",
       "heading": null,
-      "candidate_asset": "models/gal/i3/gal/scene.l64",
-      "candidate_blender": "models/gal/i3/gal.blend",
+      "candidate_asset": "models/gal/i3e/gal/scene.l64",
+      "candidate_blender": "models/gal/i3e/gal.blend",
       "candidate_selection": "gal",
-      "candidate_sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e"
+      "candidate_sha256": "fdcad971f7ffe4b516aafd4adb6ca5457d4e5c7d4408b526a6ebb61c82f5e8d7"
     },
     "NPC_CHAP4": {
       "npc_id": 87,
@@ -1307,10 +1307,10 @@
       "native_asset": "assets/models/chap/scene.l64",
       "blender_file": "assets/models/chap/chap.blend",
       "heading": null,
-      "candidate_asset": "models/chap/i3/chap/scene.l64",
-      "candidate_blender": "models/chap/i3/chap.blend",
+      "candidate_asset": "models/chap/i3f/chap/scene.l64",
+      "candidate_blender": "models/chap/i3f/chap.blend",
       "candidate_selection": "chap",
-      "candidate_sha256": "2db52b8620f73ae4571da37396bd97d809199aa0b6634460f68080db74743e17"
+      "candidate_sha256": "37daa5509d330b95f10d122dd364abcee3b85f3fc9bd7df52c3796302c446a66"
     },
     "NPC_MAN3": {
       "npc_id": 88,
@@ -1322,10 +1322,10 @@
       "native_asset": "assets/models/man/scene.l64",
       "blender_file": "assets/models/man/man.blend",
       "heading": null,
-      "candidate_asset": "models/man/i3/man/scene.l64",
-      "candidate_blender": "models/man/i3/man.blend",
+      "candidate_asset": "models/man/i3e/man/scene.l64",
+      "candidate_blender": "models/man/i3e/man.blend",
       "candidate_selection": "man",
-      "candidate_sha256": "a09bb55fccd5bf185408b4d6cb8b62889c42703426a4ccbefafb8218510d2267"
+      "candidate_sha256": "063692f881228bf83c7a1a9fc74223ead9536b497728d34521fb6e77b1684be1"
     },
     "NPC_SPECS2": {
       "npc_id": 89,
@@ -1337,10 +1337,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_SPECS3": {
       "npc_id": 90,
@@ -1352,10 +1352,10 @@
       "native_asset": "assets/models/specs/scene.l64",
       "blender_file": "assets/models/specs/specs.blend",
       "heading": null,
-      "candidate_asset": "models/specs/i3/specs/scene.l64",
-      "candidate_blender": "models/specs/i3/specs.blend",
+      "candidate_asset": "models/specs/i3e/specs/scene.l64",
+      "candidate_blender": "models/specs/i3e/specs.blend",
       "candidate_selection": "specs",
-      "candidate_sha256": "a5327d43e29700af61f6d857cbb23a2b6a3eaf66a9aa67823fda111bd69cdc57"
+      "candidate_sha256": "79dda64c28eb60356e6c3efa8366a3eb69d6ca87eea8711ca91de70f5b124611"
     },
     "NPC_WOMAN2": {
       "npc_id": 91,
@@ -1367,10 +1367,10 @@
       "native_asset": "assets/models/woman/scene.l64",
       "blender_file": "assets/models/woman/woman.blend",
       "heading": null,
-      "candidate_asset": "models/woman/i3/woman/scene.l64",
-      "candidate_blender": "models/woman/i3/woman.blend",
+      "candidate_asset": "models/woman/i3e/woman/scene.l64",
+      "candidate_blender": "models/woman/i3e/woman.blend",
       "candidate_selection": "woman",
-      "candidate_sha256": "8fbcc0f1f453b85fa8eff9b11c6e081794d50cc375fb439a0fc4de1fd8f8a716"
+      "candidate_sha256": "04118c90e8443dfce16d9e177a12115eb58d8a5d63973c6fd98dffc2d8ac2bc5"
     },
     "NPC_MANIA": {
       "npc_id": 92,
@@ -1382,10 +1382,10 @@
       "native_asset": "assets/models/mania/scene.l64",
       "blender_file": "assets/models/mania/mania.blend",
       "heading": null,
-      "candidate_asset": "models/mania/i3/mania/scene.l64",
-      "candidate_blender": "models/mania/i3/mania.blend",
+      "candidate_asset": "models/mania/i3f/mania/scene.l64",
+      "candidate_blender": "models/mania/i3f/mania.blend",
       "candidate_selection": "mania",
-      "candidate_sha256": "f0630f41cde9f511a07696017c8f641e69059ecc298eac0a0e431d0390cc01e9"
+      "candidate_sha256": "b0df8979bce7a18995b4bc66fab19fc4e7204901580c80e45c08268f9b43457d"
     },
     "NPC_PAPPY3": {
       "npc_id": 93,
@@ -1397,10 +1397,10 @@
       "native_asset": "assets/models/pappy/scene.l64",
       "blender_file": "assets/models/pappy/pappy.blend",
       "heading": null,
-      "candidate_asset": "models/pappy/i3/pappy/scene.l64",
-      "candidate_blender": "models/pappy/i3/pappy.blend",
+      "candidate_asset": "models/pappy/i3e/pappy/scene.l64",
+      "candidate_blender": "models/pappy/i3e/pappy.blend",
       "candidate_selection": "pappy",
-      "candidate_sha256": "1858a041ca2b21d5a9178b222f13c33611de7ec9f464d8cc7e361cf48a9e7698"
+      "candidate_sha256": "0321a6d385058c2c2a3a9c87401b6e37c20d321c5bf789f5b6a80077751d2ed2"
     },
     "NPC_GAL4": {
       "npc_id": 94,
@@ -1412,10 +1412,10 @@
       "native_asset": "assets/models/gal/scene.l64",
       "blender_file": "assets/models/gal/gal.blend",
       "heading": null,
-      "candidate_asset": "models/gal/i3/gal/scene.l64",
-      "candidate_blender": "models/gal/i3/gal.blend",
+      "candidate_asset": "models/gal/i3e/gal/scene.l64",
+      "candidate_blender": "models/gal/i3e/gal.blend",
       "candidate_selection": "gal",
-      "candidate_sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e"
+      "candidate_sha256": "fdcad971f7ffe4b516aafd4adb6ca5457d4e5c7d4408b526a6ebb61c82f5e8d7"
     },
     "NPC_CHAMP": {
       "npc_id": 95,
@@ -1427,10 +1427,10 @@
       "native_asset": "assets/models/mania/scene.l64",
       "blender_file": "assets/models/mania/mania.blend",
       "heading": null,
-      "candidate_asset": "models/mania/i3/mania/scene.l64",
-      "candidate_blender": "models/mania/i3/mania.blend",
+      "candidate_asset": "models/mania/i3f/mania/scene.l64",
+      "candidate_blender": "models/mania/i3f/mania.blend",
       "candidate_selection": "mania",
-      "candidate_sha256": "f0630f41cde9f511a07696017c8f641e69059ecc298eac0a0e431d0390cc01e9"
+      "candidate_sha256": "b0df8979bce7a18995b4bc66fab19fc4e7204901580c80e45c08268f9b43457d"
     },
     "NPC_HOOD2": {
       "npc_id": 96,
@@ -1442,10 +1442,10 @@
       "native_asset": "assets/models/hood/scene.l64",
       "blender_file": "assets/models/hood/hood.blend",
       "heading": null,
-      "candidate_asset": "models/hood/i3/hood/scene.l64",
-      "candidate_blender": "models/hood/i3/hood.blend",
+      "candidate_asset": "models/hood/i3e/hood/scene.l64",
+      "candidate_blender": "models/hood/i3e/hood.blend",
       "candidate_selection": "hood",
-      "candidate_sha256": "ad508a585dd2b902af34ce15105de0a5ad419fc231b3435c078c2e4d8fb51e03"
+      "candidate_sha256": "56449a2f51cf0856defc092b7e20b7d59171c6e2a07bdc53f25ca93be75c41e0"
     },
     "NPC_LASS5": {
       "npc_id": 97,
@@ -1457,10 +1457,10 @@
       "native_asset": "assets/models/lass3/scene.l64",
       "blender_file": "assets/models/lass3/lass3.blend",
       "heading": null,
-      "candidate_asset": "models/lass3/i3c/lass3/scene.l64",
-      "candidate_blender": "models/lass3/i3c/lass3.blend",
+      "candidate_asset": "models/lass3/i3f/lass3/scene.l64",
+      "candidate_blender": "models/lass3/i3f/lass3.blend",
       "candidate_selection": "lass3",
-      "candidate_sha256": "126509a8f0cfe1fb6d14d7e74c20807dd9d048e80b09ce4fdf7ddd1ec5f98614"
+      "candidate_sha256": "db79256ba54b43a54ee911f1586da69986f57ac90fe11874b2e938c5ac6e84ba"
     },
     "NPC_CHAP5": {
       "npc_id": 98,
@@ -1472,10 +1472,10 @@
       "native_asset": "assets/models/chap/scene.l64",
       "blender_file": "assets/models/chap/chap.blend",
       "heading": null,
-      "candidate_asset": "models/chap/i3/chap/scene.l64",
-      "candidate_blender": "models/chap/i3/chap.blend",
+      "candidate_asset": "models/chap/i3f/chap/scene.l64",
+      "candidate_blender": "models/chap/i3f/chap.blend",
       "candidate_selection": "chap",
-      "candidate_sha256": "2db52b8620f73ae4571da37396bd97d809199aa0b6634460f68080db74743e17"
+      "candidate_sha256": "37daa5509d330b95f10d122dd364abcee3b85f3fc9bd7df52c3796302c446a66"
     },
     "NPC_AARON": {
       "npc_id": 99,
@@ -1487,10 +1487,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_GUIDE": {
       "npc_id": 100,
@@ -1502,10 +1502,10 @@
       "native_asset": "assets/models/man/scene.l64",
       "blender_file": "assets/models/man/man.blend",
       "heading": null,
-      "candidate_asset": "models/man/i3/man/scene.l64",
-      "candidate_blender": "models/man/i3/man.blend",
+      "candidate_asset": "models/man/i3e/man/scene.l64",
+      "candidate_blender": "models/man/i3e/man.blend",
       "candidate_selection": "man",
-      "candidate_sha256": "a09bb55fccd5bf185408b4d6cb8b62889c42703426a4ccbefafb8218510d2267"
+      "candidate_sha256": "063692f881228bf83c7a1a9fc74223ead9536b497728d34521fb6e77b1684be1"
     },
     "NPC_TECH7": {
       "npc_id": 101,
@@ -1517,10 +1517,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_TECH8": {
       "npc_id": 102,
@@ -1532,10 +1532,10 @@
       "native_asset": "assets/models/tech/scene.l64",
       "blender_file": "assets/models/tech/tech.blend",
       "heading": null,
-      "candidate_asset": "models/tech/i3/tech/scene.l64",
-      "candidate_blender": "models/tech/i3/tech.blend",
+      "candidate_asset": "models/tech/i3f/tech/scene.l64",
+      "candidate_blender": "models/tech/i3f/tech.blend",
       "candidate_selection": "tech",
-      "candidate_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec"
+      "candidate_sha256": "d126b120000c77b5cab6d2e99b436923b67e07b75e943ebb5a7d2257548d2de8"
     },
     "NPC_TORCH": {
       "npc_id": 103,
@@ -1652,10 +1652,10 @@
       "native_asset": "assets/models/mark/scene.l64",
       "blender_file": "assets/models/mark/mark.blend",
       "heading": null,
-      "candidate_asset": "../mark-concepts/approved/a_adventure/i3d/mark/scene.l64",
-      "candidate_blender": "../mark-concepts/approved/a_adventure/i3d/mark.blend",
+      "candidate_asset": "models/mark/i3f/mark/scene.l64",
+      "candidate_blender": "models/mark/i3f/mark.blend",
       "candidate_selection": "mark",
-      "candidate_sha256": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3"
+      "candidate_sha256": "ebf3348ff24ad68c601016e86d5643d3fd5f4ac4d5e05dad69dc65c3650b56b3"
     },
     "NPC_6F": {
       "npc_id": 111,
@@ -1667,10 +1667,10 @@
       "native_asset": "assets/models/mark/scene.l64",
       "blender_file": "assets/models/mark/mark.blend",
       "heading": null,
-      "candidate_asset": "../mark-concepts/approved/a_adventure/i3d/mark/scene.l64",
-      "candidate_blender": "../mark-concepts/approved/a_adventure/i3d/mark.blend",
+      "candidate_asset": "models/mark/i3f/mark/scene.l64",
+      "candidate_blender": "models/mark/i3f/mark.blend",
       "candidate_selection": "mark",
-      "candidate_sha256": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3"
+      "candidate_sha256": "ebf3348ff24ad68c601016e86d5643d3fd5f4ac4d5e05dad69dc65c3650b56b3"
     },
     "NPC_MURRAY2": {
       "npc_id": 112,
@@ -1682,10 +1682,10 @@
       "native_asset": "assets/models/murray/scene.l64",
       "blender_file": "assets/models/murray/murray.blend",
       "heading": 270,
-      "candidate_asset": "models/murray/i3/murray/scene.l64",
-      "candidate_blender": "models/murray/i3/murray.blend",
+      "candidate_asset": "models/murray/i3e/murray/scene.l64",
+      "candidate_blender": "models/murray/i3e/murray.blend",
       "candidate_selection": "murray",
-      "candidate_sha256": "f51488569a5d4d419b79b8b428c3b5ee255a8ac9b0a8ae57dc1aceccac2ca847"
+      "candidate_sha256": "da2aa9e7ede0ce5926c9c23f9c20a851864381f7bb0ab7630126f82842d431dc"
     },
     "NPC_RONALD2": {
       "npc_id": 113,
@@ -1697,10 +1697,10 @@
       "native_asset": "assets/models/ronald/scene.l64",
       "blender_file": "assets/models/ronald/ronald.blend",
       "heading": null,
-      "candidate_asset": "models/ronald/i3/ronald/scene.l64",
-      "candidate_blender": "models/ronald/i3/ronald.blend",
+      "candidate_asset": "models/ronald/i3f/ronald/scene.l64",
+      "candidate_blender": "models/ronald/i3f/ronald.blend",
       "candidate_selection": "ronald",
-      "candidate_sha256": "b7b5cc0870f062ac1636c3e2d953a6bc9cbc18960f6bcff33817a64c4eaf5033"
+      "candidate_sha256": "c247d6cdb7171a71d97f8d005e08e4a8ef0fb551a9374be284863d115f898218"
     },
     "NPC_RONALD3": {
       "npc_id": 114,
@@ -1712,10 +1712,10 @@
       "native_asset": "assets/models/ronald/scene.l64",
       "blender_file": "assets/models/ronald/ronald.blend",
       "heading": null,
-      "candidate_asset": "models/ronald/i3/ronald/scene.l64",
-      "candidate_blender": "models/ronald/i3/ronald.blend",
+      "candidate_asset": "models/ronald/i3f/ronald/scene.l64",
+      "candidate_blender": "models/ronald/i3f/ronald.blend",
       "candidate_selection": "ronald",
-      "candidate_sha256": "b7b5cc0870f062ac1636c3e2d953a6bc9cbc18960f6bcff33817a64c4eaf5033"
+      "candidate_sha256": "c247d6cdb7171a71d97f8d005e08e4a8ef0fb551a9374be284863d115f898218"
     },
     "NPC_PLAYER_CREDITS": {
       "npc_id": 115,
@@ -1727,10 +1727,10 @@
       "native_asset": "assets/models/mark/scene.l64",
       "blender_file": "assets/models/mark/mark.blend",
       "heading": null,
-      "candidate_asset": "../mark-concepts/approved/a_adventure/i3d/mark/scene.l64",
-      "candidate_blender": "../mark-concepts/approved/a_adventure/i3d/mark.blend",
+      "candidate_asset": "models/mark/i3f/mark/scene.l64",
+      "candidate_blender": "models/mark/i3f/mark.blend",
       "candidate_selection": "mark",
-      "candidate_sha256": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3"
+      "candidate_sha256": "ebf3348ff24ad68c601016e86d5643d3fd5f4ac4d5e05dad69dc65c3650b56b3"
     }
   }
 }

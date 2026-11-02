@@ -10,7 +10,7 @@
   "compressed_audio_sha256": "92a170127c763c7575b815596c45b8a60671fa4e67b614cdf50515bdb42a961e",
   "decode_errors": 0,
   "faststart": true,
-  "video_sha256": "b98eee9cda6636cb383e469b323c5ac8dfb580d4a081779ec403ff77d3f9111a",
-  "bytes": 40253453,
+  "video_sha256": "56d7bca21a9c0bf77c1f7d00f6f85d7b8d68171cb5fb3b51fd99e83685d3497e",
+  "bytes": 33766456,
   "capture": "fresh local native post-VI; no CRT"
 }

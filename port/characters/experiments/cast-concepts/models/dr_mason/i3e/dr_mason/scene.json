@@ -1,0 +1,18 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "round_dr_mason_face",
+    "mas3_dr_mason_coat"
+  ],
+  "vertices": 591,
+  "triangles": 620,
+  "batches": 7,
+  "face_recipe": "tools/correct_scientist_faces.py"
+}

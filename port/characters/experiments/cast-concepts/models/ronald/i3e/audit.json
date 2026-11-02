@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "source": "models/ronald/i3/ronald",
+  "source_sha256": "b7b5cc0870f062ac1636c3e2d953a6bc9cbc18960f6bcff33817a64c4eaf5033",
+  "settings": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "target_half_width": 0.4207792207792207,
+      "target_half_depth": 0.348051948051948,
+      "head_bounds": [
+        1.46,
+        2.38
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 156,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/ronald/i3e/ronald/scene.l64",
+    "sha256": "d2330d3c6aebe78d980d99a352f56df3012e22a7f4fd30b324484742bf5d10f5",
+    "triangles": 588,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "ron3_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "before_max_eye_white_angle": 63.31591414077103,
+    "after_max_eye_white_angle": 42.40241396022429,
+    "additional_horizontal_span": 0.7,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of painted eye whites; no pixel beyond43deg in sampled owning faces; lying pose inherits standing mapping",
+    "face_vertices": 25,
+    "original_native_sha256": "642041c7c58342f5b1bfe0490db991ca0422ac1fa5aada70b3e57c6fe501b770",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

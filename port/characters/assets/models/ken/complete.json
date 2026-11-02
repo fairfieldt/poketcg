@@ -1,12 +1,12 @@
 {
   "model": "ken",
-  "triangles": 528,
-  "vertices": 450,
+  "triangles": 596,
+  "vertices": 573,
   "batches": 7,
   "linked_parts": 0,
   "appearances": [
     "ken"
   ],
-  "fingerprint": "4432905e31c344a9c2f4cb3a1fd589c4261c4b6e19acde782e4a21833f94e86f",
+  "fingerprint": "74e65496cc98ba03634ea20a2f649f91a510f4a3f663657db9732493191f9653",
   "recipe": "reviewed-cast-manual"
 }

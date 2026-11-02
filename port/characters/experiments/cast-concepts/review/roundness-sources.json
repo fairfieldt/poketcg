@@ -1,0 +1,289 @@
+{
+  "dr_mason": {
+    "prefix": "models/dr_mason/i3",
+    "source_asset": "models/dr_mason/i3/dr_mason/scene.l64",
+    "source_authoring": "models/dr_mason/i3/dr_mason/authoring.json",
+    "asset_sha256": "784e46b8f1074131bb713526708cc136140ef4a92449fe5437c9d91d144d1582",
+    "authoring_sha256": "b39d64d0aeff8cfbace4efbc9514641bf3ef76cff2ce98678e1c8d8b96f5cc98"
+  },
+  "ronald": {
+    "prefix": "models/ronald/i3",
+    "source_asset": "models/ronald/i3/ronald/scene.l64",
+    "source_authoring": "models/ronald/i3/ronald/authoring.json",
+    "asset_sha256": "b7b5cc0870f062ac1636c3e2d953a6bc9cbc18960f6bcff33817a64c4eaf5033",
+    "authoring_sha256": "600c4c9ae40065205e5db936cb6414ba96f59b186b83ae0bd7d593410ee2e6bc"
+  },
+  "ishihara": {
+    "prefix": "models/ishihara/i3",
+    "source_asset": "models/ishihara/i3/ishihara/scene.l64",
+    "source_authoring": "models/ishihara/i3/ishihara/authoring.json",
+    "asset_sha256": "577ae3f1386f5554a8c52a7cb24987061bb377362aa51d9cbc3cc0f5a04c9308",
+    "authoring_sha256": "45ad932db1bed737a8eaf14b1d50f02463745390fe1fa941c370f9e6a888d9ca"
+  },
+  "imakuni": {
+    "prefix": "models/imakuni/i3",
+    "source_asset": "models/imakuni/i3/imakuni/scene.l64",
+    "source_authoring": "models/imakuni/i3/imakuni/authoring.json",
+    "asset_sha256": "5692c1f82fc53c0f74ad7c0934d7b42a7b30c17a3adebae7b503ca2080acdd7d",
+    "authoring_sha256": "29c6ccf3aac59cc0a06fc3a2b22aae4cfc5ec6f81ac806a72a1ccf390782dea9"
+  },
+  "tech": {
+    "prefix": "models/tech/i3",
+    "source_asset": "models/tech/i3/tech/scene.l64",
+    "source_authoring": "models/tech/i3/tech/authoring.json",
+    "asset_sha256": "49c5183d4b1aa657f2c4f385e479fafcf908b1548322f15df8168a9656ee3eec",
+    "authoring_sha256": "4c3773076b8d3446a3fd771bd9edd3336f24d1c10ea66d623d82dc81ee76b55f"
+  },
+  "clerk": {
+    "prefix": "models/clerk/i3",
+    "source_asset": "models/clerk/i3/clerk/scene.l64",
+    "source_authoring": "models/clerk/i3/clerk/authoring.json",
+    "asset_sha256": "e5f4c1bda6e6e3a961d4a412fbe64ee5feefe0004ccec614966f1164501bf624",
+    "authoring_sha256": "c4631e90b38a64faee3b07127f9f145035d6b6d0899875c63562948644b6b5b4"
+  },
+  "mania": {
+    "prefix": "models/mania/i3",
+    "source_asset": "models/mania/i3/mania/scene.l64",
+    "source_authoring": "models/mania/i3/mania/authoring.json",
+    "asset_sha256": "f0630f41cde9f511a07696017c8f641e69059ecc298eac0a0e431d0390cc01e9",
+    "authoring_sha256": "ca6bea64d5f2dbc97955c7051faf926b220e3ca109cf04ac47ed8c2daae588de"
+  },
+  "lass3": {
+    "prefix": "models/lass3/i3c",
+    "source_asset": "models/lass3/i3c/lass3/scene.l64",
+    "source_authoring": "models/lass3/i3c/lass3/authoring.json",
+    "asset_sha256": "126509a8f0cfe1fb6d14d7e74c20807dd9d048e80b09ce4fdf7ddd1ec5f98614",
+    "authoring_sha256": "a93bb98e96cb47ef8ec8cb266c1b114d553c64bed9007d37f24b8854304ce051"
+  },
+  "mitch": {
+    "prefix": "models/mitch/i3",
+    "source_asset": "models/mitch/i3/mitch/scene.l64",
+    "source_authoring": "models/mitch/i3/mitch/authoring.json",
+    "asset_sha256": "1181cf83029cc890adeec4bda7059efb2846a0b4090c66840a177375bb9018ac",
+    "authoring_sha256": "93186fb3b689e0a027f010a5e94fbff270f36cf766e670e3c78bccda41971959"
+  },
+  "boy": {
+    "prefix": "models/boy/i3",
+    "source_asset": "models/boy/i3/boy/scene.l64",
+    "source_authoring": "models/boy/i3/boy/authoring.json",
+    "asset_sha256": "6362601dfaa22bd1721bae3c8c19866916ead36564cdc477b002e288a56777fe",
+    "authoring_sha256": "ad07a56011d074eceaaf5f95276da87290488f3d87a9c4244c3a5c70be99f342"
+  },
+  "man": {
+    "prefix": "models/man/i3",
+    "source_asset": "models/man/i3/man/scene.l64",
+    "source_authoring": "models/man/i3/man/authoring.json",
+    "asset_sha256": "a09bb55fccd5bf185408b4d6cb8b62889c42703426a4ccbefafb8218510d2267",
+    "authoring_sha256": "0b2dc7e28ed6aab2c849814b1424f0490531605731434cefc81280e38a8ab02a"
+  },
+  "gene": {
+    "prefix": "models/gene/i3",
+    "source_asset": "models/gene/i3/gene/scene.l64",
+    "source_authoring": "models/gene/i3/gene/authoring.json",
+    "asset_sha256": "a7c5a595c0c5f772da22bd95864aa9858e40d3f1d6293235afeee2b4a5e923b2",
+    "authoring_sha256": "b365c005aca7bf70a7c9205dadec66a2a24b411afa37252cf2935df0cf57c2b1"
+  },
+  "swimmer": {
+    "prefix": "models/swimmer/i3b",
+    "source_asset": "models/swimmer/i3b/swimmer/scene.l64",
+    "source_authoring": "models/swimmer/i3b/swimmer/authoring.json",
+    "asset_sha256": "14fc11a98d30e655454ef697418e0f93f94a3a5e3cb12c5b28e4d61266dafa7a",
+    "authoring_sha256": "6fcb4607f9afa3fee8f925b2d2744b0b512d6090e03ab7c02d9db10566ba6ab0"
+  },
+  "joshua": {
+    "prefix": "models/joshua/i3b",
+    "source_asset": "models/joshua/i3b/joshua/scene.l64",
+    "source_authoring": "models/joshua/i3b/joshua/authoring.json",
+    "asset_sha256": "61ad46c92927d5dee96b11ed1045865d53c45951f390eb8b6b96c7158b353736",
+    "authoring_sha256": "61988f0eb1f5def9c0627ed0e1f2fd54cc9d673e5d966f9cffd89274ef585d8a"
+  },
+  "amy": {
+    "prefix": "models/amy/i3",
+    "source_asset": "models/amy/i3/amy/scene.l64",
+    "source_authoring": "models/amy/i3/amy/authoring.json",
+    "asset_sha256": "36f483b6813b0b9643f1b13acc321d927f1fb3e523439bb84c8d1257911ed0f3",
+    "authoring_sha256": "7a2cd4316b9f0654a8b7df9ffb820ed086a10b2a4a368e2e32dc6c59002a0067"
+  },
+  "girl": {
+    "prefix": "models/girl/i3",
+    "source_asset": "models/girl/i3/girl/scene.l64",
+    "source_authoring": "models/girl/i3/girl/authoring.json",
+    "asset_sha256": "a096ed97d1eecea2d86db99fea21c65f3b79a304833c85ffe6bfee0f8c0595a3",
+    "authoring_sha256": "b05a4ad9e53ca36e1ed5bd830d0959f51897f520b08b9e696de9e600752bd576"
+  },
+  "hood": {
+    "prefix": "models/hood/i3",
+    "source_asset": "models/hood/i3/hood/scene.l64",
+    "source_authoring": "models/hood/i3/hood/authoring.json",
+    "asset_sha256": "ad508a585dd2b902af34ce15105de0a5ad419fc231b3435c078c2e4d8fb51e03",
+    "authoring_sha256": "4df3caebbda53784e28b0dd7cbbd8aa2818c9adc7b3c090f50aafd87c8eb7433"
+  },
+  "isaac": {
+    "prefix": "models/isaac/i3",
+    "source_asset": "models/isaac/i3/isaac/scene.l64",
+    "source_authoring": "models/isaac/i3/isaac/authoring.json",
+    "asset_sha256": "160cab180a4d802c57104a6c131c8b488aac97c22de93942c7e389c8668b6e6e",
+    "authoring_sha256": "480f749ae1628151e3328cca3d92cf221bfb49f485d6e7c11ea37a41533decf9"
+  },
+  "lass2": {
+    "prefix": "models/lass2/i3b",
+    "source_asset": "models/lass2/i3b/lass2/scene.l64",
+    "source_authoring": "models/lass2/i3b/lass2/authoring.json",
+    "asset_sha256": "218d7aa8cff4fb971f95749eb4eada4d1f5414f3f2ff0ea5ab01fb8ed4c2b57c",
+    "authoring_sha256": "7d32cb630c03d0cede0ed3a0a8cb1b435f83d8b75a99e4371558a73fe1b18739"
+  },
+  "lass1": {
+    "prefix": "models/lass1/i3",
+    "source_asset": "models/lass1/i3/lass1/scene.l64",
+    "source_authoring": "models/lass1/i3/lass1/authoring.json",
+    "asset_sha256": "7c092d0f7d5aae31f74d7433d041eb6a58ace8e1a8e8227c9c8f2c6ac151cad3",
+    "authoring_sha256": "12305c6075b7cd4fde76ce05df4a0973278d50a2ac13da61a1eb7211a3b38954"
+  },
+  "nikki": {
+    "prefix": "models/nikki/i3",
+    "source_asset": "models/nikki/i3/nikki/scene.l64",
+    "source_authoring": "models/nikki/i3/nikki/authoring.json",
+    "asset_sha256": "4ecfb5502872ed3b17cc2bbb541528a6598a91958a9f0c65dda9704b700da3d2",
+    "authoring_sha256": "1b4dd32df56dc216d0e1cb4951d105c5c51fe5e953eea0d4fd4a4c05e1bd19d9"
+  },
+  "lad": {
+    "prefix": "models/lad/i3b",
+    "source_asset": "models/lad/i3b/lad/scene.l64",
+    "source_authoring": "models/lad/i3b/lad/authoring.json",
+    "asset_sha256": "af6e16730cec6d5d8abf85218064b746486102dca688bbfd38ab746373dc2e9d",
+    "authoring_sha256": "e9137c40bcaedb612cf1ddfd5aff8a907019b44042c76e720ec93a867c274b8f"
+  },
+  "murray": {
+    "prefix": "models/murray/i3",
+    "source_asset": "models/murray/i3/murray/scene.l64",
+    "source_authoring": "models/murray/i3/murray/authoring.json",
+    "asset_sha256": "f51488569a5d4d419b79b8b428c3b5ee255a8ac9b0a8ae57dc1aceccac2ca847",
+    "authoring_sha256": "f53cbaffd6cef96f893147f59a8bb0c98ff72d4d2af8cbb3b1b63545bd73d74a"
+  },
+  "rick": {
+    "prefix": "models/rick/i3",
+    "source_asset": "models/rick/i3/rick/scene.l64",
+    "source_authoring": "models/rick/i3/rick/authoring.json",
+    "asset_sha256": "2bb12bb168502c9c2f706acd48b2f69afdc64730709848a6f331ab068b5c384f",
+    "authoring_sha256": "e7baa22a47f899f22ab0f25d8f5c082a60a868992cee23687727661e68596764"
+  },
+  "specs": {
+    "prefix": "models/specs/i3",
+    "source_asset": "models/specs/i3/specs/scene.l64",
+    "source_authoring": "models/specs/i3/specs/authoring.json",
+    "asset_sha256": "a5327d43e29700af61f6d857cbb23a2b6a3eaf66a9aa67823fda111bd69cdc57",
+    "authoring_sha256": "30d99a3b2b7f9597438de15bd51fb2ea37f6109582f0e47f7d25b3890b2c47cc"
+  },
+  "ken": {
+    "prefix": "models/ken/i3",
+    "source_asset": "models/ken/i3/ken/scene.l64",
+    "source_authoring": "models/ken/i3/ken/authoring.json",
+    "asset_sha256": "b16e536e3f2f8bb5b7bb78312426e600ccfe3275b9777730a96d145660e9c7d8",
+    "authoring_sha256": "a3b3b701bc112d4fff0fe24eb21a54d182522c315fe0b44444c03ff12550a4c1"
+  },
+  "courtney": {
+    "prefix": "models/courtney/i3",
+    "source_asset": "models/courtney/i3/courtney/scene.l64",
+    "source_authoring": "models/courtney/i3/courtney/authoring.json",
+    "asset_sha256": "6f6fa1a170baf2d3b6391245dc5dce3c7ae5e0dbbaa060ff93a5270b26eea6b2",
+    "authoring_sha256": "20d602e06bf6617f5fa20c62ad6cbfedc0c43b7a8c86c89357163d208008d8f8"
+  },
+  "steve": {
+    "prefix": "models/steve/i3",
+    "source_asset": "models/steve/i3/steve/scene.l64",
+    "source_authoring": "models/steve/i3/steve/authoring.json",
+    "asset_sha256": "465add9ae9043a91fa5824fc37acd026c17d0d2e7477ff8f3049213bedacfa67",
+    "authoring_sha256": "8543c4f040dda8632c1418ef3f4eafa15ee06fff90bcdb3f9dfde118be150f86"
+  },
+  "jack": {
+    "prefix": "models/jack/i3",
+    "source_asset": "models/jack/i3/jack/scene.l64",
+    "source_authoring": "models/jack/i3/jack/authoring.json",
+    "asset_sha256": "cac0cbd45c1f36577f7aeee854d0d1c02c2ce4427f0aa728f8ca9d30468c4688",
+    "authoring_sha256": "31bf6376387efaeb42cb42f872dab56b0a62ceb54ed62f566efd64296e50a926"
+  },
+  "rod": {
+    "prefix": "models/rod/i3",
+    "source_asset": "models/rod/i3/rod/scene.l64",
+    "source_authoring": "models/rod/i3/rod/authoring.json",
+    "asset_sha256": "01b948aa306e236d064e051f5c2503c73c72e79d4b64ea7605e3c9a945e3d266",
+    "authoring_sha256": "fa7ab8e96256d6fca8e2049b38042be821a0fa1de17a163e4cfed6604510bc5d"
+  },
+  "woman": {
+    "prefix": "models/woman/i3",
+    "source_asset": "models/woman/i3/woman/scene.l64",
+    "source_authoring": "models/woman/i3/woman/authoring.json",
+    "asset_sha256": "8fbcc0f1f453b85fa8eff9b11c6e081794d50cc375fb439a0fc4de1fd8f8a716",
+    "authoring_sha256": "765d37d9db4734f63bae268b58d2ceb04f10349bfaa0804d3e6f8bcacc7e7294"
+  },
+  "chap": {
+    "prefix": "models/chap/i3",
+    "source_asset": "models/chap/i3/chap/scene.l64",
+    "source_authoring": "models/chap/i3/chap/authoring.json",
+    "asset_sha256": "2db52b8620f73ae4571da37396bd97d809199aa0b6634460f68080db74743e17",
+    "authoring_sha256": "85d96ef1586a57885d7389bfbf0fdc83216afd893d7895168b9a1b994d2d1d3d"
+  },
+  "gal": {
+    "prefix": "models/gal/i3",
+    "source_asset": "models/gal/i3/gal/scene.l64",
+    "source_authoring": "models/gal/i3/gal/authoring.json",
+    "asset_sha256": "6657103557dcd5b17bef1772e3fb14ddc24f30b4616b39a250644029eb6d223e",
+    "authoring_sha256": "e439339d580ac11d0be45cf2a1cfcb40ab9189acd31c59a76b8383597887d17f"
+  },
+  "pappy": {
+    "prefix": "models/pappy/i3",
+    "source_asset": "models/pappy/i3/pappy/scene.l64",
+    "source_authoring": "models/pappy/i3/pappy/authoring.json",
+    "asset_sha256": "1858a041ca2b21d5a9178b222f13c33611de7ec9f464d8cc7e361cf48a9e7698",
+    "authoring_sha256": "81596bd13616f823b678cf17d5bf38104e72f83b7bce5efaaab96b1c59a78520"
+  },
+  "butch": {
+    "prefix": "models/butch/i3",
+    "source_asset": "models/butch/i3/butch/scene.l64",
+    "source_authoring": "models/butch/i3/butch/authoring.json",
+    "asset_sha256": "40c092a77f52dafd9359822fb7253eb67ccc9d79a1c3b5877eeca529cf8350bc",
+    "authoring_sha256": "ab44587da570f20114e9f393cf0a9623df5731391096b372a71e4312f85ad8bb"
+  },
+  "granny": {
+    "prefix": "models/granny/i3",
+    "source_asset": "models/granny/i3/granny/scene.l64",
+    "source_authoring": "models/granny/i3/granny/authoring.json",
+    "asset_sha256": "cd70a4e0d7e76c6e7c6a613a750da12ce7c47294d72f44f10d095c4c4889d82a",
+    "authoring_sha256": "95800cf394a7f51ab119355649dbab1ea4290bca307ec9a585c5e260194d44c0"
+  },
+  "mark": {
+    "prefix": "../mark-concepts/approved/a_adventure/i3d",
+    "source_asset": "../mark-concepts/approved/a_adventure/i3d/mark/scene.l64",
+    "source_authoring": "../mark-concepts/approved/a_adventure/i3d/mark/authoring.json",
+    "asset_sha256": "9df902bb42052d93aac348a6c279438949a7aad1d36f0bc180c493f28c238ff3",
+    "authoring_sha256": "eed84f3dd345f94e7f248a02263d676119a9adee0a101d0c72355db1746eeeed"
+  },
+  "mania_palette2": {
+    "prefix": "models/mania_palette2/i3",
+    "source_asset": "models/mania_palette2/i3/mania_palette2/scene.l64",
+    "source_authoring": "models/mania_palette2/i3/mania_palette2/authoring.json",
+    "asset_sha256": "b29e366efd08bb77b88d98436864d4e12e42ab7e6ccfab0d7eab45e37952ad9b",
+    "authoring_sha256": "8550f66a8646615db0d18187ec1ce8c70d40a31cf3d5b9f3e9436c2f37241794"
+  },
+  "boy_palette2": {
+    "prefix": "models/boy_palette2/i3",
+    "source_asset": "models/boy_palette2/i3/boy_palette2/scene.l64",
+    "source_authoring": "models/boy_palette2/i3/boy_palette2/authoring.json",
+    "asset_sha256": "410e76cecc51262e3b8d9ed596c8bdcf3facac7e13d714e5a39257e29e1748c4",
+    "authoring_sha256": "9247d53cec6487e1d53e4f13bbde692239f0ff712fb8db52924dcda57f54e7f2"
+  },
+  "swimmer_palette2": {
+    "prefix": "models/swimmer_palette2/i3b",
+    "source_asset": "models/swimmer_palette2/i3b/swimmer_palette2/scene.l64",
+    "source_authoring": "models/swimmer_palette2/i3b/swimmer_palette2/authoring.json",
+    "asset_sha256": "36da5c6037274a76c5f7896d7aaaa38b9473b370979c7fcf4f6325098a2fb8e4",
+    "authoring_sha256": "bdee8f79707a2f87126ddaf742f6d5abaa4ed395dc265df5d89f12ce30fb0a14"
+  },
+  "amy__lying": {
+    "prefix": "models/amy__lying/i3",
+    "source_asset": "models/amy__lying/i3/amy__lying/scene.l64",
+    "source_authoring": "models/amy__lying/i3/amy__lying/authoring.json",
+    "asset_sha256": "7936767efe10b6a4f0156ea4fc06d2d096e7cc3060ba36e8deccd1a27ed14e90",
+    "authoring_sha256": "dde00e42fb89338fdaa20064213dfb16b7b46b55afd58a9cac0df085f1568dbc"
+  }
+}

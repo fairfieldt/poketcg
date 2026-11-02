@@ -1,0 +1,88 @@
+{
+  "passed": true,
+  "source": "models/chap/i3/chap",
+  "source_sha256": "2db52b8620f73ae4571da37396bd97d809199aa0b6634460f68080db74743e17",
+  "settings": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "preserve_lower": false,
+      "packing_phase": [
+        -0.007,
+        -0.011,
+        -0.009
+      ],
+      "target_half_width": 0.43129870129870135,
+      "target_half_depth": 0.3567532467532468,
+      "head_bounds": [
+        1.49,
+        2.31
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 204,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/chap/i3f/chap/scene.l64",
+    "sha256": "37daa5509d330b95f10d122dd364abcee3b85f3fc9bd7df52c3796302c446a66",
+    "triangles": 628,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "gchap3_chap_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      },
+      {
+        "name": "gchap3_chap_shirt.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "sampled_feature": "painted eye whites",
+    "before_max_eye_white_angle": 59.31510825561669,
+    "after_max_eye_white_angle": 42.19720339733809,
+    "additional_horizontal_span": 0.7,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of actual painted eye feature; no sampled feature beyond43deg; Joshua uses closed eyelids; lying inherits standing mapping",
+    "face_vertices": 31,
+    "original_native_sha256": "1fe3d5212a386d8572cc0e5e47bf8e1aff5e2f1a770068d2d467ff82f24d3486",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

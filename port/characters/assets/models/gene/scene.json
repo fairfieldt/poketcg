@@ -55,8 +55,8 @@
   "appearance": "gene",
   "pose": "standing",
   "component": null,
-  "vertices": 451,
-  "triangles": 528,
+  "vertices": 553,
+  "triangles": 560,
   "batches": 7,
   "parts": [
     0,
@@ -66,8 +66,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/gene/i3/gene/scene.l64",
-    "sha256": "a7c5a595c0c5f772da22bd95864aa9858e40d3f1d6293235afeee2b4a5e923b2",
+    "asset": "experiments/cast-concepts/models/gene/i3e/gene/scene.l64",
+    "sha256": "e7f715a3a54b06741e59ccde608f8ce799e8fbad51b4008b536c650875e8d1b1",
     "selection": "gene"
   }
 }

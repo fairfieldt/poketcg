@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "gchap3_chap_face",
+    "gchap3_chap_shirt"
+  ],
+  "vertices": 609,
+  "triangles": 628,
+  "batches": 7
+}

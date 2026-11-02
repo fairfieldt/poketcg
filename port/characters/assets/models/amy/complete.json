@@ -1,12 +1,12 @@
 {
   "model": "amy",
-  "triangles": 528,
-  "vertices": 351,
+  "triangles": 580,
+  "vertices": 456,
   "batches": 6,
   "linked_parts": 0,
   "appearances": [
     "amy"
   ],
-  "fingerprint": "89f648d8f1246151c07b2de0f67969ea6f2fb7e7df12f068e9f90fefb131161b",
+  "fingerprint": "85e922c96e101296f17193e332d5bc385f3417d7b28aeec1bbe14c06b3b95087",
   "recipe": "reviewed-cast-manual"
 }

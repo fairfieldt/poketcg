@@ -1,7 +1,7 @@
 {
   "format": "L643",
   "textures": [
-    "mas3_dr_mason_face",
+    "round_dr_mason_face",
     "mas3_dr_mason_coat"
   ],
   "actors": [
@@ -57,8 +57,8 @@
   "appearance": "dr_mason",
   "pose": "standing",
   "component": null,
-  "vertices": 447,
-  "triangles": 560,
+  "vertices": 591,
+  "triangles": 620,
   "batches": 7,
   "parts": [
     0,
@@ -68,8 +68,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/dr_mason/i3/dr_mason/scene.l64",
-    "sha256": "784e46b8f1074131bb713526708cc136140ef4a92449fe5437c9d91d144d1582",
+    "asset": "experiments/cast-concepts/models/dr_mason/i3f/dr_mason/scene.l64",
+    "sha256": "0f2be9a2ddccb096086655b62b10c0bc55db1c98652ee778b726df1508b10c1c",
     "selection": "dr_mason"
   }
 }

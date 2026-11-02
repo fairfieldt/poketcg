@@ -1,0 +1,12 @@
+{
+  "sampled_feature": "painted eye whites",
+  "before_max_eye_white_angle": 57.33902584270493,
+  "after_max_eye_white_angle": 42.7150585391279,
+  "additional_horizontal_span": 0.76,
+  "target_degrees": 43,
+  "sampling": "21-step barycentric samples of actual painted eye feature; no sampled feature beyond43deg; Joshua uses closed eyelids; lying inherits standing mapping",
+  "face_vertices": 25,
+  "original_native_sha256": "ae41c3a45d5d81a3e6a5202070ca4f5e46346f42fc3b3223f22a3080252e005f",
+  "texture_png_bytes_unchanged": true,
+  "positions_indices_pivots_colors_unchanged": true
+}

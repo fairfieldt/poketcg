@@ -1,12 +1,12 @@
 {
   "model": "rick",
-  "triangles": 528,
-  "vertices": 452,
+  "triangles": 560,
+  "vertices": 554,
   "batches": 7,
   "linked_parts": 0,
   "appearances": [
     "rick"
   ],
-  "fingerprint": "89587ba5063b92aab47c259e44e4b5b2dbda85e95e5240b2c426233b9014c52e",
+  "fingerprint": "947d41deb48f6d669b698634a0bea495abdf9b736ce108b8db3d171462e4422f",
   "recipe": "reviewed-cast-manual"
 }

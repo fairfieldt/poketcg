@@ -1,0 +1,124 @@
+{
+  "passed": true,
+  "method": "Independent dumpdfs extraction from each actual private Z64: 98 full/LOD actors compared directly to generated assets and 63 referenced sprites to fresh conversion outputs. Capture metadata ROM hashes match these exact Z64 files.",
+  "capture_roms": [
+    {
+      "segment": "intro",
+      "rom_sha256": "29a6035b49b2dc2715c76049bfda6ff22a01a713bf29a5451278fd2fa1ceb3c6",
+      "full_and_lod_actor_files_checked": 98,
+      "referenced_sprites_checked": 63,
+      "method": "dumpdfs -e from actual private Z64, compared against generated model bytes and fresh sprite outputs",
+      "captured_rom_sha256_matches": true,
+      "cursor_guard": {
+        "hidden": true,
+        "original": [
+          -691,
+          1504
+        ],
+        "parked": [
+          2,
+          2
+        ],
+        "parked_outside_window": true,
+        "warped": true
+      },
+      "recorder": null,
+      "capture_method": "macOS screencapture of private Ares window only; post-VI Metal output; no CRT shader; no desktop or microphone/system audio",
+      "raw_video_sha256": "0014c6382b4d408c8ff89b4cfbca8a7d35275f02e409b0ab021057b7abc0cdc6",
+      "native_end_seen": true
+    },
+    {
+      "segment": "ronald",
+      "rom_sha256": "c22587a5e58cbdc8ada5013383a0b0361cd6a372175a299b1fc6b23bc03d4402",
+      "full_and_lod_actor_files_checked": 98,
+      "referenced_sprites_checked": 63,
+      "method": "dumpdfs -e from actual private Z64, compared against generated model bytes and fresh sprite outputs",
+      "captured_rom_sha256_matches": true,
+      "cursor_guard": {
+        "hidden": true,
+        "original": [
+          519.09375,
+          862.22265625
+        ],
+        "parked": [
+          2,
+          2
+        ],
+        "parked_outside_window": true,
+        "warped": true
+      },
+      "recorder": null,
+      "capture_method": "macOS screencapture of private Ares window only; post-VI Metal output; no CRT shader; no desktop or microphone/system audio",
+      "raw_video_sha256": "60a2a410301888e68b403634a5e20e042d118b11c51b1d6486e2dbfddd6a045c",
+      "native_end_seen": true
+    },
+    {
+      "segment": "clubs",
+      "rom_sha256": "7b5f51cadd892eb4421583816b9b6ca74a9b534ecafd282ec4b228111f131b12",
+      "full_and_lod_actor_files_checked": 98,
+      "referenced_sprites_checked": 63,
+      "method": "dumpdfs -e from actual private Z64, compared against generated model bytes and fresh sprite outputs",
+      "captured_rom_sha256_matches": true,
+      "cursor_guard": {
+        "hidden": true,
+        "original": [
+          415.8828125,
+          1358.2890625
+        ],
+        "parked": [
+          2,
+          2
+        ],
+        "parked_outside_window": true,
+        "warped": true
+      },
+      "recorder": {
+        "capture_microphone": false,
+        "captures_audio": false,
+        "fps": 60,
+        "height": 1136,
+        "ready_epoch": 1793642038.655174,
+        "shows_cursor": false,
+        "width": 1440,
+        "window_id": 822
+      },
+      "capture_method": "ScreenCaptureKit desktopIndependentWindow of private Ares only; showsCursor=false; post-VI Metal output; no CRT shader; no desktop or microphone/system audio",
+      "raw_video_sha256": "2e87c3593c36474c80015b79c19f9a788f94f30faf246b22fc30671701da1cc9",
+      "native_end_seen": true
+    },
+    {
+      "segment": "amy",
+      "rom_sha256": "cc47b5863f2e93f806a34233598562233f8b045868150e8153c5c133ddbb1a33",
+      "full_and_lod_actor_files_checked": 98,
+      "referenced_sprites_checked": 63,
+      "method": "dumpdfs -e from actual private Z64, compared against generated model bytes and fresh sprite outputs",
+      "captured_rom_sha256_matches": true,
+      "cursor_guard": {
+        "hidden": true,
+        "original": [
+          1042,
+          1117
+        ],
+        "parked": [
+          2,
+          2
+        ],
+        "parked_outside_window": true,
+        "warped": true
+      },
+      "recorder": null,
+      "capture_method": "macOS screencapture of private Ares window only; post-VI Metal output; no CRT shader; no desktop or microphone/system audio",
+      "raw_video_sha256": "119a5558d3b6da7492b005e7c3d457963c4ae88fd73af55f0f987f6e3002e8e9",
+      "native_end_seen": true
+    }
+  ],
+  "total_actor_file_hash_checks": 392,
+  "total_referenced_sprite_checks": 252,
+  "clubs_cursor_capture_excluded_by_ScreenCaptureKit": true,
+  "clubs_raw_frames_reviewed_seconds": [
+    12,
+    19,
+    26
+  ],
+  "clubs_raw_titlebar_height_pixels": 56
+}

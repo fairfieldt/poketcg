@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "width": 1440,
+  "height": 1080,
+  "fps": 60,
+  "frames": 3874,
+  "duration": 64.566667,
+  "audio_duration": 64.566,
+  "audio_identical_to_v3": true,
+  "compressed_audio_sha256": "92a170127c763c7575b815596c45b8a60671fa4e67b614cdf50515bdb42a961e",
+  "decode_errors": 0,
+  "faststart": true,
+  "video_sha256": "56d7bca21a9c0bf77c1f7d00f6f85d7b8d68171cb5fb3b51fd99e83685d3497e",
+  "bytes": 33766456,
+  "capture": "fresh local native post-VI; no CRT"
+}

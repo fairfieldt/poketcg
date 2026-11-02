@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-gal-i3e.z64",
+  "rom_sha256": "465eb9123fa8ede91393e83c5e968a13d8abdd78af9a2a7907da26fce637e94f",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1343488,
+      "free": 1392896
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1343776,
+      "free": 1392608
+    }
+  ],
+  "subject": "gal",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "6273c741cf9805e5f894aa640dda1ab9aae5f5b5e172aeadab4b00dc3b543a6f",
+    "candidate": "fdcad971f7ffe4b516aafd4adb6ca5457d4e5c7d4408b526a6ebb61c82f5e8d7"
+  }
+}

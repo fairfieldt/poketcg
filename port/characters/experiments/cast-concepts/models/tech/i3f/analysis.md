@@ -1,0 +1,1 @@
+The lab scientist has a fuller rounded skull and connected hair surface. Smaller eyes and rectangular glasses remove the oversized expression. Face paint stays in front of the temple. Accepted after actual native portrait, turn, conversation and room review.

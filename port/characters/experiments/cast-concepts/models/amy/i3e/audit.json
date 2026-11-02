@@ -1,0 +1,73 @@
+{
+  "passed": true,
+  "source": "models/amy/i3/amy",
+  "source_sha256": "36f483b6813b0b9643f1b13acc321d927f1fb3e523439bb84c8d1257911ed0f3",
+  "settings": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "target_half_width": 0.4121279999999999,
+      "target_half_depth": 0.3454838095238096,
+      "head_bounds": [
+        1.4207999999999998,
+        2.2043519999999996
+      ]
+    }
+  ],
+  "topology": [
+    {
+      "closed": true,
+      "oriented": true,
+      "hair_components": 1
+    }
+  ],
+  "original_head_triangles": 144,
+  "body_native_triangle_stream_unchanged": true,
+  "attempts": [
+    {
+      "cuts": [
+        0.66,
+        0.83
+      ],
+      "errors": []
+    }
+  ],
+  "native": {
+    "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cast-concepts/models/amy/i3e/amy/scene.l64",
+    "sha256": "dfb530ccbeca33590ede8d575ac23a0976699642526d9928afe4936ddd8ee3e7",
+    "triangles": 580,
+    "parts": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "textures": [
+      {
+        "name": "w3_amy_face.sprite",
+        "size": [
+          32,
+          32
+        ],
+        "rgba16_bytes": 2048
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "face_paint": "Original retained; follow-up tools/correct_scientist_faces.py",
+  "front_face": {
+    "before_max_eye_white_angle": 55.23430941821925,
+    "after_max_eye_white_angle": 42.086128331894194,
+    "additional_horizontal_span": 0.76,
+    "target_degrees": 43,
+    "sampling": "21-step barycentric samples of painted eye whites; no pixel beyond43deg in sampled owning faces; lying pose inherits standing mapping",
+    "face_vertices": 23,
+    "original_native_sha256": "e164a311998ca5cf74f05b9465091ef66743c75f663bc1c475e571ea6bf7940e",
+    "texture_png_bytes_unchanged": true,
+    "positions_indices_pivots_colors_unchanged": true
+  }
+}

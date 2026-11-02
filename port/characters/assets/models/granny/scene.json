@@ -56,8 +56,8 @@
   "appearance": "granny",
   "pose": "standing",
   "component": null,
-  "vertices": 412,
-  "triangles": 592,
+  "vertices": 537,
+  "triangles": 640,
   "batches": 7,
   "parts": [
     0,
@@ -67,8 +67,8 @@
     4
   ],
   "reviewed_source": {
-    "asset": "experiments/cast-concepts/models/granny/i3/granny/scene.l64",
-    "sha256": "cd70a4e0d7e76c6e7c6a613a750da12ce7c47294d72f44f10d095c4c4889d82a",
+    "asset": "experiments/cast-concepts/models/granny/i3e/granny/scene.l64",
+    "sha256": "b4ef52cda37b6bf803d94e23ec54afa10ff16a2e2baf359ec6f39d4807787682",
     "selection": "granny"
   }
 }

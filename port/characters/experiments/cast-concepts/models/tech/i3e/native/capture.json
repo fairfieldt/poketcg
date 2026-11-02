@@ -1,0 +1,40 @@
+{
+  "rom": "/Users/fairfieldt/dev/poketcg/port/frontends/n64/adventure/family-tech-i3e.z64",
+  "rom_sha256": "a523dfee57f5ea5763009125fe95ab498a369cf69c3feb50dae898a221731e38",
+  "frames": [
+    "before-room",
+    "before-talk",
+    "before-portrait",
+    "before-turn",
+    "candidate-room",
+    "candidate-talk",
+    "candidate-portrait",
+    "candidate-turn"
+  ],
+  "heap": [
+    {
+      "option": "before",
+      "total": 2736384,
+      "used": 1347216,
+      "free": 1389168
+    },
+    {
+      "option": "candidate",
+      "total": 2736384,
+      "used": 1348104,
+      "free": 1388280
+    }
+  ],
+  "subject": "tech",
+  "diagnostic_slot": "mark",
+  "views": [
+    "portrait",
+    "turn",
+    "talk",
+    "room"
+  ],
+  "input_sha256": {
+    "before": "2898d0beb770fa797382968293bb0889f03a87509ef4ebb4ab92e4fa52fa4c96",
+    "candidate": "41a0afbe7a313bdedbac246bf05caa683be759ade57b6890cf0273eeaa364e07"
+  }
+}

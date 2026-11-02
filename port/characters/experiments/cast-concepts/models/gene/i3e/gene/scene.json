@@ -1,0 +1,17 @@
+{
+  "format": "L643",
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    "gene3_face",
+    "gene3_top"
+  ],
+  "vertices": 553,
+  "triangles": 560,
+  "batches": 7
+}
