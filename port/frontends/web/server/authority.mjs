@@ -48,32 +48,33 @@ export async function loadAuthority(dist) {
 	};
 }
 
-function shuffled(list) {
+function shuffled(list, random) {
 	const a = list.slice();
 	for (let i = a.length - 1; i > 0; i--) {
-		const j = crypto.randomInt(i + 1);
+		const j = random(i + 1);
 		[a[i], a[j]] = [a[j], a[i]];
 	}
 	return a;
 }
 
 export class AuthoritativeDuel {
-	/* decks: [hostCards, guestCards]; names: [host, guest]; emit(viewer 0|1, item) */
-	constructor(lib, { decks, names, emit, seed, skipDelayAllowed = false }) {
+	/* decks: [hostCards, guestCards]; names: [host, guest]; emit(viewer 0|1, item);
+	 * random(n) in [0, n) shuffles the decks and picks the seed (tests pass a seeded one) */
+	constructor(lib, { decks, names, emit, random = crypto.randomInt, skipDelayAllowed = false }) {
 		const { engine, view } = lib;
 		this.E = engine;
 		this.V = view;
 		this.duel = new engine.Duel(lib.module);
 		this.setup = {
-			duelists: [0, 1].map((i) => ({ kind: 'human', cards: shuffled(decks[i]), name: names[i] })),
-			prizes: 6, seed: seed ?? crypto.randomInt(1 << 24), skipDelayAllowed,
+			duelists: [0, 1].map((i) => ({ kind: 'human', cards: shuffled(decks[i], random), name: names[i] })),
+			prizes: 6, seed: random(1 << 24), skipDelayAllowed,
 		};
 		this.emit = emit || (() => {});
 		this.logs = [[], []];
 		this.span = [];
 		this.prev = null;             // raw board at the end of the previous span
 		this.sent = [null, null];     // per viewer: the redacted duel variables it has
-		this.known = [new Set(), new Set()]; // per viewer: side * 64 + deck index of identities sent
+		this.known = [new Map(), new Map()]; // per viewer: side * 64 + deck index -> identity sent
 		this.revealed = false;        // setups are face down until the first turn
 		this.screen = 0;
 		this.nextId = 0;
@@ -298,10 +299,9 @@ export class AuthoritativeDuel {
 		const known = this.known[v];
 		const add = (side, idx) => {
 			const key = side * 64 + idx;
-			if (known.has(key)) return;
 			const id = this.duel.cardId(this.V.sideOf(side), idx);
-			if (!id) return;
-			known.add(key);
+			if (!id || known.get(key) === id) return; // (Ditto's Morph changes a card's identity)
+			known.set(key, id);
 			c.push(side, idx, id);
 		};
 		for (const side of [0, 1]) for (let idx = 0; idx < 60; idx++)

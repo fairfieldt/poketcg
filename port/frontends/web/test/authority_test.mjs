@@ -67,7 +67,7 @@ for (let seed = s0; seed <= s1; seed++) {
 	const clients = [0, 1].map(() => ({ remote: new RemoteDuel(statics), seen: new Set(), queue: [] }));
 	let duel = null;
 	const emit = (v, item) => clients[v].queue.push(JSON.parse(JSON.stringify(item))); // over the wire
-	duel = authority.createDuel({ decks: deckIds.map(deckCards), names: ['HOST', 'GUEST'], emit, seed: seed * 977 });
+	duel = authority.createDuel({ decks: deckIds.map(deckCards), names: ['HOST', 'GUEST'], emit, random: makeRng(seed * 977) });
 	const truthSide = (side) => duel.duel.duelvars(sideOf(side));
 	const trueId = (side, idx) => duel.duel.cardId(sideOf(side), idx);
 	const where = `seed ${seed} (${deckIds.join(' vs ')})`;
@@ -76,6 +76,7 @@ for (let seed = s0; seed <= s1; seed++) {
 
 	/* opponent cards a viewer has had a legitimate look at: in a public zone or shown by an item */
 	const everShown = [new Set(), new Set()];
+	const knownNames = [0, 1].map((v) => new Set(deckCards(deckIds[v]).map((id) => names.get(id))));
 	const notePublic = (v) => {
 		for (let side = 0; side < 2; side++) for (let idx = 0; idx < 60; idx++)
 			if (locationVisible(truthSide(side)[idx], side === v, duel.revealed)) everShown[v].add(side * 64 + idx);
@@ -136,11 +137,10 @@ for (let seed = s0; seed <= s1; seed++) {
 		const owner = term && (term.req.duelist === TCG_OPPONENT ? 1 : 0) === v;
 		const added = duel.logs[v].slice(before);
 		if (!owner && added.some((i) => i.k === 'ev')) totals.publicSpans++;
+		const known = knownNames[v]; // names this viewer has been sent, or put in their own deck
+		for (const i of added) for (let k = 0; k + 2 < (i.c || []).length; k += 3) known.add(names.get(i.c[k + 2]));
 		if (owner) return;
 		// texts in spans this viewer does not own: names of cards hidden from them
-		const known = new Set(); // names this viewer has been shown, or put in their own deck
-		for (const key of duel.known[v]) known.add(names.get(trueId(key >> 6, key & 63)));
-		for (let idx = 0; idx < 60; idx++) known.add(names.get(trueId(v, idx)));
 		const hiddenNames = new Set();
 		const o = 1 - v;
 		for (let idx = 0; idx < 60; idx++) {
@@ -151,8 +151,9 @@ for (let seed = s0; seed <= s1; seed++) {
 			if (i.k !== 'ev' || i.ev.type !== EV.TEXT || !i.ev.str) continue;
 			totals.otherTexts.set(i.ev.text, (totals.otherTexts.get(i.ev.text) || 0) + 1);
 			let text = i.ev.str.replace(/\s+/g, ' ');
+			const template = statics.text(i.ev.text) || ''; // names in the fixed wording ("Fire Energy from the Hand")
 			for (const n of [...known].filter(Boolean).sort((a, b) => b.length - a.length)) text = text.split(n).join('~');
-			for (const n of hiddenNames) if (n && new RegExp(`\\b${n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(text))
+			for (const n of hiddenNames) if (n && !template.includes(n) && new RegExp(`\\b${n.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`).test(text))
 				err(`viewer ${v}: text "${text}" names hidden card ${n}`);
 		}
 	};
