@@ -1,3 +1,4 @@
+#include "../../../src/cat_duo.h"
 #include <libdragon.h>
 #include <GL/gl.h>
 #include <GL/glu.h>
@@ -148,6 +149,7 @@ static const Scene *actor_scene(unsigned model,unsigned npc,const PresentationPo
 static void draw_presented_actor(unsigned model,const PresentationPose *pose,float scale,float floor,float tilt,unsigned npc)
 {
  if(!pose)return;
+ if(cat_duo_npc(npc))scale*=CAT_DUO_SCALE;
  scene_draw_actor_presented(actor_scene(model,npc,pose,scale,floor),model,pose->x,
   floor+pose->floor+pose->bob*scale,pose->z,pose->heading,scale,pose->lean,pose->gait,tilt);
 }
@@ -246,7 +248,7 @@ surface_t *game_render_frame(void)
    if(!pose||pose->x<-1||pose->z<-1||pose->x>w3_maps[game.ow.map].width-1||
       pose->z>w3_maps[game.ow.map].height-1)continue;
    tilt[i]=game.ow.npc_animation[i]==SPRITE_ANIM_CGB_AMY_LAYING&&!w3_npc_pose_models[npc->id]?90:0;
-   draw_npc[i]=adventure_frustum_actor(&frustum,pose,1,0,tilt[i]);
+   draw_npc[i]=adventure_frustum_actor(&frustum,pose,cat_duo_npc(npc->id)?CAT_DUO_SCALE:1,0,tilt[i]);
    if(!draw_npc[i]||(npc->id>=NPC_TORCH&&npc->id<=NPC_LEGENDARY_CARD_RIGHT_SPARK)||
       game.ow.npc_animation[i]==SPRITE_ANIM_CGB_AMY_LAYING)continue;
    if(pose->floor)continue;
@@ -369,7 +371,7 @@ static void duel_setup(TcgDuelSetup *setup,const OwDuel *duel)
  setup->duelist[0].kind=TCG_HUMAN;setup->duelist[0].name=game.name;
  memcpy(setup->duelist[0].cards,game.cards.built[game.cards.selected_deck].cards,60);
  setup->duelist[1].kind=TCG_AI;setup->duelist[1].deck_id=duel->deck;
- setup->duelist[1].name=ow_npc_name(duel->npc);
+ setup->duelist[1].name=duel->deck==CAT_DUO_DECK_ID?CAT_DUO_NAME:ow_npc_name(duel->npc);
 }
 static int host_duel(void *ctx,OwState *state,const OwDuel *duel)
 {

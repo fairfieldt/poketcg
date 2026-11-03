@@ -1,4 +1,5 @@
 #include "../presentation.h"
+#include "../../../../src/cat_duo.h"
 #include "../../../../overworld/gen/data.h"
 #include "../../../../src/gen/constants.h"
 #include "../../../../world3d/generated/world3d_maps.h"
@@ -345,9 +346,31 @@ static void test_interior_tracking(void)
  printf("INTERIOR TRACKING PASS: all33 interiors, %u walkable compositions; entry view, continuous tile motion, readable far-room scale, TV-safe sides/feet, authored wall heights, dialogue priority/exit, fixed island overview and unchanged state\n",compositions);
 }
 
+static void test_cat_conversations(void)
+{
+ for(unsigned id=CAT_TUXEDO_NPC;id<=CAT_TABBY_NPC;id++) {
+  unsigned x=id==CAT_TUXEDO_NPC?12:14;
+  OwState state={.map=ISHIHARAS_HOUSE,.x=x,.y=10,.direction=NORTH,.npc_count=2,
+    .npcs={{CAT_TUXEDO_NPC,12,8,SOUTH,1,0},{CAT_TABBY_NPC,14,8,SOUTH,1,0}}};
+  OwState canonical=state;Presentation p;presentation_init(&p,&state,false);
+  presentation_conversation(&p,id);camera_settle(&p,&state,&w3_maps[ISHIHARAS_HOUSE]);
+  close_to(p.camera.fov,50);assert(p.conversation_npc==id);close_to(CAT_DUO_SCALE,.5f);
+  close_to(p.npcs[0].pose.x,12.4f);close_to(p.npcs[1].pose.x,13.6f);
+  for(unsigned actor=0;actor<2;actor++)for(unsigned corner=0;corner<8;corner++) {
+   float scale=actor?CAT_DUO_SCALE:1;
+   float actor_x=actor?p.npcs[id-CAT_TUXEDO_NPC].pose.x:x;
+   float sx,sy;project_point(&p.camera,actor_x+(corner&1?.65f:-.65f)*scale,
+     (corner&2?2.5f:1.2f)*scale,(actor?8:10)+(corner&4?.35f:-.35f)*scale,&sx,&sy);
+   assert(sx>10&&sx<310&&sy>12&&sy<155);
+  }
+  assert(!memcmp(&state,&canonical,sizeof(state)));
+ }
+ puts("CAT CONVERSATION PASS: both half-height speakers and Mark clear the dialogue panel; state unchanged");
+}
 int main(void)
 {
  test_conversation_cameras();
+ test_cat_conversations();
  test_interior_tracking();
  /* Fractional source waits accumulate instead of doubling one-frame waits. */
  Presentation timing={0};assert(presentation_wait_frames(&timing,60)==30);

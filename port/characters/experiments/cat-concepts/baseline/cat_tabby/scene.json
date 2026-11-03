@@ -1,0 +1,17 @@
+{
+  "vertices": 2262,
+  "triangles": 1058,
+  "batches": 5,
+  "textures": [],
+  "props": [],
+  "format": "L643",
+  "model": "cat_tabby",
+  "appearance": "cat_tabby",
+  "pose": "standing",
+  "actors": [
+    {
+      "name": "cat_tabby",
+      "model": 201
+    }
+  ]
+}

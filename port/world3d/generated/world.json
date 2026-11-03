@@ -10035,8 +10035,8 @@
     2,
     2,
     2,
-    2,
-    2,
+    200,
+    201,
     2,
     2,
     2,
@@ -22156,6 +22156,66 @@
       "npc_ids": [
         105
       ]
+    },
+    "actor_cat_tuxedo": {
+      "file": "maps/actor_cat_tuxedo.l64",
+      "vertices": 974,
+      "triangles": 728,
+      "batches": 7,
+      "textures": [
+        "te727bbe6f6a78cab",
+        "tf1a77ee196085a37"
+      ],
+      "props": [],
+      "character": true,
+      "slug": "cat_tuxedo",
+      "model": 200,
+      "source_model": 200,
+      "source": "port/characters/assets/models/cat_tuxedo",
+      "source_sha256": "1d22628b550ad89967081d6cad32a93bd932ab0f962c9925760d7fe60c4a0582",
+      "grounding": {
+        "authored_triangles": 0,
+        "legacy": []
+      },
+      "family": "cat_tuxedo",
+      "kind": "guest",
+      "selector": null,
+      "aliases": [
+        "CAT_TUXEDO"
+      ],
+      "npc_ids": [
+        240
+      ]
+    },
+    "actor_cat_tabby": {
+      "file": "maps/actor_cat_tabby.l64",
+      "vertices": 1017,
+      "triangles": 728,
+      "batches": 7,
+      "textures": [
+        "t38ccbda1deee9c4d",
+        "t5d94b78a4390a1ec"
+      ],
+      "props": [],
+      "character": true,
+      "slug": "cat_tabby",
+      "model": 201,
+      "source_model": 201,
+      "source": "port/characters/assets/models/cat_tabby",
+      "source_sha256": "61cdc17c06cc0e5f1f0b7292bacc1eaa5ebf4f8b602fcce2cf483850fe5433fd",
+      "grounding": {
+        "authored_triangles": 0,
+        "legacy": []
+      },
+      "family": "cat_tabby",
+      "kind": "guest",
+      "selector": null,
+      "aliases": [
+        "CAT_TABBY"
+      ],
+      "npc_ids": [
+        241
+      ]
     }
   },
   "switches": [
@@ -22215,7 +22275,7 @@
     "actors": "actors.l64",
     "textures": "content-addressed PNG files, global deduplication"
   },
-  "texture_count": 631,
+  "texture_count": 635,
   "individual_characters": [
     {
       "file": "maps/actor_mark.l64",
@@ -23757,6 +23817,66 @@
       "npc_ids": [
         105
       ]
+    },
+    {
+      "file": "maps/actor_cat_tuxedo.l64",
+      "vertices": 974,
+      "triangles": 728,
+      "batches": 7,
+      "textures": [
+        "te727bbe6f6a78cab",
+        "tf1a77ee196085a37"
+      ],
+      "props": [],
+      "character": true,
+      "slug": "cat_tuxedo",
+      "model": 200,
+      "source_model": 200,
+      "source": "port/characters/assets/models/cat_tuxedo",
+      "source_sha256": "1d22628b550ad89967081d6cad32a93bd932ab0f962c9925760d7fe60c4a0582",
+      "grounding": {
+        "authored_triangles": 0,
+        "legacy": []
+      },
+      "family": "cat_tuxedo",
+      "kind": "guest",
+      "selector": null,
+      "aliases": [
+        "CAT_TUXEDO"
+      ],
+      "npc_ids": [
+        240
+      ]
+    },
+    {
+      "file": "maps/actor_cat_tabby.l64",
+      "vertices": 1017,
+      "triangles": 728,
+      "batches": 7,
+      "textures": [
+        "t38ccbda1deee9c4d",
+        "t5d94b78a4390a1ec"
+      ],
+      "props": [],
+      "character": true,
+      "slug": "cat_tabby",
+      "model": 201,
+      "source_model": 201,
+      "source": "port/characters/assets/models/cat_tabby",
+      "source_sha256": "61cdc17c06cc0e5f1f0b7292bacc1eaa5ebf4f8b602fcce2cf483850fe5433fd",
+      "grounding": {
+        "authored_triangles": 0,
+        "legacy": []
+      },
+      "family": "cat_tabby",
+      "kind": "guest",
+      "selector": null,
+      "aliases": [
+        "CAT_TABBY"
+      ],
+      "npc_ids": [
+        241
+      ]
     }
   ],
   "overworld_authoring": {
@@ -24309,5 +24429,29 @@
       "model": 177,
       "scene": "rom:/world/maps/hall_card_bottom_right.l64"
     }
-  ]
+  ],
+  "guest_npcs": {
+    "ishiharas_house": [
+      {
+        "npc": 240,
+        "model": 200,
+        "x": 12,
+        "y": 8,
+        "dir": 2,
+        "heading": 0,
+        "name": "cat_tuxedo",
+        "conditional": true
+      },
+      {
+        "npc": 241,
+        "model": 201,
+        "x": 14,
+        "y": 8,
+        "dir": 2,
+        "heading": 0,
+        "name": "cat_tabby",
+        "conditional": true
+      }
+    ]
+  }
 }

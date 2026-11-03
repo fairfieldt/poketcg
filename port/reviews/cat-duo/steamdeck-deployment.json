@@ -1,0 +1,25 @@
+{
+  "date": "2026-11-02T23:34:00.071514+00:00",
+  "host": "deck@192.168.0.94",
+  "emulator": "ares v148 Flatpak user installation",
+  "steam_entry": "Pokemon TCG 64 (Expansion Pak)",
+  "steam_game_id": "15945756777304293376",
+  "rom": "/home/deck/Games/n64/poketcg/expansion.z64",
+  "sha256": "fcc4aad6819e1d79da565ee2da59221225d0f8d0dae1da3d1ceccea1463e4b48",
+  "video_mode": "480x360; 8 MiB Expansion Pak verified in live emulator log",
+  "controller": "Steam Deck and Steam virtual gamepad",
+  "shader": "CRT Guest Advanced; interm=0",
+  "save": "/home/deck/Games/n64/poketcg/saves/Nintendo 64/expansion.ram",
+  "diary1": {
+    "name": "MARK",
+    "starter": "Charmander & Friends",
+    "cards": 90,
+    "medals": 1,
+    "location": "Existing saved location preserved when Water Medal added",
+    "tutorial_complete": true,
+    "water_medal": true
+  },
+  "previous_save_backed_up": true,
+  "verified": "Steam shortcut launches; post-tutorial profile loads into laboratory",
+  "water_medal_save_sha256": "1ba1b1370a5bbe61e1d5e44b1da7023ef177dde0a371129dabebc44fc058490e"
+}

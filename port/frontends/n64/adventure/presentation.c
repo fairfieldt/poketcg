@@ -1,3 +1,4 @@
+#include "../../../src/cat_duo.h"
 #include "presentation.h"
 #include "../../../overworld/gen/data.h"
 #include "../../../src/gen/constants.h"
@@ -147,12 +148,18 @@ unsigned presentation_sync(Presentation *p,const OwState *s,bool running)
  unsigned count=s->npc_count<OW_NPC_LIMIT?s->npc_count:OW_NPC_LIMIT;
  for(unsigned i=0;i<count;i++) {
   const OwNpc *n=&s->npcs[i];const PresentationActor *old=NULL;
+  float x=coordinate(n->x),z=coordinate(n->y);
+  /* Half-height guests share a tighter pose while retaining walk-grid targets. */
+  if(s->map==ISHIHARAS_HOUSE) {
+   if(n->id==CAT_TUXEDO_NPC)x+=.4f;
+   if(n->id==CAT_TABBY_NPC)x-=.4f;
+  }
   for(unsigned j=0;j<p->npc_count;j++)if(p->npcs[j].id==n->id){old=&p->npcs[j];break;}
   if(old&&!map_change)next[i]=*old;
-  else snap(&next[i],coordinate(n->x),coordinate(n->y),n->direction,n->id);
+  else snap(&next[i],x,z,n->direction,n->id);
   next[i].visible=n->visible;
-  if(old&&target(&next[i],coordinate(n->x),coordinate(n->y),n->direction,8,false,
-                 opcode(s)==0x23||magnitude(coordinate(n->x)-next[i].pose.x,coordinate(n->y)-next[i].pose.z)>5,
+  if(old&&target(&next[i],x,z,n->direction,8,false,
+                 opcode(s)==0x23||magnitude(x-next[i].pose.x,z-next[i].pose.z)>5,
                  p->tutorial_motion))
    changes|=PRESENTATION_NPC;
   /* Amy's source start is on her bench, including the short standing-up
@@ -174,7 +181,7 @@ unsigned presentation_sync(Presentation *p,const OwState *s,bool running)
 }
 void presentation_conversation(Presentation *p,unsigned npc)
 {
- p->conversation_npc=npc<NUM_NPCS?(uint8_t)npc:0;
+ p->conversation_npc=(npc<NUM_NPCS||cat_duo_npc(npc))?(uint8_t)npc:0;
 }
 
 /* The source walk permissions also identify furniture footprints. They are
@@ -195,7 +202,7 @@ static bool camera_solid(const OwState *s,float x,float z)
 }
 
 static bool conversation_fits(const PresentationCamera *camera,const PresentationPose *a,
- const PresentationPose *b)
+ const PresentationPose *b,float npc_scale)
 {
  const float sine=.3420201433f,cosine=.9396926208f,tangent=.4663076582f;
  float dx=camera->eye[0]-camera->target[0],dz=camera->eye[2]-camera->target[2];
@@ -204,9 +211,10 @@ static bool conversation_fits(const PresentationCamera *camera,const Presentatio
  float ux=dx/horizontal,uz=dz/horizontal;
  const PresentationPose *actors[]={a,b};
  for(unsigned actor=0;actor<2;actor++)for(unsigned corner=0;corner<8;corner++) {
-  float x=actors[actor]->x+(corner&1?.7f:-.7f)-camera->target[0];
-  float y=actors[actor]->floor+(corner&2?2.65f:1.05f)-camera->target[1];
-  float z=actors[actor]->z+(corner&4?.5f:-.5f)-camera->target[2];
+  float scale=actor?npc_scale:1;
+  float x=actors[actor]->x+(corner&1?.7f:-.7f)*scale-camera->target[0];
+  float y=actors[actor]->floor+(corner&2?2.65f:1.05f)*scale-camera->target[1];
+  float z=actors[actor]->z+(corner&4?.5f:-.5f)*scale-camera->target[2];
   float along=x*ux+z*uz,depth=radius-cosine*along-sine*y;
   if(depth<1.6f)return false;
   float sx=(x*uz-z*ux)/(depth*tangent*(4.0f/3.0f));
@@ -223,7 +231,8 @@ static bool conversation_candidate(const Presentation *p,const OwState *s,const 
  const PresentationPose *mark=&p->player.pose,*other=&npc->pose;
  float x=(mark->x+other->x)*.5f,z=(mark->z+other->z)*.5f;
  float ux=sinf(azimuth),uz=cosf(azimuth);
- camera->target[0]=x;camera->target[1]=1+maxf(mark->floor,other->floor)*.5f;
+ float npc_scale=cat_duo_npc(npc->id)?CAT_DUO_SCALE:1;
+ camera->target[0]=x;camera->target[1]=(1+npc_scale)*.5f+maxf(mark->floor,other->floor)*.5f;
  camera->target[2]=z;camera->fov=50;
  for(unsigned step=0;step<29;step++) {
   float wanted=6.8f+step*.4f;
@@ -232,7 +241,7 @@ static bool conversation_candidate(const Presentation *p,const OwState *s,const 
   float distance=magnitude(ex-x,ez-z);
   camera->eye[0]=ex;camera->eye[1]=camera->target[1]+distance*.3639702343f;
   camera->eye[2]=ez;
-  if(!conversation_fits(camera,mark,other))continue;
+  if(!conversation_fits(camera,mark,other,npc_scale))continue;
   float actual=atan2f(ex-x,ez-z)*180/PI;
   float front=fabsf(angle_delta(actual,npc->target_heading));
   if(front>105)continue;

@@ -1,0 +1,9 @@
+{
+  "renderer": "production N64 Tiny3D in ares",
+  "ram_mib": 4,
+  "frames": [
+    "room",
+    "tuxedo",
+    "tabby"
+  ]
+}

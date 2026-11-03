@@ -1,4 +1,5 @@
 #include "overworld.h"
+#include "../src/cat_duo.h"
 #include "../src/gen/constants.h"
 #include "../src/gen/text.h"
 #include "gen/data.h"
@@ -686,6 +687,16 @@ static bool load_npcs(OwState *s, const OwHost *h) {
         id, s->native_vars[9],        s->native_vars[10], s->native_vars[8],
         1,  ow_npc_headers[id].sprite};
   }
+  /* Port-only guests. Keep original placements and preload scripts intact. */
+  if (map == ISHIHARAS_HOUSE && ow_event(s, EVENT_MEDAL_FLAGS)) {
+    const unsigned ids[] = {CAT_TUXEDO_NPC, CAT_TABBY_NPC};
+    for (unsigned i=0; i<2 && s->npc_count<OW_NPC_LIMIT; i++) {
+      unsigned n=s->npc_count++;
+      s->npcs[n]=(OwNpc){ids[i],12+i*2,8,SOUTH,1,0};
+      s->npc_flags[n]=0;
+      s->npc_animation[n]=SPRITE_ANIM_LIGHT_NPC_DOWN;
+    }
+  }
   return true;
 }
 void ow_load_map(OwState *s, const OwHost *h, unsigned map, unsigned x,
@@ -868,7 +879,22 @@ bool ow_interact(OwState *s, const OwHost *h) {
       unsigned old_direction = n->direction, old_map = s->map, old_id = n->id;
       n->direction = (s->direction ^ 2) & 3;
       changed(s, h);
-      ow_run(s, h, ow_npc_headers[n->id].script, n->id);
+      if (cat_duo_npc(n->id)) {
+        if (!h || !h->choice || !h->duel) {
+          error(s,h,"Cat duel callback unavailable",0);
+          return false;
+        }
+        if (h->choice(h->ctx,s,OW_CHOICE_YES_NO,CAT_DUO_CHALLENGE_TEXT,2,1)) {
+          s->pending_duel=(OwDuel){CAT_TUXEDO_NPC,6,CAT_DUO_DECK_ID,MUSIC_DUEL_THEME_2};
+          s->duel_npc=n->id;
+          s->script_pc=s->next_script=0;
+          s->duel_pending=1;
+          int result=h->duel(h->ctx,s,&s->pending_duel);
+          ow_finish_duel(s,h,result);
+        }
+      } else {
+        ow_run(s, h, ow_npc_headers[n->id].script, n->id);
+      }
       run_pending(s, h);
       OwNpc *restored = npc(s, old_id);
       if (s->map == old_map && restored)
@@ -1409,9 +1435,41 @@ void ow_run(OwState *s, const OwHost *h, uint16_t pc, unsigned id) {
 
 const char *ow_npc_name(unsigned id) {
   extern const char *const ow_npc_names[];
+  if (id == CAT_TUXEDO_NPC) return CAT_TUXEDO_NAME;
+  if (id == CAT_TABBY_NPC) return CAT_TABBY_NAME;
   return id < NUM_NPCS ? ow_npc_names[id] : "";
 }
 void ow_finish_duel(OwState *s, const OwHost *h, int result) {
+  if (s->duel_pending && s->pending_duel.deck == CAT_DUO_DECK_ID) {
+    unsigned speaker=s->duel_npc;
+    s->duel_pending=0;
+    s->last_duel_result=result==1?0:1;
+    s->script_pc=s->next_script=0;
+    s->native_vars[0]=0;
+    s->default_song=ow_maps[s->map].song;
+    if (!load_npcs(s,h)) return;
+    play_default_song(s,h);
+    if (h && h->text) h->text(h->ctx,s,result==1?CAT_DUO_WIN_TEXT:
+        result==2?CAT_DUO_DRAW_TEXT:CAT_DUO_LOSS_TEXT,(uint8_t)speaker);
+    if (result == 1) {
+      if (!(s->events[CAT_DUO_REWARD_EVENT_BYTE] & CAT_DUO_REWARD_EVENT_MASK)) {
+        if (!h || !h->card_change || !h->feature) {
+          error(s,h,"Cat reward callback unavailable",0); return;
+        }
+        s->events[CAT_DUO_REWARD_EVENT_BYTE] |= CAT_DUO_REWARD_EVENT_MASK;
+        give(h,FLYING_PIKACHU,1);
+        s->received_card=FLYING_PIKACHU;
+        if (h->text) h->text(h->ctx,s,CAT_DUO_REWARD_TEXT,(uint8_t)speaker);
+        feature(s,h,OW_FEATURE_CARD_RECEIVED,FLYING_PIKACHU);
+      } else {
+        if (!h || !h->booster) { error(s,h,"Cat booster callback unavailable",0); return; }
+        h->booster(h->ctx,BOOSTER_COLOSSEUM_LIGHTNING);
+        h->booster(h->ctx,BOOSTER_MYSTERY_LIGHTNING_COLORLESS);
+      }
+    }
+    changed(s,h);
+    return;
+  }
   s->duel_pending = 0;
   s->last_duel_result = result == 1 ? 0 : 1;
   /* Original LoadMap reloads NPCs and starts the resolved room theme before

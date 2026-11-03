@@ -589,6 +589,30 @@
       "lod_triangles": 24,
       "full_vertices": 40,
       "lod_vertices": 40
+    },
+    {
+      "model": 200,
+      "slug": "cat_tuxedo",
+      "source": "maps/actor_cat_tuxedo.l64",
+      "source_sha256": "7de3eb8d206dd2b9222afa290ace017b38a00dfce528dcec70499719c259d03d",
+      "file": "lod/actor_cat_tuxedo.l64",
+      "sha256": "9d25773523e049d7324d165029ecc0d97d9db3cefb6629a13577c4b48813956e",
+      "full_triangles": 728,
+      "lod_triangles": 490,
+      "full_vertices": 974,
+      "lod_vertices": 727
+    },
+    {
+      "model": 201,
+      "slug": "cat_tabby",
+      "source": "maps/actor_cat_tabby.l64",
+      "source_sha256": "1cfab6582c81300a545e83af89f765b16747509fed3fbdca1bea6722a7a84e7e",
+      "file": "lod/actor_cat_tabby.l64",
+      "sha256": "4ed0051d1a85337e103f59311e23a138baea2ad3682c9fd27a343297d51999db",
+      "full_triangles": 728,
+      "lod_triangles": 526,
+      "full_vertices": 1017,
+      "lod_vertices": 790
     }
   ]
 }

@@ -140,6 +140,8 @@ def apply_characters(doc,roots=None,catalog_path=CATALOG,strict=False):
     components=sorted({(a['model'],a['component']) for a in catalog['aliases'].values() if a.get('component')})
     for index,(family,component) in enumerate(components):
         requests.append((family+'__'+component,176+index,family,family+'/components/'+component,'component',component))
+    for slug,model in [('cat_tuxedo',200),('cat_tabby',201)]:
+        requests.append((slug,model,slug,slug,'guest',None))
     assert len({r[1] for r in requests})==len(requests),'Character runtime ID collision'
     available={};warnings=[]
     for slug,model,family,relative,kind,selector in requests:
@@ -180,6 +182,16 @@ def apply_characters(doc,roots=None,catalog_path=CATALOG,strict=False):
         pose=alias.get('pose')
         character=available.get(alias['model']+'__'+pose) if pose else None
         if character:pose_models[alias['npc_id']]=character['model']
+    guests=[]
+    for slug,npc_id,x in [('cat_tuxedo',240,12),('cat_tabby',241,14)]:
+        character=available.get(slug)
+        if character:
+            models[npc_id]=character['model']
+            character['aliases']=[slug.upper()]
+            character['npc_ids']=[npc_id]
+            guests.append(dict(npc=npc_id,model=character['model'],x=x,y=8,dir=2,
+                               heading=0,name=slug,conditional=True))
+    doc['guest_npcs']={'ishiharas_house':guests}
     doc['npc_pose_models']=pose_models
     doc['npc_models']=models
     doc['player_model']=available.get('mark',{}).get('model',1)

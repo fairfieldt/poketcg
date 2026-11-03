@@ -47,6 +47,32 @@ an override that resumes the player in Mason's laboratory.
 `wTxRam2_b`). `txram[2..3]` contain the two number-substitution slots. Text slots
 contain text IDs, including card names, rather than card IDs.
 
+## Port-only cat encounter
+
+After the first club medal, Poppy (tuxedo) and Pepper (tabby) stand at (12,8) and (14,8) in
+Ishihara's House. Both render at half their authored size, with conversation
+framing adjusted for their height. Either NPC starts the same six-prize duel. Their IDs (240/241),
+shared deck ID (120), text IDs and names live in `src/cat_duo.h`.
+The original ROM-generated NPC, script and deck tables remain unchanged.
+
+The first victory gives Flying Pikachu; later victories give a Lightning
+Colosseum pack and a Lightning/Colorless Mystery pack. The shared first-win flag
+uses bit 0 of event byte 62, outside the extracted original event masks, and is
+encoded in the existing save layout. A pending duel uses the normal `OwDuel`
+record and resume path; both NPCs share the reward flag across diary sessions.
+
+`src/cat_duo.c` defines the 60 cards: Meowth/Persian, Electabuzz Lv35, Scyther,
+Kangaskhan, Mew Lv8 and Mew Lv23, with Lightning/Psychic/Double Colorless Energy. `src/ai/cat_duo_ai.c` supplies a randomized
+opening hand containing Meowth, Electabuzz Lv35 and Lightning Energy, places
+Electabuzz Active and Meowth on the Bench, and adds conservative search/recovery
+choices for Computer Search and Item Finder. Later turns use the existing general
+AI with boss-level Trainer reliability. All custom decisions are gated by deck ID.
+
+`make -C port catduotest` checks this encounter, deck, AI opening, search choices,
+rewards and saved-duel resume. The N64 frontend's normal test target includes it.
+`frontends/n64/adventure/tools/review_cats.py` captures the real room and both
+conversation cameras with the production renderer in ares using 4 MiB RAM.
+
 ## Validation
 
 Run `make test`:

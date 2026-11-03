@@ -1,0 +1,10 @@
+{
+  "tool": "built-in image_gen__imagegen",
+  "mode": "reference-based generation",
+  "prompt": "prompt.txt",
+  "output": "cat-duo.png",
+  "references": {
+    "tuxedo.jpg": "10be2818ba5820685563354969496c9ec1f07e5ad0e970e6ba6fa610c22a2193",
+    "tabby.jpg": "31334c57323ac9f817a197f2b70108db16a7f9457ddf4c8fef8646dfab248a3f"
+  }
+}

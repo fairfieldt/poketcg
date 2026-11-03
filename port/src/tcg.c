@@ -1,3 +1,4 @@
+#include "cat_duo.h"
 /* Frontend entry points (tcg.h). */
 #include "engine.h"
 #include "tcg.h"
@@ -43,6 +44,8 @@ static void fill_deck(const TcgDuelistSetup *d, u8 *out)
 {
 	if (has_cards(d))
 		memcpy(out, d->cards, DECK_SIZE);
+	else if (d->deck_id == CAT_DUO_DECK_ID)
+		cat_duo_deck(out);
 	else
 		expand_deck((u8)(d->deck_id + 2), out); /* *_DECK = *_DECK_ID + 2 */
 }
@@ -96,11 +99,15 @@ int tcg_run_duel(const TcgDuelSetup *s)
 	hWhoseTurn = PLAYER_TURN;
 	if (has_cards(p))
 		memcpy(wPlayerDeck, p->cards, DECK_SIZE);
+	else if (p->deck_id == CAT_DUO_DECK_ID)
+		cat_duo_deck(wPlayerDeck);
 	else
 		LoadDeck((u8)(p->deck_id + 2));
 	hWhoseTurn = OPPONENT_TURN;
 	if (has_cards(o))
 		memcpy(wOpponentDeck, o->cards, DECK_SIZE);
+	else if (o->deck_id == CAT_DUO_DECK_ID)
+		cat_duo_deck(wOpponentDeck);
 	else
 		LoadDeck((u8)(o->deck_id + 2));
 	hWhoseTurn = PLAYER_TURN;

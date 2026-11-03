@@ -1,0 +1,39 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cat-concepts/rounds/i2/cat_tabby/scene.l64",
+  "sha256": "e4f7c8af76e48548512457680f7a5832cdd0873732b45780352c82d7288d0a2b",
+  "triangles": 728,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "cat_tabby_body.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    },
+    {
+      "name": "cat_tabby_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "head_topology": {
+    "vertices": 98,
+    "faces": 112,
+    "edges": 208,
+    "closed": true,
+    "consistently_wound": true
+  }
+}

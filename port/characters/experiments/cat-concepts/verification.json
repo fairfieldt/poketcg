@@ -1,0 +1,241 @@
+{
+  "passed": true,
+  "rounds": [
+    {
+      "round": 1,
+      "models": [
+        {
+          "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cat-concepts/rounds/i1/cat_tuxedo/scene.l64",
+          "sha256": "5117973a8ef6a8402e094de3a6c3b189fea26d7ee2a452146526e1de73dccdd7",
+          "triangles": 728,
+          "parts": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "textures": [
+            {
+              "name": "cat_tuxedo_body.sprite",
+              "size": [
+                32,
+                32
+              ],
+              "rgba16_bytes": 2048
+            },
+            {
+              "name": "cat_tuxedo_face.sprite",
+              "size": [
+                32,
+                32
+              ],
+              "rgba16_bytes": 2048
+            }
+          ],
+          "errors": [],
+          "passed": true,
+          "closed_consistently_wound_skull": true,
+          "staged_native_equals_canonical_export": true,
+          "staged_sha256": "8ae68017a40676f5f025b09c6424185e614c160285d38c247d0030089eaa5291"
+        },
+        {
+          "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cat-concepts/rounds/i1/cat_tabby/scene.l64",
+          "sha256": "09e109144bdfec549ec2ad358ea47e9fad09bb545f259801d49a4dc5d880d9cf",
+          "triangles": 728,
+          "parts": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "textures": [
+            {
+              "name": "cat_tabby_body.sprite",
+              "size": [
+                32,
+                32
+              ],
+              "rgba16_bytes": 2048
+            },
+            {
+              "name": "cat_tabby_face.sprite",
+              "size": [
+                32,
+                32
+              ],
+              "rgba16_bytes": 2048
+            }
+          ],
+          "errors": [],
+          "passed": true,
+          "closed_consistently_wound_skull": true,
+          "staged_native_equals_canonical_export": true,
+          "staged_sha256": "ffcc6b75ef4ce08b161f6314924ee0b59a1b87348cf423a03c51e13d48076f25"
+        }
+      ],
+      "native_frames": 7,
+      "rom_sha256": "9dcc658c31a9198ba209ee59ebe7a863af32efb22a836a623bdc91750fa23ca5"
+    },
+    {
+      "round": 2,
+      "models": [
+        {
+          "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cat-concepts/rounds/i2/cat_tuxedo/scene.l64",
+          "sha256": "675a9c2449c66dd81b5ed0a4950491f2c29090fee99562928ea0722201379402",
+          "triangles": 728,
+          "parts": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "textures": [
+            {
+              "name": "cat_tuxedo_body.sprite",
+              "size": [
+                32,
+                32
+              ],
+              "rgba16_bytes": 2048
+            },
+            {
+              "name": "cat_tuxedo_face.sprite",
+              "size": [
+                32,
+                32
+              ],
+              "rgba16_bytes": 2048
+            }
+          ],
+          "errors": [],
+          "passed": true,
+          "closed_consistently_wound_skull": true,
+          "staged_native_equals_canonical_export": true,
+          "staged_sha256": "65b9cd9a3fd3072549d57bca537f08c17b52b284c82c0e0d9fe73623277ad2af"
+        },
+        {
+          "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cat-concepts/rounds/i2/cat_tabby/scene.l64",
+          "sha256": "e4f7c8af76e48548512457680f7a5832cdd0873732b45780352c82d7288d0a2b",
+          "triangles": 728,
+          "parts": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "textures": [
+            {
+              "name": "cat_tabby_body.sprite",
+              "size": [
+                32,
+                32
+              ],
+              "rgba16_bytes": 2048
+            },
+            {
+              "name": "cat_tabby_face.sprite",
+              "size": [
+                32,
+                32
+              ],
+              "rgba16_bytes": 2048
+            }
+          ],
+          "errors": [],
+          "passed": true,
+          "closed_consistently_wound_skull": true,
+          "staged_native_equals_canonical_export": true,
+          "staged_sha256": "7f70ed95093c0efd8eb4b087df8950671ffbbb39adf9c66df8de8a28bcb2593e"
+        }
+      ],
+      "native_frames": 7,
+      "rom_sha256": "a69ed2f072ef3fb4e37d03605638413c19765c27a229804157876df6a0c5ed55"
+    },
+    {
+      "round": 3,
+      "models": [
+        {
+          "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cat-concepts/rounds/i3/cat_tuxedo/scene.l64",
+          "sha256": "5f46e40416bb1fc32b4405b145653c5d4df083e912e5dd74bcf0ffced79eb3b7",
+          "triangles": 728,
+          "parts": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "textures": [
+            {
+              "name": "cat_tuxedo_body.sprite",
+              "size": [
+                32,
+                32
+              ],
+              "rgba16_bytes": 2048
+            },
+            {
+              "name": "cat_tuxedo_face.sprite",
+              "size": [
+                32,
+                32
+              ],
+              "rgba16_bytes": 2048
+            }
+          ],
+          "errors": [],
+          "passed": true,
+          "closed_consistently_wound_skull": true,
+          "staged_native_equals_canonical_export": true,
+          "staged_sha256": "7de3eb8d206dd2b9222afa290ace017b38a00dfce528dcec70499719c259d03d"
+        },
+        {
+          "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cat-concepts/rounds/i3/cat_tabby/scene.l64",
+          "sha256": "fd740a4e2cd069ed2a646a1531d73c37ca079f8e9e604d3f622e8c15ae2baa69",
+          "triangles": 728,
+          "parts": [
+            0,
+            1,
+            2,
+            3,
+            4
+          ],
+          "textures": [
+            {
+              "name": "cat_tabby_body.sprite",
+              "size": [
+                32,
+                32
+              ],
+              "rgba16_bytes": 2048
+            },
+            {
+              "name": "cat_tabby_face.sprite",
+              "size": [
+                32,
+                32
+              ],
+              "rgba16_bytes": 2048
+            }
+          ],
+          "errors": [],
+          "passed": true,
+          "closed_consistently_wound_skull": true,
+          "staged_native_equals_canonical_export": true,
+          "staged_sha256": "1cfab6582c81300a545e83af89f765b16747509fed3fbdca1bea6722a7a84e7e"
+        }
+      ],
+      "native_frames": 7,
+      "rom_sha256": "15f0ff2f0ab07b6fa4b5eb428bb5fd8bbb0a89830e2167f91ef1f1e7e852b870"
+    }
+  ],
+  "final_round": 3,
+  "limitations": [
+    "Ares captures establish appearance, not physical-console performance.",
+    "Room-distance face details occupy only a few pixels."
+  ]
+}

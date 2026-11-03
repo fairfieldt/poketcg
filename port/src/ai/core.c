@@ -1,3 +1,4 @@
+#include "../cat_duo.h"
 /*
  * Port of src/engine/duel/ai/core.asm itself (bank $05, "AI Logic 1").
  * Its INCLUDEs are ported separately:
@@ -2007,6 +2008,7 @@ bool CheckIfOpponentHasBossDeckID(void)
 {
 	TRACE_FN();
 	u8 a = wOpponentDeckID;
+	if (a == CAT_DUO_DECK_ID) return true;
 	if (a < LEGENDARY_MOLTRES_DECK_ID)
 		return false; /* .no_carry */
 	if (a >= MUSCLES_FOR_BRAINS_DECK_ID)

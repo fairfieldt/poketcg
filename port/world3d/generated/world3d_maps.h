@@ -54,7 +54,7 @@ static const unsigned char w3_npc_models[256] = {
     2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
     2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
     2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
-    2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+    200,201,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
 };
 static const unsigned char w3_npc_pose_models[256] = {
     0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -158,6 +158,8 @@ static const char *const w3_actor_scenes[256] = {
     [179] = "rom:/world/maps/actor_legendary_card__right_spark.l64", /* legendary_card__right_spark */
     [180] = "rom:/world/maps/actor_legendary_card__top_left.l64", /* legendary_card__top_left */
     [181] = "rom:/world/maps/actor_legendary_card__top_right.l64", /* legendary_card__top_right */
+    [200] = "rom:/world/maps/actor_cat_tuxedo.l64", /* cat_tuxedo */
+    [201] = "rom:/world/maps/actor_cat_tabby.l64", /* cat_tabby */
 };
 static const struct { unsigned char map, model; const char *scene; } w3_map_actor_scenes[] = {
     {33,180,"rom:/world/maps/hall_card_top_left.l64"},

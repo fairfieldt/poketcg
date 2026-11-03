@@ -119,3 +119,10 @@ test-long: harness
 	$(DIFFTEST) --all-pairs --human --seeds 100 100 --continue-at 6
 
 .PHONY: all objs gen clean test test-long harness practicecheck
+
+.PHONY: catduotest
+$(BUILD)/tests/cat_duo: tests/cat_duo.c $(ENGINE_SRCS) $(GAME_SRCS) src/cat_duo.h src/ai/cat_duo_ai.h
+	@mkdir -p $(dir $@)
+	$(CC) $(CFLAGS) -o $@ tests/cat_duo.c $(ENGINE_SRCS) $(GAME_SRCS)
+catduotest: $(BUILD)/tests/cat_duo
+	./$(BUILD)/tests/cat_duo

@@ -229,7 +229,7 @@ test:
 	./$(BUILD_DIR)/host/test_transfer_ui
 	$(HOST_CC) -std=c11 -Wall -Wextra -Werror tests/frame_rate.c -o $(BUILD_DIR)/host/test_frame_rate
 	./$(BUILD_DIR)/host/test_frame_rate
-	$(MAKE) -C $(PORT) practicecheck
+	$(MAKE) -C $(PORT) practicecheck catduotest
 	$(MAKE) -C $(PORT)/gameplay test
 	$(MAKE) -C $(PORT)/overworld test
 	sh tools/test_profiles.sh

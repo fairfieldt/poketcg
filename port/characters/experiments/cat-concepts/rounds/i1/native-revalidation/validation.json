@@ -1,0 +1,18 @@
+{
+  "renderer": "production N64 Tiny3D in ares",
+  "ram_mib": 4,
+  "frames": [
+    "room",
+    "tuxedo",
+    "tabby",
+    "tuxedo-portrait",
+    "tuxedo-turn",
+    "tabby-portrait",
+    "tabby-turn"
+  ],
+  "rom_sha256": "955312b3370478466d155bbf394d69a4cd99f3536e0fe0a82d50bdbb8901f7d1",
+  "model_sha256": {
+    "cat_tuxedo": "5117973a8ef6a8402e094de3a6c3b189fea26d7ee2a452146526e1de73dccdd7",
+    "cat_tabby": "09e109144bdfec549ec2ad358ea47e9fad09bb545f259801d49a4dc5d880d9cf"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "cat_tuxedo": {
+    "staged_sha256": "7de3eb8d206dd2b9222afa290ace017b38a00dfce528dcec70499719c259d03d",
+    "generated_bytes_equal": true
+  },
+  "cat_tabby": {
+    "staged_sha256": "1cfab6582c81300a545e83af89f765b16747509fed3fbdca1bea6722a7a84e7e",
+    "generated_bytes_equal": true
+  }
+}

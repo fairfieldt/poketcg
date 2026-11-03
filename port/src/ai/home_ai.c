@@ -3,6 +3,7 @@
  * They replace the weak stubs of src/ai_stubs.c.
  */
 #include "ai/ai.h"
+#include "cat_duo_ai.h"
 
 /* loads opponent deck at wOpponentDeckID to wOpponentDeck, and initializes wPlayerDuelistType.
  * on a duel against Sam, also loads PRACTICE_PLAYER_DECK to wPlayerDeck.
@@ -12,6 +13,11 @@ void LoadOpponentDeck(void)
 	TRACE_FN();
 	u8 a;
 	wIsPracticeDuel = 0;
+	if (wOpponentDeckID == CAT_DUO_DECK_ID) {
+		cat_duo_deck(wOpponentDeck);
+		TurnDuelistVars()[DUELVARS_DUELIST_TYPE] = DUELIST_TYPE_AI_OPP | CAT_DUO_DECK_ID;
+		return;
+	}
 	a = wOpponentDeckID;
 	if (a == SAMS_NORMAL_DECK_ID)
 		goto normal_sam_duel;
@@ -106,13 +112,19 @@ u8 AIDoAction(u8 action)
 		tcg_fatal("AIDoAction: action out of range");
 		return 0;
 	}
-	if (wOpponentDeckID > NUM_DECK_IDS) {
+	if (wOpponentDeckID > NUM_DECK_IDS && wOpponentDeckID != CAT_DUO_DECK_ID) {
 		tcg_fatal("AIDoAction: wOpponentDeckID out of range");
 		return 0;
 	}
 
 	/* jump to corresponding AI routine related to input */
-	u8 a = DeckAIPointerTable[wOpponentDeckID][action]();
+	u8 a;
+	if (wOpponentDeckID == CAT_DUO_DECK_ID && action == AIACTION_START_DUEL)
+		a = CatDuoStartDuel();
+	else if (wOpponentDeckID == CAT_DUO_DECK_ID)
+		a = AIActionTable_GeneralDecks[action]();
+	else
+		a = DeckAIPointerTable[wOpponentDeckID][action]();
 
 	if (per_side)
 		wOpponentDeckID = saved_deck_id;

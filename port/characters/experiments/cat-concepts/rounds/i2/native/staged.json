@@ -1,0 +1,12 @@
+{
+  "cat_tuxedo": {
+    "authored_sha256": "675a9c2449c66dd81b5ed0a4950491f2c29090fee99562928ea0722201379402",
+    "staged_sha256": "65b9cd9a3fd3072549d57bca537f08c17b52b284c82c0e0d9fe73623277ad2af",
+    "texture_names_canonicalized": true
+  },
+  "cat_tabby": {
+    "authored_sha256": "e4f7c8af76e48548512457680f7a5832cdd0873732b45780352c82d7288d0a2b",
+    "staged_sha256": "7f70ed95093c0efd8eb4b087df8950671ffbbb39adf9c66df8de8a28bcb2593e",
+    "texture_names_canonicalized": true
+  }
+}

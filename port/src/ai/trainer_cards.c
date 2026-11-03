@@ -1,3 +1,4 @@
+#include "cat_duo_ai.h"
 /*
  * Port of src/engine/duel/ai/trainer_cards.asm (part B of the AI port, see notes/AI_BRIEF.md).
  *
@@ -3893,6 +3894,7 @@ void AIPlay_ItemFinder(void)
  * this logic is suitable only for Strange Psyshock deck. */
 bool AIDecide_ItemFinder(u8 *a_out)
 {
+	if (wOpponentDeckID == CAT_DUO_DECK_ID) return CatDuoSearch(true, a_out);
 	TRACE_FN();
 	u8 *hl;
 	u8 a, b;
@@ -4424,6 +4426,7 @@ void AIPlay_ComputerSearch(void)
  * them in their own routine. */
 bool AIDecide_ComputerSearch(u8 *a_out)
 {
+	if (wOpponentDeckID == CAT_DUO_DECK_ID) return CatDuoSearch(false, a_out);
 	TRACE_FN();
 	u8 a;
 

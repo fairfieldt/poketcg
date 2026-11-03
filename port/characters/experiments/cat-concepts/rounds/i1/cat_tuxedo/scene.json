@@ -1,0 +1,19 @@
+{
+  "vertices": 968,
+  "triangles": 728,
+  "batches": 7,
+  "format": "L643",
+  "model": "cat_tuxedo",
+  "appearance": "cat_tuxedo",
+  "pose": "standing",
+  "actors": [
+    {
+      "name": "cat_tuxedo",
+      "model": 200
+    }
+  ],
+  "textures": [
+    "cat_tuxedo_body",
+    "cat_tuxedo_face"
+  ]
+}

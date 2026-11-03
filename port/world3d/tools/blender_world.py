@@ -119,7 +119,7 @@ for m in selected_maps:
         node=world['overworld_nodes'][0]
         spawn_actor(scene,dict(model=6,name='Selected location',x=node['marker_x'],y=node['marker_z']))
     else:
-        for npc in m['npcs']:
+        for npc in m['npcs']+world.get('guest_npcs',{}).get(m['slug'],[]):
             if npc['npc']==255 or not (0<=npc['x']<m['width'] and 0<=npc['y']<m['height']):continue
             spawn_actor(scene,npc)
         south=[w for w in m['warps'] if w['y']>=m['height']-4]

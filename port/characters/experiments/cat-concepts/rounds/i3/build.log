@@ -1,0 +1,14 @@
+Character sync: 51 exports, 39 families, 117 NPC aliases; player model7
+RSPQ SDK check PASS: source, private headers, public ABI and queue microcode match the pin
+    [LD] build/poketcg-adventure.elf
+    [DFS] build/poketcg-adventure.dfs
+      text       data        bss      total filename
+    750328     661916     173940    1586184 build/poketcg-adventure.elf
+    [Z64] poketcg-adventure.z64
+ACTOR GROUNDING PASS: 101 runtime files; 36 strict cases; 4 LOD binding cases; 0 legacy triangles removed
+    [LD] cats.elf
+    [DFS] cats.dfs
+      text       data        bss      total filename
+    322680     507452      57084     887216 cats.elf
+    [Z64] cats.z64
+Cat native PASS: room, tuxedo, tabby, tuxedo-portrait, tuxedo-turn, tabby-portrait, tabby-turn

@@ -45,5 +45,7 @@ static const char *const w3_actor_lod_scenes[256] = {
  [129] = "rom:/world/lod/actor_mania_palette2.l64", /* mania_palette2 */
  [130] = "rom:/world/lod/actor_swimmer_palette2.l64", /* swimmer_palette2 */
  [160] = "rom:/world/lod/actor_amy__lying.l64", /* amy__lying */
+ [200] = "rom:/world/lod/actor_cat_tuxedo.l64", /* cat_tuxedo */
+ [201] = "rom:/world/lod/actor_cat_tabby.l64", /* cat_tabby */
 };
 #endif

@@ -1,0 +1,39 @@
+{
+  "path": "/Users/fairfieldt/dev/poketcg/port/characters/experiments/cat-concepts/rounds/i2/cat_tuxedo/scene.l64",
+  "sha256": "675a9c2449c66dd81b5ed0a4950491f2c29090fee99562928ea0722201379402",
+  "triangles": 728,
+  "parts": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "textures": [
+    {
+      "name": "cat_tuxedo_body.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    },
+    {
+      "name": "cat_tuxedo_face.sprite",
+      "size": [
+        32,
+        32
+      ],
+      "rgba16_bytes": 2048
+    }
+  ],
+  "errors": [],
+  "passed": true,
+  "head_topology": {
+    "vertices": 98,
+    "faces": 112,
+    "edges": 208,
+    "closed": true,
+    "consistently_wound": true
+  }
+}

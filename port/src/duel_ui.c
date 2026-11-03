@@ -1,3 +1,4 @@
+#include "cat_duo.h"
 /*
  * UI shims (see duel_ui.h and PORTING.md).
  *
@@ -116,6 +117,8 @@ __attribute__((weak)) const char *tcg_text_override(uint16_t id)
 
 const char *tcg_text(uint16_t id)
 {
+	const char *custom = cat_duo_text(id);
+	if (custom) return custom;
 	if (id >= NUM_TEXTS)
 		return "";
 	const char *replacement = tcg_text_override(id);

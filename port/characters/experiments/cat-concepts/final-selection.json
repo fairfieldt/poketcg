@@ -1,0 +1,32 @@
+{
+  "selected_round": 3,
+  "authored_dimensions_unchanged": true,
+  "runtime_scale_requested": 0.5,
+  "runtime_scale_integration": "parent task",
+  "models": {
+    "cat_tuxedo": {
+      "path": "port/characters/experiments/cat-concepts/rounds/i3/cat_tuxedo",
+      "sha256": "5f46e40416bb1fc32b4405b145653c5d4df083e912e5dd74bcf0ffced79eb3b7",
+      "triangles": 728,
+      "parts": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    "cat_tabby": {
+      "path": "port/characters/experiments/cat-concepts/rounds/i3/cat_tabby",
+      "sha256": "fd740a4e2cd069ed2a646a1531d73c37ca079f8e9e604d3f622e8c15ae2baa69",
+      "triangles": 728,
+      "parts": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  }
+}
