@@ -11,7 +11,8 @@ import {
 	SAVE_STORE_DUEL, saveStoreOpen, saveStoreRead, saveStoreWrite, saveStoreRemove, saveStoreReadJSON, saveStoreWriteJSON,
 	exportFile, importFile, hasFileSystemAccess,
 } from './save_store.js';
-import { NPC_DECKS } from './gen/assets.js';
+import { initRomArt, loadRomArt, artSheet, removeRomArt } from './rom_art.js';
+import { NPC_DECKS, NO_BUNDLED_ART } from './gen/assets.js';
 
 const params = new URLSearchParams(location.search);
 const FAST = params.has('fast');           // tests: no pacing delays
@@ -168,6 +169,7 @@ function showTitle() {
 	buttons.push(btn('Online duel', () => chooseDeck('Choose your deck', (deck) => onlineLobby(deck), showTitle)));
 	buttons.push(btn('Deck builder', () => showDeckBuilder()));
 	s.appendChild(menu);
+	if (NO_BUNDLED_ART) s.appendChild(romArtRow());
 	s.appendChild(saveFileRow(saved));
 	const opts = el('label', 'option-row');
 	const skip = el('input');
@@ -179,6 +181,31 @@ function showTitle() {
 	s.appendChild(opts);
 	s.appendChild(el('div', 'help', 'Keys: arrows move · Z / Enter = A · X / Esc = B · C = card details. Mouse and touch work too.'));
 	menuKeys(buttons, null);
+}
+
+function romArtRow() {
+	const row = el('div', 'save-row');
+	const label = el('label', 'btn small', 'Load my ROM image for art assets');
+	const input = el('input');
+	input.type = 'file'; input.accept = '.gbc,.gb,application/octet-stream';
+	input.className = 'rom-input';
+	label.appendChild(input); row.appendChild(label);
+	const message = el('span', 'rom-message'); message.setAttribute('role', 'status');
+	input.addEventListener('change', async () => {
+		const file = input.files[0]; if (!file) return;
+		input.disabled = true; message.textContent = 'Loading ROM…';
+		try { await loadRomArt(file); showTitle(); toast('Card art saved in this browser.'); }
+		catch (e) { message.textContent = e.message; }
+		finally { input.disabled = false; input.value = ''; }
+	});
+	if (artSheet()) {
+		const remove = el('button', 'btn small', 'Remove saved ROM');
+		remove.addEventListener('click', () => {
+			try { removeRomArt(); showTitle(); } catch (e) { message.textContent = e.message; }
+		});
+		row.appendChild(remove);
+	}
+	row.appendChild(message); return row;
 }
 
 /* save file management: export / import (File System Access API or download / file input), delete */
@@ -686,7 +713,9 @@ async function boot() {
 		throw e;
 	}
 	try { app.info = await (await fetch(new URL('../build-info.json', import.meta.url))).json(); } catch { app.info = null; }
+	const artError = NO_BUNDLED_ART ? await initRomArt((id) => app.duel.card(id).name) : '';
 	showTitle();
+	if (artError) toast(artError);
 }
 
 boot();

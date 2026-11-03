@@ -46,6 +46,37 @@ second player (guest) plays them; server-run duels keep that behavior.
 The build includes every duel AI/effect module; a failed source build stops
 rather than shipping a reduced engine.
 
+## Multiplayer build with optional ROM art
+
+```sh
+./port/frontends/web/build-multiplayer.sh
+node port/frontends/web/server/server.js --dist port/frontends/web/dist-multiplayer
+# Open http://localhost:8080/
+```
+
+This separate bundle opens the duel menu at `/`. Online rooms default to
+server-authoritative play. It ships no image/audio files: cards show their names,
+and symbols, card backs and coins use text or CSS shapes. The full adventure
+build is unchanged. Use an empty `DIST` directory to choose another output;
+remove the generated `dist-multiplayer/` directory before rebuilding.
+
+On the main menu, **Load my ROM image for art assets** accepts an unmodified
+1 MiB USA/Europe Pokémon Trading Card Game ROM (original or Virtual Console).
+An exact SHA-1 check rejects other games, modified dumps and truncated files.
+Card graphics and palettes are decoded in the browser; the ROM is never sent to
+the server. The ROM is saved in localStorage and validated again on reload.
+The setting belongs to this browser and site, and lasts until site storage is
+cleared or **Remove saved ROM** is used. Storage failures show an error without
+replacing previously saved art.
+
+Building requires the matching `poketcg.sym` for card offsets, in addition to
+the normal compiler requirements. No ROM image is copied into the bundle.
+
+```sh
+node port/frontends/web/test/rom_art_test.mjs
+TCG_TEST_DIST="$PWD/port/frontends/web/dist-multiplayer" node port/frontends/web/test/server_duel_test.mjs
+```
+
 ## Live preview
 
 [Play the public web game](https://poketcg64.exe.xyz/) without tailnet access.

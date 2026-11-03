@@ -12,7 +12,7 @@ import path from 'node:path';
 const here = path.dirname(fileURLToPath(import.meta.url));
 const require = createRequire(path.join(here, '..', 'server', 'server.js'));
 const WebSocket = require('ws');
-const dist = path.join(here, '..', 'dist');
+const dist = process.env.TCG_TEST_DIST || path.join(here, '..', 'dist');
 const { Engine, REQ, C, TCG_CANCEL } = await import(path.join(dist, 'js', 'engine.js'));
 const args = process.argv.slice(2);
 const opt = (name, def) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : def; };

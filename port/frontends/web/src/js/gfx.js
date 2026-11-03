@@ -1,5 +1,6 @@
 // DOM helpers: card art from the generated sprite sheet, TX_SYMBOL tiles, rich text.
-import { CARD_SHEET } from './gen/assets.js';
+import { artSheet, artName } from './rom_art.js';
+import { CARD_SHEET, NO_BUNDLED_ART } from './gen/assets.js';
 import { C } from './engine.js';
 
 export const COLOR_NAMES = ['Fire', 'Grass', 'Lightning', 'Water', 'Fighting', 'Psychic', 'Colorless'];
@@ -20,6 +21,14 @@ export function clear(node) {
 /* card art (64x48 GB pixels) of card id, `scale` times the current pixel unit (--u) */
 export function art(id, scale = 1, cls = '') {
 	const e = el('div', 'art' + (cls ? ' ' + cls : ''));
+	if (NO_BUNDLED_ART) {
+		const sheet = artSheet();
+		e.style.backgroundImage = sheet ? `url(${sheet})` : 'none';
+		e.classList.toggle('art-placeholder', !sheet);
+		e.setAttribute('role', 'img');
+		e.setAttribute('aria-label', artName(id));
+		if (!sheet) e.textContent = artName(id);
+	}
 	e.style.setProperty('--col', id % CARD_SHEET.cols);
 	e.style.setProperty('--row', Math.floor(id / CARD_SHEET.cols));
 	e.style.setProperty('--sc', scale);
@@ -29,6 +38,7 @@ export function art(id, scale = 1, cls = '') {
 /* a TX_SYMBOL tile (SYM_* index), 1em square */
 export function sym(s, cls = '') {
 	const e = el('span', 'sym' + (cls ? ' ' + cls : ''));
+	if (NO_BUNDLED_ART) e.textContent = ({ 8: '☠', 9: 'Z', 10: '?', 11: '!', 13: 'P', 16: 'HP', 18: 'E', 20: '+', 21: 'D', 22: '●', 23: '○', 48: '◆' })[s] || '•';
 	e.style.setProperty('--sx', s % 8);
 	e.style.setProperty('--sy', s >> 3);
 	return e;
@@ -40,6 +50,7 @@ export function esym(color) {
 	e.style.setProperty('--sx', color);
 	e.style.setProperty('--sy', 7);
 	e.title = COLOR_NAMES[color] || '';
+	if (NO_BUNDLED_ART) { e.textContent = ['F', 'G', 'L', 'W', 'F', 'P', 'C'][color] || '?'; e.style.color = ['#b83424', '#237523', '#946b00', '#245bb5', '#89451d', '#863da2', '#555'][color]; }
 	return e;
 }
 

@@ -583,3 +583,15 @@ h3 { margin: 1em 0 0.4em; border-bottom: 2px solid var(--frame); }
 .bench-slot, .active, .pa-row { position: relative; }
 .effect-mark { position: absolute; right: 0; top: 0; min-width: 1.1em; text-align: center; font-weight: bold; color: #fff; background: #8d3a24; border: 1px solid #fff2b2; border-radius: 2px; line-height: 1.1; z-index: 2; }
 .cl-order { flex: none; min-width: 1em; text-align: center; font-weight: bold; color: #604311; background: #ffe495; border-radius: 2px; }
+
+/* Optional local-ROM art build: all other artwork uses plain browser shapes/text. */
+.local-art .art { background-image: none; }
+.local-art .art-placeholder { display: inline-flex; align-items: center; justify-content: center; text-align: center; padding: 4px; box-sizing: border-box; font: bold clamp(10px, 1.4vw, 16px) sans-serif; overflow: hidden; background: #e8e4d5; color: #24343c; }
+.local-art .sym { background-image: none; text-align: center; font-weight: bold; filter: none !important; }
+.local-art .card-header { display: none; }
+.local-art .coin { background: #e6cc78; border: 3px solid #957528; border-radius: 50%; }
+.local-art .coin::after { content: 'H'; color: #382e15; }
+.local-art .coin.tails::after { content: 'T'; }
+.local-art .prize-card, .local-art .pile-back { background: #104d88; }
+.rom-input { display: block; max-width: 240px; margin-top: 6px; }
+.rom-message { max-width: 36em; }

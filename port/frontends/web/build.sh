@@ -10,7 +10,8 @@ if [ -z "${WASM_OPT:-}" ]; then
   else WASM_OPT="$("$PYTHON" -c 'import pathlib,shutil; p=pathlib.Path(shutil.which("emcc")).resolve(); print(next(q for q in [p.parent / "binaryen/bin/wasm-opt",p.parent.parent / "libexec/binaryen/bin/wasm-opt",p.parent.parent / "bin/wasm-opt",p.parent.parent / "binaryen/bin/wasm-opt"] if q.exists()))')"
   fi
 fi
-mkdir -p "$WEB/build" "$WEB/dist"
+DIST="${DIST:-$WEB/dist}"
+mkdir -p "$WEB/build" "$DIST"
 N64="$PORT/frontends/n64/adventure"
 SOURCES=("$PORT"/src/*.c "$PORT"/src/gen/*.c "$PORT"/src/effects/*.c "$PORT"/src/ai/*.c
  "$PORT"/gameplay/*.c "$PORT"/gameplay/gen/*.c "$PORT"/overworld/*.c "$PORT"/overworld/gen/*.c
@@ -25,13 +26,23 @@ echo "Asyncifying browser callbacks"
 "$WASM_OPT" "$WEB/build/tcg.raw.wasm" -o "$WEB/build/tcg.wasm.next" \
  --enable-bulk-memory --enable-sign-ext --enable-mutable-globals --enable-nontrapping-float-to-int --asyncify \
  --pass-arg=asyncify-imports@env.js_event,env.js_request,env.js_adventure -O2
-mv "$WEB/build/tcg.wasm.next" "$WEB/dist/tcg.wasm"
-if [ "${CODE_ONLY:-0}" = 1 ]; then node "$WEB/tools/build_tutorial_diary.mjs"; cp -r "$WEB/src/." "$WEB/dist/"; exit 0; fi
-"$PYTHON" "$WEB/tools/gen_assets.py" "$WEB/dist"
+mv "$WEB/build/tcg.wasm.next" "$DIST/tcg.wasm"
+if [ "${MULTIPLAYER:-0}" = 1 ]; then
+  "$PYTHON" "$WEB/tools/gen_assets.py" "$DIST" --no-art
+  cp -r "$WEB/src/js" "$WEB/src/css" "$DIST/"
+  cp "$WEB/src/package.json" "$DIST/"
+  cp "$WEB/src/duel.html" "$DIST/index.html"
+  cp "$WEB/src/duel.html" "$DIST/duel.html"
+  printf '%s\n' '{"config":"multiplayer","effects":["all"],"ai":["all"],"skipped":[]}' > "$DIST/build-info.json"
+  echo "Built $DIST"
+  exit 0
+fi
+if [ "${CODE_ONLY:-0}" = 1 ]; then node "$WEB/tools/build_tutorial_diary.mjs"; cp -r "$WEB/src/." "$DIST/"; exit 0; fi
+"$PYTHON" "$WEB/tools/gen_assets.py" "$DIST"
 "$PYTHON" "$PORT/world3d/tools/sync_characters.py" --strict
 "$PYTHON" "$PORT/world3d/tools/check_actor_grounding.py"
 "$PYTHON" "$WEB/tools/pack_adventure.py"
 node "$WEB/tools/build_tutorial_diary.mjs"
-cp -r "$WEB/src/." "$WEB/dist/"
-printf '%s\n' '{"config":"full-game","effects":["all"],"ai":["all"],"skipped":[]}' > "$WEB/dist/build-info.json"
-echo "Built $WEB/dist"
+cp -r "$WEB/src/." "$DIST/"
+printf '%s\n' '{"config":"full-game","effects":["all"],"ai":["all"],"skipped":[]}' > "$DIST/build-info.json"
+echo "Built $DIST"
