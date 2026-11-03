@@ -1,6 +1,5 @@
 #include "cat_duo.h"
 #include "gen/constants.h"
-#include <assert.h>
 
 void cat_duo_deck(uint8_t cards[60])
 {
@@ -15,9 +14,7 @@ void cat_duo_deck(uint8_t cards[60])
     };
     unsigned n=0;
     for (unsigned i=0;i<sizeof(list)/sizeof(*list);i++)
-        for (unsigned j=0;j<list[i][0];j++) {
-            assert(n<60);
+        for (unsigned j=0;j<list[i][0]&&n<60;j++)
             cards[n++]=list[i][1];
-        }
-    assert(n==60);
+    /* the list is exactly 60 cards; no assert(): it pulls stdio into the standalone web build */
 }
