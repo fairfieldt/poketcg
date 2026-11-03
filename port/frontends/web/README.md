@@ -50,8 +50,8 @@ rather than shipping a reduced engine.
 
 ```sh
 ./port/frontends/web/build-multiplayer.sh
-node port/frontends/web/server/server.js --dist port/frontends/web/dist-multiplayer
-# Open http://localhost:8080/
+node port/frontends/web/server/server.js --host "$(tailscale ip -4)" --dist port/frontends/web/dist-multiplayer
+# On this machine: http://ms.tdf.sh:8080/
 ```
 
 This separate bundle opens the duel menu at `/`. Online rooms default to

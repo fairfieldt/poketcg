@@ -53,6 +53,7 @@ const { WebSocketServer } = require('ws');
 const argv = process.argv.slice(2);
 const arg = (name, def) => { const i = argv.indexOf(name); return i >= 0 ? argv[i + 1] : def; };
 const PORT = Number(arg('--port', process.env.PORT || 8080));
+const HOST = arg('--host', process.env.HOST || undefined);
 const DIST = path.resolve(arg('--dist', process.env.DIST || path.join(__dirname, '..', 'dist')));
 const ROOM_TTL_MS = 30 * 60 * 1000;
 const MAX_LOG = 200000;
@@ -288,7 +289,7 @@ function log(msg) {
 	if (!process.env.QUIET) console.log(`[relay] ${msg}`);
 }
 
-server.listen(PORT, () => {
-	console.log(`[relay] serving ${DIST} on http://localhost:${PORT}/ (WebSocket relay on /ws)`);
+server.listen(PORT, HOST, () => {
+	console.log(`[relay] serving ${DIST} on ${process.env.PUBLIC_URL || `http://${HOST || 'localhost'}:${PORT}/`} (WebSocket relay on /ws)`);
 	if (!fs.existsSync(path.join(DIST, 'index.html'))) console.log('[relay] warning: dist/ is not built yet (run ../build.sh)');
 });
