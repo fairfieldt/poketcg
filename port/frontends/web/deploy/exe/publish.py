@@ -62,7 +62,7 @@ def main():
     for required in ('index.html', 'duel.html', 'tcg.wasm', 'world/world.json',
                      'audio/audio.json', 'saves/diary2-after-tutorial.json'):
         assert 'public/'+required in files, required
-    for name in ('server.js', 'package.json', 'package-lock.json'):
+    for name in ('server.js', 'authority.mjs', 'package.json', 'package-lock.json'):
         files['server/'+name] = WEB/'server'/name
     files['poketcg.service'] = HERE/'poketcg.service'
     manifest = {'release': release, 'source_commit': commit, 'host': args.host,

@@ -3,7 +3,8 @@
 Public game: https://poketcg64.exe.xyz/
 
 The dedicated VM serves the full adventure and standalone duel frontend through
-one Node process on port 8000, including the same-origin `/ws` online-duel relay.
+one Node process on port 8000, including the same-origin `/ws` online duels. The
+same process runs the engine for server-run duels from the published bundle.
 `poketcg.service` starts on boot and restarts after a process failure. exe.dev
 provides the public HTTPS proxy. The home tailnet preview remains independent.
 

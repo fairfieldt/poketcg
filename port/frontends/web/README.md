@@ -15,7 +15,7 @@ installation's copy is discovered automatically), Python3 and Node.js. Checked-i
 and model assets make normal builds independent of Blender and the Game Boy
 ROM. `EMCC`, `WASM_OPT` and `PYTHON` override tool paths.
 
-For the existing online relay and standalone duel modes:
+For online duels and the standalone duel modes:
 
 ```sh
 npm ci --prefix port/frontends/web/server
@@ -23,6 +23,25 @@ node port/frontends/web/server/server.js
 # Full game: http://localhost:8080/
 # Duel modes: http://localhost:8080/duel.html
 ```
+
+## Online duels
+
+The host picks how a room runs; the guest joins either kind with the room code.
+
+- **Server runs the duel** (default): `server/authority.mjs` runs the only engine,
+  loaded from the same `dist/` bundle. Each page sends its deck and its own answers
+  and receives only what that duelist may see: its own hand, both play areas after
+  setup, both discard piles and the cards the duel shows. The server checks decks
+  against the deck rules, shuffles them, picks the seed and rejects answers from the
+  other duelist. Pages never receive the other deck list, deck order, prizes or the
+  RNG. Setups stay face down until the first turn.
+- **Relay** (box unchecked): both pages run the engine with the same setup and the
+  server only relays answers. Each page holds the whole duel state.
+
+Either kind survives a dropped connection or reload: the server keeps each
+player's stream and resends it on rejoin. Rooms live in memory and reset when the
+server restarts. The original engine reveals some searched cards only when the
+second player (guest) plays them; server-run duels keep that behavior.
 
 The build includes every duel AI/effect module; a failed source build stops
 rather than shipping a reduced engine.
@@ -124,6 +143,8 @@ node port/frontends/web/test/pointer_selection.mjs
 node port/frontends/web/test/duel_banners.mjs
 node port/frontends/web/test/world3d_test.mjs
 node port/frontends/web/test/relay_test.mjs
+node port/frontends/web/test/authority_test.mjs --seeds 1-60
+node port/frontends/web/test/server_duel_test.mjs
 node port/frontends/web/test/world3d_browser.mjs
 node port/frontends/web/test/adventure_browser.mjs
 ```
