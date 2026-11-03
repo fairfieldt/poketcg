@@ -1,8 +1,9 @@
 // Browser test of the web frontend with Playwright (Chromium):
 //   1. hot-seat duel: start from the title menu, play a few turns through the UI (mouse + keys),
 //      open the Check menu and a card page, take screenshots;
-//   2. online duel: two browser contexts duel through the relay server for a few turns, the guest
-//      reloads the page mid-duel and rejoins (replaying the duel from the server log);
+//   2. online duels: two browser contexts duel for a few turns, the guest reloads the page mid-duel
+//      and rejoins; once through the relay (both pages run the engine, replaying the answer log)
+//      and once with the server running the duel (the pages only show their streams);
 //   3. deck builder: build/save/export a deck.
 // Fails on any console error/warning or page error.
 //
@@ -45,13 +46,14 @@ function situation(page) {
 		const s = {
 			kind: req && ui.controls.length ? 'req' : 'busy', turn: ui.turnNumber ?? -1, text: ui.text,
 			status: document.querySelector('.status-line') ? document.querySelector('.status-line').textContent : '',
-			seq: app.online ? app.online.seq : null, hash: app.duel.stateHash(),
+			seq: app.online ? app.online.seq : app.serverDuel ? app.serverDuel.next : null, hash: app.online ? app.duel.stateHash() : 0,
 		};
 		if (!req) return s;
-		Object.assign(s, { type: req.type, duelist: req.duelist, menu: req.menu, n: req.numItems, arg: req.arg, info: req.text2Str, header: req.textStr, overlay: ui.overlayKind, local: !app.online || req.duelist === app.online.localSide });
+		const local = app.online ? req.duelist === app.online.localSide : app.serverDuel ? !!(app.serverDuel.current && app.serverDuel.current.own) : true;
+		Object.assign(s, { type: req.type, duelist: req.duelist, menu: req.menu, n: req.numItems, arg: req.arg, info: req.text2Str, header: req.textStr, overlay: ui.overlayKind, local });
 		if (req.type === 3) {
 			s.cards = Array.from(req.items.slice(0, req.numItems)).map((i) => {
-				const c = app.duel.card(app.duel.cardId(req.shown, i));
+				const c = ui.duel.card(ui.duel.cardId(req.shown, i));
 				return { name: c.name, basic: c.isPokemon && c.stage === 0, energy: c.isEnergy, pokemon: c.isPokemon };
 			});
 		}
@@ -339,6 +341,7 @@ async function online(browser) {
 	await guest.goto(BASE);
 	await host.click('text=Online duel');
 	await host.click('.deck-tile >> nth=0');
+	await host.uncheck('.lobby-box input[type=checkbox]');
 	await host.click('text=Create a room');
 	const code = (await (await host.waitForSelector('.room-display')).textContent()).trim();
 	check(/^[A-Z]{4}$/.test(code), `room created: ${code}`);
@@ -382,6 +385,66 @@ async function online(browser) {
 	check(!/Desync/i.test(st[0].status + st[1].status), 'no desync reported');
 	const saved = await Promise.all([host, guest].map((p) => p.evaluate(() => localStorage.getItem('tcg.save.duel'))));
 	check(saved[0] === null && saved[1] === null, 'online duels are not saved (no Continue Duel for link duels)');
+	await hostCtx.close();
+	await guestCtx.close();
+}
+
+async function serverOnline(browser) {
+	console.log('online duel run by the server');
+	const hostCtx = await browser.newContext({ viewport: { width: 1000, height: 860 } });
+	const guestCtx = await browser.newContext({ viewport: { width: 1000, height: 860 } });
+	const host = await hostCtx.newPage(), guest = await guestCtx.newPage();
+	watch(host, 'server-host');
+	watch(guest, 'server-guest');
+	await host.goto(BASE);
+	await guest.goto(BASE);
+	await host.click('text=Online duel');
+	await host.click('.deck-tile >> nth=0');
+	check(await host.isChecked('.lobby-box input[type=checkbox]'), 'new rooms are run by the server unless unchecked');
+	await host.click('text=Create a room');
+	const code = (await (await host.waitForSelector('.room-display')).textContent()).trim();
+	await guest.click('text=Online duel');
+	await guest.click('.deck-tile >> nth=2');
+	await guest.fill('.room-code', code);
+	await guest.click('text=Join room');
+	await host.waitForSelector('.duel .field');
+	await guest.waitForSelector('.duel .field');
+	let res = await play([host, guest], { turns: 2 });
+	check(!res.timeout, `server-run duel reached turn 2 (${JSON.stringify(res)})`);
+	await host.screenshot({ path: path.join(SHOTS, 'server-2-host.png') });
+	await guest.screenshot({ path: path.join(SHOTS, 'server-2-guest.png') });
+	// each page knows its own hand and nothing about the other one's
+	const knows = (page) => page.evaluate(() => {
+		const app = window.tcgApp, r = app.serverDuel.remote, out = {};
+		for (const [d, key] of [[0xc2, 'p'], [0xc3, 'o']]) {
+			const v = r.duelvars(d);
+			let hand = 0, handKnown = 0, deckKnown = 0;
+			for (let j = 0; j < 60; j++) {
+				if (v[j] === 1) { hand++; if (r.cardId(d, j)) handKnown++; }
+				if (v[j] === 0 && r.cardId(d, j)) deckKnown++;
+			}
+			out[key] = { hand, handKnown, deckKnown, handOrder: Array.from(v.slice(0x42, 0x42 + 60)).some((x) => x !== 0xff) };
+		}
+		out.engineRan = app.duel.running || !!app.duel._run;
+		return out;
+	});
+	const [hk, gk] = [await knows(host), await knows(guest)];
+	check(hk.p.hand > 0 && hk.p.handKnown === hk.p.hand && gk.o.hand > 0 && gk.o.handKnown === gk.o.hand, `each player sees their own hand (${hk.p.hand}/${gk.o.hand} cards)`);
+	check(hk.o.handKnown === 0 && gk.p.handKnown === 0 && !hk.o.handOrder && !gk.p.handOrder, "neither page holds the other player's hand");
+	check(!hk.p.deckKnown && !hk.o.deckKnown && !gk.p.deckKnown && !gk.o.deckKnown, 'neither page holds deck contents');
+	check(!hk.engineRan && !gk.engineRan, 'the pages run no duel engine');
+	const before = await situation(guest);
+	await guest.reload();
+	await host.waitForFunction(() => /lost the connection/.test(document.querySelector('.status-line').textContent), null, { timeout: 5000 });
+	check(true, 'host is told the guest disconnected');
+	await guest.click('text=Rejoin online duel');
+	await guest.waitForSelector('.duel .field');
+	await guest.waitForFunction((n) => window.tcgApp.serverDuel && window.tcgApp.serverDuel.next >= n, before.seq, { timeout: 10000 });
+	check(true, `guest replayed its stream up to item #${before.seq}`);
+	res = await play([host, guest], { turns: TURNS });
+	check(!res.timeout, `server-run duel continued to turn ${TURNS} (${JSON.stringify(res)})`);
+	await host.screenshot({ path: path.join(SHOTS, 'server-3-host.png') });
+	await guest.screenshot({ path: path.join(SHOTS, 'server-3-guest.png') });
 	await hostCtx.close();
 	await guestCtx.close();
 }
@@ -536,6 +599,7 @@ const browser = await chromium.launch({ headless: !args.includes('--headed'), ch
 try {
 	await hotseat(browser);
 	await online(browser);
+	await serverOnline(browser);
 	await vsComputer(browser);
 	await saveContinue(browser);
 	await practice(browser);

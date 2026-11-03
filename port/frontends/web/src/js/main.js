@@ -4,6 +4,8 @@ import { DuelUI, keyOf, K } from './duel_ui.js';
 import { DeckBuilder } from './deckbuilder.js';
 import { allDecks, preconstructedDecks, validateDeck, deckColors } from './data.js';
 import { RelayClient, relayUrl, OnlineDuel, saveSession, loadSession, clearSession } from './net.js';
+import { RemoteDuel } from './duel_view.js';
+import { ServerDuelSession } from './server_duel.js';
 import { el, clear, art, esym } from './gfx.js';
 import {
 	SAVE_STORE_DUEL, saveStoreOpen, saveStoreRead, saveStoreWrite, saveStoreRemove, saveStoreReadJSON, saveStoreWriteJSON,
@@ -432,7 +434,12 @@ function onlineLobby(deck) {
 	code.maxLength = 4;
 	const join = el('button', 'btn big', 'Join room');
 	joinRow.append(code, join);
-	box.append(create, joinRow);
+	const modeRow = el('label', 'option-row');
+	const serverRun = el('input');
+	serverRun.type = 'checkbox';
+	serverRun.checked = true;
+	modeRow.append(serverRun, document.createTextNode(' Server runs the duel'));
+	box.append(create, modeRow, joinRow);
 	s.appendChild(box);
 	const status = el('div', 'lobby-status');
 	s.appendChild(status);
@@ -449,13 +456,15 @@ function onlineLobby(deck) {
 	};
 	client.on('error', (m) => setStatus(m.msg, 'err'));
 	client.on('created', (m) => {
-		saveSession({ room: m.room, token: m.token, role: 'host', name });
-		create.disabled = join.disabled = true;
+		saveSession({ room: m.room, token: m.token, role: 'host', name, mode: m.mode });
+		create.disabled = join.disabled = serverRun.disabled = true;
 		setStatus(`Room ${m.room} created. Give this code to your opponent and wait for them to join…`, 'ok');
 		const big = el('div', 'room-display', m.room);
 		box.appendChild(big);
 	});
+	client.on('start', (m) => startServerOnline({ client, role: m.role, names: m.names, session: loadSession() }));
 	client.on('peer-joined', (m) => {
+		if (loadSession()?.mode === 'server') return; // the server starts the duel
 		const errors = validateDeck(m.deck && m.deck.cards || [], (id) => app.duel.card(id));
 		const sess = loadSession();
 		if (errors.length) { setStatus(`${m.name}'s deck is not valid: ${errors.join(' ')}`, 'err'); return; }
@@ -470,12 +479,15 @@ function onlineLobby(deck) {
 		startOnline({ client, setup, role: 'host', peerName: m.name, session: sess, log: [] });
 	});
 	client.on('joined', (m) => {
-		saveSession({ room: m.room, token: m.token, role: 'guest', name });
-		create.disabled = join.disabled = true;
+		saveSession({ room: m.room, token: m.token, role: 'guest', name, mode: m.mode });
+		create.disabled = join.disabled = serverRun.disabled = true;
 		setStatus(`Joined ${m.host.name}'s room ${m.room}. Waiting for the duel to start…`, 'ok');
+		if (m.mode === 'server') return;
 		client.on('setup', (x) => startOnline({ client, setup: x.setup, role: 'guest', peerName: m.host.name, session: loadSession(), log: [] }));
 	});
-	create.addEventListener('click', async () => { if (await connect()) client.send({ t: 'create', name, deck: deckMsg }); });
+	create.addEventListener('click', async () => {
+		if (await connect()) client.send({ t: 'create', name, deck: deckMsg, mode: serverRun.checked ? 'server' : 'relay' });
+	});
 	join.addEventListener('click', async () => {
 		const room = code.value.trim().toUpperCase();
 		if (!/^[A-Z]{4}$/.test(room)) { setStatus('Enter the 4-letter room code.', 'err'); return; }
@@ -496,6 +508,15 @@ async function rejoinOnline(sess) {
 	app.client = client;
 	client.on('error', (m) => { status.textContent = m.msg; status.className = 'lobby-status err'; });
 	client.on('rejoined', (m) => {
+		if (m.mode === 'server') {
+			if (!m.names) {
+				status.textContent = 'The duel has not started yet. Create a new room instead.';
+				clearSession();
+				return;
+			}
+			startServerOnline({ client, role: m.role, names: m.names, session: sess, items: m.items, peer: m.peer });
+			return;
+		}
 		if (!m.setup) {
 			status.textContent = 'The duel has not started yet. Create a new room instead.';
 			clearSession();
@@ -505,7 +526,7 @@ async function rejoinOnline(sess) {
 	});
 	try {
 		await client.connect();
-		client.send({ t: 'rejoin', room: sess.room, token: sess.token });
+		client.send({ t: 'rejoin', room: sess.room, token: sess.token, from: 0 });
 	} catch (e) {
 		status.textContent = e.message;
 		status.className = 'lobby-status err';
@@ -580,6 +601,69 @@ function startOnline({ client, setup, role, peerName, session, log }) {
 			if (!online.failed) { client.send({ t: 'leave' }); clearSession(); client.close(); }
 		},
 	});
+}
+
+/* an online duel the server runs: this page only shows its stream and sends our answers */
+function startServerOnline({ client, role, names, session, items = [], peer = null }) {
+	const localSide = role === 'host' ? TCG_PLAYER : TCG_OPPONENT;
+	const peerName = names[role === 'host' ? 1 : 0];
+	let finished = false;
+	const root = duelScreen(`${names[0]} vs. ${names[1]} · online (${role === 'host' ? 'host' : 'guest'}, room ${session ? session.room : '?'})`, () => {
+		if (!confirm('Leave this online duel? Your opponent will be told you left.')) return;
+		finished = true;
+		client.send({ t: 'leave' });
+		client.close();
+		clearSession();
+		duel.fail(new DuelAborted('left'));
+		showTitle();
+	});
+	const remote = new RemoteDuel(app.duel);
+	const ui = new DuelUI(root, remote, { mode: 'online', localSide, pacing: !FAST, remoteAckDelay: FAST ? 0 : 1400, skipDelay: skipDelayAllowed() });
+	ui.names = names;
+	app.ui = ui;
+	app.online = null;
+	const duel = new ServerDuelSession({ ui, remote, client, peerName, onStatus: (t, k) => ui.setStatus(t, k) });
+	app.serverDuel = duel;
+	client.on('item', (m) => duel.receive(m.item));
+	client.on('peer-left', () => ui.setStatus(`${peerName} lost the connection. Waiting for them to come back…`, 'warn'));
+	client.on('peer-back', () => ui.setStatus(`${peerName} is back.`, 'ok'));
+	client.on('peer-quit', () => {
+		if (finished) return;
+		finished = true;
+		duel.fail(new DuelAborted('peer quit'));
+		clearSession();
+		resultDialog(ui, `${peerName} left the duel.`, '', null);
+	});
+	client.on('error', (m) => ui.setStatus(m.msg, 'err'));
+	client.on('rejoined', (m) => {
+		duel.receiveAll(m.items || []);
+		ui.setStatus(m.peer && m.peer.connected ? 'Reconnected.' : `Reconnected. ${peerName} is not connected right now.`, 'ok');
+	});
+	if (items.length) duel.receiveAll(items, true);
+	if (peer && !peer.connected) ui.setStatus(`${peerName} is not connected right now.`, 'warn');
+	let delayMs = 1000;
+	const reconnect = async () => {
+		if (finished || client.closedByUser) return;
+		ui.setStatus('Connection to the server lost. Reconnecting…', 'warn');
+		try {
+			await client.connect();
+			delayMs = 1000;
+			client.send({ t: 'rejoin', room: session.room, token: session.token, from: duel.received });
+		} catch {
+			delayMs = Math.min(delayMs * 2, 10000);
+			setTimeout(reconnect, delayMs);
+		}
+	};
+	client.on('close', () => setTimeout(reconnect, 300));
+	duel.run().then((end) => {
+		if (finished) return;
+		finished = true;
+		client.send({ t: 'leave' });
+		clearSession();
+		client.close();
+		if (end.error) resultDialog(ui, 'The duel stopped', `The engine reached a part of the original game that is not ported to C yet:\n${end.error}`, null, 'fatal');
+		else resultDialog(ui, describeResult('online', end, names, localSide), `${end.turns} turns`, null);
+	}, () => {});
 }
 
 // ---------------------------------------------------------------- deck builder
